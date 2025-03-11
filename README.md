@@ -6,10 +6,9 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 ## Apresentações e Material Didático
 
-Cada capítulo do curso possui uma apresentação interativa disponível online. Navegue pelos links abaixo para acessar o material:
+0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/revisao.html)
 
 1. [Funções de várias variáveis reais a valores vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/funcoes-de-varias-variaveis-reais-a-valores-vetoriais.html)
-
 - [Função vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/funcao-vetorial.html)
 - [Campo vetorial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/campo-vetorial.html)
 - [Rotacional](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/rotacional.html)

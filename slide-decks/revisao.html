@@ -1,0 +1,2536 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: Revisão de Fundamentos</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/space-theme.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      window.onload = function () {
+        // Adicionar evento para detectar quando o Reveal.js está totalmente carregado
+        document.addEventListener('DOMContentLoaded', function () {
+          console.log('DOM carregado, inicializando Reveal.js...');
+        });
+
+        // Inicializar Reveal.js com configurações
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          transition: 'convex',
+          plugins: [RevealMath.MathJax3],
+          math: {
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+            TeX: {
+              Macros: {},
+            },
+          },
+          // Adicionar callback para quando o Reveal.js estiver pronto
+          ready: function () {
+            console.log('Reveal.js inicializado com sucesso');
+          },
+        });
+      };
+    </script>
+    <style>
+      .timeline {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--accent-color);
+        z-index: -1;
+      }
+
+      .timeline-item {
+        text-align: center;
+        background: var(--space-black);
+        border: 1px solid var(--accent-color);
+        border-radius: 8px;
+        padding: 8px;
+        width: 22%;
+        box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
+      }
+
+      .timeline-year {
+        font-weight: bold;
+        color: var(--star-blue);
+      }
+
+      .math-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1em 0;
+      }
+
+      .formula {
+        width: 48%;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .note {
+        font-size: 0.8em;
+        font-style: italic;
+        color: var(--accent-color);
+        text-align: left;
+        margin-top: 2em;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 1em 0;
+      }
+
+      .image-caption {
+        text-align: center;
+        font-style: italic;
+        font-size: 0.8em;
+        margin-top: 0.5em;
+      }
+
+      .highlight {
+        color: var(--star-blue);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- SLIDE DE TÍTULO -->
+        <section>
+          <h1>Fundamentos Matemáticos da Exploração Espacial</h1>
+          <h3>Revisão de Cálculo Diferencial e Integral</h3>
+          <p>Conectando os conceitos matemáticos à conquista do espaço</p>
+          <div class="asteroid"></div>
+          <div class="asteroid"></div>
+        </section>
+
+        <!-- INTRODUÇÃO NARRATIVA -->
+        <section>
+          <h2>Do Cálculo às Estrelas</h2>
+          <p>
+            A matemática e a física têm uma história entrelaçada com nossa
+            ambição de alcançar os céus.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">1687</div>
+              <p>
+                Newton publica <em>Principia</em> estabelecendo as bases do
+                cálculo e mecânica
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1903</div>
+              <p>
+                Tsiolkovsky publica a equação do foguete, aplicando cálculo ao
+                problema da propulsão
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1942</div>
+              <p>
+                Primeiro lançamento bem-sucedido do V2, aplicando cálculos
+                balísticos avançados
+              </p>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">1957</div>
+              <p>
+                Lançamento do Sputnik, iniciando oficialmente a Era Espacial
+              </p>
+            </div>
+          </div>
+
+          <p class="note">
+            O cálculo diferencial e integral, desenvolvido independentemente por
+            Newton e Leibniz no século XVII, tornou-se a linguagem fundamental
+            da exploração espacial.
+          </p>
+        </section>
+
+        <!-- PARTE 1: DERIVADAS -->
+        <section>
+          <section>
+            <h2>Derivadas: A Matemática da Mudança</h2>
+            <p>
+              A ferramenta que nos permite entender como as grandezas físicas
+              variam instantaneamente
+            </p>
+            <p>
+              $\frac{df}{dx} = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) -
+              f(x)}{\Delta x}$
+            </p>
+            <p class="note">
+              Esta expressão, aparentemente abstrata, permitiu aos engenheiros
+              calcular com precisão velocidades, acelerações e taxas de consumo
+              de combustível em sistemas de propulsão.
+            </p>
+          </section>
+
+          <section>
+            <h3>Significado Geométrico da Derivada</h3>
+            <p>
+              A derivada representa a inclinação da reta tangente à curva em um
+              ponto.
+            </p>
+            <div
+              id="derivada-geometrica"
+              style="
+                width: 100%;
+                height: 300px;
+                background: rgba(26, 35, 126, 0.3);
+                border: 1px solid rgba(79, 195, 247, 0.2);
+                box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+              "
+            ></div>
+            <p class="note">
+              Este conceito geométrico simples revolucionou nossa capacidade de
+              modelar fenômenos físicos.
+            </p>
+          </section>
+
+          <section>
+            <h3>Propriedades e Regras de Derivação</h3>
+            <div class="math-container">
+              <div class="formula">
+                <p>Regra da Soma</p>
+                <p>
+                  $\frac{d}{dx}[f(x) + g(x)] = \frac{df}{dx} + \frac{dg}{dx}$
+                </p>
+              </div>
+              <div class="formula">
+                <p>Regra do Produto</p>
+                <p>
+                  $\frac{d}{dx}[f(x) \cdot g(x)] = f(x) \cdot \frac{dg}{dx} +
+                  g(x) \cdot \frac{df}{dx}$
+                </p>
+              </div>
+            </div>
+            <div class="math-container">
+              <div class="formula">
+                <p>Regra do Quociente</p>
+                <p>
+                  $\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{g(x) \cdot
+                  \frac{df}{dx} - f(x) \cdot \frac{dg}{dx}}{[g(x)]^2}$
+                </p>
+              </div>
+              <div class="formula">
+                <p>Regra da Cadeia</p>
+                <p>
+                  $\frac{d}{dx}[f(g(x))] = \frac{df}{dg} \cdot \frac{dg}{dx}$
+                </p>
+              </div>
+            </div>
+            <p class="note">
+              Estas regras permitiram que engenheiros decomponham problemas
+              complexos em componentes gerenciáveis.
+            </p>
+          </section>
+
+          <section>
+            <h3>Derivadas na Física da Exploração Espacial</h3>
+            <div class="math-container">
+              <div class="formula">
+                <p>Velocidade como derivada da posição</p>
+                <p>$\vec{v} = \frac{d\vec{r}}{dt}$</p>
+              </div>
+              <div class="formula">
+                <p>Aceleração como derivada da velocidade</p>
+                <p>$\vec{a} = \frac{d\vec{v}}{dt} = \frac{d^2\vec{r}}{dt^2}$</p>
+              </div>
+            </div>
+            <p>Equação do Foguete de Tsiolkovsky (1903):</p>
+            <p>$\Delta v = v_e \ln\left(\frac{m_0}{m_f}\right)$</p>
+            <p>
+              O cálculo diferencial permitiu derivar esta equação fundamental
+              que relaciona mudança de velocidade (Δv), velocidade de exaustão
+              (v<sub>e</sub>) e razão de massas.
+            </p>
+          </section>
+
+          <section>
+            <h3>Marco Histórico: Cálculos Balísticos Pioneiros</h3>
+            <div class="image-container">
+              <div>
+                <img
+                  src="/api/placeholder/350/200"
+                  alt="Esquema de cálculo de trajetória do V2"
+                />
+                <p class="image-caption">
+                  Cálculos de trajetória do V2, década de 1940
+                </p>
+              </div>
+              <div>
+                <img
+                  src="/api/placeholder/350/200"
+                  alt="Foguete V2 em lançamento"
+                />
+                <p class="image-caption">Lançamento de um foguete V2</p>
+              </div>
+            </div>
+            <p>
+              Os engenheiros alemães liderados por von Braun aplicaram cálculo
+              diferencial para resolver problemas de:
+            </p>
+            <ul>
+              <li>Trajetórias balísticas otimizadas</li>
+              <li>Estabilidade aerodinâmica</li>
+              <li>Consumo de combustível</li>
+            </ul>
+            <p class="note">
+              Estes cálculos estabeleceram as bases matemáticas que mais tarde
+              permitiriam as viagens espaciais.
+            </p>
+          </section>
+
+          <section>
+            <h3>A Derivada na Prática: Do Papel para o Espaço</h3>
+            <p>
+              Durante o Programa Mercury (1958-1963), os engenheiros enfrentaram
+              um desafio crítico: determinar as
+              <span class="highlight">janelas de lançamento</span> para
+              encontrar a órbita correta.
+            </p>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                margin: 1em 0;
+              "
+            >
+              <div
+                style="
+                  width: 45%;
+                  text-align: left;
+                  background: rgba(26, 35, 126, 0.3);
+                  padding: 15px;
+                  border-radius: 8px;
+                "
+              >
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Problema físico:
+                </p>
+                <p>Se a velocidade de um foguete é dada por:</p>
+                <p>$v(t) = v_0 + at - bt^2$</p>
+                <p>
+                  Onde \(a\) representa o empuxo e \(b\) a resistência
+                  atmosférica:
+                </p>
+                <p>1. Quando o foguete atinge velocidade máxima?</p>
+                <p>2. Qual é essa velocidade máxima?</p>
+              </div>
+              <div style="width: 45%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Solução usando derivadas:
+                </p>
+                <p>$\frac{dv}{dt} = a - 2bt$</p>
+                <p>No ponto de velocidade máxima, \(\frac{dv}{dt} = 0\):</p>
+                <p>$a - 2bt = 0 \implies t_{max} = \frac{a}{2b}$</p>
+                <p>Substituindo de volta:</p>
+                <p>
+                  $v_{max} = v_0 + a\left(\frac{a}{2b}\right) -
+                  b\left(\frac{a}{2b}\right)^2 = v_0 + \frac{a^2}{4b}$
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              Este tipo de cálculo permitiu aos engenheiros da NASA programar
+              com precisão os estágios de separação dos foguetes, otimizando o
+              combustível disponível.
+            </p>
+          </section>
+
+          <section>
+            <h3>Derivadas de Ordem Superior e Controle de Missão</h3>
+
+            <p>
+              Além da velocidade (primeira derivada) e aceleração (segunda
+              derivada), o controle preciso de missões espaciais exige análise
+              de derivadas de ordem superior:
+            </p>
+
+            <div class="math-container">
+              <div class="formula">
+                <p>Jerk (solavanco) - 3ª derivada</p>
+                <p>$\vec{j} = \frac{d\vec{a}}{dt} = \frac{d^3\vec{r}}{dt^3}$</p>
+                <p style="font-size: 0.8em">Taxa de variação da aceleração</p>
+              </div>
+              <div class="formula">
+                <p>Snap (estalo) - 4ª derivada</p>
+                <p>$\vec{s} = \frac{d\vec{j}}{dt} = \frac{d^4\vec{r}}{dt^4}$</p>
+                <p style="font-size: 0.8em">Taxa de variação do jerk</p>
+              </div>
+            </div>
+
+            <p>
+              Durante as missões Apollo, o controle de manobras precisava
+              limitar o <em>jerk</em> para:
+            </p>
+            <ul>
+              <li>Evitar desconforto na tripulação (< 1g/s para humanos)</li>
+              <li>Prevenir tensões estruturais nas naves</li>
+              <li>Garantir correto funcionamento de instrumentos sensíveis</li>
+            </ul>
+
+            <p class="note">
+              Derivadas de ordem superior são cruciais para projetar sistemas de
+              controle de atitude e trajetória em tempo real durante missões
+              espaciais.
+            </p>
+          </section>
+
+          <section>
+            <h3>Exercício: O Problema da Reentrada</h3>
+
+            <div
+              style="
+                background: rgba(26, 35, 126, 0.3);
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+              "
+            >
+              <p style="font-weight: bold">Contexto: Missão Vostok (1961)</p>
+              <p>
+                Durante a primeira missão tripulada, Yuri Gagarin enfrentou uma
+                reentrada balística não controlada. A velocidade da cápsula
+                seguia aproximadamente a função:
+              </p>
+              <p>$v(t) = 7900 - 32t + 0.5t^3 \text{ m/s}$</p>
+              <p>onde \(t\) é o tempo em segundos após início da reentrada.</p>
+
+              <p style="font-weight: bold; margin-top: 15px">Perguntas:</p>
+              <ol>
+                <li>Em que momento a desaceleração atinge seu valor máximo?</li>
+                <li>
+                  Qual a desaceleração máxima experimentada (em unidades g)?
+                </li>
+                <li>
+                  Por que este valor é crucial para o design de cápsulas
+                  espaciais?
+                </li>
+              </ol>
+            </div>
+
+            <div style="text-align: right">
+              <p>
+                <em
+                  >Dica: A aceleração é a derivada da velocidade. Para encontrar
+                  seu valor máximo/mínimo, derive novamente e iguale a zero.</em
+                >
+              </p>
+              <p><em>1g ≈ 9.8 m/s²</em></p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Solução: O Problema da Reentrada</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+              "
+            >
+              <div style="width: 48%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Passo 1: Encontrar a aceleração
+                </p>
+                <p>$a(t) = \frac{dv}{dt} = -32 + 1.5t^2 \text{ m/s²}$</p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Passo 2: Encontrar quando a aceleração é máxima/mínima
+                </p>
+                <p>$\frac{da}{dt} = 3t = 0$</p>
+                <p>Solução: \(t = 0\)</p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Passo 3: Verificar se é máximo ou mínimo
+                </p>
+                <p>$\frac{d^2a}{dt^2} = 3 > 0$</p>
+                <p>Logo, temos um mínimo em \(t = 0\)</p>
+              </div>
+
+              <div style="width: 48%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Passo 4: Calcular o valor da aceleração em t = 0
+                </p>
+                <p>$a(0) = -32 \text{ m/s²}$</p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Passo 5: Converter para unidades g
+                </p>
+                <p>$-32 \text{ m/s²} \div 9.8 \text{ m/s²} \approx -3.27g$</p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Resposta final:
+                </p>
+                <p>
+                  A desaceleração máxima de -3.27g ocorre no início da reentrada
+                  (t = 0).
+                </p>
+                <p>
+                  Este valor é crucial pois determina as especificações
+                  estruturais da cápsula e os limites fisiológicos para os
+                  cosmonautas/astronautas.
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              O valor máximo de desaceleração durante reentradas é tipicamente
+              mantido abaixo de 8-10g para missões tripuladas, exigindo ângulos
+              de reentrada precisamente calculados.
+            </p>
+          </section>
+        </section>
+
+        <!-- PARTE 2: INTEGRAIS -->
+        <section>
+          <section>
+            <h2>Integrais: Somando o Infinitamente Pequeno</h2>
+            <p>
+              A ferramenta matemática que nos permite acumular quantidades
+              continuamente variáveis
+            </p>
+            <p>
+              $\int_a^b f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \,
+              \Delta x$
+            </p>
+            <p class="note">
+              Esta expressão permitiu aos cientistas calcular trabalho total,
+              impulso e consumo de combustível - parâmetros críticos para o
+              planejamento de missões espaciais.
+            </p>
+          </section>
+
+          <section>
+            <h3>Interpretação Geométrica: Área Sob a Curva</h3>
+            <div
+              id="integral-geometrica"
+              style="
+                width: 100%;
+                height: 300px;
+                background: rgba(26, 35, 126, 0.3);
+                border: 1px solid rgba(79, 195, 247, 0.2);
+                box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+              "
+            ></div>
+            <p>
+              A integral de uma função representa a área sob sua curva no
+              intervalo especificado.
+            </p>
+            <p class="note">
+              Este conceito geométrico é fundamental para calcular o impulso
+              total de um motor de foguete ou a energia consumida durante uma
+              manobra orbital.
+            </p>
+          </section>
+
+          <section>
+            <h3>Teorema Fundamental do Cálculo</h3>
+            <p>A ponte crucial entre derivadas e integrais:</p>
+            <p>$\int_a^b f(x) \, dx = F(b) - F(a)$</p>
+            <p>
+              Onde \(F\) é uma antiderivada de \(f\), ou seja: \(F'(x) = f(x)\)
+            </p>
+            <p class="note">
+              Esta conexão elegante permite calcular integrais definidas
+              encontrando antiderivadas, simplificando enormemente os cálculos
+              de engenharia espacial.
+            </p>
+          </section>
+
+          <section>
+            <h3>Técnicas de Integração</h3>
+            <div class="math-container">
+              <div class="formula">
+                <p>Substituição</p>
+                <p>$\int f(g(x))g'(x) \, dx = \int f(u) \, du$</p>
+                <p>onde \(u = g(x)\)</p>
+              </div>
+              <div class="formula">
+                <p>Por Partes</p>
+                <p>$\int u(x)v'(x) \, dx = u(x)v(x) - \int v(x)u'(x) \, dx$</p>
+              </div>
+            </div>
+            <p class="note">
+              Estas técnicas são essenciais para resolver as equações
+              diferenciais que descrevem órbitas e manobras espaciais.
+            </p>
+          </section>
+
+          <section>
+            <h3>Integrais na Física da Exploração Espacial</h3>
+            <div class="math-container">
+              <div class="formula">
+                <p>Trabalho realizado por uma força variável</p>
+                <p>$W = \int_a^b \vec{F} \cdot d\vec{r}$</p>
+              </div>
+              <div class="formula">
+                <p>Impulso Total</p>
+                <p>$I = \int_{t_1}^{t_2} F(t) \, dt$</p>
+              </div>
+            </div>
+            <p>A integral permitiu aos engenheiros calcular:</p>
+            <ul>
+              <li>Impulso total de motores de foguete</li>
+              <li>Energia necessária para manobras orbitais</li>
+              <li>Efeitos cumulativos da resistência atmosférica</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Marco Histórico: Cálculos de Hohmann</h3>
+            <div class="image-container">
+              <div>
+                <img
+                  src="/api/placeholder/350/200"
+                  alt="Diagrama da Transferência de Hohmann"
+                />
+                <p class="image-caption">Transferência de Hohmann (1925)</p>
+              </div>
+              <div>
+                <img
+                  src="/api/placeholder/350/200"
+                  alt="Aplicação atual em manobras espaciais"
+                />
+                <p class="image-caption">Aplicação em missões espaciais</p>
+              </div>
+            </div>
+            <p>
+              Walter Hohmann aplicou cálculo integral para mostrar que a
+              trajetória elíptica tangente a duas órbitas circulares é a manobra
+              que minimiza o combustível necessário para transferência orbital.
+            </p>
+            <p class="note">
+              Este trabalho matemático, publicado em 1925, tornou-se fundamental
+              para praticamente todas as missões espaciais realizadas durante a
+              Guerra Fria e além.
+            </p>
+          </section>
+
+          <section>
+            <h3>O Problema do Impulso na Propulsão Espacial</h3>
+
+            <div
+              style="
+                background: rgba(26, 35, 126, 0.3);
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+              "
+            >
+              <p>
+                O <span class="highlight">impulso específico</span> é uma medida
+                fundamental de eficiência em sistemas de propulsão espacial,
+                representando quanto empuxo é gerado por unidade de propelente
+                consumido por unidade de tempo.
+              </p>
+
+              <p>
+                Para um motor com empuxo variável ao longo do tempo, o impulso
+                total é calculado por:
+              </p>
+
+              <p>$I_{total} = \int_{t_0}^{t_f} F(t) \, dt$</p>
+
+              <p>
+                Onde \(F(t)\) é a força de empuxo em função do tempo, do momento
+                de ignição \(t_0\) até o desligamento \(t_f\).
+              </p>
+            </div>
+
+            <p>
+              Durante o desenvolvimento do motor F-1 usado no Saturn V, os
+              engenheiros da NASA modelaram o empuxo durante a fase de partida
+              como:
+            </p>
+
+            <p>$F(t) = F_{max}\left(1 - e^{-kt}\right) \text{ Newtons}$</p>
+
+            <p>
+              Onde \(F_{max} = 6.77 \times 10^6\) N é o empuxo máximo e \(k =
+              0.5\) s<sup>-1</sup> é a constante de tempo característica do
+              motor.
+            </p>
+
+            <p class="note">
+              Calcular o impulso total durante os primeiros 5 segundos após a
+              ignição foi crucial para garantir que o foguete pudesse decolar
+              com segurança da plataforma de lançamento.
+            </p>
+          </section>
+
+          <section>
+            <h3>Cálculo do Impulso: Um Exemplo Prático</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+              "
+            >
+              <div style="width: 48%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Problema:
+                </p>
+                <p>
+                  Calcular o impulso total nos primeiros 5 segundos de
+                  funcionamento do motor F-1 do Saturn V.
+                </p>
+
+                <p>
+                  $F(t) = 6.77 \times 10^6 \left(1 - e^{-0.5t}\right) \text{ N}$
+                </p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Solução usando integração:
+                </p>
+                <p>
+                  $I_{total} = \int_{0}^{5} 6.77 \times 10^6 \left(1 -
+                  e^{-0.5t}\right) \, dt$
+                </p>
+              </div>
+
+              <div style="width: 48%; text-align: left">
+                <p>Resolvendo:</p>
+                <p>
+                  \begin{align*} I_{total} &= 6.77 \times 10^6 \int_{0}^{5}
+                  \left(1 - e^{-0.5t}\right) \, dt \\ &= 6.77 \times 10^6
+                  \left[t + \frac{e^{-0.5t}}{0.5}\right]_{0}^{5} \\ &= 6.77
+                  \times 10^6 \left[(5 - \frac{e^{-2.5}}{0.5}) - (0 -
+                  \frac{1}{0.5})\right] \\ &= 6.77 \times 10^6 [5 - 0.16 + 2] \\
+                  &= 6.77 \times 10^6 \times 6.84 \\ &\approx 46.3 \times 10^6
+                  \text{ N·s} \end{align*}
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              Este impulso de 46.3 milhões de newton-segundos representa a
+              "quantidade de movimento" transferida ao foguete durante a fase
+              inicial de lançamento, demonstrando por que o cálculo integral é
+              indispensável para a engenharia aeroespacial.
+            </p>
+          </section>
+
+          <section>
+            <h3>Integrais e Transferências Orbitais</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 20px;
+              "
+            >
+              <div style="width: 45%">
+                <img
+                  src="/api/placeholder/350/350"
+                  alt="Diagrama da Transferência de Hohmann"
+                />
+              </div>
+
+              <div style="width: 50%; text-align: left">
+                <p>
+                  A transferência de Hohmann usa duas queimas de motor para
+                  mover uma nave da órbita 1 para a órbita 2:
+                </p>
+
+                <p>$\Delta v_{total} = \Delta v_1 + \Delta v_2$</p>
+
+                <p>
+                  Para calcular o consumo de combustível, precisamos aplicar:
+                </p>
+
+                <p>
+                  $m_{propellant} = m_{initial} \left(1 - e^{-\Delta
+                  v_{total}/v_e}\right)$
+                </p>
+
+                <p>Onde \(v_e\) é a velocidade de exaustão do motor.</p>
+
+                <p>O trabalho realizado pelos motores é dado por:</p>
+
+                <p>
+                  $W = \int F \cdot dr = \int_{r_1}^{r_2} \frac{GMm}{r^2} \, dr
+                  = GMm\left(\frac{1}{r_1} - \frac{1}{r_2}\right)$
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              Os engenheiros soviéticos e americanos redescobriram
+              independentemente os princípios de Hohmann durante a década de
+              1950, aplicando-os para as primeiras missões lunares e
+              interplanetárias.
+            </p>
+          </section>
+
+          <section>
+            <h3>
+              Exercício: Consumo de Combustível em Reorientação de Satélite
+            </h3>
+
+            <div
+              style="
+                background: rgba(26, 35, 126, 0.3);
+                padding: 20px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+              "
+            >
+              <p style="font-weight: bold">
+                Contexto: Programa Vanguard (1957-1959)
+              </p>
+              <p>
+                Durante as primeiras missões de satélites artificiais, os
+                engenheiros precisavam calcular com precisão o consumo de
+                combustível para manobras de orientação. Um propulsor específico
+                produzia força segundo a função:
+              </p>
+
+              <p>$F(t) = 20 - 0.5t^2 \text{ Newtons}$</p>
+
+              <p>para \(0 \leq t \leq 6\) segundos.</p>
+
+              <p style="font-weight: bold; margin-top: 15px">Perguntas:</p>
+              <ol>
+                <li>
+                  Qual o impulso total fornecido pelo propulsor durante seu
+                  funcionamento completo?
+                </li>
+                <li>
+                  Se a massa do satélite é 10 kg, qual a variação de velocidade
+                  resultante desta queima?
+                </li>
+                <li>
+                  Quanto combustível é consumido se o impulso específico do
+                  propulsor é 220 segundos?
+                </li>
+              </ol>
+            </div>
+
+            <div style="text-align: right">
+              <p>
+                <em
+                  >Dica: Use a equação \(\Delta v = \frac{I_{total}}{m}\) para a
+                  segunda pergunta.</em
+                >
+              </p>
+              <p>
+                <em
+                  >Para a terceira, use \(m_{propellant} =
+                  \frac{I_{total}}{I_{sp} \cdot g_0}\) onde \(g_0 = 9.8\text{
+                  m/s}^2\).</em
+                >
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h3>Solução: Consumo de Combustível em Reorientação</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+              "
+            >
+              <div style="width: 48%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  1. Cálculo do impulso total:
+                </p>
+                <p>
+                  \begin{align*} I_{total} &= \int_{0}^{6} (20 - 0.5t^2) \, dt
+                  \\ &= \left[20t - \frac{0.5t^3}{3}\right]_{0}^{6} \\ &= 20
+                  \cdot 6 - \frac{0.5 \cdot 6^3}{3} - 0 \\ &= 120 - \frac{0.5
+                  \cdot 216}{3} \\ &= 120 - 36 \\ &= 84 \text{ N·s} \end{align*}
+                </p>
+              </div>
+
+              <div style="width: 48%; text-align: left">
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  2. Variação de velocidade:
+                </p>
+                <p>
+                  \begin{align*} \Delta v &= \frac{I_{total}}{m} \\ &= \frac{84
+                  \text{ N·s}}{10 \text{ kg}} \\ &= 8.4 \text{ m/s} \end{align*}
+                </p>
+
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  3. Consumo de combustível:
+                </p>
+                <p>
+                  \begin{align*} m_{propellant} &= \frac{I_{total}}{I_{sp} \cdot
+                  g_0} \\ &= \frac{84 \text{ N·s}}{220 \text{ s} \cdot 9.8
+                  \text{ m/s}^2} \\ &= \frac{84}{2156} \\ &\approx 0.039 \text{
+                  kg} = 39 \text{ g} \end{align*}
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              A precisão nestes cálculos era essencial, pois os primeiros
+              satélites tinham reservas de combustível extremamente limitadas.
+              Um erro de cálculo poderia significar o fim prematuro da missão.
+            </p>
+          </section>
+        </section>
+
+        <!-- CONTEXTO HISTÓRICO APROFUNDADO -->
+        <section>
+          <section>
+            <h2>Matemática e Poder: As Raízes da Corrida Espacial</h2>
+
+            <p>
+              A corrida espacial não começou com o Sputnik em 1957. Suas origens
+              remontam à Segunda Guerra Mundial e aos desenvolvimentos
+              matemáticos que a precederam.
+            </p>
+
+            <div
+              class="timeline"
+              style="flex-direction: column; height: auto; gap: 20px"
+            >
+              <div class="timeline-item" style="width: 80%; margin: 0 auto">
+                <div class="timeline-year">1915-1925</div>
+                <p>
+                  Einstein publica a Teoria da Relatividade Geral; Tsiolkovsky,
+                  Oberth e Goddard desenvolvem os princípios básicos dos
+                  foguetes, todos fortemente baseados em cálculo diferencial e
+                  integral
+                </p>
+              </div>
+              <div class="timeline-item" style="width: 80%; margin: 0 auto">
+                <div class="timeline-year">1942-1945</div>
+                <p>
+                  A equipe de von Braun desenvolve o V2 na Alemanha, o primeiro
+                  míssil balístico, aplicando cálculo avançado em suas
+                  trajetórias e sistemas de propulsão
+                </p>
+              </div>
+              <div class="timeline-item" style="width: 80%; margin: 0 auto">
+                <div class="timeline-year">1945-1950</div>
+                <p>
+                  EUA e URSS recrutam cientistas alemães e incorporam seus
+                  conhecimentos matemáticos em programas militares secretos
+                </p>
+              </div>
+            </div>
+
+            <p class="note">
+              A matemática se tornou uma ferramenta de poder geopolítico quando
+              as nações perceberam que a supremacia nos céus dependia da
+              supremacia nos cálculos.
+            </p>
+          </section>
+
+          <section>
+            <h3>A Corrida pelo Talento Matemático</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                gap: 20px;
+              "
+            >
+              <div style="width: 45%">
+                <img
+                  src="/api/placeholder/350/250"
+                  alt="Cientistas do programa espacial soviético"
+                />
+                <p class="image-caption">
+                  Equipe de matemáticos soviéticos, 1953
+                </p>
+              </div>
+
+              <div style="width: 45%">
+                <img
+                  src="/api/placeholder/350/250"
+                  alt="Cientistas da NASA no centro de controle"
+                />
+                <p class="image-caption">Cientistas da NASA no JPL, 1958</p>
+              </div>
+            </div>
+
+            <p>
+              Após 1945, ambos os lados da nascente Guerra Fria reconheceram que
+              o domínio matemático era crucial para o domínio espacial:
+            </p>
+
+            <ul>
+              <li>
+                A URSS expandiu drasticamente seu programa de matemática
+                aplicada sob a liderança de Mstislav Keldysh
+              </li>
+              <li>
+                Os EUA recrutaram von Braun e sua equipe na Operação Paperclip
+              </li>
+              <li>
+                Universidades em ambos os países começaram a priorizar o cálculo
+                aplicado e a formação de engenheiros com forte base matemática
+              </li>
+            </ul>
+
+            <p class="note">
+              Pela primeira vez na história, governos investiram bilhões em
+              pesquisa matemática aplicada, transformando equações abstratas em
+              questão de segurança nacional.
+            </p>
+          </section>
+
+          <section>
+            <h3>A Matemática como Fundamento da Nova Fronteira</h3>
+
+            <div
+              style="
+                background: rgba(26, 35, 126, 0.3);
+                padding: 20px;
+                border-radius: 8px;
+                margin: 20px 0;
+              "
+            >
+              <p
+                style="
+                  font-weight: bold;
+                  color: var(--star-blue);
+                  font-size: 1.1em;
+                "
+              >
+                "Nós escolhemos ir à Lua não porque é fácil, mas porque é
+                difícil... porque esse desafio é aquele que estamos dispostos a
+                aceitar, aquele que não queremos adiar."
+              </p>
+              <p style="text-align: right">
+                — Presidente John F. Kennedy, 1962
+              </p>
+            </div>
+
+            <p>
+              O que muitos não percebiam é que por trás das palavras
+              inspiradoras estava um imenso desafio matemático:
+            </p>
+
+            <ul>
+              <li>
+                Equações diferenciais para modelar sistemas dinâmicos de
+                controle
+              </li>
+              <li>
+                Integrais multidimensionais para otimização de trajetórias
+              </li>
+              <li>
+                Cálculo vetorial para compreender campos gravitacionais e de
+                propulsão
+              </li>
+              <li>
+                Análise numérica para simular condições impossíveis de testar na
+                Terra
+              </li>
+            </ul>
+
+            <p>
+              Cada um desses campos tinha aplicações diretas e críticas na
+              conquista do espaço, transformando o que antes era matemática
+              teórica em uma necessidade prática imediata.
+            </p>
+          </section>
+        </section>
+
+        <!-- FECHAMENTO E PONTE PARA CÁLCULO VETORIAL -->
+        <section>
+          <section>
+            <h2>Do Unidimensional ao Tridimensional</h2>
+            <p>
+              Os conceitos de derivada e integral são poderosos, mas a
+              exploração espacial exige uma extensão para múltiplas dimensões.
+            </p>
+            <p>
+              Problemas como a interação gravitacional entre múltiplos corpos,
+              campos eletromagnéticos e dinâmica de fluidos em propulsores
+              requerem ferramentas matemáticas mais sofisticadas.
+            </p>
+            <p class="highlight">
+              É aqui que entra o Cálculo Vetorial: a linguagem matemática da
+              exploração espacial.
+            </p>
+            <p class="note">
+              A seguir, veremos como os conceitos de derivadas e integrais se
+              expandem para lidar com quantidades vetoriais e campos em três
+              dimensões, permitindo descrever os fenômenos físicos complexos
+              envolvidos na navegação espacial.
+            </p>
+          </section>
+
+          <section>
+            <h3>As Limitações do Cálculo Escalar</h3>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin: 1em 0;
+              "
+            >
+              <div
+                style="
+                  width: 48%;
+                  text-align: left;
+                  background: rgba(26, 35, 126, 0.3);
+                  padding: 15px;
+                  border-radius: 8px;
+                "
+              >
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Problemas com Cálculo Escalar:
+                </p>
+                <ul>
+                  <li>Não captura naturalmente direções no espaço</li>
+                  <li>Requer sistemas de coordenadas artificiais</li>
+                  <li>Torna complexa a descrição de rotações</li>
+                  <li>Dificulta a expressão de leis físicas invariantes</li>
+                </ul>
+              </div>
+
+              <div
+                style="
+                  width: 48%;
+                  text-align: left;
+                  background: rgba(26, 35, 126, 0.3);
+                  padding: 15px;
+                  border-radius: 8px;
+                "
+              >
+                <p style="font-weight: bold; color: var(--star-blue)">
+                  Vantagens do Cálculo Vetorial:
+                </p>
+                <ul>
+                  <li>Representa naturalmente grandezas direcionais</li>
+                  <li>Expressa leis físicas independentes de coordenadas</li>
+                  <li>Simplifica a descrição de movimentos tridimensionais</li>
+                  <li>Permite análise de campos em todo o espaço</li>
+                </ul>
+              </div>
+            </div>
+
+            <p>
+              Considere o movimento de uma nave espacial em órbita. Com cálculo
+              escalar, precisaríamos de três equações separadas:
+            </p>
+
+            <p>
+              $ \begin{cases} \frac{d^2x}{dt^2} =
+              -\frac{GMx}{(x^2+y^2+z^2)^{3/2}} \\ \frac{d^2y}{dt^2} =
+              -\frac{GMy}{(x^2+y^2+z^2)^{3/2}} \\ \frac{d^2z}{dt^2} =
+              -\frac{GMz}{(x^2+y^2+z^2)^{3/2}} \end{cases} $
+            </p>
+
+            <p>Com cálculo vetorial, uma única equação é suficiente:</p>
+
+            <p>$\frac{d^2\vec{r}}{dt^2} = -\frac{GM}{|\vec{r}|^3}\vec{r}$</p>
+
+            <p class="note">
+              Esta elegância matemática não é apenas estética, mas prática:
+              facilita a solução de problemas complexos e expõe simetrias
+              fundamentais dos sistemas físicos.
+            </p>
+          </section>
+
+          <section>
+            <h3>Preparando-se para a Jornada Vetorial</h3>
+
+            <p>
+              Ao avançarmos para o cálculo vetorial, expandiremos nossos
+              conceitos fundamentais:
+            </p>
+
+            <div
+              style="
+                display: flex;
+                justify-content: space-around;
+                margin: 1em 0;
+              "
+            >
+              <div style="width: 30%; text-align: center">
+                <div style="font-weight: bold; color: var(--star-blue)">
+                  Derivadas → Gradientes, Divergência, Rotacional
+                </div>
+                <div
+                  style="
+                    border: 1px solid var(--accent-color);
+                    border-radius: 8px;
+                    padding: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  <p>
+                    $\text{escalar} \frac{df}{dx} \;\to\; \text{vetorial} \nabla
+                    f, \nabla \cdot \vec{F}, \nabla \times \vec{F}$
+                  </p>
+                </div>
+              </div>
+
+              <div style="width: 30%; text-align: center">
+                <div style="font-weight: bold; color: var(--star-blue)">
+                  Integrais → Integrais de Linha, Superfície, Volume
+                </div>
+                <div
+                  style="
+                    border: 1px solid var(--accent-color);
+                    border-radius: 8px;
+                    padding: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  <p>
+                    $\int f(x)dx \;\to\; \int_C \vec{F} \cdot d\vec{r}, \iint_S
+                    \vec{F} \cdot d\vec{S}, \iiint_V \nabla \cdot \vec{F} \, dV$
+                  </p>
+                </div>
+              </div>
+
+              <div style="width: 30%; text-align: center">
+                <div style="font-weight: bold; color: var(--star-blue)">
+                  Teoremas Fundamentais → Teoremas de Green, Stokes, Gauss
+                </div>
+                <div
+                  style="
+                    border: 1px solid var(--accent-color);
+                    border-radius: 8px;
+                    padding: 10px;
+                    margin-top: 10px;
+                  "
+                >
+                  <p>
+                    $\int_a^b f'(x) \, dx = f(b) - f(a) \;\to\; \oint_C \vec{F}
+                    \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot
+                    d\vec{S}$
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p>
+              Estes conceitos vetoriais serão fundamentais para compreender:
+            </p>
+            <ul>
+              <li>Campos gravitacionais que governam órbitas planetárias</li>
+              <li>
+                Campos eletromagnéticos usados em sistemas de comunicação
+                espacial
+              </li>
+              <li>Dinâmica de fluidos em sistemas de propulsão avançados</li>
+              <li>
+                Transferência de calor em escudos térmicos durante reentrada
+                atmosférica
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Olhando para o Futuro</h3>
+
+            <div
+              style="
+                font-style: italic;
+                text-align: center;
+                font-size: 1.2em;
+                margin: 1em 0;
+              "
+            >
+              <p>
+                "A matemática é a linguagem com a qual Deus escreveu o
+                universo."
+              </p>
+              <p style="font-size: 0.8em">— Galileu Galilei</p>
+            </div>
+
+            <p>
+              Ao dominarmos o cálculo vetorial, estaremos aprendendo a linguagem
+              fundamental que descreve os movimentos celestiais e as forças que
+              governam o cosmos. Esta linguagem permitiu à humanidade:
+            </p>
+
+            <ul>
+              <li>
+                Enviar rovers a Marte com precisão de aterrissagem em metros
+              </li>
+              <li>
+                Calcular assistências gravitacionais que permitem a sondas como
+                a Voyager escapar do Sistema Solar
+              </li>
+              <li>
+                Manter satélites em órbitas precisas que tornam possível a
+                navegação global
+              </li>
+              <li>
+                Projetar manobras de rendez-vous e acoplagem em órbita terrestre
+              </li>
+            </ul>
+
+            <p>
+              Nos próximos capítulos, mergulharemos nesta poderosa linguagem
+              matemática, conectando sempre os conceitos abstratos às suas
+              aplicações concretas na exploração do cosmos.
+            </p>
+
+            <p class="highlight">
+              Prepare-se para uma jornada matemática tão ousada quanto a jornada
+              física da humanidade para as estrelas.
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Código para visualizações interativas
+
+      // Visualização Geométrica da Derivada
+      function criarVisualizacaoDerivada(containerId) {
+        // Configuração do canvas
+        const container = document.getElementById(containerId);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ajustar tamanho do canvas ao container
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        container.appendChild(canvas);
+
+        // Paleta de cores - seguindo as diretrizes do tema espacial
+        const cores = {
+          fundo: '#0a0a0f',
+          funcao: '#4fc3f7', // Azul claro para a função principal
+          secante: '#e53935', // Vermelho para a reta secante
+          tangente: '#43A047', // Verde para a reta tangente
+          ponto: '#FFB300', // Amarelo para pontos de interesse
+          grid: 'rgba(79, 195, 247, 0.1)',
+          texto: '#e0e0e0',
+        };
+
+        // Parâmetros da visualização
+        let params = {
+          x0: 2, // Ponto onde calculamos a derivada
+          dx: 1, // Delta x (que pode ser ajustado pelo usuário)
+          funcao: (x) => 0.5 * x * x, // Função f(x) = x²/2 (parábola)
+          derivada: (x) => x, // Derivada analítica f'(x) = x
+          interativo: true, // Se o usuário pode interagir
+          xMin: 0, // Limites do gráfico
+          xMax: 4,
+          yMin: 0,
+          yMax: 8,
+        };
+
+        // Sistema de coordenadas
+        const toScreenX = (x) =>
+          ((x - params.xMin) / (params.xMax - params.xMin)) * canvas.width;
+        const toScreenY = (y) =>
+          canvas.height -
+          ((y - params.yMin) / (params.yMax - params.yMin)) * canvas.height;
+        const toMathX = (screenX) =>
+          params.xMin + (screenX / canvas.width) * (params.xMax - params.xMin);
+        const toMathY = (screenY) =>
+          params.yMin +
+          ((canvas.height - screenY) / canvas.height) *
+            (params.yMax - params.yMin);
+
+        // Estado da interação
+        let arrastando = false;
+        let pontoArrastado = null;
+
+        // Cálculo da inclinação da secante
+        function calcularInclinacaoSecante() {
+          const x0 = params.x0;
+          const x1 = x0 + params.dx;
+          const y0 = params.funcao(x0);
+          const y1 = params.funcao(x1);
+          return (y1 - y0) / (x1 - x0);
+        }
+
+        // Desenhar grade de fundo
+        function desenharGrid() {
+          ctx.strokeStyle = cores.grid;
+          ctx.lineWidth = 0.5;
+
+          // Linhas verticais
+          for (let x = params.xMin; x <= params.xMax; x += 0.5) {
+            ctx.beginPath();
+            ctx.moveTo(toScreenX(x), toScreenY(params.yMin));
+            ctx.lineTo(toScreenX(x), toScreenY(params.yMax));
+            ctx.stroke();
+          }
+
+          // Linhas horizontais
+          for (let y = params.yMin; y <= params.yMax; y += 0.5) {
+            ctx.beginPath();
+            ctx.moveTo(toScreenX(params.xMin), toScreenY(y));
+            ctx.lineTo(toScreenX(params.xMax), toScreenY(y));
+            ctx.stroke();
+          }
+        }
+
+        // Desenhar eixos
+        function desenharEixos() {
+          ctx.strokeStyle = cores.texto;
+          ctx.lineWidth = 2;
+
+          // Eixo X
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(params.xMin), toScreenY(0));
+          ctx.lineTo(toScreenX(params.xMax), toScreenY(0));
+          ctx.stroke();
+
+          // Eixo Y
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(0), toScreenY(params.yMin));
+          ctx.lineTo(toScreenX(0), toScreenY(params.yMax));
+          ctx.stroke();
+
+          // Marcações nos eixos
+          ctx.fillStyle = cores.texto;
+          ctx.font = '14px Arial';
+          ctx.textAlign = 'center';
+
+          // Marcações no eixo X
+          for (let x = params.xMin; x <= params.xMax; x += 1) {
+            if (x !== 0) {
+              // Evita sobreposição na origem
+              ctx.fillText(x.toString(), toScreenX(x), toScreenY(0) + 20);
+            }
+          }
+
+          // Marcações no eixo Y
+          ctx.textAlign = 'right';
+          for (let y = params.yMin; y <= params.yMax; y += 1) {
+            if (y !== 0) {
+              // Evita sobreposição na origem
+              ctx.fillText(y.toString(), toScreenX(0) - 10, toScreenY(y) + 5);
+            }
+          }
+
+          // Origem
+          ctx.fillText('0', toScreenX(0) - 10, toScreenY(0) + 20);
+        }
+
+        // Desenhar função
+        function desenharFuncao() {
+          ctx.strokeStyle = cores.funcao;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+
+          for (let screenX = 0; screenX <= canvas.width; screenX++) {
+            const x = toMathX(screenX);
+            const y = params.funcao(x);
+
+            if (screenX === 0) {
+              ctx.moveTo(screenX, toScreenY(y));
+            } else {
+              ctx.lineTo(screenX, toScreenY(y));
+            }
+          }
+
+          ctx.stroke();
+        }
+
+        // Desenhar secante
+        function desenharSecante() {
+          const x0 = params.x0;
+          const x1 = x0 + params.dx;
+          const y0 = params.funcao(x0);
+          const y1 = params.funcao(x1);
+
+          // Linha secante
+          ctx.strokeStyle = cores.secante;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(
+            toScreenX(params.xMin),
+            toScreenY(y0 - ((x0 - params.xMin) * (y1 - y0)) / (x1 - x0))
+          );
+          ctx.lineTo(
+            toScreenX(params.xMax),
+            toScreenY(y0 + ((params.xMax - x0) * (y1 - y0)) / (x1 - x0))
+          );
+          ctx.stroke();
+
+          // Pontos de interseção com a função
+          ctx.fillStyle = cores.ponto;
+          ctx.beginPath();
+          ctx.arc(toScreenX(x0), toScreenY(y0), 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(toScreenX(x1), toScreenY(y1), 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Linha vertical mostrando Δx
+          ctx.strokeStyle = cores.texto;
+          ctx.setLineDash([5, 5]);
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(x0), toScreenY(y0));
+          ctx.lineTo(toScreenX(x1), toScreenY(y0));
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Linha horizontal mostrando Δy
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(x1), toScreenY(y0));
+          ctx.lineTo(toScreenX(x1), toScreenY(y1));
+          ctx.stroke();
+
+          // Texto para Δx e Δy
+          ctx.fillStyle = cores.texto;
+          ctx.font = '16px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('Δx', toScreenX((x0 + x1) / 2), toScreenY(y0) + 20);
+          ctx.textAlign = 'left';
+          ctx.fillText('Δy', toScreenX(x1) + 10, toScreenY((y0 + y1) / 2));
+        }
+
+        // Desenhar tangente
+        function desenharTangente() {
+          const x0 = params.x0;
+          const y0 = params.funcao(x0);
+          const m = params.derivada(x0); // Inclinação da tangente (derivada analítica)
+
+          // Linha tangente
+          ctx.strokeStyle = cores.tangente;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(
+            toScreenX(params.xMin),
+            toScreenY(y0 - (x0 - params.xMin) * m)
+          );
+          ctx.lineTo(
+            toScreenX(params.xMax),
+            toScreenY(y0 + (params.xMax - x0) * m)
+          );
+          ctx.stroke();
+        }
+
+        // Desenhar painel de informações
+        function desenharInfoPanel() {
+          const x0 = params.x0;
+          const inclinacaoSecante = calcularInclinacaoSecante();
+          const inclinacaoTangente = params.derivada(x0);
+
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.8)';
+          ctx.fillRect(10, 10, 280, 130);
+          ctx.strokeStyle = cores.funcao;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(10, 10, 280, 130);
+
+          ctx.fillStyle = cores.texto;
+          ctx.font = '16px Arial';
+          ctx.textAlign = 'left';
+          ctx.fillText(`Função: f(x) = x²/2`, 20, 35);
+          ctx.fillText(`Ponto x₀ = ${x0.toFixed(2)}`, 20, 60);
+          ctx.fillText(`Δx = ${params.dx.toFixed(2)}`, 20, 85);
+
+          ctx.fillStyle = cores.secante;
+          ctx.fillText(
+            `Inclinação da Secante: ${inclinacaoSecante.toFixed(2)}`,
+            20,
+            110
+          );
+
+          ctx.fillStyle = cores.tangente;
+          ctx.fillText(
+            `Derivada f'(${x0.toFixed(2)}) = ${inclinacaoTangente.toFixed(2)}`,
+            20,
+            135
+          );
+        }
+
+        // Desenhar cursor de arraste quando o mouse está sobre um ponto arrastável
+        function desenharCursorArraste(x, y, raio = 6) {
+          // Círculo com contorno pontilhado
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+          ctx.strokeStyle = cores.ponto;
+          ctx.setLineDash([3, 3]);
+          ctx.lineWidth = 2;
+
+          ctx.beginPath();
+          ctx.arc(x, y, raio + 4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.setLineDash([]);
+        }
+
+        // Verificar se o mouse está sobre um ponto arrastável
+        function isSobrePonto(mouseX, mouseY) {
+          const x0 = params.x0;
+          const x1 = x0 + params.dx;
+          const y0 = params.funcao(x0);
+          const y1 = params.funcao(x1);
+
+          const distX0 = Math.hypot(
+            mouseX - toScreenX(x0),
+            mouseY - toScreenY(y0)
+          );
+          const distX1 = Math.hypot(
+            mouseX - toScreenX(x1),
+            mouseY - toScreenY(y1)
+          );
+
+          if (distX0 < 10) return 'x0';
+          if (distX1 < 10) return 'x1';
+          return null;
+        }
+
+        // Renderizar tudo
+        function renderizar() {
+          // Limpar canvas
+          ctx.fillStyle = cores.fundo;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          desenharGrid();
+          desenharEixos();
+          desenharFuncao();
+          desenharSecante();
+          desenharTangente();
+          desenharInfoPanel();
+
+          // Se o mouse estiver sobre um ponto, mostrar cursor de arraste
+          if (pontoArrastado) {
+            const x0 = params.x0;
+            const x1 = x0 + params.dx;
+            const y0 = params.funcao(x0);
+            const y1 = params.funcao(x1);
+
+            if (pontoArrastado === 'x0') {
+              desenharCursorArraste(toScreenX(x0), toScreenY(y0));
+            } else if (pontoArrastado === 'x1') {
+              desenharCursorArraste(toScreenX(x1), toScreenY(y1));
+            }
+          }
+        }
+
+        // Declarar variáveis para slider e valueDisplay no escopo do objeto
+        let slider, valueDisplay;
+
+        // Gerenciar eventos de mouse
+        function inicializarInteratividade() {
+          canvas.style.cursor = 'default';
+
+          canvas.addEventListener('mousedown', (e) => {
+            if (!params.interativo) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            pontoArrastado = isSobrePonto(mouseX, mouseY);
+
+            if (pontoArrastado) {
+              arrastando = true;
+              canvas.style.cursor = 'grabbing';
+            }
+          });
+
+          canvas.addEventListener('mousemove', (e) => {
+            if (!params.interativo) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Verificar se está sobre um ponto quando não está arrastando
+            if (!arrastando) {
+              const sobrePonto = isSobrePonto(mouseX, mouseY);
+              if (sobrePonto) {
+                canvas.style.cursor = 'grab';
+                pontoArrastado = sobrePonto;
+              } else {
+                canvas.style.cursor = 'default';
+                pontoArrastado = null;
+              }
+            }
+
+            // Lógica de arraste
+            if (arrastando && pontoArrastado) {
+              const novoX = Math.max(
+                params.xMin,
+                Math.min(params.xMax, toMathX(mouseX))
+              );
+
+              if (pontoArrastado === 'x0') {
+                // Limitar x0 para não ficar muito próximo de x1
+                const minX0 = params.xMin;
+                const maxX0 = params.x0 + params.dx - 0.1;
+                params.x0 = Math.max(minX0, Math.min(maxX0, novoX));
+              } else if (pontoArrastado === 'x1') {
+                // Atualiza dx baseado na nova posição de x1
+                const minDx = 0.1; // Evita divisão por zero e mantém os pontos separados
+                const novoDx = Math.max(minDx, novoX - params.x0);
+                params.dx = novoDx;
+              }
+
+              renderizar();
+            }
+          });
+
+          // Eventos para finalizar o arraste
+          canvas.addEventListener('mouseup', () => {
+            arrastando = false;
+            if (pontoArrastado) {
+              canvas.style.cursor = 'grab';
+            } else {
+              canvas.style.cursor = 'default';
+            }
+          });
+
+          canvas.addEventListener('mouseleave', () => {
+            arrastando = false;
+            pontoArrastado = null;
+            canvas.style.cursor = 'default';
+          });
+
+          // Adicionar slider para ajustar Δx dinamicamente
+          const sliderContainer = document.createElement('div');
+          sliderContainer.style.position = 'absolute';
+          sliderContainer.style.bottom = '10px';
+          sliderContainer.style.left = '50%';
+          sliderContainer.style.transform = 'translateX(-50%)';
+          sliderContainer.style.width = '80%';
+          sliderContainer.style.textAlign = 'center';
+          sliderContainer.style.color = cores.texto;
+
+          const label = document.createElement('label');
+          label.textContent = 'Δx: ';
+          label.style.marginRight = '10px';
+
+          // Usar variáveis declaradas no escopo superior
+          slider = document.createElement('input');
+          slider.type = 'range';
+          slider.min = '0.01';
+          slider.max = '2';
+          slider.step = '0.01';
+          slider.value = params.dx.toString();
+          slider.style.width = '60%';
+
+          valueDisplay = document.createElement('span');
+          valueDisplay.textContent = params.dx.toFixed(2);
+          valueDisplay.style.marginLeft = '10px';
+
+          slider.addEventListener('input', (e) => {
+            params.dx = parseFloat(e.target.value);
+            valueDisplay.textContent = params.dx.toFixed(2);
+            renderizar();
+          });
+
+          sliderContainer.appendChild(label);
+          sliderContainer.appendChild(slider);
+          sliderContainer.appendChild(valueDisplay);
+          container.appendChild(sliderContainer);
+        }
+
+        // Inicialização
+        function inicializar() {
+          renderizar();
+          if (params.interativo) {
+            inicializarInteratividade();
+          }
+
+          // Adicionar botão de redefinir
+          const resetButton = document.createElement('button');
+          resetButton.textContent = 'Redefinir';
+          resetButton.style.position = 'absolute';
+          resetButton.style.top = '10px';
+          resetButton.style.right = '10px';
+          resetButton.style.padding = '5px 10px';
+          resetButton.style.backgroundColor = cores.fundo;
+          resetButton.style.color = cores.texto;
+          resetButton.style.border = `1px solid ${cores.funcao}`;
+          resetButton.style.borderRadius = '4px';
+          resetButton.style.cursor = 'pointer';
+
+          resetButton.addEventListener('click', () => {
+            // Redefinir parâmetros
+            params.x0 = 2;
+            params.dx = 1;
+
+            // Verificar se o slider e o display existem antes de atualizá-los
+            if (slider && valueDisplay) {
+              slider.value = params.dx.toString();
+              valueDisplay.textContent = params.dx.toFixed(2);
+            }
+
+            renderizar();
+          });
+
+          container.appendChild(resetButton);
+        }
+
+        inicializar();
+
+        // Redimensionar o canvas se o tamanho da janela mudar
+        window.addEventListener('resize', () => {
+          canvas.width = container.clientWidth;
+          canvas.height = container.clientHeight;
+          renderizar();
+        });
+
+        // Retornar API pública
+        return {
+          renderizar,
+          atualizarParametros: (novosParams) => {
+            Object.assign(params, novosParams);
+            renderizar();
+          },
+        };
+      }
+
+      // Visualização Geométrica da Integral
+      function criarVisualizacaoIntegral(containerId) {
+        // Configuração do canvas
+        const container = document.getElementById(containerId);
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Ajustar tamanho do canvas ao container
+        canvas.width = container.clientWidth;
+        canvas.height = container.clientHeight;
+        container.appendChild(canvas);
+
+        // Paleta de cores - seguindo as diretrizes do tema espacial
+        const cores = {
+          fundo: '#0a0a0f',
+          funcao: '#4fc3f7', // Azul claro para a função principal
+          retangulos: '#8BC34A', // Verde para retângulos
+          areaExata: '#7E57C2', // Roxo para área exata
+          limites: '#FB8C00', // Laranja para os limites de integração
+          grid: 'rgba(79, 195, 247, 0.1)',
+          texto: '#e0e0e0',
+        };
+
+        // Parâmetros da visualização
+        let params = {
+          funcao: (x) => 2 * Math.sin(x) + 3, // Função f(x) = 2sin(x) + 3
+          a: 0.5, // Limite inferior de integração
+          b: 5, // Limite superior de integração
+          n: 5, // Número de retângulos (subintervalos)
+          metodo: 'ponto_medio', // Método de aproximação: ponto_medio, esquerda, direita
+          interativo: true, // Se o usuário pode interagir
+          xMin: 0, // Limites do gráfico
+          xMax: 6,
+          yMin: 0,
+          yMax: 6,
+        };
+
+        // Sistema de coordenadas
+        const toScreenX = (x) =>
+          ((x - params.xMin) / (params.xMax - params.xMin)) * canvas.width;
+        const toScreenY = (y) =>
+          canvas.height -
+          ((y - params.yMin) / (params.yMax - params.yMin)) * canvas.height;
+        const toMathX = (screenX) =>
+          params.xMin + (screenX / canvas.width) * (params.xMax - params.xMin);
+        const toMathY = (screenY) =>
+          params.yMin +
+          ((canvas.height - screenY) / canvas.height) *
+            (params.yMax - params.yMin);
+
+        // Estado da interação
+        let arrastando = false;
+        let pontoArrastado = null;
+
+        // Cálculo da integral utilizando métodos numéricos
+        function calcularAreaRetangulos() {
+          const { a, b, n, funcao, metodo } = params;
+          const dx = (b - a) / n;
+          let soma = 0;
+
+          for (let i = 0; i < n; i++) {
+            let x;
+            switch (metodo) {
+              case 'esquerda':
+                x = a + i * dx;
+                break;
+              case 'direita':
+                x = a + (i + 1) * dx;
+                break;
+              case 'ponto_medio':
+              default:
+                x = a + (i + 0.5) * dx;
+                break;
+            }
+            soma += funcao(x) * dx;
+          }
+
+          return soma;
+        }
+
+        // Cálculo da integral "exata" (usando muitos retângulos)
+        function calcularAreaExata() {
+          const { a, b, funcao } = params;
+          const n = 1000; // Número grande de subintervalos para boa aproximação
+          const dx = (b - a) / n;
+          let soma = 0;
+
+          for (let i = 0; i < n; i++) {
+            const x = a + (i + 0.5) * dx;
+            soma += funcao(x) * dx;
+          }
+
+          return soma;
+        }
+
+        // Desenhar grade de fundo
+        function desenharGrid() {
+          ctx.strokeStyle = cores.grid;
+          ctx.lineWidth = 0.5;
+
+          // Linhas verticais
+          for (let x = params.xMin; x <= params.xMax; x += 0.5) {
+            ctx.beginPath();
+            ctx.moveTo(toScreenX(x), toScreenY(params.yMin));
+            ctx.lineTo(toScreenX(x), toScreenY(params.yMax));
+            ctx.stroke();
+          }
+
+          // Linhas horizontais
+          for (let y = params.yMin; y <= params.yMax; y += 0.5) {
+            ctx.beginPath();
+            ctx.moveTo(toScreenX(params.xMin), toScreenY(y));
+            ctx.lineTo(toScreenX(params.xMax), toScreenY(y));
+            ctx.stroke();
+          }
+        }
+
+        // Desenhar eixos
+        function desenharEixos() {
+          ctx.strokeStyle = cores.texto;
+          ctx.lineWidth = 2;
+
+          // Eixo X
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(params.xMin), toScreenY(0));
+          ctx.lineTo(toScreenX(params.xMax), toScreenY(0));
+          ctx.stroke();
+
+          // Eixo Y
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(0), toScreenY(params.yMin));
+          ctx.lineTo(toScreenX(0), toScreenY(params.yMax));
+          ctx.stroke();
+
+          // Marcações nos eixos
+          ctx.fillStyle = cores.texto;
+          ctx.font = '14px Arial';
+          ctx.textAlign = 'center';
+
+          // Marcações no eixo X
+          for (let x = params.xMin; x <= params.xMax; x += 1) {
+            if (x !== 0) {
+              // Evita sobreposição na origem
+              ctx.fillText(x.toString(), toScreenX(x), toScreenY(0) + 20);
+            }
+          }
+
+          // Marcações no eixo Y
+          ctx.textAlign = 'right';
+          for (let y = params.yMin; y <= params.yMax; y += 1) {
+            if (y !== 0) {
+              // Evita sobreposição na origem
+              ctx.fillText(y.toString(), toScreenX(0) - 10, toScreenY(y) + 5);
+            }
+          }
+
+          // Origem
+          ctx.fillText('0', toScreenX(0) - 10, toScreenY(0) + 20);
+        }
+
+        // Desenhar função
+        function desenharFuncao() {
+          ctx.strokeStyle = cores.funcao;
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+
+          for (let screenX = 0; screenX <= canvas.width; screenX++) {
+            const x = toMathX(screenX);
+            const y = params.funcao(x);
+
+            if (screenX === 0) {
+              ctx.moveTo(screenX, toScreenY(y));
+            } else {
+              ctx.lineTo(screenX, toScreenY(y));
+            }
+          }
+
+          ctx.stroke();
+        }
+
+        // Desenhar os limites de integração
+        function desenharLimitesIntegracao() {
+          const { a, b } = params;
+          const ya = params.funcao(a);
+          const yb = params.funcao(b);
+
+          // Linhas verticais nos limites
+          ctx.strokeStyle = cores.limites;
+          ctx.lineWidth = 2;
+          ctx.setLineDash([5, 5]);
+
+          // Limite inferior
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(a), toScreenY(0));
+          ctx.lineTo(toScreenX(a), toScreenY(ya));
+          ctx.stroke();
+
+          // Limite superior
+          ctx.beginPath();
+          ctx.moveTo(toScreenX(b), toScreenY(0));
+          ctx.lineTo(toScreenX(b), toScreenY(yb));
+          ctx.stroke();
+
+          ctx.setLineDash([]);
+
+          // Pontos nos limites
+          ctx.fillStyle = cores.limites;
+
+          // Ponto a
+          ctx.beginPath();
+          ctx.arc(toScreenX(a), toScreenY(0), 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Ponto b
+          ctx.beginPath();
+          ctx.arc(toScreenX(b), toScreenY(0), 6, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Rótulos
+          ctx.fillStyle = cores.texto;
+          ctx.font = '16px Arial';
+          ctx.textAlign = 'center';
+
+          ctx.fillText('a', toScreenX(a), toScreenY(0) + 25);
+          ctx.fillText('b', toScreenX(b), toScreenY(0) + 25);
+        }
+
+        // Desenhar retângulos de aproximação da integral
+        function desenharRetangulos() {
+          const { a, b, n, funcao, metodo } = params;
+          const dx = (b - a) / n;
+
+          ctx.fillStyle = cores.retangulos + '80'; // 50% de opacidade
+          ctx.strokeStyle = cores.retangulos;
+          ctx.lineWidth = 1;
+
+          for (let i = 0; i < n; i++) {
+            let x, altura;
+            const xi = a + i * dx;
+
+            switch (metodo) {
+              case 'esquerda':
+                x = xi;
+                altura = funcao(x);
+                break;
+              case 'direita':
+                x = xi + dx;
+                altura = funcao(x);
+                break;
+              case 'ponto_medio':
+              default:
+                x = xi + dx / 2;
+                altura = funcao(x);
+                break;
+            }
+
+            // Desenhar retângulo
+            ctx.fillRect(
+              toScreenX(xi),
+              toScreenY(altura),
+              toScreenX(dx) - toScreenX(0),
+              toScreenY(0) - toScreenY(altura)
+            );
+            ctx.strokeRect(
+              toScreenX(xi),
+              toScreenY(altura),
+              toScreenX(dx) - toScreenX(0),
+              toScreenY(0) - toScreenY(altura)
+            );
+
+            // Se for método do ponto médio, marcar o ponto médio
+            if (metodo === 'ponto_medio') {
+              const xMedio = xi + dx / 2;
+              const yMedio = funcao(xMedio);
+
+              ctx.fillStyle = cores.texto;
+              ctx.beginPath();
+              ctx.arc(toScreenX(xMedio), toScreenY(yMedio), 3, 0, Math.PI * 2);
+              ctx.fill();
+
+              // Restaurar cor dos retângulos para próximo
+              ctx.fillStyle = cores.retangulos + '80';
+            }
+          }
+        }
+
+        // Desenhar área exata sob a curva
+        function desenharAreaExata() {
+          const { a, b, funcao } = params;
+
+          ctx.fillStyle = cores.areaExata + '40'; // 25% de opacidade
+          ctx.beginPath();
+
+          // Iniciar no ponto (a, 0)
+          ctx.moveTo(toScreenX(a), toScreenY(0));
+
+          // Traçar a curva da função
+          const numPontos = 100;
+          const dx = (b - a) / numPontos;
+
+          for (let i = 0; i <= numPontos; i++) {
+            const x = a + i * dx;
+            const y = funcao(x);
+            ctx.lineTo(toScreenX(x), toScreenY(y));
+          }
+
+          // Fechar o caminho voltando para o eixo x e depois para o início
+          ctx.lineTo(toScreenX(b), toScreenY(0));
+          ctx.lineTo(toScreenX(a), toScreenY(0));
+
+          ctx.fill();
+        }
+
+        // Desenhar painel de informações
+        function desenharInfoPanel() {
+          const areaRetangulos = calcularAreaRetangulos();
+          const areaExata = calcularAreaExata();
+          const erro = Math.abs(areaExata - areaRetangulos);
+
+          ctx.fillStyle = 'rgba(10, 10, 15, 0.8)';
+          ctx.fillRect(10, 10, 300, 150);
+          ctx.strokeStyle = cores.funcao;
+          ctx.lineWidth = 1;
+          ctx.strokeRect(10, 10, 300, 150);
+
+          ctx.fillStyle = cores.texto;
+          ctx.font = '16px Arial';
+          ctx.textAlign = 'left';
+          ctx.fillText(`Função: f(x) = 2sin(x) + 3`, 20, 35);
+          ctx.fillText(
+            `Intervalo: [${params.a.toFixed(2)}, ${params.b.toFixed(2)}]`,
+            20,
+            60
+          );
+          ctx.fillText(`Número de retângulos: ${params.n}`, 20, 85);
+          ctx.fillText(`Método: ${formatarMetodo(params.metodo)}`, 20, 110);
+
+          ctx.fillStyle = cores.retangulos;
+          ctx.fillText(`Aproximação: ${areaRetangulos.toFixed(4)}`, 20, 135);
+
+          ctx.fillStyle = cores.areaExata;
+          ctx.fillText(
+            `Valor "exato": ${areaExata.toFixed(4)} (erro: ${erro.toFixed(4)})`,
+            20,
+            160
+          );
+        }
+
+        // Formatar nome do método para exibição
+        function formatarMetodo(metodo) {
+          switch (metodo) {
+            case 'esquerda':
+              return 'Retângulos à Esquerda';
+            case 'direita':
+              return 'Retângulos à Direita';
+            case 'ponto_medio':
+              return 'Ponto Médio';
+            default:
+              return metodo;
+          }
+        }
+
+        // Desenhar cursor de arraste quando o mouse está sobre um ponto arrastável
+        function desenharCursorArraste(x, y, raio = 6) {
+          // Círculo com contorno pontilhado
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+          ctx.strokeStyle = cores.limites;
+          ctx.setLineDash([3, 3]);
+          ctx.lineWidth = 2;
+
+          ctx.beginPath();
+          ctx.arc(x, y, raio + 4, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.stroke();
+
+          ctx.setLineDash([]);
+        }
+
+        // Verificar se o mouse está sobre um ponto arrastável (limites a ou b)
+        function isSobrePonto(mouseX, mouseY) {
+          const { a, b } = params;
+
+          const distA = Math.hypot(
+            mouseX - toScreenX(a),
+            mouseY - toScreenY(0)
+          );
+          const distB = Math.hypot(
+            mouseX - toScreenX(b),
+            mouseY - toScreenY(0)
+          );
+
+          if (distA < 10) return 'a';
+          if (distB < 10) return 'b';
+          return null;
+        }
+
+        // Renderizar tudo
+        function renderizar() {
+          // Limpar canvas
+          ctx.fillStyle = cores.fundo;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          // Ordem de desenho importa para sobreposições corretas
+          desenharGrid();
+          desenharEixos();
+          desenharAreaExata();
+          desenharRetangulos();
+          desenharFuncao();
+          desenharLimitesIntegracao();
+          desenharInfoPanel();
+
+          // Se o mouse estiver sobre um ponto, mostrar cursor de arraste
+          if (pontoArrastado) {
+            const { a, b } = params;
+
+            if (pontoArrastado === 'a') {
+              desenharCursorArraste(toScreenX(a), toScreenY(0));
+            } else if (pontoArrastado === 'b') {
+              desenharCursorArraste(toScreenX(b), toScreenY(0));
+            }
+          }
+        }
+
+        // Declarar variáveis no escopo superior para acessibilidade
+        let slider, valueDisplay, metodoSelect;
+
+        // Gerenciar eventos de mouse
+        function inicializarInteratividade() {
+          canvas.style.cursor = 'default';
+
+          canvas.addEventListener('mousedown', (e) => {
+            if (!params.interativo) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            pontoArrastado = isSobrePonto(mouseX, mouseY);
+
+            if (pontoArrastado) {
+              arrastando = true;
+              canvas.style.cursor = 'grabbing';
+            }
+          });
+
+          canvas.addEventListener('mousemove', (e) => {
+            if (!params.interativo) return;
+
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+
+            // Verificar se está sobre um ponto quando não está arrastando
+            if (!arrastando) {
+              const sobrePonto = isSobrePonto(mouseX, mouseY);
+              if (sobrePonto) {
+                canvas.style.cursor = 'grab';
+                pontoArrastado = sobrePonto;
+              } else {
+                canvas.style.cursor = 'default';
+                pontoArrastado = null;
+              }
+            }
+
+            // Lógica de arraste
+            if (arrastando && pontoArrastado) {
+              const novoX = Math.max(
+                params.xMin,
+                Math.min(params.xMax, toMathX(mouseX))
+              );
+
+              if (pontoArrastado === 'a') {
+                // Limitar a para não ultrapassar b
+                params.a = Math.min(params.b - 0.1, novoX);
+              } else if (pontoArrastado === 'b') {
+                // Limitar b para não ficar menor que a
+                params.b = Math.max(params.a + 0.1, novoX);
+              }
+
+              renderizar();
+            }
+          });
+
+          // Eventos para finalizar o arraste
+          canvas.addEventListener('mouseup', () => {
+            arrastando = false;
+            if (pontoArrastado) {
+              canvas.style.cursor = 'grab';
+            } else {
+              canvas.style.cursor = 'default';
+            }
+          });
+
+          canvas.addEventListener('mouseleave', () => {
+            arrastando = false;
+            pontoArrastado = null;
+            canvas.style.cursor = 'default';
+          });
+
+          // Adicionar controles para ajustar parâmetros
+          const controlsContainer = document.createElement('div');
+          controlsContainer.style.position = 'absolute';
+          controlsContainer.style.bottom = '10px';
+          controlsContainer.style.left = '50%';
+          controlsContainer.style.transform = 'translateX(-50%)';
+          controlsContainer.style.width = '90%';
+          controlsContainer.style.textAlign = 'center';
+          controlsContainer.style.color = cores.texto;
+          controlsContainer.style.display = 'flex';
+          controlsContainer.style.flexDirection = 'column';
+          controlsContainer.style.gap = '10px';
+
+          // Controle de número de retângulos
+          const sliderContainer = document.createElement('div');
+          sliderContainer.style.display = 'flex';
+          sliderContainer.style.alignItems = 'center';
+          sliderContainer.style.justifyContent = 'center';
+          sliderContainer.style.gap = '10px';
+
+          const sliderLabel = document.createElement('label');
+          sliderLabel.textContent = 'Número de retângulos: ';
+
+          slider = document.createElement('input');
+          slider.type = 'range';
+          slider.min = '1';
+          slider.max = '50';
+          slider.step = '1';
+          slider.value = params.n.toString();
+          slider.style.width = '200px';
+
+          valueDisplay = document.createElement('span');
+          valueDisplay.textContent = params.n.toString();
+          valueDisplay.style.minWidth = '30px';
+
+          slider.addEventListener('input', (e) => {
+            params.n = parseInt(e.target.value, 10);
+            valueDisplay.textContent = params.n.toString();
+            renderizar();
+          });
+
+          sliderContainer.appendChild(sliderLabel);
+          sliderContainer.appendChild(slider);
+          sliderContainer.appendChild(valueDisplay);
+
+          // Controle do método de aproximação
+          const metodoContainer = document.createElement('div');
+          metodoContainer.style.display = 'flex';
+          metodoContainer.style.alignItems = 'center';
+          metodoContainer.style.justifyContent = 'center';
+          metodoContainer.style.gap = '10px';
+
+          const metodoLabel = document.createElement('label');
+          metodoLabel.textContent = 'Método: ';
+
+          metodoSelect = document.createElement('select');
+          metodoSelect.style.backgroundColor = cores.fundo;
+          metodoSelect.style.color = cores.texto;
+          metodoSelect.style.border = `1px solid ${cores.funcao}`;
+          metodoSelect.style.padding = '5px';
+          metodoSelect.style.borderRadius = '4px';
+
+          const options = [
+            { value: 'ponto_medio', text: 'Ponto Médio' },
+            { value: 'esquerda', text: 'Retângulos à Esquerda' },
+            { value: 'direita', text: 'Retângulos à Direita' },
+          ];
+
+          options.forEach((option) => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option.value;
+            optionElement.textContent = option.text;
+            metodoSelect.appendChild(optionElement);
+          });
+
+          metodoSelect.value = params.metodo;
+
+          metodoSelect.addEventListener('change', (e) => {
+            params.metodo = e.target.value;
+            renderizar();
+          });
+
+          metodoContainer.appendChild(metodoLabel);
+          metodoContainer.appendChild(metodoSelect);
+
+          // Botão de redefinir
+          const resetButton = document.createElement('button');
+          resetButton.textContent = 'Redefinir';
+          resetButton.style.padding = '5px 10px';
+          resetButton.style.backgroundColor = cores.fundo;
+          resetButton.style.color = cores.texto;
+          resetButton.style.border = `1px solid ${cores.funcao}`;
+          resetButton.style.borderRadius = '4px';
+          resetButton.style.cursor = 'pointer';
+          resetButton.style.marginLeft = 'auto';
+          resetButton.style.marginRight = '10px';
+
+          resetButton.addEventListener('click', () => {
+            // Redefinir parâmetros
+            params.a = 0.5;
+            params.b = 5;
+            params.n = 5;
+            params.metodo = 'ponto_medio';
+
+            // Atualizar controles
+            if (slider && valueDisplay && metodoSelect) {
+              slider.value = params.n.toString();
+              valueDisplay.textContent = params.n.toString();
+              metodoSelect.value = params.metodo;
+            }
+
+            renderizar();
+          });
+
+          controlsContainer.appendChild(sliderContainer);
+          controlsContainer.appendChild(metodoContainer);
+          container.appendChild(controlsContainer);
+          container.appendChild(resetButton);
+        }
+
+        // Inicialização
+        function inicializar() {
+          renderizar();
+          if (params.interativo) {
+            inicializarInteratividade();
+          }
+        }
+
+        inicializar();
+
+        // Redimensionar o canvas se o tamanho da janela mudar
+        window.addEventListener('resize', () => {
+          canvas.width = container.clientWidth;
+          canvas.height = container.clientHeight;
+          renderizar();
+        });
+
+        // Retornar API pública
+        return {
+          renderizar,
+          atualizarParametros: (novosParams) => {
+            Object.assign(params, novosParams);
+            renderizar();
+          },
+        };
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        // Inicializar as visualizações apenas após a inicialização completa do Reveal.js
+        Reveal.on('ready', function () {
+          console.log('Reveal.js está pronto, inicializando visualizações...');
+
+          // Verificar se os elementos existem antes de criar as visualizações
+          if (document.getElementById('derivada-geometrica')) {
+            console.log('Inicializando visualização da derivada');
+            window.derivadaVisual = criarVisualizacaoDerivada(
+              'derivada-geometrica'
+            );
+          } else {
+            console.warn('Elemento derivada-geometrica não encontrado');
+          }
+
+          if (document.getElementById('integral-geometrica')) {
+            console.log('Inicializando visualização da integral');
+            window.integralVisual = criarVisualizacaoIntegral(
+              'integral-geometrica'
+            );
+          } else {
+            console.warn('Elemento integral-geometrica não encontrado');
+          }
+        });
+
+        // Atualizar visualizações quando os slides mudarem
+        Reveal.on('slidechanged', function (event) {
+          console.log('Slide mudou, verificando visualizações...');
+
+          // Verificar cada visualização quando o slide mudar
+          setTimeout(function () {
+            // Usar um pequeno atraso para garantir que o DOM foi atualizado
+            if (
+              event.currentSlide.contains(
+                document.getElementById('derivada-geometrica')
+              ) &&
+              window.derivadaVisual
+            ) {
+              console.log('Renderizando visualização da derivada');
+              window.derivadaVisual.renderizar();
+            }
+
+            if (
+              event.currentSlide.contains(
+                document.getElementById('integral-geometrica')
+              ) &&
+              window.integralVisual
+            ) {
+              console.log('Renderizando visualização da integral');
+              window.integralVisual.renderizar();
+            }
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
