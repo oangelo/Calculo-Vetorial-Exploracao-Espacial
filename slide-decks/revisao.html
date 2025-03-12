@@ -2,24 +2,12 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cálculo Vetorial: Revisão de Fundamentos</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/space-theme.css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="space-theme.css" />
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+
     <script>
       window.onload = function () {
         // Adicionar evento para detectar quando o Reveal.js está totalmente carregado
@@ -77,7 +65,7 @@
         border: 1px solid var(--accent-color);
         border-radius: 8px;
         padding: 8px;
-        width: 22%;
+        width: 90%;
         box-shadow: 0 0 15px rgba(79, 195, 247, 0.3);
       }
 
@@ -209,16 +197,12 @@
               A derivada representa a inclinação da reta tangente à curva em um
               ponto.
             </p>
-            <div
-              id="derivada-geometrica"
-              style="
-                width: 100%;
-                height: 300px;
-                background: rgba(26, 35, 126, 0.3);
-                border: 1px solid rgba(79, 195, 247, 0.2);
-                box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
-              "
-            ></div>
+            <center>
+              <div
+                id="derivada-geometrica"
+                style="width: 800px; height: 300px"
+              ></div>
+            </center>
             <p class="note">
               Este conceito geométrico simples revolucionou nossa capacidade de
               modelar fenômenos físicos.
@@ -237,7 +221,7 @@
               <div class="formula">
                 <p>Regra do Produto</p>
                 <p>
-                  $\frac{d}{dx}[f(x) \cdot g(x)] = f(x) \cdot \frac{dg}{dx} +
+                  $\frac{d}{dx}[f(x) \cdot g(x)] =$$=f(x) \cdot \frac{dg}{dx} +
                   g(x) \cdot \frac{df}{dx}$
                 </p>
               </div>
@@ -284,26 +268,10 @@
             </p>
           </section>
 
+          <!-- Slide modificado: Removidas as imagens -->
           <section>
             <h3>Marco Histórico: Cálculos Balísticos Pioneiros</h3>
-            <div class="image-container">
-              <div>
-                <img
-                  src="/api/placeholder/350/200"
-                  alt="Esquema de cálculo de trajetória do V2"
-                />
-                <p class="image-caption">
-                  Cálculos de trajetória do V2, década de 1940
-                </p>
-              </div>
-              <div>
-                <img
-                  src="/api/placeholder/350/200"
-                  alt="Foguete V2 em lançamento"
-                />
-                <p class="image-caption">Lançamento de um foguete V2</p>
-              </div>
-            </div>
+
             <p>
               Os engenheiros alemães liderados por von Braun aplicaram cálculo
               diferencial para resolver problemas de:
@@ -312,13 +280,24 @@
               <li>Trajetórias balísticas otimizadas</li>
               <li>Estabilidade aerodinâmica</li>
               <li>Consumo de combustível</li>
+              <li>Sistemas de orientação e controle</li>
+              <li>Resistência de materiais sob estresse termodinâmico</li>
             </ul>
+
+            <p>
+              As equações desenvolvidas para o V2 no início dos anos 1940
+              estabeleceram as bases matemáticas para os programas espaciais
+              subsequentes tanto nos EUA quanto na URSS.
+            </p>
+
             <p class="note">
               Estes cálculos estabeleceram as bases matemáticas que mais tarde
-              permitiriam as viagens espaciais.
+              permitiriam as viagens espaciais e foram diretamente aplicados nos
+              primeiros programas espaciais.
             </p>
           </section>
 
+          <!-- Slide dividido em dois: Problema -->
           <section>
             <h3>A Derivada na Prática: Do Papel para o Espaço</h3>
             <p>
@@ -328,64 +307,58 @@
               encontrar a órbita correta.
             </p>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                margin: 1em 0;
-              "
-            >
-              <div
-                style="
-                  width: 45%;
-                  text-align: left;
-                  background: rgba(26, 35, 126, 0.3);
-                  padding: 15px;
-                  border-radius: 8px;
-                "
-              >
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Problema físico:
-                </p>
-                <p>Se a velocidade de um foguete é dada por:</p>
-                <p>$v(t) = v_0 + at - bt^2$</p>
-                <p>
-                  Onde \(a\) representa o empuxo e \(b\) a resistência
-                  atmosférica:
-                </p>
-                <p>1. Quando o foguete atinge velocidade máxima?</p>
-                <p>2. Qual é essa velocidade máxima?</p>
-              </div>
-              <div style="width: 45%; text-align: left">
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Solução usando derivadas:
-                </p>
-                <p>$\frac{dv}{dt} = a - 2bt$</p>
-                <p>No ponto de velocidade máxima, \(\frac{dv}{dt} = 0\):</p>
-                <p>$a - 2bt = 0 \implies t_{max} = \frac{a}{2b}$</p>
-                <p>Substituindo de volta:</p>
-                <p>
-                  $v_{max} = v_0 + a\left(\frac{a}{2b}\right) -
-                  b\left(\frac{a}{2b}\right)^2 = v_0 + \frac{a^2}{4b}$
-                </p>
-              </div>
+            <div class="problem-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Problema físico:
+              </p>
+              <p>Se a velocidade de um foguete é dada por:</p>
+              <p>$v(t) = v_0 + at - bt^2$</p>
+              <p>
+                Onde \(a\) representa o empuxo e \(b\) a resistência
+                atmosférica:
+              </p>
+              <p>1. Quando o foguete atinge velocidade máxima?</p>
+              <p>2. Qual é essa velocidade máxima?</p>
+            </div>
+
+            <p class="note">
+              Este tipo de problema precisava ser resolvido com precisão para
+              otimizar o uso de combustível, um recurso extremamente limitado
+              nas primeiras missões espaciais.
+            </p>
+          </section>
+
+          <!-- Continuação: Solução -->
+          <section>
+            <h3>A Derivada na Prática: Solução</h3>
+
+            <div class="solution-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Solução usando derivadas:
+              </p>
+              <p>$\frac{dv}{dt} = a - 2bt$</p>
+              <p>No ponto de velocidade máxima, \(\frac{dv}{dt} = 0\):</p>
+              <p>$a - 2bt = 0 \implies t_{max} = \frac{a}{2b}$</p>
+              <p>Substituindo de volta:</p>
+              <p>
+                $v_{max} = v_0 + a\left(\frac{a}{2b}\right) -
+                b\left(\frac{a}{2b}\right)^2 = v_0 + \frac{a^2}{4b}$
+              </p>
             </div>
 
             <p class="note">
               Este tipo de cálculo permitiu aos engenheiros da NASA programar
               com precisão os estágios de separação dos foguetes, otimizando o
-              combustível disponível.
+              combustível disponível e garantindo a inserção orbital precisa.
             </p>
           </section>
 
+          <!-- Slide modificado: texto reduzido, fontes menores -->
           <section>
             <h3>Derivadas de Ordem Superior e Controle de Missão</h3>
-
-            <p>
-              Além da velocidade (primeira derivada) e aceleração (segunda
-              derivada), o controle preciso de missões espaciais exige análise
-              de derivadas de ordem superior:
+            <p class="small-text">
+              Além da velocidade e aceleração, o controle preciso de missões
+              espaciais exige análise de derivadas de ordem superior:
             </p>
 
             <div class="math-container">
@@ -401,34 +374,28 @@
               </div>
             </div>
 
-            <p>
-              Durante as missões Apollo, o controle de manobras precisava
-              limitar o <em>jerk</em> para:
+            <p class="small-text">
+              Durante as missões, o controle de manobras precisava limitar o
+              <em>jerk</em> para:
             </p>
-            <ul>
+            <ul class="small-text">
               <li>Evitar desconforto na tripulação (< 1g/s para humanos)</li>
               <li>Prevenir tensões estruturais nas naves</li>
               <li>Garantir correto funcionamento de instrumentos sensíveis</li>
             </ul>
 
-            <p class="note">
+            <p class="note small-text">
               Derivadas de ordem superior são cruciais para projetar sistemas de
               controle de atitude e trajetória em tempo real durante missões
               espaciais.
             </p>
           </section>
 
+          <!-- Slide dividido em dois: Contexto do exercício -->
           <section>
             <h3>Exercício: O Problema da Reentrada</h3>
 
-            <div
-              style="
-                background: rgba(26, 35, 126, 0.3);
-                padding: 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-              "
-            >
+            <div class="problem-box">
               <p style="font-weight: bold">Contexto: Missão Vostok (1961)</p>
               <p>
                 Durante a primeira missão tripulada, Yuri Gagarin enfrentou uma
@@ -437,8 +404,15 @@
               </p>
               <p>$v(t) = 7900 - 32t + 0.5t^3 \text{ m/s}$</p>
               <p>onde \(t\) é o tempo em segundos após início da reentrada.</p>
+            </div>
+          </section>
 
-              <p style="font-weight: bold; margin-top: 15px">Perguntas:</p>
+          <!-- Continuação: Perguntas do exercício -->
+          <section>
+            <h3>Exercício: O Problema da Reentrada</h3>
+
+            <div class="problem-box">
+              <p style="font-weight: bold">Perguntas:</p>
               <ol>
                 <li>Em que momento a desaceleração atinge seu valor máximo?</li>
                 <li>
@@ -462,59 +436,67 @@
             </div>
           </section>
 
+          <!-- Slide dividido em dois: Solução passos 1-3 -->
           <section>
-            <h3>Solução: O Problema da Reentrada</h3>
+            <h3>Solução: O Problema da Reentrada (Parte 1)</h3>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-              "
-            >
-              <div style="width: 48%; text-align: left">
+            <div class="split-container">
+              <div>
                 <p style="font-weight: bold; color: var(--star-blue)">
                   Passo 1: Encontrar a aceleração
                 </p>
                 <p>$a(t) = \frac{dv}{dt} = -32 + 1.5t^2 \text{ m/s²}$</p>
-
+              </div>
+              <div>
                 <p style="font-weight: bold; color: var(--star-blue)">
                   Passo 2: Encontrar quando a aceleração é máxima/mínima
                 </p>
                 <p>$\frac{da}{dt} = 3t = 0$</p>
                 <p>Solução: \(t = 0\)</p>
-
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Passo 3: Verificar se é máximo ou mínimo
-                </p>
-                <p>$\frac{d^2a}{dt^2} = 3 > 0$</p>
-                <p>Logo, temos um mínimo em \(t = 0\)</p>
               </div>
+            </div>
 
-              <div style="width: 48%; text-align: left">
+            <div style="margin-top: 20px">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Passo 3: Verificar se é máximo ou mínimo
+              </p>
+              <p>$\frac{d^2a}{dt^2} = 3 > 0$</p>
+              <p>Logo, temos um mínimo em \(t = 0\)</p>
+            </div>
+          </section>
+
+          <!-- Continuação: Solução passos 4-5 -->
+          <section>
+            <h3>Solução: O Problema da Reentrada (Parte 2)</h3>
+
+            <div class="split-container">
+              <div>
                 <p style="font-weight: bold; color: var(--star-blue)">
                   Passo 4: Calcular o valor da aceleração em t = 0
                 </p>
                 <p>$a(0) = -32 \text{ m/s²}$</p>
-
+              </div>
+              <div>
                 <p style="font-weight: bold; color: var(--star-blue)">
                   Passo 5: Converter para unidades g
                 </p>
                 <p>$-32 \text{ m/s²} \div 9.8 \text{ m/s²} \approx -3.27g$</p>
-
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Resposta final:
-                </p>
-                <p>
-                  A desaceleração máxima de -3.27g ocorre no início da reentrada
-                  (t = 0).
-                </p>
-                <p>
-                  Este valor é crucial pois determina as especificações
-                  estruturais da cápsula e os limites fisiológicos para os
-                  cosmonautas/astronautas.
-                </p>
               </div>
+            </div>
+
+            <div style="margin-top: 20px">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Resposta final:
+              </p>
+              <p>
+                A desaceleração máxima de -3.27g ocorre no início da reentrada
+                (t = 0).
+              </p>
+              <p>
+                Este valor é crucial pois determina as especificações
+                estruturais da cápsula e os limites fisiológicos para os
+                cosmonautas/astronautas.
+              </p>
             </div>
 
             <p class="note">
@@ -556,15 +538,7 @@
                 box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
               "
             ></div>
-            <p>
-              A integral de uma função representa a área sob sua curva no
-              intervalo especificado.
-            </p>
-            <p class="note">
-              Este conceito geométrico é fundamental para calcular o impulso
-              total de um motor de foguete ou a energia consumida durante uma
-              manobra orbital.
-            </p>
+            <p>-</p>
           </section>
 
           <section>
@@ -581,6 +555,7 @@
             </p>
           </section>
 
+          <!-- Slide modificado: equações em linhas separadas -->
           <section>
             <h3>Técnicas de Integração</h3>
             <div class="math-container">
@@ -589,11 +564,14 @@
                 <p>$\int f(g(x))g'(x) \, dx = \int f(u) \, du$</p>
                 <p>onde \(u = g(x)\)</p>
               </div>
-              <div class="formula">
-                <p>Por Partes</p>
-                <p>$\int u(x)v'(x) \, dx = u(x)v(x) - \int v(x)u'(x) \, dx$</p>
-              </div>
             </div>
+
+            <div class="equation-container">
+              <p>Por Partes</p>
+              <p class="equation-line">$\int u(x)v'(x) \, dx =$</p>
+              <p class="equation-line">$= u(x)v(x) - \int v(x)u'(x) \, dx$</p>
+            </div>
+
             <p class="note">
               Estas técnicas são essenciais para resolver as equações
               diferenciais que descrevem órbitas e manobras espaciais.
@@ -620,22 +598,17 @@
             </ul>
           </section>
 
+          <!-- Slide modificado: removida imagem extra -->
           <section>
             <h3>Marco Histórico: Cálculos de Hohmann</h3>
             <div class="image-container">
               <div>
                 <img
-                  src="/api/placeholder/350/200"
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Hohmann_transfer_orbit2.jpg"
                   alt="Diagrama da Transferência de Hohmann"
+                  width="200"
                 />
                 <p class="image-caption">Transferência de Hohmann (1925)</p>
-              </div>
-              <div>
-                <img
-                  src="/api/placeholder/350/200"
-                  alt="Aplicação atual em manobras espaciais"
-                />
-                <p class="image-caption">Aplicação em missões espaciais</p>
               </div>
             </div>
             <p>
@@ -650,17 +623,11 @@
             </p>
           </section>
 
+          <!-- Slide modificado: texto reduzido -->
           <section>
             <h3>O Problema do Impulso na Propulsão Espacial</h3>
 
-            <div
-              style="
-                background: rgba(26, 35, 126, 0.3);
-                padding: 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-              "
-            >
+            <div class="problem-box small-text">
               <p>
                 O <span class="highlight">impulso específico</span> é uma medida
                 fundamental de eficiência em sistemas de propulsão espacial,
@@ -681,7 +648,7 @@
               </p>
             </div>
 
-            <p>
+            <p class="small-text">
               Durante o desenvolvimento do motor F-1 usado no Saturn V, os
               engenheiros da NASA modelaram o empuxo durante a fase de partida
               como:
@@ -689,63 +656,60 @@
 
             <p>$F(t) = F_{max}\left(1 - e^{-kt}\right) \text{ Newtons}$</p>
 
-            <p>
+            <p class="small-text">
               Onde \(F_{max} = 6.77 \times 10^6\) N é o empuxo máximo e \(k =
               0.5\) s<sup>-1</sup> é a constante de tempo característica do
               motor.
             </p>
+          </section>
+
+          <!-- Slide dividido em dois: Problema do impulso -->
+          <section>
+            <h3>Cálculo do Impulso: Problema</h3>
+
+            <div class="problem-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Problema:
+              </p>
+              <p>
+                Calcular o impulso total nos primeiros 5 segundos de
+                funcionamento do motor F-1 do Saturn V.
+              </p>
+
+              <p>
+                $F(t) = 6.77 \times 10^6 \left(1 - e^{-0.5t}\right) \text{ N}$
+              </p>
+
+              <p style="font-weight: bold; color: var(--star-blue)">
+                Solução usando integração:
+              </p>
+              <p>
+                $I_{total} = \int_{0}^{5} 6.77 \times 10^6 \left(1 -
+                e^{-0.5t}\right) \, dt$
+              </p>
+            </div>
 
             <p class="note">
-              Calcular o impulso total durante os primeiros 5 segundos após a
-              ignição foi crucial para garantir que o foguete pudesse decolar
-              com segurança da plataforma de lançamento.
+              O cálculo preciso do impulso durante este período crítico foi
+              essencial para garantir que o foguete pudesse decolar com
+              segurança da plataforma de lançamento.
             </p>
           </section>
 
+          <!-- Continuação: Solução do problema do impulso -->
           <section>
-            <h3>Cálculo do Impulso: Um Exemplo Prático</h3>
+            <h3>Cálculo do Impulso: Solução</h3>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-              "
-            >
-              <div style="width: 48%; text-align: left">
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Problema:
-                </p>
-                <p>
-                  Calcular o impulso total nos primeiros 5 segundos de
-                  funcionamento do motor F-1 do Saturn V.
-                </p>
-
-                <p>
-                  $F(t) = 6.77 \times 10^6 \left(1 - e^{-0.5t}\right) \text{ N}$
-                </p>
-
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Solução usando integração:
-                </p>
-                <p>
-                  $I_{total} = \int_{0}^{5} 6.77 \times 10^6 \left(1 -
-                  e^{-0.5t}\right) \, dt$
-                </p>
-              </div>
-
-              <div style="width: 48%; text-align: left">
-                <p>Resolvendo:</p>
-                <p>
-                  \begin{align*} I_{total} &= 6.77 \times 10^6 \int_{0}^{5}
-                  \left(1 - e^{-0.5t}\right) \, dt \\ &= 6.77 \times 10^6
-                  \left[t + \frac{e^{-0.5t}}{0.5}\right]_{0}^{5} \\ &= 6.77
-                  \times 10^6 \left[(5 - \frac{e^{-2.5}}{0.5}) - (0 -
-                  \frac{1}{0.5})\right] \\ &= 6.77 \times 10^6 [5 - 0.16 + 2] \\
-                  &= 6.77 \times 10^6 \times 6.84 \\ &\approx 46.3 \times 10^6
-                  \text{ N·s} \end{align*}
-                </p>
-              </div>
+            <div class="solution-box">
+              <p>Resolvendo:</p>
+              <p>
+                \begin{align*} I_{total} &= 6.77 \times 10^6 \int_{0}^{5}
+                \left(1 - e^{-0.5t}\right) \, dt \\ &= 6.77 \times 10^6 \left[t
+                + \frac{e^{-0.5t}}{0.5}\right]_{0}^{5} \\ &= 6.77 \times 10^6
+                \left[(5 - \frac{e^{-2.5}}{0.5}) - (0 - \frac{1}{0.5})\right] \\
+                &= 6.77 \times 10^6 [5 - 0.16 + 2] \\ &= 6.77 \times 10^6 \times
+                6.84 \\ &\approx 46.3 \times 10^6 \text{ N·s} \end{align*}
+              </p>
             </div>
 
             <p class="note">
@@ -756,51 +720,32 @@
             </p>
           </section>
 
+          <!-- Slide modificado: removida imagem -->
           <section>
             <h3>Integrais e Transferências Orbitais</h3>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 20px;
-              "
-            >
-              <div style="width: 45%">
-                <img
-                  src="/api/placeholder/350/350"
-                  alt="Diagrama da Transferência de Hohmann"
-                />
-              </div>
+            <p>
+              A transferência de Hohmann usa duas queimas de motor para mover
+              uma nave da órbita 1 para a órbita 2:
+            </p>
 
-              <div style="width: 50%; text-align: left">
-                <p>
-                  A transferência de Hohmann usa duas queimas de motor para
-                  mover uma nave da órbita 1 para a órbita 2:
-                </p>
+            <p>$\Delta v_{total} = \Delta v_1 + \Delta v_2$</p>
 
-                <p>$\Delta v_{total} = \Delta v_1 + \Delta v_2$</p>
+            <p>Para calcular o consumo de combustível, precisamos aplicar:</p>
 
-                <p>
-                  Para calcular o consumo de combustível, precisamos aplicar:
-                </p>
+            <p>
+              $m_{propellant} = m_{initial} \left(1 - e^{-\Delta
+              v_{total}/v_e}\right)$
+            </p>
 
-                <p>
-                  $m_{propellant} = m_{initial} \left(1 - e^{-\Delta
-                  v_{total}/v_e}\right)$
-                </p>
+            <p>Onde \(v_e\) é a velocidade de exaustão do motor.</p>
 
-                <p>Onde \(v_e\) é a velocidade de exaustão do motor.</p>
+            <p>O trabalho realizado pelos motores é dado por:</p>
 
-                <p>O trabalho realizado pelos motores é dado por:</p>
-
-                <p>
-                  $W = \int F \cdot dr = \int_{r_1}^{r_2} \frac{GMm}{r^2} \, dr
-                  = GMm\left(\frac{1}{r_1} - \frac{1}{r_2}\right)$
-                </p>
-              </div>
-            </div>
+            <p>
+              $W = \int F \cdot dr = \int_{r_1}^{r_2} \frac{GMm}{r^2} \, dr =
+              GMm\left(\frac{1}{r_1} - \frac{1}{r_2}\right)$
+            </p>
 
             <p class="note">
               Os engenheiros soviéticos e americanos redescobriram
@@ -810,19 +755,11 @@
             </p>
           </section>
 
+          <!-- Slide dividido em dois: Contexto do exercício -->
           <section>
-            <h3>
-              Exercício: Consumo de Combustível em Reorientação de Satélite
-            </h3>
+            <h3>Exercício: Consumo de Combustível em Reorientação</h3>
 
-            <div
-              style="
-                background: rgba(26, 35, 126, 0.3);
-                padding: 20px;
-                border-radius: 8px;
-                margin-bottom: 20px;
-              "
-            >
+            <div class="problem-box">
               <p style="font-weight: bold">
                 Contexto: Programa Vanguard (1957-1959)
               </p>
@@ -836,7 +773,14 @@
               <p>$F(t) = 20 - 0.5t^2 \text{ Newtons}$</p>
 
               <p>para \(0 \leq t \leq 6\) segundos.</p>
+            </div>
+          </section>
 
+          <!-- Continuação: Perguntas do exercício -->
+          <section>
+            <h3>Exercício: Consumo de Combustível em Reorientação</h3>
+
+            <div class="problem-box">
               <p style="font-weight: bold; margin-top: 15px">Perguntas:</p>
               <ol>
                 <li>
@@ -871,47 +815,52 @@
             </div>
           </section>
 
+          <!-- Dividir solução em múltiplos slides -->
           <section>
-            <h3>Solução: Consumo de Combustível em Reorientação</h3>
+            <h3>Solução: Consumo de Combustível (Parte 1)</h3>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: flex-start;
-              "
-            >
-              <div style="width: 48%; text-align: left">
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  1. Cálculo do impulso total:
-                </p>
-                <p>
-                  \begin{align*} I_{total} &= \int_{0}^{6} (20 - 0.5t^2) \, dt
-                  \\ &= \left[20t - \frac{0.5t^3}{3}\right]_{0}^{6} \\ &= 20
-                  \cdot 6 - \frac{0.5 \cdot 6^3}{3} - 0 \\ &= 120 - \frac{0.5
-                  \cdot 216}{3} \\ &= 120 - 36 \\ &= 84 \text{ N·s} \end{align*}
-                </p>
-              </div>
+            <div class="solution-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                1. Cálculo do impulso total:
+              </p>
+              <p>
+                \begin{align*} I_{total} &= \int_{0}^{6} (20 - 0.5t^2) \, dt \\
+                &= \left[20t - \frac{0.5t^3}{3}\right]_{0}^{6} \\ &= 20 \cdot 6
+                - \frac{0.5 \cdot 6^3}{3} - 0 \\ &= 120 - \frac{0.5 \cdot
+                216}{3} \\ &= 120 - 36 \\ &= 84 \text{ N·s} \end{align*}
+              </p>
+            </div>
+          </section>
 
-              <div style="width: 48%; text-align: left">
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  2. Variação de velocidade:
-                </p>
-                <p>
-                  \begin{align*} \Delta v &= \frac{I_{total}}{m} \\ &= \frac{84
-                  \text{ N·s}}{10 \text{ kg}} \\ &= 8.4 \text{ m/s} \end{align*}
-                </p>
+          <!-- Continuação: Solução parte 2 -->
+          <section>
+            <h3>Solução: Consumo de Combustível (Parte 2)</h3>
 
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  3. Consumo de combustível:
-                </p>
-                <p>
-                  \begin{align*} m_{propellant} &= \frac{I_{total}}{I_{sp} \cdot
-                  g_0} \\ &= \frac{84 \text{ N·s}}{220 \text{ s} \cdot 9.8
-                  \text{ m/s}^2} \\ &= \frac{84}{2156} \\ &\approx 0.039 \text{
-                  kg} = 39 \text{ g} \end{align*}
-                </p>
-              </div>
+            <div class="solution-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                2. Variação de velocidade:
+              </p>
+              <p>
+                \begin{align*} \Delta v &= \frac{I_{total}}{m} \\ &= \frac{84
+                \text{ N·s}}{10 \text{ kg}} \\ &= 8.4 \text{ m/s} \end{align*}
+              </p>
+            </div>
+          </section>
+
+          <!-- Continuação: Solução parte 3 -->
+          <section>
+            <h3>Solução: Consumo de Combustível (Parte 3)</h3>
+
+            <div class="solution-box">
+              <p style="font-weight: bold; color: var(--star-blue)">
+                3. Consumo de combustível:
+              </p>
+              <p>
+                \begin{align*} m_{propellant} &= \frac{I_{total}}{I_{sp} \cdot
+                g_0} \\ &= \frac{84 \text{ N·s}}{220 \text{ s} \cdot 9.8 \text{
+                m/s}^2} \\ &= \frac{84}{2156} \\ &\approx 0.039 \text{ kg} = 39
+                \text{ g} \end{align*}
+              </p>
             </div>
 
             <p class="note">
@@ -922,7 +871,7 @@
           </section>
         </section>
 
-        <!-- CONTEXTO HISTÓRICO APROFUNDADO -->
+        <!-- CONTEXTO HISTÓRICO APROFUNDADO - reestruturado com cada timeline item em slide separado -->
         <section>
           <section>
             <h2>Matemática e Poder: As Raízes da Corrida Espacial</h2>
@@ -933,32 +882,14 @@
               matemáticos que a precederam.
             </p>
 
-            <div
-              class="timeline"
-              style="flex-direction: column; height: auto; gap: 20px"
-            >
-              <div class="timeline-item" style="width: 80%; margin: 0 auto">
+            <div class="timeline-vertical">
+              <div class="timeline-item">
                 <div class="timeline-year">1915-1925</div>
                 <p>
                   Einstein publica a Teoria da Relatividade Geral; Tsiolkovsky,
                   Oberth e Goddard desenvolvem os princípios básicos dos
                   foguetes, todos fortemente baseados em cálculo diferencial e
                   integral
-                </p>
-              </div>
-              <div class="timeline-item" style="width: 80%; margin: 0 auto">
-                <div class="timeline-year">1942-1945</div>
-                <p>
-                  A equipe de von Braun desenvolve o V2 na Alemanha, o primeiro
-                  míssil balístico, aplicando cálculo avançado em suas
-                  trajetórias e sistemas de propulsão
-                </p>
-              </div>
-              <div class="timeline-item" style="width: 80%; margin: 0 auto">
-                <div class="timeline-year">1945-1950</div>
-                <p>
-                  EUA e URSS recrutam cientistas alemães e incorporam seus
-                  conhecimentos matemáticos em programas militares secretos
                 </p>
               </div>
             </div>
@@ -971,34 +902,37 @@
           </section>
 
           <section>
-            <h3>A Corrida pelo Talento Matemático</h3>
+            <h2>Matemática e Poder: As Raízes da Corrida Espacial</h2>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 20px;
-              "
-            >
-              <div style="width: 45%">
-                <img
-                  src="/api/placeholder/350/250"
-                  alt="Cientistas do programa espacial soviético"
-                />
-                <p class="image-caption">
-                  Equipe de matemáticos soviéticos, 1953
+            <div class="timeline-vertical">
+              <div class="timeline-item">
+                <div class="timeline-year">1942-1945</div>
+                <p>
+                  A equipe de von Braun desenvolve o V2 na Alemanha, o primeiro
+                  míssil balístico, aplicando cálculo avançado em suas
+                  trajetórias e sistemas de propulsão
                 </p>
               </div>
+            </div>
+          </section>
 
-              <div style="width: 45%">
-                <img
-                  src="/api/placeholder/350/250"
-                  alt="Cientistas da NASA no centro de controle"
-                />
-                <p class="image-caption">Cientistas da NASA no JPL, 1958</p>
+          <section>
+            <h2>Matemática e Poder: As Raízes da Corrida Espacial</h2>
+
+            <div class="timeline-vertical">
+              <div class="timeline-item">
+                <div class="timeline-year">1945-1950</div>
+                <p>
+                  EUA e URSS recrutam cientistas alemães e incorporam seus
+                  conhecimentos matemáticos em programas militares secretos
+                </p>
               </div>
             </div>
+          </section>
+
+          <!-- Slide modificado: removidas imagens -->
+          <section>
+            <h3>A Corrida pelo Talento Matemático</h3>
 
             <p>
               Após 1945, ambos os lados da nascente Guerra Fria reconheceram que
@@ -1017,6 +951,15 @@
                 Universidades em ambos os países começaram a priorizar o cálculo
                 aplicado e a formação de engenheiros com forte base matemática
               </li>
+              <li>
+                O número de matemáticos trabalhando em programas espaciais
+                cresceu de algumas dezenas em 1945 para milhares em 1960
+              </li>
+              <li>
+                Os computadores analógicos e, posteriormente, digitais foram
+                desenvolvidos especificamente para resolver equações
+                diferenciais complexas necessárias para o cálculo de trajetórias
+              </li>
             </ul>
 
             <p class="note">
@@ -1026,8 +969,9 @@
             </p>
           </section>
 
+          <!-- Slide dividido em dois -->
           <section>
-            <h3>A Matemática como Fundamento da Nova Fronteira</h3>
+            <h3>A Matemática como Fundamento da Nova Fronteira (1/2)</h3>
 
             <div
               style="
@@ -1055,7 +999,17 @@
 
             <p>
               O que muitos não percebiam é que por trás das palavras
-              inspiradoras estava um imenso desafio matemático:
+              inspiradoras estava um imenso desafio matemático.
+            </p>
+          </section>
+
+          <!-- Continuação -->
+          <section>
+            <h3>A Matemática como Fundamento da Nova Fronteira (2/2)</h3>
+
+            <p>
+              O desafio de Kennedy exigia avanços significativos em diversas
+              áreas matemáticas:
             </p>
 
             <ul>
@@ -1160,7 +1114,8 @@
                 </ul>
               </div>
             </div>
-
+          </section>
+          <section>
             <p>
               Considere o movimento de uma nave espacial em órbita. Com cálculo
               escalar, precisaríamos de três equações separadas:
@@ -1177,13 +1132,14 @@
 
             <p>$\frac{d^2\vec{r}}{dt^2} = -\frac{GM}{|\vec{r}|^3}\vec{r}$</p>
 
-            <p class="note">
+            <p class="note small-text">
               Esta elegância matemática não é apenas estética, mas prática:
               facilita a solução de problemas complexos e expõe simetrias
               fundamentais dos sistemas físicos.
             </p>
           </section>
 
+          <!-- Slide modificado: sem equações emboladas -->
           <section>
             <h3>Preparando-se para a Jornada Vetorial</h3>
 
@@ -1201,7 +1157,7 @@
             >
               <div style="width: 30%; text-align: center">
                 <div style="font-weight: bold; color: var(--star-blue)">
-                  Derivadas → Gradientes, Divergência, Rotacional
+                  Derivadas →
                 </div>
                 <div
                   style="
@@ -1211,16 +1167,15 @@
                     margin-top: 10px;
                   "
                 >
-                  <p>
-                    $\text{escalar} \frac{df}{dx} \;\to\; \text{vetorial} \nabla
-                    f, \nabla \cdot \vec{F}, \nabla \times \vec{F}$
-                  </p>
+                  <p>Gradientes</p>
+                  <p>Divergência</p>
+                  <p>Rotacional</p>
                 </div>
               </div>
 
               <div style="width: 30%; text-align: center">
                 <div style="font-weight: bold; color: var(--star-blue)">
-                  Integrais → Integrais de Linha, Superfície, Volume
+                  Integrais →
                 </div>
                 <div
                   style="
@@ -1230,16 +1185,15 @@
                     margin-top: 10px;
                   "
                 >
-                  <p>
-                    $\int f(x)dx \;\to\; \int_C \vec{F} \cdot d\vec{r}, \iint_S
-                    \vec{F} \cdot d\vec{S}, \iiint_V \nabla \cdot \vec{F} \, dV$
-                  </p>
+                  <p>Integrais de Linha</p>
+                  <p>Integrais de Superfície</p>
+                  <p>Integrais de Volume</p>
                 </div>
               </div>
 
               <div style="width: 30%; text-align: center">
                 <div style="font-weight: bold; color: var(--star-blue)">
-                  Teoremas Fundamentais → Teoremas de Green, Stokes, Gauss
+                  Teoremas →
                 </div>
                 <div
                   style="
@@ -1249,15 +1203,14 @@
                     margin-top: 10px;
                   "
                 >
-                  <p>
-                    $\int_a^b f'(x) \, dx = f(b) - f(a) \;\to\; \oint_C \vec{F}
-                    \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot
-                    d\vec{S}$
-                  </p>
+                  <p>Teorema de Green</p>
+                  <p>Teorema de Stokes</p>
+                  <p>Teorema de Gauss (Divergência)</p>
                 </div>
               </div>
             </div>
-
+          </section>
+          <section>
             <p>
               Estes conceitos vetoriais serão fundamentais para compreender:
             </p>
@@ -1275,7 +1228,8 @@
             </ul>
           </section>
 
-          <section>
+          <!-- Slide modificado: fonte menor -->
+          <section class="small-text">
             <h3>Olhando para o Futuro</h3>
 
             <div
@@ -1781,35 +1735,6 @@
           if (params.interativo) {
             inicializarInteratividade();
           }
-
-          // Adicionar botão de redefinir
-          const resetButton = document.createElement('button');
-          resetButton.textContent = 'Redefinir';
-          resetButton.style.position = 'absolute';
-          resetButton.style.top = '10px';
-          resetButton.style.right = '10px';
-          resetButton.style.padding = '5px 10px';
-          resetButton.style.backgroundColor = cores.fundo;
-          resetButton.style.color = cores.texto;
-          resetButton.style.border = `1px solid ${cores.funcao}`;
-          resetButton.style.borderRadius = '4px';
-          resetButton.style.cursor = 'pointer';
-
-          resetButton.addEventListener('click', () => {
-            // Redefinir parâmetros
-            params.x0 = 2;
-            params.dx = 1;
-
-            // Verificar se o slider e o display existem antes de atualizá-los
-            if (slider && valueDisplay) {
-              slider.value = params.dx.toString();
-              valueDisplay.textContent = params.dx.toFixed(2);
-            }
-
-            renderizar();
-          });
-
-          container.appendChild(resetButton);
         }
 
         inicializar();
