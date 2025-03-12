@@ -1,4 +1,4 @@
-![cálculo vetorial](img/main.webp)
+![cálculo vetorial](img/main2.png)
 
 # Cálculo Vetorial: Uma Jornada pela Exploração Espacial
 
