@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documento Sigiloso - Cálculo Vetorial</title>
     <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://oangelo.github.io/calculo-vetorial-espacial/exercicios/styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </head>
 <body>
@@ -60,9 +60,15 @@
                         [Departamento Teórico <span class="censored">[REDACTED]</span>]
                     </div>
                     <p>
-                        Calcular a derivada de \(\displaystyle f(x) = x^2\).<br>
-                        <strong>Prática:</strong> Regra básica de potência.
+                        Calcular a derivada de \(\displaystyle f(x) = x^2\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra básica de potência.<br>
+                            <strong>Método:</strong> Se \(f(x) = x^n\), então \(f'(x) = n x^{n-1}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
@@ -70,8 +76,8 @@
                                 \[
                                   \frac{d}{dx} x^2 = 2x.
                                 \]
-                                O expoente (2) desce multiplicando e subtrai-se 1 do expoente original.
                             </p>
+                            <p>O expoente (2) desce multiplicando e subtrai-se 1 do expoente original.</p>
                         </div>
                     </details>
                 </li>
@@ -84,15 +90,21 @@
                         [Interceptado de <span class="censored">Arsenal Teórico</span>]
                     </div>
                     <p>
-                        Calcular a derivada de \(\displaystyle g(x) = 3x^5 - 2x^3 + 7x - 4\).<br>
-                        <strong>Prática:</strong> Regras de potência em cada termo.
+                        Calcular a derivada de \(\displaystyle g(x) = 3x^5 - 2x^3 + 7x - 4\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regras de potência em cada termo.<br>
+                            <strong>Método:</strong> Derivar termo a termo: \(\frac{d}{dx}[a\,x^n] = a \cdot n x^{n-1}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 \[
-                                  g'(x) = 3 \cdot 5x^{4} - 2 \cdot 3x^{2} + 7 - 0 = 15x^4 - 6x^2 + 7.
+                                  g'(x) = 3 \cdot 5x^4 - 2 \cdot 3x^2 + 7 - 0 = 15x^4 - 6x^2 + 7.
                                 \]
                             </p>
                         </div>
@@ -107,24 +119,25 @@
                         [Dados do Programa <span class="censored">[REDACTED]</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx} \bigl(x^2 \cdot e^x\bigr)\).<br>
-                        <strong>Prática:</strong> Regra do Produto (Product Rule). 
-                        <br><strong>Método:</strong> Se \(h(x) = u(x)v(x)\), então \(h'(x) = u'(x)v(x) + u(x)v'(x)\).
+                        Calcular \(\displaystyle \frac{d}{dx} \bigl(x^2 \cdot e^x\bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra do Produto (Product Rule).<br>
+                            <strong>Método:</strong> Se \(h(x) = u(x)v(x)\), então \(h'(x) = u'(x)v(x) + u(x)v'(x)\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
-                            <p>Seja \(u(x) = x^2\) e \(v(x) = e^x\).</p>
                             <p>
-                                \[
-                                  u'(x) = 2x, \quad 
-                                  v'(x) = e^x.
-                                \]
+                                Seja \(u(x) = x^2\) e \(v(x) = e^x\).
+                                <br>\(u'(x) = 2x\), \(v'(x) = e^x\).
                             </p>
                             <p>
-                                Logo, 
                                 \[
-                                  \frac{d}{dx} \bigl(x^2 e^x\bigr) = (2x)e^x + x^2 e^x = e^x(2x + x^2).
+                                  \frac{d}{dx} \bigl(x^2 e^x\bigr) = (2x)e^x + x^2 e^x = e^x (2x + x^2).
                                 \]
                             </p>
                         </div>
@@ -139,17 +152,21 @@
                         [Arquivo Classificado <span class="censored">NR-17</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\bigl(x^3 \cdot \sin x\bigr)\).<br>
-                        <strong>Prática:</strong> Regra do Produto (Product Rule).
+                        Calcular \(\displaystyle \frac{d}{dx}(x^3 \cdot \sin x)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra do Produto (Product Rule).<br>
+                            <strong>Método:</strong> \( \frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x) \).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Se \(u(x) = x^3\) e \(v(x) = \sin x\), então
-                                \[
-                                  u'(x) = 3x^2, \quad v'(x) = \cos x.
-                                \]
+                                \(u'(x) = 3x^2\), \(v'(x) = \cos x\).
                             </p>
                             <p>
                                 \[
@@ -168,33 +185,27 @@
                         [Documentos Sigilosos <span class="censored">CÓDIGO B-4</span>]
                     </div>
                     <p>
-                        Calcular a derivada de \(\displaystyle f(x) = \frac{x^2 + 1}{x - 3}\).<br>
-                        <strong>Prática:</strong> Regra do Quociente (Quotient Rule).
-                        <br><strong>Método:</strong> Se \(h(x) = \frac{u(x)}{v(x)}\), então \( h'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{(v(x))^2}\).
+                        Calcular a derivada de \(\displaystyle f(x) = \frac{x^2 + 1}{x - 3}\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra do Quociente (Quotient Rule).<br>
+                            <strong>Método:</strong> Se \(h(x) = \frac{u(x)}{v(x)}\), então
+                            \(\displaystyle h'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{(v(x))^2}.\)
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Se \(u(x) = x^2 + 1\) e \(v(x) = x - 3\), então
-                                \[
-                                  u'(x) = 2x, \quad v'(x) = 1.
-                                \]
+                                \(u'(x) = 2x\), \(v'(x) = 1\).
                             </p>
                             <p>
                                 \[
-                                  f'(x) = \frac{(2x)(x - 3) - (x^2 + 1)(1)}{(x - 3)^2}.
-                                \]
-                            </p>
-                            <p>
-                                Simplificando o numerador:
-                                \[
-                                  (2x)(x - 3) = 2x^2 - 6x, \quad
-                                  (x^2 + 1)(1) = x^2 + 1.
-                                \]
-                                \[
-                                  f'(x) = \frac{2x^2 - 6x - (x^2 + 1)}{(x - 3)^2}
-                                         = \frac{2x^2 - 6x - x^2 - 1}{(x - 3)^2}
+                                  f'(x) = \frac{(2x)(x - 3) - (x^2 + 1)(1)}{(x - 3)^2}
+                                         = \frac{2x^2 - 6x - (x^2 + 1)}{(x - 3)^2}
                                          = \frac{x^2 - 6x - 1}{(x - 3)^2}.
                                 \]
                             </p>
@@ -210,23 +221,25 @@
                         [Programa <span class="censored">Triax</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\bigl(\sqrt{x} + 2\sqrt[3]{x}\bigr)\).<br>
-                        <strong>Prática:</strong> Regras de Potência (formas radicais: \(x^{1/2}\, e\, x^{1/3}\)).
+                        Calcular \(\displaystyle \frac{d}{dx}\bigl(\sqrt{x} + 2\sqrt[3]{x}\bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regras de Potência para radicais.<br>
+                            <strong>Método:</strong> \( \sqrt{x} = x^{1/2} \), \( \sqrt[3]{x} = x^{1/3} \).
+                            Então \(\frac{d}{dx}[x^{n}] = n\,x^{n-1}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Reescrevendo: \(\sqrt{x} = x^{1/2}\) e \(\sqrt[3]{x} = x^{1/3}\).
+                                <br>\(\frac{d}{dx}[x^{1/2}] = \tfrac{1}{2}x^{-1/2}\),
+                                \(\frac{d}{dx}[x^{1/3}] = \tfrac{1}{3}x^{-2/3}\).
                             </p>
                             <p>
-                                \[
-                                  \frac{d}{dx}\bigl(x^{1/2}\bigr) = \tfrac{1}{2}x^{-1/2}, \quad
-                                  \frac{d}{dx}\bigl(x^{1/3}\bigr) = \tfrac{1}{3}x^{-2/3}.
-                                \]
-                            </p>
-                            <p>
-                                Assim,
                                 \[
                                   \frac{d}{dx}\Bigl(\sqrt{x} + 2\sqrt[3]{x}\Bigr) 
                                   = \tfrac{1}{2}x^{-1/2} + 2 \cdot \tfrac{1}{3}x^{-2/3}
@@ -245,19 +258,22 @@
                         [Arquivo <span class="censored">S-12</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\bigl( \sin(3x) \bigr)\).<br>
-                        <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para funções trigonométricas compostas.
-                        <br><strong>Método:</strong> \(\frac{d}{dx}\sin(ax) = a\cos(ax)\).
+                        Calcular \(\displaystyle \frac{d}{dx}\bigl( \sin(3x) \bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para funções trigonométricas compostas.<br>
+                            <strong>Método:</strong> \(\displaystyle \frac{d}{dx}[\sin(ax)] = a\,\cos(ax)\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Seja \(u(x) = 3x\). Então \(u'(x) = 3\). 
-                                Pela cadeia:
-                                \[
-                                  \frac{d}{dx}\sin(3x) = \cos(3x) \cdot 3 = 3\cos(3x).
-                                \]
+                                Pela regra da cadeia:
+                                \(\frac{d}{dx}\sin(3x) = \cos(3x) \cdot 3 = 3\cos(3x).\)
                             </p>
                         </div>
                     </details>
@@ -271,9 +287,15 @@
                         [Oficina <span class="censored">Galileo</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(e^{x^2}\Bigr)\).<br>
-                        <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para função exponencial composta.
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(e^{x^2}\Bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para função exponencial composta.<br>
+                            <strong>Método:</strong> Se \(h(x) = e^{u(x)}\), então \(h'(x) = u'(x)\, e^{u(x)}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
@@ -296,21 +318,27 @@
                         [Relatório <span class="censored">Omega</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( x^3 \cdot e^{2x} \Bigr)\).<br>
-                        <strong>Prática:</strong> Combinação da Regra do Produto e da Regra da Cadeia.
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( x^3 \cdot e^{2x} \Bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Combinação da Regra do Produto e da Regra da Cadeia.<br>
+                            <strong>Método:</strong> Produto: \(\frac{d}{dx}[u v] = u'v + uv'\).  
+                            Para \(v(x) = e^{2x}\), usar Cadeia: \(v'(x) = 2 e^{2x}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Seja \(u(x) = x^3\) e \(v(x) = e^{2x}\).<br>
-                                Então \(u'(x) = 3x^2\).<br>
-                                Para \(v(x) = e^{2x}\), temos \(v'(x) = e^{2x} \cdot 2\) (regra da cadeia).
+                                \(u'(x) = 3x^2\).<br>
+                                \(v'(x) = 2 e^{2x}\).
                             </p>
                             <p>
-                                Logo,
                                 \[
-                                  \frac{d}{dx}\bigl( x^3 e^{2x} \bigr) = u'(x)v(x) + u(x)v'(x) 
+                                  \frac{d}{dx}\bigl( x^3 e^{2x} \bigr) 
                                   = 3x^2 e^{2x} + x^3 \cdot 2 e^{2x}
                                   = e^{2x}\bigl(3x^2 + 2x^3\bigr).
                                 \]
@@ -327,38 +355,33 @@
                         [Banco de Dados <span class="censored">SETI</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(\frac{\ln(x)}{x^2 + 1}\Bigr)\).<br>
-                        <strong>Prática:</strong> Combinação da Regra do Quociente e Regras de Funções Compostas (logarítmica).
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(\frac{\ln(x)}{x^2 + 1}\Bigr)\).
                     </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Combinação da Regra do Quociente e Regras de Funções Compostas.<br>
+                            <strong>Método:</strong> \(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\).  
+                            Se \(\displaystyle h(x) = \frac{u}{v}\), então  
+                            \(h'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{[v(x)]^2}\).
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
                             <p>
                                 Se \(u(x) = \ln(x)\) e \(v(x) = x^2 + 1\), então:
-                                <br>\(u'(x) = \tfrac{1}{x}\), \(v'(x) = 2x\).
+                                \(u'(x) = \tfrac{1}{x}\), \(v'(x) = 2x\).
                             </p>
                             <p>
-                                Pela regra do quociente:
-                                \[
-                                  \frac{d}{dx}\Bigl(\frac{u}{v}\Bigr) = 
-                                  \frac{u'(x)\,v(x) - u(x)\,v'(x)}{[v(x)]^2}.
-                                \]
-                            </p>
-                            <p>
-                                Substituindo:
                                 \[
                                   \frac{d}{dx}\Bigl(\frac{\ln(x)}{x^2 + 1}\Bigr) 
-                                  = \frac{\frac{1}{x}(x^2 + 1) - \ln(x)(2x)}{(x^2 + 1)^2}.
+                                  = \frac{\frac{1}{x}(x^2 + 1) - \ln(x)\cdot 2x}{(x^2 + 1)^2}.
                                 \]
-                            </p>
-                            <p>
-                                Simplificando o numerador:
+                                <br>
+                                Simplificando,  
                                 \[
                                   = \frac{(x^2 + 1)/x - 2x\ln(x)}{(x^2 + 1)^2}.
-                                \]
-                                Pode-se deixar assim ou ajustar:
-                                \[
-                                  = \frac{x^2 + 1 - 2x^2\ln(x)}{x(x^2 + 1)^2}.
                                 \]
                             </p>
                         </div>
@@ -373,13 +396,17 @@
                         [Laboratório <span class="censored">Artemis</span>]
                     </div>
                     <p>
-                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( (x^2 + 2x) \cdot \frac{e^x}{\sqrt{x+1}} \Bigr)\).<br>
-                        <strong>Prática:</strong> Combinação de diversas regras: Produto, Quociente e Cadeia. 
-                        <br><em>Dica:</em> É útil primeiro reescrever \(\frac{e^x}{\sqrt{x+1}}\) como \(e^x (x+1)^{-1/2}\) antes de aplicar a Regra do Produto.
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( (x^2 + 2x) \cdot \frac{e^x}{\sqrt{x+1}} \Bigr)\).
                     </p>
-                    <p>
-                        <em>(Este problema consolida todas as regras vistas.)</em>
-                    </p>
+                    <details>
+                        <summary>MÉTODO</summary>
+                        <p>
+                            <strong>Prática:</strong> Combinação de diversas regras: Produto, Quociente e Cadeia.<br>
+                            <strong>Método:</strong> Reescrever \(\frac{e^x}{\sqrt{x+1}}\) como 
+                            \(e^x (x+1)^{-1/2}\) e então aplicar Regra do Produto (para \((x^2+2x)\) e \(e^x (x+1)^{-1/2}\)).
+                            Dentro disso, ainda é necessário derivar \((x+1)^{-1/2}\) via Cadeia.
+                        </p>
+                    </details>
                     <details>
                         <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
                         <div class="solution">
@@ -395,7 +422,7 @@
                                 \[
                                   v'(x) = e^x (x+1)^{-1/2} + e^x \cdot \frac{d}{dx}\bigl((x+1)^{-1/2}\bigr).
                                 \]
-                                A derivada \(\frac{d}{dx}((x+1)^{-1/2}) = -\tfrac{1}{2}(x+1)^{-3/2}\).
+                                A derivada de \((x+1)^{-1/2}\) é \(-\tfrac{1}{2}(x+1)^{-3/2}\).
                             </p>
                             <p>
                                 Logo,
@@ -405,10 +432,9 @@
                             </p>
                             <p>
                                 Agora, \( f'(x) = u'(x)v(x) + u(x)v'(x) \).
-                                <br>
                                 \[
                                   f'(x) = (2x + 2) \cdot e^x (x+1)^{-1/2} 
-                                          + (x^2 + 2x) \Bigl[e^x (x+1)^{-1/2} - \tfrac{1}{2} e^x (x+1)^{-3/2}\Bigr].
+                                        + (x^2 + 2x)\Bigl[e^x (x+1)^{-1/2} - \tfrac{1}{2} e^x (x+1)^{-3/2}\Bigr].
                                 \]
                             </p>
                             <p>
