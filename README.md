@@ -8,6 +8,10 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/revisao.html)
 
+- [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica.html) 
+- [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivada.html)
+- [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integral.html)
+
 1. [Funções de várias variáveis reais a valores vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/funcoes-de-varias-variaveis-reais-a-valores-vetoriais.html)
 - [Função vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/funcao-vetorial.html)
 - [Campo vetorial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/campo-vetorial.html)

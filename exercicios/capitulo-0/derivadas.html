@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://oangelo.github.io/calculo-vetorial-espacial/exercicios/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 
+        ATENÇÃO: Este é um modelo de documento histórico da Guerra Fria.
+        O document-header deve conter uma narrativa histórica relacionada à corrida espacial.
+        
+        Este documento foca em revisões de derivadas ordinárias (cálculo diferencial de funções de uma variável), 
+        mas dentro do enredo da corrida espacial e do contexto secreto da época.
+        -->
+        <div class="document-header">
+            <div class="document-stamp">SIGILOSO</div>
+            <div class="document-date">
+                DATA: <span class="censored">8</span> DE JUNHO DE <span class="censored">1963</span>
+                <br>
+                LOCALIZAÇÃO: <span class="censored">LABORATÓRIO ORBITAL [REDACTED]</span>
+            </div>
+            
+            <div class="document-intro">
+                RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">DERIV-X</span>
+                <br><br>
+                Em consonância com a contínua necessidade de análises matemáticas precisas para o 
+                <span class="censored">desenvolvimento de sistemas de propulsão</span>, apresenta-se aqui 
+                um conjunto de exercícios voltados à prática de derivadas ordinárias. 
+                <br><br>
+                Estes estudos, originalmente compilados pelo Dr. <span class="censored">█████████</span>, 
+                suportam o <span class="censored">Programa de Ajuste de Órbita</span> e fornecem 
+                métodos críticos para avaliação de polinômios, funções racionais e compostas 
+                no contexto da <span class="censored">trajetória espacial</span>.
+            </div>
+
+            <div class="warning-box">
+                Este documento contém informações matemáticas essenciais para o êxito do programa espacial.
+                A divulgação não autorizada pode resultar em <span class="censored">sanções severas</span>.
+            </div>
+
+            <div class="metadata">
+                <span>REF: DX-<span class="censored">1963</span>-C</span>
+                <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+                <span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE <span class="censored">4</span></span>
+            </div>
+        </div>
+
+        <main>
+            <ol class="exercise-list">
+                <!-- EXERCÍCIO 1 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-1</div>
+                    <div class="context">
+                        ORIGEM: Revisão Básica — Polinômios 
+                        [Departamento Teórico <span class="censored">[REDACTED]</span>]
+                    </div>
+                    <p>
+                        Calcular a derivada de \(\displaystyle f(x) = x^2\).<br>
+                        <strong>Prática:</strong> Regra básica de potência.
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                \[
+                                  \frac{d}{dx} x^2 = 2x.
+                                \]
+                                O expoente (2) desce multiplicando e subtrai-se 1 do expoente original.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 2 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-2</div>
+                    <div class="context">
+                        ORIGEM: Ajuste de Órbita — Funções Polinomiais
+                        [Interceptado de <span class="censored">Arsenal Teórico</span>]
+                    </div>
+                    <p>
+                        Calcular a derivada de \(\displaystyle g(x) = 3x^5 - 2x^3 + 7x - 4\).<br>
+                        <strong>Prática:</strong> Regras de potência em cada termo.
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                \[
+                                  g'(x) = 3 \cdot 5x^{4} - 2 \cdot 3x^{2} + 7 - 0 = 15x^4 - 6x^2 + 7.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 3 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-3</div>
+                    <div class="context">
+                        ORIGEM: Análise de Forças Múltiplas
+                        [Dados do Programa <span class="censored">[REDACTED]</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx} \bigl(x^2 \cdot e^x\bigr)\).<br>
+                        <strong>Prática:</strong> Regra do Produto (Product Rule). 
+                        <br><strong>Método:</strong> Se \(h(x) = u(x)v(x)\), então \(h'(x) = u'(x)v(x) + u(x)v'(x)\).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>Seja \(u(x) = x^2\) e \(v(x) = e^x\).</p>
+                            <p>
+                                \[
+                                  u'(x) = 2x, \quad 
+                                  v'(x) = e^x.
+                                \]
+                            </p>
+                            <p>
+                                Logo, 
+                                \[
+                                  \frac{d}{dx} \bigl(x^2 e^x\bigr) = (2x)e^x + x^2 e^x = e^x(2x + x^2).
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 4 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-4</div>
+                    <div class="context">
+                        ORIGEM: Otimização de Combustível
+                        [Arquivo Classificado <span class="censored">NR-17</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\bigl(x^3 \cdot \sin x\bigr)\).<br>
+                        <strong>Prática:</strong> Regra do Produto (Product Rule).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Se \(u(x) = x^3\) e \(v(x) = \sin x\), então
+                                \[
+                                  u'(x) = 3x^2, \quad v'(x) = \cos x.
+                                \]
+                            </p>
+                            <p>
+                                \[
+                                  \frac{d}{dx}(x^3 \sin x) = 3x^2 \sin x + x^3 \cos x.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 5 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-5</div>
+                    <div class="context">
+                        ORIGEM: Análise de Razão de Mudança
+                        [Documentos Sigilosos <span class="censored">CÓDIGO B-4</span>]
+                    </div>
+                    <p>
+                        Calcular a derivada de \(\displaystyle f(x) = \frac{x^2 + 1}{x - 3}\).<br>
+                        <strong>Prática:</strong> Regra do Quociente (Quotient Rule).
+                        <br><strong>Método:</strong> Se \(h(x) = \frac{u(x)}{v(x)}\), então \( h'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{(v(x))^2}\).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Se \(u(x) = x^2 + 1\) e \(v(x) = x - 3\), então
+                                \[
+                                  u'(x) = 2x, \quad v'(x) = 1.
+                                \]
+                            </p>
+                            <p>
+                                \[
+                                  f'(x) = \frac{(2x)(x - 3) - (x^2 + 1)(1)}{(x - 3)^2}.
+                                \]
+                            </p>
+                            <p>
+                                Simplificando o numerador:
+                                \[
+                                  (2x)(x - 3) = 2x^2 - 6x, \quad
+                                  (x^2 + 1)(1) = x^2 + 1.
+                                \]
+                                \[
+                                  f'(x) = \frac{2x^2 - 6x - (x^2 + 1)}{(x - 3)^2}
+                                         = \frac{2x^2 - 6x - x^2 - 1}{(x - 3)^2}
+                                         = \frac{x^2 - 6x - 1}{(x - 3)^2}.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 6 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-6</div>
+                    <div class="context">
+                        ORIGEM: Equações de Precisão Orbital
+                        [Programa <span class="censored">Triax</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\bigl(\sqrt{x} + 2\sqrt[3]{x}\bigr)\).<br>
+                        <strong>Prática:</strong> Regras de Potência (formas radicais: \(x^{1/2}\, e\, x^{1/3}\)).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Reescrevendo: \(\sqrt{x} = x^{1/2}\) e \(\sqrt[3]{x} = x^{1/3}\).
+                            </p>
+                            <p>
+                                \[
+                                  \frac{d}{dx}\bigl(x^{1/2}\bigr) = \tfrac{1}{2}x^{-1/2}, \quad
+                                  \frac{d}{dx}\bigl(x^{1/3}\bigr) = \tfrac{1}{3}x^{-2/3}.
+                                \]
+                            </p>
+                            <p>
+                                Assim,
+                                \[
+                                  \frac{d}{dx}\Bigl(\sqrt{x} + 2\sqrt[3]{x}\Bigr) 
+                                  = \tfrac{1}{2}x^{-1/2} + 2 \cdot \tfrac{1}{3}x^{-2/3}
+                                  = \frac{1}{2\sqrt{x}} + \frac{2}{3}x^{-2/3}.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 7 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-7</div>
+                    <div class="context">
+                        ORIGEM: Análise de Coordenadas de Lançamento
+                        [Arquivo <span class="censored">S-12</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\bigl( \sin(3x) \bigr)\).<br>
+                        <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para funções trigonométricas compostas.
+                        <br><strong>Método:</strong> \(\frac{d}{dx}\sin(ax) = a\cos(ax)\).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Seja \(u(x) = 3x\). Então \(u'(x) = 3\). 
+                                Pela cadeia:
+                                \[
+                                  \frac{d}{dx}\sin(3x) = \cos(3x) \cdot 3 = 3\cos(3x).
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 8 -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-8</div>
+                    <div class="context">
+                        ORIGEM: Estabilidade de Ônibus Espacial
+                        [Oficina <span class="censored">Galileo</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(e^{x^2}\Bigr)\).<br>
+                        <strong>Prática:</strong> Regra da Cadeia (Chain Rule) para função exponencial composta.
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Se \(u(x) = x^2\), então \(u'(x) = 2x\). 
+                                Portanto, 
+                                \[
+                                  \frac{d}{dx}\bigl(e^{x^2}\bigr) = e^{x^2} \cdot 2x = 2x e^{x^2}.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 9 (MISTURA: PRODUTO + CADEIA) -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-9</div>
+                    <div class="context">
+                        ORIGEM: Equações Avançadas de Propulsão
+                        [Relatório <span class="censored">Omega</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( x^3 \cdot e^{2x} \Bigr)\).<br>
+                        <strong>Prática:</strong> Combinação da Regra do Produto e da Regra da Cadeia.
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Seja \(u(x) = x^3\) e \(v(x) = e^{2x}\).<br>
+                                Então \(u'(x) = 3x^2\).<br>
+                                Para \(v(x) = e^{2x}\), temos \(v'(x) = e^{2x} \cdot 2\) (regra da cadeia).
+                            </p>
+                            <p>
+                                Logo,
+                                \[
+                                  \frac{d}{dx}\bigl( x^3 e^{2x} \bigr) = u'(x)v(x) + u(x)v'(x) 
+                                  = 3x^2 e^{2x} + x^3 \cdot 2 e^{2x}
+                                  = e^{2x}\bigl(3x^2 + 2x^3\bigr).
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 10 (MISTURA: QUOCIENTE + CADEIA) -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-10</div>
+                    <div class="context">
+                        ORIGEM: Matrizes de Trajetória Interplanetária
+                        [Banco de Dados <span class="censored">SETI</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl(\frac{\ln(x)}{x^2 + 1}\Bigr)\).<br>
+                        <strong>Prática:</strong> Combinação da Regra do Quociente e Regras de Funções Compostas (logarítmica).
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Se \(u(x) = \ln(x)\) e \(v(x) = x^2 + 1\), então:
+                                <br>\(u'(x) = \tfrac{1}{x}\), \(v'(x) = 2x\).
+                            </p>
+                            <p>
+                                Pela regra do quociente:
+                                \[
+                                  \frac{d}{dx}\Bigl(\frac{u}{v}\Bigr) = 
+                                  \frac{u'(x)\,v(x) - u(x)\,v'(x)}{[v(x)]^2}.
+                                \]
+                            </p>
+                            <p>
+                                Substituindo:
+                                \[
+                                  \frac{d}{dx}\Bigl(\frac{\ln(x)}{x^2 + 1}\Bigr) 
+                                  = \frac{\frac{1}{x}(x^2 + 1) - \ln(x)(2x)}{(x^2 + 1)^2}.
+                                \]
+                            </p>
+                            <p>
+                                Simplificando o numerador:
+                                \[
+                                  = \frac{(x^2 + 1)/x - 2x\ln(x)}{(x^2 + 1)^2}.
+                                \]
+                                Pode-se deixar assim ou ajustar:
+                                \[
+                                  = \frac{x^2 + 1 - 2x^2\ln(x)}{x(x^2 + 1)^2}.
+                                \]
+                            </p>
+                        </div>
+                    </details>
+                </li>
+
+                <!-- EXERCÍCIO 11 (MISTURA COMPLETA) -->
+                <li class="exercise-item">
+                    <div class="exercise-number">EXERCÍCIO DERIV-11</div>
+                    <div class="context">
+                        ORIGEM: Pesquisa Secreta de Funções Compostas
+                        [Laboratório <span class="censored">Artemis</span>]
+                    </div>
+                    <p>
+                        Calcular \(\displaystyle \frac{d}{dx}\Bigl( (x^2 + 2x) \cdot \frac{e^x}{\sqrt{x+1}} \Bigr)\).<br>
+                        <strong>Prática:</strong> Combinação de diversas regras: Produto, Quociente e Cadeia. 
+                        <br><em>Dica:</em> É útil primeiro reescrever \(\frac{e^x}{\sqrt{x+1}}\) como \(e^x (x+1)^{-1/2}\) antes de aplicar a Regra do Produto.
+                    </p>
+                    <p>
+                        <em>(Este problema consolida todas as regras vistas.)</em>
+                    </p>
+                    <details>
+                        <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                        <div class="solution">
+                            <p>
+                                Seja \( f(x) = (x^2 + 2x) \cdot e^x (x+1)^{-1/2} \).
+                                <br>Definimos \( u(x) = x^2 + 2x \) e \( v(x) = e^x (x+1)^{-1/2} \).
+                            </p>
+                            <p>
+                                \( u'(x) = 2x + 2 \).
+                            </p>
+                            <p>
+                                Para \( v(x) = e^x (x+1)^{-1/2} \), aplicamos a Regra do Produto internamente:
+                                \[
+                                  v'(x) = e^x (x+1)^{-1/2} + e^x \cdot \frac{d}{dx}\bigl((x+1)^{-1/2}\bigr).
+                                \]
+                                A derivada \(\frac{d}{dx}((x+1)^{-1/2}) = -\tfrac{1}{2}(x+1)^{-3/2}\).
+                            </p>
+                            <p>
+                                Logo,
+                                \[
+                                  v'(x) = e^x (x+1)^{-1/2} - \tfrac{1}{2} e^x (x+1)^{-3/2}.
+                                \]
+                            </p>
+                            <p>
+                                Agora, \( f'(x) = u'(x)v(x) + u(x)v'(x) \).
+                                <br>
+                                \[
+                                  f'(x) = (2x + 2) \cdot e^x (x+1)^{-1/2} 
+                                          + (x^2 + 2x) \Bigl[e^x (x+1)^{-1/2} - \tfrac{1}{2} e^x (x+1)^{-3/2}\Bigr].
+                                \]
+                            </p>
+                            <p>
+                                Pode-se fatorar \( e^x \) e agrupar termos, mas o formato acima já é suficiente 
+                                para a demonstração completa de todas as regras.
+                            </p>
+                        </div>
+                    </details>
+                </li>
+            </ol>
+        </main>
+
+        <div class="page-number">
+            PÁGINA 1 DE <span class="censored">22</span> • DOCUMENTO DX-<span class="censored">1963</span>-C
+        </div>
+    </div>
+
+    <!-- FECHAMENTO / SÍNTESE -->
+    <div class="container" style="margin-top: 40px;">
+        <h2>FECHAMENTO</h2>
+        <p>
+            Nesta sequência de exercícios, exploramos desde aplicações diretas das 
+            <strong>regras de derivação de potências</strong> até a 
+            <strong>combinação completa de produto, quociente e cadeia</strong>. 
+            Cada passo reforça a <span class="censored">capacidade de previsão de trajetórias</span> 
+            e de análise de comportamento de funções que regem componentes críticos 
+            na <span class="censored">tecnologia espacial</span>.
+        </p>
+        <p>
+            <em>SIGILOSO</em>: Recomenda-se distribuir estes problemas somente a equipes 
+            devidamente autorizadas e preparadas para manipular equações de alta relevância 
+            para o <span class="censored">Programa de Voo Orbital</span>.
+        </p>
+    </div>
+
+    <script>
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [['\\(','\\)']],
+                displayMath: [['\\[','\\]']],
+                processEscapes: true
+            },
+            "HTML-CSS": {
+                // A cor padrão do MathJax foi ajustada no modelo original
+                color: "#d4af37"
+            }
+        });
+    </script>
+</body>
+</html>
