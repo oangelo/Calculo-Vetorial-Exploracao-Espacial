@@ -9,6 +9,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/revisao.html)
 
 - [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica.html) 
+- [Conicas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/conicas.html) 
 - [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivadas.html)
 - [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integrais.html)
 

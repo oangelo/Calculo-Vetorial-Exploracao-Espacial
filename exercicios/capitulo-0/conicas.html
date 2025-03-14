@@ -8,10 +8,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://oangelo.github.io/calculo-vetorial-espacial/exercicios/styles.css"
-    />
+    <link rel="stylesheet" href="../styles.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
   </head>
   <body>
@@ -281,10 +278,17 @@
                     y="0.3"
                     font-size="0.7"
                     transform="scale(1,-1)"
+                    fill="white"
                   >
                     A
                   </text>
-                  <text x="5.2" y="0.3" font-size="0.7" transform="scale(1,-1)">
+                  <text
+                    x="5.2"
+                    y="0.3"
+                    font-size="0.7"
+                    transform="scale(1,-1)"
+                    fill="white"
+                  >
                     B
                   </text>
                 </g>
@@ -339,7 +343,7 @@
                   x2="6"
                   y2="0"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
                 <!-- Eixo Y -->
                 <line
@@ -348,17 +352,18 @@
                   x2="0"
                   y2="6"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
-                <!-- Elipse: x^2/25 + y^2/16 =1 -->
-                <path
-                  d="M -5 0
-                                     A 5 4 0 0 1 5 0
-                                     A 5 4 0 0 1 -5 0
-                                     Z"
+
+                <!-- Elipse: x^2/25 + y^2/16 = 1 => a=5, b=4 -->
+                <ellipse
+                  cx="0"
+                  cy="0"
+                  rx="5"
+                  ry="4"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.1"
                 />
 
                 <!-- Eixo maior: A(-5,0) a B(5,0) -->
@@ -368,7 +373,7 @@
                   x2="5"
                   y2="0"
                   stroke="green"
-                  stroke-width="0.05"
+                  stroke-width="0.1"
                 />
                 <!-- Eixo menor: C(0,-4) a D(0,4) -->
                 <line
@@ -377,31 +382,67 @@
                   x2="0"
                   y2="4"
                   stroke="purple"
-                  stroke-width="0.05"
+                  stroke-width="0.1"
                 />
 
                 <!-- Focos: F1(-3,0), F2(3,0) -->
-                <circle cx="-3" cy="0" r="0.07" fill="red" />
-                <circle cx="3" cy="0" r="0.07" fill="red" />
+                <circle cx="-3" cy="0" r="0.15" fill="red" />
+                <circle cx="3" cy="0" r="0.15" fill="red" />
 
                 <!-- Pontos e texto -->
-                <text x="-5.2" y="0.2" font-size="0.4" transform="scale(1,-1)">
+                <text
+                  x="-5.3"
+                  y="0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
                   A
                 </text>
-                <text x="5.1" y="0.2" font-size="0.4" transform="scale(1,-1)">
+                <text
+                  x="5.2"
+                  y="0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
                   B
                 </text>
-                <text x="0.2" y="-3.8" font-size="0.4" transform="scale(1,-1)">
+                <text
+                  x="0.3"
+                  y="-3.9"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
                   C
                 </text>
-                <text x="0.2" y="4.2" font-size="0.4" transform="scale(1,-1)">
+                <text
+                  x="0.3"
+                  y="4.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
                   D
                 </text>
-                <text x="-3.3" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  F1
+                <text
+                  x="-3.5"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  F₁
                 </text>
-                <text x="3.1" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  F2
+                <text
+                  x="3.2"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  F₂
                 </text>
               </g>
             </svg>
@@ -433,52 +474,175 @@
               x \le 10\):
             </p>
             <svg
-              width="300"
-              height="300"
+              width="400"
+              height="400"
               style="border: 1px solid #999; margin: 10px 0"
             >
-              <g transform="translate(150,150) scale(10,-10)">
+              <!-- Zoom com foco na região de interesse -->
+              <g transform="translate(200,300) scale(25,-25)">
                 <!-- Eixos -->
                 <line
-                  x1="-10"
+                  x1="-6"
                   y1="0"
-                  x2="10"
+                  x2="6"
                   y2="0"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
                 <line
                   x1="0"
-                  y1="-10"
+                  y1="-3"
                   x2="0"
-                  y2="10"
+                  y2="8"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
 
-                <!-- Parametric or discrete approximation of y= (1/8)x^2 -->
+                <!-- Grade de referência (opcional) -->
+                <line
+                  x1="-6"
+                  y1="2"
+                  x2="6"
+                  y2="2"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="-6"
+                  y1="-2"
+                  x2="6"
+                  y2="-2"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="4"
+                  y1="-3"
+                  x2="4"
+                  y2="8"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="-4"
+                  y1="-3"
+                  x2="-4"
+                  y2="8"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+
+                <!-- Parábola y = (1/8)x^2 usando pontos discretos mas precisos -->
                 <path
-                  d="M -10 12
-                                     Q -9 10.125 -8 8
-                                     Q -7 6.125 -6 4.5
-                                     Q -5 3.125 -4 2
-                                     Q -3 1.125 -2 0.5
-                                     Q -1 0.125 0 0
-                                     Q 1 0.125 2 0.5
-                                     Q 3 1.125 4 2
-                                     Q 5 3.125 6 4.5
-                                     Q 7 6.125 8 8
-                                     Q 9 10.125 10 12"
+                  d="M -6 4.5
+                 L -5 3.125
+                 L -4 2
+                 L -3 1.125
+                 L -2 0.5
+                 L -1 0.125
+                 L 0 0
+                 L 1 0.125
+                 L 2 0.5
+                 L 3 1.125
+                 L 4 2
+                 L 5 3.125
+                 L 6 4.5"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.15"
+                />
+
+                <!-- Diretriz em y = -2 -->
+                <line
+                  x1="-6"
+                  y1="-2"
+                  x2="6"
+                  y2="-2"
+                  stroke="red"
+                  stroke-width="0.1"
+                />
+
+                <!-- Destaque do segmento p = 2 entre foco e vértice -->
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="2"
+                  stroke="purple"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
                 />
 
                 <!-- Vértice (0,0) -->
-                <circle cx="0" cy="0" r="0.07" fill="red" />
-                <text x="0.2" y="-0.2" font-size="0.4" transform="scale(1,-1)">
+                <circle cx="0" cy="0" r="0.15" fill="red" />
+
+                <!-- Foco em (0, 2) -->
+                <circle cx="0" cy="2" r="0.15" fill="green" />
+
+                <!-- Legenda para pontos importantes -->
+                <text
+                  x="0.3"
+                  y="-0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
                   V
                 </text>
+                <text
+                  x="0.3"
+                  y="-2"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F
+                </text>
+                <text
+                  x="-5.8"
+                  y="1.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  Diretriz
+                </text>
+
+                <!-- Ponto P na parábola para ilustrar equidistância -->
+                <circle cx="4" cy="2" r="0.15" fill="orange" />
+                <text
+                  x="4.2"
+                  y="-2.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="orange"
+                >
+                  P
+                </text>
+
+                <!-- Linhas mostrando equidistância (PF = PD) -->
+                <line
+                  x1="4"
+                  y1="2"
+                  x2="0"
+                  y2="2"
+                  stroke="orange"
+                  stroke-width="0.05"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="4"
+                  y1="2"
+                  x2="4"
+                  y2="-2"
+                  stroke="orange"
+                  stroke-width="0.05"
+                  stroke-dasharray="0.1,0.1"
+                />
               </g>
             </svg>
             <details>
@@ -509,106 +673,183 @@
               6\):
             </p>
             <svg
-              width="300"
-              height="300"
+              width="400"
+              height="400"
               style="border: 1px solid #999; margin: 10px 0"
             >
-              <g transform="translate(150,150) scale(20,-20)">
+              <g transform="translate(200,200) scale(25,-25)">
                 <!-- Eixos -->
                 <line
-                  x1="-6"
+                  x1="-7"
                   y1="0"
-                  x2="6"
+                  x2="7"
                   y2="0"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
                 <line
                   x1="0"
-                  y1="-6"
+                  y1="-7"
                   x2="0"
-                  y2="6"
+                  y2="7"
                   stroke="gray"
-                  stroke-width="0.02"
+                  stroke-width="0.04"
                 />
 
-                <!-- Hipérbole: x^2/16 - y^2/9 = 1 -->
-                <!-- Para desenho aproximado, usaremos um path discreto. -->
-                <!-- Ramo direito (x>0) -->
+                <!-- Hipérbole: x^2/16 - y^2/9 = 1 usando parametrização mais precisa -->
+                <!-- Ramo direito (x>0) - hipérbole horizontal -->
                 <path
                   d="M 4 0
-                                     C 4.5 -1.0 5 -2 5.5 -3
-                                     C 5.7 -3.4 5.8 -4 6 -6"
+                 L 4.04 0.3
+                 L 4.16 0.6
+                 L 4.36 0.9
+                 L 4.64 1.2
+                 L 4.96 1.5
+                 L 5.33 1.8
+                 L 5.73 2.1
+                 L 6.16 2.4
+                 L 6.61 2.7
+                 L 7.07 3.0"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.15"
                 />
+
                 <path
                   d="M 4 0
-                                     C 4.5 1.0 5 2 5.5 3
-                                     C 5.7 3.4 5.8 4 6 6"
+                 L 4.04 -0.3
+                 L 4.16 -0.6
+                 L 4.36 -0.9
+                 L 4.64 -1.2
+                 L 4.96 -1.5
+                 L 5.33 -1.8
+                 L 5.73 -2.1
+                 L 6.16 -2.4
+                 L 6.61 -2.7
+                 L 7.07 -3.0"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.15"
                 />
 
                 <!-- Ramo esquerdo (x<0) -->
                 <path
                   d="M -4 0
-                                     C -4.5 -1.0 -5 -2 -5.5 -3
-                                     C -5.7 -3.4 -5.8 -4 -6 -6"
+                 L -4.04 0.3
+                 L -4.16 0.6
+                 L -4.36 0.9
+                 L -4.64 1.2
+                 L -4.96 1.5
+                 L -5.33 1.8
+                 L -5.73 2.1
+                 L -6.16 2.4
+                 L -6.61 2.7
+                 L -7.07 3.0"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.15"
                 />
+
                 <path
                   d="M -4 0
-                                     C -4.5 1.0 -5 2 -5.5 3
-                                     C -5.7 3.4 -5.8 4 -6 6"
+                 L -4.04 -0.3
+                 L -4.16 -0.6
+                 L -4.36 -0.9
+                 L -4.64 -1.2
+                 L -4.96 -1.5
+                 L -5.33 -1.8
+                 L -5.73 -2.1
+                 L -6.16 -2.4
+                 L -6.61 -2.7
+                 L -7.07 -3.0"
                   fill="none"
                   stroke="blue"
-                  stroke-width="0.05"
+                  stroke-width="0.15"
                 />
 
                 <!-- Vértices em (±4, 0) -->
-                <circle cx="4" cy="0" r="0.07" fill="red" />
-                <circle cx="-4" cy="0" r="0.07" fill="red" />
-                <text x="4.1" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  V1
+                <circle cx="4" cy="0" r="0.15" fill="red" />
+                <circle cx="-4" cy="0" r="0.15" fill="red" />
+                <text
+                  x="4.1"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  V₁
                 </text>
-                <text x="-4.9" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  V2
+                <text
+                  x="-4.9"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  V₂
                 </text>
 
                 <!-- Focos: c^2 = a^2 + b^2 => c^2=16+9=25 => c=5 => focos em (±5,0) -->
-                <circle cx="5" cy="0" r="0.07" fill="green" />
-                <circle cx="-5" cy="0" r="0.07" fill="green" />
-                <text x="5.1" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  F1
+                <circle cx="5" cy="0" r="0.15" fill="green" />
+                <circle cx="-5" cy="0" r="0.15" fill="green" />
+                <text
+                  x="5.1"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F₁
                 </text>
-                <text x="-5.8" y="0.3" font-size="0.4" transform="scale(1,-1)">
-                  F2
+                <text
+                  x="-5.8"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F₂
                 </text>
 
-                <!-- Assíntotas: y= ±(3/4)x -->
+                <!-- Assíntotas: y= ±(b/a)x = ±(3/4)x -->
                 <line
-                  x1="-6"
-                  y1="-4.5"
-                  x2="6"
-                  y2="4.5"
+                  x1="-7"
+                  y1="-5.25"
+                  x2="7"
+                  y2="5.25"
                   stroke="green"
-                  stroke-dasharray="0.05,0.05"
-                  stroke-width="0.03"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
                 />
                 <line
-                  x1="-6"
-                  y1="4.5"
-                  x2="6"
-                  y2="-4.5"
+                  x1="-7"
+                  y1="5.25"
+                  x2="7"
+                  y2="-5.25"
                   stroke="green"
-                  stroke-dasharray="0.05,0.05"
-                  stroke-width="0.03"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
                 />
+
+                <!-- Texto para as assíntotas -->
+                <text
+                  x="3"
+                  y="-2.8"
+                  font-size="0.6"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  y = (3/4)x
+                </text>
+                <text
+                  x="3"
+                  y="3.2"
+                  font-size="0.6"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  y = -(3/4)x
+                </text>
               </g>
             </svg>
             <details>
