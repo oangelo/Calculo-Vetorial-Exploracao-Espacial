@@ -1,0 +1,610 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Exercícios de Técnicas de Integração</title>
+    <!-- MathJax Config -->
+    <script>
+        window.MathJax = {
+          tex: {
+            inlineMath: [ ['\\(','\\)'] ],
+            displayMath: [ ['$$','$$'], ['\\[','\\]'] ]
+          }
+        };
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+    <h1>Lista de Exercícios de Técnicas de Integração (20 Problemas)</h1>
+    <p>
+      Abaixo temos vinte exercícios de integrais, organizados em dificuldade crescente.
+      Para cada questão, há duas seções de detalhes:
+      <strong>Técnica e dicas</strong> e <strong>Solução</strong>.
+      Use a técnica indicada como ponto de partida, mas lembre-se de que, às vezes,
+      há mais de um caminho possível.
+    </p>
+
+    <ol>
+        <!-- EXERCÍCIO 1 -->
+        <li>
+            <strong>Exercício 1:</strong> Substituição simples
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int 2x \cos(x^2)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Identifique uma função composta: \(x^2\) dentro de \(\cos(\cdot)\).</li>
+                  <li>Defina \(u = x^2\) para simplificar a integral.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Seja \(u = x^2\). Logo, \(du = 2x\,dx\). A integral torna-se
+                  \(\int 2x\cos(x^2)\,dx = \int \cos(u)\,du = \sin(u) + C = \sin(x^2) + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 2 -->
+        <li>
+            <strong>Exercício 2:</strong> Substituição simples
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{1}{x\ln(x)}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Veja \(\ln(x)\) como possível substituição.</li>
+                  <li>Se \(u = \ln(x)\), então \(du = 1/x\, dx\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Definindo \(u = \ln(x)\), temos \(du = (1/x)dx\). Assim,
+                  \(\int \frac{1}{x\ln(x)}\,dx = \int \frac{1}{u}\,du = \ln|u| + C = \ln|\ln(x)| + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 3 -->
+        <li>
+            <strong>Exercício 3:</strong> Integração por partes
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int e^x \sin(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Use integração por partes duas vezes.</li>
+                  <li>Uma forma prática é lembrar que \(\int e^x\sin(x)\,dx\) e \(\int e^x\cos(x)\,dx\) se relacionam.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Seja \(I = \int e^x\sin(x)\,dx\). Integrando por partes:
+                  <br/>
+                  \(I = e^x\sin(x) - \int e^x\cos(x)\,dx\). Chame \(J = \int e^x\cos(x)\,dx\)
+                  e resolva também por partes. Eventualmente, chega-se em
+                  \(I = \frac{e^x}{2}(\sin(x) - \cos(x)) + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 4 -->
+        <li>
+            <strong>Exercício 4:</strong> Integração por partes
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int x \cos(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Escolha \(u = x\) e \(dv = \cos(x)dx\).</li>
+                  <li>Lembre-se \(\int \sin(x)dx = -\cos(x)\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Com \(u = x\) e \(dv = \cos(x)dx\), segue:
+                  \(du = dx\) e \(v = \sin(x)\). Então,
+                  \(\int x\cos(x)\,dx = x\sin(x) - \int \sin(x)\,dx = x\sin(x) + \cos(x) + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 5 -->
+        <li>
+            <strong>Exercício 5:</strong> Frações parciais
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{1}{x(x+1)}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Faça a decomposição em frações parciais: \(\frac{1}{x(x+1)} = \frac{A}{x} + \frac{B}{x+1}.\)</li>
+                  <li>Depois, integre cada termo separadamente.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\frac{1}{x(x+1)} = \frac{1}{x} - \frac{1}{x+1}\). Então,
+                  \(\int \frac{1}{x(x+1)}\,dx = \ln|x| - \ln|x+1| + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 6 -->
+        <li>
+            <strong>Exercício 6:</strong> Frações parciais
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{x+2}{x^2 + x}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Fatorize o denominador: \(x^2 + x = x(x+1).\)</li>
+                  <li>Caso precise, utilize frações parciais ou divida para simplificar.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\frac{x+2}{x^2 + x} = \frac{x+2}{x(x+1)}\). Dividindo:
+                  \(\frac{x+2}{x(x+1)} = \frac{2}{x} - \frac{1}{x+1}\). Integrando,
+                  resulta em \(2\ln|x| - \ln|x+1| + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 7 -->
+        <li>
+            <strong>Exercício 7:</strong> Substituição trigonométrica
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sqrt{a^2 - x^2}\,dx\)</code>, onde \(a\) é constante.
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Use \(x = a\sin(\theta)\) para lidar com \(\sqrt{a^2 - x^2}\).</li>
+                  <li>\(dx = a\cos(\theta) d\theta\) e lembre-se de \(\cos^2(\theta) = (1 + \cos(2\theta))/2\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Com \(x = a\sin(\theta)\), obtemos \(dx = a\cos(\theta)d\theta\) e
+                  \(\sqrt{a^2 - x^2} = a\cos(\theta)\). Assim,
+                  \(\int a\cos(\theta) \cdot a\cos(\theta) d\theta = a^2 \int \cos^2(\theta) d\theta\).
+                  O resultado final é:
+                  \(\frac{a^2}{2}\arcsin(\frac{x}{a}) + \frac{x}{2}\sqrt{a^2 - x^2} + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 8 -->
+        <li>
+            <strong>Exercício 8:</strong> Integração de funções trigonométricas
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sin^2(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Use a identidade \(\sin^2(x) = (1 - \cos(2x))/2\).</li>
+                  <li>Isso converte a integral em termos de \(\cos(2x)\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\sin^2(x) = \frac{1 - \cos(2x)}{2}\). Então,
+                  \(\int \sin^2(x)\,dx = \int \frac{1 - \cos(2x)}{2}dx = \frac{x}{2} - \frac{\sin(2x)}{4} + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 9 -->
+        <li>
+            <strong>Exercício 9:</strong> Integração de funções trigonométricas
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \tan^3(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Lembre-se: \(\tan^2(x) = \sec^2(x) - 1\).</li>
+                  <li>Separe \(\tan^3(x) = \tan(x)(\sec^2(x) - 1)\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\int \tan^3(x)\,dx = \int \tan(x)\sec^2(x)\,dx - \int \tan(x)\,dx\).
+                  Substituindo \(u = \tan(x)\), resolve-se o primeiro termo.
+                  E \(\int \tan(x)dx = -\ln|\cos(x)|\). O resultado é
+                  \(\frac{\tan^2(x)}{2} + \ln|\cos(x)| + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 10 -->
+        <li>
+            <strong>Exercício 10:</strong> Integração de funções trigonométricas
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sec(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Multiplique e divida por \(\sec(x) + \tan(x)\) e use substituição.</li>
+                  <li>Note que \(d(\sec(x) + \tan(x)) = \sec(x)\tan(x) + \sec^2(x)\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\int \sec(x)dx = \int \sec(x)\frac{\sec(x) + \tan(x)}{\sec(x) + \tan(x)}dx
+                  = \int \frac{\sec^2(x) + \sec(x)\tan(x)}{\sec(x) + \tan(x)}dx\).
+                  Com \(u = \sec(x) + \tan(x)\), o resultado é \(\ln|\sec(x)+\tan(x)| + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- A PARTIR DAQUI, EXERCÍCIOS 11 A 20 -->
+
+        <!-- EXERCÍCIO 11 -->
+        <li>
+            <strong>Exercício 11:</strong> Substituição trigonométrica
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sqrt{x^2 - a^2}\,dx\)</code>, onde \(a\) é constante.
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Para \(\sqrt{x^2 - a^2}\), use \(x = a\sec(\theta)\), pois
+                      \(\sqrt{x^2 - a^2} = a\tan(\theta)\).</li>
+                  <li>Lembre-se de \(dx = a\sec(\theta)\tan(\theta)d\theta\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Seja \(x = a\sec(\theta)\). Então, \(\sqrt{x^2 - a^2} = a\tan(\theta)\)
+                  e \(dx = a\sec(\theta)\tan(\theta)d\theta\).
+                  A integral se torna
+                  \(\int a\tan(\theta) \cdot a\sec(\theta)\tan(\theta) d\theta = a^2\int \sec(\theta)\tan^2(\theta) d\theta\).
+                  Basta simplificar usando \(\tan^2(\theta) = \sec^2(\theta) - 1\) e integrar.
+                  O resultado final, após voltar \(\theta\) em função de \(x\), é
+                  \(
+                      \frac{x}{2}\sqrt{x^2 - a^2}
+                      - \frac{a^2}{2}\ln\bigl|x + \sqrt{x^2 - a^2}\bigr| + C.
+                  \)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 12 -->
+        <li>
+            <strong>Exercício 12:</strong> Substituição trigonométrica
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sqrt{x^2 + a^2}\,dx\)</code>, onde \(a\) é constante.
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Para \(\sqrt{x^2 + a^2}\), costuma-se usar \(x = a\tan(\theta)\) ou \(x = a\sinh(t)\) (hiperbólica).</li>
+                  <li>Fique atento à forma final ao voltar para a variável \(x\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Usando \(x = a\tan(\theta)\), obtemos
+                  \(\sqrt{x^2 + a^2} = a\sec(\theta)\) e \(dx = a\sec^2(\theta)d\theta\).
+                  Então,
+                  \(
+                    \int \sqrt{x^2 + a^2}\,dx = \int a\sec(\theta) \cdot a\sec^2(\theta)d\theta
+                    = a^2 \int \sec^3(\theta)d\theta.
+                  \)
+                  A integral de \(\sec^3(\theta)\) é conhecida:
+                  \(
+                    \int \sec^3(\theta)d\theta = \frac{1}{2}\sec(\theta)\tan(\theta) + \frac{1}{2}\ln|\sec(\theta) + \tan(\theta)| + C.
+                  \)
+                  Substituindo de volta, chega-se ao resultado:
+                  \(
+                    \frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2}\ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.
+                  \)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 13 -->
+        <li>
+            <strong>Exercício 13:</strong> Substituição simples
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{(\ln x)^2}{x}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Note que \((\ln x)^2\) é a parte complicada. Se definirmos \(u = \ln(x)\), então \(du = 1/x\,dx\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Defina \(u = \ln(x)\). Logo, \(du = (1/x)dx\) e a integral vira
+                  \(\int (\ln x)^2 / x\,dx = \int u^2\,du = \frac{u^3}{3} + C = \frac{(\ln x)^3}{3} + C.\)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 14 -->
+        <li>
+            <strong>Exercício 14:</strong> Integração de funções trigonométricas + exponencial
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int e^x \cos^2(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Use a identidade \(\cos^2(x) = (1 + \cos(2x))/2\).</li>
+                  <li>Em seguida, pode aplicar integração por partes no termo \(\int e^x\cos(2x)\,dx\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Reescreva: \(\int e^x\cos^2(x)dx = \int e^x\frac{1 + \cos(2x)}{2}dx
+                  = \frac{1}{2}\int e^x dx + \frac{1}{2}\int e^x\cos(2x)dx.\)
+                  O primeiro termo é \(\frac{e^x}{2}\). O segundo exige integração por partes duas vezes ou a fórmula padrão.
+                  O resultado será uma combinação de \(e^x\sin(2x)\) e \(e^x\cos(2x)\). Caso queira, use o método direto:
+                  \(
+                    \int e^x\cos(ax)dx = \frac{e^x}{a^2 + 1}(a\sin(ax) + \cos(ax)).
+                  \)
+                  No fim, some as constantes e simplifique.
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 15 -->
+        <li>
+            <strong>Exercício 15:</strong> Integração por partes
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int x^2 e^x\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Quando há um polinômio \(x^n\) multiplicado por \(e^x\), faça integração por partes iterativa.</li>
+                  <li>Cada vez, reduza o grau de \(x^n\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Seja \(I = \int x^2 e^x\,dx\). Usando integração por partes:
+                  <br/>
+                  1ª vez: \(u = x^2\), \(dv = e^x dx\). Então \(du = 2x dx\), \(v = e^x\).
+                  <br/>
+                  \(I = x^2 e^x - \int 2x e^x dx\).
+                  <br/>
+                  O termo \(\int 2x e^x dx\) se resolve novamente por partes.
+                  O resultado final fica \((x^2 - 2x + 2)e^x + C\). Verifique cada etapa.
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 16 -->
+        <li>
+            <strong>Exercício 16:</strong> Integração por partes
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int x \ln(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Escolha \(u = \ln(x)\) e \(dv = x\,dx\).</li>
+                  <li>Isso simplificará a parte logarítmica.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Com \(u = \ln(x)\), \(du = \frac{1}{x}dx\).
+                  E \(dv = x dx\), \(v = \frac{x^2}{2}\).
+                  Então,
+                  \(
+                    \int x\ln(x)dx = \frac{x^2}{2}\ln(x) - \int \frac{x^2}{2}\cdot\frac{1}{x}dx
+                    = \frac{x^2}{2}\ln(x) - \int \frac{x}{2} dx.
+                  \)
+                  Resulta \(\frac{x^2}{2}\ln(x) - \frac{x^2}{4} + C\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 17 -->
+        <li>
+            <strong>Exercício 17:</strong> Frações parciais (fator quadrático)
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{2x + 3}{x^2 + x + 1}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Observe que \(x^2 + x + 1\) não se fatoriza em raízes reais (discriminante negativo).</li>
+                  <li>Separe o numerador para isolar a derivada de \(x^2 + x + 1\) se possível.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Primeiro, note que a derivada de \(x^2 + x + 1\) é \(2x + 1\). Podemos escrever:
+                  \(
+                    \frac{2x+3}{x^2 + x + 1} = \frac{(2x+1) + 2}{x^2 + x + 1} = \frac{2x+1}{x^2 + x + 1} + \frac{2}{x^2 + x + 1}.
+                  \)
+                  O primeiro termo dá \(\ln|x^2 + x + 1|\) ao integrar.
+                  O segundo termo pode ser tratado completando o quadrado: \(x^2 + x + 1 = \left(x+\frac{1}{2}\right)^2 + \frac{3}{4}\).
+                  Assim, \(\int \frac{dx}{(x+h)^2 + a^2}\) é \(\frac{1}{a}\arctan\bigl(\frac{x+h}{a}\bigr)\).
+                  No fim, obtemos:
+                  \(
+                    \int \frac{2x+3}{x^2 + x + 1}dx = \ln|x^2 + x + 1| + \frac{4}{\sqrt{3}}\arctan\Bigl(\frac{2x+1}{\sqrt{3}}\Bigr) + C.
+                  \)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 18 -->
+        <li>
+            <strong>Exercício 18:</strong> Substituição de Weierstrass
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \frac{1}{1 + \sin(x)}\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>A <em>substituição de Weierstrass</em>: \(t = \tan(\frac{x}{2})\).</li>
+                  <li>Lembre-se das identidades: \(\sin(x) = \frac{2t}{1+t^2}\), \(dx = \frac{2}{1+t^2} dt\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Com \(t = \tan(x/2)\), obtemos:
+                  \(
+                    \sin(x) = \frac{2t}{1+t^2},\quad dx = \frac{2}{1+t^2}dt.
+                  \)
+                  Assim,
+                  \(
+                    \int \frac{1}{1+\sin(x)}dx = \int \frac{1}{1 + 2t/(1+t^2)}\cdot\frac{2}{1+t^2}dt.
+                  \)
+                  Simplifique cuidadosamente e, depois da integração, retorne a \(x = 2\arctan(t)\).
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 19 -->
+        <li>
+            <strong>Exercício 19:</strong> Integração de funções trigonométricas
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \cot^3(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Semehante a \(\tan^3(x)\), use \(\cot^2(x) = \csc^2(x) - 1\).</li>
+                  <li>Divida em \(\cot(x)\cot^2(x)\) e use substituição \(u = \cot(x)\) ou resolva passo a passo.</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  \(\int \cot^3(x)dx = \int \cot(x)(\csc^2(x) - 1)dx
+                  = \int \cot(x)\csc^2(x)dx - \int \cot(x)dx.\)
+                  Sabemos \(\int \cot(x)dx = \ln|\sin(x)|\) e, se \(u=\cot(x)\), então \(du=-\csc^2(x)dx\), o que ajuda no primeiro termo.
+                  No final, obtemos:
+                  \(
+                    -\frac{\cot^2(x)}{2} - \ln|\sin(x)| + C.
+                  \)
+                </p>
+            </details>
+        </li>
+
+        <!-- EXERCÍCIO 20 -->
+        <li>
+            <strong>Exercício 20:</strong> Integração de funções trigonométricas
+            <br/>
+            Calcule a integral:
+            <br/>
+            <code>\(\int \sec^3(x)\,dx\)</code>
+
+            <details>
+                <summary>Técnica e dicas</summary>
+                <ul>
+                  <li>Uma das estratégias é separar \(\sec^3(x) = \sec(x)\sec^2(x)\) e usar \(u=\sec(x)\tan(x)\) ou integration by parts.</li>
+                  <li>Também existe uma fórmula padrão: \(\int \sec^3(x)dx = \frac{1}{2}\sec(x)\tan(x) + \frac{1}{2}\ln|\sec(x)+\tan(x)| + C\).</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Solução</summary>
+                <p>
+                  Um método é:
+                  \(
+                    \int \sec^3(x)dx = \int \sec(x)\sec^2(x)dx.
+                  \)
+                  Use integração por partes com \(u = \sec(x)\) e \(dv=\sec^2(x)dx\), ou memorize a fórmula:
+                  \(
+                    \int \sec^3(x)dx = \frac{1}{2}\sec(x)\tan(x) + \frac{1}{2}\ln|\sec(x)+\tan(x)| + C.
+                  \)
+                </p>
+            </details>
+        </li>
+    </ol>
+
+</body>
+</html>
