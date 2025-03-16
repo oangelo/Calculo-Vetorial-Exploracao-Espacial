@@ -441,54 +441,137 @@
         </section>
 
         <!-- Divergente -->
-        <section>
-          <section>
-            <h2>Divergente</h2>
-            <p>
-              Seja $\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}$ um campo
-              vetorial
-            </p>
-            $\text{div }\vec{F} = \nabla \cdot \vec{F} = \frac{\partial
-            P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial
-            R}{\partial z}$
-          </section>
+<section>
+    <section>
+        <h2>Divergente</h2>
+        <p>Seja $\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}$ um campo vetorial</p>
+        $$\text{div }\vec{F} = \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
+    </section>
 
-          <section>
-            <h3>Operador Laplaciano</h3>
-            <p>O Laplaciano é um caso especial do divergente do gradiente:</p>
-            <p>
-              $$\nabla^2f = \nabla \cdot (\nabla f) = \frac{\partial^2
-              f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} +
-              \frac{\partial^2 f}{\partial z^2}$$
-            </p>
-            <p>Fundamental para:</p>
-            <ul>
-              <li>Equação do calor</li>
-              <li>Equação de Schrödinger</li>
-              <li>Trajetória de objetos espaciais</li>
-            </ul>
-          </section>
+    <section>
+        <h3>O que é o Divergente, intuitivamente?</h3>
+        <p>Mede quanto "fluxo" está <em>saindo</em> ou <em>entrando</em> de uma região muito pequena ao redor de um ponto</p>
+        <ul>
+            <li>Divergente <strong>positivo</strong>: mais fluxo sai do que entra → <strong>fonte</strong></li>
+            <li>Divergente <strong>negativo</strong>: mais fluxo entra do que sai → <strong>sumidouro</strong></li>
+            <li>Divergente <strong>zero</strong>: o que entra = o que sai → <strong>fluxo conservado</strong></li>
+        </ul>
+    </section>
 
-          <section>
-            <h3>Interpretação Física do Divergente</h3>
-            <ul>
-              <li>Mede o fluxo líquido do campo por unidade de volume</li>
-              <li>Fonte (divergente > 0): campo "saindo" do ponto</li>
-              <li>Sumidouro (divergente < 0): campo "entrando" no ponto</li>
-              <li>Campo solenoidal (divergente = 0): fluxo conservado</li>
-            </ul>
-          </section>
+    <section>
+        <h3>Cubinho Infinitesimal</h3>
+        <p>Imagine um cubo minúsculo ao redor do ponto de interesse</p>
+        <object data="cube-svg" type="image/svg+xml" width="400" height="300">
+            Cubo infinitesimal com campo vetorial
+        </object>
+        <p>O fluxo que "entra" por uma face e "sai" pela face oposta geralmente não são iguais!</p>
+    </section>
 
-          <section>
-            <h3>Analogia da Guerra Fria</h3>
-            <p>Imagine um radar rastreando mísseis:</p>
-            <ul>
-              <li>Divergente positivo: detecção de lançamento</li>
-              <li>Divergente negativo: ponto de impacto previsto</li>
-              <li>Divergente zero: míssil em trajetória balística</li>
-            </ul>
-          </section>
-        </section>
+    <section>
+        <h3>Diferenças se Tornam Derivadas</h3>
+        <p>Na direção $x$:</p>
+        <ul>
+            <li>Face esquerda: valor do campo é $\vec{F}(x)$</li>
+            <li>Face direita: valor do campo é $\vec{F}(x + dx)$</li>
+            <li>Variação da componente $F_x$: $\frac{\partial F_x}{\partial x}\,dx$</li>
+        </ul>
+        <p>Esse "excesso" de fluxo é a saída (ou entrada) líquida nessa direção</p>
+    </section>
+
+    <section>
+        <h3>Somando Todas as Direções</h3>
+        <p>Somamos as variações em todas as três direções:</p>
+        $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}$$
+        <p>Esta soma representa o "balanço total" de fluxo entrando/saindo do ponto</p>
+    </section>
+
+    <section>
+        <h3>Visualizando o Divergente</h3>
+        <p>Pense no campo como <strong>linhas de fluxo</strong>:</p>
+        <object data="source-sink-svg" type="image/svg+xml" width="400" height="200">
+            Fonte e sumidouro
+        </object>
+    </section>
+
+    <section>
+        <h3>Operador Laplaciano</h3>
+        <p>O Laplaciano é um caso especial do divergente do gradiente:</p>
+        $$\nabla^2f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}$$
+        <p>Mede quanto um campo escalar varia em relação à média de seus vizinhos</p>
+    </section>
+
+    <section>
+        <h3>Aplicação na Exploração Espacial</h3>
+        <ul>
+            <li>Análise da divergência de campos de velocidade em fluidos</li>
+            <li>Identifica regiões onde o combustível se acumula ou dispersa</li>
+            <li>Crucial para projetar o empuxo em câmaras de combustão</li>
+        </ul>
+        <p>Durante a Guerra Fria: vital para aperfeiçoar motores de foguetes e mísseis</p>
+    </section>
+
+    <section>
+        <h3>Exercício 1 (Guiado)</h3>
+        <p>
+          Considere o campo 
+          $\vec{F}(x,y) = (2x, 3y).$  
+          <strong>Passo a passo:</strong>
+        </p>
+        <ol>
+          <li>Calcule $\frac{\partial F_x}{\partial x} = \frac{\partial}{\partial x}(2x)$.</li>
+          <li>Calcule $\frac{\partial F_y}{\partial y} = \frac{\partial}{\partial y}(3y)$.</li>
+          <li>Some os resultados para obter $\nabla \cdot \vec{F}$.</li>
+          <li>Interprete fisicamente o resultado.</li>
+        </ol>
+        <p>
+          <em>Dica:</em> Visualize linhas de fluxo desse campo e identifique 
+          se há alguma "fonte" ou "sumidouro".
+        </p>
+      </section>
+      
+      <section>
+        <h3>Exercício 2 (Desafio)</h3>
+        <p>
+          Seja o campo em 3D: 
+          $\vec{G}(x,y,z) = (xy,\; x^2 - y^2,\; z^3 + xy).$
+          <strong>Tarefa:</strong>
+        </p>
+        <ol>
+          <li>Calcular $\nabla \cdot \vec{G}$.</li>
+          <li>
+            Identificar ao menos um ponto onde o divergente seja 
+            positivo e outro onde seja negativo.
+          </li>
+          <li>
+            Relacionar esse resultado à ideia de "fonte" e "sumidouro".
+          </li>
+        </ol>
+        <p>
+          <em>Para discussão em turma:</em> Pense em como esse campo poderia 
+          representar um sistema fluido ou elétrico. Onde "acumula" e onde 
+          "espalha" fluxo?
+        </p>
+      </section>
+      
+      <section>
+        <h3>Fechamento</h3>
+        <p>
+          O divergente é a forma matemática de "medir" a criação ou destruição
+          de fluxo em cada ponto do espaço. Seja em fluidos, campos elétricos 
+          ou na propulsão de foguetes, entender se há mais saída ou entrada 
+          é vital para projetar sistemas eficientes e seguros.
+        </p>
+        <p>
+          Essa análise foi crucial durante a Guerra Fria e permanece relevante
+          em inúmeras aplicações de engenharia, física e matemática.
+        </p>
+        <p>
+          <strong>Próximo passo:</strong> explorar como divergente e
+          rotacional ($\nabla \times \vec{F}$) se complementam na descrição
+          completa de um campo vetorial.
+        </p>
+      </section>
+</section>
 
         <!-- Limite e Continuidade -->
         <section>
