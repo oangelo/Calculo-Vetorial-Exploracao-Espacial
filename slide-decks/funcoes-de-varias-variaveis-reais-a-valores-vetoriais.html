@@ -33,6 +33,52 @@
         background-color: #000033;
       }
     </style>
+    <style>
+      .canvas-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 400px;
+      }
+
+      .side-by-side {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .side-by-side div {
+        width: 45%;
+      }
+
+      .img-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .interactive-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .slider {
+        width: 200px;
+        margin: 0 10px;
+      }
+
+      .equation-highlight {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .note {
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
     <div class="reveal">
@@ -378,200 +424,250 @@
         </section>
 
         <!-- Rotacional -->
+
+        <!-- Divergente -->
         <section>
+          <!-- Slide 2: Definição Formal -->
           <section>
-            <h2>Rotacional</h2>
+            <h1>Divergente de um Campo Vetorial</h1>
             <p>
-              Seja $\vec{F}(x,y,z) = P(x,y,z)\hat{i} + Q(x,y,z)\hat{j} +
-              R(x,y,z)\hat{k}$ um campo vetorial. O rotacional de $\vec{F}$ é
-              dado por:
+              O divergente de um campo vetorial tridimensional \(\vec{F} = (F_x,
+              F_y, F_z)\) é definido como:
             </p>
-            $$\text{rot }\vec{F} = \nabla \times \vec{F} = \begin{vmatrix}
-            \hat{i} & \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} &
-            \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q &
-            R \end{vmatrix}$$ $$= \left(\frac{\partial R}{\partial y} -
-            \frac{\partial Q}{\partial z}\right)\hat{i} + \left(\frac{\partial
-            P}{\partial z} - \frac{\partial R}{\partial x}\right)\hat{j} +
-            \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
-            y}\right)\hat{k}$$
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
+              \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial
+              z}$$
+            </p>
+            <p>Onde \(\nabla\) (nabla) é o operador diferencial vetorial:</p>
+            <p class="math">
+              $$\nabla = \left(\frac{\partial}{\partial x},
+              \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)$$
+            </p>
+          </section>
+
+          <!-- Slide 3: Interpretação Intuitiva - Vertical -->
+          <section>
+            <h2>Interpretação Intuitiva</h2>
+            <p>
+              O divergente mede o quanto um campo vetorial se comporta como
+              <strong>fonte</strong> ou <strong>sumidouro</strong> em um ponto
+              específico.
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-conceito.svg"
+                alt="Conceito de Divergente"
+                width="500"
+              />
+            </div>
           </section>
 
           <section>
-            <h3>Derivadas Parciais: Uma Revisão</h3>
-            <p>Imagine um satélite mudando sua posição no espaço:</p>
-            <p>
-              A derivada parcial $\frac{\partial F}{\partial x}$ mede a taxa de
-              variação de $F$ na direção $x$, mantendo $y$ e $z$ constantes
-            </p>
-            <p>Como um radar rastreando movimento em uma única direção</p>
-          </section>
-
-          <section>
-            <h3>Interpretação Intuitiva</h3>
-            <p>
-              O rotacional mede a tendência de rotação do campo em cada ponto
-            </p>
-            <p>Imagine um pequeno satélite de teste em cada ponto do espaço:</p>
+            <h2>Pensando em Fluxo</h2>
+            <p>Imagine o campo vetorial como o fluxo de um fluido:</p>
             <ul>
-              <li>Se ele tende a girar ➜ rotacional não nulo</li>
-              <li>Se ele permanece sem rotação ➜ rotacional nulo</li>
+              <li>
+                <strong>Divergente Positivo</strong>: O fluido está "saindo" do
+                ponto (fonte)
+              </li>
+              <li>
+                <strong>Divergente Negativo</strong>: O fluido está "entrando"
+                no ponto (sumidouro)
+              </li>
+              <li>
+                <strong>Divergente Zero</strong>: Tanto entra quanto sai a mesma
+                quantidade de fluido
+              </li>
             </ul>
           </section>
 
+          <!-- Slide 4: Visualização - Cubinho -->
           <section>
-            <h3>Operador Nabla (∇)</h3>
-            <p>O operador vetorial nabla é definido como:</p>
-            $$\nabla = \frac{\partial}{\partial x}\hat{i} +
-            \frac{\partial}{\partial y}\hat{j} + \frac{\partial}{\partial
-            z}\hat{k}$$
+            <h2>Visualização com um Cubinho</h2>
+            <p>Considere um pequeno cubo ao redor de um ponto:</p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/cubinho.svg"
+                alt="Cubinho Divergente"
+                width="450"
+              />
+            </div>
             <p>
-              Como uma "sonda espacial" que mede variações em todas as direções!
+              O divergente mede a taxa líquida de fluxo saindo das faces do
+              cubo, quando seu volume tende a zero.
+            </p>
+          </section>
+
+          <!-- Slide 5: Campos com Divergente Positivo -->
+          <section>
+            <h2>Campo com Divergente Positivo</h2>
+            <p>
+              Um campo vetorial radial para fora: \(\vec{F}(x,y,z) = (x, y, z)\)
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-positivo.svg"
+                alt="Divergente Positivo"
+                width="450"
+              />
+            </div>
+            <p>Divergente: \(\nabla \cdot \vec{F} = 3\) (constante positiva)</p>
+            <p>
+              As linhas de campo se afastam do ponto central - comportamento de
+              <strong>fonte</strong>.
+            </p>
+          </section>
+
+          <!-- Slide 6: Campos com Divergente Negativo -->
+          <section>
+            <h2>Campo com Divergente Negativo</h2>
+            <p>
+              Um campo vetorial radial para dentro: \(\vec{F}(x,y,z) = (-x, -y,
+              -z)\)
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-negativo.svg"
+                alt="Divergente Negativo"
+                width="450"
+              />
+            </div>
+            <p>
+              Divergente: \(\nabla \cdot \vec{F} = -3\) (constante negativa)
+            </p>
+            <p>
+              As linhas de campo convergem para o ponto central - comportamento
+              de <strong>sumidouro</strong>.
+            </p>
+          </section>
+
+          <!-- Slide 7: Campos com Divergente Zero -->
+          <section>
+            <h2>Campo com Divergente Zero</h2>
+            <p>Um campo de rotação: \(\vec{F}(x,y,z) = (-y, x, 0)\)</p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-zero.svg"
+                alt="Divergente Zero"
+                width="450"
+              />
+            </div>
+            <p>Divergente: \(\nabla \cdot \vec{F} = 0\)</p>
+            <p>
+              O fluxo circula em torno da origem - não há criação nem destruição
+              de fluxo.
+            </p>
+          </section>
+
+          <!-- Slide 8: Por que a Fórmula Funciona -->
+          <section>
+            <h2>Por que a Fórmula Funciona?</h2>
+            <p>
+              Considere a componente-x do campo atuando nas faces
+              perpendiculares ao eixo-x:
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-derivada-x.svg"
+                alt="Derivada em x"
+                width="400"
+              />
+            </div>
+            <p>
+              A diferença entre o valor de \(F_x\) nas faces é aproximadamente
+              \(\frac{\partial F_x}{\partial x} \Delta x\)
             </p>
           </section>
 
           <section>
-            <h3>Exemplos na Corrida Espacial</h3>
-            <p>Campos de rotacional não nulo:</p>
+            <h2>Somando todas as direções</h2>
+            <p>A taxa líquida de fluxo por unidade de volume é:</p>
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \lim_{\Delta V \to 0} \frac{\text{Fluxo
+              Líquido}}{\Delta V}$$
+            </p>
+            <p>Que resulta exatamente na soma das derivadas parciais:</p>
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
+              \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial
+              z}$$
+            </p>
+          </section>
+
+          <!-- Slide 10: Lei de Gauss -->
+          <section>
+            <h2>Conexão com a Lei de Gauss</h2>
+            <p>
+              O Teorema da Divergência (Gauss) relaciona o divergente de um
+              campo vetorial em um volume com o fluxo através da superfície que
+              o envolve:
+            </p>
+            <p class="math">
+              $$\iiint_V (\nabla \cdot \vec{F}) \, dV = \iint_S \vec{F} \cdot
+              \vec{n} \, dS$$
+            </p>
+            <p>
+              Esta relação é fundamental na eletrostática, magnetismo e dinâmica
+              de fluidos - áreas críticas para o desenvolvimento aeroespacial
+              durante a Guerra Fria.
+            </p>
+            <p>Este assunto será abordado com detalhes no futuro!</p>
+          </section>
+
+          <!-- Slide 11: Exercício Prático -->
+          <section>
+            <h2>Exercício Prático</h2>
+            <p>Calcule o divergente do campo gravitacional:</p>
+            <p class="math">$$\vec{g}(x,y,z) = -G\frac{M}{r^3} \vec{r}$$</p>
+            <p>
+              Onde \(\vec{r} = (x, y, z)\) e \(r = \sqrt{x^2 + y^2 + z^2}\).
+            </p>
+            <p>
+              Dica: Para pontos fora da massa \(M\), qual o valor esperado para
+              o divergente?
+            </p>
+          </section>
+
+          <!-- Slide 12: Solução do Exercício -->
+          <section>
+            <h2>Solução</h2>
+            <p>Para o campo gravitacional:</p>
+            <p class="math">
+              $$\vec{g}(x,y,z) = -G\frac{M}{r^3} \vec{r} = -G\frac{M}{r^3} (x,
+              y, z)$$
+            </p>
+            <p>Calculando o divergente para \(r \neq 0\) (fora da massa):</p>
+            <p class="math">$$\nabla \cdot \vec{g} = 0$$</p>
+            <p>
+              O divergente do campo gravitacional é zero no espaço vazio - um
+              resultado importante da Lei da Gravitação de Newton!
+            </p>
+          </section>
+
+          <!-- Slide 13: Síntese -->
+          <section>
+            <h2>Síntese</h2>
             <ul>
-              <li>Vórtices atmosféricos afetando reentrada</li>
-              <li>Campo magnético terrestre guiando bússolas</li>
-              <li>Turbulência ao redor de foguetes</li>
+              <li>
+                O divergente mede a taxa de expansão ou contração de um campo
+                vetorial em um ponto
+              </li>
+              <li>
+                Matematicamente: soma das derivadas parciais das componentes em
+                suas respectivas direções
+              </li>
+              <li>Intuitivamente: comportamento de fonte ou sumidouro</li>
+              <li>
+                Aplicações cruciais na exploração espacial e análise de fluidos
+              </li>
+              <li>
+                O próximo conceito que estudaremos é o Rotacional (Curl) - que
+                mede a rotação local do campo
+              </li>
             </ul>
           </section>
         </section>
-
-        <!-- Divergente -->
-<section>
-    <section>
-        <h2>Divergente</h2>
-        <p>Seja $\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}$ um campo vetorial</p>
-        $$\text{div }\vec{F} = \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}$$
-    </section>
-
-    <section>
-        <h3>O que é o Divergente, intuitivamente?</h3>
-        <p>Mede quanto "fluxo" está <em>saindo</em> ou <em>entrando</em> de uma região muito pequena ao redor de um ponto</p>
-        <ul>
-            <li>Divergente <strong>positivo</strong>: mais fluxo sai do que entra → <strong>fonte</strong></li>
-            <li>Divergente <strong>negativo</strong>: mais fluxo entra do que sai → <strong>sumidouro</strong></li>
-            <li>Divergente <strong>zero</strong>: o que entra = o que sai → <strong>fluxo conservado</strong></li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>Cubinho Infinitesimal</h3>
-        <p>Imagine um cubo minúsculo ao redor do ponto de interesse</p>
-        <object data="cube-svg" type="image/svg+xml" width="400" height="300">
-            Cubo infinitesimal com campo vetorial
-        </object>
-        <p>O fluxo que "entra" por uma face e "sai" pela face oposta geralmente não são iguais!</p>
-    </section>
-
-    <section>
-        <h3>Diferenças se Tornam Derivadas</h3>
-        <p>Na direção $x$:</p>
-        <ul>
-            <li>Face esquerda: valor do campo é $\vec{F}(x)$</li>
-            <li>Face direita: valor do campo é $\vec{F}(x + dx)$</li>
-            <li>Variação da componente $F_x$: $\frac{\partial F_x}{\partial x}\,dx$</li>
-        </ul>
-        <p>Esse "excesso" de fluxo é a saída (ou entrada) líquida nessa direção</p>
-    </section>
-
-    <section>
-        <h3>Somando Todas as Direções</h3>
-        <p>Somamos as variações em todas as três direções:</p>
-        $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} + \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}$$
-        <p>Esta soma representa o "balanço total" de fluxo entrando/saindo do ponto</p>
-    </section>
-
-    <section>
-        <h3>Visualizando o Divergente</h3>
-        <p>Pense no campo como <strong>linhas de fluxo</strong>:</p>
-        <object data="source-sink-svg" type="image/svg+xml" width="400" height="200">
-            Fonte e sumidouro
-        </object>
-    </section>
-
-    <section>
-        <h3>Operador Laplaciano</h3>
-        <p>O Laplaciano é um caso especial do divergente do gradiente:</p>
-        $$\nabla^2f = \nabla \cdot (\nabla f) = \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} + \frac{\partial^2 f}{\partial z^2}$$
-        <p>Mede quanto um campo escalar varia em relação à média de seus vizinhos</p>
-    </section>
-
-    <section>
-        <h3>Aplicação na Exploração Espacial</h3>
-        <ul>
-            <li>Análise da divergência de campos de velocidade em fluidos</li>
-            <li>Identifica regiões onde o combustível se acumula ou dispersa</li>
-            <li>Crucial para projetar o empuxo em câmaras de combustão</li>
-        </ul>
-        <p>Durante a Guerra Fria: vital para aperfeiçoar motores de foguetes e mísseis</p>
-    </section>
-
-    <section>
-        <h3>Exercício 1 (Guiado)</h3>
-        <p>
-          Considere o campo 
-          $\vec{F}(x,y) = (2x, 3y).$  
-          <strong>Passo a passo:</strong>
-        </p>
-        <ol>
-          <li>Calcule $\frac{\partial F_x}{\partial x} = \frac{\partial}{\partial x}(2x)$.</li>
-          <li>Calcule $\frac{\partial F_y}{\partial y} = \frac{\partial}{\partial y}(3y)$.</li>
-          <li>Some os resultados para obter $\nabla \cdot \vec{F}$.</li>
-          <li>Interprete fisicamente o resultado.</li>
-        </ol>
-        <p>
-          <em>Dica:</em> Visualize linhas de fluxo desse campo e identifique 
-          se há alguma "fonte" ou "sumidouro".
-        </p>
-      </section>
-      
-      <section>
-        <h3>Exercício 2 (Desafio)</h3>
-        <p>
-          Seja o campo em 3D: 
-          $\vec{G}(x,y,z) = (xy,\; x^2 - y^2,\; z^3 + xy).$
-          <strong>Tarefa:</strong>
-        </p>
-        <ol>
-          <li>Calcular $\nabla \cdot \vec{G}$.</li>
-          <li>
-            Identificar ao menos um ponto onde o divergente seja 
-            positivo e outro onde seja negativo.
-          </li>
-          <li>
-            Relacionar esse resultado à ideia de "fonte" e "sumidouro".
-          </li>
-        </ol>
-        <p>
-          <em>Para discussão em turma:</em> Pense em como esse campo poderia 
-          representar um sistema fluido ou elétrico. Onde "acumula" e onde 
-          "espalha" fluxo?
-        </p>
-      </section>
-      
-      <section>
-        <h3>Fechamento</h3>
-        <p>
-          O divergente é a forma matemática de "medir" a criação ou destruição
-          de fluxo em cada ponto do espaço. Seja em fluidos, campos elétricos 
-          ou na propulsão de foguetes, entender se há mais saída ou entrada 
-          é vital para projetar sistemas eficientes e seguros.
-        </p>
-        <p>
-          Essa análise foi crucial durante a Guerra Fria e permanece relevante
-          em inúmeras aplicações de engenharia, física e matemática.
-        </p>
-        <p>
-          <strong>Próximo passo:</strong> explorar como divergente e
-          rotacional ($\nabla \times \vec{F}$) se complementam na descrição
-          completa de um campo vetorial.
-        </p>
-      </section>
-</section>
 
         <!-- Limite e Continuidade -->
         <section>
