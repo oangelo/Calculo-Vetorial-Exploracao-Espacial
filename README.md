@@ -16,10 +16,10 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 1. [Funções de várias variáveis reais a valores vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-1.html)
 - [Função vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/funcao-vetorial.html)
 - [Campo vetorial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/campo-vetorial.html)
-- [Rotacional](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/rotacional.html)
-- [Divergente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/divergente.html)
 - [Limite e continuidade](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/limites.html)
 - [Derivadas parciais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/derivadas-parciais.html)
+- [Rotacional](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/rotacional.html)
+- [Divergente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/divergente.html)
 
 2. [Integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-duplas.html)
 
