@@ -8,7 +8,22 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -232,6 +247,27 @@
         padding: 5px 15px;
         pointer-events: none;
       }
+      
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
     </style>
   </head>
   <body>
@@ -325,10 +361,15 @@
               Magnitude do vetor velocidade para verificação de capacidade
               orbital.
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Utilizar teorema de Pitágoras tridimensional para
-              análise.
-            </div>
+            
+            <!-- Nova estrutura para dicas em details -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as componentes sem calcular diretamente.
+              </div>
+            </details>
+            
             <details>
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
@@ -356,6 +397,15 @@
               \end{pmatrix}\] kN DETERMINAR: Vetor resultante \(\vec{R}\) para
               avaliação de capacidade propulsiva.
             </p>
+            
+            <!-- Nova estrutura para dicas em details -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Operações elementares preservam propriedades fundamentais de sistemas vetoriais.
+              </div>
+            </details>
+            
             <details>
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
@@ -376,6 +426,58 @@
               </div>
             </details>
           </li>
+          
+          <!-- Exemplo de exercício avançado (GAMMA) com dica mínima -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Cálculo de Trajetória - Programa Apollo [DADOS SENSÍVEIS DE JUNHO/1968]
+            </div>
+            <p>
+              Análise orbital indica presença de campo vetorial \[\vec{F}(x,y,z) = \begin{pmatrix} y^2 \\ 2xy \\ z^2 - y \end{pmatrix}\] 
+              em região crítica. DETERMINAR: Classificação do campo quanto às propriedades fundamentais.
+            </p>
+            
+            <!-- Dica extremamente sutil para série GAMMA -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob operações específicas.
+              </div>
+            </details>
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>ANÁLISE DE PROPRIEDADES FUNDAMENTAIS:</p>
+                <p>[Solução detalhada seria incluída aqui]</p>
+                <p>CONCLUSÃO: Campo classificado como não-conservativo e com divergência não-nula.</p>
+              </div>
+            </details>
+          </li>
+          
+          <!-- Exemplo de exercício desafiador (OMEGA) sem dica -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Skylab - Análise de Estabilidade [COMPARTIMENTADO - DEZ/1973]
+            </div>
+            <p>
+              Sistema apresenta configuração crítica descrita por [...] 
+              DETERMINAR: Condições de estabilidade e invariância.
+            </p>
+            
+            <!-- Sem dicas para a série OMEGA -->
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE DE ESTABILIDADE:</p>
+                <p>[Solução detalhada seria incluída aqui]</p>
+                <p>CONCLUSÃO: Sistema apresenta estabilidade condicional sob restrições específicas.</p>
+              </div>
+            </details>
+          </li>
         </ol>
       </main>
 
@@ -388,18 +490,5 @@
 
       <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
     </div>
-
-    <script>
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['\\(', '\\)']],
-          displayMath: [['\\[', '\\]']],
-          processEscapes: true,
-        },
-        'HTML-CSS': {
-          color: '#000000',
-        },
-      });
-    </script>
-  </body>
+   </body>
 </html>
