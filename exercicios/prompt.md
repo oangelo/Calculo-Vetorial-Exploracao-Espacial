@@ -1,122 +1,131 @@
-### Estrutura Exata do Documento
+Crie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando EXATAMENTE o template HTML fornecido, com tema de documento sigiloso da Guerra Fria e exploração espacial.
 
-O material deve conter EXATAMENTE as seguintes seções na ordem especificada:
+### IMPORTANTE: RESPEITAR A PROGRESSÃO DOS TÓPICOS
+- Os exercícios DEVEM usar APENAS conceitos já abordados até o tópico atual
+- NUNCA antecipe conceitos de tópicos posteriores na progressão do curso
+- Consulte a sequência de tópicos ao final deste prompt
+- Se o tópico solicitado for "Funções Vetoriais", não use conceitos de "Derivadas Parciais" ou posteriores
+- Relacione o contexto histórico à época apropriada (ex: tópicos iniciais com Sputnik/Mercury, mais avançados com Apollo)
+
+### IMPORTANTE: USO CORRETO DE FÓRMULAS LATEX
+- No corpo do HTML, use APENAS:
+  * `\[fórmula\]` para fórmulas em bloco (display mode)
+  * `\(fórmula\)` para fórmulas inline
+- NUNCA use barras duplas (`\\[` ou `\\(`) no corpo do HTML
+- EXEMPLOS CORRETOS:
+  * Bloco: `<p>\[|\vec{v}| = \sqrt{v_x^2 + v_y^2}\]</p>`
+  * Inline: `<p>O vetor \(\vec{v}\) tem magnitude \(|\vec{v}|\)</p>`
+- Mesmo que você veja `\\[` na configuração do MathJax, no corpo do HTML use apenas UMA barraCrie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando EXATAMENTE o template HTML fornecido, com tema de documento sigiloso da Guerra Fria e exploração espacial.
+
+### Estrutura Exata do Documento
+Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e estrutura:
 
 1. **Cabeçalho do Documento** (classe "document-header")
    - Carimbo "SIGILOSO" (classe "document-stamp")
-   - Data e localização (classe "document-date")
-   - Introdução do projeto (classe "document-intro")
+   - Data e localização (classe "document-date") com partes censuradas
+   - Introdução do projeto (classe "document-intro") com nome de projeto fictício
    - Aviso de segurança (classe "warning-box")
-   - Metadados do documento (classe "metadata")
+   - Metadados (classe "metadata") com REF, NÍVEL DE ACESSO, CÓPIAS EXISTENTES
 
 2. **Seção de Fundamentação Teórica**
-   - Título da seção (classe "section-title"): "FUNDAMENTAÇÃO TEÓRICA: [TÓPICO]"
+   - Título (classe "section-title"): "FUNDAMENTAÇÃO TEÓRICA: [TÓPICO]"
    - Definição formal (classe "concept-definition") com fórmula matemática principal
    - Contextualização na exploração espacial (classe "mission-context")
    - Nota histórica (classe "historical-note")
 
-3. **Lista de Exercícios** (dentro da tag main, classe "exercise-list")
-   - Exatamente 12 exercícios (classe "exercise-item") distribuídos em 4 séries (ALFA, BETA, GAMMA, OMEGA)
-   - Cada exercício com estrutura padronizada:
-     * Número do exercício (classe "exercise-number")
-     * Contexto histórico (classe "context")
-     * Enunciado do problema
-     * Dica técnica (classe "hint") - apenas para séries ALFA, BETA e GAMMA
-     * Solução (dentro de tags details/summary, classe "solution")
+3. **Lista de Exercícios** (tag main, classe "exercise-list")
+   - 12 exercícios (classe "exercise-item") em progressão de dificuldade
+   - Cada exercício com número, contexto, enunciado, dica (opcional), solução
 
 4. **Rodapé**
    - Numeração de página (classe "page-number")
-   - Carimbo "ULTRASSECRETO" (classe "footer-stamp")### Formatação Padronizada
-- Título do documento: "Documento Sigiloso - [Tópico]" sempre centralizado no topo
-- Carimbo "SIGILOSO" sempre no canto superior direito da seção de cabeçalho
-- Data e localização: formato consistente com dia censurado, mês por extenso, ano censurado
-- TODOS os exercícios devem seguir o formato:
-  1. Número único do exercício (ex: "EXERCÍCIO VECTOR-1A") em negrito no topo
-  2. Contexto histórico específico logo abaixo (ex: "ORIGEM: Análise de Trajetória - Programa Apollo")
-  3. Enunciado do problema com parâmetros claramente identificados
-  4. Dica técnica quando apropriado (usando a classe "hint")
-  5. Solução detalhada dentro da tag <details> com sumário "RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]"
-  6. Conclusão ou interpretação dos resultados ao final da solução
-- Use spans com classe "censored" para informações supostamente confidenciais
-- Metadados no rodapé da seção de cabeçalho: REF, NÍVEL DE ACESSO, CÓPIAS EXISTENTES
-- Página e numeração no rodapé: formato "PÁGINA X DE Y • DOCUMENTO [CÓDIGO]"
-- Use "warning-box" para alertas e avisos importantes
-- Carimbo "ULTRASSECRETO" no rodapéCrie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando o tema de documento sigiloso da Guerra Fria e exploração espacial, seguindo estas diretrizes:
+   - Carimbo "ULTRASSECRETO" (classe "footer-stamp")
 
-### Contexto Temático
-- Simule um documento sigiloso da NASA, CIA ou organização equivalente durante a Guerra Fria (1957-1975)
-- Refira-se a eventos históricos reais da corrida espacial conforme apropriado para o tópico
-- Use terminologia de agências espaciais e militares da época
-- Inclua elementos como carimbos de "SIGILOSO", "ULTRASSECRETO", "[REDACTED]" e datas históricas relevantes
-- NUNCA use o termo "classificado" para indicar sigilo (isso é um falso cognato em português)
-
-### Requisitos Técnicos Explícitos
-- Siga EXATAMENTE o formato HTML/CSS do template fornecido
-- Use as tags de seção exatamente como fornecidas (não adicione ou remova seções)
-- Todas as fórmulas matemáticas DEVEM usar LaTeX via MathJax
-- SEMPRE use a notação \vec{} para vetores (ex: \vec{v} em vez de apenas v)
+### Requisitos Técnicos Específicos
+- Use HTML/CSS EXATAMENTE como no template fornecido
+- Todas as fórmulas matemáticas com LaTeX via MathJax
+- SEMPRE use \vec{} para vetores (ex: \vec{v})
 - Para matrizes, use o ambiente pmatrix: \begin{pmatrix} ... \end{pmatrix}
-- Use a fonte Share Tech Mono conforme especificado no template
-- Mantenha as cores e estilos exatos do template
-- Utilize as classes CSS definidas no template sem modificá-las
-- Preserve todos os elementos visuais (carimbos, áreas censuradas, etc.)
-- Todas as datas e referências devem ser historicamente consistentes com o período escolhido
+- Use a classe "censored" para áreas censuradas (8-10 por documento)
+- Mantenha todos os carimbos e elementos visuais do template
+- NUNCA use o termo "classificado" para sigilo (falso cognato em português)
 
-### Estrutura do Material
-1. **Documento Header (Contextualização Histórica)**
-   - Inclua uma data histórica relevante para o tópico (ex: perto de missões Apollo, Sputnik, etc.)
-   - Crie um nome de projeto fictício relacionado ao tópico matemático (ex: "PROJETO VECTOR-X")
-   - Relacione o tópico matemático a alguma necessidade da exploração espacial
-   - Inclua referências a situações de "rivalidade" com os soviéticos quando apropriado
+### Progressão de 12 Exercícios
+1. **Série ALFA (Exercícios 1-3)**
+   - Nomenclatura: VECTOR-1A, VECTOR-1B, VECTOR-1C
+   - Nível: Básico (aplicação direta de conceitos)
+   - Dicas: Completas e detalhadas
+   - Acesso: SIGMA-1
+   - Use números simples e contextos elementares
 
-2. **Introdução ao Conceito Matemático**
-   - Apresente a definição formal/matemática primeiro
-   - Siga com explicações intuitivas conectadas à navegação espacial, órbitas, propulsão, etc.
-   - Descreva o conceito como se fosse uma "descoberta crucial" para a segurança nacional
+2. **Série BETA (Exercícios 4-6)**
+   - Nomenclatura: VECTOR-2A, VECTOR-2B, VECTOR-2C
+   - Nível: Intermediário (múltiplos conceitos combinados)
+   - Dicas: Parciais
+   - Acesso: SIGMA-2
+   - Problemas com múltiplos passos
 
-3. **Exercícios Práticos (2-4 exercícios por página)**
-   - Cada exercício deve ter:
-     - Número único (ex: "EXERCÍCIO VECTOR-1A")
-     - Contexto histórico específico (ex: "ORIGEM: Análise de Trajetória - Programa Apollo")
-     - Enunciado usando aplicações práticas da exploração espacial
-     - Dicas técnicas (como se fossem notas de um cientista)
-     - Solução detalhada em seção oculta (usando a tag details/summary)
+3. **Série GAMMA (Exercícios 7-9)**
+   - Nomenclatura: VECTOR-3A, VECTOR-3B, VECTOR-3C
+   - Nível: Avançado (aplicações complexas)
+   - Dicas: Mínimas
+   - Acesso: SIGMA-3
+   - Problemas em contextos realistas
 
-4. **Elementos Visuais e Formatação**
-   - Inclua exatamente 8-10 áreas "censuradas" por página usando spans com a classe "censored"
-   - Use a classe "warning-box" para exatamente um alerta importante por página
-   - Mantenha o estilo de documento datilografado/envelhecido do template
-   - Adicione códigos de referência fictícios consistentes (ex: "REF: VX-1729-B")
-   - Inclua exatamente um carimbo "ULTRASSECRETO" no rodapé
-   - Mantenha a formatação de página com número e referência no rodapé
+4. **Série OMEGA (Exercícios 10-12)**
+   - Nomenclatura: VECTOR-4A, VECTOR-4B, VECTOR-4C
+   - Nível: Desafiador (integração de conceitos)
+   - Dicas: Nenhuma
+   - Acesso: SIGMA-4
+   - Problemas complexos da exploração espacial
 
-### Diretrizes de Conteúdo Matemático
-- Balanceie rigor matemático com aplicações práticas na exploração espacial
-- Conecte conceitos abstratos a problemas concretos (órbitas, navegação, propulsão, reentrada, etc.)
-- Para cálculo multivariado, use exemplos de campos gravitacionais, fluxo de combustível, etc.
-- Para vetores, relacione com velocidade, aceleração, forças em veículos espaciais
-- Para integrais, relacione com trabalho, energia, massa, centro de massa de foguetes
-- Para teoremas (Green, Stokes, Gauss), relacione com fluxo de campos, rotação de fluidos espaciais
-
-### Progressão de Dificuldade
-- Comece com exercícios básicos e aumente gradualmente a complexidade
-- Primeiro exercício: aplicação direta do conceito com números simples
-- Segundo exercício: aplicação mais elaborada ou combinação de conceitos
-- Exercícios avançados: problemas que requerem múltiplos passos ou insight
+### Formato Padrão de Cada Exercício
+- **Número** (classe "exercise-number"): "EXERCÍCIO VECTOR-XY"
+- **Contexto** (classe "context"): "ORIGEM: [Missão/Programa] - [Data/Evento]"
+- **Enunciado**: Descrição do problema com aplicação prática
+- **Dica** (classe "hint"): "[NOTA TÉCNICA]: [Sugestão]" (omitir para série OMEGA)
+- **Solução** (tags details/summary): Título "RELATÓRIO DE CÁLCULO [SIGMA-X REQUERIDO]"
+  * Dentro da classe "solution": Explicação passo a passo
+  * Fórmulas relevantes em LaTeX
+  * Conclusão ou interpretação dos resultados
 
 ### Eventos Históricos para Contextualização
-- Lançamento do Sputnik (Outubro 1957)
-- Explorer 1 - Primeiro satélite americano (Janeiro 1958)
-- Programa Mercury (1958-1963)
-- Yuri Gagarin - Primeiro homem no espaço (Abril 1961)
-- Alan Shepard - Primeiro americano no espaço (Maio 1961)
-- John Glenn - Primeira órbita americana (Fevereiro 1962)
-- Crise dos Mísseis de Cuba (Outubro 1962)
-- Programa Gemini (1965-1966)
-- Programa Apollo (1961-1972)
-- Apollo 11 - Pouso lunar (Julho 1969)
-- Apollo 13 - Missão de resgate (Abril 1970)
-- Skylab (1973-1979)
-- Projeto Apollo-Soyuz (Julho 1975)
+- Lançamento do Sputnik (1957) - primeiros tópicos
+- Programa Mercury (1958-1963) - tópicos iniciais
+- Programa Gemini (1965-1966) - tópicos intermediários
+- Programa Apollo (1961-1972) - tópicos avançados
+- Apollo 11 - primeira alunissagem (1969) - tópicos avançados
+- Skylab (1973-1979) - tópicos muito avançados
 
-Certifique-se de que o material seja matematicamente rigoroso, mas também envolvente e contextualizado historicamente. O objetivo é fazer com que os estudantes sintam que estão descobrindo segredos matemáticos que foram cruciais para a corrida espacial e a segurança nacional durante a Guerra Fria.
+### Sequência de Tópicos do Curso
+0. **Revisão**: Geometria Analítica, Cônicas, Derivadas, Integrais
+
+1. **Funções Vetoriais**:
+   a. Função vetoriais
+   b. Campo vetorial
+   c. Limite e continuidade
+   d. Derivadas parciais
+   e. Rotacional
+   f. Divergente
+
+2. **Integrais Duplas**: Soma de Riemann, Definição, Conjuntos, Integrabilidade, Propriedades
+
+3. **Teorema de Fubini**: Cálculo de integrais duplas
+
+4. **Mudança de Variáveis**: Em integrais duplas, Massa e centro de massa
+
+5. **Integrais Triplas**: Definição, Integrabilidade, Redução a duplas, Mudança de variáveis, Coordenadas
+
+6. **Integrais de Linha**: Sobre curvas, Notações, Parâmetros, Curvas C¹, Comprimento de arco
+
+7. **Campos Conservativos**: Definição, Integrais de linha, Independência do caminho, Potencial
+
+8. **Teorema de Green**
+
+9. **Superfícies**: Área e integral de superfície
+
+10. **Teorema da Divergência**: Fluxo de campo vetorial, Teorema de Gauss
+
+11. **Teorema de Stokes no Espaço**
+
+IMPORTANTE: Use APENAS conceitos já abordados na progressão até o tópico solicitado.
