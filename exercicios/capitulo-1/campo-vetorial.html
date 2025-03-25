@@ -3,277 +3,1575 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Exercícios Classificados - Cálculo Vetorial</title>
-    <!-- Fonte e estilos -->
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
     <link
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css" />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
 
-    <!-- MathJax para renderizar LaTeX -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">18</span> DE JULHO DE
-          <span class="censored">1965</span>
+          DATA: <span class="censored">14</span> DE ABRIL DE
+          <span class="censored">1961</span>
           <br />
-          LOCALIZAÇÃO: <span class="censored">BASE AVANÇADA [REDACTED]</span>
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE PESQUISA [REDACTED]</span>
         </div>
 
         <div class="document-intro">
-          RELATÓRIO DE ANÁLISE: PROJETO <span class="censored">VECTOR-Φ</span>
-          <br /><br />
-          A recente missão do
-          <span class="censored">Programa Gemini</span> revelou a necessidade
-          urgente de uma modelagem matemática mais precisa para a determinação
-          da posição e velocidade das cápsulas espaciais em trajetória elíptica
-          variável. <br /><br />
-          Em resposta, os teóricos do Setor de Matemática Aplicada desenvolveram
-          novos métodos de análise baseados em **funções vetoriais** do tempo.
-          Os registros a seguir foram extraídos dos cálculos do Dr.
-          <span class="censored">██████████</span>, cujas pesquisas foram
-          cruciais para a navegação e ajustes de trajetória em órbita.
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">CAMPO-ALFA</span> <br /><br />
+          Um dia após o histórico voo orbital de
+          <span class="censored">Yuri Gagarin</span>, nossas equipes de
+          matemáticos foram mobilizadas para desenvolver novos modelos para
+          compreensão e controle da navegação espacial. Os recentes avanços
+          soviéticos no <span class="censored">Programa Vostok</span> exigem uma
+          resposta imediata para garantir nossa presença no espaço. <br /><br />
+          A matemática dos campos vetoriais se mostra fundamental para modelar
+          as forças que afetam naves espaciais em órbita. Os exercícios a seguir
+          foram elaborados pelo Prof.
+          <span class="censored">████████</span>, especialista em análise de
+          trajetórias do <span class="censored">Programa Mercury</span>.
         </div>
 
         <div class="warning-box">
-          Este documento contém material técnico altamente sensível. O acesso
-          não autorizado pode resultar em **sanções severas** e **revogação de
-          credenciais de segurança**.
+          Este documento contém formulações matemáticas críticas para o
+          desenvolvimento de tecnologia espacial avançada. A divulgação não
+          autorizada é considerada
+          <span class="censored">crime de alta traição</span>.
         </div>
 
         <div class="metadata">
-          <span>REF: VΦ-<span class="censored">1038</span>-X</span>
-          <span>NÍVEL DE ACESSO: OMEGA-<span class="censored">5</span></span>
+          <span>REF: CA-<span class="censored">7734</span>-M</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
           <span
-            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-            <span class="censored">3</span></span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">7</span></span
           >
         </div>
       </div>
-    </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: CAMPO VETORIAL</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[F: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m, \quad \text{onde
+          } F(\vec{x}) = \vec{y}\]
+        </p>
+        <p>
+          Um campo vetorial é uma função que associa um vetor a cada ponto de
+          uma região do espaço. Em aplicações de engenharia espacial,
+          trabalha-se principalmente com campos que associam vetores a pontos
+          nos espaços bidimensional ou tridimensional. Formalmente, um campo
+          vetorial é uma função \(F\) que atribui a cada ponto \(\vec{x} = (x_1,
+          x_2, \ldots, x_n)\) de um domínio \(D \subset \mathbb{R}^n\) um vetor
+          \(\vec{y} = F(\vec{x})\) em \(\mathbb{R}^m\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Os campos vetoriais são ferramentas indispensáveis para modelar
+        fenômenos físicos envolvendo forças direcionais que variam de ponto a
+        ponto no espaço. Na navegação espacial, campos gravitacionais, campos
+        magnéticos e campos de pressão atmosférica podem ser representados
+        matematicamente como campos vetoriais. O domínio preciso dessas
+        ferramentas matemáticas permitirá determinar com exatidão as trajetórias
+        e forças atuantes em veículos espaciais, garantindo a segurança das
+        missões tripuladas.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante a primeira órbita terrestre
+        tripulada pelo cosmonauta Yuri Gagarin em 12 de abril de 1961, a
+        capacidade soviética de calcular com precisão campos vetoriais
+        gravitacionais permitiu um controle de trajetória que surpreendeu
+        analistas ocidentais. Nossas equipes agora buscam superar essa
+        capacidade para garantir o sucesso do Programa Mercury e futuros voos
+        tripulados.
+      </div>
+
       <main>
         <ol class="exercise-list">
-          <!-- EXERCÍCIO 3-A -->
           <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO 3-A</div>
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
             <div class="context">
-              ARQUIVO: Programa Explorer (1958) — [DADOS PARCIALMENTE
-              DESCLASSIFICADOS]
+              ORIGEM: Análise de Forças - Programa Mercury [DADOS COLETADOS EM
+              02/MAR/1961]
             </div>
             <p>
-              Considere o campo vetorial bidimensional \[ \vec{F}(x,y) = (x^2 -
-              y,\; x + y^2). \] (a) Calcule \(\vec{F}(1,2)\). <br />
-              (b) Interprete o significado físico deste resultado em um possível
-              contexto espacial.
+              Considere o campo vetorial definido por: \[\vec{F}(x,y) =
+              \begin{pmatrix} 2x \\ 3y \end{pmatrix}\] DETERMINAR: O valor do
+              campo \(\vec{F}\) no ponto \(P(1,2)\) e sua interpretação física.
             </p>
-            <div class="hint">
-              [DICA OPERACIONAL]: Avalie cada componente separadamente e
-              relacione com a posição \((x,y)\).
-            </div>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Substitua as coordenadas do ponto diretamente
+                nas componentes do campo vetorial.
+              </div>
+            </details>
+
             <details>
-              <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
-                <p><strong>SOLUÇÃO:</strong></p>
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
                 <p>
-                  (a) Substituindo \((x,y) = (1,2)\): \[ \vec{F}(1,2) = (1^2 -
-                  2,\; 1 + 2^2) = (-1,\; 5). \]
+                  Substituindo as coordenadas do ponto \(P(1,2)\) no campo
+                  vetorial:
                 </p>
                 <p>
-                  (b) Em termos físicos, esse vetor \((-1, 5)\) poderia
-                  representar, por exemplo, a direção e intensidade de um
-                  “fluxo” ou “força” resultante atuando em \((1,2)\). No
-                  contexto espacial, seria o vetor associado à influência de
-                  algum campo (gravitacional, magnético etc.) nesse ponto
-                  específico.
+                  \[\vec{F}(1,2) = \begin{pmatrix} 2 \cdot 1 \\ 3 \cdot 2
+                  \end{pmatrix} = \begin{pmatrix} 2 \\ 6 \end{pmatrix}\]
+                </p>
+                <p>
+                  INTERPRETAÇÃO FÍSICA: O vetor \(\begin{pmatrix} 2 \\ 6
+                  \end{pmatrix}\) representa a direção e magnitude da força
+                  atuante no ponto \(P(1,2)\). Observe que a componente vertical
+                  (y) é três vezes maior que a componente horizontal (x),
+                  indicando uma tendência de movimento predominantemente
+                  vertical. Isto pode representar, por exemplo, a força
+                  resultante em uma nave espacial devido a combinação de campos
+                  gravitacionais e propulsão.
                 </p>
               </div>
             </details>
           </li>
 
-          <!-- EXERCÍCIO 3-B -->
           <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO 3-B</div>
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
             <div class="context">
-              ARQUIVO: Projeto Lagrange (1978) — [DADOS PARCIALMENTE
-              DESCLASSIFICADOS]
+              ORIGEM: Análise de Gradientes - Laboratório de Propulsão [DADOS DE
+              18/JAN/1961]
             </div>
             <p>
-              Seja \[ \vec{G}(x,y,z) = (x - y,\; y - z,\; z - x). \] (a)
-              Determine todos os pontos \((x,y,z)\) em que \(\vec{G}(x,y,z) =
-              \vec{0}\). <br />
-              (b) Explique como esses pontos se assemelham a “pontos de
-              equilíbrio” no contexto de campos vetoriais.
+              Seja o campo vetorial: \[\vec{G}(x,y) = \begin{pmatrix} -y \\ x
+              \end{pmatrix}\] DETERMINAR: (a) O valor do campo nos pontos
+              \(P_1(1,0)\), \(P_2(0,1)\), \(P_3(-1,0)\) e \(P_4(0,-1)\). (b)
+              Identifique o padrão geométrico formado por estes vetores.
             </p>
-            <div class="hint">
-              [DICA OPERACIONAL]: \(\vec{G} = \vec{0}\) significa que cada
-              componente deve ser igual a zero.
-            </div>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Após calcular os vetores em cada ponto,
+                visualize suas direções e magnitudes. O que acontece quando você
+                se move ao longo de uma circunferência?
+              </div>
+            </details>
+
             <details>
-              <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
-                <p><strong>SOLUÇÃO:</strong></p>
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+                <p>(a) Calculando o campo em cada ponto:</p>
                 <p>
-                  (a) Para \(\vec{G}(x,y,z) = (0,0,0)\), precisamos resolver: \[
-                  x - y = 0,\quad y - z = 0,\quad z - x = 0. \] Isso implica \(x
-                  = y = z\). Logo, todos os pontos da forma \((a,a,a)\) são
-                  soluções.
+                  \[\vec{G}(1,0) = \begin{pmatrix} -0 \\ 1 \end{pmatrix} =
+                  \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
                 </p>
                 <p>
-                  (b) Tais pontos podem ser vistos como “pontos de equilíbrio”
-                  porque, nesse local, o campo \(\vec{G}\) não “empurra” o
-                  sistema em nenhuma direção; no contexto de mecânica celeste,
-                  são análogos a regiões onde forças se “compensam” (por
-                  exemplo, os verdadeiros pontos de Lagrange são pontos de
-                  equilíbrio gravitacional).
+                  \[\vec{G}(0,1) = \begin{pmatrix} -1 \\ 0 \end{pmatrix} =
+                  \begin{pmatrix} -1 \\ 0 \end{pmatrix}\]
+                </p>
+                <p>
+                  \[\vec{G}(-1,0) = \begin{pmatrix} -0 \\ -1 \end{pmatrix} =
+                  \begin{pmatrix} 0 \\ -1 \end{pmatrix}\]
+                </p>
+                <p>
+                  \[\vec{G}(0,-1) = \begin{pmatrix} -(-1) \\ 0 \end{pmatrix} =
+                  \begin{pmatrix} 1 \\ 0 \end{pmatrix}\]
+                </p>
+                <p>
+                  (b) PADRÃO GEOMÉTRICO: Observamos que os vetores são sempre
+                  perpendiculares à linha radial do ponto até a origem e têm
+                  magnitude igual à distância do ponto à origem. Isso forma um
+                  campo vetorial circular (ou de rotação), onde cada vetor é
+                  tangente ao círculo centrado na origem que passa pelo ponto.
+                  Este padrão é conhecido como campo rotacional e tem aplicações
+                  importantes em fenômenos como vórtices atmosféricos e dinâmica
+                  de fluidos.
                 </p>
               </div>
             </details>
           </li>
 
-          <!-- EXERCÍCIO 3-C -->
           <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO 3-C</div>
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
             <div class="context">
-              ARQUIVO: Laboratório de Astrofísica (1985) — [DADOS PARCIALMENTE
-              DESCLASSIFICADOS]
+              ORIGEM: Modelo Gravitacional - Programa Explorer [DADOS DE
+              31/JAN/1958]
             </div>
             <p>
-              Dado o campo vetorial em \(\mathbb{R}^2\): \[ \vec{H}(x,y) =
-              \bigl(\sin x,\; \cos y\bigr), \] (a) Avalie \(\vec{H}(0, 0)\) e
-              \(\vec{H}(\pi, \pi)\). <br />
-              (b) Discuta como a variação senoidal e cossenoidal poderia se
-              relacionar à análise de ondas (por exemplo, “vento solar”
-              periódico que incide na Terra).
+              O campo gravitacional simplificado de um corpo celeste pode ser
+              modelado como: \[\vec{F}(x,y,z) = -k \frac{\vec{r}}{|\vec{r}|^3}\]
+              onde \(\vec{r} = (x,y,z)\) é o vetor posição a partir do centro do
+              corpo, \(|\vec{r}|\) é a distância ao centro e \(k\) é uma
+              constante positiva. DETERMINAR: (a) A direção do campo em qualquer
+              ponto do espaço. (b) Como a intensidade do campo varia com a
+              distância.
             </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe o sinal negativo na equação e o
+                significado físico da fração. Qual lei fundamental da física
+                está representada aqui?
+              </div>
+            </details>
+
             <details>
-              <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
-                <p><strong>SOLUÇÃO:</strong></p>
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+                <p>(a) DIREÇÃO DO CAMPO:</p>
                 <p>
-                  (a) \[ \vec{H}(0,0) = (\sin 0,\; \cos 0) = (0,\; 1), \] \[
-                  \vec{H}(\pi,\pi) = (\sin \pi,\; \cos \pi) = (0,\; -1). \]
+                  O termo \(\frac{\vec{r}}{|\vec{r}|}\) é um vetor unitário na
+                  direção de \(\vec{r}\), apontando para fora do centro. O sinal
+                  negativo na equação inverte esta direção, fazendo com que
+                  \(\vec{F}\) aponte sempre em direção ao centro do corpo
+                  celeste. Isto corresponde à natureza atrativa da força
+                  gravitacional.
                 </p>
+
+                <p>(b) VARIAÇÃO DA INTENSIDADE:</p>
+                <p>A magnitude do campo é dada por:</p>
+                <p>\[|\vec{F}| = \frac{k}{|\vec{r}|^2}\]</p>
                 <p>
-                  (b) Em um contexto físico, esses termos senoidais podem
-                  representar padrões de variação periódica (como marés,
-                  oscilações de radiação, etc.). Para “ventos solares”,
-                  poderíamos ter um fluxo que se intensifica e diminui
-                  ciclicamente, descrito por funções seno e cosseno.
+                  Isto demonstra que a intensidade do campo gravitacional é
+                  inversamente proporcional ao quadrado da distância,
+                  confirmando a Lei da Gravitação Universal de Newton. Esta
+                  relação inversa do quadrado explica por que a gravidade
+                  diminui rapidamente à medida que nos afastamos de um corpo
+                  celeste.
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este modelo é fundamental para calcular trajetórias
+                  precisas de satélites e veículos espaciais em órbita terrestre
+                  e para missões interplanetárias.
                 </p>
               </div>
             </details>
           </li>
 
-          <!-- EXERCÍCIO 3-D -->
           <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO 3-D</div>
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
             <div class="context">
-              ARQUIVO: Missão Voyager (1979) — [DADOS PARCIALMENTE
-              DESCLASSIFICADOS]
+              ORIGEM: Análise de Sistemas - Projeto Atlas [DADOS DE 24/MAI/1959]
             </div>
             <p>
-              O campo gravitacional de um corpo esférico no espaço 3D pode ser
-              descrito (de forma simplificada) como \[ \vec{F}(\vec{r}) =
-              -\gamma \frac{M}{\|\vec{r}\|^3} \,\vec{r}, \] onde \(\vec{r} =
-              (x,y,z)\), \(\|\vec{r}\|\) é a distância ao centro, \(\gamma\) é a
-              constante gravitacional, e \(M\) a massa do corpo central.
+              Considere o campo vetorial: \[\vec{H}(x,y) = \begin{pmatrix} x^2 -
+              y^2 \\ 2xy \end{pmatrix}\] DETERMINAR: (a) Os valores do campo nos
+              pontos \(A(1,1)\), \(B(2,0)\) e \(C(0,2)\). (b) Identifique pontos
+              onde o campo é nulo (se existirem).
             </p>
-            <p>
-              (a) Explique por que há um sinal negativo neste campo. <br />
-              (b) Identifique a relação entre a intensidade do campo e a
-              distância ao centro \(\|\vec{r}\|\).
-            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Para encontrar pontos onde o campo é nulo,
+                resolva o sistema de equações resultante de igualar ambas as
+                componentes a zero.
+              </div>
+            </details>
+
             <details>
-              <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
-                <p><strong>SOLUÇÃO:</strong></p>
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+                <p>(a) Calculando os valores do campo nos pontos dados:</p>
+
+                <p>Para \(A(1,1)\):</p>
                 <p>
-                  (a) O sinal negativo indica que a força (ou vetor do campo)
-                  aponta para o centro do corpo (atração gravitacional).
-                  \(\vec{r}\) é direcionado para fora, então \(-\vec{r}\) indica
-                  a direção oposta.
+                  \[\vec{H}(1,1) = \begin{pmatrix} 1^2 - 1^2 \\ 2 \cdot 1 \cdot
+                  1 \end{pmatrix} = \begin{pmatrix} 0 \\ 2 \end{pmatrix}\]
+                </p>
+
+                <p>Para \(B(2,0)\):</p>
+                <p>
+                  \[\vec{H}(2,0) = \begin{pmatrix} 2^2 - 0^2 \\ 2 \cdot 2 \cdot
+                  0 \end{pmatrix} = \begin{pmatrix} 4 \\ 0 \end{pmatrix}\]
+                </p>
+
+                <p>Para \(C(0,2)\):</p>
+                <p>
+                  \[\vec{H}(0,2) = \begin{pmatrix} 0^2 - 2^2 \\ 2 \cdot 0 \cdot
+                  2 \end{pmatrix} = \begin{pmatrix} -4 \\ 0 \end{pmatrix}\]
+                </p>
+
+                <p>(b) PONTOS DE CAMPO NULO:</p>
+                <p>Para \(\vec{H}(x,y) = \vec{0}\), devemos ter:</p>
+                <p>\[x^2 - y^2 = 0\]</p>
+                <p>\[2xy = 0\]</p>
+
+                <p>
+                  Da segunda equação, temos \(xy = 0\), o que significa que \(x
+                  = 0\) ou \(y = 0\).
                 </p>
                 <p>
-                  (b) A magnitude do vetor gravitacional é inversamente
-                  proporcional ao quadrado da distância: \[ \|\vec{F}\| = \gamma
-                  \frac{M}{\|\vec{r}\|^2}. \] Isso mostra a “lei do inverso do
-                  quadrado”, típica de interações gravitacionais.
+                  Se \(x = 0\), pela primeira equação: \(0 - y^2 = 0\), o que
+                  implica \(y = 0\).
+                </p>
+                <p>
+                  Se \(y = 0\), pela primeira equação: \(x^2 - 0 = 0\), o que
+                  implica \(x = 0\).
+                </p>
+
+                <p>
+                  Portanto, o único ponto onde o campo é nulo é a origem
+                  \(O(0,0)\). Este ponto representa uma singularidade no campo,
+                  o que pode ser interpretado como um ponto de equilíbrio ou
+                  estagnação no contexto de sistemas dinâmicos.
                 </p>
               </div>
             </details>
           </li>
 
-          <!-- EXERCÍCIO 3-E -->
           <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO 3-E</div>
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
             <div class="context">
-              ARQUIVO: Centro de Controle Espacial (1992) — [DADOS PARCIALMENTE
-              DESCLASSIFICADOS]
+              ORIGEM: Dinâmica de Fluidos - Setor de Reentrada Atmosférica
+              [DADOS DE 07/DEZ/1960]
             </div>
             <p>
-              Considere a distinção entre uma <strong>função vetorial</strong> e
-              um <strong>campo vetorial</strong>:
+              Um campo de velocidades de um fluido é modelado por:
+              \[\vec{V}(x,y,z) = \begin{pmatrix} y \\ -x \\ z \end{pmatrix}\]
+              DETERMINAR: (a) O fluxo do fluido nos pontos \(P_1(1,1,1)\) e
+              \(P_2(2,-2,3)\). (b) Classifique o comportamento do fluido no
+              plano \(xy\) (ignore a componente \(z\)). (c) Como o movimento de
+              uma partícula varia ao longo do eixo \(z\).
             </p>
-            <ul>
-              <li>
-                <em>Função vetorial:</em> \(\vec{r}: \mathbb{R} \to
-                \mathbb{R}^3\)
-              </li>
-              <li>
-                <em>Campo vetorial:</em> \(\vec{F}: \mathbb{R}^3 \to
-                \mathbb{R}^3\)
-              </li>
-            </ul>
-            <p>
-              (a) Dê um exemplo de cada um no contexto da exploração espacial.
-              <br />
-              (b) Explique por que uma trajetória de foguete \(\vec{r}(t)\) não
-              pode ser considerada um campo vetorial.
-            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe o padrão de comportamento das
+                componentes \(x\) e \(y\) do campo e relacione com movimentos
+                circulares. Para a componente \(z\), analise sua dependência das
+                outras variáveis.
+              </div>
+            </details>
+
             <details>
-              <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
-                <p><strong>SOLUÇÃO:</strong></p>
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+                <p>(a) Calculando o fluxo nos pontos dados:</p>
+
+                <p>Para \(P_1(1,1,1)\):</p>
                 <p>
-                  (a) Exemplo de função vetorial: \(\vec{r}(t)\) descrevendo a
-                  trajetória de um satélite em função do tempo. <br />
-                  Exemplo de campo vetorial: \(\vec{G}(x,y,z)\) descrevendo a
-                  força gravitacional em cada ponto do espaço.
+                  \[\vec{V}(1,1,1) = \begin{pmatrix} 1 \\ -1 \\ 1
+                  \end{pmatrix}\]
+                </p>
+
+                <p>Para \(P_2(2,-2,3)\):</p>
+                <p>
+                  \[\vec{V}(2,-2,3) = \begin{pmatrix} -2 \\ -2 \\ 3
+                  \end{pmatrix}\]
+                </p>
+
+                <p>(b) COMPORTAMENTO NO PLANO \(xy\):</p>
+                <p>Restringindo o campo ao plano \(xy\), temos:</p>
+                <p>
+                  \[\vec{V}_{xy}(x,y) = \begin{pmatrix} y \\ -x \end{pmatrix}\]
+                </p>
+
+                <p>
+                  Este campo corresponde a um movimento de rotação horária
+                  centrado na origem. Para qualquer ponto \((x,y)\), o vetor
+                  velocidade é perpendicular ao raio vetor que liga a origem ao
+                  ponto, formando um padrão circular. A magnitude da velocidade
+                  aumenta proporcionalmente à distância da origem.
+                </p>
+
+                <p>(c) VARIAÇÃO AO LONGO DO EIXO \(z\):</p>
+                A componente \(z\) do campo de velocidade é simplesmente \(z\),
+                o que significa que:
+                <ul>
+                  <li>
+                    Se \(z > 0\), a partícula se move para cima (sentido
+                    positivo do eixo \(z\))
+                  </li>
+                  <li>
+                    Se \(z < 0\), a partícula se move para baixo (sentido
+                    negativo do eixo \(z\))
+                  </li>
+                  <li>Se \(z = 0\), não há movimento vertical</li>
+                </ul>
+
+                <p>
+                  A velocidade na direção \(z\) aumenta linearmente com a
+                  distância ao plano \(xy\). Combinando este movimento vertical
+                  com a rotação no plano \(xy\), obtemos um movimento helicoidal
+                  (em espiral) cuja "abertura" aumenta com \(|z|\).
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este tipo de campo é relevante para modelar
+                  vórtices atmosféricos e turbulências que podem afetar veículos
+                  espaciais durante a reentrada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Magnetismo - Programa de Proteção Espacial
+              [DADOS DE 18/FEV/1961]
+            </div>
+            <p>
+              Considere um campo magnético simplificado ao redor de um fio
+              condutor longo, representado por: \[\vec{B}(x,y) = \frac{k}{x^2 +
+              y^2} \begin{pmatrix} -y \\ x \end{pmatrix}\] onde \(k\) é uma
+              constante positiva. DETERMINAR: (a) O padrão geométrico do campo
+              magnético. (b) Como a intensidade do campo varia com a distância
+              ao fio. (c) Se existem pontos onde o campo é nulo ou infinito.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacione o formato deste campo com a Lei de
+                Ampère e identifique a localização do fio condutor no plano. A
+                distância ao fio é representada pelo denominador da equação.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) PADRÃO GEOMÉTRICO:</p>
+                <p>
+                  O termo \(\begin{pmatrix} -y \\ x \end{pmatrix}\) cria um
+                  campo circular em torno da origem. Para qualquer ponto
+                  \((x,y)\), o vetor do campo é perpendicular ao raio vetor da
+                  origem até o ponto, formando círculos concêntricos em torno da
+                  origem.
+                </p>
+
+                <p>
+                  Fisicamente, isto corresponde à configuração do campo
+                  magnético ao redor de um fio condutor reto transportando
+                  corrente elétrica, onde o fio está localizado
+                  perpendicularmente ao plano \(xy\), passando pela origem. As
+                  linhas de campo magnético formam círculos concêntricos ao
+                  redor do fio, como previsto pela Lei de Ampère.
+                </p>
+
+                <p>(b) VARIAÇÃO DA INTENSIDADE:</p>
+                <p>A magnitude do campo é dada por:</p>
+                <p>
+                  \[|\vec{B}(x,y)| = \frac{k}{x^2 + y^2} \cdot \sqrt{(-y)^2 +
+                  x^2} = \frac{k}{x^2 + y^2} \cdot \sqrt{x^2 + y^2} =
+                  \frac{k}{\sqrt{x^2 + y^2}}\]
+                </p>
+
+                <p>
+                  Sendo \(r = \sqrt{x^2 + y^2}\) a distância do ponto \((x,y)\)
+                  à origem (onde o fio está localizado), temos:
+                </p>
+                <p>\[|\vec{B}(x,y)| = \frac{k}{r}\]</p>
+
+                <p>
+                  Portanto, a intensidade do campo magnético é inversamente
+                  proporcional à distância ao fio condutor, seguindo a Lei de
+                  Biot-Savart para um fio condutor infinito.
+                </p>
+
+                <p>(c) PONTOS DE CAMPO NULO OU INFINITO:</p>
+                <p>
+                  O campo é nulo apenas no infinito, onde \(r \to \infty\) e,
+                  consequentemente, \(|\vec{B}| \to 0\).
+                </p>
+
+                <p>
+                  O campo se torna infinito quando \(r \to 0\), ou seja,
+                  exatamente no local do fio condutor (origem). Matematicamente,
+                  isto ocorre porque \(x^2 + y^2 = 0\) no denominador da
+                  expressão.
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este modelo é crucial para entender como os campos
+                  magnéticos interagem com veículos espaciais e para desenvolver
+                  proteções contra radiação para astronautas, uma vez que a
+                  Terra e outros corpos celestes possuem campos magnéticos que
+                  afetam a navegação e segurança das missões.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Centro de Modelagem Atmosférica - Projeto Mercúrio [DADOS
+              DE 30/NOV/1960]
+            </div>
+            <p>
+              Um campo de vento atmosférico é modelado por: \[\vec{W}(x,y,z) =
+              \begin{pmatrix} x + yz \\ y - xz \\ z \end{pmatrix}\] DETERMINAR:
+              (a) O comportamento do vento no plano \(z = 0\). (b) Analise como
+              a direção do vento muda quando \(z\) varia de valores negativos
+              para positivos. (c) Identifique regiões onde o vento tem maior
+              intensidade.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Examine como os termos cruzados \(yz\) e \(xz\)
+                afetam o comportamento do vento em diferentes altitudes.
+                Considere casos específicos para visualizar o padrão geral.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) COMPORTAMENTO NO PLANO \(z = 0\):</p>
+                <p>Substituindo \(z = 0\) no campo, obtemos:</p>
+                <p>
+                  \[\vec{W}(x,y,0) = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}\]
+                </p>
+
+                <p>
+                  Neste plano, o vento flui radialmente para fora a partir da
+                  origem, com intensidade proporcional à distância da origem. Em
+                  cada ponto \((x,y,0)\), o vetor vento aponta diretamente para
+                  fora, na mesma direção do vetor posição \((x,y,0)\).
+                </p>
+
+                <p>(b) VARIAÇÃO COM A ALTITUDE \(z\):</p>
+                <p>Analisando o campo para diferentes valores de \(z\):</p>
+
+                <p>Para \(z < 0\) (altitudes negativas):</p>
+                <p>
+                  - A componente \(x\) é reduzida pelo termo \(yz\) quando \(y >
+                  0\) e aumentada quando \(y < 0\)
                 </p>
                 <p>
-                  (b) A trajetória \(\vec{r}(t)\) possui domínio unidimensional
-                  (o tempo), enquanto um campo vetorial exige que o domínio seja
-                  um subconjunto de \(\mathbb{R}^3\). Em outras palavras, a
-                  trajetória define “onde o foguete está a cada instante”, e não
-                  atribui um vetor a todos os pontos possíveis do espaço
-                  simultaneamente.
+                  - A componente \(y\) é aumentada pelo termo \(xz\) quando \(x
+                  > 0\) e reduzida quando \(x < 0\)
+                </p>
+                <p>
+                  - Isso cria um padrão de rotação anti-horária sobreposto ao
+                  fluxo radial
+                </p>
+
+                <p>Para \(z > 0\) (altitudes positivas):</p>
+                <p>
+                  - A componente \(x\) é aumentada pelo termo \(yz\) quando \(y
+                  > 0\) e reduzida quando \(y < 0\)
+                </p>
+                <p>
+                  - A componente \(y\) é reduzida pelo termo \(xz\) quando \(x >
+                  0\) e aumentada quando \(x < 0\)
+                </p>
+                <p>
+                  - Isso cria um padrão de rotação horária sobreposto ao fluxo
+                  radial
+                </p>
+
+                <p>
+                  Além disso, a componente vertical do vento (\(z\)) faz com que
+                  o ar suba quando \(z > 0\) e desça quando \(z < 0\), criando
+                  um fluxo convergente para o plano \(z = 0\) em altitudes
+                  negativas e divergente deste plano em altitudes positivas.
+                </p>
+
+                <p>(c) REGIÕES DE MAIOR INTENSIDADE:</p>
+                <p>A magnitude do campo é dada por:</p>
+                <p>\[|\vec{W}(x,y,z)| = \sqrt{(x+yz)^2 + (y-xz)^2 + z^2}\]</p>
+
+                <p>
+                  Para valores fixos de \(z\), a intensidade aumenta à medida
+                  que nos afastamos da origem no plano \(xy\). Além disso, para
+                  \(x\) e \(y\) fixos, a intensidade geralmente aumenta com
+                  \(|z|\) devido aos termos cruzados.
+                </p>
+
+                <p>
+                  Específicamente, a intensidade será maior em regiões onde:
+                </p>
+                <p>
+                  - \(|x|\) e \(|y|\) são grandes (longe da origem no plano
+                  horizontal)
+                </p>
+                <p>
+                  - \(|z|\) é grande (altitudes extremas, positivas ou
+                  negativas)
+                </p>
+                <p>
+                  - Os produtos \(|yz|\) e \(|xz|\) são grandes (combinação de
+                  coordenadas com valores absolutos elevados)
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este modelo é crucial para prever condições
+                  atmosféricas durante lançamentos e reentradas de veículos
+                  espaciais, permitindo identificar zonas de turbulência e
+                  cisalhamento de vento que podem comprometer a integridade
+                  estrutural da espaçonave.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Laboratório de Física Espacial - Projeto Ranger [DADOS DE
+              18/AGO/1961]
+            </div>
+            <p>
+              Considere um campo elétrico em torno de duas cargas pontuais de
+              sinais opostos, modelado simplificadamente como: \[\vec{E}(x,y) =
+              \begin{pmatrix} \frac{k(x+1)}{[(x+1)^2 + y^2]^{3/2}} -
+              \frac{k(x-1)}{[(x-1)^2 + y^2]^{3/2}} \\ \frac{ky}{[(x+1)^2 +
+              y^2]^{3/2}} - \frac{ky}{[(x-1)^2 + y^2]^{3/2}} \end{pmatrix}\]
+              onde \(k\) é uma constante positiva, a carga negativa está
+              localizada em \((-1,0)\) e a positiva em \((1,0)\). DETERMINAR:
+              (a) Descreva o comportamento do campo ao longo do eixo \(x\). (b)
+              Identifique onde o campo é nulo. (c) Analise o comportamento do
+              campo a grandes distâncias da origem.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Este campo representa um dipolo elétrico.
+                Concentre-se em pontos específicos do eixo x e na simetria do
+                problema para simplificar a análise.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) COMPORTAMENTO AO LONGO DO EIXO \(x\):</p>
+                <p>No eixo \(x\), temos \(y = 0\), então o campo se reduz a:</p>
+                <p>
+                  \[\vec{E}(x,0) = \begin{pmatrix} \frac{k(x+1)}{|x+1|^3} -
+                  \frac{k(x-1)}{|x-1|^3} \\ 0 \end{pmatrix}\]
+                </p>
+
+                <p>Analisando por regiões:</p>
+
+                <p>1. Para \(x < -1\) (à esquerda da carga negativa):</p>
+                <p>
+                  Ambos os termos são negativos, indicando um campo apontando
+                  para a esquerda (sentido negativo do eixo \(x\)). A
+                  intensidade diminui com o aumento da distância.
+                </p>
+
+                <p>
+                  2. Para \(-1 < x < 0\) (entre a carga negativa e a origem):
+                </p>
+                <p>
+                  O campo aponta para a direita (sentido positivo do eixo
+                  \(x\)), afastando-se da carga negativa e direcionando-se à
+                  carga positiva.
+                </p>
+
+                <p>
+                  3. Para \(0 < x < 1\) (entre a origem e a carga positiva):
+                </p>
+                <p>
+                  O campo continua apontando para a direita, direcionando-se à
+                  carga positiva.
+                </p>
+
+                <p>4. Para \(x > 1\) (à direita da carga positiva):</p>
+                <p>
+                  Ambos os termos são positivos, indicando um campo apontando
+                  para a direita. A intensidade diminui com o aumento da
+                  distância.
+                </p>
+
+                <p>(b) PONTOS DE CAMPO NULO:</p>
+                <p>
+                  Para encontrar onde \(\vec{E} = \vec{0}\), devido à simetria
+                  do problema, sabemos que os únicos pontos de campo nulo estão
+                  no eixo \(y\) (onde \(x = 0\)).
+                </p>
+
+                <p>
+                  Por simetria, no ponto \((0,0)\) (origem), as contribuições
+                  das duas cargas se cancelam exatamente, resultando em campo
+                  nulo.
+                </p>
+
+                <p>
+                  Existem outros pontos de campo nulo, localizados no eixo \(y\)
+                  a distâncias específicas, onde as contribuições das duas
+                  cargas se cancelam devido ao equilíbrio entre suas
+                  influências.
+                </p>
+
+                <p>(c) COMPORTAMENTO A GRANDES DISTÂNCIAS:</p>
+                <p>
+                  Para \(|(x,y)| \gg 1\) (pontos muito distantes da origem), o
+                  campo se comporta como o de um dipolo elétrico, com magnitude
+                  proporcional a \(1/r^3\), onde \(r\) é a distância à origem.
+                </p>
+
+                <p>
+                  O campo tende a apontar do polo positivo para o polo negativo
+                  para pontos próximos ao eixo \(x\), e paralelo ao eixo \(x\)
+                  para pontos próximos ao eixo \(y\).
+                </p>
+
+                <p>
+                  A distâncias muito grandes, a configuração específica das
+                  cargas se torna menos relevante, e o sistema pode ser
+                  aproximado como um dipolo pontual localizado na origem.
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este modelo é fundamental para entender como
+                  veículos espaciais interagem com campos eletromagnéticos
+                  naturais (como o campo magnético terrestre) e artificiais. O
+                  conhecimento desses padrões permite o desenvolvimento de
+                  sistemas de proteção contra interferências eletromagnéticas e
+                  o design de instrumentos que utilizam esses campos para
+                  orientação e comunicação.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Dinâmica Orbital - Programa Gemini [DADOS
+              DE 03/MAR/1962]
+            </div>
+            <p>
+              Considere o campo vetorial dependente do tempo definido por:
+              \[\vec{F}(x,y,t) = \begin{pmatrix} x\cos(t) - y\sin(t) \\ x\sin(t)
+              + y\cos(t) \end{pmatrix}\] onde \(t\) representa o tempo.
+              DETERMINAR: (a) O valor do campo no ponto \(P(1,0)\) para \(t =
+              0\), \(t = \pi/2\), \(t = \pi\) e \(t = 3\pi/2\). (b) Descreva
+              como o campo evolui com o tempo para um ponto fixo. (c)
+              Identifique pontos que permanecem invariantes sob a evolução
+              temporal do campo.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Este campo pode ser interpretado como uma
+                transformação de rotação aplicada ao vetor posição. Analise como
+                a direção e magnitude do campo mudam com o tempo.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>
+                  (a) VALORES DO CAMPO EM \(P(1,0)\) PARA DIFERENTES TEMPOS:
+                </p>
+
+                <p>Para \(t = 0\):</p>
+                <p>
+                  \[\vec{F}(1,0,0) = \begin{pmatrix} 1\cos(0) - 0\sin(0) \\
+                  1\sin(0) + 0\cos(0) \end{pmatrix} = \begin{pmatrix} 1 \\ 0
+                  \end{pmatrix}\]
+                </p>
+
+                <p>Para \(t = \pi/2\):</p>
+                <p>
+                  \[\vec{F}(1,0,\pi/2) = \begin{pmatrix} 1\cos(\pi/2) -
+                  0\sin(\pi/2) \\ 1\sin(\pi/2) + 0\cos(\pi/2) \end{pmatrix} =
+                  \begin{pmatrix} 0 \\ 1 \end{pmatrix}\]
+                </p>
+
+                <p>Para \(t = \pi\):</p>
+                <p>
+                  \[\vec{F}(1,0,\pi) = \begin{pmatrix} 1\cos(\pi) - 0\sin(\pi)
+                  \\ 1\sin(\pi) + 0\cos(\pi) \end{pmatrix} = \begin{pmatrix} -1
+                  \\ 0 \end{pmatrix}\]
+                </p>
+
+                <p>Para \(t = 3\pi/2\):</p>
+                <p>
+                  \[\vec{F}(1,0,3\pi/2) = \begin{pmatrix} 1\cos(3\pi/2) -
+                  0\sin(3\pi/2) \\ 1\sin(3\pi/2) + 0\cos(3\pi/2) \end{pmatrix} =
+                  \begin{pmatrix} 0 \\ -1 \end{pmatrix}\]
+                </p>
+
+                <p>(b) EVOLUÇÃO TEMPORAL DO CAMPO:</p>
+                <p>
+                  Para um ponto fixo \((x,y)\), o campo roda em torno da origem
+                  com período \(T = 2\pi\). A magnitude do vetor permanece
+                  constante, igual a \(\sqrt{x^2 + y^2}\), enquanto sua direção
+                  gira com velocidade angular constante de 1 rad/s.
+                </p>
+
+                <p>
+                  Este padrão representa uma rotação rígida do plano em torno da
+                  origem. Para qualquer ponto \((x,y)\) que não seja a origem, o
+                  vetor do campo gira em sentido anti-horário, completando uma
+                  volta completa a cada \(2\pi\) unidades de tempo.
+                </p>
+
+                <p>(c) PONTOS INVARIANTES:</p>
+                <p>
+                  Um ponto é invariante se o campo permanece constante nele para
+                  qualquer valor de \(t\). Isto só é possível se as expressões
+                  matemáticas não dependerem de \(t\), o que só ocorre quando
+                  ambas as componentes são sempre zero.
+                </p>
+
+                <p>Resolvendo:</p>
+                <p>\[x\cos(t) - y\sin(t) = 0\]</p>
+                <p>\[x\sin(t) + y\cos(t) = 0\]</p>
+
+                <p>
+                  Para que estas equações sejam satisfeitas para todo \(t\),
+                  devemos ter \(x = 0\) e \(y = 0\), ou seja, apenas a origem
+                  \(O(0,0)\) é um ponto invariante sob a evolução temporal do
+                  campo.
+                </p>
+
+                <p>
+                  APLICAÇÃO: Este tipo de campo vetorial dependente do tempo
+                  modela sistemas rotativos, como a rotação da Terra ou de uma
+                  estação espacial. A compreensão deste comportamento é
+                  essencial para o cálculo de trajetórias que envolvem sistemas
+                  de referência rotativos, como as órbitas de satélites em
+                  relação à Terra ou manobras de acoplamento com estações
+                  espaciais em rotação.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Centro Avançado de Pesquisa - Programa Apollo [DADOS DE
+              28/JAN/1966]
+            </div>
+            <p>
+              Considere o campo vetorial não-linear: \[\vec{F}(x,y) =
+              \begin{pmatrix} y^2 - x^2 \\ -2xy \end{pmatrix}\] DETERMINAR: (a)
+              Os pontos críticos do campo (onde \(\vec{F} = \vec{0}\)). (b)
+              Analise o comportamento do campo nas proximidades de cada ponto
+              crítico. (c) Classifique o tipo de cada ponto crítico (atrator,
+              repulsor, sela, etc.).
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) PONTOS CRÍTICOS:</p>
+                <p>
+                  Para encontrar pontos críticos, igualamos \(\vec{F}(x,y) =
+                  \vec{0}\):
+                </p>
+                <p>\[y^2 - x^2 = 0\]</p>
+                <p>\[-2xy = 0\]</p>
+
+                <p>
+                  Da segunda equação, temos \(xy = 0\), o que implica \(x = 0\)
+                  ou \(y = 0\).
+                </p>
+
+                <p>
+                  Se \(x = 0\), da primeira equação: \(y^2 = 0\), o que implica
+                  \(y = 0\).
+                </p>
+                <p>
+                  Se \(y = 0\), da primeira equação: \(-x^2 = 0\), o que implica
+                  \(x = 0\).
+                </p>
+
+                <p>Portanto, o único ponto crítico é a origem \(O(0,0)\).</p>
+
+                <p>(b) e (c) ANÁLISE E CLASSIFICAÇÃO DO PONTO CRÍTICO:</p>
+                <p>
+                  Para classificar o ponto crítico, podemos analisar a matriz
+                  Jacobiana do campo no ponto \((0,0)\):
+                </p>
+
+                <p>
+                  \[J(0,0) = \begin{pmatrix} \frac{\partial F_1}{\partial x} &
+                  \frac{\partial F_1}{\partial y} \\ \frac{\partial
+                  F_2}{\partial x} & \frac{\partial F_2}{\partial y}
+                  \end{pmatrix}_{(0,0)} = \begin{pmatrix} -2x & 2y \\ -2y & -2x
+                  \end{pmatrix}_{(0,0)} = \begin{pmatrix} 0 & 0 \\ 0 & 0
+                  \end{pmatrix}\]
+                </p>
+
+                <p>
+                  Observação: A matriz Jacobiana se anula na origem, o que
+                  significa que precisamos realizar uma análise mais detalhada,
+                  examinando os termos de ordem superior.
+                </p>
+
+                <p>
+                  Podemos reescrever o campo em coordenadas polares: \(x =
+                  r\cos\theta\), \(y = r\sin\theta\).
+                </p>
+                <p>Após manipulação algébrica, obtemos:</p>
+                <p>
+                  \[\vec{F}(r,\theta) = r^2 \begin{pmatrix} \sin^2\theta -
+                  \cos^2\theta \\ -2\sin\theta\cos\theta \end{pmatrix} = -r^2
+                  \begin{pmatrix} \cos(2\theta) \\ \sin(2\theta) \end{pmatrix}\]
+                </p>
+
+                <p>Esta representação mostra que:</p>
+                <p>
+                  1. A magnitude do campo é proporcional a \(r^2\), o que
+                  significa que se aproxima de zero quando nos aproximamos da
+                  origem, e aumenta quadraticamente com a distância.
+                </p>
+                <p>
+                  2. O campo aponta na direção \(-(\cos(2\theta),
+                  \sin(2\theta))\), o que representa um padrão com simetria de
+                  ordem 2 (repetição a cada \(\pi\) radianos).
+                </p>
+
+                <p>
+                  Podemos verificar ainda que, para qualquer ponto \((x,y) \neq
+                  (0,0)\), o produto escalar \(\vec{F}(x,y) \cdot (x,y) =
+                  (y^2-x^2)x + (-2xy)y = -x^3 - y^3\) é sempre negativo ou zero,
+                  indicando que o campo tende a apontar na direção oposta ao
+                  vetor posição.
+                </p>
+
+                <p>
+                  Baseado nesta análise, classificamos a origem como um ponto
+                  crítico não-hiperbólico com comportamento de atrator (embora
+                  não seja um atrator uniforme). O campo tende a "circular" ao
+                  redor da origem, com trajetórias que se aproximam dela em um
+                  padrão espiral, mas a taxa de aproximação varia com a direção.
+                </p>
+
+                <p>
+                  APLICAÇÃO: Campos vetoriais não-lineares como este modelam
+                  sistemas complexos encontrados em mecânica celeste, como
+                  pontos de equilíbrio instáveis em campos gravitacionais
+                  combinados. O entendimento desses pontos críticos é essencial
+                  para o planejamento de trajetórias de naves espaciais que
+                  utilizam assistência gravitacional ou que devem navegar perto
+                  de pontos de Lagrange no sistema Terra-Lua.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Divisão de Astrofísica Avançada - [REDACTED] [DADOS DE
+              11/JUN/1964]
+            </div>
+            <p>
+              Um campo vetorial gravitacional simplificado em torno de três
+              corpos celestes alinhados é modelado por: \[\vec{G}(x) =
+              -\frac{m_1}{|x-x_1|^2}\text{sgn}(x-x_1) -
+              \frac{m_2}{|x-x_2|^2}\text{sgn}(x-x_2) -
+              \frac{m_3}{|x-x_3|^2}\text{sgn}(x-x_3)\] onde \(x\) é a posição ao
+              longo de uma linha, \(x_1 < x_2 < x_3\) são as posições dos três
+              corpos com massas \(m_1\), \(m_2\) e \(m_3\), respectivamente, e
+              \(\text{sgn}\) é a função sinal. DETERMINAR: (a) As posições onde
+              o campo gravitacional resultante é zero. (b) Classifique cada um
+              desses pontos quanto à estabilidade. (c) Explique como esses
+              pontos poderiam ser utilizados em missões espaciais.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) PONTOS DE CAMPO NULO:</p>
+                <p>
+                  Para encontrar os pontos onde \(\vec{G}(x) = 0\), devemos
+                  resolver:
+                </p>
+                <p>
+                  \[\frac{m_1}{(x-x_1)^2}\text{sgn}(x-x_1) +
+                  \frac{m_2}{(x-x_2)^2}\text{sgn}(x-x_2) +
+                  \frac{m_3}{(x-x_3)^2}\text{sgn}(x-x_3) = 0\]
+                </p>
+
+                <p>
+                  Devido à natureza da função sinal e ao fato de que \(x_1 < x_2
+                  < x_3\), podemos analisar diferentes regiões:
+                </p>
+
+                <p>Região 1: \(x < x_1\)</p>
+                <p>
+                  Nesta região, todos os termos são positivos, então não há
+                  solução.
+                </p>
+
+                <p>Região 2: \(x_1 < x < x_2\)</p>
+                <p>
+                  Aqui, \(\text{sgn}(x-x_1) = +1\) e \(\text{sgn}(x-x_2) =
+                  \text{sgn}(x-x_3) = -1\)
+                </p>
+                <p>A equação se torna:</p>
+                <p>
+                  \[-\frac{m_1}{(x-x_1)^2} + \frac{m_2}{(x-x_2)^2} +
+                  \frac{m_3}{(x-x_3)^2} = 0\]
+                </p>
+                <p>
+                  Dependendo dos valores de \(m_1\), \(m_2\), \(m_3\), \(x_1\),
+                  \(x_2\) e \(x_3\), pode existir um ponto de equilíbrio nesta
+                  região, que chamaremos de \(x_A\).
+                </p>
+
+                <p>Região 3: \(x_2 < x < x_3\)</p>
+                <p>
+                  Nesta região, \(\text{sgn}(x-x_1) = \text{sgn}(x-x_2) = +1\) e
+                  \(\text{sgn}(x-x_3) = -1\)
+                </p>
+                <p>A equação se torna:</p>
+                <p>
+                  \[-\frac{m_1}{(x-x_1)^2} - \frac{m_2}{(x-x_2)^2} +
+                  \frac{m_3}{(x-x_3)^2} = 0\]
+                </p>
+                <p>
+                  Pode existir outro ponto de equilíbrio nesta região, que
+                  chamaremos de \(x_B\).
+                </p>
+
+                <p>Região 4: \(x > x_3\)</p>
+                <p>Todos os termos são negativos, então não há solução.</p>
+
+                <p>
+                  Concluímos que podem existir até dois pontos de equilíbrio: um
+                  entre o primeiro e o segundo corpo (\(x_A\)), e outro entre o
+                  segundo e o terceiro corpo (\(x_B\)).
+                </p>
+
+                <p>(b) ANÁLISE DE ESTABILIDADE:</p>
+                <p>
+                  Para classificar a estabilidade de um ponto de equilíbrio,
+                  analisamos a derivada do campo nesse ponto:
+                </p>
+
+                <p>A derivada do campo é:</p>
+                <p>
+                  \[\frac{d\vec{G}}{dx} = \frac{2m_1}{|x-x_1|^3} \cdot
+                  \text{sgn}^2(x-x_1) + \frac{2m_2}{|x-x_2|^3} \cdot
+                  \text{sgn}^2(x-x_2) + \frac{2m_3}{|x-x_3|^3} \cdot
+                  \text{sgn}^2(x-x_3)\]
+                </p>
+
+                <p>
+                  Como \(\text{sgn}^2(x) = 1\) para todo \(x \neq 0\), a
+                  derivada é sempre positiva nos pontos de equilíbrio, o que
+                  indica que ambos \(x_A\) e \(x_B\) são pontos de equilíbrio
+                  instáveis (do tipo sela).
+                </p>
+
+                <p>
+                  Fisicamente, isso significa que uma pequena perturbação faria
+                  um objeto se afastar desses pontos de equilíbrio. Se deslocado
+                  ligeiramente em direção a um dos corpos celestes, o objeto
+                  seria atraído para esse corpo; se deslocado na direção oposta,
+                  se afastaria ainda mais.
+                </p>
+
+                <p>(c) APLICAÇÕES EM MISSÕES ESPACIAIS:</p>
+                <p>
+                  Esses pontos de equilíbrio, embora instáveis, têm aplicações
+                  importantes em missões espaciais:
+                </p>
+
+                <p>
+                  1. Pontos de estacionamento: Com mínimas correções periódicas,
+                  uma nave pode permanecer próxima a esses pontos com gasto
+                  energético reduzido.
+                </p>
+
+                <p>
+                  2. Pontos de transferência: Devido à natureza instável,
+                  pequenos impulsos podem iniciar trajetórias em direções
+                  específicas com mínimo gasto de combustível.
+                </p>
+
+                <p>
+                  3. Portais gravitacionais: Estes pontos podem servir como
+                  "portais" entre diferentes regimes orbitais, permitindo
+                  transferências eficientes entre órbitas de diferentes corpos.
+                </p>
+
+                <p>
+                  4. Observatórios: São locais ideais para posicionar
+                  telescópios espaciais ou sondas de observação, pois oferecem
+                  pontos de vista estáveis e estratégicos.
+                </p>
+
+                <p>
+                  5. Estrutura de missões "estacionárias": Em sistemas como
+                  Terra-Lua, estes pontos (análogos aos pontos de Lagrange L1 e
+                  L2) podem abrigar estações espaciais permanentes que servem
+                  como bases para exploração do sistema solar.
+                </p>
+
+                <p>
+                  APLICAÇÃO ESTRATÉGICA: O entendimento preciso destes pontos de
+                  equilíbrio pode proporcionar vantagem significativa em termos
+                  de eficiência de combustível e alcance de missões espaciais,
+                  representando um avanço crítico para futuras missões
+                  tripuladas à Lua e eventualmente a Marte.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Departamento de Propulsão Avançada - [PROJETO
+              CLASSIFICADO] [DADOS DE 03/OUT/1963]
+            </div>
+            <p>
+              Um campo de propulsão iônica experimental é modelado pelo campo
+              vetorial: \[\vec{P}(x,y,z) = \begin{pmatrix} e^{-r^2}x \\
+              e^{-r^2}y \\ e^{-r^2}z \end{pmatrix}\] onde \(r^2 = x^2 + y^2 +
+              z^2\) é o quadrado da distância à origem. DETERMINAR: (a) A
+              direção do campo em qualquer ponto do espaço. (b) Como a magnitude
+              do campo varia com a distância à origem. (c) Calcule o trabalho
+              realizado pelo campo para mover uma partícula da origem até o
+              ponto \((1,1,1)\) ao longo de uma linha reta.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+
+                <p>(a) DIREÇÃO DO CAMPO:</p>
+                <p>
+                  O campo em qualquer ponto \((x,y,z)\) pode ser escrito como:
+                </p>
+                <p>
+                  \[\vec{P}(x,y,z) = e^{-r^2} \begin{pmatrix} x \\ y \\ z
+                  \end{pmatrix} = e^{-r^2} \vec{r}\]
+                </p>
+
+                <p>
+                  onde \(\vec{r} = (x,y,z)\) é o vetor posição a partir da
+                  origem.
+                </p>
+
+                <p>
+                  Portanto, a direção do campo em qualquer ponto coincide com a
+                  direção do vetor posição desse ponto em relação à origem. Em
+                  outras palavras, o campo aponta radialmente para fora a partir
+                  da origem em todos os pontos do espaço (exceto na própria
+                  origem, onde o campo é nulo).
+                </p>
+
+                <p>(b) VARIAÇÃO DA MAGNITUDE COM A DISTÂNCIA:</p>
+                <p>A magnitude do campo é:</p>
+                <p>
+                  \[|\vec{P}(x,y,z)| = e^{-r^2} \cdot |\vec{r}| = r \cdot
+                  e^{-r^2}\]
+                </p>
+
+                <p>
+                  Para analisar como esta magnitude varia com \(r\), calculamos
+                  a derivada:
+                </p>
+                <p>
+                  \[\frac{d}{dr}(r e^{-r^2}) = e^{-r^2} - 2r^2 e^{-r^2} =
+                  e^{-r^2}(1 - 2r^2)\]
+                </p>
+
+                <p>
+                  Esta derivada se anula quando \(1 - 2r^2 = 0\), ou seja,
+                  quando \(r = \frac{1}{\sqrt{2}}\).
+                </p>
+
+                <p>
+                  Para \(r < \frac{1}{\sqrt{2}}\), a derivada é positiva,
+                  indicando que a magnitude do campo aumenta com \(r\).
+                </p>
+                <p>
+                  Para \(r > \frac{1}{\sqrt{2}}\), a derivada é negativa,
+                  indicando que a magnitude do campo diminui com \(r\).
+                </p>
+
+                <p>
+                  Portanto, a magnitude do campo atinge seu valor máximo em \(r
+                  = \frac{1}{\sqrt{2}} \approx 0.7071\), e diminui
+                  assintoticamente para zero à medida que \(r\) aumenta além
+                  desse valor.
+                </p>
+
+                <p>(c) TRABALHO REALIZADO PELO CAMPO:</p>
+                <p>
+                  O trabalho realizado por um campo vetorial ao mover uma
+                  partícula ao longo de um caminho \(C\) é dado pela integral de
+                  linha:
+                </p>
+                <p>\[W = \int_C \vec{P} \cdot d\vec{r}\]</p>
+
+                <p>
+                  Para uma linha reta da origem \((0,0,0)\) ao ponto
+                  \((1,1,1)\), parametrizamos o caminho como:
+                </p>
+                <p>
+                  \[\vec{r}(t) = t \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix},
+                  \quad 0 \leq t \leq 1\]
+                </p>
+
+                <p>
+                  Com \(d\vec{r} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+                  dt\).
+                </p>
+
+                <p>
+                  Ao longo deste caminho, temos \(r^2 = 3t^2\) e
+                  \(\vec{P}(\vec{r}(t)) = e^{-3t^2} \cdot t \begin{pmatrix} 1 \\
+                  1 \\ 1 \end{pmatrix}\).
+                </p>
+
+                <p>O trabalho é então:</p>
+                <p>
+                  \[W = \int_0^1 e^{-3t^2} \cdot t \begin{pmatrix} 1 \\ 1 \\ 1
+                  \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}
+                  dt = 3 \int_0^1 t e^{-3t^2} dt\]
+                </p>
+
+                <p>
+                  Usando a substituição \(u = 3t^2\), temos \(du = 6t dt\), ou
+                  \(t dt = \frac{du}{6}\):
+                </p>
+                <p>
+                  \[W = 3 \int_0^3 \frac{e^{-u}}{6} du = \frac{1}{2} \int_0^3
+                  e^{-u} du = \frac{1}{2} [-e^{-u}]_0^3 = \frac{1}{2} [-(e^{-3}
+                  - 1)] = \frac{1}{2} (1 - e^{-3})\]
+                </p>
+
+                <p>
+                  Aproximadamente: \(W \approx 0.475\) unidades de trabalho.
+                </p>
+
+                <p>
+                  APLICAÇÃO TECNOLÓGICA: Este modelo representa um campo de
+                  propulsão iônica experimental que poderia ser utilizado em
+                  sistemas de navegação de precisão para sondas espaciais. A
+                  capacidade de gerar campos vetoriais com decaimento gaussiano
+                  permite o controle finamente ajustado do impulso em diferentes
+                  regiões do espaço, otimizando o uso de energia e aumentando a
+                  eficiência de manobras orbitais complexas. Este tipo de
+                  tecnologia seria especialmente valioso para missões de longa
+                  duração, onde a eficiência de combustível é crítica.
                 </p>
               </div>
             </details>
           </li>
         </ol>
       </main>
-    </div>
 
-    <!-- Configuração do MathJax -->
-    <script>
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['\\(', '\\)']],
-          displayMath: [['\\[', '\\]']],
-          processEscapes: true,
-        },
-        'HTML-CSS': {
-          // Ajuste de cor do texto renderizado
-          color: '#d4af37',
-        },
-      });
-    </script>
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO CA-<span
+          class="censored"
+          >7734</span
+        >-M
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
   </body>
 </html>
