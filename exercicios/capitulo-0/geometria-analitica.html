@@ -4,51 +4,350 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <!-- Fonte -->
     <link
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <!-- MathJax para renderização LaTeX -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Imagem de fundo sutil */
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      /* Cabeçalho do documento */
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 3px;
+        margin: 0 2px;
+        user-select: none;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      /* Seções internas */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      /* Lista de exercícios */
+      .exercise-list {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      /* Dicas e soluções */
+      details {
+        margin-top: 15px;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        list-style: none;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      /* Caixa de dica no padrão do template */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: #f0f0e0;
+      }
+
+      /* Rodapé */
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 45px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.3em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    </style>
   </head>
+
   <body>
     <div class="container">
+      <!-- CABEÇALHO DO DOCUMENTO -->
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">15</span> DE OUTUBRO DE
+          DATA: <span class="censored">17</span> DE OUTUBRO DE
           <span class="censored">1962</span>
           <br />
-          LOCALIZAÇÃO: <span class="censored">CENTRO DE PESQUISA ORBITAL [REDACTED]</span>
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE PESQUISA [REDACTED]</span>
         </div>
 
         <div class="document-intro">
-          RELATÓRIO DE PREPARAÇÃO: PROJETO
-          <span class="censored">VECTOR-ORBITAL</span> <br /><br />
-          Em resposta ao recente avanço soviético na tecnologia de
-          <span class="censored">navegação espacial</span>, nossa equipe de 
-          matemáticos desenvolveu um conjunto de cálculos fundamentais para 
-          domínio completo do espaço tridimensional. <br /><br />
-          Os exercícios a seguir foram compilados pelo Dr.
-          <span class="censored">███████</span>, especialista em geometria analítica
-          do programa <span class="censored">███████</span>. Suas técnicas de 
-          cálculo vetorial são essenciais para missões de 
-          <span class="censored">interceptação e acoplamento</span>.
+          RELATÓRIO DE REVISÃO: PROJETO
+          <span class="censored">G-ANALYTICS</span> <br /><br />
+          Em alinhamento com as diretrizes de aprimoramento científico
+          estabelecidas após o <span class="censored">incidente orbital</span>,
+          esta compilação de exercícios tem como objetivo reforçar a
+          fundamentação de <span class="censored">geometria analítica</span> em
+          aplicações espaciais. <br /><br />
+          Os problemas aqui apresentados foram desenvolvidos por
+          <span class="censored">████████</span>, principal consultor
+          matemático, para auxílio em missões de
+          <span class="censored">interceptação e rastreio orbital</span>.
         </div>
 
         <div class="warning-box">
-          Este documento contém fórmulas matemáticas críticas para a segurança nacional.
-          A divulgação não autorizada deste material resultará em 
-          <span class="censored">acusação por traição</span> sob a Lei de Espionagem.
+          Conteúdo restrito ao nível de acesso designado. Qualquer divulgação
+          indevida resultará em <span class="censored">sanções severas</span>
+          conforme legislação vigente.
         </div>
 
         <div class="metadata">
-          <span>REF: GA-<span class="censored">2243</span>-R</span>
-          <span>NÍVEL DE ACESSO: OMEGA-<span class="censored">7</span></span>
-          <span>CÓPIAS EXISTENTES: <span class="censored">3</span> DE
-            <span class="censored">5</span></span>
+          <span>REF: GA-<span class="censored">889</span>-R</span>
+          <span>NÍVEL DE ACESSO: <span class="censored">SIGMA-4</span></span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">6</span></span>
         </div>
       </div>
+      <!-- FIM CABEÇALHO -->
+
+      <!-- SEÇÃO DE FUNDAMENTAÇÃO TEÓRICA -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: REVISÃO DE GEOMETRIA ANALÍTICA</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \text{Distância entre pontos }A(x_1, y_1, z_1) \text{ e } B(x_2, y_2, z_2) =
+          \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \]
+        </p>
+        <p>
+          Em geometria analítica no \(\mathbb{R}^3\), cada ponto é descrito por
+          suas coordenadas \((x,y,z)\). Vetores, retas, planos e relações entre
+          eles constituem a base para aplicações de orientação e navegação
+          espacial.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Este conteúdo fornece subsídios para o cálculo de trajetórias e
+        determinação de áreas, volumes e interseções no espaço — vitais para a
+        segurança e sucesso de missões que envolvem
+        <span class="censored">monitoramento orbital</span> e
+        <span class="censored">acoplamento de módulos</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A corrida espacial se intensificou após
+        o lançamento do Sputnik em 1957, evidenciando a necessidade de domínios
+        avançados de <span class="censored">geometria vetorial</span> para
+        cálculos de navegação e posicionamento.
+      </div>
+      <!-- FIM SEÇÃO TEÓRICA -->
 
       <main>
         <ol class="exercise-list">
@@ -56,43 +355,55 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
             <div class="context">
-              ORIGEM: Análise de Trajetória - Programa de Interceptação Orbital [CONFIDENCIAL]
+              ORIGEM: Análise de Trajetória - Programa de Interceptação Orbital
+              [CONFIDENCIAL]
             </div>
             <p>
-              Dado o vetor de velocidade \(\vec{v} = (3, 4, 0)\) e o vetor de referência \(\vec{u} = (1, 0, 0)\), encontre a decomposição de \(\vec{v}\) na direção de \(\vec{u}\).
+              Dado o vetor de velocidade \(\vec{v} = (3, 4, 0)\) e o vetor de
+              referência \(\vec{u} = (1, 0, 0)\), encontre a decomposição de
+              \(\vec{v}\) na direção de \(\vec{u}\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Utilize a projeção vetorial e o produto escalar para isolar componentes de velocidade.
-            </div>
+
+            <!-- Dica (ALFA => SIGMA-1) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as componentes sem
+                calcular diretamente.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE DECOMPOSIÇÃO VETORIAL:</p>
                 <p>
-                A projeção de \(\vec{v}\) sobre \(\vec{u}\) é dada por:
-                \[
-                \text{proj}_{\vec{u}}(\vec{v}) = \left(\frac{\vec{v}\cdot \vec{u}}{\vec{u}\cdot \vec{u}}\right)\vec{u}.
-                \]
-                </p>
-                <p>COMPUTAÇÃO:</p>
-                <p>
-                \(\vec{v}\cdot \vec{u} = 3 \times 1 + 4 \times 0 + 0 \times 0 = 3\)
-                <br>
-                \(\vec{u}\cdot \vec{u} = 1^2 + 0^2 + 0^2 = 1\)
-                <br>
-                Logo,
-                \[
-                \text{proj}_{\vec{u}}(\vec{v}) = (3)(1,0,0) = (3,0,0)
-                \]
-                </p>
-                <p>COMPONENTE ORTOGONAL:</p>
-                <p>
-                \[
-                \vec{v} - \text{proj}_{\vec{u}}(\vec{v}) = (3,4,0) - (3,0,0) = (0,4,0)
-                \]
+                  A projeção de \(\vec{v}\) sobre \(\vec{u}\) é dada por:
                 </p>
                 <p>
-                CONCLUSÃO: O vetor \(\vec{v} = (3,0,0) + (0,4,0)\), sendo \((3,0,0)\) a componente na direção do vetor de referência e \((0,4,0)\) a componente perpendicular.
+                  \[
+                  \text{proj}_{\vec{u}}(\vec{v}) 
+                  = \left(\frac{\vec{v}\cdot \vec{u}}{\vec{u}\cdot \vec{u}}\right)\vec{u}.
+                  \]
+                </p>
+                <p>
+                  Cálculo do produto escalar:
+                  \(\vec{v}\cdot \vec{u} = 3 \times 1 + 4 \times 0 = 3\)
+                  <br />
+                  \(\vec{u}\cdot \vec{u} = 1^2 + 0^2 = 1\)
+                </p>
+                <p>
+                  Logo,
+                  \[
+                  \text{proj}_{\vec{u}}(\vec{v}) = (3)(1,0,0) = (3,0,0).
+                  \]
+                </p>
+                <p>
+                  A componente ortogonal fica em
+                  \(\vec{v} - \text{proj}_{\vec{u}}(\vec{v}) = (3,4,0) - (3,0,0) = (0,4,0)\).
+                </p>
+                <p>
+                  Portanto, \(\vec{v} = (3,0,0) + (0,4,0)\).
                 </p>
               </div>
             </details>
@@ -102,32 +413,39 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
             <div class="context">
-              ORIGEM: Cálculos de Eficiência Energética - Projeto de Propulsão Avançada [CLASSIFICADO]
+              ORIGEM: Cálculos de Eficiência Energética - Projeto de Propulsão
+              Avançada [CLASSIFICADO]
             </div>
             <p>
-              Calcule o produto escalar entre \(\vec{a} = (2, -1, 1)\) e \(\vec{b} = (1, 1, 3)\).
+              Calcule o produto escalar entre
+              \(\vec{a} = (2, -1, 1)\) e \(\vec{b} = (1, 1, 3)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Produto escalar determina transferência de energia entre sistemas de propulsão.
-            </div>
+
+            <!-- Dica (ALFA => SIGMA-1) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as componentes sem
+                calcular diretamente.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PRODUTO ESCALAR:</p>
                 <p>
-                O produto escalar é calculado por:
-                \[
-                \vec{a} \cdot \vec{b} = (2)(1) + (-1)(1) + (1)(3)
-                \]
-                </p>
-                <p>COMPUTAÇÃO NUMÉRICA:</p>
-                <p>
-                \[
-                \vec{a} \cdot \vec{b} = 2 - 1 + 3 = 4
-                \]
+                  \(\vec{a} \cdot \vec{b} = (2)(1) + (-1)(1) + (1)(3)\)
                 </p>
                 <p>
-                CONCLUSÃO: Produto escalar = 4 [EFICIÊNCIA ENERGÉTICA CONFIRMADA]
+                  Cálculo numérico:
+                  \[
+                  2 - 1 + 3 = 4.
+                  \]
+                </p>
+                <p>
+                  Conclusão: O produto escalar vale 4, indicando interação
+                  energética significativa.
                 </p>
               </div>
             </details>
@@ -137,44 +455,44 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
             <div class="context">
-              ORIGEM: Análise de Forças Gravitacionais - Centro de Controle de Missão [RESTRITO]
+              ORIGEM: Análise de Forças Gravitacionais - Centro de Controle de
+              Missão [RESTRITO]
             </div>
             <p>
-              Calcule o produto vetorial \(\vec{v} \times \vec{w}\), onde \(\vec{v} = (1,2,3)\) e \(\vec{w} = (4,5,6)\).
+              Calcule o produto vetorial \(\vec{v} \times \vec{w}\), onde
+              \(\vec{v} = (1,2,3)\) e \(\vec{w} = (4,5,6)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Utilize determinante da matriz 3x3 para determinar a orientação espacial resultante.
-            </div>
+
+            <!-- Dica (ALFA => SIGMA-1) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar determinante e vetores
+                para obter a orientação resultante.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PRODUTO VETORIAL:</p>
                 <p>
-                \[
-                \vec{v} \times \vec{w} = 
-                \begin{vmatrix}
-                \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-                1 & 2 & 3 \\
-                4 & 5 & 6
-                \end{vmatrix}
-                \]
-                </p>
-                <p>COMPUTAÇÃO DETERMINANTE:</p>
-                <p>
-                \(\mathbf{i}\cdot(2\cdot6 - 3\cdot5) = \mathbf{i}(12 - 15) = -3\,\mathbf{i}\)
-                <br>
-                \(-\mathbf{j}\cdot(1\cdot6 - 3\cdot4) = -\mathbf{j}(6 - 12) = 6\,\mathbf{j}\)
-                <br>
-                \(\mathbf{k}\cdot(1\cdot5 - 2\cdot4) = \mathbf{k}(5 - 8) = -3\,\mathbf{k}\)
-                </p>
-                <p>RESULTADO:</p>
-                <p>
-                \[
-                \vec{v} \times \vec{w} = (-3, 6, -3)
-                \]
+                  \[
+                  \vec{v} \times \vec{w} =
+                  \begin{vmatrix}
+                    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+                    1 & 2 & 3 \\
+                    4 & 5 & 6
+                  \end{vmatrix}.
+                  \]
                 </p>
                 <p>
-                IMPLICAÇÃO PARA MISSÃO: Vetor normal ao plano formado por \(\vec{v}\) e \(\vec{w}\) [RELEVANTE PARA ORIENTAÇÃO ORBITAL]
+                  Expansão:
+                  \(-3\,\mathbf{i} + 6\,\mathbf{j} -3\,\mathbf{k}\)
+                </p>
+                <p>
+                  Resultado final:
+                  \(\vec{v} \times \vec{w} = (-3, 6, -3)\).
                 </p>
               </div>
             </details>
@@ -184,49 +502,53 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
             <div class="context">
-              ORIGEM: Cálculo de Superfícies Operacionais - Projeto de Módulo Lunar [ALTAMENTE CONFIDENCIAL]
+              ORIGEM: Cálculo de Superfícies Operacionais - Projeto de Módulo
+              Lunar [ALTAMENTE CONFIDENCIAL]
             </div>
             <p>
-              Dado dois vetores \(\vec{u}\) e \(\vec{v}\) no \(\mathbb{R}^3\), explique como encontrar a área de um triângulo formado por esses vetores. Em seguida, calcule a área para \(\vec{u} = (0,1,1)\) e \(\vec{v} = (1,1,0)\).
+              Dados dois vetores \(\vec{u}\) e \(\vec{v}\) em \(\mathbb{R}^3\),
+              explique como encontrar a área de um triângulo formado por esses
+              vetores. Em seguida, calcule a área para
+              \(\vec{u} = (0,1,1)\) e \(\vec{v} = (1,1,0)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Utilização crítica para cálculo de superfícies de pouso e estabilidade estrutural.
-            </div>
+
+            <!-- Dica (BETA => SIGMA-2) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de produtos vetoriais podem ser
+                relevantes.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE CÁLCULO DE ÁREA:</p>
                 <p>
-                A área do paralelogramo formado por \(\vec{u}\) e \(\vec{v}\) é \(\|\vec{u} \times \vec{v}\|\).
-                <br>
-                A área do triângulo é \(\frac{1}{2}\|\vec{u} \times \vec{v}\|\).
-                </p>
-                <p>COMPUTAÇÃO DO PRODUTO VETORIAL:</p>
-                <p>
-                \[
-                \vec{u} \times \vec{v} = 
-                \begin{vmatrix}
-                \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-                0 & 1 & 1 \\
-                1 & 1 & 0
-                \end{vmatrix}
-                = (-1, 1, -1)
-                \]
-                </p>
-                <p>CÁLCULO DA NORMA:</p>
-                <p>
-                \[
-                \|\vec{u} \times \vec{v}\| = \sqrt{(-1)^2 + 1^2 + (-1)^2} = \sqrt{3}
-                \]
-                </p>
-                <p>ÁREA DO TRIÂNGULO:</p>
-                <p>
-                \[
-                \text{Área} = \frac{1}{2} \sqrt{3}
-                \]
+                  A área do paralelogramo formado é
+                  \(\|\vec{u} \times \vec{v}\|\).
+                  <br />
+                  A área do triângulo será metade disso.
                 </p>
                 <p>
-                RELEVÂNCIA OPERACIONAL: Área de \(\frac{\sqrt{3}}{2}\) unidades quadradas [COMPATÍVEL COM PARÂMETROS DE ESTABILIDADE]
+                  \[
+                  \vec{u} \times \vec{v} =
+                  \begin{vmatrix}
+                    \mathbf{i} & \mathbf{j} & \mathbf{k} \\
+                    0 & 1 & 1 \\
+                    1 & 1 & 0
+                  \end{vmatrix}
+                  = (-1, 1, -1).
+                  \]
+                </p>
+                <p>
+                  \(\|\vec{u} \times \vec{v}\| = \sqrt{(-1)^2 + 1^2 + (-1)^2} =
+                  \sqrt{3}\).
+                </p>
+                <p>
+                  Logo, a área do triângulo é
+                  \(\frac{1}{2}\sqrt{3}\).
                 </p>
               </div>
             </details>
@@ -239,529 +561,350 @@
               ORIGEM: Cálculos Volumétricos - Projeto de Estação Orbital [SECRETO]
             </div>
             <p>
-              Considere três vetores \(\vec{a} = (1,2,3)\), \(\vec{b} = (0,1,1)\) e \(\vec{c} = (2,0,1)\). Calcule o volume do paralelepípedo formado por \(\vec{a}, \vec{b}, \vec{c}\).
+              Considere três vetores
+              \(\vec{a} = (1,2,3)\), \(\vec{b} = (0,1,1)\) e
+              \(\vec{c} = (2,0,1)\). Calcule o volume do paralelepípedo formado
+              por \(\vec{a}, \vec{b}, \vec{c}\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Produto misto essencial para cálculos de volume em ambiente de microgravidade.
-            </div>
+
+            <!-- Dica (BETA => SIGMA-2) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de determinantes em produtos mistos.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PRODUTO MISTO:</p>
                 <p>
-                Volume = \(|\vec{a} \cdot (\vec{b} \times \vec{c})|\)
-                </p>
-                <p>PASSO 1 - PRODUTO VETORIAL:</p>
-                <p>
-                \[
-                \vec{b} \times \vec{c} = 
-                \begin{vmatrix}
-                \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-                0 & 1 & 1 \\
-                2 & 0 & 1
-                \end{vmatrix}
-                = (1, 2, -2)
-                \]
-                </p>
-                <p>PASSO 2 - PRODUTO MISTO:</p>
-                <p>
-                \[
-                \vec{a}\cdot(\vec{b}\times \vec{c}) = (1,2,3)\cdot(1, 2, -2) = 1 + 4 - 6 = -1
-                \]
-                </p>
-                <p>VOLUME CALCULADO:</p>
-                <p>
-                \[
-                V = |-1| = 1
-                \]
+                  Volume = \(|\vec{a} \cdot (\vec{b} \times \vec{c})|\).
                 </p>
                 <p>
-                CONCLUSÃO: Volume = 1 unidade cúbica [DENTRO DOS PARÂMETROS DE DESENHO]
+                  \(\vec{b} \times \vec{c}\) resulta em \((1, 2, -2)\).
+                </p>
+                <p>
+                  \(\vec{a}\cdot(\vec{b}\times \vec{c}) =
+                  (1,2,3)\cdot(1,2,-2) = 1 + 4 - 6 = -1\).
+                </p>
+                <p>
+                  Volume = \(|-1| = 1\).
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 6 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
             <div class="context">
-              ORIGEM: Navegação Espacial - Divisão de Rendezvous Orbital [CONFIDENCIAL]
+              ORIGEM: Navegação Espacial - Divisão de Rendezvous Orbital
+              [CONFIDENCIAL]
             </div>
             <p>
-              Sejam três pontos no \(\mathbb{R}^3\): \(A(1,2,3)\), \(B(2,3,4)\) e \(C(0,1,1)\). Determine a equação do plano que passa por esses três pontos.
+              Sejam três pontos no \(\mathbb{R}^3\): \(A(1,2,3)\),
+              \(B(2,3,4)\) e \(C(0,1,1)\). Determine a equação do plano que passa
+              por esses três pontos.
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Crucial para determinar planos de interceptação e superfícies de aproximação.
-            </div>
+
+            <!-- Dica (BETA => SIGMA-2) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de vetores normais obtidos por
+                produto vetorial.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE DETERMINAÇÃO DE PLANO:</p>
                 <p>
-                Obter vetores diretores e vetor normal através de produto vetorial.
-                </p>
-                <p>PASSO 1 - VETORES DIRETORES:</p>
-                <p>
-                \(\overrightarrow{AB} = (2-1,3-2,4-3) = (1,1,1)\)
-                <br>
-                \(\overrightarrow{AC} = (0-1,1-2,1-3) = (-1,-1,-2)\)
-                </p>
-                <p>PASSO 2 - VETOR NORMAL:</p>
-                <p>
-                \[
-                \overrightarrow{n} = \overrightarrow{AB} \times \overrightarrow{AC} = 
-                \begin{vmatrix}
-                \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-                1 & 1 & 1 \\
-                -1 & -1 & -2
-                \end{vmatrix}
-                = (-1, 1, 0)
-                \]
-                </p>
-                <p>PASSO 3 - EQUAÇÃO DO PLANO:</p>
-                <p>
-                \[
-                -1(x - 1) + 1(y - 2) + 0(z - 3) = 0
-                \]
-                Simplificando:
-                \[
-                -x + 1 + y - 2 = 0 \quad \Rightarrow \quad -x + y - 1 = 0
-                \]
-                </p>
-                <p>FORMA CARTESIANA:</p>
-                <p>
-                \[
-                x - y + 1 = 0
-                \]
+                  Vetores diretores:
+                  \(\overrightarrow{AB} = (1,1,1)\),
+                  \(\overrightarrow{AC} = (-1,-1,-2)\).
                 </p>
                 <p>
-                IMPORTÂNCIA OPERACIONAL: Plano determina zona de interceptação para operações de acoplamento
+                  Vetor normal:
+                  \(\overrightarrow{n} = \overrightarrow{AB} \times \overrightarrow{AC} = (-1, 1, 0)\).
+                </p>
+                <p>
+                  Equação do plano (usando o ponto A):
+                  \[
+                  -1(x - 1) + 1(y - 2) + 0(z - 3) = 0
+                  \]
+                  \(\Rightarrow x - y + 1 = 0\).
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 7 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
             <div class="context">
-              ORIGEM: Trajetórias de Interceptação - Centro de Comando da Força Espacial [RESERVADO]
+              ORIGEM: Trajetórias de Interceptação - Centro de Comando da Força
+              Espacial [RESERVADO]
             </div>
             <p>
-              Dado dois pontos no \(\mathbb{R}^3\): \(P(1,0,2)\) e \(Q(2,3,4)\), encontre a equação vetorial da reta que passa por eles.
+              Dado dois pontos no \(\mathbb{R}^3\): \(P(1,0,2)\) e \(Q(2,3,4)\),
+              encontre a equação vetorial da reta que passa por eles.
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Aplicação direta para cálculo de trajetórias balísticas e interceptações.
-            </div>
+
+            <!-- Dica (GAMMA => SIGMA-3) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema de
+                coordenadas.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE DETERMINAÇÃO DE RETA:</p>
-                <p>PASSO 1 - VETOR DIREÇÃO:</p>
                 <p>
-                \(\vec{d} = \overrightarrow{PQ} = (2-1,3-0,4-2) = (1,3,2)\)
-                </p>
-                <p>PASSO 2 - EQUAÇÃO VETORIAL:</p>
-                <p>
-                \[
-                \vec{r}(t) = (1,0,2) + t(1,3,2)
-                \]
-                </p>
-                <p>FORMA PARAMÉTRICA:</p>
-                <p>
-                \[
-                \begin{cases}
-                x = 1 + t \\
-                y = 0 + 3t \\
-                z = 2 + 2t
-                \end{cases}
-                \]
+                  Vetor direção: \(\vec{d} = \overrightarrow{PQ} = (1,3,2)\).
                 </p>
                 <p>
-                APLICAÇÃO TÁCTICA: Determina trajetória precisa para operações de longo alcance
+                  Equação vetorial:
+                  \[
+                  \vec{r}(t) = (1,0,2) + t(1,3,2).
+                  \]
+                </p>
+                <p>
+                  Forma paramétrica:
+                  \[
+                  \begin{cases}
+                  x = 1 + t \\
+                  y = 3t \\
+                  z = 2 + 2t
+                  \end{cases}
+                  \]
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 8 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
             <div class="context">
-              ORIGEM: Navegação Anti-satélite - Programa de Defesa Estratégica [ALTAMENTE RESTRITO]
+              ORIGEM: Navegação Anti-satélite - Programa de Defesa Estratégica
+              [ALTAMENTE RESTRITO]
             </div>
             <p>
-              Encontre a reta paralela ao vetor \(\vec{v}=(2,4,1)\) que passa pelo ponto \((0,0,0)\).
+              Encontre a reta paralela ao vetor \(\vec{v}=(2,4,1)\) que passa
+              pelo ponto \((0,0,0)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determinação de trajetórias em coordenadas absolutas a partir da origem.
-            </div>
+
+            <!-- Dica (GAMMA => SIGMA-3) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Procure invariantes sob variação de parâmetros.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE RETA A PARTIR DA ORIGEM:</p>
                 <p>
-                Para uma reta paralela a \(\vec{v} = (2,4,1)\) passando por \((0,0,0)\), a equação vetorial é:
+                  \(\vec{r}(t) = (0,0,0) + t(2,4,1)\).
                 </p>
                 <p>
-                \[
-                \vec{r}(t) = (0,0,0) + t(2,4,1)
-                \]
-                </p>
-                <p>FORMA PARAMÉTRICA:</p>
-                <p>
-                \[
-                \begin{cases}
-                x = 2t \\
-                y = 4t \\
-                z = t
-                \end{cases}
-                \]
-                </p>
-                <p>
-                RELEVÂNCIA ESTRATÉGICA: Trajetória de interceptação determina vetor de aproximação primário
+                  Forma paramétrica:
+                  \[
+                  \begin{cases}
+                  x = 2t, \\
+                  y = 4t, \\
+                  z = t.
+                  \end{cases}
+                  \]
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 9 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-5A</div>
             <div class="context">
-              ORIGEM: Orientação Espacial - Projeto de Satélites de Reconhecimento [SECRETO]
+              ORIGEM: Orientação Espacial - Projeto de Satélites de
+              Reconhecimento [SECRETO]
             </div>
             <p>
-              Considere dois vetores \(\vec{u}=(1,2,0)\) e \(\vec{v}=(0,1,2)\). Escreva a equação de um plano paralelo a \(\vec{u}\) e \(\vec{v}\) que passe pelo ponto \((1,1,1)\).
+              Considere dois vetores \(\vec{u}=(1,2,0)\) e \(\vec{v}=(0,1,2)\).
+              Escreva a equação de um plano paralelo a \(\vec{u}\) e \(\vec{v}\)
+              que passe pelo ponto \((1,1,1)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determinação de planos de orientação para sistemas de imageamento orbital.
-            </div>
+
+            <!-- Dica (GAMMA => SIGMA-3) -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Podem existir simetrias ocultas nas direções
+                impostas pelos vetores.
+              </div>
+            </details>
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PLANO PARALELO A DOIS VETORES:</p>
-                <p>PASSO 1 - VETOR NORMAL:</p>
                 <p>
-                \[
-                \vec{n} = \vec{u}\times \vec{v} = 
-                \begin{vmatrix}
-                \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-                1 & 2 & 0 \\
-                0 & 1 & 2
-                \end{vmatrix}
-                = (4, -2, 1)
-                \]
-                </p>
-                <p>PASSO 2 - EQUAÇÃO DO PLANO:</p>
-                <p>
-                \[
-                4(x-1) -2(y-1) + 1(z-1) = 0
-                \]
-                Simplificando:
-                \[
-                4x - 4 -2y + 2 + z - 1 = 0 \quad \Rightarrow \quad 4x - 2y + z - 3 = 0
-                \]
+                  Vetor normal:
+                  \(\vec{n} = \vec{u}\times \vec{v} =
+                  (4, -2, 1)\).
                 </p>
                 <p>
-                APLICAÇÃO OPERACIONAL: Plano determina orientação ótima para sensores de alta resolução
+                  Equação do plano (usando ponto \((1,1,1)\)):
+                  \[
+                  4(x-1) -2(y-1) + 1(z-1) = 0 \implies
+                  4x - 2y + z - 3 = 0.
+                  \]
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 10 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-5B</div>
             <div class="context">
-              ORIGEM: Interseção de Órbitas - Programa de Encontro Espacial [CLASSIFICADO]
+              ORIGEM: Interseção de Órbitas - Programa de Encontro Espacial
+              [CLASSIFICADO]
             </div>
             <p>
               Escreva a forma paramétrica da reta que é interseção dos planos
               \[
-              \begin{cases}
-              x + y + z = 2 \\
-              2x - y + 3z = 5
-              \end{cases}
+                \begin{cases}
+                  x + y + z = 2 \\
+                  2x - y + 3z = 5
+                \end{cases}
               \]
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determinação de órbitas de interseção para operações de acoplamento.
-            </div>
+
+            <!-- Série OMEGA (ex. 10-12) => sem dica -->
+            
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE INTERSEÇÃO DE PLANOS:</p>
-                <p>PASSO 1 - PARAMETRIZAÇÃO:</p>
                 <p>
-                Atribuindo \(t = z\) para parametrizar:
-                <br>
-                Da primeira equação: \(x + y = 2 - t\)
-                <br>
-                Da segunda equação: \(2x - y + 3t = 5\)
-                </p>
-                <p>PASSO 2 - RESOLUÇÃO DO SISTEMA:</p>
-                <p>
-                Somando as equações:
-                \[
-                (x + y) + (2x - y) = (2 - t) + (5 - 3t)
-                \]
-                \[
-                3x = 7 - 4t \quad \Rightarrow \quad x = \frac{7 - 4t}{3}
-                \]
-                <br>
-                Substituindo para encontrar \(y\):
-                \[
-                y = 2 - t - \frac{7 - 4t}{3} = \frac{-1 + t}{3}
-                \]
-                </p>
-                <p>FORMA PARAMÉTRICA FINAL:</p>
-                <p>
-                \[
-                \begin{cases}
-                x = \frac{7}{3} - \frac{4}{3}t \\
-                y = -\frac{1}{3} + \frac{1}{3}t \\
-                z = t
-                \end{cases}
-                \]
-                <br>
-                Ou em forma vetorial:
-                \[
-                (x,y,z) = \left(\frac{7}{3}, -\frac{1}{3}, 0\right) + t\left(-\frac{4}{3}, \frac{1}{3}, 1\right)
-                \]
+                  Atribua \(t = z\). Da primeira equação: \(x + y = 2 - t\). Da
+                  segunda: \(2x - y + 3t = 5\).
                 </p>
                 <p>
-                RELEVÂNCIA PARA MISSÃO: Reta determina trajetória única de interseção para janela de acoplamento
+                  Somando:
+                  \(\,3x = 7 - 4t \implies x = \frac{7-4t}{3}\).
+                  <br />
+                  Então
+                  \(y = 2 - t - \frac{7-4t}{3} = \frac{-1 + t}{3}\).
+                </p>
+                <p>
+                  Forma paramétrica final:
+                  \[
+                    \begin{cases}
+                      x = \frac{7}{3} - \frac{4}{3}t,\\
+                      y = -\frac{1}{3} + \frac{1}{3}t,\\
+                      z = t.
+                    \end{cases}
+                  \]
                 </p>
               </div>
             </details>
           </li>
-          
+
           <!-- EXERCÍCIO 11 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-6A</div>
             <div class="context">
-              ORIGEM: Validação de Trajetórias - Divisão de Controle de Missão [RESTRITO]
+              ORIGEM: Validação de Trajetórias - Divisão de Controle de Missão
+              [RESTRITO]
             </div>
             <p>
               Determine se a reta
-              \[
-              \vec{r}(t) = (1,1,0) + t(1,2,3)
-              \]
-              está contida no plano \(x + 2y - z = 3\).
+              \(\vec{r}(t) = (1,1,0) + t(1,2,3)\)
+              está contida no plano
+              \(x + 2y - z = 3\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Verificação crítica para validação de janelas de lançamento e interceptação.
-            </div>
+
+            <!-- Série OMEGA => sem dica -->
+            
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PERTINÊNCIA:</p>
-                <p>PASSO 1 - SUBSTITUIÇÃO:</p>
                 <p>
-                Substituindo \(x=1+t\), \(y=1+2t\), \(z=0+3t\) na equação do plano:
-                \[
-                (1 + t) + 2(1 + 2t) - (3t) = 3
-                \]
-                </p>
-                <p>PASSO 2 - SIMPLIFICAÇÃO:</p>
-                <p>
-                \[
-                1 + t + 2 + 4t - 3t = 3
-                \]
-                \[
-                3 + 2t = 3
-                \]
-                \[
-                2t = 0 \quad \Rightarrow \quad t = 0
-                \]
-                </p>
-                <p>ANÁLISE DE RESULTADO:</p>
-                <p>
-                Apenas o ponto correspondente a \(t=0\) (que é \((1,1,0)\)) está no plano. Para qualquer outro valor de \(t\), a equação não se satisfaz.
+                  Substituindo \(x=1+t\), \(y=1+2t\), \(z=3t\) na equação do
+                  plano: \((1+t) + 2(1+2t) - (3t) = 3\).
                 </p>
                 <p>
-                CONCLUSÃO OPERACIONAL: A reta NÃO está contida no plano. Apenas o ponto \((1,1,0)\) pertence ao plano [NECESSÁRIA CORREÇÃO DE TRAJETÓRIA]
+                  Simplificando: \(1 + t + 2 + 4t - 3t = 3 \implies 3 + 2t = 3
+                  \implies t = 0\).
+                </p>
+                <p>
+                  Apenas \(t=0\) satisfaz a equação, logo apenas o ponto
+                  \((1,1,0)\) pertence ao plano. A reta completa não está
+                  contida no plano.
                 </p>
               </div>
             </details>
           </li>
-          
-          <!-- Mais exercícios continuariam aqui -->
-          <!-- Adicionarei mais alguns para exemplificar, mas não todos os 22 para não tornar a resposta excessivamente longa -->
-          
+
           <!-- EXERCÍCIO 12 -->
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-6B</div>
             <div class="context">
-              ORIGEM: Orientação de Antenas - Projeto de Comunicação Espacial [CONFIDENCIAL]
+              ORIGEM: Orientação de Antenas - Projeto de Comunicação Espacial
+              [CONFIDENCIAL]
             </div>
             <p>
-              Encontre a equação do plano que passa pelos pontos \(A(0,0,0)\), \(B(1,0,0)\) e é perpendicular ao vetor \((0,1,1)\).
+              Encontre a equação do plano que passa pelos pontos \(A(0,0,0)\),
+              \(B(1,0,0)\) e é perpendicular ao vetor \((0,1,1)\).
             </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determinação de orientação ideal para antenas de comunicação de longo alcance.
-            </div>
+
+            <!-- Série OMEGA => sem dica -->
+
             <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>PROTOCOLO DE PLANO PERPENDICULAR:</p>
                 <p>
-                Se o plano é perpendicular ao vetor \((0,1,1)\), então este é o vetor normal do plano.
-                </p>
-                <p>EQUAÇÃO DO PLANO:</p>
-                <p>
-                \[
-                0(x - x_0) + 1(y - y_0) + 1(z - z_0) = 0
-                \]
-                Usando o ponto \(A(0,0,0)\) como referência:
-                \[
-                0(x - 0) + 1(y - 0) + 1(z - 0) = 0 \quad \Rightarrow \quad y + z = 0
-                \]
-                </p>
-                <p>VERIFICAÇÃO:</p>
-                <p>
-                Para \(B(1,0,0)\): \(y=0\) e \(z=0\) satisfazem \(0 + 0 = 0\). Confirmado.
+                  Se o plano é perpendicular a \((0,1,1)\), então este é o seu
+                  vetor normal.
                 </p>
                 <p>
-                CONCLUSÃO: A equação do plano é \(y + z = 0\)
+                  Equação do plano usando o ponto \(A(0,0,0)\):
+                  \[
+                  0(x - 0) + 1(y - 0) + 1(z - 0) = 0
+                  \quad\Rightarrow\quad y + z = 0.
+                  \]
                 </p>
                 <p>
-                APLICAÇÃO: Plano determina ângulo crítico para comunicação sem interferência
+                  Verificação com \(B(1,0,0)\): atende \(y=0\) e \(z=0\). Logo,
+                  plano confirmado.
                 </p>
               </div>
             </details>
           </li>
-          
-          <!-- EXERCÍCIO 13 -->
-          <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO VECTOR-7A</div>
-            <div class="context">
-              ORIGEM: Interseção de Trajetórias - Programa de Encontro Orbital [RESTRITO]
-            </div>
-            <p>
-              Verifique se a reta
-              \[
-              \begin{cases}
-              x = 2t \\
-              y = -t \\
-              z = 1 + 3t
-              \end{cases}
-              \]
-              intersecta o plano \(2x - y + 3z = 10\). Se sim, encontre o ponto de interseção.
-            </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determinação de pontos de interseção é crítica para operações de encontro espacial.
-            </div>
-            <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
-              <div class="solution">
-                <p>PROTOCOLO DE INTERSEÇÃO RETA-PLANO:</p>
-                <p>PASSO 1 - SUBSTITUIÇÃO:</p>
-                <p>
-                Substituindo \(x=2t\), \(y=-t\), \(z=1+3t\) na equação do plano:
-                \[
-                2(2t) - (-t) + 3(1+3t) = 10
-                \]
-                </p>
-                <p>PASSO 2 - RESOLUÇÃO:</p>
-                <p>
-                \[
-                4t + t + 3 + 9t = 10
-                \]
-                \[
-                14t + 3 = 10 \quad \Rightarrow \quad 14t = 7 \quad \Rightarrow \quad t = \frac{1}{2}
-                \]
-                </p>
-                <p>PASSO 3 - CÁLCULO DO PONTO:</p>
-                <p>
-                Para \(t=\frac{1}{2}\):
-                \[
-                x = 2\left(\frac{1}{2}\right) = 1
-                \]
-                \[
-                y = -\frac{1}{2}
-                \]
-                \[
-                z = 1 + 3\left(\frac{1}{2}\right) = 1 + 1.5 = 2.5
-                \]
-                </p>
-                <p>
-                CONCLUSÃO: Ponto de interseção = \(\left(1, -\frac{1}{2}, 2.5\right)\) [COORDENADAS DE ENCONTRO CONFIRMADAS]
-                </p>
-              </div>
-            </details>
-          </li>
-          
-          <!-- EXERCÍCIO 14 -->
-          <li class="exercise-item">
-            <div class="exercise-number">EXERCÍCIO VECTOR-7B</div>
-            <div class="context">
-              ORIGEM: Determinação de Segurança Orbital - Divisão de Controle de Colisões [SECRETO]
-            </div>
-            <p>
-              Calcule a distância do ponto \(P(1,2,3)\) ao plano \(3x + 4y + 12z = 24\).
-            </p>
-            <div class="hint">
-              [NOTA TÉCNICA]: Determina margens de segurança para aproximações orbitais.
-            </div>
-            <details>
-              <summary>RELATÓRIO DE CÁLCULO [OMEGA-7 REQUERIDO]</summary>
-              <div class="solution">
-                <p>PROTOCOLO DE DISTÂNCIA PONTO-PLANO:</p>
-                <p>
-                Fórmula aplicável: 
-                \[
-                d = \frac{|ax_0 + by_0 + cz_0 - d|}{\sqrt{a^2+b^2+c^2}}
-                \]
-                </p>
-                <p>SUBSTITUIÇÃO:</p>
-                <p>
-                \[
-                d = \frac{|3\cdot1 + 4\cdot2 + 12\cdot3 - 24|}{\sqrt{3^2 + 4^2 + 12^2}}
-                \]
-                </p>
-                <p>CÁLCULO NUMÉRICO:</p>
-                <p>
-                Numerador: \(|3 + 8 + 36 - 24| = |23| = 23\)
-                <br>
-                Denominador: \(\sqrt{9 + 16 + 144} = \sqrt{169} = 13\)
-                </p>
-                <p>RESULTADO FINAL:</p>
-                <p>
-                \[
-                d = \frac{23}{13}
-                \]
-                </p>
-                <p>
-                IMPLICAÇÃO PARA SEGURANÇA: Distância de \(\frac{23}{13}\) unidades [DENTRO DA ZONA DE SEGURANÇA]
-                </p>
-              </div>
-            </details>
-          </li>
-          
-          <!-- Completaria com os exercícios restantes seguindo o mesmo padrão -->
-
         </ol>
       </main>
 
+      <!-- RODAPÉ -->
       <div class="page-number">
-        PÁGINA 1 DE <span class="censored">7</span> • DOCUMENTO GA-<span class="censored">2243</span>-R
+        PÁGINA 1 DE <span class="censored">3</span> • DOCUMENTO GA-<span
+          class="censored"
+          >889</span
+        >-R
       </div>
+      <div class="footer-stamp">ULTRASSECRETO</div>
     </div>
-
-    <script>
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [['\\(', '\\)']],
-          displayMath: [['\\[', '\\]']],
-          processEscapes: true,
-        },
-        'HTML-CSS': {
-          color: '#d4af37',
-        },
-      });
-    </script>
   </body>
 </html>
