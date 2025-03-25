@@ -96,6 +96,8 @@ Para embarcar nesta jornada, os viajantes devem estar familiarizados com:
 
 _Em breve_
 
+[Roleta](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/roleta.html)
+
 ---
 
 _"A matemática é a chave para desvendar os mistérios do cosmos." - Richard Feynman_
