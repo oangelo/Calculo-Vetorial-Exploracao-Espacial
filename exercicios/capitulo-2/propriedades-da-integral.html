@@ -1,23 +1,823 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propriedades da integral - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Propriedades da integral</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE MARÇO DE
+          <span class="censored">1966</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">CENTRO GEMINI</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">INTEGRAL-DUPLA</span> <br /><br />
+          Em meio às estratégias de voo e manobras orbitais do
+          <span class="censored">Programa Gemini</span>, nossas equipes
+          deparam-se com a necessidade de refinar o entendimento das
+          propriedades fundamentais de integrais de funções em duas variáveis.
+          Este documento compila exercícios essenciais para consolidar tais
+          conceitos.
+        </div>
+
+        <div class="warning-box">
+          Este material contém informações vitais ao desenvolvimento de
+          <span class="censored">tecnologias orbitais</span>. Qualquer
+          divulgação não autorizada acarretará
+          <span class="censored">sanções imediatas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2057</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DUPLAS</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iint_{D} f(x,y)\, dA\]
+        </p>
+        <p>
+          Uma integral dupla é definida como o limite de somas de Riemann de
+          \(f(x,y)\) sobre pequenas subdivisões de uma região \(D\subset
+          \mathbb{R}^2\). Em sua forma básica, sem o Teorema de Fubini,
+          consideramos apenas suas propriedades gerais (linearidade, aditividade
+          e positividade) sem efetuar cálculos explícitos de áreas ou volumes.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        As integrais duplas fornecem subsídios para o controle de
+        <span class="censored">distribuições de massa</span> em projetos de
+        foguetes e para o estudo de
+        <span class="censored">fluxos de propelente</span>, cruciais na fase de
+        injeção orbital. Durante o
+        <span class="censored">Programa Gemini</span>, engenheiros e
+        matemáticos ajustaram tanques e módulos de serviço embasados em tais
+        conceitos.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em 1965, a NASA lançou o
+        <span class="censored">veículo tripulado</span> do Programa Gemini,
+        viabilizando encontros e acoplamentos em órbita — elementos críticos
+        para futuras missões lunares. A compreensão das integrais múltiplas
+        desempenhou um papel fundamental na análise de cargas e trajetórias
+        desses voos.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+
+          <!-- ========================== SÉRIE ALFA (1 a 3) ========================== -->
+          <!-- 1A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Dados de Laboratório - Projeto de Cargas (MAR/1966)
+            </div>
+            <p>
+              Considere duas funções \(f(x,y)\) e \(g(x,y)\) definidas numa
+              região <span class="censored">D</span>. Verifique se a seguinte
+              propriedade de aditividade é válida:
+            </p>
+            <p>
+              \[\iint_D \bigl(f(x,y) + g(x,y)\bigr)\, dA \stackrel{?}{=} \iint_D f(x,y)\, dA \;+\; \iint_D g(x,y)\, dA.\]
+            </p>
+            <p>
+              Julgue a legitimidade dessa operação sem recorrer ao cálculo
+              efetivo das integrais.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere as definições iniciais de somas de
+                Riemann e como elas se somam ao juntar termos.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A integral dupla possui a propriedade de linearidade em
+                  relação à soma de funções. Dessa forma, é
+                  <strong>válido</strong> escrever
+                  \(\iint_D (f+g) = \iint_D f + \iint_D g\), pois, na definição
+                  de soma de Riemann, os valores de \(f\) e \(g\) se
+                  adicionam parcela a parcela.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 1B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Simulação Computacional - Centro de Controle
+              <span class="censored">Gemini</span> (MAR/1966)
+            </div>
+            <p>
+              Para uma constante real \(c\) e uma função
+              <span class="censored">h(x,y)</span> definida na região de
+              estudo, avalie se:
+            </p>
+            <p>
+              \[\iint_D \bigl(c\,h(x,y)\bigr)\, dA \stackrel{?}{=} c \;\iint_D h(x,y)\, dA.\]
+            </p>
+            <p>
+              Explique por que (ou se) o fator constante pode ser destacado da
+              integral.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a soma de Riemann e o efeito de um
+                fator constante em cada parcela.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Assim como ocorre em integrais simples, a presença de uma
+                  constante multiplicativa em \(h(x,y)\) faz com que cada termo
+                  na soma de Riemann seja multiplicado por \(c\). Logo, o
+                  resultado final é \(c\) vezes a soma original. Portanto, a
+                  propriedade é <strong>válida</strong>.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 1C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Revisão Teórica Interna (SEÇÃO DE ANÁLISE) - MAR/1966
+            </div>
+            <p>
+              Uma função \(\phi(x,y)\) assume valor zero em toda a região
+              <span class="censored">D</span>. Verificar se a seguinte
+              proposição faz sentido sem qualquer integração explícita:
+            </p>
+            <p>
+              \[\iint_D \phi(x,y)\, dA = 0.\]
+            </p>
+            <p>
+              Discuta brevemente por que a integral de uma função nula deve ser
+              nula.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre-se de que cada parcela na soma de Riemann
+                seria zero.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(\phi(x,y) = 0\) para todo ponto de \(D\), cada valor
+                  tomado nas subdivisões também é zero, tornando a soma de
+                  Riemann nula. Portanto, a integral resultante também é
+                  <strong>zero</strong>.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ========================== SÉRIE BETA (4 a 6) ========================== -->
+          <!-- 2A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Equipe de Propulsão - Levantamento de Parâmetros (ABR/1966)
+            </div>
+            <p>
+              Se \(f(x,y)\ge 0\) para todos os \((x,y)\) em
+              <span class="censored">D</span>, discuta a validade da sentença:
+            </p>
+            <p>
+              \[\iint_D f(x,y)\, dA \;\ge\; 0.\]
+            </p>
+            <p>
+              Justifique sem computar a integral, apenas analisando a natureza
+              dos valores de \(f\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de funções não negativas podem
+                indicar algo sobre a soma total.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada termo na soma de Riemann que define a integral é
+                  não-negativo, pois \(f(x,y) \ge 0\). Somar valores não
+                  negativos só pode resultar em um valor final
+                  <strong>não-negativo</strong>. Assim, a integral não pode ser
+                  negativa.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 2B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Projeto de Tanque de Combustível - Seção Aeroespacial
+              (ABR/1966)
+            </div>
+            <p>
+              Suponha que a região <span class="censored">D</span> possa ser
+              dividida em duas sub-regiões disjuntas \(D_1\) e \(D_2\). Avalie
+              se:
+            </p>
+            <p>
+              \[\iint_D f(x,y)\, dA \;=\; \iint_{D_1} f(x,y)\, dA + \iint_{D_2} f(x,y)\, dA.\]
+            </p>
+            <p>
+              Nenhum método de integração deve ser usado; apenas discuta a
+              consistência lógica da operação.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de decomposição do domínio podem
+                ser relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(D_1\) e \(D_2\) formam uma partição exata de \(D\),
+                  então as somas de Riemann em \(D\) podem ser vistas como
+                  combinações das somas em \(D_1\) e \(D_2\). Dessa forma, a
+                  integral sobre \(D\) é <strong>a soma</strong> das integrais
+                  sobre as partes.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 2C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Equipe de Ensaios Estruturais (ABR/1966)
+            </div>
+            <p>
+              Analise a afirmação:
+              \[\iint_D 1\, dA = \text{(área de D)}.\]
+              Explique se essa identidade faz ou não sentido no âmbito das
+              propriedades gerais da integral dupla.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integrais constantes podem
+                esclarecer a relação com a área.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A integral de 1 sobre uma região \(D\) corresponde, na soma de
+                  Riemann, a somar "1" em cada subdivisão, multiplicado pela
+                  área de cada parcela. Ao somar tudo, obtém-se
+                  <strong>exatamente</strong> a área total de \(D\). Portanto, a
+                  afirmação é válida.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ========================== SÉRIE GAMMA (7 a 9) ========================== -->
+          <!-- 3A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Simulação de Pressão - Módulo Lateral (MAI/1966)
+            </div>
+            <p>
+              Suponha \(f(x,y) \ge g(x,y)\) em todo ponto de
+              <span class="censored">D</span>. Discuta a validade de
+            </p>
+            <p>
+              \[\iint_D f(x,y)\, dA \;\ge\; \iint_D g(x,y)\, dA,\]
+            </p>
+            <p>
+              levando em conta apenas a comparação pontual entre as funções e a
+              definição básica da integral dupla.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes quando consideramos partes que se
+                sobrepõem ponto a ponto.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(f(x,y)\) é sempre maior ou igual que \(g(x,y)\), então as
+                  somas de Riemann geradas por \(f\) serão, parcela a parcela,
+                  maiores ou iguais que as geradas por \(g\). Portanto, a
+                  integral de \(f\) será maior ou igual que a de \(g\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 3B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Análise de Restrições Térmicas (MAI/1966)
+            </div>
+            <p>
+              Considere \(|f(x,y)| \le M\) para todo \((x,y)\) em
+              <span class="censored">D</span>, onde \(M\) é uma constante
+              positiva. Explique como tal limitação pode influenciar a
+              integrabilidade de \(f\) e a possível finitude do valor de
+              \(\iint_D f(x,y)\, dA\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A existência de um limite superior costuma
+                indicar algo sobre somas de Riemann.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(|f|\) é limitado por \(M\), cada parcela na soma de
+                  Riemann é controlada pelo produto de \(M\) com a área da
+                  subdivisão. Dessa forma, a integral não se "explode" e tende a
+                  ser <strong>finita</strong>, pois \(|f|\) não cresce
+                  indefinidamente.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 3C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Seção de Modelagem Numérica - Dados Experenciais (JUN/1966)
+            </div>
+            <p>
+              Se duas funções \(f\) e \(g\) diferem apenas em um conjunto de
+              pontos de medida nula (ou seja, em um conjunto "muito pequeno"
+              dentro de <span class="censored">D</span>), discuta a validade de
+            </p>
+            <p>
+              \[\iint_D f(x,y)\, dA = \iint_D g(x,y)\, dA.\]
+            </p>
+            <p>
+              Aborde a noção de que valores em um conjunto de "massa zero" não
+              afetam o resultado total.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem pequenas parcelas que não alteram a soma
+                total.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A definição de integral dupla admite que diferenças em
+                  conjuntos de medida zero não alteram o valor final. As somas
+                  de Riemann em tais pontos são desprezíveis, garantindo que a
+                  integral de \(f\) seja <strong>igual</strong> à de \(g\) sob
+                  essa condição.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ========================== SÉRIE OMEGA (10 a 12) ========================== -->
+          <!-- 4A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Departamento de Consistência Estrutural (JUL/1966)
+            </div>
+            <p>
+              Se \(f(x,y)\ge 0\) em <span class="censored">D</span> e
+              \(\iint_D f(x,y)\, dA = 0\), discuta a possibilidade de \(f\) ser
+              não-nula em algum subconjunto de \(D\). Em outras palavras, pode
+              \(f\) assumir valores positivos e ainda ter integral igual a zero?
+            </p>
+
+            <!-- Sem dicas para OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Uma função não-negativa cuja integral seja zero deve ser nula
+                  quase em todo ponto de \(D\). Se \(f\) assumisse valores
+                  positivos em um conjunto de medida não nula, a soma de Riemann
+                  resultaria em valor positivo. Assim, \(f\) precisa ser zero na
+                  maior parte de \(D\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Pesquisa sobre Regiões Poligonais (JUL/1966)
+            </div>
+            <p>
+              Suponha que \(D_1 \subset D_2\) e \(f(x,y)\ge 0\) em todas as
+              regiões consideradas. Avalie a afirmação:
+            </p>
+            <p>
+              \[\iint_{D_1} f(x,y)\, dA \;\le\; \iint_{D_2} f(x,y)\, dA.\]
+            </p>
+            <p>
+              Discorra por que o fato de \(D_1\) ser estritamente contida em
+              \(D_2\) influi, mesmo sem calcular as integrais.
+            </p>
+
+            <!-- Sem dicas para OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como \(D_1\) é parte de \(D_2\) e \(f\) é não-negativa, a
+                  soma de Riemann sobre \(D_1\) será um subconjunto (ou igual)
+                  da soma sobre \(D_2\). Logo,
+                  \(\iint_{D_1} f \le \iint_{D_2} f\). Se
+                  \(D_1 \neq D_2\), essa desigualdade é estrita se \(f\) assume
+                  valor positivo em algum ponto de \(D_2\setminus D_1\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- 4C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Seção Avançada de Análises Orbitais (AGO/1966)
+            </div>
+            <p>
+              Seja \(f(x,y) = c\), uma constante qualquer, definida sobre
+              <span class="censored">D</span>. Justifique a relação:
+            </p>
+            <p>
+              \[\iint_D c \, dA = c \cdot \bigl(\text{área de }D\bigr).\]
+            </p>
+            <p>
+              Explique por que, mesmo sem integrar diretamente, esse resultado é
+              consistente com a definição de integral dupla.
+            </p>
+
+            <!-- Sem dicas para OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em cada subdivisão de área \(\Delta A\), o valor de \(f\) é
+                  \(c\). Somando-se todas as parcelas
+                  \(c \cdot \Delta A\) obtém-se \(c\) multiplicado pela soma de
+                  todas as áreas (a área total de \(D\)). Assim, o resultado é
+                  exatamente \(c \times \text{área}(D)\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">21</span> • DOCUMENTO VX-<span
+          class="censored"
+          >2057</span
+        >-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>

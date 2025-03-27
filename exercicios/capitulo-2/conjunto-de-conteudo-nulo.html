@@ -1,23 +1,754 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conjunto de conteúdo nulo - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Conjunto de conteúdo nulo</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">24</span> DE MARÇO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">ESTAÇÃO GEMINI-OESTE</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">VX-DELTA</span><br /><br />
+          Após o <span class="censored">envio de dados</span> para análise na
+          <span class="censored">base central</span>, identificamos a necessidade
+          de aprofundar estudos sobre
+          <span class="censored">conjuntos de área insignificante</span> no
+          contexto da <span class="censored">integração bidimensional</span>.
+          <br /><br />
+          Os exercícios seguintes foram compilados a partir dos documentos
+          técnicos do Dr. <span class="censored">████████</span>, que
+          contribuiu decisivamente para o avanço em
+          <span class="censored">cálculos orbitais</span> durante o
+          <span class="censored">Programa Gemini</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém diretrizes matemáticas sensíveis, essenciais
+          para o êxito das missões em andamento. A divulgação não autorizada
+          implicará <span class="censored">consequências irreversíveis</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: IG-<span class="censored">391</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DUPLAS E CONJUNTOS DE CONTEÚDO NULO
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            S \subset \mathbb{R}^2 \text{ possui conteúdo nulo se, para todo } \epsilon > 0,
+            \text{ existe uma coleção enumerável de retângulos cujo somatório das áreas é menor que } \epsilon
+            \text{ e que cobre } S.
+          \]
+        </p>
+        <p>
+          Em outras palavras, um conjunto \(S\) tem conteúdo nulo em \(\mathbb{R}^2\) se
+          podemos “encapar” \(S\) com retângulos (ou figuras elementares) cuja soma
+          total de áreas pode ser arbitrariamente pequena. Em termos de
+          <em>Integrais Duplas</em>, isso significa que se uma função é
+          integrada sobre uma região que contém um subconjunto de área
+          desprezível, esse subconjunto não alterará o valor final da integral.
+          Nesta etapa do estudo, ainda não utilizamos o Teorema de Fubini, mas
+          já podemos entender a importância de ignorar formalmente conjuntos
+          “muito pequenos” para simplificar a definição de integral.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        A ideia de “ignorar” determinadas porções do domínio ao integrar é
+        relevante para projetar sistemas de controle de cápsulas espaciais,
+        pois regiões de interferência mínima (conteúdo nulo) não afetam o
+        resultado geral dos cálculos orbitais.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o
+        <span class="censored">Programa Gemini (1965-1966)</span>, a precisão
+        dos cálculos de trajetória demandava que se isolassem detalhes
+        insignificantes (conjuntos de medida ínfima) para garantir maior
+        eficácia nas correções de curso.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+
+          <!-- SÉRIE ALFA (1-3) - BÁSICO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise Preliminar - Dados de Teste [RELATÓRIO DE
+              <span class="censored">██/██/1965</span>]
+            </div>
+            <p>
+              Considere o conjunto \(P\) formado por apenas <em>5 pontos</em> no
+              plano \(\mathbb{R}^2\). Explique por que esse conjunto
+              <strong>possui</strong> conteúdo nulo, com base na definição de
+              cobrir o conjunto com retângulos de área arbitrariamente pequena.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como a soma de áreas pode ser reduzida para pontos isolados.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Pelo fato de o conjunto conter apenas um número finito de
+                  pontos, cada ponto pode ser coberto por um retângulo de área
+                  muito pequena. A soma das áreas de tais retângulos pode ser
+                  feita menor que qualquer \(\epsilon > 0\), mostrando que
+                  \(P\) tem conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Monitoramento de Trayetórias [COMUNICADO ENVIADO À
+              <span class="censored">BASE FOWLER-1</span>]
+            </div>
+            <p>
+              Mostre que uma <em>reta</em> no plano \(\mathbb{R}^2\) também é
+              um conjunto de conteúdo nulo. Sugira uma forma de cobrir toda a
+              reta com retângulos de soma de áreas arbitrariamente pequena.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacione a espessura de cada faixa que cobre a reta.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada segmento da reta pode ser coberto por uma “faixa” de
+                  largura muito fina. Ao longo de toda a reta, a soma das áreas
+                  dessas faixas pode ser reduzida para um valor menor que
+                  qualquer \(\epsilon\). Portanto, a reta tem conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Ajuste de Malha de Sensores [SETOR
+              <span class="censored">███</span> - DATA
+              <span class="censored">██/MAR/1965</span>]
+            </div>
+            <p>
+              Sejam dois círculos distintos no plano,
+              \(\mathcal{C}_1\) e \(\mathcal{C}_2\). Cada círculo é formado
+              apenas por sua circunferência (sem o interior). Explique por que a
+              união \(\mathcal{C}_1 \cup \mathcal{C}_2\) ainda tem conteúdo
+              nulo.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de união entre conjuntos de área desprezível.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada circunferência é semelhante a uma reta fechada, que pode
+                  ser coberta por faixas de espessura arbitrariamente pequena.
+                  A união de dois conjuntos de conteúdo nulo também tem
+                  conteúdo nulo, pois podemos cobri-las simultaneamente sem
+                  ultrapassar qualquer \(\epsilon\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (4-6) - INTERMEDIÁRIO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Integração de Dados Orbitais - 
+              <span class="censored">LABORATÓRIO [REDACTED]</span>
+            </div>
+            <p>
+              Seja \(\Gamma\) o <em>gráfico</em> de uma função contínua
+              \(f:[a,b]\to\mathbb{R}\) no plano, isto é,
+              \(\Gamma = \{(x,f(x)) : x \in [a,b]\}\). Mostre que \(\Gamma\) é
+              de conteúdo nulo. (Não é necessário usar derivadas ou integrais;
+              baseie-se na definição de retângulos cobrindo uma curva.)
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de extensão unidimensional em \(\mathbb{R}^2\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como a função é contínua num intervalo fechado, podemos dividi-lo
+                  em subintervalos pequenos, cobrindo cada segmento do gráfico
+                  com retângulos de altura reduzida. Ao somar as áreas, podemos
+                  torná-las menores que qualquer \(\epsilon\). Logo, o gráfico
+                  possui conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Seção de Planejamento - 
+              <span class="censored">OPERAÇÃO [SIGMA-G]</span>
+            </div>
+            <p>
+              Dado um conjunto \(A\subset \mathbb{R}^2\) com conteúdo nulo e um
+              conjunto \(B\subset \mathbb{R}^2\) <strong>qualquer</strong>,
+              analise se a interseção \(A \cap B\) também possui conteúdo nulo.
+              Explique a base lógica dessa conclusão, sem recorrer a teoremas de
+              integração.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de subconjuntos dentro de coleções de retângulos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(A\) pode ser coberto por retângulos de área total menor
+                  que \(\epsilon\), então \(A \cap B\) estará contido nessa
+                  mesma cobertura, pois
+                  \(A \cap B \subseteq A\). Logo, a área que cobre
+                  \(A \cap B\) não excederá a que cobre \(A\), garantindo que
+                  \(A \cap B\) também seja de conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Mapeamento de Fenômenos Espaciais [TRANSMISSÃO
+              <span class="censored">PROTÓTIPO-04</span>]
+            </div>
+            <p>
+              Sejam \(\{A_i\}_{i=1}^n\) uma coleção finita de conjuntos com
+              conteúdo nulo em \(\mathbb{R}^2\). Mostre que a união
+              \(A_1 \cup A_2 \cup \dots \cup A_n\) também tem conteúdo nulo,
+              utilizando apenas a definição básica de cobertura por retângulos.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de coberturas conjuntas para vários subconjuntos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada conjunto \(A_i\) pode ser coberto por retângulos de área
+                  total menor que \(\epsilon_i\). Ajustando cada \(\epsilon_i\)
+                  para que a soma seja menor que um \(\epsilon\) desejado,
+                  cobrimos todos os conjuntos simultaneamente, provando que a
+                  união finita ainda possui conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (7-9) - AVANÇADO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Análises Interceptadas - 
+              <span class="censored">CANAL DE INTELIGÊNCIA</span> [27/ABR/1965]
+            </div>
+            <p>
+              Considere o <em>Conjunto de Cantor</em> projetado no plano,
+              \(C \subset \mathbb{R}^2\), formado pela interseção de retângulos
+              que correspondem a cópias do Conjunto de Cantor em cada eixo. 
+              Investigue se \(C\) possui ou não conteúdo nulo, usando apenas
+              raciocínio de coberturas.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes na construção do Conjunto de Cantor.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O Conjunto de Cantor unidimensional tem comprimento zero,
+                  podendo ser recoberto por intervalos arbitrariamente pequenos.
+                  Em duas dimensões, a interseção de retângulos que formam
+                  \(C\) também pode ser recoberta por áreas cada vez menores em
+                  cada etapa, resultando em conteúdo nulo. O raciocínio segue o
+                  mesmo princípio de “remoções sucessivas” e coberturas
+                  mínimas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Setor de Modelagem - 
+              <span class="censored">███</span> [MEMO ENVIADO EM 14/MAI/1965]
+            </div>
+            <p>
+              Suponha que haja uma sequência enumerável de conjuntos
+              \(\{B_k\}_{k=1}^\infty\) de conteúdo nulo em \(\mathbb{R}^2\). 
+              Avalie se a união \(\bigcup_{k=1}^\infty B_k\) ainda pode possuir
+              conteúdo nulo. (Indique, em termos conceituais, por que isso
+              ocorre para contagens infinitas.)
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Atenção às somas de séries que podem convergir.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se cada \(B_k\) pode ser coberto por retângulos de área menor
+                  que \(\epsilon 2^{-k}\), por exemplo, então a soma total para
+                  cobrir a união infinita é menor que
+                  \(\epsilon \sum_{k=1}^\infty 2^{-k} = \epsilon\). Assim, a
+                  união enumerável de conjuntos de conteúdo nulo também tem
+                  conteúdo nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Observatório Orbital - Projeto 
+              <span class="censored">█████</span> [JUN/1965]
+            </div>
+            <p>
+              Seja \(X\subset \mathbb{R}^2\) um conjunto cujo fecho
+              \(\overline{X}\) (isto é, \(X\) mais seus pontos-limite) tem
+              conteúdo nulo. Discuta se \(X\) também é de conteúdo nulo, e
+              apresente a justificativa por meio de coberturas retangulares.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considerar coberturas que incluam possíveis pontos de fronteira.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(\overline{X}\) for de conteúdo nulo, então toda a
+                  “região” que inclui \(X\) e seus pontos de fronteira pode ser
+                  coberta por retângulos de área total menor que
+                  \(\epsilon\). Como \(X \subset \overline{X}\), a mesma
+                  cobertura vale para \(X\). Logo, \(X\) também é de conteúdo
+                  nulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (10-12) - DESAFIADOR (SEM DICAS) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Ajuste de Rotas de Órbita Baixa [ARQUIVO SIGILOSO
+              <span class="censored">N.47</span> - 1965]
+            </div>
+            <p>
+              Determine se o conjunto formado pela <em>borda de um polígono
+              convexo</em> (sem seu interior) pode, em alguma condição, não ser
+              de conteúdo nulo. Fundamente sua resposta apenas em
+              considerações sobre cobertura por faixas.
+            </p>
+            <!-- Série OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A borda de um polígono consiste em um número finito de
+                  segmentos de reta. Cada segmento de reta é de conteúdo nulo,
+                  e a união finita mantém essa propriedade. Portanto, não existe
+                  condição para o contorno (sem interior) deixar de ter
+                  conteúdo nulo, considerando a definição de cobertura por
+                  retângulos.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Setor de Cálculo Avançado [DOCUMENTO
+              <span class="censored">VX-182</span> - 1965]
+            </div>
+            <p>
+              Verifique se um conjunto limitado em \(\mathbb{R}^2\), composto
+              exclusivamente por uma <em>curva suave fechada</em> e um número
+              finito de pontos dispersos em seu interior, pode afetar
+              significativamente o valor de uma futura integral dupla. Baseie a
+              resposta na noção de conteúdo nulo.
+            </p>
+            <!-- Série OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A curva suave fechada em \(\mathbb{R}^2\) é semelhante à
+                  circunferência em termos de área zero, e pontos finitos
+                  também não acrescentam área. Logo, todo o conjunto tem
+                  conteúdo nulo, não impactando o valor de uma integral dupla
+                  (quando esta for desenvolvida).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Microgravidade - 
+              <span class="censored">██/06/1965</span>
+            </div>
+            <p>
+              Construa um exemplo de um conjunto \(Y \subset \mathbb{R}^2\) que
+              seja <em>infinito</em>, mas ainda assim de conteúdo nulo. Indique
+              os elementos essenciais para garantir a cobertura por retângulos
+              de área arbitrariamente pequena, sem calcular qualquer integral.
+            </p>
+            <!-- Série OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Um exemplo é uma união enumerável de pontos ou uma
+                  <em>curva fractal</em> que não preencha área. O ponto central
+                  é garantir que, para cada porção do conjunto, existam
+                  retângulos de área somada menor que \(\epsilon\). Mesmo que
+                  seja infinito, a soma das áreas pode permanecer arbitrariamente
+                  pequena.
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO IG-
+        <span class="censored">391</span>-B
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>

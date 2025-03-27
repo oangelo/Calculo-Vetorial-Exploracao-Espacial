@@ -1,23 +1,807 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condições de integrabilidade sobre conjuntos limitados - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Condições de integrabilidade sobre conjuntos limitados</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+          displayMath: [["$$", "$$"], ["\\[", "\\]"]],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ["script", "noscript", "style", "textarea", "pre"]
+        }
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">10</span> DE JULHO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">PLATAFORMA GEMINI [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">OBLIVION</span> <br /><br />
+          Em resposta às exigências de pesquisa sobre condições de
+          <span class="censored">integrabilidade</span> em domínios limitados,
+          nossa equipe de analistas iniciou a verificação de funções críticas no
+          contexto de <span class="censored">orbital staging</span>. <br /><br />
+          Os registros a seguir foram reunidos pelo Dr.
+          <span class="censored">████████</span>, cujas notas contribuíram de
+          forma crucial para o desenvolvimento do
+          <span class="censored">módulo de descida</span> da missão.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações consideradas
+          <span class="censored">ultrasensíveis</span>. Divulgar estes dados sem
+          permissão resultará em <span class="censored">retenção imediata</span>
+          e possíveis sanções.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">202</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE INTEGRABILIDADE EM CONJUNTOS LIMITADOS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          Seja f: R² → R uma função limitada e D ⊂ R² um conjunto limitado e fechado (Jordan-measurável).<br /><br />
+          Dizemos que f é integrável em D se, para todo ε &gt; 0, existem partições cuja soma superior e soma inferior diferem menos que ε.
+        </p>
+        <p>
+          Assim, a integrabilidade em conjuntos limitados exige que a função seja
+          limitada e que as regiões de descontinuidade estejam controladas em um
+          conjunto de pequena extensão (por exemplo, mensurável de medida nula).
+          Não abordaremos ainda o Teorema de Fubini, apenas as condições gerais
+          de quando uma função é integrável sobre um domínio limitado e bem
+          delimitado.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        As condições de integrabilidade em domínios limitados permitem prever se
+        um modelo matemático de força ou densidade pode ser aplicado em
+        calibrações de sistemas, garantindo análises confiáveis para
+        <span class="censored">controle de órbita</span> ou testes de
+        <span class="censored">queda livre</span> em módulos espaciais.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966), a
+        exatidão dos sistemas de acoplamento e retorno à Terra dependia de
+        estimativas de grandezas como densidade atmosférica e pressão dinâmica,
+        cujos modelos se baseiam nos conceitos de integrabilidade em domínios
+        restritos.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA: Exercícios 1-3 (Básico) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Setor de Simulações - Registro Parcial do Projeto
+              <span class="censored">PHASE-ALPHA</span> [1965]
+            </div>
+            <p>
+              Considere a função f(x,y) = x + y definida sobre o retângulo
+              D = [0,2] × [0,3]. Verifique se f é limitada e se esse
+              domínio D é adequado para garantir integrabilidade sob a
+              perspectiva de partições (sem usar a forma explícita de
+              integração).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar continuidade e
+                domínio limitado para garantir integrabilidade.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função f(x,y) = x + y é contínua em todo R²,
+                  logo é limitada em D. O conjunto
+                  [0,2]×[0,3] é um retângulo fechado e limitado,
+                  portanto Jordan-measurável. Pela definição de integrabilidade,
+                  funções contínuas em conjuntos limitados e fechados são
+                  integráveis. Conclusão: condição atendida.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Avaliação de Funções Polinomiais - Arquivo
+              <span class="censored">HIDDEN-NODE</span>
+            </div>
+            <p>
+              Dada a função g(x,y) = x² + y² definida sobre o quadrado
+              Q = [-1,1] × [-1,1]. Mostre que g não só é limitada
+              em Q, mas também que suas eventuais descontinuidades (se
+              existissem) não afetariam a integrabilidade em um conjunto
+              limitado.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Polinômios apresentam alta regularidade; pense na
+                existência (ou ausência) de pontos de descontinuidade.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função polinomial g(x,y) = x² + y² é contínua em todo o
+                  R². Sendo contínua e definida em um quadrado
+                  fechado [-1,1]×[-1,1], ela é limitada e não possui
+                  descontinuidades. Logo, cumpre a condição de integrabilidade
+                  (limitada e conjunto Jordan-measurável). Não há pontos
+                  singulares para comprometer a definição de integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Documento Interno - Seção de Modelagem Atmosférica
+              <span class="censored">████</span>
+            </div>
+            <p>
+              A função h(x,y) = sin(x)cos(y) está definida no domínio
+              retangular R = [0,π]×[0,π]. Justifique por que essa
+              função é integrável em R mesmo sem calcular a integral,
+              considerando os critérios de ser limitada e o fato de R ser
+              um conjunto fechado e limitado.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Funções produto de senos e cossenos são contínuas
+                na maior parte do domínio.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função sin(x) e cos(y) são contínuas e estão limitadas entre
+                  -1 e 1. O produto sin(x)cos(y) também é contínuo no
+                  retângulo fechado [0,π]×[0,π]. Pela definição de
+                  integrabilidade, toda função contínua em um conjunto
+                  Jordan-measurável e limitado é integrável. Logo, a condição é
+                  satisfeita.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA: Exercícios 4-6 (Intermediário) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Análises - Relatório
+              <span class="censored">G-13</span> [Verificação de Bordas]
+            </div>
+            <p>
+              Seja f(x,y) = 1 / (1 + x² + y²), definida no disco
+              limitado D = {(x,y): x² + y² ≤ 4}. Discuta a
+              integrabilidade de f no disco, sabendo que ela é contínua em
+              todo o domínio, mas não use os resultados de cálculo de integrais.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de continuidade e de domínio
+                limitado podem garantir a integrabilidade, mesmo em coordenadas
+                circulares.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função f(x,y) é contínua para todos (x,y) no disco
+                  {x² + y² ≤ 4}. Além disso, o domínio é fechado,
+                  limitado e Jordan-measurável (um disco). Por ser contínua no
+                  interior e na fronteira, f não possui descontinuidades.
+                  Portanto, atende às condições de integrabilidade (função
+                  limitada em um conjunto limitado e bem definido).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Setor de Dinâmica Orbitas - Arquivo Interno
+              <span class="censored">Gemini-Class</span>
+            </div>
+            <p>
+              A função g(x,y) = 1 se x ≥ 0 e y ≥ 0, e 0 caso
+              contrário, está definida em todo R². Restrita ao
+              quadrado Q = [-2,2]×[-2,2], discuta se essa função é
+              integrável, considerando a existência de descontinuidades sobre o
+              eixo x=0 e y=0.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de partições podem ser relevantes,
+                mesmo com descontinuidades em linhas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função é característica de uma região no quadrado
+                  [-2,2]×[-2,2] e apresenta descontinuidade ao longo
+                  das retas x=0 e y=0. Entretanto, essas linhas têm
+                  medida nula em R². A função é limitada (assume
+                  apenas os valores 0 e 1), e o domínio é Jordan-measurável e
+                  limitado. Segundo os critérios de integrabilidade, um conjunto
+                  de descontinuidades de medida nula não impede a integrabilidade
+                  da função. Assim, ela é integrável em Q.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Observatório Orbital - Registro Secreto
+              <span class="censored">Lunar Proxy</span>
+            </div>
+            <p>
+              A função h(x,y) = x se (x,y) está em D, e 2y caso
+              contrário, onde D = [0,1]×[0,1], é analisada apenas no
+              retângulo R=[-1,2]×[-1,2]. Mostre que eventuais
+              descontinuidades na fronteira de D não impedem a
+              integrabilidade de h restrita a R.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique se a fronteira onde a definição muda
+                tem área nula ou não.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A fronteira de D é um conjunto de medida nula no
+                  retângulo R. Embora haja mudança de expressão na fronteira,
+                  a função permanece limitada (pois em qualquer ponto, h é
+                  finito). Como a descontinuidade se restringe a linhas
+                  delimitadas, a medida dessas linhas é zero em R².
+                  Portanto, h é integrável em R.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA: Exercícios 7-9 (Avançado) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Coordenação de Estudos Avançados - Dossiê
+              <span class="censored">Θ-12</span>
+            </div>
+            <p>
+              A função f(x,y) = ln(1 + x² + y²) é definida em
+              R². Restringindo ao anel
+              A = {(x,y): 1 ≤ x² + y² ≤ 4}, discuta sua
+              integrabilidade apenas com base em continuidade e domínio
+              Jordan-measurável. Não é necessário calcular a integral.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem propriedades inalteradas mesmo ao remover
+                regiões menores do interior do domínio.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função ln(1 + x² + y²) é contínua em todo o anel
+                  A. O anel é um domínio fechado e limitado (a borda interna
+                  x² + y² = 1 e a borda externa x² + y² = 4 não
+                  introduzem descontinuidades para a função). Assim, pelo
+                  critério de integrabilidade, uma função contínua em um
+                  conjunto Jordan-measurável é integrável.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Centro de Controle Espacial - Dados do Programa
+              <span class="censored">Gemini-Station</span>
+            </div>
+            <p>
+              Seja g(x,y) = √(x² + y²), definida no triângulo
+              T = {(x,y): x ≥ 0, y ≥ 0, x + y ≤ 2}. Há alguma
+              irregularidade que possa comprometer a integrabilidade de g
+              nesse domínio?
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Eventuais singularidades podem ser avaliadas
+                verificando continuidade nos vértices.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função g(x,y) = √(x² + y²) é contínua em todo
+                  R², incluindo o triângulo T. Nos vértices
+                  do triângulo (por exemplo, no ponto (0,0)), a função é bem
+                  definida e sem descontinuidades (vale 0). O domínio T é
+                  poligonal fechado, logo Jordan-measurável. Conclusão:
+                  integrabilidade não é comprometida.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Departamento de Pesquisa - Registro
+              <span class="censored">Graviton</span> [1966]
+            </div>
+            <p>
+              A função h(x,y) = 1 / √|xy| está definida em
+              R² \ {xy = 0}. Analise se a presença de uma
+              “singularidade” ao longo dos eixos (onde xy=0) inviabiliza a
+              integrabilidade em um retângulo
+              [-1,1]×[-1,1] excluindo essas linhas.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes quando se remove
+                linhas de medida nula.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função 1 / √|xy| não está definida em
+                  xy=0. Essas linhas (os eixos) têm medida nula em
+                  R². No domínio considerado (retângulo
+                  [-1,1]×[-1,1], exceto onde xy=0), a função tende a
+                  infinito próxima dos eixos, mas o critério de integrabilidade
+                  não exige ausência de assíntotas, apenas que estejam contidas
+                  em um conjunto de medida nula. Assim, a descontinuidade
+                  principal ocorre num conjunto de medida nula e não
+                  necessariamente inviabiliza a integrabilidade. Uma análise
+                  mais aprofundada (integral imprópria) seria necessária, mas no
+                  nível atual há fortes indícios de integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA: Exercícios 10-12 (Desafiador) - sem dicas -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Programa Avançado de Orbitas - Arquivo
+              <span class="censored">ZetaLabs</span> [1967]
+            </div>
+            <p>
+              A função f(x,y) = sin(1 / (x² + y²)) para (x,y)≠(0,0), e 0
+              para (x,y)=(0,0), está restrita ao disco fechado
+              {(x,y): x² + y² ≤ 1}. Determinar se esta definição,
+              com possível “oscilação infinita” perto de (0,0), inviabiliza
+              a integrabilidade, sem efetuar o cálculo exato.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função pode oscilar intensamente à medida que
+                  (x,y) se aproxima de (0,0), mas permanece limitada
+                  entre -1 e 1 em todo o disco. O conjunto é fechado e limitado.
+                  Embora a continuidade seja comprometida no centro, a amplitude
+                  é sempre finita. É plausível argumentar que a região de
+                  oscilação concentrada não seja suficiente para invalidar a
+                  integrabilidade, pois sin(1 / r²) fica
+                  delimitada. A aferição rigorosa exigiria técnicas posteriores
+                  (integral imprópria), mas há fortes indícios de
+                  integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Centro de Controle - Divisão de Reentrada
+              <span class="censored">Apollo</span> [1968]
+            </div>
+            <p>
+              Considere g(x,y) = χ_D(x,y), onde D é um conjunto
+              “estranho” no quadrado [-1,1]×[-1,1], formado por uma
+              curva fractal de medida 0. Discuta se a função indicadora desse
+              conjunto fractal (1 em D e 0 fora dele) é integrável, sabendo
+              que χ_D só é 1 num conjunto de medida nula.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se D tem medida nula, então χ_D é 1 apenas em um
+                  conjunto sem “área” no sentido de Lebesgue ou Jordan. Para
+                  fins de integrabilidade em um domínio limitado e fechado, isso
+                  implica que a soma superior e inferior podem ser controladas
+                  ao ponto de convergirem para 0. Logo, a função é integrável e
+                  sua integral seria essencialmente 0. A rigor, esse tipo de
+                  argumento exige uma definição robusta de integral em
+                  superfícies fractais, mas no sentido de Jordan, a medida nula
+                  garante a integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Estabilidade - Missão
+              <span class="censored">Skylab</span> [1973]
+            </div>
+            <p>
+              A função h(x,y) = sin(xy) / (xy), definida em
+              R² exceto onde xy=0, é analisada no quadrado
+              [-2,2]×[-2,2] retirando as retas x=0 ou y=0.
+              Investigue se essa “exclusão” de um conjunto de medida nula
+              garante integrabilidade e se a função continua limitada no
+              restante do domínio.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A expressão sin(z) / z é limitada em
+                  R, tendendo a 1 quando z → 0. No plano
+                  (x,y), ao retirar as linhas xy=0, removemos a
+                  possível indeterminação. Essas linhas, porém, constituem um
+                  conjunto de medida nula. Assim, em princípio, sin(xy)/(xy)
+                  permanece limitada e sem descontinuidades graves no
+                  restante do domínio. Há indícios de que a função seja
+                  integrável. A formalização completa exigiria um exame
+                  detalhado, mas a princípio o critério de medida nula das
+                  descontinuidades sugere integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">14</span> • DOCUMENTO VX-
+        <span class="censored">202</span>-D
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
