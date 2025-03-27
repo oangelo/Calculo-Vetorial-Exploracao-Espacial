@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teorema de Fubini - Visualização 3D Interativa</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0f;
+      color: #e0e0e0;
+      overflow-x: hidden;
+    }
+    
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    h1, h2 {
+      text-align: center;
+      color: #4fc3f7;
+    }
+    
+    h1 {
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+    }
+    
+    h2 {
+      margin-top: 0;
+      font-size: 1.2em;
+      opacity: 0.9;
+      font-weight: normal;
+    }
+    
+    #canvas-container {
+      position: relative;
+      margin: 30px auto;
+      width: 800px;
+      max-width: 100%;
+    }
+    
+    canvas {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+      background-color: rgba(26, 35, 126, 0.1);
+      cursor: grab;
+    }
+    
+    canvas:active {
+      cursor: grabbing;
+    }
+    
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .control-group {
+      background: rgba(26, 35, 126, 0.3);
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    
+    label {
+      color: #e0e0e0;
+      margin-right: 10px;
+    }
+    
+    select, button {
+      background: #1a237e;
+      color: #e0e0e0;
+      border: 1px solid #4fc3f7;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+    
+    select:hover, button:hover {
+      background: #283593;
+      box-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+    }
+    
+    button.active {
+      background: #4fc3f7;
+      color: #1a237e;
+      font-weight: bold;
+    }
+    
+    .slider-container {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+    }
+    
+    .slider-label {
+      min-width: 80px;
+      display: inline-block;
+    }
+    
+    input[type="range"] {
+      flex-grow: 1;
+      margin: 0 15px;
+      -webkit-appearance: none;
+      height: 6px;
+      background: rgba(79, 195, 247, 0.3);
+      border-radius: 5px;
+      outline: none;
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #4fc3f7;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+    .slider-value {
+      min-width: 40px;
+      text-align: right;
+      color: #4fc3f7;
+      font-weight: bold;
+    }
+    
+    .value-displays {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .value-box {
+      background: rgba(26, 35, 126, 0.3);
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      border-radius: 8px;
+      padding: 15px 20px;
+      min-width: 180px;
+      text-align: center;
+    }
+    
+    .value-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    
+    .value-content {
+      font-size: 22px;
+      color: #4fc3f7;
+      font-weight: bold;
+    }
+    
+    .explanation {
+      background: rgba(26, 35, 126, 0.2);
+      border: 1px solid rgba(79, 195, 247, 0.2);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px auto;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 800px;
+    }
+    
+    .formula {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 18px;
+    }
+    
+    .canvas-help {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      background: rgba(26, 35, 126, 0.7);
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+    }
+    
+    /* Background com estrelas */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)) 50px 50px,
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)) 100px 100px,
+        radial-gradient(2px 2px at 50px 160px, #fff, rgba(0, 0, 0, 0)) 150px 150px,
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)) 200px 200px,
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0)) 250px 250px,
+        radial-gradient(3px 3px at 160px 120px, #4fc3f7, rgba(0, 0, 0, 0)) 300px 300px;
+      background-size: 500px 500px;
+      opacity: 0.3;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .icon {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 5px;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 10px;
+      }
+      
+      #canvas-container {
+        width: 100%;
+      }
+      
+      .value-displays {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .value-box {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Teorema de Fubini</h1>
+    <h2>Visualização Interativa no Contexto da Exploração Espacial</h2>
+    
+    <div class="controls">
+      <div class="control-group">
+        <label for="function-select">Função f(x,y):</label>
+        <select id="function-select">
+          <option value="simple">f(x,y) = x + y</option>
+          <option value="parabolic" selected>f(x,y) = 5 - x² - y²</option>
+          <option value="exponential">f(x,y) = e^(-(x²+y²)/5)</option>
+          <option value="trigonometric">f(x,y) = 2 + sen(x) × cos(y)</option>
+          <option value="satellite">f(x,y) = 5/(1 + x² + y²)</option>
+        </select>
+      </div>
+      
+      <div class="control-group">
+        <label>Ordem de integração:</label>
+        <button id="dydx-button" class="active">∫∫ f(x,y) dy dx</button>
+        <button id="dxdy-button">∫∫ f(x,y) dx dy</button>
+      </div>
+    </div>
+    
+    <div id="canvas-container">
+      <canvas id="fubini-canvas" width="800" height="500"></canvas>
+      <div class="canvas-help">
+        <span class="icon">🔄</span> Arraste para rotacionar a visualização
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <div class="slider-container">
+        <span class="slider-label">Zoom:</span>
+        <input type="range" id="zoom-slider" min="50" max="150" value="100">
+        <span id="zoom-value" class="slider-value">100%</span>
+      </div>
+      
+      <div class="slider-container">
+        <span class="slider-label">Valor de x:</span>
+        <input type="range" id="x-slider" min="0" max="100" value="50">
+        <span id="x-value" class="slider-value">0.0</span>
+      </div>
+      
+      <div class="slider-container">
+        <span class="slider-label">Valor de y:</span>
+        <input type="range" id="y-slider" min="0" max="100" value="50">
+        <span id="y-value" class="slider-value">0.0</span>
+      </div>
+    </div>
+    
+    <div class="value-displays">
+      <div class="value-box">
+        <div class="value-title">Integral Interna</div>
+        <div id="inner-integral" class="value-content">0.000</div>
+      </div>
+      
+      <div class="value-box">
+        <div class="value-title">Integral Total</div>
+        <div id="total-integral" class="value-content">0.000</div>
+      </div>
+    </div>
+    
+    <div class="explanation">
+      <p>O <strong>Teorema de Fubini</strong> é um resultado fundamental no cálculo multivariável que permite calcular integrais duplas (e múltiplas) como integrais iteradas. Para uma função contínua f(x,y) definida em um retângulo R = [a,b] × [c,d], a integral dupla pode ser calculada como:</p>
+      
+      <div class="formula">
+        ∬<sub>R</sub> f(x,y) dA = ∫<sub>a</sub><sup>b</sup> [∫<sub>c</sub><sup>d</sup> f(x,y) dy] dx = ∫<sub>c</sub><sup>d</sup> [∫<sub>a</sub><sup>b</sup> f(x,y) dx] dy
+      </div>
+      
+      <p>No contexto da exploração espacial, este teorema é fundamental para calcular várias grandezas físicas importantes:</p>
+      
+      <ul>
+        <li><strong>Campos gravitacionais:</strong> O cálculo da força gravitacional em corpos celestes requer a integração sobre volumes e superfícies complexas.</li>
+        <li><strong>Dinâmica de fluidos:</strong> A análise do comportamento de combustíveis em tanques de foguetes em condições de microgravidade.</li>
+        <li><strong>Planejamento de trajetórias:</strong> O cálculo de assistências gravitacionais (gravity assists) para economizar combustível em missões interplanetárias.</li>
+      </ul>
+      
+      <p>Na visualização acima, você pode explorar como as integrais iteradas funcionam mudando a ordem de integração (dy dx ou dx dy) e observando que o resultado final (o volume sob a superfície) permanece o mesmo, independentemente da ordem escolhida.</p>
+    </div>
+  </div>
+
+  <script>
+    // Configuração da visualização
+    const canvas = document.getElementById('fubini-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // Dimensões e margens
+    const width = canvas.width;
+    const height = canvas.height;
+    const margin = { top: 50, right: 50, bottom: 50, left: 70 };
+    
+    // Limites do domínio da função
+    const xMin = -3, xMax = 3;
+    const yMin = -3, yMax = 3;
+    const zMin = 0, zMax = 5;
+    
+    // Variáveis de estado
+    let currentFunction = 'parabolic';
+    let integrationOrder = 'dydx';
+    let xValue = 50;  // Valor do slider x (0-100)
+    let yValue = 50;  // Valor do slider y (0-100)
+    let zoomFactor = 1.0; // Fator de zoom inicial
+    
+    // Variáveis para rotação 3D
+    let rotationX = Math.PI / 6; // Ângulo inicial de rotação em torno do eixo X
+    let rotationY = Math.PI / 4; // Ângulo inicial de rotação em torno do eixo Y
+    let isDragging = false;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    
+    // Variáveis para touch events
+    let lastTouchX = 0;
+    let lastTouchY = 0;
+    
+    // Conversão de coordenadas matemáticas para coordenadas do canvas
+    function mapX(x, y, z = 0) {
+      // Aplicar rotação 3D
+      const [rotX, rotY, rotZ] = applyRotation(x, y, z);
+      
+      // Aplicar zoom e centralizar
+      const centerX = (width / 2);
+      return centerX + zoomFactor * rotX;
+    }
+    
+    function mapY(x, y, z = 0) {
+      // Aplicar rotação 3D
+      const [rotX, rotY, rotZ] = applyRotation(x, y, z);
+      
+      // Aplicar zoom e centralizar
+      const centerY = (height / 2);
+      return centerY + zoomFactor * rotY;
+    }
+    
+    // Aplicar rotação 3D a um ponto (x, y, z)
+    function applyRotation(x, y, z) {
+      // Centralizar os pontos
+      const cx = x - (xMax + xMin) / 2;
+      const cy = y - (yMax + yMin) / 2;
+      const cz = z - zMin;
+      
+      // Escala para visualização
+      const scaleX = (width - margin.left - margin.right) / (xMax - xMin);
+      const scaleY = (height - margin.top - margin.bottom) / (yMax - yMin);
+      const scaleZ = scaleY / 2;
+      
+      const sx = cx * scaleX;
+      const sy = cy * scaleY;
+      const sz = cz * scaleZ;
+      
+      // Rotação em torno do eixo Y (horizontal)
+      const cosY = Math.cos(rotationY);
+      const sinY = Math.sin(rotationY);
+      const y1 = sy;
+      const z1 = sz * cosY - sx * sinY;
+      const x1 = sz * sinY + sx * cosY;
+      
+      // Rotação em torno do eixo X (vertical)
+      const cosX = Math.cos(rotationX);
+      const sinX = Math.sin(rotationX);
+      const y2 = y1 * cosX - z1 * sinX;
+      const z2 = y1 * sinX + z1 * cosX;
+      
+      return [x1, y2, z2];
+    }
+    
+    // Conversão para valores reais a partir dos sliders
+    function sliderToX(value) {
+      return xMin + (value / 100) * (xMax - xMin);
+    }
+    
+    function sliderToY(value) {
+      return yMin + (value / 100) * (yMax - yMin);
+    }
+    
+    // Funções matemáticas disponíveis
+    function evaluateFunction(funcType, x, y) {
+      switch(funcType) {
+        case 'simple':
+          return x + y + 2; // Deslocado para ficar positivo
+        case 'parabolic':
+          return 5 - x*x - y*y;
+        case 'exponential':
+          return Math.exp(-(x*x + y*y)/5);
+        case 'trigonometric':
+          return 2 + Math.sin(x) * Math.cos(y);
+        case 'satellite':
+          return 5 / (1 + x*x + y*y); // Modelo simplificado de campo gravitacional
+        default:
+          return 0;
+      }
+    }
+    
+    // Ordenar pontos por profundidade (para renderização correta)
+    function depthSort(points) {
+      return [...points].sort((a, b) => {
+        // Aplicar rotação para obter a profundidade
+        const [_, __, depthA] = applyRotation(a.x, a.y, a.z);
+        const [___, ____, depthB] = applyRotation(b.x, b.y, b.z);
+        return depthB - depthA; // Ordenar do fundo para frente
+      });
+    }
+    
+    // Função para desenhar os eixos de coordenadas com rótulos
+    function drawAxes() {
+      // Encontrar origem após rotação
+      const origin = applyRotation(0, 0, 0);
+      const xEnd = applyRotation(xMax, 0, 0);
+      const yEnd = applyRotation(0, yMax, 0);
+      const zEnd = applyRotation(0, 0, zMax);
+      
+      const originX = width / 2 + zoomFactor * origin[0];
+      const originY = height / 2 + zoomFactor * origin[1];
+      
+      ctx.strokeStyle = '#4fc3f7';
+      ctx.lineWidth = 1.5;
+      
+      // Eixo X
+      ctx.beginPath();
+      ctx.moveTo(originX, originY);
+      ctx.lineTo(width / 2 + zoomFactor * xEnd[0], height / 2 + zoomFactor * xEnd[1]);
+      ctx.stroke();
+      
+      // Eixo Y
+      ctx.beginPath();
+      ctx.moveTo(originX, originY);
+      ctx.lineTo(width / 2 + zoomFactor * yEnd[0], height / 2 + zoomFactor * yEnd[1]);
+      ctx.stroke();
+      
+      // Eixo Z (mais grosso)
+      ctx.lineWidth = 3.0; // Linha mais grossa para o eixo Z
+      ctx.beginPath();
+      ctx.moveTo(originX, originY);
+      ctx.lineTo(width / 2 + zoomFactor * zEnd[0], height / 2 + zoomFactor * zEnd[1]);
+      ctx.stroke();
+      ctx.lineWidth = 1.5; // Voltar ao valor padrão para outros elementos
+      
+      // Rótulos dos eixos
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '16px Arial';
+      ctx.fillText('x', width / 2 + zoomFactor * xEnd[0] + 10, height / 2 + zoomFactor * xEnd[1] + 5);
+      ctx.fillText('y', width / 2 + zoomFactor * yEnd[0] + 10, height / 2 + zoomFactor * yEnd[1] - 10);
+      ctx.fillText('z', width / 2 + zoomFactor * zEnd[0] + 5, height / 2 + zoomFactor * zEnd[1] - 10);
+      
+      // Grades nos planos XY, ZX e ZY
+      ctx.strokeStyle = 'rgba(79, 195, 247, 0.15)';
+      ctx.lineWidth = 0.5;
+      
+      // Preparar pontos para as grades
+      const gridPoints = [];
+      
+      // 1. GRADE NO PLANO XY (z = 0)
+      // Linhas paralelas ao eixo X
+      for (let y = Math.ceil(yMin); y <= Math.floor(yMax); y++) {
+        if (y === 0) continue;
+        const startPoint = { x: xMin, y: y, z: 0 };
+        const endPoint = { x: xMax, y: y, z: 0 };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // Linhas paralelas ao eixo Y
+      for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+        if (x === 0) continue;
+        const startPoint = { x: x, y: yMin, z: 0 };
+        const endPoint = { x: x, y: yMax, z: 0 };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // 2. GRADE NO PLANO ZX (y = 0)
+      // Linhas paralelas ao eixo X
+      for (let z = 1; z <= Math.floor(zMax); z++) {
+        const startPoint = { x: xMin, y: 0, z: z };
+        const endPoint = { x: xMax, y: 0, z: z };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // Linhas paralelas ao eixo Z
+      for (let x = Math.ceil(xMin); x <= Math.floor(xMax); x++) {
+        if (x === 0) continue;
+        const startPoint = { x: x, y: 0, z: 0 };
+        const endPoint = { x: x, y: 0, z: zMax };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // 3. GRADE NO PLANO ZY (x = 0)
+      // Linhas paralelas ao eixo Y
+      for (let z = 1; z <= Math.floor(zMax); z++) {
+        const startPoint = { x: 0, y: yMin, z: z };
+        const endPoint = { x: 0, y: yMax, z: z };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // Linhas paralelas ao eixo Z
+      for (let y = Math.ceil(yMin); y <= Math.floor(yMax); y++) {
+        if (y === 0) continue;
+        const startPoint = { x: 0, y: y, z: 0 };
+        const endPoint = { x: 0, y: y, z: zMax };
+        gridPoints.push({ start: startPoint, end: endPoint });
+      }
+      
+      // Desenhar todas as grades
+      for (const line of gridPoints) {
+        const [startRotX, startRotY] = applyRotation(line.start.x, line.start.y, line.start.z);
+        const [endRotX, endRotY] = applyRotation(line.end.x, line.end.y, line.end.z);
+        
+        ctx.beginPath();
+        ctx.moveTo(width / 2 + zoomFactor * startRotX, height / 2 + zoomFactor * startRotY);
+        ctx.lineTo(width / 2 + zoomFactor * endRotX, height / 2 + zoomFactor * endRotY);
+        ctx.stroke();
+      }
+    }
+    
+    // Função para desenhar a superfície z = f(x,y)
+    function drawSurface() {
+      const resolution = 20; // Número de divisões em cada dimensão
+      const dx = (xMax - xMin) / resolution;
+      const dy = (yMax - yMin) / resolution;
+      
+      // Coletar todos os quadriláteros para ordenação de profundidade
+      const quads = [];
+      
+      for (let i = 0; i < resolution; i++) {
+        const x = xMin + i * dx;
+        const nextX = x + dx;
+        
+        for (let j = 0; j < resolution; j++) {
+          const y = yMin + j * dy;
+          const nextY = y + dy;
+          
+          const z = evaluateFunction(currentFunction, x, y);
+          const z2 = evaluateFunction(currentFunction, nextX, y);
+          const z3 = evaluateFunction(currentFunction, x, nextY);
+          const z4 = evaluateFunction(currentFunction, nextX, nextY);
+          
+          // Verificar se todos os pontos são válidos
+          if (z <= 0 || z2 <= 0 || z3 <= 0 || z4 <= 0) continue;
+          
+          // Calcular ponto central para ordenação
+          const centerX = (x + nextX) / 2;
+          const centerY = (y + nextY) / 2;
+          const centerZ = (z + z2 + z3 + z4) / 4;
+          
+          quads.push({
+            points: [
+              { x, y, z },
+              { x: nextX, y, z: z2 },
+              { x: nextX, y: nextY, z: z4 },
+              { x, y: nextY, z: z3 }
+            ],
+            center: { x: centerX, y: centerY, z: centerZ }
+          });
+        }
+      }
+      
+      // Ordenar quadriláteros por profundidade (z após rotação)
+      const sortedQuads = depthSort(quads.map(q => q.center)).map(center => {
+        return quads.find(q => q.center === center);
+      });
+      
+      // Desenhar quadriláteros do fundo para frente
+      for (const quad of sortedQuads) {
+        const points = quad.points;
+        
+        // Cor baseada no valor z (gradiente)
+        const avgZ = (points[0].z + points[1].z + points[2].z + points[3].z) / 4;
+        const intensity = Math.min(1, avgZ / zMax);
+        const color = getColorForValue(intensity);
+        const borderColor = getDarkerColor(color, 0.3);
+        
+        // Transformar pontos
+        const transformedPoints = points.map(p => {
+          const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+          return {
+            x: width / 2 + zoomFactor * rotX,
+            y: height / 2 + zoomFactor * rotY
+          };
+        });
+        
+        // Desenhar face (quadrilátero)
+        ctx.beginPath();
+        ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+        ctx.lineTo(transformedPoints[1].x, transformedPoints[1].y);
+        ctx.lineTo(transformedPoints[2].x, transformedPoints[2].y);
+        ctx.lineTo(transformedPoints[3].x, transformedPoints[3].y);
+        ctx.closePath();
+        
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.strokeStyle = borderColor;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+    
+    // Função para obter cor a partir de um gradiente azul-verde-vermelho
+    function getColorForValue(value) {
+      // Gradiente azul-ciano-verde-amarelo-vermelho
+      let r, g, b;
+      
+      if (value < 0.2) {
+        // Azul para ciano (0.0 - 0.2)
+        const t = value / 0.2;
+        r = 0;
+        g = Math.floor(255 * t);
+        b = 255;
+      } else if (value < 0.4) {
+        // Ciano para verde (0.2 - 0.4)
+        const t = (value - 0.2) / 0.2;
+        r = 0;
+        g = 255;
+        b = Math.floor(255 * (1 - t));
+      } else if (value < 0.6) {
+        // Verde para amarelo (0.4 - 0.6)
+        const t = (value - 0.4) / 0.2;
+        r = Math.floor(255 * t);
+        g = 255;
+        b = 0;
+      } else if (value < 0.8) {
+        // Amarelo para laranja (0.6 - 0.8)
+        const t = (value - 0.6) / 0.2;
+        r = 255;
+        g = Math.floor(255 * (1 - t * 0.5));
+        b = 0;
+      } else {
+        // Laranja para vermelho (0.8 - 1.0)
+        const t = (value - 0.8) / 0.2;
+        r = 255;
+        g = Math.floor(128 * (1 - t));
+        b = 0;
+      }
+      
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+    
+    // Função para escurecer uma cor RGB
+    function getDarkerColor(rgbColor, factor) {
+      const rgb = rgbColor.match(/\d+/g).map(Number);
+      return `rgb(${Math.floor(rgb[0] * (1 - factor))}, ${Math.floor(rgb[1] * (1 - factor))}, ${Math.floor(rgb[2] * (1 - factor))})`;
+    }
+    
+    // Função para desenhar elementos de integração
+    function drawIntegrationElements() {
+      const currentX = sliderToX(xValue);
+      const currentY = sliderToY(yValue);
+      
+      if (integrationOrder === 'dydx') {
+        // Plano vertical a x constante
+        drawVerticalSlice(currentX);
+        
+        // Curva de integração ao longo de y para x fixo
+        drawYIntegrationCurve(currentX);
+        
+        // Área sob a curva (integral interna)
+        drawInnerIntegralArea(currentX);
+        
+      } else { // 'dxdy'
+        // Plano horizontal a y constante
+        drawHorizontalSlice(currentY);
+        
+        // Curva de integração ao longo de x para y fixo
+        drawXIntegrationCurve(currentY);
+        
+        // Área sob a curva (integral interna)
+        drawInnerIntegralArea(null, currentY);
+      }
+    }
+    
+    // Função para desenhar plano vertical (x constante)
+    function drawVerticalSlice(x) {
+      // Criar pontos para o plano vertical
+      const points = [
+        { x, y: yMin, z: 0 },
+        { x, y: yMax, z: 0 },
+        { x, y: yMax, z: zMax },
+        { x, y: yMin, z: zMax }
+      ];
+      
+      // Transformar pontos
+      const transformedPoints = points.map(p => {
+        const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+        return {
+          x: width / 2 + zoomFactor * rotX,
+          y: height / 2 + zoomFactor * rotY
+        };
+      });
+      
+      // Desenhar plano semi-transparente
+      ctx.fillStyle = 'rgba(100, 181, 246, 0.2)';
+      ctx.strokeStyle = 'rgba(100, 181, 246, 0.8)';
+      ctx.lineWidth = 1.5;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      ctx.lineTo(transformedPoints[1].x, transformedPoints[1].y);
+      ctx.lineTo(transformedPoints[2].x, transformedPoints[2].y);
+      ctx.lineTo(transformedPoints[3].x, transformedPoints[3].y);
+      ctx.closePath();
+      
+      ctx.fill();
+      ctx.stroke();
+      
+      // Linha indicando valor atual de x
+      ctx.strokeStyle = '#ffeb3b';
+      ctx.lineWidth = 2;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      ctx.lineTo(transformedPoints[1].x, transformedPoints[1].y);
+      ctx.stroke();
+      
+      // Rótulo do valor x
+      ctx.fillStyle = '#ffeb3b';
+      ctx.font = '14px Arial';
+      const labelPos = applyRotation(x, yMin - 0.3, 0);
+      ctx.fillText(`x = ${x.toFixed(1)}`, width / 2 + zoomFactor * labelPos[0], height / 2 + zoomFactor * labelPos[1]);
+    }
+    
+    // Função para desenhar plano horizontal (y constante)
+    function drawHorizontalSlice(y) {
+      // Criar pontos para o plano horizontal
+      const points = [
+        { x: xMin, y, z: 0 },
+        { x: xMax, y, z: 0 },
+        { x: xMax, y, z: zMax },
+        { x: xMin, y, z: zMax }
+      ];
+      
+      // Transformar pontos
+      const transformedPoints = points.map(p => {
+        const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+        return {
+          x: width / 2 + zoomFactor * rotX,
+          y: height / 2 + zoomFactor * rotY
+        };
+      });
+      
+      // Desenhar plano semi-transparente
+      ctx.fillStyle = 'rgba(100, 181, 246, 0.2)';
+      ctx.strokeStyle = 'rgba(100, 181, 246, 0.8)';
+      ctx.lineWidth = 1.5;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      ctx.lineTo(transformedPoints[1].x, transformedPoints[1].y);
+      ctx.lineTo(transformedPoints[2].x, transformedPoints[2].y);
+      ctx.lineTo(transformedPoints[3].x, transformedPoints[3].y);
+      ctx.closePath();
+      
+      ctx.fill();
+      ctx.stroke();
+      
+      // Linha indicando valor atual de y
+      ctx.strokeStyle = '#ffeb3b';
+      ctx.lineWidth = 2;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      ctx.lineTo(transformedPoints[1].x, transformedPoints[1].y);
+      ctx.stroke();
+      
+      // Rótulo do valor y
+      ctx.fillStyle = '#ffeb3b';
+      ctx.font = '14px Arial';
+      const labelPos = applyRotation(xMin - 0.3, y, 0);
+      ctx.fillText(`y = ${y.toFixed(1)}`, width / 2 + zoomFactor * labelPos[0], height / 2 + zoomFactor * labelPos[1]);
+    }
+    
+    // Função para desenhar curva de integração ao longo de y (x fixo)
+    function drawYIntegrationCurve(x) {
+      const numPoints = 100;
+      const dy = (yMax - yMin) / numPoints;
+      
+      const curvePoints = [];
+      
+      for (let i = 0; i <= numPoints; i++) {
+        const y = yMin + i * dy;
+        const z = evaluateFunction(currentFunction, x, y);
+        
+        if (z <= 0) continue;
+        
+        curvePoints.push({ x, y, z });
+      }
+      
+      if (curvePoints.length < 2) return;
+      
+      // Transformar pontos
+      const transformedPoints = curvePoints.map(p => {
+        const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+        return {
+          x: width / 2 + zoomFactor * rotX,
+          y: height / 2 + zoomFactor * rotY
+        };
+      });
+      
+      // Desenhar curva
+      ctx.strokeStyle = '#ff4081';
+      ctx.lineWidth = 3;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      
+      for (let i = 1; i < transformedPoints.length; i++) {
+        ctx.lineTo(transformedPoints[i].x, transformedPoints[i].y);
+      }
+      
+      ctx.stroke();
+    }
+    
+    // Função para desenhar curva de integração ao longo de x (y fixo)
+    function drawXIntegrationCurve(y) {
+      const numPoints = 100;
+      const dx = (xMax - xMin) / numPoints;
+      
+      const curvePoints = [];
+      
+      for (let i = 0; i <= numPoints; i++) {
+        const x = xMin + i * dx;
+        const z = evaluateFunction(currentFunction, x, y);
+        
+        if (z <= 0) continue;
+        
+        curvePoints.push({ x, y, z });
+      }
+      
+      if (curvePoints.length < 2) return;
+      
+      // Transformar pontos
+      const transformedPoints = curvePoints.map(p => {
+        const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+        return {
+          x: width / 2 + zoomFactor * rotX,
+          y: height / 2 + zoomFactor * rotY
+        };
+      });
+      
+      // Desenhar curva
+      ctx.strokeStyle = '#ff4081';
+      ctx.lineWidth = 3;
+      
+      ctx.beginPath();
+      ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+      
+      for (let i = 1; i < transformedPoints.length; i++) {
+        ctx.lineTo(transformedPoints[i].x, transformedPoints[i].y);
+      }
+      
+      ctx.stroke();
+    }
+    
+    // Função para desenhar área sob a curva (integral interna)
+    function drawInnerIntegralArea(x = null, y = null) {
+      const numPoints = 40;
+      
+      if (x !== null) { // Caso dy (x fixo)
+        const dy = (yMax - yMin) / numPoints;
+        
+        const areaPoints = [];
+        let startedPath = false;
+        
+        // Coletar pontos para a área
+        for (let i = 0; i <= numPoints; i++) {
+          const y = yMin + i * dy;
+          const z = evaluateFunction(currentFunction, x, y);
+          
+          if (z <= 0) continue;
+          
+          if (!startedPath) {
+            areaPoints.push({ x, y, z: 0 });
+            startedPath = true;
+          }
+          
+          areaPoints.push({ x, y, z });
+        }
+        
+        if (areaPoints.length > 0) {
+          areaPoints.push({ x, y: areaPoints[areaPoints.length - 1].y, z: 0 });
+        }
+        
+        if (areaPoints.length < 4) return;
+        
+        // Transformar pontos
+        const transformedPoints = areaPoints.map(p => {
+          const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+          return {
+            x: width / 2 + zoomFactor * rotX,
+            y: height / 2 + zoomFactor * rotY
+          };
+        });
+        
+        // Desenhar área
+        ctx.fillStyle = 'rgba(255, 64, 129, 0.3)';
+        
+        ctx.beginPath();
+        ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+        
+        for (let i = 1; i < transformedPoints.length; i++) {
+          ctx.lineTo(transformedPoints[i].x, transformedPoints[i].y);
+        }
+        
+        ctx.closePath();
+        ctx.fill();
+        
+      } else if (y !== null) { // Caso dx (y fixo)
+        const dx = (xMax - xMin) / numPoints;
+        
+        const areaPoints = [];
+        let startedPath = false;
+        
+        // Coletar pontos para a área
+        for (let i = 0; i <= numPoints; i++) {
+          const x = xMin + i * dx;
+          const z = evaluateFunction(currentFunction, x, y);
+          
+          if (z <= 0) continue;
+          
+          if (!startedPath) {
+            areaPoints.push({ x, y, z: 0 });
+            startedPath = true;
+          }
+          
+          areaPoints.push({ x, y, z });
+        }
+        
+        if (areaPoints.length > 0) {
+          areaPoints.push({ x: areaPoints[areaPoints.length - 1].x, y, z: 0 });
+        }
+        
+        if (areaPoints.length < 4) return;
+        
+        // Transformar pontos
+        const transformedPoints = areaPoints.map(p => {
+          const [rotX, rotY] = applyRotation(p.x, p.y, p.z);
+          return {
+            x: width / 2 + zoomFactor * rotX,
+            y: height / 2 + zoomFactor * rotY
+          };
+        });
+        
+        // Desenhar área
+        ctx.fillStyle = 'rgba(255, 64, 129, 0.3)';
+        
+        ctx.beginPath();
+        ctx.moveTo(transformedPoints[0].x, transformedPoints[0].y);
+        
+        for (let i = 1; i < transformedPoints.length; i++) {
+          ctx.lineTo(transformedPoints[i].x, transformedPoints[i].y);
+        }
+        
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+    
+    // Função para calcular o valor da integral interna
+    function calculateInnerIntegral() {
+      const currentX = sliderToX(xValue);
+      const currentY = sliderToY(yValue);
+      
+      // Usar método do trapézio para aproximação numérica
+      const numSteps = 100;
+      let result = 0;
+      
+      if (integrationOrder === 'dydx') {
+        // Integrar f(currentX, y) dy
+        const dy = (yMax - yMin) / numSteps;
+        for (let i = 0; i < numSteps; i++) {
+          const y1 = yMin + i * dy;
+          const y2 = y1 + dy;
+          const f1 = Math.max(0, evaluateFunction(currentFunction, currentX, y1));
+          const f2 = Math.max(0, evaluateFunction(currentFunction, currentX, y2));
+          result += (f1 + f2) * dy / 2;
+        }
+      } else { // 'dxdy'
+        // Integrar f(x, currentY) dx
+        const dx = (xMax - xMin) / numSteps;
+        for (let i = 0; i < numSteps; i++) {
+          const x1 = xMin + i * dx;
+          const x2 = x1 + dx;
+          const f1 = Math.max(0, evaluateFunction(currentFunction, x1, currentY));
+          const f2 = Math.max(0, evaluateFunction(currentFunction, x2, currentY));
+          result += (f1 + f2) * dx / 2;
+        }
+      }
+      
+      return result;
+    }
+    
+    // Função para calcular o valor da integral dupla total
+    function calculateTotalIntegral() {
+      // Método do trapézio bidimensional
+      const numSteps = 30;
+      const dx = (xMax - xMin) / numSteps;
+      const dy = (yMax - yMin) / numSteps;
+      
+      let result = 0;
+      
+      for (let i = 0; i < numSteps; i++) {
+        const x1 = xMin + i * dx;
+        const x2 = x1 + dx;
+        
+        for (let j = 0; j < numSteps; j++) {
+          const y1 = yMin + j * dy;
+          const y2 = y1 + dy;
+          
+          const f11 = Math.max(0, evaluateFunction(currentFunction, x1, y1));
+          const f12 = Math.max(0, evaluateFunction(currentFunction, x1, y2));
+          const f21 = Math.max(0, evaluateFunction(currentFunction, x2, y1));
+          const f22 = Math.max(0, evaluateFunction(currentFunction, x2, y2));
+          
+          result += (f11 + f12 + f21 + f22) * dx * dy / 4;
+        }
+      }
+      
+      return result;
+    }
+    
+    // Função principal para atualizar toda a visualização
+    function updateVisualization() {
+      // Limpar canvas
+      ctx.clearRect(0, 0, width, height);
+      
+      // Renderizar componentes
+      drawAxes();
+      drawSurface();
+      drawIntegrationElements();
+      
+      // Atualizar valores numéricos nos displays
+      document.getElementById('x-value').textContent = sliderToX(xValue).toFixed(1);
+      document.getElementById('y-value').textContent = sliderToY(yValue).toFixed(1);
+      document.getElementById('inner-integral').textContent = calculateInnerIntegral().toFixed(3);
+      document.getElementById('total-integral').textContent = calculateTotalIntegral().toFixed(3);
+      document.getElementById('zoom-value').textContent = Math.round(zoomFactor * 100) + '%';
+    }
+    
+    // Event listeners para os controles
+    document.getElementById('function-select').addEventListener('change', function() {
+      currentFunction = this.value;
+      updateVisualization();
+    });
+    
+    document.getElementById('dydx-button').addEventListener('click', function() {
+      integrationOrder = 'dydx';
+      this.classList.add('active');
+      document.getElementById('dxdy-button').classList.remove('active');
+      updateVisualization();
+    });
+    
+    document.getElementById('dxdy-button').addEventListener('click', function() {
+      integrationOrder = 'dxdy';
+      this.classList.add('active');
+      document.getElementById('dydx-button').classList.remove('active');
+      updateVisualization();
+    });
+    
+    document.getElementById('x-slider').addEventListener('input', function() {
+      xValue = parseInt(this.value);
+      updateVisualization();
+    });
+    
+    document.getElementById('y-slider').addEventListener('input', function() {
+      yValue = parseInt(this.value);
+      updateVisualization();
+    });
+    
+    document.getElementById('zoom-slider').addEventListener('input', function() {
+      zoomFactor = parseInt(this.value) / 100;
+      updateVisualization();
+    });
+    
+    // Event listeners para rotação com mouse
+    canvas.addEventListener('mousedown', function(e) {
+      isDragging = true;
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+      canvas.style.cursor = 'grabbing';
+    });
+    
+    canvas.addEventListener('mousemove', function(e) {
+      if (!isDragging) return;
+      
+      const deltaX = e.clientX - lastMouseX;
+      const deltaY = e.clientY - lastMouseY;
+      
+      rotationY += deltaX * 0.01;
+      rotationX += deltaY * 0.01;
+      
+      // Limitar a rotação vertical para evitar que a visualização fique de cabeça para baixo
+      rotationX = Math.max(-Math.PI / 2 + 0.1, Math.min(Math.PI / 2 - 0.1, rotationX));
+      
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+      
+      updateVisualization();
+    });
+    
+    window.addEventListener('mouseup', function() {
+      if (isDragging) {
+        isDragging = false;
+        canvas.style.cursor = 'grab';
+      }
+    });
+    
+    // Event listeners para rotação com touch
+    canvas.addEventListener('touchstart', function(e) {
+      if (e.touches.length === 1) {
+        lastTouchX = e.touches[0].clientX;
+        lastTouchY = e.touches[0].clientY;
+      }
+      e.preventDefault();
+    });
+    
+    canvas.addEventListener('touchmove', function(e) {
+      if (e.touches.length === 1) {
+        const deltaX = e.touches[0].clientX - lastTouchX;
+        const deltaY = e.touches[0].clientY - lastTouchY;
+        
+        rotationY += deltaX * 0.01;
+        rotationX += deltaY * 0.01;
+        
+        // Limitar a rotação vertical
+        rotationX = Math.max(-Math.PI / 2 + 0.1, Math.min(Math.PI / 2 - 0.1, rotationX));
+        
+        lastTouchX = e.touches[0].clientX;
+        lastTouchY = e.touches[0].clientY;
+        
+        updateVisualization();
+      }
+      e.preventDefault();
+    });
+    
+    // Prevenir zoom não intencional da página durante interação com canvas
+    canvas.addEventListener('wheel', function(e) {
+      e.preventDefault();
+      
+      // Ajustar zoom com a roda do mouse
+      const delta = -Math.sign(e.deltaY) * 0.05;
+      const newZoom = Math.max(0.5, Math.min(1.5, zoomFactor + delta));
+      
+      if (newZoom !== zoomFactor) {
+        zoomFactor = newZoom;
+        document.getElementById('zoom-slider').value = Math.round(zoomFactor * 100);
+        updateVisualization();
+      }
+    });
+    
+    // Inicializar a visualização
+    window.onload = function() {
+      // Definir valores iniciais
+      xValue = 50;
+      yValue = 50;
+      document.getElementById('x-slider').value = xValue;
+      document.getElementById('y-slider').value = yValue;
+      document.getElementById('zoom-slider').value = 100;
+      
+      // Exibir mensagem de instruções inicial
+      setTimeout(() => {
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
+        ctx.fillRect(width/2 - 200, height/2 - 60, 400, 120);
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '16px Arial';
+        
+        const messages = [
+          "• Arraste com o mouse para girar a visualização",
+          "• Use a roda do mouse para zoom rápido",
+          "• Use o slider de zoom para ajuste preciso",
+          "• Explore diferentes funções e ordens de integração"
+        ];
+        
+        for (let i = 0; i < messages.length; i++) {
+          ctx.fillText(messages[i], width/2 - 180, height/2 - 30 + i * 30);
+        }
+        
+        // Remover a mensagem após 6 segundos
+        setTimeout(() => {
+          updateVisualization();
+        }, 6000);
+      }, 500);
+      
+      // Renderizar visualização inicial
+      updateVisualization();
+    };
+  </script>
+</body>
+</html>
