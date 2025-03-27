@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+      
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 
+        ATENÇÃO: Este é um modelo de documento histórico da Guerra Fria.
+        O document-header deve conter uma narrativa histórica relacionada à corrida espacial.
+        
+        Sugestões de eventos históricos para contextualização:
+        - Lançamento do Sputnik (1957)
+        - Projeto Mercury (1958-1963)
+        - Programa Vostok (1961-1963)
+        - Programa Gemini (1965-1966)
+        - Programa Apollo (1961-1972)
+        
+        O texto deve parecer um documento sigiloso da época, com partes censuradas
+        e referências a projetos secretos relacionados ao desenvolvimento de
+        tecnologia espacial durante a Guerra Fria.
+        -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">12</span> DE OUTUBRO DE
+          <span class="censored">1962</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE ESPACIAL [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">VECTOR-X</span> <br /><br />
+          Em resposta à recente demonstração de capacidade espacial soviética
+          com o <span class="censored">lançamento bem-sucedido</span>, nossa
+          equipe de matemáticos e engenheiros desenvolveu uma série de cálculos
+          críticos para otimização de trajetórias orbitais. <br /><br />
+          Os exercícios a seguir foram extraídos dos cadernos do Dr.
+          <span class="censored">████████</span>, principal teórico do programa
+          espacial <span class="censored">███████</span>. Suas descobertas sobre
+          cálculo vetorial revolucionaram nossa compreensão sobre
+          <span class="censored">navegação orbital</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada deste material pode
+          resultar em <span class="censored">graves consequências</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1729</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: [TÓPICO]</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          [FÓRMULA MATEMÁTICA PRINCIPAL DO CONCEITO]
+        </p>
+        <p>[EXPLICAÇÃO FORMAL DO CONCEITO MATEMÁTICO]</p>
+      </div>
+
+      <div class="mission-context">
+        [CONTEXTUALIZAÇÃO DO CONCEITO NO ÂMBITO DA EXPLORAÇÃO ESPACIAL]
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> [CONEXÃO DO CONCEITO COM EVENTO
+        HISTÓRICO DA CORRIDA ESPACIAL]
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise de Trajetória - Programa Vostok [INTERCEPTADO POR
+              [REDACTED] EM 17/SET/1962]
+            </div>
+            <p>
+              Durante análise de telemetria interceptada, foram detectados os
+              seguintes parâmetros de velocidade orbital: \[\vec{v} =
+              \begin{pmatrix} 3 \\ 4 \\ 0 \end{pmatrix}\] km/s DETERMINAR:
+              Magnitude do vetor velocidade para verificação de capacidade
+              orbital.
+            </p>
+            
+            <!-- Nova estrutura para dicas em details -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as componentes sem calcular diretamente.
+              </div>
+            </details>
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+                <p>\[|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}\]</p>
+                <p>COMPUTAÇÃO NUMÉRICA:</p>
+                <p>\[|\vec{v}| = \sqrt{3^2 + 4^2 + 0^2} = \sqrt{25} = 5\]</p>
+                <p>
+                  CONCLUSÃO: Velocidade orbital = 5 km/s [CAPACIDADE CONFIRMADA]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Análise de Sistema Propulsivo [DADOS DO PROGRAMA
+              [REDACTED]]
+            </div>
+            <p>
+              Telemetria indica presença de dois vetores de força
+              significativos: \[\vec{F_1} = \begin{pmatrix} 2 \\ -1 \\ 3
+              \end{pmatrix}\] kN \[\vec{F_2} = \begin{pmatrix} -1 \\ 2 \\ -1
+              \end{pmatrix}\] kN DETERMINAR: Vetor resultante \(\vec{R}\) para
+              avaliação de capacidade propulsiva.
+            </p>
+            
+            <!-- Nova estrutura para dicas em details -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Operações elementares preservam propriedades fundamentais de sistemas vetoriais.
+              </div>
+            </details>
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE SOMA VETORIAL:</p>
+                <p>
+                  \[\vec{R} = \begin{pmatrix} 2 \\ -1 \\ 3 \end{pmatrix} +
+                  \begin{pmatrix} -1 \\ 2 \\ -1 \end{pmatrix} = \begin{pmatrix}
+                  1 \\ 1 \\ 2 \end{pmatrix}\]
+                </p>
+                <p>
+                  ANÁLISE: Componentes resultantes indicam capacidade de manobra
+                  orbital.
+                </p>
+                <p>
+                  STATUS: Tecnologia compatível com especificações do Projeto
+                  <span class="censored">████</span>
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <!-- Exemplo de exercício avançado (GAMMA) com dica mínima -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Cálculo de Trajetória - Programa Apollo [DADOS SENSÍVEIS DE JUNHO/1968]
+            </div>
+            <p>
+              Análise orbital indica presença de campo vetorial \[\vec{F}(x,y,z) = \begin{pmatrix} y^2 \\ 2xy \\ z^2 - y \end{pmatrix}\] 
+              em região crítica. DETERMINAR: Classificação do campo quanto às propriedades fundamentais.
+            </p>
+            
+            <!-- Dica extremamente sutil para série GAMMA -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob operações específicas.
+              </div>
+            </details>
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>ANÁLISE DE PROPRIEDADES FUNDAMENTAIS:</p>
+                <p>[Solução detalhada seria incluída aqui]</p>
+                <p>CONCLUSÃO: Campo classificado como não-conservativo e com divergência não-nula.</p>
+              </div>
+            </details>
+          </li>
+          
+          <!-- Exemplo de exercício desafiador (OMEGA) sem dica -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Skylab - Análise de Estabilidade [COMPARTIMENTADO - DEZ/1973]
+            </div>
+            <p>
+              Sistema apresenta configuração crítica descrita por [...] 
+              DETERMINAR: Condições de estabilidade e invariância.
+            </p>
+            
+            <!-- Sem dicas para a série OMEGA -->
+            
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PROTOCOLO DE ANÁLISE DE ESTABILIDADE:</p>
+                <p>[Solução detalhada seria incluída aqui]</p>
+                <p>CONCLUSÃO: Sistema apresenta estabilidade condicional sob restrições específicas.</p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span
+          class="censored"
+          >1729</span
+        >-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+   </body>
+</html>
