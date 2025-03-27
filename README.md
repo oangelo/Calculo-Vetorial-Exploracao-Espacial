@@ -28,16 +28,14 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - Conjunto de conteúdo nulo
 - Condições de integrabilidade sobre conjuntos limitados
 - Propriedades da integral
+- Cálculo de integral dupla: Teorema de Fubini
 
-3. [Cálculo de integral dupla: Teorema de Fubini](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/calculo-de-integral-dupla-teorema-de-fubini.html)
-
-4. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/mudanca-de-variaveis-na-integral-dupla.html)
-
+3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/mudanca-de-variaveis-na-integral-dupla.html)
 - Preliminares
 - Mudança de variáveis
 - Massa e centro de massa
 
-5. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-1.html) - [ Aplicações ](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-2.html)
+4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-1.html) - [ Aplicações ](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-2.html)
 
 - Definição e conjunto de conteúdo nulo
 - Condições de integrabilidade
@@ -46,7 +44,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - Coordenadas esféricas e cilíndricas
 - Centro de massa e momento de inércia
 
-6. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-de-linha.html)
+5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-de-linha.html)
 
 - Integral de um campo vetorial sobre uma curva
 - Notações alternativas
@@ -54,7 +52,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - Integral sobre curvas de classe C¹
 - Integral relativa ao comprimento de arco
 
-7. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/campos-conservativos.html)
+6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/campos-conservativos.html)
 
 - Definição e forma diferencial exata
 - Integral de linha de campos conservativos
@@ -62,27 +60,27 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - Condições de conservação
 - Conjunto simplesmente conexo
 
-8. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green.html)
+7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green.html)
 
 - Para retângulos
 - Para conjuntos com fronteira C¹
 - Teorema de Stokes no plano
 - Teorema da divergência no plano
 
-9. [Área e integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/area-e-integral-de-superficie.html)
+8. [Área e integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/area-e-integral-de-superficie.html)
 
 - Superfícies
 - Plano tangente
 - Área de superfície
 - Integral de superfície
 
-10. [Fluxo de um campo vetorial e Teorema da divergência](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/fluxo-de-um-campo-vetorial-teorema-da-divergencia.html)
+9. [Fluxo de um campo vetorial e Teorema da divergência](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/fluxo-de-um-campo-vetorial-teorema-da-divergencia.html)
 
 - Fluxo de um campo vetorial
 - Teorema da divergência (Gauss)
 - Teorema da divergência: continuação
 
-11. [Teorema de Stokes no espaço](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-stokes-no-espaco.html)
+10. [Teorema de Stokes no espaço](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-stokes-no-espaco.html)
 
 ## Pré-requisitos
 
