@@ -20,68 +20,51 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Derivadas parciais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/derivadas-parciais.html)
 - [Rotacional](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/rotacional.html)
 - [Divergente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/divergente.html)
-
 2. [Integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-duplas.html)
-
-- Soma de Riemann
-- Definição de integral dupla
-- Conjunto de conteúdo nulo
-- Condições de integrabilidade sobre conjuntos limitados
-- Propriedades da integral
-- Cálculo de integral dupla: Teorema de Fubini
-
+- [Soma de Riemann](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/soma-de-riemann.html)
+- [Definição de integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/definicao-de-integral-dupla.html)
+- [Conjunto de conteúdo nulo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/conjunto-de-conteudo-nulo.html)
+- [Condições de integrabilidade sobre conjuntos limitados](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/condicoes-de-integrabilidade.html)
+- [Propriedades da integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/propriedades-da-integral.html)
+- [Cálculo de integral dupla: Teorema de Fubini](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/teorema-de-fubini.html)
 3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/mudanca-de-variaveis-na-integral-dupla.html)
-- Preliminares
-- Mudança de variáveis
-- Massa e centro de massa
-
+- [Preliminares](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/preliminares.html)
+- [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis.html)
+- [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa.html)
 4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-1.html) - [ Aplicações ](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-2.html)
-
-- Definição e conjunto de conteúdo nulo
-- Condições de integrabilidade
-- Redução a integrais duplas
-- Mudança de variáveis
-- Coordenadas esféricas e cilíndricas
-- Centro de massa e momento de inércia
-
+- [Definição e conjunto de conteúdo nulo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/definicao-e-conjunto-de-conteudo-nulo.html)
+- [Condições de integrabilidade](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/condicoes-de-integrabilidade.html)
+- [Redução a integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/reducao-a-integrais-duplas.html)
+- [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/mudanca-de-variaveis.html)
+- [Coordenadas esféricas e cilíndricas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/coordenadas-esfericas-e-cilindricas.html)
+- [Centro de massa e momento de inércia](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/centro-de-massa-e-momento-de-inercia.html)
 5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-de-linha.html)
-
-- Integral de um campo vetorial sobre uma curva
-- Notações alternativas
-- Mudança de parâmetro
-- Integral sobre curvas de classe C¹
-- Integral relativa ao comprimento de arco
-
+- [Integral de um campo vetorial sobre uma curva](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-campo-vetorial-curva.html)
+- [Notações alternativas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/notacoes-alternativas.html)
+- [Mudança de parâmetro](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/mudanca-de-parametro.html)
+- [Integral sobre curvas de classe C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-curvas-c1.html)
+- [Integral relativa ao comprimento de arco](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-comprimento-arco.html)
 6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/campos-conservativos.html)
-
-- Definição e forma diferencial exata
-- Integral de linha de campos conservativos
-- Independência do caminho e função potencial
-- Condições de conservação
-- Conjunto simplesmente conexo
-
+- [Definição e forma diferencial exata](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/definicao-e-forma-diferencial-exata.html)
+- [Integral de linha de campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/integral-linha-campos-conservativos.html)
+- [Independência do caminho e função potencial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/independencia-caminho-funcao-potencial.html)
+- [Condições de conservação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/condicoes-de-conservacao.html)
+- [Conjunto simplesmente conexo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/conjunto-simplesmente-conexo.html)
 7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green.html)
-
-- Para retângulos
-- Para conjuntos com fronteira C¹
-- Teorema de Stokes no plano
-- Teorema da divergência no plano
-
+- [Para retângulos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-retangulos.html)
+- [Para conjuntos com fronteira C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-conjuntos-fronteira-c1.html)
+- [Teorema de Stokes no plano](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/teorema-stokes-plano.html)
+- [Teorema da divergência no plano](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/teorema-divergencia-plano.html)
 8. [Área e integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/area-e-integral-de-superficie.html)
-
-- Superfícies
-- Plano tangente
-- Área de superfície
-- Integral de superfície
-
+- [Superfícies](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/superficies.html)
+- [Plano tangente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/plano-tangente.html)
+- [Área de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/area-de-superficie.html)
+- [Integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/integral-de-superficie.html)
 9. [Fluxo de um campo vetorial e Teorema da divergência](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/fluxo-de-um-campo-vetorial-teorema-da-divergencia.html)
-
-- Fluxo de um campo vetorial
-- Teorema da divergência (Gauss)
-- Teorema da divergência: continuação
-
+- [Fluxo de um campo vetorial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-9/fluxo-campo-vetorial.html)
+- [Teorema da divergência (Gauss)](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-9/teorema-divergencia-gauss.html)
+- [Teorema da divergência: continuação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-9/teorema-divergencia-continuacao.html)
 10. [Teorema de Stokes no espaço](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-stokes-no-espaco.html)
-
 ## Pré-requisitos
 
 Para embarcar nesta jornada, os viajantes devem estar familiarizados com:
