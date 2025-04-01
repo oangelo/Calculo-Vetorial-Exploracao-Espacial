@@ -1,23 +1,846 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cálculo de integral dupla: Teorema de Fubini - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Cálculo de integral dupla: Teorema de Fubini</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">17</span> DE SETEMBRO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: BASE GEMINI <span class="censored">██████</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">FUBINI-X</span><br /><br />
+          Em consonância com os avanços recentes do
+          <span class="censored">Programa Gemini</span>, nossa equipe de análise
+          vetorial reúne, no presente documento, estudos detalhados sobre o
+          <span class="censored">Teorema de Fubini</span> aplicado à avaliação
+          de integrais duplas. Tais resultados fornecem subsídios cruciais para
+          o planejamento de <span class="censored">rendezvous orbitais</span> e
+          controle de trajetória.
+        </div>
+
+        <div class="warning-box">
+          Esta publicação contém informações técnicas classificadas de valor
+          estratégico. A violação dos protocolos de sigilo poderá acarretar
+          <span class="censored">sanções irreversíveis</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2501</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES:
+            <span class="censored">2</span>
+            DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE FUBINI</div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \iint_{D} f(x,y)\, dA = \int_{a}^{b} \left(\int_{c}^{d} f(x,y)\,
+          dy\right) dx = \int_{c}^{d} \left(\int_{a}^{b} f(x,y)\, dx\right) dy
+          \]
+        </p>
+        <p>
+          O Teorema de Fubini estabelece que, sob condições apropriadas de
+          continuidade ou integrabilidade, a integral dupla de uma função
+          \(f(x,y)\) sobre uma região \(D\) pode ser computada por meio de
+          integrais iteradas, invertendo a ordem de integração conforme
+          necessário. Tal resultado é fundamental na análise de problemas em
+          duas dimensões, permitindo cálculos simplificados e verificações de
+          consistência.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Aplicar o Teorema de Fubini às cargas termodinâmicas em componentes
+        orbitais permite estimar pressões e temperaturas em placas de
+        revestimento, garantindo a segurança das manobras durante missões
+        espaciais. Esses métodos se mostraram essenciais para prever o
+        comportamento de
+        <span class="censored">módulos pressurizados</span>
+        em ambientes extremos.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Após os primeiros voos do
+        <span class="censored">Programa Mercury</span>, as exigências técnicas
+        para missões orbitais prolongadas se intensificaram. O
+        <span class="censored">Programa Gemini</span> (1965-1966) trouxe novos
+        desafios, exigindo métodos de cálculo mais robustos. O Teorema de Fubini
+        foi empregado para avaliar distribuições de temperatura em superfícies
+        de módulos espaciais, tornando-se parte do conjunto de técnicas
+        consideradas prioritárias pelos engenheiros.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (Exercícios 1-3) - Básico -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise Prévia de Setor Retangular - Relatório
+              <span class="censored">ALFA-01</span>
+            </div>
+            <p>
+              Calcular \(\iint_D (2x + 3y)\, dA\) onde \(D\) é o retângulo \(0
+              \le x \le 1\), \(0 \le y \le 2\). Use o Teorema de Fubini para
+              determinar o valor exato da integral e interpretar seu significado
+              em termos de \(x\) e \(y\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a integração iterada primeiro em
+                relação a y.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Aplicando Fubini em y primeiro:</p>
+                <p>
+                  \[ \int_{x=0}^{1} \left(\int_{y=0}^{2} (2x + 3y)\, dy\right)
+                  dx. \]
+                </p>
+                <p>Integração em y:</p>
+                <p>
+                  \[ \int_{0}^{2} (2x + 3y)\, dy = 2x \int_{0}^{2} dy +
+                  3\int_{0}^{2} y\, dy \]
+                </p>
+                <p>
+                  \[ = 2x (2) + 3 \left[\frac{y^2}{2}\right]_0^2 = 4x + 3 \cdot
+                  2 = 4x + 6. \]
+                </p>
+                <p>Agora integrando em x:</p>
+                <p>
+                  \[ \int_{0}^{1} (4x + 6)\, dx = \left[ 2x^2 + 6x \right]_0^1 =
+                  2 + 6 = 8. \]
+                </p>
+                <p>
+                  Conclusão: O valor da integral é 8, interpretado como a soma
+                  acumulada de (2x + 3y) sobre o retângulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Domínio por Interseção de Retas - Relatório
+              <span class="censored">ALFA-02</span>
+            </div>
+            <p>
+              Considere a região \(D\) definida pela interseção das retas \(x
+              \ge 0\), \(y \ge 0\) e \(x + y \le 3\). Calcular \(\iint_D (x +
+              2y)\, dA\) usando o Teorema de Fubini e discutir a possibilidade
+              de trocar a ordem de integração.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: O domínio é um triângulo; escolha limites em
+                função de x ou y.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Descrição do domínio:</p>
+                <p>\(0 \le x \le 3,\; 0 \le y \le 3 - x.\)</p>
+                <p>Portanto, a integral pode ser escrita como:</p>
+                <p>
+                  \[ \int_{x=0}^{3} \left(\int_{y=0}^{3-x} (x + 2y)\, dy\right)
+                  dx. \]
+                </p>
+                <p>Integração interna em y:</p>
+                <p>
+                  \[ \int_{0}^{3-x} (x + 2y)\, dy = x\int_{0}^{3-x} dy +
+                  2\int_{0}^{3-x} y\, dy. \]
+                </p>
+                <p>
+                  \[ = x(3 - x) + 2\left[\frac{y^2}{2}\right]_0^{3-x} = x(3 - x)
+                  + (3 - x)^2. \]
+                </p>
+                <p>
+                  \(x(3 - x) + (3 - x)^2 = 3x - x^2 + (9 - 6x + x^2) = 9 - 3x.\)
+                </p>
+                <p>Agora integramos em x:</p>
+                <p>
+                  \[ \int_{0}^{3} (9 - 3x)\, dx = \left[ 9x -
+                  \frac{3x^2}{2}\right]_0^3 = (27 - \frac{3\cdot 9}{2}) - 0 = 27
+                  - 13.5 = 13.5. \]
+                </p>
+                <p>
+                  Conclusão: O valor da integral é \(13.5\). Se trocarmos a
+                  ordem de integração, os limites devem ser reescritos
+                  adequadamente (em termos de y ou x), porém o resultado
+                  permanece o mesmo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Domínio Poligonal - Relatório
+              <span class="censored">ALFA-03</span>
+            </div>
+            <p>
+              Seja \(D\) a região delimitada pelas retas \(x=0\), \(y=1\),
+              \(y=2x\) e \(x=2\). Calcular \(\iint_D (3 - xy)\, dA\) e verificar
+              como o Teorema de Fubini assegura a mesma resposta
+              independentemente da ordem de integração.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Identifique a forma de trapézio no plano e
+                escolha a ordem de integração mais simples.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Ao desenhar as retas, nota-se que para cada \(x\) entre 0 e 2,
+                  \(y\) varia de \(y=1\) até \(y=2x\) (quando \(2x > 1\), isto
+                  é, \(x > 0.5\)). O domínio pode ser subdividido ou descrito
+                  via integração em duas partes.
+                </p>
+                <p>
+                  Alternativamente, inverter a ordem (integração em \(x\) ou
+                  \(y\) primeiro) leva a intervalos distintos, mas o resultado
+                  final permanece inalterado por Fubini.
+                </p>
+                <p>
+                  [Detalhes de cálculo podem ser desenvolvidos a partir da
+                  parametrização escolhida.]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (Exercícios 4-6) - Intermediário -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Análise de Domínio Curvo - Programa
+              <span class="censored">GEMINI</span>
+            </div>
+            <p>
+              Seja \(D\) a região definida por \(0 \le x \le 4\) e \(0 \le y \le
+              \sqrt{x}\). Calcular \(\iint_D (x + 1)\, dA\) e discutir se a
+              troca da ordem de integração simplifica a resolução.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de raízes podem ser exploradas, mas
+                verifique se a inversão de eixos ajuda.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em y primeiro: \( \int_{x=0}^{4} \left[\int_{y=0}^{\sqrt{x}}
+                  (x + 1)\, dy\right] dx. \)
+                </p>
+                <p>
+                  A expressão \(x+1\) é independente de y, resultando em \((x+1)
+                  \cdot (\sqrt{x} - 0)\) para a parte interna.
+                </p>
+                <p>
+                  \( \int_{0}^{4} (x+1)\sqrt{x}\, dx = \int_{0}^{4} x^{1/2} (x +
+                  1)\, dx. \)
+                </p>
+                <p>
+                  A resolução exige manipulação algébrica ou substituições. Se
+                  invertêssemos a ordem, y varia de 0 a 2, e x de y^2 a 4,
+                  podendo ou não simplificar.
+                </p>
+                <p>
+                  O Teorema de Fubini garante que qualquer que seja a escolha
+                  dos limites corretos, o valor final será o mesmo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Domínio Definido por Funções - Setor
+              <span class="censored">BETA-05</span>
+            </div>
+            <p>
+              Considerar \(D = \{(x,y) \mid 1 \le x \le 3,\; 0 \le y \le
+              \ln(x)\}\). Calcular \(\iint_D \bigl(2 + e^y\bigr)\, dA\),
+              avaliando primeiro em y e depois invertendo a ordem para checar a
+              consistência.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades do logaritmo e do exponencial podem
+                simplificar a discussão sobre limites.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Integração em y primeiro: \( \int_{x=1}^{3}
+                  \left[\int_{y=0}^{\ln(x)} (2 + e^y)\, dy\right] dx. \)
+                </p>
+                <p>
+                  \( = \int_{1}^{3} \left[ 2y + e^y \right]_{0}^{\ln(x)} dx =
+                  \int_{1}^{3} \left[ 2\ln(x) + x - 1 \right] dx. \)
+                </p>
+                <p>
+                  Ao integrar em x, obtemos a expressão final em função de
+                  \(\ln(x)\). Invertendo a ordem, descreve-se x em função de y:
+                  \(0 \le y \le \ln(3),\; e^y \le x \le 3\). A consistência é
+                  assegurada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Cálculos Orbitais - Programa
+              <span class="censored">BETA-06</span>
+            </div>
+            <p>
+              Analisar \(\iint_D (x^2 - y)\, dA\), onde \(D\) é definido por \(
+              x + y \ge 2\), \(0 \le x \le 3\), \(0 \le y \le 4\). Montar os
+              limites apropriados e verificar como o Teorema de Fubini permite a
+              reordenação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Reescreva y \(\ge 2 - x\) ao definir os limites.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A região corresponde a pontos acima da reta x+y=2, dentro do
+                  retângulo [0,3]x[0,4]. A descrição em x primeiro ou y primeiro
+                  requer atenção ao traçar o esboço.
+                </p>
+                <p>
+                  [Os passos de integração e simplificação são análogos aos
+                  exemplos anteriores, resultando em valor único,
+                  independentemente da ordem.]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (Exercícios 7-9) - Avançado -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Domínio Circular - Análise
+              <span class="censored">GAMMA-1</span>
+            </div>
+            <p>
+              Seja \(D\) o disco \(x^2 + y^2 \le 4\). Calcular \(\iint_D
+              e^{-(x^2 + y^2)}\, dA\) usando integrais iteradas em coordenadas
+              cartesianas (sem polar). Comentar a dificuldade em estabelecer os
+              limites e a aplicabilidade de Fubini.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias, mas a mudança para
+                coordenadas polares não está disponível neste tópico.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em Cartesianas: \( -2 \le x \le 2,\; -\sqrt{4 - x^2} \le y \le
+                  \sqrt{4 - x^2}. \)
+                </p>
+                <p>
+                  \( \iint_D e^{-(x^2 + y^2)}\, dA = \int_{x=-2}^{2}
+                  \left[\int_{y=-\sqrt{4 - x^2}}^{\sqrt{4 - x^2}} e^{-(x^2 +
+                  y^2)} dy\right] dx. \)
+                </p>
+                <p>
+                  Embora a forma fechada seja complexa, o Teorema de Fubini
+                  garante a equivalência de qualquer forma de inteiração
+                  iterada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Conjunto Limitado por Curvas - Relatório
+              <span class="censored">GAMMA-2</span>
+            </div>
+            <p>
+              A região \(D\) é limitada por \(y = x^2\) e \(y = 4\). Avaliar
+              \(\iint_D (xy)\, dA\), discutindo a possibilidade de dividir a
+              região ou usar diretamente um único conjunto de limites.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A curva \(y=x^2\) pode sugerir inversão de
+                eixos.]
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Domínio em x: \(-2 \le x \le 2\), e para cada x, \(x^2 \le y
+                  \le 4\). A integral pode ser estruturada como
+                </p>
+                <p>
+                  \[ \int_{x=-2}^{2} \left(\int_{y=x^2}^{4} xy\, dy\right) dx.
+                  \]
+                </p>
+                <p>
+                  Alternativamente, descrevendo em y primeiro, temos \(0 \le y
+                  \le 4\), \(-\sqrt{y} \le x \le \sqrt{y}\). A aplicabilidade de
+                  Fubini se mantém.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Ajustes Orbitais - Painel
+              <span class="censored">GAMMA-3</span>
+            </div>
+            <p>
+              Verificar \(\iint_D \ln(1 + x^2 + y^2)\, dA\) em que \(D\) é o
+              retângulo \(-1 \le x \le 2\), \(-1 \le y \le 1\). Discutir a
+              continuidade do integrando e o efeito de termos logarítmicos.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Não há singularidades em x^2+y^2>=0, mas note o
+                comportamento para x negativo.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função \(\ln(1 + x^2 + y^2)\) é contínua em toda a região e
+                  livre de singularidades, pois \(1 + x^2 + y^2 > 0\). Assim,
+                  Fubini garante a possibilidade de usar integrais iteradas
+                  invertidas.
+                </p>
+                <p>
+                  [A resolução analítica pode demandar técnicas avançadas, mas a
+                  existência da integral é assegurada.]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (Exercícios 10-12) - Desafiador -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Projeto
+              <span class="censored">OMEGA-1</span> - Investigação Sigilosa
+            </div>
+            <p>
+              Analisar \(\iint_D (e^{xy} - y^2)\, dA\) onde \(D\) é delimitado
+              pelos limites \(0 \le x \le 2\) e \(x \le y \le 3\). Justificar a
+              aplicação do Teorema de Fubini e relatar se a inversão (integrar
+              em x primeiro) traz simplificações.
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [Solução detalhada sobre os limites de y: y varia de x até 3,
+                  e x de 0 até 2. Nota-se que e^{xy} pode exigir atenção na
+                  troca de ordem.]
+                </p>
+                <p>
+                  Conclusão: O Teorema de Fubini assegura o valor único, embora
+                  a ordem escolhida possa ser mais ou menos conveniente.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Missão Secreta
+              <span class="censored">OMEGA-2</span> - Cálculo Tenso
+            </div>
+            <p>
+              Determinar \(\iint_D (x^3 - y^3)\, dA\) na região \(D = \{ (x,y)
+              \mid -2 \le x \le 2, -2 \le y \le 2 \}\). Analisar como a simetria
+              pode anular termos, justificando a coerência com o Teorema de
+              Fubini.
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [Explicação sobre funções ímpares em regiões simétricas;
+                  Fubini garante a integral nula dos termos ímpares, desde que o
+                  domínio seja centrado na origem.]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Inquérito
+              <span class="censored">ULTRA</span> - Programa Reservado
+            </div>
+            <p>
+              Calcular \(\iint_D \arctan(x + y)\, dA\), onde \(D\) é o trapézio
+              definido pelos pontos \((0,0)\), \((2,0)\), \((1,1)\), \((0,1)\).
+              Verificar se a segmentação em duas regiões facilita a
+              identificação dos limites.
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [Estabelecimento de limites para x e y, possível divisão do
+                  trapézio para simplificar. Mesmo assim, a soma das integrais
+                  parciais deve conduzir ao resultado único, conforme Fubini.]
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">10</span> • DOCUMENTO VX-
+        <span class="censored">2501</span>-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
