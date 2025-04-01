@@ -1,4 +1,4 @@
-![cálculo vetorial](img/main2.png)
+![cálculo vetorial](img/tio-sam.svg)
 
 # Cálculo Vetorial: Uma Jornada pela Exploração Espacial
 
