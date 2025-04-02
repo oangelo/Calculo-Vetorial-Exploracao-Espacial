@@ -1,6 +1,4 @@
-![cálculo vetorial](img/main2.png)
-
-# Cálculo Vetorial: Uma Jornada pela Exploração Espacial
+![cálculo vetorial](img/tio-sam.svg)
 
 Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fundamentos do Cálculo Vetorial através de uma perspectiva única: a exploração espacial. Aqui, cada teorema se torna uma ferramenta para desvendar os mistérios do universo, cada conceito uma chave para compreender a dança dos corpos celestes. Das órbitas dos satélites aos campos gravitacionais das estrelas, veremos como o cálculo vetorial nos permite modelar e compreender os fenômenos que regem nosso cosmos.
 
