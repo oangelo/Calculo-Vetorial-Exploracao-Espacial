@@ -28,7 +28,6 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Propriedades da integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/propriedades-da-integral.html)
 - [Cálculo de integral dupla: Teorema de Fubini](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/teorema-de-fubini.html)
 3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/mudanca-de-variaveis-na-integral-dupla.html)
-- [Preliminares](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/preliminares.html)
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis.html)
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa.html)
 4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-1.html) - [ Aplicações ](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-2.html)
