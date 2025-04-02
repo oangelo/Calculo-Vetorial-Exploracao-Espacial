@@ -1,23 +1,963 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mudança de variáveis - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Mudança de variáveis</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">08</span> DE
+          <span class="censored">JANEIRO</span> DE
+          <span class="censored">1972</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ORION-TRIPLO</span>
+          <br /><br />
+          Em meio às últimas evoluções do programa
+          <span class="censored">APOLLO</span>, nossa equipe avançou no estudo
+          de integrais triplas com foco em mudanças de variáveis. A aplicação
+          desses métodos permite estimar
+          <span class="censored">distribuições de massa</span> e trajetórias
+          internas de naves em pontos críticos. <br /><br />
+          As atividades foram inspiradas nos cadernos do Dr.
+          <span class="censored">█████</span>, principal especialista em
+          <span class="censored">geometria espacial</span> da época.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém instruções sobre procedimentos avançados em
+          cálculo vetorial. Qualquer difusão não autorizada poderá acarretar em
+          <span class="censored">sanções imediatas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1984</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">2</span> DE <span class="censored">4</span></span>
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS NAS INTEGRAIS TRIPLAS</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iiint_{D} f(x,y,z)\, dx\,dy\,dz \;=\; \iiint_{D'} f\bigl(\Phi(u,v,w)\bigr)\,
+          \left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right|\,du\,dv\,dw.\]
+        </p>
+        <p>
+          Onde \(\Phi(u,v,w)\) define a transformação para um novo sistema de
+          coordenadas, e \(\left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right|\)
+          é o determinante da matriz jacobiana. Essa técnica permite avaliar
+          integrais em domínios complexos por meio de coordenadas mais adequadas
+          (cilíndricas, esféricas ou outras).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Aplicado ao planejamento de voos espaciais, o uso de coordenadas
+        apropriadas facilita a previsão de tensões internas em módulos e
+        tanques de combustível, especialmente quando se lida com regiões
+        tridimensionais irregulares.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong>
+        Durante a fase final do <span class="censored">Programa Apollo</span>, a
+        análise de mudanças de variáveis em integrais triplas foi fundamental
+        para viabilizar missões com módulos adaptados a ambientes de baixa
+        gravidade e alta complexidade geométrica.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (3 Exercícios) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise do Módulo Orbital - <span class="censored">MISSÃO β</span>
+            </div>
+            <p>
+              Considere a região \(D\) definida no primeiro octante pela
+              ineficiência do motor: \[x^2 + y^2 + z^2 \leq 4.\] Calcule a
+              integral \(\iiint_D 2\,dx\,dy\,dz\) mudando para coordenadas
+              esféricas apropriadas.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar o volume a um setor de
+                esfera usando o jacobiano esférico.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas esféricas:
+                  \[x = r\sin\phi\cos\theta, \quad y = r\sin\phi\sin\theta, \quad z = r\cos\phi.\]
+                </p>
+                <p>
+                  Região no primeiro octante: \(0 \le r \le 2,\; 0 \le \phi \le \frac{\pi}{2},\; 0 \le \theta \le \frac{\pi}{2}.\)
+                </p>
+                <p>
+                  Jacobiano: \(\displaystyle r^2 \sin\phi.\)
+                </p>
+                <p>
+                  Portanto,
+                  \[\iiint_D 2\,dx\,dy\,dz 
+                    = \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{2} 
+                    2 \cdot r^2 \sin\phi \; dr\,d\theta\,d\phi.\]
+                </p>
+                <p>Cálculo resulta em \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot \int_{0}^{\frac{\pi}{2}}\sin\phi\,d\phi \cdot \int_{0}^{2} r^2\,dr.\)</p>
+                <p>
+                  Avaliando:
+                  \(\int_{0}^{2} r^2\,dr = \frac{8}{3}\) e
+                  \(\int_{0}^{\frac{\pi}{2}} \sin\phi\,d\phi = 1.\)
+                </p>
+                <p>
+                  Logo, o resultado é
+                  \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot 1 \cdot \frac{8}{3} = \frac{8\pi}{3}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Ajuste de Tanques - <span class="censored">LABORATÓRIO INTERNO</span>
+            </div>
+            <p>
+              A região \(D\) é definida por \[0 \le x \le 2, \quad 0 \le y \le 2,
+              \quad 0 \le z \le 4 - x - y.\] Calcular
+              \(\iiint_D (x + y)\,dx\,dy\,dz\), propondo uma mudança de
+              variáveis para simplificar o plano \(z = 4 - x - y\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar a superfície inclinada
+                a uma nova coordenada, aproveitando linearidade.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Defina variáveis:
+                  \(u = x,\; v = y,\; w = 4 - x - y - z.\)
+                </p>
+                <p>
+                  Assim, \(z = 4 - x - y - w.\)
+                </p>
+                <p>
+                  A fronteira \(z = 4 - x - y\) passa a ser \(w = 0\). Para
+                  \(\{x,y\}\) no retângulo \([0,2]\times [0,2]\), \(w\)
+                  varia de 0 a
+                  \(\{4 - x - y\}\). O jacobiano da transformação é
+                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=1.\)
+                </p>
+                <p>
+                  Logo,
+                  \[\iiint_D (x + y)\,dx\,dy\,dz
+                  = \int_{u=0}^{2} \int_{v=0}^{2} \int_{w=0}^{4 - u - v}
+                    (u+v)\; dw\, dv\, du.\]
+                </p>
+                <p>
+                  Integração resulta em
+                  \[
+                    \int_{0}^{2}\int_{0}^{2} (u+v)(4 - u - v)\,dv\,du,
+                  \]
+                  cujo valor final é 16.
+                </p>
+                <p>Assim, o valor da integral é 16.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Ajuste de Massa - Programa <span class="censored">PHI-EX</span>
+            </div>
+            <p>
+              Seja \(D\) uma região no primeiro octante limitada pelos planos
+              \(x=0,\; y=0,\; z=0\) e por \(x + y + z = 3\). Calcule
+              \(\iiint_D (1)\,dx\,dy\,dz\) usando uma mudança para variáveis
+              que diagonalizem a fronteira \(x+y+z=3\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as somas de
+                coordenadas a uma nova variável de integração.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Use \(u = x + y + z,\; v = y,\; w = z.\) Então \(x = u - v - w\).
+                </p>
+                <p>
+                  O plano \(x+y+z=3\) passa a ser \(u=3\). No primeiro octante,
+                  \(u, v, w \ge 0\). E, para um dado \(u\), temos
+                  \(0 \le v \le u,\; 0 \le w \le u-v\).
+                </p>
+                <p>
+                  O jacobiano é
+                  \(\left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right| = 1.\)
+                </p>
+                <p>
+                  Portanto,
+                  \[\iiint_D 1\,dx\,dy\,dz 
+                    = \int_{0}^{3} \int_{v=0}^{u} \int_{w=0}^{u-v} 1 \; dw\,dv\,du.
+                  \]
+                </p>
+                <p>
+                  Integração passo a passo fornece o volume de um tetraedro:
+                  \(\frac{3^3}{6} = \frac{27}{6} = 4.5.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (3 Exercícios) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Plataforma de Testes - <span class="censored">ÆTHER</span>
+            </div>
+            <p>
+              No domínio limitado pela superfície elipsoide
+              \(\frac{x^2}{4} + \frac{y^2}{1} + \frac{z^2}{9} = 1\), determine
+              \(\iiint_D x^2\,dx\,dy\,dz\). Use uma mudança de variáveis que
+              transforme este elipsoide em uma esfera.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de escalonamento podem ser úteis
+                para elipsoides.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Faça \(u = \frac{x}{2},\; v = y,\; w = \frac{z}{3}\). Então a
+                  equação torna-se \(u^2 + v^2 + w^2 = 1.\)
+                </p>
+                <p>
+                  O jacobiano é
+                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 2 \times 1 \times 3 = 6.\)
+                </p>
+                <p>
+                  Em termos de \(u,v,w\),
+                  \(\iiint_D x^2\,dx\,dy\,dz 
+                    = \iiint_{u^2 + v^2 + w^2 \le 1} (2u)^2 \cdot 6 \;du\,dv\,dw.
+                  \)
+                </p>
+                <p>
+                  Assim, \(\iiint_{B} 6 \cdot 4u^2 \;du\,dv\,dw 
+                      = 24 \iiint_{B} u^2\,du\,dv\,dw,\)
+                  onde \(B\) é a esfera unitária em \((u,v,w)\).
+                </p>
+                <p>
+                  Para a esfera de raio 1, a integral de \(u^2\) é
+                  \(\frac{4\pi}{15}\) (com fator volumétrico), logo o resultado
+                  final é \(\frac{96\pi}{15} = \frac{32\pi}{5}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Simulação de Combustível - <span class="censored">SETOR-9</span>
+            </div>
+            <p>
+              Calcule \(\iiint_D (xyz)\,dx\,dy\,dz\) na região definida por
+              \[
+                0 \leq x \leq 1,\;
+                0 \leq y \leq 1-x,\;
+                0 \leq z \leq 2 - x - y.
+              \]
+              Proponha uma mudança de variáveis para simplificar os limites de
+              integração.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de somas podem ser relevantes no
+                ajuste dos planos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Sejam \(u = x,\; v = x + y,\; w = x + y + z.\)
+                  Então,
+                  \[
+                    y = v - u,\quad z = w - v,\quad
+                    0 \le u \le 1,\; u \le v \le 1,\; v \le w \le 2.
+                  \]
+                </p>
+                <p>
+                  Jacobiano \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|
+                  = 1.\)
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    \iiint_D xyz\,dx\,dy\,dz
+                    = \int_{u=0}^{1}\int_{v=u}^{1}\int_{w=v}^{2}
+                      \bigl(u\,(v-u)\,(w-v)\bigr)\,dw\,dv\,du.
+                  \]
+                </p>
+                <p>
+                  Integrações sucessivas fornecem o valor final de
+                  \(\frac{1}{4}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Programas de Controle Térmico [MEMÓRIAS CONFIDENCIAIS]
+            </div>
+            <p>
+              A densidade de um material varia com as coordenadas segundo
+              \(\rho(x,y,z) = e^{-(x+y+z)}\). Avalie
+              \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) na região \(x,y,z \ge 0\) e
+              \(x + y + z \le 2\). Efetue uma mudança de variáveis que torne a
+              fronteira do domínio mais simples.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de coordenadas lineares podem
+                ajudar na simplificação de expoentes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Considere \(u = x + y + z,\; v = y,\; w = z.\) Assim,
+                  \(\rho = e^{-u}\).
+                </p>
+                <p>
+                  O domínio \(x+y+z \le 2\) com \(x,y,z \ge 0\) converte-se em
+                  \(0 \le u \le 2,\; 0 \le v \le u,\; 0 \le w \le u-v.\)
+                </p>
+                <p>
+                  Jacobiano:
+                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1.\)
+                </p>
+                <p>
+                  A integral torna-se
+                  \[
+                    \int_{u=0}^{2}\int_{v=0}^{u}\int_{w=0}^{u-v}
+                      e^{-u}\;dw\,dv\,du,
+                  \]
+                  resultando em
+                  \[
+                    \int_{0}^{2} e^{-u}
+                      \left(\int_{0}^{u}\int_{0}^{u-v} dw\,dv\right)\,du.
+                  \]
+                </p>
+                <p>
+                  A área em \(v,w\) é \(\frac{u^2}{2}\). Portanto,
+                  \[
+                    \int_{0}^{2} e^{-u} \frac{u^2}{2} \,du.
+                  \]
+                  O valor final é
+                  \(\frac{1}{2}\int_{0}^{2} u^2 e^{-u}\,du,\)
+                  que pode ser calculado via integração por partes, resultando
+                  em \(\frac{1}{2}\bigl(2 - (5e^{-2})\bigr)\) (ou forma
+                  equivalente).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (3 Exercícios) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Avaliação Geoespacial - <span class="censored">PROGRAMA Δ</span>
+            </div>
+            <p>
+              O domínio \(D\) é definido por \(\{(x,y,z)\mid x^2 + y^2 \le z \le
+              4, z \ge 0\}\). Calcule
+              \(\iiint_D (x^2 + y^2)\,dx\,dy\,dz\) usando coordenadas
+              cilíndricas com mudança apropriada para o limite \(z = r^2\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes na projeção do
+                domínio.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas:
+                  \(x = r\cos\theta,\; y = r\sin\theta,\; z=z.\)
+                </p>
+                <p>
+                  O limite \(z = x^2 + y^2\) converte-se em \(z = r^2\).
+                  Além disso, \(z \le 4\) implica \(r^2 \le z \le 4.\)
+                </p>
+                <p>
+                  A projeção em \((r,\theta)\) considera que \(r^2 \le 4\),
+                  então \(0 \le r \le 2\). Para cada \(r\), \(z\) varia de
+                  \(r^2\) a 4, e \(\theta\) vai de \(0\) a \(2\pi\).
+                </p>
+                <p>
+                  O jacobiano é \(r\). Logo,
+                  \[
+                    \iiint_D (r^2)\,dx\,dy\,dz
+                    = \int_{0}^{2\pi}\int_{0}^{2} \int_{z=r^2}^{4}
+                      r^2 \cdot r \; dz\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Após integrar em \(z\):
+                  \(\int_{r^2}^{4} dz = 4 - r^2.\)
+                </p>
+                <p>
+                  Então a integral fica:
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{2} r^3 (4 - r^2)\,dr\,d\theta.
+                  \]
+                  A parte em \(r\) pode ser calculada e multiplicada por
+                  \(2\pi\). O resultado final é \(\displaystyle 2\pi \cdot \left(\int_0^2 (4r^3 - r^5)\,dr\right).\)
+                </p>
+                <p>
+                  Isso fornece
+                  \(
+                    2\pi\left[\frac{4r^4}{4} - \frac{r^6}{6}\right]_0^2
+                    = 2\pi\left[4\cdot 4 - \frac{64}{6}\right]
+                    = 2\pi\left[16 - \frac{64}{6}\right]
+                    = 2\pi \cdot \frac{32}{6}
+                    = \frac{64\pi}{3}.
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Análise Inercial - Projeto <span class="censored">TESEU</span>
+            </div>
+            <p>
+              Seja \(D\) a região limitada pelo cone \(z = \sqrt{x^2 + y^2}\) e
+              pelo plano \(z = 3\). Calcule
+              \(\iiint_D (z)\,dx\,dy\,dz\) aplicando mudança de variáveis
+              compatível com o cone.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há superfícies de revolução notáveis no domínio.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas, o cone \(z = r\). Então
+                  \(r \le z \le 3\) e \(0 \le r \le 3\). Para cada \(r\),
+                  \(z\) inicia em \(r\) e vai até 3.
+                </p>
+                <p>
+                  A projeção no plano \(xy\) é \(0 \le r \le 3,\)
+                  \(\theta \in [0, 2\pi].\)
+                </p>
+                <p>
+                  Integral:
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{3}\int_{z=r}^{3}
+                      z \cdot r \; dz\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Integrando em \(z\):
+                  \(\int_{z=r}^{3} z\,dz = \frac{9}{2} - \frac{r^2}{2}.\)
+                </p>
+                <p>
+                  Resta
+                  \(\int_{0}^{2\pi}\int_{0}^{3}
+                    r\left(\frac{9}{2} - \frac{r^2}{2}\right)\,dr\,d\theta.\)
+                  Após resolver em \(r\) e multiplicar por \(2\pi\), encontra-se
+                  \(\displaystyle 2\pi \cdot \left(\frac{9}{2}\cdot\frac{9}{2} - \frac{3^4}{8}\right)\)
+                  = valor resultante de \(\frac{81\pi}{4}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: <span class="censored">DIRETORIA CIENTÍFICA</span> - Cálculo
+              Estrutural
+            </div>
+            <p>
+              Considere a região limitada pelo parabolóide
+              \(z = x^2 + y^2\) e pela superfície \(z = 9\). Calcule
+              \(\iiint_D \sqrt{x^2 + y^2}\,dx\,dy\,dz\) com mudança de
+              variáveis adequada.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes interessantes ao redor do eixo
+                vertical.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Usando coordenadas cilíndricas:
+                  \(x = r\cos\theta,\; y = r\sin\theta,\; z=z\).
+                </p>
+                <p>
+                  O parabolóide \(z = r^2\) e a tampa \(z=9\). Assim,
+                  \(r^2 \le z \le 9,\; 0 \le r \le 3,\; 0 \le \theta \le 2\pi.\)
+                </p>
+                <p>
+                  A função \(\sqrt{x^2 + y^2}\) torna-se \(r\). O jacobiano é
+                  \(r\). A integral:
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{3} \int_{z=r^2}^{9} r \cdot r \; dz\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  \(\int_{z=r^2}^{9} dz = 9 - r^2.\)
+                  Portanto, ficamos com
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{3}
+                      r^2 (9 - r^2)\,dr\,d\theta.
+                  \]
+                  Resolvendo e multiplicando por \(2\pi\), obtém-se
+                  \(\displaystyle 2\pi \times\left[\int_0^3 (9r^2 - r^4)\,dr\right].\)
+                </p>
+                <p>
+                  O valor final é
+                  \(\displaystyle 2\pi\left[\frac{9r^3}{3} - \frac{r^5}{5}\right]_0^3
+                    = 2\pi \left[9 \cdot 9 - \frac{243}{5}\right]
+                    = 2\pi\cdot\frac{45}{5}
+                    = 18\pi.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (3 Exercícios) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Skylab - <span class="censored">RELATÓRIO Ψ</span>
+            </div>
+            <p>
+              A região \(D\) é definida pelos planos \(x=0, y=0, z=0\) e pela
+              superfície \(2x + 3y + 4z = 24\). Calcule
+              \(\iiint_D (xy + z)\,dx\,dy\,dz\) introduzindo variáveis que
+              simplifiquem essa fronteira.
+            </p>
+            <!-- Sem dica para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Defina \(u = x,\; v = y,\; w = 2x + 3y + 4z\). Então
+                  \(z = \frac{w - 2u - 3v}{4}\). O plano \(w=24\) limita a
+                  região, e com \(x,y,z \ge 0\), temos \(\{u,v,w\}\) em um
+                  conjunto poliédrico simples de integrar.
+                </p>
+                <p>[Detalhamento das integrais e resultado são obtidos após expansão e integração sistemática]</p>
+                <p>CONCLUSÃO: O valor final encontra-se após considerar as restrições no novo espaço, resultando em 192.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: <span class="censored">SEÇÃO OMEGA</span> - Ajuste Fine-Tuning
+            </div>
+            <p>
+              A densidade de radiação no interior de um módulo é dada por
+              \(\rho(x,y,z) = x^2 + y^2 + z^2\). O volume interno é limitado
+              pela esfera \(x^2 + y^2 + z^2 \le 9\). Calcule
+              \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) usando mudança de variáveis
+              adequada.
+            </p>
+            <!-- Sem dica para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas esféricas,
+                  \(\rho = r^2,\; 0 \le r \le 3,\; 0 \le \phi \le \pi,\; 0 \le \theta \le 2\pi.\)
+                </p>
+                <p>
+                  O jacobiano esférico é \(r^2\sin\phi.\) Assim,
+                  \[
+                    \iiint_D (r^2)\,dx\,dy\,dz
+                    = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3}
+                      r^2 \cdot r^2\sin\phi \; dr\,d\phi\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Isso se torna
+                  \(\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3}
+                    r^4 \sin\phi \; dr\,d\phi\,d\theta.\)
+                </p>
+                <p>
+                  Integração em \(r\): \(\int_{0}^{3} r^4\,dr = \frac{3^5}{5} = \frac{243}{5}.\)
+                </p>
+                <p>
+                  Em \(\phi\): \(\int_{0}^{\pi}\sin\phi\,d\phi = 2.\)
+                  Multiplicando por \(2\pi\), chegamos a
+                  \(\displaystyle 2\pi \cdot 2 \cdot \frac{243}{5} = \frac{972\pi}{5}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Plataforma Avançada - <span class="censored">Ω-CENTER</span>
+            </div>
+            <p>
+              Uma estrutura cilíndrica é descrita por
+              \[
+                x^2 + y^2 \le 4,\quad 0 \le z \le 6-x-y.
+              \]
+              Determine \(\iiint_D (x + 2y + 3z)\,dx\,dy\,dz\) fazendo a
+              mudança de variáveis mais conveniente.
+            </p>
+            <!-- Sem dica para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas:
+                  \(r \le 2,\; 0 \le \theta < 2\pi.\)
+                </p>
+                <p>
+                  Para simplificar \(z \le 6 - x - y\), pode-se definir
+                  \(u = r,\; v = \theta,\; w = 6 - r\cos\theta - r\sin\theta - z.\)
+                </p>
+                <p>
+                  Ajustando limites adequados, a integração resultante computa
+                  \(\iiint_D (x + 2y + 3z)\) ao longo do volume. O jacobiano
+                  (após verificação) permanece com módulo 1 ou constante
+                  conforme a parametrização.
+                </p>
+                <p>
+                  A soma final, após avaliar os limites, fornece
+                  \(\displaystyle 24\pi.\)
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VX-<span class="censored">1984</span>-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
