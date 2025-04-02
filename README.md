@@ -29,7 +29,6 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis.html)
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa.html)
 4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-1.html) - [ Aplicações ](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/integrais-triplas-2.html)
-- [Definição e conjunto de conteúdo nulo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/definicao-e-conjunto-de-conteudo-nulo.html)
 - [Condições de integrabilidade](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/condicoes-de-integrabilidade.html)
 - [Redução a integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/reducao-a-integrais-duplas.html)
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/mudanca-de-variaveis.html)
