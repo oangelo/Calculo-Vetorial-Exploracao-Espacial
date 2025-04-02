@@ -1,23 +1,906 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Condições de integrabilidade - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Condições de integrabilidade</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">15</span> DE AGOSTO DE
+          <span class="censored">1971</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">BASE [REDACTED] - SETOR [████]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">TRIPLO-X</span><br /><br />
+          Em resposta à crescente demanda de análises em
+          <span class="censored">ambientes tridimensionais</span> no âmbito da
+          corrida espacial, nossa equipe trabalhou em estudos avançados sobre
+          as condições de integrabilidade de funções em domínios
+          <span class="censored">volumétricos</span>. <br /><br />
+          Os exercícios a seguir foram compilados pelos especialistas do
+          programa <span class="censored">APOLLO</span>, visando garantir a
+          correta aplicação dos critérios de integrabilidade em
+          <span class="censored">cálculos orbitais</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém dados e técnicas essenciais à
+          <span class="censored">dinâmica espacial</span>. A divulgação
+          indevida pode causar <span class="censored">danos irreversíveis</span>
+          à segurança das operações.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">042</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE FUNDAMENTAÇÃO TEÓRICA -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE INTEGRABILIDADE EM INTEGRAIS TRIPLAS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iiint_{D} f(x,y,z)\, dV \quad\text{é integrável se } f \text{ é
+          limitada e contínua em } D,\text{ e } D \text{ é um domínio
+          limitado.}\]
+        </p>
+        <p>
+          Para funções \(f(x,y,z)\) que sejam limitadas e cujos pontos de
+          descontinuidade formem um conjunto de medida nula em \(D\), a integral
+          tripla existe e corresponde ao volume (ou massa, se a densidade
+          estiver envolvida) sob a superfície dada por \(f(x,y,z)\), dentro do
+          domínio \(D\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        A aplicação prática desses critérios de integrabilidade impacta o cálculo
+        de trajetórias espaciais em três dimensões, auxiliando na determinação
+        de parâmetros como empuxo resultante, energia acumulada e
+        <span class="censored">cálculos orbitais críticos</span>. O
+        entendimento das condições de integrabilidade garante maior confiabilidade
+        na etapa de planejamento das missões.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante as fases avançadas do Programa
+        Apollo, iniciado em <span class="censored">1961</span>, surgiram
+        necessidades de análises detalhadas em três dimensões, sobretudo no
+        planejamento de alunissagens. A sistematização dos critérios de
+        integrabilidade tornou possível prever comportamentos de sistemas
+        físicos em escalas <span class="censored">orbitais</span>.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- EXERCÍCIOS SÉRIE ALFA (1-3) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Estudo Preliminar de Volume - Dados de Simulação [JUN/1971]
+            </div>
+            <p>
+              Considere a função \[f(x,y,z) = x + y + z\] definida no domínio
+              \(D\) limitado pelo cubo
+              \[0 \le x \le 2, \, 0 \le y \le 2, \, 0 \le z \le 2.\]
+            </p>
+            <p>
+              Verifique se as condições de integrabilidade estão satisfeitas e,
+              caso positivo, calcule \(\iiint_{D} f(x,y,z)\, dV.\)
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere as propriedades de continuidade da
+                função em todo o cubo.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função \(f(x,y,z) = x+y+z\) é contínua no cubo. Logo, as
+                  condições de integrabilidade são satisfeitas.
+                </p>
+                <p>
+                  Para o cálculo:
+                  \[\iiint_{D} (x + y + z)\, dV,\quad D=[0,2]\times[0,2]\times[0,2].\]
+                </p>
+                <p>
+                  Integração passo a passo:
+                  \[
+                    \int_{0}^{2} \int_{0}^{2} \int_{0}^{2} (x + y + z)\, dx\, dy\, dz.
+                  \]
+                </p>
+                <p>
+                  A resolução conduz a
+                  \[
+                    \int_{0}^{2} \int_{0}^{2} \left[\frac{x^2}{2} + xy + xz\right]_{x=0}^{2}\, dy\, dz
+                  \]
+                  e, procedendo, obtemos o valor final \(\boxed{24}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Análise de Densidade - Simulações Orbitais [JUL/1971]
+            </div>
+            <p>
+              Suponha que \(\rho(x,y,z)\) represente a densidade de um protótipo
+              de módulo de reentrada, onde \(\rho(x,y,z)\) é limitada e não
+              apresenta descontinuidades dentro do domínio
+              <span class="censored">[Sistema Reservado]</span>. Mostre que as
+              condições de integrabilidade são atendidas e discuta por que a
+              densidade total obtida pela integral tripla é finita.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique a existência de limites superior e
+                inferior para \(\rho\) e a delimitação do domínio.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(\rho\) é limitada, então existe \(M>0\) tal que
+                  \(|\rho(x,y,z)| \le M\) em todo o domínio tridimensional.
+                </p>
+                <p>
+                  Além disso, sendo contínua ou apresentando apenas um conjunto
+                  de possíveis descontinuidades de medida nula, as condições de
+                  integrabilidade permanecem válidas.
+                </p>
+                <p>
+                  Como \(D\) é limitado, o volume total de integração é finito,
+                  assegurando que
+                  \(\left|\iiint_{D} \rho(x,y,z)\, dV\right|\) seja finito.
+                </p>
+                <p>
+                  Conclusão: A soma (integral tripla) da densidade ao longo do
+                  domínio resulta em valor finito, condizente com o
+                  <span class="censored">cálculo balístico</span> do módulo de
+                  reentrada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Observatório - Programa Apollo [AGOSTO/1971]
+            </div>
+            <p>
+              A função \[g(x,y,z) = e^{-x^2-y^2-z^2}\] aparece em modelos de
+              dispersão de gases no interior do módulo. Verifique se esta
+              função atende aos critérios de integrabilidade no domínio
+              \(\{(x,y,z)\in \mathbb{R}^3 \mid |x|\le 2, |y|\le 2, |z|\le 2\}\),
+              descrevendo sucintamente a razão.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre-se de que a função exponencial é
+                infinitamente diferenciável.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função \(e^{-x^2-y^2-z^2}\) é contínua e limitada em todo
+                  \(\mathbb{R}^3\). Em particular, dentro do cubo
+                  \([-2,2]^3\), não há pontos de descontinuidade.
+                </p>
+                <p>
+                  Portanto, as condições de integrabilidade são atendidas no
+                  referido domínio. Uma vez que \(D\) é limitado, a integral
+                  tripla é finita. 
+                </p>
+                <p>
+                  A relevância prática está na estimativa de
+                  <span class="censored">concentração de gases</span> dentro do
+                  módulo, garantindo segurança ao programa Apollo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIOS SÉRIE BETA (4-6) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Comparativo de Modelos 3D - Seção de Testes [AGOSTO/1971]
+            </div>
+            <p>
+              Seja \[h(x,y,z) = \frac{1}{1 + x^2 + y^2 + z^2}.\] Analisar a
+              integrabilidade de \(h\) no domínio
+              \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le 4\}\), indicando se
+              descontinuidades ou comportamentos assintóticos podem comprometer
+              a existência da integral tripla.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de
+                \(\frac{1}{1 + r^2}\) podem ser relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  No interior da esfera de raio 2, a função
+                  \(h(x,y,z)=\frac{1}{1 + x^2 + y^2 + z^2}\) é contínua e não
+                  apresenta singularidades. Portanto, a integrabilidade é
+                  garantida.
+                </p>
+                <p>
+                  A ausência de pontos de descontinuidade ou termos que tornem
+                  o denominador nulo assegura que a integral tripla existe e é
+                  finita nesse volume esférico.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Setor de Propulsão - Análise Energética [AGOSTO/1971]
+            </div>
+            <p>
+              Considere o campo de temperatura
+              \(\Theta(x,y,z)=\ln(1 + x + y + z)\) definido para
+              \(x+y+z > -1\). Discuta se a região
+              \(\{(x,y,z)\mid x\ge0,\,y\ge0,\,z\ge0,\,x+y+z\le 5\}\) satisfaz
+              completamente as condições para a integral tripla de \(\Theta\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de continuidade em regiões livres
+                de zero no argumento do logaritmo podem ser relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função \(\ln(1 + x + y + z)\) apresenta continuidade em
+                  qualquer domínio onde \(1 + x + y + z > 0\). No conjunto em
+                  questão (\(x,y,z \ge 0\)), temos \(x+y+z \le 5\), de modo que
+                  \(1 + x + y + z\) está sempre entre 1 e 6, sem se anular.
+                </p>
+                <p>
+                  Portanto, não há descontinuidades ou indeterminações. Além
+                  disso, o domínio é limitado e a função é finita em seu
+                  interior, cumprindo as condições de integrabilidade.
+                </p>
+                <p>
+                  A integral tripla resultante fornecerá um indicador
+                  energético relevante para
+                  <span class="censored">avaliação térmica</span> do sistema de
+                  propulsão.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Departamento de Dinâmica - Lab. Secreto [AGOSTO/1971]
+            </div>
+            <p>
+              Na região definida por \(0 \le x \le 1\), \(0 \le y \le 1\) e
+              \(-1 \le z \le 1\), a função
+              \[F(x,y,z) = \frac{\sin(\pi x)\,\sin(\pi y)\,\sin(\pi z)}{\pi(x+y+1)}\]
+              é analisada para verificar eventuais problemas de integrabilidade.
+              Investigue a existência de pontos de descontinuidade ou
+              indeterminação no denominador.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de funções senoidais e possíveis
+                valores que anulam o denominador podem ser úteis.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  No domínio especificado, temos \(x \ge 0\), \(y \ge 0\) e
+                  portanto \(x + y + 1 \ge 1\). Isto impede que
+                  \(\pi(x+y+1)\) seja zero.
+                </p>
+                <p>
+                  As funções \(\sin(\pi x)\), \(\sin(\pi y)\) e \(\sin(\pi z)\)
+                  também não introduzem descontinuidades no intervalo fornecido,
+                  pois são contínuas em \(\mathbb{R}\).
+                </p>
+                <p>
+                  Assim, a função não apresenta descontinuidades ou
+                  singularidades na região. Conclusão: As condições de
+                  integrabilidade são satisfeitas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIOS SÉRIE GAMMA (7-9) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Módulo de Observação - Programa Apollo [SET/1971]
+            </div>
+            <p>
+              Considere a função
+              \[u(x,y,z) = \begin{cases}
+                \sin\bigl(\frac{1}{x^2+y^2+z^2}\bigr) & \text{se } x^2+y^2+z^2 \neq 0,\\
+                0 & \text{se } x=y=z=0.
+              \end{cases}\]
+              Avalie se a continuidade desta função em \(D\) = \(\{(x,y,z)\mid 0 \le x^2+y^2+z^2 \le 4\}\)
+              é suficiente para garantir a integrabilidade.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função é contínua em quase todos os pontos de \(D\), mas o
+                  ponto \((0,0,0)\) requer atenção: por construção,
+                  \(u(0,0,0)=0\). Graças à definição, o limite de
+                  \(\sin\bigl(\frac{1}{r^2}\bigr)\) quando \(r\to 0\) é
+                  mantido em \(0\) pela escolha conveniente de valor.
+                </p>
+                <p>
+                  Assim, \(\sin\bigl(\frac{1}{x^2+y^2+z^2}\bigr)\) não cria
+                  descontinuidade no centro, pois foi explicitamente definida
+                  para ser 0 nesse ponto. Logo, a função é limitada e contínua
+                  em todo \(D\).
+                </p>
+                <p>
+                  Conclusão: As condições de integrabilidade são satisfeitas no
+                  volume esférico de raio 2.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Seção de Controle Térmico - Apollo 14 [OUT/1971]
+            </div>
+            <p>
+              Uma distribuição de temperatura local é dada por:
+              \[
+                T(x,y,z) = \begin{cases}
+                  \frac{1}{\sqrt{x^2 + y^2 + z^2}}, & \text{se } x^2 + y^2 + z^2 \neq 0, \\
+                  100, & \text{se } x = y = z = 0.
+                \end{cases}
+              \]
+              Investigue se a presença de \(\frac{1}{\sqrt{r^2}}\) no
+              denominador afeta a integrabilidade em
+              \(\{(x,y,z)\mid 0 \le r\le 3\}\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pense na convergência de integrais envolvendo
+                \(r^{-1}\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas esféricas, a função se torna aproximadamente
+                  \(\frac{1}{r}\). O volume infinitesimal é proporcional a
+                  \(r^2\, dr\). Assim, ao integrar \(\frac{1}{r}\cdot r^2\) em
+                  \(r\), a integral se comporta como
+                  \(\int r\, dr\), que converge para \(r\le3\).
+                </p>
+                <p>
+                  No ponto \((0,0,0)\), foi atribuído o valor 100, mas isso não
+                  afeta a integrabilidade, pois é um único ponto (conjunto de
+                  medida nula).
+                </p>
+                <p>
+                  Portanto, a função é integrável no volume esférico e não há
+                  divergência na vizinhança de \(r=0\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Cálculos Orbitais - Laboratório Secreto [OUT/1971]
+            </div>
+            <p>
+              O potencial gravitacional de um asteroide hipotético é
+              aproximado por
+              \[
+                \Phi(x,y,z) = \frac{1}{(1 + x^2 + y^2 + z^2)^2}.
+              \]
+              Explique por que esta função não apresenta problemas de
+              integrabilidade em qualquer domínio limitado que inclua a origem.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe a taxa de decaimento e a possibilidade
+                de singularidades.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função \(\Phi\) é suave (infinitamente diferenciável) em
+                  \(\mathbb{R}^3\) e não apresenta singularidades reais, pois
+                  \(1 + x^2 + y^2 + z^2 \neq 0\).
+                </p>
+                <p>
+                  Mesmo próximo à origem, a função mantém valor finito. Em
+                  qualquer volume limitado, \(\Phi\) é limitada e contínua,
+                  garantindo a integrabilidade.
+                </p>
+                <p>
+                  Conclusão: O potencial resultante pode ser integrado sem
+                  problemas de convergência no
+                  <span class="censored">modelo orbital</span> analisado.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIOS SÉRIE OMEGA (10-12) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Análise Final - Apollo 15 [NOV/1971]
+            </div>
+            <p>
+              Um estudo de formação de crateras em um satélite é modelado pela
+              integral tripla de
+              \[
+                M(x,y,z) = \max\{0, 5 - (x^2 + y^2 + z^2)\}.
+              \]
+              Justifique a integrabilidade de \(M\) e calcule seu valor total
+              para o domínio onde a função é positiva.
+            </p>
+            <!-- SÉRIE OMEGA NÃO TEM DICAS -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(M\) é contínua em \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le \sqrt{5}\}\)
+                  e zero fora desse raio, logo limitada e sem descontinuidades.
+                </p>
+                <p>
+                  A região de integração é uma esfera de raio \(\sqrt{5}\). Para
+                  \(r^2 \le 5\), \(M= 5 - r^2\). A integral em coordenadas
+                  esféricas:
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\sqrt{5}}
+                      \bigl(5 - r^2\bigr)\, r^2 \sin\phi\, dr\, d\phi\, d\theta.
+                  \]
+                </p>
+                <p>
+                  O resultado numérico (após a computação passo a passo) conduz
+                  ao valor exato:
+                  \[
+                    \boxed{\frac{500\pi}{3}}.
+                  \]
+                </p>
+                <p>Conclusão: o valor total de massa/volume associado é finito.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Simulação 3D - Apollo 16 [NOV/1971]
+            </div>
+            <p>
+              A função
+              \[
+                Q(x,y,z) = \begin{cases}
+                  \frac{x}{\sqrt{x^2 + y^2}} & \text{se } y \neq 0,\\
+                  0 & \text{se } y = 0,
+                \end{cases}
+              \]
+              é utilizada num modelo de rotação parcial para eixo \(z\). Avalie
+              se existem regiões onde \(\frac{x}{\sqrt{x^2 + y^2}}\) possa
+              impedir a integrabilidade em um bloco
+              \([-1,1]\times[-1,1]\times[0,2]\].
+            </p>
+            <!-- SEM DICAS NA SÉRIE OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A função é indefinida apenas na linha onde \(y=0\) e
+                  \(x\neq 0\). Entretanto, o valor foi definido como 0
+                  explicitamente nessa linha, evitando descontinuidade. 
+                </p>
+                <p>
+                  Em \([-1,1]\times[-1,1]\times[0,2]\), \(\frac{x}{\sqrt{x^2 +
+                  y^2}}\) é limitada e não introduz singularidades de grande
+                  ordem (não há divisão por zero para pontos fora de
+                  \(y=0\), e no próprio \(y=0\) foi atribuída continuidade).
+                </p>
+                <p>
+                  Conclusão: A integrabilidade é garantida no bloco, pois não
+                  há conjunto significativo de descontinuidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Projeto Póstumo - Apollo 17 [DEZ/1971]
+            </div>
+            <p>
+              Uma função experimental
+              \[
+                \Gamma(x,y,z) = \frac{\ln(2 + x^2 + z^4)}{1 + y^4}
+              \]
+              é empregada na análise de vibrações mecânicas do módulo lunar.
+              Verifique, sem a realização da integral completa, se a condição
+              de integrabilidade em \([-1,1]^3\) permanece válida.
+            </p>
+            <!-- SEM DICAS NA SÉRIE OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em \([-1,1]^3\), a expressão \(2 + x^2 + z^4\) permanece
+                  acima de 1, evitando possíveis problemas no logaritmo.
+                </p>
+                <p>
+                  A parte \(1 + y^4\) nunca se anula, mantendo a fração
+                  \(\frac{\ln(\dots)}{1 + y^4}\) livre de singularidades.
+                </p>
+                <p>
+                  Consequentemente, \(\Gamma\) é limitada e contínua em todo
+                  o cubo \([-1,1]^3\). Logo, a integral tripla é finita e
+                  bem-definida.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA <span class="censored">1</span> DE
+        <span class="censored">11</span> • DOCUMENTO VX-
+        <span class="censored">042</span>-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
