@@ -1,23 +1,1223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Massa e centro de massa - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Massa e centro de massa</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: #f0f0e0;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE SETEMBRO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE DE LANÇAMENTOS [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-V</span> <br /><br />
+          Com o avanço das técnicas de controle orbital
+          <span class="censored">e de reentrada atmosférica</span>, nossa equipe
+          foi encarregada de revisar métodos de <span class="censored">cálculo
+          avançado</span> para determinar a massa e o centro de massa de
+          estruturas <span class="censored">bi-modulares</span>. <br /><br />
+          As técnicas aqui descritas envolvem mudanças de variáveis
+          <span class="censored">específicas</span> em integrais duplas, fator
+          crucial para a correta alocação de <span class="censored">recursos de
+          propulsão</span> durante as manobras orbitais.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações de
+          <span class="censored">natureza confidencial</span>. Divulgações não
+          autorizadas podem resultar em <span class="censored">sanções
+          irreparáveis</span> e comprometimento de programas estratégicos.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">3081</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS NA INTEGRAL DUPLA
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            \iint_{D} f(x,y)\,dA
+            \;=\;
+            \iint_{D'} f(x(u,v),\, y(u,v)) \,
+            \left| \frac{\partial (x,y)}{\partial (u,v)} \right|
+            \,du\,dv
+          \]
+        </p>
+        <p>
+          A mudança de variáveis em integrais duplas consiste em transformar uma
+          região \(D\) no plano \((x,y)\) em outra região \(D'\) no plano
+          \((u,v)\) através de uma função invertível. O fator determinante
+          (Jacobian) \(\left|\tfrac{\partial (x,y)}{\partial (u,v)}\right|\)
+          ajusta a área infinitesimal para o novo sistema de coordenadas.
+        </p>
+        <p>
+          Para o cálculo de massa de uma lamina, com densidade \(\rho(x,y)\), 
+          a integral 
+          \(\displaystyle M = \iint_D \rho(x,y)\,dA\) 
+          pode ser resolvida com a mudança de variáveis apropriada. 
+          O centro de massa \((\bar{x},\bar{y})\) de tal lamina é dado por:
+        </p>
+        <p class="formula-highlight">
+          \[
+            \bar{x} = \frac{1}{M}\iint_D x\,\rho(x,y)\,dA,
+            \quad
+            \bar{y} = \frac{1}{M}\iint_D y\,\rho(x,y)\,dA.
+          \]
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Nos projetos espaciais, determinar a massa e o centro de massa de
+        peças estruturais é essencial para planejar manobras. A correta
+        aplicação de coordenadas polares ou outras transformações
+        <span class="censored">exóticas</span> permite simplificar o processo de
+        integração, garantindo maior precisão no consumo de combustível.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em <span class="censored">1965</span>,
+        técnicos envolvidos no <span class="censored">Programa Apollo</span>
+        começaram a empregar métodos de mudança de variáveis para prever
+        alterações de momento angular durante a inserção em órbita. Esses
+        estudos foram fundamentais para as etapas de <span class="censored"
+        >acoplamento em voo</span> que ocorreriam posteriormente.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+
+          <!-- SÉRIE ALFA (1-3) - Nível Básico (SIGMA-1) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Setor de Treinamento [Análises Básicas - JAN/1965]
+            </div>
+            <p>
+              Considere a lamina plana definida pelo retângulo
+              \([0,2] \times [0,3]\), com densidade constante
+              \(\rho(x,y)=5\). Calcule a massa total \(\displaystyle M\)
+              através da integral
+              \(\displaystyle \iint_D \rho(x,y)\,dA\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a integral como uma soma acumulada
+                das contribuições no domínio.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\displaystyle M = \iint_D 5 \, dA = 5 \times \text{área do retângulo}\).</p>
+                <p>\(\displaystyle \text{Área} = 2 \times 3 = 6.\)</p>
+                <p>
+                  Logo, \(\displaystyle M = 5 \times 6 = 30.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Laboratório Interno [Ensaios Iniciais - FEV/1965]
+            </div>
+            <p>
+              A lamina ocupa a região no plano dada por
+              \(\displaystyle D = \{(x,y) \mid 0 \le x \le 1,\, 0 \le y \le 2\}\)
+              e apresenta densidade variável
+              \(\rho(x,y) = 2 + x\). Calcule a massa total
+              \(\displaystyle M\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como agrupar termos ao integrar
+                em relação a \(x\) e \(y\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \[
+                    M = \int_{y=0}^{2}\int_{x=0}^{1} (2 + x)\, dx\,dy.
+                  \]
+                </p>
+                <p>
+                  Integração em \(x\):
+                  \(\displaystyle
+                    \int_{0}^{1} (2 + x)\, dx = \left[2x + \frac{x^2}{2}\right]_0^1 = 2 + \frac{1}{2} = 2.5.
+                  \)
+                </p>
+                <p>
+                  Em seguida, 
+                  \(\displaystyle \int_{y=0}^{2} 2.5 \,dy = 2.5 \times 2 = 5.\)
+                </p>
+                <p>Logo, \(\displaystyle M = 5.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Base de Simulações [Missão Pré-Apollo - MAR/1965]
+            </div>
+            <p>
+              Seja \(D\) a mesma região do exercício anterior e densidade
+              \(\rho(x,y) = 2 + x\). Determine o centro de massa 
+              \((\bar{x}, \bar{y})\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacione as fórmulas de \(\bar{x}\) e \(\bar{y}\)
+                com a massa total já obtida.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Da solução anterior, \(M = 5\).</p>
+                <p>
+                  \[
+                    \bar{x} = \frac{1}{M}\iint_D x\,\rho(x,y)\,dA
+                    = \frac{1}{5}\int_{0}^{2}\int_{0}^{1} x(2 + x)\,dx\,dy.
+                  \]
+                </p>
+                <p>
+                  \(\displaystyle \int_{0}^{1} x(2 + x)\,dx
+                  = \int_{0}^{1} (2x + x^2)\,dx
+                  = \left[x^2 + \frac{x^3}{3}\right]_0^1
+                  = 1 + \frac{1}{3} = \frac{4}{3}.\)
+                </p>
+                <p>
+                  Como não depende de \(y\), multiplicamos por \(\int_{0}^{2} dy = 2\):
+                  \(\displaystyle 2 \times \frac{4}{3} = \frac{8}{3}.\)
+                </p>
+                <p>
+                  Assim, \(\displaystyle \bar{x} = \frac{\frac{8}{3}}{5} = \frac{8}{15}.\)
+                </p>
+                <p>
+                  Para \(\bar{y}\):
+                  \[
+                    \bar{y} = \frac{1}{5}\iint_D y\,(2 + x)\,dA.
+                  \]
+                </p>
+                <p>
+                  Primeiro, \(\displaystyle \int_{0}^{1} (2 + x)\,dx = 2.5\)
+                  (como no exercício anterior). 
+                  Em seguida, \(\displaystyle \int_{0}^{2} y \cdot 2.5 \,dy
+                  = 2.5 \cdot \left[\frac{y^2}{2}\right]_0^2
+                  = 2.5 \times 2 = 5.\)
+                </p>
+                <p>
+                  Logo, \(\displaystyle \bar{y} = \frac{5}{5} = 1.\)
+                </p>
+                <p>
+                  Portanto, o centro de massa é
+                  \(\displaystyle \bigl(\frac{8}{15}, 1\bigr).\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (4-6) - Nível Intermediário (SIGMA-2) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Equipe de Simulação [Programa Apollo - ABR/1965]
+            </div>
+            <p>
+              A região \(D\) é definida no primeiro quadrante pelas
+              retas \(y=0\), \(x=2\) e a curva \(y=\sqrt{4-x^2}\). 
+              A densidade é constante \(\rho=3\). Utilize coordenadas polares
+              para determinar a massa \(\displaystyle M\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de coordenadas polares podem ser
+                úteis para simplificar a curva.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas polares, \(x = r \cos \theta\),
+                  \(y = r \sin \theta\), e \(dA = r\,dr\,d\theta.\)
+                </p>
+                <p>
+                  A curva \(y = \sqrt{4 - x^2}\) corresponde ao semicírculo
+                  \(r = 2\), pois \(x^2 + y^2 = 4\).
+                </p>
+                <p>
+                  Para o primeiro quadrante, \(\theta\) varia de \(0\) a
+                  \(\frac{\pi}{2}\), e \(r\) varia de \(0\) a \(2\).
+                </p>
+                <p>
+                  \[
+                    M = \int_{\theta=0}^{\frac{\pi}{2}}\int_{r=0}^{2}
+                    3 \cdot r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Integração em \(r\):
+                  \(\displaystyle \int_{0}^{2} 3r\,dr = 3 \left[\frac{r^2}{2}\right]_0^2 = 3 \times 2 = 6.\)
+                </p>
+                <p>
+                  Integração em \(\theta\):
+                  \(\displaystyle \int_{0}^{\frac{\pi}{2}} 6 \,d\theta
+                  = 6 \times \frac{\pi}{2} = 3\pi.\)
+                </p>
+                <p>
+                  Logo, \(\displaystyle M = 3\pi.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Seção de Modelagem [Apollo - MAI/1965]
+            </div>
+            <p>
+              Seja \(D\) a coroa circular no plano: 
+              \(1 \le r \le 2\), \(0 \le \theta \le \pi\). 
+              A densidade varia conforme \(\rho(r,\theta)=2r\). 
+              Calcule a massa total.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integrais em anéis podem ser
+                relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em polares, \(dA = r\,dr\,d\theta\). Assim,
+                  \[
+                    M = \int_{\theta=0}^{\pi}\int_{r=1}^{2} 2r \cdot r \,dr\,d\theta
+                    = \int_{0}^{\pi}\int_{1}^{2} 2r^2 \,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Integração em \(r\):
+                  \(\displaystyle \int_{1}^{2} 2r^2 \,dr
+                  = 2\left[\frac{r^3}{3}\right]_{1}^{2}
+                  = 2\left(\frac{8}{3} - \frac{1}{3}\right)
+                  = 2 \cdot \frac{7}{3} = \frac{14}{3}.\)
+                </p>
+                <p>
+                  Em seguida,
+                  \(\displaystyle \int_{0}^{\pi} \frac{14}{3} \, d\theta
+                  = \frac{14}{3}\pi.\)
+                </p>
+                <p>
+                  Portanto, \(\displaystyle M = \frac{14\pi}{3}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Análise Estrutural [Apollo - JUN/1965]
+            </div>
+            <p>
+              A mesma coroa do exercício anterior (\(1 \le r \le 2\), \(0 \le \theta
+              \le \pi\)) possui densidade \(\rho(r,\theta) = 2r\). Determine as
+              coordenadas do centro de massa \((\bar{x}, \bar{y})\). 
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a simetria ao integrar em cada
+                coordenada.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para o semicírculo superior (de \(\theta = 0\) a
+                  \(\theta = \pi\)), por simetria, \(\bar{y}\) tende a ser
+                  positivo e \(\bar{x}\) tende a zero. Vamos comprovar:
+                </p>
+                <p>
+                  \[
+                    \bar{x}
+                    = \frac{1}{M} \iint_D x\,\rho(r,\theta)\,dA
+                    = \frac{1}{M} \int_{0}^{\pi}\int_{1}^{2} (r\cos\theta)\cdot (2r)
+                    \,r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Note que \(\int_{0}^{\pi} \cos\theta \, d\theta = 0\).
+                  Assim, \(\bar{x} = 0\).
+                </p>
+                <p>
+                  Para \(\bar{y}\):
+                  \[
+                    \bar{y}
+                    = \frac{1}{M} \int_{0}^{\pi}\int_{1}^{2} (r\sin\theta)\cdot (2r)
+                    \,r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Fatorizando: 
+                  \(\displaystyle
+                    \bar{y}
+                    = \frac{1}{M} \int_{0}^{\pi}\int_{1}^{2} 2r^3 \sin\theta
+                    \,dr\,d\theta.
+                  \)
+                </p>
+                <p>
+                  Em \(r\):
+                  \(\displaystyle \int_{1}^{2} 2r^3\,dr = 2\left[\frac{r^4}{4}\right]_{1}^{2}
+                  = \left[r^4\right]_{1}^{2}
+                  = 16 - 1 = 15.\)
+                </p>
+                <p>
+                  Então,
+                  \(\displaystyle \bar{y}
+                    = \frac{1}{M} \left(\int_{0}^{\pi} 15 \sin\theta\,d\theta\right).
+                \)
+                </p>
+                <p>
+                  \(\displaystyle \int_{0}^{\pi} \sin\theta\,d\theta = 2.\)
+                  Assim, o valor dentro dos colchetes é \(15 \times 2 = 30.\)
+                </p>
+                <p>
+                  Recordando do exercício anterior que
+                  \(\displaystyle M = \frac{14\pi}{3}.\)
+                </p>
+                <p>
+                  Logo,
+                  \(\displaystyle \bar{y} = \frac{30}{\frac{14\pi}{3}} = \frac{30 \times 3}{14\pi}
+                  = \frac{90}{14\pi} = \frac{45}{7\pi}.\)
+                </p>
+                <p>
+                  Portanto, \(\bar{x}=0\) e 
+                  \(\displaystyle \bar{y} = \frac{45}{7\pi}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (7-9) - Nível Avançado (SIGMA-3) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Departamento de Dinâmica Orbital [Apollo - JUL/1965]
+            </div>
+            <p>
+              Sejam \(\displaystyle x = u^2 - v^2\) e \(\displaystyle y = 2uv\).
+              Considere a região \(\displaystyle D'\) em \((u,v)\) dada por
+              \(\displaystyle 0 \le u \le 1\), \(\displaystyle 0 \le v \le 1\).
+              A densidade na nova variável é \(\rho(u,v) = 1\). Calcule a massa
+              correspondente na região \((x,y)\) resultante.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Primeiro, determinamos o Jacobiano:
+                </p>
+                <p>
+                  \[
+                    x = u^2 - v^2,\quad
+                    y = 2uv.
+                  \]
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+                      \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      2u & -2v \\
+                      2v & 2u
+                    \end{vmatrix}.
+                  \]
+                </p>
+                <p>
+                  Determinante:
+                  \(\displaystyle 2u \cdot 2u - (-2v)\cdot 2v = 4u^2 - (-4v^2) = 4u^2 + 4v^2.\)
+                </p>
+                <p>
+                  Assim,
+                  \(\displaystyle
+                    \left| \frac{\partial(x,y)}{\partial(u,v)} \right|
+                    = 4(u^2 + v^2).
+                  \)
+                </p>
+                <p>
+                  A massa é dada por:
+                  \(\displaystyle
+                    M = \iint_{D'} \rho(u,v) \left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+                    \,du\,dv.
+                  \)
+                  Com \(\rho(u,v) = 1\):
+                </p>
+                <p>
+                  \[
+                    M = \int_{0}^{1}\int_{0}^{1} 4(u^2 + v^2)\,dv\,du.
+                  \]
+                </p>
+                <p>
+                  Integração em \(v\):
+                  \(\displaystyle
+                    \int_{0}^{1} 4(u^2 + v^2)\,dv
+                    = 4\int_{0}^{1} (u^2 + v^2)\,dv
+                    = 4\left[u^2 v + \frac{v^3}{3}\right]_{0}^{1}
+                    = 4\left(u^2 + \frac{1}{3}\right).
+                  \)
+                </p>
+                <p>
+                  Em seguida,
+                  \(\displaystyle
+                    M = \int_{0}^{1} 4\left(u^2 + \frac{1}{3}\right)\,du
+                    = 4\left(\int_{0}^{1} u^2 \,du + \int_{0}^{1} \frac{1}{3}\,du\right).
+                  \)
+                </p>
+                <p>
+                  \(\displaystyle \int_{0}^{1} u^2 \,du = \frac{1}{3}\)
+                  e
+                  \(\displaystyle \int_{0}^{1} \frac{1}{3} \,du = \frac{1}{3}.\)
+                </p>
+                <p>
+                  Logo,
+                  \(\displaystyle
+                    M = 4\left(\frac{1}{3} + \frac{1}{3}\right)
+                    = 4 \times \frac{2}{3} = \frac{8}{3}.
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Grupo de Otimização de Massa [Apollo - AGO/1965]
+            </div>
+            <p>
+              Em um projeto para avaliar equilíbrio de peças,
+              considera-se a transformação polinomial
+              \(\displaystyle x = u + v^2,\; y = u^2 - v\).
+              A região em \((u,v)\) é o quadrado \(0 \le u \le 2\),
+              \(0 \le v \le 2\). Densidade uniforme \(\rho=4\). 
+              Calcule a massa total no plano \((x,y)\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes em funções polinomiais.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Jacobiano:
+                  \(\displaystyle
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+                      \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      1 & 2v \\
+                      2u & -1
+                    \end{vmatrix}
+                    = -1 - 4uv.
+                  \)
+                </p>
+                <p>
+                  Módulo do determinante:
+                  \(\displaystyle \left|-1 - 4uv\right|.\)
+                  Para \(0 \le u \le 2\) e \(0 \le v \le 2\), 
+                  \( -1 - 4uv \le -1\). 
+                  Então
+                  \(\left|-1 - 4uv\right| = 1 + 4uv.\)
+                </p>
+                <p>
+                  Massa:
+                  \(\displaystyle
+                    M = \iint_{D'} 4 \times (1 + 4uv)\,du\,dv.
+                  \)
+                  onde \(D' = [0,2]\times[0,2].\)
+                </p>
+                <p>
+                  \(\displaystyle
+                    M = \int_{0}^{2}\int_{0}^{2} 4(1 + 4uv)\,du\,dv
+                    = \int_{0}^{2}\int_{0}^{2} (4 + 16uv)\,du\,dv.
+                  \)
+                </p>
+                <p>
+                  Integração em \(u\):
+                  \(\displaystyle
+                    \int_{0}^{2} (4 + 16uv)\,du
+                    = \left[4u + 8u^2v\right]_0^2
+                    = 8 + 32v.
+                  \)
+                </p>
+                <p>
+                  Agora em \(v\):
+                  \(\displaystyle
+                    \int_{0}^{2} (8 + 32v)\,dv
+                    = \left[8v + 16v^2\right]_0^2
+                    = 8 \times 2 + 16 \times 4 = 16 + 64 = 80.
+                  \)
+                </p>
+                <p>
+                  Portanto, \(\displaystyle M = 80.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Simulações de Estabilidade [Apollo - SET/1965]
+            </div>
+            <p>
+              Uma placa está descrita em coordenadas \((u,v)\) pela região 
+              \(D':\; 0 \le u \le \pi,\; 0 \le v \le 2\), com a transformação
+              \(x = v \cos(u)\), \(y = v \sin(u)\). A densidade é
+              \(\rho(u,v) = 1 + v\). Determine a massa total no plano \((x,y)\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Jacobiano:
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+                      \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      -v\sin(u) & \cos(u) \\
+                      v\cos(u)  & \sin(u)
+                    \end{vmatrix}.
+                  \]
+                </p>
+                <p>
+                  Determinante:
+                  \(\displaystyle
+                    -v\sin(u)\cdot \sin(u) - \cos(u)\cdot (v\cos(u))
+                    = -v(\sin^2(u) + \cos^2(u))
+                    = -v.
+                  \)
+                </p>
+                <p>
+                  Módulo do determinante: \( |{-v}| = v.\)
+                  Então
+                  \(\displaystyle dA = v\,du\,dv.\)
+                </p>
+                <p>
+                  Massa:
+                  \(\displaystyle
+                    M = \int_{u=0}^{\pi}\int_{v=0}^{2}
+                    \bigl(1 + v\bigr)\cdot v
+                    \,dv\,du.
+                  \)
+                </p>
+                <p>
+                  Integração em \(v\):
+                  \(\displaystyle
+                    \int_{0}^{2} v(1+v)\,dv
+                    = \int_{0}^{2} (v + v^2)\,dv
+                    = \left[\frac{v^2}{2} + \frac{v^3}{3}\right]_0^2
+                    = \left(2 + \frac{8}{3}\right)
+                    = \frac{6}{3} + \frac{8}{3} = \frac{14}{3}.
+                  \)
+                </p>
+                <p>
+                  Em seguida,
+                  \(\displaystyle
+                    M = \int_{0}^{\pi} \frac{14}{3}\,du
+                    = \frac{14}{3} \times \pi = \frac{14\pi}{3}.
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (10-12) - Nível Desafiador (SIGMA-4) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Testes - Orbital [Apollo - OUT/1965]
+            </div>
+            <p>
+              A lamina corresponde à região obtida pela transformação
+              \(\displaystyle x = \alpha \,u^3,\; y = \alpha \,v^3\), 
+              onde \(0 \le u,v \le 1\) e \(\alpha\) é uma constante positiva.
+              A densidade é \(\rho(u,v)=\alpha + uv\). Determinar a
+              massa total no plano \((x,y)\).
+            </p>
+
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Procede-se ao cálculo do Jacobiano:
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+                      \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      3\alpha u^2 & 0 \\
+                      0 & 3\alpha v^2
+                    \end{vmatrix}
+                    = 9\alpha^2 u^2 v^2.
+                  \]
+                </p>
+                <p>
+                  Assim,
+                  \(\displaystyle
+                    M = \int_{0}^{1}\int_{0}^{1}
+                    \bigl(\alpha + uv\bigr)\, \bigl(9\alpha^2 u^2 v^2\bigr)
+                    \,dv\,du.
+                  \)
+                </p>
+                <p>
+                  \(\displaystyle
+                    M = 9\alpha^2 \int_{0}^{1}\int_{0}^{1}
+                    (\alpha + uv) u^2 v^2
+                    \,dv\,du.
+                  \)
+                </p>
+                <p>
+                  Desenvolvendo: 
+                  \((\alpha + uv)u^2 v^2 = \alpha\,u^2 v^2 + u^3 v^3.\)
+                </p>
+                <p>
+                  Portanto,
+                  \(\displaystyle
+                    M = 9\alpha^2 \left[
+                      \int_{0}^{1}\int_{0}^{1}
+                        \alpha\,u^2 v^2 \,dv\,du
+                      \;+\;
+                      \int_{0}^{1}\int_{0}^{1}
+                        u^3 v^3 \,dv\,du
+                    \right].
+                  \)
+                </p>
+                <p>
+                  A primeira integral:
+                  \(\displaystyle
+                    \alpha \int_{0}^{1}u^2 \left(\int_{0}^{1} v^2 \,dv\right) du
+                    = \alpha \left(\int_{0}^{1} u^2\,du \right)
+                    \left(\int_{0}^{1} v^2\,dv \right)
+                    = \alpha \left(\frac{1}{3}\right)\left(\frac{1}{3}\right)
+                    = \frac{\alpha}{9}.
+                  \)
+                </p>
+                <p>
+                  A segunda integral:
+                  \(\displaystyle
+                    \int_{0}^{1}\int_{0}^{1} u^3 v^3\,dv\,du
+                    = \left(\int_{0}^{1} u^3\,du\right)
+                      \left(\int_{0}^{1} v^3\,dv\right)
+                    = \left(\frac{1}{4}\right)\left(\frac{1}{4}\right)
+                    = \frac{1}{16}.
+                  \)
+                </p>
+                <p>
+                  Somando: \(\displaystyle \frac{\alpha}{9} + \frac{1}{16}.\)
+                </p>
+                <p>
+                  Logo,
+                  \(\displaystyle
+                    M = 9\alpha^2 \left(\frac{\alpha}{9} + \frac{1}{16}\right)
+                    = \alpha^2 \left(\alpha + \frac{9}{16}\right).
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Seção de Controle Avançado [Apollo - NOV/1965]
+            </div>
+            <p>
+              Seja \(\displaystyle D'\) a região \(0 \le u \le \pi/2\),
+              \(1 \le v \le 2\). A transformação para o plano \((x,y)\) é
+              \(\displaystyle x = v \sin(u),\; y = v \cos(u)\). 
+              A densidade no plano \((u,v)\) é
+              \(\rho(u,v) = 1 + \sin(u)\). Determinar a massa total.
+            </p>
+
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Jacobiano:
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} \\
+                      \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      v\cos(u) & \sin(u) \\
+                      -v\sin(u) & \cos(u)
+                    \end{vmatrix}.
+                  \]
+                </p>
+                <p>
+                  Determinante:
+                  \(\displaystyle v\cos(u)\cos(u) - \sin(u)(-v\sin(u)) = v[\cos^2(u) + \sin^2(u)] = v.\)
+                </p>
+                <p>
+                  Então
+                  \(\displaystyle dA = v\,du\,dv.\)
+                </p>
+                <p>
+                  Massa:
+                  \(\displaystyle
+                    M = \int_{u=0}^{\frac{\pi}{2}}\int_{v=1}^{2}
+                    \bigl(1 + \sin(u)\bigr)\,v
+                    \,dv\,du.
+                  \)
+                </p>
+                <p>
+                  \(\displaystyle
+                    \int_{1}^{2} v\,dv
+                    = \left[\frac{v^2}{2}\right]_1^2
+                    = \frac{4}{2} - \frac{1}{2} = \frac{3}{2}.
+                  \)
+                </p>
+                <p>
+                  Logo,
+                  \(\displaystyle
+                    M = \int_{0}^{\frac{\pi}{2}} \bigl(1 + \sin(u)\bigr) \cdot \frac{3}{2}
+                    \,du
+                    = \frac{3}{2} \int_{0}^{\frac{\pi}{2}} \bigl(1 + \sin(u)\bigr)\,du.
+                  \)
+                </p>
+                <p>
+                  Integração:
+                  \(\displaystyle \int_{0}^{\frac{\pi}{2}} (1 + \sin(u))\,du
+                  = \left[u - \cos(u)\right]_0^{\frac{\pi}{2}}
+                  = \left(\frac{\pi}{2} - 0\right) - (\cos(\tfrac{\pi}{2}) - \cos(0))
+                  = \frac{\pi}{2} - (0 - 1) = \frac{\pi}{2} + 1.
+                  \)
+                </p>
+                <p>
+                  Portanto,
+                  \(\displaystyle
+                    M = \frac{3}{2}\left(\frac{\pi}{2} + 1\right)
+                    = \frac{3}{2} \cdot \frac{\pi}{2} + \frac{3}{2}
+                    = \frac{3\pi}{4} + \frac{3}{2}.
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Setor de Estruturas Críticas [Apollo - DEZ/1965]
+            </div>
+            <p>
+              Uma peça industrial é descrita pela transformação
+              \(\displaystyle x = a\,e^u \cos(v),\; y = a\,e^u \sin(v)\),
+              para \(0 \le u \le 1\) e \(0 \le v \le 2\pi\). A densidade
+              \(\displaystyle \rho(u,v) = e^{-u}\). Determinar a massa total
+              no plano \((x,y)\). 
+            </p>
+
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Jacobiano:
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    = \begin{vmatrix}
+                      \frac{\partial}{\partial u}(a\,e^u \cos v)
+                        & \frac{\partial}{\partial v}(a\,e^u \cos v) \\
+                      \frac{\partial}{\partial u}(a\,e^u \sin v)
+                        & \frac{\partial}{\partial v}(a\,e^u \sin v)
+                    \end{vmatrix}
+                    = \begin{vmatrix}
+                      a\,e^u \cos v & -a\,e^u \sin v \\
+                      a\,e^u \sin v & a\,e^u \cos v
+                    \end{vmatrix}.
+                  \]
+                </p>
+                <p>
+                  Determinante:
+                  \(\displaystyle
+                    (a\,e^u \cos v)(a\,e^u \cos v) -
+                    (-a\,e^u \sin v)(a\,e^u \sin v)
+                  \)
+                  \(\displaystyle
+                    = a^2 e^{2u}(\cos^2 v + \sin^2 v) = a^2 e^{2u}.
+                  \)
+                </p>
+                <p>
+                  Massa:
+                  \(\displaystyle
+                    M = \int_{u=0}^{1}\int_{v=0}^{2\pi}
+                    e^{-u} \cdot a^2 e^{2u}
+                    \,dv\,du
+                    = a^2 \int_{0}^{1}\int_{0}^{2\pi}
+                    e^{u} \,dv\,du.
+                  \)
+                </p>
+                <p>
+                  Integração em \(v\):
+                  \(\displaystyle \int_{0}^{2\pi} dv = 2\pi.\)
+                </p>
+                <p>
+                  Logo,
+                  \(\displaystyle
+                    M = a^2 \int_{0}^{1} 2\pi e^{u} \,du
+                    = 2\pi a^2 \left[\ e^{u}\right]_0^1
+                    = 2\pi a^2 (e - 1).
+                  \)
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VX-
+        <span class="censored">3081</span>-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
