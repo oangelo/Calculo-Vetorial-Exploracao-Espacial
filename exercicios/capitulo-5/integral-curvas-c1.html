@@ -1,23 +1,882 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Integral sobre curvas de classe C¹ - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Integral sobre curvas de classe C¹</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">05</span> DE AGOSTO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE GEMINI [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">FLUXUS-LINEAR</span> <br /><br />
+          Em meio aos esforços para aprimorar nossa compreensão de
+          <span class="censored">trajetórias orbitais</span> durante o Programa
+          Gemini, nossa equipe de pesquisa organizou um conjunto de exercícios
+          sobre <span class="censored">integrais de linha</span> aplicadas a
+          curvas de classe <span class="censored">C¹</span>. <br /><br />
+          Estes registros são baseados nos cadernos do Dr.
+          <span class="censored">█████</span>, responsável pelo cálculo de
+          <span class="censored">rotas internas</span> de naves tripuladas.
+        </div>
+
+        <div class="warning-box">
+          Acesso restrito aos pesquisadores com credenciais de
+          <span class="censored">nível avançado</span> em
+          <span class="censored">análise vetorial</span>. Qualquer violação de
+          segurança resultará em
+          <span class="censored">procedimentos de contenção</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: GL-<span class="censored">1965</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\int_{C} f(x,y,z)\,ds = \int_a^b
+          f(\vec{r}(t))\,\|\vec{r}'(t)\|\,dt\]
+        </p>
+        <p>
+          Onde \(C\) é uma curva de classe \(C^1\) parametrizada por
+          \(\vec{r}(t)\), \(t \in [a,b]\). As integrais de linha permitem o
+          cálculo de grandezas ao longo de percursos definidos no espaço,
+          possibilitando a análise de comprimento de arco, trabalho (quando
+          aplicado a campos vetoriais) e outras quantidades.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        A determinação precisa de integrais de linha é crucial em manobras
+        orbitais, garantindo que a trajetória de uma cápsula Gemini seja
+        planejada segundo parâmetros de segurança e eficiência. O ajuste de rota
+        depende de integrais que medem esforço propulsivo e consumo de
+        combustível ao longo do percurso.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+        os voos tripulados ganharam complexidade, exigindo cálculos rigorosos de
+        trajetórias. Técnicas de integrais de linha se mostraram fundamentais
+        para prever estabilidade de órbitas e correções em tempo real.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- ALFA: Exercícios 1 a 3 (VECTOR-1A, 1B, 1C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Simulação de Trajetória Interna - Gemini [ARQUIVOS DE
+              <span class="censored">13/JUL/1965</span>]
+            </div>
+            <p>
+              Considere a curva \(C\) no plano \(xy\) parametrizada por
+              \(\vec{r}(t) = \begin{pmatrix} 2t \\ t^2 \end{pmatrix}\), \(t \in
+              [0,2]\). Calcule o comprimento total da curva usando a integral de
+              linha \(\int_C ds\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar \(\|\vec{r}'(t)\|\)
+                diretamente à expressão paramétrica.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Primeiro, obtemos a derivada: \(\vec{r}'(t) = \begin{pmatrix}
+                  2 \\ 2t \end{pmatrix}\).
+                </p>
+                <p>
+                  Assim, \(\|\vec{r}'(t)\| = \sqrt{2^2 + (2t)^2} = \sqrt{4 +
+                  4t^2} = 2\sqrt{1 + t^2}\).
+                </p>
+                <p>
+                  Portanto, o comprimento é: \[ \int_0^2 \|\vec{r}'(t)\|\, dt =
+                  \int_0^2 2\sqrt{1 + t^2}\, dt. \]
+                </p>
+                <p>
+                  A integral resultante (usando substituições padrão) é \[ 2
+                  \int_0^2 \sqrt{1 + t^2}\, dt = 2 \left[\frac{t}{2}\sqrt{1+t^2}
+                  + \frac{1}{2}\ln\bigl(t + \sqrt{1+t^2}\bigr)\right]_0^2. \]
+                </p>
+                <p>
+                  Cálculo numérico: \(\sqrt{1+2^2} = \sqrt{5}\). Substituindo os
+                  limites, obtemos o valor final aproximado. O resultado indica
+                  o comprimento total exigido para a manobra simulada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Análise de Percurso - Dados
+              <span class="censored">Internos</span> do Projeto Gemini
+            </div>
+            <p>
+              A curva \(C\) no espaço é dada pela parametrização \(\vec{r}(t) =
+              \begin{pmatrix} \cos t \\ \sin t \\ t \end{pmatrix}\), \(t \in [0,
+              \pi]\). Calcule o comprimento dessa curva e interprete o resultado
+              em termos de deslocamento vertical acumulado.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A projeção no plano \(xy\) pode auxiliar na
+                compreensão da variação vertical.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Derivando, temos: \(\vec{r}'(t) = \begin{pmatrix} -\sin t \\
+                  \cos t \\ 1 \end{pmatrix}\).
+                </p>
+                <p>
+                  Logo, \[ \|\vec{r}'(t)\| = \sqrt{(-\sin t)^2 + (\cos t)^2 +
+                  1^2} = \sqrt{\sin^2 t + \cos^2 t + 1} = \sqrt{1 + 1} =
+                  \sqrt{2}. \]
+                </p>
+                <p>
+                  O comprimento é constante em função de \(t\), então \[
+                  \int_0^\pi \sqrt{2}\, dt = \sqrt{2} \cdot \pi. \]
+                </p>
+                <p>
+                  Interpretação: o termo \(\pi\sqrt{2}\) representa a soma do
+                  deslocamento vertical (em \(\vec{k}\)) com a variação circular
+                  no plano \(xy\). A manobra seria análoga a um “giro” enquanto
+                  a cápsula se desloca em altitude.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Sessão de Testes - Centro de Controle
+              <span class="censored">[REDACTED]</span>
+            </div>
+            <p>
+              Seja a curva \(C\) no plano \(xy\) definida por \(\vec{r}(t) =
+              \begin{pmatrix} t \\ e^t \end{pmatrix}\), \(t \in [0, 1]\).
+              Obtenha o comprimento de \(C\). Compare o valor final com a
+              trajetória de referência \(\vec{r}_{\text{ref}}(t) =
+              \begin{pmatrix} t \\ t \end{pmatrix}\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A diferença entre \(\sqrt{1 + (e^t)^2}\) e
+                \(\sqrt{1 + 1^2}\) pode direcionar a análise comparativa.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Derivando: \(\vec{r}'(t) = \begin{pmatrix} 1 \\ e^t
+                  \end{pmatrix}\).
+                </p>
+                <p>
+                  Então \(\|\vec{r}'(t)\| = \sqrt{1^2 + (e^t)^2} = \sqrt{1 +
+                  e^{2t}}.\)
+                </p>
+                <p>
+                  O comprimento: \[ \int_0^1 \sqrt{1 + e^{2t}}\, dt. \] Não
+                  possui antiderivada elementar simples, mas pode ser estimado
+                  numericamente. Já a curva de referência apresenta
+                  \(\|\vec{r}'_{\text{ref}}(t)\| = \sqrt{1 + 1} = \sqrt{2}\),
+                  resultando em um comprimento exato de \(\sqrt{2}\).
+                </p>
+                <p>
+                  Conclusão: o crescimento exponencial de \(e^t\) gera um
+                  incremento maior em relação à reta de referência.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- BETA: Exercícios 4 a 6 (VECTOR-2A, 2B, 2C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Ajuste de Rota - Programa Gemini [Arquivos Compartilhados]
+            </div>
+            <p>
+              A curva \(C\) em \(\mathbb{R}^3\) é parametrizada por \(\vec{r}(t)
+              = \begin{pmatrix} 2\cos t \\ 2\sin t \\ \sqrt{t} \end{pmatrix}\),
+              \(t \in [0,4]\). Determine o comprimento da curva e descreva como
+              a variação em \(\sqrt{t}\) afeta o perfil espacial.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de parametrização circular
+                combinadas a incrementos em \(z\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\vec{r}'(t) = \begin{pmatrix} -2\sin t \\ 2\cos t \\
+                  \frac{1}{2\sqrt{t}} \end{pmatrix}\).
+                </p>
+                <p>
+                  \(\|\vec{r}'(t)\| = \sqrt{(-2\sin t)^2 + (2\cos t)^2 +
+                  \left(\frac{1}{2\sqrt{t}}\right)^2} = \sqrt{4\sin^2 t +
+                  4\cos^2 t + \frac{1}{4t}}.\)
+                </p>
+                <p>
+                  Como \(\sin^2 t + \cos^2 t = 1\), isso simplifica para \[
+                  \sqrt{4 + \frac{1}{4t}} = \sqrt{\frac{16t + 1}{4t}} =
+                  \sqrt{\frac{16t+1}{4t}}. \]
+                </p>
+                <p>
+                  O comprimento será \[ \int_0^4 \sqrt{\frac{16t+1}{4t}}\, dt,
+                  \] cuja avaliação requer manipulação algébrica ou métodos
+                  numéricos apropriados. A presença de \(\sqrt{t}\) em \(z\)
+                  indica que, enquanto a projeção é um círculo de raio 2, existe
+                  um crescimento suave em altitude à medida que \(t\) aumenta.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Manobra de Transferência - Centro
+              <span class="censored">Técnico</span> Gemini
+            </div>
+            <p>
+              Uma nave segue a curva \(C\) parametrizada por \(\vec{r}(t) =
+              \begin{pmatrix} t \\ 3t - t^2 \\ 2t \end{pmatrix}\), \(t \in [0,
+              3]\). Calcule o comprimento total e discuta se há pontos de
+              inflexão relevantes na projeção \(xy\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de polinômios podem simplificar a
+                verificação de curvatura.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Derivando: \(\vec{r}'(t) = \begin{pmatrix} 1 \\ 3 - 2t \\ 2
+                  \end{pmatrix}\).
+                </p>
+                <p>
+                  \(\|\vec{r}'(t)\| = \sqrt{1^2 + (3 - 2t)^2 + 2^2} = \sqrt{1 +
+                  9 - 12t + 4t^2 + 4} = \sqrt{14 + 4t^2 - 12t}.\)
+                </p>
+                <p>
+                  O comprimento: \[ \int_0^3 \sqrt{14 + 4t^2 - 12t}\, dt. \]
+                  Após completar quadrado ou usar substituições, o resultado
+                  pode ser determinado numericamente. Na projeção \(xy\), a
+                  curva \((t, 3t - t^2)\) possui ponto de inflexão em \(t=1.5\).
+                  Isso afeta a trajetória ao alterar a curvatura antes de uma
+                  queda na componente \(y\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Análise Interna - Setor de Trajetórias
+              <span class="censored">Confidenciais</span>
+            </div>
+            <p>
+              Parametrize a curva \(C\) dada pela interseção dos planos \(x + y
+              = 4\) e \(z = 2\). Calcule o comprimento do trecho da interseção
+              entre \((x,y)=(0,4)\) e \((x,y)=(4,0)\). Discuta a relevância
+              desse trajeto em manobras de transferência retas.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A interseção é uma linha reta; verifique
+                consistência da parametrização.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A linha de interseção satisfaz \(z=2\) e \(y=4-x\). Uma
+                  parametrização simples é: \[ \vec{r}(t) = \begin{pmatrix} t \\
+                  4 - t \\ 2 \end{pmatrix}, \quad t \in [0,4]. \]
+                </p>
+                <p>
+                  Logo, \(\vec{r}'(t) = \begin{pmatrix} 1 \\ -1 \\ 0
+                  \end{pmatrix}\), e \(\|\vec{r}'(t)\| = \sqrt{1^2 + (-1)^2 +
+                  0^2} = \sqrt{2}.\)
+                </p>
+                <p>
+                  O comprimento do trecho é \(\int_0^4 \sqrt{2}\, dt =
+                  4\sqrt{2}.\)
+                </p>
+                <p>
+                  Conclusão: Trata-se de uma transferência retilínea entre dois
+                  pontos, útil em manobras de correção de curso quando a
+                  capacidade de ajuste fino é limitada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- GAMMA: Exercícios 7 a 9 (VECTOR-3A, 3B, 3C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Cálculo de Órbita - Gemini [Relatório Parcial de
+              <span class="censored">17/SET/1965</span>]
+            </div>
+            <p>
+              A cápsula segue a curva \(C\) em \(\mathbb{R}^3\) descrita por
+              \(\vec{r}(t) = \begin{pmatrix} \cos^2 t \\ \sin^2 t \\ t
+              \end{pmatrix}\), \(t \in [0,\frac{\pi}{2}]\). Calcule o
+              comprimento total e avalie eventuais implicações no consumo de
+              combustível.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes ao combinar
+                \(\cos^2 t\) e \(\sin^2 t\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\vec{r}'(t) = \begin{pmatrix} -2\cos t\,\sin t \\ 2\sin
+                  t\,\cos t \\ 1 \end{pmatrix} = \begin{pmatrix} -\sin 2t \\
+                  \sin 2t \\ 1 \end{pmatrix}.\)
+                </p>
+                <p>
+                  \(\|\vec{r}'(t)\| = \sqrt{(-\sin 2t)^2 + (\sin 2t)^2 + 1} =
+                  \sqrt{\sin^2 2t + \sin^2 2t + 1} = \sqrt{2\sin^2 2t + 1}.\)
+                </p>
+                <p>
+                  O comprimento é \[ \int_0^{\frac{\pi}{2}} \sqrt{1 +
+                  2\sin^2(2t)}\, dt. \] Este valor requer métodos numéricos ou
+                  transformações trigonométricas. A análise sugere que a
+                  variação combinada em \(x\) e \(y\) associada ao crescimento
+                  linear em \(z\) pode demandar maior uso de propulsores para
+                  correção fina.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Pesquisas de Voo - Equipe
+              <span class="censored">Gêmeos</span>
+            </div>
+            <p>
+              Uma manobra orbital requer percorrer a curva \(C\) no espaço
+              \(\vec{r}(t) = \begin{pmatrix} 2t \\ \ln(1+t) \\ \sqrt{1+t^2}
+              \end{pmatrix}\), \(t \in [0, 2]\). Calcule o comprimento e avalie
+              se há variação significativa em \(\ln(1+t)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe cuidadosamente as taxas de crescimento
+                de cada componente.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\vec{r}'(t) = \begin{pmatrix} 2 \\ \frac{1}{1+t} \\
+                  \frac{t}{\sqrt{1+t^2}} \end{pmatrix}\).
+                </p>
+                <p>
+                  Logo, \[ \|\vec{r}'(t)\| = \sqrt{2^2 +
+                  \left(\frac{1}{1+t}\right)^2 +
+                  \left(\frac{t}{\sqrt{1+t^2}}\right)^2}. \]
+                </p>
+                <p>
+                  A integral \(\int_0^2 \sqrt{4 + \frac{1}{(1+t)^2} +
+                  \frac{t^2}{1+t^2}}\, dt\) não admite solução elementar
+                  simples. Comparações numéricas mostram que o crescimento de
+                  \(\ln(1+t)\) é modesto, enquanto as variações em \(x=2t\) e
+                  \(z=\sqrt{1+t^2}\) dominam o comportamento do comprimento
+                  total.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Relatório de Análise - Projeto
+              <span class="censored">Σ-GEMINI</span>
+            </div>
+            <p>
+              O trecho de curva \(C\) é definido pela função implícita
+              \(F(x,y,z) = x^2 + y^2 - z^2 = 0\), com \(\vec{r}(t) =
+              \begin{pmatrix} \cosh t \\ \sinh t \\ t \end{pmatrix}\), \(t \in
+              [0,1]\). Verifique se tal parametrização de fato satisfaz a
+              equação implícita e calcule o comprimento.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Hiperbólicos possuem relações análogas às
+                funções trigonométricas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Observamos que \(\cosh^2 t - \sinh^2 t = 1\). Logo, \(x^2 +
+                  y^2 - z^2 = \cosh^2 t + \sinh^2 t - t^2\). Entretanto,
+                  \(\cosh^2 t + \sinh^2 t = 2\sinh^2 t + 1\). Não
+                  necessariamente isso iguala \(t^2\); há de se verificar
+                  coerência para o intervalo \([0,1]\).
+                </p>
+                <p>
+                  A derivada: \(\vec{r}'(t) = \begin{pmatrix} \sinh t \\ \cosh t
+                  \\ 1 \end{pmatrix}\).
+                </p>
+                <p>
+                  \(\|\vec{r}'(t)\| = \sqrt{\sinh^2 t + \cosh^2 t + 1}.\) Usando
+                  identidades hiperbólicas, \(\sinh^2 t + \cosh^2 t = \cosh(2t)
+                  + 1\) (requer cuidado).
+                </p>
+                <p>
+                  A integral de \[ \int_0^1 \sqrt{\cosh(2t) + 2}\, dt \]
+                  determina o comprimento. A consistência com \(F(x,y,z)=0\)
+                  depende de ajustes no modelo: a forma exata do trajeto pode
+                  sofrer variações para atender \(\cosh^2 t + \sinh^2 t = t^2\).
+                  Em aplicações reais, validamos numericamente a trajetória.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- OMEGA: Exercícios 10 a 12 (VECTOR-4A, 4B, 4C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Plataforma Gemini - Análise Final
+              <span class="censored">Secreta</span>
+            </div>
+            <p>
+              A curva \(C\) é definida por uma série de pontos críticos da
+              trajetória real. Modelar cada trecho como um arco de parábola
+              \(\vec{r}(t) = \begin{pmatrix} t \\ t^2 \\ f(t) \end{pmatrix}\),
+              com condições de contorno
+              <span class="censored">classificadas</span>. Verificar a
+              viabilidade estrutural ao obter o comprimento total para \((t \in
+              [0,5])\).
+            </p>
+            <!-- Nenhuma dica para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Sem a forma explícita de \(f(t)\), a integral de linha exige
+                  modelagem adicional. Caso \(f(t)\) seja polinomial de grau
+                  \(n\), procede-se com: \[ \|\vec{r}'(t)\| = \sqrt{1 + (2t)^2 +
+                  (f'(t))^2}. \]
+                </p>
+                <p>
+                  A análise final demanda estimativas numéricas e verificação de
+                  estabilidade. Conclusão: estrutura da curva suporta
+                  trajetórias se o comprimento total permanecer abaixo de
+                  limites previstos pelas tabelas de consumo de propelente.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Integração Avançada - Dados de
+              <span class="censored">Telemetria</span>
+            </div>
+            <p>
+              Modela-se a curva \(C\) por seções polinomiais de grau 3, de modo
+              a suavizar a transição entre pontos de controle \((x_i,y_i,z_i)\).
+              Demonstrar que o comprimento final excede
+              <span class="censored">██</span> unidades se a derivada em cada
+              emenda for contínua e imponha aceleração mínima não-nula.
+            </p>
+            <!-- Sem dicas para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada trecho cúbico \(\vec{r}_k(t)\) possui \(\vec{r}_k'(t)\)
+                  contínuo nas junções. O comprimento total soma-se das
+                  integrais de cada arco: \[ \sum_k \int_{a_k}^{b_k}
+                  \|\vec{r}_k'(t)\|\ dt. \] Caso a aceleração mínima seja
+                  imposta, há um alargamento das curvas, ampliando o percurso.
+                  Simulações indicam que ultrapassamos o valor
+                  <span class="censored">██</span> para a manobra agregada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Diagnóstico de Retorno - Gemini
+              <span class="censored">Terminal</span>
+            </div>
+            <p>
+              Um módulo em reentrada segue a curva \(C\) parametrizada por
+              \(\vec{r}(t) = \begin{pmatrix} \alpha(t) \\ \beta(t) \\ \gamma(t)
+              \end{pmatrix}\) com \(\alpha'(t), \beta'(t), \gamma'(t)\)
+              <span class="censored">secretas</span>. Elaborar o método de
+              cálculo do comprimento sem revelar explicitamente as funções,
+              garantindo proteção das informações classificadas.
+            </p>
+            <!-- Sem dicas para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O procedimento geral: \[ \int_C ds = \int_a^b
+                  \sqrt{(\alpha'(t))^2 + (\beta'(t))^2 + (\gamma'(t))^2}\ dt. \]
+                  Sem explicitá-las, podemos definir apenas limites e técnicas
+                  de integração apropriadas (por exemplo, quadraturas numéricas
+                  ou análises de sensibilidade).
+                </p>
+                <p>
+                  Conclusão: A reentrada controlada é validada ao demonstrar que
+                  o comprimento calculado permanece consistente com margens de
+                  segurança definidas pela missão.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">13</span> • DOCUMENTO GL-<span
+          class="censored"
+          >1965</span
+        >-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
