@@ -1,126 +1,158 @@
 # Diretrizes para Criação de Slides de Cálculo Vetorial
 
 ## Resumo do Projeto
-Criar slides interativos para um curso de Cálculo Vetorial usando o tema espacial, com **separação clara entre conteúdo matemático e contextualização histórica**. As visualizações interativas devem ser mantidas em slides separados para maximizar clareza e visibilidade.
+Criar slides interativos para um curso de Cálculo Vetorial usando um tema espacial, com **navegação horizontal entre tópicos principais** e **navegação vertical para aprofundamento de cada tópico**. O conteúdo deve ser otimizado para caber adequadamente na tela, com separação clara entre conceito matemático e contextualização histórica.
 
-## Template Obrigatório
-Você DEVE seguir o template HTML e a estrutura de slide exatamente conforme especificado abaixo. O template usa o arquivo space-theme.css atualizado que já inclui todas as classes necessárias.
+## Estrutura de Navegação Obrigatória
+O template implementa uma organização hierárquica em dois níveis:
 
-## Estrutura Padronizada dos Slides
+1. **Navegação Horizontal**: Entre diferentes tópicos principais do capítulo
+2. **Navegação Vertical**: Para aprofundamento dentro de cada tópico
 
-Cada conceito matemático deve ser apresentado seguindo esta sequência exata:
+Cada capítulo deve seguir esta estrutura:
+```
+Slide de Título do Capítulo
+    ↓
+Tópico 1 (Horizontal →)
+    ↓ (Vertical ↓)
+    - Slide 1.1: Conceito Principal
+    - Slide 1.2: Visualizações
+    - Slide 1.3: Formalismo...
+        
+Tópico 2 (→)
+    ↓ (↓)
+    - Slide 2.1: Conceito Principal
+    - Slide 2.2: Visualizações
+    ...
+        
+Tópico 3 (→)
+    ...
+```
 
-1. **Slide de conceito principal**:
-   - Título centralizado
-   - Definição formal em uma `math-section`
-   - Contextualização histórica em uma `history-section` separada
+## Template HTML e CSS
+Use o template fornecido que já inclui:
+- CSS ultra-compacto otimizado para maximizar espaço
+- Estrutura de navegação horizontal/vertical correta
+- Controles de navegação inteligentes que desaparecem quando não há mais slides
+- Classes CSS para diferentes tipos de conteúdo
 
-2. **Slide de visualização** (separado):
-   - Apenas o canvas e controles, sem texto competindo por espaço
-   - Interface minimalista para foco na visualização
+## Diretrizes por Tipo de Slide
 
-3. **Slide de formalismo matemático**:
-   - Desenvolvimento detalhado da teoria
-   - Explicações adicionais e derivações
+### 1. Slides de Tópico Principal (Primeiro Slide Vertical de Cada Tópico)
+- **Conteúdo**: Introdução ao conceito, definição formal, propriedades essenciais
+- **Layout**: Usar `math-section` para conteúdo matemático e `history-section` para contextualização
+- **Indicador**: Incluir "▼ Clique para aprofundar ▼" no final para indicar conteúdo vertical
 
-4. **Slide de problema**:
-   - Enunciado claro com contexto espacial
-   - Não incluir a solução no mesmo slide
+### 2. Slides de Visualização
+- **Conteúdo**: Canvas único com controles interativos, sem texto competindo por espaço
+- **Scripts**: Implementar funções específicas para cada tópico (`initTopic1Visualization`, `updateTopic1Visualization`, etc.)
+- **Controles**: Usar `controls-container` e `control-slider` para parâmetros ajustáveis
 
-5. **Slide de solução**:
-   - Solução passo a passo do problema apresentado
-   - Conclusão e interpretação dos resultados
+### 3. Slides de Formalismo Matemático
+- **Conteúdo**: Desenvolvimento detalhado, teoremas, provas
+- **Layout**: Usar `multi-column` para organizar conteúdo relacionado em colunas
+- **Elementos**: Incluir caixas de `example-box` ou `hint-box` para destacar pontos importantes
 
-6. **Slide de conexões**:
-   - Relações com outros conceitos
-   - Próximos passos e aplicações
+### 4. Slides de Problema
+- **Conteúdo**: Enunciado claro e dados do problema
+- **Layout**: Usar `problem-section` com layout em colunas para etapas e dados
+- **Separação**: Não incluir a solução no mesmo slide
 
-## Classes CSS Obrigatórias
+### 5. Slides de Solução
+- **Estrutura**: Dividir soluções longas em múltiplos slides (Parte 1, Parte 2, etc.)
+- **Classes**: Usar `math-section compact-solution` para maximizar densidade de conteúdo
+- **Passos**: Organizar em `solution-part` e `math-steps` para clareza
 
-Você DEVE usar estas classes CSS específicas do space-theme.css:
+## Classes CSS Específicas para Uso
 
-1. `math-section`: Para todo conteúdo matemático formal
-   ```html
-   <div class="math-section">
-     <p>Conteúdo matemático aqui...</p>
-   </div>
+### Contêineres Principais
+- `math-section`: Para conteúdo matemático formal
+- `history-section`: Para contextualização histórica (inclui `history-label`)
+- `problem-section`: Para enunciados de problemas
+- `visualization-canvas`: Para elementos canvas
+
+### Layout e Organização
+- `multi-column`: Container para layout em colunas
+- `column`: Colunas individuais
+
+### Elementos Auxiliares
+- `hint-box`: Dicas importantes e insights
+- `example-box`: Exemplos práticos
+- `note-box`: Observações adicionais
+- `solution-part`: Partes da solução de um problema
+- `compact-solution`: Classe para maximizar densidade em soluções
+- `math-steps`: Para equações sequenciais passo a passo
+
+### Visualizações
+- `controls-container`: Container para controles interativos
+- `control-slider`: Sliders para parâmetros
+- `control-button`: Botões de ação
+- `visualization-legend`: Legendas para visualizações
+
+## Contextualização Histórica Progressiva
+
+Mantenha a cronologia progressiva ao longo dos capítulos:
+
+1. **1945-1956 (Era dos Mísseis)**: Funções Vetoriais e Campos Vetoriais
+2. **1957-1961 (Era Sputnik)**: Derivadas Parciais, Rotacional, Divergente
+3. **1961-1964 (Primeiros Astronautas)**: Integrais Duplas
+4. **1965-1966 (Programa Gemini)**: Mudança de Variáveis e Integrais Triplas
+5. **1967-1969 (Primeiras Missões Apollo)**: Integrais de Linha e Campos Conservativos
+6. **1969-1970 (Pouso Lunar)**: Teorema de Green
+7. **1971-1972 (Missões Apollo Avançadas)**: Área e Integral de Superfície
+8. **1973-1985 (Estações Espaciais)**: Fluxo e Teorema da Divergência
+9. **1980-1991 (Exploração Planetária)**: Teorema de Stokes no Espaço
+
+## Implementação de Visualizações
+
+Cada tópico deve ter suas próprias funções de visualização independentes:
+
+1. **Funções de inicialização** com nome único por tópico:
+   ```javascript
+   function initTopic1Visualization() { ... }
+   function initTopic2Visualization() { ... }
    ```
 
-2. `history-section`: Para contextualização histórica (Guerra Fria/Exploração Espacial)
-   ```html
-   <div class="history-section">
-     <div class="history-label">CONTEXTO</div>
-     <p><strong>Evento Histórico (Ano)</strong></p>
-     <p>Descrição contextual aqui...</p>
-   </div>
+2. **Funções de atualização** específicas para cada tópico:
+   ```javascript
+   window.updateTopic1Visualization = function() { ... }
+   window.updateTopic2Visualization = function() { ... }
    ```
 
-3. `visualization-canvas`: Para todos os elementos canvas
+3. **IDs de elementos** únicos para cada tópico:
    ```html
-   <canvas id="idUnico" class="visualization-canvas" width="700" height="400"></canvas>
+   <canvas id="concept1Visualization" ...></canvas>
+   <input id="param1Topic1" ...>
    ```
 
-4. `problem-section`: Para enunciados de problemas
-   ```html
-   <div class="problem-section">
-     <p><strong>Problema:</strong> Descrição...</p>
-   </div>
-   ```
+## Otimização de Espaço
 
-5. `controls-container`: Para agrupar controles de interação
-   ```html
-   <div class="controls-container">
-     <!-- Controles aqui -->
-   </div>
-   ```
+Para garantir que o conteúdo caiba adequadamente:
 
-## Limites de Conteúdo
+1. **Usar layout em colunas** para conteúdo relacionado
+2. **Dividir soluções longas** em múltiplos slides
+3. **Usar classes compactas** para áreas com muito conteúdo
+4. **Minimizar espaçamento** usando as classes otimizadas
+5. **Limitar a quantidade de texto** por slide
+6. **Favorecer listas concisas** sobre parágrafos longos
 
-Para garantir que os slides se ajustem adequadamente:
+## Exemplo de Implementação
 
-- **Títulos**: Máximo de 60 caracteres
-- **Conteúdo matemático**: Máximo de 250 palavras por slide
-- **Contexto histórico**: Máximo de 150 palavras por slide
-- **Fórmulas**: No máximo 2-3 fórmulas complexas por slide
+Para cada capítulo:
 
-## Padrões de Código JavaScript
+1. **Slide de título do capítulo**
+2. **Para cada tópico principal**:
+   - Slide de conceito principal (horizontal)
+   - 2-5 slides de aprofundamento (vertical)
+3. **Conexões no final** do capítulo
 
-1. Cada visualização deve ter estas três funções:
-   - `initVisualization()`: Configuração inicial
-   - `drawVisualization()`: Renderização principal
-   - `updateVisualization()`: Atualização baseada em controles
+## Elementos Obrigatórios por Slide de Tópico
 
-2. Cada componente interativo deve incluir:
-   - Comentários explicativos para cada seção do código
-   - Feedback visual imediato para interações
-   - Função de reset para valores iniciais
+1. **Título claro e conciso** (máximo 60 caracteres)
+2. **Definição matemática formal** usando LaTeX
+3. **Contextualização histórica** correspondente ao período adequado
+4. **Visualização interativa** relacionada ao conceito
+5. **Problema contextualizado** na exploração espacial
+6. **Solução passo a passo** dividida quando extensa
 
-## Notação Matemática
-
-- Vetores: Sempre usar `\vec{v}` em LaTeX
-- Escalares: Usar notação padrão `a, b, c`
-- Unidades: Incluir unidades onde apropriado `\text{ m/s}`
-- Equações importantes: Usar display math `\[...\]`
-- Equações inline: Usar `\(...\)`
-
-## Paleta de Cores para Visualizações
-
-Usar consistentemente:
-- Vetores de posição: `#1E88E5` (azul)
-- Vetores de velocidade: `#43A047` (verde)
-- Vetores de aceleração: `#E53935` (vermelho)
-- Vetores de força: `#FFB300` (amarelo)
-- Vetores unitários: `#FFFFFF` (branco)
-
-## Exemplo de Entrega
-
-Para um módulo sobre Campos Vetoriais, você deve entregar HTML que siga exatamente o template, incluindo:
-
-1. Slide conceitual sobre campos vetoriais (definição + contexto histórico)
-2. Slide de visualização interativa de um campo vetorial
-3. Slide de formalismo matemático aprofundado
-4. Slide com problema prático relacionado
-5. Slide com solução detalhada
-6. Slide de conexões e próximos passos
-
-Adira estritamente à estrutura, classes CSS e organização especificadas.
+Adira estritamente à estrutura, classes CSS e organização hierárquica especificadas para garantir consistência visual e navegabilidade.

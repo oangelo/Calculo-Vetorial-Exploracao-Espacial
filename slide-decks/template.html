@@ -11,11 +11,58 @@
       href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
     />
 
-    <!-- Carregando o estilo space-theme -->
+    <!-- Carregando o estilo space-theme ultra-compacto -->
     <link
       rel="stylesheet"
       href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/space-theme.css"
     />
+
+    <!-- CSS adicional para controles inteligentes -->
+    <style>
+      /* Estilo base para os controles */
+      .reveal .controls {
+        color: var(--accent-color);
+        opacity: 0.8;
+        z-index: 30;
+        bottom: 15px;
+        right: 15px;
+      }
+
+      /* Remover a animação de fade padrão do Reveal.js para os controles */
+      .reveal .controls .controls-arrow {
+        transition: none;
+      }
+
+      /* Classe para esconder um controle específico quando não tiver para onde navegar */
+      .reveal .controls .nav-hidden {
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+
+      /* Indicadores de navegação vertical para alertar sobre slides aninhados */
+      .reveal .slide-menu-button {
+        bottom: 30px;
+      }
+
+      .vertical-indicator {
+        position: absolute;
+        bottom: 20px;
+        color: var(--accent-color);
+        font-size: 0.7em;
+        width: 100%;
+        text-align: center;
+        opacity: 0.7;
+      }
+
+      /* Ajuste para que a numeração de slides apareça corretamente */
+      .reveal .slide-number {
+        bottom: 15px;
+        left: 15px;
+        font-size: 0.7em;
+        opacity: 0.7;
+      }
+    </style>
 
     <!-- Scripts para Reveal.js e MathJax -->
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
@@ -31,31 +78,43 @@
 
       <div class="slides">
         <!-- =========================== -->
-        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL DO MÓDULO -->
         <!-- =========================== -->
         <section>
           <h1>[TÍTULO DO MÓDULO]</h1>
           <h3>Explorando o Espaço através da Matemática</h3>
         </section>
 
-        <!-- =========================== -->
-        <!-- MÓDULO: [NOME DO CONCEITO] -->
-        <!-- =========================== -->
+        <!-- ================================================ -->
+        <!-- TÓPICO 1: NAVEGAÇÃO HORIZONTAL ENTRE TÓPICOS     -->
+        <!-- ================================================ -->
         <section>
-          <!-- Slide 1: Conceito Principal -->
+          <!-- Slide introdutório do Tópico 1 -->
           <section>
-            <h2>[Nome do Conceito]</h2>
+            <h2>Tópico 1: [Nome do Conceito]</h2>
 
             <div class="math-section">
               <p>Definição formal do conceito:</p>
               <p>\[\text{Fórmula matemática}\]</p>
 
-              <p>Propriedades importantes:</p>
-              <ul>
-                <li>Propriedade 1</li>
-                <li>Propriedade 2</li>
-                <li>Propriedade 3</li>
-              </ul>
+              <div class="multi-column">
+                <div class="column">
+                  <p>Propriedades importantes:</p>
+                  <ul>
+                    <li>Propriedade 1</li>
+                    <li>Propriedade 2</li>
+                    <li>Propriedade 3</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <p>Interpretação intuitiva:</p>
+                  <ul>
+                    <li>Significado prático</li>
+                    <li>Analogia física</li>
+                    <li>Conexão com conceitos anteriores</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="history-section">
@@ -63,18 +122,19 @@
               <p><strong>Evento Histórico (Ano)</strong></p>
               <p>
                 Breve descrição do contexto histórico relacionado ao conceito,
-                com ênfase na exploração espacial e na Guerra Fria. (Máximo 150
-                palavras).
+                com ênfase na exploração espacial e na Guerra Fria.
               </p>
             </div>
+
+            <div class="vertical-indicator">▼ Clique para aprofundar ▼</div>
           </section>
 
-          <!-- Slide 2: Visualização -->
+          <!-- Aprofundamento Vertical do Tópico 1: Visualização -->
           <section>
             <h2>Visualização: [Nome do Conceito]</h2>
 
             <canvas
-              id="conceptVisualization"
+              id="concept1Visualization"
               class="visualization-canvas"
               width="700"
               height="400"
@@ -82,124 +142,342 @@
 
             <div class="controls-container">
               <div class="control-slider">
-                <label for="parameter1">Parâmetro 1:</label>
+                <label for="param1Topic1">Parâmetro 1:</label>
                 <input
                   type="range"
-                  id="parameter1"
+                  id="param1Topic1"
                   min="1"
                   max="100"
                   value="50"
-                  oninput="updateVisualization()"
+                  oninput="updateTopic1Visualization()"
                 />
               </div>
 
-              <button class="control-button" onclick="resetVisualization()">
+              <div class="control-slider">
+                <label for="param2Topic1">Parâmetro 2:</label>
+                <input
+                  type="range"
+                  id="param2Topic1"
+                  min="1"
+                  max="100"
+                  value="50"
+                  oninput="updateTopic1Visualization()"
+                />
+              </div>
+
+              <button
+                class="control-button"
+                onclick="resetTopic1Visualization()"
+              >
                 Reiniciar
               </button>
             </div>
+
+            <div class="visualization-legend">
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: #1e88e5"
+                ></div>
+                <span>Vetores de posição</span>
+              </div>
+              <div class="legend-item">
+                <div
+                  class="legend-color"
+                  style="background-color: #43a047"
+                ></div>
+                <span>Vetores de velocidade</span>
+              </div>
+            </div>
           </section>
 
-          <!-- Slide 3: Formalismo Matemático -->
+          <!-- Aprofundamento Vertical do Tópico 1: Formalismo Matemático -->
           <section>
-            <h2>Formalismo Matemático</h2>
+            <h2>Formalismo Matemático: [Nome do Conceito]</h2>
 
             <div class="math-section">
               <p>Desenvolvimento matemático mais detalhado:</p>
               <p>\[\text{Fórmula matemática expandida}\]</p>
 
-              <p>Onde:</p>
-              <ul>
-                <li>\(a\) representa [significado]</li>
-                <li>\(b\) representa [significado]</li>
-                <li>\(c\) representa [significado]</li>
-              </ul>
+              <div class="multi-column">
+                <div class="column">
+                  <p>Onde:</p>
+                  <ul>
+                    <li>\(a\) representa [significado]</li>
+                    <li>\(b\) representa [significado]</li>
+                    <li>\(c\) representa [significado]</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <p>Propriedades adicionais:</p>
+                  <ul>
+                    <li>Propriedade A</li>
+                    <li>Propriedade B</li>
+                  </ul>
+                </div>
+              </div>
 
-              <p>Propriedade adicional ou teorema relacionado:</p>
+              <p>Teorema relacionado:</p>
               <p>\[\text{Teorema ou propriedade}\]</p>
+
+              <div class="example-box">
+                <p>
+                  <strong>Exemplo:</strong> Aplicação prática do formalismo.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ================================================ -->
+        <!-- TÓPICO 2: NAVEGAÇÃO HORIZONTAL PARA OUTRO TÓPICO -->
+        <!-- ================================================ -->
+        <section>
+          <!-- Slide introdutório do Tópico 2 -->
+          <section>
+            <h2>Tópico 2: [Outro Conceito]</h2>
+
+            <div class="math-section">
+              <p>Definição formal deste segundo conceito:</p>
+              <p>\[\text{Fórmula matemática do segundo conceito}\]</p>
+
+              <div class="multi-column">
+                <div class="column">
+                  <p>Propriedades importantes:</p>
+                  <ul>
+                    <li>Propriedade X</li>
+                    <li>Propriedade Y</li>
+                    <li>Propriedade Z</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <p>Aplicações práticas:</p>
+                  <ul>
+                    <li>Aplicação 1</li>
+                    <li>Aplicação 2</li>
+                    <li>Aplicação 3</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p><strong>Outro Evento Histórico (Ano)</strong></p>
+              <p>
+                Contextualização histórica para este segundo conceito, mostrando
+                como ele foi importante na exploração espacial.
+              </p>
+            </div>
+
+            <div class="vertical-indicator">▼ Clique para aprofundar ▼</div>
+          </section>
+
+          <!-- Aprofundamento Vertical do Tópico 2: Visualização -->
+          <section>
+            <h2>Visualização: [Outro Conceito]</h2>
+
+            <canvas
+              id="concept2Visualization"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="param1Topic2">Força:</label>
+                <input
+                  type="range"
+                  id="param1Topic2"
+                  min="1"
+                  max="100"
+                  value="50"
+                  oninput="updateTopic2Visualization()"
+                />
+              </div>
+
+              <div class="control-slider">
+                <label for="param2Topic2">Densidade:</label>
+                <input
+                  type="range"
+                  id="param2Topic2"
+                  min="1"
+                  max="100"
+                  value="50"
+                  oninput="updateTopic2Visualization()"
+                />
+              </div>
+
+              <button
+                class="control-button"
+                onclick="resetTopic2Visualization()"
+              >
+                Reiniciar
+              </button>
             </div>
           </section>
 
-          <!-- Slide 4: Problema Prático -->
+          <!-- Aprofundamento Vertical do Tópico 2: Problema -->
           <section>
-            <h2>Problema: [Título do Problema]</h2>
+            <h2>Problema: [Relacionado ao Conceito 2]</h2>
 
             <div class="problem-section">
               <p>
-                <strong>Problema:</strong> Descrição detalhada do problema
-                prático com contexto de exploração espacial.
+                <strong>Problema:</strong> Descrição detalhada do problema com
+                contexto de exploração espacial.
               </p>
 
-              <ol>
-                <li>Sub-problema ou etapa 1</li>
-                <li>Sub-problema ou etapa 2</li>
-                <li>Sub-problema ou etapa 3</li>
-              </ol>
-
-              <p><strong>Dados:</strong></p>
-              <ul>
-                <li>Valor 1: \(a = \text{valor}\)</li>
-                <li>Valor 2: \(b = \text{valor}\)</li>
-                <li>Valor 3: \(c = \text{valor}\)</li>
-              </ul>
+              <div class="multi-column">
+                <div class="column">
+                  <p><strong>Etapas:</strong></p>
+                  <ol>
+                    <li>Sub-problema A</li>
+                    <li>Sub-problema B</li>
+                    <li>Sub-problema C</li>
+                  </ol>
+                </div>
+                <div class="column">
+                  <p><strong>Dados:</strong></p>
+                  <ul>
+                    <li>Valor X: \(x = \text{valor}\)</li>
+                    <li>Valor Y: \(y = \text{valor}\)</li>
+                    <li>Valor Z: \(z = \text{valor}\)</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 
-          <!-- Slide 5: Solução do Problema -->
+          <!-- Aprofundamento Vertical do Tópico 2: Solução Parte 1 -->
           <section>
-            <h2>Solução: [Título do Problema]</h2>
+            <h2>Solução (Parte 1): [Relacionado ao Conceito 2]</h2>
+
+            <div class="math-section compact-solution">
+              <div class="solution-part">
+                <p><strong>1. Solução do sub-problema A:</strong></p>
+                <p>Primeira etapa da solução do problema.</p>
+                <div class="math-steps">
+                  <p>Equações relevantes:</p>
+                  <p>\[\text{Equações da solução parte 1}\]</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Aprofundamento Vertical do Tópico 2: Solução Parte 2 -->
+          <section>
+            <h2>Solução (Parte 2): [Relacionado ao Conceito 2]</h2>
+
+            <div class="math-section compact-solution">
+              <div class="solution-part">
+                <p><strong>2 & 3. Solução final:</strong></p>
+                <p>Continuação e finalização da solução.</p>
+                <div class="math-steps">
+                  <p>Resultado final:</p>
+                  <p>\[\text{Resultado da solução final}\]</p>
+                </div>
+                <p>
+                  <strong>Conclusão:</strong> Interpretação do resultado no
+                  contexto do problema.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- ================================================ -->
+        <!-- TÓPICO 3: OUTRO TÓPICO HORIZONTAL                -->
+        <!-- ================================================ -->
+        <section>
+          <!-- Slide introdutório do Tópico 3 -->
+          <section>
+            <h2>Tópico 3: [Terceiro Conceito]</h2>
 
             <div class="math-section">
-              <p><strong>1. Solução do sub-problema 1:</strong></p>
-              <p>Explicação passo a passo com fórmulas relevantes.</p>
-              <p>\[\text{Fórmula com valores numéricos}\]</p>
-
-              <p><strong>2. Solução do sub-problema 2:</strong></p>
-              <p>Explicação passo a passo com fórmulas relevantes.</p>
-              <p>\[\text{Fórmula com valores numéricos}\]</p>
-
-              <p><strong>3. Solução do sub-problema 3:</strong></p>
-              <p>Explicação passo a passo com fórmulas relevantes.</p>
-              <p>\[\text{Fórmula com valores numéricos}\]</p>
+              <p>Definição formal do terceiro conceito:</p>
+              <p>\[\text{Fórmula matemática}\]</p>
 
               <p>
-                <strong>Conclusão:</strong> Interpretação do resultado no
-                contexto do problema.
+                Este tópico avança no nosso entendimento, conectando os
+                conceitos anteriores e introduzindo novas ferramentas
+                matemáticas.
               </p>
+            </div>
+
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p><strong>Terceiro Evento Histórico (Ano)</strong></p>
+              <p>
+                Contextualização histórica para este terceiro conceito, mantendo
+                a progressão cronológica da narrativa espacial.
+              </p>
+            </div>
+
+            <div class="vertical-indicator">▼ Clique para aprofundar ▼</div>
+          </section>
+
+          <!-- Aprofundamento Vertical do Tópico 3: Detalhes -->
+          <section>
+            <h2>Detalhamento: [Terceiro Conceito]</h2>
+
+            <div class="math-section">
+              <p>Exploração mais aprofundada deste conceito:</p>
+              <div class="multi-column">
+                <div class="column">
+                  <p>Aspectos teóricos:</p>
+                  <ul>
+                    <li>Teorema relacionado 1</li>
+                    <li>Teorema relacionado 2</li>
+                  </ul>
+                </div>
+                <div class="column">
+                  <p>Aspectos práticos:</p>
+                  <ul>
+                    <li>Aplicação espacial 1</li>
+                    <li>Aplicação espacial 2</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </section>
 
-          <!-- Slide 6: Conexões e Próximos Passos -->
+          <!-- Conexões e Próximos Passos -->
           <section>
             <h2>Conexões e Próximos Passos</h2>
 
-            <div class="math-section">
-              <p>Este conceito se conecta a:</p>
-              <ul>
-                <li>Conexão com [conceito relacionado 1]</li>
-                <li>Conexão com [conceito relacionado 2]</li>
-                <li>Aplicação em [área de aplicação]</li>
-              </ul>
-
-              <p>Próximos conceitos a serem explorados:</p>
-              <ul>
-                <li>[Próximo conceito 1]</li>
-                <li>[Próximo conceito 2]</li>
-              </ul>
+            <div class="multi-column">
+              <div class="column">
+                <div class="math-section">
+                  <p>Estes conceitos se conectam a:</p>
+                  <ul>
+                    <li>Conexão com conceito A</li>
+                    <li>Conexão com conceito B</li>
+                    <li>Aplicação em área específica</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="column">
+                <div class="math-section">
+                  <p>Próximos conceitos a explorar:</p>
+                  <ul>
+                    <li>Próximo conceito 1</li>
+                    <li>Próximo conceito 2</li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
             <div class="history-section">
               <div class="history-label">CONTEXTO</div>
               <p><strong>Desenvolvimento Histórico</strong></p>
               <p>
-                Breve descrição de como este conceito se desenvolveu
-                historicamente e como influenciou avanços subsequentes na
-                exploração espacial.
+                Síntese do desenvolvimento histórico destes conceitos e sua
+                importância para os avanços futuros na exploração espacial.
               </p>
             </div>
           </section>
         </section>
-
-        <!-- Aqui você pode inserir mais módulos seguindo a mesma estrutura -->
       </div>
     </div>
 
@@ -207,37 +485,160 @@
     <script>
       // Inicialização do Reveal.js
       window.onload = function () {
+        // Inicializar o Reveal.js
         Reveal.initialize({
+          // Configurações essenciais
           controls: true,
+          controlsLayout: 'bottom-right',
+          controlsBackArrows: 'faded',
           progress: true,
+          slideNumber: true,
+          overview: true,
           center: true,
           hash: true,
+
+          // Configurações de plugin
           plugins: [RevealMath.MathJax3],
-          // Configuração específica para ajuste de tela
+
+          // Configurações específicas para ajuste de tela
           width: '100%',
           height: '100%',
-          margin: 0.05,
-          minScale: 0.5,
+          margin: 0.03,
+          minScale: 0.4,
           maxScale: 1.5,
+
           // Transições
           transition: 'fade',
+
           // Navegação
           navigationMode: 'default',
+
+          // Configurações específicas para melhorar a performance
+          preloadIframes: true,
+          autoPlayMedia: false,
+
+          // Configurações adicionais para garantir visualização dos controles
+          hideInactiveCursor: false,
+          hideCursorTime: 5000,
         });
 
-        // Inicializa a visualização
-        initVisualization();
+        // Após a inicialização, configurar os controles inteligentes
+        setupSmartControls();
+
+        // Inicializar visualizações quando os slides correspondentes são exibidos
+        Reveal.on('slidechanged', function (event) {
+          // Atualizar os controles inteligentes a cada mudança de slide
+          updateSmartControls();
+
+          // Verificar qual slide está ativo e inicializar a visualização correspondente
+          if (event.currentSlide.querySelector('#concept1Visualization')) {
+            initTopic1Visualization();
+          } else if (
+            event.currentSlide.querySelector('#concept2Visualization')
+          ) {
+            initTopic2Visualization();
+          }
+        });
       };
 
-      // =============================================
-      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO CONCEITO
-      // =============================================
-      function initVisualization() {
-        const canvas = document.getElementById('conceptVisualization');
-        if (!canvas) return; // Verificação de segurança
+      // Função para configurar os controles inteligentes que desaparecem quando não há slides
+      function setupSmartControls() {
+        // Certificar que os elementos de controle estão disponíveis
+        setTimeout(updateSmartControls, 500);
+      }
 
+      // Função para atualizar a visibilidade dos controles com base na posição atual
+      function updateSmartControls() {
+        // Obter os índices do slide atual
+        const indices = Reveal.getIndices();
+
+        // Obter o número total de slides horizontais e verticais
+        const totalHorizontal = Reveal.getTotalSlides();
+        const horizontalSlides = document.querySelectorAll(
+          '.reveal .slides > section'
+        );
+        const currentHorizontalSlide = horizontalSlides[indices.h];
+        const verticalSlides = currentHorizontalSlide
+          ? currentHorizontalSlide.querySelectorAll('section')
+          : [];
+
+        // Verificar se estamos no último slide horizontal
+        const isLastHorizontal = indices.h === horizontalSlides.length - 1;
+
+        // Verificar se estamos no último slide vertical do slide horizontal atual
+        const isLastVertical = indices.v === verticalSlides.length - 1;
+
+        // Verificar se estamos no primeiro slide horizontal
+        const isFirstHorizontal = indices.h === 0;
+
+        // Verificar se estamos no primeiro slide vertical
+        const isFirstVertical = indices.v === 0;
+
+        // Obter os controles direcionais específicos
+        const rightControl = document.querySelector('.navigate-right');
+        const downControl = document.querySelector('.navigate-down');
+        const leftControl = document.querySelector('.navigate-left');
+        const upControl = document.querySelector('.navigate-up');
+
+        // Ocultar ou mostrar controles com base nas condições
+        if (rightControl) {
+          if (isLastHorizontal) {
+            rightControl.classList.add('nav-hidden');
+          } else {
+            rightControl.classList.remove('nav-hidden');
+          }
+        }
+
+        if (downControl) {
+          if (isLastVertical || verticalSlides.length <= 1) {
+            downControl.classList.add('nav-hidden');
+          } else {
+            downControl.classList.remove('nav-hidden');
+          }
+        }
+
+        if (leftControl) {
+          if (isFirstHorizontal) {
+            leftControl.classList.add('nav-hidden');
+          } else {
+            leftControl.classList.remove('nav-hidden');
+          }
+        }
+
+        if (upControl) {
+          if (isFirstVertical) {
+            upControl.classList.add('nav-hidden');
+          } else {
+            upControl.classList.remove('nav-hidden');
+          }
+        }
+
+        // Atualizar o indicador vertical
+        const verticalIndicators = document.querySelectorAll(
+          '.vertical-indicator'
+        );
+        verticalIndicators.forEach(function (indicator) {
+          if (
+            indicator.parentElement === currentHorizontalSlide &&
+            verticalSlides.length <= 1
+          ) {
+            indicator.style.display = 'none';
+          }
+        });
+      }
+
+      // =============================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO TÓPICO 1
+      // =============================================
+      function initTopic1Visualization() {
+        const canvas = document.getElementById('concept1Visualization');
+        if (!canvas || canvas.getAttribute('data-initialized') === 'true')
+          return;
+
+        canvas.setAttribute('data-initialized', 'true');
         const ctx = canvas.getContext('2d');
-        let parameter1 = 50; // Valor inicial
+        let parameter1 = 50;
+        let parameter2 = 50;
 
         function drawVisualization() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -246,10 +647,7 @@
           const centerX = canvas.width / 2;
           const centerY = canvas.height / 2;
 
-          // Implementação da visualização aqui
-          // Este é apenas um exemplo - substituir pela visualização específica do conceito
-
-          // Desenhar um círculo cujo raio depende do parâmetro
+          // Desenhar um círculo cujo raio depende do parâmetro 1
           const radius = (parameter1 * canvas.width) / 200;
 
           ctx.beginPath();
@@ -273,31 +671,181 @@
           ctx.lineWidth = 2;
           ctx.stroke();
 
-          // Adicionar texto explicativo
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '16px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText(`Parâmetro 1: ${parameter1}`, centerX, 30);
+          // Desenhar vetores
+          const numVectors = Math.floor(parameter2 / 10) + 3;
+          for (let i = 0; i < numVectors; i++) {
+            const angle = (i / numVectors) * Math.PI * 2;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle) * radius;
+
+            // Vetor de posição
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(x, y);
+            ctx.strokeStyle = '#1E88E5';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Vetor de velocidade
+            const velAngle = angle + Math.PI / 2;
+            const vx = x + Math.cos(velAngle) * 30;
+            const vy = y + Math.sin(velAngle) * 30;
+
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(vx, vy);
+            ctx.strokeStyle = '#43A047';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Desenhar ponta da seta
+            const headlen = 10;
+            ctx.beginPath();
+            ctx.moveTo(vx, vy);
+            ctx.lineTo(
+              vx - headlen * Math.cos(velAngle - Math.PI / 6),
+              vy - headlen * Math.sin(velAngle - Math.PI / 6)
+            );
+            ctx.lineTo(
+              vx - headlen * Math.cos(velAngle + Math.PI / 6),
+              vy - headlen * Math.sin(velAngle + Math.PI / 6)
+            );
+            ctx.closePath();
+            ctx.fillStyle = '#43A047';
+            ctx.fill();
+          }
         }
 
         // Desenhar a visualização inicial
         drawVisualization();
 
-        // Função para atualizar com base no slider
-        window.updateVisualization = function () {
-          const slider = document.getElementById('parameter1');
-          if (slider) {
-            parameter1 = slider.value;
-            drawVisualization();
-          }
+        // Funções para interação
+        window.updateTopic1Visualization = function () {
+          const slider1 = document.getElementById('param1Topic1');
+          const slider2 = document.getElementById('param2Topic1');
+
+          if (slider1) parameter1 = parseInt(slider1.value);
+          if (slider2) parameter2 = parseInt(slider2.value);
+
+          drawVisualization();
         };
 
-        // Função para reiniciar
-        window.resetVisualization = function () {
+        window.resetTopic1Visualization = function () {
           parameter1 = 50;
-          if (document.getElementById('parameter1')) {
-            document.getElementById('parameter1').value = 50;
+          parameter2 = 50;
+
+          const slider1 = document.getElementById('param1Topic1');
+          const slider2 = document.getElementById('param2Topic1');
+
+          if (slider1) slider1.value = 50;
+          if (slider2) slider2.value = 50;
+
+          drawVisualization();
+        };
+      }
+
+      // =============================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO TÓPICO 2
+      // =============================================
+      function initTopic2Visualization() {
+        const canvas = document.getElementById('concept2Visualization');
+        if (!canvas || canvas.getAttribute('data-initialized') === 'true')
+          return;
+
+        canvas.setAttribute('data-initialized', 'true');
+        const ctx = canvas.getContext('2d');
+        let parameter1 = 50;
+        let parameter2 = 50;
+
+        function drawVisualization() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Centro do canvas
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height / 2;
+
+          // Desenhar grade de vetores (campo de força)
+          const gridSize = Math.floor(parameter2 / 5) + 10;
+          const cellSize = canvas.width / gridSize;
+
+          for (let i = 0; i < gridSize; i++) {
+            for (let j = 0; j < gridSize; j++) {
+              const x = i * cellSize + cellSize / 2;
+              const y = j * cellSize + cellSize / 2;
+
+              // Calcular vetor
+              const dx = x - centerX;
+              const dy = y - centerY;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 1) continue;
+
+              // Força inversamente proporcional ao quadrado da distância
+              const strength = Math.min(
+                50,
+                (parameter1 * 2000) / (dist * dist)
+              );
+              const nx = -dx / dist;
+              const ny = -dy / dist;
+
+              // Desenhar vetor
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + nx * strength, y + ny * strength);
+
+              // Colorir com base na distância
+              const intensity = Math.min(
+                255,
+                (parameter1 * 20000) / (dist * dist * dist)
+              );
+              ctx.strokeStyle = `rgb(${255 - intensity}, ${intensity}, 255)`;
+              ctx.lineWidth = 2;
+              ctx.stroke();
+
+              // Desenhar ponta da seta
+              const angle = Math.atan2(ny, nx);
+              const headlen = 8;
+              ctx.beginPath();
+              ctx.moveTo(x + nx * strength, y + ny * strength);
+              ctx.lineTo(
+                x + nx * strength - headlen * Math.cos(angle - Math.PI / 6),
+                y + ny * strength - headlen * Math.sin(angle - Math.PI / 6)
+              );
+              ctx.lineTo(
+                x + nx * strength - headlen * Math.cos(angle + Math.PI / 6),
+                y + ny * strength - headlen * Math.sin(angle + Math.PI / 6)
+              );
+              ctx.closePath();
+              ctx.fillStyle = ctx.strokeStyle;
+              ctx.fill();
+            }
           }
+        }
+
+        // Desenhar a visualização inicial
+        drawVisualization();
+
+        // Funções para interação
+        window.updateTopic2Visualization = function () {
+          const slider1 = document.getElementById('param1Topic2');
+          const slider2 = document.getElementById('param2Topic2');
+
+          if (slider1) parameter1 = parseInt(slider1.value);
+          if (slider2) parameter2 = parseInt(slider2.value);
+
+          drawVisualization();
+        };
+
+        window.resetTopic2Visualization = function () {
+          parameter1 = 50;
+          parameter2 = 50;
+
+          const slider1 = document.getElementById('param1Topic2');
+          const slider2 = document.getElementById('param2Topic2');
+
+          if (slider1) slider1.value = 50;
+          if (slider2) slider2.value = 50;
+
           drawVisualization();
         };
       }

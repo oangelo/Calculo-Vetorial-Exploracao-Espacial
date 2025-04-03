@@ -1,7 +1,7 @@
 /**
- * Tema Espacial para Reveal.js (Versão 2.0)
+ * Tema Espacial para Reveal.js (Versão 4.0 - Ultra-Compacto)
  * Design inspirado na vastidão do espaço profundo 
- * Com componentes adicionais para slides de Cálculo Vetorial
+ * Otimizado para máximo aproveitamento de espaço em slides de Cálculo Vetorial
  */
 
 /* =============================================
@@ -41,6 +41,8 @@
   position: relative;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.9em; /* Fonte base ainda menor */
+  line-height: 1.2; /* Espaçamento mais compacto */
 }
 
 /* Campo estelar estático */
@@ -71,7 +73,7 @@
     radial-gradient(3px 3px at 300px 350px, var(--star-blue), rgba(0, 0, 0, 0))
       calc(50px * 9) calc(50px * 9);
   background-size: 500px 500px;
-  opacity: 0.8;
+  opacity: 0.5; /* Estrelas ainda mais sutis */
   pointer-events: none;
   z-index: -1;
 }
@@ -144,7 +146,7 @@
 }
 
 /* =============================================
-   ESTRUTURA DOS SLIDES
+   ESTRUTURA DOS SLIDES - ULTRA-COMPACTA
    ============================================= */
 .reveal .slides {
   text-align: center;
@@ -153,8 +155,8 @@
 }
 
 .reveal .slides section {
-  padding: 20px;
-  font-size: 28px;
+  padding: 6px; /* Reduzido de 10px para 6px */
+  font-size: 24px; /* Ainda menor */
   text-align: center;
   box-sizing: border-box;
   width: 100%;
@@ -166,23 +168,24 @@
 }
 
 /* =============================================
-   TÍTULOS
+   TÍTULOS - TAMANHOS AINDA MAIS REDUZIDOS
    ============================================= */
 .reveal h1 {
   color: var(--star-blue);
-  font-size: 2.5em;
+  font-size: 2em; /* Reduzido de 2.2em */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   text-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
-  margin-bottom: 0.8em;
+  margin-bottom: 0.4em; /* Reduzido de 0.5em */
   width: 100%;
   text-align: center;
 }
 
 .reveal h2 {
   color: var(--star-blue);
-  font-size: 1.8em;
-  margin-bottom: 0.5em;
+  font-size: 1.4em; /* Reduzido de 1.5em */
+  margin-top: 0.1em; /* Reduzido */
+  margin-bottom: 0.2em; /* Reduzido de 0.3em */
   text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
   width: 100%;
   text-align: center !important;
@@ -190,175 +193,101 @@
 
 .reveal h3 {
   color: var(--accent-color);
-  font-size: 1.3em;
+  font-size: 1em; /* Reduzido de 1.1em */
   width: 100%;
   text-align: center;
+  margin-top: 0.1em; /* Reduzido */
+  margin-bottom: 0.2em; /* Reduzido */
 }
 
 /* =============================================
-   CONTEÚDO TEXTUAL
+   CONTEÚDO TEXTUAL - ESPAÇAMENTO MÍNIMO
    ============================================= */
 .reveal p {
   text-align: center;
-  line-height: 1.6;
-  margin: 0.5em auto;
-  max-width: 90%;
+  line-height: 1.3; /* Reduzido de 1.4 */
+  margin: 0.25em auto; /* Reduzido de 0.3em */
+  max-width: 96%; /* Aumentado de 92% */
 }
 
 /* =============================================
-   LISTAS
+   LISTAS - ESPAÇAMENTO MÍNIMO
    ============================================= */
 .reveal ul,
 .reveal ol {
   display: inline-block;
   text-align: left;
-  margin: 0.5em auto;
-  max-width: 85%;
+  margin: 0.2em auto; /* Reduzido de 0.3em */
+  max-width: 95%; /* Aumentado de 90% */
+  padding-left: 20px; /* Lista mais compacta */
 }
 
 .reveal ul li,
 .reveal ol li {
-  margin: 0.5em 0;
-  line-height: 1.4;
+  margin: 0.15em 0; /* Reduzido de 0.2em */
+  line-height: 1.25; /* Reduzido de 1.3 */
 }
 
 /* =============================================
-   ELEMENTOS MATEMÁTICOS
+   ELEMENTOS MATEMÁTICOS - TAMANHO OTIMIZADO
    ============================================= */
 .reveal .math {
-  font-size: 1.2em;
-  margin: 0.7em auto;
-  max-width: 90%;
+  font-size: 0.95em; /* Reduzido de 1.1em */
+  margin: 0.4em auto; /* Reduzido de 0.5em */
+  max-width: 95%;
   text-align: center;
   position: relative;
   z-index: 1;
 }
 
 .katex { 
-  font-size: 1.1em; 
+  font-size: 0.95em; /* Reduzido de 1em */
+}
+
+/* Para fórmulas grandes que incluem frações complexas */
+.katex .mfrac .frac-line {
+  min-height: 0.06em; /* Linha de fração mais fina */
+}
+
+.katex .msupsub {
+  font-size: 0.9em; /* Índices e expoentes menores */
 }
 
 /* =============================================
-   BLOCOS DE CÓDIGO
-   ============================================= */
-.reveal pre {
-  background: rgba(26, 35, 126, 0.3);
-  border: 1px solid rgba(79, 195, 247, 0.2);
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
-  margin: 1em auto;
-  max-width: 90%;
-  padding: 1em;
-  text-align: left;
-}
-
-.reveal code {
-  background: rgba(26, 35, 126, 0.3);
-  color: var(--star-blue);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-}
-
-/* =============================================
-   CITAÇÕES
-   ============================================= */
-.reveal blockquote {
-  background: rgba(26, 35, 126, 0.3);
-  border-left: 4px solid var(--accent-color);
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
-  margin: 1em auto;
-  padding: 1em;
-  max-width: 85%;
-  text-align: left;
-}
-
-/* =============================================
-   LINKS
-   ============================================= */
-.reveal a {
-  color: var(--star-blue);
-  text-decoration: none;
-  transition:
-    color 0.2s ease,
-    text-shadow 0.2s ease;
-}
-
-.reveal a:hover {
-  color: var(--accent-color);
-  text-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
-}
-
-/* =============================================
-   ELEMENTOS DE NAVEGAÇÃO
-   ============================================= */
-.reveal .controls {
-  color: var(--accent-color);
-}
-
-.reveal .progress {
-  background: rgba(79, 195, 247, 0.2);
-  height: 3px;
-}
-
-.reveal .progress span {
-  background: var(--accent-color);
-}
-
-/* =============================================
-   TRANSIÇÕES ENTRE SLIDES
-   ============================================= */
-.reveal .slides section {
-  transition:
-    transform 0.4s ease,
-    opacity 0.4s ease;
-}
-
-/* =============================================
-   IMAGENS
-   ============================================= */
-.reveal img {
-  max-width: 90%;
-  height: auto;
-  margin: 1em auto;
-  border: 1px solid rgba(79, 195, 247, 0.2);
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
-  display: block;
-}
-
-/* =============================================
-   COMPONENTES ESPECIALIZADOS PARA CÁLCULO VETORIAL
+   COMPONENTES ESPECIALIZADOS - ULTRA-COMPACTOS
    ============================================= */
 
 /* Seção de conteúdo matemático */
 .math-section {
   background: var(--math-bg);
   border: 1px solid var(--math-border);
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px auto;
-  max-width: 90%;
+  border-radius: 4px; /* Reduzido de 5px */
+  padding: 8px; /* Reduzido de 10px */
+  margin: 6px auto; /* Reduzido de 8px */
+  max-width: 96%; /* Aumentado de 94% */
   text-align: left;
   box-sizing: border-box;
 }
 
 .math-section p {
   text-align: left;
+  margin: 0.2em 0; /* Espaçamento reduzido */
 }
 
 .math-section .katex-display {
-  margin: 0.7em 0;
+  margin: 0.4em 0; /* Reduzido de 0.5em */
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 0.2em 0;
+  padding: 0.08em 0; /* Reduzido de 0.1em */
 }
 
 /* Seção de contextualização histórica */
 .history-section {
   background: var(--history-bg);
-  border-left: 4px solid var(--history-border);
-  padding: 15px;
-  padding-left: 25px;
-  margin: 20px auto;
-  max-width: 85%;
+  border-left: 3px solid var(--history-border); /* Reduzido de 4px */
+  padding: 8px 10px 8px 18px; /* Reduzido e ajustado */
+  margin: 8px auto; /* Reduzido de 12px */
+  max-width: 96%; /* Aumentado de 92% */
   position: relative;
   text-align: left;
   box-sizing: border-box;
@@ -367,6 +296,7 @@
 .history-section p {
   text-align: left;
   font-style: italic;
+  margin: 0.2em 0; /* Espaçamento reduzido */
 }
 
 .history-section strong {
@@ -375,13 +305,13 @@
 
 .history-label {
   position: absolute;
-  left: -45px;
+  left: -28px; /* Ajustado de -35px */
   top: 50%;
   transform: translateY(-50%) rotate(-90deg);
   background: var(--history-border);
   color: white;
-  padding: 3px 10px;
-  font-size: 14px;
+  padding: 2px 6px; /* Reduzido de 2px 8px */
+  font-size: 10px; /* Reduzido de 12px */
   font-weight: bold;
   white-space: nowrap;
   box-sizing: border-box;
@@ -392,16 +322,17 @@
 .problem-section {
   background: var(--problem-bg);
   border: 1px solid var(--problem-border);
-  border-radius: 5px;
-  padding: 15px;
-  margin: 10px auto;
-  max-width: 90%;
+  border-radius: 4px; /* Reduzido de 5px */
+  padding: 8px; /* Reduzido de 10px */
+  margin: 6px auto; /* Reduzido de 8px */
+  max-width: 96%; /* Aumentado de 94% */
   text-align: left;
   box-sizing: border-box;
 }
 
 .problem-section p {
   text-align: left;
+  margin: 0.2em 0; /* Espaçamento reduzido */
 }
 
 .problem-section strong {
@@ -412,23 +343,23 @@
 .visualization-canvas {
   background: rgba(10, 10, 15, 0.6);
   border: 1px solid var(--math-border);
-  border-radius: 5px;
+  border-radius: 4px; /* Reduzido de 5px */
   margin: 0 auto;
   display: block;
-  max-width: 90%;
+  max-width: 96%; /* Aumentado de 94% */
   max-height: 70vh;
 }
 
 /* =============================================
-   CONTROLES DE INTERAÇÃO
+   CONTROLES DE INTERAÇÃO - MAIS COMPACTOS
    ============================================= */
 .controls-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 15px auto;
-  max-width: 90%;
+  gap: 6px; /* Reduzido de 8px */
+  margin: 6px auto; /* Reduzido de 10px */
+  max-width: 96%; /* Aumentado de 94% */
   z-index: 10;
 }
 
@@ -436,17 +367,18 @@
   display: flex;
   align-items: center;
   background: rgba(26, 35, 126, 0.3);
-  padding: 5px 10px;
-  border-radius: 20px;
+  padding: 2px 6px; /* Reduzido de 3px 8px */
+  border-radius: 16px; /* Reduzido de 20px */
 }
 
 .control-slider label {
-  margin-right: 10px;
+  margin-right: 6px; /* Reduzido de 8px */
   white-space: nowrap;
+  font-size: 0.8em; /* Reduzido de 0.85em */
 }
 
 .control-slider input {
-  width: 150px;
+  width: 120px; /* Reduzido de 130px */
 }
 
 .control-slider select {
@@ -454,17 +386,19 @@
   color: var(--text-color);
   border: 1px solid var(--accent-color);
   border-radius: 3px;
-  padding: 3px 10px;
+  padding: 1px 6px; /* Reduzido de 2px 8px */
+  font-size: 0.8em; /* Reduzido de 0.85em */
 }
 
 .control-button {
   background: rgba(26, 35, 126, 0.5);
   color: var(--text-color);
   border: 1px solid var(--accent-color);
-  border-radius: 20px;
-  padding: 5px 15px;
+  border-radius: 14px; /* Reduzido de 16px */
+  padding: 2px 10px; /* Reduzido de 3px 12px */
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 0.8em; /* Reduzido de 0.85em */
 }
 
 .control-button:hover {
@@ -472,48 +406,189 @@
 }
 
 /* =============================================
-   RODAPÉ
+   ELEMENTOS AUXILIARES - ULTRA-COMPACTOS
    ============================================= */
-.slide-footer {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 16px;
-  opacity: 0.7;
+
+/* Caixas de dicas */
+.hint-box {
+  background: rgba(79, 195, 247, 0.1);
+  border-left: 2px solid #64b5f6; /* Reduzido de 3px */
+  padding: 4px 10px; /* Reduzido de 6px 12px */
+  margin: 6px auto; /* Reduzido de 8px */
+  font-style: italic;
+  font-size: 0.8em; /* Reduzido de 0.85em */
+  text-align: left;
+  max-width: 96%; /* Aumentado de 92% */
+}
+
+/* Caixas de exemplo */
+.example-box {
+  background: rgba(76, 175, 80, 0.1);
+  border-left: 2px solid #4caf50; /* Reduzido de 3px */
+  padding: 4px 10px; /* Reduzido de 6px 12px */
+  margin: 6px auto; /* Reduzido de 8px */
+  text-align: left;
+  max-width: 96%; /* Aumentado de 92% */
+  font-size: 0.85em; /* Reduzido de 0.9em */
+}
+
+/* Caixas de notas */
+.note-box {
+  background: rgba(255, 152, 0, 0.1);
+  border-left: 2px solid #ff9800; /* Reduzido de 3px */
+  padding: 4px 10px; /* Reduzido de 6px 12px */
+  margin: 6px auto; /* Reduzido de 8px */
+  text-align: left;
+  max-width: 96%; /* Aumentado de 92% */
+  font-size: 0.85em; /* Reduzido de 0.9em */
+}
+
+/* Layout de múltiplas colunas */
+.multi-column {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px; /* Reduzido de 15px */
+  margin: 6px auto; /* Reduzido de 8px */
+  max-width: 98%; /* Aumentado de 95% */
+}
+
+.column {
+  flex: 1;
+  min-width: 180px; /* Reduzido de 200px */
+}
+
+/* Passos de solução */
+.solution-step {
+  background: rgba(26, 35, 126, 0.2);
+  border: 1px solid rgba(79, 195, 247, 0.3);
+  border-radius: 3px; /* Reduzido de 4px */
+  padding: 4px 8px; /* Reduzido de 6px 10px */
+  margin: 6px auto; /* Reduzido de 8px */
+  text-align: left;
+  max-width: 96%; /* Aumentado de 94% */
+}
+
+/* Legendas para visualizações */
+.visualization-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px; /* Reduzido de 10px */
+  margin: 4px auto; /* Reduzido de 5px */
+  font-size: 0.7em; /* Reduzido de 0.75em */
+  max-width: 95%; /* Aumentado de 90% */
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 1px; /* Reduzido de 2px */
+}
+
+.legend-color {
+  width: 10px; /* Reduzido de 12px */
+  height: 10px; /* Reduzido de 12px */
+  border-radius: 50%;
+  margin-right: 4px; /* Reduzido de 6px */
 }
 
 /* =============================================
-   RESPONSIVIDADE
+   LAYOUT PARA SOLUÇÕES LONGAS
+   ============================================= */
+
+/* Solução dividida em partes */
+.solution-part {
+  margin: 5px 0;
+  width: 100%;
+}
+
+/* Solução mais compacta com espaçamento mínimo */
+.compact-solution {
+  font-size: 0.95em;
+  line-height: 1.2;
+}
+
+.compact-solution p {
+  margin: 0.18em 0;
+}
+
+.compact-solution .katex {
+  font-size: 0.9em;
+}
+
+/* Contêiner horizontal para equações sequenciais */
+.equation-sequence {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 5px auto;
+}
+
+.equation-sequence .katex-display {
+  margin: 0 5px;
+}
+
+/* =============================================
+   TABELAS ULTRA-COMPACTAS
+   ============================================= */
+table {
+  font-size: 0.85em;
+  margin: 0.4em auto;
+  border-collapse: collapse;
+  width: 95%;
+}
+
+table th, table td {
+  padding: 3px 5px;
+  border: 1px solid rgba(79, 195, 247, 0.2);
+}
+
+table th {
+  background: rgba(26, 35, 126, 0.4);
+  font-weight: bold;
+}
+
+/* =============================================
+   RESPONSIVIDADE MELHORADA
    ============================================= */
 @media screen and (max-width: 768px) {
   .reveal h1 {
-    font-size: 2em;
+    font-size: 1.7em;
   }
   
   .reveal h2 {
-    font-size: 1.5em;
+    font-size: 1.2em;
   }
   
-  .reveal pre {
+  .reveal h3 {
     font-size: 0.9em;
   }
   
+  .reveal p, .reveal li {
+    font-size: 0.85em;
+  }
+  
   .reveal .slides section {
-    padding: 10px;
+    padding: 5px;
+    font-size: 22px;
   }
   
   .math-section, 
   .history-section, 
-  .problem-section {
-    max-width: 95%;
-    padding: 10px;
+  .problem-section,
+  .hint-box,
+  .example-box,
+  .note-box {
+    max-width: 98%;
+    padding: 6px;
   }
   
   .history-label {
-    left: -35px;
-    font-size: 12px;
+    left: -24px;
+    font-size: 9px;
   }
   
   .control-slider {
@@ -522,6 +597,72 @@
   }
   
   .control-slider input {
-    width: 120px;
+    width: 90px;
   }
+  
+  .multi-column {
+    flex-direction: column;
+  }
+  
+  .column {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+/* =============================================
+   ALINHAMENTO E ESPAÇAMENTO ESPECIAL
+   ============================================= */
+
+/* Para slides com muito conteúdo matemático */
+.narrow-math .katex-display {
+  font-size: 0.85em;
+}
+
+/* Para equações sequenciais (passo a passo) */
+.math-steps {
+  text-align: left;
+  width: 96%;
+  margin: 0.3em auto;
+}
+
+.math-steps .katex {
+  font-size: 0.9em;
+}
+
+.math-steps p {
+  margin: 0.15em 0;
+}
+
+/* Para pequenos ícones explicativos */
+.math-icon {
+  vertical-align: middle;
+  margin: 0 3px;
+  width: 18px;
+  height: 18px;
+}
+
+/* =============================================
+   MELHOR APROVEITAMENTO VERTICAL
+   ============================================= */
+
+/* Eliminar espaços desnecessários */
+.reveal .slides > section > section {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 6px 0;
+  box-sizing: border-box;
+}
+
+/* Ajustes especiais para elementos matemáticos */
+.katex-display > .katex {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Ajustes para acomodar equações maiores */
+.math-oversize {
+  font-size: 0.8em;
 }
