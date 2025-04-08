@@ -171,15 +171,164 @@ Para garantir que os slides se ajustem adequadamente:
 
 ## Padrões de Código JavaScript
 
-1. Cada visualização deve ter estas três funções:
-   - `initVisualization()`: Configuração inicial
-   - `drawVisualization()`: Renderização principal
-   - `updateVisualization()`: Atualização baseada em controles
+### Estrutura básica das visualizações
 
-2. Cada componente interativo deve incluir:
-   - Comentários explicativos para cada seção do código
-   - Feedback visual imediato para interações
-   - Função de reset para valores iniciais
+Cada visualização deve ser encapsulada em um IIFE (Immediately Invoked Function Expression) para evitar poluição do escopo global e conflitos entre visualizações:
+
+```javascript
+(function() {
+  // Variáveis privadas para esta visualização específica
+  let canvas, ctx;
+  let animationId = null;
+  let isRunning = false;
+  
+  // Funções principais obrigatórias
+  function initVisualization() {
+    // Inicialização: obter canvas, configurar contexto, criar objetos iniciais
+    canvas = document.getElementById('idUnicoDoCanvas');
+    if (!canvas) return; // Verificação de segurança
+    
+    ctx = canvas.getContext('2d');
+    
+    // Inicialização adicional
+    setupEventListeners();
+    drawVisualization();
+  }
+  
+  function drawVisualization() {
+    // Limpar canvas
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Código de renderização aqui
+  }
+  
+  function updateVisualization() {
+    // Atualizar estado com base nos controles
+    // Redesenhar
+    drawVisualization();
+  }
+  
+  function cleanupVisualization() {
+    // Limpeza de recursos: cancelar animações, remover event listeners
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+    // Remover event listeners se necessário
+  }
+  
+  function setupEventListeners() {
+    // Adicionar event listeners para controles
+  }
+  
+  // Expor apenas as funções necessárias no escopo global com nomes específicos
+  window.vizNomeUnico = {
+    init: initVisualization,
+    update: updateVisualization,
+    cleanup: cleanupVisualization
+  };
+})();
+```
+
+### Regras para código de visualização
+
+1. **Encapsulamento rigoroso**:
+   - Use IIFE para isolar cada visualização
+   - Prefixe todas as funções e variáveis globais com nomes específicos para evitar colisões
+   - Exponha apenas o mínimo necessário via objeto global nomeado
+
+2. **Gerenciamento cuidadoso do ciclo de vida**:
+   - Inicialize visualizações apenas quando o slide correspondente estiver ativo
+   - Implemente função de limpeza que cancela animações e libera recursos
+   - Use event listeners adequados com o Reveal.js:
+
+```javascript
+// No script principal
+Reveal.on('slidechanged', function(event) {
+  // Limpar TODAS as visualizações primeiro
+  if (window.vizExemplo1 && window.vizExemplo1.cleanup) window.vizExemplo1.cleanup();
+  if (window.vizExemplo2 && window.vizExemplo2.cleanup) window.vizExemplo2.cleanup();
+  
+  // Inicializar apenas a visualização atual
+  if (event.currentSlide.querySelector('#canvasExemplo1')) {
+    window.vizExemplo1.init();
+  } else if (event.currentSlide.querySelector('#canvasExemplo2')) {
+    window.vizExemplo2.init();
+  }
+});
+```
+
+3. **Uso correto do DOM**:
+   - **SEMPRE use seletores DOM nativos** (evite seletores estilo jQuery)
+   - Use IDs para identificação inequívoca de elementos
+   - Prefira `document.getElementById()` em vez de querySelectorAll quando possível
+   - Verifique se elementos existem antes de tentar manipulá-los
+
+4. **Preferência por Canvas 2D sobre WebGL/Three.js**:
+   - Use Canvas 2D para visualizações simples
+   - Se Three.js for necessário, limite a UMA visualização 3D por vez
+   - Não misture Canvas 2D e WebGL em uma mesma visualização
+
+5. **Controle de recursos**:
+   - Cancele animações quando não visíveis: `cancelAnimationFrame(id)`
+   - Pare intervalos quando não necessários: `clearInterval(id)`
+   - Evite memory leaks removendo event listeners quando apropriado
+
+### Exemplo específico para Canvas 2D
+
+```javascript
+(function() {
+  // Variáveis privadas para esta visualização
+  let canvas, ctx;
+  let particulas = [];
+  let animationId = null;
+  
+  function initCampoVetorial() {
+    canvas = document.getElementById('campoVetorialCanvas');
+    if (!canvas) return;
+    
+    ctx = canvas.getContext('2d');
+    
+    // Criar partículas iniciais
+    criarParticulas();
+    
+    // Adicionar event listeners
+    const slider = document.getElementById('velocidadeSlider');
+    if (slider) {
+      slider.addEventListener('input', updateVelocidade);
+    }
+    
+    // Iniciar animação
+    animarCampo();
+  }
+  
+  function criarParticulas() {
+    // Inicialização de objetos
+  }
+  
+  function animarCampo() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    // Desenhar e atualizar partículas
+    
+    // Agendar próximo frame
+    animationId = requestAnimationFrame(animarCampo);
+  }
+  
+  function cleanupCampoVetorial() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+  }
+  
+  // Exportar funções públicas
+  window.campoVetorial = {
+    init: initCampoVetorial,
+    cleanup: cleanupCampoVetorial
+  };
+})();
+```
 
 ## Paleta de Cores para Visualizações
 
@@ -204,26 +353,36 @@ Mantenha a cronologia progressiva ao longo dos capítulos:
 8. **1973-1985 (Estações Espaciais)**: Fluxo e Teorema da Divergência
 9. **1980-1991 (Exploração Planetária)**: Teorema de Stokes no Espaço
 
-## Implementação de Visualizações
+## Considerações Técnicas Adicionais
 
-Para facilitar a manutenção, use funções JavaScript independentes para cada visualização:
+### Quando usar Three.js vs Canvas 2D
 
-1. **Funções de inicialização** com nome único:
-   ```javascript
-   function initVisualization() { ... }
-   function initApplicationVisual() { ... }
-   ```
+- **PREFIRA Canvas 2D** para:
+  - Visualizações 2D simples (campos vetoriais planos, gráficos de funções, etc.)
+  - Quando performance é crítica em dispositivos de menor capacidade
+  - Quando não há necessidade de interatividade 3D
 
-2. **Funções de atualização** específicas:
-   ```javascript
-   window.updateVisualization = function() { ... }
-   ```
+- **USE Three.js APENAS quando**:
+  - Visualização 3D genuína é necessária pedagogicamente
+  - Interação 3D é crucial para o entendimento do conceito
+  - Não há mais de uma visualização Three.js na mesma apresentação
 
-3. **IDs de elementos** únicos para cada canvas e controle:
-   ```html
-   <canvas id="conceptVisualization" ...></canvas>
-   <input id="parameter1" ...>
-   ```
+### Otimização de performance
+
+1. **Renderização eficiente**:
+   - Renderize apenas quando necessário, não a cada frame
+   - Use `requestAnimationFrame` em vez de `setInterval` para animações
+   - Implemente throttling em eventos de mouse (especialmente mousemove)
+
+2. **Gestão de memória**:
+   - Reutilize objetos em vez de criar novos a cada frame
+   - Limite o número de objetos em cena
+   - Implemente pooling de objetos para partículas e elementos repetitivos
+
+3. **Responsividade**:
+   - Adapte resolução do canvas ao tamanho da tela
+   - Escale visualizações proporcionalmente
+   - Considere simplificar visualizações em dispositivos móveis
 
 ## Exemplo de Entrega
 
