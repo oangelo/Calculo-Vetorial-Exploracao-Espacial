@@ -25,6 +25,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Condições de integrabilidade sobre conjuntos limitados](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/condicoes-de-integrabilidade.html)
 - [Propriedades da integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/propriedades-da-integral.html)
 - [Cálculo de integral dupla: Teorema de Fubini](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/teorema-de-fubini.html)
+- [Troca de ordem de integração](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/troca-de-ordem.html)
 3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/mudanca-de-variaveis-na-integral-dupla.html)
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis.html)
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa.html)
