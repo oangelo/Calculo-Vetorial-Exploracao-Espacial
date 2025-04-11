@@ -72,7 +72,7 @@ Para embarcar nesta jornada, os viajantes devem estar familiarizados com:
 
 ## Bibliografia Recomendada
 
-_Em breve_
+**Guidorizzi**. *Um Curso de Cálculo - Vol. 3*. Capa comum, 25 janeiro 2002.
 
 [Roleta](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/roleta.html)
 
