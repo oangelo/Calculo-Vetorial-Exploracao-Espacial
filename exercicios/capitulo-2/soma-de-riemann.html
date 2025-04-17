@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Soma de Riemann na Integral Dupla</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- CABEÇALHO DO DOCUMENTO -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">15</span> DE MARÇO DE
+          <span class="censored">1972</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">RIEMANN-X</span><br /><br />
+          Em meio à escalada da competição espacial com as forças
+          <span class="censored">soviéticas</span>, nossas equipes de análise e
+          <span class="censored">pesquisa avançada</span> conduziram estudos
+          sobre a aplicação da soma de Riemann na <span class="censored">integral
+          dupla</span>. Estes princípios são cruciais para determinar
+          <span class="censored">distribuições de massa</span> e para o sucesso
+          das missões <span class="censored">Apollo</span>.
+        </div>
+
+        <div class="warning-box">
+          Atenção: A difusão indevida deste documento compromete operações de
+          <span class="censored">monitoramento orbital</span> e pode acarretar
+          <span class="censored">repercussões estratégicas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: SR2-<span class="censored">X</span>-ALPHA</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">2</span> DE <span class="censored">2</span></span>
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE FUNDAMENTAÇÃO TEÓRICA -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: SOMA DE RIEMANN NA INTEGRAL DUPLA</div>
+      
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          $$\iint_{D} f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^{m} \sum_{j=1}^{n} f\bigl(x_{ij}^*, y_{ij}^*\bigr)\,\Delta x \,\Delta y$$
+        </p>
+        <p>
+          A integral dupla pode ser construída a partir de somas de Riemann,
+          subdividindo a região \(D\) em retângulos de dimensões
+          \(\Delta x \times \Delta y\). À medida que as particionamentos se
+          refinam (ou seja, \(m,n \to \infty\)), a soma de Riemann converge para
+          o valor exato da integral.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        No contexto da exploração espacial, a análise através de somas de Riemann
+        em integrais duplas permite prever a distribuição de materiais em um
+        módulo de serviço ou calcular a variação de temperatura em painéis
+        fotovoltaicos. Tais estimativas são determinantes para o sucesso das
+        manobras orbitais.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em <span class="censored">1972</span>,
+        durante os preparativos para a missão Apollo 17, engenheiros da
+        <span class="censored">NASA</span> empregaram integrais duplas para
+        otimizar a blindagem térmica do Módulo Lunar e calibrar com precisão a
+        quantidade de propelente para reentrada atmosférica.
+      </div>
+
+      <!-- LISTA DE EXERCÍCIOS (12 EXERCÍCIOS EM 4 SÉRIES: ALFA, BETA, GAMMA, OMEGA) -->
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (3 EXERCÍCIOS) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-ALFA-1</div>
+            <div class="context">
+              ORIGEM: Laboratório de Cálculos Orbitais, Programa Apollo
+            </div>
+            <p>
+              Considere a região retangular \(D = [0,2] \times [0,3]\). Sejam
+              \(m=2\) e \(n=3\) as subdivisões para uma soma de Riemann inicial.
+              Calcule a soma de Riemann de
+              \(\iint_D (x+2y)\, dA\) usando pontos amostrais no canto superior
+              direito de cada sub-retângulo.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Lembre-se de que \(\Delta x = \frac{2-0}{m}\) e
+              \(\Delta y = \frac{3-0}{n}\).
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Dividindo o intervalo em \(m=2\) partes no eixo \(x\) e
+                  \(n=3\) partes no eixo \(y\), obtemos
+                  \(\Delta x = 1\) e \(\Delta y = 1\).
+                </p>
+                <p>
+                  Pontos amostrais (canto superior direito) em cada sub-região:
+                  por exemplo, no primeiro retângulo ao longo de \(x\) e \(y\),
+                  seria \((1,1)\), depois \((2,1)\), \((1,2)\), \((2,2)\),
+                  \((1,3)\), \((2,3)\).
+                </p>
+                <p>
+                  A soma de Riemann se expressa como \(\sum f(x_{ij}^*, y_{ij}^*) \Delta x \,\Delta y\).
+                  Substituindo cada ponto:
+                </p>
+                <ul>
+                  <li>\(f(1,1) = 1 + 2(1) = 3\)</li>
+                  <li>\(f(2,1) = 2 + 2(1) = 4\)</li>
+                  <li>\(f(1,2) = 1 + 2(2) = 5\)</li>
+                  <li>\(f(2,2) = 2 + 2(2) = 6\)</li>
+                  <li>\(f(1,3) = 1 + 2(3) = 7\)</li>
+                  <li>\(f(2,3) = 2 + 2(3) = 8\)</li>
+                </ul>
+                <p>
+                  Soma total:
+                  \[
+                    (3 + 4 + 5 + 6 + 7 + 8) \times 1 \times 1 = 33.
+                  \]
+                </p>
+                <p>Portanto, a soma de Riemann aproximada é \(33\).</p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-ALFA-2</div>
+            <div class="context">
+              ORIGEM: Departamento de Análise de Combustível - Projeto Lunar
+            </div>
+            <p>
+              Seja \(D\) a região limitada por \(0 \leq x \leq 1\) e \(0 \leq y \leq 2\).
+              Considere a função \(\displaystyle f(x,y) = x^2 + y\). Faça
+              \(m=2\) e \(n=2\) subdivisions para estimar
+              \(\iint_D f(x,y)\, dA\) via soma de Riemann nos cantos inferiores
+              esquerdos de cada retângulo.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Identifique cuidadosamente cada sub-retângulo e os
+              pontos inferiores esquerdos.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Temos \(\Delta x = \frac{1}{2}\) e \(\Delta y = \frac{2}{2} = 1\).
+                  Os pontos amostrais (inferiores esquerdos) são:
+                </p>
+                <ul>
+                  <li>\((0,0)\), \((\frac{1}{2}, 0)\)</li>
+                  <li>\((0,1)\), \((\frac{1}{2}, 1)\)</li>
+                </ul>
+                <p>
+                  Avaliando \(f\):
+                  <br />
+                  \(f(0,0) = 0^2 + 0 = 0\)
+                  <br />
+                  \(f(\tfrac{1}{2},0) = \left(\tfrac{1}{2}\right)^2 + 0 = \tfrac{1}{4}\)
+                  <br />
+                  \(f(0,1) = 0^2 + 1 = 1\)
+                  <br />
+                  \(f\!\bigl(\tfrac{1}{2},1\bigr) = \tfrac{1}{4} + 1 = \tfrac{5}{4}\)
+                </p>
+                <p>
+                  Soma de Riemann:
+                  \[
+                    \Bigl(0 + \tfrac{1}{4}\Bigr)\cdot \tfrac{1}{2}\cdot 1
+                    \;+\;
+                    \Bigl(1 + \tfrac{5}{4}\Bigr)\cdot \tfrac{1}{2}\cdot 1
+                    =
+                    \tfrac{1}{4}\cdot \tfrac{1}{2}
+                    \;+\;
+                    \tfrac{9}{4}\cdot \tfrac{1}{2}.
+                  \]
+                </p>
+                <p>
+                  \(\tfrac{1}{4}\cdot \tfrac{1}{2} = \tfrac{1}{8}\) e
+                  \(\tfrac{9}{4}\cdot \tfrac{1}{2} = \tfrac{9}{8}\).
+                  <br />
+                  Soma total = \(\tfrac{1}{8} + \tfrac{9}{8} = \tfrac{10}{8} = 1.25\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-ALFA-3</div>
+            <div class="context">
+              ORIGEM: Sistemas de Reentrada Atmosférica - Centro de Pesquisas
+              [REDACTED]
+            </div>
+            <p>
+              Calcule a soma de Riemann aproximada para
+              \(\iint_D e^x \,dA\) em \(D = [0,1]\times [0,1]\), com
+              \(m=2\) e \(n=2\) divisões, usando pontos médios como amostras.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Pontos médios em cada sub-retângulo ficam a
+              \(\Delta x/2\) e \(\Delta y/2\) do canto inferior esquerdo.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada sub-retângulo terá dimensão
+                  \(\Delta x = \tfrac{1-0}{2} = 0.5\),
+                  \(\Delta y = 0.5\).
+                </p>
+                <p>
+                  Ponto médio do primeiro sub-retângulo: \((0.25, 0.25)\),
+                  do segundo: \((0.75, 0.25)\), terceiro: \((0.25, 0.75)\),
+                  quarto: \((0.75, 0.75)\).
+                </p>
+                <p>
+                  Soma de Riemann (pontos médios):
+                  \[
+                    \Bigl(e^{0.25} + e^{0.75} + e^{0.25} + e^{0.75}\Bigr) \times (0.5)\times (0.5).
+                  \]
+                  Observa-se que \(e^{0.25}\) aparece duas vezes e
+                  \(e^{0.75}\) aparece duas vezes.
+                </p>
+                <p>
+                  Fator comum:
+                  \[
+                    2\,e^{0.25} + 2\,e^{0.75}.
+                  \]
+                  Multiplicando por \(0.5 \times 0.5 = 0.25\), obtemos:
+                  \[
+                    0.25 \bigl(2\,e^{0.25} + 2\,e^{0.75}\bigr) = 0.5\,\bigl(e^{0.25} + e^{0.75}\bigr).
+                  \]
+                </p>
+                <p>
+                  Valor aproximado numérico (se desejado) pode ser calculado
+                  tomando \(e^{0.25}\approx 1.2840\) e \(e^{0.75}\approx 2.1170\).
+                  A soma ficaria em torno de
+                  \(0.5 \times (1.2840 + 2.1170) \approx 0.5 \times 3.401 = 1.7005.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (3 EXERCÍCIOS) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-BETA-1</div>
+            <div class="context">
+              ORIGEM: Análise de Painéis Solares - Projeto de Estação Orbital
+            </div>
+            <p>
+              Seja \(D = [1,2]\times [2,4]\). Considere a função
+              \(\displaystyle f(x,y) = \ln(xy)\) e aplique
+              \(m=2, n=2\) subdivisões. Use pontos amostrais no canto superior
+              esquerdo. Calcule a soma de Riemann aproximada.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Lembre-se de que \(\ln(ab) = \ln(a) + \ln(b)\).
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\Delta x = \frac{2-1}{2} = 0.5\),
+                  \(\Delta y = \frac{4-2}{2} = 1.\)
+                </p>
+                <p>
+                  Canto superior esquerdo de cada retângulo:
+                  <br/>
+                  1º retângulo: \((x,y)\approx(1,3)\);
+                  2º retângulo: \((1.5,3)\);
+                  3º retângulo: \((1,4)\);
+                  4º retângulo: \((1.5,4)\).
+                </p>
+                <p>
+                  Avaliando \(f\):
+                  \(\ln(1\times 3) = \ln(3)\),
+                  \(\ln(1.5\times 3)=\ln(4.5)\),
+                  \(\ln(1\times 4)=\ln(4)\),
+                  \(\ln(1.5\times 4)=\ln(6)\).
+                </p>
+                <p>
+                  Soma:
+                  \[
+                    (\ln 3 + \ln 4.5 + \ln 4 + \ln 6)\times 0.5 \times 1.
+                  \]
+                  <br />
+                  \(\ln(4.5)\approx 1.5041\); \(\ln(3)\approx 1.0986\);
+                  \(\ln(4)\approx 1.3863\); \(\ln(6)\approx 1.7918\).
+                </p>
+                <p>
+                  Somando:
+                  \(1.0986 + 1.5041 + 1.3863 + 1.7918 \approx 5.7808.\)
+                  Multiplicando por \(0.5\),
+                  obtemos aproximadamente \(2.8904\).
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-BETA-2</div>
+            <div class="context">
+              ORIGEM: Seção de Testes Térmicos - Foguete Saturn V
+            </div>
+            <p>
+              Use uma soma de Riemann com \(m=3\) e \(n=3\) em \(D=[0,3]\times[0,3]\)
+              para estimar \(\iint_D \sqrt{x^2 + y^2}\, dA\) com pontos no canto
+              inferior esquerdo. Considere apenas a forma simbólica da soma,
+              sem necessariamente calcular a parte numérica.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Cada sub-retângulo tem dimensões
+              \(\Delta x = 1\) e \(\Delta y = 1\), e os pontos inferiores
+              esquerdos são inteiros.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Divisão: 3 partes em \(x\), 3 partes em \(y\). \(\Delta x = 1\),
+                  \(\Delta y = 1\).
+                </p>
+                <p>
+                  Pontos inferiores esquerdos: \((0,0), (1,0), (2,0)\), depois
+                  \((0,1), (1,1), (2,1)\), e \((0,2), (1,2), (2,2)\).
+                </p>
+                <p>
+                  Soma de Riemann:
+                  \[
+                    \sum_{i=0}^{2}\sum_{j=0}^{2} \sqrt{i^2 + j^2}\,\Delta x \,\Delta y.
+                  \]
+                  Explicitamente:
+                  \[
+                    (\sqrt{0+0} + \sqrt{1+0} + \sqrt{4+0} + \sqrt{0+1} + \sqrt{1+1} + \sqrt{4+1} + \sqrt{0+4} + \sqrt{1+4} + \sqrt{4+4}) \times 1 \times 1.
+                  \]
+                </p>
+                <p>
+                  Logo, 
+                  \(\sqrt{0} + \sqrt{1} + \sqrt{4} + \sqrt{1} + \sqrt{2} +
+                  \sqrt{5} + \sqrt{4} + \sqrt{5} + \sqrt{8}\).
+                  Esse valor multiplicado por 1 é a soma solicitada.
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-BETA-3</div>
+            <div class="context">
+              ORIGEM: Equipe de Dinâmica de Voos Espaciais - Iniciativa Gemini
+            </div>
+            <p>
+              Calcule a soma de Riemann de
+              \(\iint_D \cos(xy)\, dA\) no domínio \(D=[0,2]\times [1,2]\),
+              com \(m=2\) e \(n=1\) subdivisões, usando pontos médios.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Cada subdivisão em \(x\) terá largura 1. No eixo \(y\),
+              há apenas uma subdivisão de altura 1.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Divisão: em \(x\), \(\Delta x = 1\); em \(y\), \(\Delta y = 1\).
+                  O intervalo em \(y\) é [1,2], uma única faixa.
+                </p>
+                <p>
+                  Pontos médios no eixo \(x\): \(0.5\) e \(1.5\). No eixo \(y\),
+                  ponto médio: \(1.5\).
+                </p>
+                <p>
+                  Assim, temos dois sub-retângulos. Seus pontos médios:
+                  \((0.5,1.5)\) e \((1.5,1.5)\).
+                </p>
+                <p>
+                  Soma de Riemann:
+                  \[
+                    \bigl[\cos(0.5\times 1.5) + \cos(1.5\times 1.5)\bigr]\,\Delta x\,\Delta y
+                    =
+                    \bigl[\cos(0.75) + \cos(2.25)\bigr]\times 1\times 1.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (3 EXERCÍCIOS) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-GAMMA-1</div>
+            <div class="context">
+              ORIGEM: Seção Avançada de Propulsão - [REDACTED]
+            </div>
+            <p>
+              Seja \(D = [0,2]\times [0,2]\). Estime
+              \(\iint_D (x^3 + y^3)\, dA\) via soma de Riemann com
+              \(m=2\) e \(n=2\), usando pontos superiores direitos.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: Calcular separadamente para cada sub-retângulo e somar.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\Delta x = 1\), \(\Delta y = 1\). Pontos superiores direitos:
+                  \((1,1), (2,1), (1,2), (2,2)\).
+                </p>
+                <p>
+                  Função: \(f(x,y) = x^3 + y^3\).
+                  <br/>
+                  \(f(1,1) = 1 + 1 = 2\);
+                  \(f(2,1) = 8 + 1 = 9\);
+                  \(f(1,2) = 1 + 8 = 9\);
+                  \(f(2,2) = 8 + 8 = 16\).
+                </p>
+                <p>
+                  Soma: \((2 + 9 + 9 + 16)\times (1)(1) = 36.\)
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-GAMMA-2</div>
+            <div class="context">
+              ORIGEM: Análise de Campos Gravitacionais - Missão Secreta
+              [REDACTED]
+            </div>
+            <p>
+              Seja \(D=[1,2]\times [1,3]\). A função
+              \(\displaystyle f(x,y)=\frac{1}{x+y}\). Use soma de Riemann com
+              \(m=1, n=2\) e pontos médios no eixo \(y\). Calcule a soma
+              aproximada.
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: No eixo \(x\), uma única subdivisão: \(\Delta x=1\).
+              No eixo \(y\), duas subdivisões: cada \(\Delta y=1\). Pontos médios
+              em \(y\): 1.5 e 2.5.
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\Delta x = (2-1)=1\). \(\Delta y=\frac{3-1}{2}=1\).
+                </p>
+                <p>
+                  A única subdivisão em \(x\) é [1,2]. Para \(y\), as faixas são
+                  [1,2] e [2,3].
+                </p>
+                <p>
+                  Pontos médios no eixo \(y\): 1.5, 2.5. No eixo \(x\), ponto
+                  médio entre 1 e 2 é 1.5, se usamos soma de Riemann por ponto
+                  médio também no \(x\). Então os pontos são:
+                  \((1.5, 1.5)\) e \((1.5, 2.5)\).
+                </p>
+                <p>
+                  Avaliando \(f\):
+                  \[
+                    f(1.5, 1.5) = \frac{1}{1.5 + 1.5} = \frac{1}{3} = 0.3333,
+                    \quad
+                    f(1.5, 2.5) = \frac{1}{1.5 + 2.5} = \frac{1}{4} = 0.25.
+                  \]
+                </p>
+                <p>
+                  Soma total:
+                  \((0.3333 + 0.25)\times 1\times 1 = 0.5833\).
+                </p>
+                <p>Aproximação: 0.5833 (pode variar ligeiramente pela precisão).</p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-GAMMA-3</div>
+            <div class="context">
+              ORIGEM: Divisão de Campos Eletromagnéticos - Operação Lunar
+              [SIGILOSA]
+            </div>
+            <p>
+              Calcule a soma de Riemann (com pontos de canto inferior esquerdo)
+              para \(\iint_D x^2y^2 \, dA\), onde \(D=[0,2]\times[0,1]\),
+              dividindo \(D\) em \(m=2\) (no eixo \(x\)) e \(n=1\) (no eixo \(y\)).
+            </p>
+            <div class="hint">
+              [SUGESTÃO]: \(\Delta x = 1\), \(\Delta y = 1\). Há dois sub-retângulos
+              no eixo \(x\).
+            </div>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Subdivisões em \(x\): [0,1] e [1,2]. Única subdivisão em \(y\):
+                  [0,1].
+                </p>
+                <p>
+                  Canto inferior esquerdo para o 1º retângulo: \((0,0)\),
+                  para o 2º retângulo: \((1,0)\).
+                </p>
+                <p>
+                  Avaliando a função \(x^2y^2\):
+                  \[
+                    f(0,0)=0, \quad f(1,0)=1^2\times 0^2=0.
+                  \]
+                </p>
+                <p>
+                  Soma de Riemann:
+                  \[
+                    (0 + 0)\times 1 \times 1 = 0.
+                  \]
+                </p>
+                <p>
+                  Observa-se que, para essa escolha de pontos e partições,
+                  obtemos 0 como valor aproximado.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (3 EXERCÍCIOS, SEM HINT) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-OMEGA-1</div>
+            <div class="context">
+              ORIGEM: Laboratório Especial de Análise Numérica - CIA
+            </div>
+            <p>
+              Estime \(\iint_D \sin(x) + y \, dA\) em \(D = [0,\pi]\times [0,1]\)
+              usando \(m=3\) e \(n=2\) divisões, com pontos amostrais nos cantos
+              superiores direitos.
+            </p>
+            <!-- SEM hint -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\Delta x = \frac{\pi - 0}{3} = \frac{\pi}{3}\),
+                  \(\Delta y = \frac{1 - 0}{2} = 0.5\).
+                </p>
+                <p>
+                  Canto superior direito para cada subdivisão: por exemplo,
+                  primeiro retângulo em \(x\) (0 a \(\pi/3\)) e \(y\) (0 a 0.5),
+                  terá ponto \((\pi/3, 0.5)\).
+                </p>
+                <p>
+                  Procede-se de forma análoga para os outros 5 sub-retângulos.
+                  A soma de Riemann final terá a forma:
+                  \[
+                    \sum (\sin(x_{ij}^*) + y_{ij}^*) \,\Delta x\, \Delta y,
+                  \]
+                  considerando cada canto superior direito.
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-OMEGA-2</div>
+            <div class="context">
+              ORIGEM: Centro de Navegação Interplanetária - Operação Phoenix
+            </div>
+            <p>
+              Para a função \(f(x,y) = e^{-x^2 - y^2}\) no domínio
+              \(D=[0,2]\times[0,2]\), construa a soma de Riemann com
+              \(m=2, n=2\) e pontos médios, mas liste apenas as coordenadas de
+              cada ponto médio e a expressão geral do somatório.
+            </p>
+            <!-- SEM hint -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Subdivisão: \(\Delta x=1\), \(\Delta y=1\). Pontos médios
+                  em cada sub-retângulo: \((0.5, 0.5)\), \((1.5, 0.5)\),
+                  \((0.5, 1.5)\), \((1.5, 1.5)\).
+                </p>
+                <p>
+                  Expressão geral:
+                  \[
+                    \sum f(x_{ij}^*, y_{ij}^*)\,\Delta x\,\Delta y
+                    = \bigl[e^{-(0.5)^2-(0.5)^2} + e^{-(1.5)^2-(0.5)^2} + e^{-(0.5)^2-(1.5)^2} + e^{-(1.5)^2-(1.5)^2}\bigr]\times 1\times 1.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+          
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO SR2-OMEGA-3</div>
+            <div class="context">
+              ORIGEM: Divisão de Análise Criptográfica - Iniciativa Aérea
+              Especial
+            </div>
+            <p>
+              Seja \(D=[0,1]\times[0,1]\). Utilize \(m=n=2\) e pontos no canto
+              inferior esquerdo para estimar
+              \(\iint_D \ln(1 + x^2 + y^2)\, dA\). Explique a expressão da soma
+              de Riemann resultante.
+            </p>
+            <!-- SEM hint -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\Delta x=0.5\), \(\Delta y=0.5\). Pontos inferiores esquerdos:
+                  \((0,0), (0.5,0), (0,0.5), (0.5,0.5)\).
+                </p>
+                <p>
+                  Soma de Riemann:
+                  \[
+                    \bigl[\ln(1 + 0^2 + 0^2) + \ln(1 + 0.5^2 + 0^2) + \ln(1 + 0^2 + 0.5^2) + \ln(1 + 0.5^2 + 0.5^2)\bigr]\times 0.5\times 0.5.
+                  \]
+                </p>
+                <p>
+                  Simbolicamente: 
+                  \(\ln(1) + \ln(1 + 0.25) + \ln(1 + 0.25) + \ln(1 + 0.25 + 0.25)\).
+                  Multiplica-se tudo por \(0.25\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <!-- RODAPÉ -->
+      <div class="page-number">
+        PÁGINA 1 DE 1 • DOCUMENTO SR2-<span class="censored">X</span>-ALPHA
+      </div>
+      <div class="footer-stamp">ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>
