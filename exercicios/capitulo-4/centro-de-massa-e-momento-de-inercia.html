@@ -1,0 +1,1110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+      
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">16</span> DE JULHO DE
+          <span class="censored">1971</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">ESTAÇÃO ORBITAL</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">VOLUMETRIA-3D</span> <br /><br />
+          Em resposta aos avanços recentes no programa espacial da
+          <span class="censored">███</span>, nossa equipe intensificou os
+          estudos sobre distribuição de massa em módulos orbitais. Os resultados
+          aqui apresentados são fruto das anotações do Dr.
+          <span class="censored">██████</span> sobre aplicações de integrais
+          triplas no cálculo de centro de massa e momento de inércia, de grande
+          relevância para o
+          <span class="censored">reposicionamento de foguetes</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações relacionadas a projetos de
+          distribuição de massa e estabilidade estrutural de naves espaciais.
+          Qualquer divulgação não autorizada poderá resultar em
+          <span class="censored">ações punitivas</span> e comprometimento de
+          nossa <span class="censored">operacionalidade</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: CM-<span class="censored">752</span>-Z</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES:
+            <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS TRIPLAS PARA CÁLCULO DE CENTRO DE MASSA E MOMENTO DE INÉRCIA
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            \text{Centro de Massa: } \vec{R}_C
+            = \frac{1}{M}\iiint_V \vec{r}\,\rho(\vec{r})\, dV
+            \quad\text{e}\quad
+            \text{Momento de Inércia (em torno de } z\text{): }
+            I_z = \iiint_V \rho(\vec{r})(x^2 + y^2)\, dV.
+          \]
+        </p>
+        <p>
+          O cálculo do centro de massa por integrais triplas considera a
+          distribuição volumétrica de densidade \(\rho\) em um corpo,
+          integrando as coordenadas espaciais para obter o ponto de equilíbrio
+          de massa. Já o momento de inércia, também via integrais triplas,
+          representa a resistência que o objeto oferece à variação de rotação em
+          torno de um eixo específico.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        No contexto de voos espaciais, determinar o centro de massa é
+        fundamental para planejar manobras orbitais e acoplagens. O momento de
+        inércia é igualmente importante para prever a estabilidade de rotação
+        durante operações como desacoplamento de módulos e
+        <span class="censored">ajustes finos de trajetória</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Após o sucesso da missão Apollo 14 em
+        fevereiro de 1971, intensificou-se o estudo de novos projetos orbitais
+        que demandavam maior precisão no controle de rotação dos módulos,
+        culminando em pesquisas avançadas sobre a aplicação de integrais triplas
+        para analisar centro de massa e momentos de inércia.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+
+          <!-- SÉRIE ALFA (EXERCÍCIOS 1-3) | NÍVEL BÁSICO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Pesquisas Iniciais - Programa Mercury [1961]
+            </div>
+            <p>
+              Considere um bloco retangular maciço ocupando a região
+              \[
+                0 \le x \le 2, \quad
+                0 \le y \le 1, \quad
+                0 \le z \le 3.
+              \]
+              Admita densidade constante \(\rho = 5 \, \text{kg/m}^3\). Calcule
+              o centro de massa \(\vec{R}_C\) desse bloco.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar cada coordenada
+                separadamente.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para densidade constante, o centro de massa de um bloco
+                  retangular está em seu centro geométrico:
+                </p>
+                <p>\[
+                  x_C = \frac{2}{2} = 1, \quad
+                  y_C = \frac{1}{2} = 0{,}5, \quad
+                  z_C = \frac{3}{2} = 1{,}5.
+                \]</p>
+                <p>\[
+                  \vec{R}_C = \begin{pmatrix}1 \\ 0{,}5 \\ 1{,}5\end{pmatrix}.
+                \]</p>
+                <p>
+                  Conclusão: O centro de massa está situado no ponto acima,
+                  corroborando a distribuição uniforme de densidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Cálculos Preliminares de Satélite [Dados de 1962]
+            </div>
+            <p>
+              Um sólido ocupa a região esférica
+              \(\{(x,y,z) : x^2 + y^2 + z^2 \le 9\}\) (raio 3). Densidade
+              constante \(\rho = 2 \, \text{kg/m}^3\). Determine a massa total
+              \(M\) e verifique a posição do centro de massa \(\vec{R}_C\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Formule a integral em coordenadas adequadas para
+                simplificar o cálculo.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Massa total (esfera de raio 3, densidade constante):
+                </p>
+                <p>\[
+                  M = \iiint_V \rho\,dV = 2 \cdot \frac{4}{3}\pi (3)^3
+                  = 2 \cdot 36\pi = 72\pi.
+                \]</p>
+                <p>
+                  Centro de massa, dada a simetria esférica, situa-se na origem:
+                  \(\vec{R}_C = \begin{pmatrix}0 \\ 0 \\ 0\end{pmatrix}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Revisão Interna de Projeto [Programa Mercury, 1963]
+            </div>
+            <p>
+              Um cilindro reto é definido por
+              \(\{(x,y,z): x^2 + y^2 \le 1, \ 0 \le z \le 4\}\) e apresenta
+              densidade constante \(\rho = 3\,\text{kg/m}^3\). Calcule a massa e
+              a coordenada \(z_C\) do centro de massa.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a fórmula do volume do cilindro.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Volume do cilindro: \( \pi \cdot 1^2 \cdot 4 = 4\pi\). Densidade
+                  constante:
+                </p>
+                <p>\[
+                  M = 3 \cdot 4\pi = 12\pi.
+                \]</p>
+                <p>
+                  Centro de massa em \(z\) fica no meio do comprimento:
+                  \(z_C = \frac{4}{2} = 2.\)
+                </p>
+                <p>
+                  Portanto, \(\vec{R}_C = \begin{pmatrix}0 \\ 0 \\ 2\end{pmatrix}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (EXERCÍCIOS 4-6) | NÍVEL INTERMEDIÁRIO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Programa Gemini - 1965 [Avaliação de Módulo Pressurizado]
+            </div>
+            <p>
+              Um sólido ocupa a região
+              \(\{(x,y,z): 0 \le z \le 2, \ x^2 + y^2 \le (z+1)^2\}\). Admita
+              densidade variável \(\rho(x,y,z) = 2(z+1)\). Calcule a massa total
+              desse sólido usando integrais triplas.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria podem simplificar o
+                resultado.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas: \(r = z+1\), \(\theta\) de 0 a
+                  \(2\pi\), \(z\) de 0 a 2.
+                </p>
+                <p>
+                  A densidade é \(\rho = 2(z+1)\). O volume elementar:
+                  \(dV = r\,dr\,d\theta\,dz\).
+                </p>
+                <p>\[
+                  M = \int_{z=0}^{2}\int_{\theta=0}^{2\pi}\int_{r=0}^{z+1}
+                  2(z+1)\, r \, dr\, d\theta\, dz.
+                \]</p>
+                <p>
+                  Integração em \(r\): \(\int_{0}^{z+1} 2(z+1)r\,dr =
+                  2(z+1)\cdot \frac{(z+1)^2}{2} = (z+1)^3.\)
+                </p>
+                <p>
+                  Depois em \(\theta\): \(\int_{0}^{2\pi} (z+1)^3 \,d\theta =
+                  2\pi (z+1)^3.\)
+                </p>
+                <p>
+                  Finalmente em \(z\):
+                  \(\int_{0}^{2} 2\pi (z+1)^3 \, dz =
+                  2\pi \left[\frac{(z+1)^4}{4}\right]_{0}^{2}
+                  = \frac{2\pi}{4} \left[(3)^4 - (1)^4\right]
+                  = \frac{\pi}{2}\left[81 - 1\right] = \frac{\pi}{2} \cdot 80
+                  = 40\pi.\)
+                </p>
+                <p>
+                  Conclusão: \(M = 40\pi.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Programa Gemini - 1966 [Testes de Estruturas Cônicas]
+            </div>
+            <p>
+              Considere um cone sólido definido por
+              \(0 \le z \le 3\), \(x^2 + y^2 \le \left(\frac{z}{3}\right)^2\).
+              Suponha densidade variável \(\rho(x,y,z) = 4z\). Calcule o centro
+              de massa \(\vec{R}_C\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de volumes cônicos podem ser úteis.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas: \(r \le \frac{z}{3}\), \(\theta\)
+                  de 0 a \(2\pi\), \(z\) de 0 a 3.
+                </p>
+                <p>
+                  A densidade: \(\rho = 4z\). O elemento de volume:
+                  \(dV = r\,dr\,d\theta\,dz\).
+                </p>
+                <p>
+                  Coordenadas do centro de massa:
+                  \[
+                    x_C = 0, \quad
+                    y_C = 0,
+                    \quad
+                    z_C = \frac{1}{M}
+                    \iiint_V z \cdot \rho \, dV,
+                  \]
+                  pois a simetria anula \(x_C\) e \(y_C\).
+                </p>
+                <p>
+                  Primeiro, calculamos a massa:
+                  \[
+                    M = \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
+                    4z \, r \, dr\, d\theta\, dz.
+                  \]
+                </p>
+                <p>
+                  Integração em \(r\):
+                  \(\int_{0}^{\frac{z}{3}} 4z \, r \, dr
+                  = 4z \cdot \frac{1}{2}\left(\frac{z}{3}\right)^2
+                  = 2z \cdot \frac{z^2}{9} = \frac{2z^3}{9}.
+                </p>
+                <p>
+                  Em \(\theta\):
+                  \(\int_{0}^{2\pi} \frac{2z^3}{9} \, d\theta
+                  = \frac{2z^3}{9} \cdot 2\pi = \frac{4\pi z^3}{9}.\)
+                </p>
+                <p>
+                  Em \(z\):
+                  \(\int_{0}^{3} \frac{4\pi z^3}{9}\,dz
+                  = \frac{4\pi}{9} \left[\frac{z^4}{4}\right]_{0}^{3}
+                  = \frac{4\pi}{9} \cdot \frac{81}{4} = \frac{324\pi}{36}
+                  = 9\pi.
+                </p>
+                <p>
+                  Portanto, \(M = 9\pi.\)
+                </p>
+                <p>
+                  Agora, para \(z_C\):
+                  \[
+                    z_C = \frac{1}{9\pi}
+                    \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
+                    z \cdot (4z) \, r\,dr\, d\theta \, dz
+                    = \frac{1}{9\pi}
+                    \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
+                    4z^2 \, r\,dr\, d\theta \, dz.
+                  \]
+                </p>
+                <p>
+                  Repetindo o processo:
+                  \(\int_{0}^{\frac{z}{3}} 4z^2 \,r\,dr
+                  = 4z^2 \cdot \frac{1}{2}\left(\frac{z}{3}\right)^2
+                  = 2z^2 \cdot \frac{z^2}{9} = \frac{2z^4}{9}.\)
+                </p>
+                <p>
+                  Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^4}{9}\,d\theta
+                  = \frac{2z^4}{9}\cdot 2\pi = \frac{4\pi z^4}{9}.\)
+                </p>
+                <p>
+                  Em \(z\):
+                  \(\int_{0}^{3} \frac{4\pi z^4}{9} \, dz
+                  = \frac{4\pi}{9}\left[\frac{z^5}{5}\right]_{0}^{3}
+                  = \frac{4\pi}{9} \cdot \frac{243}{5}
+                  = \frac{972\pi}{45} = \frac{972\pi}{45}.
+                </p>
+                <p>
+                  Simplificando: \(\frac{972}{45} = \frac{972}{45} = 21.6.\)
+                  Então o valor integral é \(21.6\pi\).
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    z_C = \frac{21.6\pi}{9\pi} = 2.4.
+                  \]
+                </p>
+                <p>
+                  Conclusão: \(\vec{R}_C = \begin{pmatrix}0\\0\\2.4\end{pmatrix}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Cálculos de Estruturas Mistas [Gemini, 1966]
+            </div>
+            <p>
+              Um sólido é composto por duas partes justapostas, cada uma com
+              densidade constante, mas distinta. Defina volumes \(V_1\) e
+              \(V_2\), cada um cúbico de aresta 1, localizados em
+              \[
+                V_1: 0 \le x \le 1,\ 0 \le y \le 1,\ 0 \le z \le 1
+              \]
+              e
+              \[
+                V_2: 1 \le x \le 2,\ 0 \le y \le 1,\ 0 \le z \le 1.
+              \]
+              Suponha \(\rho_1 = 2\) e \(\rho_2 = 6\). Determine o centro de
+              massa total do corpo.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Calcular separadamente e usar somas ponderadas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Massa de \(V_1\): \(M_1 = 2 \times 1^3 = 2.\)<br/>
+                  Centro de massa de \(V_1\): \(\begin{pmatrix}0.5 \\ 0.5 \\ 0.5\end{pmatrix}\).
+                </p>
+                <p>
+                  Massa de \(V_2\): \(M_2 = 6 \times 1^3 = 6.\)<br/>
+                  Centro de massa de \(V_2\): \(\begin{pmatrix}1.5 \\ 0.5 \\ 0.5\end{pmatrix}\).
+                </p>
+                <p>
+                  Massa total: \(M = M_1 + M_2 = 8.\)
+                </p>
+                <p>
+                  Centro de massa total:
+                  \[
+                    \vec{R}_C
+                    = \frac{M_1 \vec{R}_{C1} + M_2 \vec{R}_{C2}}{M}
+                    = \frac{2 \begin{pmatrix}0.5 \\ 0.5 \\ 0.5\end{pmatrix}
+                             + 6 \begin{pmatrix}1.5 \\ 0.5 \\ 0.5\end{pmatrix}}{8}.
+                  \]
+                </p>
+                <p>
+                  Soma vetorial:
+                  \(\begin{pmatrix}1 \\ 1 \\ 1\end{pmatrix}
+                   + \begin{pmatrix}9 \\ 3 \\ 3\end{pmatrix}
+                   = \begin{pmatrix}10 \\ 4 \\ 4\end{pmatrix}.\)
+                </p>
+                <p>
+                  Dividindo por 8: \(\begin{pmatrix}1.25 \\ 0.5 \\ 0.5\end{pmatrix}.\)
+                </p>
+                <p>
+                  Conclusão: \(\vec{R}_C = \begin{pmatrix}1.25 \\ 0.5 \\ 0.5\end{pmatrix}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (EXERCÍCIOS 7-9) | NÍVEL AVANÇADO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Estudo Avançado de Momento de Inércia - Apollo [1968]
+            </div>
+            <p>
+              Uma carenagem de foguete apresenta formato esférico oco, com raio
+              externo 2 e espessura 0.5. Admita uma densidade constante
+              \(\rho\). Calcule o momento de inércia em torno do eixo \(z\),
+              considerando o invólucro oco (de raio interno 1.5 e externo 2).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há simetrias não-óbvias na configuração esférica.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O momento de inércia de uma esfera oca (ou casca esférica
+                  espessa) em torno de qualquer eixo que passe pelo centro
+                  utiliza a expressão:
+                </p>
+                <p>\[
+                  I_z = \iiint_V \rho(x^2 + y^2) \, dV.
+                \]</p>
+                <p>
+                  Em coordenadas esféricas, \((x^2 + y^2) = r^2\sin^2\phi\), e o
+                  volume está entre \(r=1.5\) e \(r=2\). O fator de volume é
+                  \(dV = r^2\sin\phi\,dr\,d\phi\,d\theta\).
+                </p>
+                <p>
+                  A integral resultante é resolvida via tabela ou resultado
+                  padrão, mas seria:
+                </p>
+                <p>\[
+                  I_z = \rho \int_{r=1.5}^{2} \int_{\phi=0}^{\pi}
+                  \int_{\theta=0}^{2\pi} r^2 \sin^2\phi \, r^2 \sin\phi
+                  \, d\theta \, d\phi \, dr.
+                \]</p>
+                <p>
+                  Fatores: \(\int_{0}^{2\pi} d\theta = 2\pi\), e
+                  \(\int_{0}^{\pi}\sin^3\phi\,d\phi = \frac{4}{3}\). Após a
+                  integração em \(r\), obtém-se a diferença entre
+                  \(\frac{r^5}{5}\) avaliada em 1.5 e 2.
+                </p>
+                <p>
+                  Resultado simplificado (omisso em detalhes numéricos nesta
+                  breve síntese):
+                  \[
+                    I_z = \rho \cdot \frac{8\pi}{15} \bigl(2^5 - 1.5^5\bigr).
+                  \]
+                </p>
+                <p>
+                  Conclusão: O momento de inércia depende diretamente da
+                  densidade \(\rho\); valores exatos podem ser computados
+                  substituindo os termos numéricos.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Análise Estrutural Apollo [1969]
+            </div>
+            <p>
+              Uma seção de foguete em formato de parabolóide (aberto para cima)
+              ocupa a região
+              \(\{(x,y,z): z = x^2 + y^2,\ 0 \le z \le 4\}\). Densidade
+              \(\rho(x,y,z) = 1 + \frac{z}{4}\). Calcule o momento de inércia
+              \(I_z\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias radiais notáveis no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas cilíndricas: \(z = r^2\). O sólido varia de
+                  \(r=0\) até \(r=2\), pois \(4 = 2^2\). Então \(0 \le z \le 4\).
+                </p>
+                <p>
+                  Momento de inércia em torno de \(z\):
+                  \[
+                    I_z = \iiint_V \rho(x,y,z)(x^2 + y^2)\, dV.
+                  \]
+                  Em cilíndricas, \(x^2 + y^2 = r^2\), e \(dV = r\,dr\,d\theta\,dz\).
+                </p>
+                <p>
+                  A densidade: \(\rho = 1 + \frac{z}{4}\). Mas \(z = r^2\).
+                  Logo, \(\rho = 1 + \frac{r^2}{4}\).
+                </p>
+                <p>
+                  Integração:
+                  \[
+                    I_z = \int_{\theta=0}^{2\pi} \int_{r=0}^{2} \int_{z=r^2}^{4}
+                    \left(1 + \frac{r^2}{4}\right) r^2 \cdot r \,dz\,dr\,d\theta.
+                  \]
+                  Entretanto, observe que \(z\) vai apenas até \(r^2\), pois
+                  para cada \(r\), \(z\) se estende de 0 a \(r^2\). A forma
+                  exata da integral deve ser ajustada adequadamente
+                  (ou invertida a ordem de integração).
+                </p>
+                <p>
+                  Usando a ordem mais natural: \(\theta: 0 \to 2\pi\), \(r: 0
+                  \to 2\), \(z: 0 \to r^2\). Então:
+                  \[
+                    I_z = \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{r^2}
+                    \left(1 + \frac{r^2}{4}\right) r^2 \, r \, dz\, dr\, d\theta.
+                  \]
+                </p>
+                <p>
+                  Integra em \(z\): fator \(\left(1 + \frac{r^2}{4}\right)r^3\)
+                  fica constante em \(z\). Então
+                  \(\int_{0}^{r^2} dz = r^2\).
+                </p>
+                <p>
+                  Integra em \(r\) e \(\theta\):
+                  \[
+                    I_z = \int_{0}^{2\pi} d\theta \int_{0}^{2}
+                    \left(1 + \frac{r^2}{4}\right)r^3 \, r^2 \, dr.
+                  \]
+                  Notar que multiplicamos por \(r^2\) do limite em \(z\).
+                </p>
+                <p>
+                  Simplificação:
+                  \[
+                    = \int_{0}^{2\pi} d\theta \int_{0}^{2}
+                      \left(1 + \frac{r^2}{4}\right)r^5 \, dr
+                    = 2\pi \int_{0}^{2} \left(r^5 + \frac{r^7}{4}\right) dr.
+                  \]
+                </p>
+                <p>
+                  \[
+                    \int_{0}^{2} r^5 \, dr = \left[\frac{r^6}{6}\right]_{0}^{2}
+                    = \frac{64}{6} = \frac{32}{3},
+                    \quad
+                    \int_{0}^{2} r^7 \, dr = \left[\frac{r^8}{8}\right]_{0}^{2}
+                    = \frac{256}{8} = 32.
+                  \]
+                </p>
+                <p>
+                  Então
+                  \[
+                    I_z = 2\pi \left(\frac{32}{3} + \frac{32}{4}\right)
+                    = 2\pi \left(\frac{32}{3} + 8\right)
+                    = 2\pi \left(\frac{32}{3} + \frac{24}{3}\right)
+                    = 2\pi \cdot \frac{56}{3}
+                    = \frac{112\pi}{3}.
+                  \]
+                </p>
+                <p>
+                  Conclusão: \(I_z = \frac{112\pi}{3}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Missão Apollo 11 [Análise Pré-Lançamento, 1969]
+            </div>
+            <p>
+              Um módulo cilíndrico de raio 2 e altura 3 possui densidade
+              \(\rho(x,y,z)\) que varia de forma linear entre 4 (na base \(z=0\))
+              e 10 (no topo \(z=3\)). Calcule o centro de massa em \(z\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes que emergem ao analisar a variação linear.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A densidade pode ser expressa como \(\rho(z) = 4 + 6 \cdot
+                  \frac{z}{3} = 4 + 2z.\)
+                </p>
+                <p>
+                  Massa total:
+                  \[
+                    M = \int_{0}^{2\pi} \int_{r=0}^{2} \int_{z=0}^{3}
+                    (4 + 2z)\,r\,dz\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Integra em \(z\):
+                  \(\int_{0}^{3} (4+2z)\,dz = [4z + z^2]_{0}^{3} = 12 + 9 = 21.\)
+                </p>
+                <p>
+                  Em \(r\):
+                  \(\int_{0}^{2} r\,dr = \left[\frac{r^2}{2}\right]_{0}^{2}
+                  = 2.\)
+                </p>
+                <p>
+                  Em \(\theta\):
+                  \(\int_{0}^{2\pi} d\theta = 2\pi.\)
+                </p>
+                <p>
+                  Logo, \(M = 21 \cdot 2 \cdot 2\pi = 84\pi.\)
+                </p>
+                <p>
+                  Para \(z_C\):
+                  \(\displaystyle z_C = \frac{1}{M} \iiint z\,\rho(z)\,dV.\)
+                  Em integral tripla:
+                  \[
+                    \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{3}
+                    z\,(4+2z)\,r \, dz\, dr\, d\theta.
+                  \]
+                </p>
+                <p>
+                  Integra em \(z\):
+                  \(\int_{0}^{3} z(4+2z)\,dz = \int_{0}^{3} (4z + 2z^2)\,dz
+                  = [2z^2 + \tfrac{2z^3}{3}]_{0}^{3}
+                  = 2 \cdot 9 + \tfrac{2 \cdot 27}{3}
+                  = 18 + 18 = 36.
+                </p>
+                <p>
+                  Em \(r\): \(\int_{0}^{2} r\,dr = 2.\)
+                </p>
+                <p>
+                  Em \(\theta\): \(\int_{0}^{2\pi} d\theta = 2\pi.\)
+                </p>
+                <p>
+                  Produto total: \(36 \cdot 2 \cdot 2\pi = 144\pi.\)
+                </p>
+                <p>
+                  Assim,
+                  \(\displaystyle z_C = \frac{144\pi}{84\pi} = \frac{144}{84}
+                  = \frac{12}{7} \approx 1.714.\)
+                </p>
+                <p>
+                  Conclusão: \(\vec{R}_C = \begin{pmatrix} 0 \\ 0 \\ \tfrac{12}{7}\end{pmatrix}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (EXERCÍCIOS 10-12) | NÍVEL DESAFIADOR -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Skylab [1973] - Análise de Módulos Despressurizados
+            </div>
+            <p>
+              Um módulo assume formato poliédrico irregular no espaço,
+              subdividido em células tetraédricas de densidades distintas. Suponha
+              5 tetraedros justapostos com diferentes valores de \(\rho_i\).
+              Determinar o centro de massa global, considerando cada sub-volume
+              e respectivo valor de densidade.
+            </p>
+
+            <!-- SÉRIE OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Cada tetraedro <em>i</em> possui volume \(V_i\) e densidade
+                  \(\rho_i\) constantes. Calcular massa \(M_i = \rho_i V_i\) e
+                  centros de massa \(\vec{R}_{C_i}\) individuais. Em seguida:
+                </p>
+                <p>\[
+                  M = \sum_i M_i,\quad
+                  \vec{R}_C = \frac{1}{M} \sum_i M_i \,\vec{R}_{C_i}.
+                \]</p>
+                <p>
+                  Conclusão: O resultado final depende dos valores específicos
+                  de \(\rho_i\), volumes e posicionamento de cada célula
+                  tetraédrica.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Skylab - Módulo de Gravidade Artificial [1974]
+            </div>
+            <p>
+              Para um sistema em forma de toro (gerado pela rotação de um círculo
+              de raio menor \(a\) em torno de um eixo a uma distância \(R\)),
+              calcule o momento de inércia em torno do eixo de simetria.
+            </p>
+
+            <!-- SÉRIE OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A forma toroidal pode ser parametrizada por integrais triplas
+                  em coordenadas adequadas (toroidais). O momento de inércia
+                  envolve \((x^2 + y^2)\) ou \((z^2 + \dots)\) dependendo do
+                  eixo escolhido.
+                </p>
+                <p>
+                  Resultado geral (omisso em detalhes):
+                  \[
+                    I_z = 2 \pi \rho \int_{r=R-a}^{R+a} \int_{\theta=0}^{2\pi}
+                    \dots \, d\theta \, dr,
+                  \]
+                  devendo considerar o círculo gerador e o raio de rotação.
+                </p>
+                <p>
+                  Conclusão: O valor exato depende das dimensões \(a\) e \(R\),
+                  mas segue a fórmula clássica de toro para momentos de inércia
+                  conhecidos em tabelas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Programa de Simulação Avançada [Skylab, 1975]
+            </div>
+            <p>
+              Em um experimento de formação de microclima interno, o módulo
+              apresenta um gradiente de densidade ao longo do eixo \(z\),
+              \(\rho = \rho_0 + \alpha z\), sobre uma forma cúbica de aresta
+              <span class="censored">Δ</span>. Determine o momento de inércia em
+              torno de um eixo horizontal que atravessa o centro do cubo.
+            </p>
+
+            <!-- SÉRIE OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O problema exige a variação volumétrica de \(\rho\) e a
+                  expressão de \((x^2 + z^2)\) ou \((y^2 + z^2)\), conforme o
+                  eixo escolhido. Integra-se em \(x,y,z\), considerando a faixa
+                  de \(\pm \tfrac{\Delta}{2}\) em cada coordenada e a forma de
+                  \(\rho\).
+                </p>
+                <p>
+                  O resultado final é obtido via
+                  \[
+                    I = \iiint_V \rho(x,y,z)\,(\dots)\, dV,
+                  \]
+                  inserindo \(\rho = \rho_0 + \alpha z\) e usando a simetria do
+                  cubo para simplificar termos lineares.
+                </p>
+                <p>
+                  Conclusão: a contribuição adicional de \(\alpha z\) modifica a
+                  distribuição de massa e, por consequência, aumenta o momento
+                  de inércia em relação ao cubo de densidade constante.
+                </p>
+              </div>
+            </details>
+          </li>
+
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA <span class="censored">3</span> DE
+        <span class="censored">12</span> • DOCUMENTO CM-<span
+          class="censored">752</span
+        >-Z
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

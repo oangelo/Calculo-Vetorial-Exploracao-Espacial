@@ -1,0 +1,866 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">25</span> DE SETEMBRO DE
+          <span class="censored">1961</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">DELTA-X</span> <br /><br />
+          Em meio à intensificação da corrida espacial, nossa equipe de
+          pesquisadores elaborou este módulo de revisão sobre derivadas
+          ordinárias. As técnicas apresentadas são cruciais para
+          <span class="censored">cálculos de orientação</span> e para o sucesso
+          de futuras missões do programa <span class="censored">████████</span>.
+          <br /><br />
+          Estes exercícios contemplam aplicações de regras de derivação
+          fundamentais para auxiliar no aprimoramento das
+          <span class="censored">análises de propulsão</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações de alto valor estratégico, com
+          aplicações imediatas no projeto <span class="censored">Fênix</span>.
+          Qualquer divulgação não autorizada resultará em
+          <span class="censored">sanções severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: RV-<span class="censored">210</span>-X</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">1</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: REVISÃO DE DERIVADAS</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            \frac{d}{dx}\bigl[f(x)\bigr] = \lim_{\Delta x \to 0}
+            \frac{f(x+\Delta x) - f(x)}{\Delta x}
+          \]
+        </p>
+        <p>
+          Nesta revisão, focamos nas principais regras de derivação:
+          <strong>Regra do Produto</strong>, <strong>Regra do Quociente</strong>
+          e <strong>Regra da Cadeia</strong>. O domínio de aplicação dessas
+          técnicas é amplo e abrange desde a definição de velocidades em linhas
+          de produção até a otimização de trajetórias espaciais.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        A capacidade de calcular derivadas com precisão é imprescindível na
+        estimativa de variações instantâneas de empuxo e na correção de rota em
+        naves experimentais. Em situações de microgravidade, qualquer erro
+        insignificante no cálculo de \(\frac{d}{dx}\) pode comprometer a
+        estabilidade de
+        <span class="censored">módulos orbitais</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong>
+        Durante o início dos anos 60, a computação de derivadas ordinárias
+        desempenhou papel fundamental no
+        <span class="censored">Programa Mercury</span>, ajudando a prever e
+        corrigir desvios de trajetória em lançamentos iniciais.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA: Exercícios 1, 2, 3 (Básicos) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Teste de Conceitos Iniciais - Relatório Interno de
+              <span class="censored">Abril</span> de 1960
+            </div>
+            <p>
+              Calcular a derivada da função \[f(x) = 3x^2 + 4x - 1\].<br />
+              <strong>Método:</strong> Identificar coeficientes e aplicar
+              derivação termo a termo.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relembre a propriedade básica
+                \(\frac{d}{dx}(x^n) = n x^{n-1}\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \[
+                    f'(x) = \frac{d}{dx}(3x^2) + \frac{d}{dx}(4x) -
+                    \frac{d}{dx}(1) = 6x + 4 - 0.
+                  \]
+                </p>
+                <p>Logo, \(f'(x) = 6x + 4.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Avaliação Básica - Setor de Controle
+              <span class="censored">Propulsivo</span>
+            </div>
+            <p>
+              Calcular a derivada usando a <strong>Regra do Produto</strong>:
+              \[
+                g(x) = (2x + 1)(x^3 - 4).
+              \]<br />
+              <strong>Método:</strong> \(\frac{d}{dx}[u(x)v(x)] = u'(x)v(x) + u(x)v'(x)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Aplique a derivada separadamente em cada fator e
+                utilize a soma das parcelas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u(x) = 2x + 1\) e \(v(x) = x^3 - 4\). Então:
+                </p>
+                <p>
+                  \[
+                    u'(x) = 2, \quad
+                    v'(x) = 3x^2.
+                  \]
+                </p>
+                <p>
+                  Pela Regra do Produto:
+                  \[
+                    g'(x) = u'(x)v(x) + u(x)v'(x) = 2(x^3 - 4) + (2x + 1)(3x^2).
+                  \]
+                </p>
+                <p>
+                  Simplificando:
+                  \[
+                    g'(x) = 2x^3 - 8 + 6x^3 + 3x^2 =
+                    8x^3 + 3x^2 - 8.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Observações Iniciais - Setor de
+              <span class="censored">Cálculos Operacionais</span>
+            </div>
+            <p>
+              Calcular \(\frac{d}{dx}\bigl[h(x)\bigr]\) para
+              \[h(x) = \sqrt{x^2 + 1}.\] <br />
+              <strong>Método:</strong> Interpretar \(\sqrt{x^2 + 1}\) como
+              \(\bigl(x^2 + 1\bigr)^{1/2}\) e usar a <strong>Regra da Cadeia</strong>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre que se \(f(x) = (x^2+1)\), então
+                \(\frac{d}{dx}[f(x)^{1/2}] = \frac{1}{2\sqrt{f(x)}} \cdot f'(x)\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Considere \(h(x) = (x^2 + 1)^{1/2}\). Então:
+                  \[
+                    h'(x) = \frac{1}{2}(x^2 + 1)^{-1/2} \cdot 2x =
+                    \frac{x}{\sqrt{x^2 + 1}}.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA: Exercícios 4, 5, 6 (Intermediários) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Subsetor de Análises Mistas - Registros de
+              <span class="censored">23/05/1961</span>
+            </div>
+            <p>
+              Calcular a derivada da função
+              \[
+                p(x) = \frac{x^2 - 1}{x^2 + 1},
+              \]
+              aplicando a <strong>Regra do Quociente</strong>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de diferenças e somas no numerador
+                podem ser úteis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Pela Regra do Quociente:
+                  \[
+                    p'(x) = \frac{(2x)(x^2 + 1) - (x^2 - 1)(2x)}{(x^2 + 1)^2}.
+                  \]
+                </p>
+                <p>
+                  Numerador:
+                  \[
+                    (2x)(x^2 + 1) - (x^2 - 1)(2x) = 2x(x^2 + 1) - 2x(x^2 - 1).
+                  \]
+                  <br />
+                  \[
+                    = 2x^3 + 2x - 2x^3 + 2x = 4x.
+                  \]
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    p'(x) = \frac{4x}{(x^2 + 1)^2}.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Painel de Estudos - Departamento de
+              <span class="censored">Otimização Balística</span>
+            </div>
+            <p>
+              Use a <strong>Regra da Cadeia</strong> combinada à
+              <strong>Regra do Produto</strong> para encontrar
+              \(\frac{d}{dx}\) de
+              \[
+                q(x) = (x + 1)^3 \cdot \bigl(\sin(2x)\bigr).
+              \]
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de funções trigonométricas podem
+                auxiliar no resultado final.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u(x) = (x + 1)^3\) e \(v(x) = \sin(2x)\). Então:
+                </p>
+                <p>
+                  \[
+                    u'(x) = 3(x+1)^2, \quad
+                    v'(x) = \cos(2x) \cdot 2 = 2\cos(2x).
+                  \]
+                </p>
+                <p>
+                  Pela Regra do Produto:
+                  \[
+                    q'(x) = u'(x)v(x) + u(x)v'(x)
+                    = 3(x+1)^2 \sin(2x) + (x+1)^3 \cdot 2\cos(2x).
+                  \]
+                </p>
+                <p>
+                  \[
+                    q'(x) = 3(x+1)^2 \sin(2x) + 2(x+1)^3 \cos(2x).
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Estudos Intermediários - Registro
+              <span class="censored">[████]</span>
+            </div>
+            <p>
+              Calcular a derivada de
+              \[
+                r(x) = \frac{\ln(x^2+1)}{x-1}.
+              \]
+              Combine <strong>Regra da Cadeia</strong> e
+              <strong>Regra do Quociente</strong>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A derivada de \(\ln(u)\) é
+                \(\frac{u'(x)}{u(x)}\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u(x) = \ln(x^2+1)\) e \(v(x) = x-1\). Então:
+                </p>
+                <p>
+                  \[
+                    u'(x) = \frac{1}{x^2+1} \cdot 2x = \frac{2x}{x^2+1},
+                    \quad
+                    v'(x) = 1.
+                  \]
+                </p>
+                <p>
+                  Pela Regra do Quociente:
+                  \[
+                    r'(x) = \frac{u'(x)v(x) - u(x)v'(x)}{(v(x))^2}.
+                  \]
+                </p>
+                <p>
+                  Substituindo:
+                  \[
+                    r'(x) = \frac{\bigl(\frac{2x}{x^2+1}\bigr)(x-1) - \ln(x^2+1)\cdot 1}{(x-1)^2}.
+                  \]
+                </p>
+                <p>
+                  \[
+                    r'(x) = \frac{\frac{2x(x-1)}{x^2+1} - \ln(x^2+1)}{(x-1)^2}.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA: Exercícios 7, 8, 9 (Avançados) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Programa <span class="censored">Gemini</span> - Relatório Avançado
+            </div>
+            <p>
+              Determinar \(\frac{d}{dx}\) de
+              \[
+                s(x) = e^{3x} \cdot (x^2 + 2)^5.
+              \]
+              Combine <strong>Regra do Produto</strong>,
+              <strong>Regra da Cadeia</strong> e
+              <strong>Função Exponencial</strong>.
+            </p>
+            <!-- Dica extremamente sutil para GAMMA -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes ocultos no crescimento exponencial.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u(x) = e^{3x}\) e \(v(x) = (x^2+2)^5\).
+                </p>
+                <p>
+                  \[
+                    u'(x) = 3 e^{3x}, \quad
+                    v'(x) = 5(x^2+2)^4 \cdot 2x = 10x (x^2+2)^4.
+                  \]
+                </p>
+                <p>
+                  Então,
+                  \[
+                    s'(x) = u'(x)v(x) + u(x)v'(x)
+                    = 3 e^{3x}(x^2+2)^5 + e^{3x}\cdot 10x (x^2+2)^4.
+                  \]
+                </p>
+                <p>
+                  Factorizando, obtemos:
+                  \[
+                    s'(x) = e^{3x}(x^2+2)^4 \bigl[3(x^2+2) + 10x\bigr].
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Laboratório <span class="censored">Dinâmico</span> - Protocolo de 1962
+            </div>
+            <p>
+              Diferencie a função:
+              \[
+                t(x) = (\cos x)^4 \cdot \sqrt{3x + 1}.
+              \]
+              Combine manipulações trigonométricas com radicais.
+            </p>
+            <!-- Dica muito sutil para GAMMA -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere derivar separadamente cada fator e aplicar a Regra do Produto.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Escreva \((\cos x)^4 = \cos^4 x\) e \(\sqrt{3x + 1} = (3x+1)^{1/2}\).
+                </p>
+                <p>
+                  Seja \(u(x) = \cos^4 x\) e \(v(x) = (3x+1)^{1/2}\).
+                </p>
+                <p>
+                  \[
+                    u'(x) = 4\cos^3(x)(-\sin x) = -4\cos^3 x\, \sin x,
+                  \]
+                  \[
+                    v'(x) = \frac{1}{2}(3x+1)^{-1/2} \cdot 3 = \frac{3}{2\sqrt{3x+1}}.
+                  \]
+                </p>
+                <p>
+                  Pela Regra do Produto:
+                  \[
+                    t'(x) = u'(x)v(x) + u(x)v'(x).
+                  \]
+                  <br />
+                  \[
+                    t'(x) = -4\cos^3(x)\sin(x) \cdot \sqrt{3x+1}
+                    + \cos^4(x) \cdot \frac{3}{2\sqrt{3x+1}}.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Seção de <span class="censored">Astrodinâmica</span> - 1962
+            </div>
+            <p>
+              Calcular \(\frac{d}{dx}\bigl[z(x)\bigr]\) para
+              \[
+                z(x) = \ln\bigl(\sin(x^3)\bigr).
+              \]
+              Trata-se de composição de logaritmo e função trigonométrica.
+            </p>
+            <!-- Dica muito sutil para GAMMA -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Analisar cuidadosamente a derivada de \(\sin(x^3)\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u(x) = \sin(x^3)\). Então \(z(x) = \ln(u(x))\).
+                </p>
+                <p>
+                  \[
+                    z'(x) = \frac{1}{u(x)} \cdot u'(x), \quad
+                    u'(x) = \cos(x^3) \cdot 3x^2.
+                  \]
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    z'(x) = \frac{3x^2\cos(x^3)}{\sin(x^3)}.
+                  \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA: Exercícios 10, 11, 12 (Desafiadores) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão <span class="censored">Apollo</span> - Operações Avançadas
+            </div>
+            <p>
+              Diferencie:
+              \[
+                w(x) = (x+2)^{\sin x}.
+              \]
+              Lembre-se de que o expoente depende de \(x\).
+            </p>
+            <!-- Sem dicas para OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Use a abordagem de logaritmos:
+                  \(\ln w(x) = \sin x \cdot \ln(x+2)\).
+                </p>
+                <p>
+                  A derivada final envolve termos da derivada de \(\sin x\)
+                  e \(\ln(x+2)\), combinados.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Dados <span class="censored">Sigilosos</span> - Centro de Lançamento
+            </div>
+            <p>
+              Calcular \(\frac{d}{dx}\) para
+              \[
+                y(x) = \frac{x e^x}{(x^2 + 4)^2}.
+              \]
+              Envolve combinação de <strong>produto</strong>,
+              <strong>exponencial</strong> e <strong>quociente</strong>.
+            </p>
+            <!-- Sem dicas para OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Separar em \(u(x) = x e^x\) e \(v(x) = (x^2 + 4)^2\);
+                  aplicar a Regra do Quociente. Cada parcela exigirá regras
+                  combinadas.
+                </p>
+                <p>
+                  \(u'(x) = e^x + x e^x\) e \(v'(x) = 2(x^2 + 4) \cdot 2x\)
+                  são partes centrais.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Arquivos de <span class="censored">Recursos Orbitais</span> - 1963
+            </div>
+            <p>
+              Encontrar a derivada de
+              \[
+                \phi(x) = \sqrt{\ln( x^2 + e^x )} \biggl/ ( \sin x + 2 ) .
+              \]
+              Combinação de todas as regras abordadas.
+            </p>
+            <!-- Sem dicas para OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Analisar \(\phi(x)\) como
+                  \(\frac{(\ln( x^2 + e^x ))^{1/2}}{\sin x + 2}\).
+                </p>
+                <p>
+                  Usar <strong>Regra da Cadeia</strong> para a raiz e o log;
+                  <strong>Regra Exponencial</strong> em \(e^x\);
+                  <strong>Regra do Quociente</strong> para o denominador.
+                </p>
+                <p>
+                  O resultado final concentra derivadas parciais em cada fator.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO RV-<span
+          class="censored"
+          >210</span
+        >-X
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>
