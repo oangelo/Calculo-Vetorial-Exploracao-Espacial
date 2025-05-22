@@ -1,0 +1,1559 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: Integrais Triplas (Parte 1: Fundamentos)</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme (Certifique-se que este arquivo está acessível) -->
+    <!-- Se space-theme.css não estiver no mesmo diretório, ajuste o path ou use um tema padrão -->
+    <link rel="stylesheet" href="space-theme.css" />
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides (Opcional, requer CSS em space-theme.css) -->
+      <!-- <div class="asteroid"></div> -->
+      <!-- <div class="asteroid"></div> -->
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Integrais Triplas: Explorando Volumes no Espaço</h1>
+          <h3>Parte 1</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico: 1957-1961</h2>
+
+          <div class="history-section" style="font-size: 0.8em">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Corrida Espacial (1957-1961)</strong></p>
+            <p>
+              Em 4 de outubro de 1957, a União Soviética lançou o Sputnik, o
+              primeiro satélite artificial. Este evento iniciou oficialmente a
+              corrida espacial durante a Guerra Fria, impulsionando ambos os
+              lados a desenvolverem tecnologias avançadas para conquista do
+              espaço.
+            </p>
+          </div>
+
+          <div class="history-section" style="font-size: 0.8em">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Precisão de Cálculo de Volumes</strong></p>
+            <p>
+              O projeto de foguetes e satélites exigia cálculos extremamente
+              precisos de volumes de combustível, distribuição de massa e
+              controle de trajetórias em três dimensões. As integrais triplas
+              tornaram-se ferramentas matemáticas indispensáveis para resolver
+              estes desafios complexos.
+            </p>
+          </div>
+          <style>
+            /* Adicionado para contexto */
+            .history-section {
+              margin-bottom: 15px;
+              padding: 10px;
+              background-color: rgba(0, 0, 0, 0.2);
+              border-radius: 5px;
+            }
+            .history-label {
+              font-weight: bold;
+              color: #4caf50;
+              margin-bottom: 5px;
+            }
+          </style>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: INTEGRAIS TRIPLAS -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Conceito Principal -->
+          <section>
+            <h2>O que são Integrais Triplas?</h2>
+
+            <div class="math-section">
+              <p>Definição formal (Soma de Riemann):</p>
+              <p>
+                \[\iiint_E f(x,y,z) \, dV = \lim_{\|P\| \to 0} \sum_{i=1}^{n}
+                f(x_i^*, y_i^*, z_i^*) \, \Delta V_i\]
+              </p>
+
+              <p>Onde:</p>
+              <ul>
+                <li>\(E\) é uma região limitada no espaço \(\mathbb{R}^3\).</li>
+                <li>
+                  \(P\) é uma partição de \(E\) em \(n\) sub-regiões (e.g.,
+                  pequenos paralelepípedos) de volume \(\Delta V_i\).
+                </li>
+                <li>
+                  \(\|P\|\) é a norma da partição (maior diagonal das
+                  sub-regiões).
+                </li>
+                <li>
+                  \((x_i^*, y_i^*, z_i^*)\) é um ponto de amostra na \(i\)-ésima
+                  sub-região.
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>Interpretação:</p>
+              <ul>
+                <li>
+                  Soma dos valores da função \(f\) multiplicados por pequenos
+                  volumes \(\Delta V\).
+                </li>
+                <li>
+                  Se \(f(x,y,z) = 1\), a integral calcula o
+                  <strong>Volume</strong> da região \(E\). \[\text{Volume}(E) =
+                  \iiint_E 1 \, dV\]
+                </li>
+                <li>
+                  Se \(f(x,y,z) = \rho(x,y,z)\) (densidade de massa), a integral
+                  calcula a <strong>Massa</strong> total da região \(E\). \[M =
+                  \iiint_E \rho(x,y,z) \, dV\]
+                </li>
+              </ul>
+            </div>
+            <style>
+              /* Adicionado para melhorar layout */
+              .math-section {
+                margin-bottom: 1em;
+              }
+              .math-section ul {
+                margin-top: 0.5em;
+              }
+            </style>
+          </section>
+
+          <!-- Slide 2: Visualização -->
+          <section>
+            <h2>Visualização: Subdivisão do Espaço (Soma de Riemann)</h2>
+
+            <canvas
+              id="tripleIntegralVisualization"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="subdivisions">Refinamento (N):</label>
+                <input
+                  type="range"
+                  id="subdivisions"
+                  min="2"
+                  max="7"
+                  value="3"
+                  step="1"
+                  oninput="updateVisualization()"
+                />
+                <span id="subdivisionsValue">3</span>³
+              </div>
+
+              <div class="control-slider">
+                <label for="transparency">Transparência:</label>
+                <input
+                  type="range"
+                  id="transparency"
+                  min="10"
+                  max="90"
+                  value="50"
+                  step="5"
+                  oninput="updateVisualization()"
+                />
+                <span id="transparencyValue">50</span>%
+              </div>
+
+              <button class="control-button" onclick="resetVisualization()">
+                Reiniciar
+              </button>
+            </div>
+            <style>
+              /* Adicionado para controles */
+              .controls-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                margin-top: 15px;
+                font-size: 0.7em;
+              }
+              .control-slider {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+              }
+              .control-button {
+                padding: 5px 10px;
+                cursor: pointer;
+              }
+              .visualization-canvas {
+                border: 1px solid #444;
+                margin-bottom: 10px;
+              }
+            </style>
+          </section>
+
+          <!-- Slide 3: Conjuntos de Conteúdo Nulo -->
+          <section>
+            <h2>Conjuntos de Conteúdo Nulo</h2>
+
+            <div class="math-section">
+              <p>Definição (Intuitiva):</p>
+              <p>
+                Um conjunto \(S \subset \mathbb{R}^3\) tem **conteúdo nulo** se
+                seu "volume tridimensional" é zero. Formalmente, para qualquer
+                \(\epsilon > 0\), \(S\) pode ser coberto por um número finito de
+                caixas cuja soma dos volumes é menor que \(\epsilon\).
+              </p>
+
+              <p>Exemplos em \(\mathbb{R}^3\):</p>
+              <ul>
+                <li>Conjuntos finitos de pontos.</li>
+                <li>Curvas suaves (segmentos de reta, arcos - objetos 1D).</li>
+                <li>
+                  Superfícies suaves (planos finitos, cascas esféricas - objetos
+                  2D).
+                </li>
+              </ul>
+
+              <p>Importância para Integração:</p>
+              <ul>
+                <li>
+                  A integral de qualquer função sobre um conjunto de conteúdo
+                  nulo é zero.
+                </li>
+                <li>
+                  Modificar o valor de uma função \(f\) sobre um conjunto de
+                  conteúdo nulo não altera o valor de \(\iiint_E f \, dV\).
+                </li>
+                <li>
+                  Modificar a região de integração \(E\) por um conjunto de
+                  conteúdo nulo (e.g., adicionar ou remover a fronteira) não
+                  altera o valor da integral.
+                </li>
+                <li>
+                  Isso justifica o uso de desigualdades estritas (<) ou não
+                  estritas (≤) nos limites de integração muitas vezes.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 4: Condições de Integrabilidade -->
+          <section>
+            <h2>Condições de Integrabilidade (Riemann)</h2>
+
+            <div class="math-section">
+              <p>
+                Para que uma função \(f(x,y,z)\) seja integrável (no sentido de
+                Riemann) em uma região \(E\):
+              </p>
+              <ol>
+                <li>
+                  A região \(E\) deve ser <strong>limitada</strong> (contida em
+                  alguma caixa finita).
+                </li>
+                <li>
+                  A função \(f\) deve ser <strong>limitada</strong> em \(E\)
+                  (não pode ir para \(\pm \infty\)).
+                </li>
+                <li>
+                  O conjunto dos pontos de <strong>descontinuidade</strong> de
+                  \(f\) dentro de \(E\) deve ter <strong>conteúdo nulo</strong>.
+                </li>
+              </ol>
+
+              <p>Teorema Fundamental (Condição Suficiente):</p>
+              <p>
+                Se \(f\) é <strong>contínua</strong> numa região \(E\) limitada
+                e "bem comportada" (cuja fronteira tem conteúdo nulo), então
+                \(f\) é integrável em \(E\).
+              </p>
+              <p>
+                (Regiões como caixas, esferas, cilindros, cones, tetraedros e
+                suas combinações finitas são "bem comportadas").
+              </p>
+            </div>
+
+            <div class="math-section">
+              <p>Aplicação Prática (Engenharia):</p>
+              <p>
+                Ao modelar a densidade \(\rho(x,y,z)\) de um componente de
+                foguete, podemos ter junções entre materiais diferentes, criando
+                descontinuidades na densidade. Desde que essas junções ocorram
+                em superfícies (conjuntos de conteúdo nulo), a função de
+                densidade ainda é integrável, e podemos calcular a massa total
+                \(M = \iiint_E \rho \, dV\) sem problemas.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: TEOREMA DE FUBINI -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Enunciado do Teorema -->
+          <section>
+            <h2>Teorema de Fubini para Integrais Triplas</h2>
+
+            <div class="history-section" style="font-size: 0.8em">
+              <div class="history-label">Guido Fubini (1879-1943)</div>
+              <p>
+                Matemático italiano que generalizou resultados anteriores,
+                provando rigorosamente que, sob certas condições, integrais
+                múltiplas podem ser calculadas como integrais iteradas (uma
+                variável de cada vez). Isso transforma um problema conceitual
+                (limite de somas) em um procedimento de cálculo prático. Sua
+                aplicabilidade se estendeu da matemática pura à física e
+                engenharia, incluindo áreas relevantes para a era espacial.
+              </p>
+            </div>
+
+            <div class="math-section">
+              <p>Ideia Central:</p>
+              <p>
+                Permite calcular \(\iiint_E f(x,y,z) \, dV\) resolvendo três
+                integrais simples sucessivas.
+              </p>
+
+              <p>Enunciado (Região Tipo 1 - integração primeiro em \(z\)):</p>
+              <p>
+                Seja \(E = \{(x,y,z) \mid (x,y) \in D, \, g_1(x,y) \le z \le
+                g_2(x,y)\}\), onde \(D\) é a projeção de \(E\) no plano xy
+                (região Tipo I ou II no plano). Se \(f\) é contínua em \(E\),
+                então:
+              </p>
+              <p>
+                \[\iiint_E f(x,y,z) \, dV = \iint_D \left[
+                \int_{g_1(x,y)}^{g_2(x,y)} f(x,y,z) \, dz \right] dA_{xy}\]
+              </p>
+              <p>
+                A integral dupla sobre \(D\) também pode ser iterada. Se \(D =
+                \{(x,y) \mid a \le x \le b, \, h_1(x) \le y \le h_2(x)\}\):
+              </p>
+              <p>
+                \[\iiint_E f \, dV = \int_a^b \int_{h_1(x)}^{h_2(x)}
+                \int_{g_1(x,y)}^{g_2(x,y)} f(x,y,z) \, dz \, dy \, dx\]
+              </p>
+              <p>(Existem 6 ordens possíveis de integração!)</p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Interpretação Geométrica (Conceito) -->
+          <section>
+            <h2>Interpretação Geométrica (Conceito - Ordem dz dy dx)</h2>
+
+            <div class="math-section">
+              <p>
+                \[V = \int_a^b \int_{h_1(x)}^{h_2(x)} \int_{g_1(x,y)}^{g_2(x,y)}
+                f(x,y,z) \, dz \, dy \, dx\]
+              </p>
+              <p>Vamos pensar em \(f=1\) (cálculo de volume):</p>
+              <ol>
+                <li>
+                  <strong>Integral Interna (\(dz\)):</strong> Fixe \((x,y)\).
+                  Calcule \(\int_{g_1(x,y)}^{g_2(x,y)} 1 \, dz = g_2(x,y) -
+                  g_1(x,y)\). Isso representa o <strong>comprimento</strong> do
+                  segmento de reta vertical dentro do sólido \(E\) na posição
+                  \((x,y)\).
+                </li>
+
+                <li>
+                  <strong>Integral Intermediária (\(dy\)):</strong> Fixe \(x\).
+                  Calcule \(\int_{h_1(x)}^{h_2(x)} [g_2(x,y) - g_1(x,y)] \,
+                  dy\). Isso soma os comprimentos verticais ao longo de uma
+                  linha horizontal (variando \(y\)) para um \(x\) fixo. O
+                  resultado é a
+                  <strong>área da seção transversal</strong> (fatia) do sólido
+                  no plano perpendicular ao eixo x, na posição \(x\). Vamos
+                  chamar essa área de \(A(x)\).
+                </li>
+
+                <li>
+                  <strong>Integral Externa (\(dx\)):</strong> Calcule \(\int_a^b
+                  A(x) \, dx\). Isso soma as áreas de todas as fatias
+                  infinitesimais \(A(x)\) ao longo do eixo x, do início \(a\) ao
+                  fim \(b\). O resultado é o <strong>volume total</strong> do
+                  sólido \(E\).
+                </li>
+              </ol>
+              <p>
+                É análogo ao método de cálculo de volumes por fatiamento visto
+                no Cálculo I/II, mas generalizado para 3D.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.1: Interpretação Geométrica INTERATIVA -->
+          <section>
+            <h2>Interpretação Geométrica (Visualização Interativa - Fubini)</h2>
+
+            <div class="fubini-interactive-container">
+              <div class="fubini-controls">
+                <!-- Label removido para economizar espaço, as opções são auto-explicativas -->
+                <div>
+                  <input
+                    type="radio"
+                    id="fubini_dx"
+                    name="fubini_order"
+                    value="dx"
+                    checked
+                    onchange="updateFubiniInteractive()"
+                  />
+                  <label for="fubini_dx">Final: dx (Soma fatias YZ)</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="fubini_dy"
+                    name="fubini_order"
+                    value="dy"
+                    onchange="updateFubiniInteractive()"
+                  />
+                  <label for="fubini_dy">Final: dy (Soma fatias XZ)</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="fubini_dz"
+                    name="fubini_order"
+                    value="dz"
+                    onchange="updateFubiniInteractive()"
+                  />
+                  <label for="fubini_dz">Final: dz (Soma fatias XY)</label>
+                </div>
+              </div>
+
+              <canvas
+                id="fubiniVisualizationInteractive"
+                class="visualization-canvas"
+                width="550"
+                height="350"
+              ></canvas>
+            </div>
+
+            <p id="fubiniExplanation" class="fubini-explanation-text">
+              Visualizando a integração iterada...
+            </p>
+
+            <style>
+              .fubini-interactive-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                justify-content: center;
+                width: 100%;
+              }
+              .fubini-controls {
+                display: flex;
+                gap: 15px;
+                text-align: center;
+                font-size: 0.7em;
+                background-color: rgba(40, 40, 60, 0.7);
+                padding: 8px 15px;
+                border-radius: 8px;
+                color: #eee;
+              }
+              .fubini-controls div {
+                margin-bottom: 0;
+              }
+              .fubini-controls input[type='radio'] {
+                margin-right: 4px;
+                vertical-align: middle;
+              }
+              .fubini-controls label {
+                vertical-align: middle;
+                font-weight: normal;
+                cursor: pointer;
+              }
+              #fubiniVisualizationInteractive {
+                border: 1px solid #555;
+                max-width: 90%;
+              }
+              .fubini-explanation-text {
+                font-size: 0.75em;
+                margin-top: 8px;
+                width: 90%;
+                text-align: center;
+                color: #ccc;
+                min-height: 1.5em; /* Reserve space */
+              }
+            </style>
+          </section>
+
+          <!-- Slide 3: Ordens de Integração -->
+          <section>
+            <h2>Ordens de Integração</h2>
+
+            <div class="math-section">
+              <p>
+                Existem \(3! = 6\) ordens possíveis para iterar uma integral
+                tripla. A escolha depende da geometria de \(E\) e da função
+                \(f\). Qual ordem torna os limites de integração mais simples de
+                descrever e/ou a integral interna mais fácil de calcular?
+              </p>
+
+              <p><strong>Exemplos de Ordens:</strong></p>
+              <ul>
+                <li>
+                  \(dz \, dy \, dx\): Integra primeiro em \(z\), depois \(y\),
+                  depois \(x\). (Visualização: soma fatias YZ)
+                </li>
+                <li>
+                  \(dx \, dy \, dz\): Integra primeiro em \(x\), depois \(y\),
+                  depois \(z\). (Visualização: soma fatias XY)
+                </li>
+                <li>
+                  \(dy \, dz \, dx\): Integra primeiro em \(y\), depois \(z\),
+                  depois \(x\). (Visualização: soma fatias YZ, mas calculando a
+                  área da fatia de forma diferente)
+                </li>
+                <li>
+                  Etc. ( \(dx \, dz \, dy\), \(dy \, dx \, dz\), \(dz \, dx \,
+                  dy\) )
+                </li>
+              </ul>
+              <p>Os limites de integração mudarão drasticamente com a ordem!</p>
+              <p>
+                Ex: Para um cubo \( [0,1]^3 \), todas as ordens são \(\int_0^1
+                \int_0^1 \int_0^1 \dots \).
+              </p>
+              <p>Ex: Para o tetraedro \(x+y+z \le 1\) no 1º octante:</p>
+              <ul>
+                <li>
+                  \(dz\,dy\,dx \implies \int_0^1 \int_0^{1-x} \int_0^{1-x-y}
+                  \dots dz\,dy\,dx\)
+                </li>
+                <li>
+                  \(dx\,dy\,dz \implies \int_0^1 \int_0^{1-z} \int_0^{1-y-z}
+                  \dots dx\,dy\,dz\)
+                </li>
+                <li>(Outras ordens terão limites similares)</li>
+              </ul>
+            </div>
+
+            <div class="problem-section">
+              <p>
+                <strong>Implicação Prática:</strong> Escolher a ordem "certa"
+                pode ser a diferença entre uma integral factível e uma
+                intratável analiticamente.
+              </p>
+              <p>
+                Engenheiros aeroespaciais usam software (CAD/CAE) que muitas
+                vezes lida com isso numericamente, mas a compreensão de como as
+                ordens funcionam é fundamental para configurar o problema
+                corretamente e interpretar os resultados.
+              </p>
+            </div>
+            <style>
+              .problem-section {
+                font-size: 0.8em;
+                margin-top: 1em;
+                padding: 10px;
+                background-color: rgba(60, 20, 20, 0.3);
+                border-left: 3px solid #e57373;
+              }
+            </style>
+          </section>
+
+          <!-- Slide 4: Exemplo 1 - Volume de um Cilindro -->
+          <section>
+            <h2>Exemplo 1: Volume de um Cilindro</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular o volume \(V\) de um
+                cilindro \(E\) com base circular de raio \(r\) no plano xy
+                (centrada na origem) e altura \(h\) (\(0 \le z \le h\)).
+              </p>
+              <p>
+                Região: \(E = \{(x,y,z) : x^2 + y^2 \leq r^2, 0 \leq z \leq
+                h\}\)
+              </p>
+              <p>\(V = \iiint_E 1 \, dV\).</p>
+            </div>
+
+            <div class="compact-solution">
+              <p><strong>Solução (Ordem \(dz \, dy \, dx\)):</strong></p>
+              <p>
+                1. <strong>Limites:</strong> \(0 \le z \le h\). Projeção \(D\) é
+                \(x^2+y^2 \le r^2\). Em cartesianas: \(-r \le x \le r\),
+                \(-\sqrt{r^2-x^2} \le y \le \sqrt{r^2-x^2}\).
+              </p>
+              <p>
+                2. <strong>Integral:</strong> \[V = \int_{-r}^{r}
+                \int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}} \left[ \int_{0}^{h} 1 \,
+                dz \right] \, dy \, dx\]
+              </p>
+              <p>
+                3. <strong>Interna (dz):</strong> \(\int_{0}^{h} 1 \, dz =
+                [z]_0^h = h\).
+              </p>
+              <p>
+                4.
+                <strong>Intermediária (dy):</strong>
+                \(\int_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}} h \, dy = h
+                [y]_{-\sqrt{r^2-x^2}}^{\sqrt{r^2-x^2}} = h (2\sqrt{r^2-x^2})\).
+              </p>
+              <p>
+                5. <strong>Externa (dx):</strong> \(V = \int_{-r}^{r}
+                2h\sqrt{r^2-x^2} \, dx\). Reconhecemos \(\int_{-r}^{r}
+                \sqrt{r^2-x^2} \, dx\) como a área de um semicírculo de raio
+                \(r\) (\(\frac{1}{2}\pi r^2\)).
+              </p>
+              \[V = 2h \left( \frac{1}{2}\pi r^2 \right) = \pi r^2 h\]
+              <p>
+                (Nota: Esta integral externa também pode ser resolvida por
+                substituição trigonométrica, mas reconhecer a área é mais
+                rápido. Coordenadas cilíndricas tornarão este cálculo trivial na
+                próxima parte!)
+              </p>
+            </div>
+            <style>
+              .compact-solution {
+                font-size: 0.85em;
+              }
+              .compact-solution p {
+                margin-bottom: 0.5em;
+              }
+            </style>
+          </section>
+
+          <!-- Slide 5: Exemplo 2 - Volume de um Paralelepípedo -->
+          <section>
+            <h2>Exemplo 2: Volume de um Paralelepípedo Retangular</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular o volume da caixa \(E\)
+                definida por \(0 \leq x \leq a\), \(0 \leq y \leq b\), \(0 \leq
+                z \leq c\).
+              </p>
+              <p>Região: \(E = [0,a] \times [0,b] \times [0,c]\)</p>
+              <p>\(V = \iiint_E 1 \, dV\).</p>
+            </div>
+
+            <div class="compact-solution">
+              <p><strong>Solução (Ordem \(dz \, dy \, dx\)):</strong></p>
+              <p>Os limites são constantes e independentes:</p>
+              <p>
+                \[V = \int_{0}^{a} \int_{0}^{b} \int_{0}^{c} 1 \, dz \, dy \,
+                dx\]
+              </p>
+              <p>
+                \[V = \int_{0}^{a} \int_{0}^{b} [z]_{0}^{c} \, dy \, dx =
+                \int_{0}^{a} \int_{0}^{b} c \, dy \, dx\]
+              </p>
+              <p>
+                \[V = \int_{0}^{a} [cy]_{0}^{b} \, dx = \int_{0}^{a} cb \, dx\]
+              </p>
+              <p>\[V = [cbx]_{0}^{a} = cba = abc\]</p>
+              <p>
+                Para regiões retangulares e funções separáveis \(f(x,y,z) =
+                g(x)h(y)k(z)\), a integral tripla se torna um produto de três
+                integrais simples: \[ \iiint_E g(x)h(y)k(z) dV = \left(\int_a^b
+                g(x)dx\right) \left(\int_c^d h(y)dy\right) \left(\int_p^q
+                k(z)dz\right) \]
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 6: Exemplo 3 - Volume de um Tetraedro -->
+          <section>
+            <h2>Exemplo 3: Volume de um Tetraedro</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular o volume da região \(E\)
+                limitada pelos planos \(x=0, y=0, z=0\) e \(x + y + z = 1\).
+              </p>
+              <p>
+                Região: \(E = \{(x,y,z) : x \ge 0, y \ge 0, z \ge 0, x + y + z
+                \leq 1\}\)
+              </p>
+            </div>
+
+            <div class="compact-solution">
+              <p><strong>Solução (Ordem \(dz \, dy \, dx\)):</strong></p>
+              <p>
+                1. <strong>Limites:</strong> - \(z\) vai do plano \(z=0\) até o
+                plano \(z = 1 - x - y\). Então \(0 \leq z \leq 1 - x - y\). - A
+                projeção \(D\) no plano xy é onde \(z_{piso} \le z_{teto}\),
+                i.e., \(0 \le 1-x-y \implies x+y \le 1\). No 1º quadrante, \(D\)
+                é o triângulo com vértices (0,0), (1,0), (0,1). - Descrevendo
+                \(D\): \(0 \le x \le 1\). Para \(x\) fixo, \(y\) vai de \(y=0\)
+                até a reta \(y = 1 - x\). Então \(0 \leq y \leq 1 - x\).
+              </p>
+              <p>
+                2. <strong>Integral:</strong> \[V = \int_{0}^{1} \int_{0}^{1-x}
+                \int_{0}^{1-x-y} 1 \, dz \, dy \, dx\]
+              </p>
+              <p>
+                3. <strong>Interna (dz):</strong> \(\int_{0}^{1-x-y} 1 \, dz = 1
+                - x - y\).
+              </p>
+              <p>
+                4. <strong>Intermediária (dy):</strong> \[\int_{0}^{1-x} (1 - x
+                - y) \, dy = \left[ (1-x)y - \frac{y^2}{2}
+                \right]_{y=0}^{y=1-x}\] \[= (1-x)(1-x) - \frac{(1-x)^2}{2} =
+                (1-x)^2 - \frac{1}{2}(1-x)^2 = \frac{1}{2}(1-x)^2\]
+              </p>
+              <p>
+                5. <strong>Externa (dx):</strong> \[V = \int_{0}^{1}
+                \frac{1}{2}(1-x)^2 \, dx = \frac{1}{2} \left[ -\frac{(1-x)^3}{3}
+                \right]_{0}^{1}\] \[= -\frac{1}{6} [ (1-1)^3 - (1-0)^3 ] =
+                -\frac{1}{6} [ 0 - 1 ] = \frac{1}{6}\]
+              </p>
+
+              <p>O volume é \(1/6\).</p>
+            </div>
+          </section>
+
+          <!-- Slide 7: Aplicações -->
+          <section>
+            <h2>Aplicações do Teorema de Fubini na Exploração Espacial</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p>Cálculos Fundamentais:</p>
+                <ul>
+                  <li>
+                    <strong>Massa Total:</strong> \(M = \iiint_E \rho(x,y,z) \,
+                    dV\).
+                  </li>
+                  <li>
+                    <strong>Centro de Massa:</strong> \(\bar{x} = \frac{1}{M}
+                    \iiint_E x \rho \, dV\), etc. Vital para estabilidade.
+                  </li>
+                  <li>
+                    <strong>Momentos de Inércia:</strong> \(I_z = \iiint_E
+                    (x^2+y^2)\rho \, dV\), etc. Essencial para controle de
+                    atitude.
+                  </li>
+                  <li><strong>Volumes</strong> de tanques complexos.</li>
+                  <li>
+                    <strong>Forças/Potenciais Gravitacionais:</strong> Ex: \(U =
+                    -G \iiint_E \frac{\rho(x,y,z)}{r} \, dV\).
+                  </li>
+                </ul>
+                <p>
+                  Fubini permite calcular essas quantidades decompondo o
+                  problema 3D em etapas 1D.
+                </p>
+              </div>
+
+              <div class="history-section" style="font-size: 0.8em">
+                <div class="history-label">Exemplo: Controle de Atitude</div>
+                <p><strong>Explorer 1 (1958)</strong></p>
+                <p>
+                  O satélite girava de forma inesperada. A análise pós-missão
+                  revelou que a energia estava sendo dissipada (por antenas
+                  flexíveis), fazendo-o girar em torno do eixo de *máximo*
+                  momento de inércia, não o pretendido. Cálculos precisos dos
+                  momentos \(I_x, I_y, I_z\) (via integrais triplas iteradas)
+                  são cruciais para prever e controlar a dinâmica rotacional de
+                  qualquer espaçonave.
+                </p>
+              </div>
+            </div>
+            <style>
+              /* Adicionado para dual panel */
+              .dual-panel {
+                display: flex;
+                gap: 20px;
+                align-items: flex-start;
+              }
+              .dual-panel > div {
+                flex: 1;
+              }
+            </style>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide de Aplicação Histórica -->
+          <section>
+            <h2>Aplicação Histórica: Sputnik (1957)</h2>
+
+            <div class="math-section">
+              <p>
+                Para o Sputnik (esfera \(\approx\) 84kg, 58cm diâmetro), mesmo
+                com a forma simples, cálculos internos eram necessários:
+              </p>
+              <ul>
+                <li>
+                  <strong>Verificação do Volume Total:</strong> \(\iiint_E 1 \,
+                  dV\) (trivial em esféricas, mas confirma a ferramenta).
+                </li>
+                <li>
+                  <strong>Massa e Centro de Massa:</strong> Considerando a casca
+                  de alumínio e os componentes internos (baterias, rádio),
+                  \(\iiint_E \rho_{total}(x,y,z) \, dV\). O centro de massa
+                  tinha que estar próximo ao centro geométrico para estabilidade
+                  inicial.
+                </li>
+                <li>
+                  <strong>Momento de Inércia:</strong> \(I = \iiint_E
+                  r_{\perp}^2 \rho \, dV\) para prever a rotação inicial. Para
+                  uma esfera oca, \(I = \frac{2}{3}MR^2\), mas os componentes
+                  internos alteram isso.
+                </li>
+              </ul>
+            </div>
+
+            <div class="history-section" style="font-size: 0.8em">
+              <div class="history-label">Impacto</div>
+              <p><strong>Sputnik 1 (4 de outubro de 1957)</strong></p>
+              <p>
+                O sucesso do Sputnik não foi apenas um feito de propulsão, mas
+                também de engenharia de sistemas. A capacidade de calcular e
+                verificar propriedades de massa e volume usando integrais
+                triplas (mesmo que para formas relativamente simples
+                inicialmente) era uma competência matemática essencial
+                subjacente ao projeto e construção do satélite e seu estágio de
+                lançamento.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide de Aplicação Prática -->
+          <section>
+            <h2>Aplicações Práticas na Engenharia Aeroespacial Atual</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p>Integrais Triplas e Fubini são a base para:</p>
+                <ul>
+                  <li>
+                    <strong>Análise de Elementos Finitos (FEA):</strong>
+                    Software de simulação divide estruturas complexas (asas,
+                    fuselagens, motores) em pequenos volumes (elementos finitos)
+                    e integra numericamente equações (baseadas em integrais)
+                    sobre esses volumes para calcular tensões, deformações,
+                    temperaturas.
+                  </li>
+                  <li>
+                    <strong>Dinâmica de Fluidos Computacional (CFD):</strong>
+                    Simula o fluxo de ar (aerodinâmica) ou propelente (motores)
+                    resolvendo equações diferenciais em volumes de controle, o
+                    que envolve integrais de fluxo, pressão, etc.
+                  </li>
+                  <li>
+                    <strong>Gerenciamento de Propelente:</strong> Calcular o
+                    volume exato e o centro de massa do propelente líquido em
+                    tanques durante manobras (considerando o efeito "slosh").
+                  </li>
+                  <li>
+                    <strong>Projeto de Escudos Térmicos:</strong> Calcular a
+                    quantidade total de calor absorvida integrando o fluxo de
+                    calor sobre o volume do escudo.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="history-section" style="font-size: 0.8em">
+                <div class="history-label">Exemplo: Simulação Numérica</div>
+                <p><strong>Projeto de Veículos de Reentrada</strong></p>
+                <p>
+                  Ao projetar cápsulas como a Orion ou Starliner, engenheiros
+                  usam CFD (baseado em integrais de volume e superfície) para
+                  simular o aquecimento extremo durante a reentrada atmosférica.
+                  Eles calculam o fluxo de calor em cada ponto da superfície e
+                  integram isso sobre o volume do escudo térmico para garantir
+                  que ele possa suportar a carga térmica total sem falhar.
+                  Fubini está implícito na forma como essas integrais 3D são
+                  resolvidas numericamente.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide de Encerramento -->
+          <section>
+            <h2>Próximos Passos: Simplificando Integrais</h2>
+
+            <div class="math-section">
+              <p>
+                Fubini nos permite calcular integrais triplas iterando, mas os
+                limites em coordenadas
+                <strong>cartesianas (x, y, z)</strong> podem ser complicados
+                para regiões curvas.
+              </p>
+              <p>
+                Na Parte 2, veremos como a
+                <strong>Mudança de Coordenadas</strong> simplifica integrais
+                sobre regiões com simetria:
+              </p>
+              <ul>
+                <li>
+                  <strong>Coordenadas Cilíndricas (r, \(\theta\), z):</strong>
+                  Para cilindros, cones, paraboloides.
+                </li>
+                <li>
+                  <strong
+                    >Coordenadas Esféricas (\(\rho\), \(\theta\),
+                    \(\phi\)):</strong
+                  >
+                  Para esferas, cones na origem, regiões esféricas.
+                </li>
+              </ul>
+              <p>
+                Introduziremos o <strong>Jacobiano</strong> (\( |
+                \frac{\partial(x,y,z)}{\partial(u,v,w)} | \)), o fator que
+                ajusta o elemento de volume:
+              </p>
+              <p>
+                \[ dV = dx \, dy \, dz \quad \longrightarrow \quad |J| \, du \,
+                dv \, dw \]
+              </p>
+              <p>
+                Ex: \(dV = r \, dr \, d\theta \, dz\) (Cilíndricas), \(dV =
+                \rho^2 \sin\phi \, d\rho \, d\phi \, d\theta\) (Esféricas).
+              </p>
+            </div>
+
+            <div class="problem-section">
+              <p>
+                <strong>Desafio:</strong> Monte a integral tripla para o volume
+                do cone \(z = \sqrt{x^2+y^2}\) limitado acima por \(z=1\). Tente
+                resolver em cartesianas. Você verá como os limites
+                \(\sqrt{...}\) tornam isso desagradável. Na próxima parte,
+                faremos isso facilmente em cilíndricas! \[ E = \{ (x,y,z) \mid
+                x^2+y^2 \le z^2, \, 0 \le z \le 1 \} \] \[ V = \int_{-1}^{1}
+                \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}} \int_{\sqrt{x^2+y^2}}^{1} 1
+                \, dz \, dy \, dx \quad \text{(Note: Limites de y errados! Deve
+                ser } \sqrt{x^2+y^2} \le 1 \text{ ) } \] \[ \text{Correto: } V =
+                \int_{-1}^{1} \int_{-\sqrt{1-x^2}}^{\sqrt{1-x^2}}
+                \int_{\sqrt{x^2+y^2}}^{1} 1 \, dz \, dy \, dx \quad
+                \text{(Projeção D é } x^2+y^2 \le 1 \text{)} \]
+              </p>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Script de inicialização e visualizações -->
+    <script>
+      // Inicialização do Reveal.js
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3], // Use RevealMath.MathJax3 para MathJax 3
+          // Configuração específica para ajuste de tela
+          width: '95%',
+          height: '100%',
+          margin: 0.04,
+          minScale: 0.2,
+          maxScale: 2.0,
+          // Transições
+          transition: 'slide',
+          backgroundTransition: 'fade',
+          // Navegação
+          navigationMode: 'default',
+          math: {
+            // Configuração específica do plugin RevealMath
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+            // passNoteHTML: true
+          },
+        });
+
+        // Inicializa as visualizações
+        initTripleIntegralViz();
+        initFubiniInteractiveViz(); // Initialize the new interactive one
+      };
+
+      // =============================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DA INTEGRAL TRIPLA
+      // =============================================
+      function initTripleIntegralViz() {
+        const canvas = document.getElementById('tripleIntegralVisualization');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const subdivisionsValueSpan =
+          document.getElementById('subdivisionsValue');
+        const transparencyValueSpan =
+          document.getElementById('transparencyValue');
+
+        let subdivisions = 3;
+        let transparency = 50;
+
+        function updateSliderValues() {
+          if (subdivisionsValueSpan)
+            subdivisionsValueSpan.textContent = subdivisions;
+          if (transparencyValueSpan)
+            transparencyValueSpan.textContent = transparency;
+        }
+
+        // Define a projection function (simple isometric-like)
+        function project(x, y, z, canvasWidth, canvasHeight) {
+          const scale = Math.min(canvasWidth, canvasHeight) * 0.2;
+          // Ajuste para uma projeção isométrica mais padrão
+          const angle = Math.PI / 6; // 30 degrees
+          const isoX = (x - y) * Math.cos(angle);
+          const isoY = (x + y) * Math.sin(angle) - z; // Z vai para baixo na projeção
+          return {
+            x: canvasWidth / 2 + isoX * scale,
+            y: canvasHeight / 2 + isoY * scale * 0.8, // Invert Y axis and apply slight vertical scale
+          };
+        }
+
+        function drawAxis() {
+          const w = canvas.width;
+          const h = canvas.height;
+          const axisLength = 1.8; // Relative length in projected units
+
+          ctx.lineWidth = 1.5;
+          ctx.font = '14px Arial';
+
+          // Helper to draw one axis with arrow
+          function drawSingleAxis(x, y, z, color, label) {
+            const origin = project(0, 0, 0, w, h);
+            const end = project(
+              x * axisLength,
+              y * axisLength,
+              z * axisLength,
+              w,
+              h
+            );
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.stroke();
+            // Arrow head
+            const angle = Math.atan2(end.y - origin.y, end.x - origin.x);
+            const arrowSize = 8;
+            ctx.beginPath();
+            ctx.moveTo(end.x, end.y);
+            ctx.lineTo(
+              end.x - arrowSize * Math.cos(angle - Math.PI / 6),
+              end.y - arrowSize * Math.sin(angle - Math.PI / 6)
+            );
+            ctx.moveTo(end.x, end.y);
+            ctx.lineTo(
+              end.x - arrowSize * Math.cos(angle + Math.PI / 6),
+              end.y - arrowSize * Math.sin(angle + Math.PI / 6)
+            );
+            ctx.stroke();
+            // Label
+            ctx.fillStyle = color;
+            ctx.fillText(
+              label,
+              end.x + 10 * Math.cos(angle),
+              end.y + 10 * Math.sin(angle) + (label === 'z' ? -2 : 4)
+            );
+          }
+
+          drawSingleAxis(1, 0, 0, '#E53935', 'x'); // X (Red)
+          drawSingleAxis(0, 1, 0, '#43A047', 'y'); // Y (Green)
+          drawSingleAxis(0, 0, 1, '#1E88E5', 'z'); // Z (Blue)
+        }
+
+        function drawCube(x, y, z, size, alpha) {
+          const w = canvas.width;
+          const h = canvas.height;
+          const s2 = size / 2;
+
+          const vertices = [
+            { x: x - s2, y: y - s2, z: z - s2 },
+            { x: x + s2, y: y - s2, z: z - s2 }, // 0, 1 Bottom Front
+            { x: x + s2, y: y + s2, z: z - s2 },
+            { x: x - s2, y: y + s2, z: z - s2 }, // 2, 3 Bottom Back
+            { x: x - s2, y: y - s2, z: z + s2 },
+            { x: x + s2, y: y - s2, z: z + s2 }, // 4, 5 Top Front
+            { x: x + s2, y: y + s2, z: z + s2 },
+            { x: x - s2, y: y + s2, z: z + s2 }, // 6, 7 Top Back
+          ];
+
+          const projectedVertices = vertices.map((v) =>
+            project(v.x, v.y, v.z, w, h)
+          );
+
+          const faces = [
+            { idx: [0, 1, 2, 3], color: '#DDDDDD' }, // Bottom face (z-) Light Gray
+            { idx: [4, 5, 6, 7], color: '#FFFFFF' }, // Top face (z+) White
+            { idx: [0, 1, 5, 4], color: '#FFCCCC' }, // Front face (y-) Light Red
+            { idx: [2, 3, 7, 6], color: '#E0E0FF' }, // Back face (y+) Light Blue
+            { idx: [0, 3, 7, 4], color: '#CCFFCC' }, // Left face (x-) Light Green
+            { idx: [1, 2, 6, 5], color: '#FFFFCC' }, // Right face (x+) Light Yellow
+          ];
+
+          // Calculate face depth (average projected Y of vertices) for painter's algorithm
+          const faceDepths = faces.map((faceData) => {
+            let avgProjY =
+              faceData.idx.reduce(
+                (sum, vertexIndex) => sum + projectedVertices[vertexIndex].y,
+                0
+              ) / faceData.idx.length;
+            // Tie break with Z
+            let avgZ =
+              faceData.idx.reduce(
+                (sum, vertexIndex) => sum + vertices[vertexIndex].z,
+                0
+              ) / faceData.idx.length;
+            return { faceData, depth: avgProjY + avgZ * 0.1 }; // Prioritize screen Y
+          });
+
+          faceDepths.sort((a, b) => a.depth - b.depth); // Sort from back (lower Y) to front (higher Y)
+
+          ctx.lineWidth = 0.5;
+          const alphaHex = Math.floor((alpha * 255) / 100)
+            .toString(16)
+            .padStart(2, '0');
+          ctx.strokeStyle = `#555555${alphaHex}`; // Outline color
+
+          faceDepths.forEach(({ faceData }) => {
+            ctx.beginPath();
+            const firstVert = projectedVertices[faceData.idx[0]];
+            ctx.moveTo(firstVert.x, firstVert.y);
+            for (let i = 1; i < faceData.idx.length; i++) {
+              const vert = projectedVertices[faceData.idx[i]];
+              ctx.lineTo(vert.x, vert.y);
+            }
+            ctx.closePath();
+
+            ctx.fillStyle = faceData.color + alphaHex;
+            ctx.fill();
+            ctx.stroke();
+          });
+        }
+
+        function drawVolume() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawAxis();
+
+          const domainSize = 1.5; // Make the overall region slightly larger visually
+          const step = domainSize / subdivisions;
+          const offset = -domainSize / 2 + step / 2;
+          const alpha = transparency;
+
+          let cubesToDraw = [];
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              for (let k = 0; k < subdivisions; k++) {
+                let x = offset + i * step;
+                let y = offset + j * step;
+                let z = offset + k * step;
+                // Calculate depth based on projected Y primarily
+                let proj = project(x, y, z, canvas.width, canvas.height);
+                cubesToDraw.push({ x, y, z, depth: proj.y + z * 0.1 });
+              }
+            }
+          }
+
+          cubesToDraw.sort((a, b) => a.depth - b.depth); // Sort back to front
+
+          cubesToDraw.forEach((cube) => {
+            drawCube(cube.x, cube.y, cube.z, step, alpha);
+          });
+
+          ctx.fillStyle = '#e0e0e0';
+          ctx.font = '16px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(
+            `Região dividida em ${subdivisions}³ = ${subdivisions * subdivisions * subdivisions} sub-volumes (ΔV)`,
+            canvas.width / 2,
+            canvas.height - 15
+          ); // Move text to bottom
+        }
+
+        // Initial setup
+        updateSliderValues();
+        drawVolume();
+
+        window.updateVisualization = function () {
+          const subdivisionsSlider = document.getElementById('subdivisions');
+          const transparencySlider = document.getElementById('transparency');
+
+          if (subdivisionsSlider && transparencySlider) {
+            subdivisions = parseInt(subdivisionsSlider.value);
+            transparency = parseInt(transparencySlider.value);
+            updateSliderValues();
+            drawVolume();
+          }
+        };
+
+        window.resetVisualization = function () {
+          subdivisions = 3;
+          transparency = 50;
+
+          const subdivisionsSlider = document.getElementById('subdivisions');
+          const transparencySlider = document.getElementById('transparency');
+          if (subdivisionsSlider) subdivisionsSlider.value = 3;
+          if (transparencySlider) transparencySlider.value = 50;
+
+          updateSliderValues();
+          drawVolume();
+        };
+      }
+
+      // ===================================================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO INTERATIVA DO TEOREMA DE FUBINI (FIXED)
+      // ===================================================================
+      let fubiniAnimationId = null;
+      let currentFubiniOrder = 'dx';
+
+      function initFubiniInteractiveViz() {
+        const canvas = document.getElementById(
+          'fubiniVisualizationInteractive'
+        );
+        const explanationElem = document.getElementById('fubiniExplanation');
+        if (!canvas || !explanationElem) {
+          console.error(
+            'Fubini interactive canvas or explanation element not found.'
+          );
+          return;
+        }
+
+        const ctx = canvas.getContext('2d');
+        let animationStep = 0;
+        const totalSteps = 180; // Slower animation
+
+        // --- Geometry Setup ---
+        const box = { width: 1.0, depth: 0.8, height: 0.6 };
+        const center = { x: canvas.width / 2, y: canvas.height / 2 + 30 }; // Adjust Y
+        const scale = Math.min(canvas.width, canvas.height) * 0.45;
+
+        // --- Projection Object --- <<<< FIX: Ensure iso is consistently defined and used
+        const iso = {
+          angle: Math.PI / 6, // 30 degrees
+          scale: scale,
+          centerX: center.x,
+          centerY: center.y,
+          zScale: 0.8, // Visual foreshortening for Z
+
+          projectX: function (x, y, z) {
+            return this.centerX + (x - y) * Math.cos(this.angle) * this.scale;
+          },
+          projectY: function (x, y, z) {
+            // Y increases downwards in canvas, Z projection subtracts
+            return (
+              this.centerY +
+              ((x + y) * Math.sin(this.angle) - z * this.zScale) * this.scale
+            );
+          },
+          // Helper to project a vertex object {x, y, z}
+          projectVertex: function (vertex) {
+            return {
+              x: this.projectX(vertex.x, vertex.y, vertex.z),
+              y: this.projectY(vertex.x, vertex.y, vertex.z),
+            };
+          },
+        };
+
+        // --- Drawing Functions ---
+
+        function drawAxes() {
+          ctx.lineWidth = 1.5;
+          const axisLength = 0.8;
+          ctx.font = '12px Arial';
+
+          function drawSingleAxis(x, y, z, color, label) {
+            // --- FIX: Use iso.projectVertex ---
+            const origin = iso.projectVertex({ x: 0, y: 0, z: 0 });
+            const end = iso.projectVertex({
+              x: x * axisLength,
+              y: y * axisLength,
+              z: z * axisLength,
+            });
+            // --- End Fix ---
+
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(origin.x, origin.y);
+            ctx.lineTo(end.x, end.y);
+            ctx.stroke();
+
+            const angle = Math.atan2(end.y - origin.y, end.x - origin.x);
+            const arrowSize = 7;
+            ctx.fillStyle = color; // Use fill for arrow head
+            ctx.beginPath();
+            ctx.moveTo(end.x, end.y);
+            ctx.lineTo(
+              end.x - arrowSize * Math.cos(angle - Math.PI / 6),
+              end.y - arrowSize * Math.sin(angle - Math.PI / 6)
+            );
+            ctx.lineTo(
+              end.x - arrowSize * Math.cos(angle + Math.PI / 6),
+              end.y - arrowSize * Math.sin(angle + Math.PI / 6)
+            );
+            ctx.closePath();
+            ctx.fill();
+
+            ctx.fillText(
+              label,
+              end.x + 8 * Math.cos(angle),
+              end.y + 8 * Math.sin(angle) + (label === 'z' ? -2 : 5)
+            );
+          }
+
+          drawSingleAxis(1, 0, 0, '#E53935', 'x');
+          drawSingleAxis(0, 1, 0, '#43A047', 'y');
+          drawSingleAxis(0, 0, 1, '#1E88E5', 'z');
+        }
+
+        function getBoxVertices(b) {
+          const w2 = b.width / 2,
+            d2 = b.depth / 2,
+            h = b.height;
+          return [
+            { x: -w2, y: -d2, z: 0 },
+            { x: w2, y: -d2, z: 0 },
+            { x: w2, y: d2, z: 0 },
+            { x: -w2, y: d2, z: 0 },
+            { x: -w2, y: -d2, z: h },
+            { x: w2, y: -d2, z: h },
+            { x: w2, y: d2, z: h },
+            { x: -w2, y: d2, z: h },
+          ];
+        }
+
+        const boxFacesIndices = [
+          [0, 1, 2, 3],
+          [4, 5, 6, 7],
+          [0, 1, 5, 4],
+          [2, 3, 7, 6],
+          [0, 3, 7, 4],
+          [1, 2, 6, 5],
+        ];
+
+        function drawShape(
+          vertices,
+          faceIndices,
+          fillColor,
+          strokeColor,
+          lineWidth = 1
+        ) {
+          const faces = faceIndices.map((indices) => {
+            const points = indices.map((i) => vertices[i]);
+
+            // --- FIX: Use iso.projectVertex ---
+            const projPoints = points.map((p) => iso.projectVertex(p));
+            // --- End Fix ---
+
+            let avgProjY =
+              projPoints.reduce((sum, p) => sum + p.y, 0) / points.length;
+            let avgZ = points.reduce((sum, p) => sum + p.z, 0) / points.length; // Use original Z for tie-breaking
+            let depth = avgProjY * 1000 + avgZ;
+
+            return { points, projPoints, depth };
+          });
+
+          faces.sort((a, b) => a.depth - b.depth); // Furthest first
+
+          ctx.lineWidth = lineWidth;
+
+          faces.forEach((face) => {
+            ctx.fillStyle = fillColor;
+            ctx.strokeStyle = strokeColor;
+            ctx.beginPath();
+            ctx.moveTo(face.projPoints[0].x, face.projPoints[0].y);
+            for (let i = 1; i < face.projPoints.length; i++) {
+              ctx.lineTo(face.projPoints[i].x, face.projPoints[i].y);
+            }
+            ctx.closePath();
+            if (fillColor) ctx.fill();
+            if (strokeColor) ctx.stroke();
+          });
+        }
+
+        function drawSlice(order, position, thickness) {
+          const w2 = box.width / 2,
+            d2 = box.depth / 2,
+            h = box.height;
+          let sliceVertices = [];
+          let sliceFaces = boxFacesIndices;
+
+          switch (order) {
+            case 'dx':
+              const x1 = position - thickness / 2;
+              const x2 = position + thickness / 2;
+              if (x1 > w2 || x2 < -w2) return; // Check bounds
+              sliceVertices = [
+                { x: x1, y: -d2, z: 0 },
+                { x: x2, y: -d2, z: 0 },
+                { x: x2, y: d2, z: 0 },
+                { x: x1, y: d2, z: 0 },
+                { x: x1, y: -d2, z: h },
+                { x: x2, y: -d2, z: h },
+                { x: x2, y: d2, z: h },
+                { x: x1, y: d2, z: h },
+              ];
+              break;
+            case 'dy':
+              const y1 = position - thickness / 2;
+              const y2 = position + thickness / 2;
+              if (y1 > d2 || y2 < -d2) return;
+              sliceVertices = [
+                { x: -w2, y: y1, z: 0 },
+                { x: w2, y: y1, z: 0 },
+                { x: w2, y: y2, z: 0 },
+                { x: -w2, y: y2, z: 0 },
+                { x: -w2, y: y1, z: h },
+                { x: w2, y: y1, z: h },
+                { x: w2, y: y2, z: h },
+                { x: -w2, y: y2, z: h },
+              ];
+              break;
+            case 'dz':
+              const z1 = position - thickness / 2;
+              const z2 = position + thickness / 2;
+              if (z1 > h || z2 < 0) return;
+              sliceVertices = [
+                { x: -w2, y: -d2, z: z1 },
+                { x: w2, y: -d2, z: z1 },
+                { x: w2, y: d2, z: z1 },
+                { x: -w2, y: d2, z: z1 },
+                { x: -w2, y: -d2, z: z2 },
+                { x: w2, y: -d2, z: z2 },
+                { x: w2, y: d2, z: z2 },
+                { x: -w2, y: d2, z: z2 },
+              ];
+              break;
+          }
+          if (sliceVertices.length > 0) {
+            drawShape(
+              sliceVertices,
+              sliceFaces,
+              'rgba(255, 90, 95, 0.75)',
+              '#D32F2F',
+              1.5
+            );
+          }
+        }
+
+        // --- Animation Loop ---
+        function animateFubini() {
+          // Order is checked/updated via the global variable currentFubiniOrder
+
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawAxes();
+
+          const boxVertices = getBoxVertices(box);
+          drawShape(
+            boxVertices,
+            boxFacesIndices,
+            'rgba(79, 195, 247, 0.1)',
+            'rgba(120, 180, 220, 0.4)',
+            1
+          );
+
+          const progress = (animationStep % totalSteps) / totalSteps;
+          const easedProgress = 0.5 - 0.5 * Math.cos(progress * Math.PI * 2); // 0 -> 1 -> 0
+
+          let position, range, thickness, explanation;
+          const w2 = box.width / 2,
+            d2 = box.depth / 2,
+            h = box.height;
+
+          switch (currentFubiniOrder) {
+            case 'dx':
+              range = box.width;
+              position = -w2 + easedProgress * range;
+              thickness = 0.04 * box.width;
+              explanation = `Somando fatias YZ (∫dz dy) ao longo do eixo X. Final: dx. Posição x ≈ ${position.toFixed(2)}`;
+              break;
+            case 'dy':
+              range = box.depth;
+              position = -d2 + easedProgress * range;
+              thickness = 0.04 * box.depth;
+              explanation = `Somando fatias XZ (∫dz dx) ao longo do eixo Y. Final: dy. Posição y ≈ ${position.toFixed(2)}`;
+              break;
+            case 'dz':
+              range = box.height;
+              position = 0 + easedProgress * range;
+              thickness = 0.04 * box.height;
+              explanation = `Somando fatias XY (∫dx dy) ao longo do eixo Z. Final: dz. Posição z ≈ ${position.toFixed(2)}`;
+              break;
+          }
+
+          drawSlice(currentFubiniOrder, position, thickness);
+          explanationElem.textContent = explanation;
+
+          animationStep++;
+          fubiniAnimationId = requestAnimationFrame(animateFubini);
+        }
+
+        // --- Event Listeners ---
+        window.updateFubiniInteractive = function () {
+          const newOrder = document.querySelector(
+            'input[name="fubini_order"]:checked'
+          ).value;
+          if (newOrder !== currentFubiniOrder) {
+            currentFubiniOrder = newOrder;
+            animationStep = 0; // Reset animation if order changes
+            if (!fubiniAnimationId) {
+              // Restart if stopped
+              animateFubini();
+            }
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', function (event) {
+          const currentSlide = event.currentSlide;
+          // Check if the canvas element exists *within* the current slide
+          const isVisible = currentSlide && currentSlide.contains(canvas);
+
+          if (isVisible) {
+            if (!fubiniAnimationId) {
+              console.log('Fubini viz starting on slide enter');
+              animationStep = 0;
+              // Ensure order is read from UI before starting
+              currentFubiniOrder = document.querySelector(
+                'input[name="fubini_order"]:checked'
+              ).value;
+              animateFubini();
+            }
+          } else {
+            if (fubiniAnimationId) {
+              console.log('Fubini viz stopping on slide exit');
+              cancelAnimationFrame(fubiniAnimationId);
+              fubiniAnimationId = null;
+            }
+          }
+        });
+
+        // --- FIX: Remove initial animation call from here ---
+        // Initialize the order, but don't start animation yet.
+        // The 'slidechanged' listener will handle the first start.
+        currentFubiniOrder = document.querySelector(
+          'input[name="fubini_order"]:checked'
+        ).value;
+        console.log('Fubini viz initialized, waiting for slide enter.');
+      } // --- End of initFubiniInteractiveViz ---
+    </script>
+  </body>
+</html>
