@@ -1,23 +1,929 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conjunto simplesmente conexo - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Conjunto simplesmente conexo</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!doctype html>
+
+    <html lang="pt-BR">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Documento Sigiloso - Cálculo Vetorial</title>
+        <link
+          href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+          rel="stylesheet"
+        />
+        <!-- Include MathJax -->
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script
+          id="MathJax-script"
+          async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+        <script>
+          MathJax = {
+            tex: {
+              inlineMath: [
+                ['$', '$'],
+                ['\\(', '\\)'],
+              ],
+              displayMath: [
+                ['$$', '$$'],
+                ['\\[', '\\]'],
+              ],
+              processEscapes: true,
+              processEnvironments: true,
+            },
+            options: {
+              skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            },
+          };
+        </script>
+        <style>
+          :root {
+            --main-bg-color: #0a0a0a;
+            --paper-color: #f5f5dc;
+            --text-color: #333;
+            --accent-color: #d4af37;
+            --stamp-color: #8b0000;
+            --censored-bg: #000;
+            --header-bg: #e6e6cc;
+          }
+          * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+          body {
+            background-color: var(--main-bg-color);
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            line-height: 1.6;
+          }
+          .container {
+            width: 100%;
+            max-width: 800px;
+            background-color: var(--paper-color);
+            color: var(--text-color);
+            padding: 25px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            position: relative;
+            overflow: hidden;
+          }
+          .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+            opacity: 0.05;
+            pointer-events: none;
+          }
+          .document-header {
+            position: relative;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #555;
+            padding-bottom: 20px;
+          }
+          .document-stamp {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--stamp-color);
+            color: #fff;
+            padding: 5px 15px;
+            transform: rotate(15deg);
+            font-weight: bold;
+            font-size: 1.2em;
+            border: 2px solid #500;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+          }
+          .document-date {
+            text-align: right;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+          }
+          .document-intro {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+          }
+          .censored {
+            background-color: var(--censored-bg);
+            color: var(--censored-bg);
+            padding: 0 2px;
+            user-select: none;
+            margin: 0 2px;
+          }
+          .warning-box {
+            border: 1px dashed #8b0000;
+            padding: 10px;
+            margin: 15px 0;
+            background-color: rgba(139, 0, 0, 0.05);
+          }
+          .metadata {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dotted #555;
+          }
+          /* Theoretical section */
+          .section-title {
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+            border-bottom: 1px solid #777;
+            padding-bottom: 5px;
+          }
+          .concept-definition {
+            background-color: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--accent-color);
+            padding: 10px;
+            margin: 15px 0;
+          }
+          .mission-context {
+            font-style: italic;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            border: 1px dashed #555;
+          }
+          .formula-highlight {
+            text-align: center;
+            margin: 15px auto;
+            padding: 10px;
+          }
+          .historical-note {
+            font-size: 0.85em;
+            margin: 10px 0;
+            padding: 8px;
+            border: 1px dotted #777;
+            background-color: rgba(139, 0, 0, 0.05);
+          }
+          /* Exercises */
+          .exercise-list {
+            list-style-type: none;
+          }
+          .exercise-item {
+            margin-bottom: 30px;
+            border: 1px solid #777;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.4);
+          }
+          .exercise-number {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #777;
+            padding-bottom: 5px;
+          }
+          .context {
+            font-size: 0.8em;
+            margin-bottom: 15px;
+            font-style: italic;
+            color: #555;
+          }
+          summary {
+            cursor: pointer;
+            background-color: var(--header-bg);
+            padding: 8px;
+            margin-top: 15px;
+            border: 1px solid #999;
+            font-weight: bold;
+            transition: background-color 0.3s;
+          }
+          summary:hover {
+            background-color: #d6d6b6;
+          }
+          .solution {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid #999;
+            border-top: none;
+          }
+          .hint-container {
+            margin-top: 10px;
+            margin-bottom: 10px;
+          }
+          .hint-container summary {
+            background-color: #f0f0e0;
+            font-weight: normal;
+            font-size: 0.9em;
+          }
+          .hint {
+            font-size: 0.9em;
+            font-style: italic;
+            margin: 10px 0;
+            padding: 5px;
+            border-left: 3px solid #777;
+            background-color: rgba(0, 0, 0, 0.05);
+          }
+          .page-number {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8em;
+            color: #555;
+            border-top: 1px solid #777;
+            padding-top: 10px;
+          }
+          .footer-stamp {
+            position: absolute;
+            bottom: 50px;
+            right: 30px;
+            opacity: 0.3;
+            transform: rotate(-20deg);
+            font-weight: bold;
+            font-size: 1.5em;
+            color: var(--stamp-color);
+            border: 2px solid var(--stamp-color);
+            padding: 5px 15px;
+            pointer-events: none;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <div class="document-header">
+            <div class="document-stamp">SIGILOSO</div>
+            <div class="document-date">
+              DATA: <span class="censored">07</span> DE MARÇO DE
+              <span class="censored">1966</span><br />
+              LOCALIZAÇÃO:
+              <span class="censored">CENTRO DE PESQUISA [███]</span>
+            </div>
+            <div class="document-intro">
+              RELATÓRIO DE PROGRESSO: PROJETO
+              <span class="censored">VECTOR-X</span><br /><br />
+              Em resposta à corrida tecnológica desencadeada pelo
+              <span class="censored">lançamento do Sputnik</span>, este dossiê
+              consolida investigações sobre geometria de regiões de voo\,
+              essenciais para assegurar rotas seguras de reentrada. <br /><br />
+              Os exercícios anexos foram transcritos dos cadernos do Dr. <span
+                class="censored"
+                >██████████</span
+              >\, cuja pesquisa em
+              <span class="censored">topologia aplicada</span> sustenta a
+              navegação de cápsulas Gemini. 
+            </div>
+            <div class="warning-box">
+              Este documento contém informações consideradas vitais para a
+              segurança nacional. A divulgação não autorizada poderá resultar em
+              <span class="censored">sanções severas</span>.
+            </div>
+            <div class="metadata">
+              <span>REF: VX-<span class="censored">0042</span>-C</span>
+              <span
+                >NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span
+              >
+              <span
+                >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+                <span class="censored">4</span></span
+              >
+            </div>
+          </div>
+
+          ```
+          <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+          <div class="section-title">
+            FUNDAMENTAÇÃO TEÓRICA: CONJUNTO SIMPLESMENTE CONEXO
+          </div>
+          <div class="concept-definition">
+            <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+            <p class="formula-highlight">\[\pi_1(\Omega)=\{e\}\]</p>
+            <p>
+              Um subconjunto \(\Omega \subseteq \mathbb{R}^n\) é
+              <em>simplesmente conexo</em> se é caminho‑conexo e todo caminho
+              fechado em \(\Omega\) pode ser continuamente deformado, dentro de
+              \(\Omega\), até um ponto.<br />Intuitivamente, regiões sem
+              "furos".
+            </p>
+          </div>
+          <div class="mission-context">
+            No planejamento de reentrada das cápsulas Gemini, a região de
+            tolerância térmica no espaço de estados precisava ser simplesmente
+            conexa, garantindo que
+            <span class="censored">manobras corretivas</span> fossem possíveis
+            sem saltar fronteiras críticas.
+          </div>
+          <div class="historical-note">
+            <strong>NOTA HISTÓRICA:</strong> Durante o
+            <em>Programa Gemini</em> (1965‑1966) engenheiros dependiam da
+            identificação de domínios simplesmente conexos no plano de
+            inclinação versus perigeu para projetar janelas seguras de retorno.
+          </div>
+
+          <main>
+            <ol class="exercise-list">
+              <!-- ALFA SERIES -->
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+                <div class="context">
+                  ORIGEM: Briefing Gemini IV — Maio/1965
+                </div>
+                <p>
+                  Considere o disco aberto \(D = \{(x,y) \mid x^2+y^2 < 1\}\).
+                  Determine se \(D\) é simplesmente conexo justificando de forma
+                  intuitiva.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Imagine encolher qualquer laço até o centro.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      O disco é caminho‑conexo e não possui furos. Qualquer
+                      curva fechada pode ser retraída radialmente até um ponto,
+                      logo \(\pi_1(D)=\{e\}\). Portanto, simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+                <div class="context">
+                  ORIGEM: Laboratório de Trajetórias — Junho/1965
+                </div>
+                <p>
+                  Seja \(A = \{(x,y) \mid 1 < x^2 + y^2 < 4\}\) (anel entre dois
+                  círculos). Julgue a simples conexidade e explique.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Observe a presença de uma região removida no
+                    centro.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCALCULO [SIGMA-1 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      O anel contém um "furo" central. Existe curva que circunda
+                      o furo e não pode ser contraída dentro de \(A\). Assim
+                      \(A\) não é simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+                <div class="context">
+                  ORIGEM: Documento de Teste ─ Julho/1965
+                </div>
+                <p>
+                  A região \(R = \{(x,y) \mid y > 0\}\) (semiplano superior) é
+                  simplesmente conexa? Forneça argumento visual.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Pense nas deformações possíveis sem sair da
+                    região.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      O semiplano não contém furos e é caminho‑conexo. Laços
+                      podem ser empurrados para longe da borda e contraídos.
+                      Logo é simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <!-- BETA SERIES -->
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+                <div class="context">
+                  ORIGEM: Simulação de Manobra — Agosto/1965
+                </div>
+                <p>
+                  O domínio \(B = D \setminus \{(0,0)\}\) é o disco aberto
+                  anterior com o centro removido. Discuta se \(B\) é
+                  simplesmente conexo.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Propriedades de conservação podem ser
+                    relevantes.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      Remover o ponto cria um furo topológico. Um laço que
+                      circunde o centro não pode ser encolhido sem passar pelo
+                      ponto removido. Portanto, não é simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+                <div class="context">
+                  ORIGEM: Departamento de Navegação — Setembro/1965
+                </div>
+                <p>
+                  Considere o domínio \(C = \{(x,y) \mid y > \sin x\}\).
+                  Argumente sobre sua simples conexidade.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Superfícies sem auto‑intersecções tendem a
+                    não prender curvas.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      A região acima do gráfico de uma função contínua é
+                      homeomorfa ao semiplano superior, logo simplesmente
+                      conexa.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+                <div class="context">
+                  ORIGEM: Oficina de Topologia Aplicada — Outubro/1965
+                </div>
+                <p>
+                  Explique se o interior de um triângulo equilátero é
+                  simplesmente conexo e relacione com o disco por deformação.<br />
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Pense em transformação contínua que preserva
+                    fronteiras.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      O interior do triângulo é simplesmente conexo pois pode
+                      ser mapeado homeomorficamente (por estiramento) ao disco,
+                      que é simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <!-- GAMMA SERIES -->
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+                <div class="context">
+                  ORIGEM: Programa Apollo — Janeiro/1966
+                </div>
+                <p>
+                  Considere \(\mathbb{R}^3\) menos o eixo \(z\). Este domínio é
+                  simplesmente conexo? Apresente pensamento geométrico.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Existem invariantes relevantes sob rotações
+                    em torno do eixo removido.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      A remoção de uma linha infinita cria um furo como um tubo.
+                      Um laço que envolve o eixo não pode ser encolhido, logo o
+                      domínio não é simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+                <div class="context">
+                  ORIGEM: Arquivos Secretos — Fevereiro/1966
+                </div>
+                <p>
+                  A união de dois discos sobrepostos formando uma "lente"
+                  (região de intersecção inclusive) é simplesmente conexa?
+                  Justifique.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Verifique se a união introduz buracos novos.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCALO [SIGMA-3 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      A sobreposição mantém região sem furos, permanecendo
+                      simplesmente conexa.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+                <div class="context">ORIGEM: Seção de Ensaios — Março/1966</div>
+                <p>
+                  Considere a casca esférica \(E = \{(x,y,z) \mid 1 <
+                  x^2+y^2+z^2 < 4\}\). É simplesmente conexa? Discuta.
+                </p>
+                <details class="hint-container">
+                  <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+                  <div class="hint">
+                    [NOTA TÉCNICA]: Analise a presença de cavidade central.
+                  </div>
+                </details>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      A casca possui cavidade; laços envolvendo a esfera interna
+                      não se contraem. Portanto, não é simplesmente conexa.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <!-- OMEGA SERIES -->
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+                <div class="context">ORIGEM: Missão Skylab — Dezembro/1973</div>
+                <p>
+                  A região interior de um toro (rosquinha) em \(\mathbb{R}^3\) é
+                  candidata a depósito de combustível. Avalie a simples
+                  conexidade.
+                </p>
+                <!-- sem dica -->
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      O toro tem cavidade central e túnel; logo não é
+                      simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+                <div class="context">
+                  ORIGEM: Estudo de Heat Shield — Fevereiro/1974
+                </div>
+                <p>
+                  Propõe‑se remover um setor angular (como um "fatia") de um
+                  disco. A nova região permanece simplesmente conexa? Explique.
+                </p>
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      Com o setor removido não há furos; laços podem escapar
+                      pelo corte e se contrair. Portanto, simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+
+              <li class="exercise-item">
+                <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+                <div class="context">
+                  ORIGEM: Cálculo de Navegação Avançada — Abril/1974
+                </div>
+                <p>
+                  Num cenário em quatro dimensões \(\mathbb{R}^4\), remova o
+                  hiperplano \(x_1 = 0\). Discuta intuitivamente se o domínio
+                  resultante é simplesmente conexo.
+                </p>
+                <!-- sem dica -->
+                <details>
+                  <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+                  <div class="solution">
+                    <p>
+                      Em dimensão \(4\) remover um hiperplano não cria "túnel"
+                      suficiente para obstruir contrações. O domínio continua
+                      simplesmente conexo.
+                    </p>
+                  </div>
+                </details>
+              </li>
+            </ol>
+          </main>
+
+          <div class="page-number">
+            PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span
+              class="censored"
+              >0042</span
+            >-C
+          </div>
+          <div class="footer-stamp">ULTRASSECRETO</div>
+        </div>
+        ```
+      </body>
+    </html>
+  </body>
 </html>
