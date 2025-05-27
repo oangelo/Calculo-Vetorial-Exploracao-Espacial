@@ -45,7 +45,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Integral sobre curvas de classe C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-curvas-c1.html)
 - [Integral relativa ao comprimento de arco](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-comprimento-arco.html)
 6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/campos-conservativos.html)
-- [Definição e forma diferencial exata](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/definicao-e-forma-diferencial-exata.html)
+- Definição e forma diferencial exata
 - [Integral de linha de campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/integral-linha-campos-conservativos.html)
 - [Independência do caminho e função potencial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/independencia-caminho-funcao-potencial.html)
 - [Condições de conservação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/condicoes-de-conservacao.html)
