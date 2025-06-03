@@ -50,7 +50,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Independência do caminho e função potencial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/independencia-caminho-funcao-potencial.html)
 - [Condições de conservação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/condicoes-de-conservacao.html)
 - [Conjunto simplesmente conexo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/conjunto-simplesmente-conexo.html)
-7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green.html)
+7. [Teorema de Green - 1](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green_1.html) [Teorema de Green - 2](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-green_2.html)
 - [Para retângulos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-retangulos.html)
 - [Para conjuntos com fronteira C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-conjuntos-fronteira-c1.html)
 - [Teorema de Stokes no plano](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/teorema-stokes-plano.html)
