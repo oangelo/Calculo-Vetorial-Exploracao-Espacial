@@ -1,0 +1,1513 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: Teoremas Planares (Parte 2)</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme -->
+    <link rel="stylesheet" href="space-theme.css" />
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+      /* Estilos básicos para simulação do space-theme durante desenvolvimento (se space-theme.css não carregar) */
+      :root {
+        --background-color: #0a1128;
+        --text-color: #e9ecef;
+        --accent-color: #ff5a5f;
+        --link-color: #00b4d8;
+        --math-box-bg: rgba(0, 180, 216, 0.1);
+        --math-box-border: rgba(0, 180, 216, 0.3);
+        --history-note-bg: rgba(255, 90, 95, 0.2);
+        --visualization-container-bg: rgba(10, 17, 40, 0.6);
+        --visualization-container-border: rgba(79, 195, 247, 0.3);
+        --visualization-container-shadow: rgba(79, 195, 247, 0.15);
+        --canvas-bg: rgba(10, 10, 15, 0.6);
+        --canvas-border: var(--accent-color);
+        --controls-group-bg: rgba(26, 35, 126, 0.2);
+        --button-bg: rgba(26, 35, 126, 0.5);
+        --button-border: var(--accent-color);
+        --button-hover-bg: rgba(79, 195, 247, 0.3);
+        --results-display-bg: rgba(26, 35, 126, 0.3);
+        --results-display-border: rgba(79, 195, 247, 0.3);
+        --results-label-color: var(--link-color);
+        --star-blue: #4fc3f7;
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--star-blue);
+      }
+      .historical-note {
+        background-color: var(--history-note-bg);
+        border-left: 4px solid var(--accent-color);
+        padding: 10px;
+        font-style: italic;
+        margin: 20px auto;
+        max-width: 85%;
+      }
+      .math-box {
+        background-color: var(--math-box-bg);
+        border: 1px solid var(--math-box-border);
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 90%;
+      }
+
+      .visualization-container {
+        width: 500px; /* Default width */
+        height: auto; /* Adjust height based on content */
+        min-height: 300px; /* Minimum height */
+        margin: 10px auto;
+        position: relative;
+        background-color: var(--visualization-container-bg);
+        border: 1px solid var(--visualization-container-border);
+        box-shadow: 0 0 10px var(--visualization-container-shadow);
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+      }
+
+      canvas.visualization-canvas {
+        display: block;
+        margin: 0 auto;
+        background: var(--canvas-bg);
+        border: 1px solid var(--canvas-border);
+        border-radius: 5px;
+        max-width: 100%; /* Ensure canvas is responsive */
+      }
+
+      img.diagram-svg {
+        display: block;
+        margin: 10px auto;
+        max-width: 90%;
+        height: auto;
+        border-radius: 5px;
+        background-color: #f0f4f8; /* Match SVG background if needed */
+      }
+
+      .controls-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px auto;
+        width: 100%;
+        max-width: 500px;
+        z-index: 10;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--controls-group-bg);
+        border-radius: 4px;
+        padding: 5px;
+        min-width: 120px;
+      }
+
+      .control-label {
+        margin-bottom: 3px;
+        font-size: 0.8em;
+        color: var(--accent-color);
+      }
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .slider {
+        flex-grow: 1;
+        margin: 0 3px;
+        accent-color: var(--star-blue);
+      }
+      .slider::-webkit-slider-thumb {
+        background: var(--star-blue);
+      }
+      .slider::-moz-range-thumb {
+        background: var(--star-blue);
+        border: none;
+      }
+
+      .slider-value {
+        min-width: 25px;
+        text-align: center;
+        font-size: 0.7em;
+      }
+
+      button.control-button,
+      .controls-container button,
+      .horizontal-buttons button {
+        background: var(--button-bg);
+        color: var(--text-color);
+        border: 1px solid var(--button-border);
+        border-radius: 15px;
+        padding: 4px 12px;
+        font-size: 0.9em;
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          transform 0.2s;
+        margin: 3px;
+      }
+
+      button.control-button:hover,
+      .controls-container button:hover,
+      .horizontal-buttons button:hover {
+        background: var(--button-hover-bg);
+        transform: scale(1.05);
+      }
+
+      .horizontal-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+      .horizontal-buttons button {
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 0.8em;
+      }
+
+      .results-display {
+        background-color: var(--results-display-bg);
+        border: 1px solid var(--results-display-border);
+        border-radius: 4px;
+        padding: 5px 8px;
+        margin-top: 10px;
+        width: 80%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: monospace;
+        font-size: 0.7em;
+      }
+
+      .results-title {
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 3px;
+        font-size: 0.8em;
+      }
+
+      .results-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 2px 0;
+      }
+
+      .results-label {
+        color: var(--results-label-color);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Teoremas Planares Avançados</h1>
+          <h3>Stokes e Divergência no Plano: Rumo ao 3D</h3>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TÓPICO 4: TEOREMA DE STOKES NO PLANO     -->
+        <!-- ========================================= -->
+        <section>
+          <!-- Slide 4.1: Uma Nova Perspectiva para Green (Revisado) -->
+          <section>
+            <h2>Teorema de Stokes no Plano: Green Revisitado</h2>
+            <div class="math-section">
+              <p>Relembremos o Teorema de Green:</p>
+              \[ \oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial
+              Q}{\partial x} - \frac{\partial P}{\partial y}\right)\,dA \]
+              <p>
+                Podemos entender este teorema como um caso especial do Teorema
+                de Stokes (geral) considerando um campo vetorial \(\vec{F}\) que
+                "vive" no plano XY, ou seja, \(\vec{F}(x,y,z) = (P(x,y), Q(x,y),
+                0)\).
+              </p>
+              <p>O rotacional deste campo \(\vec{F}\) em 3D é:</p>
+              \[ \nabla \times \vec{F} = \begin{vmatrix} \vec{i} & \vec{j} &
+              \vec{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ P & Q & 0 \end{vmatrix} \]
+              <p>
+                Como \(P\) e \(Q\) dependem apenas de \(x\) e \(y\), as
+                derivadas em relação a \(z\) são nulas (\(\frac{\partial
+                Q}{\partial z} = 0, \frac{\partial P}{\partial z} = 0\)). Assim:
+              </p>
+              \[ \nabla \times \vec{F} = \left(0, 0, \frac{\partial Q}{\partial
+              x} - \frac{\partial P}{\partial y}\right) \]
+            </div>
+          </section>
+
+          <!-- Slide 4.1.1: Aplicando Stokes ao Plano -->
+          <section>
+            <h2>Stokes no Plano: Superfície, Normal e Orientação</h2>
+            <div class="dual-panel">
+              <div class="math-section" style="flex: 1.2">
+                <p>
+                  O Teorema de Stokes (geral) relaciona a integral de linha de
+                  \(\vec{F}\) ao longo de uma curva fechada \(C\) com o fluxo do
+                  rotacional de \(\vec{F}\) através de uma superfície \(S\) que
+                  tem \(C\) como sua fronteira:
+                </p>
+                \[ \oint_C \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times
+                \vec{F}) \cdot \vec{n} \,dS \]
+                <p>No nosso caso plano:</p>
+                <ul>
+                  <li>
+                    <strong>Superfície \(S\):</strong> É a própria região plana
+                    \(D\) no plano \(xy\).
+                  </li>
+                  <li>
+                    <strong>Vetor Normal à Superfície (\(\vec{n}\)):</strong>
+                    Para a região \(D\), a normal consistente com a orientação
+                    anti-horária de \(C\) (regra da mão direita) é \(\vec{n} =
+                    \vec{k} = (0,0,1)\).
+                  </li>
+                  <li>
+                    <strong>Elemento de Área \(dS\):</strong> Torna-se \(dA\) no
+                    plano.
+                  </li>
+                  <li>
+                    <strong>Produto Escalar:</strong> \((\nabla \times \vec{F})
+                    \cdot \vec{n} = \left(\frac{\partial Q}{\partial x} -
+                    \frac{\partial P}{\partial y}\right)\).
+                  </li>
+                </ul>
+                <p>
+                  Substituindo, obtemos o Teorema de Green. A discussão completa
+                  sobre superfícies orientadas e normais será aprofundada ao
+                  estudarmos o Teorema de Stokes em 3D.
+                </p>
+              </div>
+              <div
+                style="
+                  flex: 0.8;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding-left: 10px;
+                "
+              >
+                <img
+                  src="diagramas_svg/normais_fronteira_2d.svg"
+                  alt="Diagrama de normal para Stokes no plano e Divergência no plano"
+                  class="diagram-svg"
+                  style="max-height: 250px"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4.2: Rotacional Escalar vs. Vetorial -->
+          <section>
+            <h2>Rotacional em 2D e 3D</h2>
+            <div class="dual-panel">
+              <div class="math-section" style="flex: 1.2">
+                <p>
+                  A conexão entre o Teorema de Green e o Teorema de Stokes no
+                  plano destaca a natureza do rotacional:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Em 2D (Teorema de Green):</strong> O termo
+                    \(\left(\frac{\partial Q}{\partial x} - \frac{\partial
+                    P}{\partial y}\right)\) é um <strong>escalar</strong>. Ele
+                    representa a magnitude da componente do rotacional 3D que é
+                    perpendicular ao plano \(xy\) (ou seja, ao longo do eixo
+                    \(\vec{k}\)). Ele mede a tendência de "giro" do campo no
+                    plano.
+                  </li>
+                  <li>
+                    <strong>Em 3D (Teorema de Stokes geral):</strong> O
+                    rotacional \(\nabla \times \vec{F}\) é um
+                    <strong>vetor</strong>. Sua direção indica o eixo em torno
+                    do qual o campo tende a girar, e sua magnitude indica a
+                    intensidade dessa rotação.
+                  </li>
+                </ul>
+                <p>
+                  Assim, o "rotacional" do Teorema de Green é a componente
+                  \(\vec{k}\) do vetor rotacional \(\nabla \times \vec{F}\)
+                  quando \(\vec{F}\) é um campo no plano \(xy\).
+                </p>
+              </div>
+              <div
+                style="
+                  flex: 0.8;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding-left: 10px;
+                "
+              >
+                <img
+                  src="diagramas_svg/rotacional_2d_perspectiva.svg"
+                  alt="Diagrama do rotacional 2D em perspectiva"
+                  class="diagram-svg"
+                  style="max-height: 280px"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4.3: Visualização: Campos Conservativos vs. Rotacionais -->
+          <section>
+            <h2>Visualizando Rotação: Conservativo vs. Rotacional</h2>
+            <p>
+              Campo Conservativo: \(\vec{F}=(x,y)\), \(\text{rot}_k = 0\). Campo
+              Rotacional: \(\vec{F}=(-y,x)\), \(\text{rot}_k = 2\).
+            </p>
+            <div class="visualization-container" style="height: auto">
+              <canvas
+                id="stokesPlaneVisualization"
+                class="visualization-canvas"
+                width="500"
+                height="300"
+              ></canvas>
+              <div class="horizontal-buttons" style="margin-top: 5px">
+                <button id="sp_conservativeFieldBtn">
+                  Campo Conservativo \((x,y)\)
+                </button>
+                <button id="sp_rotationalFieldBtn">
+                  Campo Rotacional \((-y,x)\)
+                </button>
+              </div>
+              <div class="results-display" style="width: 90%">
+                <div class="results-title">
+                  Integrais (Círculo Raio = 2 unidades)
+                </div>
+                <div class="results-row">
+                  <span class="results-label">Rotacional Escalar:</span>
+                  <span id="sp_curlValue">0.00</span>
+                </div>
+                <div class="results-row">
+                  <span class="results-label"
+                    >\(\oint_C \vec{F} \cdot d\vec{r}\):</span
+                  >
+                  <span id="sp_lineIntegralValue">0.0000</span>
+                </div>
+                <div class="results-row">
+                  <span class="results-label"
+                    >\(\iint_D \text{rot}_k \,dA\):</span
+                  >
+                  <span id="sp_doubleIntegralValue">0.0000</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4.4: Contexto Histórico – Apollo J-Missions -->
+          <section>
+            <h2>Análise de Fluxos e Campos Detalhada</h2>
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p><strong>Missões Apollo Avançadas (1971-1972)</strong></p>
+              <p>
+                As missões "J" (Apollo 15, 16, 17) permitiram estadias mais
+                longas na Lua e o uso extensivo do Veículo Explorador Lunar
+                (Rover). Isso possibilitou uma análise científica mais
+                detalhada, incluindo o mapeamento de campos magnéticos lunares
+                (embora fracos) e a observação de fenômenos como o fluxo de
+                exaustão dos motores do módulo lunar. A perspectiva do
+                rotacional (mesmo que aplicada conceitualmente a projeções 2D de
+                fenômenos 3D) ajudava a identificar regiões de interesse onde
+                campos ou fluxos poderiam exibir comportamento de "torção" ou
+                circulação significativa, importante para a segurança dos
+                equipamentos e a interpretação dos dados científicos.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.5: Problema – Circulação em Campo de Vórtice -->
+          <section>
+            <h2>Problema: Circulação de um Vórtice</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> O fluxo de um fluido é modelado pelo
+                campo de velocidades \(\vec{v}(x,y) = \left(\frac{-y}{x^2+y^2},
+                \frac{x}{x^2+y^2}\right)\) para \((x,y) \neq (0,0)\).
+              </p>
+              <ol>
+                <li>Calcule o rotacional escalar de \(\vec{v}\).</li>
+                <li>
+                  Calcule a circulação \(\oint_C \vec{v} \cdot d\vec{r}\) onde
+                  \(C\) é o círculo \(x^2+y^2=R^2\) (\(R>0\)) orientado
+                  positivamente.
+                </li>
+                <li>
+                  O Teorema de Green (ou Stokes no plano) se aplica diretamente
+                  para calcular a integral de linha usando a integral do
+                  rotacional sobre o disco \(D\) delimitado por \(C\)? Por quê?
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Slide 4.6: Solução – Circulação de Vórtice -->
+          <section>
+            <h2>Solução: Circulação de Vórtice</h2>
+            <div class="compact-solution">
+              <p>
+                Seja \(P = \frac{-y}{x^2+y^2}\) e \(Q = \frac{x}{x^2+y^2}\).
+              </p>
+              <p>
+                1. Rotacional escalar: \(\frac{\partial Q}{\partial x} =
+                \frac{(x^2+y^2)(1) - x(2x)}{(x^2+y^2)^2} =
+                \frac{y^2-x^2}{(x^2+y^2)^2}\). E \(\frac{\partial P}{\partial y}
+                = \frac{(x^2+y^2)(-1) - (-y)(2y)}{(x^2+y^2)^2} =
+                \frac{y^2-x^2}{(x^2+y^2)^2}\). Portanto, \(\frac{\partial
+                Q}{\partial x} - \frac{\partial P}{\partial y} = 0\) para
+                \((x,y) \neq (0,0)\).
+              </p>
+              <p>
+                2. Integral de Linha: Parametrize \(C\): \(x=R\cos t, y=R\sin
+                t\), \(0 \le t \le 2\pi\). Então \(dx = -R\sin t \,dt, dy =
+                R\cos t \,dt\). Em \(C\), \(P = \frac{-R\sin t}{R^2} =
+                -\frac{\sin t}{R}\) e \(Q = \frac{R\cos t}{R^2} = \frac{\cos
+                t}{R}\).
+              </p>
+              \[ \oint_C (Pdx + Qdy) = \int_0^{2\pi} \left( \left(-\frac{\sin
+              t}{R}\right)(-R\sin t) + \left(\frac{\cos t}{R}\right)(R\cos t)
+              \right) dt \] \[ = \int_0^{2\pi} (\sin^2 t + \cos^2 t) dt =
+              \int_0^{2\pi} 1 \,dt = [t]_0^{2\pi} = 2\pi \]
+              <p>
+                3. Aplicabilidade do Teorema: A integral de linha é \(2\pi\). Se
+                usássemos o Teorema de Green/Stokes, \(\iint_D
+                (\text{rotacional}) \,dA = \iint_D 0 \,dA = 0\). Os resultados
+                diferem! O teorema não se aplica diretamente porque o campo
+                \(\vec{v}\) (e suas derivadas parciais) não são
+                definidos/contínuos na origem (0,0), que é um ponto dentro da
+                região \(D\) delimitada por \(C\). Isso viola as condições do
+                teorema.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.7: Conclusão – Tópico 4 -->
+          <section>
+            <h2>Conclusão: Green como Caso Especial de Stokes</h2>
+            <div class="math-section">
+              <p>
+                Entender o Teorema de Green como uma manifestação do Teorema de
+                Stokes no plano é um passo conceitual importante. Ele reforça a
+                ideia de que propriedades na fronteira de uma região estão
+                intrinsecamente ligadas ao comportamento "interno" do campo
+                vetorial.
+              </p>
+              <p>
+                Este exemplo também salienta a importância crucial das condições
+                de aplicabilidade dos teoremas: a continuidade das funções e
+                suas derivadas na região de integração é fundamental.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =================================================== -->
+        <!-- TÓPICO 5: TEOREMA DA DIVERGÊNCIA NO PLANO         -->
+        <!-- =================================================== -->
+        <section>
+          <!-- Slide 5.1: Fluxo Através de uma Fronteira (Revisado) -->
+          <section>
+            <h2>Teorema da Divergência no Plano: Fluxo e Expansão</h2>
+            <div class="dual-panel">
+              <div class="math-section" style="flex: 1.2">
+                <p>
+                  Para um campo vetorial \(\vec{F}(x,y) = (P(x,y), Q(x,y))\) com
+                  componentes continuamente diferenciáveis, o Teorema da
+                  Divergência no Plano (outra forma do Teorema de Green) afirma:
+                </p>
+                \[ \oint_C \vec{F} \cdot \vec{n} \, ds = \iint_D
+                \text{div}(\vec{F}) \, dA \] Onde:
+                <ul>
+                  <li>
+                    \(C\) é uma curva simples, fechada, C¹ por partes, orientada
+                    positivamente (anti-horário), delimitando a região \(D\).
+                  </li>
+                  <li>
+                    \(\vec{n}\) é o vetor normal unitário à curva \(C\),
+                    apontando para <strong>fora</strong> da região \(D\).
+                  </li>
+                  <li>
+                    \(ds\) é o elemento de comprimento de arco ao longo de
+                    \(C\).
+                  </li>
+                  <li>
+                    \(\text{div}(\vec{F}) = \nabla \cdot \vec{F} =
+                    \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial
+                    y}\) é a divergência de \(\vec{F}\).
+                  </li>
+                </ul>
+                <p>
+                  O lado esquerdo representa o <strong>fluxo</strong> total de
+                  \(\vec{F}\) para fora através da fronteira \(C\). O lado
+                  direito é a integral da divergência (taxa de
+                  expansão/contração por unidade de área) sobre a região \(D\).
+                  A generalização para 3D (Teorema de Gauss) será vista adiante.
+                </p>
+              </div>
+              <div
+                style="
+                  flex: 0.8;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  padding-left: 10px;
+                "
+              >
+                <img
+                  src="diagramas_svg/normais_fronteira_2d.svg"
+                  alt="Diagrama de normal para Stokes no plano e Divergência no plano"
+                  class="diagram-svg"
+                  style="max-height: 250px"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 5.2: Derivação a partir do Teorema de Green -->
+          <section>
+            <h2>Conectando Divergência e Green</h2>
+            <div class="math-section">
+              <p>
+                Se \(C\) é parametrizada por \(\vec{r}(t) = (x(t), y(t))\), o
+                vetor tangente unitário é \(\vec{T} = \frac{1}{s'}(x', y')\) e o
+                normal exterior unitário é \(\vec{n} = \frac{1}{s'}(y', -x')\),
+                onde \(s'(t)\) é a rapidez \(|\vec{r}'(t)|\).
+              </p>
+              <p>
+                Então, \(\vec{F} \cdot \vec{n} \, ds = (P,Q) \cdot (y'/s',
+                -x'/s') s'\,dt = (Py' - Qx')\,dt = P\,dy - Q\,dx\).
+              </p>
+              <p>
+                Assim, a integral de fluxo é \(\oint_C \vec{F} \cdot \vec{n} \,
+                ds = \oint_C (-Q\,dx + P\,dy)\).
+              </p>
+              <p>
+                Aplicando o Teorema de Green (com \(P_{green} = -Q\) e
+                \(Q_{green} = P\)):
+              </p>
+              \[ \oint_C (-Q\,dx + P\,dy) = \iint_D \left( \frac{\partial
+              (P)}{\partial x} - \frac{\partial (-Q)}{\partial y} \right) dA \]
+              \[ = \iint_D \left( \frac{\partial P}{\partial x} + \frac{\partial
+              Q}{\partial y} \right) dA = \iint_D \text{div}(\vec{F}) \, dA \]
+              <p>
+                Isso mostra que o Teorema da Divergência no Plano é uma
+                consequência direta do Teorema de Green.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 5.3: Visualização: Fontes, Sumidouros e Fluxo -->
+          <section>
+            <h2>Visualizando Divergência e Fluxo</h2>
+            <p>Campo com fonte e sumidouro. Ajuste suas intensidades.</p>
+            <div class="visualization-container" style="height: auto">
+              <canvas
+                id="divergencePlaneVisualization"
+                class="visualization-canvas"
+                width="500"
+                height="320"
+              ></canvas>
+              <div class="controls">
+                <div class="control-group">
+                  <span class="control-label">Fonte (k₁)</span>
+                  <div class="slider-container">
+                    <input
+                      type="range"
+                      id="dp_sourceSlider"
+                      class="slider"
+                      min="-2"
+                      max="2"
+                      step="0.1"
+                      value="1"
+                    />
+                    <span id="dp_sourceValue" class="slider-value">1.0</span>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <span class="control-label">Sumidouro (k₂)</span>
+                  <div class="slider-container">
+                    <input
+                      type="range"
+                      id="dp_sinkSlider"
+                      class="slider"
+                      min="-2"
+                      max="2"
+                      step="0.1"
+                      value="-1"
+                    />
+                    <span id="dp_sinkValue" class="slider-value">-1.0</span>
+                  </div>
+                </div>
+              </div>
+              <div class="results-display" style="width: 90%">
+                <div class="results-title">Integrais (Círculo Raio Fixo)</div>
+                <div class="results-row">
+                  <span class="results-label"
+                    >\(\oint_C \vec{F} \cdot \vec{n} \, ds\):</span
+                  >
+                  <span id="dp_fluxValue">0.0000</span>
+                </div>
+                <div class="results-row">
+                  <span class="results-label"
+                    >\(\iint_D \text{div}(\vec{F}) \,dA\) (Teórico):</span
+                  >
+                  <span id="dp_divIntegralValue">0.0000</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 5.4: Contexto Histórico – Gerenciamento de Recursos -->
+          <section>
+            <h2>Gerenciamento de Fluidos e Atmosfera</h2>
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p>
+                <strong>Estações Espaciais (Skylab, Salyut - anos 1970)</strong>
+              </p>
+              <p>
+                Com o advento das primeiras estações espaciais e missões de
+                longa duração, o gerenciamento de sistemas de suporte à vida
+                tornou-se primordial. Isso incluía o controle preciso de
+                atmosferas internas, circulação de ar, e sistemas de
+                refrigeração por fluidos. O conceito de divergência, mesmo que
+                não sempre calculado explicitamente com integrais duplas para
+                cada componente, era fundamental para entender "fontes"
+                (produção de gases, injeção de fluidos) e "sumidouros"
+                (vazamentos, consumo, extração de fluidos) dentro de volumes
+                controlados. Uma divergência líquida diferente de zero em uma
+                região indicaria um acúmulo ou depleção de substância, crucial
+                para a manutenção da habitabilidade e operação dos sistemas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 5.5: Problema – Fluxo de um Campo Radial -->
+          <section>
+            <h2>Problema: Fluxo Radial</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Considere o campo vetorial
+                \(\vec{F}(x,y) = (x,y)\).
+              </p>
+              <ol>
+                <li>Calcule \(\text{div}(\vec{F})\).</li>
+                <li>
+                  Calcule o fluxo \(\oint_C \vec{F} \cdot \vec{n} \, ds\) onde
+                  \(C\) é o círculo \(x^2+y^2=R^2\) (\(R>0\)), usando o Teorema
+                  da Divergência no Plano.
+                </li>
+                <li>
+                  Verifique o resultado calculando a integral de fluxo
+                  diretamente.
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Slide 5.6: Solução – Fluxo Radial -->
+          <section>
+            <h2>Solução: Fluxo Radial</h2>
+            <div class="compact-solution">
+              <p>
+                1. \(\vec{F}=(x,y) \Rightarrow P=x, Q=y\). \(\text{div}(\vec{F})
+                = \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y}
+                = \frac{\partial x}{\partial x} + \frac{\partial y}{\partial y}
+                = 1 + 1 = 2\).
+              </p>
+              <p>
+                2. Pelo Teorema da Divergência: \(\oint_C \vec{F} \cdot \vec{n}
+                \, ds = \iint_D \text{div}(\vec{F}) \, dA = \iint_D 2 \, dA = 2
+                \cdot \text{Área}(D)\). A área do disco \(D\) de raio \(R\) é
+                \(\pi R^2\). Portanto, o Fluxo = \(2 \pi R^2\).
+              </p>
+              <p>
+                3. Cálculo direto do fluxo: Parametrização de \(C\):
+                \(\vec{r}(t)=(R\cos t, R\sin t)\), \(0 \le t \le 2\pi\). Vetor
+                tangente \(\vec{r}'(t)=(-R\sin t, R\cos t)\). Rapidez \(s'(t) =
+                |\vec{r}'(t)| = R\). Vetor normal unitário exterior \(\vec{n}(t)
+                = \frac{1}{s'}(y'(t), -x'(t)) = \frac{1}{R}(R\cos t, -(-R\sin
+                t)) = (\cos t, \sin t)\). (Alternativamente, para um círculo
+                centrado na origem, \(\vec{n} = \frac{\vec{r}}{|\vec{r}|} =
+                \frac{(x,y)}{R} = (\cos t, \sin t)\)). Em \(C\),
+                \(\vec{F}(\vec{r}(t)) = (R\cos t, R\sin t)\). \(\vec{F} \cdot
+                \vec{n} = (R\cos t)(\cos t) + (R\sin t)(\sin t) = R(\cos^2 t +
+                \sin^2 t) = R\). Fluxo \( = \oint_C (\vec{F} \cdot \vec{n}) \,
+                ds = \int_0^{2\pi} R \cdot (R \, dt) = R^2 \int_0^{2\pi} dt =
+                R^2 [t]_0^{2\pi} = 2\pi R^2\).
+              </p>
+              <p>Os resultados coincidem.</p>
+            </div>
+          </section>
+
+          <!-- Slide 5.7: Conclusão – Tópico 5 -->
+          <section>
+            <h2>Conclusão: Divergência como Medida de Expansão</h2>
+            <div class="math-section">
+              <p>
+                O Teorema da Divergência no Plano (ou forma normal do Teorema de
+                Green) fornece uma ferramenta poderosa para relacionar o fluxo
+                líquido de um campo vetorial através de uma curva fechada com a
+                "densidade de fonte" (divergência) total dentro da região
+                delimitada pela curva.
+              </p>
+              <p>
+                Este conceito é fundamental em diversas áreas da física e
+                engenharia, como mecânica dos fluidos (onde a divergência zero
+                implica incompressibilidade) e eletromagnetismo (Lei de Gauss).
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <section>
+            <h2>Síntese e Próximos Passos</h2>
+            <div class="math-section">
+              <p>
+                Nesta apresentação, exploramos três teoremas fundamentais no
+                plano:
+              </p>
+              <ul>
+                <li>
+                  <strong>Teorema de Green (Forma Tangencial):</strong>
+                  Relaciona a integral de linha da componente tangencial de
+                  \(\vec{F}\) com a integral dupla do rotacional escalar.
+                  \(\oint_C \vec{F} \cdot d\vec{r} = \iint_D
+                  \text{rot}_k(\vec{F}) \,dA\).
+                </li>
+                <li>
+                  <strong>Teorema de Stokes no Plano:</strong> Uma
+                  reinterpretação do Teorema de Green, vendo-o como um caso 2D
+                  do Teorema de Stokes 3D.
+                </li>
+                <li>
+                  <strong
+                    >Teorema da Divergência no Plano (Forma Normal de
+                    Green):</strong
+                  >
+                  Relaciona a integral de linha da componente normal de
+                  \(\vec{F}\) (fluxo) com a integral dupla da divergência.
+                  \(\oint_C \vec{F} \cdot \vec{n} \,ds = \iint_D
+                  \text{div}(\vec{F}) \,dA\).
+                </li>
+              </ul>
+              <p>
+                Todos esses teoremas compartilham um tema comum: conectar uma
+                integral sobre uma fronteira (curva \(C\)) com uma integral
+                sobre a região (\(D\)) que ela delimita, envolvendo derivadas do
+                campo vetorial.
+              </p>
+              <p>
+                <strong>Próximos Passos:</strong> Generalizaremos esses
+                conceitos para o espaço tridimensional, estudando o Teorema de
+                Stokes para superfícies e o Teorema da Divergência de Gauss para
+                volumes.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Aplicação Histórica Consolidada</h2>
+            <div class="history-section">
+              <div class="history-label">IMPACTO</div>
+              <p><strong>Da Lua às Estações Espaciais</strong></p>
+              <p>
+                A matemática do cálculo vetorial, incluindo os princípios
+                encapsulados pelos teoremas planares, foi indispensável desde as
+                primeiras missões Apollo até o desenvolvimento e operação de
+                estações espaciais como Skylab e Salyut. Seja para otimizar
+                trajetórias, analisar campos de força, entender a dinâmica de
+                fluidos em microgravidade, ou garantir a integridade dos
+                sistemas de suporte à vida, esses teoremas forneceram as
+                ferramentas conceituais e computacionais para transformar
+                desafios complexos em problemas tratáveis. Eles representam a
+                linguagem pela qual os engenheiros e cientistas puderam modelar,
+                prever e controlar os ambientes e tecnologias da exploração
+                espacial.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Aplicação Prática Moderna</h2>
+            <div class="dual-panel">
+              <div class="math-section" style="flex: 1">
+                <p>
+                  Os princípios dos Teoremas de Green, Stokes e Divergência são
+                  pedras angulares em muitas tecnologias e campos científicos
+                  modernos:
+                </p>
+                <ul>
+                  <li>
+                    <strong>CFD (Dinâmica dos Fluidos Computacional):</strong>
+                    Modelagem de fluxo de ar em aeronaves, fluxo sanguíneo,
+                    padrões climáticos.
+                  </li>
+                  <li>
+                    <strong>Eletromagnetismo:</strong> Design de antenas,
+                    motores elétricos, análise de propagação de ondas.
+                  </li>
+                  <li>
+                    <strong>Geofísica:</strong> Modelagem de campos
+                    gravitacionais e magnéticos da Terra.
+                  </li>
+                  <li>
+                    <strong>Engenharia Médica:</strong> Análise de fluxos em
+                    sistemas biológicos, imagem por ressonância magnética.
+                  </li>
+                  <li>
+                    <strong>Computação Gráfica:</strong> Simulação de fluidos,
+                    efeitos de partículas, renderização realista.
+                  </li>
+                </ul>
+              </div>
+              <div
+                style="
+                  flex: 1;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <canvas
+                  id="modernApplicationsPlanar"
+                  class="visualization-canvas"
+                  width="400"
+                  height="280"
+                ></canvas>
+              </div>
+            </div>
+            <p style="font-size: 0.8em; text-align: center">
+              (Ex: Simulação de fluxo e cálculo de forças em um perfil
+              aerodinâmico usando princípios de fluxo e circulação).
+            </p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+          math: {
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+          },
+          width: '95%',
+          height: '100%',
+          margin: 0.04,
+          minScale: 0.2,
+          maxScale: 2.0,
+          transition: 'fade',
+          navigationMode: 'default',
+        });
+        initializePlanarVisualizations();
+      };
+
+      function initializePlanarVisualizations() {
+        const canvases = document.querySelectorAll(
+          'canvas.visualization-canvas'
+        );
+        canvases.forEach((c) => (c.initialized = false));
+
+        if (window.activeAnimationFramesPlanar) {
+          window.activeAnimationFramesPlanar.forEach((id) =>
+            cancelAnimationFrame(id)
+          );
+        }
+        window.activeAnimationFramesPlanar = [];
+
+        Reveal.on('slidechanged', function (event) {
+          if (window.activeAnimationFramesPlanar) {
+            window.activeAnimationFramesPlanar.forEach((id) =>
+              cancelAnimationFrame(id)
+            );
+          }
+          window.activeAnimationFramesPlanar = [];
+
+          const currentSlide = event.currentSlide;
+          if (
+            currentSlide.querySelector('#stokesPlaneVisualization') &&
+            !document.getElementById('stokesPlaneVisualization').initialized
+          ) {
+            initStokesPlaneVisualization();
+          }
+          if (
+            currentSlide.querySelector('#divergencePlaneVisualization') &&
+            !document.getElementById('divergencePlaneVisualization').initialized
+          ) {
+            initDivergencePlaneVisualization();
+          }
+          if (
+            currentSlide.querySelector('#modernApplicationsPlanar') &&
+            !document.getElementById('modernApplicationsPlanar').initialized
+          ) {
+            initModernApplicationsPlanar();
+          }
+        });
+
+        const firstSlide = Reveal.getCurrentSlide();
+        if (
+          firstSlide.querySelector('#stokesPlaneVisualization') &&
+          !document.getElementById('stokesPlaneVisualization').initialized
+        ) {
+          initStokesPlaneVisualization();
+        }
+        if (
+          firstSlide.querySelector('#divergencePlaneVisualization') &&
+          !document.getElementById('divergencePlaneVisualization').initialized
+        ) {
+          initDivergencePlaneVisualization();
+        }
+        if (
+          firstSlide.querySelector('#modernApplicationsPlanar') &&
+          !document.getElementById('modernApplicationsPlanar').initialized
+        ) {
+          initModernApplicationsPlanar();
+        }
+      }
+      window.activeAnimationFramesPlanar = [];
+
+      // =============================================
+      // VISUALIZAÇÃO: STOKES NO PLANO (CONSERVATIVO VS ROTACIONAL)
+      // =============================================
+      function initStokesPlaneVisualization() {
+        const canvas = document.getElementById('stokesPlaneVisualization');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        const scaleVal = 50; // pixels per unit
+        const offsetX = width / 2;
+        const offsetY = height / 2;
+        const pathRadiusUnits = 2; // Raio da curva de integração em unidades
+        const pathRadiusPixels = pathRadiusUnits * scaleVal;
+
+        let fieldType = 'conservative'; // 'conservative' or 'rotational'
+
+        const fields = {
+          conservative: { P: (x, y) => x, Q: (x, y) => y, curl_k: () => 0 },
+          rotational: { P: (x, y) => -y, Q: (x, y) => x, curl_k: () => 2 },
+        };
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+          const currentField = fields[fieldType];
+
+          // Eixos
+          ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, offsetY);
+          ctx.lineTo(width, offsetY);
+          ctx.moveTo(offsetX, 0);
+          ctx.lineTo(offsetX, height);
+          ctx.stroke();
+
+          // Campo Vetorial
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.8)';
+          ctx.fillStyle = 'rgba(100, 181, 246, 0.8)';
+          const gridSize = 30;
+          for (let i = 0; i <= width; i += gridSize) {
+            for (let j = 0; j <= height; j += gridSize) {
+              const x_unit = (i - offsetX) / scaleVal;
+              const y_unit = (offsetY - j) / scaleVal;
+              const vx = currentField.P(x_unit, y_unit);
+              const vy = currentField.Q(x_unit, y_unit);
+              const mag = Math.sqrt(vx * vx + vy * vy);
+              if (mag > 1e-3) {
+                const arrowLen = Math.min(gridSize * 0.7, mag * scaleVal * 0.5);
+                const nx = (vx / mag) * arrowLen;
+                const ny = (-vy / mag) * arrowLen; // Y invertido no canvas
+                ctx.beginPath();
+                ctx.moveTo(i, j);
+                ctx.lineTo(i + nx, j + ny);
+                ctx.stroke();
+                const angle = Math.atan2(ny, nx);
+                ctx.beginPath();
+                ctx.moveTo(i + nx, j + ny);
+                ctx.lineTo(
+                  i + nx - 4 * Math.cos(angle - Math.PI / 6),
+                  j + ny - 4 * Math.sin(angle - Math.PI / 6)
+                );
+                ctx.lineTo(
+                  i + nx - 4 * Math.cos(angle + Math.PI / 6),
+                  j + ny - 4 * Math.sin(angle + Math.PI / 6)
+                );
+                ctx.closePath();
+                ctx.fill();
+              }
+            }
+          }
+
+          // Curva de Integração (Círculo)
+          ctx.strokeStyle = 'rgba(255, 90, 95, 0.9)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(offsetX, offsetY, pathRadiusPixels, 0, 2 * Math.PI);
+          ctx.stroke();
+          // Seta de orientação CCW
+          const arrowAngle = Math.PI / 4;
+          const ax = offsetX + pathRadiusPixels * Math.cos(arrowAngle);
+          const ay = offsetY - pathRadiusPixels * Math.sin(arrowAngle); // Y para cima no canvas é negativo
+          ctx.fillStyle = 'rgba(255, 90, 95, 0.9)';
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(
+            ax + 5 * Math.cos(arrowAngle + (Math.PI * 3) / 4),
+            ay - 5 * Math.sin(arrowAngle + (Math.PI * 3) / 4)
+          );
+          ctx.lineTo(
+            ax + 5 * Math.cos(arrowAngle - (Math.PI * 3) / 4),
+            ay - 5 * Math.sin(arrowAngle - (Math.PI * 3) / 4)
+          );
+          ctx.closePath();
+          ctx.fill();
+
+          // Cálculos e exibição
+          const curlVal = currentField.curl_k();
+          const areaD = Math.PI * pathRadiusUnits * pathRadiusUnits;
+          const doubleIntValue = curlVal * areaD;
+
+          let lineIntValue = 0;
+          if (fieldType === 'conservative') {
+            lineIntValue = 0; // Para F=(x,y), integral de linha em caminho fechado é 0
+          } else {
+            // F=(-y,x)
+            lineIntValue = 2 * areaD; // rot é 2, então int_linha = 2 * Area
+          }
+
+          document.getElementById('sp_curlValue').textContent =
+            curlVal.toFixed(2);
+          document.getElementById('sp_lineIntegralValue').textContent =
+            lineIntValue.toFixed(4);
+          document.getElementById('sp_doubleIntegralValue').textContent =
+            doubleIntValue.toFixed(4);
+        }
+
+        document
+          .getElementById('sp_conservativeFieldBtn')
+          .addEventListener('click', () => {
+            fieldType = 'conservative';
+            draw();
+          });
+        document
+          .getElementById('sp_rotationalFieldBtn')
+          .addEventListener('click', () => {
+            fieldType = 'rotational';
+            draw();
+          });
+        draw(); // Desenho inicial
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO: DIVERGÊNCIA NO PLANO (FONTES/SUMIDOUROS)
+      // =============================================
+      function initDivergencePlaneVisualization() {
+        const canvas = document.getElementById('divergencePlaneVisualization');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        const scaleVal = 80; // pixels per unit
+        const offsetX = width / 2;
+        const offsetY = height / 2;
+        const pathRadiusUnits = 1.5;
+        const pathRadiusPixels = pathRadiusUnits * scaleVal;
+
+        let sourceK = 1.0; // k1
+        let sinkK = -1.0; // k2 (negativo para ser sumidouro na fórmula)
+
+        // Posições fixas para fonte e sumidouro em unidades
+        const sourcePosUnit = { x: -0.8, y: 0 };
+        const sinkPosUnit = { x: 0.8, y: 0 };
+
+        function getFieldVector(x_unit, y_unit) {
+          let vx = 0,
+            vy = 0;
+          // Fonte
+          const dx1 = x_unit - sourcePosUnit.x;
+          const dy1 = y_unit - sourcePosUnit.y;
+          const rSq1 = dx1 * dx1 + dy1 * dy1;
+          if (rSq1 > 1e-4) {
+            // Evitar singularidade
+            vx += (sourceK * dx1) / rSq1;
+            vy += (sourceK * dy1) / rSq1;
+          }
+          // Sumidouro
+          const dx2 = x_unit - sinkPosUnit.x;
+          const dy2 = y_unit - sinkPosUnit.y;
+          const rSq2 = dx2 * dx2 + dy2 * dy2;
+          if (rSq2 > 1e-4) {
+            vx += (sinkK * dx2) / rSq2; // sinkK é k2, se positivo é fonte, se negativo é sumidouro
+            vy += (sinkK * dy2) / rSq2;
+          }
+          return { vx, vy };
+        }
+
+        function getDivergence(x_unit, y_unit) {
+          // Div(k*vec_r/r^2) = 0 para r != 0.
+          // A divergência é zero em toda parte exceto nas singularidades (fontes/sumidouros).
+          // O teorema da divergência captura o efeito dessas singularidades.
+          // Para a visualização do mapa de cores, podemos usar uma aproximação
+          // ou simplesmente colorir perto das fontes/sumidouros.
+          // Para este exemplo, vamos manter simples: é 0 exceto nas fontes/sumidouros.
+          // A integral dupla da divergência será 2*pi*(soma das intensidades das fontes dentro da região).
+          return 0; // Exceto nas singularidades
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, width, height);
+
+          // Mapa de Cores da Divergência (Simplificado: círculos em torno das fontes/sumidouros)
+          const sourceCanvasX = offsetX + sourcePosUnit.x * scaleVal;
+          const sourceCanvasY = offsetY - sourcePosUnit.y * scaleVal;
+          const sinkCanvasX = offsetX + sinkPosUnit.x * scaleVal;
+          const sinkCanvasY = offsetY - sinkPosUnit.y * scaleVal;
+
+          if (sourceK > 0) {
+            ctx.fillStyle = `rgba(255, 100, 100, ${Math.min(0.5, sourceK * 0.2)})`;
+            ctx.beginPath();
+            ctx.arc(
+              sourceCanvasX,
+              sourceCanvasY,
+              20 * Math.sqrt(sourceK),
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          } else if (sourceK < 0) {
+            ctx.fillStyle = `rgba(100, 100, 255, ${Math.min(0.5, -sourceK * 0.2)})`;
+            ctx.beginPath();
+            ctx.arc(
+              sourceCanvasX,
+              sourceCanvasY,
+              20 * Math.sqrt(-sourceK),
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          }
+
+          if (sinkK > 0) {
+            // Se k2 for positivo, é uma fonte
+            ctx.fillStyle = `rgba(255, 100, 100, ${Math.min(0.5, sinkK * 0.2)})`;
+            ctx.beginPath();
+            ctx.arc(
+              sinkCanvasX,
+              sinkCanvasY,
+              20 * Math.sqrt(sinkK),
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          } else if (sinkK < 0) {
+            // Se k2 for negativo, é um sumidouro
+            ctx.fillStyle = `rgba(100, 100, 255, ${Math.min(0.5, -sinkK * 0.2)})`;
+            ctx.beginPath();
+            ctx.arc(
+              sinkCanvasX,
+              sinkCanvasY,
+              20 * Math.sqrt(-sinkK),
+              0,
+              2 * Math.PI
+            );
+            ctx.fill();
+          }
+
+          // Eixos
+          ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, offsetY);
+          ctx.lineTo(width, offsetY);
+          ctx.moveTo(offsetX, 0);
+          ctx.lineTo(offsetX, height);
+          ctx.stroke();
+
+          // Campo Vetorial
+          ctx.strokeStyle = 'rgba(200, 200, 220, 0.8)'; // Cor mais clara para contraste com fundo
+          ctx.fillStyle = 'rgba(200, 200, 220, 0.8)';
+          const gridSize = 25;
+          for (let i = 0; i <= width; i += gridSize) {
+            for (let j = 0; j <= height; j += gridSize) {
+              const x_unit = (i - offsetX) / scaleVal;
+              const y_unit = (offsetY - j) / scaleVal;
+              const { vx, vy } = getFieldVector(x_unit, y_unit);
+              const mag = Math.sqrt(vx * vx + vy * vy);
+              if (mag > 1e-3) {
+                const arrowLen = Math.min(gridSize * 0.8, mag * scaleVal * 0.6);
+                const nx = (vx / mag) * arrowLen;
+                const ny = (-vy / mag) * arrowLen;
+                ctx.beginPath();
+                ctx.moveTo(i, j);
+                ctx.lineTo(i + nx, j + ny);
+                ctx.stroke();
+                const angle = Math.atan2(ny, nx);
+                ctx.beginPath();
+                ctx.moveTo(i + nx, j + ny);
+                ctx.lineTo(
+                  i + nx - 4 * Math.cos(angle - Math.PI / 6),
+                  j + ny - 4 * Math.sin(angle - Math.PI / 6)
+                );
+                ctx.lineTo(
+                  i + nx - 4 * Math.cos(angle + Math.PI / 6),
+                  j + ny - 4 * Math.sin(angle + Math.PI / 6)
+                );
+                ctx.closePath();
+                ctx.fill();
+              }
+            }
+          }
+
+          // Fonte/Sumidouro marcadores
+          ctx.fillStyle = sourceK > 0 ? 'red' : 'blue';
+          ctx.beginPath();
+          ctx.arc(sourceCanvasX, sourceCanvasY, 5, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.fillStyle = sinkK > 0 ? 'red' : 'blue';
+          ctx.beginPath();
+          ctx.arc(sinkCanvasX, sinkCanvasY, 5, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // Curva de Integração (Círculo)
+          ctx.strokeStyle = 'rgba(255, 220, 100, 0.9)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(offsetX, offsetY, pathRadiusPixels, 0, 2 * Math.PI);
+          ctx.stroke();
+          // Seta de orientação CCW
+          const arrowAngle = Math.PI / 4;
+          const ax = offsetX + pathRadiusPixels * Math.cos(arrowAngle);
+          const ay = offsetY - pathRadiusPixels * Math.sin(arrowAngle);
+          ctx.fillStyle = 'rgba(255, 220, 100, 0.9)';
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.lineTo(
+            ax + 5 * Math.cos(arrowAngle + (Math.PI * 3) / 4),
+            ay - 5 * Math.sin(arrowAngle + (Math.PI * 3) / 4)
+          );
+          ctx.lineTo(
+            ax + 5 * Math.cos(arrowAngle - (Math.PI * 3) / 4),
+            ay - 5 * Math.sin(arrowAngle - (Math.PI * 3) / 4)
+          );
+          ctx.closePath();
+          ctx.fill();
+
+          // Cálculos e exibição
+          // A integral dupla da divergência é 2*pi*(soma das intensidades das fontes DENTRO da região)
+          let divIntValue = 0;
+          // Checar se fonte está dentro do círculo de integração
+          const distSqSource =
+            sourcePosUnit.x * sourcePosUnit.x +
+            sourcePosUnit.y * sourcePosUnit.y;
+          if (distSqSource < pathRadiusUnits * pathRadiusUnits) {
+            divIntValue += 2 * Math.PI * sourceK;
+          }
+          // Checar se "sumidouro" (segunda fonte) está dentro
+          const distSqSink =
+            sinkPosUnit.x * sinkPosUnit.x + sinkPosUnit.y * sinkPosUnit.y;
+          if (distSqSink < pathRadiusUnits * pathRadiusUnits) {
+            divIntValue += 2 * Math.PI * sinkK;
+          }
+
+          document.getElementById('dp_fluxValue').textContent =
+            divIntValue.toFixed(4); // Pelo teorema, são iguais
+          document.getElementById('dp_divIntegralValue').textContent =
+            divIntValue.toFixed(4);
+        }
+
+        document
+          .getElementById('dp_sourceSlider')
+          .addEventListener('input', (e) => {
+            sourceK = parseFloat(e.target.value);
+            document.getElementById('dp_sourceValue').textContent =
+              sourceK.toFixed(1);
+            draw();
+          });
+        document
+          .getElementById('dp_sinkSlider')
+          .addEventListener('input', (e) => {
+            sinkK = parseFloat(e.target.value);
+            document.getElementById('dp_sinkValue').textContent =
+              sinkK.toFixed(1);
+            draw();
+          });
+        draw(); // Desenho inicial
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO: APLICAÇÕES MODERNAS (PLANAR)
+      // =============================================
+      function initModernApplicationsPlanar() {
+        const canvas = document.getElementById('modernApplicationsPlanar');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        let time = 0;
+        let animFrameId_modern_planar;
+
+        function drawModernPlanar() {
+          ctx.clearRect(0, 0, width, height);
+          const centerX = width / 2;
+          const centerY = height / 2;
+
+          // Perfil Aerodinâmico (Airfoil)
+          ctx.fillStyle = 'rgba(180, 190, 200, 0.9)';
+          ctx.beginPath();
+          ctx.moveTo(centerX - 100, centerY + 10); // Trailing edge bottom
+          ctx.bezierCurveTo(
+            centerX - 30,
+            centerY - 40, // Control point 1, Control point 2
+            centerX + 80,
+            centerY - 10, // End point (leading edge)
+            centerX + 80,
+            centerY - 10
+          );
+          ctx.bezierCurveTo(
+            centerX - 30,
+            centerY + 60, // Control point 1 (bottom), Control point 2 (bottom)
+            centerX - 100,
+            centerY + 10, // End point (trailing edge)
+            centerX - 100,
+            centerY + 10
+          );
+          ctx.closePath();
+          ctx.fill();
+
+          // Linhas de Fluxo (simples)
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.6)';
+          ctx.lineWidth = 1.5;
+          for (
+            let yStream = centerY - 80;
+            yStream < centerY + 80;
+            yStream += 15
+          ) {
+            ctx.beginPath();
+            ctx.moveTo(centerX - 180, yStream);
+            let currentY = yStream;
+            for (
+              let xStream = centerX - 180;
+              xStream < centerX + 180;
+              xStream += 5
+            ) {
+              // Simular curvatura do fluxo em torno do aerofólio
+              let dy = 0;
+              if (xStream > centerX - 100 && xStream < centerX + 80) {
+                // Na região do aerofólio
+                const airfoilTopY =
+                  centerY -
+                  20 +
+                  20 *
+                    Math.cos((((xStream - (centerX - 10)) / 90) * Math.PI) / 2); // Aprox.
+                const airfoilBottomY =
+                  centerY +
+                  20 -
+                  10 *
+                    Math.cos((((xStream - (centerX - 10)) / 90) * Math.PI) / 2);
+                if (currentY < centerY) {
+                  // Acima
+                  dy =
+                    (centerY - 30 - currentY) *
+                    0.03 *
+                    Math.exp(-Math.abs(xStream - centerX) / 50);
+                } else {
+                  // Abaixo
+                  dy =
+                    (centerY + 30 - currentY) *
+                    0.02 *
+                    Math.exp(-Math.abs(xStream - centerX) / 50);
+                }
+              }
+              currentY += dy * Math.sin(time + xStream / 50.0); // Adiciona alguma variação
+              ctx.lineTo(xStream, currentY);
+            }
+            ctx.stroke();
+          }
+
+          time += 0.015;
+          if (
+            Reveal.getCurrentSlide().querySelector('#modernApplicationsPlanar')
+          ) {
+            animFrameId_modern_planar = requestAnimationFrame(drawModernPlanar);
+            if (
+              window.activeAnimationFramesPlanar &&
+              !window.activeAnimationFramesPlanar.includes(
+                animFrameId_modern_planar
+              )
+            ) {
+              window.activeAnimationFramesPlanar.push(
+                animFrameId_modern_planar
+              );
+            }
+          }
+        }
+        drawModernPlanar();
+      }
+    </script>
+  </body>
+</html>
