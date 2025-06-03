@@ -404,3 +404,5 @@ Para um módulo sobre Campos Vetoriais, você deve entregar HTML que siga a estr
 Priorize a didática e clareza acima da adesão rígida à estrutura. Alguns tópicos podem precisar de mais ou menos slides dependendo da complexidade e natureza do conteúdo.
 
 Adira às classes CSS e padrões de notação para garantir consistência visual, independentemente da estrutura escolhida.
+
+Em relação aos exemplos, vamos dar exemplos simples e clássicos, sem necessariamente envolver o tema de exploração espacial, pois o objetivo deve ser ilustrar o básico da aplicação das ferramentas matemáticas. Em particular, vamos focar em exemplos que relacionem o conteúdo com conceitos básicos de geometria analítica, álgebra linear e Física Básica. 
