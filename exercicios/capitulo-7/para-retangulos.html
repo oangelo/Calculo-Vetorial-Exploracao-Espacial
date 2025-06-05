@@ -1,23 +1,719 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para retângulos - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Para retângulos</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Teorema de Green (Retângulos)</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para hints dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- DOCUMENT HEADER -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE SETEMBRO DE
+          <span class="censored">1965</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">COMPLEXO DE LANÇAMENTO [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-G</span
+          ><br /><br />
+          Após os êxitos iniciais do Programa Gemini, a necessidade de modelar
+          trajetórias de reentrada com maior precisão levou nossa equipe a um
+          estudo intensivo de circulação de campos vetoriais sobre regiões
+          retangulares. Os exercícios aqui reunidos foram compilados a partir
+          dos cadernos confidenciais do Dr.
+          <span class="censored">████████</span>, cujo trabalho em cálculo
+          vetorial permitiu otimizações de correção de atitude em módulos de
+          comando.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém material considerado vital para a segurança
+          nacional. Qualquer divulgação não autorizada poderá resultar em
+          <span class="censored">consequências severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VG-<span class="censored">1965</span>-R</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <!-- FUNDAMENTAÇÃO TEÓRICA -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN EM RETÂNGULOS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\oint_{\partial R} \bigl(P\,dx + Q\,dy\bigr) = \iint_R \left(
+          \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
+          dA \]
+        </p>
+        <p>
+          Para um campo vetorial \(\vec{F}(x,y) = \bigl(P(x,y), Q(x,y)\bigr)\)
+          de classe \(C^1\) definido em um retângulo fechado \(R = [a,b] \times
+          [c,d]\), o <em>Teorema de Green</em> relaciona a circulação ao redor
+          da fronteira \(\partial R\) à integral dupla da
+          <em>componente de rotação</em> \(\dfrac{\partial Q}{\partial x} -
+          \dfrac{\partial P}{\partial y}\) sobre a área de \(R\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        O controle de atitude durante as fases de encontro em órbita baixa exige
+        o cálculo rápido de circulações em superfícies simplificadas. O
+        retângulo surge naturalmente quando sensores de telemetria produzem
+        dados em grelhas cartesianas discretas, permitindo o uso direto deste
+        teorema para validar algoritmos de navegação.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o voo
+        <span class="censored">Gemini&nbsp;VII</span> (1965), correções de
+        trajetória usaram estimativas derivadas de integrais de linha que,
+        segundo relatórios, foram verificadas por um “método retangular”
+        compatível com o Teorema de Green, reduzindo o tempo de cálculo em
+        computadores a bordo.
+      </div>
+
+      <!-- EXERCISES LIST -->
+      <main>
+        <ol class="exercise-list">
+          <!-- ALFA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Dinâmica Orbital – Projeto Mercury
+              [LOG&nbsp;<span class="censored">1959</span>]
+            </div>
+            <p>
+              Considere o campo vetorial \(\vec{F}(x,y) = (x, y)\) definido no
+              retângulo \(R = [0,2] \times [0,1]\). Calcule \(\displaystyle
+              \oint_{\partial R} x\,dx + y\,dy\) utilizando o Teorema de Green.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe se a componente de rotação é nula em
+                todo o retângulo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A rotação é \(\dfrac{\partial y}{\partial x} - \dfrac{\partial
+                  x}{\partial y} = 0 - 0 = 0\).<br />Logo, \[\oint_{\partial R}
+                  x\,dx + y\,dy = 0.\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Telemetria de Empuxo – Painel de Controle
+              Gemini&nbsp;IV&nbsp;[JUN/1965]
+            </div>
+            <p>
+              Para \(\vec{F}(x,y) = (y^2, 2xy)\) sobre \(R = [0,1] \times
+              [0,3]\), determine a circulação \(\displaystyle \oint_{\partial R}
+              y^2\,dx + 2xy\,dy\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use a simetria do retângulo para simplificar a
+                integral dupla.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (2xy)}{\partial x} -
+                  \dfrac{\partial (y^2)}{\partial y} = 2y - 2y = 0.\)<br />Portanto,
+                  \[\oint_{\partial R} y^2\,dx + 2xy\,dy = 0.\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Simulação de Reentrada – Centro de Cálculo
+              <span class="censored">████</span> [AGO/1966]
+            </div>
+            <p>
+              O campo \(\vec{F}(x,y) = (0, x y^2)\) está definido em \(R = [1,3]
+              \times [0,2]\). Calcule a circulação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique se somente uma das componentes depende
+                de ambas as variáveis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (x y^2)}{\partial x} - 0 =
+                  y^2.\)<br />Assim, \[\int_{0}^{2}\int_{1}^{3} y^2\,dx\,dy =
+                  (3-1)\int_{0}^{2} y^2\,dy = 2
+                  \left[\dfrac{y^3}{3}\right]_0^{2} = 2 \cdot \dfrac{8}{3} =
+                  \dfrac{16}{3}.\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- BETA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Painel de Controle – Gemini&nbsp;VI&nbsp;[DEZ/1965]
+            </div>
+            <p>
+              Determine \(\displaystyle \oint_{\partial R} e^x y\,dx + x^2\,dy\)
+              para \(R = [0,\ln 2] \times [0,1]\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de exponenciais simplificam a
+                integral em <em>x</em>.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (x^2)}{\partial x} -
+                  \dfrac{\partial (e^x y)}{\partial y} = 2x - e^x.\)<br />Integral:
+                  \[\int_{0}^{1}\int_{0}^{\ln 2} \bigl(2x - e^x\bigr)\,dx\,dy =
+                  1 \cdot \left[ x^2 - e^x \right]_0^{\ln 2} = ( (\ln 2)^2 - 2 )
+                  - (0 - 1)= (\ln 2)^2 - 1.\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Banco de Dados – Propulsor
+              <span class="censored">████</span> [MAR/1966]
+            </div>
+            <p>
+              Para \(\vec{F}(x,y) = (y \cos x, x \sin y)\) em \(R = [0,\pi/2]
+              \times [0,\pi/2]\), compute a circulação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe as derivadas parciais de funções
+                trigonométricas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (x \sin y)}{\partial x} -
+                  \dfrac{\partial (y \cos x)}{\partial y} = \sin y - \cos
+                  x.\)<br />Integral dupla: \[\int_{0}^{\pi/2}\int_{0}^{\pi/2}
+                  (\sin y - \cos x)\,dx\,dy =\int_{0}^{\pi/2}\bigl[ x\sin y -
+                  \sin x \bigr]_{0}^{\pi/2} dy \]
+                </p>
+                <p>
+                  \[= \int_{0}^{\pi/2} \Bigl( \frac{\pi}{2}\sin y - 1 \Bigr) dy
+                  = \frac{\pi}{2}\bigl[ -\cos y \bigr]_0^{\pi/2} -
+                  y\Big|_{0}^{\pi/2} = \frac{\pi}{2} (1) - \frac{\pi}{2} = 0.\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Relatório de Voo – Gemini&nbsp;VIII&nbsp;[MAR/1966]
+            </div>
+            <p>
+              Existem constantes \(k\) tais que o campo \(\vec{F}(x,y) = (k y,
+              x)\) possui circulação nula em <em>todo</em> retângulo do plano.
+              Determine \(k\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Circulação nula implica rotação identicamente
+                zero.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial x}{\partial x} - \dfrac{\partial (k
+                  y)}{\partial y} = 1 - k.\)<br />Para ser zero, é necessário
+                  \(k = 1.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- GAMMA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Análise de Controle de Atitude –
+              Apollo&nbsp;09&nbsp;[MAR/1969]
+            </div>
+            <p>
+              Para o campo paramétrico \(\vec{F}(x,y) = (a y + x^2, b x -
+              y^2)\), calcule \(\displaystyle \oint_{\partial R} P\,dx + Q\,dy\)
+              em \(R = [-1,1]\times[0,2]\) e determine as relações entre \(a\) e
+              \(b\) que tornam o resultado igual a zero.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Procure invariantes não aparentes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (b x - y^2)}{\partial x} -
+                  \dfrac{\partial (a y + x^2)}{\partial y} = b - a.\)<br />Área
+                  de \(R\) é \( (1 - (-1)) \times (2 - 0) = 4.\)<br />Assim a
+                  circulação é \( (b - a) \times 4.\)<br />Para ser zero: \(a =
+                  b.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Estudo de Sensores – Módulo Lunar
+              <span class="censored">████</span> [MAI/1969]
+            </div>
+            <p>
+              Considere \(\vec{F}(x,y) = (\sin xy, x e^y)\) em \(R =
+              [0,\varepsilon]\times[0,\pi]\) com \(\varepsilon &gt; 0\). Mostre
+              que, quando \(\varepsilon \to 0^+\), a circulação converge para
+              \(\displaystyle \int_{0}^{\pi} (x e^y)\big|_{x=0} dy\) e
+              interprete o resultado.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pense em \(\sin(xy) \approx xy\) para pequenos
+                \(x\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (x e^y)}{\partial x} -
+                  \dfrac{\partial (\sin xy)}{\partial y} = e^y -
+                  x\cos(xy)\,x.\)<br />Quando \(x\to 0\), \(\cos(xy)\approx 1\)
+                  e o termo de ordem superior some, restando \(e^y.\)<br />Integral
+                  dupla tende a \(\displaystyle \int_{0}^{\pi}\int_{0}^{0}
+                  e^y\,dx\,dy = 0.\)<br />O limite da circulação, portanto, é
+                  governado pelo segmento onde \(x=0\), resultando em zero —
+                  interpretação: fronteira degenera em um segmento vertical sem
+                  área associada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Plano de Cobertura de Painéis Solares –
+              Skylab&nbsp;[JAN/1973]
+            </div>
+            <p>
+              Use \(\vec{F}(x,y) = (-y, x)\) em um retângulo genérico \(R =
+              [a,b]\times[c,d]\). Demonstre que a circulação coincide com
+              <em>duas vezes a área</em> de \(R\) e discuta a relação com o
+              cálculo de áreas através de integrais de linha.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre que a rotação desse campo é constante.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial x}{\partial x} - \dfrac{\partial
+                  (-y)}{\partial y} = 1 + 1 = 2.\)<br />Assim, \[\oint_{\partial
+                  R} (-y)\,dx + x\,dy = 2 \times \text{Área}(R) = 2(b-a)(d-c).\]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- OMEGA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Algoritmo de Navegação Autônoma –
+              <span class="censored">LAB&nbsp;███</span> [OUT/1974]
+            </div>
+            <p>
+              Calcule \(\displaystyle \oint_{\partial R} (x^3 - 3xy^2)\,dx +
+              (3x^2 y - y^3)\,dy\) em \(R = [-1,1]\times[-1,1]\). (Nenhuma dica
+              disponível.)
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (3x^2 y - y^3)}{\partial x} -
+                  \dfrac{\partial (x^3 - 3xy^2)}{\partial y} = 6xy - (-6xy) =
+                  12xy.\)<br />Por simetria, a integral dupla de \(12xy\) sobre
+                  o quadrado centrado na origem é zero, pois a função é ímpar em
+                  cada quadrante. Logo, a circulação é 0.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Diagnóstico de Pane em Sistema de Arrefecimento –
+              Module&nbsp;Service&nbsp;Bay [NOV/1974]
+            </div>
+            <p>
+              Avalie \(\oint_{\partial R} (y e^{x y})\,dx + (x e^{x y})\,dy\)
+              para \(R = [0,1]\times[0,1]\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotação: \(\dfrac{\partial (x e^{xy})}{\partial x} -
+                  \dfrac{\partial (y e^{xy})}{\partial y} = e^{xy} + x y e^{xy}
+                  - e^{xy} - x y e^{xy} = 0.\)<br />Portanto, a circulação é 0.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Computador de Bordo – Missão Experimental
+              <span class="censored">██-05</span> [DEZ/1974]
+            </div>
+            <p>
+              Sejam \(R\) e \(S\) dois retângulos adjacentes que compartilham um
+              lado. Demonstre que a circulação de um campo \(C^1\) sobre \(R
+              \cup S\) é a soma das circulações individuais, comentando sobre a
+              linearidade do Teorema de Green. (Nenhuma dica disponível.)
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como a rotação é integrável, \[\oint_{\partial (R\cup S)} \!
+                  \! P\,dx+Q\,dy = \iint_{R\cup S} \Bigl(\frac{\partial
+                  Q}{\partial x}-\frac{\partial P}{\partial y}\Bigr) dA =
+                  \iint_R (\cdots) + \iint_S (\cdots),\] realizando-se a soma
+                  das áreas.<br />As integrais de linha sobre o lado comum
+                  cancelam-se por percorrerem sentidos opostos, provando a
+                  aditividade.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VG-<span
+          class="censored"
+          >1965</span
+        >-R
+      </div>
+      <div class="footer-stamp">ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>

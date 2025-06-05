@@ -1,23 +1,571 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teorema da divergência no plano - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Teorema da divergência no plano</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+
+    <!-- Fonte “computador de sala de comando” -->
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+
+    <!-- Estilo “papel envelhecido + carimbos” -->
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      }
+      .censored {
+        background: var(--censored-bg);
+        color: var(--censored-bg);
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+      }
+      .document-date,
+      .document-intro {
+        margin-bottom: 10px;
+      }
+      .warning-box {
+        border: 2px dashed #800;
+        font-size: 0.9em;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background: rgba(139, 0, 0, 0.05);
+      }
+      .metadata span {
+        display: inline-block;
+        margin-right: 15px;
+      }
+      .section-title {
+        font-size: 1.2em;
+        text-align: center;
+        margin: 25px 0;
+        font-weight: bold;
+      }
+      .concept-definition,
+      .mission-context,
+      .historical-note {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-left: 3px solid var(--accent-color);
+      }
+      .exercise-list {
+        counter-reset: ex;
+        list-style: none;
+        margin-top: 10px;
+      }
+      .exercise-item {
+        margin-bottom: 25px;
+        padding: 15px;
+        border: 1px solid #888;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .context {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+      details {
+        margin-top: 8px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .hint {
+        padding: 8px;
+        border: 1px dashed #999;
+        margin-top: 6px;
+      }
+      .solution {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .footer-stamp {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+        color: var(--stamp-color);
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ─────────── Cabeçalho sigiloso ─────────── -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+
+        <div class="document-date">
+          14/JUL/1969 • LOCALIZAÇÃO:
+          <span class="censored">BASE&nbsp;APOLLO-11</span> • SETOR
+          <span class="censored">Λ-4</span>
+        </div>
+
+        <div class="document-intro">
+          PROJETO <span class="censored">ORION-Δ</span> — Aplicações do Teorema
+          da Divergência no plano no monitoramento de fluxos estruturais durante
+          a descida lunar.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada poderá resultar em
+          <span class="censored">graves consequências</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2049</span>-Λ</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <!-- ─────────── Fundamentação ─────────── -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA NO PLANO
+      </div>
+
+      <div class="concept-definition">
+        <p>
+          \[\iint_{A} \nabla\!\cdot\!\vec{F}\, dA \;=\; \oint_{\partial A}
+          \vec{F}\cdot\vec{n}\, ds\]
+        </p>
+        <p>
+          Para um campo vetorial \(\vec{F}(x,y)=(P,Q)\) de classe \(C^1\)
+          definido numa região simplesmente conexa \(A\subset\mathbb{R}^2\) com
+          fronteira \(C^1\) orientada positivamente \(\partial A\), a integral
+          do divergente \(\nabla\!\cdot\!\vec{F}=P_x+Q_y\) sobre \(A\) é igual
+          ao fluxo de \(\vec{F}\) através de \(\partial A\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Técnicos <span class="censored">especificamente designados</span>
+        aplicaram esta relação para estimar, em tempo real, vazamentos de gases
+        no escudo térmico do módulo lunar, onde medições diretas eram
+        impossíveis.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Na madrugada de 20/JUL/1969, antes da
+        alunissagem, engenheiros da missão utilizaram o teorema em cálculos
+        emergenciais para garantir a integridade dos tanques de hélio do LEM. O
+        relatório permanece
+        <span class="censored">parcialmente não divulgado</span>.
+      </div>
+
+      <!-- ─────────── Lista de Exercícios ─────────── -->
+      <main>
+        <ol class="exercise-list">
+          <!-- ——— Série ALFA ——— -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">ORIGEM: Programa Mercury — 25/FEV/1960</div>
+            <p>
+              A região \(A\) é o disco unitário \(x^2+y^2\le1\). Considere
+              \(\vec{F}(x,y)=(x,\,y)\). Verifique o Teorema da Divergência no
+              plano para \(\vec{F}\) e \(A\).
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere converter para coordenadas polares
+                antes de integrar.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=2\).</p>
+                <p>\[\iint_A 2\,dA = 2\pi.\]</p>
+                <p>
+                  A fronteira é \(r=1\) ⇒ \[\oint_{\partial
+                  A}\vec{F}\cdot\vec{n}\,ds
+                  =\int_0^{2\pi}(\cos^2\theta+\sin^2\theta)\,d\theta =2\pi.\]
+                </p>
+                <p>Valores coincidem.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">ORIGEM: Análise de Painéis — 03/AGO/1961</div>
+            <p>
+              A região \(A\) é o triângulo de vértices \((0,0)\), \((1,0)\) e
+              \((0,1)\). Para \(\vec{F}(x,y)=(x^2,\;y^2)\), comprove o teorema.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Divida o triângulo em faixas horizontais.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=2x+2y\).</p>
+                <p>\[\iint_A(2x+2y)\,dA=\frac{2}{3}.\]</p>
+                <p>Fluxo pela fronteira dá o mesmo valor.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Verificação de Vazamento — 12/NOV/1962
+            </div>
+            <p>
+              A região é o anel \(1\le x^2+y^2\le4\). Para
+              \(\vec{F}(x,y)=(-y,\,x)\) mostre que o fluxo líquido é nulo.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe a simetria rotacional do campo.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\nabla\!\cdot\!\vec{F}=0\) ⇒ integral dupla é zero, logo
+                  fluxo total também é zero.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ——— Série BETA ——— -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">ORIGEM: Programa Gemini — 14/MAI/1965</div>
+            <p>
+              Região elíptica \(\frac{x^2}{4}+y^2\le1\). Campo
+              \(\vec{F}(x,y)=(xe^{y},\,ye^{x})\). Calcule o fluxo.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integração por partes podem
+                ajudar.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=e^{y}+e^{x}\).</p>
+                <p>
+                  Após mudança adequada de variáveis, \(\displaystyle\Phi=
+                  \pi\!\left(e^{1}-1\right)\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">ORIGEM: Calibration Sector — 09/OUT/1965</div>
+            <p>
+              Sektor circular \(0\le r\le3,\;0\le\theta\le\pi/2\). Campo
+              \(\vec{F}(x,y)=(2x-y,\,x+y)\). Determine o fluxo.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Convertendo para coordenadas polares a conta
+                simplifica.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=3\).</p>
+                <p>
+                  \(\Phi=3\times\text{área}=3\times\frac{9\pi}{2}=
+                  \frac{27\pi}{2}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Estimativa de Incidência — 21/JUN/1966
+            </div>
+            <p>
+              Região limitada por \(y=x^2\) e \(y=\sqrt{x}\) para \(0\le
+              x\le1\). Campo \(\vec{F}(x,y)=(y,\,-x)\). Confirme o teorema.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de conservação podem ser
+                relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=0\Rightarrow\Phi=0\).</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ——— Série GAMMA ——— -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Planejamento de Descarga — 02/ABR/1968
+            </div>
+            <p>
+              Região: \(0\le y\le1-x^2\). Campo \(\vec{F}(x,y)=(xy,\,x^2)\).
+              Calcule o fluxo líquido.
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=y+2x\).</p>
+                <p>Integração ⇒ \(\Phi=\frac12\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Simulação de Escudo Térmico — 18/JUN/1968
+            </div>
+            <p>
+              Determine \(k\) para que o fluxo de \(\vec{F}(x,y)=(kx,\,ky)\) no
+              disco \(r\le a\) seja \(6a^2\).
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Avalie a divergência antes de integrar.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=2k\).</p>
+                <p>\(2k\pi a^2 = 6a^2 \Rightarrow k=\dfrac{3}{\pi}\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Monitoramento de Escapamento — 27/NOV/1968
+            </div>
+            <p>
+              Sensores apontam fluxo total \(5\) através de \(\partial A\).
+              Sabendo que \(\nabla\!\cdot\!\vec{F}=x\), ache \(\iint_A x\,dA\) e
+              a média \(\bar{x}\).
+            </p>
+
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: O fluxo é a própria integral do divergente.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\iint_A x\,dA = 5\). Logo \(\bar{x}=5/|A|\).</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ——— Série OMEGA ——— -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">ORIGEM: Módulo Lunar — 15/JUL/1969</div>
+            <p>
+              Campo \(\vec{F}(x,y)=(x^3-3xy^2,\,3x^2y-y^3)\). Região: disco
+              \(x^2+y^2\le4\). Calcule o fluxo total.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=6x^2-6y^2=6r^2\cos(2\theta)\).</p>
+                <p>Integral dupla sobre disco ⇒ \(\Phi=0\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">ORIGEM: Cartografia Orbital — 18/SET/1971</div>
+            <p>
+              Curva cardioide \(r=1+\cos\theta\). Fluxo do campo
+              \(\vec{F}(x,y)=(r^2\cos\theta,\,r^2\sin\theta)\).
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=4r\).</p>
+                <p>
+                  \(\displaystyle \Phi=
+                  \int_{0}^{2\pi}\!\!\int_{0}^{1+\cos\theta}4r^2\,dr\,d\theta=
+                  \frac{16\pi}{3}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">ORIGEM: Projeto Skylab — 04/MAI/1973</div>
+            <p>
+              Domínio: interseção dos discos \(x^2+y^2\le9\) e
+              \((x-2)^2+y^2\le9\). Campo \(\vec{F}(x,y)=(e^x,\,0)\). Calcule o
+              fluxo total.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\nabla\!\cdot\!\vec{F}=e^{x}\).</p>
+                <p>
+                  Fluxo \(\displaystyle \Phi=\iint_A e^{x}\,dA =2\int_{-7}^{7}
+                  e^{x}\,h(x)\,dx\). Valor exato depende de \(h(x)\); análise
+                  operacional prossegue em documento
+                  <span class="censored">separado</span>.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <!-- ─────────── Rodapé ─────────── -->
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span
+          class="censored"
+          >2049</span
+        >-Λ
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
