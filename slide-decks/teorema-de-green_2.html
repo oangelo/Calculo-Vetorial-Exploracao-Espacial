@@ -646,17 +646,27 @@
           <!-- Slide 5.3: Visualização: Fontes, Sumidouros e Fluxo -->
           <section>
             <h2>Visualizando Divergência e Fluxo</h2>
-            <p>Campo com fonte e sumidouro. Ajuste suas intensidades.</p>
-            <div class="visualization-container" style="height: auto">
+            <p>
+              Campo com uma "fonte/sumidouro" em \((-0.8,0)\) e outra em
+              \((0.8,0)\). Ajuste suas intensidades (k positivo = fonte, k
+              negativo = sumidouro).
+            </p>
+            <div
+              class="visualization-container"
+              style="height: auto; padding-bottom: 10px"
+            >
+              <!-- Added padding-bottom -->
               <canvas
                 id="divergencePlaneVisualization"
                 class="visualization-canvas"
                 width="500"
                 height="320"
               ></canvas>
-              <div class="controls">
+              <div class="controls-container" style="margin-top: 10px">
+                <!-- Usando controls-container do template -->
                 <div class="control-group">
-                  <span class="control-label">Fonte (k₁)</span>
+                  <!-- Reutilizando estilo do control-group -->
+                  <span class="control-label">Intensidade Fonte 1 (k₁)</span>
                   <div class="slider-container">
                     <input
                       type="range"
@@ -665,13 +675,14 @@
                       min="-2"
                       max="2"
                       step="0.1"
-                      value="1"
+                      value="1.0"
                     />
                     <span id="dp_sourceValue" class="slider-value">1.0</span>
                   </div>
                 </div>
                 <div class="control-group">
-                  <span class="control-label">Sumidouro (k₂)</span>
+                  <!-- Reutilizando estilo do control-group -->
+                  <span class="control-label">Intensidade Fonte 2 (k₂)</span>
                   <div class="slider-container">
                     <input
                       type="range"
@@ -680,17 +691,19 @@
                       min="-2"
                       max="2"
                       step="0.1"
-                      value="-1"
+                      value="-1.0"
                     />
                     <span id="dp_sinkValue" class="slider-value">-1.0</span>
                   </div>
                 </div>
               </div>
-              <div class="results-display" style="width: 90%">
-                <div class="results-title">Integrais (Círculo Raio Fixo)</div>
+              <div class="results-display" style="width: 90%; margin-top: 5px">
+                <div class="results-title">
+                  Integrais (Círculo Raio Fixo = 1.5 unidades)
+                </div>
                 <div class="results-row">
                   <span class="results-label"
-                    >\(\oint_C \vec{F} \cdot \vec{n} \, ds\):</span
+                    >\(\oint_C \vec{F} \cdot \vec{n} \, ds\) (Fluxo):</span
                   >
                   <span id="dp_fluxValue">0.0000</span>
                 </div>
