@@ -1,0 +1,1825 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: Teorema de Green</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme -->
+    <link rel="stylesheet" href="space-theme.css" />
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+      /* Estilos básicos para simulação do space-theme durante desenvolvimento (se space-theme.css não carregar) */
+      :root {
+        --background-color: #0a1128;
+        --text-color: #e9ecef;
+        --accent-color: #ff5a5f; /* Cor de destaque dos títulos no original */
+        --link-color: #00b4d8; /* Cor dos links no original */
+        --math-box-bg: rgba(
+          0,
+          180,
+          216,
+          0.1
+        ); /* Cor de fundo de caixas matemáticas */
+        --math-box-border: rgba(
+          0,
+          180,
+          216,
+          0.3
+        ); /* Cor da borda de caixas matemáticas */
+        --history-note-bg: rgba(
+          255,
+          90,
+          95,
+          0.2
+        ); /* Fundo de notas históricas */
+        --visualization-container-bg: rgba(10, 17, 40, 0.6);
+        --visualization-container-border: rgba(79, 195, 247, 0.3);
+        --visualization-container-shadow: rgba(79, 195, 247, 0.15);
+        --canvas-bg: rgba(10, 10, 15, 0.6);
+        --canvas-border: var(
+          --accent-color
+        ); /* Usando accent-color como no template */
+        --controls-group-bg: rgba(26, 35, 126, 0.2);
+        --button-bg: rgba(26, 35, 126, 0.5);
+        --button-border: var(--accent-color); /* Usando accent-color */
+        --button-hover-bg: rgba(79, 195, 247, 0.3);
+        --results-display-bg: rgba(26, 35, 126, 0.3);
+        --results-display-border: rgba(79, 195, 247, 0.3);
+        --results-label-color: var(--link-color); /* Mantendo consistência */
+        --star-blue: #4fc3f7; /* Cor de estrela do tema original */
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--star-blue); /* Títulos principais usam star-blue no tema */
+      }
+      .historical-note {
+        background-color: var(--history-note-bg);
+        border-left: 4px solid var(--accent-color);
+        padding: 10px;
+        font-style: italic;
+        margin: 20px auto;
+        max-width: 85%;
+      }
+      .math-box {
+        background-color: var(--math-box-bg);
+        border: 1px solid var(--math-box-border);
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 90%;
+      }
+      .spacer {
+        height: 30px;
+      }
+
+      .visualization-container {
+        width: 500px;
+        height: 300px;
+        margin: 10px auto;
+        position: relative;
+        background-color: var(--visualization-container-bg);
+        border: 1px solid var(--visualization-container-border);
+        box-shadow: 0 0 10px var(--visualization-container-shadow);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      canvas.visualization-canvas {
+        display: block;
+        margin: 0 auto;
+        background: var(--canvas-bg);
+        border: 1px solid var(--canvas-border);
+        border-radius: 5px;
+      }
+
+      .controls-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 12px auto;
+        width: 100%;
+        max-width: 500px;
+        z-index: 10;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: var(--controls-group-bg);
+        border-radius: 4px;
+        padding: 5px;
+        min-width: 120px;
+      }
+
+      .control-label {
+        margin-bottom: 3px;
+        font-size: 0.8em;
+        color: var(--accent-color); /* Cor de destaque para labels */
+      }
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .slider {
+        flex-grow: 1;
+        margin: 0 3px;
+        accent-color: var(--star-blue); /* Para combinar com o tema */
+      }
+      /* Estilos para navegadores WebKit (Chrome, Safari) */
+      .slider::-webkit-slider-thumb {
+        background: var(--star-blue);
+      }
+      /* Estilos para Firefox */
+      .slider::-moz-range-thumb {
+        background: var(--star-blue);
+        border: none;
+      }
+
+      .slider-value {
+        min-width: 25px;
+        text-align: center;
+        font-size: 0.7em;
+      }
+
+      button.control-button,
+      .controls-container button,
+      .horizontal-buttons button {
+        background: var(--button-bg);
+        color: var(--text-color);
+        border: 1px solid var(--button-border);
+        border-radius: 15px; /* Raio do template */
+        padding: 4px 12px; /* Padding do template */
+        font-size: 0.9em; /* Tamanho da fonte do template */
+        cursor: pointer;
+        transition:
+          background-color 0.3s,
+          transform 0.2s;
+        margin: 3px;
+      }
+
+      button.control-button:hover,
+      .controls-container button:hover,
+      .horizontal-buttons button:hover {
+        background: var(--button-hover-bg);
+        transform: scale(1.05);
+      }
+
+      .horizontal-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+      .horizontal-buttons button {
+        /* Override para botões específicos se necessário */
+        border-radius: 4px; /* Mantendo o específico se for o caso */
+        padding: 4px 8px;
+        font-size: 0.8em;
+      }
+
+      .results-display {
+        background-color: var(--results-display-bg);
+        border: 1px solid var(--results-display-border);
+        border-radius: 4px;
+        padding: 5px 8px;
+        margin-top: 10px;
+        width: 80%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: monospace;
+        font-size: 0.7em;
+      }
+
+      .results-title {
+        color: var(--accent-color); /* Destaque para o título dos resultados */
+        font-weight: bold;
+        margin-bottom: 3px;
+        font-size: 0.8em;
+      }
+
+      .results-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 2px 0;
+      }
+
+      .results-label {
+        color: var(--results-label-color);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Teorema de Green</h1>
+          <h3>Unindo Fronteiras e Áreas na Exploração Espacial</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico: A Era Apollo</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Pouso Lunar e Missões Apollo (1969-1970)</strong></p>
+            <p>
+              Após o pouso da Apollo 11 em 1969, missões subsequentes como
+              Apollo 12 e 13 continuaram a exploração lunar. Esses
+              empreendimentos exigiam uma matemática robusta para navegação,
+              cálculo de trajetórias e análise de campos de força em ambientes
+              complexos e com recursos computacionais limitados.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Computação Eficiente para Missões Críticas</strong></p>
+            <p>
+              O Apollo Guidance Computer (AGC), embora revolucionário, possuía
+              capacidade de processamento e memória modestas para os padrões
+              atuais. Teoremas como o de Green permitiam transformar integrais
+              de linha, que poderiam ser computacionalmente intensivas ao longo
+              de trajetórias complexas, em integrais de área, muitas vezes mais
+              simples de avaliar ou aproximar, otimizando os cálculos cruciais
+              para o sucesso da missão.
+            </p>
+          </div>
+        </section>
+
+        <!-- ========================================= -->
+        <!-- TÓPICO 1: INTRODUÇÃO AO TEOREMA DE GREEN -->
+        <!-- ========================================= -->
+        <section>
+          <!-- Slide 1.1: Definição Formal -->
+          <section>
+            <h2>O Teorema de Green: Definição</h2>
+            <div class="math-section">
+              <p>
+                Seja \(D\) uma região plana limitada por uma curva simples,
+                fechada, suave por partes e orientada positivamente \(C\). Se
+                \(P(x,y)\) e \(Q(x,y)\) têm derivadas parciais contínuas em uma
+                região aberta contendo \(D\), então:
+              </p>
+              \[ \oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial
+              Q}{\partial x} - \frac{\partial P}{\partial y}\right)\,dA \]
+              <p>
+                Este teorema estabelece uma relação fundamental entre uma
+                integral de linha ao longo da fronteira \(C\) de uma região
+                \(D\) e uma integral dupla sobre a própria região \(D\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 1.2: Interpretação Geométrica e Física -->
+          <section>
+            <h2>Interpretação do Teorema</h2>
+            <div class="math-section">
+              <p><strong>Interpretação Geométrica:</strong></p>
+              <p>
+                O teorema relaciona a "circulação" ou "fluxo tangencial" ao
+                longo da fronteira de uma região com a "densidade de rotação"
+                (rotacional) dentro da região.
+              </p>
+            </div>
+            <div class="math-section">
+              <p>
+                <strong
+                  >Interpretação Física (para um campo vetorial \(\vec{F} =
+                  (P,Q)\)):</strong
+                >
+              </p>
+              <ul>
+                <li>
+                  <strong>Lado Esquerdo (\(\oint_C (P\,dx + Q\,dy)\)):</strong>
+                  Representa a <strong>circulação</strong> do campo vetorial
+                  \(\vec{F}\) ao longo da curva fechada \(C\). Se \(\vec{F}\)
+                  for um campo de forças, esta integral calcula o
+                  <strong>trabalho</strong> realizado pela força ao mover uma
+                  partícula ao longo de \(C\).
+                </li>
+                <li>
+                  <strong
+                    >Lado Direito (\(\iint_D \left(\frac{\partial Q}{\partial x}
+                    - \frac{\partial P}{\partial y}\right)\,dA\)):</strong
+                  >
+                  O termo \( \left(\frac{\partial Q}{\partial x} -
+                  \frac{\partial P}{\partial y}\right) \) é o componente k (ou
+                  escalar) do rotacional de \(\vec{F}\) em 2D. Ele mede a
+                  tendência microscópica do campo de girar em torno de um ponto.
+                  A integral dupla soma essa "densidade de giro" sobre toda a
+                  região \(D\).
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 1.3: Visualização Interativa -->
+          <section>
+            <h2>Visualizando o Teorema de Green</h2>
+            <p>
+              Explore a relação entre a integral de linha e a integral de área
+              para um campo vetorial \(\vec{F}(x,y) = (-ay, bx)\).
+            </p>
+            <div class="visualization-container">
+              <canvas
+                id="greenTheoremVisualization"
+                class="visualization-canvas"
+                width="500"
+                height="300"
+              ></canvas>
+            </div>
+            <div class="controls">
+              <div class="control-group">
+                <span class="control-label">Parâmetro a</span>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="gt_aSlider"
+                    class="slider"
+                    min="0"
+                    max="4"
+                    step="0.1"
+                    value="1"
+                  />
+                  <span id="gt_aValue" class="slider-value">1.0</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <span class="control-label">Parâmetro b</span>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="gt_bSlider"
+                    class="slider"
+                    min="0"
+                    max="4"
+                    step="0.1"
+                    value="1"
+                  />
+                  <span id="gt_bValue" class="slider-value">1.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="horizontal-buttons">
+              <button id="gt_circlePathBtn">
+                Caminho Circular (Raio Fixo)
+              </button>
+              <button id="gt_userPathBtn">Desenhar Caminho (Poligonal)</button>
+              <button id="gt_resetPathBtn">Limpar Caminho</button>
+            </div>
+            <div class="results-display">
+              <div class="results-title">Resultados da Integração</div>
+              <div class="results-row">
+                <span class="results-label"
+                  >Rotacional (\(\frac{\partial Q}{\partial x} - \frac{\partial
+                  P}{\partial y}\)):</span
+                >
+                <span id="gt_curlValue">2.0000</span>
+              </div>
+              <div class="results-row">
+                <span class="results-label"
+                  >Integral de Linha (\(\oint_C \vec{F} \cdot d\vec{r}\)):</span
+                >
+                <span id="gt_lineIntegralValue">0.0000</span>
+              </div>
+              <div class="results-row">
+                <span class="results-label"
+                  >Integral Dupla (\(\iint_D \text{rot} \, dA\)):</span
+                >
+                <span id="gt_doubleIntegralValue">0.0000</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 1.4: Contexto Histórico – Simplificando o Complexo -->
+          <section>
+            <h2>O Poder da Simplificação</h2>
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO</div>
+              <p><strong>Desafio do Apollo Guidance Computer (AGC)</strong></p>
+              <p>
+                Com os recursos computacionais limitados do AGC, transformar
+                integrais de linha ao longo de trajetórias potencialmente
+                complexas em integrais de área sobre regiões mais simples (ou
+                sobre aproximações dessas regiões) era uma técnica valiosa. Isso
+                permitia estimar, por exemplo, o trabalho total realizado por um
+                campo ou o fluxo total de alguma quantidade, analisando o
+                comportamento agregado do campo dentro de uma região delimitada,
+                em vez de seguir ponto a ponto uma trajetória complicada.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 1.5: Aplicação – Cálculo de Área -->
+          <section>
+            <h2>Usando Green para Calcular Áreas</h2>
+            <div class="math-section">
+              <p>
+                O Teorema de Green pode ser habilmente usado para calcular a
+                área \(A\) de uma região \(D\), escolhendo \(P\) e \(Q\)
+                apropriadamente para que \( \frac{\partial Q}{\partial x} -
+                \frac{\partial P}{\partial y} = 1 \). Algumas escolhas comuns
+                são:
+              </p>
+              <ul>
+                <li>
+                  Se \(P(x,y) = 0\) e \(Q(x,y) = x\), então \(A = \oint_C
+                  x\,dy\).
+                </li>
+                <li>
+                  Se \(P(x,y) = -y\) e \(Q(x,y) = 0\), então \(A = \oint_C
+                  -y\,dx\).
+                </li>
+                <li>
+                  Uma escolha simétrica popular é \(P(x,y) = -y/2\) e \(Q(x,y) =
+                  x/2\), resultando em \(A = \frac{1}{2} \oint_C (-y\,dx +
+                  x\,dy)\).
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 1.6: Problema – Área de uma Elipse -->
+          <section>
+            <h2>Problema: Área de uma Elipse</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcule a área da região \(D\)
+                limitada pela elipse \( \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1 \)
+                usando o Teorema de Green.
+              </p>
+              <p>
+                <strong>Dica:</strong> Utilize a parametrização da elipse \(x(t)
+                = a\cos t\), \(y(t) = b\sin t\) para \(0 \le t \le 2\pi\).
+                Escolha uma das fórmulas de área, por exemplo, \(A = \oint_C
+                x\,dy\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 1.7: Solução – Área da Elipse -->
+          <section>
+            <h2>Solução: Área da Elipse</h2>
+            <div class="compact-solution">
+              <p>
+                Usamos \(A = \oint_C x\,dy\). Com \(x(t) = a\cos t\) e \(y(t) =
+                b\sin t\), temos \(dy = b\cos t \,dt\).
+              </p>
+              \[ A = \int_0^{2\pi} (a\cos t)(b\cos t \,dt) = ab \int_0^{2\pi}
+              \cos^2 t \,dt \]
+              <p>Sabendo que \(\cos^2 t = \frac{1 + \cos(2t)}{2}\):</p>
+              \[ A = ab \int_0^{2\pi} \frac{1 + \cos(2t)}{2} \,dt = ab \left[
+              \frac{t}{2} + \frac{\sin(2t)}{4} \right]_0^{2\pi} \] \[ A = ab
+              \left( \left( \frac{2\pi}{2} + \frac{\sin(4\pi)}{4} \right) -
+              \left( 0 + \frac{\sin(0)}{4} \right) \right) = ab (\pi + 0 - 0) =
+              \pi ab \]
+              <p>Portanto, a área da elipse é \(\pi ab\).</p>
+            </div>
+          </section>
+
+          <!-- Slide 1.8: Conclusão – Tópico 1 -->
+          <section>
+            <h2>Conclusão: A Essência do Teorema</h2>
+            <div class="math-section">
+              <p>
+                O Teorema de Green fornece uma ponte elegante entre o
+                comportamento de um campo vetorial em uma fronteira (macro) e
+                suas propriedades internas (microscópicas agregadas).
+              </p>
+              <p>
+                Sua versatilidade permite o cálculo de trabalho, fluxo (em uma
+                forma específica), e notavelmente, áreas de regiões planas,
+                simplificando problemas que de outra forma exigiriam integrações
+                mais complexas.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================================== -->
+        <!-- TÓPICO 2: TEOREMA DE GREEN EM RETÂNGULOS -->
+        <!-- =========================================== -->
+        <section>
+          <!-- Slide 2.1: Caso Especial – Regiões Retangulares -->
+          <section>
+            <h2>Green em Retângulos: A Base</h2>
+            <div class="math-section">
+              <p>
+                Para entender a origem do Teorema de Green, é instrutivo
+                demonstrá-lo primeiro para uma região retangular simples \(D =
+                [a,b] \times [c,d]\).
+              </p>
+              <p>
+                A fronteira \(\partial D\) é composta por quatro segmentos de
+                reta \(C_1, C_2, C_3, C_4\), orientados positivamente
+                (anti-horário).
+              </p>
+              <img
+                src="diagramas_svg/retangulo_green.svg"
+                alt="Retângulo com lados C1, C2, C3, C4 e coordenadas"
+                style="
+                  width: 400px;
+                  max-width: 90%;
+                  height: auto;
+                  background-color: white;
+                  padding: 10px;
+                  border-radius: 5px;
+                  margin: 10px auto;
+                  display: block;
+                "
+              />
+            </div>
+          </section>
+
+          <!-- Slide 2.2: Demonstração para Retângulos (Parte 1) -->
+          <section>
+            <h2>Demonstração (Parte 1: Termo com \(P\))</h2>
+            <div class="math-section">
+              <p>
+                Consideremos o termo \( \iint_D -\frac{\partial P}{\partial y}
+                \,dA \):
+              </p>
+              \[ \iint_D -\frac{\partial P}{\partial y} \,dA = \int_a^b \left[
+              \int_c^d -\frac{\partial P}{\partial y} \,dy \right] dx \]
+              <p>Pelo Teorema Fundamental do Cálculo (em \(y\)):</p>
+              \[ = \int_a^b [-P(x,y)]_{y=c}^{y=d} \,dx = \int_a^b [P(x,c) -
+              P(x,d)] \,dx \] \[ = \int_a^b P(x,c)\,dx - \int_a^b P(x,d)\,dx =
+              \int_a^b P(x,c)\,dx + \int_b^a P(x,d)\,dx \]
+              <p>
+                Observamos que \(\int_a^b P(x,c)\,dx = \int_{C_1} P\,dx\) (em
+                \(C_1\), \(y=c, dy=0\)).
+              </p>
+              <p>
+                E \(\int_b^a P(x,d)\,dx = \int_{C_3} P\,dx\) (em \(C_3\), \(y=d,
+                dy=0\), \(x\) de \(b\) para \(a\)).
+              </p>
+              <p>
+                Assim, \( \iint_D -\frac{\partial P}{\partial y} \,dA =
+                \int_{C_1} P\,dx + \int_{C_3} P\,dx \).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.3: Demonstração para Retângulos (Parte 2) -->
+          <section>
+            <h2>Demonstração (Parte 2: Termo com \(Q\))</h2>
+            <div class="math-section">
+              <p>
+                Agora, consideremos o termo \( \iint_D \frac{\partial
+                Q}{\partial x} \,dA \):
+              </p>
+              \[ \iint_D \frac{\partial Q}{\partial x} \,dA = \int_c^d \left[
+              \int_a^b \frac{\partial Q}{\partial x} \,dx \right] dy \]
+              <p>Pelo Teorema Fundamental do Cálculo (em \(x\)):</p>
+              \[ = \int_c^d [Q(x,y)]_{x=a}^{x=b} \,dy = \int_c^d [Q(b,y) -
+              Q(a,y)] \,dy \] \[ = \int_c^d Q(b,y)\,dy - \int_c^d Q(a,y)\,dy =
+              \int_c^d Q(b,y)\,dy + \int_d^c Q(a,y)\,dy \]
+              <p>
+                Observamos que \(\int_c^d Q(b,y)\,dy = \int_{C_2} Q\,dy\) (em
+                \(C_2\), \(x=b, dx=0\)).
+              </p>
+              <p>
+                E \(\int_d^c Q(a,y)\,dy = \int_{C_4} Q\,dy\) (em \(C_4\), \(x=a,
+                dx=0\), \(y\) de \(d\) para \(c\)).
+              </p>
+              <p>
+                Assim, \( \iint_D \frac{\partial Q}{\partial x} \,dA =
+                \int_{C_2} Q\,dy + \int_{C_4} Q\,dy \).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.4: Demonstração para Retângulos (Conclusão) -->
+          <section>
+            <h2>Demonstração (Conclusão)</h2>
+            <div class="math-section">
+              <p>Somando os resultados das Partes 1 e 2:</p>
+              \[ \iint_D \left(\frac{\partial Q}{\partial x} - \frac{\partial
+              P}{\partial y}\right)\,dA = \left( \int_{C_2} Q\,dy + \int_{C_4}
+              Q\,dy \right) + \left( \int_{C_1} P\,dx + \int_{C_3} P\,dx \right)
+              \]
+              <p>
+                Como \(\int_{C_i} Q\,dy = 0\) para \(C_1, C_3\) (pois \(dy=0\))
+                e \(\int_{C_i} P\,dx = 0\) para \(C_2, C_4\) (pois \(dx=0\)),
+                podemos reescrever a soma como:
+              </p>
+              \[ = \int_{C_1} (Pdx+Qdy) + \int_{C_2} (Pdx+Qdy) + \int_{C_3}
+              (Pdx+Qdy) + \int_{C_4} (Pdx+Qdy) \] \[ = \oint_C (P\,dx + Q\,dy)
+              \]
+              <p>
+                Isso completa a demonstração do Teorema de Green para um
+                retângulo.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.5: Contexto Histórico – Fundações Computacionais -->
+          <section>
+            <h2>Retângulos: Base para Simulações</h2>
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO</div>
+              <p><strong>Grade de Cálculo e Discretização</strong></p>
+              <p>
+                Mesmo para formas geométricas complexas encontradas em problemas
+                de engenharia aeroespacial, uma estratégia comum na era
+                pré-computadores poderosos (e ainda hoje) é a discretização:
+                aproximar a região por uma grade de pequenos retângulos (ou
+                outras formas simples). O Teorema de Green, demonstrado em
+                retângulos, fundamenta a ideia de que ao somar as contribuições
+                de retângulos adjacentes, as integrais de linha nas bordas
+                internas se cancelam devido à orientação oposta, restando apenas
+                a contribuição da fronteira externa da região total. Esta
+                propriedade de cancelamento é crucial em métodos numéricos como
+                os de elementos finitos ou volumes finitos.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.6: Problema – Campo em Região Retangular -->
+          <section>
+            <h2>Problema: Campo em Região Retangular</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Uma sonda mapeia um campo vetorial
+                \(\vec{F}(x,y) = (y^2, x^3 - 2xy)\) na região retangular \(D =
+                [1,4] \times [2,5]\). Verifique o Teorema de Green calculando
+                \(\oint_C \vec{F} \cdot d\vec{r}\) e \(\iint_D
+                \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+                y}\right)\,dA\) separadamente.
+              </p>
+              <p>Aqui, \(P(x,y) = y^2\) e \(Q(x,y) = x^3 - 2xy\).</p>
+            </div>
+          </section>
+
+          <!-- Slide 2.7: Solução – Lado Direito (Integral Dupla) -->
+          <section>
+            <h2>Solução (Integral Dupla)</h2>
+            <div class="compact-solution">
+              <p>
+                Calculamos \( \frac{\partial Q}{\partial x} - \frac{\partial
+                P}{\partial y} \):
+              </p>
+              <p>\(P = y^2 \Rightarrow \frac{\partial P}{\partial y} = 2y\)</p>
+              <p>
+                \(Q = x^3 - 2xy \Rightarrow \frac{\partial Q}{\partial x} = 3x^2
+                - 2y\)
+              </p>
+              <p>
+                \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+                = (3x^2 - 2y) - (2y) = 3x^2 - 4y\)
+              </p>
+              <p>Agora, a integral dupla sobre \(D = [1,4] \times [2,5]\):</p>
+              \[ \iint_D (3x^2 - 4y) \,dA = \int_1^4 \int_2^5 (3x^2 - 4y)
+              \,dy\,dx \] \[ = \int_1^4 \left[ 3x^2y - 2y^2 \right]_{y=2}^{y=5}
+              \,dx = \int_1^4 ((15x^2 - 50) - (6x^2 - 8)) \,dx \] \[ = \int_1^4
+              (9x^2 - 42) \,dx = \left[ 3x^3 - 42x \right]_1^4 \] \[ = (3(4)^3 -
+              42(4)) - (3(1)^3 - 42(1)) = (192 - 168) - (3 - 42) = 24 - (-39) =
+              63 \]
+            </div>
+          </section>
+
+          <!-- Slide 2.8: Solução – Lado Esquerdo (Integral de Linha) -->
+          <section>
+            <h2>Solução (Integral de Linha)</h2>
+            <div class="compact-solution">
+              <p>A fronteira \(C\) é composta por 4 segmentos:</p>
+              <ul>
+                <li>
+                  \(C_1: y=2, dy=0, x \text{ de } 1 \text{ a } 4\). \(\int_{C_1}
+                  y^2 dx = \int_1^4 (2)^2 dx = \int_1^4 4 dx = [4x]_1^4 =
+                  16-4=12\).
+                </li>
+                <li>
+                  \(C_2: x=4, dx=0, y \text{ de } 2 \text{ a } 5\). \(\int_{C_2}
+                  (x^3-2xy) dy = \int_2^5 (4^3 - 2(4)y) dy = \int_2^5 (64-8y) dy
+                  = [64y - 4y^2]_2^5 = (320-100) - (128-16) = 220 - 112 = 108\).
+                </li>
+                <li>
+                  \(C_3: y=5, dy=0, x \text{ de } 4 \text{ a } 1\). \(\int_{C_3}
+                  y^2 dx = \int_4^1 (5)^2 dx = \int_4^1 25 dx = [25x]_4^1 =
+                  25-100=-75\).
+                </li>
+                <li>
+                  \(C_4: x=1, dx=0, y \text{ de } 5 \text{ a } 2\). \(\int_{C_4}
+                  (x^3-2xy) dy = \int_5^2 (1^3 - 2(1)y) dy = \int_5^2 (1-2y) dy
+                  = [y - y^2]_5^2 = (2-4) - (5-25) = -2 - (-20) = 18\).
+                </li>
+              </ul>
+              <p>
+                Somando: \(\oint_C \vec{F} \cdot d\vec{r} = 12 + 108 - 75 + 18 =
+                63\).
+              </p>
+              <p>Ambos os lados resultam em 63, verificando o teorema.</p>
+            </div>
+          </section>
+
+          <!-- Slide 2.9: Conclusão – Tópico 2 -->
+          <section>
+            <h2>Conclusão: A Força da Demonstração Direta</h2>
+            <div class="math-section">
+              <p>
+                A demonstração do Teorema de Green para retângulos é um passo
+                fundamental. Ela não apenas valida o teorema para uma forma
+                básica, mas também elucida o mecanismo de como as derivadas
+                parciais internas se relacionam com o comportamento do campo na
+                fronteira.
+              </p>
+              <p>
+                Este caso serve como alicerce para generalizar o teorema para
+                regiões mais complexas, que podem ser aproximadas por uma
+                coleção de retângulos.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- ============================================================= -->
+        <!-- TÓPICO 3: TEOREMA DE GREEN PARA FRONTEIRAS C¹ POR PARTES     -->
+        <!-- ============================================================= -->
+        <section>
+          <!-- Slide 3.1: Generalizando – Fronteiras C¹ por Partes -->
+          <section>
+            <h2>Além dos Retângulos: Fronteiras Suaves</h2>
+            <div class="math-section">
+              <p>
+                O Teorema de Green se estende para regiões \(D\) mais gerais,
+                contanto que sua fronteira \(C\) seja
+                <strong>C¹ por partes</strong> (ou seccionalmente suave). Isso
+                significa que \(C\) é formada por um número finito de curvas
+                suaves (C¹), conectadas em "quinas". A orientação de \(C\) deve
+                ser positiva (anti-horária), mantendo a região \(D\) à esquerda.
+              </p>
+              <p>
+                A ideia da generalização envolve aproximar a região \(D\) por
+                uma união de muitos retângulos pequenos (ou outras formas para
+                as quais o teorema já é conhecido). As integrais de linha ao
+                longo das bordas internas desses retângulos se cancelam aos
+                pares devido às orientações opostas, restando apenas a integral
+                de linha ao longo da fronteira externa aproximada de \(D\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.2: Visualização Interativa – Fronteiras C¹ -->
+          <section>
+            <h2>Explorando Fronteiras C¹</h2>
+            <p>
+              Campo Irrotacional: \(\vec{F}(x,y) = (y^2, x^2)\). Rotacional:
+              \(2x-2y\).
+            </p>
+            <p>
+              Campo Rotacional: \(\vec{G}(x,y) = (-y, x)\). Rotacional: \(2\).
+            </p>
+            <div class="visualization-container">
+              <canvas
+                id="c1BoundaryVisualization"
+                class="visualization-canvas"
+                width="500"
+                height="300"
+              ></canvas>
+            </div>
+            <div class="controls">
+              <div class="control-group">
+                <span class="control-label">Elipse: Eixo A</span>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="c1_aParamSlider"
+                    class="slider"
+                    min="0.5"
+                    max="3"
+                    step="0.1"
+                    value="2.0"
+                  />
+                  <span id="c1_aParamValue" class="slider-value">2.0</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <span class="control-label">Elipse: Eixo B</span>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="c1_bParamSlider"
+                    class="slider"
+                    min="0.5"
+                    max="3"
+                    step="0.1"
+                    value="1.0"
+                  />
+                  <span id="c1_bParamValue" class="slider-value">1.0</span>
+                </div>
+              </div>
+              <div class="control-group">
+                <span class="control-label">Elipse: Rotação</span>
+                <div class="slider-container">
+                  <input
+                    type="range"
+                    id="c1_rotationSlider"
+                    class="slider"
+                    min="0"
+                    max="90"
+                    step="5"
+                    value="0"
+                  />
+                  <span id="c1_rotationValue" class="slider-value">0°</span>
+                </div>
+              </div>
+            </div>
+            <div class="horizontal-buttons">
+              <button id="c1_ellipseBoundaryBtn">Fronteira Elíptica</button>
+              <button id="c1_customBoundaryBtn">Fronteira Poligonal</button>
+            </div>
+            <div class="horizontal-buttons" style="margin-top: 5px">
+              <span
+                class="control-label"
+                style="margin-right: 10px; color: var(--text-color)"
+                >Tipo de Campo:</span
+              >
+              <button id="c1_fieldIrrotationalBtn">
+                Irrotacional \((y^2,x^2)\)
+              </button>
+              <button id="c1_fieldRotationalBtn">Rotacional \((-y,x)\)</button>
+            </div>
+            <div class="results-display">
+              <div class="results-title">Análise da Fronteira e Integrais</div>
+              <div class="results-row">
+                <span class="results-label">Área Aprox. (D):</span>
+                <span id="c1_boundaryArea">0.00</span>
+              </div>
+              <div class="results-row">
+                <span class="results-label">Rotacional:</span>
+                <span id="c1_curlValueDisplay">Variável</span>
+              </div>
+              <div class="results-row">
+                <span class="results-label"
+                  >\(\oint_C \vec{F} \cdot d\vec{r}\) (Aprox.):</span
+                >
+                <span id="c1_lineIntegral">0.00</span>
+              </div>
+              <div class="results-row">
+                <span class="results-label"
+                  >\(\iint_D \text{rot } dA\) (Aprox.):</span
+                >
+                <span id="c1_doubleIntegral">0.00</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 3.3: Contexto Histórico – Modelando o Mundo Real -->
+          <section>
+            <h2>Modelagem de Trajetórias e Campos Complexos</h2>
+            <div class="history-section">
+              <div class="history-label">DESAFIOS</div>
+              <p><strong>Reentrada Atmosférica e Campos Planetários</strong></p>
+              <p>
+                As trajetórias de reentrada de cápsulas espaciais, como as do
+                programa Apollo, não eram simples formas geométricas. Para
+                calcular o arrasto atmosférico ou analisar campos térmicos, os
+                engenheiros precisavam lidar com regiões delimitadas por curvas
+                complexas. O Teorema de Green oferecia um método para relacionar
+                o comportamento agregado de um campo dentro de tal região
+                (integral dupla) com suas propriedades na fronteira (integral de
+                linha), o que era vital para prever forças e aquecimento.
+                Similarmente, ao analisar campos gravitacionais ou magnéticos de
+                corpos celestes (que não são perfeitamente esféricos), o teorema
+                ajudava a avaliar efeitos sobre regiões de interesse ao longo da
+                trajetória da espaçonave.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.4: Problema – Trabalho com Rotacional Constante -->
+          <section>
+            <h2>Problema: Trabalho em Campo com Rotacional Constante</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um objeto se move sob a influência de
+                um campo de força \(\vec{F}(x,y) = (-y, x)\). Determine o
+                trabalho realizado pela força ao mover o objeto ao longo da
+                fronteira elíptica \(C\) dada por \( \frac{x^2}{9} +
+                \frac{y^2}{4} = 1 \), orientada no sentido anti-horário.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.5: Solução – Trabalho com Rotacional Constante -->
+          <section>
+            <h2>Solução: Trabalho em Campo Elíptico</h2>
+            <div class="compact-solution">
+              <p>Temos \(P(x,y) = -y\) e \(Q(x,y) = x\).</p>
+              <p>Calculamos o termo do rotacional para o Teorema de Green:</p>
+              <p>\(\frac{\partial P}{\partial y} = -1\)</p>
+              <p>\(\frac{\partial Q}{\partial x} = 1\)</p>
+              <p>
+                \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+                = 1 - (-1) = 2\)
+              </p>
+              <p>
+                Pelo Teorema de Green, o trabalho \(W = \oint_C \vec{F} \cdot
+                d\vec{r}\) é:
+              </p>
+              \[ W = \iint_D \left(\frac{\partial Q}{\partial x} -
+              \frac{\partial P}{\partial y}\right)\,dA = \iint_D 2 \,dA \] \[ W
+              = 2 \iint_D dA \]
+              <p>
+                A integral \(\iint_D dA\) representa a área da região \(D\)
+                delimitada pela elipse. A elipse \( \frac{x^2}{a^2} +
+                \frac{y^2}{b^2} = 1 \) tem semieixos \(a=3\) e \(b=2\). Sua área
+                é \(\pi ab\).
+              </p>
+              <p>Área(\(D\)) = \(\pi (3)(2) = 6\pi\).</p>
+              <p>Portanto, o trabalho realizado é:</p>
+              \[ W = 2 \cdot (6\pi) = 12\pi \]
+            </div>
+          </section>
+
+          <!-- Slide 3.6: Conclusão – Tópico 3 -->
+          <section>
+            <h2>Conclusão: A Generalidade do Teorema</h2>
+            <div class="math-section">
+              <p>
+                A capacidade do Teorema de Green de lidar com regiões
+                delimitadas por curvas C¹ por partes (ou seja, curvas suaves que
+                podem ter um número finito de "quinas") o torna uma ferramenta
+                extremamente poderosa e versátil.
+              </p>
+              <p>
+                Essa generalidade é crucial para aplicar o teorema a uma vasta
+                gama de problemas práticos em física e engenharia, onde as
+                regiões de interesse raramente são retângulos perfeitos.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 4.1: Aplicação Histórica Consolidada -->
+          <section>
+            <h2>O Legado Matemático do Pouso Lunar</h2>
+            <div class="history-section">
+              <div class="history-label">IMPACTO</div>
+              <p><strong>Apollo 11 e o Cálculo Vetorial</strong></p>
+              <p>
+                O sucesso das missões Apollo, culminando no pouso lunar, não foi
+                apenas um triunfo da engenharia de foguetes, mas também da
+                matemática aplicada. Teoremas como o de Green, ao permitirem a
+                transformação entre diferentes tipos de integrais (linha para
+                área), foram cruciais. Eles não apenas simplificaram cálculos
+                complexos para os limitados computadores de bordo, mas também
+                ofereceram perspectivas diferentes e mais profundas para
+                entender os sistemas físicos envolvidos no voo espacial, como
+                campos gravitacionais e o fluxo de fluidos em motores.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.2: Aplicação Prática Moderna -->
+          <section>
+            <h2>O Teorema de Green Hoje</h2>
+            <div class="dual-panel">
+              <div class="math-section">
+                <p>
+                  Aplicações contemporâneas do Teorema de Green e seus análogos
+                  dimensionais superiores (Stokes, Divergência) são vastas:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Dinâmica dos Fluidos Computacional (CFD):</strong>
+                    Calcular forças de sustentação e arrasto em aerofólios e
+                    veículos.
+                  </li>
+                  <li>
+                    <strong>Eletromagnetismo:</strong> Análise de campos
+                    elétricos e magnéticos, cálculo de potenciais e fluxos.
+                  </li>
+                  <li>
+                    <strong>Robótica e Visão Computacional:</strong> Cálculo de
+                    áreas de formas detectadas por sensores, planejamento de
+                    trajetória para evitar obstáculos.
+                  </li>
+                  <li>
+                    <strong>Geodésia e Cartografia:</strong> Cálculo preciso de
+                    áreas em mapas a partir de coordenadas de fronteira.
+                  </li>
+                  <li>
+                    <strong>Engenharia Estrutural:</strong> Análise de tensões e
+                    deformações em placas.
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <canvas
+                  id="modernApplicationsGreen"
+                  class="visualization-canvas"
+                  width="350"
+                  height="300"
+                ></canvas>
+                <p style="font-size: 0.8em; text-align: center">
+                  Visualização de um campo de fluxo em torno de um objeto. A
+                  circulação ao longo da curva tracejada pode ser calculada
+                  usando Green.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Inicialização do Reveal.js
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+          math: {
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+          },
+          width: '95%',
+          height: '100%',
+          margin: 0.04,
+          minScale: 0.2,
+          maxScale: 2.0,
+          transition: 'fade',
+          navigationMode: 'default',
+        });
+
+        initializeVisualizations();
+      };
+
+      function initializeVisualizations() {
+        const canvases = document.querySelectorAll(
+          'canvas.visualization-canvas'
+        );
+        canvases.forEach((c) => (c.initialized = false));
+
+        // Função para limpar todas as animações (se houver)
+        function cleanupAllVisualizations() {
+          if (window.activeAnimationFrames) {
+            window.activeAnimationFrames.forEach((id) =>
+              cancelAnimationFrame(id)
+            );
+          }
+          window.activeAnimationFrames = [];
+        }
+
+        Reveal.on('slidechanged', function (event) {
+          cleanupAllVisualizations(); // Limpa animações do slide anterior
+          const currentSlide = event.currentSlide;
+
+          if (
+            currentSlide.querySelector('#greenTheoremVisualization') &&
+            !document.getElementById('greenTheoremVisualization').initialized
+          ) {
+            initGreenTheoremVisualization();
+          }
+          if (
+            currentSlide.querySelector('#c1BoundaryVisualization') &&
+            !document.getElementById('c1BoundaryVisualization').initialized
+          ) {
+            initC1BoundaryVisualization();
+          }
+          if (
+            currentSlide.querySelector('#modernApplicationsGreen') &&
+            !document.getElementById('modernApplicationsGreen').initialized
+          ) {
+            initModernApplicationsGreen();
+          }
+        });
+
+        // Trigger para o primeiro slide
+        const firstSlide = Reveal.getCurrentSlide();
+        if (
+          firstSlide.querySelector('#greenTheoremVisualization') &&
+          !document.getElementById('greenTheoremVisualization').initialized
+        ) {
+          initGreenTheoremVisualization();
+        }
+        if (
+          firstSlide.querySelector('#c1BoundaryVisualization') &&
+          !document.getElementById('c1BoundaryVisualization').initialized
+        ) {
+          initC1BoundaryVisualization();
+        }
+        if (
+          firstSlide.querySelector('#modernApplicationsGreen') &&
+          !document.getElementById('modernApplicationsGreen').initialized
+        ) {
+          initModernApplicationsGreen();
+        }
+      }
+
+      window.activeAnimationFrames = []; // Guarda IDs de requestAnimationFrame
+
+      // =============================================
+      // VISUALIZAÇÃO 1: TEOREMA DE GREEN BÁSICO
+      // =============================================
+      function initGreenTheoremVisualization() {
+        const canvas = document.getElementById('greenTheoremVisualization');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+
+        let aValue = 1;
+        let bValue = 1;
+        let pathType = 'circle';
+        let userPath = []; // Pontos em coordenadas do canvas
+        let pathClosed = false;
+        let isDrawing = false;
+
+        const scale = 40;
+        const offsetX = width / 2;
+        const offsetY = height / 2;
+        const fixedRadiusPixels = Math.min(width, height) * 0.35;
+
+        function currentField() {
+          return {
+            P: (x_unit, y_unit) => -aValue * y_unit,
+            Q: (x_unit, y_unit) => bValue * x_unit,
+            curl_val: () => aValue + bValue,
+          };
+        }
+
+        function drawVectorField() {
+          ctx.clearRect(0, 0, width, height);
+          const field = currentField();
+
+          ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, offsetY);
+          ctx.lineTo(width, offsetY);
+          ctx.moveTo(offsetX, 0);
+          ctx.lineTo(offsetX, height);
+          ctx.stroke();
+
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.8)';
+          ctx.fillStyle = 'rgba(100, 181, 246, 0.8)';
+          const gridSize = 25; // Aumentado para menos vetores
+          for (let i = 0; i <= width; i += gridSize) {
+            for (let j = 0; j <= height; j += gridSize) {
+              const x_unit = (i - offsetX) / scale;
+              const y_unit = (offsetY - j) / scale;
+              const vx_unit = field.P(x_unit, y_unit);
+              const vy_unit = field.Q(x_unit, y_unit);
+              const mag_unit = Math.sqrt(vx_unit * vx_unit + vy_unit * vy_unit);
+              if (mag_unit > 1e-3) {
+                // Evitar divisão por zero e vetores minúsculos
+                const arrowLengthPixels = Math.min(
+                  gridSize * 0.6,
+                  mag_unit * scale * 0.5
+                );
+                const nx_canvas = (vx_unit / mag_unit) * arrowLengthPixels;
+                const ny_canvas = (-vy_unit / mag_unit) * arrowLengthPixels;
+                ctx.beginPath();
+                ctx.moveTo(i, j);
+                ctx.lineTo(i + nx_canvas, j + ny_canvas);
+                ctx.stroke();
+                const angle = Math.atan2(ny_canvas, nx_canvas);
+                ctx.beginPath();
+                ctx.moveTo(i + nx_canvas, j + ny_canvas);
+                ctx.lineTo(
+                  i + nx_canvas - 4 * Math.cos(angle - Math.PI / 6),
+                  j + ny_canvas - 4 * Math.sin(angle - Math.PI / 6)
+                );
+                ctx.lineTo(
+                  i + nx_canvas - 4 * Math.cos(angle + Math.PI / 6),
+                  j + ny_canvas - 4 * Math.sin(angle + Math.PI / 6)
+                );
+                ctx.closePath();
+                ctx.fill();
+              }
+            }
+          }
+
+          if (pathType === 'circle') {
+            drawCirclePath(fixedRadiusPixels);
+            updateResultsCircle(fixedRadiusPixels);
+          } else if (pathType === 'user' && userPath.length > 0) {
+            drawUserPath();
+            if (pathClosed) {
+              calculateUserPathResults();
+            } else {
+              document.getElementById('gt_lineIntegralValue').textContent =
+                'Path Open';
+              document.getElementById('gt_doubleIntegralValue').textContent =
+                'Path Open';
+            }
+          } else {
+            document.getElementById('gt_lineIntegralValue').textContent = 'N/A';
+            document.getElementById('gt_doubleIntegralValue').textContent =
+              'N/A';
+          }
+          document.getElementById('gt_curlValue').textContent = field
+            .curl_val()
+            .toFixed(4);
+        }
+
+        function drawCirclePath(radiusPixels) {
+          ctx.strokeStyle = 'rgba(255, 90, 95, 0.8)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(offsetX, offsetY, radiusPixels, 0, 2 * Math.PI);
+          ctx.stroke();
+        }
+
+        function drawUserPath() {
+          if (userPath.length < 1) return;
+          ctx.strokeStyle = 'rgba(255, 90, 95, 0.8)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(userPath[0].x, userPath[0].y);
+          for (let i = 1; i < userPath.length; i++) {
+            ctx.lineTo(userPath[i].x, userPath[i].y);
+          }
+          if (pathClosed) {
+            ctx.closePath();
+          }
+          ctx.stroke();
+          if (userPath.length > 0 && !pathClosed) {
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+            ctx.beginPath();
+            ctx.arc(userPath[0].x, userPath[0].y, 5, 0, 2 * Math.PI);
+            ctx.fill();
+          }
+        }
+
+        function updateResultsCircle(radiusPixels) {
+          const r_units = radiusPixels / scale;
+          const area_units = Math.PI * r_units * r_units;
+          const currentCurl = currentField().curl_val();
+          const integralValue = currentCurl * area_units;
+          document.getElementById('gt_lineIntegralValue').textContent =
+            integralValue.toFixed(4);
+          document.getElementById('gt_doubleIntegralValue').textContent =
+            integralValue.toFixed(4);
+        }
+
+        function calculateUserPathResults() {
+          if (userPath.length < 3 || !pathClosed) return;
+
+          // Convert path to math coordinates (y-up) for shoelace
+          let path_math = userPath.map((p_canvas) => ({
+            x: (p_canvas.x - offsetX) / scale,
+            y: (offsetY - p_canvas.y) / scale,
+          }));
+
+          let signedAreaMath = 0;
+          for (let i = 0; i < path_math.length; i++) {
+            const p1 = path_math[i];
+            const p2 = path_math[(i + 1) % path_math.length];
+            signedAreaMath += p1.x * p2.y - p2.x * p1.y;
+          }
+          signedAreaMath /= 2.0; // This is positive for CCW in math coords
+
+          const currentCurl = currentField().curl_val();
+          const integralValue = currentCurl * signedAreaMath;
+
+          document.getElementById('gt_lineIntegralValue').textContent =
+            integralValue.toFixed(4);
+          document.getElementById('gt_doubleIntegralValue').textContent =
+            integralValue.toFixed(4);
+        }
+
+        canvas.addEventListener('mousedown', function (e) {
+          if (pathType !== 'user') return;
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          if (pathClosed) {
+            userPath = []; // Reset path
+            pathClosed = false;
+          }
+
+          if (userPath.length > 2 && !pathClosed) {
+            // Check for closing only if not already closed
+            const dx = x - userPath[0].x;
+            const dy = y - userPath[0].y;
+            if (Math.sqrt(dx * dx + dy * dy) < 15) {
+              pathClosed = true;
+              isDrawing = false;
+              drawVectorField();
+              return;
+            }
+          }
+          isDrawing = true;
+          userPath.push({ x, y });
+          drawVectorField();
+        });
+
+        canvas.addEventListener('mousemove', function (e) {
+          if (!isDrawing || pathType !== 'user' || pathClosed) return;
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const lastPoint = userPath[userPath.length - 1];
+          const distSq =
+            (x - lastPoint.x) * (x - lastPoint.x) +
+            (y - lastPoint.y) * (y - lastPoint.y);
+          if (distSq > 10 * 10) {
+            userPath.push({ x, y });
+            drawVectorField();
+          }
+        });
+
+        canvas.addEventListener('mouseup', function () {
+          if (pathType === 'user') isDrawing = false;
+        });
+
+        document
+          .getElementById('gt_aSlider')
+          .addEventListener('input', function (e) {
+            aValue = parseFloat(e.target.value);
+            document.getElementById('gt_aValue').textContent =
+              aValue.toFixed(1);
+            drawVectorField();
+          });
+        document
+          .getElementById('gt_bSlider')
+          .addEventListener('input', function (e) {
+            bValue = parseFloat(e.target.value);
+            document.getElementById('gt_bValue').textContent =
+              bValue.toFixed(1);
+            drawVectorField();
+          });
+        document
+          .getElementById('gt_circlePathBtn')
+          .addEventListener('click', function () {
+            pathType = 'circle';
+            userPath = [];
+            pathClosed = false;
+            isDrawing = false;
+            drawVectorField();
+          });
+        document
+          .getElementById('gt_userPathBtn')
+          .addEventListener('click', function () {
+            pathType = 'user';
+            userPath = [];
+            pathClosed = false;
+            isDrawing = false;
+            drawVectorField();
+          });
+        document
+          .getElementById('gt_resetPathBtn')
+          .addEventListener('click', function () {
+            userPath = [];
+            pathClosed = false;
+            isDrawing = false;
+            drawVectorField();
+          });
+        drawVectorField();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO 2: FRONTEIRAS C¹
+      // =============================================
+      function initC1BoundaryVisualization() {
+        const canvas = document.getElementById('c1BoundaryVisualization');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        const canvas_offsetX = width / 2;
+        const canvas_offsetY = height / 2;
+
+        let aParam = 2.0;
+        let bParam = 1.0;
+        let rotation = 0;
+        let boundaryDefType = 'ellipse';
+        let controlPoints = [];
+
+        let activeFieldType = 'irrotational'; // 'irrotational' or 'rotational'
+
+        const scale = 50;
+
+        const fields = {
+          irrotational: {
+            // F(x,y) = (y^2, x^2)
+            P: (x_unit, y_unit) => y_unit * y_unit,
+            Q: (x_unit, y_unit) => x_unit * x_unit,
+            curl_str: '2x - 2y',
+            curl_func: (x_unit, y_unit) => 2 * x_unit - 2 * y_unit,
+          },
+          rotational: {
+            // G(x,y) = (-y, x)
+            P: (x_unit, y_unit) => -y_unit,
+            Q: (x_unit, y_unit) => x_unit,
+            curl_str: '2',
+            curl_func: (x_unit, y_unit) => 2,
+          },
+        };
+        let currentFieldFunctions = fields[activeFieldType];
+
+        function initCustomControlPoints() {
+          controlPoints = [];
+          const initialRadius = 1.5 * scale;
+          const numPoints = 5;
+          for (let i = 0; i < numPoints; i++) {
+            const angle = (i / numPoints) * 2 * Math.PI + Math.PI / 6; // Offset start angle
+            controlPoints.push({
+              x: canvas_offsetX + initialRadius * Math.cos(angle),
+              y: canvas_offsetY + initialRadius * Math.sin(angle),
+            });
+          }
+        }
+
+        function drawVisualization() {
+          ctx.clearRect(0, 0, width, height);
+          currentFieldFunctions = fields[activeFieldType]; // Ensure current field is used
+
+          ctx.strokeStyle = 'rgba(150, 150, 150, 0.5)';
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(0, canvas_offsetY);
+          ctx.lineTo(width, canvas_offsetY);
+          ctx.moveTo(canvas_offsetX, 0);
+          ctx.lineTo(canvas_offsetX, height);
+          ctx.stroke();
+
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.7)';
+          ctx.fillStyle = 'rgba(100, 181, 246, 0.7)';
+          const gridSize = 40;
+          for (let i = 0; i <= width; i += gridSize) {
+            for (let j = 0; j <= height; j += gridSize) {
+              const x_unit = (i - canvas_offsetX) / scale;
+              const y_unit = (canvas_offsetY - j) / scale;
+              const vx_unit = currentFieldFunctions.P(x_unit, y_unit);
+              const vy_unit = currentFieldFunctions.Q(x_unit, y_unit);
+              const mag_unit = Math.sqrt(vx_unit * vx_unit + vy_unit * vy_unit);
+
+              if (mag_unit > 1e-3) {
+                const arrowLengthPixels = Math.min(
+                  gridSize * 0.6,
+                  mag_unit *
+                    scale *
+                    (activeFieldType === 'rotational' ? 0.8 : 0.2)
+                ); // Adjust length scaling
+                const nx_canvas = (vx_unit / mag_unit) * arrowLengthPixels;
+                const ny_canvas = (-vy_unit / mag_unit) * arrowLengthPixels;
+
+                ctx.beginPath();
+                ctx.moveTo(i, j);
+                ctx.lineTo(i + nx_canvas, j + ny_canvas);
+                ctx.stroke();
+                const angle = Math.atan2(ny_canvas, nx_canvas);
+                ctx.beginPath();
+                ctx.moveTo(i + nx_canvas, j + ny_canvas);
+                ctx.lineTo(
+                  i + nx_canvas - 4 * Math.cos(angle - Math.PI / 6),
+                  j + ny_canvas - 4 * Math.sin(angle - Math.PI / 6)
+                );
+                ctx.lineTo(
+                  i + nx_canvas - 4 * Math.cos(angle + Math.PI / 6),
+                  j + ny_canvas - 4 * Math.sin(angle + Math.PI / 6)
+                );
+                ctx.closePath();
+                ctx.fill();
+              }
+            }
+          }
+
+          ctx.strokeStyle = 'rgba(255, 90, 95, 0.8)';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+
+          let pathForIntegration_math = []; // Array of {x, y} in math units (y-up)
+
+          if (boundaryDefType === 'ellipse') {
+            const a_px = aParam * scale;
+            const b_px = bParam * scale;
+            for (let t = 0; t <= 2 * Math.PI + 0.01; t += 0.02) {
+              // Increased step for performance
+              const cos_t = Math.cos(t);
+              const sin_t = Math.sin(t);
+              const x_local = a_px * cos_t;
+              const y_local = b_px * sin_t;
+              const x_rotated =
+                x_local * Math.cos(rotation) - y_local * Math.sin(rotation);
+              const y_rotated =
+                x_local * Math.sin(rotation) + y_local * Math.cos(rotation);
+              const x_canvas = canvas_offsetX + x_rotated;
+              const y_canvas = canvas_offsetY + y_rotated;
+              if (t < 0.015)
+                ctx.moveTo(x_canvas, y_canvas); // Use slightly larger than 0.01
+              else ctx.lineTo(x_canvas, y_canvas);
+
+              pathForIntegration_math.push({
+                x: x_rotated / scale,
+                y: -y_rotated / scale, // y up for math
+              });
+            }
+            ctx.closePath();
+            ctx.stroke();
+            calculateResults(pathForIntegration_math);
+          } else if (boundaryDefType === 'custom') {
+            if (controlPoints.length > 0) {
+              ctx.moveTo(controlPoints[0].x, controlPoints[0].y);
+              pathForIntegration_math.push({
+                x: (controlPoints[0].x - canvas_offsetX) / scale,
+                y: (canvas_offsetY - controlPoints[0].y) / scale,
+              });
+              for (let i = 1; i < controlPoints.length; i++) {
+                ctx.lineTo(controlPoints[i].x, controlPoints[i].y);
+                pathForIntegration_math.push({
+                  x: (controlPoints[i].x - canvas_offsetX) / scale,
+                  y: (canvas_offsetY - controlPoints[i].y) / scale,
+                });
+              }
+              ctx.closePath();
+              ctx.stroke();
+
+              ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
+              controlPoints.forEach((p) => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+              });
+              if (controlPoints.length >= 3)
+                calculateResults(pathForIntegration_math);
+              else {
+                document.getElementById('c1_boundaryArea').textContent = 'N/A';
+                document.getElementById('c1_lineIntegral').textContent = 'N/A';
+                document.getElementById('c1_doubleIntegral').textContent =
+                  'N/A';
+              }
+            }
+          }
+          document.getElementById('c1_curlValueDisplay').textContent =
+            currentFieldFunctions.curl_str;
+        }
+
+        function calculateResults(path_math_units) {
+          let signedArea_math_units = 0;
+          let lineIntegral = 0;
+          let doubleIntegral_numerical = 0;
+
+          const numSegments = path_math_units.length; // Path is already "closed" by its definition here
+          if (numSegments < 3) return;
+
+          for (let i = 0; i < numSegments; i++) {
+            const p1 = path_math_units[i];
+            const p2 = path_math_units[(i + 1) % numSegments];
+            signedArea_math_units += p1.x * p2.y - p2.x * p1.y;
+
+            const mid_x = (p1.x + p2.x) / 2;
+            const mid_y = (p1.y + p2.y) / 2;
+            const P_val = currentFieldFunctions.P(mid_x, mid_y);
+            const Q_val = currentFieldFunctions.Q(mid_x, mid_y);
+            lineIntegral += P_val * (p2.x - p1.x) + Q_val * (p2.y - p1.y);
+          }
+          signedArea_math_units /= 2.0;
+
+          // Numerical double integral of curl(F) dA
+          // For simplicity, if curl is constant, it's curl * Area.
+          // If curl is variable, this needs a proper 2D numerical integration (e.g. grid sum)
+          // Here, we'll use a very rough centroid approximation for variable curl or exact for constant.
+          if (currentFieldFunctions.curl_str === '2') {
+            // Constant curl
+            doubleIntegral_numerical =
+              currentFieldFunctions.curl_func(0, 0) * signedArea_math_units;
+          } else {
+            // Variable curl (2x - 2y), approximate at centroid
+            let cx = 0,
+              cy = 0;
+            path_math_units.forEach((p) => {
+              cx += p.x;
+              cy += p.y;
+            });
+            cx /= numSegments;
+            cy /= numSegments;
+            const curl_at_centroid = currentFieldFunctions.curl_func(cx, cy);
+            doubleIntegral_numerical = curl_at_centroid * signedArea_math_units;
+          }
+
+          document.getElementById('c1_boundaryArea').textContent = Math.abs(
+            signedArea_math_units
+          ).toFixed(2);
+          document.getElementById('c1_lineIntegral').textContent =
+            lineIntegral.toFixed(2);
+          document.getElementById('c1_doubleIntegral').textContent =
+            doubleIntegral_numerical.toFixed(2);
+        }
+
+        let draggedPointIndex = -1;
+        canvas.addEventListener('mousedown', function (e) {
+          if (boundaryDefType !== 'custom') return;
+          const rect = canvas.getBoundingClientRect();
+          const mouseX = e.clientX - rect.left;
+          const mouseY = e.clientY - rect.top;
+          for (let i = 0; i < controlPoints.length; i++) {
+            const distSq =
+              (mouseX - controlPoints[i].x) ** 2 +
+              (mouseY - controlPoints[i].y) ** 2;
+            if (distSq < 10 * 10) {
+              draggedPointIndex = i;
+              return;
+            }
+          }
+        });
+        canvas.addEventListener('mousemove', function (e) {
+          if (draggedPointIndex === -1 || boundaryDefType !== 'custom') return;
+          const rect = canvas.getBoundingClientRect();
+          controlPoints[draggedPointIndex].x = e.clientX - rect.left;
+          controlPoints[draggedPointIndex].y = e.clientY - rect.top;
+          drawVisualization();
+        });
+        canvas.addEventListener('mouseup', function () {
+          draggedPointIndex = -1;
+        });
+
+        document
+          .getElementById('c1_aParamSlider')
+          .addEventListener('input', function (e) {
+            aParam = parseFloat(e.target.value);
+            document.getElementById('c1_aParamValue').textContent =
+              aParam.toFixed(1);
+            if (boundaryDefType === 'ellipse') drawVisualization();
+          });
+        document
+          .getElementById('c1_bParamSlider')
+          .addEventListener('input', function (e) {
+            bParam = parseFloat(e.target.value);
+            document.getElementById('c1_bParamValue').textContent =
+              bParam.toFixed(1);
+            if (boundaryDefType === 'ellipse') drawVisualization();
+          });
+        document
+          .getElementById('c1_rotationSlider')
+          .addEventListener('input', function (e) {
+            rotation = (parseFloat(e.target.value) * Math.PI) / 180;
+            document.getElementById('c1_rotationValue').textContent =
+              e.target.value + '°';
+            if (boundaryDefType === 'ellipse') drawVisualization();
+          });
+        document
+          .getElementById('c1_ellipseBoundaryBtn')
+          .addEventListener('click', function () {
+            boundaryDefType = 'ellipse';
+            drawVisualization();
+          });
+        document
+          .getElementById('c1_customBoundaryBtn')
+          .addEventListener('click', function () {
+            boundaryDefType = 'custom';
+            initCustomControlPoints();
+            drawVisualization();
+          });
+        document
+          .getElementById('c1_fieldIrrotationalBtn')
+          .addEventListener('click', function () {
+            activeFieldType = 'irrotational';
+            drawVisualization();
+          });
+        document
+          .getElementById('c1_fieldRotationalBtn')
+          .addEventListener('click', function () {
+            activeFieldType = 'rotational';
+            drawVisualization();
+          });
+
+        initCustomControlPoints();
+        drawVisualization();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO 3: APLICAÇÕES MODERNAS
+      // =============================================
+      function initModernApplicationsGreen() {
+        const canvas = document.getElementById('modernApplicationsGreen');
+        if (!canvas || canvas.initialized) return;
+        canvas.initialized = true;
+
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width;
+        const height = canvas.height;
+        let time = 0;
+        let animFrameId_modern;
+
+        function drawModern() {
+          ctx.clearRect(0, 0, width, height);
+          const centerX = width / 2;
+          const centerY = height / 2;
+
+          ctx.fillStyle = 'rgba(150, 150, 170, 0.8)';
+          ctx.beginPath();
+          ctx.moveTo(centerX - 60, centerY);
+          ctx.quadraticCurveTo(
+            centerX,
+            centerY - 30,
+            centerX + 70,
+            centerY + 5
+          );
+          ctx.quadraticCurveTo(centerX, centerY + 20, centerX - 60, centerY);
+          ctx.closePath();
+          ctx.fill();
+
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.5)';
+          ctx.lineWidth = 1;
+          for (let yStream = 10; yStream < height; yStream += 20) {
+            ctx.beginPath();
+            ctx.moveTo(0, yStream);
+            for (let xStream = 0; xStream < width; xStream += 5) {
+              const dy =
+                0.5 * Math.sin(xStream / 30 + time + yStream / 50.0) * 10;
+              ctx.lineTo(xStream, yStream + dy);
+            }
+            ctx.stroke();
+          }
+
+          ctx.strokeStyle = 'rgba(255, 90, 95, 0.9)';
+          ctx.lineWidth = 1.5;
+          ctx.setLineDash([5, 3]);
+          ctx.beginPath();
+          ctx.ellipse(centerX, centerY, 100, 50, 0, 0, 2 * Math.PI);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          const circulation = 55.0 + 5 * Math.sin(time * 2);
+          ctx.fillStyle = 'white';
+          ctx.font = '12px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(
+            `Circulação \u222E F·dr = ${circulation.toFixed(1)}`,
+            centerX,
+            centerY + 70
+          );
+
+          time += 0.02;
+          if (
+            Reveal.getCurrentSlide().querySelector('#modernApplicationsGreen')
+          ) {
+            animFrameId_modern = requestAnimationFrame(drawModern);
+            if (
+              window.activeAnimationFrames &&
+              !window.activeAnimationFrames.includes(animFrameId_modern)
+            ) {
+              window.activeAnimationFrames.push(animFrameId_modern);
+            }
+          }
+        }
+        drawModern();
+      }
+    </script>
+  </body>
+</html>

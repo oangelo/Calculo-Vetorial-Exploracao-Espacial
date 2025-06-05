@@ -1,0 +1,1071 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: campos-conservativos</title>
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="space-theme.css" />
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+    <script>
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+          math: {
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+            TeX: {
+              Macros: {},
+            },
+          },
+        });
+      };
+    </script>
+
+    <style>
+      /* Estilos para simulação do space-theme */
+      :root {
+        --space-black: #0a0a0f;
+        --deep-blue: #1a237e;
+        --star-blue: #4fc3f7;
+        --nebula-blue: rgba(79, 195, 247, 0.15);
+        --text-color: #e0e0e0;
+        --accent-color: #64b5f6;
+      }
+
+      /* Estilo para as visualizações SVG */
+      svg.visualization {
+        background-color: var(--nebula-blue); /* Usando variável do tema */
+        border: 1px solid var(--star-blue); /* Usando variável do tema */
+        box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+        margin: 10px auto; /* Adiciona margem vertical */
+        display: block;
+      }
+    </style>
+    <!-- O JavaScript específico das demos foi removido -->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Slide de Título -->
+        <section>
+          <h1>Campos Conservativos</h1>
+          <h3>A Matemática da Eficiência na Exploração Espacial</h3>
+          <p>Curso de Cálculo Vetorial</p>
+        </section>
+
+        <!-- SEÇÃO 1: Definição e Forma Diferencial Exata -->
+        <section>
+          <section>
+            <h2>Campos Conservativos: A Matemática da Eficiência</h2>
+            <p class="fragment">
+              Um campo vetorial \(\vec{F}\) é
+              <strong>conservativo</strong> quando existe uma função escalar
+              \(f\) tal que:
+            </p>
+            <p class="fragment">\[\vec{F} = \nabla f\]</p>
+            <p class="fragment">
+              Forma diferencial: \(\vec{F} \cdot d\vec{r} = df\)
+            </p>
+            <p class="fragment">
+              São campos onde o
+              <em>trabalho independe do caminho percorrido</em> - uma
+              propriedade matemática com profundas implicações físicas.
+            </p>
+          </section>
+
+          <section>
+            <h3>Pensando Intuitivamente</h3>
+            <p>Imagine um terreno montanhoso. Para ir de um ponto a outro:</p>
+            <ul>
+              <li class="fragment">
+                A <em>diferença de altitude</em> entre pontos é única
+              </li>
+              <li class="fragment">
+                O <em>trabalho contra a gravidade</em> depende apenas dos pontos
+                inicial e final
+              </li>
+              <li class="fragment">
+                Independe do caminho escolhido (direto, zigue-zague, espiral)
+              </li>
+            </ul>
+            <p class="fragment">
+              Esta propriedade fundamental permite otimizar trajetórias e
+              calcular trabalho de maneira elegante.
+            </p>
+          </section>
+
+          <section>
+            <h3>Forma Diferencial Exata</h3>
+            <p>\[\vec{F} \cdot d\vec{r} = df\]</p>
+            <p>
+              Esta notação compacta revela a essência dos campos conservativos:
+            </p>
+            <ul>
+              <li class="fragment">
+                O produto escalar \(\vec{F} \cdot d\vec{r}\) representa trabalho
+                infinitesimal
+              </li>
+              <li class="fragment">
+                \(df\) é a mudança infinitesimal na função potencial
+              </li>
+              <li class="fragment">
+                O operador \(\nabla\) (gradiente) aponta na direção de
+                crescimento mais rápido da função potencial
+              </li>
+            </ul>
+            <p class="fragment">
+              O campo vetorial é, portanto, o gradiente do potencial: \(\vec{F}
+              = \nabla f\)
+            </p>
+          </section>
+
+          <section>
+            <h3>Contexto Histórico: Cálculo de Trajetórias</h3>
+            <p>
+              Durante a Guerra Fria, a corrida espacial transformou esta
+              matemática em vantagem estratégica:
+            </p>
+            <ul>
+              <li class="fragment">
+                Engenheiros da NASA e soviéticos usavam campos conservativos
+                para minimizar consumo de combustível
+              </li>
+              <li class="fragment">
+                Cálculos manuais iniciais: Katherine Johnson e equipe calcularam
+                manualmente as trajetórias Apollo
+              </li>
+              <li class="fragment">
+                Economia de combustível significava maior carga útil e maior
+                chance de sucesso
+              </li>
+            </ul>
+            <blockquote class="fragment">
+              "Dar a volta na Lua exigia precisão perfeita. Compreender os
+              campos gravitacionais conservativos não era apenas matemática
+              teórica; era nossa única chance de trazer os astronautas de volta
+              para casa." — Relato atribuído aos engenheiros da NASA, anos 1960
+            </blockquote>
+          </section>
+        </section>
+
+        <!-- SEÇÃO 2: Integral de Linha de Campos Conservativos -->
+        <section>
+          <section>
+            <h2>A Elegância da Integral de Linha</h2>
+            <p class="fragment">
+              Para um campo conservativo \(\vec{F} = \nabla f\), o trabalho
+              entre pontos \(A\) e \(B\) é dado por:
+            </p>
+            <p class="fragment">
+              \[\int_C \vec{F} \cdot d\vec{r} = f(B) - f(A)\]
+            </p>
+            <p class="fragment">
+              Esta é a essência do
+              <strong>Teorema Fundamental para Integrais de Linha</strong>.
+            </p>
+            <p class="fragment">
+              Uma propriedade poderosa: o resultado depende apenas dos pontos
+              extremos, não do caminho \(C\).
+            </p>
+          </section>
+
+          <section>
+            <h3>Demonstração da Independência do Caminho</h3>
+            <svg
+              width="650"
+              height="350"
+              viewBox="0 0 650 350"
+              xmlns="http://www.w3.org/2000/svg"
+              class="visualization"
+              aria-label="Ilustração da independência do caminho da integral de linha. Mostra pontos A e B e três caminhos diferentes (C₁, C₂, C₃) entre eles. Uma legenda indica que a integral de linha é a mesma para todos os caminhos."
+            >
+              <defs>
+                <marker
+                  id="arrowhead-field1"
+                  markerWidth="8"
+                  markerHeight="5.6"
+                  refX="7"
+                  refY="2.8"
+                  orient="auto"
+                  fill="rgba(79, 195, 247, 0.7)"
+                >
+                  <polygon points="0 0, 8 2.8, 0 5.6" />
+                </marker>
+              </defs>
+              <!-- Campo Vetorial Simples F(x,y) = (k, kx) -->
+              <g
+                stroke="rgba(79, 195, 247, 0.4)"
+                stroke-width="1"
+                marker-end="url(#arrowhead-field1)"
+              >
+                <script>
+                  // Script para gerar linhas do campo vetorial (não interativo, apenas para desenho)
+                  // Este script será executado pelo navegador ao renderizar o SVG
+                  // No entanto, é melhor evitar scripts em SVGs por segurança e compatibilidade
+                  // Para uma versão puramente estática, estas linhas seriam pré-calculadas:
+                </script>
+                <!-- Exemplo de vetores de campo pré-calculados -->
+                <line x1="50" y1="50" x2="70" y2="50" />
+                <line x1="50" y1="100" x2="70" y2="100" />
+                <line x1="50" y1="150" x2="70" y2="150" />
+                <line x1="50" y1="200" x2="70" y2="200" />
+                <line x1="50" y1="250" x2="70" y2="250" />
+                <line x1="50" y1="300" x2="70" y2="300" />
+                <line x1="150" y1="50" x2="190" y2="50" />
+                <line x1="150" y1="100" x2="190" y2="100" />
+                <line x1="150" y1="150" x2="190" y2="150" />
+                <line x1="150" y1="200" x2="190" y2="200" />
+                <line x1="150" y1="250" x2="190" y2="250" />
+                <line x1="150" y1="300" x2="190" y2="300" />
+                <line x1="250" y1="50" x2="310" y2="50" />
+                <line x1="250" y1="100" x2="310" y2="100" />
+                <line x1="250" y1="150" x2="310" y2="150" />
+                <line x1="250" y1="200" x2="310" y2="200" />
+                <line x1="250" y1="250" x2="310" y2="250" />
+                <line x1="250" y1="300" x2="310" y2="300" />
+                <line x1="350" y1="50" x2="430" y2="50" />
+                <line x1="350" y1="100" x2="430" y2="100" />
+                <line x1="350" y1="150" x2="430" y2="150" />
+                <line x1="350" y1="200" x2="430" y2="200" />
+                <line x1="350" y1="250" x2="430" y2="250" />
+                <line x1="350" y1="300" x2="430" y2="300" />
+                <line x1="450" y1="50" x2="550" y2="50" />
+                <line x1="450" y1="100" x2="550" y2="100" />
+                <line x1="450" y1="150" x2="550" y2="150" />
+                <line x1="450" y1="200" x2="550" y2="200" />
+                <line x1="450" y1="250" x2="550" y2="250" />
+                <line x1="450" y1="300" x2="550" y2="300" />
+                <line x1="550" y1="50" x2="610" y2="50" />
+                <line x1="550" y1="100" x2="610" y2="100" />
+                <line x1="550" y1="150" x2="610" y2="150" />
+                <line x1="550" y1="200" x2="610" y2="200" />
+                <line x1="550" y1="250" x2="610" y2="250" />
+                <line x1="550" y1="300" x2="610" y2="300" />
+              </g>
+              <!-- Pontos A e B -->
+              <circle cx="100" cy="175" r="10" fill="var(--accent-color)" />
+              <text
+                x="100"
+                y="175"
+                dy="5"
+                text-anchor="middle"
+                fill="white"
+                font-size="18"
+                font-weight="bold"
+              >
+                A
+              </text>
+              <circle cx="550" cy="175" r="10" fill="#FF6F61" />
+              <!-- Cor para B -->
+              <text
+                x="550"
+                y="175"
+                dy="5"
+                text-anchor="middle"
+                fill="white"
+                font-size="18"
+                font-weight="bold"
+              >
+                B
+              </text>
+              <!-- Caminhos -->
+              <path
+                d="M 100 175 L 550 175"
+                stroke="white"
+                stroke-width="2.5"
+                fill="none"
+              />
+              <text
+                x="325"
+                y="160"
+                fill="white"
+                font-size="16"
+                font-style="italic"
+              >
+                C₁
+              </text>
+              <path
+                d="M 100 175 Q 325 100 550 175"
+                stroke="#FFEB3B"
+                stroke-width="2.5"
+                fill="none"
+              />
+              <!-- Amarelo -->
+              <text
+                x="325"
+                y="90"
+                fill="#FFEB3B"
+                font-size="16"
+                font-style="italic"
+              >
+                C₂
+              </text>
+              <path
+                d="M 100 175 C 250 275, 400 275, 550 175"
+                stroke="#8BC34A"
+                stroke-width="2.5"
+                fill="none"
+              />
+              <!-- Verde -->
+              <text
+                x="325"
+                y="285"
+                fill="#8BC34A"
+                font-size="16"
+                font-style="italic"
+              >
+                C₃
+              </text>
+              <!-- Legenda -->
+              <text
+                x="325"
+                y="330"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="16"
+                font-family="Arial, sans-serif"
+              >
+                <tspan font-style="italic">∫</tspan>
+                <tspan font-size="0.7em" dy="-0.3em">C₁</tspan>
+                <tspan font-style="italic">F·dr =</tspan>
+                <tspan font-style="italic">∫</tspan>
+                <tspan font-size="0.7em" dy="-0.3em">C₂</tspan>
+                <tspan font-style="italic">F·dr =</tspan>
+                <tspan font-style="italic">∫</tspan>
+                <tspan font-size="0.7em" dy="-0.3em">C₃</tspan>
+                <tspan font-style="italic">F·dr = f(B) - f(A)</tspan>
+              </text>
+            </svg>
+            <p>
+              <small
+                ><em
+                  >A imagem ilustra que a integral de linha entre A e B é a
+                  mesma para os caminhos C₁, C₂ e C₃ em um campo
+                  conservativo.</em
+                ></small
+              >
+            </p>
+          </section>
+
+          <section>
+            <h3>Análise da Independência do Caminho</h3>
+            <!-- O div info-panel foi removido -->
+            <p>
+              Esta propriedade de independência do caminho é a essência dos
+              campos conservativos.
+            </p>
+            <p>
+              A integral de linha em qualquer caminho fechado será sempre zero,
+              pois os pontos inicial e final coincidem.
+            </p>
+          </section>
+
+          <section>
+            <h3>Aplicação: Manobras Orbitais</h3>
+            <p>
+              A corrida espacial elevou estes conceitos matemáticos à
+              importância estratégica nacional:
+            </p>
+            <ul>
+              <li class="fragment">
+                Transferência de Hohmann: trajetória elíptica ótima para mudar
+                entre órbitas circulares
+              </li>
+              <li class="fragment">
+                Baseada diretamente no princípio de conservação de energia
+              </li>
+              <li class="fragment">
+                Usada para as missões Luna, Apollo e Soyuz na década de 1960
+              </li>
+            </ul>
+            <p class="fragment">
+              O campo gravitacional terrestre, sendo conservativo, permitiu
+              estes cálculos precisos com recursos computacionais limitados da
+              época.
+            </p>
+          </section>
+
+          <section>
+            <h3>Cálculo Passo a Passo</h3>
+            <p>
+              Exemplo: Para um campo \(\vec{F}(x,y) = (2x)\hat{\imath} +
+              (2y)\hat{\jmath}\)
+            </p>
+            <ol>
+              <li class="fragment">
+                Identifique a função potencial \(f(x,y) = x^2 + y^2\)
+                (verificamos que \(\nabla f = \vec{F}\))
+              </li>
+              <li class="fragment">
+                Para calcular o trabalho de \((1,1)\) a \((3,4)\):
+              </li>
+              <li class="fragment">
+                \[\int_C \vec{F} \cdot d\vec{r} = f(3,4) - f(1,1) = (3^2 + 4^2)
+                - (1^2 + 1^2) = 25 - 2 = 23\]
+              </li>
+            </ol>
+            <p class="fragment">
+              O resultado 23 é independente do caminho escolhido entre os
+              pontos!
+            </p>
+          </section>
+        </section>
+
+        <!-- SEÇÃO 3: Independência do Caminho e Função Potencial -->
+        <section>
+          <section>
+            <h2>A Liberdade do Caminho</h2>
+            <p class="fragment">
+              Teorema fundamental: Em campos conservativos, a integral de linha
+              independe do caminho escolhido.
+            </p>
+            <p class="fragment">
+              Matematicamente, temos duas condições equivalentes:
+            </p>
+            <ul>
+              <li class="fragment">
+                \(\vec{F}\) é conservativo \(\iff\) a integral de \(\vec{F}\) ao
+                longo de qualquer caminho fechado é zero
+              </li>
+              <li class="fragment">
+                \(\oint_C \vec{F} \cdot d\vec{r} = 0\) para qualquer curva
+                fechada \(C\)
+              </li>
+            </ul>
+            <p class="fragment">
+              Esta propriedade revolucionou o planejamento de missões espaciais.
+            </p>
+          </section>
+
+          <section>
+            <h3>Encontrando a Função Potencial</h3>
+            <p>
+              Para um campo conservativo \(\vec{F}(x,y,z) = (P, Q, R)\), podemos
+              encontrar o potencial \(f\) através de integração:
+            </p>
+            <div class="fragment">
+              <p>\[f(x,y,z) = \int P(x,y,z) \, dx + C(y,z)\]</p>
+              <p>Onde \(C(y,z)\) é determinado por:</p>
+              <p>
+                \[\frac{\partial f}{\partial y} = Q \quad \text{e} \quad
+                \frac{\partial f}{\partial z} = R\]
+              </p>
+            </div>
+            <p class="fragment">
+              Esta técnica foi essencial para os primeiros computadores da NASA
+              calcularem trajetórias eficientes.
+            </p>
+          </section>
+
+          <section>
+            <h3>Função Potencial e Equipotenciais</h3>
+            <p>
+              Um campo conservativo \(\vec{F} = \nabla f\) é perpendicular às
+              curvas de nível (equipotenciais) da função \(f\).
+            </p>
+            <p>
+              Em uma equipotencial, o valor da função potencial é constante. Ao
+              atravessar diferentes equipotenciais, o potencial muda.
+            </p>
+          </section>
+
+          <section>
+            <h3>Visualização de Equipotenciais</h3>
+            <svg
+              width="650"
+              height="350"
+              viewBox="0 0 650 350"
+              xmlns="http://www.w3.org/2000/svg"
+              class="visualization"
+              aria-label="Ilustração de curvas equipotenciais (círculos concêntricos) e vetores de campo (gradiente) perpendiculares a elas, saindo do centro."
+            >
+              <defs>
+                <marker
+                  id="arrowhead-potential"
+                  markerWidth="10"
+                  markerHeight="7"
+                  refX="8"
+                  refY="3.5"
+                  orient="auto"
+                  fill="var(--accent-color)"
+                >
+                  <polygon points="0 0, 10 3.5, 0 7" />
+                </marker>
+              </defs>
+              <g id="contours">
+                <circle
+                  cx="325"
+                  cy="175"
+                  r="50"
+                  stroke="var(--star-blue)"
+                  stroke-width="2"
+                  fill="none"
+                  opacity="0.8"
+                />
+                <text
+                  x="380"
+                  y="170"
+                  fill="var(--star-blue)"
+                  font-size="14"
+                  font-family="Arial, sans-serif"
+                  font-style="italic"
+                >
+                  f = c₁
+                </text>
+                <circle
+                  cx="325"
+                  cy="175"
+                  r="100"
+                  stroke="var(--star-blue)"
+                  stroke-width="2"
+                  fill="none"
+                  opacity="0.8"
+                />
+                <text
+                  x="430"
+                  y="170"
+                  fill="var(--star-blue)"
+                  font-size="14"
+                  font-family="Arial, sans-serif"
+                  font-style="italic"
+                >
+                  f = c₂
+                </text>
+                <circle
+                  cx="325"
+                  cy="175"
+                  r="150"
+                  stroke="var(--star-blue)"
+                  stroke-width="2"
+                  fill="none"
+                  opacity="0.8"
+                />
+                <text
+                  x="480"
+                  y="170"
+                  fill="var(--star-blue)"
+                  font-size="14"
+                  font-family="Arial, sans-serif"
+                  font-style="italic"
+                >
+                  f = c₃
+                </text>
+              </g>
+              <g
+                id="field-vectors"
+                stroke="var(--accent-color)"
+                stroke-width="1.5"
+                marker-end="url(#arrowhead-potential)"
+              >
+                <!-- Vetores saindo radialmente de (325,175) até r=150 -->
+                <line x1="325" y1="175" x2="325" y2="175-150" />
+                <line x1="325" y1="175" x2="325+106.06" y2="175-106.06" />
+                <!-- 45 graus -->
+                <line x1="325" y1="175" x2="325+150" y2="175" />
+                <line x1="325" y1="175" x2="325+106.06" y2="175+106.06" />
+                <line x1="325" y1="175" x2="325" y2="175+150" />
+                <line x1="325" y1="175" x2="325-106.06" y2="175+106.06" />
+                <line x1="325" y1="175" x2="325-150" y2="175" />
+                <line x1="325" y1="175" x2="325-106.06" y2="175-106.06" />
+              </g>
+              <text
+                x="325"
+                y="30"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="16"
+                font-family="Arial, sans-serif"
+              >
+                Campo Vetorial (∇
+                <tspan font-style="italic">f</tspan>
+                ) perpendicular às Curvas Equipotenciais (
+                <tspan font-style="italic">f</tspan>
+                =constante)
+              </text>
+            </svg>
+            <p>
+              <small
+                ><em
+                  >A imagem ilustra o campo vetorial (setas) perpendicular às
+                  curvas equipotenciais (onde a função potencial f é
+                  constante).</em
+                ></small
+              >
+            </p>
+            <!-- O div info-panel foi removido -->
+          </section>
+
+          <section>
+            <h3>Aplicação Espacial: Campos de Energia</h3>
+            <p>
+              A Guerra Fria impulsionou o desenvolvimento de "mapas
+              gravitacionais":
+            </p>
+            <ul>
+              <li class="fragment">
+                Representações do potencial gravitacional da Terra e Lua
+              </li>
+              <li class="fragment">
+                Permitiam calcular trajetórias com eficiência energética máxima
+              </li>
+              <li class="fragment">
+                Desafio: computadores dos anos 60 tinham memória extremamente
+                limitada
+              </li>
+            </ul>
+            <p class="fragment">
+              Solução: usar a propriedade de independência do caminho para
+              armazenar apenas valores do potencial em pontos-chave, reduzindo
+              drasticamente as necessidades computacionais.
+            </p>
+          </section>
+        </section>
+
+        <!-- SEÇÃO 4: Condições de Conservação -->
+        <section>
+          <section>
+            <h2>O Teste Definitivo</h2>
+            <p class="fragment">Como determinar se um campo é conservativo?</p>
+            <p class="fragment">Condição necessária e suficiente:</p>
+            <p class="fragment">
+              \[\vec{F} \text{ é conservativo} \iff \nabla \times \vec{F} =
+              \vec{0}\]
+            </p>
+            <p class="fragment">
+              O <strong>rotacional</strong> (curl) nulo é a marca característica
+              dos campos conservativos.
+            </p>
+          </section>
+
+          <section>
+            <h3>Interpretação Física do Rotacional</h3>
+            <p>
+              O rotacional mede a tendência de um campo para criar movimento
+              circular:
+            </p>
+            <ul>
+              <li class="fragment">
+                Campos conservativos não possuem "turbilhões" (rotacional zero)
+              </li>
+              <li class="fragment">
+                Fisicamente, representa a ausência de torque rotacional
+              </li>
+              <li class="fragment">
+                Um fluido neste campo não formaria redemoinhos naturalmente
+              </li>
+            </ul>
+            <p class="fragment">
+              Para um campo \(\vec{F} = (P,Q,R)\) em coordenadas cartesianas:
+            </p>
+            <p class="fragment">
+              \[\nabla \times \vec{F} = \begin{vmatrix} \hat{\imath} &
+              \hat{\jmath} & \hat{k} \\ \frac{\partial}{\partial x} &
+              \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ P & Q
+              & R \end{vmatrix}\]
+            </p>
+          </section>
+
+          <section>
+            <h3>Derivadas Parciais e Teste de Simetria</h3>
+            <p>
+              Para um campo \(\vec{F}(x,y,z) = (P,Q,R)\), a condição de
+              rotacional nulo se traduz em:
+            </p>
+            <div class="fragment">
+              <p>
+                \[\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x},
+                \quad \frac{\partial P}{\partial z} = \frac{\partial R}{\partial
+                x}, \quad \frac{\partial Q}{\partial z} = \frac{\partial
+                R}{\partial y}\]
+              </p>
+              <p>
+                Este é o <strong>teste de simetria</strong> das derivadas
+                parciais cruzadas.
+              </p>
+            </div>
+            <p class="fragment">
+              Exemplo: Verifique se \(\vec{F}(x,y) = (2xy + y^2)\hat{\imath} +
+              (x^2 + 2xy)\hat{\jmath}\) é conservativo.
+            </p>
+            <p class="fragment">
+              Solução: \(\frac{\partial}{\partial y}(2xy + y^2) = 2x + 2y\) e
+              \(\frac{\partial}{\partial x}(x^2 + 2xy) = 2x + 2y\)
+            </p>
+            <p class="fragment">Como são iguais, o campo é conservativo.</p>
+          </section>
+
+          <section>
+            <h3>Caso Prático: Campo Gravitacional em Órbitas</h3>
+            <p>
+              O campo gravitacional terrestre é conservativo, expressado como:
+            </p>
+            <p>\[\vec{F}(\vec{r}) = -\frac{GMm}{|\vec{r}|^3}\vec{r}\]</p>
+            <p>Implicações práticas durante a corrida espacial:</p>
+            <ul>
+              <li class="fragment">
+                Permitiu calcular órbitas usando conservação de energia mecânica
+              </li>
+              <li class="fragment">
+                As trajetórias poderiam ser otimizadas para minimizar
+                combustível
+              </li>
+              <li class="fragment">
+                Sistema Terra-Lua: aproximado como campo conservativo
+              </li>
+            </ul>
+            <p class="fragment">
+              Limitação: sistemas de três corpos (Terra-Lua-Sol) não podem ser
+              expressos como campos conservativos simples, complicando o
+              planejamento de missões.
+            </p>
+          </section>
+        </section>
+
+        <!-- SEÇÃO 5: Conjunto Simplesmente Conexo -->
+        <section>
+          <section>
+            <h2>Domínios e Seus Buracos</h2>
+            <p class="fragment">
+              Um conjunto é <strong>simplesmente conexo</strong> se qualquer
+              curva fechada pode ser continuamente contraída a um ponto.
+            </p>
+            <p class="fragment">Intuição: domínios "sem buracos".</p>
+            <p class="fragment">Implicação fundamental:</p>
+            <p class="fragment">Em conjuntos simplesmente conexos:</p>
+            <p class="fragment">
+              \[\nabla \times \vec{F} = \vec{0} \iff \vec{F} \text{ é
+              conservativo}\]
+            </p>
+            <p class="fragment">
+              Esta propriedade topológica tem consequências profundas para
+              campos físicos.
+            </p>
+          </section>
+
+          <section>
+            <h3>Intuição Visual: Conjuntos Simplesmente Conexos</h3>
+            <ul>
+              <li>
+                Conjuntos simplesmente conexos:
+                <ul>
+                  <li>Esfera sólida</li>
+                  <li>Cubo</li>
+                  <li>Todo o espaço \(\mathbb{R}^3\)</li>
+                </ul>
+              </li>
+              <li>
+                Conjuntos <em>não</em> simplesmente conexos:
+                <ul>
+                  <li>Toro (forma de rosquinha)</li>
+                  <li>
+                    Espaço ao redor de um fio (cilindro com um eixo removido)
+                  </li>
+                  <li>Qualquer região com "buracos"</li>
+                </ul>
+              </li>
+            </ul>
+            <p>
+              Propriedade chave: Em domínios simplesmente conexos, qualquer
+              curva fechada pode ser continuamente contraída a um ponto.
+            </p>
+          </section>
+
+          <section>
+            <h3>Demonstração: Contração de Curvas</h3>
+            <p>
+              <small
+                >A imagem ilustra a diferença entre um domínio simplesmente
+                conexo (onde uma curva pode ser contraída) e um não simplesmente
+                conexo (com um obstáculo).</small
+              >
+            </p>
+            <svg
+              width="650"
+              height="300"
+              viewBox="0 0 650 300"
+              xmlns="http://www.w3.org/2000/svg"
+              class="visualization"
+              aria-label="Ilustração comparando um domínio simplesmente conexo, onde uma curva C se contrai a um ponto P, com um domínio não simplesmente conexo contendo um obstáculo, onde uma curva C' ao redor do obstáculo não pode ser contraída."
+            >
+              <!-- Parte 1: Simplesmente Conexo -->
+              <rect
+                x="10"
+                y="10"
+                width="300"
+                height="280"
+                fill="rgba(79, 195, 247, 0.1)"
+                stroke="var(--star-blue)"
+                stroke-width="1"
+              />
+              <text
+                x="160"
+                y="35"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="14"
+                font-family="Arial, sans-serif"
+              >
+                Domínio Simplesmente Conexo
+              </text>
+              <path
+                d="M 80 150 Q 160 100 240 150 Q 160 200 80 150 Z"
+                stroke="#FF9800"
+                stroke-width="2"
+                fill="none"
+              />
+              <!-- Laranja -->
+              <text
+                x="160"
+                y="120"
+                fill="#FF9800"
+                font-size="14"
+                font-style="italic"
+                font-family="Arial, sans-serif"
+              >
+                C
+              </text>
+              <circle cx="160" cy="150" r="4" fill="#FF9800" />
+              <text
+                x="170"
+                y="155"
+                fill="var(--text-color)"
+                font-size="12"
+                font-style="italic"
+                font-family="Arial, sans-serif"
+              >
+                P
+              </text>
+              <!-- Curvas de contração -->
+              <path
+                d="M 100 150 Q 160 120 220 150 Q 160 180 100 150 Z"
+                stroke="#FF9800"
+                stroke-width="1"
+                fill="none"
+                stroke-dasharray="4,4"
+                opacity="0.7"
+              />
+              <path
+                d="M 120 150 Q 160 135 200 150 Q 160 165 120 150 Z"
+                stroke="#FF9800"
+                stroke-width="1"
+                fill="none"
+                stroke-dasharray="4,4"
+                opacity="0.5"
+              />
+              <text
+                x="160"
+                y="250"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="12"
+                font-family="Arial, sans-serif"
+              >
+                Curva
+                <tspan font-style="italic">C</tspan>
+                pode ser contraída a
+                <tspan font-style="italic">P</tspan>
+                .
+              </text>
+              <text
+                x="160"
+                y="270"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="12"
+                font-family="Arial, sans-serif"
+              >
+                <tspan font-style="italic">∮</tspan>
+                <tspan font-size="0.7em" dy="-0.3em">C</tspan>
+                <tspan font-style="italic">F·dr = 0 (se ∇×F = 0)</tspan>
+              </text>
+
+              <!-- Linha divisória -->
+              <line
+                x1="325"
+                y1="10"
+                x2="325"
+                y2="290"
+                stroke="var(--text-color)"
+                stroke-width="0.5"
+              />
+
+              <!-- Parte 2: Não Simplesmente Conexo -->
+              <rect
+                x="340"
+                y="10"
+                width="300"
+                height="280"
+                fill="rgba(79, 195, 247, 0.1)"
+                stroke="var(--star-blue)"
+                stroke-width="1"
+              />
+              <text
+                x="490"
+                y="35"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="14"
+                font-family="Arial, sans-serif"
+              >
+                Domínio Não Simplesmente Conexo
+              </text>
+              <circle
+                cx="490"
+                cy="150"
+                r="30"
+                fill="var(--space-black)"
+                stroke="var(--accent-color)"
+                stroke-width="1.5"
+              />
+              <text
+                x="490"
+                y="155"
+                text-anchor="middle"
+                fill="var(--accent-color)"
+                font-size="10"
+                font-family="Arial, sans-serif"
+              >
+                Obstáculo
+              </text>
+              <path
+                d="M 390 150 Q 490 50 590 150 Q 490 250 390 150 Z"
+                stroke="#F44336"
+                stroke-width="2"
+                fill="none"
+              />
+              <!-- Vermelho -->
+              <text
+                x="490"
+                y="75"
+                fill="#F44336"
+                font-size="14"
+                font-style="italic"
+                font-family="Arial, sans-serif"
+              >
+                C'
+              </text>
+              <text
+                x="490"
+                y="250"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="12"
+                font-family="Arial, sans-serif"
+              >
+                Curva
+                <tspan font-style="italic">C'</tspan>
+                não pode ser contraída.
+              </text>
+              <text
+                x="490"
+                y="270"
+                text-anchor="middle"
+                fill="var(--text-color)"
+                font-size="12"
+                font-family="Arial, sans-serif"
+              >
+                <tspan font-style="italic">∮</tspan>
+                <tspan font-size="0.7em" dy="-0.3em">C'</tspan>
+                <tspan font-style="italic">F·dr ≠ 0 (possivelmente)</tspan>
+              </text>
+            </svg>
+            <!-- O div info-panel e os botões foram removidos -->
+          </section>
+
+          <section>
+            <h3>Quando a Conservatividade Falha</h3>
+            <p>Exemplo crucial: Campo magnético ao redor de um fio infinito:</p>
+            <p>\[\vec{B}(r,\theta,z) = \frac{\mu_0 I}{2\pi r}\hat{\theta}\]</p>
+            <ul>
+              <li class="fragment">
+                Tem rotacional nulo em qualquer ponto fora do fio: \(\nabla
+                \times \vec{B} = \vec{0}\)
+              </li>
+              <li class="fragment">
+                Mas não é conservativo! \(\oint_C \vec{B} \cdot d\vec{r} = \mu_0
+                I \neq 0\)
+              </li>
+              <li class="fragment">
+                Razão: o domínio (espaço ao redor do fio) não é simplesmente
+                conexo
+              </li>
+            </ul>
+            <p class="fragment">
+              Esta distinção foi crítica para o desenvolvimento das primeiras
+              sondas espaciais, que precisavam operar em campos magnéticos
+              complexos.
+            </p>
+          </section>
+
+          <section>
+            <h3>Aplicação na Astronáutica Moderna</h3>
+            <p>
+              Os <strong>pontos de Lagrange</strong> representam aplicações
+              avançadas de campos em domínios complexos:
+            </p>
+            <ul>
+              <li class="fragment">
+                Pontos de equilíbrio no sistema de três corpos
+                (Terra-Lua-Satélite ou Sol-Terra-Satélite)
+              </li>
+              <li class="fragment">
+                L1, L2, L3 são pontos de equilíbrio instável (como uma bola no
+                topo de uma colina)
+              </li>
+              <li class="fragment">
+                L4, L5 são pontos de equilíbrio estável (como uma bola em um
+                vale)
+              </li>
+            </ul>
+            <p class="fragment">
+              O telescópio James Webb orbita o ponto L2 do sistema Sol-Terra,
+              uma aplicação direta da teoria de campos.
+            </p>
+            <p class="fragment">
+              A diferença: hoje usamos simulações numéricas massivas, enquanto
+              na Guerra Fria estas soluções exigiam insights teóricos profundos
+              devido às limitações computacionais.
+            </p>
+          </section>
+        </section>
+
+        <!-- Slide de Conclusão -->
+        <section>
+          <h2>Síntese: Campos Conservativos e Exploração</h2>
+          <ul>
+            <li class="fragment">
+              Campos conservativos: \(\vec{F} = \nabla f\) e o trabalho
+              independe do caminho
+            </li>
+            <li class="fragment">
+              A integral de linha se reduz a: \(\int_C \vec{F} \cdot d\vec{r} =
+              f(B) - f(A)\)
+            </li>
+            <li class="fragment">
+              Teste de conservatividade: \(\nabla \times \vec{F} = \vec{0}\)
+            </li>
+            <li class="fragment">
+              Em domínios simplesmente conexos, rotacional nulo garante
+              conservatividade
+            </li>
+          </ul>
+          <p class="fragment">
+            Esta matemática não apenas inspirou a corrida espacial; foi seu
+            fundamento computacional, permitindo que a humanidade alcançasse as
+            estrelas com recursos tecnológicos limitados.
+          </p>
+          <p class="fragment">
+            Próximo tema: <em>Teorema de Green e suas aplicações</em>
+          </p>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
