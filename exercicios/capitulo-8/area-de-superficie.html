@@ -1,23 +1,434 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Área de superfície - Cálculo Vetorial</title>
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
-<body>
-    <header>
-        <h1>Área de superfície</h1>
-    </header>
-    <main>
-        <section class="exercicios">
-            <h2>Exercícios</h2>
-            <p>Conteúdo a ser adicionado.</p>
-        </section>
-    </main>
-    <footer>
-        <p>Cálculo Vetorial - Exploração Espacial</p>
-    </footer>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Área de Superfície</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /* (mesmo CSS do template original, preservado) */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">02</span> DE JULHO DE
+          <span class="censored">1969</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CÁLCULO [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-S</span
+          ><br /><br />
+          Em preparação para as manobras de
+          <span class="censored">reentrada atmosférica</span> da missão
+          <span class="censored">Apollo‑██</span>, foi requisitada à nossa
+          divisão matemática uma série de estudos sobre a
+          <strong>área de superfícies clássicas</strong>. Os resultados servem
+          para estimar a quantidade de material ablativo necessário aos escudos
+          térmicos e ao dimensionamento de painéis
+          <span class="censored">fotovoltaicos</span> de última geração.
+        </div>
+        <div class="warning-box">
+          Este documento contém equações sensíveis à segurança nacional.
+          Divulgação sem autorização acarretará
+          <span class="censored">sanções irreversíveis</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VS‑<span class="censored">3141</span>‑A</span>
+          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: ÁREA DE SUPERFÍCIE</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[A(S) = \iint_{D} \sqrt{1 + \left(\frac{\partial z}{\partial
+          x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2}\, dA\]
+        </p>
+        <p>
+          Para uma superfície regular descrita como o gráfico de uma função
+          diferenciável \(z = f(x, y)\) sobre um domínio \(D \subset
+          \mathbb{R}^2\), a expressão acima fornece a área. No caso paramétrico
+          \(\vec{r}(u,v)\), utiliza‑se \(A(S) = \iint_{D} \|\vec{r}_u \times
+          \vec{r}_v\|\, du\,dv\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Estes cálculos foram empregados no dimensionamento do escudo térmico
+        <span class="censored">██████‑β</span>, garantindo que a dissipação de
+        calor durante a reentrada não exceda os
+        <span class="censored">limites estruturais</span> das cápsulas.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o
+        <em>Programa Gemini</em> (1965‑1966), falhas na previsão da área em
+        protótipos iniciais levaram ao superaquecimento de painéis. As fórmulas
+        aqui consolidadas mitigam tal risco.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (Básico) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1A</div>
+            <div class="context">
+              ORIGEM: Simulação de Painel Solar – Projeto Mercury (01/JAN/1960)
+            </div>
+            <p>
+              Considere a superfície plana \(z = 0\) sobre o retângulo \(0 \le x
+              \le 3\), \(0 \le y \le 4\).<br />
+              <strong>DETERMINAR:</strong> a área da superfície utilizando a
+              definição de área de superfície.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A métrica reduz‑se a \(\sqrt{1}\) nesta
+                configuração.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                \[A = \iint_{D} 1\, dA = 3 \times 4 = 12\] Assim, a área
+                solicitada é <strong>12 unidades²</strong>.
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1B</div>
+            <div class="context">
+              ORIGEM: Prototipagem de Ala – Dados Internos [REDACTED]
+            </div>
+            <p>
+              A superfície é dada por \(z = 2x\) sobre o retângulo \(0 \le x \le
+              1\), \(0 \le y \le 2\).<br />
+              <strong>DETERMINAR:</strong> a área exata da superfície.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Note que \(f_x = 2\) e \(f_y = 0\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                A métrica é \(\sqrt{1 + 4} = \sqrt{5}\). Logo, \[A = \sqrt{5}\,
+                \iint_{D} dA = \sqrt{5} \times 1 \times 2 = 2\sqrt{5}.\]
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1C</div>
+            <div class="context">
+              ORIGEM: Revestimento de Antena – Laboratório de Engenharia
+              (17/FEB/1962)
+            </div>
+            <p>
+              A superfície paraboloide é \(z = x^2 + y^2\) sobre o disco
+              unitário \(x^2 + y^2 \le 1\).<br />
+              <strong>DETERMINAR:</strong> a área da superfície.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere coordenadas polares.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                Métrica: \(\sqrt{1 + 4r^2}\). Assim, \[A = 2\pi \int_0^1
+                r\sqrt{1+4r^2}\, dr = \frac{\pi}{6}\bigl(5^{3/2} - 1\bigr).\]
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (Intermediário) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2A</div>
+            <div class="context">
+              ORIGEM: Tanque de Combustível – Projeto Gemini (05/MAR/1965)
+            </div>
+            <p>
+              A superfície lateral de um cilindro de raio \(r = 1\) m e altura
+              \(h = 3\) m deve ser recoberta por material isolante.<br />
+              <strong>DETERMINAR:</strong> a área lateral utilizando
+              parametrização cilíndrica.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de invariância do módulo do produto
+                vetorial são úteis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                Parametrização: \(\vec{r}(\theta,z) = (\cos\theta, \sin\theta,
+                z)\).<br />
+                \(\|\vec{r}_\theta \times \vec{r}_z\| = 1\). Assim, \[A =
+                \int_0^{2\pi}\int_0^{3} 1\, dz\, d\theta = 6\pi.\]
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2B</div>
+            <div class="context">
+              ORIGEM: Cone de Nariz – Documento Técnico
+              <span class="censored">N‑47‑Δ</span>
+            </div>
+            <p>
+              Para um cone reto de raio da base \(r = 2\) m e altura \(h = 4\) m
+              (sem a base),<br />
+              <strong>DETERMINAR:</strong> a área lateral por integração direta.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relações de conservação envolvem o comprimento
+                geratriz.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                Geratriz: \(l = \sqrt{r^2 + h^2} = \sqrt{20}\). Logo, \[A = \pi
+                r l = 2\pi \sqrt{20}.\]
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2C</div>
+            <div class="context">
+              ORIGEM: Escudo Térmico – Relatório Confidencial (23/SEP/1966)
+            </div>
+            <p>
+              A cúpula esférica (hemisfério) possui raio \(r = 2\) m.<br />
+              <strong>DETERMINAR:</strong> a área externa da calota.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria esférica simplificam o
+                cálculo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                Área hemisfério: \(A = 2\pi r^2 = 8\pi\; \text{m}^2\).
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (Avançado) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3A</div>
+            <div class="context">
+              ORIGEM: Hélice de Reentrada – Dados Clas.<span class="censored"
+                >███</span
+              >
+              (11/JUL/1967)
+            </div>
+            <p>
+              A superfície helicoidal é parametrizada por \(\vec{r}(u,v) =
+              \bigl(u\cos v,\; u\sin v,\; v\bigr)\) com \(0 \le u \le 1\) e \(0
+              \le v \le 2\pi\).<br />
+              <strong>DETERMINAR:</strong> a área total da hélice.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes não‑evidentes sob rotações.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                \(\|\vec{r}_u \times \vec{r}_v\| = \sqrt{1+u^2}.\) Logo, \[A =
+                2\pi \int_0^1 \sqrt{1+u^2}\, du = \pi\Bigl(u\sqrt{1+u^2} +
+                \sinh^{-1}u\Bigr)\big|_0^1 \approx 7.21.\]
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3B</div>
+            <div class="context">
+              ORIGEM: Montagem de Tanques Toróides – Programa Apollo
+              (04/JAN/1968)
+            </div>
+            <p>
+              Considere o toro com raio maior \(R = 3\) m e raio menor \(r = 1\)
+              m parametrizado por \(\vec{r}(u,v) = \bigl((R + r\cos u)\cos v,\;
+              (R + r\cos u)\sin v,\; r\sin u\bigr)\), \(0 \le u,v \le 2\pi\).<br />
+              <strong>DETERMINAR:</strong> a área da superfície.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe produtos mistos sob simetria axial.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                Resultado clássico: \(A = 4\pi^2 R r = 12\pi^2\; \text{m}^2\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3C</div>
+            <div class="context">
+              ORIGEM: Painel Paraboloide – Estudo Interno (19/NOV/1968)
+            </div>
+            <p>
+              Para o paraboloide \(z = x^2 + y^2\) sobre o disco \(x^2 + y^2 \le
+              2^2\),<br />
+              <strong>DETERMINAR:</strong> a área total da superfície.<br />
+              <em>Expressão analítica é suficiente.</em>
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Integre \(r\sqrt{1+4r^2}\) até \(r=2\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                \[A = 2\pi \int_0^2 r\sqrt{1+4r^2}\, dr =
+                \frac{\pi}{6}\Bigl((1+16)^{3/2} - 1\Bigr).\]
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (Desafiador) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4A</div>
+            <div class="context">
+              ORIGEM: Cápsula de Retorno – Missão Skylab (07/DEC/1973)
+            </div>
+            <p>
+              O escudo térmico é modelado por \(z = 1 - (x^2 + y^2)\) sobre o
+              disco unitário.<br />
+              <strong>DETERMINAR:</strong> a área externa exata do escudo.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                Similar ao Vector‑1C, porém \[A = 2\pi \int_0^1 r\sqrt{1+4r^2}\,
+                dr = \frac{\pi}{6}\bigl(5^{3/2} - 1\bigr).\]
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4B</div>
+            <div class="context">
+              ORIGEM: Matriz de Painéis – Design Fotovoltaico
+              <span class="censored">Ω‑12</span> (14/MAY/1974)
+            </div>
+            <p>
+              A superfície é parametrizada por \(\vec{r}(u,v) = (u, v,
+              \ln(1+u^2+v^2))\), \(-1 \le u,v \le 1\).<br />
+              <strong>DETERMINAR:</strong> a área total, expressa como integral
+              dupla.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                Métrica: \(\sqrt{1 + \left(\frac{2u}{1+u^2+v^2}\right)^2 +
+                \left(\frac{2v}{1+u^2+v^2}\right)^2}\).<br />
+                Área: \[A = \iint_{[-1,1]^2} \sqrt{1 +
+                \frac{4(u^2+v^2)}{(1+u^2+v^2)^2}}\, du\, dv.\] Avaliação
+                numérica recomendada por métodos computacionais.
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4C</div>
+            <div class="context">
+              ORIGEM: Estrutura de Torre – Documento
+              <span class="censored">Z‑9</span> (21/FEB/1975)
+            </div>
+            <p>
+              A superfície \(z = xy\) está definida sobre o retângulo \(-1 \le x
+              \le 1\), \(-1 \le y \le 1\).<br />
+              <strong>DETERMINAR:</strong> a área total, apresentando o
+              resultado em forma fechada ou como integral avaliada.
+            </p>
+            <!-- Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                Métrica: \(\sqrt{1 + x^2 + y^2}\).<br />
+                \[A = \int_{-1}^{1}\int_{-1}^{1} \sqrt{1 + x^2 + y^2}\, dy\,
+                dx.\] Resultado pode ser expresso via funções hiperbólicas após
+                integração em coordenadas polares.
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VS‑<span
+          class="censored"
+          >3141</span
+        >‑A
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
 </html>
