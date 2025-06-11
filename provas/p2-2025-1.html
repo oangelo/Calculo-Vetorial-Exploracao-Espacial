@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gabarito - P2 Cálculo Vetorial</title>
+  <style>
+    /* Estilos básicos para melhor visualização */
+    body { 
+      font-family: sans-serif; 
+      line-height: 1.6; 
+      margin: 2em; 
+      background-color: #f4f4f9;
+    }
+    .container {
+      max-width: 900px; /* Limita a largura para melhor legibilidade */
+      margin: 0 auto; /* Centraliza o container */
+      padding: 1em;
+    }
+    .question { 
+      background-color: #fff;
+      border: 1px solid #ccc; 
+      padding: 1em 1.5em; 
+      margin-bottom: 1.5em; 
+      border-radius: 8px; 
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .question-title { 
+      color: #005a9c; 
+      border-bottom: 2px solid #eef;
+      padding-bottom: 0.5em;
+    }
+    ol.sub { 
+      padding-left: 20px; 
+    }
+    li { 
+      margin-bottom: 0.5em; 
+    }
+    details {
+      background-color: #f0f8ff; /* AliceBlue */
+      border: 1px solid #b0c4de; /* LightSteelBlue */
+      border-radius: 4px;
+      padding: 0.5em 1em;
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      color: #003366;
+    }
+    /* Para renderização de LaTeX com MathJax */
+    script {
+        src: "https://polyfill.io/v3/polyfill.min.js?features=es6";
+        async: true;
+    }
+    script {
+        id: "MathJax-script";
+        src: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js";
+        async: true;
+    }
+  </style>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Gabarito - Prova de Cálculo Vetorial (P2)</h1>
+
+    <!-- QUESTÃO 1 -->
+    <div class="question">
+      <h2 class="question-title">Questão 1 – Volume de Tetraedro</h2>
+      <p>Sejam os pontos \(P(1,1,2)\), \(Q(1,2,1)\) e \(R(2,1,1)\), todos situados no primeiro octante.</p>
+      <ol class="sub">
+        <li>Mostre que os três pontos pertencem ao mesmo plano e determine a equação desse plano na forma geral \(ax+by+cz=d\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Para determinar o plano, criamos dois vetores a partir dos pontos dados, por exemplo, \(\vec{PQ}\) e \(\vec{PR}\).</p>
+          <p>\(\vec{PQ} = Q - P = (1-1, 2-1, 1-2) = (0, 1, -1)\)</p>
+          <p>\(\vec{PR} = R - P = (2-1, 1-1, 1-2) = (1, 0, -1)\)</p>
+          <p>O vetor normal \(\mathbf n\) ao plano é dado pelo produto vetorial \(\mathbf n = \vec{PQ} \times \vec{PR}\):
+          \[ \mathbf n = \begin{vmatrix} \mathbf i & \mathbf j & \mathbf k \\ 0 & 1 & -1 \\ 1 & 0 & -1 \end{vmatrix} = \mathbf i(-1) - \mathbf j(1) + \mathbf k(-1) = (-1, -1, -1) \]
+          Podemos usar o vetor paralelo \(\mathbf n' = (1, 1, 1)\) para simplificar. A equação do plano é \(\mathbf n' \cdot (X - P) = 0\), onde \(X=(x,y,z)\).
+          \[ (1,1,1) \cdot (x-1, y-1, z-2) = 0 \]
+          \[ 1(x-1) + 1(y-1) + 1(z-2) = 0 \]
+          \[ x - 1 + y - 1 + z - 2 = 0 \]
+          A equação geral do plano é \(x + y + z = 4\).</p>
+        </details>
+        
+        <li>Encontre as intersecções desse plano com os eixos coordenados, obtendo assim os pontos \(A\) sobre o eixo \(x\), \(B\) sobre o eixo \(y\) e \(C\) sobre o eixo \(z\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Usamos a equação do plano \(x+y+z=4\).</p>
+          <ul>
+            <li><strong>Eixo x (y=0, z=0):</strong> \(x + 0 + 0 = 4 \implies x=4\). Ponto \(A(4,0,0)\).</li>
+            <li><strong>Eixo y (x=0, z=0):</strong> \(0 + y + 0 = 4 \implies y=4\). Ponto \(B(0,4,0)\).</li>
+            <li><strong>Eixo z (x=0, y=0):</strong> \(0 + 0 + z = 4 \implies z=4\). Ponto \(C(0,0,4)\).</li>
+          </ul>
+        </details>
+
+        <li>Obtenha os vetores \(\mathbf u = \overrightarrow{OA}\), \(\mathbf v = \overrightarrow{OB}\) e \(\mathbf w = \overrightarrow{OC}\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Sendo \(O\) a origem (0,0,0):</p>
+          <ul>
+              <li>\(\mathbf u = \overrightarrow{OA} = A - O = (4,0,0)\)</li>
+              <li>\(\mathbf v = \overrightarrow{OB} = B - O = (0,4,0)\)</li>
+              <li>\(\mathbf w = \overrightarrow{OC} = C - O = (0,0,4)\)</li>
+          </ul>
+        </details>
+        
+        <li>Utilize o produto misto para calcular o volume do tetraedro delimitado pelo plano e pelos planos coordenados: \[\displaystyle V = \frac{|(\mathbf u \times \mathbf v)\cdot \mathbf w|}{6}.\]</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Calculamos o produto misto, que pode ser feito pelo determinante das componentes dos vetores:</p>
+          \[ (\mathbf u \times \mathbf v)\cdot \mathbf w = \begin{vmatrix} 4 & 0 & 0 \\ 0 & 4 & 0 \\ 0 & 0 & 4 \end{vmatrix} = 4(16-0) - 0 + 0 = 64 \]
+          <p>O volume do tetraedro é:</p>
+          \[ V = \frac{|64|}{6} = \frac{32}{3} \text{ unidades de volume.} \]
+        </details>
+        
+        <li>Monte uma integral tripla em coordenadas cartesianas que produza o mesmo volume e explique a presença do fator \(\tfrac16\) no resultado.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O volume do tetraedro definido por \(x \ge 0, y \ge 0, z \ge 0\) e pelo plano \(x+y+z=4\) é dado pela integral tripla:</p>
+          \[ V = \int_{0}^{4} \int_{0}^{4-x} \int_{0}^{4-x-y} dz\,dy\,dx \]
+          <p>O fator \(\frac16\) na fórmula do produto misto vem da geometria. O valor absoluto do produto misto, \(|(\mathbf u \times \mathbf v)\cdot \mathbf w|\), representa o volume do <strong>paralelepípedo</strong> formado pelos vetores \(\mathbf u, \mathbf v, \mathbf w\). O volume de um tetraedro com os mesmos vetores de aresta é exatamente um sexto do volume desse paralelepípedo.</p>
+        </details>
+      </ol>
+    </div>
+
+    <!-- QUESTÃO 2 -->
+    <div class="question">
+      <h2 class="question-title">Questão 2 – Coordenadas Cilíndricas</h2>
+      <p>Considere o sólido limitado por \(z = r^{2}\) (paraboloide) e \(z = h\).</p>
+      <ol class="sub">
+        <li>Desenhe um esboço do sólido, indicando suas principais seções.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O sólido é uma "tigela" (paraboloide \(z=r^2\)) com uma "tampa" plana (plano \(z=h\)).</p>
+          <ul>
+            <li>A base do sólido está no vértice do paraboloide, na origem (0,0,0).</li>
+            <li>A parte superior é um disco circular no plano \(z=h\), cuja borda é a interseção de \(z=h\) com \(z=r^2\), ou seja, \(r^2=h \implies r=\sqrt{h}\).</li>
+            <li>Uma seção transversal vertical (plano \(y=0\)) mostra a parábola \(z=x^2\) cortada pela reta horizontal \(z=h\).</li>
+          </ul>
+        </details>
+        
+        <li>Descreva a região em coordenadas cilíndricas, especificando claramente os intervalos de \(r\), \(\theta\) e \(z\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Os intervalos em coordenadas cilíndricas \((r, \theta, z)\) são:</p>
+          <ul>
+            <li>\(\theta\): O sólido tem simetria de revolução completa, então \(0 \le \theta \le 2\pi\).</li>
+            <li>\(r\): O raio se estende do eixo z (\(r=0\)) até a borda do disco de interseção, que tem raio \(\sqrt{h}\). Então, \(0 \le r \le \sqrt{h}\).</li>
+            <li>\(z\): Para um dado \((r, \theta)\), a altura \(z\) vai do paraboloide (\(z=r^2\)) até o plano superior (\(z=h\)). Então, \(r^2 \le z \le h\).</li>
+          </ul>
+        </details>
+        
+        <li>Calcule o volume do sólido por meio de uma integral tripla em coordenadas cilíndricas.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O elemento de volume em coordenadas cilíndricas é \(dV = r\,dz\,dr\,d\theta\). A integral é:</p>
+          \[ V = \int_{0}^{2\pi} \int_{0}^{\sqrt{h}} \int_{r^2}^{h} r\,dz\,dr\,d\theta \]
+          <p>Resolvendo a integral interna (em z):</p>
+          \[ \int_{r^2}^{h} r\,dz = r[z]_{r^2}^h = r(h - r^2) = rh - r^3 \]
+          <p>Resolvendo a integral do meio (em r):</p>
+          \[ \int_{0}^{\sqrt{h}} (rh - r^3) dr = \left[\frac{r^2h}{2} - \frac{r^4}{4}\right]_0^{\sqrt{h}} = \left(\frac{(\sqrt{h})^2h}{2} - \frac{(\sqrt{h})^4}{4}\right) - 0 = \frac{h^2}{2} - \frac{h^2}{4} = \frac{h^2}{4} \]
+          <p>Resolvendo a integral externa (em \(\theta\)):</p>
+          \[ \int_{0}^{2\pi} \frac{h^2}{4} d\theta = \frac{h^2}{4} [\theta]_0^{2\pi} = \frac{h^2}{4}(2\pi) = \frac{\pi h^2}{2} \]
+          <p>O volume é \(\displaystyle \frac{\pi h^2}{2}\).</p>
+        </details>
+        
+        <li>Admitindo densidade radial \(\rho(r)=\rho_{0}\bigl(1+\beta r\bigr)\), <em>monte</em> a integral que determina a massa do sólido.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>A massa \(M\) é a integral da densidade sobre o volume. Usando \(dM = \rho\,dV\), a integral para a massa é:</p>
+          \[ M = \iiint_E \rho(r) \, dV = \int_{0}^{2\pi} \int_{0}^{\sqrt{h}} \int_{r^2}^{h} \rho_0(1+\beta r) \cdot r\,dz\,dr\,d\theta \]
+        </details>
+        
+        <li>Sem resolver, discuta qualitativamente onde se localiza o centro de massa ao longo do eixo \(z\) quando \(\beta > 0\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Por simetria, o centro de massa está no eixo \(z\). A densidade \(\rho(r)\) aumenta com o raio \(r\) quando \(\beta > 0\). O sólido é mais largo (maior \(r\)) na parte superior (próximo de \(z=h\)) e mais estreito (menor \(r\)) na parte inferior (próximo de \(z=0\)). Como a massa está mais concentrada onde o raio é maior, a condição \(\beta > 0\) desloca o centro de massa para cima, em direção à tampa em \(z=h\), em comparação com um sólido de densidade uniforme (\(\beta=0\)).</p>
+        </details>
+      </ol>
+    </div>
+
+    <!-- QUESTÃO 3 -->
+    <div class="question">
+      <h2 class="question-title">Questão 3 – Coordenadas Esféricas</h2>
+      <p>Uma esfera de raio \(R\) tem um furo cilíndrico de raio \(a\) (com eixo coincidente com o eixo \(z\)), com \(0 < a < R\).</p>
+      <ol class="sub">
+        <li>Faça um esboço da curva de nível no plano \(x\)-\(z\) mostrando a interseção entre a esfera e o cilindro.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>No plano x-z, a esfera \(x^2+y^2+z^2 = R^2\) se torna o círculo \(x^2+z^2=R^2\). O cilindro \(x^2+y^2=a^2\) (ou \(r=a\)) se torna as duas retas verticais \(x=a\) e \(x=-a\). O esboço é um círculo de raio \(R\) centrado na origem, com duas linhas verticais cortando-o em \(x=a\) e \(x=-a\).</p>
+        </details>
+        
+        <li>A partir do esboço, mostre como o raio esférico \(\rho\) varia com o ângulo \(\varphi\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O raio esférico \(\rho\) é a distância da origem a um ponto no sólido.
+          A fronteira interna é a parede do cilindro e a fronteira externa é a superfície da esfera.</p>
+          <ul>
+            <li><strong>Fronteira Externa:</strong> É a esfera, então \(\rho = R\).</li>
+            <li><strong>Fronteira Interna:</strong> É o cilindro \(r=a\). Em coordenadas esféricas, \(r = \rho \sin\varphi\). Portanto, a fronteira interna é \(\rho \sin\varphi = a\), o que implica \(\rho = \frac{a}{\sin\varphi} = a \csc\varphi\).</li>
+          </ul>
+          <p>Assim, para um dado ângulo \(\varphi\), o raio \(\rho\) varia de \(a \csc\varphi\) a \(R\).</p>
+        </details>
+        
+        <li>Determine os intervalos de variação para \(\rho\), \(\varphi\) e \(\theta\) em coordenadas esféricas para descrever o sólido remanescente.</li>
+        <details>
+          <summary>Resposta</summary>
+          <ul>
+            <li>\(\theta\): O furo é axial, então o sólido tem simetria de revolução completa. \(0 \le \theta \le 2\pi\).</li>
+            <li>\(\varphi\): O ângulo polar \(\varphi\) varia entre os ângulos de interseção da esfera (\(\rho=R\)) e do cilindro (\(\rho=a\csc\varphi\)). A interseção ocorre quando \(R = a\csc\varphi\), ou \(\sin\varphi = a/R\). Seja \(\alpha = \arcsin(a/R)\). O sólido existe entre o "polo norte" furado e o "polo sul" furado, então \(\alpha \le \varphi \le \pi - \alpha\).</li>
+            <li>\(\rho\): Conforme determinado no item anterior, \(a \csc\varphi \le \rho \le R\).</li>
+          </ul>
+        </details>
+        
+        <li><em>Monte</em> a integral tripla \(\displaystyle \iiint dV\) em coordenadas esféricas que fornece o volume remanescente e calcule-o.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O elemento de volume é \(dV = \rho^2 \sin\varphi\,d\rho\,d\varphi\,d\theta\). A integral é:</p>
+          \[ V = \int_{0}^{2\pi} \int_{\arcsin(a/R)}^{\pi-\arcsin(a/R)} \int_{a\csc\varphi}^{R} \rho^2 \sin\varphi\,d\rho\,d\varphi\,d\theta \]
+          <p><strong>Cálculo:</strong></p>
+          <p>Integral interna (em \(\rho\)): 
+          \[ \sin\varphi \int_{a\csc\varphi}^{R} \rho^2 d\rho = \sin\varphi \left[\frac{\rho^3}{3}\right]_{a\csc\varphi}^{R} = \frac{\sin\varphi}{3}(R^3 - a^3\csc^3\varphi) = \frac{R^3}{3}\sin\varphi - \frac{a^3}{3}\csc^2\varphi \]
+          </p>
+          <p>Integral do meio (em \(\varphi\)), com \(\alpha = \arcsin(a/R)\):
+          \[ \int_{\alpha}^{\pi-\alpha} \left(\frac{R^3}{3}\sin\varphi - \frac{a^3}{3}\csc^2\varphi\right) d\varphi = \left[-\frac{R^3}{3}\cos\varphi + \frac{a^3}{3}\cot\varphi\right]_{\alpha}^{\pi-\alpha} \]
+          Usando \(\cos(\pi-\alpha) = -\cos\alpha\) e \(\cot(\pi-\alpha) = -\cot\alpha\), a avaliação resulta em:
+          \[ \left(\frac{R^3}{3}\cos\alpha - \frac{a^3}{3}\cot\alpha\right) - \left(-\frac{R^3}{3}\cos\alpha + \frac{a^3}{3}\cot\alpha\right) = \frac{2R^3}{3}\cos\alpha - \frac{2a^3}{3}\cot\alpha \]
+          Sabendo que \(\sin\alpha = a/R\), temos \(\cos\alpha = \sqrt{R^2-a^2}/R\) e \(\cot\alpha = \sqrt{R^2-a^2}/a\). Substituindo:
+          \[ \frac{2}{3} \left( R^3 \frac{\sqrt{R^2-a^2}}{R} - a^3 \frac{\sqrt{R^2-a^2}}{a} \right) = \frac{2}{3} (R^2 - a^2)\sqrt{R^2-a^2} = \frac{2}{3}(R^2-a^2)^{3/2} \]
+          </p>
+          <p>Integral externa (em \(\theta\)):
+          \[ \int_0^{2\pi} \frac{2}{3}(R^2-a^2)^{3/2} d\theta = 2\pi \cdot \frac{2}{3}(R^2-a^2)^{3/2} = \frac{4\pi}{3}(R^2-a^2)^{3/2} \]
+          </p>
+        </details>
+
+        <li><em>Monte</em> as integrais que determinam as coordenadas do centro de massa e explique, usando argumentos de simetria, por que o centro de massa permanece na origem.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>As integrais para as coordenadas do centro de massa \((\bar{x}, \bar{y}, \bar{z})\) são (com densidade constante \(\rho_0\)):
+          \[ \bar{x} = \frac{1}{M}\iiint x \rho_0 dV = \frac{1}{V}\iiint (\rho\sin\varphi\cos\theta) \rho^2 \sin\varphi d\rho d\varphi d\theta \]
+          \[ \bar{y} = \frac{1}{M}\iiint y \rho_0 dV = \frac{1}{V}\iiint (\rho\sin\varphi\sin\theta) \rho^2 \sin\varphi d\rho d\varphi d\theta \]
+          \[ \bar{z} = \frac{1}{M}\iiint z \rho_0 dV = \frac{1}{V}\iiint (\rho\cos\varphi) \rho^2 \sin\varphi d\rho d\varphi d\theta \]
+          </p>
+          <p><strong>Argumento de Simetria:</strong> O sólido remanescente é perfeitamente simétrico em relação à origem.
+          <ul>
+              <li><strong>Simetria em z:</strong> Para cada ponto de massa em \(z\), há um ponto de massa equivalente em \(-z\). Portanto, \(\bar{z}=0\).</li>
+              <li><strong>Simetria rotacional:</strong> O sólido é simétrico em relação ao eixo z. Isso garante que para qualquer massa em \((x,y)\), há massas equivalentes em \((-x,y)\) e \((x,-y)\), o que força \(\bar{x}=0\) e \(\bar{y}=0\).</li>
+          </ul>
+          Consequentemente, o centro de massa permanece na origem \((0,0,0)\).</p>
+        </details>
+        
+        <li><em>Monte</em> a integral que determina o momento de inércia em torno do eixo \(z\) e explique por que ele é menor do que o da esfera maciça de raio \(R\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>O momento de inércia em torno do eixo z é \(I_z = \iiint r^2 dM\), onde \(r\) é a distância perpendicular ao eixo z (\(r^2 = x^2+y^2\)) e \(dM = \rho_0 dV\). Em coordenadas esféricas, \(r^2 = (\rho\sin\varphi)^2\).</p>
+          \[ I_z = \iiint_E (\rho\sin\varphi)^2 (\rho_0 \rho^2\sin\varphi) d\rho\,d\varphi\,d\theta = \rho_0 \int_{0}^{2\pi} \int_{\alpha}^{\pi-\alpha} \int_{a\csc\varphi}^{R} \rho^4 \sin^3\varphi \,d\rho\,d\varphi\,d\theta \]
+          <p><strong>Explicação:</strong> O momento de inércia mede a resistência de um objeto à rotação. Ele depende da massa e de como essa massa está distribuída em relação ao eixo de rotação. Ao fazer um furo cilíndrico, estamos removendo massa da esfera original. Como toda a massa removida estava a uma distância \(r > 0\) do eixo z, sua remoção necessariamente diminui o momento de inércia total do objeto.</p>
+        </details>
+      </ol>
+    </div>
+
+    <!-- QUESTÃO 4 -->
+    <div class="question">
+      <h2 class="question-title">Questão 4 – Integrais de Linha</h2>
+      <p>A corda segue a curva \(\displaystyle \mathbf r(t)=\bigl(a\cos t,\;a\sin t,\,\tfrac{2a}{\pi}t\bigr)\), com \(0 \le t \le \tfrac{\pi}{2}\).</p>
+      <ol class="sub">
+        <li>Esboce a curva e calcule \(ds = \lVert \mathbf r'(t) \rVert \, dt\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p><strong>Esboço:</strong> A curva é um segmento de hélice. Ela começa em \(t=0\) no ponto \((a,0,0)\) e termina em \(t=\pi/2\) no ponto \((0,a,a)\), completando um quarto de volta no plano xy enquanto sobe linearmente no eixo z.</p>
+          <p><strong>Cálculo de \(ds\):</strong></p>
+          <p>Primeiro, o vetor tangente \(\mathbf r'(t)\):
+          \[ \mathbf r'(t) = \left( -a\sin t, a\cos t, \frac{2a}{\pi} \right) \]
+          </p>
+          <p>Agora, sua norma \(\lVert \mathbf r'(t) \rVert\):
+          \[ \lVert \mathbf r'(t) \rVert = \sqrt{(-a\sin t)^2 + (a\cos t)^2 + \left(\frac{2a}{\pi}\right)^2} = \sqrt{a^2(\sin^2 t + \cos^2 t) + \frac{4a^2}{\pi^2}} \]
+          \[ = \sqrt{a^2(1) + \frac{4a^2}{\pi^2}} = \sqrt{a^2\left(1 + \frac{4}{\pi^2}\right)} = a \sqrt{\frac{\pi^2+4}{\pi^2}} = \frac{a}{\pi}\sqrt{\pi^2+4} \]
+          </p>
+          <p>Como a norma é constante, o elemento de comprimento de arco é:
+          \[ ds = \left( \frac{a}{\pi}\sqrt{\pi^2+4} \right) dt \]
+          </p>
+        </details>
+
+        <li>A densidade linear é \(\lambda(t)=\lambda_{0}\bigl(1+\beta t\bigr)\) <em>Monte</em> a integral que fornece a massa total da corda.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>A massa total \(M\) é a integral de linha da densidade \(\lambda\) ao longo da curva \(C\):</p>
+          \[ M = \int_C \lambda \, ds = \int_{0}^{\pi/2} \lambda(t) \lVert \mathbf r'(t) \rVert dt \]
+          \[ M = \int_{0}^{\pi/2} \lambda_0(1+\beta t) \left( \frac{a}{\pi}\sqrt{\pi^2+4} \right) dt \]
+        </details>
+
+        <li><em>Monte</em> a integral que determina a coordenada \(\bar z\) do centro de massa da corda e discuta qualitativamente como \(\beta\) afeta seu valor.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>A coordenada \(\bar z\) do centro de massa é dada por \(\bar z = \frac{1}{M} \int_C z \lambda \, ds\).</p>
+          \[ \bar z = \frac{\int_{0}^{\pi/2} z(t) \lambda(t) \lVert \mathbf r'(t) \rVert dt}{\int_{0}^{\pi/2} \lambda(t) \lVert \mathbf r'(t) \rVert dt} = \frac{\int_{0}^{\pi/2} \left(\frac{2a}{\pi}t\right) \lambda_0(1+\beta t) \left( \frac{a}{\pi}\sqrt{\pi^2+4} \right) dt}{\int_{0}^{\pi/2} \lambda_0(1+\beta t) \left( \frac{a}{\pi}\sqrt{\pi^2+4} \right) dt} \]
+          <p><strong>Discussão qualitativa:</strong> A coordenada \(z(t) = \frac{2a}{\pi}t\) aumenta linearmente com \(t\). O parâmetro \(\beta\) controla como a densidade \(\lambda(t)\) varia com \(t\).
+          <ul>
+              <li>Se \(\beta > 0\), a densidade é maior para valores maiores de \(t\). Como \(z\) também é maior para \(t\) maior, isso significa que há mais massa concentrada na parte superior da corda. Portanto, \(\bar z\) será maior do que no caso de densidade uniforme (\(\beta=0\)).</li>
+              <li>Se \(\beta < 0\), a densidade é menor para valores maiores de \(t\). A massa está concentrada na parte inferior da corda, e \(\bar z\) será menor.</li>
+          </ul>
+          </p>
+        </details>
+      </ol>
+    </div>
+
+    <!-- QUESTÃO 5 -->
+    <div class="question">
+      <h2 class="question-title">Questão 5 – Campo Conservativo</h2>
+      <p>Considere o campo vetorial \(\displaystyle \mathbf F(x,y)=\bigl(2xy+y^{2},\;x^{2}+2xy\bigr)\).</p>
+      <ol class="sub">
+        <li>Mostre que o campo é conservativo (isto é, \(\nabla \times \mathbf F = \mathbf 0\)).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Para um campo 2D \(\mathbf F = (P, Q)\), ele é conservativo se \(\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}\).</p>
+          <p>Temos \(P(x,y) = 2xy+y^2\) e \(Q(x,y) = x^2+2xy\).</p>
+          <p>\(\displaystyle \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(2xy+y^2) = 2x+2y\)</p>
+          <p>\(\displaystyle \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(x^2+2xy) = 2x+2y\)</p>
+          <p>Como \(\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}\), o campo vetorial \(\mathbf F\) é conservativo.</p>
+        </details>
+
+        <li>Encontre um potencial escalar \(f\) tal que \(\mathbf F = \nabla f\).</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Procuramos \(f(x,y)\) tal que \(\frac{\partial f}{\partial x} = P\) e \(\frac{\partial f}{\partial y} = Q\).</p>
+          <p>1. Integrando \(\frac{\partial f}{\partial x} = 2xy+y^2\) em relação a \(x\):</p>
+          \[ f(x,y) = \int (2xy+y^2) dx = x^2y + xy^2 + g(y) \]
+          onde \(g(y)\) é uma função apenas de \(y\).
+          <p>2. Derivando o resultado em relação a \(y\) e igualando a \(Q\):</p>
+          \[ \frac{\partial f}{\partial y} = \frac{\partial}{\partial y}(x^2y + xy^2 + g(y)) = x^2 + 2xy + g'(y) \]
+          \[ x^2 + 2xy + g'(y) = Q = x^2+2xy \]
+          <p>Isso implica que \(g'(y) = 0\), então \(g(y) = K\) (uma constante). Escolhendo \(K=0\), a função potencial é:</p>
+          \[ f(x,y) = x^2y + xy^2 \]
+        </details>
+        
+        <li>Calcule \(\displaystyle \int_{C_{1}} \mathbf F \cdot d\mathbf r\) ao longo da meia parábola \(C_{1}\): \(\mathbf r(t)=\bigl(t, t^{2}\bigr)\),  \(0\le t \le 1\), usando dois métodos: (i) parametrização direta e (ii) diferença de potencial.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p><strong>(i) Parametrização Direta:</strong></p>
+          <p>\(\mathbf r(t) = (t, t^2)\), \(\mathbf r'(t) = (1, 2t)\)</p>
+          <p>\(\mathbf F(\mathbf r(t)) = \mathbf F(t, t^2) = (2t(t^2) + (t^2)^2, t^2 + 2t(t^2)) = (2t^3+t^4, t^2+2t^3)\)</p>
+          <p>\(\mathbf F \cdot d\mathbf r = \mathbf F(\mathbf r(t)) \cdot \mathbf r'(t) dt = ((2t^3+t^4)(1) + (t^2+2t^3)(2t)) dt = (2t^3+t^4+2t^3+4t^4)dt = (4t^3+5t^4)dt\)</p>
+          <p>\(\displaystyle \int_{C_1} \mathbf F \cdot d\mathbf r = \int_0^1 (4t^3+5t^4)dt = \left[t^4+t^5\right]_0^1 = (1^4+1^5) - 0 = 2\)</p>
+          <p><strong>(ii) Teorema Fundamental para Integrais de Linha (Diferença de Potencial):</strong></p>
+          <p>A integral é \(f(\text{ponto final}) - f(\text{ponto inicial})\).</p>
+          <p>Ponto inicial: \(\mathbf r(0) = (0,0)\). Ponto final: \(\mathbf r(1) = (1, 1^2) = (1,1)\).</p>
+          <p>\(f(x,y) = x^2y+xy^2\)</p>
+          <p>\(\displaystyle \int_{C_1} \mathbf F \cdot d\mathbf r = f(1,1) - f(0,0) = (1^2\cdot1 + 1\cdot1^2) - (0) = 1+1=2\)</p>
+          <p>Ambos os métodos resultam em 2.</p>
+        </details>
+        
+        <li>Repita a integral ao longo do caminho \(C_{2}\), a <strong>reta</strong> que une (0,0) a (1,1): \(\mathbf r(t)=(t,t)\),  \(0\le t \le 1\). Compare os resultados.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>Como o campo \(\mathbf F\) é conservativo, a integral de linha depende apenas dos pontos inicial e final, não do caminho. Os pontos inicial (0,0) e final (1,1) são os mesmos da questão anterior. Portanto, o resultado da integral <strong>deve ser 2</strong>.</p>
+          <p><em>Verificação por parametrização:</em></p>
+          <p>\(\mathbf r(t)=(t,t)\), \(\mathbf r'(t)=(1,1)\)</p>
+          <p>\(\mathbf F(\mathbf r(t)) = \mathbf F(t, t) = (2t(t)+t^2, t^2+2t(t)) = (3t^2, 3t^2)\)</p>
+          <p>\(\mathbf F \cdot d\mathbf r = (3t^2, 3t^2) \cdot (1,1) dt = (3t^2+3t^2)dt = 6t^2 dt\)</p>
+          <p>\(\displaystyle \int_{C_2} \mathbf F \cdot d\mathbf r = \int_0^1 6t^2 dt = \left[2t^3\right]_0^1 = 2(1)^3 - 0 = 2\)</p>
+          <p>O resultado é o mesmo, como esperado.</p>
+        </details>
+        
+        <li>Interprete o valor da integral em termos de energia potencial entre os pontos inicial e final.</li>
+        <details>
+          <summary>Resposta</summary>
+          <p>A integral de linha de um campo de força, \(\int_C \mathbf F \cdot d\mathbf r\), representa o <strong>trabalho</strong> (\(W\)) realizado pelo campo \(\mathbf F\) sobre uma partícula que se move ao longo do caminho \(C\).
+          Para um campo conservativo, o trabalho é igual à <strong>diminuição da energia potencial</strong> (\(U\)), ou seja, \(W = -\Delta U = U_{\text{inicial}} - U_{\text{final}}\).
+          No nosso caso, \(\mathbf F = \nabla f\), então a função potencial \(f\) está relacionada à energia potencial por \(f = -U + \text{constante}\).
+          O valor da integral, 2, significa que o trabalho realizado pelo campo para mover a partícula de (0,0) a (1,1) é 2. Isso corresponde a uma diminuição de 2 unidades na energia potencial do sistema, ou seja, \(\Delta U = U(1,1) - U(0,0) = -2\).</p>
+        </details>
+      </ol>
+    </div>
+
+  </div>
+
+</body>
+</html>
