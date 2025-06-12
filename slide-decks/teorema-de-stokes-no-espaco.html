@@ -3,12 +3,466 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cálculo Vetorial: teorema-de-stokes-no-espaco</title>
-    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <title>Cálculo Vetorial: Teorema de Stokes no Espaço</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme -->
     <link rel="stylesheet" href="space-theme.css" />
-    <script src="reveal.js/dist/reveal.js"></script>
-    <script src="reveal.js/plugin/math/math.js"></script>
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Teorema de Stokes no Espaço</h1>
+          <h3>Unificando Superfícies e Fronteiras</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Exploração Planetária (1980-1991)</strong></p>
+            <p>
+              A era das missões Voyager revelou a complexidade dos campos
+              magnéticos de Júpiter e Saturno. Entender como esses campos se
+              comportavam em grandes regiões do espaço era crucial para a
+              navegação e sobrevivência das sondas.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>De Medidas Locais a Efeitos Globais</strong></p>
+            <p>
+              Os engenheiros precisavam de uma forma de relacionar as medições
+              "microscópicas" do campo (sua tendência a girar em um ponto) com o
+              efeito "macroscópico" total ao longo de uma trajetória. O Teorema
+              de Stokes forneceu a ponte matemática exata para essa necessidade.
+            </p>
+          </div>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: TEOREMA DE STOKES   -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Conceito Principal -->
+          <section>
+            <h2>O Teorema de Stokes</h2>
+
+            <div class="math-section">
+              <p>
+                O Teorema de Stokes relaciona a integral de superfície do
+                rotacional de um campo vetorial com a integral de linha do campo
+                ao longo da fronteira dessa superfície.
+              </p>
+              \[ \iint_S (\nabla \times \vec{F}) \cdot d\vec{S} = \oint_C
+              \vec{F} \cdot d\vec{r} \]
+            </div>
+
+            <div class="math-section">
+              <p><strong>Interpretação Física:</strong></p>
+              <p>
+                A circulação total de um campo ao redor de uma fronteira fechada
+                (`C`) é igual à soma de todas as "pequenas" circulações
+                (rotacional) que ocorrem na superfície (`S`) delimitada por essa
+                fronteira.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Visualização -->
+          <section>
+            <h2>Visualização: Rotacional e Circulação</h2>
+
+            <canvas
+              id="stokesVisualization"
+              class="visualization-canvas"
+              width="700"
+              height="380"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="curlStrength">Intensidade do Rotacional:</label>
+                <input
+                  type="range"
+                  id="curlStrength"
+                  min="-100"
+                  max="100"
+                  value="50"
+                />
+              </div>
+
+              <button id="resetStokes" class="control-button">Reiniciar</button>
+            </div>
+          </section>
+
+          <!-- Slide 3: Componentes do Teorema -->
+          <section>
+            <h2>Componentes do Teorema de Stokes</h2>
+            <div class="dual-panel">
+              <div class="math-section">
+                <p><strong>Integral de Superfície do Rotacional</strong></p>
+                <p>\( \iint_S (\nabla \times \vec{F}) \cdot d\vec{S} \)</p>
+                <ul>
+                  <li>
+                    <p>
+                      \(\nabla \times \vec{F}\): O <strong>rotacional</strong>.
+                      Mede a tendência de rotação do campo em cada ponto.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      \(d\vec{S}\): Vetor normal à superfície, cuja orientação
+                      define o "lado de cima".
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>Significado:</strong> A soma líquida de toda a
+                      rotação microscópica na superfície.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+              <div class="math-section">
+                <p><strong>Integral de Linha na Fronteira</strong></p>
+                <p>\( \oint_C \vec{F} \cdot d\vec{r} \)</p>
+                <ul>
+                  <li>
+                    <p>
+                      \(C\): A <strong>curva-fronteira</strong> fechada da
+                      superfície \(S\).
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      \(d\vec{r}\): Vetor tangente à curva, indicando a direção
+                      do percurso.
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <strong>Significado:</strong> A circulação total (ou
+                      trabalho) do campo ao longo da fronteira.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <p style="font-size: 0.9em; margin-top: 10px">
+              A orientação da curva \(C\) e do vetor normal \(d\vec{S}\) estão
+              ligadas pela <strong>regra da mão direita</strong>.
+            </p>
+          </section>
+
+          <!-- Slide 4: Problema Prático -->
+          <section>
+            <h2>Problema 1: Campo Magnético em uma Bobina</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um campo magnético é descrito por
+                \(\vec{B} = -y\hat{i} + x\hat{j} + z\hat{k}\). Calcule a
+                circulação deste campo ao redor da circunferência \(C\) definida
+                por \(x^2 + y^2 = 4\) no plano \(z=1\).
+              </p>
+
+              <p>
+                <strong>Objetivo:</strong> Calcular \(\oint_C \vec{B} \cdot
+                d\vec{r}\) usando o Teorema de Stokes.
+              </p>
+
+              <p><strong>Passos Sugeridos:</strong></p>
+              <ol>
+                <li>
+                  Calcular o rotacional do campo, \(\nabla \times \vec{B}\).
+                </li>
+                <li>
+                  Definir a superfície \(S\) e seu vetor normal \(d\vec{S}\).
+                </li>
+                <li>
+                  Calcular a integral de superfície \(\iint_S (\nabla \times
+                  \vec{B}) \cdot d\vec{S}\).
+                </li>
+              </ol>
+            </div>
+          </section>
+
+          <!-- Slide 5: Solução do Sub-problema 1 -->
+          <section>
+            <h2>Solução 1: Cálculo do Rotacional</h2>
+
+            <div class="compact-solution">
+              <p><strong>Cálculo de \(\nabla \times \vec{B}\):</strong></p>
+              <p>Usamos o determinante simbólico para o rotacional:</p>
+              \[ \nabla \times \vec{B} = \begin{vmatrix} \hat{i} & \hat{j} &
+              \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ -y & x & z \end{vmatrix} \] \[
+              = \hat{i}\left(\frac{\partial(z)}{\partial y} -
+              \frac{\partial(x)}{\partial z}\right) -
+              \hat{j}\left(\frac{\partial(z)}{\partial x} -
+              \frac{\partial(-y)}{\partial z}\right) +
+              \hat{k}\left(\frac{\partial(x)}{\partial x} -
+              \frac{\partial(-y)}{\partial y}\right) \] \[ = \hat{i}(0-0) -
+              \hat{j}(0-0) + \hat{k}(1 - (-1)) = 2\hat{k} \]
+              <p>
+                O rotacional é um campo vetorial constante: \(\nabla \times
+                \vec{B} = (0, 0, 2)\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 6: Solução do Sub-problema 2 e 3 -->
+          <section>
+            <h2>Solução 1: Integral de Superfície</h2>
+
+            <div class="compact-solution">
+              <p><strong>Aplicação do Teorema:</strong></p>
+              <p>
+                A curva \(C\) é a fronteira do disco \(S\) de raio 2 no plano
+                \(z=1\). O vetor normal unitário à superfície \(S\) que
+                corresponde à orientação anti-horária de \(C\) é \(\hat{n} =
+                \hat{k}\). Portanto, \(d\vec{S} = \hat{k} \, dA\).
+              </p>
+              <p>A integral de linha se torna:</p>
+              \[ \oint_C \vec{B} \cdot d\vec{r} = \iint_S (\nabla \times
+              \vec{B}) \cdot d\vec{S} = \iint_S (2\hat{k}) \cdot (\hat{k} \, dA)
+              \] \[ = \iint_S 2 \, dA = 2 \iint_S dA \]
+              <p>
+                Como \(\iint_S dA\) é simplesmente a área da superfície \(S\),
+                temos:
+              </p>
+              \[ 2 \times (\text{Área do disco}) = 2 \times (\pi r^2) = 2 \times
+              (\pi \cdot 2^2) = 8\pi \]
+            </div>
+          </section>
+
+          <!-- Slide 7: Conclusão do Problema -->
+          <section>
+            <h2>Conclusão: Problema 1</h2>
+
+            <div class="compact-solution">
+              <p><strong>Interpretação dos Resultados:</strong></p>
+              <p>
+                A circulação total do campo magnético \(\vec{B}\) ao longo da
+                circunferência \(C\) é de \(8\pi\).
+              </p>
+              <p>
+                O Teorema de Stokes nos permitiu substituir uma integral de
+                linha, que exigiria parametrizar a curva, por uma integral de
+                superfície muito mais simples, baseada na área da região. Isso
+                demonstra o poder do teorema como uma ferramenta de
+                simplificação.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: PROBLEMA 2 (ESFÉRICO) -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Enunciado do Problema 2 -->
+          <section>
+            <h2>Problema 2: Fluxo em uma Calota Esférica</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Verifique o Teorema de Stokes para o
+                campo vetorial \(\vec{F} = y\hat{i} - x\hat{j} + z^2\hat{k}\) na
+                superfície \(S\), que é a parte superior da esfera \(x^2 + y^2 +
+                z^2 = 9\) (ou seja, \(z \ge 0\)).
+              </p>
+
+              <p>
+                <strong>Objetivo:</strong> Demonstrar que \(\oint_C \vec{F}
+                \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot
+                d\vec{S}\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Solução - Lado 1 (Integral de Linha) -->
+          <section>
+            <h2>Solução 2: Lado 1 - Integral de Linha</h2>
+
+            <div class="compact-solution">
+              <p>
+                A fronteira \(C\) é a circunferência \(x^2+y^2=9\) no plano
+                \(z=0\). Parametrizamos \(C\):
+              </p>
+              <p>
+                \(\vec{r}(t) = (3\cos t, 3\sin t, 0)\), para \(0 \le t \le
+                2\pi\).
+              </p>
+              <p>
+                O vetor tangente é \(\vec{r}'(t) = (-3\sin t, 3\cos t, 0)\).
+              </p>
+
+              <p>Avaliamos \(\vec{F}\) sobre a curva:</p>
+              <p>
+                \(\vec{F}(\vec{r}(t)) = (3\sin t)\hat{i} - (3\cos t)\hat{j} +
+                (0)^2\hat{k} = (3\sin t, -3\cos t, 0)\).
+              </p>
+
+              <p>Calculamos o produto escalar e integramos:</p>
+              \[ \vec{F} \cdot \vec{r}'(t) = (3\sin t)(-3\sin t) + (-3\cos
+              t)(3\cos t) = -9\sin^2 t - 9\cos^2 t = -9 \] \[ \oint_C \vec{F}
+              \cdot d\vec{r} = \int_0^{2\pi} -9 \, dt = -9[t]_0^{2\pi} = -18\pi
+              \]
+            </div>
+          </section>
+
+          <!-- Slide 3: Solução - Lado 2 (Integral de Superfície) -->
+          <section>
+            <h2>Solução 2: Lado 2 - Integral de Superfície</h2>
+
+            <div class="compact-solution">
+              <p>Primeiro, calculamos o rotacional de \(\vec{F}\):</p>
+              \[ \nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} &
+              \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ y & -x & z^2 \end{vmatrix} =
+              \hat{k}(-1-1) = -2\hat{k} \]
+
+              <p>
+                Agora, calculamos a integral de superfície. A superfície \(S\) é
+                o hemisfério superior. O elemento de área \(d\vec{S}\) aponta
+                para fora (para cima).
+              </p>
+              \[ \iint_S (\nabla \times \vec{F}) \cdot d\vec{S} = \iint_S
+              (-2\hat{k}) \cdot d\vec{S} \]
+              <p>
+                Esta integral representa \(-2\) vezes o fluxo do campo
+                \(\hat{k}\) através de \(S\). Geometricamente, o fluxo de
+                \(\hat{k}\) através de uma superfície é a área de sua projeção
+                no plano \(xy\).
+              </p>
+              <p>A projeção de \(S\) no plano \(xy\) é um disco de raio 3.</p>
+              \[ \iint_S (\nabla \times \vec{F}) \cdot d\vec{S} = -2 \times
+              (\text{Área do disco}) = -2 \times (\pi \cdot 3^2) = -18\pi \]
+            </div>
+          </section>
+
+          <!-- Slide 4: Conclusão do Problema 2 -->
+          <section>
+            <h2>Conclusão: Problema 2</h2>
+            <div class="compact-solution">
+              <p><strong>Resultados Consistentes:</strong></p>
+              <p>
+                Ambos os lados da equação resultaram em \(-18\pi\), verificando
+                o teorema:
+              </p>
+              \[ \oint_C \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times
+              \vec{F}) \cdot d\vec{S} = -18\pi \]
+              <p>
+                Este exemplo mostra que mesmo para uma superfície curva
+                (hemisfério), o Teorema de Stokes se mantém, relacionando o
+                comportamento do campo na fronteira plana com o comportamento do
+                rotacional em toda a superfície.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide de Aplicação Histórica -->
+          <section>
+            <h2>Aplicação Histórica</h2>
+
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+              <p><strong>Missões Voyager (1977 - Presente)</strong></p>
+              <p>
+                O Teorema de Stokes é uma peça central das Equações de Maxwell,
+                que governam o eletromagnetismo. Ao atravessar as magnetosferas
+                de Júpiter e Saturno, as sondas Voyager mediram campos
+                magnéticos. Stokes permitiu que os cientistas relacionassem
+                essas medições locais a correntes elétricas em grande escala nos
+                planetas, ajudando a mapear e entender suas complexas
+                magnetosferas.
+              </p>
+            </div>
+
+            <div class="math-section">
+              <p>
+                A Lei de Ampère-Maxwell, uma aplicação direta de Stokes,
+                relaciona o campo magnético \(\vec{B}\) com a corrente elétrica
+                \(\vec{J}\):
+              </p>
+              \[ \oint \vec{B} \cdot d\vec{l} = \mu_0 \iint_S \vec{J} \cdot
+              d\vec{S} + \dots \]
+            </div>
+          </section>
+
+          <!-- Slide de Aplicação Prática Moderna -->
+          <section>
+            <h2>Aplicação Prática Moderna</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p><strong>Aplicações Contemporâneas:</strong></p>
+                <ul>
+                  <li>
+                    <strong>Previsão do Tempo Espacial:</strong> Análise de
+                    ejeções de massa coronal e seus efeitos no campo magnético
+                    da Terra.
+                  </li>
+                  <li>
+                    <strong>Aerodinâmica:</strong> Modelagem de vórtices e
+                    turbulência no fluxo de ar ao redor de foguetes e aeronaves.
+                  </li>
+                  <li>
+                    <strong>Engenharia de Antenas:</strong> O teorema é usado
+                    para calcular os campos de radiação de antenas a partir das
+                    correntes em sua superfície.
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <canvas
+                  id="applicationVisualStokes"
+                  class="visualization-canvas"
+                  width="350"
+                  height="280"
+                ></canvas>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Script de inicialização e visualizações -->
     <script>
+      // Inicialização do Reveal.js
       window.onload = function () {
         Reveal.initialize({
           controls: true,
@@ -16,17 +470,263 @@
           center: true,
           hash: true,
           plugins: [RevealMath.MathJax3],
+          width: '95%',
+          height: '100%',
+          margin: 0.04,
+          minScale: 0.2,
+          maxScale: 2.0,
+          transition: 'fade',
         });
+
+        // Gerenciador de ciclo de vida das visualizações
+        let currentViz = null;
+        const vizInitializers = {
+          stokesVisualization: initStokesVisualization,
+          applicationVisualStokes: initApplicationVisualStokes,
+        };
+
+        function cleanupCurrentViz() {
+          if (currentViz && currentViz.cleanup) {
+            currentViz.cleanup();
+            currentViz = null;
+          }
+        }
+
+        Reveal.on('slidechanged', function (event) {
+          cleanupCurrentViz();
+
+          const canvasId = event.currentSlide.querySelector('canvas')?.id;
+          if (canvasId && vizInitializers[canvasId]) {
+            currentViz = vizInitializers[canvasId]();
+          }
+        });
+
+        // Inicializar a viz do primeiro slide, se houver
+        const firstCanvas = document.querySelector('.slides section canvas');
+        if (firstCanvas && vizInitializers[firstCanvas.id]) {
+          currentViz = vizInitializers[firstCanvas.id]();
+        }
       };
+
+      // =============================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO TEOREMA DE STOKES
+      // =============================================
+      function initStokesVisualization() {
+        const canvas = document.getElementById('stokesVisualization');
+        if (!canvas) return null;
+
+        const ctx = canvas.getContext('2d');
+        const slider = document.getElementById('curlStrength');
+        const resetButton = document.getElementById('resetStokes');
+        let animationId = null;
+
+        const state = {
+          curl: 0.5,
+          time: 0,
+        };
+
+        const grid = {
+          rows: 8,
+          cols: 12,
+          padding: 40,
+          arrowSize: 10,
+        };
+
+        function draw() {
+          state.time += 0.02;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          const cellWidth = (canvas.width - 2 * grid.padding) / grid.cols;
+          const cellHeight = (canvas.height - 2 * grid.padding) / grid.rows;
+
+          // Desenha rotacional interno
+          ctx.strokeStyle = 'rgba(79, 195, 247, 0.6)';
+          ctx.lineWidth = 1.5;
+          for (let i = 0; i < grid.rows; i++) {
+            for (let j = 0; j < grid.cols; j++) {
+              const x = grid.padding + j * cellWidth + cellWidth / 2;
+              const y = grid.padding + i * cellHeight + cellHeight / 2;
+
+              ctx.beginPath();
+              ctx.arc(x, y, grid.arrowSize, 0, Math.PI * 2);
+              ctx.stroke();
+
+              const angle = state.time * state.curl;
+              const arrowX = x + grid.arrowSize * Math.cos(angle);
+              const arrowY = y + grid.arrowSize * Math.sin(angle);
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(arrowX, arrowY);
+              ctx.stroke();
+            }
+          }
+
+          // Desenha integral de linha na fronteira
+          const rectX = grid.padding + cellWidth / 2;
+          const rectY = grid.padding + cellHeight / 2;
+          const rectWidth = (grid.cols - 1) * cellWidth;
+          const rectHeight = (grid.rows - 1) * cellHeight;
+
+          ctx.strokeStyle = '#ff5a5f';
+          ctx.lineWidth = 3;
+          ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+
+          // Animação na fronteira (simplificado)
+          const perimeter = 2 * (rectWidth + rectHeight);
+          const pos = (state.time * 50 * state.curl) % perimeter;
+
+          let pX, pY;
+          if (pos < rectWidth) {
+            // Topo
+            pX = rectX + pos;
+            pY = rectY;
+          } else if (pos < rectWidth + rectHeight) {
+            // Direita
+            pX = rectX + rectWidth;
+            pY = rectY + (pos - rectWidth);
+          } else if (pos < 2 * rectWidth + rectHeight) {
+            // Fundo
+            pX = rectX + rectWidth - (pos - (rectWidth + rectHeight));
+            pY = rectY + rectHeight;
+          } else {
+            // Esquerda
+            pX = rectX;
+            pY = rectY + rectHeight - (pos - (2 * rectWidth + rectHeight));
+          }
+
+          ctx.fillStyle = '#ff5a5f';
+          ctx.beginPath();
+          ctx.arc(pX, pY, 8, 0, 2 * Math.PI);
+          ctx.fill();
+
+          animationId = requestAnimationFrame(draw);
+        }
+
+        function update() {
+          state.curl = slider.value / 100.0;
+        }
+
+        function reset() {
+          slider.value = 50;
+          update();
+        }
+
+        slider.addEventListener('input', update);
+        resetButton.addEventListener('click', reset);
+
+        update();
+        draw();
+
+        return {
+          cleanup: () => {
+            if (animationId) cancelAnimationFrame(animationId);
+            slider.removeEventListener('input', update);
+            resetButton.removeEventListener('click', reset);
+          },
+        };
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DA APLICAÇÃO PRÁTICA (STOKES)
+      // =============================================
+      function initApplicationVisualStokes() {
+        const canvas = document.getElementById('applicationVisualStokes');
+        if (!canvas) return null;
+
+        const ctx = canvas.getContext('2d');
+        let animationId = null;
+
+        const earth = {
+          x: canvas.width / 2,
+          y: canvas.height / 2,
+          radius: 30,
+        };
+
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            x: -10,
+            y: Math.random() * canvas.height,
+            vx: 2 + Math.random(),
+            vy: 0,
+          });
+        }
+
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Desenha campo magnético (simplificado)
+          ctx.strokeStyle = 'rgba(79, 195, 247, 0.5)';
+          ctx.lineWidth = 1;
+          for (let i = 1; i < 5; i++) {
+            ctx.beginPath();
+            ctx.ellipse(
+              earth.x,
+              earth.y,
+              earth.radius + i * 18,
+              earth.radius + i * 25,
+              Math.PI / 6,
+              0,
+              2 * Math.PI
+            );
+            ctx.stroke();
+          }
+
+          // Desenha a Terra
+          const gradient = ctx.createRadialGradient(
+            earth.x - 10,
+            earth.y - 10,
+            5,
+            earth.x,
+            earth.y,
+            earth.radius
+          );
+          gradient.addColorStop(0, '#64b5f6');
+          gradient.addColorStop(1, '#1a237e');
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(earth.x, earth.y, earth.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Atualiza e desenha partículas (vento solar)
+          ctx.fillStyle = '#ff5a5f';
+          particles.forEach((p) => {
+            const dx = p.x - earth.x;
+            const dy = p.y - earth.y;
+            const distSq = dx * dx + dy * dy;
+
+            if (distSq < (earth.radius + 80) ** 2) {
+              const force = 5000 / distSq;
+              p.vx += force * (dx / Math.sqrt(distSq)) * 0.1;
+              p.vy += force * (dy / Math.sqrt(distSq)) * 0.1;
+            }
+
+            p.x += p.vx * 0.2;
+            p.y += p.vy * 0.2;
+
+            if (p.x > canvas.width || p.y > canvas.height || p.y < 0) {
+              p.x = -10;
+              p.y = Math.random() * canvas.height;
+              p.vx = 2 + Math.random();
+              p.vy = 0;
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 1.5, 0, 2 * Math.PI);
+            ctx.fill();
+          });
+
+          animationId = requestAnimationFrame(draw);
+        }
+
+        draw();
+
+        return {
+          cleanup: () => {
+            if (animationId) cancelAnimationFrame(animationId);
+          },
+        };
+      }
     </script>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <section>
-          <h1>teorema-de-stokes-no-espaco</h1>
-        </section>
-      </div>
-    </div>
   </body>
 </html>
