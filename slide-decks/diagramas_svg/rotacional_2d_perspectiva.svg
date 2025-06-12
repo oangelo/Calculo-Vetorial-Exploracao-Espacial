@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="361.79999"
+   height="233.49297"
+   viewBox="0 0 361.79999 233.49297"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="rotacional_2d_perspectiva.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview5"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.496875"
+     inkscape:cx="179.82478"
+     inkscape:cy="107.93492"
+     inkscape:window-width="1920"
+     inkscape:window-height="1008"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <style
+     id="style1">
+    .axis-line { stroke: #495057; stroke-width: 1.5; marker-end: url(#arrowHeadAxisFig1); }
+    .plane-xy { fill: #dee2e6; stroke: #adb5bd; stroke-width: 1; opacity: 0.8; }
+    .field-arrow { stroke: #0d6efd; stroke-width: 1.5; marker-end: url(#arrowHeadFieldFig1); }
+    .curl-vector { stroke: #d63384; stroke-width: 3; marker-end: url(#arrowHeadCurlFig1); }
+    .origin-dot { fill: #343a40; }
+  </style>
+  <defs
+     id="defs3">
+    <marker
+       id="arrowHeadAxisFig1"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="6"
+       markerHeight="6"
+       orient="auto-start-reverse">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#495057"
+         id="path1" />
+    </marker>
+    <marker
+       id="arrowHeadFieldFig1"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="4"
+       markerHeight="4"
+       orient="auto-start-reverse">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#0d6efd"
+         id="path2" />
+    </marker>
+    <marker
+       id="arrowHeadCurlFig1"
+       viewBox="0 0 10 10"
+       refX="8"
+       refY="5"
+       markerWidth="5"
+       markerHeight="5"
+       orient="auto-start-reverse">
+      <path
+         d="M 0,0 10,5 0,10 Z"
+         fill="#d63384"
+         id="path3" />
+    </marker>
+  </defs>
+  <!-- Grupo para perspectiva e posicionamento -->
+  <g
+     transform="matrix(1,0,0,-1,180,110.55603)"
+     id="g5">
+    <!-- Plano XY (paralelogramo com perspectiva aprimorada) -->
+    <!-- Coordenadas do paralelogramo (x,y): A(-160,-70), B(60,-110), C(160,70), D(-60,110) -->
+    <polygon
+       points="160,70 -60,110 -160,-70 60,-110 "
+       class="plane-xy"
+       id="polygon3" />
+    <!-- Eixos X e Y no plano -->
+    <line
+       x1="-180"
+       y1="0"
+       x2="180"
+       y2="0"
+       class="axis-line"
+       id="line3" />
+    <!-- Eixo X -->
+    <line
+       x1="0"
+       y1="-90"
+       x2="0"
+       y2="90"
+       class="axis-line"
+       id="line4" />
+    <!-- Eixo Y -->
+    <!-- Campo Vetorial 2D indicando rotação (vórtice) -->
+    <g
+       id="vortexFig1">
+      <circle
+         cx="0"
+         cy="0"
+         r="60"
+         fill="none"
+         stroke="#0d6efd"
+         stroke-width="0.5"
+         stroke-dasharray="3, 3"
+         stroke-opacity="0.6"
+         id="circle4" />
+      <script
+         id="script4">
+        const vortexFig1 = document.getElementById(&quot;vortexFig1&quot;);
+        if (vortexFig1) { // Check if element exists (for non-browser rendering)
+            const numArrows = 8;
+            const radius = 60;
+            const arrowLenBase = 20;
+            for (let i = 0; i  numArrows; i++) {
+              const angle = (i / numArrows) * 2 * Math.PI;
+              // Start point on the circle
+              const startX = radius * Math.cos(angle);
+              const startY = radius * Math.sin(angle);
+              // End point for tangent vector (-sin, cos for CCW)
+              // Make arrows slightly shorter to not overlap too much
+              const arrowLen = arrowLenBase * (0.7 + 0.3 * Math.sin(angle * 2)); // Vary length for visual
+              const endX = startX - arrowLen * Math.sin(angle);
+              const endY = startY + arrowLen * Math.cos(angle);
+              
+              const line = document.createElementNS(&quot;http://www.w3.org/2000/svg&quot;, &quot;line&quot;);
+              line.setAttribute(&quot;x1&quot;, startX.toFixed(2));
+              line.setAttribute(&quot;y1&quot;, startY.toFixed(2));
+              line.setAttribute(&quot;x2&quot;, endX.toFixed(2));
+              line.setAttribute(&quot;y2&quot;, endY.toFixed(2));
+              line.setAttribute(&quot;class&quot;, &quot;field-arrow&quot;);
+              vortexFig1.appendChild(line);
+            }
+        }
+      </script>
+    </g>
+    <!-- Origem -->
+    <circle
+       cx="0"
+       cy="0"
+       r="3"
+       class="origin-dot"
+       id="circle5" />
+    <!-- Vetor Rotacional (saindo do plano com melhor perspectiva) -->
+    <!-- Base do vetor no plano (um pequeno círculo escuro para ancorar) -->
+    <ellipse
+       cx="0"
+       cy="0"
+       rx="4"
+       ry="2"
+       fill="#343a40"
+       opacity="0.5"
+       transform="skewX(-30)"
+       id="ellipse5" />
+    <!-- Linha do vetor com perspectiva -->
+    <line
+       x1="0"
+       y1="0"
+       x2="-25"
+       y2="-120"
+       class="curl-vector"
+       id="line5" />
+  </g>
+</svg>
