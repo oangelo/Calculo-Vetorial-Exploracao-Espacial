@@ -3,14 +3,469 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Cálculo Vetorial: fluxo-de-um-campo-vetorial-teorema-da-divergencia
-    </title>
-    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <title>Cálculo Vetorial: Fluxo e Teorema da Divergência</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
     <link rel="stylesheet" href="space-theme.css" />
-    <script src="reveal.js/dist/reveal.js"></script>
-    <script src="reveal.js/plugin/math/math.js"></script>
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
     <script>
+      // Configuração do MathJax para usar \vec como seta
+      window.MathJax = {
+        tex: {
+          macros: {
+            vec: ['\\overrightarrow{#1}', 1],
+          },
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Fluxo e Teorema da Divergência</h1>
+          <h3>Explorando o Espaço através da Matemática</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto: A Era das Estações Espaciais</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Corrida Espacial Tardia (1973-1985)</strong></p>
+            <p>
+              Após a chegada à Lua, o foco se voltou para a permanência humana
+              no espaço. A Skylab americana e a série Salyut soviética foram os
+              primeiros laboratórios em órbita, marcando o início da era das
+              estações espaciais e das missões de longa duração.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Gerenciamento de Sistemas Fechados</strong></p>
+            <p>
+              Manter astronautas vivos por meses exigia um controle sem
+              precedentes de sistemas de suporte à vida. A circulação de ar, a
+              dissipação de calor e o gerenciamento de fluidos se tornaram
+              problemas críticos, modelados matematicamente por campos
+              vetoriais, fluxo e divergência.
+            </p>
+          </div>
+        </section>
+
+        <!-- ===================================== -->
+        <!-- TÓPICO 1: FLUXO DE UM CAMPO VETORIAL -->
+        <!-- ===================================== -->
+        <section>
+          <!-- Slide 1.1: Conceito Principal -->
+          <section>
+            <h2>Fluxo de um Campo Vetorial</h2>
+
+            <div class="math-section">
+              <p>
+                O fluxo \( \Phi \) de um campo vetorial \( \vec{F} \) através de
+                uma superfície orientada \( S \) é a integral de superfície do
+                componente normal de \( \vec{F} \).
+              </p>
+              <p>
+                \[ \Phi = \iint_S \vec{F} \cdot d\vec{S} = \iint_S \vec{F} \cdot
+                \vec{n} \, dS \]
+              </p>
+              <p>
+                Onde \( \vec{n} \) é o vetor normal unitário à superfície \(S\).
+              </p>
+            </div>
+
+            <div class="math-section">
+              <p><strong>Interpretação Física:</strong></p>
+              Representa a taxa líquida com que um "fluido" (massa, calor, campo
+              elétrico) atravessa uma superfície.
+              <ul>
+                <li>\( \Phi > 0 \): Fluxo líquido para fora.</li>
+                <li>\( \Phi < 0 \): Fluxo líquido para dentro.</li>
+                <li>\( \Phi = 0 \): O que entra é igual ao que sai.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 1.2: Intuição com a fórmula -->
+          <section>
+            <h2>Intuição: Fluxo e o Ângulo de Incidência</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um fluido se move com velocidade
+                constante \( \vec{v} \). Qual é o fluxo através de uma área
+                \(A\) cujo vetor normal \( \vec{n} \) faz um ângulo \( \theta \)
+                com \( \vec{v} \)?
+              </p>
+            </div>
+            <div class="compact-solution">
+              <p>
+                O fluxo \( \Phi \) é a taxa de volume que passa por \( A \).
+                Como \( \vec{v} \) é constante:
+              </p>
+              <p>
+                \[ \Phi = \iint_A \vec{v} \cdot \vec{n} \, dS = (\vec{v} \cdot
+                \vec{n}) \iint_A dS \]
+              </p>
+              <p>
+                Sabendo que \( \vec{v} \cdot \vec{n} =
+                |\vec{v}||\vec{n}|\cos\theta = |\vec{v}|\cos\theta \), temos:
+              </p>
+              <p>
+                \[ \Phi = \underbrace{|\vec{v}| \cdot
+                \text{Área}(A)}_{\text{Fluxo Máximo}} \cdot \cos\theta \]
+              </p>
+              <p>
+                O fluxo é máximo quando \( \theta = 0^\circ \) (área
+                perpendicular ao fluxo) e nulo quando \( \theta = 90^\circ \)
+                (área paralela ao fluxo).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 1.3: Visualização com Partículas e Colisão -->
+          <section>
+            <h2>Visualização: Fluxo de Partículas</h2>
+            <canvas
+              id="particleFluxCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="flowAngle">Ângulo do Fluxo (θ):</label>
+                <input type="range" id="flowAngle" min="0" max="90" value="0" />
+                <span id="flowAngleValue">0°</span>
+              </div>
+              <div class="control-slider">
+                <label for="flowIntensity">Intensidade (|v|):</label>
+                <input
+                  type="range"
+                  id="flowIntensity"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
+                <span id="flowIntensityValue">5</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 1.4: Problema Prático 1 -->
+          <section>
+            <h2>Problema: Ventilação Nula</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um sistema de ventilação gera um
+                campo de velocidades \( \vec{v}(x, y, z) = \langle 0, 2, z
+                \rangle \, \text{m/s} \). Calcule o fluxo de ar através de uma
+                escotilha retangular no plano \( yz \), definida por \( 0 \le y
+                \le 2 \) e \( 0 \le z \le 1 \).
+              </p>
+              <p>
+                O vetor normal à escotilha é \( \vec{n} = \langle 1, 0, 0
+                \rangle \). O ar flui na direção y/z, paralelo à superfície.
+              </p>
+            </div>
+            <div class="compact-solution">
+              <p>
+                Como o campo vetorial \( \vec{v} \) é sempre perpendicular ao
+                vetor normal \( \vec{n} \), o produto escalar é nulo em todos os
+                pontos.
+              </p>
+              <p>
+                \[ \vec{v} \cdot \vec{n} = \langle 0, 2, z \rangle \cdot \langle
+                1, 0, 0 \rangle = 0 \]
+              </p>
+              <p>
+                Portanto, o fluxo é zero, pois o ar apenas "raspa" a superfície,
+                sem atravessá-la.
+              </p>
+              <p>
+                \[ \Phi = \iint_S \vec{v} \cdot \vec{n} \, dS = \iint_S 0 \, dS
+                = 0 \]
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- ======================================= -->
+        <!-- TÓPICO 2: DIVERGÊNCIA DE CAMPO VETORIAL -->
+        <!-- ======================================= -->
+        <section>
+          <!-- Slide 2.1: Conceito Principal -->
+          <section>
+            <h2>Divergência de um Campo Vetorial</h2>
+
+            <div class="math-section">
+              <p>
+                A divergência de um campo vetorial \( \vec{F} = \langle P, Q, R
+                \rangle \) é um campo escalar que mede a "taxa de expansão" do
+                campo em um ponto.
+              </p>
+              <p>
+                \[ \text{div} \vec{F} = \nabla \cdot \vec{F} = \frac{\partial
+                P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial
+                R}{\partial z} \]
+              </p>
+            </div>
+
+            <div class="math-section">
+              <p>
+                <strong
+                  >Interpretação Física (Fluxo por unidade de volume):</strong
+                >
+              </p>
+              <ul>
+                <li>
+                  \( \text{div} \vec{F} > 0 \): O ponto é uma
+                  <strong>fonte</strong> (o campo diverge).
+                </li>
+                <li>
+                  \( \text{div} \vec{F} < 0 \): O ponto é um
+                  <strong>sumidouro</strong> (o campo converge).
+                </li>
+                <li>
+                  \( \text{div} \vec{F} = 0 \): O campo é
+                  <strong>incompressível</strong> ou solenoidal.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 2.2: Visualização com Grid -->
+          <section>
+            <h2>Visualização: Fluxo Local (Divergência)</h2>
+            <canvas
+              id="divergenceVisualizationCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+            <div class="controls-container">
+              <button class="control-button" id="btnDivPositive">
+                Fonte (div > 0)
+              </button>
+              <button class="control-button" id="btnDivNegative">
+                Sumidouro (div < 0)
+              </button>
+              <button class="control-button" id="btnDivZero">
+                Incompressível (div = 0)
+              </button>
+            </div>
+          </section>
+        </section>
+
+        <!-- =================================== -->
+        <!-- TÓPICO 3: TEOREMA DA DIVERGÊNCIA    -->
+        <!-- =================================== -->
+        <section>
+          <!-- Slide 3.1: O Teorema -->
+          <section>
+            <h2>O Teorema da Divergência (Gauss)</h2>
+            <div class="math-section">
+              <p>
+                Seja \(E\) uma região sólida simples e \(S\) a superfície
+                fronteira de \(E\), com orientação positiva (para fora). Seja \(
+                \vec{F} \) um campo vetorial cujas componentes têm derivadas
+                parciais contínuas em \(E\). Então:
+              </p>
+              <p>
+                \[ \iint_S \vec{F} \cdot d\vec{S} = \iiint_E (\text{div}
+                \vec{F}) \, dV \]
+              </p>
+              <p>
+                <strong>Interpretação:</strong> O fluxo total para fora de uma
+                superfície fechada é igual à soma de todas as fontes e
+                sumidouros dentro do volume delimitado por essa superfície.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.2: Problema com Esfera -->
+          <section>
+            <h2>Problema: Verificando com uma Esfera</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Use o Teorema da Divergência para
+                calcular o fluxo do campo \( \vec{F}(x,y,z) = \langle 2x, 3y, 4z
+                \rangle \) para fora da esfera unitária \( x^2 + y^2 + z^2 = 1
+                \).
+              </p>
+            </div>
+            <div class="compact-solution">
+              <p><strong>1. Calcular a divergência:</strong></p>
+              <p>
+                \[ \text{div} \vec{F} = \frac{\partial}{\partial x}(2x) +
+                \frac{\partial}{\partial y}(3y) + \frac{\partial}{\partial
+                z}(4z) = 2 + 3 + 4 = 9 \]
+              </p>
+              <p><strong>2. Aplicar o Teorema:</strong></p>
+              <p>
+                \[ \iint_S \vec{F} \cdot d\vec{S} = \iiint_E 9 \, dV = 9
+                \iiint_E dV \]
+              </p>
+              <p>
+                A integral \( \iiint_E dV \) é o volume da esfera de raio 1, que
+                é \( \frac{4}{3}\pi \).
+              </p>
+              <p>
+                \[ \text{Fluxo} = 9 \times \left( \frac{4}{3}\pi (1)^3 \right) =
+                12\pi \]
+              </p>
+              <p>
+                Isto é muito mais simples do que calcular a integral de
+                superfície diretamente.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.3: Problema com Cilindro -->
+          <section>
+            <h2>Exemplo em Coordenadas Cilíndricas</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcule o fluxo do campo \(
+                \vec{F}(x,y,z) = \langle x, y, z^2 \rangle \) para fora do
+                cilindro fechado \( x^2+y^2 \le 4 \), com \( 0 \le z \le 3 \).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.4: Solução com Cilindro -->
+          <section>
+            <h2>Solução: Fluxo para Fora do Cilindro</h2>
+            <div class="compact-solution">
+              <p><strong>1. Calcular a divergência:</strong></p>
+              <p>
+                \[ \text{div} \vec{F} = \frac{\partial x}{\partial x} +
+                \frac{\partial y}{\partial y} + \frac{\partial (z^2)}{\partial
+                z} = 1 + 1 + 2z = 2 + 2z \]
+              </p>
+              <p><strong>2. Aplicar o Teorema da Divergência:</strong></p>
+              <p>\[ \Phi = \iiint_E (2+2z) \, dV \]</p>
+              <p>
+                <strong>3. Usar coordenadas cilíndricas:</strong> \( dV = r \,
+                dz \, dr \, d\theta \)
+              </p>
+              <p>
+                Os limites são: \( 0 \le \theta \le 2\pi \), \( 0 \le r \le 2
+                \), \( 0 \le z \le 3 \).
+              </p>
+              <p>
+                \[ \Phi = \int_0^{2\pi} \int_0^2 \int_0^3 (2+2z) r \, dz \, dr
+                \, d\theta \]
+              </p>
+              <p>
+                \[ = \int_0^{2\pi} d\theta \cdot \int_0^2 \left[ (2z+z^2)r
+                \right]_0^3 \, dr = 2\pi \int_0^2 (6+9)r \, dr \]
+              </p>
+              <p>
+                \[ = 2\pi \int_0^2 15r \, dr = 30\pi \left[ \frac{r^2}{2}
+                \right]_0^2 = 30\pi \left( \frac{4}{2} \right) = 60\pi \]
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide de Aplicação Histórica -->
+          <section>
+            <h2>Aplicação Histórica</h2>
+
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+              <p><strong>Controle Térmico da Estação Skylab (1973)</strong></p>
+              <p>
+                A Skylab sofria de superaquecimento. O calor gerado por
+                equipamentos e astronautas (fontes de calor, \( \text{div}
+                \vec{q} > 0 \)) precisava ser removido. O Teorema da Divergência
+                conecta o total de calor gerado internamente (\( \iiint
+                \text{div} \vec{q} \, dV \)) ao fluxo total de calor que deve
+                ser irradiado para o espaço pela superfície da estação (\( \iint
+                \vec{q} \cdot d\vec{S} \)). Engenheiros usaram esses princípios
+                para projetar sistemas de refrigeração e radiadores.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide de Aplicação Prática Moderna -->
+          <section>
+            <h2>Aplicação Prática Moderna</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p><strong>Aplicações Contemporâneas:</strong></p>
+                <ul>
+                  <li>
+                    <strong>CFD:</strong> Simulação de fluxo de ar em torno de
+                    naves na reentrada (fluxo de calor) e de propelentes em
+                    motores de foguete.
+                  </li>
+                  <li>
+                    <strong>Eletromagnetismo:</strong> A Lei de Gauss para
+                    eletricidade, \( \nabla \cdot \vec{E} = \rho / \epsilon_0
+                    \), é uma aplicação direta do teorema. Essencial para
+                    projetar blindagem contra radiação.
+                  </li>
+                  <li>
+                    <strong>Astrofísica:</strong> Modelagem do fluxo de matéria
+                    em estrelas e galáxias.
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <canvas
+                  id="modernApplicationCanvas"
+                  class="visualization-canvas"
+                  width="350"
+                  height="250"
+                ></canvas>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Script de inicialização e visualizações -->
+    <script>
+      // =============================================
+      // INICIALIZAÇÃO E GERENCIAMENTO DE CICLO DE VIDA
+      // =============================================
+
+      const vizCleanupFunctions = {};
+
       window.onload = function () {
         Reveal.initialize({
           controls: true,
@@ -18,19 +473,391 @@
           center: true,
           hash: true,
           plugins: [RevealMath.MathJax3],
+          width: '90%',
+          height: '100%',
+          margin: 0.02,
+          minScale: 0.45,
+          maxScale: 1.5,
+          transition: 'fade',
+          navigationMode: 'default',
         });
+
+        Reveal.on('slidechanged', function (event) {
+          Object.values(vizCleanupFunctions).forEach((cleanup) => cleanup());
+
+          const canvas = event.currentSlide.querySelector('canvas');
+          if (canvas) {
+            const vizInitializers = {
+              particleFluxCanvas: window.particleFluxViz?.init,
+              divergenceVisualizationCanvas: window.divergenceViz?.init,
+              modernApplicationCanvas: window.modernAppViz?.init,
+            };
+            vizInitializers[canvas.id]?.();
+          }
+        });
+
+        const firstCanvas = document.querySelector(
+          '.slides section.present canvas'
+        );
+        if (firstCanvas) {
+          Reveal.dispatchEvent(
+            new CustomEvent('slidechanged', {
+              detail: { currentSlide: firstCanvas.parentElement },
+            })
+          );
+        }
       };
+
+      // Função auxiliar para desenhar setas
+      function drawArrowhead(ctx, fromX, fromY, toX, toY, radius = 5) {
+        const angle = Math.atan2(toY - fromY, toX - fromX);
+        ctx.save();
+        ctx.translate(toX, toY);
+        ctx.rotate(angle);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(-radius * 2, -radius);
+        ctx.lineTo(-radius * 2, radius);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // ==========================================================
+      // VISUALIZAÇÃO 1: FLUXO DE PARTÍCULAS (COM FONTE DUPLA)
+      // ==========================================================
+      (function () {
+        let canvas,
+          ctx,
+          animationId = null;
+        let particles = [];
+        let target_vx = 5,
+          target_vy = 0;
+        let fluxCounter = 0,
+          lastFluxTime = 0,
+          fluxDisplayValue = 0;
+
+        const wall = {
+          x: 450,
+          hole_y1: 150,
+          hole_y2: 250,
+          thickness: 10,
+        };
+
+        function init() {
+          canvas = document.getElementById('particleFluxCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+
+          const angleSlider = document.getElementById('flowAngle');
+          const intensitySlider = document.getElementById('flowIntensity');
+          angleSlider.addEventListener('input', updateParams);
+          intensitySlider.addEventListener('input', updateParams);
+
+          updateParams();
+          createParticles();
+          lastFluxTime = performance.now();
+          fluxCounter = 0;
+
+          animate(performance.now());
+        }
+
+        function updateParams() {
+          const angleSlider = document.getElementById('flowAngle');
+          const intensitySlider = document.getElementById('flowIntensity');
+          const angle = parseFloat(angleSlider.value);
+          const intensity = parseFloat(intensitySlider.value);
+
+          document.getElementById('flowAngleValue').textContent = `${angle}°`;
+          document.getElementById('flowIntensityValue').textContent = intensity;
+
+          const rad = (-angle * Math.PI) / 180;
+          target_vx = intensity * Math.cos(rad);
+          target_vy = intensity * Math.sin(rad);
+        }
+
+        function createParticles() {
+          particles = [];
+          for (let i = 0; i < 200; i++) {
+            particles.push({
+              x: Math.random() * canvas.width,
+              y: Math.random() * canvas.height,
+              vx: target_vx,
+              vy: target_vy,
+            });
+          }
+        }
+
+        function drawWall() {
+          ctx.fillStyle = '#E53935';
+          ctx.fillRect(wall.x, 0, wall.thickness, wall.hole_y1);
+          ctx.fillRect(
+            wall.x,
+            wall.hole_y2,
+            wall.thickness,
+            canvas.height - wall.hole_y2
+          );
+        }
+
+        function resetParticle(p) {
+          // 50% de chance de reiniciar na esquerda, 50% na parte inferior
+          if (Math.random() < 0.5) {
+            // Reinicia na borda esquerda
+            p.x = 0;
+            p.y = Math.random() * canvas.height;
+          } else {
+            // Reinicia na borda inferior, mas antes da parede
+            p.x = Math.random() * wall.x;
+            p.y = canvas.height;
+          }
+          p.vx = target_vx;
+          p.vy = target_vy;
+        }
+
+        function animate(currentTime) {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          drawWall();
+
+          ctx.fillStyle = '#1E88E5';
+          particles.forEach((p) => {
+            const old_x = p.x;
+            p.x += p.vx * 0.2;
+            p.y += p.vy * 0.2;
+
+            if (
+              p.x >= wall.x &&
+              p.x <= wall.x + wall.thickness &&
+              (p.y < wall.hole_y1 || p.y > wall.hole_y2)
+            ) {
+              p.vx = -p.vx;
+              p.x += p.vx * 0.2;
+            }
+
+            if (old_x < wall.x && p.x >= wall.x) {
+              if (p.y > wall.hole_y1 && p.y < wall.hole_y2) {
+                fluxCounter++;
+              }
+            }
+
+            if (
+              p.x > canvas.width ||
+              p.x < 0 ||
+              p.y > canvas.height ||
+              p.y < 0
+            ) {
+              resetParticle(p);
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+          });
+
+          const elapsedTime = (currentTime - lastFluxTime) / 1000;
+          if (elapsedTime > 1) {
+            fluxDisplayValue = fluxCounter / elapsedTime;
+            fluxCounter = 0;
+            lastFluxTime = currentTime;
+          }
+
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '18px Arial';
+          ctx.textAlign = 'right';
+          ctx.fillText(
+            `Fluxo: ${fluxDisplayValue.toFixed(1)} partículas/s`,
+            canvas.width - 20,
+            30
+          );
+
+          animationId = requestAnimationFrame(animate);
+        }
+
+        function cleanup() {
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+          }
+        }
+        window.particleFluxViz = { init, cleanup };
+        vizCleanupFunctions.particleFlux = cleanup;
+      })();
+
+      // ============================================================
+      // VISUALIZAÇÃO 2: DIVERGÊNCIA (COM GRID)
+      // ============================================================
+      (function () {
+        let canvas, ctx;
+        let fieldType = 'positive';
+
+        function init() {
+          canvas = document.getElementById('divergenceVisualizationCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          document
+            .getElementById('btnDivPositive')
+            .addEventListener('click', () => {
+              fieldType = 'positive';
+              draw();
+            });
+          document
+            .getElementById('btnDivNegative')
+            .addEventListener('click', () => {
+              fieldType = 'negative';
+              draw();
+            });
+          document
+            .getElementById('btnDivZero')
+            .addEventListener('click', () => {
+              fieldType = 'zero';
+              draw();
+            });
+          draw();
+        }
+
+        function drawGrid() {
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+          ctx.lineWidth = 1;
+          const spacingX = canvas.width / 20;
+          const spacingY = canvas.height / 12;
+          for (let i = 0; i <= 20; i++) {
+            ctx.beginPath();
+            ctx.moveTo(i * spacingX, 0);
+            ctx.lineTo(i * spacingX, canvas.height);
+            ctx.stroke();
+          }
+          for (let j = 0; j <= 12; j++) {
+            ctx.beginPath();
+            ctx.moveTo(0, j * spacingY);
+            ctx.lineTo(canvas.width, j * spacingY);
+            ctx.stroke();
+          }
+        }
+
+        function draw() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawGrid();
+
+          const centerX = canvas.width / 2,
+            centerY = canvas.height / 2;
+          let divText = '',
+            color = '';
+          const spacingX = canvas.width / 20,
+            spacingY = canvas.height / 12;
+
+          for (let i = 0; i <= 20; i++) {
+            for (let j = 0; j <= 12; j++) {
+              const x = i * spacingX,
+                y = j * spacingY;
+              const dx = x - centerX,
+                dy = y - centerY;
+              let vec;
+              if (fieldType === 'positive') {
+                vec = { x: dx, y: dy };
+                color = '#1E88E5';
+                divText = 'div F > 0 (Fonte)';
+              } else if (fieldType === 'negative') {
+                vec = { x: -dx, y: -dy };
+                color = '#E53935';
+                divText = 'div F < 0 (Sumidouro)';
+              } else {
+                vec = { x: -dy, y: dx };
+                color = '#43A047';
+                divText = 'div F = 0 (Incompressível/Rotacional)';
+              }
+              const mag = Math.sqrt(vec.x * vec.x + vec.y * vec.y);
+              if (mag > 1)
+                drawVector(ctx, x, y, vec.x / mag, vec.y / mag, color);
+            }
+          }
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '20px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText(divText, canvas.width / 2, 30);
+        }
+
+        function drawVector(ctx, x, y, dx, dy, color) {
+          const endX = x + dx * 12,
+            endY = y + dy * 12;
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(endX, endY);
+          ctx.strokeStyle = color;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+          ctx.fillStyle = color;
+          drawArrowhead(ctx, x, y, endX, endY, 4);
+        }
+
+        function cleanup() {}
+        window.divergenceViz = { init, cleanup };
+        vizCleanupFunctions.divergence = cleanup;
+      })();
+
+      // =============================================
+      // VISUALIZAÇÃO 3: APLICAÇÃO MODERNA (CFD)
+      // =============================================
+      (function () {
+        let canvas,
+          ctx,
+          animationId = null;
+        let particles = [];
+
+        function init() {
+          canvas = document.getElementById('modernApplicationCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          particles = [];
+          for (let i = 0; i < 50; i++) {
+            particles.push({
+              x: (Math.random() * canvas.width) / 4,
+              y: Math.random() * canvas.height,
+              speed: 2 + Math.random() * 2,
+            });
+          }
+          animate();
+        }
+
+        function animate() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.beginPath();
+          ctx.moveTo(0, canvas.height * 0.2);
+          ctx.lineTo(canvas.width * 0.4, canvas.height * 0.35);
+          ctx.lineTo(canvas.width, 0);
+          ctx.moveTo(0, canvas.height * 0.8);
+          ctx.lineTo(canvas.width * 0.4, canvas.height * 0.65);
+          ctx.lineTo(canvas.width, canvas.height);
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.fillStyle = '#FFB300';
+          particles.forEach((p) => {
+            p.x += p.speed;
+            if (p.x > canvas.width) {
+              p.x = 0;
+              p.y = Math.random() * canvas.height;
+            }
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          animationId = requestAnimationFrame(animate);
+        }
+
+        function cleanup() {
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+          }
+        }
+
+        window.modernAppViz = { init, cleanup };
+        vizCleanupFunctions.modernApp = cleanup;
+      })();
     </script>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-
-        <section>
-                          <h1>fluxo-de-um-campo-vetorial-teorema-da-divergencia</h1>
-        </section>
-                            </div>
-
-    </div>
   </body>
 </html>
