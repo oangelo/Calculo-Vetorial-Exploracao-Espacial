@@ -178,8 +178,13 @@
               ligadas pela <strong>regra da mão direita</strong>.
             </p>
           </section>
+        </section>
 
-          <!-- Slide 4: Problema Prático -->
+        <!-- =========================== -->
+        <!-- MÓDULO: PROBLEMA 1 (PLANO)   -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Problema Prático 1 -->
           <section>
             <h2>Problema 1: Campo Magnético em uma Bobina</h2>
 
@@ -212,7 +217,7 @@
             </div>
           </section>
 
-          <!-- Slide 5: Solução do Sub-problema 1 -->
+          <!-- Slide 2: Solução do Sub-problema 1 -->
           <section>
             <h2>Solução 1: Cálculo do Rotacional</h2>
 
@@ -236,7 +241,7 @@
             </div>
           </section>
 
-          <!-- Slide 6: Solução do Sub-problema 2 e 3 -->
+          <!-- Slide 3: Solução do Sub-problema 2 e 3 -->
           <section>
             <h2>Solução 1: Integral de Superfície</h2>
 
@@ -261,7 +266,7 @@
             </div>
           </section>
 
-          <!-- Slide 7: Conclusão do Problema -->
+          <!-- Slide 4: Conclusão do Problema -->
           <section>
             <h2>Conclusão: Problema 1</h2>
 
@@ -509,7 +514,7 @@
       };
 
       // =============================================
-      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO TEOREMA DE STOKES
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO TEOREMA DE STOKES (VERSÃO ATUALIZADA)
       // =============================================
       function initStokesVisualization() {
         const canvas = document.getElementById('stokesVisualization');
@@ -526,10 +531,9 @@
         };
 
         const grid = {
-          rows: 8,
-          cols: 12,
+          rows: 6, // Reduzido para melhor visualização
+          cols: 9,
           padding: 40,
-          arrowSize: 10,
         };
 
         function draw() {
@@ -539,64 +543,90 @@
           const cellWidth = (canvas.width - 2 * grid.padding) / grid.cols;
           const cellHeight = (canvas.height - 2 * grid.padding) / grid.rows;
 
-          // Desenha rotacional interno
-          ctx.strokeStyle = 'rgba(79, 195, 247, 0.6)';
-          ctx.lineWidth = 1.5;
+          // --- NOVO: Desenha o reticulado interno e as partículas ---
+          ctx.lineWidth = 1;
+          const smallPerimeter = 2 * (cellWidth + cellHeight);
+
           for (let i = 0; i < grid.rows; i++) {
             for (let j = 0; j < grid.cols; j++) {
-              const x = grid.padding + j * cellWidth + cellWidth / 2;
-              const y = grid.padding + i * cellHeight + cellHeight / 2;
+              const cellX = grid.padding + j * cellWidth;
+              const cellY = grid.padding + i * cellHeight;
 
-              ctx.beginPath();
-              ctx.arc(x, y, grid.arrowSize, 0, Math.PI * 2);
-              ctx.stroke();
+              // Desenha o retângulo do reticulado
+              ctx.strokeStyle = 'rgba(79, 195, 247, 0.6)'; // --star-blue com opacidade
+              ctx.strokeRect(cellX, cellY, cellWidth, cellHeight);
 
-              const angle = state.time * state.curl;
-              const arrowX = x + grid.arrowSize * Math.cos(angle);
-              const arrowY = y + grid.arrowSize * Math.sin(angle);
+              // Anima a partícula em cada célula
+              const pos = (state.time * 50 * state.curl) % smallPerimeter;
+
+              let pX, pY;
+              // Lógica de movimento na borda do retângulo pequeno
+              if (pos < cellWidth) {
+                // Topo
+                pX = cellX + pos;
+                pY = cellY;
+              } else if (pos < cellWidth + cellHeight) {
+                // Direita
+                pX = cellX + cellWidth;
+                pY = cellY + (pos - cellWidth);
+              } else if (pos < 2 * cellWidth + cellHeight) {
+                // Fundo
+                pX = cellX + cellWidth - (pos - (cellWidth + cellHeight));
+                pY = cellY + cellHeight;
+              } else {
+                // Esquerda
+                pX = cellX;
+                pY = cellY + cellHeight - (pos - (2 * cellWidth + cellHeight));
+              }
+
+              ctx.fillStyle = '#64b5f6'; // --accent-color
               ctx.beginPath();
-              ctx.moveTo(x, y);
-              ctx.lineTo(arrowX, arrowY);
-              ctx.stroke();
+              ctx.arc(pX, pY, 3, 0, 2 * Math.PI);
+              ctx.fill();
             }
           }
 
-          // Desenha integral de linha na fronteira
-          const rectX = grid.padding + cellWidth / 2;
-          const rectY = grid.padding + cellHeight / 2;
-          const rectWidth = (grid.cols - 1) * cellWidth;
-          const rectHeight = (grid.rows - 1) * cellHeight;
+          // --- MANTIDO: Desenha a fronteira externa vermelha e sua partícula ---
+          const boundaryX = grid.padding;
+          const boundaryY = grid.padding;
+          const boundaryWidth = grid.cols * cellWidth;
+          const boundaryHeight = grid.rows * cellHeight;
 
-          ctx.strokeStyle = '#ff5a5f';
+          ctx.strokeStyle = '#ff5a5f'; // --highlight-color
           ctx.lineWidth = 3;
-          ctx.strokeRect(rectX, rectY, rectWidth, rectHeight);
+          ctx.strokeRect(boundaryX, boundaryY, boundaryWidth, boundaryHeight);
 
-          // Animação na fronteira (simplificado)
-          const perimeter = 2 * (rectWidth + rectHeight);
-          const pos = (state.time * 50 * state.curl) % perimeter;
+          const largePerimeter = 2 * (boundaryWidth + boundaryHeight);
+          const largePos = (state.time * 50 * state.curl) % largePerimeter;
 
-          let pX, pY;
-          if (pos < rectWidth) {
+          let lpX, lpY;
+          if (largePos < boundaryWidth) {
             // Topo
-            pX = rectX + pos;
-            pY = rectY;
-          } else if (pos < rectWidth + rectHeight) {
+            lpX = boundaryX + largePos;
+            lpY = boundaryY;
+          } else if (largePos < boundaryWidth + boundaryHeight) {
             // Direita
-            pX = rectX + rectWidth;
-            pY = rectY + (pos - rectWidth);
-          } else if (pos < 2 * rectWidth + rectHeight) {
+            lpX = boundaryX + boundaryWidth;
+            lpY = boundaryY + (largePos - boundaryWidth);
+          } else if (largePos < 2 * boundaryWidth + boundaryHeight) {
             // Fundo
-            pX = rectX + rectWidth - (pos - (rectWidth + rectHeight));
-            pY = rectY + rectHeight;
+            lpX =
+              boundaryX +
+              boundaryWidth -
+              (largePos - (boundaryWidth + boundaryHeight));
+            lpY = boundaryY + boundaryHeight;
           } else {
             // Esquerda
-            pX = rectX;
-            pY = rectY + rectHeight - (pos - (2 * rectWidth + rectHeight));
+            lpX = boundaryX;
+            lpY =
+              boundaryY +
+              boundaryHeight -
+              (largePos - (2 * boundaryWidth + boundaryHeight));
           }
 
           ctx.fillStyle = '#ff5a5f';
           ctx.beginPath();
-          ctx.arc(pX, pY, 8, 0, 2 * Math.PI);
+          ctx.arc(lpX, lpY, 8, 0, 2 * Math.PI);
           ctx.fill();
 
           animationId = requestAnimationFrame(draw);
