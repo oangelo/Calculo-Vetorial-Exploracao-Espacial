@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabarito - Prova de Cálculo Vetorial</title>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      h1,
+      h2 {
+        border-bottom: 2px solid #005a9c;
+        padding-bottom: 10px;
+        color: #003366;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      .question-item {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      details {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        background-color: #fff;
+        padding: 15px;
+      }
+      summary {
+        font-weight: bold;
+        cursor: pointer;
+        color: #005a9c;
+      }
+      .solution {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gabarito - Prova de Cálculo Vetorial</h1>
+
+    <h2>Questão 1</h2>
+    <p>
+      Deseja-se calcular a área da porção do paraboloide \(z = x^2 + y^2\) que
+      se encontra abaixo do plano \(z = 4\).
+    </p>
+
+    <div class="question-item">
+      a) Encontre uma parametrização \(\mathbf{r}(x, y)\) para a superfície e
+      descreva o domínio dos parâmetros.
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>
+          A superfície é dada por \(z = f(x, y) = x^2 + y^2\). A forma mais
+          natural de parametrização é usar \(x\) e \(y\) como parâmetros:
+        </p>
+        <p>
+          \[ \mathbf{r}(x, y) = \langle x, y, z \rangle = \langle x, y, x^2 +
+          y^2 \rangle \]
+        </p>
+        <p>
+          O domínio dos parâmetros é a projeção da superfície no plano \(xy\).
+          Como a superfície está abaixo do plano \(z=4\), temos a condição \(x^2
+          + y^2 \le 4\). Este é um disco de raio 2 centrado na origem.
+        </p>
+        <p>
+          Portanto, o domínio \(D\) é: \[ D = \{(x, y) \in \mathbb{R}^2 \mid x^2
+          + y^2 \le 4 \} \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Calcule o vetor normal \(\mathbf{r}_x \times \mathbf{r}_y\) e o módulo
+      deste vetor, \(||\mathbf{r}_x \times \mathbf{r}_y||\).
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          Calculamos as derivadas parciais da parametrização \(\mathbf{r}(x,
+          y)\):
+        </p>
+        <p>
+          \[ \mathbf{r}_x = \frac{\partial \mathbf{r}}{\partial x} = \langle 1,
+          0, 2x \rangle \]
+        </p>
+        <p>
+          \[ \mathbf{r}_y = \frac{\partial \mathbf{r}}{\partial y} = \langle 0,
+          1, 2y \rangle \]
+        </p>
+        <p>O produto vetorial é:</p>
+        <p>
+          \[ \mathbf{r}_x \times \mathbf{r}_y = \begin{vmatrix} \mathbf{i} &
+          \mathbf{j} & \mathbf{k} \\ 1 & 0 & 2x \\ 0 & 1 & 2y \end{vmatrix} =
+          \mathbf{i}(0 - 2x) - \mathbf{j}(2y - 0) + \mathbf{k}(1 - 0) = \langle
+          -2x, -2y, 1 \rangle \]
+        </p>
+        <p>O módulo do vetor normal é:</p>
+        <p>
+          \[ ||\mathbf{r}_x \times \mathbf{r}_y|| = \sqrt{(-2x)^2 + (-2y)^2 +
+          1^2} = \sqrt{4x^2 + 4y^2 + 1} \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Monte e calcule a integral dupla que fornece a área da superfície.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          A fórmula da área de superfície é \(A = \iint_D ||\mathbf{r}_x \times
+          \mathbf{r}_y|| \,dA\). Substituindo o resultado do item (b):
+        </p>
+        <p>\[ A = \iint_D \sqrt{4x^2 + 4y^2 + 1} \,dA \]</p>
+        <p>
+          O domínio \(D\) é um disco, então usamos coordenadas polares: \(x =
+          r\cos\theta\), \(y = r\sin\theta\), \(dA = r\,dr\,d\theta\). O domínio
+          se torna \(0 \le r \le 2\) e \(0 \le \theta \le 2\pi\).
+        </p>
+        <p>
+          \[ A = \int_0^{2\pi} \int_0^2 \sqrt{4(r^2\cos^2\theta +
+          r^2\sin^2\theta) + 1} \cdot r \,dr\,d\theta \]
+        </p>
+        <p>
+          \[ A = \int_0^{2\pi} \int_0^2 \sqrt{4r^2 + 1} \cdot r \,dr\,d\theta \]
+        </p>
+        <p>
+          Para a integral interna, usamos a substituição \(u = 4r^2 + 1\), logo
+          \(du = 8r\,dr \implies r\,dr = \frac{du}{8}\).
+        </p>
+        <p>
+          \[ \int \sqrt{u} \frac{du}{8} = \frac{1}{8} \frac{u^{3/2}}{3/2} =
+          \frac{1}{12}u^{3/2} = \frac{1}{12}(4r^2+1)^{3/2} \]
+        </p>
+        <p>Avaliando a integral interna:</p>
+        <p>
+          \[ \int_0^2 \sqrt{4r^2 + 1} \cdot r \,dr = \left[
+          \frac{1}{12}(4r^2+1)^{3/2} \right]_0^2 = \frac{1}{12} \left(
+          (4(2)^2+1)^{3/2} - (4(0)^2+1)^{3/2} \right) = \frac{1}{12}(17^{3/2} -
+          1) = \frac{1}{12}(17\sqrt{17} - 1) \]
+        </p>
+        <p>Finalmente, a integral externa:</p>
+        <p>
+          \[ A = \int_0^{2\pi} \frac{1}{12}(17\sqrt{17} - 1) \,d\theta =
+          \frac{1}{12}(17\sqrt{17} - 1) [\theta]_0^{2\pi} =
+          \frac{2\pi}{12}(17\sqrt{17} - 1) = \frac{\pi}{6}(17\sqrt{17} - 1) \]
+        </p>
+      </div>
+    </details>
+
+    <h2>Questão 2</h2>
+    <p>
+      Considere a integral de linha \(\oint_C (y + e^{\sqrt{x}}) dx + (2x +
+      \cos(y^2)) dy\), onde \(C\) é a fronteira da região \(R\) delimitada pelas
+      parábolas \(y = x^2\) e \(x = y^2\), orientada no sentido anti-horário.
+    </p>
+
+    <div class="question-item">
+      a) Identifique as funções \(P(x, y)\) e \(Q(x, y)\) da integral. Em
+      seguida, calcule a expressão \(\frac{\partial Q}{\partial x} -
+      \frac{\partial P}{\partial y}\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>
+          A integral está na forma \(\oint_C P\,dx + Q\,dy\). Identificamos:
+        </p>
+        <p>\[ P(x, y) = y + e^{\sqrt{x}} \]</p>
+        <p>\[ Q(x, y) = 2x + \cos(y^2) \]</p>
+        <p>Calculamos as derivadas parciais:</p>
+        <p>
+          \[ \frac{\partial Q}{\partial x} = \frac{\partial}{\partial x}(2x +
+          \cos(y^2)) = 2 \]
+        </p>
+        <p>
+          \[ \frac{\partial P}{\partial y} = \frac{\partial}{\partial y}(y +
+          e^{\sqrt{x}}) = 1 \]
+        </p>
+        <p>A expressão é:</p>
+        <p>
+          \[ \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 2 -
+          1 = 1 \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Esboce a região \(R\) delimitada pela curva \(C\) e determine seus
+      limites de integração em coordenadas cartesianas.
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          A região \(R\) é delimitada pelas curvas \(y=x^2\) (parábola com
+          abertura para cima) e \(x=y^2\) ou \(y=\sqrt{x}\) (parábola com
+          abertura para a direita). Os pontos de interseção são encontrados
+          resolvendo \(x^2 = \sqrt{x} \implies x^4 = x \implies x(x^3-1)=0\). As
+          soluções são \(x=0\) e \(x=1\), correspondendo aos pontos \((0,0)\) e
+          \((1,1)\).
+        </p>
+        <p>
+          Para um \(x\) fixo entre 0 e 1, a curva inferior é \(y=x^2\) e a curva
+          superior é \(y=\sqrt{x}\).
+        </p>
+        <p>Os limites de integração são:</p>
+        <p>\[ 0 \le x \le 1 \]</p>
+        <p>\[ x^2 \le y \le \sqrt{x} \]</p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Utilizando os resultados anteriores, converta a integral de linha em
+      uma integral dupla sobre a região \(R\) e calcule o seu valor.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          Pelo Teorema de Green, \(\oint_C P\,dx + Q\,dy = \iint_R
+          \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+          y}\right) dA\). Usando o resultado do item (a):
+        </p>
+        <p>
+          \[ \oint_C (y + e^{\sqrt{x}}) dx + (2x + \cos(y^2)) dy = \iint_R (1)
+          \,dA \]
+        </p>
+        <p>
+          Esta integral dupla representa a área da região \(R\). Usando os
+          limites do item (b):
+        </p>
+        <p>\[ \text{Área} = \int_0^1 \int_{x^2}^{\sqrt{x}} 1 \,dy\,dx \]</p>
+        <p>
+          \[ = \int_0^1 [y]_{x^2}^{\sqrt{x}} \,dx = \int_0^1 (\sqrt{x} - x^2)
+          \,dx \]
+        </p>
+        <p>
+          \[ = \left[ \frac{x^{3/2}}{3/2} - \frac{x^3}{3} \right]_0^1 = \left[
+          \frac{2}{3}x^{3/2} - \frac{x^3}{3} \right]_0^1 \]
+        </p>
+        <p>
+          \[ = \left(\frac{2}{3}(1)^{3/2} - \frac{1^3}{3}\right) - (0) =
+          \frac{2}{3} - \frac{1}{3} = \frac{1}{3} \]
+        </p>
+      </div>
+    </details>
+
+    <h2>Questão 3</h2>
+    <p>
+      Considere o campo vetorial \(\mathbf{F}(x, y, z) = \langle 2z, 3x, 5y
+      \rangle\) e a superfície \(S\), que é a parte do paraboloide \(z = 9 - x^2
+      - y^2\) com \(z \ge 0\), orientada com o vetor normal apontando para cima.
+      A fronteira de \(S\) é a curva \(C\) no plano \(xy\).
+    </p>
+
+    <div class="question-item">
+      a) Calcule diretamente a integral \(\iint_S (\text{rot } \mathbf{F}) \cdot
+      d\mathbf{S}\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>Primeiro, calculamos o rotacional de \(\mathbf{F}\):</p>
+        <p>
+          \[ \text{rot } \mathbf{F} = \nabla \times \mathbf{F} = \begin{vmatrix}
+          \mathbf{i} & \mathbf{j} & \mathbf{k} \\ \partial/\partial x &
+          \partial/\partial y & \partial/\partial z \\ 2z & 3x & 5y
+          \end{vmatrix} = \langle 5-0, 2-0, 3-0 \rangle = \langle 5, 2, 3
+          \rangle \]
+        </p>
+        <p>
+          Parametrizamos a superfície \(S\): \(\mathbf{r}(x,y) = \langle x, y, 9
+          - x^2 - y^2 \rangle\) sobre o disco \(D: x^2+y^2 \le 9\). O vetor
+          normal é \(\mathbf{r}_x \times \mathbf{r}_y = \langle 2x, 2y, 1
+          \rangle\), que aponta para cima, como pedido.
+        </p>
+        <p>A integral de superfície é:</p>
+        <p>
+          \[ \iint_S (\text{rot } \mathbf{F}) \cdot d\mathbf{S} = \iint_D
+          \langle 5, 2, 3 \rangle \cdot \langle 2x, 2y, 1 \rangle \,dA = \iint_D
+          (10x + 4y + 3) \,dA \]
+        </p>
+        <p>
+          Convertendo para coordenadas polares (\(D: 0 \le r \le 3, 0 \le \theta
+          \le 2\pi\)):
+        </p>
+        <p>
+          \[ \int_0^{2\pi} \int_0^3 (10r\cos\theta + 4r\sin\theta + 3) r
+          \,dr\,d\theta = \int_0^{2\pi} \int_0^3 (10r^2\cos\theta +
+          4r^2\sin\theta + 3r) \,dr\,d\theta \]
+        </p>
+        <p>
+          \[ = \int_0^{2\pi} \left[ \frac{10}{3}r^3\cos\theta +
+          \frac{4}{3}r^3\sin\theta + \frac{3}{2}r^2 \right]_0^3 \,d\theta =
+          \int_0^{2\pi} \left( 90\cos\theta + 36\sin\theta + \frac{27}{2}
+          \right) \,d\theta \]
+        </p>
+        <p>
+          \[ = \left[ 90\sin\theta - 36\cos\theta + \frac{27}{2}\theta
+          \right]_0^{2\pi} = \left(0 - 36 + 27\pi\right) - \left(0 - 36 +
+          0\right) = 27\pi \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Calcule a integral de linha \(\oint_C \mathbf{F} \cdot d\mathbf{r}\),
+      onde \(C\) é orientada de forma compatível com a orientação de \(S\).
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          A fronteira \(C\) é a interseção de \(z = 9-x^2-y^2\) com \(z=0\), que
+          é o círculo \(x^2+y^2=9\) no plano \(xy\). A orientação normal para
+          cima em \(S\) induz uma orientação anti-horária em \(C\).
+        </p>
+        <p>
+          Parametrizamos \(C\): \(\mathbf{r}(t) = \langle 3\cos t, 3\sin t, 0
+          \rangle\), para \(0 \le t \le 2\pi\).
+        </p>
+        <p>Então, \(\mathbf{r}'(t) = \langle -3\sin t, 3\cos t, 0 \rangle\).</p>
+        <p>
+          Avaliamos \(\mathbf{F}\) em \(\mathbf{r}(t)\):
+          \(\mathbf{F}(\mathbf{r}(t)) = \langle 2(0), 3(3\cos t), 5(3\sin t)
+          \rangle = \langle 0, 9\cos t, 15\sin t \rangle\).
+        </p>
+        <p>A integral de linha é:</p>
+        <p>
+          \[ \oint_C \mathbf{F} \cdot d\mathbf{r} = \int_0^{2\pi}
+          \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}'(t) \,dt = \int_0^{2\pi}
+          \langle 0, 9\cos t, 15\sin t \rangle \cdot \langle -3\sin t, 3\cos t,
+          0 \rangle \,dt \]
+        </p>
+        <p>
+          \[ = \int_0^{2\pi} (0 \cdot (-3\sin t) + (9\cos t)(3\cos t) + (15\sin
+          t)(0)) \,dt = \int_0^{2\pi} 27\cos^2 t \,dt \]
+        </p>
+        <p>Usando a identidade \(\cos^2 t = \frac{1 + \cos(2t)}{2}\):</p>
+        <p>
+          \[ = 27 \int_0^{2\pi} \frac{1 + \cos(2t)}{2} \,dt = \frac{27}{2}
+          \left[ t + \frac{1}{2}\sin(2t) \right]_0^{2\pi} = \frac{27}{2} ((2\pi
+          + 0) - (0 + 0)) = 27\pi \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Compare os resultados dos itens (a) e (b). O que você observa e por
+      qual teorema isso acontece?
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>Os resultados dos itens (a) e (b) são idênticos: \(27\pi\).</p>
+        <p>
+          Isso acontece devido ao <strong>Teorema de Stokes</strong>, que
+          relaciona a integral de superfície do rotacional de um campo vetorial
+          com a integral de linha do campo ao longo da fronteira da superfície.
+          O teorema afirma que:
+        </p>
+        <p>
+          \[ \iint_S (\text{rot } \mathbf{F}) \cdot d\mathbf{S} = \oint_C
+          \mathbf{F} \cdot d\mathbf{r} \]
+        </p>
+        <p>
+          Os cálculos confirmam esta igualdade para o campo e a superfície
+          dados.
+        </p>
+      </div>
+    </details>
+
+    <h2>Questão 4</h2>
+    <p>
+      Calcule o fluxo do campo vetorial \(\mathbf{F}(x, y, z) = \langle x^3,
+      y^3, z^3 \rangle\) para fora da superfície fechada \(S\), que é a
+      fronteira do sólido \(E\) limitado pelo cone \(z = \sqrt{x^2 + y^2}\) e
+      pelo plano \(z = 2\).
+    </p>
+
+    <div class="question-item">
+      a) Calcule o divergente do campo vetorial \(\mathbf{F}\), ou seja,
+      \(\text{div}(\mathbf{F})\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>
+          O divergente de \(\mathbf{F} = \langle P, Q, R \rangle\) é
+          \(\text{div}(\mathbf{F}) = \frac{\partial P}{\partial x} +
+          \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\).
+        </p>
+        <p>
+          \[ \text{div}(\mathbf{F}) = \frac{\partial}{\partial x}(x^3) +
+          \frac{\partial}{\partial y}(y^3) + \frac{\partial}{\partial z}(z^3) =
+          3x^2 + 3y^2 + 3z^2 \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Descreva o sólido \(E\) utilizando um sistema de coordenadas apropriado
+      (cartesiano, cilíndrico ou esférico) e defina os limites de integração
+      para o volume de \(E\).
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          O sólido \(E\) é um cone com a ponta na origem, cortado pelo plano
+          \(z=2\). A simetria em torno do eixo \(z\) e a equação do cone, \(z =
+          \sqrt{x^2+y^2}\), sugerem o uso de
+          <strong>coordenadas cilíndricas</strong>.
+        </p>
+        <p>
+          Em coordenadas cilíndricas: \(x = r\cos\theta\), \(y = r\sin\theta\),
+          \(z=z\). O cone se torna \(z=r\).
+        </p>
+        <p>Os limites de integração são:</p>
+        <ul>
+          <li>
+            \(\theta\): A projeção no plano \(xy\) é um disco completo, então
+            \(0 \le \theta \le 2\pi\).
+          </li>
+          <li>
+            \(z\): O sólido é limitado abaixo pelo cone (\(z=r\)) e acima pelo
+            plano (\(z=2\)), então \(r \le z \le 2\).
+          </li>
+          <li>
+            \(r\): O raio máximo ocorre na interseção do cone com o plano,
+            \(r=z=2\). Então \(0 \le r \le 2\).
+          </li>
+        </ul>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Utilize os resultados anteriores para transformar a integral de fluxo
+      em uma integral tripla sobre o sólido \(E\) e calcule o seu valor final.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          Pelo Teorema da Divergência (Gauss), o fluxo \(\oiint_S \mathbf{F}
+          \cdot d\mathbf{S}\) é igual a \(\iiint_E \text{div}(\mathbf{F})
+          \,dV\).
+        </p>
+        <p>\[ \text{Fluxo} = \iiint_E (3x^2 + 3y^2 + 3z^2) \,dV \]</p>
+        <p>
+          Em coordenadas cilíndricas, \(x^2+y^2=r^2\) e \(dV =
+          r\,dz\,dr\,d\theta\). A integral se torna:
+        </p>
+        <p>
+          \[ \text{Fluxo} = \int_0^{2\pi} \int_0^2 \int_r^2 3(r^2 + z^2) \cdot r
+          \,dz\,dr\,d\theta \]
+        </p>
+        <p>
+          \[ = 3 \int_0^{2\pi} \int_0^2 \int_r^2 (r^3 + rz^2) \,dz\,dr\,d\theta
+          \]
+        </p>
+        <p>Integrando em \(z\):</p>
+        <p>
+          \[ \int_r^2 (r^3 + rz^2) \,dz = \left[ r^3z + r\frac{z^3}{3}
+          \right]_r^2 = \left(2r^3 + \frac{8r}{3}\right) - \left(r^4 +
+          \frac{r^4}{3}\right) = 2r^3 + \frac{8r}{3} - \frac{4r^4}{3} \]
+        </p>
+        <p>Integrando em \(r\):</p>
+        <p>
+          \[ 3 \int_0^2 \left( 2r^3 + \frac{8r}{3} - \frac{4r^4}{3} \right) \,dr
+          = 3 \left[ \frac{2r^4}{4} + \frac{8r^2}{6} - \frac{4r^5}{15}
+          \right]_0^2 = 3 \left[ \frac{r^4}{2} + \frac{4r^2}{3} -
+          \frac{4r^5}{15} \right]_0^2 \]
+        </p>
+        <p>
+          \[ = 3 \left( \frac{16}{2} + \frac{4(4)}{3} - \frac{4(32)}{15} \right)
+          = 3 \left( 8 + \frac{16}{3} - \frac{128}{15} \right) = 3 \left(
+          \frac{120 + 80 - 128}{15} \right) = 3 \left( \frac{72}{15} \right) =
+          \frac{72}{5} \]
+        </p>
+        <p>Finalmente, integrando em \(\theta\):</p>
+        <p>
+          \[ \int_0^{2\pi} \frac{72}{5} \,d\theta = \frac{72}{5}
+          [\theta]_0^{2\pi} = \frac{72}{5} (2\pi) = \frac{144\pi}{5} \]
+        </p>
+      </div>
+    </details>
+  </body>
+</html>
