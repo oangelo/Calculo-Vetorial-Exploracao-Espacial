@@ -1,0 +1,1013 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[','\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">10</span> DE SETEMBRO DE
+          <span class="censored">1962</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE DE TESTES [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">INTEGRAL-X</span> <br /><br />
+          Em atenção às necessidades de
+          <span class="censored">cálculos orbitais</span> e à crescente
+          importância de modelos matemáticos avançados, este dossiê apresenta
+          exercícios focados em <span class="censored">técnicas de integração</span>.
+          As soluções foram registradas pelos pesquisadores do programa
+          <span class="censored">███████</span>.
+        </div>
+
+        <div class="warning-box">
+          Divulgar as informações contidas neste documento sem autorização
+          adequada configura <span class="censored">violação grave</span> da
+          segurança nacional.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2023</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: TÉCNICAS DE INTEGRAÇÃO</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\int f(x)\,dx = F(x) + C\]
+        </p>
+        <p>
+          As técnicas de integração consistem em métodos para encontrar a
+          antiderivada de uma função, incluindo substituição, integração por
+          partes, frações parciais e métodos trigonométricos. Tais ferramentas
+          são cruciais para resolver problemas de
+          <span class="censored">navegação</span>, dinâmica orbital e análise de
+          empuxo em veículos espaciais.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        O domínio de técnicas de integração permite calcular trajetórias,
+        avaliar consumo de propelente e estimar pontos de injeção em órbita
+        <span class="censored">geostacionária</span>. Sem esses métodos, a
+        precisão necessária para missões durante a
+        <span class="censored">corrida espacial</span> ficaria seriamente
+        comprometida.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> No início da década de
+        <span class="censored">1960</span>, cálculos de reentrada e saída da
+        atmosfera utilizavam extensivamente essas técnicas para prever
+        <span class="censored">pontos de pouso</span> seguros e eficientes.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- EXERCÍCIO 1 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 1</div>
+            <div class="context">
+              ORIGEM: Relatório de Iniciação - Laboratório de Testes [AGO/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int 2x \cos(x^2)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Identifique a função composta \(x^2\) em
+                \(\cos(\cdot)\). Tente \(u = x^2\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(u = x^2\). Então, \(du = 2x\,dx\). A integral fica
+                  \(\int \cos(u)\,du = \sin(u) + C = \sin(x^2) + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 2 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 2</div>
+            <div class="context">
+              ORIGEM: Arquivos de Treinamento - Seção Teórica [SET/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{1}{x\ln(x)}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a substituição \(u = \ln(x)\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Definindo \(u = \ln(x)\), então \(du = (1/x)\,dx\). A integral
+                  torna-se \(\int \frac{1}{u}\,du = \ln|u| + C = \ln|\ln(x)| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 3 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 3</div>
+            <div class="context">
+              ORIGEM: Seção de Testes Avançados [SET/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int e^x \sin(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Será necessário aplicar integração por partes
+                duas vezes. Observe também o par \(\int e^x\sin(x)\,dx\) e
+                \(\int e^x\cos(x)\,dx\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(I = \int e^x \sin(x)\,dx\). Integra-se por partes:
+                  <br>
+                  \(I = e^x \sin(x) - \int e^x \cos(x)\,dx\).
+                </p>
+                <p>
+                  Defina \(J = \int e^x \cos(x)\,dx\) e também resolva por
+                  partes. No final, obtém-se:
+                </p>
+                <p>\[I = \frac{e^x}{2}(\sin(x) - \cos(x)) + C.\]</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 4 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 4</div>
+            <div class="context">
+              ORIGEM: Análises Iniciais - Centro de Cálculo [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int x \cos(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use integração por partes com \(u = x\) e
+                \(dv = \cos(x)\,dx\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Escolhendo \(u = x\) e \(dv = \cos(x)\,dx\), temos \(du = dx\)
+                  e \(v = \sin(x)\). Logo,
+                </p>
+                <p>
+                  \(\int x\cos(x)\,dx = x\sin(x) - \int \sin(x)\,dx = x\sin(x) +
+                  \cos(x) + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 5 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 5</div>
+            <div class="context">
+              ORIGEM: Documentos de Frações Parciais [SET/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{1}{x(x+1)}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Realize a decomposição em frações parciais:
+                \(\frac{1}{x(x+1)} = \frac{A}{x} + \frac{B}{x+1}\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{1}{x(x+1)} = \frac{1}{x} - \frac{1}{x+1}\). Então,
+                  \(\int \frac{1}{x(x+1)}\,dx = \ln|x| - \ln|x+1| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 6 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 6</div>
+            <div class="context">
+              ORIGEM: Dossiê de Integrais Racionais [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{x+2}{x^2 + x}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Fatorize \(x^2+x = x(x+1)\). Tente simplificar
+                antes de integrar.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{x+2}{x^2 + x} = \frac{x+2}{x(x+1)}\). Dividindo,
+                  obtemos \(\frac{2}{x} - \frac{1}{x+1}\). Assim,
+                </p>
+                <p>\(\int \frac{x+2}{x^2 + x}\,dx = 2\ln|x| - \ln|x+1| + C.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 7 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 7</div>
+            <div class="context">
+              ORIGEM: Setor de Substituições Trigonométricas [AGO/1962]
+            </div>
+            <p>Calcule a integral, onde \(a\) é constante:</p>
+            <p>\[\int \sqrt{a^2 - x^2}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use \(x = a\sin(\theta)\). Então
+                \(\sqrt{a^2 - x^2} = a\cos(\theta)\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Com \(x = a\sin(\theta)\), temos \(dx = a\cos(\theta)d\theta\)
+                  e \(\sqrt{a^2 - x^2} = a\cos(\theta)\). A integral vira
+                </p>
+                <p>
+                  \(\int a\cos(\theta)\cdot a\cos(\theta)d\theta = a^2 \int
+                  \cos^2(\theta)d\theta.\)
+                </p>
+                <p>
+                  Resulta
+                  \(\frac{a^2}{2}\arcsin(\frac{x}{a}) + \frac{x}{2}\sqrt{a^2 - x^2} + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 8 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 8</div>
+            <div class="context">
+              ORIGEM: Arquivos Trigonométricos - Seção de Treinamento [AGO/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \sin^2(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use a identidade
+                \(\sin^2(x) = \tfrac{1 - \cos(2x)}{2}\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\sin^2(x) = \frac{1 - \cos(2x)}{2}\). Logo,
+                  \(\int \sin^2(x)\,dx = \int \frac{1 - \cos(2x)}{2}dx = \frac{x}{2}
+                  - \frac{\sin(2x)}{4} + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 9 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 9</div>
+            <div class="context">
+              ORIGEM: Setor de Análises Trigonométricas [AGO/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \tan^3(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Separe \(\tan^3(x) = \tan(x)\tan^2(x)\) e use
+                \(\tan^2(x) = \sec^2(x) - 1\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\int \tan^3(x)\,dx = \int \tan(x)\sec^2(x)\,dx - \int
+                  \tan(x)\,dx.\)
+                </p>
+                <p>
+                  Com \(u = \tan(x)\), \(du = \sec^2(x)\,dx\) para o primeiro
+                  termo. E \(\int \tan(x)\,dx = -\ln|\cos(x)|\). Assim, obtemos
+                  \(\frac{\tan^2(x)}{2} + \ln|\cos(x)| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 10 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 10</div>
+            <div class="context">
+              ORIGEM: Registros Trigonométricos Especiais [AGO/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \sec(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Multiplique e divida por
+                \(\sec(x) + \tan(x)\). Verifique que a derivada de
+                \(\sec(x) + \tan(x)\) ajuda na integração.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\int \sec(x)\,dx = \int \sec(x)\frac{\sec(x) + \tan(x)}{\sec(x) + \tan(x)}
+                  \,dx\).
+                </p>
+                <p>
+                  Seja \(u = \sec(x) + \tan(x)\). Então,
+                  \(du = (\sec(x)\tan(x) + \sec^2(x))\,dx\). A integral
+                  simplifica para \(\ln|\sec(x) + \tan(x)| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 11 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 11</div>
+            <div class="context">
+              ORIGEM: Substituições Trigonométricas - Equipe de Pesquisa [SET/1962]
+            </div>
+            <p>Calcule a integral, onde \(a\) é constante:</p>
+            <p>\[\int \sqrt{x^2 - a^2}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use \(x = a\sec(\theta)\). Então
+                \(\sqrt{x^2 - a^2} = a\tan(\theta)\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Com \(x = a\sec(\theta)\), obtemos
+                  \(\sqrt{x^2 - a^2} = a\tan(\theta)\) e
+                  \(dx = a\sec(\theta)\tan(\theta)\,d\theta\).
+                </p>
+                <p>
+                  A integral fica
+                  \(\int a\tan(\theta)\cdot a\sec(\theta)\tan(\theta)\,d\theta\),
+                  o que exige manipulação de \(\tan^2(\theta)\). Resulta
+                </p>
+                <p>
+                  \(\frac{x}{2}\sqrt{x^2 - a^2} - \frac{a^2}{2}
+                  \ln\bigl|x + \sqrt{x^2 - a^2}\bigr| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 12 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 12</div>
+            <div class="context">
+              ORIGEM: Substituições Avançadas - Seção Hiperbólica [SET/1962]
+            </div>
+            <p>Calcule a integral, onde \(a\) é constante:</p>
+            <p>\[\int \sqrt{x^2 + a^2}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pode-se usar \(x = a\tan(\theta)\) ou
+                \(x = a\sinh(t)\). Observe o retorno para a variável original.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Com \(x = a\tan(\theta)\), \(\sqrt{x^2 + a^2} = a\sec(\theta)\)
+                  e \(dx = a\sec^2(\theta)\,d\theta\). Então,
+                </p>
+                <p>
+                  \(\int \sqrt{x^2 + a^2}\,dx = a^2 \int \sec^3(\theta)\,d\theta.\)
+                  Conhece-se que
+                  \(\int \sec^3(\theta)\,d\theta = \frac{1}{2}\sec(\theta)\tan(\theta)
+                  + \frac{1}{2}\ln|\sec(\theta) + \tan(\theta)| + C.\)
+                </p>
+                <p>
+                  Substituindo de volta para \(x\), obtemos
+                  \(\frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2}
+                  \ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 13 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 13</div>
+            <div class="context">
+              ORIGEM: Arquivos Logarítmicos - Projeto Interno [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{(\ln x)^2}{x}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Se \(u = \ln(x)\), então \(du = (1/x)\,dx\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Definindo \(u = \ln(x)\), então
+                  \(\int \frac{(\ln x)^2}{x}\,dx = \int u^2\,du = \frac{u^3}{3} + C
+                  = \frac{(\ln x)^3}{3} + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 14 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 14</div>
+            <div class="context">
+              ORIGEM: Equipe de Pesquisas Exponenciais [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int e^x \cos^2(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Use \(\cos^2(x) = \tfrac{1 + \cos(2x)}{2}\) e
+                depois integração por partes no termo \(\int e^x \cos(2x)\,dx\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\int e^x \cos^2(x)\,dx = \frac{1}{2}\int e^x\,dx +
+                  \frac{1}{2}\int e^x\cos(2x)\,dx.\)
+                </p>
+                <p>
+                  O primeiro termo é \(\frac{e^x}{2}\). Para
+                  \(\int e^x \cos(2x)\,dx\), a forma padrão é
+                  \(\int e^x \cos(ax)\,dx = \frac{e^x}{a^2+1}\bigl(a\sin(ax) + \cos(ax)\bigr)\).
+                </p>
+                <p>
+                  Ao final, resulta em combinação de \(e^x\sin(2x)\) e
+                  \(e^x\cos(2x)\), mais as constantes, formando
+                  \(\frac{e^x}{2} +\) termos envolvendo \(\sin(2x), \cos(2x)\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 15 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 15</div>
+            <div class="context">
+              ORIGEM: Integração por Partes Iterativa [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int x^2 e^x\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Integração por partes repetidamente, reduzindo o
+                grau do polinômio.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Seja \(I = \int x^2 e^x\,dx\). Primeiro passo: \(u = x^2\),
+                  \(dv = e^x\,dx\). Então \(du = 2x\,dx\), \(v = e^x\).
+                </p>
+                <p>
+                  \(I = x^2 e^x - \int 2x e^x\,dx.\) Em seguida, integre
+                  \(\int 2x e^x\,dx\) por partes novamente. Ao fim, obtemos
+                </p>
+                <p>\[(x^2 - 2x + 2)e^x + C.\]</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 16 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 16</div>
+            <div class="context">
+              ORIGEM: Seção de Logaritmos e Polinômios [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int x \ln(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Escolha \(u = \ln(x)\) e \(dv = x\,dx\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Com \(u = \ln(x)\), \(du = \frac{1}{x}dx\). E
+                  \(dv = x\,dx\), \(v = \frac{x^2}{2}\). Logo,
+                </p>
+                <p>
+                  \(\int x\ln(x)\,dx = \frac{x^2}{2}\ln(x) - \int \frac{x^2}{2}
+                  \cdot \frac{1}{x}dx = \frac{x^2}{2}\ln(x) - \frac{x^2}{4} + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 17 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 17</div>
+            <div class="context">
+              ORIGEM: Arquivos de Frações Parciais Quadráticas [SET/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{2x + 3}{x^2 + x + 1}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe que a derivada de \(x^2 + x + 1\) é
+                \(2x + 1\). Separe o numerador para usar essa informação.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{2x+3}{x^2 + x + 1} = \frac{(2x+1) + 2}{x^2 + x + 1} =
+                  \frac{2x+1}{x^2 + x + 1} + \frac{2}{x^2 + x + 1}.\)
+                </p>
+                <p>
+                  A primeira parte gera \(\ln|x^2 + x + 1|\). Para a segunda,
+                  complete o quadrado: \(x^2 + x + 1 = (x+\tfrac{1}{2})^2 +
+                  \tfrac{3}{4}\). Assim, obtemos
+                </p>
+                <p>
+                  \(\int \frac{2x+3}{x^2 + x + 1}\,dx = \ln|x^2 + x + 1| +
+                  \frac{4}{\sqrt{3}}\arctan\Bigl(\frac{2x+1}{\sqrt{3}}\Bigr) + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 18 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 18</div>
+            <div class="context">
+              ORIGEM: Substituição de Weierstrass - Equipe Trig. [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \frac{1}{1 + \sin(x)}\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Substituição de Weierstrass:
+                \(t = \tan\bigl(\frac{x}{2}\bigr)\). Lembre-se
+                \(\sin(x) = \frac{2t}{1+t^2}\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Com \(t = \tan(x/2)\), temos \(\sin(x) = \frac{2t}{1+t^2}\) e
+                  \(dx = \frac{2}{1+t^2}\,dt\). A integral
+                </p>
+                <p>
+                  \(\int \frac{1}{1+\sin(x)}\,dx\) se transforma em expressão
+                  racional em \(t\). Após a simplificação e integração,
+                  retorna-se via \(x = 2\arctan(t)\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 19 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 19</div>
+            <div class="context">
+              ORIGEM: Grupo de Pesquisa em Funções Trigonométricas [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \cot^3(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacionar
+                \(\cot^2(x) = \csc^2(x) - 1\). Dividir em \(\cot(x)\cot^2(x)\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\int \cot^3(x)\,dx = \int \cot(x)\csc^2(x)\,dx - \int
+                  \cot(x)\,dx.\)
+                </p>
+                <p>
+                  Com \(u = \cot(x)\), temos \(du = -\csc^2(x)\,dx\). E
+                  \(\int \cot(x)\,dx = \ln|\sin(x)|\). O resultado é
+                </p>
+                <p>
+                  \(-\frac{\cot^2(x)}{2} - \ln|\sin(x)| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- EXERCÍCIO 20 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO 20</div>
+            <div class="context">
+              ORIGEM: Avanço Trigonométrico - Equipe Principal [OUT/1962]
+            </div>
+            <p>Calcule a integral:</p>
+            <p>\[\int \sec^3(x)\,dx\]</p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Separar \(\sec^3(x) = \sec(x)\sec^2(x)\) e
+                aplicar integração por partes, ou lembrar a fórmula padrão
+                conhecida.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Um método: \(\int \sec^3(x)\,dx = \int \sec(x)\sec^2(x)\,dx\).
+                  Com integração por partes ou pela fórmula clássica,
+                </p>
+                <p>
+                  \(\int \sec^3(x)\,dx = \frac{1}{2}\sec(x)\tan(x) +
+                  \frac{1}{2}\ln|\sec(x)+\tan(x)| + C.\)
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">20</span> • DOCUMENTO VX-<span
+          class="censored"
+          >2023</span
+        >-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Condições de Conservação</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Cabeçalho -->
+      <header class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">Base Orbital ████, 27/05/2025</div>
+        <p class="document-intro">
+          PROJETO <span class="censored">ORION‑VECTOR</span> — Manual de
+          Operações Matemáticas
+        </p>
+        <div class="warning-box">
+          Atenção: A reprodução não autorizada destas instruções compromete a
+          segurança da missão e resultará em ação disciplinar imediata.
+        </div>
+        <div class="metadata">
+          <span>REF: VX‑2025‑CC‑17</span>
+          <span>NÍVEL DE ACESSO: Σ‑3</span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">08</span></span>
+        </div>
+      </header>
+
+      <!-- Fundamentação Teórica -->
+      <section>
+        <h2 class="section-title">
+          FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE CONSERVAÇÃO
+        </h2>
+        <p class="concept-definition">
+          Um campo vetorial \(\vec{F}\) definido em uma região \(R\subset
+          \mathbb{R}^n\) é
+          <strong>conservativo</strong> se existe uma função potencial
+          \(\Phi\colon R \to \mathbb{R}\) tal que \(\nabla \Phi = \vec{F}\).
+        </p>
+        <p class="concept-definition">
+          Para \(n=2\), a condição necessária e suficiente em regiões
+          simplesmente conexas é \[ \frac{\partial F_1}{\partial y} =
+          \frac{\partial F_2}{\partial x}. \] Para \(n=3\), exige‑se \[ \nabla
+          \times \vec{F} = \vec{0}. \]
+        </p>
+        <p class="mission-context">
+          Durante os cálculos de rota do <em>Programa Mercury</em> (1959), a
+          avaliação rápida da conservatividade dos campos poupou
+          horas‑computador nos IBM 7090, crucial para sincronizar as janelas de
+          lançamento.
+        </p>
+        <p class="historical-note">
+          Nota histórica: O <span class="censored">Dr.&nbsp;█████</span> aplicou
+          os critérios de conservatividade em tempo real a bordo do
+          <em>Gemini IV</em>, reduzindo o consumo de combustível em
+          <span class="censored">7 %</span>.
+        </p>
+      </section>
+
+      <!-- Lista de Exercícios -->
+      <main class="exercise-list">
+        <ol>
+          <!-- SÉRIE ALFA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1A</div>
+            <div class="context">ORIGEM: Mercury‑Atlas 5 — NOV/1961</div>
+            <p>
+              O campo \(\vec{F}(x,y)=\bigl(2xy,\,x^{2}\bigr)\). Verifique se
+              \(\vec{F}\) é conservativo e, em caso afirmativo, determine a
+              função potencial \(\Phi\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar as derivadas cruzadas das
+                componentes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Verifica‑se \(\partial F_1/\partial y = 2x\) e \(\partial
+                  F_2/\partial x = 2x\); logo o campo é conservativo.
+                </p>
+                <p>
+                  Como \(\nabla \Phi = (2xy, x^{2})\), integra‑se: \[
+                  \Phi(x,y)=\int 2xy\,dx = x^{2}y + C(y). \] Derivando:
+                  \(\partial\Phi/\partial y = x^{2}+C'(y)=F_2=x^{2}\Rightarrow
+                  C'(y)=0\). Assim \(\Phi(x,y)=x^{2}y+K\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1B</div>
+            <div class="context">ORIGEM: Mercury‑Redstone 3 — MAI/1961</div>
+            <p>
+              Seja \(\vec{F}(x,y)=\bigl(y^{3}+2x,\,3xy^{2}+5\bigr)\). Determine
+              se \(\vec{F}\) é conservativo e encontre \(\Phi\) se existir.
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe as potências ímpares das variáveis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\partial F_1/\partial y = 3y^{2}\) e \(\partial F_2/\partial
+                  x = 3y^{2}\) ⇒ conservativo.
+                </p>
+                <p>
+                  Integra‑se \(F_1\) em \(x\): \[ \Phi = \frac{2}{3}x y^{3} +
+                  x^{2} + C(y). \] Ajustando, obtém‑se \(\Phi(x,y)=\frac{2}{3}x
+                  y^{3} + x^{2}+5y\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1C</div>
+            <div class="context">ORIGEM: Relatório Pré‑Voo — JAN/1962</div>
+            <p>
+              Verifique se o campo \(\vec{F}(x,y,z)=\bigl(yz,\,xz,\,xy\bigr)\) é
+              conservativo em \(\mathbb{R}^{3}\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Analise cada componente do rotacional.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\nabla \times \vec{F}=\vec{0}\). Integra‑se e obtém‑se
+                  \(\Phi(x,y,z)=xyz\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2A</div>
+            <div class="context">ORIGEM: Gemini‑III — MAR/1965</div>
+            <p>
+              Determine se o campo \(\vec{F}(x,y)=\bigl(e^{x}\cos y, -e^{x}\sin
+              y\bigr)\) é conservativo em \(\mathbb{R}^{2}\) e, se for, encontre
+              \(\Phi\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                Propriedades de exponenciais podem ser relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\partial F_1/\partial y=-e^{x}\sin y\) e \(\partial
+                  F_2/\partial x=-e^{x}\sin y\) ⇒ conservativo.
+                </p>
+                <p>Integrando: \(\Phi=e^{x}\cos y + K\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2B</div>
+            <div class="context">ORIGEM: Gemini‑IV — JUN/1965</div>
+            <p>
+              O campo
+              \(\vec{F}(x,y)=\bigl(-y/(x^{2}+y^{2}),\,x/(x^{2}+y^{2})\bigr)\) é
+              definido em \(R=\mathbb{R}^{2}\setminus\{(0,0)\}\). Verifique se
+              \(\vec{F}\) é conservativo em \(R\) e discuta a independência do
+              caminho para curvas que envolvem a origem.
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                Campos com singularidades centrais exibem peculiaridades
+                topológicas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\nabla \times \vec{F}=0\) em \(R\), mas \(R\) não é
+                  simplesmente conexo. A integral ao longo da circunferência
+                  unitária é \(2\pi\), logo \(\vec{F}\) não é conservativo em
+                  \(R\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2C</div>
+            <div class="context">ORIGEM: Gemini‑VII — DEZ/1965</div>
+            <p>
+              Seja
+              \(\vec{F}(x,y,z)=\bigl(2xyz+z^{2},\,x^{2}z+2yz,\,x^{2}y+2xz\bigr)\).
+              Mostre que \(\vec{F}\) é conservativo e encontre \(\Phi\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                Utilize simetrias não aparentes no sistema.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\nabla \times \vec{F}=\vec{0}\). Integrações sequenciais
+                  fornecem \[ \Phi=x^{2}y z + xyz^{2}+K. \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3A</div>
+            <div class="context">ORIGEM: Apollo‑8 — DEZ/1968</div>
+            <p>
+              Verifique se \(\vec{F}(x,y)=\bigl(x^{2}-y^{2},\,2xy\bigr)\) é
+              conservativo em \(\mathbb{R}^{2}\) e determine \(\Phi\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\partial F_1/\partial y=-2y\) e \(\partial F_2/\partial
+                  x=2y\) ⇒ não é conservativo, pois as derivadas cruzadas
+                  diferem em sinal.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3B</div>
+            <div class="context">ORIGEM: Apollo‑10 — MAI/1969</div>
+            <p>
+              Considere o campo \(\vec{F}(x,y,z)=\bigl(y e^{xz},\,z e^{xy},\,x
+              e^{yz}\bigr)\) definido em \(\mathbb{R}^{3}\). Demonstre que
+              \(\vec{F}\) é conservativo e encontre um potencial \(\Phi\).
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                O expoente carrega uma pista sobre integrações parciais.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Calcula‑se \(\nabla \times \vec{F}=\vec{0}\). Integra‑se a
+                  primeira componente em \(x\): \[ \Phi= e^{xz}y + C(y,z). \]
+                  Derivando em \(y\) e ajustando sucessivamente obtém‑se \[
+                  \Phi(x,y,z)=e^{xz}y + e^{xy}z + e^{yz}x + K. \]
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3C</div>
+            <div class="context">
+              ORIGEM: Relatório <span class="censored">██‑1969‑Ω</span>
+            </div>
+            <p>
+              Seja o domínio \(D=\mathbb{R}^{3}\setminus\{ z\text{-eixo} \}\) e
+              o campo
+              \(\vec{F}(x,y,z)=\bigl(-y/(x^{2}+y^{2}),\,x/(x^{2}+y^{2}),\,0\bigr)\).
+              Mostre que \(\nabla\times\vec{F}=\vec{0}\) em \(D\) mas que
+              \(\vec{F}\) não admite potencial global em \(D\). Em seguida,
+              calcule a integral de linha de \(\vec{F}\) ao longo da hélice
+              \(\gamma(t)=(\cos t,\sin t,\alpha t)\), \(0\le t\le 2\pi\), e
+              discuta o resultado.
+            </p>
+            <details>
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                A topologia do domínio desempenha papel crucial.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Embora \(\nabla\times\vec{F}=\vec{0}\) em \(D\), o domínio não
+                  é simplesmente conexo. A integral ao longo de \(\gamma\)
+                  resulta em \(2\pi\), independentemente de \(\alpha\),
+                  evidenciando a ausência de potencial global.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4A</div>
+            <div class="context">ORIGEM: Apollo‑11 — JUL/1969</div>
+            <p>
+              Considere o campo gravitacional simplificado \(\displaystyle
+              \vec{G}(x,y,z)= -\frac{GM}{(x^{2}+y^{2}+z^{2})^{3/2}}(x, y, z)\),
+              definido em \(\mathbb{R}^{3}\setminus\{(0,0,0)\}\). Demonstre que
+              \(\vec{G}\) é conservativo e encontre o potencial associado. Em
+              seguida, calcule o trabalho realizado ao mover a nave de
+              \(|\vec{r}_1|=R\) até \(|\vec{r}_2|=2R\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Mostra‑se que \(\nabla\times\vec{G}=\vec{0}\). O potencial é
+                  \(\Phi(r)= -GM/r + K\). O trabalho é \(GM\left(1/R -
+                  1/(2R)\right)=GM/(2R)\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4B</div>
+            <div class="context">
+              ORIGEM: Skylab <span class="censored">███</span> — 1973
+            </div>
+            <p>
+              Um vetor campo \(\vec{F}(r,\theta,z)=\bigl(Ar\cos\theta,
+              Ar\sin\theta, Bz\bigr)\) é dado em coordenadas cilíndricas, com
+              \(A,B\) constantes e \(r>0\). Determine se \(\vec{F}\) é
+              conservativo no semiespaço \(z>0\) e, se for, encontre \(\Phi\).
+              Em seguida, calcule \(\int_{\gamma}\vec{F}\cdot d\vec{r}\) ao
+              longo da espiral \(\gamma(t)=(r_0, t, ct)\), \(0\le t\le 2\pi\),
+              para constantes \(r_0,c>0\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Convertendo para cartesianas verifica‑se
+                  \(\nabla\times\vec{F}=\vec{0}\) em \(z>0\). O potencial é
+                  \(\Phi=\frac{A}{2}r^{2}+\frac{B}{2}z^{2}+K\). A integral de
+                  linha depende apenas dos extremos e vale
+                  \(\Phi(r_0,2\pi,c2\pi)-\Phi(r_0,0,0)=\frac{B}{2}c^{2}(2\pi)^{2}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4C</div>
+            <div class="context">
+              ORIGEM: Estudo Avançado <span class="censored">████‑Ω‑1975</span>
+            </div>
+            <p>
+              Seja \(D=\{(x,y,z)\in\mathbb{R}^{3}\mid z>0\}\) e o campo
+              \(\vec{F}(x,y,z)=\bigl(2xz,2yz,z^{2}\bigr)\). Demonstre que
+              \(\vec{F}\) é conservativo em \(D\), encontre um potencial
+              \(\Phi\) e explique por que o resultado não contradiz o exemplo do
+              exercício VECTOR‑3C.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como \(\nabla\times\vec{F}=\vec{0}\) e \(D\) é simplesmente
+                  conexo, existe \(\Phi\). Integrando: \(\partial\Phi/\partial x
+                  = 2xz\Rightarrow \Phi=x^{2}z+ C(y,z)\). Prosseguindo, obtém‑se
+                  \(\Phi=x^{2}z + y^{2}z + z^{3}/3 + K\).
+                </p>
+                <p>
+                  O exemplo VECTOR‑3C falha em admitir potencial porque seu
+                  domínio não é simplesmente conexo; aqui, mesmo com
+                  \(\nabla\times\vec{F}=\vec{0}\), a topologia amigável de \(D\)
+                  garante a existência de \(\Phi\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <!-- Rodapé -->
+      <footer>
+        <div class="page-number">Página 1 de 1</div>
+        <div class="footer-stamp">ULTRASSECRETO</div>
+      </footer>
+    </div>
+  </body>
+</html>
