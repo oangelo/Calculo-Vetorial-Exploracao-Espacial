@@ -1,0 +1,1141 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">4</span> DE AGOSTO DE
+          <span class="censored">1965</span><br />
+          LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO GEMINI</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ZETA-OMEGA</span><br /><br />
+          Após eventos recentes envolvendo
+          <span class="censored">a órbita terrestre baixa</span>, nossa equipe
+          concentrou esforços em aprimorar métodos de cálculo para
+          <span class="censored">trajetórias de voo suborbital e orbital</span>.
+          <br /><br />
+          As técnicas aqui compiladas baseiam-se nos manuscritos do Dr.
+          <span class="censored">█████████</span>, cujo trabalho em
+          <span class="censored">geometria analítica</span> e transformações
+          de coordenadas oferece subsídios críticos para o programa
+          <span class="censored">GEMINI</span>.
+        </div>
+
+        <div class="warning-box">
+          Divulgação não autorizada deste material constitui violação do protocolo
+          <span class="censored">S-9</span> e poderá resultar em
+          <span class="censored">sanções severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: MX-<span class="censored">268</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS EM INTEGRAIS DUPLAS</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            \iint_{R} f(x,y)\, dx\, dy \;=\;
+            \iint_{S} 
+            f\bigl(x(u,v),\, y(u,v)\bigr)\;
+            \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\; du\, dv
+          \]
+        </p>
+        <p>
+          Nesta transformação, \( (x,y) \) é reescrito como função de novas
+          variáveis \((u,v)\). O determinante do Jacobiano
+          \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\) ajusta o elemento
+          de área ao novo sistema de coordenadas, garantindo equivalência
+          entre a área original e a área transformada.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        O uso de coordenadas polares, cilíndricas e outras formas de mudança de
+        variáveis permite simplificar o cálculo de integrais em regiões
+        complexas. No contexto da exploração espacial, tais transformações são
+        vitais para estimar parâmetros em trajetórias que fogem dos eixos
+        cartesianamente definidos.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+        cálculos de mudança de variáveis se mostraram essenciais para
+        <span class="censored">otimizar as órbitas</span>, bem como para
+        avaliar projeções de voo em regiões cujo formato não era perfeitamente
+        retilíneo.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA: Exercícios 1-3 (Básico) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise de Setor Circular - Programa Interno [ARQUIVOS DE
+              <span class="censored">1964</span>]
+            </div>
+            <p>
+              Calcular \(\iint_{R} (x+2y)\,dx\,dy\) em que \(R\) é a região no
+              primeiro quadrante delimitada por \(x^2 + y^2 \le 4\). Use
+              coordenadas polares para efetuar a mudança de variáveis.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar as variáveis de forma a
+                aproveitar simetria do setor.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em coordenadas polares, \(x = r\cos\theta\) e
+                  \(y = r\sin\theta\). A região \(R\) no primeiro quadrante
+                  implica \(0 \le r \le 2\) e \(0 \le \theta \le \frac{\pi}{2}\).
+                </p>
+                <p>
+                  O Jacobiano resulta em \(\left|\frac{\partial(x,y)}{\partial(r,\theta)}\right| = r\).
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    \iint_{R} (x+2y)\,dx\,dy
+                    =
+                    \int_{0}^{\pi/2}\!\!\int_{0}^{2}
+                    \bigl(r\cos\theta + 2r\sin\theta\bigr)\,
+                    r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Ao expandir,
+                  \[
+                    \int_{0}^{\pi/2}\!\!\int_{0}^{2}
+                    r^2 \cos\theta
+                    + 2r^2 \sin\theta\,
+                    dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Resulta no valor numérico 
+                  \(\int_{0}^{\pi/2} \bigl[\frac{r^3}{3}\cos\theta + \frac{2r^3}{3}\sin\theta\bigr]_0^2 \, d\theta\)
+                  = 
+                  \(\int_{0}^{\pi/2} \left(\frac{8}{3}\cos\theta + \frac{16}{3}\sin\theta\right) d\theta\).
+                </p>
+                <p>
+                  Solucionando,
+                  \(\left[\frac{8}{3}\sin\theta - \frac{16}{3}\cos\theta \right]_{0}^{\pi/2}
+                  = \frac{8}{3}\cdot 1 - \frac{16}{3}\cdot 0 - \left(0 - \frac{16}{3}\right)
+                  = \frac{8}{3} + \frac{16}{3} = \frac{24}{3} = 8.\)
+                </p>
+                <p>CONCLUSÃO: O valor da integral é 8.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Área Retangular Deformada - Laboratório de <span class="censored">Coordenadas</span>
+            </div>
+            <p>
+              Seja \(\iint_{R} (3x - y)\,dx\,dy\) onde a região \(R\) é descrita
+              em termos das variáveis \(u\) e \(v\) pela transformação
+              \[
+                \begin{cases}
+                x = u + 1 \\
+                y = v - 2
+                \end{cases}
+              \]
+              com \(0 \le u \le 2\) e \(1 \le v \le 3\). Calcule a integral via
+              mudança de variáveis.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Operações elementares de translação podem
+                simplificar consideravelmente o cálculo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A Jacobiana da transformação é
+                  \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\) = 1,
+                  pois
+                  \[
+                    x = u + 1,\quad
+                    y = v - 2 \implies
+                    \frac{\partial(x,y)}{\partial(u,v)} =
+                    \begin{pmatrix}
+                      1 & 0 \\
+                      0 & 1
+                    \end{pmatrix}
+                  \]
+                </p>
+                <p>
+                  Portanto,
+                  \[
+                    \iint_{R} (3x - y)\,dx\,dy
+                    = \int_{v=1}^{3} \int_{u=0}^{2}
+                      \bigl(3(u+1) - (v-2)\bigr)\cdot 1\, du\, dv.
+                  \]
+                </p>
+                <p>
+                  Expande-se em
+                  \(\int_{1}^{3}\int_{0}^{2} (3u + 3 - v + 2)\,du\,dv\)
+                  = 
+                  \(\int_{1}^{3}\int_{0}^{2} (3u + 5 - v)\,du\,dv.\)
+                </p>
+                <p>
+                  Primeiro em \(u\):
+                  \[
+                    \int_{0}^{2} (3u + 5 - v)\,du
+                    =
+                    \left[\frac{3u^2}{2} + 5u - vu\right]_{0}^{2}
+                    =
+                    \left[\frac{3\cdot 4}{2} + 10 - 2v\right] - 0
+                    =
+                    6 + 10 - 2v
+                    =
+                    16 - 2v.
+                  \]
+                </p>
+                <p>
+                  Em seguida, integrando em \(v\) de 1 a 3:
+                  \[
+                    \int_{1}^{3} (16 - 2v)\,dv
+                    =
+                    \left[16v - v^2\right]_{1}^{3}
+                    =
+                    (16\cdot 3 - 9) - (16\cdot 1 - 1)
+                    =
+                    (48 - 9) - (16 - 1)
+                    =
+                    39 - 15
+                    =
+                    24.
+                  \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral é 24.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Registro de <span class="censored">Análises Civis</span> - Setor Acadêmico
+            </div>
+            <p>
+              Na região \(R\) dada por \(\{(x,y)\mid 0 \le x \le 1,\; 0 \le y \le 2\}\),
+              considere a função \(f(x,y)=x^2 + xy\). Proponha uma transformação
+              linear simples \(u=x,\;v=y/2\). Calcule \(\iint_{R} f(x,y)\,dx\,dy\)
+              por meio da nova parametrização.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a reescala de uma das variáveis para
+                reduzir a extensão do intervalo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A transformação proposta: \(x=u,\;y=2v\). Então
+                  \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right| = 
+                  \begin{vmatrix}
+                    1 & 0\\
+                    0 & 2
+                  \end{vmatrix} = 2.\)
+                </p>
+                <p>
+                  A região \(0 \le x \le 1,\; 0 \le y \le 2\) torna-se
+                  \(0 \le u \le 1,\; 0 \le v \le 1\).
+                </p>
+                <p>
+                  Assim,
+                  \[
+                    \iint_{R} (x^2 + xy)\,dx\,dy 
+                    = \int_{0}^{1}\int_{0}^{1} \bigl(u^2 + u(2v)\bigr)\cdot 2\,du\,dv.
+                  \]
+                </p>
+                <p>
+                  Simplificando,
+                  \[
+                    2 \int_{0}^{1}\int_{0}^{1} \bigl(u^2 + 2uv\bigr)\,du\,dv
+                    =
+                    2 \int_{0}^{1}\left[\int_{0}^{1} (u^2 + 2uv)\,du\right] dv.
+                  \]
+                </p>
+                <p>
+                  Integre em \(u\):
+                  \[
+                    \int_{0}^{1} (u^2 + 2uv)\,du
+                    = \left[\frac{u^3}{3} + u^2v\right]_0^1
+                    = \frac{1}{3} + v.
+                  \]
+                </p>
+                <p>
+                  Agora, em \(v\) de 0 a 1:
+                  \[
+                    2 \int_{0}^{1} \left(\frac{1}{3} + v\right)\,dv
+                    =
+                    2 \left[\frac{v}{3} + \frac{v^2}{2}\right]_0^1
+                    =
+                    2 \left(\frac{1}{3} + \frac{1}{2}\right)
+                    =
+                    2 \left(\frac{5}{6}\right)
+                    =
+                    \frac{10}{6}
+                    =
+                    \frac{5}{3}.
+                  \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral é \(\frac{5}{3}\).</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA: Exercícios 4-6 (Intermediário) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Ajuste de Coordenadas Polares - Dados de Voo Espacial
+              [ANÁLISE <span class="censored">SUPERVISIONADA</span>]
+            </div>
+            <p>
+              Calcular \(\iint_{R} e^{x^2+y^2}\,dx\,dy\), onde \(R\) é a coroa
+              circular \(1 \le x^2 + y^2 \le 4\). Transforme para coordenadas
+              polares e apresente o resultado.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integração em regiões anelares
+                podem simplificar a expressão.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em polares, \(x^2 + y^2 = r^2\), e o Jacobiano é \(r\).
+                  A coroa circular \(1 \le r^2 \le 4\) implica \(1 \le r \le 2\)
+                  e \(0 \le \theta \le 2\pi\).
+                </p>
+                <p>
+                  Portanto,
+                  \[
+                    \iint_{R} e^{x^2+y^2}\,dx\,dy
+                    =
+                    \int_{0}^{2\pi}\int_{1}^{2}
+                    e^{r^2}\, r \,dr\, d\theta.
+                  \]
+                </p>
+                <p>
+                  Integra-se primeiro em \(r\):
+                  \[
+                    \int_{1}^{2} r\, e^{r^2}\,dr.
+                  \]
+                  Use substituição \(t = r^2\), \(dt = 2r\,dr\). Assim,
+                  \(\frac{1}{2}\int_{1}^{4} e^t\,dt
+                  = \frac{1}{2}\bigl[e^t\bigr]_{1}^{4}
+                  = \frac{1}{2}\bigl(e^4 - e^1\bigr).
+                  \)
+                </p>
+                <p>
+                  Em seguida,
+                  \[
+                    \int_{0}^{2\pi} \frac{1}{2}\bigl(e^4 - e^1\bigr)\, d\theta
+                    =
+                    \pi \bigl(e^4 - e\bigr).
+                  \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral é \(\pi (e^4 - e)\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Conversão Paramétrica - Registro da <span class="censored">Estação</span> X
+            </div>
+            <p>
+              Seja \(\iint_{R} (4xy)\,dx\,dy\) onde \(R\) é a elipse definida
+              por \(\frac{x^2}{4} + \frac{y^2}{9} \le 1\). Proponha uma mudança
+              de variáveis para que a região se converta em círculo unitário,
+              e calcule a integral.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de escalonamento podem ser
+                relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para transformar a elipse em círculo unitário, definimos
+                  \[
+                    x = 2u,\quad y = 3v.
+                  \]
+                  Então, a condição \(\frac{x^2}{4} + \frac{y^2}{9} \le 1\)
+                  torna-se \(u^2 + v^2 \le 1\).
+                </p>
+                <p>
+                  O Jacobiano é
+                  \[
+                    \left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+                    = 
+                    \begin{vmatrix}
+                      2 & 0\\
+                      0 & 3
+                    \end{vmatrix}
+                    =
+                    6.
+                  \]
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    \iint_{R} (4xy)\,dx\,dy
+                    =
+                    \iint_{u^2+v^2 \le 1} \bigl(4 \cdot (2u) \cdot (3v)\bigr)\,
+                    6\, du\, dv.
+                  \]
+                </p>
+                <p>
+                  Simplificando o integrando:
+                  \[
+                    4 \times 2u \times 3v = 24\,uv,
+                    \quad
+                    24\,uv \times 6 = 144\,uv.
+                  \]
+                </p>
+                <p>
+                  Assim,
+                  \[
+                    \int_{u^2+v^2 \le 1} 144\,uv \;du\,dv.
+                  \]
+                  A região é o disco unitário. Observando a função \(uv\),
+                  é uma função ímpar em relação a \(u\) e \(v\) sobre um
+                  domínio simétrico (o círculo de raio 1).
+                </p>
+                <p>
+                  Portanto, a integral de \(uv\) sobre a área simétrica é zero,
+                  e, consequentemente, 
+                  \(\iint_{R} (4xy)\,dx\,dy = 0\).
+                </p>
+                <p>CONCLUSÃO: O valor da integral é 0.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Laboratório de <span class="censored">Transformações</span> - Pesquisa Interna
+            </div>
+            <p>
+              Calcular \(\iint_{R} \ln(1 + x^2 + y^2)\,dx\,dy\) onde \(R\) é o
+              triângulo determinado pelos pontos
+              \((0,0), (2,0), (2,2)\). Sugerir uma parametrização que simplifique
+              o cálculo em dois estágios, convertendo primeiro a base e depois
+              ajustando a altura.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de conservação podem ser relevantes
+                ao relacionar a base triangular e a altura.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Uma forma de parametrizar é transformar a base do triângulo
+                  em uma faixa de \(u\) e a altura em \(v\). Por exemplo:
+                  \[
+                    x = u, \quad
+                    y = v \cdot u,
+                  \]
+                  onde \(0 \le u \le 2\) e \(0 \le v \le 1\). Observe que
+                  quando \(v=1\), \(y=u\), coincidindo com a reta \(x=y\)
+                  no trecho entre \((0,0)\) e \((2,2)\).
+                </p>
+                <p>
+                  O Jacobiano:
+                  \[
+                    \left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+                    =
+                    \begin{vmatrix}
+                      1 & 0 \\
+                      v & u
+                    \end{vmatrix}
+                    =
+                    (1)(u) - (0)(v)
+                    =
+                    u.
+                  \]
+                </p>
+                <p>
+                  Assim,
+                  \[
+                    \iint_{R} \ln\bigl(1 + x^2 + y^2\bigr)\,dx\,dy
+                    =
+                    \int_{0}^{2}\!\!\int_{0}^{1}
+                    \ln\bigl(1 + u^2 + (v u)^2\bigr)\,u\,dv\,du.
+                  \]
+                </p>
+                <p>
+                  Temos:
+                  \[
+                    \int_{0}^{2}\left[\int_{0}^{1}
+                    u \ln\bigl(1 + u^2(1 + v^2)\bigr) \,dv\right]
+                    du.
+                  \]
+                  A integral exata em termos de funções elementares é complexa.
+                  Em geral, a solução pode envolver integrais especiais ou séries
+                  de expansão, dependendo do nível de detalhamento requerido.
+                </p>
+                <p>
+                  Neste contexto, a parametrização cumpre o objetivo de facilitar
+                  a redução dimensional e organizar o cálculo, mas o resultado
+                  final provavelmente exigirá métodos numéricos ou aproximações
+                  especiais.
+                </p>
+                <p>CONCLUSÃO: O formato integral final está corretamente estabelecido.</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA: Exercícios 7-9 (Avançado) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Simulações Orbitais - <span class="censored">Módulo Secreto</span> [Programa Gemini]
+            </div>
+            <p>
+              Dada a região elíptica \(\frac{x^2}{9} + \frac{y^2}{16} \le 1\),
+              e a função \(f(x,y) = \sin(x^2 + y^2)\), aplicar mudança de
+              variáveis que converta a elipse em \(\frac{u^2}{1} + \frac{v^2}{1}
+              \le 1\) e avaliar a integral resultante. Interprete se a
+              integral pode ser zero por simetria ou não.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A transformação clássica:
+                  \[
+                    x = 3u,\quad y = 4v,\quad
+                    \text{com }u^2 + v^2 \le 1.
+                  \]
+                  O Jacobiano é \(12\).
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    \iint f(x,y)\,dx\,dy
+                    =
+                    \int_{u^2+v^2\le 1} \sin\bigl((3u)^2 + (4v)^2\bigr)\,12\,du\,dv.
+                  \]
+                </p>
+                <p>
+                  Ou seja,
+                  \[
+                    12 \int_{u^2+v^2\le 1} \sin(9u^2 + 16v^2)\,du\,dv.
+                  \]
+                  Diferentemente de funções como \(uv\) ou
+                  polinômios ímpares, \(\sin(9u^2 + 16v^2)\) não se anula
+                  automaticamente por simetria. 
+                </p>
+                <p>
+                  Portanto, não há cancelamento global no disco unitário.
+                  O valor exato demanda avaliação especializada, mas
+                  a integral não é trivialmente zero.
+                </p>
+                <p>
+                  CONCLUSÃO: Nenhuma anulação por simetria; integral depende
+                  de cálculo mais aprofundado.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Pesquisa Avançada - <span class="censored">Setor Polar</span>
+            </div>
+            <p>
+              Considere a integral \(\iint_{R} \cos(xy)\,dx\,dy\), onde \(R\)
+              é a região \(\{(x,y) \mid 1 \le x^2 + y^2 \le 9\}\). Utilize
+              coordenadas polares para avaliar possíveis simplificações e discuta
+              se o resultado final é diretamente integrável em termos de funções
+              elementares.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes e periodicidades que podem aparecer
+                ao abordar esta forma trigonométrica.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em polares, \(x = r\cos\theta,\; y = r\sin\theta\). Então
+                  \(xy = r^2\cos\theta\sin\theta = \frac{r^2}{2}\sin(2\theta)\).
+                </p>
+                <p>
+                  A região \(1 \le r^2 \le 9\) se traduz em \(1 \le r \le 3\),
+                  com \(0 \le \theta \le 2\pi\).
+                </p>
+                <p>
+                  Assim,
+                  \[
+                    \iint_{R} \cos(xy)\,dx\,dy
+                    =
+                    \int_{0}^{2\pi} \int_{1}^{3}
+                    \cos\Bigl(\frac{r^2}{2}\sin(2\theta)\Bigr)\,r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  A dependência \(\sin(2\theta)\) complica a resolução, pois
+                  não há separabilidade trivial. Em geral, integrais deste tipo
+                  não se expressam em funções elementares simples.
+                </p>
+                <p>
+                  CONCLUSÃO: A expressão integral está correta, mas seu
+                  resultado exige técnicas especiais (séries ou métodos
+                  numéricos), não havendo simplificação imediata em termos de
+                  funções elementares.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Cálculo Bilateral - Seção de <span class="censored">Órbita Sincronizada</span>
+            </div>
+            <p>
+              A região \(R\) está contida entre as retas \(y=0\) e \(y=2x\),
+              e entre \(x=0\) e \(x=2\). Defina uma transformação apropriada
+              para “endireitar” a faixa de integração e calcule
+              \(\iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy\). Sugira se há
+              possibilidade de simplificação adicional ou não.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Busque uma parametrização que uniformize a
+                inclinação das retas-limite.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Podemos adotar \(u = x\) e \(v = \frac{y}{2x}\) (para \(x>0\)),
+                  de modo que quando \(y = 0\), \(v=0\), e quando \(y=2x\),
+                  \(v=1\). Além disso, \(0 \le x \le 2\) leva \(0 \le u \le 2\).
+                </p>
+                <p>
+                  A Jacobiana, no entanto, requer cuidado:
+                  \[
+                    x = u,\quad y = 2u\,v.
+                  \]
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    =
+                    \begin{vmatrix}
+                      1 & 0\\
+                      2v & 2u
+                    \end{vmatrix}
+                    =
+                    (1)(2u) - (0)(2v)
+                    =
+                    2u.
+                  \]
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    \iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy
+                    =
+                    \int_{0}^{2}\int_{0}^{1}
+                    \sqrt{1 + u^2 + (2uv)^2}\,\bigl(2u\bigr)\, dv\,du.
+                  \]
+                </p>
+                <p>
+                  A expressão interna resulta em
+                  \(\sqrt{1 + u^2 + 4u^2v^2}\). Novamente, a integral não
+                  parece conduzir a funções elementares triviais. Pode-se recorrer
+                  a expansões ou métodos numéricos para uma avaliação mais
+                  precisa.
+                </p>
+                <p>
+                  CONCLUSÃO: A mudança de variáveis foi realizada com sucesso,
+                  mas a simplificação adicional exige técnicas avançadas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA: Exercícios 10-12 (Desafiador) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Programa <span class="censored">Apollo</span> - Análise de
+              Injeção Orbital (Dados de <span class="censored">MAI/1966</span>)
+            </div>
+            <p>
+              Determinar \(\iint_{R} \exp(-x^2 + y)\,dx\,dy\) na região obtida
+              pela interseção entre \(\frac{x^2}{4} + \frac{y^2}{4} \le 1\) e
+              \(y \ge x\). Proponha a melhor mudança de variáveis possível para
+              solucionar o problema.
+            </p>
+            <!-- SEM DICAS PARA SÉRIE OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [SUGESTÃO DE PROCEDIMENTO]: Avaliar primeiramente a porção
+                  de elipse onde \(y \ge x\). Uma possível transformação é
+                  escalonar a elipse para um círculo unitário e, em seguida,
+                  restringir ao setor definido pela reta transformada. Em geral,
+                  \[
+                    x = 2r\cos\theta,\quad y = 2r\sin\theta,
+                  \]
+                  com o devido ajuste para \(\theta\) que mantenha \(y \ge x\),
+                  ou seja, \(\theta \in [\frac{\pi}{4}, \frac{5\pi}{4}]\) em
+                  termos de todo o círculo, mas é preciso verificar a orientação
+                  do setor.
+                </p>
+                <p>
+                  Na sequência, considerar \(\exp\bigl(-(2r\cos\theta)^2 + 2r\sin\theta\bigr)\)
+                  e o Jacobiano (que será \(4r\)), resultando numa integral
+                  potencialmente complexa. O resultado provavelmente exigirá
+                  métodos numéricos ou séries de potências.
+                </p>
+                <p>
+                  CONCLUSÃO: Não há solução elementar simples. A definição
+                  correta da faixa de \(\theta\) e a verificação dos limites
+                  garantem a transformação adequada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Centro de <span class="censored">Convergência</span> - Dados
+              Confidenciais
+            </div>
+            <p>
+              Calcular \(\iint_{R} \sin(x + y)\,dx\,dy\) onde \(R\) se define
+              pelos vértices \((0,0), (3,0), (3,3)\) com exclusão da parte em que
+              \(y < x\). Proponha a mudança de variáveis apropriada para que
+              a diagonal seja convertida em um novo limite simples.
+            </p>
+            <!-- SEM DICAS PARA SÉRIE OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [SUGESTÃO DE PROCEDIMENTO]: Uma opção é fazer:
+                  \[
+                    u = x, \quad v = y - x,
+                  \]
+                  transformando a região triangular acima da reta \(y=x\)
+                  em um conjunto de limites retangulares em \((u,v)\).
+                  Calcular o Jacobiano \(\begin{vmatrix}1 & 0 \\ -1 & 1\end{vmatrix} = 1\).
+                </p>
+                <p>
+                  Então \(\sin(x+y) = \sin\bigl(u + (v + u)\bigr)
+                  = \sin(2u + v)\).
+                  Ajustar os limites de \(u\) e \(v\) adequadamente leva a uma
+                  integral aninhada, mas sem limites oblíquos.
+                </p>
+                <p>CONCLUSÃO: Mudança de variáveis facilita a análise geométrica, apesar de não trivializar a função trigonométrica.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Missão Skylab - Setor de <span class="censored">Cálculo Exclusivo</span> [1973]
+            </div>
+            <p>
+              Investigar o valor de
+              \(\iint_{R} (x^2 - y^2)\,dx\,dy\), onde \(R\) é definido em
+              coordenadas polares como
+              \(\{(r,\theta)\mid 0 \le r \le 2,\; \frac{\pi}{6} \le \theta \le \frac{5\pi}{6}\}\).
+              Discutir qualquer possível simplificação e se o resultado é
+              nulo ou não.
+            </p>
+            <!-- SEM DICAS PARA SÉRIE OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  [SUGESTÃO DE PROCEDIMENTO]: Em polares, \(x = r\cos\theta,\;
+                  y = r\sin\theta\). Então \(x^2 - y^2 = r^2(\cos^2\theta -
+                  \sin^2\theta) = r^2 \cos(2\theta)\).
+                </p>
+                <p>
+                  A integral torna-se
+                  \[
+                    \int_{\theta=\pi/6}^{5\pi/6}\int_{r=0}^{2}
+                    r^2 \cos(2\theta)\,r\,dr\,d\theta
+                    =
+                    \int_{\pi/6}^{5\pi/6} \cos(2\theta)\,
+                    \left[\int_{0}^{2} r^3\,dr\right]
+                    d\theta.
+                  \]
+                  A parte de \(r\) rende \(\frac{2^4}{4} = 4\).
+                </p>
+                <p>
+                  Logo,
+                  \[
+                    4 \int_{\pi/6}^{5\pi/6} \cos(2\theta)\, d\theta
+                    =
+                    4 \left[ \frac{\sin(2\theta)}{2} \right]_{\pi/6}^{5\pi/6}
+                    =
+                    2 \bigl(\sin\bigl(\frac{10\pi}{6}\bigr) - \sin\bigl(\frac{\pi}{3}\bigr)\bigr).
+                  \]
+                </p>
+                <p>
+                  \(\sin\bigl(\frac{10\pi}{6}\bigr) = \sin\bigl(\frac{5\pi}{3}\bigr) = -\sin\bigl(\frac{\pi}{3}\bigr)\).
+                  Assim, a diferença torna-se
+                  \(-\sin(\frac{\pi}{3}) - \sin(\frac{\pi}{3}) = -2\sin(\frac{\pi}{3}) = -\sqrt{3}\).
+                </p>
+                <p>
+                  Portanto o valor é \(2 \times (-\sqrt{3}) = -2\sqrt{3}\).
+                </p>
+                <p>
+                  CONCLUSÃO: O resultado não é zero. A assimetria no intervalo
+                  de \(\theta\) (de \(\pi/6\) a \(5\pi/6\)) impede o cancelamento
+                  total da função \(\cos(2\theta)\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA <span class="censored">3</span> DE
+        <span class="censored">12</span> • DOCUMENTO MX-<span
+          class="censored"
+          >268</span
+        >-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

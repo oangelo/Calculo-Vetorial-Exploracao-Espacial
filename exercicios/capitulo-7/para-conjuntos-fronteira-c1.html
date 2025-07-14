@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /* (estilos idênticos ao template - mantidos) */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- ===== CABEÇALHO (narrativa Guerra Fria) ===== -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE ABRIL DE
+          <span class="censored">1965</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO AEROSPACIAL [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">GREEN-VECTOR</span><br /><br />
+          Na corrida para aperfeiçoar manobras orbitais de encontro entre
+          cápsulas Gemini, nossos analistas identificaram que o
+          <span class="censored">controle de circulação</span> em torno de
+          trajetórias fechadas exige domínio absoluto do **Teorema de Green**. O
+          material abaixo foi extraído dos cadernos do Dr.
+          <span class="censored">████████</span>, matemático-chefe da operação
+          <span class="censored">GATEWAY</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações matemáticas classificadas como
+          vitais. Divulgação não autorizada resultará em
+          <span class="censored">sanções severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: GV-<span class="censored">027</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+
+      <!-- ===== FUNDAMENTAÇÃO TEÓRICA ===== -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN (FRONTEIRA \(C^1\))
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iint_{D}\!\left(\frac{\partial Q}{\partial x}-\frac{\partial
+          P}{\partial y}\right)\,dA \;=\;\oint_{\partial D} P\,dx+Q\,dy\]
+        </p>
+        <p>
+          Seja \(D\subset\mathbb{R}^2\) uma região simplesmente conexa com
+          fronteira \(C^1\) positiva e orientada no sentido anti-horário. Para
+          um campo \(\vec F=(P,Q)\) cujas derivadas parciais são contínuas em
+          uma vizinhança de \(D\), a equação acima relaciona a circulação de
+          \(\vec F\) ao fluxo de sua “rotacional escalar” no interior.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Durante o acoplamento em órbita baixa, calcular a circulação de campos
+        de velocidade ao redor da cápsula permite estimar torques indesejados
+        sobre o módulo de serviço. O Teorema de Green fornece o elo entre
+        medidas de superfície (dentro da nave) e leituras de sensores ao longo
+        do casco.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em 23 / 03 / 1965, a missão Gemini 3
+        executou o primeiro “roll maneuver” dos EUA. As correções de atitude
+        empregaram algoritmos baseados em
+        <span class="censored">integrais de linha</span> validados por Green
+        apenas dois meses antes do lançamento.
+      </div>
+
+      <!-- ===== LISTA DE EXERCÍCIOS ===== -->
+      <main>
+        <ol class="exercise-list">
+          <!-- ========== SÉRIE ALFA (1–3) ========== -->
+          <!-- VECTOR-1A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Simulação Gemini – Módulo de Ensaio (03/JAN/1964)
+            </div>
+            <p>
+              Mostre, via Teorema de Green, que a área do disco de raio \(R=2\)
+              pode ser obtida pela integral<br />
+              \[\oint_{C} x\,dy\] onde \(C\) é o círculo \(\,x^2+y^2=4\,\)
+              orientado positivamente. Calcule o valor numérico.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacione a integral a \(\frac12\oint_C x\,dy -
+                y\,dx\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                \[A=\iint_D dA =\iint_D\left(\frac{\partial}{\partial
+                x}0-\frac{\partial}{\partial y}(-x)\right)dA =\oint_C
+                x\,dy=4\pi\].
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-1B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Laboratório de Dinâmica – Projeto Mercury (19/NOV/1962)
+            </div>
+            <p>
+              Calcule \(\displaystyle\oint_{C}(y\,dx+x\,dy)\) onde \(C\) é a
+              elipse \(\frac{x^{2}}{9}+\frac{y^{2}}{4}=1\) (sentido
+              anti-horário).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A integral relaciona-se à derivada de
+                \(x^2+y^2\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                \[\frac{\partial}{\partial x}(x)=1,\; \frac{\partial}{\partial
+                y}(y)=1 \;\Rightarrow\; \oint_C(y\,dx+x\,dy)=
+                \iint_D(1-1)\,dA=0.\]
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-1C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Telemetria de Solo – Base
+              <span class="censored">███</span> (02/ABR/1964)
+            </div>
+            <p>
+              Avalie
+              \(\displaystyle\oint_{C}\!\bigl(x^{2}y\,dx+y^{3}\,dy\bigr)\) onde
+              \(C:\,x^{2}+y^{2}=1\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Aplique \(\frac{\partial Q}{\partial
+                x}\!-\!\frac{\partial P}{\partial y}\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                \[\frac{\partial Q}{\partial x}=0,\; \frac{\partial P}{\partial
+                y}=x^{2}\cdot2y\] \[\Rightarrow\iint_D(-2x^{2}y)\,dA=0\] pela
+                simetria em \(y\).
+              </div>
+            </details>
+          </li>
+
+          <!-- ========== SÉRIE BETA (4–6) ========== -->
+          <!-- VECTOR-2A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Programa Vostok (Análise Interceptada 17/SET/1962)
+            </div>
+            <p>
+              Verifique o Teorema de Green para o campo \(\vec F=(-y,x)\) na
+              região anular \(1\le x^{2}+y^{2}\le4\). Use orientação padrão:
+              borda externa anti-horária, interna horária.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de conservação podem ser
+                relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                \[\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}
+                =1+1=2\] Área do anel \(=3\pi\) ⇒ integral dupla \(6\pi\). As
+                integrais de contorno dão \(2\pi(2)^{2}-2\pi(1)^{2}=6\pi\),
+                confirmando o teorema.
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-2B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Cálculo de Capsula – Missão Gemini 5 (23/AGO/1965)
+            </div>
+            <p>
+              Use Green para obter a área da asteroide
+              \(x^{2/3}+y^{2/3}=a^{2/3}\). Expresse o resultado em função de
+              \(a\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Parametrização polar modificada facilita a
+                integral.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">\[A=\frac{3\pi}{8}a^{2}\]</div>
+            </details>
+          </li>
+
+          <!-- VECTOR-2C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Seção de Navegação – Projeto
+              <span class="censored">ORION</span> (01/MAR/1964)
+            </div>
+            <p>
+              Calcule \(\oint_{C}(e^{x}\cos y\,dx+e^{x}\sin y\,dy)\) para
+              \(C:\,x^{2}+4y^{2}=4\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe \(e^{x}\sin y\) e \(e^{x}\cos y\) como
+                derivadas cruzadas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                Como \(\frac{\partial}{\partial x}(e^{x}\sin y)=e^{x}\sin y\) e
+                \(\frac{\partial}{\partial y}(e^{x}\cos y)=-e^{x}\sin y\), a
+                diferença é \(2e^{x}\sin y\). Integrando sobre \(D\)\! (simetria
+                em \(y\)) ⇒ resultado \(0\).
+              </div>
+            </details>
+          </li>
+
+          <!-- ========== SÉRIE GAMMA (7–9) ========== -->
+          <!-- VECTOR-3A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Trajetória Lunar – Apollo 8 (NOV/1968)
+            </div>
+            <p>
+              Seja \(D\) a elipse \(\frac{x^{2}}{4}+\frac{y^{2}}{9}\le1\).
+              Determine \(\displaystyle\oint_{\partial
+              D}(x^{2}-y^{2})\,dx+2xy\,dy\) usando Green.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob rotações de
+                \(45^\circ\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                \[\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}
+                =\frac{\partial}{\partial x}(2xy)-\frac{\partial}{\partial
+                y}(x^{2}-y^{2}) =2y+2y=4y\] Integral dupla: \(\iint_D 4y\,dA=0\)
+                (simetria). Logo o contorno é \(0\).
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-3B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Centro <span class="censored">███</span> – Estudo de
+              Estabilidade (05/MAI/1966)
+            </div>
+            <p>
+              Prove que, para qualquer curva fechada suave \(C\), \[\oint_C
+              x\,dy - y\,dx = 2A\] onde \(A\) é a área assinada de \(C\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">[NOTA TÉCNICA]: Considere \(P=-y,\;Q=x\).</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                Para \(\vec F=(-y,x)\), temos \(\frac{\partial Q}{\partial
+                x}-\frac{\partial P}{\partial y}=1+1=2\). Assim,
+                \(\oint_C(-y\,dx+x\,dy)=2\iint_D dA=2A.\)
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-3C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">ORIGEM: Missão de Teste Skylab (SET/1973)</div>
+            <p>
+              Avalie \(\displaystyle\oint_{C}\bigl(x^{3}-3xy^{2}\bigr)\,dx+
+              \bigl(3x^{2}y-y^{3}\bigr)\,dy\) onde \(C\) é o círculo
+              \(x^{2}+y^{2}=9\).
+            </p>
+            <!-- GAMMA: dica mínima e indireta -->
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há simetrias não aparentes no sistema.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                Diferença de derivadas \(=12xy\). Em coordenadas polares,
+                \(xy=r^{2}\sin\theta\cos\theta\). Integral dupla em disco raio 3
+                resulta em zero (função ímpar em \(\theta\) sobre \([0,2\pi]\)).
+              </div>
+            </details>
+          </li>
+
+          <!-- ========== SÉRIE OMEGA (10–12) ========== -->
+          <!-- VECTOR-4A -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Simulação de Reentrada – Consórcio
+              <span class="censored">█████</span> (12/DEZ/1970)
+            </div>
+            <p>
+              Calcule
+              \(\displaystyle\oint_{C}\!\bigl(x^{2}+y^{2}\bigr)^{2}\,dx+2xy\,dy\)
+              em \(C:\,x^{2}+y^{2}=1\).
+            </p>
+            <!-- sem dica -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                Diferença de derivadas \(=4(x^{2}+y^{2})\). Sobre o disco
+                unidade: \(\iint_D 4r^{2}\,dA =4\int_{0}^{1}r^{2}(2\pi r)\,dr
+                =4\cdot2\pi\int_{0}^{1}r^{3}\,dr =2\pi.\)
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-4B -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Laboratório de Mecânica Orbital – Arquivo
+              <span class="censored">Ω-52</span> (08/JUN/1971)
+            </div>
+            <p>
+              Para \(C:\,4x^{2}+9y^{2}=36\), determine \(\displaystyle\oint_C\!
+              \bigl(y\,dx - x\,dy\bigr)\).
+            </p>
+            <!-- sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec F=(-x,y)\) ⇒ diferença \(=2\). Área da elipse \(=\pi ab=
+                \pi\!\cdot\!3\!\cdot\!2=6\pi\). Resultado \(=2\cdot6\pi=12\pi\).
+              </div>
+            </details>
+          </li>
+
+          <!-- VECTOR-4C -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Departamento Ultra-Secreto – Dossiê
+              <span class="censored">ICARUS</span> (03/JUL/1972)
+            </div>
+            Seja \(\vec
+            F=\bigl(\dfrac{y}{x^{2}+y^{2}},-\dfrac{x}{x^{2}+y^{2}}\bigr)\).
+            Calcule \(\displaystyle\oint_{C}\vec F\cdot d\vec r\) onde \(C\) é o
+            círculo \(x^{2}+y^{2}=4\), percebendo que \(\vec F\) não está
+            definido na origem. Utilize um anel \(0 \le r \le 2\) e justifique o
+            resultado.
+            <!-- sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                Exclui-se um disco de raio \(\varepsilon\). Como \(\partial
+                Q/\partial x-\partial P/\partial y=0\) fora da origem, Green
+                implica que o valor no contorno externo iguala \(-\)valor no
+                contorno interno. No limite \(\varepsilon\to0\), o interno
+                fornece \(-2\pi\). Logo o integral pedido é \(2\pi\).
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <!-- ===== RODAPÉ ===== -->
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">5</span> • DOCUMENTO GV-<span
+          class="censored"
+          >027</span
+        >
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

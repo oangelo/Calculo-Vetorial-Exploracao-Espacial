@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Revisão Integral Dupla</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">05</span> DE AGOSTO DE
+          <span class="censored">1966</span><br />LOCALIZAÇÃO: INSTALAÇÃO
+          <span class="censored">███</span> – SETOR
+          <span class="censored">█</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE COMPILAÇÃO: PROJETO
+          <span class="censored">DOUBLE‑CHECK</span><br /><br />
+          Em meio às revisões finais do
+          <span class="censored">Programa Gemini</span>, a equipe de matemática
+          aplicada foi instruída a consolidar o<br />conhecimento obtido sobre
+          <span class="censored">integrais em duas dimensões</span>. O presente
+          dossiê reúne problemas estratégicos destinados a aferir a<br />profundidade de
+          compreensão antes da avaliação interna de
+          <span class="censored">rendimento orbital</span>.
+        </div>
+        <div class="warning-box">
+          Este volume contém tópicos vitais para o êxito das manobras em órbita
+          baixa. Qualquer divulgação acarretará
+          <span class="censored">sanções operacionais</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX‑<span class="censored">3210</span>‑R</span
+          ><span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span
+          ><span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: REVISÃO DE INTEGRAIS DUPLAS
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iint_D f(x,y)\,dA = \lim_{\|P\| \to 0} \sum_{(x_i^*,y_i^*) \in P}
+          f(x_i^*,y_i^*)\,\Delta A_i\]
+        </p>
+        <p>
+          Onde \(D\) é uma região limitada do plano, \(P\) uma partição de \(D\)
+          e \(\Delta A_i\) as áreas das sub‑regiões. A convergência da soma de
+          Riemann estabelece a existência da integral dupla, permitindo
+          estimativas de <span class="censored">fluxo térmico</span>,
+          <span class="censored">distribuição de massa</span> e outras grandezas
+          bidimensionais.
+        </p>
+      </div>
+      <div class="mission-context">
+        Aplicações no cálculo da carga estrutural de painéis, na predição de
+        <span class="censored">hot‑spots</span> de reentrada e no balanço de
+        propelente em tanques segmentados.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o teste
+        <span class="censored">Gemini X</span> (1966), falhas de telemetria
+        exigiram recomputações manuais de áreas sob curvas de pressão; o domínio
+        descrito exigia somente a definição de integral dupla.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- ======================== VECTOR‑REVIEW‑1 (BETA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑1</div>
+            <div class="context">
+              ORIGEM: Oficina de Placas Térmicas – Documento Técnico
+              <span class="censored">B‑17</span>
+            </div>
+            <p>
+              A região \(D\) é união de dois retângulos adjacentes:
+              \(R_1=[0,1]\times[0,2]\) e \(R_2=[1,2]\times[0,1]\). Sabendo que
+              \(f(x,y)=3x+2\) em todo \(D\), determine \[\iint_D f(x,y)\,dA\]
+              apenas pela definição e pelas propriedades de aditividade.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Calcule cada retângulo separadamente.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para \(R_1\): área \(=2\). Como \(f\) é constante em \(y\),
+                  \[\iint_{R_1} f = \int_0^1\int_0^2 (3x+2)\,dy\,dx = \int_0^1
+                  (3x+2)\cdot2\,dx = 2\int_0^1(3x+2)dx =
+                  2(\tfrac{3}{2}+2)=\boxed{7}.\]
+                </p>
+                <p>
+                  Para \(R_2\): área \(=1\). Integral:
+                  \[\int_1^2\int_0^1(3x+2)\,dy\,dx = \int_1^2(3x+2)\cdot1\,dx =
+                  \tfrac{3}{2}(2^2-1^2)+2(2-1)=\tfrac{9}{2}+2=\boxed{6.5}.\]
+                </p>
+                <p>Soma total: \(7+6.5=\boxed{13.5}.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑2 (BETA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑2</div>
+            <div class="context">
+              ORIGEM: Análise de Propagação de Calor – Caderno
+              <span class="censored">Δ‑12</span>
+            </div>
+            <p>
+              Considere duas funções limitadas em \(D=[0,1]\times[0,1]\):
+              \(g(x,y)=x^2\) e \(h(x,y)=x^2+y\). Sem calcular valores
+              explícitos, explique por que \[\iint_D h\,dA \ge \iint_D g\,dA\] e
+              confira o resultado computando ambas as integrais via definição.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Compare termo a termo na soma de Riemann.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como \(h(x,y)=g(x,y)+y\) e \(y\ge0\) em \(D\), cada termo da
+                  soma de Riemann de \(h\) excede o correspondente de \(g\).
+                  Portanto \(\iint h\ge\iint g\).
+                </p>
+                <p>
+                  Computando: \(\iint_D x^2 \,dA = \int_0^1 x^2\,dx \cdot
+                  \int_0^1 dy = \tfrac{1}{3}\cdot1=\tfrac{1}{3}.\)
+                </p>
+                <p>
+                  \(\iint_D x^2+y\,dA = \tfrac{1}{3}+\int_0^1\int_0^1 y\,dy\,dx
+                  =
+                  \tfrac{1}{3}+\Bigl[\tfrac{y^2}{2}\Bigr]_0^1=\tfrac{1}{3}+\tfrac{1}{2}=\tfrac{5}{6}.\)
+                </p>
+                <p>Confirma‑se que \(\tfrac{5}{6} > \tfrac{1}{3}.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑3 (GAMMA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑3</div>
+            <div class="context">
+              ORIGEM: Setor de Modelagem Numérica – Fita
+              <span class="censored">#45‑A</span>
+            </div>
+            <p>
+              A função \(q(x,y)=\begin{cases}1&\text{se }x>y\\0&\text{caso
+              contrário}\end{cases}\) está definida em \(D=[0,1]\times[0,1]\).
+              Discuta a integrabilidade de \(q\) e compute \(\iint_D q\,dA\) via
+              contagem geométrica da região onde \(x>y\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há simetria no quadrado unitário.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O conjunto de descontinuidade é a diagonal \(x=y\) (medida
+                  nula), logo \(q\) é integrável.
+                </p>
+                <p>
+                  A região \(x>y\) corresponde a metade do quadrado unitário;
+                  área \(=\tfrac{1}{2}.\)
+                </p>
+                <p>
+                  Como \(q=1\) nessa metade e 0 no restante, a integral vale
+                  \(\boxed{0.5}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑4 (GAMMA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑4</div>
+            <div class="context">
+              ORIGEM: Laboratório de Ensaios Estruturais – Memo
+              <span class="censored">γ‑22</span>
+            </div>
+            <p>
+              Mostre numericamente a linearidade: calcule \[\iint_D
+              \bigl(2x+3y\bigr)\,dA\] e \[2\iint_D x\,dA + 3\iint_D y\,dA\] em
+              \(D=[0,1]\times[0,2]\) e compare.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">[NOTA TÉCNICA]: Integre termo por termo.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Total direto: \(\int_0^1\int_0^2
+                  (2x+3y)\,dy\,dx=\int_0^1\bigl(2x\cdot2+3\tfrac{(2)^2}{2}\bigr)dx=\int_0^1(4x+6)dx=2+6=8.\)
+                </p>
+                <p>
+                  Separado: \(2\int_0^1\int_0^2 x\,dy\,dx
+                  =2\int_0^1x\cdot2dx=2(1)=2.\) \(3\int_0^1\int_0^2
+                  y\,dy\,dx=3\int_0^12dx=6.\)
+                </p>
+                <p>Soma: \(2+6=8\). Linearidade confirmada.</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑5 (GAMMA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑5</div>
+            <div class="context">
+              ORIGEM: Departamento de Estruturas – Plano
+              <span class="censored">S‑13</span>
+            </div>
+            <p>
+              O domínio \(D\) é em forma de “L”: quadrado unitário
+              \([0,2]\times[0,2]\) menos o sub‑quadrado \([1,2]\times[1,2]\).
+              Calcule \(\iint_D 1\,dA\) e explique por que o resultado coincide
+              com a área física.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">[NOTA TÉCNICA]: Subtraia áreas.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Área total do quadrado maior: 4. Área removida: 1. Logo área
+                  de \(D\)=3.
+                </p>
+                <p>\(\iint_D 1\,dA = \text{área}(D)=3.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑6 (OMEGA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑6</div>
+            <div class="context">
+              ORIGEM: Painel de Controle – Diretiva
+              <span class="censored">Ω‑7</span>
+            </div>
+            <p>
+              Prove que se \(f\ge0\) em um domínio limitado \(D\) e \(\iint_D
+              f\,dA=0\), então \(f=0\) em quase todo ponto de \(D\). Utilize
+              apenas propriedades da soma de Riemann e conjuntos de medida nula.
+            </p>
+            <!-- Omega: sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se existisse subconjunto \(E\subset D\) de área positiva onde
+                  \(f>0\), então nas sub‑regiões que cobrem \(E\) a soma
+                  inferior seria positiva, forçando \(\iint_D f>0\).
+                  Contradição. Portanto \(f=0\) exceto em conjunto de medida
+                  nula.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑7 (OMEGA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑7</div>
+            <div class="context">
+              ORIGEM: Divisão de Aproximações Numéricas – Circular
+              <span class="censored">Ω‑9</span>
+            </div>
+            <p>
+              A função \(s(x,y)=\sin(\tfrac{1}{x+y})\) está definida em
+              \(D=(0,1]\times(0,1]\) e estendida por continuidade como zero na
+              borda onde \(x=0\) ou \(y=0\). Argumente sobre a integrabilidade
+              de \(s\) em \(D\) apesar da oscilação infinita próximo à origem.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(|s|\le1\) e o conjunto problemático (uma vizinhança da
+                  origem) pode ter área arbitrariamente pequena; a oscilação não
+                  impede a convergência das somas de Riemann. Logo \(s\) é
+                  integrável.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ======================== VECTOR‑REVIEW‑8 (OMEGA) ======================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑8</div>
+            <div class="context">
+              ORIGEM: Engenharia de Painéis Solares – Dossiê
+              <span class="censored">Ω‑11</span>
+            </div>
+            <p>
+              Em um painel retangular \(D=[0,5]\times[0,0.4]\) m², a densidade
+              superficial de poeira é aproximada por uma constante
+              \(\rho=8\times10^{-4}\,\text{kg/m}^2\). Determine a massa total
+              depositada.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Área \(=5\times0.4=2\,\text{m}^2\). Massa
+                  \(=\rho\cdot\text{área}=8\times10^{-4}\times2=1.6\times10^{-3}\,\text{kg}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">8</span> • DOCUMENTO VX‑<span
+          class="censored"
+          >3210</span
+        >‑R
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

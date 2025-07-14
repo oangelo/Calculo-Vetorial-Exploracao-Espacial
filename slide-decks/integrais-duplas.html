@@ -1,0 +1,2087 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integrais Duplas: Explorando o Espaço através da Matemática</title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme -->
+    <link rel="stylesheet" href="space-theme.css" />
+
+    <style>
+      /* Estilos adicionais */
+      .viz-caption {
+        font-size: 0.8em;
+        color: #e0e0e0;
+        text-align: center;
+        margin-top: 5px;
+        font-style: italic;
+      }
+
+      .vertical-highlight {
+        color: #ff5a5f;
+        font-weight: bold;
+      }
+
+      .horizontal-highlight {
+        color: #43a047;
+        font-weight: bold;
+      }
+
+      .svg-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .svg-container img {
+        max-width: 100%;
+        max-height: 280px;
+      }
+    </style>
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Integrais Duplas</h1>
+          <h3>Explorando o Espaço através da Matemática</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Era dos Primeiros Astronautas (1961-1964)</strong></p>
+            <p>
+              Com o lançamento das primeiras missões tripuladas, os matemáticos
+              e engenheiros da corrida espacial enfrentaram desafios sem
+              precedentes de modelagem física. Era necessário calcular com
+              precisão o comportamento de estruturas, distribuição de calor e
+              campos de força em ambientes tridimensionais complexos.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Modelagem Avançada para Missões Tripuladas</strong></p>
+            <p>
+              Os sistemas de controle de ambiente das cápsulas espaciais exigiam
+              cálculos precisos de transferência de calor através de superfícies
+              irregulares. As integrais duplas forneceram o framework matemático
+              necessário para estas análises críticas para a segurança dos
+              astronautas.
+            </p>
+          </div>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 1: INTRODUÇÃO CONCEITUAL -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide: Por que estudar integrais duplas? -->
+          <section>
+            <h2>Por que estudar integrais duplas?</h2>
+
+            <div class="math-section">
+              <p>
+                As integrais duplas expandem o conceito de acumulação para duas
+                dimensões:
+              </p>
+              <ul>
+                <li>Da <strong>linha</strong> ao <strong>plano</strong></li>
+                <li>Da <strong>distância</strong> à <strong>área</strong></li>
+                <li>
+                  Do <strong>comprimento</strong> ao <strong>volume</strong>
+                </li>
+              </ul>
+            </div>
+
+            <p>
+              Através delas, podemos quantificar fenômenos que variam
+              continuamente sobre superfícies.
+            </p>
+          </section>
+
+          <!-- Slide: Aplicações na Engenharia Espacial -->
+          <section>
+            <h2>Aplicações na Engenharia Espacial</h2>
+
+            <div class="math-section">
+              <p>
+                No contexto da exploração espacial, as integrais duplas resolvem
+                problemas críticos:
+              </p>
+              <ul>
+                <li>Otimização de painéis solares</li>
+                <li>Cálculo do centro de massa de componentes</li>
+                <li>Análise estrutural de materiais compostos</li>
+                <li>Modelagem de campos gravitacionais</li>
+                <li>Cálculo de dissipação térmica em escudos térmicos</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 2: CONCEITOS FUNDAMENTAIS -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide: Da integral simples à dupla -->
+          <section>
+            <h2>Da Integral Simples à Dupla</h2>
+
+            <div class="math-section">
+              <p>
+                A integral simples acumula valores ao longo de um intervalo:
+              </p>
+              <p>\[ \int_a^b f(x) \, dx \]</p>
+
+              <p>
+                A integral dupla estende este conceito para regiões
+                bidimensionais:
+              </p>
+              <p>\[ \iint_D f(x,y) \, dA \]</p>
+
+              <p>
+                Enquanto a integral simples representa uma
+                <strong>área</strong>, a integral dupla frequentemente
+                representa um <strong>volume</strong>.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide: Visualização da soma de Riemann -->
+          <section>
+            <h2>Da Soma de Riemann à Integral Dupla</h2>
+
+            <div class="math-section">
+              <p>
+                Assim como em uma dimensão, aproximamos a integral com somas
+                finitas:
+              </p>
+              <ol>
+                <li>Dividimos a região \(D\) em pequenos retângulos</li>
+                <li>Avaliamos a função em um ponto de cada retângulo</li>
+                <li>Multiplicamos pelo valor da área do retângulo</li>
+                <li>Somamos todas as contribuições</li>
+              </ol>
+              <p>
+                À medida que refinamos a malha, esta soma se aproxima da
+                integral dupla.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide: Visualização interativa da soma de Riemann -->
+          <section>
+            <h2>Visualização da Soma de Riemann</h2>
+
+            <canvas
+              id="riemannCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="subdivSlider">Número de Subdivisões:</label>
+                <input
+                  type="range"
+                  id="subdivSlider"
+                  min="2"
+                  max="10"
+                  value="4"
+                />
+                <span id="subdivValue">4</span>
+              </div>
+
+              <button
+                class="control-button"
+                onclick="resetRiemannVisualization()"
+              >
+                Reiniciar
+              </button>
+            </div>
+
+            <div class="value-display">
+              Valor da Soma: <span id="integralValue">0</span>
+            </div>
+          </section>
+
+          <!-- Slide: Interpretação geométrica -->
+          <section>
+            <h2>Interpretação Geométrica</h2>
+
+            <div class="math-section">
+              <p>
+                Podemos visualizar a integral dupla como um
+                <strong>volume</strong>:
+              </p>
+              <ul>
+                <li>A função \(f(x,y)\) define uma superfície no espaço</li>
+                <li>A região \(D\) delimita a base no plano \(xy\)</li>
+                <li>
+                  O valor da integral é o volume entre a superfície e o plano
+                  \(xy\)
+                </li>
+              </ul>
+              <p>
+                Esta analogia ajuda a entender por que a integral dupla
+                frequentemente representa um volume no espaço tridimensional.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 3: FORMALIZAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide: Definição matemática -->
+          <section>
+            <h2>Definição Matemática</h2>
+
+            <div class="math-section">
+              <p>
+                A <strong>integral dupla</strong> de uma função \(f(x,y)\) sobre
+                uma região \(D\) é formalmente definida como:
+              </p>
+
+              <p>
+                \[ \iint_D f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m
+                \sum_{j=1}^n f(x_{ij}, y_{ij}) \,\Delta A_{ij} \]
+              </p>
+
+              <p>onde:</p>
+              <ul>
+                <li>\(D\) é a região de integração no plano \(xy\)</li>
+                <li>\(\Delta A_{ij}\) é a área de cada subregião</li>
+                <li>\((x_{ij}, y_{ij})\) é um ponto na subregião \((i,j)\)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide: Componentes essenciais -->
+          <section>
+            <h2>Componentes Essenciais</h2>
+
+            <div class="math-section">
+              <p>
+                A formulação da integral dupla envolve três elementos
+                fundamentais:
+              </p>
+              <ul>
+                <li>
+                  <strong>Região de Integração \(D\)</strong>: Define o domínio
+                  sobre o qual integramos, podendo ser simples (retângulos) ou
+                  mais complexo (regiões curvas, delimitadas por funções).
+                </li>
+                <li>
+                  <strong>Função Integranda \(f(x,y)\)</strong>: Representa a
+                  grandeza que estamos acumulando em cada ponto do domínio, como
+                  densidade, temperatura ou pressão.
+                </li>
+                <li>
+                  <strong>Elemento de Área \(dA\)</strong>: Tipicamente escrito
+                  como \(dx\,dy\) ou \(dy\,dx\), representa a "forma"
+                  infinitesimal de nossa integração.
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide: Visualização tridimensional -->
+          <section>
+            <h2>Volume como Integral Dupla</h2>
+
+            <canvas
+              id="volumeCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="limitRange">Tamanho da Região:</label>
+                <input
+                  type="range"
+                  id="limitRange"
+                  min="2"
+                  max="10"
+                  value="5"
+                />
+                <span id="limitValue">1</span>
+              </div>
+
+              <button
+                class="control-button"
+                onclick="resetVolumeVisualization()"
+              >
+                Reiniciar
+              </button>
+            </div>
+
+            <div class="value-display">
+              Volume = <span id="volumeValue">0</span>
+            </div>
+            <div class="formula-display">f(x,y) = x²/4 + y²/9</div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 4: PROPRIEDADES E MÉTODOS -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide: Propriedades básicas -->
+          <section>
+            <h2>Propriedades Básicas</h2>
+
+            <div class="math-section">
+              <p>
+                As integrais duplas preservam propriedades fundamentais das
+                integrais simples:
+              </p>
+              <ul>
+                <li>
+                  <strong>Linearidade</strong>:
+                  <p>
+                    \(\displaystyle \iint_D (f + g)\, dA = \iint_D f\, dA +
+                    \iint_D g\, dA\)
+                  </p>
+                  <p>
+                    \(\displaystyle \iint_D (c \cdot f)\, dA = c \cdot \iint_D
+                    f\, dA\)
+                  </p>
+                </li>
+                <li>
+                  <strong>Aditividade em Sub-Regiões</strong>: Se \(D = D_1 \cup
+                  D_2\) com \(D_1 \cap D_2 = \emptyset\), então:
+                  <p>
+                    \(\displaystyle \iint_D f\, dA = \iint_{D_1} f\, dA +
+                    \iint_{D_2} f\, dA\)
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide: Propriedades adicionais -->
+          <section>
+            <h2>Mais Propriedades</h2>
+
+            <div class="math-section">
+              <ul>
+                <li>
+                  <strong>Positividade</strong>: Se \(f(x,y) \geq 0\) em \(D\),
+                  então \(\iint_D f\, dA \geq 0\)
+                </li>
+                <li>
+                  <strong>Comparação</strong>: Se \(f(x,y) \geq g(x,y)\) em
+                  \(D\), então \(\iint_D f\, dA \geq \iint_D g\, dA\)
+                </li>
+                <li>
+                  <strong>Valor Médio</strong>: O valor médio de \(f\) sobre
+                  \(D\) é dado por:
+                  <p>
+                    \(\displaystyle f_{avg} = \frac{1}{A(D)}\iint_D f\, dA\)
+                  </p>
+                  onde \(A(D)\) é a área da região \(D\).
+                </li>
+              </ul>
+              <p>
+                Estas propriedades fornecem ferramentas poderosas para manipular
+                e estimar integrais duplas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide: Teorema de Fubini -->
+          <section>
+            <h2>Integração Iterada (Teorema de Fubini)</h2>
+
+            <div class="math-section">
+              <p>
+                O <strong>Teorema de Fubini</strong> permite transformar uma
+                integral dupla em integrais simples aninhadas:
+              </p>
+              <p>
+                \(\displaystyle \iint_D f(x,y)\,dA = \int_a^b
+                \left(\int_{g_1(x)}^{g_2(x)} f(x,y)\,dy\right) dx\)
+              </p>
+
+              <p>
+                Esta abordagem converte um problema bidimensional em dois
+                problemas unidimensionais sequenciais:
+              </p>
+              <ol>
+                <li>
+                  Para cada valor fixo de \(x\), integramos \(f(x,y)\) em
+                  relação a \(y\)
+                </li>
+                <li>
+                  Integramos o resultado em relação a \(x\) ao longo do
+                  intervalo \([a,b]\)
+                </li>
+              </ol>
+
+              <p>
+                Alternativamente, podemos integrar primeiro em relação a \(x\) e
+                depois em relação a \(y\).
+              </p>
+            </div>
+          </section>
+          <!-- Slide: Exemplo 1 - Região retangular -->
+          <section>
+            <h2>Exemplo: Região Retangular</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular a integral dupla da função
+                \(f(x,y) = x + 2y\) sobre a região retangular \(D = [0,2] \times
+                [1,3]\).
+              </p>
+
+              <p>
+                <strong>Interpretação física:</strong> Esta integral representa
+                o volume sob a superfície plana \(z = x + 2y\) sobre o retângulo
+                definido.
+              </p>
+
+              <p><strong>Dados:</strong></p>
+              <ul>
+                <li>Função: \(f(x,y) = x + 2y\)</li>
+                <li>Região: \(D = [0,2] \times [1,3]\)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide: Solução passo a passo (Parte 1) -->
+          <section>
+            <h2>Solução: Aplicando o Teorema de Fubini</h2>
+
+            <div class="compact-solution">
+              <p><strong>Passo 1:</strong> Expressar como integral iterada</p>
+              <p>
+                \[ \iint_D (x + 2y)\, dA = \int_0^2 \int_1^3 (x + 2y)\, dy\, dx
+                \]
+              </p>
+
+              <p>
+                <strong>Passo 2:</strong> Resolver a integral interna (em \(y\))
+              </p>
+              <p>
+                \[ \int_1^3 (x + 2y)\, dy = x \cdot 2 + 2 \cdot \frac{y^2}{2}
+                \Big|_1^3 = 2x + 2(4.5 - 0.5) = 2x + 8 \]
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide: Solução passo a passo (Parte 2) -->
+          <section>
+            <h2>Solução: Continuação</h2>
+
+            <div class="compact-solution">
+              <p>
+                <strong>Passo 3:</strong> Resolver a integral externa (em \(x\))
+              </p>
+              <p>
+                \[ \int_0^2 (2x + 8)\, dx = 2 \cdot \frac{x^2}{2} \Big|_0^2 + 8
+                \cdot 2 = 2 + 16 = 18 \]
+              </p>
+
+              <p>
+                <strong>Resultado final:</strong> \(\iint_D (x + 2y)\, dA = 18\)
+                unidades cúbicas
+              </p>
+
+              <p>
+                <strong>Interpretação física:</strong> Se \(f(x,y)\)
+                representasse a distribuição de densidade de um material, o
+                valor 18 representaria a massa total do objeto. Se representasse
+                a intensidade solar sobre um painel, representaria a energia
+                total capturada.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 5: MUDANÇA DE ORDEM DE INTEGRAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Introdução à Mudança de Ordem -->
+          <section>
+            <h2>Mudança da Ordem de Integração</h2>
+
+            <div class="math-section">
+              <p>
+                O Teorema de Fubini nos permite escolher entre duas ordens de
+                integração para a mesma região:
+              </p>
+
+              <p>
+                \[ \iint_D f(x,y)\,dA = \int_a^b \int_{g_1(x)}^{g_2(x)}
+                f(x,y)\,dy\,dx \]
+              </p>
+
+              <p>\[ = \int_c^d \int_{h_1(y)}^{h_2(y)} f(x,y)\,dx\,dy \]</p>
+
+              <p>
+                A escolha da ordem pode
+                <strong>simplificar consideravelmente</strong> o cálculo,
+                especialmente quando:
+              </p>
+              <ul>
+                <li>A integração em uma variável é mais simples</li>
+                <li>
+                  Os limites de integração em uma ordem são mais complexos
+                </li>
+                <li>A função apresenta descontinuidades ou singularidades</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 2: Regiões Triangulares -->
+          <section>
+            <h2>Integrais sobre Regiões Triangulares</h2>
+
+            <div class="math-section">
+              <p>
+                Os triângulos são formas fundamentais na engenharia espacial:
+              </p>
+              <ul>
+                <li>
+                  Elementos básicos de <strong>malhas estruturais</strong>
+                </li>
+                <li>
+                  Componentes de <strong>superfícies aerodinâmicas</strong>
+                </li>
+                <li>
+                  Seções de <strong>painéis solares</strong> e escudos térmicos
+                </li>
+              </ul>
+
+              <p>Para integrar sobre um triângulo, precisamos:</p>
+              <ol>
+                <li>
+                  Determinar as <strong>equações das retas</strong> que
+                  delimitam o triângulo
+                </li>
+                <li>
+                  Escolher uma <strong>ordem de integração</strong> apropriada
+                </li>
+                <li>
+                  Expressar os <strong>limites de integração</strong> em termos
+                  da variável apropriada
+                </li>
+              </ol>
+            </div>
+
+            <p>
+              Diferentes ordens de integração podem ter diferentes complexidades
+              de cálculo.
+            </p>
+          </section>
+
+          <!-- Slide 3: Exemplo de Triângulo - Definição - Em duas colunas -->
+          <section>
+            <h2>Exemplo: Triângulo no Plano</h2>
+
+            <div class="dual-panel">
+              <div class="problem-section">
+                <p>
+                  <strong>Problema:</strong> Calcular a integral de uma função
+                  \(f(x,y)\) sobre o triângulo \(T\) com vértices (0,0), (1,0) e
+                  (0,2).
+                </p>
+
+                <p><strong>Equações das retas:</strong></p>
+                <ul>
+                  <li>Eixo x: \(y = 0\) para \(0 \leq x \leq 1\)</li>
+                  <li>Eixo y: \(x = 0\) para \(0 \leq y \leq 2\)</li>
+                  <li>Reta diagonal: \(y = 2(1-x)\)</li>
+                  <li>Equivalente a: \(x = 1-\frac{y}{2}\)</li>
+                </ul>
+
+                <p>
+                  <strong>Desafio:</strong> Determinar os limites de integração
+                  nas duas ordens possíveis.
+                </p>
+              </div>
+
+              <div class="svg-container">
+                <img
+                  src="svg-mudança-de-variaveis/triangulo-plano.svg"
+                  alt="Triângulo no plano xy"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4-5: Comparação das Ordens de Integração em Duas Colunas -->
+          <section>
+            <h2>Comparação das Ordens de Integração</h2>
+
+            <div class="dual-panel">
+              <div>
+                <h3>
+                  Ordem <span class="vertical-highlight">dy dx</span>: Vertical
+                </h3>
+                <div class="math-section">
+                  <p>Para cada \(x\) fixo entre 0 e 1:</p>
+                  <ul>
+                    <li>Limite inferior: \(y = 0\)</li>
+                    <li>Limite superior: \(y = 2(1-x)\)</li>
+                  </ul>
+                  <p>\[ \int_0^1 \int_0^{2(1-x)} f(x,y) \, dy \, dx \]</p>
+                </div>
+
+                <div class="svg-container">
+                  <img
+                    src="svg-mudança-de-variaveis/integracao-vertical.svg"
+                    alt="Integração vertical"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <h3>
+                  Ordem <span class="horizontal-highlight">dx dy</span>:
+                  Horizontal
+                </h3>
+                <div class="math-section">
+                  <p>Para cada \(y\) fixo entre 0 e 2:</p>
+                  <ul>
+                    <li>Limite inferior: \(x = 0\)</li>
+                    <li>Limite superior: \(x = 1-\frac{y}{2}\)</li>
+                  </ul>
+                  <p>
+                    \[ \int_0^2 \int_0^{1-\frac{y}{2}} f(x,y) \, dx \, dy \]
+                  </p>
+                </div>
+
+                <div class="svg-container">
+                  <img
+                    src="svg-mudança-de-variaveis/integracao-horizontal.svg"
+                    alt="Integração horizontal"
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 6: Visualização Interativa -->
+          <section>
+            <h2>Visualização das Ordens de Integração</h2>
+
+            <div class="canvas-container">
+              <canvas
+                id="integrationCanvas"
+                class="visualization-canvas"
+                width="700"
+                height="400"
+              ></canvas>
+            </div>
+
+            <div class="controls-container">
+              <button id="btnVertical" class="control-button active">
+                Ordem dy dx (Vertical)
+              </button>
+              <button id="btnHorizontal" class="control-button">
+                Ordem dx dy (Horizontal)
+              </button>
+              <button id="btnPause" class="control-button">Pausar</button>
+              <button id="btnReset" class="control-button">Reiniciar</button>
+
+              <div class="control-slider">
+                <label for="speedSlider">Velocidade:</label>
+                <input
+                  type="range"
+                  id="speedSlider"
+                  min="1"
+                  max="10"
+                  value="3"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 7: Quando Escolher Cada Ordem -->
+          <section>
+            <h2>Escolhendo a Melhor Ordem de Integração</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p><strong>Fatores a considerar:</strong></p>
+                <ul>
+                  <li>Simplicidade da <strong>integração interna</strong></li>
+                  <li>Complexidade das <strong>funções limite</strong></li>
+                  <li>
+                    Presença de <strong>singularidades</strong> ou
+                    descontinuidades
+                  </li>
+                  <li>
+                    Facilidade em aplicar <strong>teoremas de cálculo</strong>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="math-section">
+                <p><strong>Estratégias práticas:</strong></p>
+                <ul>
+                  <li>
+                    Sempre <strong>desenhe a região</strong> antes de escolher a
+                    ordem
+                  </li>
+                  <li>
+                    Identifique qual ordem gera
+                    <strong>limites mais simples</strong>
+                  </li>
+                  <li>
+                    Se ambas parecem equivalentes, examine a
+                    <strong>função integranda</strong>
+                  </li>
+                  <li>
+                    Considere fazer uma <strong>mudança de variáveis</strong> se
+                    nenhuma ordem simplifica o problema
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <p>
+              A experiência na avaliação de integrais o ajudará a desenvolver
+              intuição para escolher a ordem mais vantajosa.
+            </p>
+          </section>
+
+          <!-- Slide 8: Exemplo Completo de Cálculo -->
+          <section>
+            <h2>Exemplo: Cálculo da Área do Triângulo</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular a área do triângulo com
+                vértices (0,0), (1,0) e (0,2).
+              </p>
+
+              <p>
+                Neste caso, a função integranda é \(f(x,y) = 1\), pois a
+                integral dupla de 1 sobre uma região representa sua área.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 9: Solução usando Ordem dy dx -->
+          <section>
+            <h2>Solução: Usando Ordem dy dx</h2>
+
+            <div class="compact-solution">
+              <p><strong>Ordem vertical primeiro:</strong></p>
+
+              <p>
+                \[ A = \iint_T 1 \, dA = \int_0^1 \int_0^{2(1-x)} 1 \, dy \, dx
+                \]
+              </p>
+
+              <p>
+                <strong>Etapa 1:</strong> Resolver a integral interna em \(y\):
+              </p>
+              <p>\[ \int_0^{2(1-x)} 1 \, dy = y \big|_0^{2(1-x)} = 2(1-x) \]</p>
+
+              <p>
+                <strong>Etapa 2:</strong> Resolver a integral externa em \(x\):
+              </p>
+              <p>
+                \[ \int_0^1 2(1-x) \, dx = 2 \int_0^1 (1-x) \, dx = 2[x -
+                \frac{x^2}{2}]_0^1 = 2(1 - \frac{1}{2}) = 1 \]
+              </p>
+
+              <p>
+                <strong>Resultado:</strong> A área do triângulo é 1 unidade
+                quadrada.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 10: Solução usando Ordem dx dy -->
+          <section>
+            <h2>Solução: Usando Ordem dx dy</h2>
+
+            <div class="compact-solution">
+              <p><strong>Ordem horizontal primeiro:</strong></p>
+
+              <p>
+                \[ A = \iint_T 1 \, dA = \int_0^2 \int_0^{1-\frac{y}{2}} 1 \, dx
+                \, dy \]
+              </p>
+
+              <p>
+                <strong>Etapa 1:</strong> Resolver a integral interna em \(x\):
+              </p>
+              <p>
+                \[ \int_0^{1-\frac{y}{2}} 1 \, dx = x \big|_0^{1-\frac{y}{2}} =
+                1-\frac{y}{2} \]
+              </p>
+
+              <p>
+                <strong>Etapa 2:</strong> Resolver a integral externa em \(y\):
+              </p>
+              <p>
+                \[ \int_0^2 (1-\frac{y}{2}) \, dy = \int_0^2 1 \, dy -
+                \frac{1}{2}\int_0^2 y \, dy = 2 - \frac{1}{2}[y^2/2]_0^2 = 2 -
+                \frac{1}{2} \cdot 2 = 1 \]
+              </p>
+
+              <p>
+                <strong>Resultado:</strong> A área do triângulo é 1 unidade
+                quadrada.
+              </p>
+              <p>
+                Observação: Ambas as ordens produziram o mesmo resultado, como
+                esperado.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 11: Aplicações Práticas -->
+          <section>
+            <h2>Aplicações Práticas</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p><strong>Aplicações em Engenharia Espacial:</strong></p>
+                <ul>
+                  <li>
+                    Cálculo da distribuição de estresse em painéis triangulares
+                  </li>
+                  <li>Análise térmica em elementos finitos triangulares</li>
+                  <li>
+                    Otimização de materiais compósitos com estrutura variável
+                  </li>
+                  <li>Modelagem de fluxo de radiação através de superfícies</li>
+                  <li>
+                    Cálculo de centros de massa de componentes não-homogêneos
+                  </li>
+                </ul>
+              </div>
+
+              <div class="math-section">
+                <p><strong>Melhores Práticas:</strong></p>
+                <ul>
+                  <li>
+                    Sempre desenhe a região de integração antes de escolher a
+                    ordem
+                  </li>
+                  <li>
+                    Avalie a complexidade da função e dos limites de integração
+                  </li>
+                  <li>
+                    Considere se a função apresenta descontinuidades ou
+                    singularidades
+                  </li>
+                  <li>
+                    Quando possível, use simetrias para simplificar a integração
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SEÇÃO 7: APLICAÇÕES FINAIS -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide: Aplicação histórica -->
+          <section>
+            <h2>Aplicação Histórica</h2>
+
+            <div class="math-section">
+              <p>As integrais duplas se conectam a:</p>
+              <ul>
+                <li>Cálculo de centros de massa de componentes espaciais</li>
+                <li>Análise de distribuição de calor nos escudos térmicos</li>
+                <li>
+                  Estudo de campos gravitacionais para trajetórias orbitais
+                </li>
+              </ul>
+            </div>
+
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+              <p><strong>Programa Mercury (1961-1963)</strong></p>
+              <p>
+                Os engenheiros da NASA utilizaram integrais duplas para calcular
+                a distribuição de calor durante a reentrada das cápsulas
+                Mercury. Estas análises foram cruciais para dimensionar
+                corretamente o escudo térmico que protegeria os astronautas das
+                temperaturas extremas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide: Aplicações modernas -->
+          <section>
+            <h2>Aplicações Modernas</h2>
+
+            <div class="dual-panel">
+              <div class="math-section">
+                <p>
+                  Integrais duplas são essenciais na exploração espacial
+                  moderna:
+                </p>
+                <ul>
+                  <li>
+                    <strong>Painéis solares em órbita:</strong> Calcular a
+                    energia captada ao longo de trajetórias elípticas, onde a
+                    intensidade varia com o quadrado inverso da distância (\(I
+                    \propto \frac{1}{r^2}\))
+                  </li>
+                  <li>
+                    <strong>Análise térmica:</strong> Modelar a distribuição de
+                    calor em superfícies de veículos espaciais
+                  </li>
+                  <li>
+                    <strong>Otimização de materiais:</strong> Calcular
+                    resistência estrutural de componentes com densidade variável
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <canvas
+                  id="applicationVisual"
+                  class="visualization-canvas"
+                  width="350"
+                  height="250"
+                ></canvas>
+                <div class="viz-caption">
+                  Simulação de painel solar em órbita elíptica, onde a
+                  intensidade solar varia com a distância
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Script para inicialização -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Inicialização do RevealJS
+        Reveal.initialize({
+          hash: true,
+          center: true,
+          slideNumber: true,
+          transition: 'slide',
+          navigationMode: 'default',
+          plugins: [RevealMath.MathJax3],
+          math: {
+            mathjax:
+              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
+            config: 'TeX-AMS_HTML-full',
+            TeX: {
+              Macros: {},
+            },
+          },
+        });
+
+        // Inicializar visualizações
+        initRiemannVisualization();
+        initVolumeVisualization();
+        initApplicationVisualization();
+        initIntegrationVisualization();
+      });
+
+      // =============================================
+      // VISUALIZAÇÃO DA SOMA DE RIEMANN
+      // =============================================
+      function initRiemannVisualization() {
+        const riemannCanvas = document.getElementById('riemannCanvas');
+        if (!riemannCanvas) return;
+
+        const ctx = riemannCanvas.getContext('2d');
+        let subdivisions = 4; // Valor inicial
+        let angle = 30;
+        let scale = 120;
+        let isDragging = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Configurar controle deslizante
+        const subdivSlider = document.getElementById('subdivSlider');
+        const subdivValue = document.getElementById('subdivValue');
+
+        // Atualizar valor do slider
+        subdivSlider.addEventListener('input', updateRiemannVisualization);
+
+        // Função da superfície
+        function f(x, y) {
+          return Math.pow(x, 2) / 4 + Math.pow(y, 2) / 9;
+        }
+
+        // Conversão para coordenadas 2D isométricas
+        function to2D(x, y, z) {
+          const angleRad = (angle * Math.PI) / 180;
+          const isoX = (x - y) * Math.cos(angleRad);
+          const isoY = ((x + y) * Math.sin(angleRad)) / 2 - z * 0.7;
+          return {
+            x: isoX * scale + riemannCanvas.width / 2,
+            y: isoY * scale + riemannCanvas.height / 2,
+          };
+        }
+
+        // Função principal de desenho
+        function drawRiemannVisualization() {
+          ctx.clearRect(0, 0, riemannCanvas.width, riemannCanvas.height);
+
+          // Desenhar eixos
+          ctx.beginPath();
+          ctx.strokeStyle = '#FF69B4'; // Rosa para eixo X (vetor posição)
+          const xStart = to2D(-1.2, 0, 0);
+          const xEnd = to2D(1.2, 0, 0);
+          ctx.moveTo(xStart.x, xStart.y);
+          ctx.lineTo(xEnd.x, xEnd.y);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.strokeStyle = '#4CAF50'; // Verde para eixo Y (vetor velocidade)
+          const yStart = to2D(0, -1.2, 0);
+          const yEnd = to2D(0, 1.2, 0);
+          ctx.moveTo(yStart.x, yStart.y);
+          ctx.lineTo(yEnd.x, yEnd.y);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.strokeStyle = '#2196F3'; // Azul para eixo Z
+          const zStart = to2D(0, 0, 0);
+          const zEnd = to2D(0, 0, 1.2);
+          ctx.moveTo(zStart.x, zStart.y);
+          ctx.lineTo(zEnd.x, zEnd.y);
+          ctx.stroke();
+
+          // Desenhar retângulos da soma de Riemann
+          const dx = 2 / subdivisions;
+          const dy = 2 / subdivisions;
+
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              const x = -1 + i * dx + dx / 2;
+              const y = -1 + j * dy + dy / 2;
+              const z = f(x, y);
+
+              // Calcular cor baseada na altura
+              const blue = Math.min(255, Math.floor(150 + z * 100));
+              const strokeColor = `rgba(52, 152, 219, 0.8)`;
+              const fillColor = `rgba(52, 152, ${blue}, ${0.2 + z * 0.3})`;
+
+              ctx.beginPath();
+              ctx.strokeStyle = strokeColor;
+              ctx.fillStyle = fillColor;
+              ctx.lineWidth = 1;
+
+              const points = [
+                to2D(x - dx / 2, y - dy / 2, 0),
+                to2D(x + dx / 2, y - dy / 2, 0),
+                to2D(x + dx / 2, y + dy / 2, 0),
+                to2D(x - dx / 2, y + dy / 2, 0),
+                to2D(x - dx / 2, y - dy / 2, z),
+                to2D(x + dx / 2, y - dy / 2, z),
+                to2D(x + dx / 2, y + dy / 2, z),
+                to2D(x - dx / 2, y + dy / 2, z),
+              ];
+
+              // Desenhar base
+              ctx.moveTo(points[0].x, points[0].y);
+              ctx.lineTo(points[1].x, points[1].y);
+              ctx.lineTo(points[2].x, points[2].y);
+              ctx.lineTo(points[3].x, points[3].y);
+              ctx.lineTo(points[0].x, points[0].y);
+
+              // Desenhar arestas verticais
+              for (let k = 0; k < 4; k++) {
+                ctx.moveTo(points[k].x, points[k].y);
+                ctx.lineTo(points[k + 4].x, points[k + 4].y);
+              }
+
+              // Desenhar topo
+              ctx.moveTo(points[4].x, points[4].y);
+              ctx.lineTo(points[5].x, points[5].y);
+              ctx.lineTo(points[6].x, points[6].y);
+              ctx.lineTo(points[7].x, points[7].y);
+              ctx.lineTo(points[4].x, points[4].y);
+
+              ctx.stroke();
+              ctx.fill();
+            }
+          }
+
+          updateRiemannIntegralValue();
+        }
+
+        // Calcular o valor aproximado da integral
+        function calculateRiemannApproximation() {
+          const dx = 2 / subdivisions;
+          const dy = 2 / subdivisions;
+          let sum = 0;
+
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              const x = -1 + i * dx + dx / 2;
+              const y = -1 + j * dy + dy / 2;
+              sum += f(x, y) * dx * dy;
+            }
+          }
+          return sum.toFixed(3);
+        }
+
+        // Atualizar o valor exibido
+        function updateRiemannIntegralValue() {
+          const integralValueElement = document.getElementById('integralValue');
+          if (integralValueElement) {
+            integralValueElement.textContent = calculateRiemannApproximation();
+          }
+        }
+
+        // Função de atualização baseada nos controles
+        function updateRiemannVisualization() {
+          subdivisions = parseInt(this.value);
+          document.getElementById('subdivValue').textContent = subdivisions;
+          drawRiemannVisualization();
+        }
+
+        // Função de reset
+        window.resetRiemannVisualization = function () {
+          subdivisions = 4;
+          if (subdivSlider) {
+            subdivSlider.value = 4;
+            subdivValue.textContent = 4;
+          }
+          drawRiemannVisualization();
+        };
+
+        // Manipuladores de interação com mouse/toque
+        riemannCanvas.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          riemannCanvas.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+
+          const deltaX = e.clientX - lastX;
+          angle = (angle + deltaX * 0.5) % 360;
+          lastX = e.clientX;
+
+          drawRiemannVisualization();
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          riemannCanvas.style.cursor = 'grab';
+        });
+
+        // Iniciar desenho da visualização de Riemann
+        drawRiemannVisualization();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DO VOLUME
+      // =============================================
+      function initVolumeVisualization() {
+        const volumeCanvas = document.getElementById('volumeCanvas');
+        if (!volumeCanvas) return;
+
+        const volumeCtx = volumeCanvas.getContext('2d');
+
+        // Estado
+        let angleZ = 225;
+        let angleX = 30;
+        let limitSize = 1; // Valor inicial
+        let limitXMin = -limitSize;
+        let limitXMax = limitSize;
+        let limitYMin = -limitSize;
+        let limitYMax = limitSize;
+        let volumeIsDragging = false;
+        let volumeLastX = 0;
+        let volumeLastY = 0;
+
+        // Configurar controle deslizante
+        const limitRange = document.getElementById('limitRange');
+        const limitValue = document.getElementById('limitValue');
+
+        // Atualizar valor do slider
+        limitRange.addEventListener('input', updateVolumeVisualization);
+
+        // Função da superfície
+        function f(x, y) {
+          return Math.pow(x, 2) / 4 + Math.pow(y, 2) / 9;
+        }
+
+        // Função de conversão para coordenadas isométricas
+        function iso(x, y, z) {
+          const scale = 90;
+          const angleZRad = (angleZ * Math.PI) / 180;
+          const angleXRad = (angleX * Math.PI) / 180;
+
+          // Rotação em torno do eixo Z
+          let x1 = x * Math.cos(angleZRad) - y * Math.sin(angleZRad);
+          let y1 = x * Math.sin(angleZRad) + y * Math.cos(angleZRad);
+          let z1 = z;
+
+          // Rotação em torno do eixo X
+          let y2 = y1 * Math.cos(angleXRad) - z1 * Math.sin(angleXRad);
+          let z2 = y1 * Math.sin(angleXRad) + z1 * Math.cos(angleXRad);
+
+          return {
+            x: volumeCanvas.width / 2 + x1 * scale,
+            y: volumeCanvas.height / 2 + y2 * scale,
+          };
+        }
+
+        // Função principal de renderização do volume
+        function drawVolumeVisualization() {
+          volumeCtx.clearRect(0, 0, volumeCanvas.width, volumeCanvas.height);
+
+          // Desenhar eixos coordenados
+          const origin = iso(0, 0, 0);
+          const axisLength = 3;
+
+          // Eixo X - Rosa (vetor posição)
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#FF69B4';
+          volumeCtx.lineWidth = 1.5;
+          const xEnd = iso(axisLength, 0, 0);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(xEnd.x, xEnd.y);
+          volumeCtx.stroke();
+
+          // Eixo Y - Verde (vetor velocidade)
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#4CAF50';
+          const yEnd = iso(0, axisLength, 0);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(yEnd.x, yEnd.y);
+          volumeCtx.stroke();
+
+          // Eixo Z - Azul
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#2196F3';
+          const zEnd = iso(0, 0, axisLength);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(zEnd.x, zEnd.y);
+          volumeCtx.stroke();
+
+          // Desenhar região de integração (base)
+          volumeCtx.strokeStyle = 'rgba(255, 50, 50, 0.8)';
+          volumeCtx.lineWidth = 2;
+          volumeCtx.beginPath();
+          const r1 = iso(limitXMin, limitYMin, 0);
+          const r2 = iso(limitXMax, limitYMin, 0);
+          const r3 = iso(limitXMax, limitYMax, 0);
+          const r4 = iso(limitXMin, limitYMax, 0);
+          volumeCtx.moveTo(r1.x, r1.y);
+          volumeCtx.lineTo(r2.x, r2.y);
+          volumeCtx.lineTo(r3.x, r3.y);
+          volumeCtx.lineTo(r4.x, r4.y);
+          volumeCtx.closePath();
+          volumeCtx.stroke();
+
+          // Desenhar grade vertical (linhas da superfície até a região)
+          volumeCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+          volumeCtx.lineWidth = 0.5;
+          const step = Math.max(0.5, limitSize / 4); // Ajusta a densidade da grade
+
+          for (let x = limitXMin; x <= limitXMax + 0.01; x += step) {
+            for (let y = limitYMin; y <= limitYMax + 0.01; y += step) {
+              const p1 = iso(x, y, 0);
+              const p2 = iso(x, y, f(x, y));
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.stroke();
+            }
+          }
+
+          // Desenhar superfície
+          const resolution = 15;
+          const dx = (limitXMax - limitXMin) / resolution;
+          const dy = (limitYMax - limitYMin) / resolution;
+
+          for (let i = 0; i < resolution; i++) {
+            for (let j = 0; j < resolution; j++) {
+              const x1 = limitXMin + i * dx;
+              const y1 = limitYMin + j * dy;
+              const x2 = x1 + dx;
+              const y2 = y1 + dy;
+
+              const z1 = f(x1, y1);
+              const z2 = f(x2, y1);
+              const z3 = f(x2, y2);
+              const z4 = f(x1, y2);
+
+              // Cor baseada na altura média
+              const avgZ = (z1 + z2 + z3 + z4) / 4;
+              const blue = Math.min(255, Math.floor(150 + avgZ * 70));
+
+              const p1 = iso(x1, y1, z1);
+              const p2 = iso(x2, y1, z2);
+              const p3 = iso(x2, y2, z3);
+              const p4 = iso(x1, y2, z4);
+
+              // Desenhar face preenchida
+              volumeCtx.fillStyle = `rgba(52, 152, ${blue}, 0.5)`;
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.lineTo(p3.x, p3.y);
+              volumeCtx.lineTo(p4.x, p4.y);
+              volumeCtx.closePath();
+              volumeCtx.fill();
+
+              // Desenhar contorno
+              volumeCtx.strokeStyle = `rgba(100, 180, 255, 0.7)`;
+              volumeCtx.lineWidth = 0.5;
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.lineTo(p3.x, p3.y);
+              volumeCtx.lineTo(p4.x, p4.y);
+              volumeCtx.closePath();
+              volumeCtx.stroke();
+            }
+          }
+
+          // Calcular e exibir volume
+          const volume = calculateVolume();
+          document.getElementById('volumeValue').textContent =
+            volume.toFixed(3);
+        }
+
+        // Cálculo do volume
+        function calculateVolume() {
+          const resolution = 50;
+          const dx = (limitXMax - limitXMin) / resolution;
+          const dy = (limitYMax - limitYMin) / resolution;
+          let sum = 0;
+
+          for (let i = 0; i < resolution; i++) {
+            for (let j = 0; j < resolution; j++) {
+              const x = limitXMin + (i + 0.5) * dx;
+              const y = limitYMin + (j + 0.5) * dy;
+              sum += f(x, y) * dx * dy;
+            }
+          }
+
+          return sum;
+        }
+
+        // Função de atualização baseada nos controles
+        function updateVolumeVisualization() {
+          const value = parseInt(this.value) / 5;
+          limitSize = value;
+          limitXMin = -limitSize;
+          limitXMax = limitSize;
+          limitYMin = -limitSize;
+          limitYMax = limitSize;
+          limitValue.textContent = limitSize.toFixed(1);
+          drawVolumeVisualization();
+        }
+
+        // Função de reset
+        window.resetVolumeVisualization = function () {
+          limitSize = 1;
+          limitXMin = -limitSize;
+          limitXMax = limitSize;
+          limitYMin = -limitSize;
+          limitYMax = limitSize;
+          if (limitRange) {
+            limitRange.value = 5;
+            limitValue.textContent = '1.0';
+          }
+          drawVolumeVisualization();
+        };
+
+        // Configurar interação de rotação
+        volumeCanvas.addEventListener('mousedown', (e) => {
+          volumeIsDragging = true;
+          volumeLastX = e.clientX;
+          volumeLastY = e.clientY;
+          volumeCanvas.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!volumeIsDragging) return;
+
+          const deltaX = e.clientX - volumeLastX;
+          const deltaY = e.clientY - volumeLastY;
+
+          angleZ = (angleZ - deltaX * 0.5) % 360;
+          angleX = Math.max(-89, Math.min(89, angleX + deltaY * 0.5));
+
+          volumeLastX = e.clientX;
+          volumeLastY = e.clientY;
+
+          drawVolumeVisualization();
+        });
+
+        document.addEventListener('mouseup', () => {
+          volumeIsDragging = false;
+          volumeCanvas.style.cursor = 'grab';
+        });
+
+        // Iniciar desenho da visualização de volume
+        drawVolumeVisualization();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DE APLICAÇÃO PRÁTICA (PAINEL SOLAR EM ÓRBITA)
+      // =============================================
+      function initApplicationVisualization() {
+        const canvas = document.getElementById('applicationVisual');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Parâmetros da órbita
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const a = 120; // Semi-eixo maior da elipse
+        const b = 70; // Semi-eixo menor da elipse
+
+        // Parâmetros de animação
+        let orbitAngle = 0;
+        let animationFrameId;
+
+        function drawApplicationVisualization() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Desenhar órbita elíptica
+          ctx.beginPath();
+          ctx.ellipse(centerX, centerY, a, b, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+          ctx.setLineDash([2, 3]);
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Desenhar Sol
+          drawSun();
+
+          // Calcular posição atual do satélite na órbita
+          const satellitePos = getPositionOnOrbit(orbitAngle);
+
+          // Desenhar linhas de distância
+          drawDistanceLines(satellitePos);
+
+          // Desenhar o satélite com painéis solares
+          const panelPositions = drawSatellite(satellitePos);
+
+          // Desenhar raios solares diretamente para os painéis
+          drawSolarRays(panelPositions);
+
+          // Atualizar ângulo para animação
+          orbitAngle += 0.005;
+          if (orbitAngle > Math.PI * 2) orbitAngle = 0;
+
+          // Continuar animação
+          animationFrameId = requestAnimationFrame(
+            drawApplicationVisualization
+          );
+        }
+
+        function drawSun() {
+          // Sol no centro
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, 20, 0, Math.PI * 2);
+
+          // Gradiente para o sol
+          const sunGradient = ctx.createRadialGradient(
+            centerX,
+            centerY,
+            0,
+            centerX,
+            centerY,
+            20
+          );
+          sunGradient.addColorStop(0, '#FFFFFF');
+          sunGradient.addColorStop(0.7, '#FFFF00');
+          sunGradient.addColorStop(1, '#FFA500');
+          ctx.fillStyle = sunGradient;
+          ctx.fill();
+
+          // Aura solar
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, 25, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+          ctx.fill();
+        }
+
+        function getPositionOnOrbit(angle) {
+          // Equações paramétricas da elipse
+          const x = centerX + a * Math.cos(angle);
+          const y = centerY + b * Math.sin(angle);
+
+          return { x, y };
+        }
+
+        function drawDistanceLines(position) {
+          // Linha do satélite até o sol
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(position.x, position.y);
+          ctx.strokeStyle = 'rgba(255, 255, 0, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        function drawSatellite(position) {
+          // Calcular ângulo para orientar os painéis em direção ao sol
+          const dx = centerX - position.x;
+          const dy = centerY - position.y;
+          const angle = Math.atan2(dy, dx);
+
+          // Corpo do satélite
+          ctx.beginPath();
+          ctx.arc(position.x, position.y, 6, 0, Math.PI * 2);
+          ctx.fillStyle = '#CCCCCC';
+          ctx.fill();
+          ctx.strokeStyle = '#999999';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Painéis solares (sempre orientados para o sol)
+          ctx.save();
+          ctx.translate(position.x, position.y);
+          ctx.rotate(angle);
+
+          // Painel da esquerda
+          ctx.beginPath();
+          ctx.rect(-30, -5, 20, 10);
+          const panelGradient = ctx.createLinearGradient(-30, 0, -10, 0);
+          panelGradient.addColorStop(0, '#4fc3f7');
+          panelGradient.addColorStop(1, '#1a237e');
+          ctx.fillStyle = panelGradient;
+          ctx.fill();
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Painel da direita
+          ctx.beginPath();
+          ctx.rect(10, -5, 20, 10);
+          const panelGradient2 = ctx.createLinearGradient(10, 0, 30, 0);
+          panelGradient2.addColorStop(0, '#1a237e');
+          panelGradient2.addColorStop(1, '#4fc3f7');
+          ctx.fillStyle = panelGradient2;
+          ctx.fill();
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Calcular as posições dos centros dos painéis em coordenadas do mundo
+          const leftPanelCenter = {
+            x: position.x + Math.cos(angle) * -20,
+            y: position.y + Math.sin(angle) * -20,
+          };
+
+          const rightPanelCenter = {
+            x: position.x + Math.cos(angle) * 20,
+            y: position.y + Math.sin(angle) * 20,
+          };
+
+          ctx.restore();
+
+          return {
+            left: leftPanelCenter,
+            right: rightPanelCenter,
+            angle: angle,
+          };
+        }
+
+        function drawSolarRays(panelPositions) {
+          // Desenhar apenas dois raios solares, um para cada painel
+          const distanceFromSun = Math.sqrt(
+            Math.pow(panelPositions.left.x - centerX, 2) +
+              Math.pow(panelPositions.left.y - centerY, 2)
+          );
+
+          // Intensidade baseada na distância
+          const normalizedIntensity = Math.min(
+            1,
+            (a * a) / (distanceFromSun * distanceFromSun)
+          );
+
+          // Raio para o painel esquerdo
+          drawRayToPanel(panelPositions.left, normalizedIntensity);
+
+          // Raio para o painel direito
+          drawRayToPanel(panelPositions.right, normalizedIntensity);
+        }
+
+        function drawRayToPanel(panelCenter, intensity) {
+          // Calcular direção do sol ao painel
+          const dx = panelCenter.x - centerX;
+          const dy = panelCenter.y - centerY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          // Normalizar o vetor direção
+          const dirX = dx / distance;
+          const dirY = dy / distance;
+
+          // Ponto de partida no sol
+          const startX = centerX + dirX * 20; // Borda do sol
+          const startY = centerY + dirY * 20;
+
+          // Desenhar raio solar
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+
+          // Usar 5 segmentos para o raio
+          for (let i = 1; i <= 4; i++) {
+            const segRatio = i / 5;
+            const midX = startX + dx * segRatio;
+            const midY = startY + dy * segRatio;
+
+            // Pequena variação perpendicular para efeito visual
+            const perpX = -dirY * (i % 2 === 0 ? 2 : -2);
+            const perpY = dirX * (i % 2 === 0 ? 2 : -2);
+
+            ctx.lineTo(midX + perpX, midY + perpY);
+          }
+
+          // Terminar no centro do painel
+          ctx.lineTo(panelCenter.x, panelCenter.y);
+
+          // Estilo do raio
+          ctx.strokeStyle = `rgba(255, 215, 0, ${0.4 + intensity * 0.6})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Brilho no ponto de impacto
+          ctx.beginPath();
+          ctx.arc(panelCenter.x, panelCenter.y, 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 0, ${0.5 + intensity * 0.5})`;
+          ctx.fill();
+        }
+
+        // Iniciar a animação
+        drawApplicationVisualization();
+
+        // Função para limpar a animação quando o slide mudar
+        Reveal.addEventListener('slidechanged', function (event) {
+          // Verificar se o canvas está no slide atual
+          const currentSlide = event.currentSlide;
+          const canvasInCurrentSlide = currentSlide.contains(canvas);
+
+          if (canvasInCurrentSlide) {
+            // Reiniciar a animação se o slide se tornou visível
+            if (!animationFrameId) {
+              animationFrameId = requestAnimationFrame(
+                drawApplicationVisualization
+              );
+            }
+          } else {
+            // Parar a animação se o slide não está mais visível
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO INTERATIVA DE ORDEM DE INTEGRAÇÃO
+      // =============================================
+      function initIntegrationVisualization() {
+        // Verificar se o canvas existe
+        const canvas = document.getElementById('integrationCanvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Estado da visualização
+        let isVerticalOrder = true;
+        let isPaused = false;
+        let progress = 0;
+        let animationSpeed = 3;
+        let animationFrameId;
+
+        // Referências para os controles
+        const btnVertical = document.getElementById('btnVertical');
+        const btnHorizontal = document.getElementById('btnHorizontal');
+        const btnPause = document.getElementById('btnPause');
+        const btnReset = document.getElementById('btnReset');
+        const speedSlider = document.getElementById('speedSlider');
+
+        // Configurar handlers de eventos para os botões (se existirem)
+        if (btnVertical) {
+          btnVertical.addEventListener('click', function () {
+            isVerticalOrder = true;
+            btnVertical.classList.add('active');
+            btnHorizontal.classList.remove('active');
+          });
+        }
+
+        if (btnHorizontal) {
+          btnHorizontal.addEventListener('click', function () {
+            isVerticalOrder = false;
+            btnVertical.classList.remove('active');
+            btnHorizontal.classList.add('active');
+          });
+        }
+
+        if (btnPause) {
+          btnPause.addEventListener('click', function () {
+            isPaused = !isPaused;
+            btnPause.textContent = isPaused ? 'Continuar' : 'Pausar';
+          });
+        }
+
+        if (btnReset) {
+          btnReset.addEventListener('click', function () {
+            progress = 0;
+            isPaused = false;
+            if (btnPause) btnPause.textContent = 'Pausar';
+          });
+        }
+
+        if (speedSlider) {
+          speedSlider.addEventListener('input', function () {
+            animationSpeed = parseInt(this.value);
+          });
+        }
+
+        // Configuração do espaço de coordenadas
+        const margin = 50;
+        const width = canvas.width - 2 * margin;
+        const height = canvas.height - 2 * margin;
+        const xScale = width / 1.2;
+        const yScale = height / 2.4;
+
+        // Transformação de coordenadas
+        function transformX(x) {
+          return margin + x * xScale;
+        }
+
+        function transformY(y) {
+          return canvas.height - margin - y * yScale;
+        }
+
+        // Desenhar background e triângulo
+        function drawBackground() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Desenhar eixos
+          ctx.beginPath();
+          ctx.strokeStyle = '#808080';
+          ctx.lineWidth = 1;
+
+          // Eixo X
+          ctx.moveTo(margin, canvas.height - margin);
+          ctx.lineTo(margin + width, canvas.height - margin);
+
+          // Eixo Y
+          ctx.moveTo(margin, canvas.height - margin);
+          ctx.lineTo(margin, canvas.height - margin - height);
+
+          ctx.stroke();
+
+          // Rótulos dos eixos
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '14px Arial';
+          ctx.textAlign = 'center';
+
+          // Rótulos do eixo X
+          ctx.fillText('0', transformX(0), transformY(-0.15));
+          ctx.fillText('1', transformX(1), transformY(-0.15));
+          ctx.fillText('x', transformX(1.1), transformY(-0.15));
+
+          // Rótulos do eixo Y
+          ctx.textAlign = 'right';
+          ctx.fillText('1', transformX(-0.05), transformY(1));
+          ctx.fillText('2', transformX(-0.05), transformY(2));
+          ctx.fillText('y', transformX(-0.05), transformY(2.2));
+
+          // Desenhar o contorno do triângulo
+          ctx.beginPath();
+          ctx.moveTo(transformX(0), transformY(0)); // (0,0)
+          ctx.lineTo(transformX(1), transformY(0)); // (1,0)
+          ctx.lineTo(transformX(0), transformY(2)); // (0,2)
+          ctx.closePath();
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Rotular os vértices
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '12px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('(0,0)', transformX(0) - 15, transformY(0) + 15);
+          ctx.fillText('(1,0)', transformX(1) + 15, transformY(0) + 15);
+          ctx.fillText('(0,2)', transformX(0) - 15, transformY(2) - 10);
+
+          // Equações das retas
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#CCCCCC';
+          ctx.fillText('y = 0', transformX(0.5), transformY(0) + 20);
+          ctx.fillText('x = 0', transformX(0) - 35, transformY(1));
+
+          // Equação da reta diagonal y = 2(1-x)
+          ctx.textAlign = 'center';
+          const diagonalMidX = transformX(0.5);
+          const diagonalMidY = transformY(1) - 25;
+          ctx.fillText('y = 2(1-x)', diagonalMidX, diagonalMidY);
+        }
+
+        // Desenhar integração vertical (dy dx)
+        function drawVerticalIntegration() {
+          const currentX = progress;
+
+          if (currentX <= 1) {
+            // Calcular yMax para o valor atual de x
+            const yMax = 2 * (1 - currentX);
+
+            // Retângulo semi-transparente para a área restante
+            ctx.fillStyle = 'rgba(255, 90, 95, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(transformX(currentX), transformY(0));
+            ctx.lineTo(transformX(1), transformY(0));
+            ctx.lineTo(transformX(0), transformY(2));
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.closePath();
+            ctx.fill();
+
+            // Desenhar fatia atual
+            ctx.beginPath();
+            ctx.moveTo(transformX(currentX), transformY(0));
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'rgba(255, 90, 95, 0.8)';
+            ctx.stroke();
+
+            // Desenhar indicador de posição x
+            ctx.fillStyle = '#FF5A5F';
+            ctx.beginPath();
+            ctx.arc(transformX(currentX), transformY(0), 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Valor de x atual
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(
+              `x = ${currentX.toFixed(2)}`,
+              transformX(currentX),
+              transformY(-0.25)
+            );
+
+            // Indicar y_max
+            ctx.fillStyle = '#FF5A5F';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText(
+              `y_max = 2(1-x) = ${yMax.toFixed(2)}`,
+              transformX(1.02),
+              transformY(yMax)
+            );
+
+            // Desenhar seta
+            const arrowX = transformX(1.02);
+            const arrowY = transformY(yMax);
+            ctx.beginPath();
+            ctx.moveTo(arrowX - 5, arrowY);
+            ctx.lineTo(arrowX - 15, arrowY);
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.strokeStyle = '#FF5A5F';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Mostrar a integral
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`∫₀¹ ∫₀²⁽¹⁻ˣ⁾ f(x,y) dy dx`, canvas.width / 2, 30);
+
+            // Indicar progresso da integração
+            ctx.fillStyle = '#FF5A5F';
+            ctx.fillText(
+              `Integrando de y=0 até y=${yMax.toFixed(2)} para x=${currentX.toFixed(2)}`,
+              canvas.width / 2,
+              60
+            );
+          }
+        }
+
+        // Desenhar integração horizontal (dx dy)
+        function drawHorizontalIntegration() {
+          const currentY = progress * 2; // Escalar para cobrir de 0 a 2
+
+          if (currentY <= 2) {
+            // Calcular xMax para o valor atual de y
+            const xMax = 1 - currentY / 2;
+
+            // Retângulo semi-transparente para a área restante
+            ctx.fillStyle = 'rgba(67, 160, 71, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(transformX(0), transformY(currentY));
+            ctx.lineTo(transformX(0), transformY(2));
+            ctx.lineTo(transformX(0), transformY(0));
+            ctx.lineTo(transformX(1), transformY(0));
+            if (xMax > 0) {
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+            }
+            ctx.closePath();
+            ctx.fill();
+
+            // Desenhar fatia atual
+            if (xMax > 0) {
+              ctx.beginPath();
+              ctx.moveTo(transformX(0), transformY(currentY));
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+              ctx.lineWidth = 3;
+              ctx.strokeStyle = 'rgba(67, 160, 71, 0.8)';
+              ctx.stroke();
+
+              // Indicar x_max
+              ctx.fillStyle = '#43A047';
+              ctx.font = '14px Arial';
+              ctx.textAlign = 'left';
+              ctx.fillText(
+                `x_max = 1-y/2 = ${xMax.toFixed(2)}`,
+                transformX(xMax),
+                transformY(currentY) - 10
+              );
+
+              // Desenhar seta
+              const arrowX = transformX(xMax);
+              const arrowY = transformY(currentY) - 15;
+              ctx.beginPath();
+              ctx.moveTo(arrowX, arrowY);
+              ctx.lineTo(arrowX, arrowY + 10);
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+              ctx.strokeStyle = '#43A047';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+
+            // Desenhar indicador de posição y
+            ctx.fillStyle = '#43A047';
+            ctx.beginPath();
+            ctx.arc(transformX(0), transformY(currentY), 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Valor de y atual
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'right';
+            ctx.fillText(
+              `y = ${currentY.toFixed(2)}`,
+              transformX(-0.1),
+              transformY(currentY) + 5
+            );
+
+            // Mostrar a integral
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`∫₀² ∫₀¹⁻ʸ/² f(x,y) dx dy`, canvas.width / 2, 30);
+
+            // Indicar progresso da integração
+            ctx.fillStyle = '#43A047';
+            if (xMax >= 0) {
+              ctx.fillText(
+                `Integrando de x=0 até x=${xMax.toFixed(2)} para y=${currentY.toFixed(2)}`,
+                canvas.width / 2,
+                60
+              );
+            } else {
+              ctx.fillText(
+                `y=${currentY.toFixed(2)} está fora da região`,
+                canvas.width / 2,
+                60
+              );
+            }
+          }
+        }
+
+        // Função de animação principal
+        function animate() {
+          drawBackground();
+
+          if (isVerticalOrder) {
+            drawVerticalIntegration();
+          } else {
+            drawHorizontalIntegration();
+          }
+
+          // Avançar progresso se não pausado
+          if (!isPaused) {
+            progress += 0.0005 * animationSpeed;
+
+            // Reiniciar quando completar
+            if (progress > 1.1) {
+              progress = 0;
+            }
+          }
+
+          animationFrameId = requestAnimationFrame(animate);
+        }
+
+        // Iniciar a animação
+        animate();
+
+        // Detectar quando o slide é visível ou não
+        Reveal.addEventListener('slidechanged', function (event) {
+          // Verificar se o canvas está no slide atual
+          const currentSlide = event.currentSlide;
+          const canvasInCurrentSlide = currentSlide.contains(canvas);
+
+          if (canvasInCurrentSlide) {
+            // Reiniciar a animação se o slide se tornou visível
+            if (!animationFrameId) {
+              animate();
+            }
+          } else {
+            // Parar a animação se o slide não está mais visível
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

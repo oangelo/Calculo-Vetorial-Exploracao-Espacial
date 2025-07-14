@@ -1,0 +1,1878 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cálculo Vetorial: Área e Integral de Superfície</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+    <link rel="stylesheet" href="space-theme.css" />
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+      /* Estilos adicionais para canvas, se necessário, mas priorizar space-theme.css */
+      .visualization-canvas {
+        /* max-width: 700px;
+        max-height: 400px; */ /* space-theme já tem isso */
+        margin: 10px auto; /* Centraliza e adiciona margem */
+      }
+      .info-panel {
+        /* Para exibir informações abaixo da visualização */
+        margin-top: 10px;
+        background: rgba(26, 35, 126, 0.3);
+        padding: 8px;
+        border-radius: 5px;
+        width: auto;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 0.8em;
+        text-align: center;
+      }
+      .flux-legend {
+        font-size: 0.8em;
+        margin-top: 10px;
+        text-align: center;
+      }
+      .visualization-tip {
+        font-size: 0.8em;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 5px;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Área e Integral de Superfície</h1>
+          <h3>Explorando o Espaço através da Matemática</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO GERAL -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico Geral</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Missões Apollo Avançadas (1971-1972)</strong></p>
+            <p>
+              Neste período, as missões Apollo (15, 16 e 17) tornaram-se mais
+              ambiciosas, com estadias mais longas na Lua e o uso do Veículo
+              Lunar Roteador (LRV). A exploração científica da superfície lunar
+              intensificou-se, exigindo maior precisão no planejamento e na
+              engenharia.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Desafios Tecnológicos da Exploração Lunar</strong></p>
+            <p>
+              O design de equipamentos para operar na superfície lunar, como o
+              LRV e os pacotes de experimentos (ALSEP), demandava cálculos
+              precisos de áreas de superfície para análise térmica (dissipação
+              de calor, exposição à radiação solar), distribuição de massa e
+              integridade estrutural. A interação com a poeira lunar e o terreno
+              irregular também impunham desafios que se beneficiavam de
+              modelagem de superfícies. O cálculo de fluxos (radiação, calor)
+              através das superfícies dos módulos e trajes espaciais era vital
+              para a segurança dos astronautas.
+            </p>
+          </div>
+        </section>
+
+        <!-- ====================================== -->
+        <!-- TÓPICO 1: SUPERFÍCIES PARAMETRIZADAS -->
+        <!-- ====================================== -->
+        <section>
+          <!-- Slide 1.1: Conceito Principal -->
+          <section>
+            <h2>Superfícies Parametrizadas</h2>
+            <div class="math-section">
+              <p>
+                Uma superfície \(S\) no espaço tridimensional pode ser descrita
+                por uma função vetorial de dois parâmetros, \(u\) e \(v\):
+              </p>
+              <p>
+                \[ \vec{r}(u,v) = x(u,v)\,\vec{i} + y(u,v)\,\vec{j} +
+                z(u,v)\,\vec{k} \]
+              </p>
+              <p>
+                ou, de forma mais compacta, \( \vec{r}(u,v) = (x(u,v), y(u,v),
+                z(u,v)) \).
+              </p>
+              <p>
+                Os parâmetros \(u\) e \(v\) variam sobre uma região \(D\) no
+                plano \(uv\), chamada domínio dos parâmetros.
+              </p>
+            </div>
+            <div class="math-section">
+              <p>Interpretação geométrica:</p>
+              <ul>
+                <li>
+                  Podemos pensar em \( \vec{r}(u,v) \) como um mapeamento que
+                  "deforma" a região plana \(D\) em uma superfície \(S\) no
+                  espaço \(\mathbb{R}^3\).
+                </li>
+                <li>
+                  Fixando \(u = u_0\), \( \vec{r}(u_0, v) \) descreve uma curva
+                  na superfície (curva de grade \(u\)-constante).
+                </li>
+                <li>
+                  Fixando \(v = v_0\), \( \vec{r}(u, v_0) \) descreve outra
+                  curva na superfície (curva de grade \(v\)-constante).
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 1.2: Exemplo e Contexto Histórico Específico -->
+          <section>
+            <h2>Exemplo: Esfera</h2>
+            <div class="math-section">
+              <p>
+                Uma esfera de raio \(R\) centrada na origem pode ser
+                parametrizada por:
+              </p>
+              <p>
+                \[ \vec{r}(\phi, \theta) = (R\sin\phi\cos\theta,
+                R\sin\phi\sin\theta, R\cos\phi) \]
+              </p>
+              <p>
+                onde \(0 \le \phi \le \pi\) (ângulo polar) e \(0 \le \theta \le
+                2\pi\) (ângulo azimutal).
+              </p>
+            </div>
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p>
+                <strong
+                  >Design de Cápsulas e Tanques (Décadas de 1960-1970)</strong
+                >
+              </p>
+              <p>
+                A forma esférica (ou seções dela) é comum em engenharia espacial
+                devido à sua capacidade de suportar pressão interna
+                uniformemente (tanques de propelente) e, em alguns casos, por
+                suas propriedades aerodinâmicas ou de reentrada (primeiras
+                cápsulas). A parametrização precisa era essencial para modelar e
+                analisar essas estruturas.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 1.3: Visualização -->
+          <section>
+            <h2>Visualização: Superfície Parametrizada (Esfera)</h2>
+            <canvas
+              id="vizParametricSurfaceCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="380"
+            ></canvas>
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="uParamSliderEsfera">Parâmetro \(u (\phi)\):</label>
+                <input
+                  type="range"
+                  id="uParamSliderEsfera"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.5"
+                />
+              </div>
+              <div class="control-slider">
+                <label for="vParamSliderEsfera"
+                  >Parâmetro \(v (\theta)\):</label
+                >
+                <input
+                  type="range"
+                  id="vParamSliderEsfera"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.5"
+                />
+              </div>
+            </div>
+            <p class="visualization-tip">
+              Arraste para rotacionar. Ajuste os sliders para mover o ponto.
+            </p>
+          </section>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- TÓPICO 2: PLANO TANGENTE E VETOR NORMAL -->
+        <!-- ================================================= -->
+        <section>
+          <!-- Slide 2.1: Conceito Principal -->
+          <section>
+            <h2>Plano Tangente e Vetor Normal</h2>
+            <div class="math-section">
+              <p>
+                Os vetores tangentes às curvas de grade são dados pelas
+                derivadas parciais de \(\vec{r}(u,v)\):
+              </p>
+              <p>
+                \[ \vec{r}_u = \frac{\partial \vec{r}}{\partial u} =
+                \left(\frac{\partial x}{\partial u}, \frac{\partial y}{\partial
+                u}, \frac{\partial z}{\partial u}\right) \]
+              </p>
+              <p>
+                \[ \vec{r}_v = \frac{\partial \vec{r}}{\partial v} =
+                \left(\frac{\partial x}{\partial v}, \frac{\partial y}{\partial
+                v}, \frac{\partial z}{\partial v}\right) \]
+              </p>
+              <p>
+                Se \(\vec{r}_u\) e \(\vec{r}_v\) não são paralelos, eles definem
+                o plano tangente à superfície no ponto \(\vec{r}(u,v)\).
+              </p>
+              <p>
+                Um vetor normal (não necessariamente unitário) à superfície é
+                dado pelo produto vetorial:
+              </p>
+              <p>\[ \vec{N} = \vec{r}_u \times \vec{r}_v \]</p>
+              <p>
+                O vetor normal unitário é \(\vec{n} = \frac{\vec{r}_u \times
+                \vec{r}_v}{|\vec{r}_u \times \vec{r}_v|}\), se \(\vec{r}_u
+                \times \vec{r}_v \neq \vec{0}\).
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.2: Interpretação e Contexto -->
+          <section>
+            <h2>Interpretação do Plano Tangente</h2>
+            <div class="math-section">
+              <p>Interpretação física e geométrica:</p>
+              <ul>
+                <li>
+                  O plano tangente é a melhor aproximação linear (plana) da
+                  superfície em um ponto.
+                </li>
+                <li>
+                  O vetor normal indica a direção "para fora" (ou "para dentro")
+                  da superfície, perpendicular a ela.
+                </li>
+                <li>
+                  Essencial para entender como campos de força interagem com
+                  superfícies, ou como a luz reflete.
+                </li>
+              </ul>
+            </div>
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO</div>
+              <p>
+                <strong
+                  >Orientação de Antenas e Painéis Solares (Satélites)</strong
+                >
+              </p>
+              <p>
+                Para satélites em órbita, a orientação correta de antenas (para
+                comunicação com a Terra) e painéis solares (para captação de
+                energia) é crucial. O cálculo do vetor normal à superfície do
+                satélite onde esses componentes estão montados, em relação à
+                Terra ou ao Sol, utiliza esses conceitos. As missões Apollo
+                avançadas também dependiam de comunicação precisa e energia.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2.3: Visualização -->
+          <section>
+            <h2>Visualização: Plano Tangente (Paraboloide)</h2>
+            <canvas
+              id="vizTangentPlaneCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="380"
+            ></canvas>
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="tangentXSlider">Posição X (u):</label>
+                <input
+                  type="range"
+                  id="tangentXSlider"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.5"
+                />
+              </div>
+              <div class="control-slider">
+                <label for="tangentYSlider">Posição Y (v):</label>
+                <input
+                  type="range"
+                  id="tangentYSlider"
+                  min="0"
+                  max="1"
+                  step="0.01"
+                  value="0.5"
+                />
+              </div>
+            </div>
+            <div class="info-panel" id="tangentInfoPanel">
+              Ponto: (0,0,0), Normal: (0,0,1)
+            </div>
+            <p class="visualization-tip">
+              Arraste para rotacionar. Ajuste os sliders para mover o ponto de
+              tangência.
+            </p>
+          </section>
+        </section>
+
+        <!-- ====================================== -->
+        <!-- TÓPICO 3: ÁREA DE SUPERFÍCIE -->
+        <!-- ====================================== -->
+        <section>
+          <!-- Slide 3.1: Conceito Principal -->
+          <section>
+            <h2>Área de Superfície</h2>
+            <div class="math-section">
+              <p>
+                Um pequeno retângulo no plano \(uv\) com lados \(du\) e \(dv\) é
+                mapeado para um pequeno paralelogramo na superfície \(S\) com
+                lados vetoriais \(\vec{r}_u du\) e \(\vec{r}_v dv\).
+              </p>
+              <p>
+                A área deste paralelogramo infinitesimal, \(dS\), é dada pela
+                magnitude do seu produto vetorial:
+              </p>
+              <p>
+                \[ dS = |\vec{r}_u du \times \vec{r}_v dv| = |\vec{r}_u \times
+                \vec{r}_v| \,du\,dv \]
+              </p>
+              <p>
+                A área total da superfície \(S\) é obtida integrando \(dS\)
+                sobre a região \(D\) no plano \(uv\):
+              </p>
+              <p>\[ A(S) = \iint_D |\vec{r}_u \times \vec{r}_v| \,du\,dv \]</p>
+            </div>
+          </section>
+
+          <!-- Slide 3.2: Exemplo: Área da Esfera -->
+          <section>
+            <h2>Problema: Área da Esfera</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcular a área de uma esfera de raio
+                \(R\).
+              </p>
+              <p>
+                Parametrização: \( \vec{r}(\phi, \theta) = (R\sin\phi\cos\theta,
+                R\sin\phi\sin\theta, R\cos\phi) \), com \(0 \le \phi \le \pi\) e
+                \(0 \le \theta \le 2\pi\).
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Sub-problema 1 (Vetor Normal)</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Passo 1:</strong> Calcular \(\vec{r}_\phi\) e
+                \(\vec{r}_\theta\).
+              </p>
+              <p>
+                \[ \vec{r}_\phi = (R\cos\phi\cos\theta, R\cos\phi\sin\theta,
+                -R\sin\phi) \]
+              </p>
+              <p>
+                \[ \vec{r}_\theta = (-R\sin\phi\sin\theta, R\sin\phi\cos\theta,
+                0) \]
+              </p>
+              <p>
+                <strong>Passo 2:</strong> Calcular o produto vetorial
+                \(\vec{r}_\phi \times \vec{r}_\theta\).
+              </p>
+              <p>
+                \[ \vec{r}_\phi \times \vec{r}_\theta =
+                (R^2\sin^2\phi\cos\theta, R^2\sin^2\phi\sin\theta,
+                R^2\sin\phi\cos\phi) \]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Sub-problema 2 (Magnitude e Integral)</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Passo 3:</strong> Calcular a magnitude \(|\vec{r}_\phi
+                \times \vec{r}_\theta|\).
+              </p>
+              <p>
+                \[ |\vec{r}_\phi \times \vec{r}_\theta|^2 =
+                (R^2\sin^2\phi\cos\theta)^2 + (R^2\sin^2\phi\sin\theta)^2 +
+                (R^2\sin\phi\cos\phi)^2 \] \[ = R^4\sin^4\phi(\cos^2\theta +
+                \sin^2\theta) + R^4\sin^2\phi\cos^2\phi \] \[ = R^4\sin^4\phi +
+                R^4\sin^2\phi\cos^2\phi = R^4\sin^2\phi(\sin^2\phi + \cos^2\phi)
+                = R^4\sin^2\phi \]
+              </p>
+              <p>
+                Como \(0 \le \phi \le \pi\), \(\sin\phi \ge 0\), então
+                \(|\vec{r}_\phi \times \vec{r}_\theta| = R^2\sin\phi\).
+              </p>
+              <p><strong>Passo 4:</strong> Calcular a integral de área.</p>
+              <p>
+                \[ A(S) = \int_0^{2\pi} \int_0^\pi R^2\sin\phi \,d\phi\,d\theta
+                = R^2 \int_0^{2\pi} [-\cos\phi]_0^\pi \,d\theta \] \[ = R^2
+                \int_0^{2\pi} (1 - (-1)) \,d\theta = R^2 \int_0^{2\pi} 2
+                \,d\theta = 2R^2 [ \theta ]_0^{2\pi} = 4\pi R^2 \]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Conclusão: Área da Esfera</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Resultado:</strong> A área da superfície de uma esfera
+                de raio \(R\) é \(A(S) = 4\pi R^2 \text{ unidades de área}^2\).
+              </p>
+              <p>
+                Este resultado é consistente com a fórmula geométrica conhecida.
+              </p>
+              <p>
+                <strong>Implicação Espacial:</strong> Para uma nave esférica ou
+                um tanque de combustível esférico de raio \(R\), esta fórmula dá
+                a área total exposta ao ambiente espacial ou a área de material
+                necessária para sua construção.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3.3: Visualização -->
+          <section>
+            <h2>Visualização: Elementos de Área (Esfera)</h2>
+            <canvas
+              id="vizSurfaceAreaCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="380"
+            ></canvas>
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="subdivSliderEsfera">Subdivisões:</label>
+                <input
+                  type="range"
+                  id="subdivSliderEsfera"
+                  min="4"
+                  max="30"
+                  step="1"
+                  value="10"
+                />
+              </div>
+            </div>
+            <div class="info-panel" id="surfaceAreaInfoPanel">
+              Área Aprox.: 0.00, Erro: 0.00%
+            </div>
+            <p class="visualization-tip">
+              Arraste para rotacionar. Aumente subdivisões para melhor
+              aproximação da área.
+            </p>
+          </section>
+        </section>
+
+        <!-- ================================================= -->
+        <!-- TÓPICO 4: INTEGRAL DE SUPERFÍCIE E FLUXO -->
+        <!-- ================================================= -->
+        <section>
+          <!-- Slide 4.1: Conceito Principal (Campo Escalar) -->
+          <section>
+            <h2>Integral de Superfície de Campo Escalar</h2>
+            <div class="math-section">
+              <p>
+                Se \(f(x,y,z)\) é um campo escalar (uma função que atribui um
+                número a cada ponto no espaço), sua integral sobre a superfície
+                \(S\) é:
+              </p>
+              <p>
+                \[ \iint_S f(x,y,z) \,dS = \iint_D f(\vec{r}(u,v)) |\vec{r}_u
+                \times \vec{r}_v| \,du\,dv \]
+              </p>
+              <p>
+                Interpretação: Se \(f\) representa a densidade de massa
+                superficial, a integral dá a massa total da superfície. Se
+                \(f=1\), recuperamos a área da superfície.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.2: Conceito Principal (Campo Vetorial - Fluxo) -->
+          <section>
+            <h2>Integral de Superfície de Campo Vetorial (Fluxo)</h2>
+            <div class="math-section">
+              <p>
+                Se \(\vec{F}(x,y,z)\) é um campo vetorial, o fluxo de
+                \(\vec{F}\) através da superfície \(S\) (orientada) é:
+              </p>
+              <p>
+                \[ \iint_S \vec{F} \cdot d\vec{S} = \iint_S \vec{F} \cdot
+                \vec{n} \,dS = \iint_D \vec{F}(\vec{r}(u,v)) \cdot (\vec{r}_u
+                \times \vec{r}_v) \,du\,dv \]
+              </p>
+              <p>
+                Aqui, \(d\vec{S} = \vec{n} \,dS = (\vec{r}_u \times \vec{r}_v)
+                \,du\,dv\) é o vetor elemento de área, e \(\vec{n}\) é o vetor
+                normal unitário que define a orientação da superfície.
+              </p>
+              <p>
+                Interpretação: O fluxo mede a quantidade "líquida" do campo
+                vetorial que atravessa a superfície na direção de \(\vec{n}\).
+              </p>
+            </div>
+            <div class="history-section">
+              <div class="history-label">CONTEXTO</div>
+              <p><strong>Radiação e Transferência de Calor (Apollo)</strong></p>
+              <p>
+                Durante as missões Apollo, especialmente nas atividades
+                extraveiculares na Lua, os astronautas e equipamentos estavam
+                expostos à intensa radiação solar e a grandes variações de
+                temperatura. Calcular o fluxo de radiação e o fluxo de calor
+                através das superfícies dos trajes espaciais e do Módulo Lunar
+                era crucial para o projeto de sistemas de proteção térmica e de
+                suporte à vida.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.3: Problema Fluxo -->
+          <section>
+            <h2>Problema: Fluxo Através de Paraboloide</h2>
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Calcule o fluxo do campo vetorial
+                \(\vec{F}(x,y,z) = z\,\vec{k}\) através da porção do paraboloide
+                \(z = 1 - x^2 - y^2\) que está acima do plano \(xy\) (\(z \ge
+                0\)), com orientação para cima.
+              </p>
+              <p>
+                <strong>Contexto Espacial (Simplificado):</strong> Imagine que
+                \(\vec{F}\) representa um fluxo de partículas do espaço e o
+                paraboloide é a antena de um radiotelescópio na Lua. Queremos
+                saber quantas partículas atingem a antena.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Sub-problema 1 (Parametrização)</h2>
+            <div class="compact-solution">
+              <p><strong>Passo 1:</strong> Parametrizar a superfície.</p>
+              <p>Usamos \(x=u\) e \(y=v\). Então \(z = 1 - u^2 - v^2\).</p>
+              <p>\[ \vec{r}(u,v) = (u, v, 1 - u^2 - v^2) \]</p>
+              <p>
+                O domínio \(D\) é o disco \(u^2+v^2 \le 1\) no plano \(uv\).
+              </p>
+              <p>
+                <strong>Passo 2:</strong> Calcular \(\vec{r}_u\) e
+                \(\vec{r}_v\).
+              </p>
+              <p>\[ \vec{r}_u = (1, 0, -2u) \]</p>
+              <p>\[ \vec{r}_v = (0, 1, -2v) \]</p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Sub-problema 2 (Normal e Fluxo)</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Passo 3:</strong> Calcular \(\vec{r}_u \times
+                \vec{r}_v\).
+              </p>
+              <p>
+                \[ \vec{r}_u \times \vec{r}_v = \begin{vmatrix} \vec{i} &
+                \vec{j} & \vec{k} \\ 1 & 0 & -2u \\ 0 & 1 & -2v \end{vmatrix} =
+                (2u, 2v, 1) \]
+              </p>
+              <p>
+                Este vetor aponta para cima (componente \(k\) positiva), que é a
+                orientação desejada.
+              </p>
+              <p>
+                <strong>Passo 4:</strong> Avaliar \(\vec{F}\) na superfície:
+                \(\vec{F}(\vec{r}(u,v)) = (1-u^2-v^2)\vec{k} = (0,0,
+                1-u^2-v^2)\).
+              </p>
+              <p>
+                <strong>Passo 5:</strong> Calcular \(\vec{F} \cdot (\vec{r}_u
+                \times \vec{r}_v)\).
+              </p>
+              <p>
+                \[ \vec{F} \cdot (\vec{r}_u \times \vec{r}_v) = (0,0, 1-u^2-v^2)
+                \cdot (2u, 2v, 1) = 1 - u^2 - v^2 \]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Sub-problema 3 (Integral)</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Passo 6:</strong> Calcular a integral de fluxo sobre
+                \(D\).
+              </p>
+              <p>\[ \text{Fluxo} = \iint_D (1 - u^2 - v^2) \,dA \]</p>
+              <p>
+                Convertendo para coordenadas polares no plano \(uv\): \(u =
+                r\cos\theta, v = r\sin\theta, dA = r\,dr\,d\theta\). O domínio
+                \(D\) é \(0 \le r \le 1, 0 \le \theta \le 2\pi\).
+              </p>
+              <p>
+                \[ \text{Fluxo} = \int_0^{2\pi} \int_0^1 (1 - r^2) r
+                \,dr\,d\theta = \int_0^{2\pi} \int_0^1 (r - r^3) \,dr\,d\theta
+                \] \[ = \int_0^{2\pi} \left[ \frac{r^2}{2} - \frac{r^4}{4}
+                \right]_0^1 \,d\theta = \int_0^{2\pi} \left(\frac{1}{2} -
+                \frac{1}{4}\right) \,d\theta = \int_0^{2\pi} \frac{1}{4}
+                \,d\theta \] \[ = \frac{1}{4} [\theta]_0^{2\pi} = \frac{1}{4}
+                (2\pi) = \frac{\pi}{2} \]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Conclusão: Fluxo pelo Paraboloide</h2>
+            <div class="compact-solution">
+              <p>
+                <strong>Resultado:</strong> O fluxo do campo vetorial
+                \(\vec{F}(x,y,z) = z\,\vec{k}\) através da porção do paraboloide
+                é \(\frac{\pi}{2}\).
+              </p>
+              <p>
+                <strong
+                  >Significado Prático (no contexto espacial
+                  simplificado):</strong
+                >
+                Se \(\vec{F}\) representasse a densidade de fluxo de partículas
+                (partículas por unidade de área por unidade de tempo), então
+                \(\frac{\pi}{2}\) seria a taxa total de partículas interceptadas
+                pela antena por unidade de tempo.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 4.4: Visualização -->
+          <section>
+            <h2>Visualização: Fluxo Através de Superfície</h2>
+            <canvas
+              id="vizFluxCanvas"
+              class="visualization-canvas"
+              width="700"
+              height="380"
+            ></canvas>
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="fieldIntensitySlider">Intensidade Campo Z:</label>
+                <input
+                  type="range"
+                  id="fieldIntensitySlider"
+                  min="-1.5"
+                  max="1.5"
+                  step="0.1"
+                  value="1"
+                />
+              </div>
+              <div class="control-slider">
+                <label for="fieldCurlSlider">Componente X/Y (Curl):</label>
+                <input
+                  type="range"
+                  id="fieldCurlSlider"
+                  min="-1"
+                  max="1"
+                  step="0.1"
+                  value="0"
+                />
+              </div>
+            </div>
+            <div class="info-panel" id="fluxInfoPanel">Fluxo Aprox.: 0.00</div>
+            <div class="flux-legend">
+              Cores: <span style="color: #43a047">Positivo (saindo)</span> /
+              <span style="color: #e53935">Negativo (entrando)</span> /
+              <span style="color: #1e88e5">Tangencial</span>
+            </div>
+            <p class="visualization-tip">
+              Arraste para rotacionar. Ajuste sliders para alterar o campo
+              vetorial.
+            </p>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide A.1: Aplicação Histórica -->
+          <section>
+            <h2>Aplicação Histórica</h2>
+            <div class="math-section">
+              <p>
+                Os conceitos de área e integral de superfície são fundamentais
+                para:
+              </p>
+              <ul>
+                <li>Modelagem de formas complexas de naves e componentes.</li>
+                <li>Cálculo de forças (pressão, arrasto) sobre superfícies.</li>
+                <li>
+                  Análise de transferência de calor e exposição à radiação.
+                </li>
+                <li>
+                  Determinação de propriedades de materiais (ex: densidade
+                  superficial).
+                </li>
+              </ul>
+            </div>
+
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+              <p>
+                <strong
+                  >Missões Apollo Avançadas (1971-1972) e Skylab
+                  (1973-1974)</strong
+                >
+              </p>
+              <p>
+                O design do Veículo Lunar Roteador (LRV) exigiu cálculos de área
+                para estimar o acúmulo de poeira lunar e a dissipação de calor
+                de seus componentes. Para a estação espacial Skylab, a análise
+                da área de seus grandes painéis solares foi crucial para prever
+                a geração de energia e o arrasto atmosférico residual. O reparo
+                de um painel solar danificado do Skylab e a instalação de um
+                "guarda-sol" improvisado envolveram considerações sobre áreas e
+                forças em superfícies no vácuo.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide A.2: Aplicação Prática Moderna -->
+          <section>
+            <h2>Aplicação Prática Moderna</h2>
+            <div class="dual-panel">
+              <div class="math-section">
+                <p>Aplicações contemporâneas:</p>
+                <ul>
+                  <li>
+                    Design de antenas de satélite com formas complexas para
+                    otimizar a recepção/transmissão de sinais.
+                  </li>
+                  <li>
+                    Modelagem de escudos térmicos para reentrada de naves (ex:
+                    SpaceX Starship).
+                  </li>
+                  <li>
+                    Análise de fluxo de plasma ao redor de satélites em órbitas
+                    baixas.
+                  </li>
+                  <li>
+                    Simulação de impacto de micrometeoroides e detritos
+                    espaciais.
+                  </li>
+                  <li>Desenvolvimento de velas solares para propulsão.</li>
+                </ul>
+              </div>
+              <div>
+                <canvas
+                  id="vizModernAppCanvas"
+                  class="visualization-canvas"
+                  width="350"
+                  height="250"
+                ></canvas>
+                <p class="visualization-tip" style="font-size: 0.7em">
+                  Simulação simplificada de fluxo (ex: vento solar) ao redor de
+                  um satélite.
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      // Utilitários para manipulação 3D (simplificado)
+      class Matrix3D {
+        static rotateX(angle) {
+          const c = Math.cos(angle),
+            s = Math.sin(angle);
+          return [1, 0, 0, 0, c, -s, 0, s, c];
+        }
+        static rotateY(angle) {
+          const c = Math.cos(angle),
+            s = Math.sin(angle);
+          return [c, 0, s, 0, 1, 0, -s, 0, c];
+        }
+        static multiply(m1, m2) {
+          const r = Array(9).fill(0);
+          for (let i = 0; i < 3; i++)
+            for (let j = 0; j < 3; j++)
+              for (let k = 0; k < 3; k++)
+                r[i * 3 + j] += m1[i * 3 + k] * m2[k * 3 + j];
+          return r;
+        }
+        static transform(m, p) {
+          const [x, y, z] = p;
+          return [
+            m[0] * x + m[1] * y + m[2] * z,
+            m[3] * x + m[4] * y + m[5] * z,
+            m[6] * x + m[7] * y + m[8] * z,
+          ];
+        }
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO: SUPERFÍCIE PARAMETRIZADA (ESFERA)
+      // =============================================
+      (function () {
+        let canvas, ctx, uParamSlider, vParamSlider;
+        let uParam = 0.5,
+          vParam = 0.5;
+        let rotationX = Math.PI / 6,
+          rotationY = Math.PI / 4;
+        let isDragging = false,
+          lastX,
+          lastY;
+        let animationId = null;
+
+        const sphereRadius = 1;
+        const uSteps = 20,
+          vSteps = 20;
+
+        function sphereFunc(uVal, vVal) {
+          // uVal for phi (0 to PI), vVal for theta (0 to 2PI)
+          const phi = uVal * Math.PI;
+          const theta = vVal * 2 * Math.PI;
+          return [
+            sphereRadius * Math.sin(phi) * Math.cos(theta),
+            sphereRadius * Math.sin(phi) * Math.sin(theta),
+            sphereRadius * Math.cos(phi),
+          ];
+        }
+
+        function project(point) {
+          const scale = Math.min(canvas.width, canvas.height) * 0.3;
+          const [x, y, z] = point;
+          const perspective = 1.5;
+          const zFactor = perspective / (perspective - z / 2); // Adjusted for better perspective
+          return [
+            canvas.width / 2 + x * scale * zFactor,
+            canvas.height / 2 - y * scale * zFactor,
+          ];
+        }
+
+        function drawVisualization() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const rotMat = Matrix3D.multiply(
+            Matrix3D.rotateX(rotationX),
+            Matrix3D.rotateY(rotationY)
+          );
+
+          // Draw grid lines
+          for (let i = 0; i <= uSteps; i++) {
+            // u-lines (phi varies, theta constant)
+            ctx.beginPath();
+            const uVal = i / uSteps;
+            for (let j = 0; j <= vSteps; j++) {
+              const vVal = j / vSteps;
+              const p3D = sphereFunc(uVal, vVal);
+              const rotatedP = Matrix3D.transform(rotMat, p3D);
+              const [px, py] = project(rotatedP);
+              if (j === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.strokeStyle = 'rgba(100, 181, 246, 0.5)';
+            ctx.stroke();
+          }
+          for (let j = 0; j <= vSteps; j++) {
+            // v-lines (theta varies, phi constant)
+            ctx.beginPath();
+            const vVal = j / vSteps;
+            for (let i = 0; i <= uSteps; i++) {
+              const uVal = i / uSteps;
+              const p3D = sphereFunc(uVal, vVal);
+              const rotatedP = Matrix3D.transform(rotMat, p3D);
+              const [px, py] = project(rotatedP);
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.strokeStyle = 'rgba(100, 181, 246, 0.5)';
+            ctx.stroke();
+          }
+
+          // Highlighted point and lines
+          const currentP3D = sphereFunc(uParam, vParam);
+          const rotatedCurrentP = Matrix3D.transform(rotMat, currentP3D);
+          const [hx, hy] = project(rotatedCurrentP);
+
+          ctx.fillStyle = 'var(--highlight-color)'; // #ff5a5f
+          ctx.beginPath();
+          ctx.arc(hx, hy, 5, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // Highlight u-curve (phi varies, theta fixed)
+          ctx.beginPath();
+          for (let i = 0; i <= uSteps; i++) {
+            const uVal = i / uSteps;
+            const p3D = sphereFunc(uVal, vParam); // vParam is fixed
+            const rotatedP = Matrix3D.transform(rotMat, p3D);
+            const [px, py] = project(rotatedP);
+            if (i === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.strokeStyle = 'var(--highlight-color)';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Highlight v-curve (theta varies, phi fixed)
+          ctx.beginPath();
+          for (let j = 0; j <= vSteps; j++) {
+            const vVal = j / vSteps;
+            const p3D = sphereFunc(uParam, vVal); // uParam is fixed
+            const rotatedP = Matrix3D.transform(rotMat, p3D);
+            const [px, py] = project(rotatedP);
+            if (j === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          }
+          ctx.strokeStyle = 'var(--highlight-color)';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          ctx.lineWidth = 1;
+        }
+
+        function updateFromSliders() {
+          uParam = parseFloat(uParamSlider.value);
+          vParam = parseFloat(vParamSlider.value);
+          drawVisualization();
+        }
+
+        function setupEventListeners() {
+          uParamSlider.addEventListener('input', updateFromSliders);
+          vParamSlider.addEventListener('input', updateFromSliders);
+
+          canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+          });
+          canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              rotationY += (e.clientX - lastX) * 0.01;
+              rotationX += (e.clientY - lastY) * 0.01;
+              lastX = e.clientX;
+              lastY = e.clientY;
+              drawVisualization();
+            }
+          });
+          canvas.addEventListener('mouseup', () => (isDragging = false));
+          canvas.addEventListener('mouseleave', () => (isDragging = false));
+        }
+
+        function initVisualization() {
+          canvas = document.getElementById('vizParametricSurfaceCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          uParamSlider = document.getElementById('uParamSliderEsfera');
+          vParamSlider = document.getElementById('vParamSliderEsfera');
+
+          if (!uParamSlider || !vParamSlider) {
+            console.error('Sliders for Esfera not found');
+            return;
+          }
+
+          uParamSlider.value = uParam; // Restore slider value
+          vParamSlider.value = vParam;
+
+          setupEventListeners();
+          drawVisualization();
+        }
+
+        function cleanupVisualization() {
+          if (animationId) cancelAnimationFrame(animationId);
+          animationId = null;
+          if (uParamSlider)
+            uParamSlider.removeEventListener('input', updateFromSliders);
+          if (vParamSlider)
+            vParamSlider.removeEventListener('input', updateFromSliders);
+          // Basic mouse listeners don't strictly need removal if the canvas is removed/re-added,
+          // but it's good practice for more complex listeners. For now, this is okay.
+          isDragging = false;
+        }
+
+        window.vizParametricSurface = {
+          init: initVisualization,
+          cleanup: cleanupVisualization,
+        };
+      })();
+
+      // =============================================
+      // VISUALIZAÇÃO: PLANO TANGENTE (PARABOLOIDE)
+      // =============================================
+      (function () {
+        let canvas, ctx, xSlider, ySlider, infoPanel;
+        let posX = 0.5,
+          posY = 0.5; // Normalized 0-1
+        let rotationX = Math.PI / 6,
+          rotationY = Math.PI / 4;
+        let isDragging = false,
+          lastX,
+          lastY;
+        let animationId = null;
+
+        const surfaceScale = 2; // Real coordinates from -surfaceScale to +surfaceScale
+
+        function surface(x, y) {
+          return 0.5 * (x * x + y * y);
+        } // Paraboloid z = 0.5(x^2+y^2)
+        function dzdx(x, y) {
+          return x;
+        }
+        function dzdy(x, y) {
+          return y;
+        }
+
+        function project(point) {
+          const scale = Math.min(canvas.width, canvas.height) * 0.25;
+          const [x, y, z] = point;
+          const perspective = 2.5;
+          const zFactor = perspective / (perspective - z / 2);
+          return [
+            canvas.width / 2 + x * scale * zFactor,
+            canvas.height / 2 - y * scale * zFactor,
+          ];
+        }
+
+        function drawVisualization() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const rotMat = Matrix3D.multiply(
+            Matrix3D.rotateX(rotationX),
+            Matrix3D.rotateY(rotationY)
+          );
+
+          const xReal = (posX - 0.5) * 2 * surfaceScale; // Map 0-1 to -surfaceScale to +surfaceScale
+          const yReal = (posY - 0.5) * 2 * surfaceScale;
+          const zReal = surface(xReal, yReal);
+
+          const normal_dx = -dzdx(xReal, yReal); // For z=f(x,y), normal is (-fx, -fy, 1) or (fx, fy, -1)
+          const normal_dy = -dzdy(xReal, yReal); // We use (2u, 2v, 1) type for upward normal from r(u,v)=(u,v,f(u,v))
+          // So, dx = partial_x f, dy = partial_y f. normal is (dx, dy, -1) for downward or (-dx, -dy, 1) for upward.
+          // My r_u = (1,0,dzdx), r_v = (0,1,dzdy). r_u x r_v = (-dzdx, -dzdy, 1)
+
+          const tan_plane_z0 = zReal;
+          const tan_plane_dx = dzdx(xReal, yReal);
+          const tan_plane_dy = dzdy(xReal, yReal);
+
+          // Draw surface grid
+          const gridSize = 15;
+          const step = (2 * surfaceScale) / gridSize;
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.4)';
+          ctx.lineWidth = 1;
+          for (let i = 0; i <= gridSize; i++) {
+            let x = -surfaceScale + i * step;
+            ctx.beginPath();
+            for (let j = 0; j <= gridSize; j++) {
+              let y = -surfaceScale + j * step;
+              let z = surface(x, y);
+              let rotatedP = Matrix3D.transform(rotMat, [x, y, z]);
+              let [px, py] = project(rotatedP);
+              if (j === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+            ctx.beginPath();
+            for (let j = 0; j <= gridSize; j++) {
+              let y = -surfaceScale + j * step;
+              // swap x and y for the other set of grid lines
+              let z = surface(y, x); // This assumes x becomes the first param, y the second
+              let rotatedP = Matrix3D.transform(rotMat, [y, x, z]); // This is incorrect, x should be fixed.
+              // Correct approach: fix y, iterate x
+              let z_corr = surface(x, y); // x is fixed from outer loop, y varies in inner loop
+              let rotatedP_corr = Matrix3D.transform(rotMat, [
+                y,
+                x,
+                surface(y, x),
+              ]); // No, should be [x_fixed, y_iter, z_iter]
+              // The first loop draws lines of constant x. The second loop should draw lines of constant y.
+            }
+            //ctx.stroke(); // This part needs fix.
+          }
+          for (let j = 0; j <= gridSize; j++) {
+            // Lines of constant Y
+            let y = -surfaceScale + j * step;
+            ctx.beginPath();
+            for (let i = 0; i <= gridSize; i++) {
+              let x = -surfaceScale + i * step;
+              let z = surface(x, y);
+              let rotatedP = Matrix3D.transform(rotMat, [x, y, z]);
+              let [px, py] = project(rotatedP);
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+          }
+
+          // Draw tangent plane (small patch)
+          const planePatchSize = surfaceScale * 0.5;
+          ctx.fillStyle = 'rgba(255, 90, 95, 0.3)'; // highlight color, semi-transparent
+          ctx.beginPath();
+          let planePoints = [
+            [xReal - planePatchSize, yReal - planePatchSize],
+            [xReal + planePatchSize, yReal - planePatchSize],
+            [xReal + planePatchSize, yReal + planePatchSize],
+            [xReal - planePatchSize, yReal + planePatchSize],
+          ];
+          planePoints.forEach((p, idx) => {
+            let pz =
+              tan_plane_z0 +
+              tan_plane_dx * (p[0] - xReal) +
+              tan_plane_dy * (p[1] - yReal);
+            let rotatedP = Matrix3D.transform(rotMat, [p[0], p[1], pz]);
+            let [px, py] = project(rotatedP);
+            if (idx === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
+          });
+          ctx.closePath();
+          ctx.fill();
+
+          // Draw normal vector
+          const normalVecEnd = [
+            xReal - tan_plane_dx * 0.5,
+            yReal - tan_plane_dy * 0.5,
+            zReal + 1 * 0.5,
+          ]; // (r_u x r_v) scaled
+          let rotatedStart = Matrix3D.transform(rotMat, [xReal, yReal, zReal]);
+          let rotatedEnd = Matrix3D.transform(rotMat, normalVecEnd);
+          let [sx, sy] = project(rotatedStart);
+          let [ex, ey] = project(rotatedEnd);
+          ctx.beginPath();
+          ctx.moveTo(sx, sy);
+          ctx.lineTo(ex, ey);
+          ctx.strokeStyle = 'var(--vector-force)'; // yellow
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          // Arrow head for normal
+          let angle = Math.atan2(ey - sy, ex - sx);
+          ctx.beginPath();
+          ctx.moveTo(ex, ey);
+          ctx.lineTo(
+            ex - 8 * Math.cos(angle - Math.PI / 6),
+            ey - 8 * Math.sin(angle - Math.PI / 6)
+          );
+          ctx.lineTo(
+            ex - 8 * Math.cos(angle + Math.PI / 6),
+            ey - 8 * Math.sin(angle + Math.PI / 6)
+          );
+          ctx.closePath();
+          ctx.fillStyle = 'var(--vector-force)';
+          ctx.fill();
+
+          // Point of tangency
+          ctx.fillStyle = 'var(--highlight-color)';
+          ctx.beginPath();
+          ctx.arc(sx, sy, 5, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.lineWidth = 1;
+
+          if (infoPanel) {
+            infoPanel.innerHTML = `Ponto: (${xReal.toFixed(2)}, ${yReal.toFixed(2)}, ${zReal.toFixed(2)})<br>Normal ~ (${(-tan_plane_dx).toFixed(2)}, ${(-tan_plane_dy).toFixed(2)}, 1.00)`;
+          }
+        }
+
+        function updateFromSliders() {
+          posX = parseFloat(xSlider.value);
+          posY = parseFloat(ySlider.value);
+          drawVisualization();
+        }
+
+        function setupEventListeners() {
+          xSlider.addEventListener('input', updateFromSliders);
+          ySlider.addEventListener('input', updateFromSliders);
+          canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+          });
+          canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              rotationY += (e.clientX - lastX) * 0.01;
+              rotationX += (e.clientY - lastY) * 0.01;
+              lastX = e.clientX;
+              lastY = e.clientY;
+              drawVisualization();
+            }
+          });
+          canvas.addEventListener('mouseup', () => (isDragging = false));
+          canvas.addEventListener('mouseleave', () => (isDragging = false));
+        }
+
+        function initVisualization() {
+          canvas = document.getElementById('vizTangentPlaneCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          xSlider = document.getElementById('tangentXSlider');
+          ySlider = document.getElementById('tangentYSlider');
+          infoPanel = document.getElementById('tangentInfoPanel');
+
+          if (!xSlider || !ySlider || !infoPanel) {
+            console.error('Elements for Tangent Plane viz not found');
+            return;
+          }
+
+          xSlider.value = posX;
+          ySlider.value = posY;
+
+          setupEventListeners();
+          drawVisualization();
+        }
+        function cleanupVisualization() {
+          if (animationId) cancelAnimationFrame(animationId);
+          animationId = null;
+          if (xSlider) xSlider.removeEventListener('input', updateFromSliders);
+          if (ySlider) ySlider.removeEventListener('input', updateFromSliders);
+          isDragging = false;
+        }
+        window.vizTangentPlane = {
+          init: initVisualization,
+          cleanup: cleanupVisualization,
+        };
+      })();
+
+      // =============================================
+      // VISUALIZAÇÃO: ÁREA DE SUPERFÍCIE (ESFERA)
+      // =============================================
+      (function () {
+        let canvas, ctx, subdivSlider, infoPanel;
+        let subdivisions = 10;
+        let rotationX = Math.PI / 6,
+          rotationY = Math.PI / 4;
+        let isDragging = false,
+          lastX,
+          lastY;
+        let animationId = null;
+
+        const sphereRadius = 1;
+        const theoreticalArea = 4 * Math.PI * sphereRadius * sphereRadius;
+
+        function sphereFunc(u, v) {
+          // u: phi (0-1 -> 0-PI), v: theta (0-1 -> 0-2PI)
+          const phi = u * Math.PI;
+          const theta = v * 2 * Math.PI;
+          return [
+            sphereRadius * Math.sin(phi) * Math.cos(theta),
+            sphereRadius * Math.sin(phi) * Math.sin(theta),
+            sphereRadius * Math.cos(phi),
+          ];
+        }
+        // Magnitude of r_u x r_v for sphere: R^2 sin(phi)
+        // Here u corresponds to phi, so R^2 sin(u*PI)
+        // dS = R^2 sin(u*PI) * (d(u*PI)) * (d(v*2PI)) = R^2 sin(u*PI) * PI * 2PI du dv
+        // No, dS = |r_u x r_v| du dv. For sphere, |r_phi x r_theta| = R^2 sin(phi).
+        // So dS = R^2 sin(phi) dphi dtheta.
+        // If u maps to phi/PI and v maps to theta/(2PI), then dphi = PI du, dtheta = 2PI dv
+        // Area of patch (u_mid, v_mid) is roughly R^2 sin(u_mid*PI) * (PI * delta_u) * (2PI * delta_v)
+        // This is incorrect. Area of patch is |r_u x r_v| * delta_u * delta_v
+        // For our parametrization u in [0,1] for phi, v in [0,1] for theta:
+        // r_u: derivative wrt u (phi param)
+        // r_v: derivative wrt v (theta param)
+        // r_phi = d/dphi, r_theta = d/dtheta
+        // r_u = dr/dphi * dphi/du = r_phi * PI
+        // r_v = dr/dtheta * dtheta/dv = r_theta * 2PI
+        // |r_u x r_v| = | (PI * r_phi) x (2PI * r_theta) | = 2*PI^2 * |r_phi x r_theta| = 2*PI^2 * R^2 sin(phi)
+        // This is the term to integrate.
+
+        function project(point) {
+          const scale = Math.min(canvas.width, canvas.height) * 0.3;
+          const [x, y, z] = point;
+          const perspective = 1.5;
+          const zFactor = perspective / (perspective - z / 2);
+          return [
+            canvas.width / 2 + x * scale * zFactor,
+            canvas.height / 2 - y * scale * zFactor,
+          ];
+        }
+
+        function drawVisualization() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const rotMat = Matrix3D.multiply(
+            Matrix3D.rotateX(rotationX),
+            Matrix3D.rotateY(rotationY)
+          );
+
+          let approximatedArea = 0;
+          const du = 1 / subdivisions;
+          const dv = 1 / subdivisions;
+
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              const u1 = i * du;
+              const v1 = j * dv;
+              const u2 = (i + 1) * du;
+              const v2 = (j + 1) * dv;
+              const uMid = (u1 + u2) / 2; // Midpoint for phi parameter
+
+              const p1 = sphereFunc(u1, v1);
+              const p2 = sphereFunc(u2, v1);
+              const p3 = sphereFunc(u2, v2);
+              const p4 = sphereFunc(u1, v2);
+
+              const patchPoints = [p1, p2, p3, p4]
+                .map((p) => Matrix3D.transform(rotMat, p))
+                .map((p) => project(p));
+
+              ctx.beginPath();
+              patchPoints.forEach(([px, py], idx) =>
+                idx === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py)
+              );
+              ctx.closePath();
+
+              // Color based on latitude (phi or u)
+              const intensity = Math.sin(uMid * Math.PI); // Max at equator (uMid=0.5)
+              ctx.fillStyle = `rgba(${100 + intensity * 100}, ${100 + intensity * 100}, 255, 0.7)`;
+              ctx.fill();
+              ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+              ctx.stroke();
+
+              // Area element |r_u x r_v| = 2 * PI^2 * R^2 * sin(phi) = 2 * PI^2 * R^2 * sin(u_mid * PI)
+              // This term is for the mapping from unit square [0,1]x[0,1] to sphere.
+              // The original integral over (phi, theta) domain is simpler: R^2 sin(phi) dphi dtheta.
+              // delta_phi = PI * du, delta_theta = 2PI * dv.
+              // patchArea = R^2 * sin(phi_mid) * delta_phi * delta_theta
+              const phi_mid = uMid * Math.PI;
+              const delta_phi = Math.PI * du;
+              const delta_theta = 2 * Math.PI * dv;
+              approximatedArea +=
+                sphereRadius *
+                sphereRadius *
+                Math.sin(phi_mid) *
+                delta_phi *
+                delta_theta;
+            }
+          }
+          if (infoPanel) {
+            const errorPercent =
+              (Math.abs(approximatedArea - theoreticalArea) / theoreticalArea) *
+              100;
+            infoPanel.innerHTML = `Subdivs: ${subdivisions}x${subdivisions}<br>Área Aprox.: ${approximatedArea.toFixed(3)} (Teórica: ${theoreticalArea.toFixed(3)})<br>Erro: ${errorPercent.toFixed(2)}%`;
+          }
+        }
+
+        function updateFromSliders() {
+          subdivisions = parseInt(subdivSlider.value);
+          drawVisualization();
+        }
+
+        function setupEventListeners() {
+          subdivSlider.addEventListener('input', updateFromSliders);
+          canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+          });
+          canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              rotationY += (e.clientX - lastX) * 0.01;
+              rotationX += (e.clientY - lastY) * 0.01;
+              lastX = e.clientX;
+              lastY = e.clientY;
+              drawVisualization();
+            }
+          });
+          canvas.addEventListener('mouseup', () => (isDragging = false));
+          canvas.addEventListener('mouseleave', () => (isDragging = false));
+        }
+
+        function initVisualization() {
+          canvas = document.getElementById('vizSurfaceAreaCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          subdivSlider = document.getElementById('subdivSliderEsfera');
+          infoPanel = document.getElementById('surfaceAreaInfoPanel');
+          if (!subdivSlider || !infoPanel) {
+            console.error('Elements for Surface Area viz not found');
+            return;
+          }
+
+          subdivSlider.value = subdivisions;
+
+          setupEventListeners();
+          drawVisualization();
+        }
+        function cleanupVisualization() {
+          if (animationId) cancelAnimationFrame(animationId);
+          animationId = null;
+          if (subdivSlider)
+            subdivSlider.removeEventListener('input', updateFromSliders);
+          isDragging = false;
+        }
+        window.vizSurfaceArea = {
+          init: initVisualization,
+          cleanup: cleanupVisualization,
+        };
+      })();
+
+      // =============================================
+      // VISUALIZAÇÃO: FLUXO ATRAVÉS DE SUPERFÍCIE
+      // =============================================
+      (function () {
+        let canvas, ctx, intensitySlider, curlSlider, infoPanel;
+        let fieldIntensityZ = 1.0;
+        let fieldCurl = 0.0; // For adding some X/Y components
+        let rotationX = Math.PI / 6,
+          rotationY = Math.PI / 4;
+        let isDragging = false,
+          lastX,
+          lastY;
+        let animationId = null;
+
+        // Paraboloid: z = 1 - x^2 - y^2, for z >= 0
+        // Parametrization: r(u,v) = (u, v, 1 - u^2 - v^2)
+        // r_u = (1, 0, -2u), r_v = (0, 1, -2v)
+        // r_u x r_v = (2u, 2v, 1) -> upward normal
+        const surfaceDomainRadius = 1; // u^2 + v^2 <= 1
+
+        function surfacePoint(u, v) {
+          return [u, v, 1 - u * u - v * v];
+        }
+        function surfaceNormal(u, v) {
+          return [2 * u, 2 * v, 1];
+        } // Not unit
+
+        function vectorField(x, y, z) {
+          return [
+            fieldCurl * -y * fieldIntensityZ, // Some rotational component
+            fieldCurl * x * fieldIntensityZ,
+            fieldIntensityZ, // Dominant Z component
+          ];
+        }
+
+        function project(point) {
+          const scale = Math.min(canvas.width, canvas.height) * 0.3;
+          const [x, y, z] = point;
+          const perspective = 2.0;
+          const zFactor = perspective / (perspective - z / 1.5);
+          return [
+            canvas.width / 2 + x * scale * zFactor,
+            canvas.height / 2 - y * scale * zFactor,
+          ];
+        }
+
+        function drawVisualization() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          const rotMat = Matrix3D.multiply(
+            Matrix3D.rotateX(rotationX),
+            Matrix3D.rotateY(rotationY)
+          );
+
+          const gridSize = 10; // For drawing surface grid
+          const vectorGridSize = 7; // For drawing field vectors
+          const step = (2 * surfaceDomainRadius) / gridSize;
+          const vecStep = (2 * surfaceDomainRadius) / vectorGridSize;
+
+          ctx.strokeStyle = 'rgba(100, 181, 246, 0.3)';
+          ctx.lineWidth = 1;
+          // Draw surface grid
+          for (let i = 0; i <= gridSize; i++) {
+            const u = -surfaceDomainRadius + i * step;
+            ctx.beginPath();
+            for (let j = 0; j <= gridSize; j++) {
+              const v = -surfaceDomainRadius + j * step;
+              if (u * u + v * v > surfaceDomainRadius * surfaceDomainRadius)
+                continue;
+              const p3D = surfacePoint(u, v);
+              const rotatedP = Matrix3D.transform(rotMat, p3D);
+              const [px, py] = project(rotatedP);
+              if (
+                j === 0 ||
+                u * u + (v - step) * (v - step) >
+                  surfaceDomainRadius * surfaceDomainRadius
+              )
+                ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+
+            const v_fixed = -surfaceDomainRadius + i * step; // for constant v lines
+            ctx.beginPath();
+            for (let j = 0; j <= gridSize; j++) {
+              const u_iter = -surfaceDomainRadius + j * step;
+              if (
+                u_iter * u_iter + v_fixed * v_fixed >
+                surfaceDomainRadius * surfaceDomainRadius
+              )
+                continue;
+              const p3D = surfacePoint(u_iter, v_fixed);
+              const rotatedP = Matrix3D.transform(rotMat, p3D);
+              const [px, py] = project(rotatedP);
+              if (
+                j === 0 ||
+                (u_iter - step) * (u_iter - step) + v_fixed * v_fixed >
+                  surfaceDomainRadius * surfaceDomainRadius
+              )
+                ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.stroke();
+          }
+
+          // Draw field vectors and calculate flux
+          let totalFlux = 0;
+          const dA =
+            (Math.PI * surfaceDomainRadius * surfaceDomainRadius) /
+            (vectorGridSize * vectorGridSize); // Approximate area element in uv-plane for averaging
+
+          for (let i = 0; i <= vectorGridSize; i++) {
+            const u = -surfaceDomainRadius + i * vecStep;
+            for (let j = 0; j <= vectorGridSize; j++) {
+              const v = -surfaceDomainRadius + j * vecStep;
+              if (u * u + v * v > surfaceDomainRadius * surfaceDomainRadius)
+                continue;
+
+              const p_uv = surfacePoint(u, v); // point on surface
+              const N_uv = surfaceNormal(u, v); // normal vector (r_u x r_v)
+              const F_uv = vectorField(p_uv[0], p_uv[1], p_uv[2]); // field at that point
+
+              const dotProduct =
+                F_uv[0] * N_uv[0] + F_uv[1] * N_uv[1] + F_uv[2] * N_uv[2];
+              // Flux element is F . (r_u x r_v) du dv.
+              // Here dA is area in uv plane, so du*dv approx dA_patch / (density_u*density_v)
+              const du_patch = vecStep;
+              const dv_patch = vecStep;
+              totalFlux += dotProduct * du_patch * dv_patch; // Sum F . N dA
+
+              const rotatedP = Matrix3D.transform(rotMat, p_uv);
+              const [sx, sy] = project(rotatedP);
+
+              const F_scaled = F_uv.map((c) => c * 0.3); // Scale for drawing
+              const endP3D = [
+                p_uv[0] + F_scaled[0],
+                p_uv[1] + F_scaled[1],
+                p_uv[2] + F_scaled[2],
+              ];
+              const rotatedEndP = Matrix3D.transform(rotMat, endP3D);
+              const [ex, ey] = project(rotatedEndP);
+
+              ctx.beginPath();
+              ctx.moveTo(sx, sy);
+              ctx.lineTo(ex, ey);
+
+              // Color based on dot product with UP (0,0,1) for field, and normal for flux contribution
+              let N_unit = N_uv.map(
+                (c) => c / Math.sqrt(N_uv[0] ** 2 + N_uv[1] ** 2 + N_uv[2] ** 2)
+              ); // unit normal
+              let F_unit = F_uv.map(
+                (c) =>
+                  c /
+                  (Math.sqrt(F_uv[0] ** 2 + F_uv[1] ** 2 + F_uv[2] ** 2) || 1)
+              );
+              let localFluxSign =
+                F_uv[0] * N_unit[0] + F_uv[1] * N_unit[1] + F_uv[2] * N_unit[2];
+
+              if (localFluxSign > 0.1)
+                ctx.strokeStyle = 'var(--vector-velocity)'; // Green - positive flux
+              else if (localFluxSign < -0.1)
+                ctx.strokeStyle = 'var(--vector-acceleration)'; // Red - negative flux
+              else ctx.strokeStyle = 'var(--vector-position)'; // Blue - near zero/tangential flux
+
+              ctx.lineWidth = 1.5;
+              ctx.stroke();
+              // Arrow head
+              let angle = Math.atan2(ey - sy, ex - sx);
+              ctx.beginPath();
+              ctx.moveTo(ex, ey);
+              ctx.lineTo(
+                ex - 6 * Math.cos(angle - Math.PI / 6),
+                ey - 6 * Math.sin(angle - Math.PI / 6)
+              );
+              ctx.lineTo(
+                ex - 6 * Math.cos(angle + Math.PI / 6),
+                ey - 6 * Math.sin(angle + Math.PI / 6)
+              );
+              ctx.closePath();
+              ctx.fillStyle = ctx.strokeStyle;
+              ctx.fill();
+            }
+          }
+          ctx.lineWidth = 1;
+          if (infoPanel)
+            infoPanel.innerHTML = `Fluxo Aprox. ( \(\iint \vec{F} \cdot d\vec{S}\) ): ${totalFlux.toFixed(3)}`;
+        }
+
+        function updateFromSliders() {
+          fieldIntensityZ = parseFloat(intensitySlider.value);
+          fieldCurl = parseFloat(curlSlider.value);
+          drawVisualization();
+        }
+
+        function setupEventListeners() {
+          intensitySlider.addEventListener('input', updateFromSliders);
+          curlSlider.addEventListener('input', updateFromSliders);
+          canvas.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            lastX = e.clientX;
+            lastY = e.clientY;
+          });
+          canvas.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              rotationY += (e.clientX - lastX) * 0.01;
+              rotationX += (e.clientY - lastY) * 0.01;
+              lastX = e.clientX;
+              lastY = e.clientY;
+              drawVisualization();
+            }
+          });
+          canvas.addEventListener('mouseup', () => (isDragging = false));
+          canvas.addEventListener('mouseleave', () => (isDragging = false));
+        }
+
+        function initVisualization() {
+          canvas = document.getElementById('vizFluxCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+          intensitySlider = document.getElementById('fieldIntensitySlider');
+          curlSlider = document.getElementById('fieldCurlSlider');
+          infoPanel = document.getElementById('fluxInfoPanel');
+
+          if (!intensitySlider || !curlSlider || !infoPanel) {
+            console.error('Elements for Flux viz not found');
+            return;
+          }
+
+          intensitySlider.value = fieldIntensityZ;
+          curlSlider.value = fieldCurl;
+
+          setupEventListeners();
+          drawVisualization();
+        }
+        function cleanupVisualization() {
+          if (animationId) cancelAnimationFrame(animationId);
+          animationId = null;
+          if (intensitySlider)
+            intensitySlider.removeEventListener('input', updateFromSliders);
+          if (curlSlider)
+            curlSlider.removeEventListener('input', updateFromSliders);
+          isDragging = false;
+        }
+        window.vizFlux = {
+          init: initVisualization,
+          cleanup: cleanupVisualization,
+        };
+      })();
+
+      // =============================================
+      // VISUALIZAÇÃO: APLICAÇÃO MODERNA (SIMPLES)
+      // =============================================
+      (function () {
+        let canvas, ctx;
+        let animationId = null;
+        let particles = [];
+        const numParticles = 30;
+
+        function initVisualization() {
+          canvas = document.getElementById('vizModernAppCanvas');
+          if (!canvas) return;
+          ctx = canvas.getContext('2d');
+
+          particles = []; // Reset particles
+          for (let i = 0; i < numParticles; i++) {
+            particles.push({
+              x: Math.random() * canvas.width * 0.3, // Start from left
+              y: Math.random() * canvas.height,
+              vx: 2 + Math.random() * 2, // Speed
+              vy: (Math.random() - 0.5) * 0.5,
+              radius: 2 + Math.random() * 2,
+              color: `rgba(255, 255, ${100 + Math.random() * 155}, ${0.3 + Math.random() * 0.5})`, // Yellowish particles
+            });
+          }
+          if (animationId) cancelAnimationFrame(animationId);
+          animate();
+        }
+
+        function drawSatellite() {
+          const satX = canvas.width * 0.65;
+          const satY = canvas.height / 2;
+          const bodyWidth = 40;
+          const bodyHeight = 60;
+          const panelWidth = 70;
+          const panelHeight = 15;
+
+          // Body
+          ctx.fillStyle = '#aaa';
+          ctx.fillRect(
+            satX - bodyWidth / 2,
+            satY - bodyHeight / 2,
+            bodyWidth,
+            bodyHeight
+          );
+          // Antenna
+          ctx.fillStyle = '#ddd';
+          ctx.beginPath();
+          ctx.arc(
+            satX,
+            satY - bodyHeight / 2 - 10,
+            15,
+            Math.PI * 0.2,
+            Math.PI * 0.8,
+            true
+          );
+          ctx.fill();
+          // Solar panels
+          ctx.fillStyle = '#335'; // Dark blue/purple
+          ctx.fillRect(
+            satX - bodyWidth / 2 - panelWidth,
+            satY - panelHeight / 2 - bodyHeight * 0.3,
+            panelWidth,
+            panelHeight
+          );
+          ctx.fillRect(
+            satX + bodyWidth / 2,
+            satY - panelHeight / 2 - bodyHeight * 0.3,
+            panelWidth,
+            panelHeight
+          );
+        }
+
+        function animate() {
+          if (!ctx) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          drawSatellite();
+
+          const satCenterX = canvas.width * 0.65;
+          const satRadius = 40; // Approximate radius for deflection
+
+          particles.forEach((p) => {
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Deflection logic
+            let dx = p.x - satCenterX;
+            let dy = p.y - canvas.height / 2;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < satRadius && p.x < satCenterX + 20) {
+              // Particle hits the "shield"
+              if (p.y < canvas.height / 2)
+                p.y -= (satRadius - dist) * 0.1; // Deflect up
+              else p.y += (satRadius - dist) * 0.1; // Deflect down
+              p.x -= p.vx * 0.5; // Slow down a bit
+            }
+
+            if (p.x > canvas.width + p.radius) {
+              // Reset particle
+              p.x = -p.radius;
+              p.y = Math.random() * canvas.height;
+            }
+            if (p.y > canvas.height + p.radius || p.y < -p.radius) {
+              p.y = Math.random() * canvas.height; // keep it on screen roughly
+            }
+
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.fill();
+          });
+
+          animationId = requestAnimationFrame(animate);
+        }
+
+        function cleanupVisualization() {
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+          }
+          particles = [];
+        }
+
+        window.vizModernApp = {
+          init: initVisualization,
+          cleanup: cleanupVisualization,
+        };
+      })();
+
+      // Inicialização do Reveal.js e Gerenciamento de Visualizações
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+          width: '90%',
+          height: '100%',
+          margin: 0.04, // Ajuste de margem
+          minScale: 0.2,
+          maxScale: 2.0,
+          transition: 'fade',
+          navigationMode: 'default',
+        });
+
+        Reveal.on('ready', function (event) {
+          // Inicializa a visualização do primeiro slide, se houver
+          if (event.currentSlide.querySelector('#vizParametricSurfaceCanvas'))
+            window.vizParametricSurface.init();
+          else if (event.currentSlide.querySelector('#vizTangentPlaneCanvas'))
+            window.vizTangentPlane.init();
+          else if (event.currentSlide.querySelector('#vizSurfaceAreaCanvas'))
+            window.vizSurfaceArea.init();
+          else if (event.currentSlide.querySelector('#vizFluxCanvas'))
+            window.vizFlux.init();
+          else if (event.currentSlide.querySelector('#vizModernAppCanvas'))
+            window.vizModernApp.init();
+        });
+
+        Reveal.on('slidechanged', function (event) {
+          // Limpar todas as visualizações conhecidas
+          if (
+            window.vizParametricSurface &&
+            window.vizParametricSurface.cleanup
+          )
+            window.vizParametricSurface.cleanup();
+          if (window.vizTangentPlane && window.vizTangentPlane.cleanup)
+            window.vizTangentPlane.cleanup();
+          if (window.vizSurfaceArea && window.vizSurfaceArea.cleanup)
+            window.vizSurfaceArea.cleanup();
+          if (window.vizFlux && window.vizFlux.cleanup)
+            window.vizFlux.cleanup();
+          if (window.vizModernApp && window.vizModernApp.cleanup)
+            window.vizModernApp.cleanup();
+
+          // Inicializar a visualização do slide atual, se houver
+          if (event.currentSlide.querySelector('#vizParametricSurfaceCanvas')) {
+            setTimeout(() => window.vizParametricSurface.init(), 50); // Pequeno delay para renderização do DOM
+          } else if (
+            event.currentSlide.querySelector('#vizTangentPlaneCanvas')
+          ) {
+            setTimeout(() => window.vizTangentPlane.init(), 50);
+          } else if (
+            event.currentSlide.querySelector('#vizSurfaceAreaCanvas')
+          ) {
+            setTimeout(() => window.vizSurfaceArea.init(), 50);
+          } else if (event.currentSlide.querySelector('#vizFluxCanvas')) {
+            setTimeout(() => window.vizFlux.init(), 50);
+          } else if (event.currentSlide.querySelector('#vizModernAppCanvas')) {
+            setTimeout(() => window.vizModernApp.init(), 50);
+          }
+        });
+      };
+    </script>
+  </body>
+</html>

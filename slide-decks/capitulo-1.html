@@ -1,0 +1,1461 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Cálculo Vetorial: Funções de Várias Variáveis Reais a Valores Vetoriais
+    </title>
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="space-theme.css" />
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+    <script>
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+        });
+      };
+    </script>
+    <style>
+      .canvas-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      canvas {
+        border: 1px solid #333;
+        background-color: #000033;
+      }
+    </style>
+    <style>
+      .canvas-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 400px;
+      }
+
+      .side-by-side {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .side-by-side div {
+        width: 45%;
+      }
+
+      .img-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .interactive-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .slider {
+        width: 200px;
+        margin: 0 10px;
+      }
+
+      .equation-highlight {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .note {
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <!-- Slide de Título -->
+        <section>
+          <h1>Funções de Várias Variáveis Reais a Valores Vetoriais</h1>
+          <h3>Cálculo Vetorial</h3>
+        </section>
+
+        <!-- Funções Vetoriais-->
+        <section>
+          <section>
+            <h2>O que são Funções Vetoriais?</h2>
+            <p>Uma função vetorial é um mapeamento que associa:</p>
+            <ul>
+              <li>Um ponto do \(\mathbb{R}^n\) (domínio)</li>
+              <li>A um vetor no \(\mathbb{R}^m\) (contradomínio)</li>
+            </ul>
+            <p>Notação: \(\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^m\)</p>
+          </section>
+          <section>
+            <h2>Do Unidimensional ao Multidimensional</h2>
+            <p>Para compreender funções vetoriais, partamos do familiar:</p>
+            <p><strong>Função Escalar:</strong> \(f(x) = 2x\)</p>
+            <p>
+              Para cada número real \(x\), obtemos um único número real \(y\).
+            </p>
+            <p>
+              <strong>Função Vetorial:</strong> \(\vec{F}(t) = (x(t), y(t),
+              z(t))\)
+            </p>
+            <p>
+              Para cada número real \(t\), obtemos um vetor com múltiplas
+              componentes.
+            </p>
+          </section>
+
+          <section>
+            <h2>Funções Vetoriais</h2>
+            <div class="fragment">
+              <p>
+                Uma função vetorial é qualquer função que produz vetores como
+                saída
+              </p>
+              <p>Podem ter diferentes tipos de domínio, por exemplo:</p>
+              <ul>
+                <li>
+                  \(\vec{r}: \mathbb{R} \to \mathbb{R}^n\) (curva no espaço)
+                </li>
+                <li>
+                  \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\) (campo vetorial)
+                </li>
+                <li>\(\vec{G}: \mathbb{R}^m \to \mathbb{R}^n\) (caso geral)</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Funções Vetoriais: Uma Linguagem para Descrever o Movimento</h2>
+            <p>
+              Quando descrevemos o movimento de um objeto no espaço, precisamos
+              especificar múltiplas informações simultaneamente. Em cada
+              instante \(t\), precisamos conhecer:
+            </p>
+            <ul>
+              <li>
+                Sua posição em relação a diferentes eixos: \((x(t), y(t),
+                z(t))\)
+              </li>
+              <li>
+                Sua velocidade em cada direção: \((\dot{x}(t), \dot{y}(t),
+                \dot{z}(t))\)
+              </li>
+              <li>
+                As forças que atuam sobre ele: \(\vec{F}(t) = (F_x(t), F_y(t),
+                F_z(t))\)
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Exemplo Fundamental</h2>
+            <p><strong>1. Movimento Circular</strong></p>
+            <p>\[\vec{r}(t) = (R\cos t, R\sin t)\]</p>
+            <p>
+              Esta função descreve uma trajetória circular de raio R no plano.
+            </p>
+          </section>
+
+          <section>
+            <h2>Campo Gravitacional Terra-Lua</h2>
+            <a
+              href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/visualizacao/campo-gravitacional-terra-lua.html"
+              target="_blank"
+              >Visualização</a
+            >
+          </section>
+
+          <section>
+            <h2>Visualização Geométrica</h2>
+            <p>
+              Uma função vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^m\)
+              pode ser interpretada de três formas complementares:
+            </p>
+            <ul>
+              <li>
+                Como uma curva paramétrica: \(\vec{r}(t) = (x(t), y(t), z(t))\)
+              </li>
+              <li>
+                Como um campo vetorial: \(\vec{F}(x,y) = (P(x,y), Q(x,y))\)
+              </li>
+              <li>
+                Como uma transformação: \(\vec{T}: \mathbb{R}^2 \to
+                \mathbb{R}^2\)
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Aplicações na Física</h2>
+            <p><strong>Campos Gravitacionais:</strong></p>
+            <p>
+              O campo gravitacional é uma função vetorial que associa a cada
+              ponto do espaço um vetor força:
+            </p>
+            <p>\[\vec{g}(x,y,z) = -G\frac{M}{r^3}(x,y,z)\]</p>
+          </section>
+
+          <section>
+            <h2>Formalização Matemática</h2>
+            <p>
+              Uma função vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^m\) é
+              um mapeamento que:
+            </p>
+            <ul>
+              <li>
+                Recebe \(n\) variáveis independentes: \((x_1, x_2, ..., x_n)\)
+              </li>
+              <li>Produz \(m\) componentes: \((y_1, y_2, ..., y_m)\)</li>
+              <li>
+                De forma que: \(\vec{F}(x_1, ..., x_n) = (f_1(x_1, ..., x_n),
+                ..., f_m(x_1, ..., x_n))\)
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Campo Vetorial -->
+        <section>
+          <section>
+            <h2>Campo Vetorial</h2>
+            <p>
+              Definição: Um campo vetorial \(\vec{F}\) em um conjunto aberto \(U
+              \subseteq \mathbb{R}^n\) é uma função
+            </p>
+            <p>\(\vec{F}: U \to \mathbb{R}^n\)</p>
+            <p>
+              que associa a cada ponto \(\vec{p} \in U\) um vetor
+              \(\vec{F}(\vec{p}) \in \mathbb{R}^n\)
+            </p>
+            <div class="fragment">(⌐⊙_⊙) Entendeu? Não?! Nem eu. Calma!</div>
+            <div class="fragment">
+              <p>Exemplo em \(\mathbb{R}^2\):</p>
+              <p>\(\vec{F}(x,y) = (x^2-y)\vec{i} + (x+y^2)\vec{j}\)</p>
+            </div>
+          </section>
+
+          <!-- Relação entre os Conceitos -->
+          <section>
+            <h2>Campo Vetorial: Um Caso Especial</h2>
+            <div class="fragment">
+              <p>Todo campo vetorial é uma função vetorial onde:</p>
+              <ul>
+                <li>O domínio é um subconjunto de \(\mathbb{R}^n\)</li>
+                <li>O contradomínio é o mesmo \(\mathbb{R}^n\)</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Mas nem toda função vetorial é um campo vetorial!</p>
+              <p>
+                Exemplo: A trajetória de uma nave \(\vec{r}(t) = (x(t), y(t),
+                z(t))\)
+              </p>
+              <ul>
+                <li>É uma função vetorial (\(\mathbb{R} \to \mathbb{R}^3\))</li>
+                <li>Não é um campo vetorial (domínio diferente)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Campo Vetorial vs Função Vetorial -->
+          <section>
+            <h2>Campo Vetorial vs Função Vetorial</h2>
+            <div class="fragment">
+              <p>Função Vetorial \(\vec{r}: \mathbb{R} \to \mathbb{R}^n\)</p>
+              <ul>
+                <li>Entrada: um número real \(t\) (geralmente tempo)</li>
+                <li>Saída: um vetor em \(\mathbb{R}^n\)</li>
+                <li>
+                  Exemplo: trajetória de uma nave \(\vec{r}(t) = (x(t), y(t),
+                  z(t))\)
+                </li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Campo Vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\)</p>
+              <ul>
+                <li>Entrada: um ponto no espaço \((x,y,z)\)</li>
+                <li>Saída: um vetor nesse ponto</li>
+                <li>
+                  Exemplo: campo gravitacional \(\vec{F}(x,y,z)\) em cada ponto
+                  do espaço
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Campo Vetorial - Introdução Intuitiva -->
+          <section>
+            <h2>Campo Vetorial: Uma Visão Intuitiva</h2>
+            <div class="fragment">
+              <p>Imagine o campo gravitacional ao redor de um planeta... 🌍</p>
+              <p>Em cada ponto do espaço, temos:</p>
+              <ul>
+                <li>Uma direção da força gravitacional</li>
+                <li>Uma intensidade que varia com a distância</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Isso é um campo vetorial!</p>
+              <p>
+                Para cada ponto do espaço, associamos um vetor que representa a
+                força.
+              </p>
+            </div>
+          </section>
+
+          <!-- Exemplos no Espaço -->
+          <section>
+            <h2>Campos Vetoriais no Espaço</h2>
+            <div class="fragment">
+              <p>🌠 Campo gravitacional de sistemas planetários</p>
+              <p>☀️ Vento solar</p>
+              <p>🌍 Campo magnético terrestre</p>
+              <p>🛸 Trajetórias de naves espaciais</p>
+            </div>
+            <div class="fragment">
+              <p>
+                Que outros exemplos de campos vetoriais você consegue
+                identificar na exploração espacial?
+              </p>
+            </div>
+          </section>
+
+
+          <!-- Visualização -->
+          <section>
+            <h2>Pontos de Lagrange</h2>
+            <div class="text-container">
+              <div class="lagrange-point">
+                <p>
+                  Os pontos de Lagrange são posições no espaço onde as forças
+                  gravitacionais de dois corpos celestes e a força centrífuga se
+                  equilibram, permitindo que um objeto menor permaneça em uma
+                  posição relativamente estável.
+                </p>
+              </div>
+                <ul>
+                  <li>
+                    <strong>L1:</strong> Localizado entre os dois corpos, útil
+                    para observações solares.
+                  </li>
+                  <li>
+                    <strong>L2:</strong> Além do corpo menor, ideal para
+                    telescópios espaciais.
+                  </li>
+                  <li>
+                    <strong>L3:</strong> Oposto ao corpo menor, do outro lado do
+                    corpo principal.
+                  </li>
+                  <li>
+                    <strong>L4 e L5:</strong> Formam triângulos equiláteros com
+                    os dois corpos, conhecidos como pontos troianos.
+                  </li>
+                  <li>
+                  L4 e L5 são naturalmente estáveis quando a razão de massa é
+                  menor que 0.0385 (critério de Routh). L1, L2 e L3 são
+                  instáveis e requerem correções periódicas de órbita.
+                  </li>
+                </ul>
+          </section>
+
+          <!-- Slide com a visualização -->
+          <section>
+            <h2>Visualização Interativa dos pontos de Lagrange</h2>
+            <a
+              href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/visualizacao/lagrange.html"
+              target="_blank"
+              >Visualização</a
+            >
+          </section>
+
+          <!-- Para Refletir -->
+          <section>
+            <h2>Para Refletir...</h2>
+            <div class="fragment">
+              <p>Imagine uma sonda espacial:</p>
+              <ul>
+                <li>Como o campo gravitacional afeta sua trajetória?</li>
+                <li>O que acontece quando ela passa pelo ponto de Lagrange?</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Estas questões nos levam a conceitos importantes:</p>
+              <ul>
+                <li>Órbitas como curvas integrais</li>
+                <li>Pontos de equilíbrio no espaço</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Aplicações -->
+          <section>
+            <h2>Aplicações na Exploração Espacial</h2>
+            <div class="fragment">
+              <p>Campos vetoriais são essenciais para:</p>
+              <ul>
+                <li>Planejamento de trajetórias de naves espaciais</li>
+                <li>Análise do vento solar e seus efeitos</li>
+                <li>Estudo de campos magnéticos planetários</li>
+                <li>Previsão de órbitas de satélites</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+      <!-- Limite e Continuidade -->
+        <section>
+          <section>
+            <h2>Limite e Continuidade</h2>
+            <p>
+              Definição formal: Uma função vetorial \(\vec{F}: D \subset
+              \mathbb{R}^n \to \mathbb{R}^m\) é contínua em \(\vec{a}\) se:
+            </p>
+            <div class="fragment">
+              <p>
+                \[\lim_{\vec{x} \to \vec{a}} \vec{F}(\vec{x}) =
+                \vec{F}(\vec{a})\]
+              </p>
+              <p>
+                Ou seja, para todo \(\varepsilon > 0\), existe \(\delta > 0\)
+                tal que:
+              </p>
+              <p>
+                \[\|\vec{x} - \vec{a}\| < \delta \implies \|\vec{F}(\vec{x}) -
+                \vec{F}(\vec{a})\| < \varepsilon\]
+              </p>
+            </div>
+          </section>
+
+          <!-- Interpretação Geométrica -->
+          <section>
+            <h2>Interpretação Geométrica</h2>
+            <p>Imagine um satélite em órbita:</p>
+            <div class="fragment">
+              <p>
+                Sua trajetória é descrita por uma função vetorial contínua
+                \(\vec{r}(t)\)
+              </p>
+              <p>
+                \[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t)
+                \end{pmatrix}\]
+              </p>
+            </div>
+            <div class="fragment">
+              <p>A continuidade garante que não há "saltos" na trajetória</p>
+            </div>
+          </section>
+
+          <!-- Exemplo Prático -->
+          <section>
+            <h2>Exemplo: Trajetória de Lançamento</h2>
+            <p>Considere a trajetória simplificada de um foguete:</p>
+            <div class="fragment">
+              <p>
+                \[\vec{r}(t) = \begin{pmatrix} v_0t \\ h_0 + v_0t -
+                \frac{1}{2}gt^2 \end{pmatrix}\]
+              </p>
+              <p>Onde:</p>
+              <ul>
+                <li>\(v_0\): velocidade inicial</li>
+                <li>\(h_0\): altura inicial</li>
+                <li>\(g\): aceleração da gravidade</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Aplicação: Detecção de Descontinuidades -->
+          <section>
+            <h2>Aplicação: Detecção de Falhas</h2>
+            <p>
+              Durante a corrida espacial, detectar descontinuidades era crucial:
+            </p>
+            <div class="fragment">
+              <ul>
+                <li>Falhas em sensores</li>
+                <li>Interferências em sinais de rádio</li>
+                <li>Anomalias em trajetórias</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Uma descontinuidade pode indicar:</p>
+              <p>
+                \[\lim_{t \to t_0^-} \vec{F}(t) \neq \lim_{t \to t_0^+}
+                \vec{F}(t)\]
+              </p>
+            </div>
+          </section>
+
+          <!-- Critério de Continuidade -->
+          <section>
+            <h2>Critério de Continuidade</h2>
+            <p>
+              Uma função vetorial \(\vec{F}(x,y) = \begin{pmatrix} F_1(x,y) \\
+              F_2(x,y) \end{pmatrix}\) é contínua se e somente se:
+            </p>
+            <div class="fragment">
+              <p>Cada componente \(F_1(x,y)\) e \(F_2(x,y)\) é contínua</p>
+              <p>Exemplo: Campo gravitacional da Terra</p>
+              <p>
+                \[\vec{g}(x,y,z) = -G\frac{M}{r^3}\begin{pmatrix} x \\ y \\ z
+                \end{pmatrix}\]
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- Derivadas Parciais -->
+        <section>
+          <section>
+            <h2>Derivadas Parciais</h2>
+            <p>Para uma função \(\mathbf{F}(x,y)\), definimos:</p>
+            <div class="fragment">
+              <p>
+                \(\frac{\partial \mathbf{F}}{\partial x} = \lim_{h \to 0}
+                \frac{\mathbf{F}(x+h,y) - \mathbf{F}(x,y)}{h}\)
+              </p>
+              <p>
+                \(\frac{\partial \mathbf{F}}{\partial y} = \lim_{h \to 0}
+                \frac{\mathbf{F}(x,y+h) - \mathbf{F}(x,y)}{h}\)
+              </p>
+            </div>
+            <div class="fragment">
+              <p class="note">
+                Interpretação: Taxa de variação em uma direção, mantendo as
+                outras variáveis constantes
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Visualização Geométrica -->
+          <section>
+            <h2>Visualização Geométrica</h2>
+            <div class="two-col">
+              <div class="col">
+                <p>Derivada em x: "Fatia" perpendicular ao eixo y</p>
+              </div>
+              <div class="col fragment">
+                <p>Derivada em y: "Fatia" perpendicular ao eixo x</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 3: Aplicação Espacial -->
+          <section>
+            <h2>Aplicação: Trajetória Orbital</h2>
+            <div class="content-box">
+              <p class="historical-note">
+                A missão Vostok 1 (1961) marcou a primeira vez que um ser humano
+                orbitou a Terra. Em meio à Guerra Fria, os soviéticos precisavam
+                garantir não só que Yuri Gagarin chegasse ao espaço, mas que
+                retornasse em segurança - um desafio matemático sem precedentes.
+              </p>
+              <p>
+                Para este feito histórico, as derivadas parciais foram cruciais
+                para:
+              </p>
+              <ul class="fragment">
+                <li>Calcular variações de velocidade em diferentes direções</li>
+                <li>Otimizar consumo de combustível</li>
+                <li>Prever desvios de trajetória</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 4: Exemplo Prático -->
+          <section>
+            <h2>Exemplo: Campo Gravitacional</h2>
+            <div class="fragment">
+              <p>Potencial gravitacional: \(\phi(x,y,z) = -\frac{GM}{r}\)</p>
+              <p>onde \(r = \sqrt{x^2 + y^2 + z^2}\)</p>
+            </div>
+            <div class="fragment">
+              <p>Calcule: \(\frac{\partial \phi}{\partial x}\)</p>
+            </div>
+          </section>
+
+          <!-- Slide 5: Exercício Interativo -->
+          <section>
+            <h2>Exercício: Órbita Lunar</h2>
+            <div class="problem-box">
+              <p>Para uma órbita circular de raio R, temos a energia total:</p>
+              <p>\(E(v,r) = \frac{1}{2}mv^2 - \frac{GMm}{r}\)</p>
+              <div class="fragment">
+                <p>Calcule:</p>
+                <ol>
+                  <li>
+                    \(\frac{\partial E}{\partial v}\) (variação com velocidade)
+                  </li>
+                  <li>\(\frac{\partial E}{\partial r}\) (variação com raio)</li>
+                </ol>
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2>Derivadas Parciais de Campos Vetoriais</h2>
+            <div class="content-box">
+              <p>
+                Para um campo vetorial \(\vec{F}(x,y) = P(x,y)\hat{i} +
+                Q(x,y)\hat{j}\), temos:
+              </p>
+              <div class="fragment">
+                <p>
+                  \(\frac{\partial \vec{F}}{\partial x} = \frac{\partial
+                  P}{\partial x}\hat{i} + \frac{\partial Q}{\partial x}\hat{j}\)
+                </p>
+                <p>
+                  \(\frac{\partial \vec{F}}{\partial y} = \frac{\partial
+                  P}{\partial y}\hat{i} + \frac{\partial Q}{\partial y}\hat{j}\)
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Exemplo Prático de Campo Vetorial -->
+          <section>
+            <h2>Exemplo: Campo de Vento Solar</h2>
+            <div class="content-box">
+              <p>Considere o campo de velocidade do vento solar:</p>
+              <p>
+                \(\vec{v}(x,y) = \frac{kx}{r^3}\hat{i} + \frac{ky}{r^3}\hat{j}\)
+              </p>
+              <p>onde \(r = \sqrt{x^2 + y^2}\) e \(k\) é uma constante.</p>
+            </div>
+            <div class="fragment">
+              <p>A derivada parcial em x é?</p>
+            </div>
+            <div class="fragment">
+              <p class="note">
+                Esta derivada nos dá a taxa de variação do vento solar na
+                direção x, crucial para prever a interação com satélites e
+                escudos magnéticos.
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Síntese e Conexões</h2>
+            <div class="summary-box">
+              <ul>
+                <li>
+                  Derivadas parciais medem variações em direções específicas
+                </li>
+                <li>Fundamentais para análise de movimento orbital</li>
+                <li>
+                  Essenciais na análise de campos vetoriais (vento solar, campos
+                  magnéticos)
+                </li>
+                <li>Base para otimização de trajetórias</li>
+              </ul>
+            </div>
+          </section>
+
+        </section>
+
+        <!-- Rotacional -->
+        <section>
+          <!-- Slide 2: Definição Formal -->
+          <section>
+            <h2>Rotacional de um Campo Vetorial</h2>
+            <p>
+              O rotacional de um campo vetorial \(\vec{F} = (F_x, F_y, F_z)\) é
+              definido como:
+            </p>
+            <p>
+              $$ \nabla \times \vec{F} \;=\; \begin{vmatrix} \hat{i} & \hat{j} &
+              \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ F_x & F_y & F_z \end{vmatrix}
+              $$
+            </p>
+            <p>Expandindo o determinante:</p>
+            <p>
+              $$ \nabla \times \vec{F} \;=\; \left(\frac{\partial F_z}{\partial
+              y} - \frac{\partial F_y}{\partial z},\; \frac{\partial
+              F_x}{\partial z} - \frac{\partial F_z}{\partial x},\;
+              \frac{\partial F_y}{\partial x} - \frac{\partial F_x}{\partial
+              y}\right) $$
+            </p>
+          </section>
+
+          <!-- Slide 3: Interpretação Física Básica (Ideia Intuitiva) -->
+          <section>
+            <h2>Intuição Física: "Efeito de Giro"</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1">
+                <ul>
+                  <li>
+                    O rotacional mede a tendência de um campo vetorial "girar"
+                    ao redor de um ponto
+                  </li>
+                  <li>Imagine um pequeno moinho colocado no fluido:</li>
+                  <ul>
+                    <li>Se o moinho não gira → rotacional é zero</li>
+                    <li>Se o moinho gira → rotacional é não-nulo</li>
+                  </ul>
+                  <li>A direção do rotacional é o eixo de rotação</li>
+                  <li>A magnitude indica a intensidade do giro</li>
+                </ul>
+              </div>
+              <div style="flex: 1">
+                <img
+                  src="svg-cap1/helice-rio.jpeg"
+                  alt="Moinho em um campo"
+                  width="400"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 4: Redemoinho como analogia -->
+          <section>
+            <h2>Analogia: Fluxo em Redemoinho</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1">
+                <ul>
+                  <li>Pense na água escoando em direção a um ralo</li>
+                  <li>Em certos pontos, forma-se um redemoinho (vórtice)</li>
+                  <li>
+                    A velocidade de rotação desse vórtice está relacionada ao
+                    rotacional
+                  </li>
+                  <li>
+                    Nos foguetes, esse comportamento ocorre em câmaras de
+                    combustão e motores
+                  </li>
+                </ul>
+              </div>
+              <div style="flex: 1">
+                <img
+                  src="svg-cap1/vortice-agua.jpeg"
+                  alt="Redemoinho de água"
+                  width="300"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 5: Fluxo através de um anel pequeno -->
+          <section>
+            <h2>Interpretação: Anel de Fluxo</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1">
+                <ul>
+                  <li>
+                    O rotacional pode ser interpretado observando um pequeno
+                    "anel" no espaço
+                  </li>
+                  <li>
+                    Se o campo empurra esse anel com mais força de um lado que
+                    de outro, gerará rotação
+                  </li>
+                  <li>
+                    A direção do rotacional aponta para o eixo em torno do qual
+                    o anel gira
+                  </li>
+                  <li>Sua magnitude indica a intensidade desse giro</li>
+                </ul>
+              </div>
+              <div style="flex: 1">
+                <img src="svg-cap1/anel.svg" alt="Anel de fluxo" width="400" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 6: Componente Z do Rotacional -->
+          <section>
+            <h2>Entendendo a Componente Z do Rotacional</h2>
+            <p>
+              $$(\nabla \times \vec{F})_z = \frac{\partial F_y}{\partial x} -
+              \frac{\partial F_x}{\partial y}$$
+            </p>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1">
+                <ul>
+                  <li>Considere um pequeno anel no plano \(xy\)</li>
+                  <li>
+                    \(\frac{\partial F_y}{\partial x}\) - Como a componente
+                    \(y\) varia ao longo de \(x\)
+                  </li>
+                  <li>
+                    \(\frac{\partial F_x}{\partial y}\) - Como a componente
+                    \(x\) varia ao longo de \(y\)
+                  </li>
+                  <li>
+                    A diferença dessas variações cria um torque que faz o anel
+                    girar em torno do eixo \(z\)
+                  </li>
+                </ul>
+              </div>
+              <div style="flex: 1">
+                <img
+                  src="svg-cap1/componente-z.svg"
+                  alt="Componente Z do rotacional"
+                  width="400"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 7: Visualização Interativa do Rotacional -->
+          <section>
+            <h2>Visualização Interativa: Campo com Rotacional</h2>
+            <div class="canvas-container">
+              <canvas id="rotationalField" width="500" height="400"></canvas>
+            </div>
+            <div class="control-container">
+              <div class="slider-container">
+                <label for="rotationSlider">Intensidade do Rotacional:</label>
+                <input
+                  type="range"
+                  id="rotationSlider"
+                  min="0"
+                  max="100"
+                  value="50"
+                />
+              </div>
+            </div>
+            <script>
+              // O código para a visualização interativa será inserido na integração final
+              document.addEventListener('DOMContentLoaded', function () {
+                const canvas = document.getElementById('rotationalField');
+                const ctx = canvas.getContext('2d');
+                const slider = document.getElementById('rotationSlider');
+
+                // Configurações do campo
+                const gridSize = 20;
+                const scale = 0.8;
+                let rotationIntensity = slider.value / 50;
+
+                // Função para desenhar o campo vetorial com rotacional
+                function drawRotationalField() {
+                  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                  // Origem central
+                  const centerX = canvas.width / 2;
+                  const centerY = canvas.height / 2;
+
+                  // Desenha os vetores do campo
+                  for (let x = 0; x < canvas.width; x += gridSize) {
+                    for (let y = 0; y < canvas.height; y += gridSize) {
+                      // Calcula posição relativa ao centro
+                      const dx = x - centerX;
+                      const dy = y - centerY;
+
+                      // Distância ao centro
+                      const distance = Math.sqrt(dx * dx + dy * dy);
+
+                      if (distance < 20) continue; // Evita vetores muito próximos ao centro
+
+                      // Calcula componentes para campo rotacional
+                      // Em um campo rotacional, os vetores são perpendiculares à linha do centro
+                      // (como em um redemoinho)
+                      let vx = (-dy / distance) * rotationIntensity;
+                      let vy = (dx / distance) * rotationIntensity;
+
+                      // Normaliza e ajusta escala
+                      const magnitude = Math.sqrt(vx * vx + vy * vy);
+                      const vectorLength = Math.min(
+                        magnitude * scale * gridSize,
+                        gridSize * 1.5
+                      );
+
+                      if (magnitude > 0) {
+                        vx = (vx / magnitude) * vectorLength;
+                        vy = (vy / magnitude) * vectorLength;
+                      }
+
+                      // Desenha vetor
+                      ctx.beginPath();
+                      ctx.moveTo(x, y);
+                      ctx.lineTo(x + vx, y + vy);
+
+                      // Cor baseada na intensidade
+                      const colorIntensity = Math.min(
+                        255,
+                        Math.round(magnitude * 255)
+                      );
+                      ctx.strokeStyle = `rgb(${255 - colorIntensity}, ${255 - colorIntensity}, 255)`;
+                      ctx.lineWidth = 2;
+                      ctx.stroke();
+
+                      // Desenha ponta da seta
+                      const arrowSize = 5;
+                      const angle = Math.atan2(vy, vx);
+                      ctx.beginPath();
+                      ctx.moveTo(x + vx, y + vy);
+                      ctx.lineTo(
+                        x + vx - arrowSize * Math.cos(angle - Math.PI / 6),
+                        y + vy - arrowSize * Math.sin(angle - Math.PI / 6)
+                      );
+                      ctx.lineTo(
+                        x + vx - arrowSize * Math.cos(angle + Math.PI / 6),
+                        y + vy - arrowSize * Math.sin(angle + Math.PI / 6)
+                      );
+                      ctx.closePath();
+                      ctx.fillStyle = ctx.strokeStyle;
+                      ctx.fill();
+                    }
+                  }
+
+                  // Desenha indicador de rotacional no centro
+                  ctx.beginPath();
+                  ctx.arc(centerX, centerY, 15, 0, 2 * Math.PI);
+                  ctx.fillStyle = 'rgba(79, 195, 247, 0.5)';
+                  ctx.fill();
+
+                  // Seta indicando direção do rotacional (perpendicular ao plano)
+                  ctx.beginPath();
+                  ctx.moveTo(centerX, centerY - 10);
+                  ctx.lineTo(centerX, centerY - 30);
+                  ctx.lineWidth = 3;
+                  ctx.strokeStyle = '#64b5f6';
+                  ctx.stroke();
+
+                  // Ponta da seta
+                  ctx.beginPath();
+                  ctx.moveTo(centerX, centerY - 30);
+                  ctx.lineTo(centerX - 5, centerY - 25);
+                  ctx.lineTo(centerX + 5, centerY - 25);
+                  ctx.closePath();
+                  ctx.fillStyle = '#64b5f6';
+                  ctx.fill();
+                }
+
+                // Inicializa o campo
+                drawRotationalField();
+
+                // Atualiza o campo quando o slider muda
+                slider.addEventListener('input', function () {
+                  rotationIntensity = this.value / 50;
+                  drawRotationalField();
+                });
+              });
+            </script>
+          </section>
+
+          <!-- Slide 8: Aplicações na Exploração Espacial -->
+          <section>
+            <h2>Aplicações na Exploração Espacial</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1">
+                <ul>
+                  <li>
+                    <strong>Motores de Foguete:</strong> Análise de vórtices nas
+                    câmaras de combustão e turbobombas
+                  </li>
+                  <li>
+                    <strong>Controle de Estabilidade:</strong> Entender como
+                    torques são gerados em satélites e espaçonaves
+                  </li>
+                  <li>
+                    <strong>Dinâmica de Fluidos:</strong> Prever áreas de
+                    turbulência em sistemas propulsivos
+                  </li>
+                  <li>
+                    <strong>Campos Magnéticos:</strong> Análise de campos
+                    magnéticos interplanetários
+                  </li>
+                </ul>
+              </div>
+              <div style="flex: 1">
+                <img
+                  src="svg-cap1/foguete.jpeg"
+                  alt="Motor de foguete"
+                  width="150"
+                />
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 10: Exercício Conceitual -->
+          <section>
+            <h2>Exercício Conceitual</h2>
+            <p>
+              Pense em um campo de velocidade \(\vec{V}\) gerado por um
+              ventilador no centro de uma sala:
+            </p>
+            <ol>
+              <li>Onde você esperaria encontrar o rotacional mais intenso?</li>
+              <li>Qual seria a direção do vetor rotacional nesses pontos?</li>
+              <li>Existem pontos onde o rotacional seria zero? Por quê?</li>
+            </ol>
+            <p>
+              <em
+                >Estas perguntas não exigem cálculos, apenas interpretação
+                física do conceito.</em
+              >
+            </p>
+          </section>
+
+          <!-- Slide 12: Problema 1 - Campo com Rotacional não Nulo -->
+          <section>
+            <h2>Problema 1: Campo com Rotacional não Nulo</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1.2">
+                <p>
+                  Considere o campo vetorial que modela um redemoinho em torno
+                  do eixo z:
+                </p>
+                <p>$\vec{F}(x,y,z) = (-y, x, 0)$</p>
+                <p>
+                  <strong
+                    >Calcule o rotacional deste campo e interprete fisicamente o
+                    resultado.</strong
+                  >
+                </p>
+                <p>
+                  <em
+                    >Dica: Visualize o movimento circular em torno do eixo z e
+                    observe o padrão de "giro".</em
+                  >
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 13: Solução do Problema 1 -->
+          <section>
+            <h2>Solução: Campo com Rotacional não Nulo</h2>
+            <p>Calculando o rotacional de $\vec{F}(x,y,z) = (-y, x, 0)$:</p>
+            <p>
+              $\nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} &
+              \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ -y & x & 0 \end{vmatrix}$
+            </p>
+            <p>
+              $\nabla \times \vec{F} = \hat{i}\left(\frac{\partial 0}{\partial
+              y} - \frac{\partial x}{\partial z}\right) +
+              \hat{j}\left(\frac{\partial -y}{\partial z} - \frac{\partial
+              0}{\partial x}\right) + \hat{k}\left(\frac{\partial x}{\partial x}
+              - \frac{\partial -y}{\partial y}\right)$
+            </p>
+            <p>
+              $\nabla \times \vec{F} = \hat{i}(0 - 0) + \hat{j}(0 - 0) +
+              \hat{k}(1 - (-1)) = \hat{k}(2) = (0, 0, 2)$
+            </p>
+            <p>
+              <strong>Interpretação física:</strong> O rotacional aponta no eixo
+              z com magnitude 2, indicando uma rotação no sentido anti-horário
+              em torno deste eixo. Esse campo tem
+              <em>vorticidade constante</em>, como um fluido girando
+              uniformemente.
+            </p>
+          </section>
+
+          <!-- Slide 14: Problema 2 - Campo Irrotacional -->
+          <section>
+            <h2>Problema 2: Campo Irrotacional</h2>
+            <div class="container" style="display: flex; align-items: center">
+              <div style="flex: 1.2">
+                <p>Considere o campo vetorial radial:</p>
+                <p>$\vec{F}(x,y,z) = (x, y, z)$</p>
+                <p>
+                  <strong
+                    >Calcule o rotacional deste campo e explique por que ele é
+                    irrotacional. Encontre uma função potencial φ tal que
+                    $\vec{F} = \nabla \phi$.</strong
+                  >
+                </p>
+                <p>
+                  <em>Dica: Campos gradientes são sempre irrotacionais.</em>
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Slide 15: Solução do Problema 2 -->
+          <section>
+            <h2>Solução: Campo Irrotacional</h2>
+            <p>Calculando o rotacional de $\vec{F}(x,y,z) = (x, y, z)$:</p>
+            <p>
+              $\nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} &
+              \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial
+              y} & \frac{\partial}{\partial z} \\ x & y & z \end{vmatrix}$
+            </p>
+            <p>
+              $\nabla \times \vec{F} = \hat{i}\left(\frac{\partial z}{\partial
+              y} - \frac{\partial y}{\partial z}\right) +
+              \hat{j}\left(\frac{\partial x}{\partial z} - \frac{\partial
+              z}{\partial x}\right) + \hat{k}\left(\frac{\partial y}{\partial x}
+              - \frac{\partial x}{\partial y}\right)$
+            </p>
+            <p>
+              $\nabla \times \vec{F} = \hat{i}(0 - 0) + \hat{j}(0 - 0) +
+              \hat{k}(0 - 0) = (0, 0, 0)$
+            </p>
+            <p>
+              <strong>Função potencial:</strong> $\phi(x,y,z) = \frac{x^2 + y^2
+              + z^2}{2}$
+            </p>
+            <p>
+              Verificação: $\nabla \phi = \left(\frac{\partial \phi}{\partial
+              x}, \frac{\partial \phi}{\partial y}, \frac{\partial
+              \phi}{\partial z}\right) = (x, y, z) = \vec{F}$
+            </p>
+            <p>
+              <strong>Interpretação:</strong> O rotacional é zero em todos os
+              pontos, portanto não há tendência de "giro". Este campo representa
+              um fluxo puramente expansivo, apontando radialmente para fora a
+              partir da origem.
+            </p>
+          </section>
+
+          <!-- Slide 16: Próximos Passos -->
+          <section>
+            <h2>Futuro: Teorema de Stokes</h2>
+            <p>
+              O rotacional se conecta com outros conceitos através do Teorema de
+              Stokes:
+            </p>
+            <p>
+              $\oint_C \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times \vec{F})
+              \cdot \hat{n} \, dS$
+            </p>
+            <p>
+              Este teorema relaciona a <strong>circulação</strong> do campo ao
+              longo de uma curva fechada com o
+              <strong>fluxo do rotacional</strong> através da superfície
+              delimitada por esta curva.
+            </p>
+            <div style="text-align: center">
+              <img
+                src="svg-cap1/teorema-stokes.svg"
+                alt="Teorema de Stokes"
+                width="350"
+              />
+            </div>
+          </section>
+        <!-- Slide 11: Síntese -->
+        <section>
+          <h2>Síntese: O Que é o Rotacional?</h2>
+          <ul>
+            <li>
+              <strong>Conceito Físico:</strong> Mede a tendência de "giro" de um
+              campo vetorial em um ponto
+            </li>
+            <li>
+              <strong>Representação:</strong> Vetor cuja direção indica o eixo
+              de rotação e magnitude indica a intensidade
+            </li>
+            <li>
+              <strong>Formalismo:</strong> \(\nabla \times \vec{F}\) captura
+              variações perpendiculares das componentes do campo
+            </li>
+            <li>
+              <strong>Contexto Prático:</strong> Fundamental em aerodinâmica,
+              motores de foguetes, campos magnéticos
+            </li>
+            <li>
+              <strong>Legado Histórico:</strong> Impulsionado pela necessidade
+              de dominar fluidos e campos para a exploração espacial
+            </li>
+          </ul>
+        </section>
+        </section>
+
+        <!-- Divergente -->
+        <section>
+          <!-- Slide 2: Definição Formal -->
+          <section>
+            <h2>Divergente de um Campo Vetorial</h2>
+            <p>
+              O divergente de um campo vetorial tridimensional \(\vec{F} = (F_x,
+              F_y, F_z)\) é definido como:
+            </p>
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
+              \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial
+              z}$$
+            </p>
+            <p>Onde \(\nabla\) (nabla) é o operador diferencial vetorial:</p>
+            <p class="math">
+              $$\nabla = \left(\frac{\partial}{\partial x},
+              \frac{\partial}{\partial y}, \frac{\partial}{\partial z}\right)$$
+            </p>
+          </section>
+
+          <!-- Slide 3: Interpretação Intuitiva - Vertical -->
+          <section>
+            <h2>Interpretação Intuitiva</h2>
+            <p>
+              O divergente mede o quanto um campo vetorial se comporta como
+              <strong>fonte</strong> ou <strong>sumidouro</strong> em um ponto
+              específico.
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-conceito.svg"
+                alt="Conceito de Divergente"
+                width="500"
+              />
+            </div>
+          </section>
+
+          <section>
+            <h2>Pensando em Fluxo</h2>
+            <p>Imagine o campo vetorial como o fluxo de um fluido:</p>
+            <ul>
+              <li>
+                <strong>Divergente Positivo</strong>: O fluido está "saindo" do
+                ponto (fonte)
+              </li>
+              <li>
+                <strong>Divergente Negativo</strong>: O fluido está "entrando"
+                no ponto (sumidouro)
+              </li>
+              <li>
+                <strong>Divergente Zero</strong>: Tanto entra quanto sai a mesma
+                quantidade de fluido
+              </li>
+            </ul>
+          </section>
+
+          <!-- Slide 4: Visualização - Cubinho -->
+          <section>
+            <h2>Visualização com um Cubinho</h2>
+            <p>Considere um pequeno cubo ao redor de um ponto:</p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/cubinho.svg"
+                alt="Cubinho Divergente"
+                width="450"
+              />
+            </div>
+            <p>
+              O divergente mede a taxa líquida de fluxo saindo das faces do
+              cubo, quando seu volume tende a zero.
+            </p>
+          </section>
+
+          <!-- Slide 5: Campos com Divergente Positivo -->
+          <section>
+            <h2>Campo com Divergente Positivo</h2>
+            <p>
+              Um campo vetorial radial para fora: \(\vec{F}(x,y,z) = (x, y, z)\)
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-positivo.svg"
+                alt="Divergente Positivo"
+                width="450"
+              />
+            </div>
+            <p>Divergente: \(\nabla \cdot \vec{F} = 3\) (constante positiva)</p>
+            <p>
+              As linhas de campo se afastam do ponto central - comportamento de
+              <strong>fonte</strong>.
+            </p>
+          </section>
+
+          <!-- Slide 6: Campos com Divergente Negativo -->
+          <section>
+            <h2>Campo com Divergente Negativo</h2>
+            <p>
+              Um campo vetorial radial para dentro: \(\vec{F}(x,y,z) = (-x, -y,
+              -z)\)
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-negativo.svg"
+                alt="Divergente Negativo"
+                width="450"
+              />
+            </div>
+            <p>
+              Divergente: \(\nabla \cdot \vec{F} = -3\) (constante negativa)
+            </p>
+            <p>
+              As linhas de campo convergem para o ponto central - comportamento
+              de <strong>sumidouro</strong>.
+            </p>
+          </section>
+
+          <!-- Slide 7: Campos com Divergente Zero -->
+          <section>
+            <h2>Campo com Divergente Zero</h2>
+            <p>Um campo de rotação: \(\vec{F}(x,y,z) = (-y, x, 0)\)</p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-zero.svg"
+                alt="Divergente Zero"
+                width="450"
+              />
+            </div>
+            <p>Divergente: \(\nabla \cdot \vec{F} = 0\)</p>
+            <p>
+              O fluxo circula em torno da origem - não há criação nem destruição
+              de fluxo.
+            </p>
+          </section>
+
+          <!-- Slide 8: Por que a Fórmula Funciona -->
+          <section>
+            <h2>Por que a Fórmula Funciona?</h2>
+            <p>
+              Considere a componente-x do campo atuando nas faces
+              perpendiculares ao eixo-x:
+            </p>
+            <div class="img-container">
+              <img
+                src="svg-cap1/divergente-derivada-x.svg"
+                alt="Derivada em x"
+                width="400"
+              />
+            </div>
+            <p>
+              A diferença entre o valor de \(F_x\) nas faces é aproximadamente
+              \(\frac{\partial F_x}{\partial x} \Delta x\)
+            </p>
+          </section>
+
+          <section>
+            <h2>Somando todas as direções</h2>
+            <p>A taxa líquida de fluxo por unidade de volume é:</p>
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \lim_{\Delta V \to 0} \frac{\text{Fluxo
+              Líquido}}{\Delta V}$$
+            </p>
+            <p>Que resulta exatamente na soma das derivadas parciais:</p>
+            <p class="math">
+              $$\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
+              \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial
+              z}$$
+            </p>
+          </section>
+
+          <!-- Slide 10: Lei de Gauss -->
+          <section>
+            <h2>Conexão com a Lei de Gauss</h2>
+            <p>
+              O Teorema da Divergência (Gauss) relaciona o divergente de um
+              campo vetorial em um volume com o fluxo através da superfície que
+              o envolve:
+            </p>
+            <p class="math">
+              $$\iiint_V (\nabla \cdot \vec{F}) \, dV = \iint_S \vec{F} \cdot
+              \vec{n} \, dS$$
+            </p>
+            <p>
+              Esta relação é fundamental na eletrostática, magnetismo e dinâmica
+              de fluidos - áreas críticas para o desenvolvimento aeroespacial
+              durante a Guerra Fria.
+            </p>
+            <p>Este assunto será abordado com detalhes no futuro!</p>
+          </section>
+
+          <!-- Slide 11: Exercício Prático -->
+          <section>
+            <h2>Exercício Prático</h2>
+            <p>Calcule o divergente do campo gravitacional:</p>
+            <p class="math">$$\vec{g}(x,y,z) = -G\frac{M}{r^3} \vec{r}$$</p>
+            <p>
+              Onde \(\vec{r} = (x, y, z)\) e \(r = \sqrt{x^2 + y^2 + z^2}\).
+            </p>
+            <p>
+              Dica: Para pontos fora da massa \(M\), qual o valor esperado para
+              o divergente?
+            </p>
+          </section>
+
+          <!-- Slide 12: Solução do Exercício -->
+          <section>
+            <h2>Solução</h2>
+            <p>Para o campo gravitacional:</p>
+            <p class="math">
+              $$\vec{g}(x,y,z) = -G\frac{M}{r^3} \vec{r} = -G\frac{M}{r^3} (x,
+              y, z)$$
+            </p>
+            <p>Calculando o divergente para \(r \neq 0\) (fora da massa):</p>
+            <p class="math">$$\nabla \cdot \vec{g} = 0$$</p>
+            <p>
+              O divergente do campo gravitacional é zero no espaço vazio - um
+              resultado importante da Lei da Gravitação de Newton!
+            </p>
+          </section>
+
+          <section>
+            <h3>Exercício 1 (Guiado)</h3>
+            <p>
+              Considere o campo $\vec{F}(x,y) = (2x, 3y).$
+              <strong>Passo a passo:</strong>
+            </p>
+            <ol>
+              <li>
+                Calcule $\frac{\partial F_x}{\partial x} =
+                \frac{\partial}{\partial x}(2x)$.
+              </li>
+              <li>
+                Calcule $\frac{\partial F_y}{\partial y} =
+                \frac{\partial}{\partial y}(3y)$.
+              </li>
+              <li>Some os resultados para obter $\nabla \cdot \vec{F}$.</li>
+              <li>Interprete fisicamente o resultado.</li>
+            </ol>
+            <p>
+              <em>Dica:</em> Visualize linhas de fluxo desse campo e identifique
+              se há alguma "fonte" ou "sumidouro".
+            </p>
+          </section>
+
+          <section>
+            <h3>Exercício 2 (Desafio)</h3>
+            <p>
+              Seja o campo em 3D: $\vec{G}(x,y,z) = (xy,\; x^2 - y^2,\; z^3 +
+              xy).$
+              <strong>Tarefa:</strong>
+            </p>
+            <ol>
+              <li>Calcular $\nabla \cdot \vec{G}$.</li>
+              <li>
+                Identificar ao menos um ponto onde o divergente seja positivo e
+                outro onde seja negativo.
+              </li>
+              <li>
+                Relacionar esse resultado à ideia de "fonte" e "sumidouro".
+              </li>
+            </ol>
+            <p>
+              <em>Para discussão em turma:</em> Pense em como esse campo poderia
+              representar um sistema fluido ou elétrico. Onde "acumula" e onde
+              "espalha" fluxo?
+            </p>
+          </section>
+
+          <!-- Slide 13: Síntese -->
+          <section>
+            <h2>Síntese</h2>
+            <ul>
+              <li>
+                O divergente mede a taxa de expansão ou contração de um campo
+                vetorial em um ponto
+              </li>
+              <li>
+                Matematicamente: soma das derivadas parciais das componentes em
+                suas respectivas direções
+              </li>
+              <li>Intuitivamente: comportamento de fonte ou sumidouro</li>
+              <li>
+                Aplicações cruciais na exploração espacial e análise de fluidos
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        </div>
+    </div>
+  </body>
+</html>

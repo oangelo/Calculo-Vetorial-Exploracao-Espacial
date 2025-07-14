@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">09</span> DE MAIO DE
+          <span class="censored">1963</span><br />
+          LOCALIZAÇÃO: INSTALAÇÃO <span class="censored">█</span> - SETOR
+          <span class="censored">██</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">DOUBLE-INTEGRAL</span><br /><br />
+          Em conformidade com as diretrizes estabelecidas após o
+          <span class="censored">último lançamento suborbital</span>, nossa
+          equipe apresenta os avanços no estudo das integrais em duas dimensões,
+          visando aprimorar <span class="censored">cálculos de rendimento</span>
+          em sistemas de propulsão. A definição rigorosa destas integrais é
+          fundamental para <span class="censored">estimar cargas</span> e
+          avaliar <span class="censored">riscos térmicos</span> em futuras
+          missões.
+        </div>
+
+        <div class="warning-box">
+          Este material é considerado de interesse estratégico para o programa
+          espacial e não deve ser compartilhado sem autorização dos
+          departamentos competentes. Qualquer violação acarretará
+          <span class="censored">sanções severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1138</span>-B</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE <span class="censored">3</span></span>
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DUPLAS (DEFINIÇÃO E FUNDAMENTOS)
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[
+            \iint_{D} f(x,y)\, dA 
+            = \lim_{\|P\|\to 0} 
+            \sum_{(x_i^*,\,y_i^*) \in P} f(x_i^*,y_i^*)\, \Delta A_i
+          \]
+        </p>
+        <p>
+          Onde \(D\) é um subconjunto limitado do plano, \(\|P\|\) representa o
+          refinamento da partição sobre \(D\), e cada \(\Delta A_i\) corresponde
+          à área de cada sub-região. Esta soma de Riemann bidimensional permite
+          generalizar o conceito de área e volume em análises de
+          <span class="censored">distribuição</span> e
+          <span class="censored">densidade</span> de sistemas físicos.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        O uso de integrais duplas possibilita a avaliação precisa de superfícies
+        de reação em câmaras de combustão, garantindo maior
+        <span class="censored">eficiência</span> em dispositivos projetados para
+        o programa espacial. Com essa técnica, é possível estimar quantidades
+        como fluxo de massa e variações de pressão em duas dimensões.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o
+        <span class="censored">Programa Mercury</span> (1958-1963), estudos
+        sobre integrais duplas ajudaram no dimensionamento de certos componentes
+        críticos. A compreensão rigorosa da soma de Riemann em duas variáveis
+        suportou cálculos iniciais de <span class="censored">trajetórias</span>
+        e de áreas sujeitas a <span class="censored">aquecimento</span> durante
+        a reentrada.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (BÁSICO) - EXERCÍCIOS 1 A 3 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Caderno de Notas - Laboratório de Testes do Programa Mercury
+            </div>
+            <p>
+              Considere uma região retangular \(D\) limitada por
+              \[0 \le x \le 2\] e \[0 \le y \le 3\], subdividida em
+              partições retangulares de mesma dimensão. Defina
+              \(\Delta A_i\) como a área de cada sub-região e explique como
+              proceder para construir a soma de Riemann bidimensional de uma
+              função \(f(x,y)\) ainda sem utilizar o Teorema de Fubini.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere o refinamento uniforme das partições e
+                a soma dos valores em pontos representativos.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para cada sub-região retangular, escolhe-se um ponto
+                  \((x_i^*,\,y_i^*)\) no interior e calcula-se
+                  \(f(x_i^*,\,y_i^*)\,\Delta A_i\). A soma de todos esses
+                  termos, no limite em que o tamanho das partições tende a zero,
+                  define a integral dupla.
+                </p>
+                <p>
+                  Assim, \(\iint_{D} f(x,y)\, dA\) surge como limite das somas
+                  de Riemann bidimensionais, respeitando a definição fundamental
+                  de integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Apontamentos de Análise Estrutural [REGISTROS INTERNOS]
+            </div>
+            <p>
+              Sabe-se que linhas e curvas regulares no plano têm conteúdo nulo
+              (medida de área zero). Explique, no contexto de uma soma de
+              Riemann bidimensional, por que um conjunto formado apenas por
+              linhas não afeta o valor da integral dupla em uma região
+              limitada.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pense em como áreas infinitamente "finas" não
+                contribuem para a soma total.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em uma partição bidimensional, cada sub-região possui área
+                  finita (por menor que seja). Uma linha isolada não
+                  "preenche" essas sub-regiões, pois seu conteúdo (área)
+                  permanece zero, mesmo ao refinar a partição.
+                </p>
+                <p>
+                  Portanto, conjuntos de medida zero não alteram o valor final
+                  das somas de Riemann, preservando a mesma integral.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Diário Técnico - Equipe de Propulsão [SETOR <span class="censored">██</span>]
+            </div>
+            <p>
+              Uma função \(f(x,y)\) está definida e é limitada em um domínio
+              retangular \(D\). A função apresenta um número finito de pontos de
+              descontinuidade em \(D\). Verifique, de forma conceitual, se é
+              possível concluir a integrabilidade de \(f\), sem ainda recorrer a
+              ferramentas avançadas ou teoremas posteriores.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Descontinuidades em conjunto finito raramente
+                afetam a soma de Riemann de forma significativa.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Um número finito de pontos de descontinuidade representa um
+                  conjunto de medida nula. Ao construir as somas de Riemann, o
+                  impacto desses pontos é desprezível no cálculo da área
+                  acumulada, não impedindo a função de ser integrável no
+                  domínio.
+                </p>
+                <p>
+                  Assim, é plausível que \(f\) seja integrável em \(D\),
+                  atendendo às condições de integrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (INTERMEDIÁRIO) - EXERCÍCIOS 4 A 6 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Documentos Classificados - Projeto Mercury [ANÁLISE COMBINADA]
+            </div>
+            <p>
+              Sejam \(m\) e \(M\) funções constantes que limitam \(f(x,y)\) de
+              modo que \(m \leq f(x,y) \leq M\) para todo ponto \((x,y)\) em
+              \(D\). Explique como a existência desses limites influencia a
+              construção das somas inferior e superior, usadas na definição da
+              integral dupla.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de limites uniformes podem ser
+                úteis na comparação de somas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(m \leq f(x,y) \leq M\), então as somas de Riemann
+                  inferiores e superiores são limitadas por
+                  \(m \times \text{área}(D)\) e \(M \times \text{área}(D)\),
+                  respectivamente.
+                </p>
+                <p>
+                  Assim, ao refinar as partições, a diferença entre a soma
+                  superior e a soma inferior tende a zero se a função for
+                  integrável, garantindo que \(\iint_D f\) exista nos limites
+                  impostos.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Sessão de Treinamento - Equipe de Análise [BASE <span class="censored">REDACTED</span>]
+            </div>
+            <p>
+              Seja \(f(x,y)\) uma função limitada em \(D\). Defina as
+              <em>somas inferiores</em> \(\underline{S}(P,f)\) e as
+              <em>somas superiores</em> \(\overline{S}(P,f)\) para cada
+              partição \(P\). Descreva, conceitualmente, como o refinamento de
+              \(P\) influencia a aproximação desses valores rumo à integral
+              dupla.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe as lacunas entre valores de mínimo e
+                máximo em cada sub-região.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  À medida que a partição se torna mais fina, o máximo e o
+                  mínimo de \(f\) em cada sub-região ficam mais próximos entre
+                  si. Consequentemente, \(\underline{S}(P,f)\) e
+                  \(\overline{S}(P,f)\) convergem para o mesmo valor-limite,
+                  caso \(f\) seja integrável.
+                </p>
+                <p>
+                  Esse valor comum é definido como \(\iint_{D} f(x,y)\,dA\),
+                  validando o processo fundamental de aproximação via somas de
+                  Riemann.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Grupo de Cálculo Avançado - Programa Gemini [RELATÓRIOS CRUZADOS]
+            </div>
+            <p>
+              Demonstre, em termos de ideia geral, como a linearidade da soma de
+              Riemann bidimensional permite concluir que a integral de
+              \(\alpha f(x,y) + \beta g(x,y)\) (onde \(\alpha\) e \(\beta\) são
+              constantes) pode ser decomposta na soma das integrais de
+              \(\alpha f\) e \(\beta g\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de conservação podem ser relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Ao somar as contribuições de \(\alpha f\) e \(\beta g\) em
+                  cada sub-região, obtemos
+                  \(\sum [\alpha f(x_i^*,y_i^*) + \beta g(x_i^*,y_i^*)]\Delta A_i\).
+                </p>
+                <p>
+                  Essa expressão se separa em
+                  \(\alpha \sum f(x_i^*,y_i^*)\Delta A_i + \beta \sum g(x_i^*,y_i^*)\Delta A_i\),
+                  indicando que o limite da soma (ou seja, a integral) também se
+                  decomporá linearmente, respeitando
+                  \(\iint(\alpha f+\beta g)=\alpha\iint f+\beta\iint g\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (AVANÇADO) - EXERCÍCIOS 7 A 9 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Arquivos de Simulação - Projeto Gemini [Dados de 1965]
+            </div>
+            <p>
+              Analise se uma função \(f(x,y)\), cuja principal dificuldade está
+              na existência de linhas de descontinuidade ao longo de
+              \(x = y\), pode ser integrável num domínio quadrado \(D\). Suponha
+              que fora dessas linhas, \(f\) seja contínua e limitada.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  As linhas \(x=y\) formam um conjunto unidimensional no plano,
+                  possuindo medida nula. Sendo \(f\) limitada e contínua na
+                  maior parte de \(D\), a presença dessas descontinuidades
+                  pontuais (ou lineares) não inviabiliza a integrabilidade.
+                </p>
+                <p>
+                  Com a soma de Riemann devidamente construída, as discrepâncias
+                  em \(\Delta A_i\) sobre essas linhas não comprometem o limite
+                  final, confirmando a integrabilidade de \(f\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Centro de Pesquisas Orbitais [REGISTROS INTERNOS]
+            </div>
+            <p>
+              Dado um domínio \(D\) que pode ser decomposto em duas regiões
+              adjacentes \(D_1\) e \(D_2\), explique como é possível relacionar
+              \(\iint_{D} f(x,y)\,dA\) às integrais sobre \(D_1\) e \(D_2\),
+              sem recorrer a propriedades de <span class="censored">Fubini</span>
+              ou outras ferramentas avançadas.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há invariantes na forma como a soma de Riemann é
+                montada.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Se \(D = D_1 \cup D_2\) e \(D_1 \cap D_2\) é um conjunto de
+                  medida nula (apenas fronteira comum), pode-se construir as
+                  somas de Riemann separadamente em cada região e somar os
+                  resultados.
+                </p>
+                <p>
+                  No limite, a integral de \(f\) em \(D\) é a soma das integrais
+                  em \(D_1\) e \(D_2\), pois a fronteira não contribui
+                  significativamente para o valor (também de medida zero).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Informes Técnicos do <span class="censored">Departamento Avançado</span>
+            </div>
+            <p>
+              Considere um domínio \(D\) poligonal e uma função \(f\)
+              potencialmente descontínua ao longo dos vértices do polígono. Em
+              linhas gerais, justifique por que tais descontinuidades em um
+              número finito de pontos não prejudica a soma de Riemann e,
+              portanto, não anula a possibilidade de \(f\) ser integrável.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pequenos conjuntos não afetam significativamente
+                a soma total.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Vértices poligonais formam um conjunto discreto de pontos.
+                  Como cada ponto isolado tem conteúdo nulo, essas
+                  descontinuidades não contribuem no cálculo de área acumulada.
+                </p>
+                <p>
+                  Em suma, para a maior parte do domínio, \(f\) continua
+                  limitada, e a soma de Riemann converge normalmente, validando
+                  a integrabilidade apesar das descontinuidades pontuais.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (DESAFIADOR) - EXERCÍCIOS 10 A 12 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Dinâmica Espacial [Dados Compilados - 1963]
+            </div>
+            <p>
+              Investigue as condições para que uma função \(f\) definida em um
+              domínio irregular \(D\) seja integrável via soma de Riemann, mesmo
+              que \(D\) apresente partes convexas e côncavas. Analise se a forma
+              de \(D\) interfere no processo ou apenas a natureza de \(f\) e
+              seu comportamento em conjuntos de medida não nula.
+            </p>
+
+            <!-- SÉRIE OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O formato do domínio, sendo limitado e mensurável, não impede
+                  a aplicação da definição de integral dupla via soma de
+                  Riemann. O fator decisivo é a regularidade de \(f\) em quase
+                  todo \(D\).
+                </p>
+                <p>
+                  Ainda que a fronteira de \(D\) seja complexa, o refinamento das
+                  partições em regiões pequenas permite aproximar a área total
+                  e, se \(f\) for limitada e suas descontinuidades estiverem em
+                  conjuntos de medida zero, a integral existe.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Seção de Estudos Internos [Programa <span class="censored">█</span>]
+            </div>
+            <p>
+              Seja \(f\) uma função que assume valores distintos em regiões de
+              diferentes densidades (por exemplo, zonas mais "densas" dentro de
+              um domínio). Explore como o particionamento mais refinado nessas
+              zonas pode assegurar a integrabilidade, levando em conta apenas o
+              conceito de soma de Riemann e propriedades de conjuntos de medida
+              nula.
+            </p>
+
+            <!-- SÉRIE OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em zonas onde \(f\) varia de forma mais brusca, um maior
+                  refinamento das sub-regiões diminui a diferença entre as somas
+                  superiores e inferiores, controlando o erro total.
+                </p>
+                <p>
+                  Esse processo de refinamento localizado, juntamente com a
+                  compreensão de que descontinuidades limitadas ocorrem em
+                  conjuntos de área nula, garante que a integral dupla exista
+                  quando \(f\) se mantém limitada e não exibe
+                  "descontinuidades" de grande medida.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Painel Avançado de Pesquisa - Setor <span class="censored">X</span>
+            </div>
+            <p>
+              Construa um raciocínio sobre como as propriedades básicas
+              (lineares, monotônicas, limitadas) da soma de Riemann em duas
+              variáveis são suficientes para garantir uma formulação coerente
+              do conceito de integral dupla, mesmo antes da aplicação de
+              teoremas posteriores (como Fubini).
+            </p>
+
+            <!-- SÉRIE OMEGA: Sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A definição de integral via soma de Riemann baseia-se em
+                  partições arbitrárias de \(D\), assumindo apenas que \(f\) é
+                  limitada e que suas descontinuidades ocorrem em conjuntos de
+                  medida nula. A linearidade e a comparação entre somas
+                  inferiores e superiores asseguram consistência para a soma em
+                  2D.
+                </p>
+                <p>
+                  Assim, mesmo sem recorrer a Fubini ou outras ferramentas, já
+                  se estabelece um arcabouço firme para a existência e unicidade
+                  do valor integral, fundamentado apenas em partições,
+                  refinamentos e limitações de \(f\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VX-
+        <span class="censored">1138</span>-B
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

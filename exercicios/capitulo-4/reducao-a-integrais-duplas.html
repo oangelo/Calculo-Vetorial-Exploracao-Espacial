@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE MARÇO DE
+          <span class="censored">1974</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">PLATAFORMA ORBITAL [██████]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ASTRO-EULER</span><br /><br />
+          Em resposta à recente <span class="censored">escalada</span> na
+          Corrida Espacial, nossa equipe de pesquisa se concentrou em novos
+          métodos de integração no espaço de três dimensões. <br /><br />
+          Este dossiê apresenta o estudo de
+          <span class="censored">redução volumétrica</span> via integrais
+          triplas, com especial ênfase em técnicas de redução para integrais
+          duplas aplicadas ao projeto
+          <span class="censored">████████</span>.<br />
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações críticas sobre técnicas avançadas de
+          cálculo. Qualquer divulgação não autorizada resultará em
+          <span class="censored">consequências irreversíveis</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">4001</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: REDUÇÃO A INTEGRAIS DUPLAS EM INTEGRAIS TRIPLAS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D} \left(\int_{z=a(x,y)}^{z=b(x,y)}
+          f(x,y,z)\,dz \right) dA\]
+        </p>
+        <p>
+          A redução de uma integral tripla a uma integral dupla ocorre quando a
+          região de integração \(V\) pode ser descrita por limites superiores e
+          inferiores em uma das variáveis, resultando em uma integração
+          iterativa em duas dimensões. Na prática, define-se a base \(D\) no
+          plano e ajustam-se os limites da terceira variável para cada ponto de
+          \((x,y)\) em \(D\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Em ambientes de microgravidade, a determinação do
+        <span class="censored">centro de massa</span> de módulos espaciais
+        utiliza métodos de integração em três dimensões. A aplicação de técnicas
+        de redução a integrais duplas agiliza o cálculo de volumes
+        <span class="censored">cilíndricos</span> e
+        <span class="censored">regiões irregulares</span>, garantindo maior
+        segurança em trajetórias orbitais.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante a fase final do Programa Apollo
+        (1961-1972), cálculos avançados de volumes pressurizados em módulos
+        lunares exigiram novas abordagens matemáticas. O sucesso da missão
+        <span class="censored">████</span> inspirou nossa equipe a
+        desenvolver métodos de redução de integrais triplas, antecipando
+        melhorias essenciais para o projeto Skylab (1973-1979).
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- ALFA: Exercícios 1 a 3 (Básico) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise de Volume Simplificado - Laboratório de
+              <span class="censored">Testes</span> [MAR/1974]
+            </div>
+            <p>
+              Considere o volume \(V\) abaixo do plano \(z = 4\) e acima da
+              região \(D\) no plano \(xy\), onde \(D\) é limitado pelo retângulo
+              \(0 \le x \le 2\), \(0 \le y \le 3\). Reduza a integral tripla
+              \[\iiint_V 1 \, dV\] a uma integral dupla e calcule o volume.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar limites superiores e inferiores para \(z\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O volume pode ser descrito por \(0 \le x \le 2\), \(0 \le y \le 3\) e \(0 \le z \le 4\).
+                </p>
+                <p>
+                  Redução para integral dupla:
+                </p>
+                <p>
+                  \[\iiint_V 1\, dV = \iint_D \left(\int_{z=0}^{z=4} 1\, dz \right)dA.\]
+                </p>
+                <p>
+                  Integração interna em \(z\): \(\int_{0}^{4} 1 \, dz = 4.\)
+                </p>
+                <p>
+                  Assim, \[\iint_D 4 \, dA = 4 \times \text{Área de }D = 4 \times (2 \times 3) = 24.\]
+                </p>
+                <p>
+                  Conclusão: O volume buscado é \(24\) unidades cúbicas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Simulação de Tanque Orbital -
+              <span class="censored">Setor de Propulsão</span>
+            </div>
+            <p>
+              Seja \(V\) o volume limitado acima pelo cone \(z = \sqrt{x^2 + y^2}\)
+              e abaixo pelo plano \(z=0\) na região \(D\). Considere \(D\) o
+              círculo \(x^2 + y^2 \le 4\). Escreva a integral tripla de
+              \(\iiint_V x\, dV\) reduzindo-a a uma integral dupla.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Pense em coordenadas adequadas para \(D\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para cada ponto \((x,y)\) em \(D\), \(z\) varia de \(0\) a
+                  \(\sqrt{x^2 + y^2}\).
+                </p>
+                <p>
+                  Portanto:
+                  \[
+                  \iiint_V x \, dV 
+                  = \iint_D \left(\int_{z=0}^{z=\sqrt{x^2 + y^2}} x \, dz\right) dA.
+                  \]
+                </p>
+                <p>
+                  Integração interna:
+                  \(\int_{0}^{\sqrt{x^2 + y^2}} x \, dz = x \cdot \sqrt{x^2 + y^2}.\)
+                </p>
+                <p>
+                  Logo, a integral reduzida é:
+                  \[
+                  \iint_D x \sqrt{x^2 + y^2} \, dA,
+                  \quad \text{onde } D: x^2 + y^2 \le 4.
+                  \]
+                </p>
+                <p>
+                  O problema se torna mais simples em coordenadas polares, mas a
+                  solicitação era apenas expressar a redução em forma de dupla
+                  integral.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Cálculo Rápido de Massa - Módulo de
+              <span class="censored">Acoplagem</span>
+            </div>
+            <p>
+              O módulo cilíndrico possui densidade constante \(\rho=2\). O raio
+              da base é \(3\) e a altura é \(5\). Usando a descrição no espaço
+              com \(z\) variando de \(0\) a \(5\) e \((x,y)\) no disco de raio
+              \(3\), reduza a integral tripla para uma dupla integral para
+              encontrar a massa total: \(\iiint_V 2\, dV\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a altura constante e o disco no plano.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Região \(V\): \(0 \le z \le 5\), \(x^2 + y^2 \le 9\).
+                </p>
+                <p>
+                  Integral tripla:
+                  \[
+                  \iiint_V 2\, dV 
+                  = \iint_D \left(\int_{z=0}^{5} 2 \, dz \right) dA.
+                  \]
+                </p>
+                <p>
+                  Integração em \(z\): \(\int_{0}^{5} 2 \, dz = 10.\)
+                </p>
+                <p>
+                  Assim, \(\iint_D 10 \, dA = 10 \cdot \text{Área do disco} = 10 \times \pi \cdot 3^2 = 90\pi.\)
+                </p>
+                <p>
+                  Massa total = \(90\pi\) unidades de massa.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- BETA: Exercícios 4 a 6 (Intermediário) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Departamento de Geometria -
+              <span class="censored">Centro de Controle</span>
+            </div>
+            <p>
+              Calcular \(\iiint_V (x^2 + y^2)\, dV\) onde \(V\) é o sólido
+              limitado pelo paraboloide \(z = x^2 + y^2\) e pelo plano
+              \(z = 9\). Reduza a integral tripla a uma integral dupla no
+              domínio projetado sobre o plano \(xy\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria podem ser relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Interseção: \(z = 9 = x^2 + y^2\) implica \(x^2 + y^2 = 9\). 
+                </p>
+                <p>
+                  Portanto, \(V\) é limitado no \(xy\)-plano pelo círculo
+                  \(x^2 + y^2 \le 9\) e \(0 \le z \le 9 - (x^2 + y^2)\).
+                </p>
+                <p>
+                  A integral tripla:
+                  \[
+                  \iiint_V (x^2 + y^2)\, dV
+                  = \iint_D \left( \int_{z=0}^{9 - (x^2 + y^2)} (x^2 + y^2)\, dz \right) dA.
+                  \]
+                </p>
+                <p>
+                  Integração em \(z\):
+                  \(\int_{0}^{9 - (x^2 + y^2)} (x^2 + y^2) \, dz
+                  = (x^2 + y^2) \bigl[\,z
