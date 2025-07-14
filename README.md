@@ -2,6 +2,11 @@
 
 Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fundamentos do Cálculo Vetorial através de uma perspectiva única: a exploração espacial. Aqui, cada teorema se torna uma ferramenta para desvendar os mistérios do universo, cada conceito uma chave para compreender a dança dos corpos celestes. Das órbitas dos satélites aos campos gravitacionais das estrelas, veremos como o cálculo vetorial nos permite modelar e compreender os fenômenos que regem nosso cosmos.
 
+## Notas 
+
+[2025-1](notas/2025-1.md)
+Revisão da PS amanhã, dia 15/07/2025, a partir das 10:40 da manhã até às 12h no lab de robôtica.
+
 ## Apresentações e Material Didático
 
 0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/revisao.html)
