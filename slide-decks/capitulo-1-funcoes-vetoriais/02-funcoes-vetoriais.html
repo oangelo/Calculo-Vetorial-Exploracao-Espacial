@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+        <section>
+          <section>
+            <h2>O que são Funções Vetoriais?</h2>
+            <p>Uma função vetorial é um mapeamento que associa:</p>
+            <ul>
+              <li>Um ponto do \(\mathbb{R}^n\) (domínio)</li>
+              <li>A um vetor no \(\mathbb{R}^m\) (contradomínio)</li>
+            </ul>
+            <p>Notação: \(\mathbf{F}: \mathbb{R}^n \to \mathbb{R}^m\)</p>
+          </section>
+          <section>
+            <h2>Do Unidimensional ao Multidimensional</h2>
+            <p>Para compreender funções vetoriais, partamos do familiar:</p>
+            <p><strong>Função Escalar:</strong> \(f(x) = 2x\)</p>
+            <p>
+              Para cada número real \(x\), obtemos um único número real \(y\).
+            </p>
+            <p>
+              <strong>Função Vetorial:</strong> \(\vec{F}(t) = (x(t), y(t),
+              z(t))\)
+            </p>
+            <p>
+              Para cada número real \(t\), obtemos um vetor com múltiplas
+              componentes.
+            </p>
+          </section>
+
+          <section>
+            <h2>Funções Vetoriais</h2>
+            <div class="fragment">
+              <p>
+                Uma função vetorial é qualquer função que produz vetores como
+                saída
+              </p>
+              <p>Podem ter diferentes tipos de domínio, por exemplo:</p>
+              <ul>
+                <li>
+                  \(\vec{r}: \mathbb{R} \to \mathbb{R}^n\) (curva no espaço)
+                </li>
+                <li>
+                  \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\) (campo vetorial)
+                </li>
+                <li>\(\vec{G}: \mathbb{R}^m \to \mathbb{R}^n\) (caso geral)</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Funções Vetoriais: Uma Linguagem para Descrever o Movimento</h2>
+            <p>
+              Quando descrevemos o movimento de um objeto no espaço, precisamos
+              especificar múltiplas informações simultaneamente. Em cada
+              instante \(t\), precisamos conhecer:
+            </p>
+            <ul>
+              <li>
+                Sua posição em relação a diferentes eixos: \((x(t), y(t),
+                z(t))\)
+              </li>
+              <li>
+                Sua velocidade em cada direção: \((\dot{x}(t), \dot{y}(t),
+                \dot{z}(t))\)
+              </li>
+              <li>
+                As forças que atuam sobre ele: \(\vec{F}(t) = (F_x(t), F_y(t),
+                F_z(t))\)
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Exemplo Fundamental</h2>
+            <p><strong>1. Movimento Circular</strong></p>
+            <p>\[\vec{r}(t) = (R\cos t, R\sin t)\]</p>
+            <p>
+              Esta função descreve uma trajetória circular de raio R no plano.
+            </p>
+          </section>
+
+          <section>
+            <h2>Campo Gravitacional Terra-Lua</h2>
+            <a
+              href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/visualizacao/campo-gravitacional-terra-lua.html"
+              target="_blank"
+              >Visualização</a
+            >
+          </section>
+
+          <section>
+            <h2>Visualização Geométrica</h2>
+            <p>
+              Uma função vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^m\)
+              pode ser interpretada de três formas complementares:
+            </p>
+            <ul>
+              <li>
+                Como uma curva paramétrica: \(\vec{r}(t) = (x(t), y(t), z(t))\)
+              </li>
+              <li>
+                Como um campo vetorial: \(\vec{F}(x,y) = (P(x,y), Q(x,y))\)
+              </li>
+              <li>
+                Como uma transformação: \(\vec{T}: \mathbb{R}^2 \to
+                \mathbb{R}^2\)
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Aplicações na Física</h2>
+            <p><strong>Campos Gravitacionais:</strong></p>
+            <p>
+              O campo gravitacional é uma função vetorial que associa a cada
+              ponto do espaço um vetor força:
+            </p>
+            <p>\[\vec{g}(x,y,z) = -G\frac{M}{r^3}(x,y,z)\]</p>
+          </section>
+
+          <section>
+            <h2>Formalização Matemática</h2>
+            <p>
+              Uma função vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^m\) é
+              um mapeamento que:
+            </p>
+            <ul>
+              <li>
+                Recebe \(n\) variáveis independentes: \((x_1, x_2, ..., x_n)\)
+              </li>
+              <li>Produz \(m\) componentes: \((y_1, y_2, ..., y_m)\)</li>
+              <li>
+                De forma que: \(\vec{F}(x_1, ..., x_n) = (f_1(x_1, ..., x_n),
+                ..., f_m(x_1, ..., x_n))\)
+              </li>
+            </ul>
+          </section>
+        </section>
+</body>
+</html>

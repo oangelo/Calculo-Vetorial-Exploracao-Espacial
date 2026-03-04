@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+</head>
+<body>
+        <section>
+          <section>
+            <h2>Campo Vetorial</h2>
+            <p>
+              Definição: Um campo vetorial \(\vec{F}\) em um conjunto aberto \(U
+              \subseteq \mathbb{R}^n\) é uma função
+            </p>
+            <p>\(\vec{F}: U \to \mathbb{R}^n\)</p>
+            <p>
+              que associa a cada ponto \(\vec{p} \in U\) um vetor
+              \(\vec{F}(\vec{p}) \in \mathbb{R}^n\)
+            </p>
+            <div class="fragment">(⌐⊙_⊙) Entendeu? Não?! Nem eu. Calma!</div>
+            <div class="fragment">
+              <p>Exemplo em \(\mathbb{R}^2\):</p>
+              <p>\(\vec{F}(x,y) = (x^2-y)\vec{i} + (x+y^2)\vec{j}\)</p>
+            </div>
+          </section>
+
+          <!-- Relação entre os Conceitos -->
+          <section>
+            <h2>Campo Vetorial: Um Caso Especial</h2>
+            <div class="fragment">
+              <p>Todo campo vetorial é uma função vetorial onde:</p>
+              <ul>
+                <li>O domínio é um subconjunto de \(\mathbb{R}^n\)</li>
+                <li>O contradomínio é o mesmo \(\mathbb{R}^n\)</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Mas nem toda função vetorial é um campo vetorial!</p>
+              <p>
+                Exemplo: A trajetória de uma nave \(\vec{r}(t) = (x(t), y(t),
+                z(t))\)
+              </p>
+              <ul>
+                <li>É uma função vetorial (\(\mathbb{R} \to \mathbb{R}^3\))</li>
+                <li>Não é um campo vetorial (domínio diferente)</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Campo Vetorial vs Função Vetorial -->
+          <section>
+            <h2>Campo Vetorial vs Função Vetorial</h2>
+            <div class="fragment">
+              <p>Função Vetorial \(\vec{r}: \mathbb{R} \to \mathbb{R}^n\)</p>
+              <ul>
+                <li>Entrada: um número real \(t\) (geralmente tempo)</li>
+                <li>Saída: um vetor em \(\mathbb{R}^n\)</li>
+                <li>
+                  Exemplo: trajetória de uma nave \(\vec{r}(t) = (x(t), y(t),
+                  z(t))\)
+                </li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Campo Vetorial \(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\)</p>
+              <ul>
+                <li>Entrada: um ponto no espaço \((x,y,z)\)</li>
+                <li>Saída: um vetor nesse ponto</li>
+                <li>
+                  Exemplo: campo gravitacional \(\vec{F}(x,y,z)\) em cada ponto
+                  do espaço
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Campo Vetorial - Introdução Intuitiva -->
+          <section>
+            <h2>Campo Vetorial: Uma Visão Intuitiva</h2>
+            <div class="fragment">
+              <p>Imagine o campo gravitacional ao redor de um planeta... 🌍</p>
+              <p>Em cada ponto do espaço, temos:</p>
+              <ul>
+                <li>Uma direção da força gravitacional</li>
+                <li>Uma intensidade que varia com a distância</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Isso é um campo vetorial!</p>
+              <p>
+                Para cada ponto do espaço, associamos um vetor que representa a
+                força.
+              </p>
+            </div>
+          </section>
+
+          <!-- Exemplos no Espaço -->
+          <section>
+            <h2>Campos Vetoriais no Espaço</h2>
+            <div class="fragment">
+              <p>🌠 Campo gravitacional de sistemas planetários</p>
+              <p>☀️ Vento solar</p>
+              <p>🌍 Campo magnético terrestre</p>
+              <p>🛸 Trajetórias de naves espaciais</p>
+            </div>
+            <div class="fragment">
+              <p>
+                Que outros exemplos de campos vetoriais você consegue
+                identificar na exploração espacial?
+              </p>
+            </div>
+          </section>
+
+
+          <!-- Visualização -->
+          <section>
+            <h2>Pontos de Lagrange</h2>
+            <div class="text-container">
+              <div class="lagrange-point">
+                <p>
+                  Os pontos de Lagrange são posições no espaço onde as forças
+                  gravitacionais de dois corpos celestes e a força centrífuga se
+                  equilibram, permitindo que um objeto menor permaneça em uma
+                  posição relativamente estável.
+                </p>
+              </div>
+                <ul>
+                  <li>
+                    <strong>L1:</strong> Localizado entre os dois corpos, útil
+                    para observações solares.
+                  </li>
+                  <li>
+                    <strong>L2:</strong> Além do corpo menor, ideal para
+                    telescópios espaciais.
+                  </li>
+                  <li>
+                    <strong>L3:</strong> Oposto ao corpo menor, do outro lado do
+                    corpo principal.
+                  </li>
+                  <li>
+                    <strong>L4 e L5:</strong> Formam triângulos equiláteros com
+                    os dois corpos, conhecidos como pontos troianos.
+                  </li>
+                  <li>
+                  L4 e L5 são naturalmente estáveis quando a razão de massa é
+                  menor que 0.0385 (critério de Routh). L1, L2 e L3 são
+                  instáveis e requerem correções periódicas de órbita.
+                  </li>
+                </ul>
+          </section>
+
+          <!-- Slide com a visualização -->
+          <section>
+            <h2>Visualização Interativa dos pontos de Lagrange</h2>
+            <a
+              href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/visualizacao/lagrange.html"
+              target="_blank"
+              >Visualização</a
+            >
+          </section>
+
+          <!-- Para Refletir -->
+          <section>
+            <h2>Para Refletir...</h2>
+            <div class="fragment">
+              <p>Imagine uma sonda espacial:</p>
+              <ul>
+                <li>Como o campo gravitacional afeta sua trajetória?</li>
+                <li>O que acontece quando ela passa pelo ponto de Lagrange?</li>
+              </ul>
+            </div>
+            <div class="fragment">
+              <p>Estas questões nos levam a conceitos importantes:</p>
+              <ul>
+                <li>Órbitas como curvas integrais</li>
+                <li>Pontos de equilíbrio no espaço</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Aplicações -->
+          <section>
+            <h2>Aplicações na Exploração Espacial</h2>
+            <div class="fragment">
+              <p>Campos vetoriais são essenciais para:</p>
+              <ul>
+                <li>Planejamento de trajetórias de naves espaciais</li>
+                <li>Análise do vento solar e seus efeitos</li>
+                <li>Estudo de campos magnéticos planetários</li>
+                <li>Previsão de órbitas de satélites</li>
+              </ul>
+            </div>
+          </section>
+        </section>
+</body>
+</html>
