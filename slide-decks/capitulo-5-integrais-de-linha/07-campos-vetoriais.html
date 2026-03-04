@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Problema de Campo Gravitacional -->
+      <section>
+        <h2>Problema: Trabalho em Campo Gravitacional</h2>
+
+        <div class="problem-section">
+          <p>
+            <strong>Problema:</strong> Considere um satélite movendo-se em uma
+            trajetória semi-circular de raio \(R\) centrada na Terra, do ponto
+            \(A(R,0,0)\) ao ponto \(B(-R,0,0)\).
+          </p>
+
+          <p>O campo gravitacional é dado por:</p>
+          <p>
+            \[\vec{F}(x,y,z) =
+            -\frac{GM}{(x^2+y^2+z^2)^{3/2}}(x\hat{\imath}+y\hat{\jmath}+z\hat{k})\]
+          </p>
+
+          <p>
+            <strong>Calcule:</strong> O trabalho realizado pelo campo
+            gravitacional ao longo dessa trajetória.
+          </p>
+
+          <p>
+            <strong>Contexto:</strong> Este cálculo representa a energia
+            necessária para mover um satélite em uma órbita semicircular,
+            simulando parte de uma transferência orbital.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Resolução Etapa 1 -->
+      <section>
+        <h2>Solução: Etapa 1</h2>
+
+        <div class="compact-solution">
+          <p><strong>1. Parametrização da trajetória:</strong></p>
+          <p>A curva semicircular pode ser parametrizada como:</p>
+          <p>
+            \[\vec{r}(t) = R\cos t \, \hat{\imath} + R\sin t \, \hat{\jmath},
+            \quad 0 \leq t \leq \pi\]
+          </p>
+
+          <p><strong>2. Vetor d\(\vec{r}\):</strong></p>
+          <p>
+            \[d\vec{r} = \vec{r}'(t)\,dt = (-R\sin t \, \hat{\imath} + R\cos t
+            \, \hat{\jmath})\,dt\]
+          </p>
+
+          <p><strong>3. Campo ao longo da trajetória:</strong></p>
+          <p>Para pontos na trajetória: \(|\vec{r}(t)| = R\) para todo \(t\)</p>
+          <p>
+            \[\vec{F}(\vec{r}(t)) = -\frac{GM}{R^3}(R\cos t \, \hat{\imath} +
+            R\sin t \, \hat{\jmath}) = -\frac{GM}{R^2}(\cos t \, \hat{\imath} +
+            \sin t \, \hat{\jmath})\]
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Resolução Etapa 2 -->
+      <section>
+        <h2>Solução: Etapa 2</h2>
+
+        <div class="compact-solution">
+          <p><strong>4. Produto escalar:</strong></p>
+          <p>
+            \[\vec{F}(\vec{r}(t)) \cdot d\vec{r} = -\frac{GM}{R^2}(\cos t \,
+            \hat{\imath} + \sin t \, \hat{\jmath}) \cdot (-R\sin t \,
+            \hat{\imath} + R\cos t \, \hat{\jmath})\,dt\]
+          </p>
+
+          <p>Desenvolvendo o produto escalar:</p>
+          <p>
+            \[\begin{align} \vec{F}(\vec{r}(t)) \cdot d\vec{r} &=
+            -\frac{GM}{R^2} \cdot R [(-\cos t)(\sin t) + (\sin t)(\cos t)]\,dt
+            \\ &= -\frac{GM}{R} [0]\,dt \\ &= 0\,dt \end{align}\]
+          </p>
+
+          <p>
+            Isto ocorre porque o campo gravitacional é sempre perpendicular ao
+            deslocamento em uma órbita circular!
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 4: Conclusão do Problema -->
+      <section>
+        <h2>Solução: Conclusão</h2>
+
+        <div class="compact-solution">
+          <p><strong>5. Integração:</strong></p>
+          <p>\[\int_C \vec{F} \cdot d\vec{r} = \int_0^\pi 0 \, dt = 0\]</p>
+
+          <p><strong>Interpretação física:</strong></p>
+          <p>
+            O trabalho total é zero porque o campo gravitacional é perpendicular
+            à trajetória circular em todos os pontos. Isso representa um
+            princípio fundamental das órbitas estáveis: em uma órbita circular,
+            o campo gravitacional não realiza trabalho líquido sobre o satélite.
+          </p>
+
+          <p>
+            Este resultado é consistente com a conservação de energia em órbitas
+            circulares e explica por que satélites podem permanecer em órbita
+            sem gasto contínuo de combustível.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 5: Problema Avançado -->
+      <section>
+        <h2>Problema Avançado: Manobra de Hohmann</h2>
+
+        <div class="problem-section">
+          <p>
+            <strong>Problema:</strong> Uma manobra de Hohmann é uma
+            transferência orbital eficiente entre duas órbitas circulares.
+          </p>
+
+          <p>Considere um campo de força central gravitacional:</p>
+          <p>\[\vec{F}(\vec{r}) = -\frac{GM}{|\vec{r}|^3}\vec{r}\]</p>
+
+          <p>
+            Calcule o trabalho realizado pelo campo durante uma transferência de
+            Hohmann de uma órbita circular de raio \(r_1 = 7000\) km para outra
+            de raio \(r_2 = 42000\) km (órbita geoestacionária).
+          </p>
+
+          <p>
+            <strong>Contexto:</strong> Esta é a manobra orbital padrão usada
+            para posicionar satélites de comunicação em órbita geoestacionária a
+            partir de uma órbita de estacionamento.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+    <!-- SEÇÃO 6: APLICAÇÃO HISTÓRICA -->
+    <!-- =========================== -->
+  </body>
+</html>

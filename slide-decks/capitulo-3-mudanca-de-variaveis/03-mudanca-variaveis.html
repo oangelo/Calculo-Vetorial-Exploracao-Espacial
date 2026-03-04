@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 0: O Vetor Posição e Vetores Tangentes -->
+      <section>
+        <h2>O Vetor Posição e Vetores Tangentes</h2>
+
+        <div class="math-section">
+          <p>
+            O <strong>vetor posição</strong> \(\vec{r}(u,v)\) é fundamental na
+            mudança de variáveis:
+          </p>
+          <p>\[\vec{r}(u,v) = (x(u,v), y(u,v))\]</p>
+
+          <p>
+            Este vetor define uma <strong>transformação</strong> entre sistemas
+            de coordenadas:
+          </p>
+          <ul>
+            <li>
+              Para cada par \((u,v)\), o vetor \(\vec{r}\) nos dá as coordenadas
+              cartesianas \((x,y)\)
+            </li>
+            <li>
+              Por exemplo, em coordenadas polares: \(\vec{r}(r,\theta) =
+              (r\cos\theta, r\sin\theta)\)
+            </li>
+          </ul>
+        </div>
+
+        <div class="math-section">
+          <p>
+            Os <strong>vetores tangentes</strong> indicam como o ponto se move
+            quando variamos \(u\) ou \(v\):
+          </p>
+          <p>
+            \[d\vec{r}_u = \frac{\partial \vec{r}}{\partial u}du =
+            \left(\frac{\partial x}{\partial u}, \frac{\partial y}{\partial
+            u}\right)du\]
+          </p>
+          <p>
+            \[d\vec{r}_v = \frac{\partial \vec{r}}{\partial v}dv =
+            \left(\frac{\partial x}{\partial v}, \frac{\partial y}{\partial
+            v}\right)dv\]
+          </p>
+
+          <p>
+            O <strong>elemento infinitesimal de área</strong> é dado pelo
+            produto vetorial desses vetores tangentes:
+          </p>
+          <p>\[dA = |d\vec{r}_u \times d\vec{r}_v|\]</p>
+        </div>
+      </section>
+
+      <!-- Slide 1: Área como Produto Vetorial -->
+      <section>
+        <h2>Área como Produto Vetorial</h2>
+
+        <div class="math-section">
+          <p>
+            A área de um paralelogramo definido por dois vetores \(\vec{v}_1\) e
+            \(\vec{v}_2\) é dada pelo módulo do produto vetorial:
+          </p>
+          <p>\[\text{Área} = |\vec{v}_1 \times \vec{v}_2|\]</p>
+
+          <p>
+            Em duas dimensões, para vetores \(\vec{v}_1 = (a, b)\) e \(\vec{v}_2
+            = (c, d)\), esta área é:
+          </p>
+          <p>
+            \[|\vec{v}_1 \times \vec{v}_2| = |ad - bc| =
+            \left|\det\begin{pmatrix} a & c \\ b & d \end{pmatrix}\right|\]
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>
+            Este é o princípio fundamental que nos permite entender o Jacobiano
+            como uma medida de distorção de área em mudanças de variáveis.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Elementos Infinitesimais e Produto Vetorial -->
+      <section>
+        <h2>Elementos Infinitesimais e Produto Vetorial</h2>
+
+        <div class="math-section">
+          <p>
+            Em uma mudança de variáveis de \((x,y)\) para \((u,v)\),
+            consideramos os vetores tangentes:
+          </p>
+          <p>
+            \[d\vec{r}_u = \frac{\partial \vec{r}}{\partial u}du =
+            \left(\frac{\partial x}{\partial u}, \frac{\partial y}{\partial
+            u}\right)du\]
+          </p>
+          <p>
+            \[d\vec{r}_v = \frac{\partial \vec{r}}{\partial v}dv =
+            \left(\frac{\partial x}{\partial v}, \frac{\partial y}{\partial
+            v}\right)dv\]
+          </p>
+
+          <p>O elemento infinitesimal de área é dado pelo produto vetorial:</p>
+          <p>\[dA = |d\vec{r}_u \times d\vec{r}_v|\]</p>
+        </div>
+
+        <div class="history-section">
+          <div class="history-label">CONCEITO</div>
+          <p>
+            Esta interpretação geométrica foi essencial para engenheiros que
+            projetavam componentes espaciais com geometrias não retangulares
+            durante a corrida espacial. Permitia visualizar como áreas se
+            transformavam em diferentes sistemas de coordenadas.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Visualização do Determinante como Área -->
+      <section>
+        <h2>Visualização: Área como Produto Vetorial</h2>
+
+        <canvas
+          id="determinantCanvas"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <p>
+            Arraste os pontos coloridos para mover os vetores e ver como o
+            produto vetorial determina a área
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 4: Relação com o Jacobiano -->
+      <section>
+        <h2>Do Produto Vetorial ao Jacobiano</h2>
+
+        <div class="math-section">
+          <p>
+            O produto vetorial dos elementos infinitesimais nos leva diretamente
+            ao Jacobiano:
+          </p>
+          <p>
+            \begin{align} |d\vec{r}_u \times d\vec{r}_v| &=
+            \left|\left(\frac{\partial x}{\partial
+            u}du\right)\left(\frac{\partial y}{\partial v}dv\right) -
+            \left(\frac{\partial x}{\partial v}dv\right)\left(\frac{\partial
+            y}{\partial u}du\right)\right|\\ &= \left|\left(\frac{\partial
+            x}{\partial u}\frac{\partial y}{\partial v} - \frac{\partial
+            x}{\partial v}\frac{\partial y}{\partial u}\right)\right| |du \,
+            dv|\\ &= \left|\det \begin{pmatrix} \frac{\partial x}{\partial u} &
+            \frac{\partial x}{\partial v} \\ \frac{\partial y}{\partial u} &
+            \frac{\partial y}{\partial v} \end{pmatrix}\right| |du \, dv|
+            \end{align}
+          </p>
+
+          <p>
+            Este determinante é o <strong>Jacobiano</strong> da transformação:
+          </p>
+          <p>\[J = \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\]</p>
+        </div>
+      </section>
+
+      <!-- Slide 5: Jacobiano como Distorção de Área -->
+      <section>
+        <h2>Jacobiano como Distorção de Área</h2>
+
+        <div class="math-section">
+          <p>
+            Em coordenadas cartesianas, um elemento infinitesimal de área é \(dA
+            = dx \cdot dy\)
+          </p>
+          <p>Ao mudarmos para outro sistema \((u,v)\), o elemento se torna:</p>
+          <p>
+            \[dA = \left|\frac{\partial(x,y)}{\partial(u,v)}\right| du \, dv\]
+          </p>
+
+          <p>
+            O Jacobiano \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\)
+            representa o <strong>fator de escala</strong> pelo qual o elemento
+            de área \(du \, dv\) deve ser multiplicado.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>
+            Este é precisamente o módulo do produto vetorial dos vetores
+            tangentes \(d\vec{r}_u\) e \(d\vec{r}_v\).
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 6: Visualização da Distorção em Coordenadas Polares -->
+      <section>
+        <h2>Visualização: Distorção de Elementos de Área</h2>
+
+        <canvas
+          id="distortionCanvas"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <p>
+            Mova o mouse sobre a visualização para ver a distorção de áreas em
+            coordenadas polares
+          </p>
+        </div>
+        <!-- Controles são adicionados dinamicamente pelo JS -->
+      </section>
+
+      <!-- Slide 7: Coordenadas Polares - Abordagem com Produto Vetorial -->
+      <section>
+        <h2>Coordenadas Polares: Abordagem Vetorial</h2>
+
+        <div class="math-section">
+          <p>
+            Em coordenadas polares \(x = r\cos\theta\) e \(y = r\sin\theta\), os
+            vetores tangentes são:
+          </p>
+          <p>
+            \[\frac{\partial \vec{r}}{\partial r} = (\cos\theta, \sin\theta)\]
+          </p>
+          <p>
+            \[\frac{\partial \vec{r}}{\partial \theta} = (-r\sin\theta,
+            r\cos\theta)\]
+          </p>
+
+          <p>O produto vetorial destes vetores nos dá:</p>
+          <p>
+            \begin{align} \left|\frac{\partial \vec{r}}{\partial r} \times
+            \frac{\partial \vec{r}}{\partial \theta}\right| &=
+            |(\cos\theta)(-r\cos\theta) - (-r\sin\theta)(\sin\theta)| \\ &=
+            |r\cos^2\theta + r\sin^2\theta| \\ &= r \end{align}
+          </p>
+
+          <p>
+            Isso explica por que em coordenadas polares: \(dA = r \, dr \,
+            d\theta\)
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 8: Visualização do Jacobiano Polar -->
+      <section>
+        <h2>Visualização: Jacobiano em Coordenadas Polares</h2>
+
+        <canvas
+          id="polarJacobianCanvas"
+          class="visualization-canvas"
+          width="600"
+          height="450"
+        ></canvas>
+
+        <div class="controls-container">
+          <p>
+            Clique na visualização para iniciar/parar a animação da distorção de
+            área
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+  </body>
+</html>

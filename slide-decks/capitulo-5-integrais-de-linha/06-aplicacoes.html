@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Conceito Principal -->
+      <section>
+        <h2>Integral Relativa ao Comprimento de Arco</h2>
+
+        <div class="math-section">
+          <p>Quando parametrizamos uma curva pelo comprimento de arco \(s\):</p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \int_0^L \vec{F}(\vec{r}(s)) \cdot
+            \hat{T}(s) \, ds\]
+          </p>
+
+          <p>Onde:</p>
+          <ul>
+            <li>\(L\) é o comprimento total da curva</li>
+            <li>
+              \(\hat{T}(s) = \frac{d\vec{r}}{ds}\) é o vetor tangente unitário
+            </li>
+            <li>\(s\) mede distância ao longo da curva</li>
+          </ul>
+
+          <p>
+            A vantagem desta parametrização é que \(|\hat{T}(s)| = 1\) para todo
+            \(s\), simplificando os cálculos.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Visualização de Diferentes Parametrizações -->
+      <section>
+        <h2>Visualização: Parametrização Orbital</h2>
+
+        <canvas
+          id="canvasArcLength"
+          class="visualization-canvas"
+          width="700"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="markerInterval">Intervalo entre marcas:</label>
+            <input
+              type="range"
+              id="markerInterval"
+              min="1"
+              max="50"
+              value="10"
+            />
+            <span id="intervalValue">10</span>
+          </div>
+        </div>
+
+        <div class="controls-container">
+          <button id="btnToggleParam" class="control-button">
+            Alternar Parametrização
+          </button>
+          <button id="btnAnimateOrbit" class="control-button">
+            Animar Órbita
+          </button>
+          <button id="btnReset" class="control-button">Reiniciar</button>
+        </div>
+      </section>
+
+      <!-- Slide 3: Explicação da Visualização -->
+      <section>
+        <h2>Sobre as Parametrizações Orbitais</h2>
+
+        <div class="math-section">
+          <p>
+            Na visualização anterior, comparamos duas parametrizações
+            diferentes:
+          </p>
+          <ul>
+            <li>
+              <span style="color: rgba(255, 90, 95, 0.8)">●</span>
+              <strong>Parametrização por tempo</strong> (Lei de Kepler): Pontos
+              mais espaçados no periélio, mais densos no afélio
+            </li>
+            <li>
+              <span style="color: rgba(79, 195, 247, 0.8)">●</span>
+              <strong>Parametrização por ângulo</strong>: Distribuição angular
+              uniforme dos pontos
+            </li>
+          </ul>
+          <p>
+            Apesar das diferentes distribuições de pontos, a integral de linha
+            resultante é a mesma!
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>Consequências na exploração espacial:</p>
+          <ul>
+            <li>
+              Uma sonda em órbita elíptica move-se mais rápido próximo ao
+              periélio
+            </li>
+            <li>
+              Para captar dados uniformemente distribuídos, instrumentos
+              científicos precisam compensar esta variação de velocidade
+            </li>
+            <li>
+              As janelas de comunicação e manobras orbitais são planejadas
+              considerando estas variações de velocidade
+            </li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+    <!-- SEÇÃO 5: PROBLEMAS PRÁTICOS -->
+    <!-- =========================== -->
+  </body>
+</html>

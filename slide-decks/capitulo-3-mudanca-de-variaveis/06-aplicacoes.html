@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: NOVA Aplicação Histórica - Massa de Componentes -->
+      <section>
+        <div class="history-section">
+          <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+          <p><strong>Programa Gemini (1965-1966)</strong></p>
+          <p>
+            A precisão no cálculo da massa de cada componente era vital para o
+            sucesso das missões Gemini, especialmente para as manobras de
+            rendezvous e acoplamento. Muitas peças não eram simples retângulos
+            ou discos e podiam ter densidade variável devido a diferentes
+            materiais ou processos de fabricação.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>
+            Considere calcular a massa de um painel em forma de setor anular
+            (parte de um anel): \(R_1 \le r \le R_2\), \(\theta_1 \le \theta \le
+            \theta_2\), com densidade \(\rho(r, \theta)\).
+          </p>
+          <p>A massa é \(m = \iint_R \rho(x,y) \, dA\).</p>
+          <p>Usando coordenadas polares (\(dA = r dr d\theta\)):</p>
+          <p>
+            \[m = \int_{\theta_1}^{\theta_2} \int_{R_1}^{R_2} \rho(r\cos\theta,
+            r\sin\theta) \cdot r \, dr \, d\theta\]
+          </p>
+          <p>
+            Esta abordagem, usando a mudança de variáveis e o Jacobiano \(r\),
+            permitia aos engenheiros obter estimativas de massa muito mais
+            precisas do que aproximações simples, impactando diretamente o
+            planejamento de combustível e o controle da espaçonave.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Aplicação Prática Moderna (Mantida) -->
+      <section>
+        <h2>Aplicação Prática: Análise de Materiais Compostos</h2>
+
+        <div class="dual-panel">
+          <div class="math-section">
+            <p>Aplicações em engenharia moderna:</p>
+            <ul>
+              <li>
+                Análise de estresse em painéis solares de formas complexas
+              </li>
+              <li>Distribuição de carga em placas de circuito impresso</li>
+              <li>
+                Cálculo de propriedades médias (térmicas, elétricas) em
+                superfícies
+              </li>
+              <li>Análise de vibração em estruturas planas não retangulares</li>
+              <li>Otimização de massa em componentes aeroespaciais</li>
+            </ul>
+          </div>
+
+          <div>
+            <canvas
+              id="plateVisualization"
+              class="visualization-canvas"
+              width="350"
+              height="250"
+            ></canvas>
+            <!-- Visualização genérica de placa mantida -->
+          </div>
+        </div>
+
+        <div class="history-section">
+          <div class="history-label">LEGADO</div>
+          <p>
+            As técnicas de mudança de variáveis em integrais duplas, refinadas
+            durante a corrida espacial para lidar com geometrias complexas e
+            propriedades variáveis, continuam sendo ferramentas fundamentais na
+            engenharia moderna para projetar e analisar componentes de forma
+            eficiente e precisa.
+          </p>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
