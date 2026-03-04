@@ -1,0 +1,87 @@
+/*
+ * Game Theme for Algebra Arcade Exercises
+ * Estilo para as listas de exercícios (v3 - Pedagógico)
+ */
+
+:root {
+    --background-color: #1a1a2d;
+    --main-font: 'VT323', monospace;
+    --heading-font: 'Press Start 2P', sans-serif;
+    --text-color: #e0e0e0;
+    --cyan: #00ffff;
+    --magenta: #ff00ff;
+    --yellow: #ffff00;
+    --green: #00ff00;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--main-font);
+    font-size: 1.5rem;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 4px solid var(--cyan);
+    box-shadow: 0 0 15px var(--cyan);
+}
+
+h1, h2, h3 {
+    font-family: var(--heading-font);
+    color: var(--yellow);
+    text-shadow: 2px 2px 0px var(--magenta);
+    text-transform: uppercase;
+}
+
+.console-header { text-align: center; border: 2px solid var(--yellow); padding: 10px; margin-bottom: 30px; }
+.console-header h1 { font-size: 2em; margin: 0.5em 0; }
+.console-header h2 { font-size: 1.2em; margin: 0.5em 0; }
+.mission-intro h3 { font-size: 1.5em; color: var(--cyan); text-shadow: 2px 2px 0px var(--magenta); }
+
+.mission { background-color: rgba(0, 0, 0, 0.3); border: 2px solid var(--cyan); padding: 20px; margin-bottom: 25px; counter-increment: mission-counter; }
+.mission h3 { font-size: 1.2em; }
+.mission h3::before { content: "MISSÃO #" counter(mission-counter) ": "; color: var(--yellow); }
+
+.mission-objective {
+    background-color: rgba(0, 255, 255, 0.1);
+    border: 1px dashed var(--cyan);
+    padding: 10px;
+    margin: 15px 0;
+    font-size: 1.2rem;
+}
+.mission-objective strong {
+    font-family: var(--heading-font);
+    color: var(--cyan);
+    font-size: 0.9em;
+}
+
+.hint-container {
+    margin: 15px 0;
+}
+.hint-container summary {
+    font-family: var(--main-font);
+    color: var(--yellow);
+    font-size: 1.2rem;
+    font-style: italic;
+    cursor: pointer;
+    border: 1px dashed var(--yellow);
+    padding: 8px;
+    display: inline-block;
+}
+.hint-container .hint {
+    margin-top: 10px;
+    border-left: 4px solid var(--yellow);
+    padding: 10px;
+    background: rgba(255, 255, 0, 0.05);
+    font-style: italic;
+}
+.hint p { margin: 0; }
+
+details { border: 2px dashed var(--green); padding: 15px; margin-top: 20px; background-color: rgba(0, 255, 0, 0.05); }
+details summary { font-family: var(--heading-font); color: var(--green); cursor: pointer; font-size: 0.9em; }
+
+.solution-steps { padding-left: 20px; }
+.solution-steps li { list-style-type: '» '; margin-bottom: 10px; padding-left: 10px; }
+
+.formula { display: block; margin: 15px 0; padding: 15px; background-color: rgba(0, 0, 0, 0.5); border: 2px solid var(--magenta); color: var(--text-color); text-align: center; overflow-x: auto; }
+.game-connection { margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--text-color); font-size: 1.1rem; }
