@@ -4,23 +4,19 @@ Obrigado pelo interesse em contribuir com o projeto **Cálculo Vetorial Explora�
 
 ---
 
-## 🎯 Como Contribuir
+## Como Contribuir
 
 ### 1. Criar Novo Conteúdo
 
-#### Exercícios
+**Exercícios:**
 
-- Use o prompt em `/docs/prompts/exercicios.md`
-- Siga o template em `/exercicios/template.html`
-- Respeite a progressão pedagógica dos capítulos
-- Teste no navegador antes de submeter
+- Use `/docs/prompts/exercicios.md` e `/exercicios/template.html`
+- Consulte `/docs/workflow.md` para processo completo
 
-#### Slides
+**Slides:**
 
-- Use o prompt em `/docs/prompts/slides.md`
-- Use o framework Reveal.js
-- Separe claramente matemática de contexto histórico
-- Priorize Canvas 2D sobre Three.js
+- Use `/docs/prompts/slides.md` e Reveal.js
+- Consulte `/docs/workflow.md` para processo completo
 
 ### 2. Corrigir Problemas Existentes
 
@@ -38,68 +34,7 @@ Consulte `/docs/css/inventory.md` para:
 
 ---
 
-## ✅ Checklist de Qualidade
-
-### Para Exercícios
-
-- [ ] Estrutura HTML válida
-- [ ] MathJax: `\( \)` e `\[ \]` (uma barra)
-- [ ] 12 exercícios (ALFA/BETA/GAMMA/OMEGA)
-- [ ] Contexto histórico apropriado
-- [ ] Classes CSS do template mantidas
-- [ ] Testado no navegador
-- [ ] Progressão pedagógica respeitada
-
-### Para Slides
-
-- [ ] Reveal.js configurado corretamente
-- [ ] Classes CSS específicas aplicadas
-- [ ] Limite de 250 palavras/slide
-- [ ] Separação clara: matemática vs história
-- [ ] Visualizações funcionam (se houver)
-- [ ] Navegação H/V funciona
-- [ ] Testado no navegador
-
----
-
-## 📝 Convenções
-
-### Nomenclatura de Arquivos
-
-- **Formato:** `kebab-case.html`
-- **Exemplos:**
-  - `soma-de-riemann.html` ✅
-  - `SomaDeRiemann.html` ❌
-  - `soma_de_riemann.html` ❌
-
-### Estrutura de Diretórios
-
-```
-exercicios/
-└── capitulo-N/
-    └── nome-do-topico.html
-
-slide-decks/
-└── nome-do-topico.html
-```
-
-### CSS
-
-- **Exercícios:** Use `../styles.css` (relativo ao capítulo)
-- **Slides:** Use `space-theme.css`
-- **NÃO** misture temas
-- **NÃO** crie CSS inline (use externo)
-
-### MathJax
-
-- **Inline:** `\( fórmula \)`
-- **Bloco:** `\[ fórmula \]`
-- **Vetores:** `\vec{v}` (com barra invertida)
-- **Matrizes:** `\begin{pmatrix}...\end{pmatrix}`
-
----
-
-## 🔧 Processo de Contribuição
+## Processo de Contribuição
 
 ### 1. Fork e Clone
 
@@ -118,7 +53,7 @@ git checkout -b fix/descricao-do-fix
 
 ### 3. Faça suas Mudanças
 
-- Siga as convenções
+- Siga convenções em `/AGENTS.md`
 - Teste localmente
 - Documente mudanças significativas
 
@@ -139,9 +74,7 @@ Abra um Pull Request no GitHub.
 
 ---
 
-## 🧪 Testes
-
-### Testes Manuais Obrigatórios
+## Testes Manuais Obrigatórios
 
 Antes de commitar:
 
@@ -152,46 +85,19 @@ Antes de commitar:
    ```
 
 2. **Verifique:**
-
    - CSS carregou
    - MathJax renderizou
    - Interatividade funciona
    - Links funcionam
 
-3. **Responsividade** (opcional)
-   - Teste em diferentes tamanhos de tela
-   - Verifique se não quebra em mobile
-
 ---
 
-## 🚫 O que Evitar
-
-### NÃO
-
-- ❌ Quebrar links existentes
-- ❌ Mudar IDs/classes CSS sem atualizar todos os arquivos
-- ❌ Antecipar conceitos de capítulos posteriores
-- ❌ Usar CSS inline (use externo)
-- ❌ Misturar temas CSS
-- ❌ Usar jQuery (use DOM nativo)
-- ❌ Criar Three.js se Canvas 2D basta
-
-### FAÇA
-
-- ✅ Testar no navegador
-- ✅ Manter consistência visual
-- ✅ Documentar mudanças
-- ✅ Seguir convenções de nomenclatura
-- ✅ Respeitar progressão pedagógica
-
----
-
-## 📚 Recursos
+## Recursos
 
 ### Documentação
 
-- `/AGENTS.md` - Guia para agentes de IA
-- `/docs/workflow.md` - Processo de criação
+- `/AGENTS.md` - Guia para agentes de IA (visão geral)
+- `/docs/workflow.md` - Processo de criação passo a passo
 - `/docs/css/themes.md` - Documentação de temas
 - `/docs/css/inventory.md` - Status do CSS
 
@@ -208,7 +114,7 @@ Antes de commitar:
 
 ---
 
-## 💬 Dúvidas
+## Dúvidas
 
 - Abra uma **Issue** no GitHub
 - Consulte `/AGENTS.md` para visão geral
@@ -216,16 +122,6 @@ Antes de commitar:
 
 ---
 
-## 📜 Licença
-
-(Especificar licença do projeto)
-
----
-
-## 🙏 Agradecimentos
-
 Obrigado por contribuir com a educação em Cálculo Vetorial!
-
----
 
 **Última atualização:** Março 2026

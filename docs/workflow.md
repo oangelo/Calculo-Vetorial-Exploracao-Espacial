@@ -4,322 +4,148 @@ Guia passo a passo para agentes de IA criarem novos exercícios e slides.
 
 ---
 
-## 📋 Criar Novos Exercícios
+## Criar Novos Exercícios
 
 ### Passo 1: Preparação
 
-1. **Identifique o capítulo e tópico**
-
-   - Consulte a tabela de capítulos no `AGENTS.md`
-   - Verifique se já existe material similar
-   - Escolha um tópico que respeite a progressão pedagógica
-
-2. **Reúna os arquivos necessários**
+1. Identifique capítulo e tópico (consulte tabela em `AGENTS.md`)
+2. Reúna arquivos:
    - Prompt: `/docs/prompts/exercicios.md`
    - Template: `/exercicios/template.html`
-   - CSS: `/exercicios/styles.css` (já linkado no template)
 
-### Passo 2: Seguir o Prompt
+### Passo 2: Gerar Conteúdo
 
-1. **Leia o prompt** em `/docs/prompts/exercicios.md`
+1. Leia o prompt em `/docs/prompts/exercicios.md`
+2. Identifique o tópico solicitado
+3. Use o template como base
+4. Gere conteúdo seguindo instruções do prompt
 
-2. **Identifique o tópico** solicitado pelo usuário
+### Passo 3: Revisar
 
-   - Exemplo: "Funções Vetoriais", "Integrais Duplas", "Teorema de Green"
+**Estrutura:**
 
-3. **Use o template** `/exercicios/template.html` como base
+- HTML válido com classes CSS do template
+- 12 exercícios (ALFA/BETA/GAMMA/OMEGA)
+- Contexto histórico apropriado
 
-   - Preserve toda a estrutura HTML
-   - Mantenha classes CSS existentes
+**MathJax:**
 
-4. **Gere o conteúdo** seguindo rigorosamente as instruções do prompt
+- `\(inline\)` e `\[bloco\]` (uma barra)
+- `\vec{v}` para vetores
+- `\begin{pmatrix}...\end{pmatrix}` para matrizes
 
-### Passo 3: Revisar Resultado
+**Tema:**
 
-**Checklist de Revisão:**
-
-- [ ] **Estrutura HTML correta**
-
-  - `<!doctype html>` presente
-  - Todas as tags fechadas corretamente
-  - Classes CSS do template mantidas
-
-- [ ] **Conteúdo matemático**
-
-  - MathJax: `\(inline\)` e `\[bloco\]` (apenas UMA barra)
-  - Vetores: `\vec{v}` (com barra invertida)
-  - Matrizes: `\begin{pmatrix}...\end{pmatrix}`
-  - Fórmulas renderizam corretamente
-
-- [ ] **Tema visual**
-
-  - Carimbos "SIGILOSO" e "ULTRASSECRETO" presentes
-  - Partes censuradas com classe `.censored` (8-10 por documento)
-  - Contexto histórico apropriado ao período
-
-- [ ] **Progressão pedagógica**
-
-  - 12 exercícios no total
-  - Série ALFA (1-3): Básico, dicas completas
-  - Série BETA (4-6): Intermediário, dicas parciais
-  - Série GAMMA (7-9): Avançado, dicas mínimas
-  - Série OMEGA (10-12): Desafiador, sem dicas
-
-- [ ] **Apenas conceitos já abordados**
-  - Não antecipa tópicos de capítulos posteriores
-  - Respeita a sequência do curso
+- Carimbos "SIGILOSO" e "ULTRASSECRETO"
+- 8-10 partes censuradas com `.censored`
 
 ### Passo 4: Salvar e Testar
 
-1. **Salve o arquivo**
+```bash
+# Salvar
+exercicios/capitulo-N/nome-do-topico.html
 
-   ```bash
-   # Nomenclatura: nome-do-topico.html (kebab-case)
-   # Local: exercicios/capitulo-N/
+# Testar
+firefox exercicios/capitulo-N/nome-do-topico.html
+```
 
-   # Exemplo:
-   exercicios/capitulo-2/soma-de-riemann.html
-   ```
-
-2. **Teste no navegador**
-
-   ```bash
-   # Abra o arquivo no navegador
-   firefox exercicios/capitulo-2/soma-de-riemann.html
-   # ou
-   google-chrome exercicios/capitulo-2/soma-de-riemann.html
-   ```
-
-3. **Verifique:**
-
-   - CSS carregou (não parece "sem estilo")
-   - MathJax renderizou (fórmulas visíveis)
-   - Interatividade funciona (details/summary)
-   - Links internos funcionam (navegação)
-
-4. **Comite** (se estiver tudo certo)
-   ```bash
-   git add exercicios/capitulo-2/soma-de-riemann.html
-   git commit -m "Adiciona exercícios sobre soma de Riemann"
-   ```
+Verificar: CSS, MathJax, interatividade, links
 
 ---
 
-## 🎨 Criar Novos Slides
+## Criar Novos Slides
 
 ### Passo 1: Preparação
 
-1. **Identifique o capítulo e tópico**
-
-   - Consulte a cronologia histórica no `AGENTS.md`
-   - Escolha tópico alinhado com período histórico
-   - Verifique necessidade de visualizações
-
-2. **Reúna os arquivos necessários**
+1. Identifique capítulo e período histórico (consulte `AGENTS.md`)
+2. Reúna arquivos:
    - Prompt: `/docs/prompts/slides.md`
-   - Framework: Reveal.js (já em `/slide-decks/reveal.js/`)
-   - CSS: `/slide-decks/space-theme.css`
+   - Framework: Reveal.js (em `/slide-decks/reveal.js/`)
 
-### Passo 2: Seguir o Prompt
+### Passo 2: Gerar Conteúdo
 
-1. **Leia o prompt** em `/docs/prompts/slides.md`
-
-2. **Identifique requisitos:**
-
-   - Tópico desejado
-   - Se precisa de visualizações interativas
-   - Nível de complexidade
-   - Período histórico para contextualização
-
-3. **Gere o HTML** seguindo:
+1. Leia o prompt em `/docs/prompts/slides.md`
+2. Identifique requisitos (tópico, visualizações, período histórico)
+3. Gere HTML com:
    - Estrutura Reveal.js
    - Classes CSS específicas
    - Separação matemática/história
 
-### Passo 3: Revisar Resultado
+### Passo 3: Revisar
 
-**Checklist de Revisão:**
+**Estrutura:**
 
-- [ ] **Estrutura Reveal.js correta**
+- `<div class="reveal">` e `<div class="slides">`
+- Navegação horizontal (tópicos) e vertical (aprofundamento)
 
-  - `<div class="reveal">` e `<div class="slides">` presentes
-  - Navegação horizontal (tópicos) e vertical (aprofundamento)
-  - Scripts Reveal.js e MathJax incluídos
+**Classes CSS:**
 
-- [ ] **Classes CSS específicas**
+- `math-section` para matemática
+- `history-section` para contexto histórico
+- `visualization-canvas` para canvas
+- `problem-section` para problemas
 
-  - `math-section` para conteúdo matemático
-  - `history-section` para contexto histórico
-  - `visualization-canvas` para canvas
-  - `problem-section` para problemas
-  - `controls-container` para controles
+**Conteúdo:**
 
-- [ ] **Conteúdo**
+- 250 palavras/slide máximo
+- 2-3 fórmulas complexas máximo
 
-  - Limite: 250 palavras por slide
-  - 2-3 fórmulas complexas máximo por slide
-  - Separação clara: matemática vs história
-  - Exemplos simples e didáticos
+**Visualizações:**
 
-- [ ] **Visualizações** (se houver)
-
-  - Canvas 2D preferível a Three.js
-  - Código encapsulado em IIFE
-  - Função de cleanup implementada
-  - IDs únicos para elementos
-
-- [ ] **Contexto histórico**
-  - Período correto para o capítulo
-  - Eventos apropriados
-  - Conexão clara com conceitos matemáticos
+- Canvas 2D preferível
+- Código encapsulado em IIFE
+- Cleanup ao mudar de slide
 
 ### Passo 4: Salvar e Testar
 
-1. **Salve o arquivo**
+```bash
+# Salvar
+slide-decks/nome-do-topico.html
 
-   ```bash
-   # Nomenclatura: nome-do-topico.html (kebab-case)
-   # Local: slide-decks/
+# Testar
+firefox slide-decks/nome-do-topico.html
+```
 
-   # Exemplo:
-   slide-decks/integrais-duplas.html
-   ```
-
-2. **Teste no navegador**
-
-   ```bash
-   # Abra o arquivo
-   firefox slide-decks/integrais-duplas.html
-   ```
-
-3. **Verifique:**
-
-   - Reveal.js carrega (navegação funciona)
-   - CSS aplicado (tema espacial)
-   - MathJax renderizou
-   - Visualizações funcionam (se houver)
-   - Navegação H/V funciona corretamente
-
-4. **Teste interatividade**
-
-   - Controles sliders/buttons funcionam
-   - Animações rodam suavemente
-   - Cleanup ao mudar de slide (sem memory leaks)
-
-5. **Comite**
-   ```bash
-   git add slide-decks/integrais-duplas.html
-   git commit -m "Adiciona slides sobre integrais duplas"
-   ```
+Verificar: Reveal.js, CSS, MathJax, visualizações, navegação
 
 ---
 
-## 🔄 Workflow para Capítulo Completo
+## Workflow para Capítulo Completo
 
-### Ordem Recomendada
+**Ordem recomendada:**
 
-1. **Primeiro: Slides de conceitos**
-
-   - Criar apresentação principal do capítulo
-   - Incluir visualizações interativas
-   - Foco em didática e clareza
-
-2. **Segundo: Exercícios de prática**
-
-   - Criar 1-2 arquivos de exercícios
-   - Cobrir tópicos principais do capítulo
-   - Progressão de dificuldade
-
-3. **Terceiro: Revisão e ajustes**
-   - Testar tudo junto
-   - Verificar links entre slides e exercícios
-   - Ajustar conforme necessário
+1. Slides de conceitos (com visualizações)
+2. Exercícios de prática (1-2 arquivos)
+3. Revisão e ajustes (testar links, ajustar)
 
 ---
 
-## 🛠️ Dicas e Truques
+## Problemas Comuns
 
-### Para Exercícios
+**MathJax não renderiza:**
 
-1. **Contexto histórico**
+- Verifique `\( \)` e `\[ \]` (uma barra)
+- Confirme script MathJax incluído
+- Abra console do navegador
 
-   - Use eventos reais da Guerra Fria
-   - Consulte `/investigacao/` para referências
-   - Mantenha tom de "documento sigiloso"
+**CSS não carrega:**
 
-2. **Progressão de dificuldade**
+- Verifique caminho: `../styles.css` para exercícios
+- Confirme arquivo CSS existe
 
-   - ALFA: Números simples, aplicação direta
-   - BETA: Múltiplos passos, conceitos combinados
-   - GAMMA: Problemas realistas, mínimas dicas
-   - OMEGA: Integração de conceitos, sem dicas
+**Visualizações não funcionam:**
 
-3. **Dicas**
-   - Sutis, não dão a resposta
-   - Direcionam o raciocínio
-   - Usam linguagem técnica
-
-### Para Slides
-
-1. **Visualizações**
-
-   - Canvas 2D para maioria dos casos
-   - Three.js apenas se 3D for essencial
-   - Limpar recursos ao mudar de slide
-
-2. **Didática**
-
-   - Um conceito por slide
-   - Texto mínimo necessário
-   - Fórmulas bem espaçadas
-
-3. **Cronologia histórica**
-   - 1945-1956: Mísseis (Cap 1)
-   - 1957-1961: Sputnik (Cap 2)
-   - 1961-1964: Astronautas (Cap 3)
-   - 1965-1966: Gemini (Cap 4)
-   - 1967-1969: Apollo (Cap 5-6)
-   - 1969-1970: Lua (Cap 7)
-   - 1971-1972: Apollo avançado (Cap 8)
-   - 1973-1985: Estações (Cap 9)
+- IDs únicos no HTML
+- Código JavaScript após HTML
+- Console para erros
 
 ---
 
-## 📚 Referências
+## Referências
 
-- **AGENTS.md** - Visão geral do projeto
-- **docs/css/themes.md** - Documentação dos temas
-- **docs/css/inventory.md** - Status do CSS
-- **investigacao/** - Material histórico de referência
-
----
-
-## 🆘 Problemas Comuns
-
-### MathJax não renderiza
-
-- Verifique se há `\( \)` e `\[ \]` (apenas UMA barra)
-- Confirme se script MathJax está incluído
-- Abra console do navegador para ver erros
-
-### CSS não carrega
-
-- Verifique caminho relativo: `../styles.css` para exercícios
-- Confirme se arquivo CSS existe
-- Teste com caminho absoluto temporariamente
-
-### Links quebrados
-
-- Use caminhos relativos corretos
-- Teste links no navegador
-- Verifique se arquivo de destino existe
-
-### Visualizações não funcionam
-
-- Verifique IDs únicos no HTML
-- Confirme se código JavaScript está após o HTML
-- Teste console para erros
-- Verifique cleanup de recursos
+- `/AGENTS.md` - Visão geral do projeto
+- `/docs/css/themes.md` - Documentação dos temas
+- `/investigacao/` - Material histórico
 
 ---
 
