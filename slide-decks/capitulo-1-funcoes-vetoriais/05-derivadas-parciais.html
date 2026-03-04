@@ -1,155 +1,151 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-        <section>
-          <section>
-            <h2>Derivadas Parciais</h2>
-            <p>Para uma função \(\mathbf{F}(x,y)\), definimos:</p>
-            <div class="fragment">
-              <p>
-                \(\frac{\partial \mathbf{F}}{\partial x} = \lim_{h \to 0}
-                \frac{\mathbf{F}(x+h,y) - \mathbf{F}(x,y)}{h}\)
-              </p>
-              <p>
-                \(\frac{\partial \mathbf{F}}{\partial y} = \lim_{h \to 0}
-                \frac{\mathbf{F}(x,y+h) - \mathbf{F}(x,y)}{h}\)
-              </p>
-            </div>
-            <div class="fragment">
-              <p class="note">
-                Interpretação: Taxa de variação em uma direção, mantendo as
-                outras variáveis constantes
-              </p>
-            </div>
-          </section>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Derivadas Parciais</h2>
+        <p>Para uma função \(\mathbf{F}(x,y)\), definimos:</p>
+        <div class="fragment">
+          <p>
+            \(\frac{\partial \mathbf{F}}{\partial x} = \lim_{h \to 0}
+            \frac{\mathbf{F}(x+h,y) - \mathbf{F}(x,y)}{h}\)
+          </p>
+          <p>
+            \(\frac{\partial \mathbf{F}}{\partial y} = \lim_{h \to 0}
+            \frac{\mathbf{F}(x,y+h) - \mathbf{F}(x,y)}{h}\)
+          </p>
+        </div>
+        <div class="fragment">
+          <p class="note">
+            Interpretação: Taxa de variação em uma direção, mantendo as outras
+            variáveis constantes
+          </p>
+        </div>
+      </section>
 
-          <!-- Slide 2: Visualização Geométrica -->
-          <section>
-            <h2>Visualização Geométrica</h2>
-            <div class="two-col">
-              <div class="col">
-                <p>Derivada em x: "Fatia" perpendicular ao eixo y</p>
-              </div>
-              <div class="col fragment">
-                <p>Derivada em y: "Fatia" perpendicular ao eixo x</p>
-              </div>
-            </div>
-          </section>
+      <!-- Slide 2: Visualização Geométrica -->
+      <section>
+        <h2>Visualização Geométrica</h2>
+        <div class="two-col">
+          <div class="col">
+            <p>Derivada em x: "Fatia" perpendicular ao eixo y</p>
+          </div>
+          <div class="col fragment">
+            <p>Derivada em y: "Fatia" perpendicular ao eixo x</p>
+          </div>
+        </div>
+      </section>
 
-          <!-- Slide 3: Aplicação Espacial -->
-          <section>
-            <h2>Aplicação: Trajetória Orbital</h2>
-            <div class="content-box">
-              <p class="historical-note">
-                A missão Vostok 1 (1961) marcou a primeira vez que um ser humano
-                orbitou a Terra. Em meio à Guerra Fria, os soviéticos precisavam
-                garantir não só que Yuri Gagarin chegasse ao espaço, mas que
-                retornasse em segurança - um desafio matemático sem precedentes.
-              </p>
-              <p>
-                Para este feito histórico, as derivadas parciais foram cruciais
-                para:
-              </p>
-              <ul class="fragment">
-                <li>Calcular variações de velocidade em diferentes direções</li>
-                <li>Otimizar consumo de combustível</li>
-                <li>Prever desvios de trajetória</li>
-              </ul>
-            </div>
-          </section>
+      <!-- Slide 3: Aplicação Espacial -->
+      <section>
+        <h2>Aplicação: Trajetória Orbital</h2>
+        <div class="content-box">
+          <p class="historical-note">
+            A missão Vostok 1 (1961) marcou a primeira vez que um ser humano
+            orbitou a Terra. Em meio à Guerra Fria, os soviéticos precisavam
+            garantir não só que Yuri Gagarin chegasse ao espaço, mas que
+            retornasse em segurança - um desafio matemático sem precedentes.
+          </p>
+          <p>
+            Para este feito histórico, as derivadas parciais foram cruciais
+            para:
+          </p>
+          <ul class="fragment">
+            <li>Calcular variações de velocidade em diferentes direções</li>
+            <li>Otimizar consumo de combustível</li>
+            <li>Prever desvios de trajetória</li>
+          </ul>
+        </div>
+      </section>
 
-          <!-- Slide 4: Exemplo Prático -->
-          <section>
-            <h2>Exemplo: Campo Gravitacional</h2>
-            <div class="fragment">
-              <p>Potencial gravitacional: \(\phi(x,y,z) = -\frac{GM}{r}\)</p>
-              <p>onde \(r = \sqrt{x^2 + y^2 + z^2}\)</p>
-            </div>
-            <div class="fragment">
-              <p>Calcule: \(\frac{\partial \phi}{\partial x}\)</p>
-            </div>
-          </section>
+      <!-- Slide 4: Exemplo Prático -->
+      <section>
+        <h2>Exemplo: Campo Gravitacional</h2>
+        <div class="fragment">
+          <p>Potencial gravitacional: \(\phi(x,y,z) = -\frac{GM}{r}\)</p>
+          <p>onde \(r = \sqrt{x^2 + y^2 + z^2}\)</p>
+        </div>
+        <div class="fragment">
+          <p>Calcule: \(\frac{\partial \phi}{\partial x}\)</p>
+        </div>
+      </section>
 
-          <!-- Slide 5: Exercício Interativo -->
-          <section>
-            <h2>Exercício: Órbita Lunar</h2>
-            <div class="problem-box">
-              <p>Para uma órbita circular de raio R, temos a energia total:</p>
-              <p>\(E(v,r) = \frac{1}{2}mv^2 - \frac{GMm}{r}\)</p>
-              <div class="fragment">
-                <p>Calcule:</p>
-                <ol>
-                  <li>
-                    \(\frac{\partial E}{\partial v}\) (variação com velocidade)
-                  </li>
-                  <li>\(\frac{\partial E}{\partial r}\) (variação com raio)</li>
-                </ol>
-              </div>
-            </div>
-          </section>
+      <!-- Slide 5: Exercício Interativo -->
+      <section>
+        <h2>Exercício: Órbita Lunar</h2>
+        <div class="problem-box">
+          <p>Para uma órbita circular de raio R, temos a energia total:</p>
+          <p>\(E(v,r) = \frac{1}{2}mv^2 - \frac{GMm}{r}\)</p>
+          <div class="fragment">
+            <p>Calcule:</p>
+            <ol>
+              <li>
+                \(\frac{\partial E}{\partial v}\) (variação com velocidade)
+              </li>
+              <li>\(\frac{\partial E}{\partial r}\) (variação com raio)</li>
+            </ol>
+          </div>
+        </div>
+      </section>
 
-          <section>
-            <h2>Derivadas Parciais de Campos Vetoriais</h2>
-            <div class="content-box">
-              <p>
-                Para um campo vetorial \(\vec{F}(x,y) = P(x,y)\hat{i} +
-                Q(x,y)\hat{j}\), temos:
-              </p>
-              <div class="fragment">
-                <p>
-                  \(\frac{\partial \vec{F}}{\partial x} = \frac{\partial
-                  P}{\partial x}\hat{i} + \frac{\partial Q}{\partial x}\hat{j}\)
-                </p>
-                <p>
-                  \(\frac{\partial \vec{F}}{\partial y} = \frac{\partial
-                  P}{\partial y}\hat{i} + \frac{\partial Q}{\partial y}\hat{j}\)
-                </p>
-              </div>
-            </div>
-          </section>
+      <section>
+        <h2>Derivadas Parciais de Campos Vetoriais</h2>
+        <div class="content-box">
+          <p>
+            Para um campo vetorial \(\vec{F}(x,y) = P(x,y)\hat{i} +
+            Q(x,y)\hat{j}\), temos:
+          </p>
+          <div class="fragment">
+            <p>
+              \(\frac{\partial \vec{F}}{\partial x} = \frac{\partial P}{\partial
+              x}\hat{i} + \frac{\partial Q}{\partial x}\hat{j}\)
+            </p>
+            <p>
+              \(\frac{\partial \vec{F}}{\partial y} = \frac{\partial P}{\partial
+              y}\hat{i} + \frac{\partial Q}{\partial y}\hat{j}\)
+            </p>
+          </div>
+        </div>
+      </section>
 
-          <!-- Exemplo Prático de Campo Vetorial -->
-          <section>
-            <h2>Exemplo: Campo de Vento Solar</h2>
-            <div class="content-box">
-              <p>Considere o campo de velocidade do vento solar:</p>
-              <p>
-                \(\vec{v}(x,y) = \frac{kx}{r^3}\hat{i} + \frac{ky}{r^3}\hat{j}\)
-              </p>
-              <p>onde \(r = \sqrt{x^2 + y^2}\) e \(k\) é uma constante.</p>
-            </div>
-            <div class="fragment">
-              <p>A derivada parcial em x é?</p>
-            </div>
-            <div class="fragment">
-              <p class="note">
-                Esta derivada nos dá a taxa de variação do vento solar na
-                direção x, crucial para prever a interação com satélites e
-                escudos magnéticos.
-              </p>
-            </div>
-          </section>
+      <!-- Exemplo Prático de Campo Vetorial -->
+      <section>
+        <h2>Exemplo: Campo de Vento Solar</h2>
+        <div class="content-box">
+          <p>Considere o campo de velocidade do vento solar:</p>
+          <p>
+            \(\vec{v}(x,y) = \frac{kx}{r^3}\hat{i} + \frac{ky}{r^3}\hat{j}\)
+          </p>
+          <p>onde \(r = \sqrt{x^2 + y^2}\) e \(k\) é uma constante.</p>
+        </div>
+        <div class="fragment">
+          <p>A derivada parcial em x é?</p>
+        </div>
+        <div class="fragment">
+          <p class="note">
+            Esta derivada nos dá a taxa de variação do vento solar na direção x,
+            crucial para prever a interação com satélites e escudos magnéticos.
+          </p>
+        </div>
+      </section>
 
-          <section>
-            <h2>Síntese e Conexões</h2>
-            <div class="summary-box">
-              <ul>
-                <li>
-                  Derivadas parciais medem variações em direções específicas
-                </li>
-                <li>Fundamentais para análise de movimento orbital</li>
-                <li>
-                  Essenciais na análise de campos vetoriais (vento solar, campos
-                  magnéticos)
-                </li>
-                <li>Base para otimização de trajetórias</li>
-              </ul>
-            </div>
-          </section>
-
-        </section>
-</body>
+      <section>
+        <h2>Síntese e Conexões</h2>
+        <div class="summary-box">
+          <ul>
+            <li>Derivadas parciais medem variações em direções específicas</li>
+            <li>Fundamentais para análise de movimento orbital</li>
+            <li>
+              Essenciais na análise de campos vetoriais (vento solar, campos
+              magnéticos)
+            </li>
+            <li>Base para otimização de trajetórias</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+  </body>
 </html>
