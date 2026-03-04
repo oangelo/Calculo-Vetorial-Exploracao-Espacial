@@ -2,80 +2,61 @@
 
 Este diretório contém os prompts usados para gerar conteúdo do curso com assistência de IA.
 
-## Arquivos Disponíveis
+## Versões Disponíveis
 
-### `exercicios.md`
+### Versões Rápidas (Recomendado)
 
-Prompt para criar **listas de exercícios** no formato "documento sigiloso da Guerra Fria".
+Use para versões para tarefas simples e rápidas:
 
-**Características:**
+- **`exercicios-quick.md`** (~60 linhas) - Criar exercícios bás
+- **`slides-quick.md`** (~75 linhas) - Criar slides bás
 
-- 12 exercícios por arquivo
-- Progressão: ALFA (básico) → BETA (intermediário) → GAMMA (avançado) → OMEGA (desafiador)
-- Tema visual: documento classificado, partes censuradas
-- Template HTML específico (`/exercicios/template.html`)
+### Versões Completas
 
-**Como usar (AGENTES):**
+Use para tarefas complexas ou quando precisar de mais detalhes:
 
-1. Leia o prompt completamente
-2. Identifique o tópico solicitado (ver sequência no final do arquivo)
-3. Use o template HTML (`/exercicios/template.html`) como base
-4. Gere o conteúdo seguindo as instruções do prompt
-5. Salve o resultado em `/exercicios/capitulo-N/nome-do-topico.html`
+- **`exercicios-full.md`** (132 linhas) - Exercícios com exemp detalhados
+- **`slides-full.md`** (408 linhas) - Slides com exemp detalhados
 
-### `slides.md`
+## Como Usar
 
-Prompt para criar **apresentações Reveal.js** com visualizações interativas.
+### Para Tarefas Simples
 
-**Características:**
+1. **Identifique o tipo**: Exercícios ou Slides
+2. **Use versão quick** correspondente
+3. **Siga instruções resumidas**
+4. **Consulte template/exemplos** se necessário
 
-- Estrutura hierárquica (horizontal: tópicos, vertical: aprofundamento)
-- Separação clara: conteúdo matemático vs contexto histórico
-- Visualizações interativas com Canvas 2D ou Three.js
-- Tema visual: exploração espacial
-- Cronologia histórica progressiva
+### Para Tarefas Complexas
 
-**Como usar (AGENTES):**
-
-1. Leia o prompt completamente
-2. Identifique o tópico solicitado (ver cronologia no prompt)
-3. Verifique se precisa de visualizações interativas
-4. Gere o HTML seguindo a estrutura e classes CSS especificadas
-5. Salve o resultado em `/slide-decks/nome-do-topico.html`
+1. **Identifique o tipo**: Exercícios ou Slides
+2. **Use versão full** correspondente
+3. **Siga instruções detalhadas**
+4. **Consulte exemp detalhados** no próprio prompt
 
 ## Diferenças Principais
 
-| Aspecto        | Exercícios                          | Slides                        |
-| -------------- | ----------------------------------- | ----------------------------- |
-| Formato        | Lista de 12 problemas               | Apresentação navegável        |
-| Tema Visual    | Documento sigiloso (Guerra Fria)    | Exploração espacial           |
-| Interatividade | Solutions ocultas (details/summary) | Visualizações Canvas/Three.js |
-| Foco           | Prática e aplicação                 | Didática e conceitos          |
-| Estrutura      | Linear (1-12)                       | Hierárquica (H/V)             |
+| Aspecto      | Versão Quick                    | Versão Full                         |
+| ------------ | ------------------------------- | ----------------------------------- |
+| **Tamanho**  | ~60-75 linhas                   | 130-400 linhas                      |
+| **Foco**     | Regras essenciais + estrutura   | Regras + exemplos + casos especiais |
+| **Uso**      | Tarefas simples, contexto menor | Tarefas complexas, primeira vez     |
+| **Contexto** | Reduzido em ~30%                | Completo                            |
 
-## Workflow para Agentes
+## Workflow Recomendado
 
-### Ao Receber Solicitação
-
-1. **Identificar tipo**: Exercícios ou Slides
-2. **Ler prompt correspondente** deste diretório
-3. **Consultar template/exemplos** se necessário
-4. **Gerar conteúdo** seguindo instruções
-5. **Testar no navegador** (abrir arquivo HTML)
-6. **Ajustar se necessário**
-
-### Para Novo Capítulo
-
-1. **Primeiro**: Gerar slides (conceitos + visualizações)
-2. **Depois**: Gerar exercícios (prática + aplicação)
+1. **Comece com versão quick**
+2. **Se encontrar dificuldades, consulte versão full**
+3. **Use template HTML** como referência visual
+4. **Teste no navegador** sempre
 
 ## Importante
 
-Esses prompts foram refinados para:
+Esses prompts foram otimizados para:
 
-- Manter consistência visual com material existente
-- Respeitar progressão pedagógica do curso
-- Evitar erros comuns de MathJax e CSS
-- Garantir qualidade didática
+- **Reduzir contexto** necessário para agentes de IA
+- **Manter qualidade** didática
+- **Facilitar uso progressivo** (quick → full se necessário)
+- **Evitar erros comuns** (MathJax, CSS, estrutura)
 
-**Agentes**: Sigam as instruções rigorosamente. Consultem exemplos existentes em caso de dúvida.
+**Agentes**: Use a versão apropriada ao nível de complexidade da tarefa.
