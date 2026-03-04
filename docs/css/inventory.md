@@ -163,6 +163,56 @@ Status atual do uso de CSS no projeto (última atualização: Março 2026)
 **Impacto:** ~9.600 linhas de código duplicado
 **Solução:** Remover CSS inline e usar `<link rel="stylesheet" href="../styles.css" />`
 
+**Como resolver (manual):**
+
+1. **Identificar CSS inline:**
+
+   ```bash
+   # Encontrar arquivos com CSS inline
+   grep -l "<style>" exercicios/capitulo-*/*.html
+   ```
+
+2. **Remover CSS inline:**
+
+   - Abrir arquivo HTML
+   - Localizar tag `<style>` dentro de `<head>`
+   - Remover todo o bloco `<style>...</style>` (~240 linhas)
+   - Adicionar antes de `</head>`:
+     ```html
+     <link rel="stylesheet" href="../styles.css" />
+     ```
+
+3. **Verificar:**
+   - Abrir arquivo no navegador
+   - Confirmar que CSS carregou (visual não quebrou)
+   - Verificar console para erros
+
+**Como resolver (automatizado):**
+
+```bash
+# Script de migração (NÃO EXECUTAR - apenas referência)
+#!/bin/bash
+
+for file in exercicios/capitulo-*/*.html; do
+  # Verificar se tem CSS inline
+  if grep -q "<style>" "$file"; then
+    # Remover bloco <style>...</style>
+    sed -i '/<style>/,/<\/style>/d' "$file"
+
+    # Adicionar link CSS externo antes de </head>
+    sed -i 's|</head>|  <link rel="stylesheet" href="../styles.css" />\n</head>|' "$file"
+
+    echo "Migrado: $file"
+  fi
+done
+```
+
+**⚠️ IMPORTANTE:**
+
+- NÃO executar script sem backup
+- Testar cada arquivo após migração
+- Manter referência deste documento atualizada
+
 ### 3. URL Externa (2 arquivos)
 
 **Problema:** Referência a GitHub Pages em vez de arquivo local
