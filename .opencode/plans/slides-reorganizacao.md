@@ -205,16 +205,204 @@ slide-decks/
 
 ---
 
-**Próximo passo:** Aprovar plano e responder perguntas abaixo.
+**Status:** ✅ Plano aprovado pelo usuário
 
-## Perguntas
+**Decisões:**
 
-1. **Nome das pastas:** `capitulo-1-funcoes-vetoriais` ou `cap-01-funcoes-vetoriais`?
+- Nomenclatura: `capitulo-N-nome`
+- Loader: Fetch síncrono
+- Backups: Manter temporariamente
+- Servidor: Python http.server
 
-2. **Loader:** Fetch síncrono (simples) ou paralelo (rápido)?
+---
 
-3. **Backups:** Manter `.backup` temporariamente?
+## EXECUÇÃO - FASE 1: CAPÍTULO 1 (PILOTO)
 
-4. **Ordem:** Capítulo 1 primeiro OK?
+### Estrutura Identificada do capitulo-1.html
 
-5. **Servidor:** Python http.server OK para testes?
+**Total:** 1461 linhas, 8 seções principais, 66 slides verticais
+
+| Seção | Linhas    | Tópico                | Slides Verticais | Arquivo                     |
+| ----- | --------- | --------------------- | ---------------- | --------------------------- |
+| 1     | 87-90     | Título                | 0                | 01-titulo.html              |
+| 2     | 93-228    | Funções Vetoriais     | 9                | 02-funcoes-vetoriais.html   |
+| 3     | 231-417   | Campo Vetorial        | 9                | 03-campo-vetorial.html      |
+| 4     | 420-518   | Limite e Continuidade | 5                | 04-limite-continuidade.html |
+| 5     | 521-667   | Derivadas Parciais    | 8                | 05-derivadas-parciais.html  |
+| 6     | 670-1168  | Rotacional            | 14               | 06-rotacional.html          |
+| 7     | 1143-1167 | _Síntese (problema)_  | _estrutural_     | (ignorar/mesclar)           |
+| 8     | 1171-1456 | Divergente            | 15               | 07-divergente.html          |
+
+**Nota:** Seção 7 tem problema de indentação e sobreposição. Será mesclada com Seção 6.
+
+### Passos de Execução
+
+#### 1. Criar Estrutura de Pastas
+
+```bash
+mkdir -p slide-decks/capitulo-1-funcoes-vetoriais
+```
+
+#### 2. Extrair Seções
+
+Para cada seção:
+
+**Exemplo - Seção 1 (Título):**
+
+```bash
+# Linhas 87-90
+sed -n '87,90p' slide-decks/capitulo-1.html > slide-decks/capitulo-1-funcoes-vetoriais/01-titulo.html
+```
+
+**Estrutura de cada arquivo de seção:**
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- Conteúdo da seção (linhas extraídas) -->
+    <section>
+      <!-- slides verticais -->
+    </section>
+  </body>
+</html>
+```
+
+#### 3. Criar Loader (index.html)
+
+**Características:**
+
+- Carregar Reveal.js, MathJax, CSS (como no original)
+- Fetch síncrono das seções
+- Inserir seções em `<div class="slides">`
+- Inicializar Reveal.js após carregar
+
+**Template do loader:**
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <title>Funções Vetoriais - Cálculo Vetorial</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../space-theme.css" />
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- Configuração MathJax e estilos inline do original -->
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="slides-container"></div>
+    </div>
+
+    <script>
+      async function loadSlides() {
+        const sections = [
+          '01-titulo.html',
+          '02-funcoes-vetoriais.html',
+          '03-campo-vetorial.html',
+          '04-limite-continuidade.html',
+          '05-derivadas-parciais.html',
+          '06-rotacional.html',
+          '07-divergente.html',
+        ];
+
+        const container = document.getElementById('slides-container');
+
+        for (const sectionFile of sections) {
+          const response = await fetch(sectionFile);
+          const html = await response.text();
+
+          // Parse HTML e extrair <section>
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const section = doc.querySelector('section');
+
+          if (section) {
+            container.appendChild(section);
+          }
+        }
+
+        // Inicializar Reveal.js
+        Reveal.initialize({
+          // config do Reveal.js
+        });
+      }
+
+      loadSlides();
+    </script>
+  </body>
+</html>
+```
+
+#### 4. Ajustar Paths de Recursos
+
+**No loader:**
+
+- CSS: `../space-theme.css`
+- Reveal.js: `../reveal.js/dist/reveal.css`
+
+**Nas seções:**
+
+- SVGs: `../../svg-cap1/imagem.svg`
+- Imagens: manter paths originais (relativos à slide-decks/)
+
+#### 5. Criar Backup do Original
+
+```bash
+cp slide-decks/capitulo-1.html slide-decks/capitulo-1.html.backup
+```
+
+#### 6. Testar
+
+```bash
+cd slide-decks
+python3 -m http.server 8000
+# Abrir http://localhost:8000/capitulo-1-funcoes-vetoriais/
+```
+
+**Checklist de teste:**
+
+- [ ] Loader abre no navegador
+- [ ] Todas as 7 seções carregam
+- [ ] Navegação horizontal funciona
+- [ ] Navegação vertical funciona
+- [ ] MathJax renderiza fórmulas
+- [ ] SVGs carregam
+- [ ] Visualizações Canvas funcionam
+- [ ] Console sem erros
+
+#### 7. Commit e Push
+
+```bash
+git add slide-decks/capitulo-1-funcoes-vetoriais/
+git add slide-decks/capitulo-1.html.backup
+git commit -m "refactor: modularize chapter 1 slides
+
+- Create capitulo-1-funcoes-vetoriais/ folder
+- Split capitulo-1.html into 7 section files
+- Create index.html loader with synchronous fetch
+- Backup original as capitulo-1.html.backup
+- Total: 1461 lines → 7 files of ~100-300 lines each"
+
+git push origin main
+```
+
+---
+
+## PRÓXIMOS PASSOS (Após Validação)
+
+1. **Se usuário aprovar:**
+   - Remover capitulo-1.html.backup
+   - Aplicar mesmo processo aos outros capítulos
+2. **Se houver problemas:**
+   - Ajustar conforme feedback
+   - Re-testar
+3. **Capítulos subsequentes:**
+   - Capítulo 0 (revisao.html)
+   - Capítulo 2 (integrais-duplas.html)
+   - E assim por diante...
