@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide: Definição matemática -->
+      <section>
+        <h2>Definição Matemática</h2>
+
+        <div class="math-section">
+          <p>
+            A <strong>integral dupla</strong> de uma função \(f(x,y)\) sobre uma
+            região \(D\) é formalmente definida como:
+          </p>
+
+          <p>
+            \[ \iint_D f(x,y)\, dA = \lim_{m,n \to \infty} \sum_{i=1}^m
+            \sum_{j=1}^n f(x_{ij}, y_{ij}) \,\Delta A_{ij} \]
+          </p>
+
+          <p>onde:</p>
+          <ul>
+            <li>\(D\) é a região de integração no plano \(xy\)</li>
+            <li>\(\Delta A_{ij}\) é a área de cada subregião</li>
+            <li>\((x_{ij}, y_{ij})\) é um ponto na subregião \((i,j)\)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide: Componentes essenciais -->
+      <section>
+        <h2>Componentes Essenciais</h2>
+
+        <div class="math-section">
+          <p>
+            A formulação da integral dupla envolve três elementos fundamentais:
+          </p>
+          <ul>
+            <li>
+              <strong>Região de Integração \(D\)</strong>: Define o domínio
+              sobre o qual integramos, podendo ser simples (retângulos) ou mais
+              complexo (regiões curvas, delimitadas por funções).
+            </li>
+            <li>
+              <strong>Função Integranda \(f(x,y)\)</strong>: Representa a
+              grandeza que estamos acumulando em cada ponto do domínio, como
+              densidade, temperatura ou pressão.
+            </li>
+            <li>
+              <strong>Elemento de Área \(dA\)</strong>: Tipicamente escrito como
+              \(dx\,dy\) ou \(dy\,dx\), representa a "forma" infinitesimal de
+              nossa integração.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide: Visualização tridimensional -->
+      <section>
+        <h2>Volume como Integral Dupla</h2>
+
+        <canvas
+          id="volumeCanvas"
+          class="visualization-canvas"
+          width="700"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="limitRange">Tamanho da Região:</label>
+            <input type="range" id="limitRange" min="2" max="10" value="5" />
+            <span id="limitValue">1</span>
+          </div>
+
+          <button class="control-button" onclick="resetVolumeVisualization()">
+            Reiniciar
+          </button>
+        </div>
+
+        <div class="value-display">
+          Volume = <span id="volumeValue">0</span>
+        </div>
+        <div class="formula-display">f(x,y) = x²/4 + y²/9</div>
+      </section>
+    </section>
+  </body>
+</html>

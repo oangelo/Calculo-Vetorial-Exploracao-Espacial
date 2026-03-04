@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide: Da integral simples à dupla -->
+      <section>
+        <h2>Da Integral Simples à Dupla</h2>
+
+        <div class="math-section">
+          <p>A integral simples acumula valores ao longo de um intervalo:</p>
+          <p>\[ \int_a^b f(x) \, dx \]</p>
+
+          <p>
+            A integral dupla estende este conceito para regiões bidimensionais:
+          </p>
+          <p>\[ \iint_D f(x,y) \, dA \]</p>
+
+          <p>
+            Enquanto a integral simples representa uma
+            <strong>área</strong>, a integral dupla frequentemente representa um
+            <strong>volume</strong>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide: Visualização da soma de Riemann -->
+      <section>
+        <h2>Da Soma de Riemann à Integral Dupla</h2>
+
+        <div class="math-section">
+          <p>
+            Assim como em uma dimensão, aproximamos a integral com somas
+            finitas:
+          </p>
+          <ol>
+            <li>Dividimos a região \(D\) em pequenos retângulos</li>
+            <li>Avaliamos a função em um ponto de cada retângulo</li>
+            <li>Multiplicamos pelo valor da área do retângulo</li>
+            <li>Somamos todas as contribuições</li>
+          </ol>
+          <p>
+            À medida que refinamos a malha, esta soma se aproxima da integral
+            dupla.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide: Visualização interativa da soma de Riemann -->
+      <section>
+        <h2>Visualização da Soma de Riemann</h2>
+
+        <canvas
+          id="riemannCanvas"
+          class="visualization-canvas"
+          width="700"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="subdivSlider">Número de Subdivisões:</label>
+            <input type="range" id="subdivSlider" min="2" max="10" value="4" />
+            <span id="subdivValue">4</span>
+          </div>
+
+          <button class="control-button" onclick="resetRiemannVisualization()">
+            Reiniciar
+          </button>
+        </div>
+
+        <div class="value-display">
+          Valor da Soma: <span id="integralValue">0</span>
+        </div>
+      </section>
+
+      <!-- Slide: Interpretação geométrica -->
+      <section>
+        <h2>Interpretação Geométrica</h2>
+
+        <div class="math-section">
+          <p>
+            Podemos visualizar a integral dupla como um
+            <strong>volume</strong>:
+          </p>
+          <ul>
+            <li>A função \(f(x,y)\) define uma superfície no espaço</li>
+            <li>A região \(D\) delimita a base no plano \(xy\)</li>
+            <li>
+              O valor da integral é o volume entre a superfície e o plano \(xy\)
+            </li>
+          </ul>
+          <p>
+            Esta analogia ajuda a entender por que a integral dupla
+            frequentemente representa um volume no espaço tridimensional.
+          </p>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

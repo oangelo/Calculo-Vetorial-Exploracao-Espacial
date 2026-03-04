@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integrais Duplas - Cálculo Vetorial</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../space-theme.css" />
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <style>
+      .side-by-side {
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .side-by-side div {
+        flex: 1;
+      }
+
+      .canvas-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .img-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .highlight {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .note {
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 20px;
+      }
+
+      .example-box {
+        background-color: rgba(74, 158, 255, 0.1);
+        border-left: 4px solid #4a9eff;
+        padding: 15px;
+        margin: 20px 0;
+      }
+
+      .theorem-box {
+        background-color: rgba(255, 179, 0, 0.1);
+        border-left: 4px solid #ffb300;
+        padding: 15px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="slides-container"></div>
+    </div>
+
+    <script src="visualizacoes.js"></script>
+    <script>
+      async function loadSlides() {
+        const sections = [
+          '01-titulo.html',
+          '02-contexto-historico.html',
+          '03-introducao.html',
+          '04-conceitos.html',
+          '05-formalizacao.html',
+          '06-propriedades.html',
+          '07-mudanca-ordem.html',
+          '08-aplicacoes.html',
+        ];
+
+        const container = document.getElementById('slides-container');
+
+        for (const sectionFile of sections) {
+          try {
+            const response = await fetch(sectionFile);
+            if (!response.ok) {
+              throw new Error(`Failed to load ${sectionFile}`);
+            }
+
+            const html = await response.text();
+
+            // Parse HTML e extrair <section>
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const sections = doc.querySelectorAll('body > section');
+
+            // Inserir cada seção no container
+            sections.forEach((section) => {
+              container.appendChild(section);
+            });
+          } catch (error) {
+            console.error(`Error loading ${sectionFile}:`, error);
+          }
+        }
+
+        // Inicializar Reveal.js após carregar todas as seções
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+        });
+      }
+
+      // Carregar slides quando a página carregar
+      window.addEventListener('load', loadSlides);
+    </script>
+  </body>
+</html>

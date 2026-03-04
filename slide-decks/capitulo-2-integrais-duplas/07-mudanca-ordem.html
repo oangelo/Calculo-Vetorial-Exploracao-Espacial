@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Introdução à Mudança de Ordem -->
+      <section>
+        <h2>Mudança da Ordem de Integração</h2>
+
+        <div class="math-section">
+          <p>
+            O Teorema de Fubini nos permite escolher entre duas ordens de
+            integração para a mesma região:
+          </p>
+
+          <p>
+            \[ \iint_D f(x,y)\,dA = \int_a^b \int_{g_1(x)}^{g_2(x)}
+            f(x,y)\,dy\,dx \]
+          </p>
+
+          <p>\[ = \int_c^d \int_{h_1(y)}^{h_2(y)} f(x,y)\,dx\,dy \]</p>
+
+          <p>
+            A escolha da ordem pode
+            <strong>simplificar consideravelmente</strong> o cálculo,
+            especialmente quando:
+          </p>
+          <ul>
+            <li>A integração em uma variável é mais simples</li>
+            <li>Os limites de integração em uma ordem são mais complexos</li>
+            <li>A função apresenta descontinuidades ou singularidades</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide 2: Regiões Triangulares -->
+      <section>
+        <h2>Integrais sobre Regiões Triangulares</h2>
+
+        <div class="math-section">
+          <p>Os triângulos são formas fundamentais na engenharia espacial:</p>
+          <ul>
+            <li>Elementos básicos de <strong>malhas estruturais</strong></li>
+            <li>Componentes de <strong>superfícies aerodinâmicas</strong></li>
+            <li>
+              Seções de <strong>painéis solares</strong> e escudos térmicos
+            </li>
+          </ul>
+
+          <p>Para integrar sobre um triângulo, precisamos:</p>
+          <ol>
+            <li>
+              Determinar as <strong>equações das retas</strong> que delimitam o
+              triângulo
+            </li>
+            <li>
+              Escolher uma <strong>ordem de integração</strong> apropriada
+            </li>
+            <li>
+              Expressar os <strong>limites de integração</strong> em termos da
+              variável apropriada
+            </li>
+          </ol>
+        </div>
+
+        <p>
+          Diferentes ordens de integração podem ter diferentes complexidades de
+          cálculo.
+        </p>
+      </section>
+
+      <!-- Slide 3: Exemplo de Triângulo - Definição - Em duas colunas -->
+      <section>
+        <h2>Exemplo: Triângulo no Plano</h2>
+
+        <div class="dual-panel">
+          <div class="problem-section">
+            <p>
+              <strong>Problema:</strong> Calcular a integral de uma função
+              \(f(x,y)\) sobre o triângulo \(T\) com vértices (0,0), (1,0) e
+              (0,2).
+            </p>
+
+            <p><strong>Equações das retas:</strong></p>
+            <ul>
+              <li>Eixo x: \(y = 0\) para \(0 \leq x \leq 1\)</li>
+              <li>Eixo y: \(x = 0\) para \(0 \leq y \leq 2\)</li>
+              <li>Reta diagonal: \(y = 2(1-x)\)</li>
+              <li>Equivalente a: \(x = 1-\frac{y}{2}\)</li>
+            </ul>
+
+            <p>
+              <strong>Desafio:</strong> Determinar os limites de integração nas
+              duas ordens possíveis.
+            </p>
+          </div>
+
+          <div class="svg-container">
+            <img
+              src="../svg-mudança-de-variaveis/triangulo-plano.svg"
+              alt="Triângulo no plano xy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 4-5: Comparação das Ordens de Integração em Duas Colunas -->
+      <section>
+        <h2>Comparação das Ordens de Integração</h2>
+
+        <div class="dual-panel">
+          <div>
+            <h3>
+              Ordem <span class="vertical-highlight">dy dx</span>: Vertical
+            </h3>
+            <div class="math-section">
+              <p>Para cada \(x\) fixo entre 0 e 1:</p>
+              <ul>
+                <li>Limite inferior: \(y = 0\)</li>
+                <li>Limite superior: \(y = 2(1-x)\)</li>
+              </ul>
+              <p>\[ \int_0^1 \int_0^{2(1-x)} f(x,y) \, dy \, dx \]</p>
+            </div>
+
+            <div class="svg-container">
+              <img
+                src="../svg-mudança-de-variaveis/integracao-vertical.svg"
+                alt="Integração vertical"
+              />
+            </div>
+          </div>
+
+          <div>
+            <h3>
+              Ordem <span class="horizontal-highlight">dx dy</span>: Horizontal
+            </h3>
+            <div class="math-section">
+              <p>Para cada \(y\) fixo entre 0 e 2:</p>
+              <ul>
+                <li>Limite inferior: \(x = 0\)</li>
+                <li>Limite superior: \(x = 1-\frac{y}{2}\)</li>
+              </ul>
+              <p>\[ \int_0^2 \int_0^{1-\frac{y}{2}} f(x,y) \, dx \, dy \]</p>
+            </div>
+
+            <div class="svg-container">
+              <img
+                src="../svg-mudança-de-variaveis/integracao-horizontal.svg"
+                alt="Integração horizontal"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Visualização Interativa -->
+      <section>
+        <h2>Visualização das Ordens de Integração</h2>
+
+        <div class="canvas-container">
+          <canvas
+            id="integrationCanvas"
+            class="visualization-canvas"
+            width="700"
+            height="400"
+          ></canvas>
+        </div>
+
+        <div class="controls-container">
+          <button id="btnVertical" class="control-button active">
+            Ordem dy dx (Vertical)
+          </button>
+          <button id="btnHorizontal" class="control-button">
+            Ordem dx dy (Horizontal)
+          </button>
+          <button id="btnPause" class="control-button">Pausar</button>
+          <button id="btnReset" class="control-button">Reiniciar</button>
+
+          <div class="control-slider">
+            <label for="speedSlider">Velocidade:</label>
+            <input type="range" id="speedSlider" min="1" max="10" value="3" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Quando Escolher Cada Ordem -->
+      <section>
+        <h2>Escolhendo a Melhor Ordem de Integração</h2>
+
+        <div class="dual-panel">
+          <div class="math-section">
+            <p><strong>Fatores a considerar:</strong></p>
+            <ul>
+              <li>Simplicidade da <strong>integração interna</strong></li>
+              <li>Complexidade das <strong>funções limite</strong></li>
+              <li>
+                Presença de <strong>singularidades</strong> ou descontinuidades
+              </li>
+              <li>
+                Facilidade em aplicar <strong>teoremas de cálculo</strong>
+              </li>
+            </ul>
+          </div>
+
+          <div class="math-section">
+            <p><strong>Estratégias práticas:</strong></p>
+            <ul>
+              <li>
+                Sempre <strong>desenhe a região</strong> antes de escolher a
+                ordem
+              </li>
+              <li>
+                Identifique qual ordem gera
+                <strong>limites mais simples</strong>
+              </li>
+              <li>
+                Se ambas parecem equivalentes, examine a
+                <strong>função integranda</strong>
+              </li>
+              <li>
+                Considere fazer uma <strong>mudança de variáveis</strong> se
+                nenhuma ordem simplifica o problema
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          A experiência na avaliação de integrais o ajudará a desenvolver
+          intuição para escolher a ordem mais vantajosa.
+        </p>
+      </section>
+
+      <!-- Slide 8: Exemplo Completo de Cálculo -->
+      <section>
+        <h2>Exemplo: Cálculo da Área do Triângulo</h2>
+
+        <div class="problem-section">
+          <p>
+            <strong>Problema:</strong> Calcular a área do triângulo com vértices
+            (0,0), (1,0) e (0,2).
+          </p>
+
+          <p>
+            Neste caso, a função integranda é \(f(x,y) = 1\), pois a integral
+            dupla de 1 sobre uma região representa sua área.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 9: Solução usando Ordem dy dx -->
+      <section>
+        <h2>Solução: Usando Ordem dy dx</h2>
+
+        <div class="compact-solution">
+          <p><strong>Ordem vertical primeiro:</strong></p>
+
+          <p>
+            \[ A = \iint_T 1 \, dA = \int_0^1 \int_0^{2(1-x)} 1 \, dy \, dx \]
+          </p>
+
+          <p><strong>Etapa 1:</strong> Resolver a integral interna em \(y\):</p>
+          <p>\[ \int_0^{2(1-x)} 1 \, dy = y \big|_0^{2(1-x)} = 2(1-x) \]</p>
+
+          <p><strong>Etapa 2:</strong> Resolver a integral externa em \(x\):</p>
+          <p>
+            \[ \int_0^1 2(1-x) \, dx = 2 \int_0^1 (1-x) \, dx = 2[x -
+            \frac{x^2}{2}]_0^1 = 2(1 - \frac{1}{2}) = 1 \]
+          </p>
+
+          <p>
+            <strong>Resultado:</strong> A área do triângulo é 1 unidade
+            quadrada.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 10: Solução usando Ordem dx dy -->
+      <section>
+        <h2>Solução: Usando Ordem dx dy</h2>
+
+        <div class="compact-solution">
+          <p><strong>Ordem horizontal primeiro:</strong></p>
+
+          <p>
+            \[ A = \iint_T 1 \, dA = \int_0^2 \int_0^{1-\frac{y}{2}} 1 \, dx \,
+            dy \]
+          </p>
+
+          <p><strong>Etapa 1:</strong> Resolver a integral interna em \(x\):</p>
+          <p>
+            \[ \int_0^{1-\frac{y}{2}} 1 \, dx = x \big|_0^{1-\frac{y}{2}} =
+            1-\frac{y}{2} \]
+          </p>
+
+          <p><strong>Etapa 2:</strong> Resolver a integral externa em \(y\):</p>
+          <p>
+            \[ \int_0^2 (1-\frac{y}{2}) \, dy = \int_0^2 1 \, dy -
+            \frac{1}{2}\int_0^2 y \, dy = 2 - \frac{1}{2}[y^2/2]_0^2 = 2 -
+            \frac{1}{2} \cdot 2 = 1 \]
+          </p>
+
+          <p>
+            <strong>Resultado:</strong> A área do triângulo é 1 unidade
+            quadrada.
+          </p>
+          <p>
+            Observação: Ambas as ordens produziram o mesmo resultado, como
+            esperado.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 11: Aplicações Práticas -->
+      <section>
+        <h2>Aplicações Práticas</h2>
+
+        <div class="dual-panel">
+          <div class="math-section">
+            <p><strong>Aplicações em Engenharia Espacial:</strong></p>
+            <ul>
+              <li>
+                Cálculo da distribuição de estresse em painéis triangulares
+              </li>
+              <li>Análise térmica em elementos finitos triangulares</li>
+              <li>Otimização de materiais compósitos com estrutura variável</li>
+              <li>Modelagem de fluxo de radiação através de superfícies</li>
+              <li>Cálculo de centros de massa de componentes não-homogêneos</li>
+            </ul>
+          </div>
+
+          <div class="math-section">
+            <p><strong>Melhores Práticas:</strong></p>
+            <ul>
+              <li>
+                Sempre desenhe a região de integração antes de escolher a ordem
+              </li>
+              <li>
+                Avalie a complexidade da função e dos limites de integração
+              </li>
+              <li>
+                Considere se a função apresenta descontinuidades ou
+                singularidades
+              </li>
+              <li>
+                Quando possível, use simetrias para simplificar a integração
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
