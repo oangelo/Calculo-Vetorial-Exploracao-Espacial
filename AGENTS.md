@@ -25,7 +25,17 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 │   ├── capitulo-9/       # Teorema da divergência
 │   ├── template.html     # Template base
 │   └── styles.css        # Tema industrial/cobre
-├── slide-decks/          # 20+ apresentações Reveal.js
+├── slide-decks/          # Apresentações Reveal.js organizadas por capítulo
+│   ├── capitulo-0-revisao/
+│   ├── capitulo-1-funcoes-vetoriais/
+│   ├── capitulo-2-integrais-duplas/
+│   ├── capitulo-3-mudanca-de-variaveis/
+│   ├── capitulo-4-integrais-triplas/
+│   ├── capitulo-5-integrais-de-linha/
+│   ├── capitulo-6-campos-conservativos/
+│   ├── capitulo-7-teorema-de-green/
+│   ├── capitulo-8-integral-de-superficie/
+│   ├── capitulo-9-teorema-da-divergencia/
 │   ├── reveal.js/        # Framework
 │   └── space-theme.css   # Tema espacial
 ├── docs/                 # Documentação
@@ -68,7 +78,19 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 1. Leia o prompt completamente
 2. Identifique tópico e período histórico (ver cronologia no prompt)
 3. Gere HTML seguindo estrutura Reveal.js
-4. Salve em `/slide-decks/nome-do-topico.html`
+4. Salve em `/slide-decks/capitulo-N-nome-do-capitulo/NN-nome-da-secao.html`
+5. Crie ou atualize o `index.html` (loader) na pasta do capítulo
+
+**Estrutura de uma pasta de capítulo:**
+
+```
+slide-decks/capitulo-N-nome/
+├── index.html              # Loader que faz fetch das seções
+├── 01-titulo.html          # Seção 1
+├── 02-conceito.html        # Seção 2
+├── 03-exemplos.html        # Seção 3
+└── ...
+```
 
 **Regras críticas:**
 
@@ -114,12 +136,13 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 **Nomenclatura:** kebab-case.html
 
 - Exercícios: `exercicios/capitulo-N/nome-do-topico.html`
-- Slides: `slide-decks/nome-do-topico.html`
+- Slides: `slide-decks/capitulo-N-nome-do-capitulo/index.html` (arquivo principal do capítulo)
+- Seções de slides: `slide-decks/capitulo-N-nome/NN-nome-da-secao.html`
 
 **CSS:**
 
 - Exercícios: usar `../styles.css` (relativo ao capítulo)
-- Slides: usar `space-theme.css`
+- Slides: usar `../space-theme.css` (relativo à pasta do capítulo)
 
 ## O que Evitar
 
