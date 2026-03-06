@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integrais Triplas - Cálculo Vetorial</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../space-theme.css" />
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="slides-container"></div>
+    </div>
+
+    <script>
+      async function loadSlides() {
+        const sections = [
+          '01-introducao.html',
+          '02-coordenadas.html',
+          '03-aplicacoes-fisicas.html',
+        ];
+
+        const container = document.getElementById('slides-container');
+
+        for (const sectionFile of sections) {
+          try {
+            const response = await fetch(sectionFile);
+            if (!response.ok) throw new Error(`Failed to load ${sectionFile}`);
+
+            const html = await response.text();
+
+            // Parse HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const slidesDiv = doc.querySelector('.slides');
+
+            if (slidesDiv) {
+              // Inserir todos os <section> do arquivo
+              const sections = slidesDiv.querySelectorAll(':scope > section');
+              sections.forEach((section) => container.appendChild(section));
+            }
+          } catch (error) {
+            console.error(`Error loading ${sectionFile}:`, error);
+          }
+        }
+
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+        });
+      }
+
+      window.addEventListener('load', loadSlides);
+    </script>
+  </body>
+</html>

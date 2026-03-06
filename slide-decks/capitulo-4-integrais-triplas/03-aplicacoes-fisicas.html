@@ -1,0 +1,2099 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Cálculo Vetorial: Integrais Triplas: Aplicações Físicas (Parte 3)
+    </title>
+
+    <!-- Links para CDNs -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.css"
+    />
+
+    <!-- Carregando o estilo space-theme -->
+    <link rel="stylesheet" href="space-theme.css" />
+    <!-- Alternativa usando URL pública -->
+    <!-- <link rel="stylesheet" href="https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/space-theme.css"> -->
+
+    <!-- Scripts para Reveal.js e MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/dist/reveal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/math/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Efeito de asteroides -->
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+
+      <div class="slides">
+        <!-- =========================== -->
+        <!-- SLIDE DE TÍTULO PRINCIPAL -->
+        <!-- =========================== -->
+        <section>
+          <h1>Integrais Triplas: Aplicações Físicas</h1>
+          <h3>Parte 3</h3>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDE DE CONTEXTO HISTÓRICO -->
+        <!-- =========================== -->
+        <section>
+          <h2>Contexto Histórico: Programa Apollo (1965-1969)</h2>
+
+          <div class="history-section">
+            <div class="history-label">CONTEXTO</div>
+            <p><strong>Programa Apollo (1965-1969)</strong></p>
+            <p>
+              Durante o programa Apollo, a NASA enfrentou desafios críticos de
+              estabilidade em suas naves espaciais. A dinâmica rotacional no
+              ambiente de microgravidade apresentou comportamentos
+              contra-intuitivos que não podiam ser facilmente testados na Terra,
+              exigindo modelos matemáticos precisos.
+            </p>
+          </div>
+
+          <div class="history-section">
+            <div class="history-label">NECESSIDADE</div>
+            <p><strong>Desafios de Estabilidade no Espaço</strong></p>
+            <p>
+              O comportamento de corpos rígidos no espaço depende diretamente de
+              propriedades como centro de massa e momento de inércia - conceitos
+              que só podem ser calculados precisamente usando integrais triplas.
+              Erros de cálculo poderiam resultar em falhas catastróficas durante
+              manobras críticas.
+            </p>
+          </div>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: CENTRO DE MASSA -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Conceito Principal -->
+          <section>
+            <h2>Centro de Massa</h2>
+
+            <div class="math-section">
+              <p>Definição formal do centro de massa:</p>
+              <p>
+                \[\vec{r}_{CM} = \frac{1}{M}\iiint_V \rho(x,y,z)\vec{r}\,dV\]
+              </p>
+              <p>Onde:</p>
+              <ul>
+                <li>\(\vec{r}_{CM}\) é o vetor posição do centro de massa</li>
+                <li>\(M = \iiint_V \rho(x,y,z)\,dV\) é a massa total</li>
+                <li>\(\rho(x,y,z)\) é a função densidade de massa</li>
+                <li>\(\vec{r}\) é o vetor posição de cada ponto no volume</li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>Componentes do centro de massa:</p>
+              <p>\[x_{CM} = \frac{1}{M}\iiint_V x\rho(x,y,z)\,dV\]</p>
+              <p>\[y_{CM} = \frac{1}{M}\iiint_V y\rho(x,y,z)\,dV\]</p>
+              <p>\[z_{CM} = \frac{1}{M}\iiint_V z\rho(x,y,z)\,dV\]</p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Visualização -->
+          <section>
+            <h2>Visualização: Centro de Massa</h2>
+
+            <canvas
+              id="centerOfMassVisualization"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div class="control-slider">
+                <label for="densityParam">Densidade:</label>
+                <input
+                  type="range"
+                  id="densityParam"
+                  min="1"
+                  max="100"
+                  value="50"
+                  oninput="updateCenterOfMass()"
+                />
+              </div>
+
+              <div class="control-slider">
+                <label for="gradientDirection">Gradiente de Massa:</label>
+                <input
+                  type="range"
+                  id="gradientDirection"
+                  min="0"
+                  max="100"
+                  value="50"
+                  oninput="updateCenterOfMass()"
+                />
+              </div>
+
+              <div class="control-slider">
+                <label for="rotationParam">Rotação:</label>
+                <input
+                  type="range"
+                  id="rotationParam"
+                  min="0"
+                  max="360"
+                  value="0"
+                  oninput="updateCenterOfMass()"
+                />
+              </div>
+
+              <button class="control-button" onclick="resetCenterOfMass()">
+                Reiniciar
+              </button>
+            </div>
+          </section>
+
+          <!-- Slide 3: Interpretação Física -->
+          <section>
+            <h2>Propriedades do Centro de Massa</h2>
+
+            <div class="math-section">
+              <p>Propriedades fundamentais:</p>
+              <ul>
+                <li>
+                  É o ponto onde todo o peso do objeto pode ser considerado
+                  concentrado
+                </li>
+                <li>
+                  É o ponto ao redor do qual o corpo rotacionará sob a
+                  influência de torques externos
+                </li>
+                <li>
+                  Em um campo gravitacional uniforme, segue a trajetória de uma
+                  partícula pontual
+                </li>
+                <li>
+                  A orientação de uma espaçonave é controlada por motores que
+                  criam torques em relação ao CM
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>
+                A distribuição de massa em um veículo espacial deve garantir
+                que:
+              </p>
+              <ul>
+                <li>
+                  O CM esteja próximo ao eixo de propulsão para evitar rotações
+                  durante a aceleração
+                </li>
+                <li>
+                  O CM se mova de forma previsível à medida que o combustível é
+                  consumido
+                </li>
+                <li>
+                  Os sistemas de controle de atitude possam compensar mudanças
+                  na posição do CM
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2>Estabilidade e Centro de Massa</h2>
+
+            <div class="math-section">
+              <p>Estabilidade em foguetes e veículos espaciais:</p>
+              <ul>
+                <li>
+                  Para estabilidade estática, o centro de massa (CM) deve estar
+                  à frente do centro de pressão (CP)
+                </li>
+                <li>
+                  Quanto maior a distância CM-CP, mais estável é o veículo, mas
+                  menos ágil nas manobras
+                </li>
+                <li>
+                  Se o CP estiver à frente do CM, o foguete será instável e
+                  começará a girar descontroladamente
+                </li>
+                <li>
+                  Durante o voo, o CM se desloca para cima à medida que o
+                  combustível é consumido
+                </li>
+              </ul>
+
+              <p>O critério de estabilidade pode ser expresso como:</p>
+              <p>\[ \vec{r}_{CP} - \vec{r}_{CM} > d_{min} \]</p>
+              <p>
+                Onde \(d_{min}\) é a distância mínima de estabilidade,
+                tipicamente 1-2 diâmetros do corpo do foguete.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: PROBLEMA DO CENTRO DE MASSA -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Problema Prático -->
+          <section>
+            <h2>Problema: Centro de Massa de um Foguete</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um estágio superior de foguete é
+                modelado como um cilindro com 4 metros de altura e 2 metros de
+                diâmetro. O tanque de combustível ocupa a metade inferior e tem
+                uma densidade variável devido ao consumo de combustível, dada
+                por \(\rho_c(z) = \rho_0(1 - \frac{z}{h})\) onde \(h = 2\)
+                metros é a altura do tanque. A seção superior tem densidade
+                constante \(\rho_e\).
+              </p>
+
+              <p>Determine:</p>
+              <ol>
+                <li>O centro de massa do foguete quando cheio (\(z = 0\))</li>
+                <li>
+                  Como o centro de massa se desloca à medida que o combustível é
+                  consumido
+                </li>
+                <li>
+                  Avalie a estabilidade do foguete considerando que o centro de
+                  pressão está a 2.5m da base
+                </li>
+              </ol>
+
+              <p><strong>Dados:</strong></p>
+              <ul>
+                <li>
+                  Densidade inicial do combustível: \(\rho_0 = 1000 \text{
+                  kg/m}^3\)
+                </li>
+                <li>
+                  Densidade da seção estrutural: \(\rho_e = 200 \text{ kg/m}^3\)
+                </li>
+                <li>Altura total: \(H = 4 \text{ m}\)</li>
+                <li>Raio: \(R = 1 \text{ m}\)</li>
+                <li>
+                  Critério de estabilidade: CM deve estar pelo menos 0.5m à
+                  frente do CP
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 2: Solução do Problema -->
+          <section>
+            <h2>Solução: Massa do Foguete</h2>
+
+            <div class="compact-solution">
+              <p><strong>1. Cálculo da massa total:</strong></p>
+              <p>
+                Massa do tanque de combustível: \[M_c = \iiint_{V_c}
+                \rho_c(z)\,dV = \int_0^{2\pi}\int_0^R\int_0^h \rho_0(1 -
+                \frac{z}{h})r\,dz\,dr\,d\theta\] \[M_c =
+                2\pi\rho_0\int_0^R\int_0^h (1 - \frac{z}{h})r\,dz\,dr =
+                2\pi\rho_0\int_0^R r\,dr \int_0^h(1 - \frac{z}{h})\,dz\] \[M_c =
+                2\pi\rho_0 \cdot \frac{R^2}{2} \cdot [z - \frac{z^2}{2h}]_0^h =
+                \pi\rho_0 R^2 \cdot (h - \frac{h}{2}) = \pi\rho_0 R^2 \cdot
+                \frac{h}{2}\] \[M_c = \pi \cdot 1000 \cdot 1^2 \cdot \frac{2}{2}
+                = 1000\pi \text{ kg}\]
+              </p>
+
+              <p>
+                Massa da seção estrutural: \[M_e = \iiint_{V_e} \rho_e\,dV =
+                \rho_e \cdot \pi R^2 \cdot h = 200 \cdot \pi \cdot 1^2 \cdot 2 =
+                400\pi \text{ kg}\]
+              </p>
+
+              <p>
+                Massa total: \(M = M_c + M_e = 1000\pi + 400\pi = 1400\pi \text{
+                kg} \approx 4398 \text{ kg}\)
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Centro de Massa do Foguete</h2>
+
+            <div class="compact-solution">
+              <p><strong>2. Cálculo do centro de massa:</strong></p>
+              <p>
+                Para o tanque de combustível: \[z_{c,CM} =
+                \frac{1}{M_c}\iiint_{V_c} z\rho_c(z)\,dV =
+                \frac{1}{M_c}\int_0^{2\pi}\int_0^R\int_0^h
+                z\rho_0(1-\frac{z}{h})r\,dz\,dr\,d\theta\] \[z_{c,CM} =
+                \frac{2\pi\rho_0}{M_c}\int_0^R r\,dr \int_0^h
+                z(1-\frac{z}{h})\,dz = \frac{2\pi\rho_0 \cdot
+                \frac{R^2}{2}}{M_c}[\frac{z^2}{2} - \frac{z^3}{3h}]_0^h\]
+                \[z_{c,CM} = \frac{\pi\rho_0 R^2}{M_c} \cdot (\frac{h^2}{2} -
+                \frac{h^3}{3h}) = \frac{\pi\rho_0 R^2}{M_c} \cdot (\frac{h^2}{2}
+                - \frac{h^2}{3}) = \frac{\pi\rho_0 R^2 h^2}{M_c} \cdot
+                \frac{1}{6}\] \[z_{c,CM} = \frac{1000\pi \cdot 2^2}{1000\pi}
+                \cdot \frac{1}{6} = \frac{4}{6} = \frac{2}{3} \text{ m}\]
+              </p>
+
+              <p>
+                Para a seção estrutural (constante): \[z_{e,CM} = h +
+                \frac{h}{2} = 2 + 1 = 3 \text{ m}\]
+              </p>
+
+              <p>
+                Centro de massa do foguete completo: \[z_{CM} = \frac{M_c \cdot
+                z_{c,CM} + M_e \cdot z_{e,CM}}{M_c + M_e} = \frac{1000\pi \cdot
+                \frac{2}{3} + 400\pi \cdot 3}{1400\pi} = \frac{667\pi +
+                1200\pi}{1400\pi} \approx 1.33 \text{ m}\]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Análise de Estabilidade</h2>
+
+            <div class="compact-solution">
+              <p>
+                <strong>3. Deslocamento durante consumo de combustível:</strong>
+              </p>
+              <p>
+                À medida que o combustível é consumido, o centro de massa se
+                move para cima, aproximando-se do centro da seção estrutural em
+                \(z = 3 \text{ m}\).
+              </p>
+
+              <p><strong>4. Avaliação da estabilidade:</strong></p>
+              <p>
+                O centro de pressão está localizado a \(z_{CP} = 2.5 \text{ m}\)
+                a partir da base.
+              </p>
+              <p>
+                No início da missão: \(z_{CM} \approx 1.33 \text{ m}\), portanto
+                \(z_{CP} - z_{CM} = 2.5 - 1.33 = 1.17 \text{ m} > 0\)
+              </p>
+              <p>
+                Isso indica que o CP está atrás do CM, o que torna o foguete
+                instável!
+              </p>
+              <p>
+                Para corrigir: podemos adicionar massa na parte superior ou
+                mover as aletas para baixo para deslocar o CP mais para trás. O
+                ideal seria \(z_{CP} \leq 0.83 \text{ m}\) para satisfazer o
+                critério de estabilidade de 0.5m.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: MOMENTO DE INÉRCIA -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Introdução ao Conceito -->
+          <section>
+            <h2>Momento de Inércia: Conceito Intuitivo</h2>
+
+            <div class="math-section">
+              <p>
+                O momento de inércia é a medida da resistência de um corpo à
+                mudança em seu movimento rotacional:
+              </p>
+              <ul>
+                <li>
+                  Assim como a massa mede a resistência ao movimento linear
+                  (inércia linear)
+                </li>
+                <li>
+                  O momento de inércia mede a resistência ao movimento
+                  rotacional (inércia rotacional)
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>Fatores que afetam o momento de inércia:</p>
+              <ul>
+                <li>
+                  <strong>Massa total:</strong> Quanto maior a massa, maior o
+                  momento de inércia
+                </li>
+                <li>
+                  <strong>Distribuição da massa:</strong> Quanto mais afastada
+                  do eixo de rotação, maior o momento de inércia
+                </li>
+                <li>
+                  <strong>Eixo de rotação:</strong> O mesmo objeto tem
+                  diferentes momentos de inércia em torno de diferentes eixos
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>
+                Aplicação no espaço: Se dois satélites tiverem a mesma massa mas
+                formas diferentes, eles responderão de maneira diferente às
+                mesmas forças rotacionais.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Definição Matemática -->
+          <section>
+            <h2>Momento de Inércia: Definição Formal</h2>
+
+            <div class="math-section">
+              <p>Definição do momento de inércia em torno de um eixo:</p>
+              <p>\[I = \iiint_V \rho(x,y,z)r^2\,dV\]</p>
+
+              <p>Onde \(r\) é a distância perpendicular ao eixo de rotação.</p>
+
+              <p>O tensor de inércia completo é dado por:</p>
+
+              <p>
+                \[I = \begin{pmatrix} I_{xx} & -I_{xy} & -I_{xz} \\ -I_{xy} &
+                I_{yy} & -I_{yz} \\ -I_{xz} & -I_{yz} & I_{zz} \end{pmatrix}\]
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 3: Componentes do Tensor -->
+          <section>
+            <h2>Componentes do Tensor de Inércia</h2>
+
+            <div class="math-section">
+              <p>Componentes do tensor em termos de integrais triplas:</p>
+              <p>\[I_{xx} = \iiint_V \rho(x,y,z)(y^2+z^2)\,dV\]</p>
+              <p>\[I_{yy} = \iiint_V \rho(x,y,z)(x^2+z^2)\,dV\]</p>
+              <p>\[I_{zz} = \iiint_V \rho(x,y,z)(x^2+y^2)\,dV\]</p>
+            </div>
+
+            <div class="math-section">
+              <p>Produtos de inércia (termos não diagonais):</p>
+              <p>\[I_{xy} = \iiint_V \rho(x,y,z)xy\,dV\]</p>
+              <p>\[I_{xz} = \iiint_V \rho(x,y,z)xz\,dV\]</p>
+              <p>\[I_{yz} = \iiint_V \rho(x,y,z)yz\,dV\]</p>
+            </div>
+
+            <div class="math-section">
+              <p>
+                Significado físico: os termos diagonais descrevem inércia em
+                torno dos eixos principais, enquanto os produtos de inércia
+                determinam o acoplamento entre diferentes direções de rotação.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide 2: Visualização do Tensor -->
+          <section>
+            <h2>Visualização: Tensor de Inércia</h2>
+
+            <canvas
+              id="inertiaVisualization"
+              class="visualization-canvas"
+              width="700"
+              height="400"
+            ></canvas>
+
+            <div class="controls-container">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  background: rgba(26, 35, 126, 0.3);
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  margin: 0 5px;
+                "
+              >
+                <span style="margin-right: 10px; white-space: nowrap"
+                  >Forma do Corpo:</span
+                >
+                <label style="margin-right: 10px; cursor: pointer">
+                  <input
+                    type="radio"
+                    name="bodyShape"
+                    value="0"
+                    onchange="updateInertiaVisualization()"
+                  />
+                  Esfera
+                </label>
+                <label style="margin-right: 10px; cursor: pointer">
+                  <input
+                    type="radio"
+                    name="bodyShape"
+                    value="50"
+                    checked
+                    onchange="updateInertiaVisualization()"
+                  />
+                  Cilindro
+                </label>
+                <label style="cursor: pointer">
+                  <input
+                    type="radio"
+                    name="bodyShape"
+                    value="100"
+                    onchange="updateInertiaVisualization()"
+                  />
+                  Paralelepípedo
+                </label>
+              </div>
+
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  background: rgba(26, 35, 126, 0.3);
+                  padding: 4px 8px;
+                  border-radius: 15px;
+                  margin: 0 5px;
+                "
+              >
+                <span style="margin-right: 10px; white-space: nowrap"
+                  >Eixo de Rotação:</span
+                >
+                <label style="margin-right: 5px; cursor: pointer">
+                  <input
+                    type="radio"
+                    name="rotationAxis"
+                    value="0"
+                    checked
+                    onchange="updateInertiaVisualization()"
+                  />
+                  X
+                </label>
+                <label style="margin-right: 5px; cursor: pointer">
+                  <input
+                    type="radio"
+                    name="rotationAxis"
+                    value="1"
+                    onchange="updateInertiaVisualization()"
+                  />
+                  Y
+                </label>
+                <label style="cursor: pointer">
+                  <input
+                    type="radio"
+                    name="rotationAxis"
+                    value="2"
+                    onchange="updateInertiaVisualization()"
+                  />
+                  Z
+                </label>
+              </div>
+
+              <button
+                class="control-button"
+                onclick="resetInertiaVisualization()"
+              >
+                Reiniciar
+              </button>
+            </div>
+          </section>
+
+          <!-- Slide 3: Aplicação na Estabilidade -->
+          <section>
+            <h2>Aplicação na Estabilidade de Satélites</h2>
+
+            <div class="math-section">
+              <p>
+                O tensor de inércia determina o comportamento rotacional do
+                corpo:
+              </p>
+              <ul>
+                <li>
+                  Se todos os momentos principais de inércia são iguais (como em
+                  uma esfera), a rotação em qualquer eixo é estável
+                </li>
+                <li>
+                  Se \(I_1 = I_2 \neq I_3\) (como em um cilindro), a rotação é
+                  estável apenas em torno do eixo de simetria
+                </li>
+                <li>
+                  Se \(I_1 < I_2 < I_3\), a rotação é estável apenas em torno
+                  dos eixos com menor e maior momento de inércia
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>
+                A equação de Euler descreve a dinâmica rotacional em termos do
+                tensor de inércia:
+              </p>
+              <p>
+                \[I\vec{\dot{\omega}} + \vec{\omega} \times (I\vec{\omega}) =
+                \vec{\tau}\]
+              </p>
+              <p>
+                Onde \(\vec{\omega}\) é a velocidade angular e \(\vec{\tau}\) é
+                o torque aplicado.
+              </p>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- MÓDULO: PROBLEMA DE MOMENTO DE INÉRCIA -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide 1: Problema Prático -->
+          <section>
+            <h2>Problema: Momento de Inércia de um Satélite</h2>
+
+            <div class="problem-section">
+              <p>
+                <strong>Problema:</strong> Um satélite de comunicação está sendo
+                projetado com um corpo principal cilíndrico (raio = 1m, altura =
+                3m) e dois painéis solares retangulares (cada um com 5m × 2m).
+                Determine o tensor de inércia do satélite para garantir
+                estabilidade rotacional.
+              </p>
+
+              <p>Calcule:</p>
+              <ol>
+                <li>Os momentos de inércia em torno dos 3 eixos principais</li>
+                <li>Identifique o eixo mais estável para rotação</li>
+                <li>
+                  Determine se o satélite terá estabilidade rotacional passiva
+                </li>
+              </ol>
+
+              <p><strong>Dados:</strong></p>
+              <ul>
+                <li>
+                  Corpo principal: cilindro com densidade \(\rho_c = 300 \text{
+                  kg/m}^3\)
+                </li>
+                <li>
+                  Painéis solares: densidade superficial \(\sigma = 10 \text{
+                  kg/m}^2\)
+                </li>
+                <li>Os painéis solares se estendem ao longo do eixo y</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Slide 2: Solução do Problema -->
+          <section>
+            <h2>Solução: Momento de Inércia do Corpo Principal</h2>
+
+            <div class="compact-solution">
+              <p><strong>1. Momento de inércia do corpo cilíndrico:</strong></p>
+              <p>
+                Massa do cilindro: \(M_c = \rho_c \cdot \pi R^2 \cdot h = 300
+                \cdot \pi \cdot 1^2 \cdot 3 = 900\pi \text{ kg}\)
+              </p>
+              <p>Para um cilindro homogêneo, os momentos de inércia são:</p>
+              <p>
+                \[I_{c,xx} = I_{c,yy} = \frac{M_c}{12}(3R^2 + h^2) =
+                \frac{900\pi}{12}(3 \cdot 1^2 + 3^2) = \frac{900\pi}{12}(3 + 9)
+                = \frac{900\pi}{12} \cdot 12 = 900\pi \text{ kg·m}^2\]
+              </p>
+              <p>
+                \[I_{c,zz} = \frac{M_c R^2}{2} = \frac{900\pi \cdot 1^2}{2} =
+                450\pi \text{ kg·m}^2\]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Momento de Inércia dos Painéis Solares</h2>
+
+            <div class="compact-solution">
+              <p><strong>2. Momento de inércia dos painéis solares:</strong></p>
+              <p>
+                Massa de cada painel: \(M_p = \sigma \cdot A = 10 \cdot 5 \cdot
+                2 = 100 \text{ kg}\)
+              </p>
+              <p>
+                Os painéis estão no plano xz, estendendo-se ao longo do eixo y a
+                1m do centro:
+              </p>
+              <p>
+                \[I_{p,xx} = 2 \cdot (M_p \cdot \frac{l_z^2}{12}) = 2 \cdot (100
+                \cdot \frac{5^2}{12}) = 2 \cdot (100 \cdot \frac{25}{12}) = 2
+                \cdot 208.33 = 416.67 \text{ kg·m}^2\]
+              </p>
+              <p>
+                \[I_{p,yy} = 2 \cdot (M_p \cdot (R + \frac{l_x}{2})^2) = 2 \cdot
+                (100 \cdot (1 + \frac{2}{2})^2) = 2 \cdot (100 \cdot 2^2) = 2
+                \cdot 400 = 800 \text{ kg·m}^2\]
+              </p>
+              <p>
+                \[I_{p,zz} = 2 \cdot (M_p \cdot \frac{l_x^2}{12}) = 2 \cdot (100
+                \cdot \frac{2^2}{12}) = 2 \cdot (100 \cdot \frac{4}{12}) = 2
+                \cdot 33.33 = 66.67 \text{ kg·m}^2\]
+              </p>
+            </div>
+          </section>
+
+          <section>
+            <h2>Solução: Análise da Estabilidade Rotacional</h2>
+
+            <div class="compact-solution">
+              <p><strong>3. Momento de inércia total do satélite:</strong></p>
+              <p>
+                \[I_{xx} = I_{c,xx} + I_{p,xx} = 900\pi + 416.67 \approx 3243.67
+                \text{ kg·m}^2\]
+              </p>
+              <p>
+                \[I_{yy} = I_{c,yy} + I_{p,yy} = 900\pi + 800 \approx 3627
+                \text{ kg·m}^2\]
+              </p>
+              <p>
+                \[I_{zz} = I_{c,zz} + I_{p,zz} = 450\pi + 66.67 \approx 1479.67
+                \text{ kg·m}^2\]
+              </p>
+
+              <p><strong>4. Conclusão:</strong></p>
+              <p>
+                Os momentos de inércia seguem a relação \(I_{zz} < I_{xx} <
+                I_{yy}\), portanto:
+              </p>
+              <ul>
+                <li>
+                  O eixo mais estável para rotação é o eixo z (eixo de simetria
+                  do cilindro)
+                </li>
+                <li>
+                  O satélite terá estabilidade rotacional passiva ao redor do
+                  eixo z
+                </li>
+                <li>
+                  A rotação ao redor do eixo y seria instável e tenderia a mudar
+                  para o eixo z ou x
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+
+        <!-- =========================== -->
+        <!-- SLIDES FINAIS DE APLICAÇÃO -->
+        <!-- =========================== -->
+        <section>
+          <!-- Slide de Aplicação Histórica -->
+          <section>
+            <h2>Aplicação Histórica: O Incidente do Explorer 1</h2>
+
+            <div class="math-section">
+              <p>
+                O incidente do Explorer 1 ilustra a importância dos cálculos de
+                momento de inércia:
+              </p>
+              <ul>
+                <li>
+                  Explorer 1, lançado em 1958, foi projetado para girar em torno
+                  de seu eixo longitudinal
+                </li>
+                <li>
+                  Cientistas observaram que o satélite mudou inesperadamente
+                  para rotação em torno do eixo transversal
+                </li>
+                <li>
+                  Causa: \(I_z < I_x = I_y\) (corpo longo e fino), violando a
+                  condição de estabilidade
+                </li>
+              </ul>
+            </div>
+
+            <div class="history-section">
+              <div class="history-label">APLICAÇÃO HISTÓRICA</div>
+              <p><strong>Lição do Explorer 1 (1958)</strong></p>
+              <p>
+                O comportamento inesperado do Explorer 1 levou ao
+                desenvolvimento da "Teoria da Dissipação de Energia" por
+                engenheiros da NASA. Eles perceberam que pequenas dissipações
+                internas de energia fazem com que corpos rígidos no espaço
+                tendam a rotacionar em torno do eixo com maior momento de
+                inércia, independentemente da rotação inicial. Este princípio
+                fundamental tornou-se crítico para o projeto de todos os
+                veículos espaciais subsequentes, incluindo os módulos Apollo.
+              </p>
+            </div>
+          </section>
+
+          <!-- Slide de Aplicação Prática Moderna -->
+          <section>
+            <h2>Aplicação Prática Moderna</h2>
+
+            <div class="math-section">
+              <p>Aplicações contemporâneas:</p>
+              <ul>
+                <li>
+                  SpaceX Starship utiliza análise de tensor de inércia para
+                  otimizar o controle durante a reentrada atmosférica e pouso
+                </li>
+                <li>
+                  Telescópio Espacial James Webb utiliza cálculos precisos de
+                  momento de inércia para estabilização ultra-fina
+                </li>
+                <li>
+                  Estabilizadores por rotação (momentum wheels) dependem de
+                  propriedades inerciais calculadas através de integrais triplas
+                </li>
+                <li>
+                  Sondas interplanetárias utilizam "spin-stabilization" baseada
+                  no princípio de maior momento de inércia
+                </li>
+              </ul>
+            </div>
+
+            <div class="math-section">
+              <p>Inércia e controle de atitude:</p>
+              <ul>
+                <li>
+                  Satélites modernos utilizam sistemas de controle ativo para
+                  compensar desequilíbrios inerciais
+                </li>
+                <li>
+                  Momentos de inércia são calculados com alta precisão para
+                  prever comportamento rotacional
+                </li>
+                <li>
+                  Simulações numéricas de integrais triplas permitem modelar
+                  redistribuição de massa durante a missão
+                </li>
+                <li>
+                  Tecnologias de propulsão recentes exploram gradientes de
+                  momento de inércia para manobras eficientes
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <!-- Script de inicialização e visualizações -->
+    <script>
+      // Inicialização do Reveal.js
+      window.onload = function () {
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+          // Configuração específica para ajuste de tela
+          width: '90%', // Largura de 90%
+          height: '100%',
+          margin: 0.02, // Margem menor para aproveitar mais espaço
+          minScale: 0.45, // Permitir mais zoom out para ver o slide completo
+          maxScale: 1.5,
+          // Transições
+          transition: 'fade',
+          // Navegação
+          navigationMode: 'default',
+        });
+
+        // Inicializa as visualizações
+        initCenterOfMass();
+        initInertiaVisualization();
+        initApplicationVisual();
+      };
+
+      // =============================================
+      // IMPLEMENTAÇÃO: VISUALIZAÇÃO DO CENTRO DE MASSA
+      // =============================================
+      function initCenterOfMass() {
+        const canvas = document.getElementById('centerOfMassVisualization');
+        if (!canvas) return; // Verificação de segurança
+
+        const ctx = canvas.getContext('2d');
+        let densityParam = 50; // Densidade relativa (0-100)
+        let rotationAngle = 0; // Ângulo de rotação em graus
+        let gradientDirection = 50; // Direção do gradiente de massa (0-100)
+
+        // Criar um modelo de foguete 3D
+        const rocketHeight = 160;
+        const rocketDiameter = 40;
+        const nozzleDiameter = 30;
+        const finWidth = 25;
+        const finHeight = 30;
+
+        // Parâmetros de projeção isométrica
+        const isoAngleX = Math.PI / 6;
+        const isoAngleY = Math.PI / 6;
+
+        // Função para converter coordenadas 3D para 2D com projeção isométrica
+        function iso(x, y, z) {
+          const isoX = (x - z) * Math.cos(isoAngleX);
+          const isoY = y + (x + z) * Math.sin(isoAngleY);
+          return { x: isoX, y: isoY };
+        }
+
+        function drawRocket() {
+          // Limpar canvas
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.save();
+
+          // Transladar para o centro do canvas
+          ctx.translate(canvas.width / 2, canvas.height / 2);
+
+          // Aplicar rotação
+          ctx.rotate((rotationAngle * Math.PI) / 180);
+
+          // Fator de escala para visualização
+          const scale = 1.3;
+          ctx.scale(scale, scale);
+
+          // Calcular a direção do gradiente de densidade (de -1 a 1)
+          const gradientFactor = (gradientDirection - 50) / 50;
+
+          // Calcular densidade média baseada no slider de densidade (0.5 a 2.0)
+          const densityFactor = 0.5 + densityParam / 50;
+
+          // Arrays para armazenar segmentos do foguete e suas propriedades
+          const segments = [];
+          const segmentHeight = 20;
+          const numSegments = rocketHeight / segmentHeight;
+
+          // Criar segmentos do foguete com gradiente de densidade
+          for (let i = 0; i < numSegments; i++) {
+            const y = -rocketHeight / 2 + i * segmentHeight;
+            // A densidade varia ao longo do foguete conforme o gradiente
+            const normalizedPos = i / (numSegments - 1); // 0 a 1 (baixo para cima)
+            const densityOffset = gradientFactor * (normalizedPos - 0.5) * 2; // Efeito do gradiente
+            const segmentDensity = densityFactor * (1 + densityOffset);
+
+            segments.push({
+              y: y,
+              height: segmentHeight,
+              diameter:
+                i === numSegments - 1 ? rocketDiameter * 0.8 : rocketDiameter, // Cone no topo
+              density: segmentDensity,
+            });
+          }
+
+          // Calcular massa total e momentos
+          let totalMass = 0;
+          let totalMomentY = 0;
+
+          // Primeiro passe: calcular massa e momentos
+          for (const segment of segments) {
+            const volume =
+              Math.PI * Math.pow(segment.diameter / 2, 2) * segment.height;
+            const mass = volume * segment.density;
+            const centerY = segment.y + segment.height / 2;
+
+            totalMass += mass;
+            totalMomentY += mass * centerY;
+          }
+
+          // Calcular o centro de massa
+          const cmY = totalMass > 0 ? totalMomentY / totalMass : 0;
+
+          // Desenhar todos os segmentos do foguete com efeito 3D
+
+          // Primeiro, desenhar as partes traseiras dos fins
+          if (gradientFactor < 0) {
+            // Fins visíveis na parte traseira (quando gradiente é negativo)
+            // Fin traseiro direito
+            ctx.beginPath();
+            const finRightBack = iso(
+              rocketDiameter / 2,
+              0,
+              -rocketDiameter / 2
+            );
+            const finTipRightBack = iso(
+              rocketDiameter / 2 + finWidth,
+              0,
+              -rocketDiameter / 2
+            );
+            const finBottomRightBack = iso(
+              rocketDiameter / 2,
+              rocketHeight / 2,
+              -rocketDiameter / 2
+            );
+            ctx.moveTo(finRightBack.x, finRightBack.y);
+            ctx.lineTo(finTipRightBack.x, finTipRightBack.y);
+            ctx.lineTo(finBottomRightBack.x, finBottomRightBack.y);
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(100, 181, 246, 0.7)';
+            ctx.fill();
+            ctx.strokeStyle = '#4fc3f7';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Desenhar corpo do foguete - parte traseira (gradientes de densidade)
+          for (let i = numSegments - 1; i >= 0; i--) {
+            const segment = segments[i];
+            const y1 = segment.y;
+            const y2 = segment.y + segment.height;
+            const r = segment.diameter / 2;
+
+            // Parte traseira (elipse)
+            const backLeft = iso(-r, y1, 0);
+            const backRight = iso(r, y1, 0);
+            const backTop = iso(0, y1, -r);
+            const backBottom = iso(0, y1, r);
+
+            // Desenhar elipse traseira
+            ctx.beginPath();
+            ctx.ellipse(0, backTop.y, r, r * 0.4, 0, 0, Math.PI * 2);
+
+            // Cor baseada na densidade
+            const density = segment.density;
+            const color = getColorFromDensity(density);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = '#4fc3f7';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Desenhar o corpo cilíndrico principal
+          for (let i = 0; i < numSegments; i++) {
+            const segment = segments[i];
+            const y1 = segment.y;
+            const y2 = segment.y + segment.height;
+            const r = segment.diameter / 2;
+
+            // Parte visível lateral esquerda
+            const leftTop = iso(-r, y1, 0);
+            const leftBottom = iso(-r, y2, 0);
+
+            // Parte visível lateral direita
+            const rightTop = iso(r, y1, 0);
+            const rightBottom = iso(r, y2, 0);
+
+            // Desenhar lado esquerdo
+            ctx.beginPath();
+            ctx.moveTo(leftTop.x, leftTop.y);
+            ctx.lineTo(leftBottom.x, leftBottom.y);
+            ctx.lineTo(0, y2);
+            ctx.lineTo(0, y1);
+            ctx.closePath();
+
+            // Cor baseada na densidade com maior transparência
+            const density = segment.density;
+            const color = getColorFromDensity(density, 0.9);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.strokeStyle = '#4fc3f7';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Desenhar lado direito
+            ctx.beginPath();
+            ctx.moveTo(rightTop.x, rightTop.y);
+            ctx.lineTo(rightBottom.x, rightBottom.y);
+            ctx.lineTo(0, y2);
+            ctx.lineTo(0, y1);
+            ctx.closePath();
+
+            // Cor baseada na densidade com menor transparência
+            const colorRight = getColorFromDensity(density, 0.8);
+            ctx.fillStyle = colorRight;
+            ctx.fill();
+            ctx.strokeStyle = '#4fc3f7';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+
+          // Desenhar os fins (aletas)
+          // Fin direito
+          ctx.beginPath();
+          const finRight = iso(
+            rocketDiameter / 2,
+            rocketHeight / 2 - finHeight,
+            0
+          );
+          const finTipRight = iso(
+            rocketDiameter / 2 + finWidth,
+            rocketHeight / 2 - finHeight / 2,
+            0
+          );
+          const finBottomRight = iso(rocketDiameter / 2, rocketHeight / 2, 0);
+          ctx.moveTo(finRight.x, finRight.y);
+          ctx.lineTo(finTipRight.x, finTipRight.y);
+          ctx.lineTo(finBottomRight.x, finBottomRight.y);
+          ctx.closePath();
+          ctx.fillStyle = '#5c6bc0';
+          ctx.fill();
+          ctx.strokeStyle = '#4fc3f7';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Fin esquerdo
+          ctx.beginPath();
+          const finLeft = iso(
+            -rocketDiameter / 2,
+            rocketHeight / 2 - finHeight,
+            0
+          );
+          const finTipLeft = iso(
+            -rocketDiameter / 2 - finWidth,
+            rocketHeight / 2 - finHeight / 2,
+            0
+          );
+          const finBottomLeft = iso(-rocketDiameter / 2, rocketHeight / 2, 0);
+          ctx.moveTo(finLeft.x, finLeft.y);
+          ctx.lineTo(finTipLeft.x, finTipLeft.y);
+          ctx.lineTo(finBottomLeft.x, finBottomLeft.y);
+          ctx.closePath();
+          ctx.fillStyle = '#5c6bc0';
+          ctx.fill();
+          ctx.strokeStyle = '#4fc3f7';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Nozzle (bocal do motor)
+          ctx.beginPath();
+          const nozzleTop = iso(0, rocketHeight / 2, 0);
+          const nozzleBottomLeft = iso(
+            -nozzleDiameter / 2,
+            rocketHeight / 2 + nozzleDiameter / 2,
+            0
+          );
+          const nozzleBottomRight = iso(
+            nozzleDiameter / 2,
+            rocketHeight / 2 + nozzleDiameter / 2,
+            0
+          );
+          ctx.moveTo(nozzleBottomLeft.x, nozzleBottomLeft.y);
+          ctx.lineTo(0, nozzleTop.y);
+          ctx.lineTo(nozzleBottomRight.x, nozzleBottomRight.y);
+          ctx.closePath();
+
+          // Gradiente para o nozzle
+          const nozzleGradient = ctx.createLinearGradient(
+            0,
+            nozzleTop.y,
+            0,
+            nozzleBottomLeft.y
+          );
+          nozzleGradient.addColorStop(0, '#ff9800');
+          nozzleGradient.addColorStop(1, '#f44336');
+          ctx.fillStyle = nozzleGradient;
+          ctx.fill();
+          ctx.strokeStyle = '#ffeb3b';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Desenhar centro de massa como uma esfera
+          const cmPoint = iso(0, cmY, 0);
+          ctx.beginPath();
+          ctx.arc(cmPoint.x, cmPoint.y, 8, 0, Math.PI * 2);
+          ctx.fillStyle = '#ff5a5f';
+          ctx.fill();
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Desenhar linha horizontal através do CM para referência
+          ctx.beginPath();
+          const cmLineLeft = iso(-rocketDiameter, cmY, 0);
+          const cmLineRight = iso(rocketDiameter, cmY, 0);
+          ctx.moveTo(cmLineLeft.x, cmLineLeft.y);
+          ctx.lineTo(cmLineRight.x, cmLineRight.y);
+          ctx.setLineDash([3, 3]);
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Desenhar centro de pressão (CP) - sempre abaixo do CM para foguetes estáveis
+          const cpOffset = Math.abs(gradientFactor) * 40; // Distância entre CM e CP baseada no gradiente
+          const cpY = cmY + cpOffset;
+          const cpPoint = iso(0, cpY, 0);
+
+          ctx.beginPath();
+          ctx.arc(cpPoint.x, cpPoint.y, 8, 0, Math.PI * 2);
+          ctx.fillStyle = '#64b5f6';
+          ctx.fill();
+          ctx.strokeStyle = 'white';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Linha para CP
+          ctx.beginPath();
+          const cpLineLeft = iso(-rocketDiameter, cpY, 0);
+          const cpLineRight = iso(rocketDiameter, cpY, 0);
+          ctx.moveTo(cpLineLeft.x, cpLineLeft.y);
+          ctx.lineTo(cpLineRight.x, cpLineRight.y);
+          ctx.setLineDash([3, 3]);
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Desenhar seta indicando a força aerodinâmica
+          if (Math.abs(gradientFactor) > 0.3) {
+            const arrowStartX = cpPoint.x + 30;
+            ctx.beginPath();
+            ctx.moveTo(arrowStartX, cpPoint.y);
+            ctx.lineTo(cpPoint.x, cpPoint.y);
+            ctx.strokeStyle = '#64b5f6';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Ponta da seta
+            ctx.beginPath();
+            ctx.moveTo(cpPoint.x, cpPoint.y);
+            ctx.lineTo(cpPoint.x + 10, cpPoint.y - 5);
+            ctx.lineTo(cpPoint.x + 10, cpPoint.y + 5);
+            ctx.closePath();
+            ctx.fillStyle = '#64b5f6';
+            ctx.fill();
+          }
+
+          // Restaurar contexto
+          ctx.restore();
+
+          // Desenhar informações
+          ctx.font = '16px Arial';
+          ctx.fillStyle = '#e0e0e0';
+          ctx.textAlign = 'center';
+          ctx.fillText(
+            `Centro de Massa: Posição Y = ${cmY.toFixed(1)}`,
+            canvas.width / 2,
+            30
+          );
+
+          // Mensagem sobre estabilidade
+          let stabilityMessage = 'Estabilidade: Neutra';
+          if (cmY < -20) {
+            stabilityMessage = 'Estabilidade: Boa - CM próximo à frente';
+          } else if (cmY > 20) {
+            stabilityMessage = 'Estabilidade: Ruim - CM muito atrás';
+          }
+
+          ctx.fillText(stabilityMessage, canvas.width / 2, 55);
+
+          // Legenda
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#ff5a5f';
+          ctx.fillText('● CM: Centro de Massa', 20, canvas.height - 50);
+          ctx.fillStyle = '#64b5f6';
+          ctx.fillText('● CP: Centro de Pressão', 20, canvas.height - 25);
+
+          // Instrução sobre o gradiente
+          ctx.textAlign = 'center';
+          ctx.fillStyle = '#e0e0e0';
+          ctx.fillText(
+            "Use o slider 'Gradiente de Massa' para alterar a distribuição de massa",
+            canvas.width / 2,
+            canvas.height - 10
+          );
+        }
+
+        // Função auxiliar para obter cor baseada na densidade
+        function getColorFromDensity(density, alpha = 1.0) {
+          // Escala de azul para vermelho baseada na densidade
+          const blue = Math.max(0, 255 - density * 80);
+          const red = Math.min(255, 100 + density * 80);
+          const green = Math.max(0, 150 - density * 40);
+          return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+        }
+
+        // Desenhar a visualização inicial
+        drawRocket();
+
+        // Função para atualizar com base nos sliders
+        window.updateCenterOfMass = function () {
+          const densitySlider = document.getElementById('densityParam');
+          const rotationSlider = document.getElementById('rotationParam');
+          const gradientSlider = document.getElementById('gradientDirection');
+
+          if (densitySlider) densityParam = parseInt(densitySlider.value);
+          if (rotationSlider) rotationAngle = parseInt(rotationSlider.value);
+          if (gradientSlider)
+            gradientDirection = parseInt(gradientSlider.value);
+
+          drawRocket();
+        };
+
+        // Função para reiniciar
+        window.resetCenterOfMass = function () {
+          densityParam = 50;
+          rotationAngle = 0;
+          gradientDirection = 50;
+
+          if (document.getElementById('densityParam'))
+            document.getElementById('densityParam').value = 50;
+          if (document.getElementById('rotationParam'))
+            document.getElementById('rotationParam').value = 0;
+          if (document.getElementById('gradientDirection'))
+            document.getElementById('gradientDirection').value = 50;
+
+          drawRocket();
+        };
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DO MOMENTO DE INÉRCIA
+      // =============================================
+      function initInertiaVisualization() {
+        const canvas = document.getElementById('inertiaVisualization');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let bodyShapeParam = 50; // 0=esfera, 50=cilindro, 100=paralelepípedo
+        let rotationAxisIndex = 0; // 0=x, 1=y, 2=z
+        let rotation = 0; // ângulo de rotação do corpo em radianos
+
+        // Cores para os eixos
+        const axisColors = {
+          x: '#1E88E5', // Azul
+          y: '#43A047', // Verde
+          z: '#E53935', // Vermelho
+        };
+
+        // Ajustar para 3D
+        const perspective = 0.3; // Fator de perspectiva
+        const angleX = Math.PI / 6; // Ângulo de rotação em X para visão isométrica
+        const angleY = Math.PI / 6; // Ângulo de rotação em Y para visão isométrica
+
+        // Função para converter coordenadas 3D para 2D com projeção isométrica
+        function project3Dto2D(x, y, z) {
+          // Aplicar rotação isométrica
+          const isoX = (x - z) * Math.cos(angleX);
+          const isoY = y + (x + z) * Math.sin(angleY);
+          return { x: isoX, y: isoY };
+        }
+
+        // Função para rotacionar um ponto 3D ao redor de um eixo
+        function rotatePoint(point, axis, angle) {
+          const { x, y, z } = point;
+          let newPoint = { x, y, z };
+
+          if (axis === 0) {
+            // Rotação em torno do eixo X
+            newPoint.y = y * Math.cos(angle) - z * Math.sin(angle);
+            newPoint.z = y * Math.sin(angle) + z * Math.cos(angle);
+          } else if (axis === 1) {
+            // Rotação em torno do eixo Y
+            newPoint.x = x * Math.cos(angle) + z * Math.sin(angle);
+            newPoint.z = -x * Math.sin(angle) + z * Math.cos(angle);
+          } else if (axis === 2) {
+            // Rotação em torno do eixo Z
+            newPoint.x = x * Math.cos(angle) - y * Math.sin(angle);
+            newPoint.y = x * Math.sin(angle) + y * Math.cos(angle);
+          }
+
+          return newPoint;
+        }
+
+        function drawInertiaVisualization() {
+          // Limpar canvas
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Centro do canvas
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height / 2;
+
+          // Atualizar ângulo de rotação
+          rotation += 0.01;
+          if (rotation > Math.PI * 2) rotation -= Math.PI * 2;
+
+          // Parâmetros do corpo
+          const baseSize = 100; // Tamanho base do objeto
+          let width, height, depth;
+
+          if (bodyShapeParam <= 20) {
+            // Esfera
+            width = baseSize;
+            height = baseSize;
+            depth = baseSize;
+          } else if (bodyShapeParam <= 80) {
+            // Cilindro
+            width = baseSize;
+            height = baseSize * 1.8; // Altura do cilindro
+            depth = baseSize;
+          } else {
+            // Paralelepípedo
+            width = baseSize * 1.4;
+            height = baseSize * 2.2; // Mais alongado
+            depth = baseSize * 0.6; // Mais fino
+          }
+
+          // Pontos 3D dos vértices do objeto
+          const halfW = width / 2;
+          const halfH = height / 2;
+          const halfD = depth / 2;
+
+          // Definir os vértices do objeto 3D (cubo/retângulo)
+          let vertices = [
+            { x: -halfW, y: -halfH, z: -halfD }, // 0: Inferior traseiro esquerdo
+            { x: halfW, y: -halfH, z: -halfD }, // 1: Inferior traseiro direito
+            { x: halfW, y: halfH, z: -halfD }, // 2: Superior traseiro direito
+            { x: -halfW, y: halfH, z: -halfD }, // 3: Superior traseiro esquerdo
+            { x: -halfW, y: -halfH, z: halfD }, // 4: Inferior frontal esquerdo
+            { x: halfW, y: -halfH, z: halfD }, // 5: Inferior frontal direito
+            { x: halfW, y: halfH, z: halfD }, // 6: Superior frontal direito
+            { x: -halfW, y: halfH, z: halfD }, // 7: Superior frontal esquerdo
+          ];
+
+          // Se for uma esfera, gerar vértices para representar uma esfera
+          let sphereVertices = [];
+          if (bodyShapeParam <= 20) {
+            const radius = width / 2;
+            const segments = 12;
+
+            // Gerar vértices para a esfera (círculos em diferentes planos)
+            for (let i = 0; i <= segments; i++) {
+              const phi = (Math.PI * i) / segments;
+              const sinPhi = Math.sin(phi);
+              const cosPhi = Math.cos(phi);
+
+              for (let j = 0; j <= segments; j++) {
+                const theta = (2 * Math.PI * j) / segments;
+                const sinTheta = Math.sin(theta);
+                const cosTheta = Math.cos(theta);
+
+                const x = radius * sinPhi * cosTheta;
+                const y = radius * cosPhi;
+                const z = radius * sinPhi * sinTheta;
+
+                sphereVertices.push({ x, y, z });
+              }
+            }
+          }
+
+          // Calcular os momentos de inércia aproximados para formas regulares
+          const mass = 1; // Massa unitária para simplicidade
+          let Ixx, Iyy, Izz;
+
+          if (bodyShapeParam <= 20) {
+            // Aproximação para esfera com radius = width/2
+            const radius = width / 2;
+            Ixx = Iyy = Izz = (2 / 5) * mass * radius * radius;
+          } else if (bodyShapeParam <= 80) {
+            // Aproximação para cilindro com raio = width/2 e altura = height
+            const radius = width / 2;
+            // Eixo Y é o eixo vertical do cilindro
+            Iyy = (1 / 2) * mass * radius * radius;
+            // Eixos X e Z são perpendiculares ao eixo do cilindro
+            Ixx = Izz =
+              (1 / 12) * mass * (3 * radius * radius + height * height);
+          } else {
+            // Aproximação para paralelepípedo
+            Ixx = (1 / 12) * mass * (height * height + depth * depth);
+            Iyy = (1 / 12) * mass * (width * width + depth * depth);
+            Izz = (1 / 12) * mass * (width * width + height * height);
+          }
+
+          // Normalizar os valores de inércia para visualização
+          const maxI = Math.max(Ixx, Iyy, Izz);
+          const Ix_norm = Ixx / maxI;
+          const Iy_norm = Iyy / maxI;
+          const Iz_norm = Izz / maxI;
+
+          // Determinar o eixo de rotação
+          const rotationAxes = ['x', 'y', 'z'];
+          const rotationAxis = rotationAxes[rotationAxisIndex];
+
+          // Aplicar rotação a todos os vértices
+          const rotatedVertices = vertices.map((v) =>
+            rotatePoint(v, rotationAxisIndex, rotation)
+          );
+          const projectedVertices = rotatedVertices.map((v) =>
+            project3Dto2D(v.x, v.y, v.z)
+          );
+
+          // Para esfera, aplicar rotação e projeção
+          const rotatedSphereVertices = sphereVertices.map((v) =>
+            rotatePoint(v, rotationAxisIndex, rotation)
+          );
+          const projectedSphereVertices = rotatedSphereVertices.map((v) =>
+            project3Dto2D(v.x, v.y, v.z)
+          );
+
+          // Função para desenhar objeto 3D
+          function drawObject() {
+            ctx.save();
+            ctx.translate(centerX, centerY);
+
+            if (bodyShapeParam <= 20) {
+              // Desenhar esfera usando múltiplos círculos
+              ctx.strokeStyle = '#4fc3f7';
+              ctx.lineWidth = 0.5;
+
+              // Círculos horizontais
+              const horizontalCircles = 6;
+              for (let i = 0; i <= horizontalCircles; i++) {
+                const y = -halfH + i * (height / horizontalCircles);
+                const radius = Math.sqrt(
+                  halfW * halfW - ((y * y) / (halfH * halfH)) * halfW * halfW
+                );
+                if (radius > 0) {
+                  const projectedY = project3Dto2D(0, y, 0).y;
+
+                  // Calcular o raio projetado aproximado
+                  const projectedRadius = radius * 0.8; // Ajuste para perspectiva
+
+                  ctx.beginPath();
+                  ctx.ellipse(
+                    0,
+                    projectedY,
+                    projectedRadius,
+                    projectedRadius * 0.6,
+                    0,
+                    0,
+                    Math.PI * 2
+                  );
+                  ctx.stroke();
+                }
+              }
+
+              // Círculos verticais
+              const verticalCircles = 6;
+              for (let i = 0; i < verticalCircles; i++) {
+                ctx.beginPath();
+                const angle = (i / verticalCircles) * Math.PI;
+
+                for (let j = 0; j <= 36; j++) {
+                  const circleAngle = (j / 36) * Math.PI * 2;
+                  const x = halfW * Math.cos(angle) * Math.cos(circleAngle);
+                  const y = halfH * Math.sin(circleAngle);
+                  const z = halfD * Math.sin(angle) * Math.cos(circleAngle);
+
+                  // Rotacionar o ponto
+                  const rotatedPoint = rotatePoint(
+                    { x, y, z },
+                    rotationAxisIndex,
+                    rotation
+                  );
+
+                  // Projetar para 2D
+                  const projectedPoint = project3Dto2D(
+                    rotatedPoint.x,
+                    rotatedPoint.y,
+                    rotatedPoint.z
+                  );
+
+                  if (j === 0) {
+                    ctx.moveTo(projectedPoint.x, projectedPoint.y);
+                  } else {
+                    ctx.lineTo(projectedPoint.x, projectedPoint.y);
+                  }
+                }
+                ctx.stroke();
+              }
+
+              // Adicionar sombreamento para a esfera
+              const gradient = ctx.createRadialGradient(
+                -15,
+                -15,
+                0,
+                0,
+                0,
+                halfW * 1.2
+              );
+              gradient.addColorStop(0, 'rgba(100, 181, 246, 0.8)');
+              gradient.addColorStop(1, 'rgba(26, 35, 126, 0.4)');
+
+              ctx.fillStyle = gradient;
+              ctx.beginPath();
+              ctx.arc(0, 0, halfW * 0.95, 0, Math.PI * 2);
+              ctx.fill();
+            } else if (bodyShapeParam <= 80) {
+              // Desenhar cilindro
+
+              // Faces e arestas da base e topo
+              const circleSegments = 24;
+
+              // Base inferior
+              ctx.beginPath();
+              for (let i = 0; i <= circleSegments; i++) {
+                const angle = (i / circleSegments) * Math.PI * 2;
+                const x = halfW * Math.cos(angle);
+                const z = halfD * Math.sin(angle);
+                const y = -halfH;
+
+                const rotatedPoint = rotatePoint(
+                  { x, y, z },
+                  rotationAxisIndex,
+                  rotation
+                );
+                const projectedPoint = project3Dto2D(
+                  rotatedPoint.x,
+                  rotatedPoint.y,
+                  rotatedPoint.z
+                );
+
+                if (i === 0) {
+                  ctx.moveTo(projectedPoint.x, projectedPoint.y);
+                } else {
+                  ctx.lineTo(projectedPoint.x, projectedPoint.y);
+                }
+              }
+              ctx.closePath();
+              ctx.fillStyle = 'rgba(40, 53, 147, 0.8)';
+              ctx.fill();
+              ctx.strokeStyle = '#4fc3f7';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+
+              // Base superior
+              ctx.beginPath();
+              for (let i = 0; i <= circleSegments; i++) {
+                const angle = (i / circleSegments) * Math.PI * 2;
+                const x = halfW * Math.cos(angle);
+                const z = halfD * Math.sin(angle);
+                const y = halfH;
+
+                const rotatedPoint = rotatePoint(
+                  { x, y, z },
+                  rotationAxisIndex,
+                  rotation
+                );
+                const projectedPoint = project3Dto2D(
+                  rotatedPoint.x,
+                  rotatedPoint.y,
+                  rotatedPoint.z
+                );
+
+                if (i === 0) {
+                  ctx.moveTo(projectedPoint.x, projectedPoint.y);
+                } else {
+                  ctx.lineTo(projectedPoint.x, projectedPoint.y);
+                }
+              }
+              ctx.closePath();
+              ctx.fillStyle = 'rgba(64, 196, 255, 0.8)';
+              ctx.fill();
+              ctx.strokeStyle = '#4fc3f7';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+
+              // Linhas laterais conectando as bases
+              for (let i = 0; i < circleSegments; i += 4) {
+                const angle = (i / circleSegments) * Math.PI * 2;
+                const x1 = halfW * Math.cos(angle);
+                const z1 = halfD * Math.sin(angle);
+
+                const rotatedPoint1 = rotatePoint(
+                  { x: x1, y: -halfH, z: z1 },
+                  rotationAxisIndex,
+                  rotation
+                );
+                const rotatedPoint2 = rotatePoint(
+                  { x: x1, y: halfH, z: z1 },
+                  rotationAxisIndex,
+                  rotation
+                );
+
+                const projectedPoint1 = project3Dto2D(
+                  rotatedPoint1.x,
+                  rotatedPoint1.y,
+                  rotatedPoint1.z
+                );
+                const projectedPoint2 = project3Dto2D(
+                  rotatedPoint2.x,
+                  rotatedPoint2.y,
+                  rotatedPoint2.z
+                );
+
+                ctx.beginPath();
+                ctx.moveTo(projectedPoint1.x, projectedPoint1.y);
+                ctx.lineTo(projectedPoint2.x, projectedPoint2.y);
+                ctx.strokeStyle = '#4fc3f7';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+
+              // Superfície curva do cilindro (semi-transparente)
+              ctx.beginPath();
+              for (let i = 0; i <= circleSegments / 2; i++) {
+                const angle = (i / circleSegments) * Math.PI * 2 + Math.PI / 2;
+                const x = halfW * Math.cos(angle);
+                const z = halfD * Math.sin(angle);
+
+                const rotatedPointBottom = rotatePoint(
+                  { x, y: -halfH, z },
+                  rotationAxisIndex,
+                  rotation
+                );
+                const projectedPointBottom = project3Dto2D(
+                  rotatedPointBottom.x,
+                  rotatedPointBottom.y,
+                  rotatedPointBottom.z
+                );
+
+                if (i === 0) {
+                  ctx.moveTo(projectedPointBottom.x, projectedPointBottom.y);
+                } else {
+                  ctx.lineTo(projectedPointBottom.x, projectedPointBottom.y);
+                }
+              }
+
+              for (let i = circleSegments / 2; i >= 0; i--) {
+                const angle = (i / circleSegments) * Math.PI * 2 + Math.PI / 2;
+                const x = halfW * Math.cos(angle);
+                const z = halfD * Math.sin(angle);
+
+                const rotatedPointTop = rotatePoint(
+                  { x, y: halfH, z },
+                  rotationAxisIndex,
+                  rotation
+                );
+                const projectedPointTop = project3Dto2D(
+                  rotatedPointTop.x,
+                  rotatedPointTop.y,
+                  rotatedPointTop.z
+                );
+
+                ctx.lineTo(projectedPointTop.x, projectedPointTop.y);
+              }
+              ctx.closePath();
+
+              const gradient = ctx.createLinearGradient(
+                -halfW,
+                -halfH,
+                halfW,
+                halfH
+              );
+              gradient.addColorStop(0, 'rgba(100, 181, 246, 0.9)');
+              gradient.addColorStop(1, 'rgba(30, 136, 229, 0.7)');
+              ctx.fillStyle = gradient;
+              ctx.fill();
+              ctx.strokeStyle = '#4fc3f7';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            } else {
+              // Desenhar paralelepípedo
+
+              // Arestas do cubo - cada aresta é definida pelos índices dos seus vértices
+              const edges = [
+                [0, 1],
+                [1, 2],
+                [2, 3],
+                [3, 0], // Face traseira
+                [4, 5],
+                [5, 6],
+                [6, 7],
+                [7, 4], // Face frontal
+                [0, 4],
+                [1, 5],
+                [2, 6],
+                [3, 7], // Conectores
+              ];
+
+              // Faces do cubo - cada face é definida por seus 4 vértices em ordem
+              const faces = [
+                [0, 1, 2, 3], // Face traseira
+                [4, 5, 6, 7], // Face frontal
+                [0, 1, 5, 4], // Face inferior
+                [2, 3, 7, 6], // Face superior
+                [0, 3, 7, 4], // Face esquerda
+                [1, 2, 6, 5], // Face direita
+              ];
+
+              // Cores para diferentes faces
+              const faceColors = [
+                'rgba(26, 35, 126, 0.7)', // Traseira
+                'rgba(79, 195, 247, 0.9)', // Frontal
+                'rgba(40, 53, 147, 0.8)', // Inferior
+                'rgba(64, 196, 255, 0.8)', // Superior
+                'rgba(30, 136, 229, 0.8)', // Esquerda
+                'rgba(40, 181, 255, 0.8)', // Direita
+              ];
+
+              // Simplificado: desenhar todas as faces com transparência
+              for (let i = 0; i < faces.length; i++) {
+                const face = faces[i];
+
+                ctx.beginPath();
+                const v0 = projectedVertices[face[0]];
+                ctx.moveTo(v0.x, v0.y);
+
+                for (let j = 1; j < face.length; j++) {
+                  const v = projectedVertices[face[j]];
+                  ctx.lineTo(v.x, v.y);
+                }
+
+                ctx.closePath();
+                ctx.fillStyle = faceColors[i];
+                ctx.fill();
+                ctx.strokeStyle = '#4fc3f7';
+                ctx.lineWidth = 1;
+                ctx.stroke();
+              }
+            }
+
+            // Desenhar os eixos
+            const axisLength = 150;
+
+            // Eixo X
+            const xStart = project3Dto2D(-axisLength, 0, 0);
+            const xEnd = project3Dto2D(axisLength, 0, 0);
+            ctx.beginPath();
+            ctx.moveTo(xStart.x, xStart.y);
+            ctx.lineTo(xEnd.x, xEnd.y);
+            ctx.strokeStyle = axisColors.x;
+            ctx.lineWidth = rotationAxis === 'x' ? 3 : 1;
+            ctx.stroke();
+            ctx.fillStyle = axisColors.x;
+            ctx.fillText('X', xEnd.x + 10, xEnd.y);
+
+            // Eixo Y
+            const yStart = project3Dto2D(0, -axisLength, 0);
+            const yEnd = project3Dto2D(0, axisLength, 0);
+            ctx.beginPath();
+            ctx.moveTo(yStart.x, yStart.y);
+            ctx.lineTo(yEnd.x, yEnd.y);
+            ctx.strokeStyle = axisColors.y;
+            ctx.lineWidth = rotationAxis === 'y' ? 3 : 1;
+            ctx.stroke();
+            ctx.fillStyle = axisColors.y;
+            ctx.fillText('Y', yEnd.x, yEnd.y + 10);
+
+            // Eixo Z
+            const zStart = project3Dto2D(0, 0, -axisLength);
+            const zEnd = project3Dto2D(0, 0, axisLength);
+            ctx.beginPath();
+            ctx.moveTo(zStart.x, zStart.y);
+            ctx.lineTo(zEnd.x, zEnd.y);
+            ctx.strokeStyle = axisColors.z;
+            ctx.lineWidth = rotationAxis === 'z' ? 3 : 1;
+            ctx.stroke();
+            ctx.fillStyle = axisColors.z;
+            ctx.fillText('Z', zEnd.x - 5, zEnd.y - 5);
+
+            ctx.restore();
+          }
+
+          // Desenhar o objeto
+          drawObject();
+
+          // Mostrar informações sobre os momentos de inércia
+          ctx.font = '16px Arial';
+          ctx.fillStyle = '#e0e0e0';
+          ctx.textAlign = 'center';
+
+          // Formato do objeto
+          let objectType = 'Esfera';
+          if (bodyShapeParam > 20 && bodyShapeParam <= 80) {
+            objectType = 'Cilindro';
+          } else if (bodyShapeParam > 80) {
+            objectType = 'Paralelepípedo';
+          }
+
+          // Título
+          ctx.fillText(
+            `Momento de Inércia - ${objectType}`,
+            canvas.width / 2,
+            30
+          );
+
+          // Valores de inércia
+          ctx.textAlign = 'left';
+          ctx.fillStyle = axisColors.x;
+          ctx.fillText(`Ixx: ${Ixx.toFixed(3)}`, 20, 60);
+          ctx.fillStyle = axisColors.y;
+          ctx.fillText(`Iyy: ${Iyy.toFixed(3)}`, 20, 90);
+          ctx.fillStyle = axisColors.z;
+          ctx.fillText(`Izz: ${Izz.toFixed(3)}`, 20, 120);
+
+          // Comparação de momentos de inércia
+          ctx.fillStyle = '#e0e0e0';
+          ctx.fillText(
+            `Proporção: Ixx:Iyy:Izz = ${Ix_norm.toFixed(2)}:${Iy_norm.toFixed(2)}:${Iz_norm.toFixed(2)}`,
+            20,
+            150
+          );
+
+          // Informação sobre estabilidade
+          ctx.fillStyle = '#e0e0e0';
+          ctx.textAlign = 'center';
+
+          // Determinar a estabilidade baseada nos valores de inércia e eixo de rotação
+          let stabilityMessage = '';
+          if (Math.abs(Ixx - Iyy) < 0.01 && Math.abs(Iyy - Izz) < 0.01) {
+            stabilityMessage = 'Rotação estável em todos os eixos';
+          } else if (
+            rotationAxis === 'x' &&
+            ((Ixx < Iyy && Ixx < Izz) || (Ixx > Iyy && Ixx > Izz))
+          ) {
+            stabilityMessage = `Rotação estável no eixo X (I${Ixx < Iyy ? 'menor' : 'maior'})`;
+          } else if (
+            rotationAxis === 'y' &&
+            ((Iyy < Ixx && Iyy < Izz) || (Iyy > Ixx && Iyy > Izz))
+          ) {
+            stabilityMessage = `Rotação estável no eixo Y (I${Iyy < Ixx ? 'menor' : 'maior'})`;
+          } else if (
+            rotationAxis === 'z' &&
+            ((Izz < Ixx && Izz < Iyy) || (Izz > Ixx && Izz > Iyy))
+          ) {
+            stabilityMessage = `Rotação estável no eixo Z (I${Izz < Ixx ? 'menor' : 'maior'})`;
+          } else {
+            stabilityMessage = 'Rotação instável neste eixo';
+          }
+
+          ctx.fillText(stabilityMessage, canvas.width / 2, canvas.height - 20);
+
+          // Solicitar próximo frame de animação
+          requestAnimationFrame(drawInertiaVisualization);
+        }
+
+        // Iniciar a visualização
+        drawInertiaVisualization();
+
+        // Função para atualizar com base nos controles
+        window.updateInertiaVisualization = function () {
+          const shapeRadios = document.getElementsByName('bodyShape');
+          const axisRadios = document.getElementsByName('rotationAxis');
+
+          // Obter o valor do radio button de forma selecionado
+          for (let i = 0; i < shapeRadios.length; i++) {
+            if (shapeRadios[i].checked) {
+              bodyShapeParam = parseInt(shapeRadios[i].value);
+              break;
+            }
+          }
+
+          // Obter o valor do radio button de eixo selecionado
+          for (let i = 0; i < axisRadios.length; i++) {
+            if (axisRadios[i].checked) {
+              rotationAxisIndex = parseInt(axisRadios[i].value);
+              break;
+            }
+          }
+        };
+
+        // Função para reiniciar
+        window.resetInertiaVisualization = function () {
+          bodyShapeParam = 50;
+          rotationAxisIndex = 0;
+          rotation = 0;
+
+          // Resetar os radio buttons
+          const shapeRadios = document.getElementsByName('bodyShape');
+          const axisRadios = document.getElementsByName('rotationAxis');
+
+          for (let i = 0; i < shapeRadios.length; i++) {
+            shapeRadios[i].checked = i === 1; // Selecionar "Cilindro"
+          }
+
+          for (let i = 0; i < axisRadios.length; i++) {
+            axisRadios[i].checked = i === 0; // Selecionar "X"
+          }
+        };
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DA APLICAÇÃO PRÁTICA
+      // =============================================
+      function initApplicationVisual() {
+        const canvas = document.getElementById('applicationVisual');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        function drawApplication() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Centro do canvas
+          const centerX = canvas.width / 2;
+          const centerY = canvas.height / 2;
+
+          // Tempo para animação
+          const time = Date.now() * 0.001;
+
+          // Desenhar satélite estilizado com paineis solares
+          const bodyWidth = 40;
+          const bodyHeight = 80;
+          const panelWidth = 60;
+          const panelHeight = 20;
+
+          // Corpo principal
+          const angle = (time * 0.5) % (Math.PI * 2);
+          ctx.save();
+          ctx.translate(centerX, centerY);
+          ctx.rotate(angle);
+
+          // Corpo do satélite
+          ctx.fillStyle = '#1a237e';
+          ctx.fillRect(-bodyWidth / 2, -bodyHeight / 2, bodyWidth, bodyHeight);
+          ctx.strokeStyle = '#4fc3f7';
+          ctx.lineWidth = 2;
+          ctx.strokeRect(
+            -bodyWidth / 2,
+            -bodyHeight / 2,
+            bodyWidth,
+            bodyHeight
+          );
+
+          // Painéis solares
+          ctx.fillStyle = '#64b5f6';
+          ctx.fillRect(
+            bodyWidth / 2,
+            -panelHeight / 2,
+            panelWidth,
+            panelHeight
+          );
+          ctx.fillRect(
+            -bodyWidth / 2 - panelWidth,
+            -panelHeight / 2,
+            panelWidth,
+            panelHeight
+          );
+          ctx.strokeStyle = '#4fc3f7';
+          ctx.strokeRect(
+            bodyWidth / 2,
+            -panelHeight / 2,
+            panelWidth,
+            panelHeight
+          );
+          ctx.strokeRect(
+            -bodyWidth / 2 - panelWidth,
+            -panelHeight / 2,
+            panelWidth,
+            panelHeight
+          );
+
+          // Antena
+          ctx.beginPath();
+          ctx.moveTo(0, -bodyHeight / 2);
+          ctx.lineTo(0, -bodyHeight / 2 - 20);
+          ctx.arc(0, -bodyHeight / 2 - 20, 10, 0, Math.PI * 2);
+          ctx.strokeStyle = '#fff';
+          ctx.stroke();
+
+          // Centro de massa
+          ctx.beginPath();
+          ctx.arc(0, 0, 5, 0, Math.PI * 2);
+          ctx.fillStyle = '#ff5a5f';
+          ctx.fill();
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Vetor momento angular
+          const arrowLength = 50;
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.lineTo(0, arrowLength);
+          ctx.moveTo(0, arrowLength);
+          ctx.lineTo(-5, arrowLength - 10);
+          ctx.moveTo(0, arrowLength);
+          ctx.lineTo(5, arrowLength - 10);
+          ctx.strokeStyle = '#E53935';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          ctx.restore();
+
+          // Texto
+          ctx.font = '12px Arial';
+          ctx.fillStyle = '#e0e0e0';
+          ctx.textAlign = 'center';
+          ctx.fillText('Satélite em rotação estável', centerX, 20);
+
+          // Animar continuamente
+          requestAnimationFrame(drawApplication);
+        }
+
+        // Iniciar a animação
+        drawApplication();
+      }
+    </script>
+  </body>
+</html>
