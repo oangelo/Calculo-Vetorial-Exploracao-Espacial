@@ -1,251 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-</head>
-<body>
-        <section>
-          <section>
-            <h2>Do Unidimensional ao Tridimensional</h2>
-            <p>
-              Os conceitos de derivada e integral são poderosos, mas a
-              exploração espacial exige uma extensão para múltiplas dimensões.
-            </p>
-            <p>
-              Problemas como a interação gravitacional entre múltiplos corpos,
-              campos eletromagnéticos e dinâmica de fluidos em propulsores
-              requerem ferramentas matemáticas mais sofisticadas.
-            </p>
-            <p class="highlight">
-              É aqui que entra o Cálculo Vetorial: a linguagem matemática da
-              exploração espacial.
-            </p>
-            <p class="note">
-              A seguir, veremos como os conceitos de derivadas e integrais se
-              expandem para lidar com quantidades vetoriais e campos em três
-              dimensões, permitindo descrever os fenômenos físicos complexos
-              envolvidos na navegação espacial.
-            </p>
-          </section>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Do Unidimensional ao Tridimensional</h2>
+        <p>
+          Os conceitos de derivada e integral são poderosos, mas a exploração
+          espacial exige uma extensão para múltiplas dimensões.
+        </p>
+        <p>
+          Problemas como a interação gravitacional entre múltiplos corpos,
+          campos eletromagnéticos e dinâmica de fluidos em propulsores requerem
+          ferramentas matemáticas mais sofisticadas.
+        </p>
+        <p class="highlight">
+          É aqui que entra o Cálculo Vetorial: a linguagem matemática da
+          exploração espacial.
+        </p>
+        <p class="note">
+          A seguir, veremos como os conceitos de derivadas e integrais se
+          expandem para lidar com quantidades vetoriais e campos em três
+          dimensões, permitindo descrever os fenômenos físicos complexos
+          envolvidos na navegação espacial.
+        </p>
+      </section>
 
-          <section>
-            <h3>As Limitações do Cálculo Escalar</h3>
+      <section>
+        <h3>As Limitações do Cálculo Escalar</h3>
 
-            <div
-              style="
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin: 1em 0;
-              "
-            >
-              <div
-                style="
-                  width: 48%;
-                  text-align: left;
-                  background: rgba(26, 35, 126, 0.3);
-                  padding: 15px;
-                  border-radius: 8px;
-                "
-              >
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Problemas com Cálculo Escalar:
-                </p>
-                <ul>
-                  <li>Não captura naturalmente direções no espaço</li>
-                  <li>Requer sistemas de coordenadas artificiais</li>
-                  <li>Torna complexa a descrição de rotações</li>
-                  <li>Dificulta a expressão de leis físicas invariantes</li>
-                </ul>
-              </div>
-
-              <div
-                style="
-                  width: 48%;
-                  text-align: left;
-                  background: rgba(26, 35, 126, 0.3);
-                  padding: 15px;
-                  border-radius: 8px;
-                "
-              >
-                <p style="font-weight: bold; color: var(--star-blue)">
-                  Vantagens do Cálculo Vetorial:
-                </p>
-                <ul>
-                  <li>Representa naturalmente grandezas direcionais</li>
-                  <li>Expressa leis físicas independentes de coordenadas</li>
-                  <li>Simplifica a descrição de movimentos tridimensionais</li>
-                  <li>Permite análise de campos em todo o espaço</li>
-                </ul>
-              </div>
-            </div>
-          </section>
-          <section>
-            <p>
-              Considere o movimento de uma nave espacial em órbita. Com cálculo
-              escalar, precisaríamos de três equações separadas:
-            </p>
-
-            <p>
-              $ \begin{cases} \frac{d^2x}{dt^2} =
-              -\frac{GMx}{(x^2+y^2+z^2)^{3/2}} \\ \frac{d^2y}{dt^2} =
-              -\frac{GMy}{(x^2+y^2+z^2)^{3/2}} \\ \frac{d^2z}{dt^2} =
-              -\frac{GMz}{(x^2+y^2+z^2)^{3/2}} \end{cases} $
-            </p>
-
-            <p>Com cálculo vetorial, uma única equação é suficiente:</p>
-
-            <p>$\frac{d^2\vec{r}}{dt^2} = -\frac{GM}{|\vec{r}|^3}\vec{r}$</p>
-
-            <p class="note small-text">
-              Esta elegância matemática não é apenas estética, mas prática:
-              facilita a solução de problemas complexos e expõe simetrias
-              fundamentais dos sistemas físicos.
-            </p>
-          </section>
-
-          <!-- Slide modificado: sem equações emboladas -->
-          <section>
-            <h3>Preparando-se para a Jornada Vetorial</h3>
-
-            <p>
-              Ao avançarmos para o cálculo vetorial, expandiremos nossos
-              conceitos fundamentais:
-            </p>
-
-            <div
-              style="
-                display: flex;
-                justify-content: space-around;
-                margin: 1em 0;
-              "
-            >
-              <div style="width: 30%; text-align: center">
-                <div style="font-weight: bold; color: var(--star-blue)">
-                  Derivadas →
-                </div>
-                <div
-                  style="
-                    border: 1px solid var(--accent-color);
-                    border-radius: 8px;
-                    padding: 10px;
-                    margin-top: 10px;
-                  "
-                >
-                  <p>Gradientes</p>
-                  <p>Divergência</p>
-                  <p>Rotacional</p>
-                </div>
-              </div>
-
-              <div style="width: 30%; text-align: center">
-                <div style="font-weight: bold; color: var(--star-blue)">
-                  Integrais →
-                </div>
-                <div
-                  style="
-                    border: 1px solid var(--accent-color);
-                    border-radius: 8px;
-                    padding: 10px;
-                    margin-top: 10px;
-                  "
-                >
-                  <p>Integrais de Linha</p>
-                  <p>Integrais de Superfície</p>
-                  <p>Integrais de Volume</p>
-                </div>
-              </div>
-
-              <div style="width: 30%; text-align: center">
-                <div style="font-weight: bold; color: var(--star-blue)">
-                  Teoremas →
-                </div>
-                <div
-                  style="
-                    border: 1px solid var(--accent-color);
-                    border-radius: 8px;
-                    padding: 10px;
-                    margin-top: 10px;
-                  "
-                >
-                  <p>Teorema de Green</p>
-                  <p>Teorema de Stokes</p>
-                  <p>Teorema de Gauss (Divergência)</p>
-                </div>
-              </div>
-            </div>
-          </section>
-          <section>
-            <p>
-              Estes conceitos vetoriais serão fundamentais para compreender:
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1em 0;
+          "
+        >
+          <div
+            style="
+              width: 48%;
+              text-align: left;
+              background: rgba(26, 35, 126, 0.3);
+              padding: 15px;
+              border-radius: 8px;
+            "
+          >
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Problemas com Cálculo Escalar:
             </p>
             <ul>
-              <li>Campos gravitacionais que governam órbitas planetárias</li>
-              <li>
-                Campos eletromagnéticos usados em sistemas de comunicação
-                espacial
-              </li>
-              <li>Dinâmica de fluidos em sistemas de propulsão avançados</li>
-              <li>
-                Transferência de calor em escudos térmicos durante reentrada
-                atmosférica
-              </li>
+              <li>Não captura naturalmente direções no espaço</li>
+              <li>Requer sistemas de coordenadas artificiais</li>
+              <li>Torna complexa a descrição de rotações</li>
+              <li>Dificulta a expressão de leis físicas invariantes</li>
             </ul>
-          </section>
+          </div>
 
-          <!-- Slide modificado: fonte menor -->
-          <section class="small-text">
-            <h3>Olhando para o Futuro</h3>
+          <div
+            style="
+              width: 48%;
+              text-align: left;
+              background: rgba(26, 35, 126, 0.3);
+              padding: 15px;
+              border-radius: 8px;
+            "
+          >
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Vantagens do Cálculo Vetorial:
+            </p>
+            <ul>
+              <li>Representa naturalmente grandezas direcionais</li>
+              <li>Expressa leis físicas independentes de coordenadas</li>
+              <li>Simplifica a descrição de movimentos tridimensionais</li>
+              <li>Permite análise de campos em todo o espaço</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p>
+          Considere o movimento de uma nave espacial em órbita. Com cálculo
+          escalar, precisaríamos de três equações separadas:
+        </p>
 
+        <p>
+          $ \begin{cases} \frac{d^2x}{dt^2} = -\frac{GMx}{(x^2+y^2+z^2)^{3/2}}
+          \\ \frac{d^2y}{dt^2} = -\frac{GMy}{(x^2+y^2+z^2)^{3/2}} \\
+          \frac{d^2z}{dt^2} = -\frac{GMz}{(x^2+y^2+z^2)^{3/2}} \end{cases} $
+        </p>
+
+        <p>Com cálculo vetorial, uma única equação é suficiente:</p>
+
+        <p>$\frac{d^2\vec{r}}{dt^2} = -\frac{GM}{|\vec{r}|^3}\vec{r}$</p>
+
+        <p class="note small-text">
+          Esta elegância matemática não é apenas estética, mas prática: facilita
+          a solução de problemas complexos e expõe simetrias fundamentais dos
+          sistemas físicos.
+        </p>
+      </section>
+
+      <!-- Slide modificado: sem equações emboladas -->
+      <section>
+        <h3>Preparando-se para a Jornada Vetorial</h3>
+
+        <p>
+          Ao avançarmos para o cálculo vetorial, expandiremos nossos conceitos
+          fundamentais:
+        </p>
+
+        <div
+          style="display: flex; justify-content: space-around; margin: 1em 0"
+        >
+          <div style="width: 30%; text-align: center">
+            <div style="font-weight: bold; color: var(--star-blue)">
+              Derivadas →
+            </div>
             <div
               style="
-                font-style: italic;
-                text-align: center;
-                font-size: 1.2em;
-                margin: 1em 0;
+                border: 1px solid var(--accent-color);
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 10px;
               "
             >
-              <p>
-                "A matemática é a linguagem com a qual Deus escreveu o
-                universo."
-              </p>
-              <p style="font-size: 0.8em">— Galileu Galilei</p>
+              <p>Gradientes</p>
+              <p>Divergência</p>
+              <p>Rotacional</p>
             </div>
+          </div>
 
-            <p>
-              Ao dominarmos o cálculo vetorial, estaremos aprendendo a linguagem
-              fundamental que descreve os movimentos celestiais e as forças que
-              governam o cosmos. Esta linguagem permitiu à humanidade:
-            </p>
+          <div style="width: 30%; text-align: center">
+            <div style="font-weight: bold; color: var(--star-blue)">
+              Integrais →
+            </div>
+            <div
+              style="
+                border: 1px solid var(--accent-color);
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 10px;
+              "
+            >
+              <p>Integrais de Linha</p>
+              <p>Integrais de Superfície</p>
+              <p>Integrais de Volume</p>
+            </div>
+          </div>
 
-            <ul>
-              <li>
-                Enviar rovers a Marte com precisão de aterrissagem em metros
-              </li>
-              <li>
-                Calcular assistências gravitacionais que permitem a sondas como
-                a Voyager escapar do Sistema Solar
-              </li>
-              <li>
-                Manter satélites em órbitas precisas que tornam possível a
-                navegação global
-              </li>
-              <li>
-                Projetar manobras de rendez-vous e acoplagem em órbita terrestre
-              </li>
-            </ul>
+          <div style="width: 30%; text-align: center">
+            <div style="font-weight: bold; color: var(--star-blue)">
+              Teoremas →
+            </div>
+            <div
+              style="
+                border: 1px solid var(--accent-color);
+                border-radius: 8px;
+                padding: 10px;
+                margin-top: 10px;
+              "
+            >
+              <p>Teorema de Green</p>
+              <p>Teorema de Stokes</p>
+              <p>Teorema de Gauss (Divergência)</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <p>Estes conceitos vetoriais serão fundamentais para compreender:</p>
+        <ul>
+          <li>Campos gravitacionais que governam órbitas planetárias</li>
+          <li>
+            Campos eletromagnéticos usados em sistemas de comunicação espacial
+          </li>
+          <li>Dinâmica de fluidos em sistemas de propulsão avançados</li>
+          <li>
+            Transferência de calor em escudos térmicos durante reentrada
+            atmosférica
+          </li>
+        </ul>
+      </section>
 
-            <p>
-              Nos próximos capítulos, mergulharemos nesta poderosa linguagem
-              matemática, conectando sempre os conceitos abstratos às suas
-              aplicações concretas na exploração do cosmos.
-            </p>
+      <!-- Slide modificado: fonte menor -->
+      <section class="small-text">
+        <h3>Olhando para o Futuro</h3>
 
-            <p class="highlight">
-              Prepare-se para uma jornada matemática tão ousada quanto a jornada
-              física da humanidade para as estrelas.
-            </p>
-          </section>
-        </section>
-</body>
+        <div
+          style="
+            font-style: italic;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 1em 0;
+          "
+        >
+          <p>
+            "A matemática é a linguagem com a qual Deus escreveu o universo."
+          </p>
+          <p style="font-size: 0.8em">— Galileu Galilei</p>
+        </div>
+
+        <p>
+          Ao dominarmos o cálculo vetorial, estaremos aprendendo a linguagem
+          fundamental que descreve os movimentos celestiais e as forças que
+          governam o cosmos. Esta linguagem permitiu à humanidade:
+        </p>
+
+        <ul>
+          <li>Enviar rovers a Marte com precisão de aterrissagem em metros</li>
+          <li>
+            Calcular assistências gravitacionais que permitem a sondas como a
+            Voyager escapar do Sistema Solar
+          </li>
+          <li>
+            Manter satélites em órbitas precisas que tornam possível a navegação
+            global
+          </li>
+          <li>
+            Projetar manobras de rendez-vous e acoplagem em órbita terrestre
+          </li>
+        </ul>
+
+        <p>
+          Nos próximos capítulos, mergulharemos nesta poderosa linguagem
+          matemática, conectando sempre os conceitos abstratos às suas
+          aplicações concretas na exploração do cosmos.
+        </p>
+
+        <p class="highlight">
+          Prepare-se para uma jornada matemática tão ousada quanto a jornada
+          física da humanidade para as estrelas.
+        </p>
+      </section>
+    </section>
+  </body>
 </html>
