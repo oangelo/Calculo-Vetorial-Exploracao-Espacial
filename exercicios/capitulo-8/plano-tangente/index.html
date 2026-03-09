@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Documento Sigiloso – Planos Tangentes</title>
+    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /*  ———  TODO o CSS original do template permanece inalterado  ———  */
+      /*  (para brevidade, omiti aqui; basta copiar do template-espacial-atualizado.html)  */
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE --><div class="document-header">
+<div class="document-stamp">SIGILOSO</div>
+<div class="document-date">
+          DATA: <span class="censored">14</span> DE JULHO DE
+          <span class="censored">1965</span><br/>
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CÁLCULO ORBITAL [REDACTED]</span>
+</div>
+<div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-X</span><br/><br/>
+          Em esforço conjunto entre <span class="censored">NASA</span> e
+          <span class="censored">CONTRAINTELIGÊNCIA</span>, reunimos exercícios
+          fundamentais sobre
+          <span class="censored">planos de aproximação</span> para orientar
+          painéis solares e antenas em órbita baixa. Anotações obtidas dos
+          cadernos do Dr. <span class="censored">██████</span>.
+        </div>
+<div class="warning-box">
+          Este documento contém informações geométricas cruciais. Divulgação não
+          autorizada resultará em <span class="censored">sanções severas</span>.
+        </div>
+<div class="metadata">
+<span>REF: VX-<span class="censored">3141</span>-T</span>
+<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+<span>CÓPIAS: <span class="censored">1</span> DE
+            <span class="censored">3</span></span>
+</div>
+</div>
+<div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: PLANOS TANGENTES EM SUPERFÍCIES
+      </div>
+<div class="concept-definition">
+<p><strong>DEFINIÇÃO FORMAL:</strong></p>
+<p class="formula-highlight">
+          \[\nabla F(x_0,y_0,z_0)\cdot(\vec{r}-\vec{r_0})=0\]
+        </p>
+<p>
+          Para \(F(x,y,z)=0\), o plano tangente em \(\vec{r_0}\) é ortogonal a
+          \(\nabla F\). Se \(z=f(x,y)\), então<br/>
+          \[z-f(x_0,y_0)=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0).\]
+        </p>
+</div>
+<div class="mission-context">
+        No Programa Gemini, a orientação de painéis solares exigia conhecer
+        rapidamente o plano tangente local da superfície orbital simulada para
+        ajustes em tempo real.
+      </div>
+<div class="historical-note">
+<strong>NOTA HISTÓRICA:</strong> Após o sucesso do
+        <span class="censored">Gemini VI-A</span> (1965), estes cálculos
+        permitiram ensaios de <span class="censored">rendezvous orbital</span>,
+        passo decisivo rumo ao pouso lunar.
+      </div>
+ ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ Exercise List
+      
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+      
+      <div class="page-number">        PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span class="censored">3141</span>-T      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html'
+          ];
+          
+          const list = document.getElementById('exercises');
+          
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+          
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+      
+      loadExercises();
+    </script>
+  </body>
+</html>

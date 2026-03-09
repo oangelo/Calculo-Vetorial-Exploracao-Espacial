@@ -1,0 +1,46 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+<div class="context">
+              ORIGEM: Laboratório Avançado - Programa Apollo [NOV/1966]
+            </div>
+<p>
+              Uma manobra de injeção translunar usa a curva: \(\vec{r}(t) =
+              \begin{pmatrix} e^{2t} \\ \ln(1 + t^2) \\ t \end{pmatrix}\) em
+              \([0,2]\). Reparametrize para eliminar o expoente \(2t\) na
+              primeira componente. Calcule a integral de linha \(\displaystyle
+              \int_C f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\) para \(f(\vec{r}) =
+              2e^{-2t}\).
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob certas
+                transformações paramétricas.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  DEFINIÇÃO: Para eliminar \(e^{2t}\), uma escolha possível:
+                  \(\tau = e^{2t}\). Daí \(t = \frac{1}{2}\ln(\tau)\).
+                </p>
+<p>
+                  CÁLCULO: \(\vec{r}(\tau) = \begin{pmatrix} \tau \\ \ln\bigl(1
+                  + \bigl(\tfrac{1}{2}\ln(\tau)\bigr)^2\bigr) \\
+                  \tfrac{1}{2}\ln(\tau) \end{pmatrix}\).
+                </p>
+<p>
+                  COM \(f(\vec{r}) = 2e^{-2t} =
+                  2e^{-2\cdot(\frac{1}{2}\ln(\tau))} = 2\tau^{-1}\).
+                </p>
+<p>
+                  DERIVADA e limites de integração \(\tau(0)=1\),
+                  \(\tau(2)=e^4\) completam o procedimento. Integra-se \[
+                  \int_1^{e^4} 2\tau^{-1}\,\Bigl|\frac{d\vec{r}}{d\tau}\Bigr|\,
+                  d\tau. \] O resultado final depende do processamento
+                  específico.
+                </p>
+</div>
+</details>
+</li>

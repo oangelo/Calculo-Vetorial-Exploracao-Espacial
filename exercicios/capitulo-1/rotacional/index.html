@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link href="../../styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">20</span> DE JULHO DE
+          <span class="censored">1969</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CONTROLE DA MISSÃO</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE ANÁLISE: PROJETO <span class="censored">APOLLO-11</span>
+          <br /><br />
+          Durante a alunissagem, nossa equipe de engenharia identificou padrões
+          inesperados nos campos aerodinâmicos, sugerindo efeitos não triviais
+          do rotacional do campo atmosférico residual na Lua. O presente
+          relatório detalha os cálculos necessários para avaliar o impacto
+          dessas forças.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada deste material pode
+          resultar em <span class="censored">graves consequências</span>.
+        </div>
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO APOLLO-<span
+          class="censored"
+          >11</span
+        >
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-2d.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

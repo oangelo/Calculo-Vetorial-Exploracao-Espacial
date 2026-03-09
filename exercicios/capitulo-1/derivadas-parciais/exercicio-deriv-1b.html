@@ -1,0 +1,65 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO DERIV-1B</div>
+<div class="context">
+              ORIGEM: Projeto <span class="censored">VECTOR-Z</span>
+              [RELACIONADO AO MÓDULO DE ATERRISSAGEM]
+            </div>
+<p>
+              Temos a função de potencial gravitacional simplificada em 2D: \[
+              \phi(x,y) = -\frac{G M}{\sqrt{x^2 + y^2}}. \] Calcule: \[
+              \frac{\partial \phi}{\partial x} \quad \text{e} \quad
+              \frac{\partial \phi}{\partial y}. \] Faça a análise do sinal
+              físico de cada componente.
+            </p>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+<strong>Passo 1:</strong> Identificar \(r = \sqrt{x^2 +
+                  y^2}\).
+                </p>
+<p><strong>Passo 2:</strong> Derivar usando regra da cadeia.</p>
+<p>
+                  \[ \frac{\partial \phi}{\partial x} = -GM \,
+                  \frac{\partial}{\partial x} \left(\frac{1}{r}\right) = -GM
+                  \left(-\frac{1}{r^2}\right) \frac{\partial r}{\partial x} =
+                  \frac{GM}{r^2} \cdot \frac{x}{\sqrt{x^2 + y^2}}. \]
+                  <br/>
+                  \[ \frac{\partial \phi}{\partial x} = \frac{GM\, x}{(x^2 +
+                  y^2)^{3/2}}. \]
+                </p>
+<p>
+                  \[ \frac{\partial \phi}{\partial y} = \frac{GM\, y}{(x^2 +
+                  y^2)^{3/2}}. \]
+                </p>
+<p>
+<strong>Análise de sinal e direção da força:</strong> Note que
+                  \(\frac{\partial \phi}{\partial x}\) ou \(\frac{\partial
+                  \phi}{\partial y}\) podem ser positivos ou negativos conforme
+                  \(x\) ou \(y\) sejam positivos ou negativos, refletindo que o
+                  potencial \(\phi(x,y) = -\frac{GM}{\sqrt{x^2 + y^2}}\)
+                  torna-se menos negativo à medida que nos afastamos da origem
+                  em qualquer direção positiva. Entretanto, a
+                  <em>força</em> associada é dada por \[ \mathbf{F} = -\nabla
+                  \phi, \] ou seja, é o <em>negativo</em> dessas derivadas. Isso
+                  garante que o vetor força aponte sempre em direção à origem
+                  (atração gravitacional), mesmo quando as derivadas parciais do
+                  potencial em relação a \(x\) e \(y\) sejam positivas
+                  <strong>Análise de sinal e direção da força:</strong> Note que
+                  \(\frac{\partial \phi}{\partial x}\) ou \(\frac{\partial
+                  \phi}{\partial y}\) podem ser positivos ou negativos conforme
+                  \(x\) ou \(y\) sejam positivos ou negativos, refletindo que o
+                  potencial \(\phi(x,y) = -\frac{GM}{\sqrt{x^2 + y^2}}\)
+                  torna-se menos negativo à medida que nos afastamos da origem
+                  em qualquer direção positiva. Entretanto, a
+                  <em>força</em> associada é dada por \[ \mathbf{F} = -\nabla
+                  \phi, \] ou seja, é o <em>negativo</em> dessas derivadas. Isso
+                  garante que o vetor força aponte sempre em direção à origem
+                  (atração gravitacional), mesmo quando as derivadas parciais do
+                  potencial em relação a \(x\) e \(y\) sejam positivas para
+                  valores positivos de \(x\) ou \(y\). para valores positivos de
+                  \(x\) ou \(y\).
+                </p>
+</div>
+</details>
+</li>

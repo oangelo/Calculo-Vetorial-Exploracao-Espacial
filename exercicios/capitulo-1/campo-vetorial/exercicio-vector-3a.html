@@ -1,0 +1,105 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+<div class="context">
+              ORIGEM: Centro de Modelagem Atmosférica - Projeto Mercúrio [DADOS
+              DE 30/NOV/1960]
+            </div>
+<p>
+              Um campo de vento atmosférico é modelado por: \[\vec{W}(x,y,z) =
+              \begin{pmatrix} x + yz \\ y - xz \\ z \end{pmatrix}\] DETERMINAR:
+              (a) O comportamento do vento no plano \(z = 0\). (b) Analise como
+              a direção do vento muda quando \(z\) varia de valores negativos
+              para positivos. (c) Identifique regiões onde o vento tem maior
+              intensidade.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Examine como os termos cruzados \(yz\) e \(xz\)
+                afetam o comportamento do vento em diferentes altitudes.
+                Considere casos específicos para visualizar o padrão geral.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+<p>(a) COMPORTAMENTO NO PLANO \(z = 0\):</p>
+<p>Substituindo \(z = 0\) no campo, obtemos:</p>
+<p>
+                  \[\vec{W}(x,y,0) = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}\]
+                </p>
+<p>
+                  Neste plano, o vento flui radialmente para fora a partir da
+                  origem, com intensidade proporcional à distância da origem. Em
+                  cada ponto \((x,y,0)\), o vetor vento aponta diretamente para
+                  fora, na mesma direção do vetor posição \((x,y,0)\).
+                </p>
+<p>(b) VARIAÇÃO COM A ALTITUDE \(z\):</p>
+<p>Analisando o campo para diferentes valores de \(z\):</p>
+<p>Para \(z &lt; 0\) (altitudes negativas):</p>
+<p>
+                  - A componente \(x\) é reduzida pelo termo \(yz\) quando \(y &gt;
+                  0\) e aumentada quando \(y &lt; 0\)
+                </p>
+<p>
+                  - A componente \(y\) é aumentada pelo termo \(xz\) quando \(x
+                  &gt; 0\) e reduzida quando \(x &lt; 0\)
+                </p>
+<p>
+                  - Isso cria um padrão de rotação anti-horária sobreposto ao
+                  fluxo radial
+                </p>
+<p>Para \(z &gt; 0\) (altitudes positivas):</p>
+<p>
+                  - A componente \(x\) é aumentada pelo termo \(yz\) quando \(y
+                  &gt; 0\) e reduzida quando \(y &lt; 0\)
+                </p>
+<p>
+                  - A componente \(y\) é reduzida pelo termo \(xz\) quando \(x &gt;
+                  0\) e aumentada quando \(x &lt; 0\)
+                </p>
+<p>
+                  - Isso cria um padrão de rotação horária sobreposto ao fluxo
+                  radial
+                </p>
+<p>
+                  Além disso, a componente vertical do vento (\(z\)) faz com que
+                  o ar suba quando \(z &gt; 0\) e desça quando \(z &lt; 0\), criando
+                  um fluxo convergente para o plano \(z = 0\) em altitudes
+                  negativas e divergente deste plano em altitudes positivas.
+                </p>
+<p>(c) REGIÕES DE MAIOR INTENSIDADE:</p>
+<p>A magnitude do campo é dada por:</p>
+<p>\[|\vec{W}(x,y,z)| = \sqrt{(x+yz)^2 + (y-xz)^2 + z^2}\]</p>
+<p>
+                  Para valores fixos de \(z\), a intensidade aumenta à medida
+                  que nos afastamos da origem no plano \(xy\). Além disso, para
+                  \(x\) e \(y\) fixos, a intensidade geralmente aumenta com
+                  \(|z|\) devido aos termos cruzados.
+                </p>
+<p>
+                  Específicamente, a intensidade será maior em regiões onde:
+                </p>
+<p>
+                  - \(|x|\) e \(|y|\) são grandes (longe da origem no plano
+                  horizontal)
+                </p>
+<p>
+                  - \(|z|\) é grande (altitudes extremas, positivas ou
+                  negativas)
+                </p>
+<p>
+                  - Os produtos \(|yz|\) e \(|xz|\) são grandes (combinação de
+                  coordenadas com valores absolutos elevados)
+                </p>
+<p>
+                  APLICAÇÃO: Este modelo é crucial para prever condições
+                  atmosféricas durante lançamentos e reentradas de veículos
+                  espaciais, permitindo identificar zonas de turbulência e
+                  cisalhamento de vento que podem comprometer a integridade
+                  estrutural da espaçonave.
+                </p>
+</div>
+</details>
+</li>

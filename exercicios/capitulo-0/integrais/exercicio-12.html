@@ -1,0 +1,35 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO 12</div>
+<div class="context">
+              ORIGEM: Substituições Avançadas - Seção Hiperbólica [SET/1962]
+            </div>
+<p>Calcule a integral, onde \(a\) é constante:</p>
+<p>\[\int \sqrt{x^2 + a^2}\,dx\]</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Pode-se usar \(x = a\tan(\theta)\) ou
+                \(x = a\sinh(t)\). Observe o retorno para a variável original.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Com \(x = a\tan(\theta)\), \(\sqrt{x^2 + a^2} = a\sec(\theta)\)
+                  e \(dx = a\sec^2(\theta)\,d\theta\). Então,
+                </p>
+<p>
+                  \(\int \sqrt{x^2 + a^2}\,dx = a^2 \int \sec^3(\theta)\,d\theta.\)
+                  Conhece-se que
+                  \(\int \sec^3(\theta)\,d\theta = \frac{1}{2}\sec(\theta)\tan(\theta)
+                  + \frac{1}{2}\ln|\sec(\theta) + \tan(\theta)| + C.\)
+                </p>
+<p>
+                  Substituindo de volta para \(x\), obtemos
+                  \(\frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2}
+                  \ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.\)
+                </p>
+</div>
+</details>
+</li>

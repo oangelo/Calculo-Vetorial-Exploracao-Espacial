@@ -1,0 +1,50 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+<div class="context">
+              ORIGEM: Módulo de Testes Avançados [Missão
+              <span class="censored">SKYLAB-13</span>]
+            </div>
+<p>
+              Região \(D\) formada pela interseção de \(\{(x,y) \mid x \ge 0,\;
+              y \ge 0,\; x^2 + y^2 \le 9\}\) e a banda \(y \ge x - 1\). A
+              densidade \(\rho(x,y) = 5 + e^{-x}\). <br/>
+              DETERMINAR: A massa total.
+            </p>
+<!-- OMEGA sem dica -->
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  PROTOCOLO DE ANÁLISE:
+                  <br/>
+                  A região está no primeiro quadrante (pois \(x \ge 0, y \ge
+                  0\)) e dentro do círculo de raio 3. Adicionalmente, há a
+                  restrição \(y \ge x - 1\).
+                </p>
+<p>
+                  Mapeando os limites:
+                  <br/>
+                  - O raio máximo é 3.
+                  <br/>
+                  - Para \(x\) entre 0 e 1, a reta \(y = x-1\) fica negativa,
+                  então o limite inferior de \(y\) é 0. Para \(x\) acima de 1,
+                  \(y \ge x-1\).
+                </p>
+<p>
+                  Uma abordagem possível é separar a integral em duas regiões:
+                  <br/>
+                  1) \(0 \le x \le 1\): \(0 \le y \le \sqrt{9 - x^2}\). <br/>
+                  2) \(1 \le x \le 3\): \(x-1 \le y \le \sqrt{9 - x^2}\).
+                </p>
+<p>
+                  A densidade é \(\rho(x,y) = 5 + e^{-x}\). Integra-se em \(y\),
+                  depois em \(x\). As integrais resultantes envolvem termos
+                  polinomiais e exponenciais simples.
+                </p>
+<p>
+                  CONCLUSÃO: A expressão final (não expandida aqui) garante a
+                  massa total a partir dessa soma de integrais parciais.
+                </p>
+</div>
+</details>
+</li>

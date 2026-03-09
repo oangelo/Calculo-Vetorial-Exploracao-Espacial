@@ -1,0 +1,63 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+<div class="context">
+              ORIGEM: Estudo Avançado de Momento de Inércia - Apollo [1968]
+            </div>
+<p>
+              Uma carenagem de foguete apresenta formato esférico oco, com raio
+              externo 2 e espessura 0.5. Admita uma densidade constante
+              \(\rho\). Calcule o momento de inércia em torno do eixo \(z\),
+              considerando o invólucro oco (de raio interno 1.5 e externo 2).
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Há simetrias não-óbvias na configuração esférica.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  O momento de inércia de uma esfera oca (ou casca esférica
+                  espessa) em torno de qualquer eixo que passe pelo centro
+                  utiliza a expressão:
+                </p>
+<p>\[
+                  I_z = \iiint_V \rho(x^2 + y^2) \, dV.
+                \]</p>
+<p>
+                  Em coordenadas esféricas, \((x^2 + y^2) = r^2\sin^2\phi\), e o
+                  volume está entre \(r=1.5\) e \(r=2\). O fator de volume é
+                  \(dV = r^2\sin\phi\,dr\,d\phi\,d\theta\).
+                </p>
+<p>
+                  A integral resultante é resolvida via tabela ou resultado
+                  padrão, mas seria:
+                </p>
+<p>\[
+                  I_z = \rho \int_{r=1.5}^{2} \int_{\phi=0}^{\pi}
+                  \int_{\theta=0}^{2\pi} r^2 \sin^2\phi \, r^2 \sin\phi
+                  \, d\theta \, d\phi \, dr.
+                \]</p>
+<p>
+                  Fatores: \(\int_{0}^{2\pi} d\theta = 2\pi\), e
+                  \(\int_{0}^{\pi}\sin^3\phi\,d\phi = \frac{4}{3}\). Após a
+                  integração em \(r\), obtém-se a diferença entre
+                  \(\frac{r^5}{5}\) avaliada em 1.5 e 2.
+                </p>
+<p>
+                  Resultado simplificado (omisso em detalhes numéricos nesta
+                  breve síntese):
+                  \[
+                    I_z = \rho \cdot \frac{8\pi}{15} \bigl(2^5 - 1.5^5\bigr).
+                  \]
+                </p>
+<p>
+                  Conclusão: O momento de inércia depende diretamente da
+                  densidade \(\rho\); valores exatos podem ser computados
+                  substituindo os termos numéricos.
+                </p>
+</div>
+</details>
+</li>

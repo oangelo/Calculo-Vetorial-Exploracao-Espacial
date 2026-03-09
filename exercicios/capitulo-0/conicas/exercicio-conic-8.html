@@ -1,0 +1,109 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO CONIC-8</div>
+<div class="context">
+              ORIGEM: Seção de Configurações Orbitais [MATERIAL DE PESQUISA]
+            </div>
+<p>
+              (Atividade orientada) Considere a hipérbole descrita pela equação:
+              \[\frac{x^2}{16} - \frac{y^2}{9} = 1.\] Identifique seus vértices,
+              focos e assíntotas. Explique como a diferença das distâncias a
+              cada foco permanece constante.
+            </p>
+<p>
+              Na figura seguinte, desenhamos a curva no intervalo \(-6 \le x \le
+              6\):
+            </p>
+<svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
+<g transform="translate(200,200) scale(25,-25)">
+<!-- Eixos -->
+<line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
+<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
+<!-- Hipérbole: x^2/16 - y^2/9 = 1 usando parametrização mais precisa -->
+<!-- Ramo direito (x>0) - hipérbole horizontal -->
+<path d="M 4 0
+                 L 4.04 0.3
+                 L 4.16 0.6
+                 L 4.36 0.9
+                 L 4.64 1.2
+                 L 4.96 1.5
+                 L 5.33 1.8
+                 L 5.73 2.1
+                 L 6.16 2.4
+                 L 6.61 2.7
+                 L 7.07 3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+<path d="M 4 0
+                 L 4.04 -0.3
+                 L 4.16 -0.6
+                 L 4.36 -0.9
+                 L 4.64 -1.2
+                 L 4.96 -1.5
+                 L 5.33 -1.8
+                 L 5.73 -2.1
+                 L 6.16 -2.4
+                 L 6.61 -2.7
+                 L 7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+<!-- Ramo esquerdo (x<0) -->
+<path d="M -4 0
+                 L -4.04 0.3
+                 L -4.16 0.6
+                 L -4.36 0.9
+                 L -4.64 1.2
+                 L -4.96 1.5
+                 L -5.33 1.8
+                 L -5.73 2.1
+                 L -6.16 2.4
+                 L -6.61 2.7
+                 L -7.07 3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+<path d="M -4 0
+                 L -4.04 -0.3
+                 L -4.16 -0.6
+                 L -4.36 -0.9
+                 L -4.64 -1.2
+                 L -4.96 -1.5
+                 L -5.33 -1.8
+                 L -5.73 -2.1
+                 L -6.16 -2.4
+                 L -6.61 -2.7
+                 L -7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+<!-- Vértices em (±4, 0) -->
+<circle cx="4" cy="0" fill="red" r="0.15"></circle>
+<circle cx="-4" cy="0" fill="red" r="0.15"></circle>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="4.1" y="0.5">
+                  V₁
+                </text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="-4.9" y="0.5">
+                  V₂
+                </text>
+<!-- Focos: c^2 = a^2 + b^2 => c^2=16+9=25 => c=5 => focos em (±5,0) -->
+<circle cx="5" cy="0" fill="green" r="0.15"></circle>
+<circle cx="-5" cy="0" fill="green" r="0.15"></circle>
+<text fill="green" font-size="0.7" transform="scale(1,-1)" x="5.1" y="0.5">
+                  F₁
+                </text>
+<text fill="green" font-size="0.7" transform="scale(1,-1)" x="-5.8" y="0.5">
+                  F₂
+                </text>
+<!-- Assíntotas: y= ±(b/a)x = ±(3/4)x -->
+<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="-5.25" y2="5.25"></line>
+<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="5.25" y2="-5.25"></line>
+<!-- Texto para as assíntotas -->
+<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="-2.8">
+                  y = (3/4)x
+                </text>
+<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="3.2">
+                  y = -(3/4)x
+                </text>
+</g>
+</svg>
+<details>
+<summary>Solução</summary>
+<p>
+                Para \(\frac{x^2}{16} - \frac{y^2}{9} = 1\), temos a = 4, b =
+                3.<br/>
+                Portanto, focos em (±5,0), vértices em (±4,0) e assíntotas
+                definidas por y = ±(b/a)x = ±(3/4)x.<br/>
+                Para qualquer ponto P na hipérbole, a diferença |PF1 – PF2| é
+                constante (= 2a).
+              </p>
+</details>
+</li>

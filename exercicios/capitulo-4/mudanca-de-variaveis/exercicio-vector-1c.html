@@ -1,0 +1,46 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+<div class="context">
+              ORIGEM: Ajuste de Massa - Programa <span class="censored">PHI-EX</span>
+</div>
+<p>
+              Seja \(D\) uma região no primeiro octante limitada pelos planos
+              \(x=0,\; y=0,\; z=0\) e por \(x + y + z = 3\). Calcule
+              \(\iiint_D (1)\,dx\,dy\,dz\) usando uma mudança para variáveis
+              que diagonalizem a fronteira \(x+y+z=3\).
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as somas de
+                coordenadas a uma nova variável de integração.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Use \(u = x + y + z,\; v = y,\; w = z.\) Então \(x = u - v - w\).
+                </p>
+<p>
+                  O plano \(x+y+z=3\) passa a ser \(u=3\). No primeiro octante,
+                  \(u, v, w \ge 0\). E, para um dado \(u\), temos
+                  \(0 \le v \le u,\; 0 \le w \le u-v\).
+                </p>
+<p>
+                  O jacobiano é
+                  \(\left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right| = 1.\)
+                </p>
+<p>
+                  Portanto,
+                  \[\iiint_D 1\,dx\,dy\,dz 
+                    = \int_{0}^{3} \int_{v=0}^{u} \int_{w=0}^{u-v} 1 \; dw\,dv\,du.
+                  \]
+                </p>
+<p>
+                  Integração passo a passo fornece o volume de um tetraedro:
+                  \(\frac{3^3}{6} = \frac{27}{6} = 4.5.\)
+                </p>
+</div>
+</details>
+</li>

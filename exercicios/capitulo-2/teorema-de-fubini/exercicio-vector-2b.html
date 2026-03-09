@@ -1,0 +1,39 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+<div class="context">
+              ORIGEM: Domínio Definido por Funções - Setor
+              <span class="censored">BETA-05</span>
+</div>
+<p>
+              Considerar \(D = \{(x,y) \mid 1 \le x \le 3,\; 0 \le y \le
+              \ln(x)\}\). Calcular \(\iint_D \bigl(2 + e^y\bigr)\, dA\),
+              avaliando primeiro em y e depois invertendo a ordem para checar a
+              consistência.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades do logaritmo e do exponencial podem
+                simplificar a discussão sobre limites.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Integração em y primeiro: \( \int_{x=1}^{3}
+                  \left[\int_{y=0}^{\ln(x)} (2 + e^y)\, dy\right] dx. \)
+                </p>
+<p>
+                  \( = \int_{1}^{3} \left[ 2y + e^y \right]_{0}^{\ln(x)} dx =
+                  \int_{1}^{3} \left[ 2\ln(x) + x - 1 \right] dx. \)
+                </p>
+<p>
+                  Ao integrar em x, obtemos a expressão final em função de
+                  \(\ln(x)\). Invertendo a ordem, descreve-se x em função de y:
+                  \(0 \le y \le \ln(3),\; e^y \le x \le 3\). A consistência é
+                  assegurada.
+                </p>
+</div>
+</details>
+</li>

@@ -1,0 +1,60 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO CONIC-5</div>
+<div class="context">
+              ORIGEM: Análise de Diagrama [PROJETO [REDACTED]]
+            </div>
+<p>
+              (Atividade orientada) Considere a circunferência descrita pela
+              equação: \[x^2 + y^2 = 25.\] Identifique o centro, o raio, e um
+              diâmetro qualquer. Explique por que todos os pontos que satisfazem
+              a equação estão à mesma distância do centro.
+            </p>
+<p>
+              A figura abaixo mostra uma representação exata desta
+              circunferência no plano cartesiano:
+              <svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
+<!-- Usando transform para "simular" eixos de -6..6, com 25 px por unidade -->
+<g transform="translate(150,150) scale(25,-25)">
+<!-- Eixo X -->
+<line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
+<!-- Eixo Y -->
+<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-6" y2="6"></line>
+<!-- Circunferência x^2 + y^2 = 25 => raio=5 -->
+<circle cx="0" cy="0" fill="none" r="5" stroke="blue" stroke-width="0.1"></circle>
+<!-- Diâmetro de exemplo: A(-5,0) e B(5,0) -->
+<line stroke="green" stroke-width="0.1" x1="-5" x2="5" y1="0" y2="0"></line>
+<!-- Pontos -->
+<circle cx="0" cy="0" fill="red" r="0.15"></circle>
+<!-- Centro -->
+<circle cx="-5" cy="0" fill="black" r="0.15"></circle>
+<!-- A -->
+<circle cx="5" cy="0" fill="black" r="0.15"></circle>
+<!-- B -->
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.2">
+                    O
+                  </text>
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="-5.4" y="0.3">
+                    A
+                  </text>
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="5.2" y="0.3">
+                    B
+                  </text>
+</g>
+</svg>
+</p>
+<p>
+<em>Instrução:</em> Observe que a equação \(x^2 + y^2 = 25\)
+              descreve todos os pontos (\(x, y\)) a uma distância 5 da origem.
+            </p>
+<details>
+<summary>Solução</summary>
+<p>
+<strong>Centro:</strong> (0,0). <strong>Raio:</strong> 5.
+                <strong>Exemplo de diâmetro:</strong> segmento ligando A(-5,0) e
+                B(5,0).<br/>
+                Todo ponto (x,y) que satisfaz x^2 + y^2 = 25 está a distância
+                \(\sqrt{x^2 + y^2} = 5\) do centro (0,0), definindo assim uma
+                circunferência de raio 5.
+              </p>
+</details>
+</li>

@@ -1,0 +1,54 @@
+<div class="document-header">
+<div class="document-stamp">SIGILOSO</div>
+<div class="document-date">
+          DATA: <span class="censored">21</span> DE JUNHO DE
+          <span class="censored">1966</span><br/>
+          LOCALIZAÇÃO: <span class="censored">ESTAÇÃO GEMINI-4</span>
+</div>
+<div class="document-intro">
+          RELATÓRIO DE TREINAMENTO: PROJETO
+          <span class="censored">VECTOR-DELTA</span><br/><br/>
+          A equipe de análise orbital foi incumbida de dominar procedimentos
+          críticos envolvendo integrais duplas. A precisão no cálculo de áreas
+          sob superfícies é vital para a programação de reentrada e
+          sincronização de módulos em órbita.<br/><br/>
+          Este módulo trata exclusivamente da
+          <strong>mudança da ordem de integração</strong> em integrais duplas.
+        </div>
+<div class="warning-box">
+          Esta sequência de exercícios é de acesso restrito. Somente agentes com
+          autorização SIGMA podem consultá-la integralmente.
+        </div>
+<div class="metadata">
+<span>REF: VX-<span class="censored">9914</span>-C</span>
+<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+<span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span>
+</div>
+</div>
+<div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: Troca da Ordem de Integração
+      </div>
+<div class="concept-definition">
+<p><strong>DEFINIÇÃO FORMAL:</strong></p>
+<p class="formula-highlight">
+          \[ \int_a^b \int_{g_1(x)}^{g_2(x)} f(x, y) \,dy\,dx = \int_c^d
+          \int_{h_1(y)}^{h_2(y)} f(x, y) \,dx\,dy \]
+        </p>
+<p>
+          Para que a troca de ordem de integração seja válida, a função deve ser
+          integrável sobre a região delimitada e essa região deve ser reescrita
+          com os limites trocados de forma equivalente.
+        </p>
+</div>
+<div class="mission-context">
+        Em simulações de acoplamento entre cápsulas orbitais, muitas vezes é
+        necessário recalcular integrais sobre regiões complexas a partir de
+        dados parciais. A troca da ordem de integração permite adaptar
+        algoritmos de integração numérica a diferentes sensores.
+      </div>
+<div class="historical-note">
+<strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini, diversas
+        rotinas de cálculo embarcado exigiam reordenação de limites para
+        minimizar uso de memória e melhorar desempenho em tempo real.
+      </div>

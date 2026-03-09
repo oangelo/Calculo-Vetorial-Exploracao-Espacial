@@ -50,6 +50,7 @@ body {
   box-shadow:
     0 0 15px rgba(184, 115, 51, 0.2),
     inset 0 0 30px rgba(139, 69, 19, 0.3);
+  animation: flicker 2s infinite;
 }
 
 .document-stamp {
@@ -132,108 +133,159 @@ body {
   box-shadow:
     0 0 10px rgba(184, 115, 51, 0.1),
     inset 0 0 20px rgba(139, 69, 19, 0.2);
+}
 
-  .exercise-number {
-    color: var(--primary-light);
-    font-size: 1.4em;
-    font-weight: bold;
-    margin-bottom: 15px;
-    display: inline-block;
-    padding: 5px 10px;
-    border: 1px solid var(--primary);
-    background-color: rgba(184, 115, 51, 0.1);
-  }
+.exercise-item:hover {
+  animation: metallic-shine 3s infinite;
+}
 
-  .context {
-    color: var(--text-faded);
-    font-style: italic;
-    margin-bottom: 15px;
-    padding: 10px;
-    border-left: 3px solid var(--rust);
-    background-color: rgba(139, 69, 19, 0.1);
-  }
+.exercise-item .exercise-number {
+  color: var(--primary-light);
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--primary);
+  background-color: rgba(184, 115, 51, 0.1);
+}
 
-  .hint {
-    background-color: rgba(212, 175, 55, 0.1);
-    border-left: 3px solid var(--accent);
-    padding: 10px;
-    margin: 15px 0;
-    color: var(--text-faded);
-  }
+.exercise-item .context {
+  color: var(--text-faded);
+  font-style: italic;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-left: 3px solid var(--rust);
+  background-color: rgba(139, 69, 19, 0.1);
+}
 
-  details {
-    margin-top: 20px;
-    border: 1px solid var(--primary);
-  }
+.exercise-item .hint {
+  background-color: rgba(212, 175, 55, 0.1);
+  border-left: 3px solid var(--accent);
+  padding: 10px;
+  margin: 15px 0;
+  color: var(--text-faded);
+}
 
-  summary {
-    padding: 10px;
-    background-color: rgba(184, 115, 51, 0.1);
-    cursor: pointer;
-    font-weight: bold;
-    color: var(--primary-light);
-  }
+.exercise-item details {
+  margin-top: 20px;
+  border: 1px solid var(--primary);
+}
 
-  summary:hover {
-    background-color: rgba(184, 115, 51, 0.2);
-    color: var(--accent);
-  }
+.exercise-item summary {
+  padding: 10px;
+  background-color: rgba(184, 115, 51, 0.1);
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--primary-light);
+}
 
-  .solution {
-    background-color: rgba(26, 15, 10, 0.8);
-    padding: 20px;
-    border-top: 1px solid var(--primary);
-  }
+.exercise-item summary:hover {
+  background-color: rgba(184, 115, 51, 0.2);
+  color: var(--accent);
+}
 
-  @keyframes flicker {
-    0% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.95;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
+.exercise-item .solution {
+  background-color: rgba(26, 15, 10, 0.8);
+  padding: 20px;
+  border-top: 1px solid var(--primary);
+}
 
-  .document-header {
-    animation: flicker 2s infinite;
-  }
+.page-number {
+  text-align: right;
+  color: var(--text-faded);
+  margin-top: 20px;
+  font-size: 0.9em;
+  border-top: 1px solid var(--primary);
+  padding-top: 10px;
+}
 
-  @keyframes metallic-shine {
-    0% {
-      box-shadow:
-        0 0 5px var(--primary),
-        inset 0 0 10px rgba(184, 115, 51, 0.3);
-    }
-    50% {
-      box-shadow:
-        0 0 15px var(--primary-light),
-        inset 0 0 20px rgba(184, 115, 51, 0.5);
-    }
-    100% {
-      box-shadow:
-        0 0 5px var(--primary),
-        inset 0 0 10px rgba(184, 115, 51, 0.3);
-    }
+@keyframes flicker {
+  0% {
+    opacity: 1;
   }
+  50% {
+    opacity: 0.95;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
-  .exercise-item:hover {
-    animation: metallic-shine 3s infinite;
+@keyframes metallic-shine {
+  0% {
+    box-shadow:
+      0 0 5px var(--primary),
+      inset 0 0 10px rgba(184, 115, 51, 0.3);
   }
+  50% {
+    box-shadow:
+      0 0 15px var(--primary-light),
+      inset 0 0 20px rgba(184, 115, 51, 0.5);
+  }
+  100% {
+    box-shadow:
+      0 0 5px var(--primary),
+      inset 0 0 10px rgba(184, 115, 51, 0.3);
+  }
+}
 
-  .page-number {
-    text-align: right;
-    color: var(--text-faded);
-    margin-top: 20px;
-    font-size: 0.9em;
-    border-top: 1px solid var(--primary);
-    padding-top: 10px;
-  }
+/* Estilo para fórmulas matemáticas */
+.mjx-chtml {
+  color: var(--text) !important;
+}
 
-  /* Estilo para fórmulas matemáticas */
-  .mjx-chtml {
-    color: var(--text) !important;
-  }
+/* Seção teórica */
+.section-title {
+  margin: 20px 0 10px 0;
+  font-weight: bold;
+  border-bottom: 1px solid var(--primary);
+  padding-bottom: 5px;
+  color: var(--accent);
+  font-size: 1.2em;
+}
+
+.concept-definition {
+  background-color: rgba(184, 115, 51, 0.1);
+  border-left: 3px solid var(--primary);
+  padding: 10px;
+  margin: 15px 0;
+}
+
+.mission-context {
+  font-style: italic;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(139, 69, 19, 0.1);
+  border: 1px dashed var(--primary);
+  color: var(--text-faded);
+}
+
+.formula-highlight {
+  text-align: center;
+  margin: 15px auto;
+  padding: 10px;
+}
+
+.historical-note {
+  font-size: 0.85em;
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px dotted var(--primary);
+  background-color: rgba(165, 42, 42, 0.1);
+}
+
+.hint-container summary {
+  background-color: rgba(212, 175, 55, 0.1);
+  font-weight: normal;
+  font-size: 0.9em;
+}
+
+.hint-container .hint {
+  margin-top: 0;
+  border: none;
+  background-color: rgba(212, 175, 55, 0.1);
+  border-top: none;
+  border-left: 3px solid var(--primary);
+  margin-bottom: 0;
 }

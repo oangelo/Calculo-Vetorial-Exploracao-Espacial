@@ -1,0 +1,58 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+<div class="context">
+                        ORIGEM: Departamento de Dinâmica de Voos
+                        [RELATÓRIO CONFIDENCIAL DO PROJETO [REDACTED]]
+                    </div>
+<p>
+                        Seja \(\vec{G}(x,y,z) = \bigl(\sin(xy),\; y^2 + z,\; xz - y \bigr)\).
+                        Determine se \(\vec{G}\) é <em>solenoidal</em>, isto é, se \(\nabla \cdot \vec{G} = 0\) em todo o espaço.
+                    </p>
+<p>
+<strong>Desafio adicional:</strong> Caso a divergência não seja zero, indique as regiões (se houver) onde ela se anula. 
+                        Aplique este resultado para discutir possíveis implicações em trajetórias orbitais sujeitas a forças variáveis em diferentes pontos do espaço.
+                    </p>
+<p>
+                        Observação: Este problema requer manipulação de derivadas parciais com produtos de funções trigonométricas e polinomiais.
+                        Utilize protocolos avançados de computação ou derive cuidadosamente cada componente.
+                    </p>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p><strong>Cálculo da divergência:</strong></p>
+<p>
+                                \[
+                                    \nabla \cdot \vec{G} = \frac{\partial}{\partial x}\bigl(\sin(xy)\bigr)
+                                    + \frac{\partial}{\partial y}\bigl(y^2 + z\bigr)
+                                    + \frac{\partial}{\partial z}\bigl(xz - y\bigr).
+                                \]
+                            </p>
+<p>
+<em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[\sin(xy)] = y \cos(xy).\)
+                                <br/>
+<em>Segundo termo:</em> \(\frac{\partial}{\partial y}[y^2 + z] = 2y.\)
+                                <br/>
+<em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[xz - y] = x.\)
+                            </p>
+<p>
+                                Logo,
+                                \[
+                                    \nabla \cdot \vec{G} = y\cos(xy) + 2y + x.
+                                \]
+                            </p>
+<p>
+<strong>Análise:</strong> Este valor não é, em geral, zero para todos \(x, y, z\). Logo, \(\vec{G}\) não é solenoidal em todo o espaço.
+                            </p>
+<p>
+                                Para encontrar as regiões onde a divergência se anula, resolvemos:
+                                \[
+                                    y\cos(xy) + 2y + x = 0.
+                                \]
+                                Dependendo dos valores de \(x\) e \(y\), pode haver soluções específicas. Por exemplo, se \(y=0\), então o termo \(x\) deve ser \(0\), implicando \(x=0\). Assim, a origem \((0,0,z)\) é uma região onde a divergência é nula.
+                            </p>
+<p>
+                                Fisicamente, em trajetórias orbitais, regiões onde \(\nabla \cdot \vec{G} = 0\) podem implicar balanço entre componentes do campo; entretanto, por não ser nulo globalmente, tais equilíbrios podem ser pontuais ou limitados.
+                            </p>
+</div>
+</details>
+</li>

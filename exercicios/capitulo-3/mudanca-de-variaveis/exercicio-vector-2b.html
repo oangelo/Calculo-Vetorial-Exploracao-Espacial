@@ -1,0 +1,77 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+<div class="context">
+              ORIGEM: Conversão Paramétrica - Registro da <span class="censored">Estação</span> X
+            </div>
+<p>
+              Seja \(\iint_{R} (4xy)\,dx\,dy\) onde \(R\) é a elipse definida
+              por \(\frac{x^2}{4} + \frac{y^2}{9} \le 1\). Proponha uma mudança
+              de variáveis para que a região se converta em círculo unitário,
+              e calcule a integral.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades de escalonamento podem ser
+                relevantes.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Para transformar a elipse em círculo unitário, definimos
+                  \[
+                    x = 2u,\quad y = 3v.
+                  \]
+                  Então, a condição \(\frac{x^2}{4} + \frac{y^2}{9} \le 1\)
+                  torna-se \(u^2 + v^2 \le 1\).
+                </p>
+<p>
+                  O Jacobiano é
+                  \[
+                    \left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+                    = 
+                    \begin{vmatrix}
+                      2 &amp; 0\\
+                      0 &amp; 3
+                    \end{vmatrix}
+                    =
+                    6.
+                  \]
+                </p>
+<p>
+                  Logo,
+                  \[
+                    \iint_{R} (4xy)\,dx\,dy
+                    =
+                    \iint_{u^2+v^2 \le 1} \bigl(4 \cdot (2u) \cdot (3v)\bigr)\,
+                    6\, du\, dv.
+                  \]
+                </p>
+<p>
+                  Simplificando o integrando:
+                  \[
+                    4 \times 2u \times 3v = 24\,uv,
+                    \quad
+                    24\,uv \times 6 = 144\,uv.
+                  \]
+                </p>
+<p>
+                  Assim,
+                  \[
+                    \int_{u^2+v^2 \le 1} 144\,uv \;du\,dv.
+                  \]
+                  A região é o disco unitário. Observando a função \(uv\),
+                  é uma função ímpar em relação a \(u\) e \(v\) sobre um
+                  domínio simétrico (o círculo de raio 1).
+                </p>
+<p>
+                  Portanto, a integral de \(uv\) sobre a área simétrica é zero,
+                  e, consequentemente, 
+                  \(\iint_{R} (4xy)\,dx\,dy = 0\).
+                </p>
+<p>CONCLUSÃO: O valor da integral é 0.</p>
+</div>
+</details>
+</li>

@@ -1,0 +1,68 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+<div class="context">
+              ORIGEM: Cálculo Bilateral - Seção de <span class="censored">Órbita Sincronizada</span>
+</div>
+<p>
+              A região \(R\) está contida entre as retas \(y=0\) e \(y=2x\),
+              e entre \(x=0\) e \(x=2\). Defina uma transformação apropriada
+              para “endireitar” a faixa de integração e calcule
+              \(\iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy\). Sugira se há
+              possibilidade de simplificação adicional ou não.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Busque uma parametrização que uniformize a
+                inclinação das retas-limite.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Podemos adotar \(u = x\) e \(v = \frac{y}{2x}\) (para \(x&gt;0\)),
+                  de modo que quando \(y = 0\), \(v=0\), e quando \(y=2x\),
+                  \(v=1\). Além disso, \(0 \le x \le 2\) leva \(0 \le u \le 2\).
+                </p>
+<p>
+                  A Jacobiana, no entanto, requer cuidado:
+                  \[
+                    x = u,\quad y = 2u\,v.
+                  \]
+                  \[
+                    \frac{\partial(x,y)}{\partial(u,v)}
+                    =
+                    \begin{vmatrix}
+                      1 &amp; 0\\
+                      2v &amp; 2u
+                    \end{vmatrix}
+                    =
+                    (1)(2u) - (0)(2v)
+                    =
+                    2u.
+                  \]
+                </p>
+<p>
+                  Logo,
+                  \[
+                    \iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy
+                    =
+                    \int_{0}^{2}\int_{0}^{1}
+                    \sqrt{1 + u^2 + (2uv)^2}\,\bigl(2u\bigr)\, dv\,du.
+                  \]
+                </p>
+<p>
+                  A expressão interna resulta em
+                  \(\sqrt{1 + u^2 + 4u^2v^2}\). Novamente, a integral não
+                  parece conduzir a funções elementares triviais. Pode-se recorrer
+                  a expansões ou métodos numéricos para uma avaliação mais
+                  precisa.
+                </p>
+<p>
+                  CONCLUSÃO: A mudança de variáveis foi realizada com sucesso,
+                  mas a simplificação adicional exige técnicas avançadas.
+                </p>
+</div>
+</details>
+</li>

@@ -1,0 +1,43 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+<div class="context">
+              ORIGEM: Cálculo de Órbita - Gemini [Relatório Parcial de
+              <span class="censored">17/SET/1965</span>]
+            </div>
+<p>
+              A cápsula segue a curva \(C\) em \(\mathbb{R}^3\) descrita por
+              \(\vec{r}(t) = \begin{pmatrix} \cos^2 t \\ \sin^2 t \\ t
+              \end{pmatrix}\), \(t \in [0,\frac{\pi}{2}]\). Calcule o
+              comprimento total e avalie eventuais implicações no consumo de
+              combustível.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes ao combinar
+                \(\cos^2 t\) e \(\sin^2 t\).
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  \(\vec{r}'(t) = \begin{pmatrix} -2\cos t\,\sin t \\ 2\sin
+                  t\,\cos t \\ 1 \end{pmatrix} = \begin{pmatrix} -\sin 2t \\
+                  \sin 2t \\ 1 \end{pmatrix}.\)
+                </p>
+<p>
+                  \(\|\vec{r}'(t)\| = \sqrt{(-\sin 2t)^2 + (\sin 2t)^2 + 1} =
+                  \sqrt{\sin^2 2t + \sin^2 2t + 1} = \sqrt{2\sin^2 2t + 1}.\)
+                </p>
+<p>
+                  O comprimento é \[ \int_0^{\frac{\pi}{2}} \sqrt{1 +
+                  2\sin^2(2t)}\, dt. \] Este valor requer métodos numéricos ou
+                  transformações trigonométricas. A análise sugere que a
+                  variação combinada em \(x\) e \(y\) associada ao crescimento
+                  linear em \(z\) pode demandar maior uso de propulsores para
+                  correção fina.
+                </p>
+</div>
+</details>
+</li>

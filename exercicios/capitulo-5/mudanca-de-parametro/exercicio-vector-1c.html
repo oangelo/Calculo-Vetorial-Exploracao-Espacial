@@ -1,0 +1,45 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+<div class="context">
+              ORIGEM: <span class="censored">Universidade</span> Soviética
+              [Relatório de <span class="censored">████</span>, 1965]
+            </div>
+<p>
+              Dada a curva parametrizada por \(\vec{r}(t) = \begin{pmatrix} e^t
+              \\ t \end{pmatrix}\) no intervalo \([0, 1]\), proponha uma função
+              \(u(\tau)\) que possa simplificar a componente exponencial. Avalie
+              a integral de linha \(\int_C |\vec{r}'(t)|\, dt\) pela nova
+              parametrização.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar a transformação de
+                variável para \(\ln\) ou equivalentes.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  PROCEDIMENTO: \(\vec{r}'(t) = \begin{pmatrix} e^t \\ 1
+                  \end{pmatrix}\), então \(|\vec{r}'(t)| = \sqrt{e^{2t} + 1}.\)
+                </p>
+<p>
+                  PROPOSTA: Use \(\tau = e^t\) para simplificar o termo. Então
+                  \(t = \ln(\tau)\) e \(\frac{d\tau}{dt} = e^t = \tau\).
+                </p>
+<p>
+                  SOB A NOVA VARIÁVEL: \(\tau\) varia de \(\tau(0)=1\) até
+                  \(\tau(1)=e\). A expressão \[ \int_1^{e} \sqrt{\tau^2 + 1}
+                  \,\frac{d t}{d \tau}\, d\tau \] demanda computar
+                  \(\frac{dt}{d\tau} = \frac{1}{\tau}\).
+                </p>
+<p>
+                  ASSIM, \[ \int_1^{e} \sqrt{\tau^2 + 1} \cdot \frac{1}{\tau} \,
+                  d\tau. \] A partir daí, aplica-se o método adequado para
+                  avaliação (simbólica ou numérica).
+                </p>
+</div>
+</details>
+</li>

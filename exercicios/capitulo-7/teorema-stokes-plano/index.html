@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Documento Sigiloso - Teorema de Stokes no Plano</title>
+    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE --><div class="document-header">
+<div class="document-stamp">SIGILOSO</div>
+<div class="document-date">
+          DATA: <span class="censored">07</span> DE MAIO DE
+          <span class="censored">1967</span><br/>
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CONTROLE [REDACTED]</span>
+</div>
+<div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-XI</span><br/><br/>
+          Em virtude da recente
+          <span class="censored">anomalia orbital</span> detectada durante o
+          Programa Gemini, solicitou‑se à divisão matemática a elaboração de
+          protocolos de verificação rápida de curvas de navegação. O presente
+          dossiê consolida exercícios sobre o
+          <span class="censored">Teorema de Stokes</span> aplicado ao plano,
+          fundamentais para checagem de simulações na
+          <span class="censored">sala de cálculo 3‑B</span>.
+        </div>
+<div class="warning-box">
+          Este documento contém informações estratégicas. Divulgação não
+          autorizada resultará em <span class="censored">sanções severas</span>.
+        </div>
+<div class="metadata">
+<span>REF: VX‑<span class="censored">3141</span>‑C</span>
+<span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">3</span></span>
+<span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span>
+</div>
+</div>
+<div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE STOKES NO PLANO
+      </div>
+<div class="concept-definition">
+<p><strong>DEFINIÇÃO FORMAL:</strong></p>
+<p class="formula-highlight">
+          \[\oint_{\partial R} \vec{F}\cdot d\vec{r} = \iint_{R} \left(
+          \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
+          dA\]
+        </p>
+<p>
+          Em um domínio \(R\) simples no plano, limitado por uma curva fechada
+          orientada positivamente \(\partial R\), o teorema relaciona a
+          circulação de um campo \(\vec{F}(x,y)=(P,Q)\) ao fluxo do rotacional
+          escalar \(\operatorname{rot}\vec{F}=\frac{\partial Q}{\partial
+          x}-\frac{\partial P}{\partial y}\) através da área de \(R\).
+        </p>
+</div>
+<div class="mission-context">
+        Cálculos de circulação servem para estimar
+        <span class="censored">vórtices de plasma</span> ao redor das cápsulas
+        na reentrada, onde medições diretas são inviáveis. O método reduz
+        operações de linha (longas) a integrais de área computadas nos
+        computadores <span class="censored">IBM‑7090</span>.
+      </div>
+<div class="historical-note">
+<strong>NOTA HISTÓRICA:</strong> A consolidação deste resultado foi
+        decisiva para o sucesso dos acoplamentos do Programa Gemini (1965‑1966),
+        permitindo correções de atitude com economia de combustível.
+      </div>
+      
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+      
+      <div class="page-number">        PÁGINA 1 DE <span class="censored">9</span> • DOCUMENTO VX‑<span class="censored">3141</span>‑C      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector‑1a.html',
+            'exercicio-vector‑1b.html',
+            'exercicio-vector‑1c.html',
+            'exercicio-vector‑2a.html',
+            'exercicio-vector‑2b.html',
+            'exercicio-vector‑2c.html',
+            'exercicio-vector‑3a.html',
+            'exercicio-vector‑3b.html',
+            'exercicio-vector‑3c.html',
+            'exercicio-vector‑4a.html',
+            'exercicio-vector‑4b.html',
+            'exercicio-vector‑4c.html'
+          ];
+          
+          const list = document.getElementById('exercises');
+          
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+          
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+      
+      loadExercises();
+    </script>
+  </body>
+</html>

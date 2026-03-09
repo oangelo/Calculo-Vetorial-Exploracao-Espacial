@@ -1,0 +1,67 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO CONIC-6</div>
+<div class="context">
+              ORIGEM: Seção de Geometria - Programa [REDACTED]
+            </div>
+<p>
+              (Atividade orientada) Considere a elipse dada pela equação:
+              \[\frac{x^2}{25} + \frac{y^2}{16} = 1.\] Identifique o eixo maior,
+              o eixo menor, e localize os focos. Explique como a soma das
+              distâncias de qualquer ponto da elipse até os focos permanece
+              constante.
+            </p>
+<p>
+              Na figura abaixo, plotamos essa elipse e evidenciamos seus eixos.
+              Note que \(a = 5\) e \(b = 4\), com focos localizados em \((\pm 3,
+              0)\).
+            </p>
+<svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
+<!-- Escala e deslocamento: x,y em [-6..6], 25 px/un. -->
+<g transform="translate(150,150) scale(25,-25)">
+<!-- Eixo X -->
+<line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
+<!-- Eixo Y -->
+<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-6" y2="6"></line>
+<!-- Elipse: x^2/25 + y^2/16 = 1 => a=5, b=4 -->
+<ellipse cx="0" cy="0" fill="none" rx="5" ry="4" stroke="blue" stroke-width="0.1"></ellipse>
+<!-- Eixo maior: A(-5,0) a B(5,0) -->
+<line stroke="green" stroke-width="0.1" x1="-5" x2="5" y1="0" y2="0"></line>
+<!-- Eixo menor: C(0,-4) a D(0,4) -->
+<line stroke="purple" stroke-width="0.1" x1="0" x2="0" y1="-4" y2="4"></line>
+<!-- Focos: F1(-3,0), F2(3,0) -->
+<circle cx="-3" cy="0" fill="red" r="0.15"></circle>
+<circle cx="3" cy="0" fill="red" r="0.15"></circle>
+<!-- Pontos e texto -->
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="-5.3" y="0.3">
+                  A
+                </text>
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="5.2" y="0.3">
+                  B
+                </text>
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="0.3" y="-3.9">
+                  C
+                </text>
+<text fill="white" font-size="0.7" transform="scale(1,-1)" x="0.3" y="4.3">
+                  D
+                </text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="-3.5" y="0.5">
+                  F₁
+                </text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="3.2" y="0.5">
+                  F₂
+                </text>
+</g>
+</svg>
+<details>
+<summary>Solução</summary>
+<p>
+                A elipse tem eixo maior no segmento AB (comprimento 2a = 10) e
+                eixo menor no segmento CD (comprimento 2b = 8).<br/>
+                Os focos estão em (±3, 0), pois <em>c</em>² = a² – b² = 25 – 16
+                = 9, logo c = 3.<br/>
+                A soma das distâncias de qualquer ponto da elipse até F1 e F2 é
+                2a (ou seja, 10).<br/>
+                Assim, se P(x,y) estiver sobre a elipse, então PF1 + PF2 = 10.
+              </p>
+</details>
+</li>

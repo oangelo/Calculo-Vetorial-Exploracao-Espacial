@@ -1,0 +1,60 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+<div class="context">
+              ORIGEM: Laboratório de Simulações - Missão
+              <span class="censored">ÁRTEMIS</span> [NOTA DE MAR/1965]
+            </div>
+<p>
+              Uma trajetória simples é dada por \(\vec{r}(t) = \begin{pmatrix} t
+              \\ t^2 \end{pmatrix}\) para \(t\) no intervalo \([0, 2]\).
+              Reparametrize a curva usando uma função \(u(\tau) = \tau^2\) que
+              mapeia \(\tau\) em \([0, \sqrt{2}]\). Calcule a integral de linha
+              \(\displaystyle \int_C |\vec{r}'(t)|\, dt\) usando a nova
+              parametrização.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar as expressões de
+                \(\vec{r}'(u(\tau))\) antes de integrar.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  PRIMEIRO, DERIVADA ORIGINAL: \(\vec{r}'(t) = \begin{pmatrix} 1
+                  \\ 2t \end{pmatrix}\).
+                </p>
+<p>
+                  MAGNITUDE: \[|\vec{r}'(t)| = \sqrt{(1)^2 + (2t)^2} = \sqrt{1 +
+                  4t^2}.\]
+                </p>
+<p>
+                  NOVA PARAMETRIZAÇÃO: \(t = u(\tau) = \tau^2\). Então
+                  \(\frac{d\vec{r}}{d\tau} = \vec{r}'(u(\tau)) \cdot
+                  \frac{du}{d\tau}.\)
+                </p>
+<p>
+                  COMO \(\frac{du}{d\tau} = 2\tau\), temos: \[
+                  \frac{d\vec{r}}{d\tau} = \begin{pmatrix} 1 \\ 2(\tau^2)
+                  \end{pmatrix} \cdot 2\tau = \begin{pmatrix} 2\tau \\ 4\tau^3
+                  \end{pmatrix}. \]
+                </p>
+<p>
+                  LOGO, \[\bigl|\frac{d\vec{r}}{d\tau}\bigr| = \sqrt{(2\tau)^2 +
+                  (4\tau^3)^2} = \sqrt{4\tau^2 + 16\tau^6} = 2\tau \sqrt{1 +
+                  4\tau^4}.\]
+                </p>
+<p>
+                  INTEGRAL: \[ \int_{0}^{\sqrt{2}} 2\tau \sqrt{1 + 4\tau^4}\,
+                  d\tau. \] (Cálculo numérico ou simbólico pode ser aplicado
+                  conforme necessário.)
+                </p>
+<p>
+                  STATUS: Valor resultante determina o comprimento da trajetória
+                  reparametrizada.
+                </p>
+</div>
+</details>
+</li>

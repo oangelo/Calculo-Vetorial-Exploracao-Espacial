@@ -1,0 +1,52 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+<div class="context">
+              ORIGEM: Ajuste de Tanques - <span class="censored">LABORATÓRIO INTERNO</span>
+</div>
+<p>
+              A região \(D\) é definida por \[0 \le x \le 2, \quad 0 \le y \le 2,
+              \quad 0 \le z \le 4 - x - y.\] Calcular
+              \(\iiint_D (x + y)\,dx\,dy\,dz\), propondo uma mudança de
+              variáveis para simplificar o plano \(z = 4 - x - y\).
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar a superfície inclinada
+                a uma nova coordenada, aproveitando linearidade.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Defina variáveis:
+                  \(u = x,\; v = y,\; w = 4 - x - y - z.\)
+                </p>
+<p>
+                  Assim, \(z = 4 - x - y - w.\)
+                </p>
+<p>
+                  A fronteira \(z = 4 - x - y\) passa a ser \(w = 0\). Para
+                  \(\{x,y\}\) no retângulo \([0,2]\times [0,2]\), \(w\)
+                  varia de 0 a
+                  \(\{4 - x - y\}\). O jacobiano da transformação é
+                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=1.\)
+                </p>
+<p>
+                  Logo,
+                  \[\iiint_D (x + y)\,dx\,dy\,dz
+                  = \int_{u=0}^{2} \int_{v=0}^{2} \int_{w=0}^{4 - u - v}
+                    (u+v)\; dw\, dv\, du.\]
+                </p>
+<p>
+                  Integração resulta em
+                  \[
+                    \int_{0}^{2}\int_{0}^{2} (u+v)(4 - u - v)\,dv\,du,
+                  \]
+                  cujo valor final é 16.
+                </p>
+<p>Assim, o valor da integral é 16.</p>
+</div>
+</details>
+</li>

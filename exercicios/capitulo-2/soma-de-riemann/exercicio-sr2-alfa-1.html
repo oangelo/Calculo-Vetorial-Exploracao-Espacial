@@ -1,0 +1,52 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO SR2-ALFA-1</div>
+<div class="context">
+              ORIGEM: Laboratório de Cálculos Orbitais, Programa Apollo
+            </div>
+<p>
+              Considere a região retangular \(D = [0,2] \times [0,3]\). Sejam
+              \(m=2\) e \(n=3\) as subdivisões para uma soma de Riemann inicial.
+              Calcule a soma de Riemann de
+              \(\iint_D (x+2y)\, dA\) usando pontos amostrais no canto superior
+              direito de cada sub-retângulo.
+            </p>
+<div class="hint">
+              [SUGESTÃO]: Lembre-se de que \(\Delta x = \frac{2-0}{m}\) e
+              \(\Delta y = \frac{3-0}{n}\).
+            </div>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Dividindo o intervalo em \(m=2\) partes no eixo \(x\) e
+                  \(n=3\) partes no eixo \(y\), obtemos
+                  \(\Delta x = 1\) e \(\Delta y = 1\).
+                </p>
+<p>
+                  Pontos amostrais (canto superior direito) em cada sub-região:
+                  por exemplo, no primeiro retângulo ao longo de \(x\) e \(y\),
+                  seria \((1,1)\), depois \((2,1)\), \((1,2)\), \((2,2)\),
+                  \((1,3)\), \((2,3)\).
+                </p>
+<p>
+                  A soma de Riemann se expressa como \(\sum f(x_{ij}^*, y_{ij}^*) \Delta x \,\Delta y\).
+                  Substituindo cada ponto:
+                </p>
+<ul>
+<li>\(f(1,1) = 1 + 2(1) = 3\)</li>
+<li>\(f(2,1) = 2 + 2(1) = 4\)</li>
+<li>\(f(1,2) = 1 + 2(2) = 5\)</li>
+<li>\(f(2,2) = 2 + 2(2) = 6\)</li>
+<li>\(f(1,3) = 1 + 2(3) = 7\)</li>
+<li>\(f(2,3) = 2 + 2(3) = 8\)</li>
+</ul>
+<p>
+                  Soma total:
+                  \[
+                    (3 + 4 + 5 + 6 + 7 + 8) \times 1 \times 1 = 33.
+                  \]
+                </p>
+<p>Portanto, a soma de Riemann aproximada é \(33\).</p>
+</div>
+</details>
+</li>

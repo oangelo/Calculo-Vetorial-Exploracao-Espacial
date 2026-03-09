@@ -1,0 +1,42 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+<div class="context">
+              ORIGEM: Pesquisas de Voo - Equipe
+              <span class="censored">Gêmeos</span>
+</div>
+<p>
+              Uma manobra orbital requer percorrer a curva \(C\) no espaço
+              \(\vec{r}(t) = \begin{pmatrix} 2t \\ \ln(1+t) \\ \sqrt{1+t^2}
+              \end{pmatrix}\), \(t \in [0, 2]\). Calcule o comprimento e avalie
+              se há variação significativa em \(\ln(1+t)\).
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Observe cuidadosamente as taxas de crescimento
+                de cada componente.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  \(\vec{r}'(t) = \begin{pmatrix} 2 \\ \frac{1}{1+t} \\
+                  \frac{t}{\sqrt{1+t^2}} \end{pmatrix}\).
+                </p>
+<p>
+                  Logo, \[ \|\vec{r}'(t)\| = \sqrt{2^2 +
+                  \left(\frac{1}{1+t}\right)^2 +
+                  \left(\frac{t}{\sqrt{1+t^2}}\right)^2}. \]
+                </p>
+<p>
+                  A integral \(\int_0^2 \sqrt{4 + \frac{1}{(1+t)^2} +
+                  \frac{t^2}{1+t^2}}\, dt\) não admite solução elementar
+                  simples. Comparações numéricas mostram que o crescimento de
+                  \(\ln(1+t)\) é modesto, enquanto as variações em \(x=2t\) e
+                  \(z=\sqrt{1+t^2}\) dominam o comportamento do comprimento
+                  total.
+                </p>
+</div>
+</details>
+</li>
