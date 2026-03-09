@@ -22,6 +22,7 @@ Revisão da PS amanhã, dia 15/07/2025, a partir das 10:40 da manhã até às 12
 
 - [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica.html)
 - [Conicas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/conicas.html)
+- [Curvas de Nível](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/05-curvas-de-nivel.html)
 - [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivadas.html)
 - [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integrais.html)
 
