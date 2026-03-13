@@ -85,6 +85,10 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 10. [Teorema de Stokes no espaço](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-stokes-no-espaco.html)
 
+## Calendário do Semestre
+
+Confira as datas importantes, cronograma de aulas e prazos no [planejamento do semestre 2026/1](planejamento/planejamento-CV-2026-1.md).
+
 ## Ferramentas
 
 - [Roleta de exercícios](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/roleta.html) - Sorteie exercícios para praticar
