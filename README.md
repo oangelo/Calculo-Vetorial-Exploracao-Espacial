@@ -2,26 +2,13 @@
 
 Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fundamentos do Cálculo Vetorial através de uma perspectiva única: a exploração espacial. Aqui, cada teorema se torna uma ferramenta para desvendar os mistérios do universo, cada conceito uma chave para compreender a dança dos corpos celestes. Das órbitas dos satélites aos campos gravitacionais das estrelas, veremos como o cálculo vetorial nos permite modelar e compreender os fenômenos que regem nosso cosmos.
 
-## 📋 TODO e Roadmap
-
-Veja nosso [TODO.md](TODO.md) para:
-
-- Tarefas pendentes e melhorias futuras
-- Lista de bugs conhecidos
-- Ideias para novas funcionalidades
-- Como contribuir com o projeto
-
-## Notas
-
-[2025-1](notas/2025-1.md)
-Revisão da PS amanhã, dia 15/07/2025, a partir das 10:40 da manhã até às 12h no lab de robôtica.
-
 ## Apresentações e Material Didático
 
 0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/index.html)
 
 - [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica.html)
 - [Conicas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/conicas.html)
+- [Curvas de Nível](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/05-curvas-de-nivel.html)
 - [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivadas.html)
 - [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integrais.html)
 
@@ -98,6 +85,14 @@ Revisão da PS amanhã, dia 15/07/2025, a partir das 10:40 da manhã até às 12
 
 10. [Teorema de Stokes no espaço](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/teorema-de-stokes-no-espaco.html)
 
+## Calendário do Semestre
+
+Confira as datas importantes, cronograma de aulas e prazos no [planejamento do semestre 2026/1](planejamento/planejamento-CV-2026-1.md).
+
+## Ferramentas
+
+- [Roleta de exercícios](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/roleta.html) - Sorteie exercícios para praticar
+
 ## Pré-requisitos
 
 Para embarcar nesta jornada, os viajantes devem estar familiarizados com:
@@ -109,8 +104,6 @@ Para embarcar nesta jornada, os viajantes devem estar familiarizados com:
 ## Bibliografia Recomendada
 
 **Guidorizzi**. _Um Curso de Cálculo - Vol. 3_. Capa comum, 25 janeiro 2002.
-
-[Roleta](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/roleta.html)
 
 ---
 

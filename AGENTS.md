@@ -45,8 +45,10 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 │   └── css/              # Documentação de estilos
 │       ├── inventory.md  # Status e problemas CSS
 │       └── themes.md     # Documentação dos 3 temas
+├── planejamento/         # Cronogramas e planejamentos semestrais
 ├── investigacao/         # Material de pesquisa histórica
-└── notas/                # Notas do curso
+├── notas/                # Notas do curso
+└── .tree/                # Git worktrees (ignorado pelo git)
 ```
 
 ## Para Agentes de IA: Como Contribuir
