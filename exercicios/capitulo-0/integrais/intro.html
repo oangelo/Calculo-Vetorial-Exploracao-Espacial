@@ -28,19 +28,52 @@
             <span class="censored">5</span></span>
 </div>
 </div>
-<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: TÉCNICAS DE INTEGRAÇÃO</div>
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS</div>
 <div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
+<p><strong>INTEGRAL INDEFINIDA (ANTIDERIVADA):</strong></p>
 <p class="formula-highlight">
-          \[\int f(x)\,dx = F(x) + C\]
+          \[ \int f(x)\,dx = F(x) + C \iff F'(x) = f(x) \]
         </p>
 <p>
-          As técnicas de integração consistem em métodos para encontrar a
-          antiderivada de uma função, incluindo substituição, integração por
-          partes, frações parciais e métodos trigonométricos. Tais ferramentas
-          são cruciais para resolver problemas de
-          <span class="censored">navegação</span>, dinâmica orbital e análise de
-          empuxo em veículos espaciais.
+          A constante \(C\) representa a família de todas as antiderivadas.
+          A integração é a operação inversa da derivação.
+        </p>
+</div>
+<div class="concept-definition">
+<p><strong>INTEGRAL DEFINIDA (SOMA DE RIEMANN):</strong></p>
+<p class="formula-highlight">
+          \[ \int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*)\,\Delta x \]
+        </p>
+<p>
+          onde \(\Delta x = \frac{b-a}{n}\) e \(x_i^*\) é um ponto de amostragem
+          no \(i\)-ésimo subintervalo. Geometricamente, a integral definida
+          representa a <strong>área com sinal</strong> sob o gráfico de \(f\)
+          entre \(a\) e \(b\).
+        </p>
+</div>
+<div class="concept-definition">
+<p><strong>TEOREMA FUNDAMENTAL DO CÁLCULO:</strong></p>
+<p class="formula-highlight">
+          \[ \int_a^b f(x)\,dx = F(b) - F(a) \]
+        </p>
+<p>
+          onde \(F\) é qualquer antiderivada de \(f\). Este teorema conecta
+          os dois conceitos centrais do cálculo: derivação e integração.
+        </p>
+</div>
+<div class="concept-definition">
+<p><strong>TÉCNICAS BÁSICAS DE INTEGRAÇÃO:</strong></p>
+<p class="formula-highlight">
+          <strong>1. Substituição:</strong>
+          \[ \int f(g(x))\,g'(x)\,dx = \int f(u)\,du, \quad u = g(x) \]
+          <br/><br/>
+
+          <strong>2. Integração por Partes:</strong>
+          \[ \int u\,dv = uv - \int v\,du \]
+          <br/><br/>
+
+          <strong>3. Potências:</strong>
+          \[ \int x^n\,dx = \frac{x^{n+1}}{n+1} + C, \quad n \neq -1 \]
         </p>
 </div>
 <div class="mission-context">
