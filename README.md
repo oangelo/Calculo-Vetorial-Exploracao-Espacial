@@ -8,7 +8,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 - [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica/index.html)
 - [Conicas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/conicas/index.html)
-- [Curvas de Nível](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/07-curvas-de-nivel.html)
+- [Curvas de Nível](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/curvas-de-nivel/index.html)
 - [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivadas/index.html)
 - [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integrais/index.html)
 
