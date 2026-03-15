@@ -1,25 +1,24 @@
 <li class="exercise-item">
 <div class="exercise-number">EXERCÍCIO CONIC-8</div>
-<div class="context">
-              ORIGEM: Seção de Configurações Orbitais [MATERIAL DE PESQUISA]
-            </div>
+<div class="context">ORIGEM: Configurações de Trajetória Interplanetária [PROGRAMA VOYAGER, 1965]</div>
 <p>
-              (Atividade orientada) Considere a hipérbole descrita pela equação:
-              \[\frac{x^2}{16} - \frac{y^2}{9} = 1.\] Identifique seus vértices,
-              focos e assíntotas. Explique como a diferença das distâncias a
-              cada foco permanece constante.
+              A figura mostra uma hipérbole horizontal com vértices em V₁(-4, 0) e V₂(4, 0). As assíntotas são y = (3/4)x e y = -(3/4)x. Determine a equação canônica e calcule a posição dos focos.
             </p>
 <p>
-              Na figura seguinte, desenhamos a curva no intervalo \(-6 \le x \le
-              6\):
-            </p>
 <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
+<!-- Hipérbole: a=4, b=3, assíntotas y=±(3/4)x -->
 <g transform="translate(200,200) scale(25,-25)">
-<!-- Eixos -->
+<!-- Eixo X -->
 <line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
+<!-- Eixo Y -->
 <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
-<!-- Hipérbole: x^2/16 - y^2/9 = 1 usando parametrização mais precisa -->
-<!-- Ramo direito (x>0) - hipérbole horizontal -->
+<!-- Assíntotas: y = ±(3/4)x -->
+<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="-5.25" y2="5.25"></line>
+<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="5.25" y2="-5.25"></line>
+<!-- Texto assíntotas -->
+<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="-2.8">y = (3/4)x</text>
+<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="3.2">y = −(3/4)x</text>
+<!-- Ramo direito -->
 <path d="M 4 0
                  L 4.04 0.3
                  L 4.16 0.6
@@ -42,7 +41,7 @@
                  L 6.16 -2.4
                  L 6.61 -2.7
                  L 7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
-<!-- Ramo esquerdo (x<0) -->
+<!-- Ramo esquerdo -->
 <path d="M -4 0
                  L -4.04 0.3
                  L -4.16 0.6
@@ -65,45 +64,29 @@
                  L -6.16 -2.4
                  L -6.61 -2.7
                  L -7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
-<!-- Vértices em (±4, 0) -->
+<!-- Vértices -->
 <circle cx="4" cy="0" fill="red" r="0.15"></circle>
 <circle cx="-4" cy="0" fill="red" r="0.15"></circle>
-<text fill="red" font-size="0.7" transform="scale(1,-1)" x="4.1" y="0.5">
-                  V₁
-                </text>
-<text fill="red" font-size="0.7" transform="scale(1,-1)" x="-4.9" y="0.5">
-                  V₂
-                </text>
-<!-- Focos: c^2 = a^2 + b^2 => c^2=16+9=25 => c=5 => focos em (±5,0) -->
-<circle cx="5" cy="0" fill="green" r="0.15"></circle>
-<circle cx="-5" cy="0" fill="green" r="0.15"></circle>
-<text fill="green" font-size="0.7" transform="scale(1,-1)" x="5.1" y="0.5">
-                  F₁
-                </text>
-<text fill="green" font-size="0.7" transform="scale(1,-1)" x="-5.8" y="0.5">
-                  F₂
-                </text>
-<!-- Assíntotas: y= ±(b/a)x = ±(3/4)x -->
-<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="-5.25" y2="5.25"></line>
-<line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="5.25" y2="-5.25"></line>
-<!-- Texto para as assíntotas -->
-<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="-2.8">
-                  y = (3/4)x
-                </text>
-<text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="3.2">
-                  y = -(3/4)x
-                </text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="4.1" y="0.5">V₂(4, 0)</text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="-6.5" y="0.5">V₁(−4, 0)</text>
 </g>
 </svg>
+</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
+<div class="hint">[NOTA TÉCNICA]: A forma canônica de uma hipérbole horizontal centrada na origem é \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1.\] O valor de \(a\) é a distância do centro a cada vértice. As assíntotas \(y = \pm\frac{b}{a}x\) fornecem a razão \(b/a\). Use \(c^2 = a^2 + b^2\) para encontrar os focos.</div>
+</details>
 <details>
-<summary>Solução</summary>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-8 REQUERIDO]</summary>
 <p>
-                Para \(\frac{x^2}{16} - \frac{y^2}{9} = 1\), temos a = 4, b =
-                3.<br/>
-                Portanto, focos em (±5,0), vértices em (±4,0) e assíntotas
-                definidas por y = ±(b/a)x = ±(3/4)x.<br/>
-                Para qualquer ponto P na hipérbole, a diferença |PF1 – PF2| é
-                constante (= 2a).
+                Vértices em V₁(-4, 0) e V₂(4, 0), logo a = 4.<br>
+                As assíntotas são \(y = \pm\frac{3}{4}x\), logo \(\frac{b}{a} = \frac{3}{4}\):<br>
+                \[b = \frac{3}{4} \times 4 = 3.\]<br>
+                Calculando c (distância aos focos):<br>
+                \[c^2 = a^2 + b^2 = 16 + 9 = 25 \implies c = 5.\]<br>
+                Focos em (±5, 0), ou seja, F₁(-5, 0) e F₂(5, 0).<br>
+                A equação canônica é:<br>
+                \[\frac{x^2}{16} - \frac{y^2}{9} = 1.\]
               </p>
 </details>
 </li>

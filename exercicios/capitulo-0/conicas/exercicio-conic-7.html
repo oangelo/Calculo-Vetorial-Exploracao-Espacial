@@ -1,27 +1,20 @@
 <li class="exercise-item">
 <div class="exercise-number">EXERCÍCIO CONIC-7</div>
-<div class="context">ORIGEM: Dossiê Geométrico [CLASSIFICADO]</div>
+<div class="context">ORIGEM: Estudo de Trajetórias de Reentrada [PROGRAMA GEMINI, 1964]</div>
 <p>
-              (Atividade orientada) Considere a parábola dada pela equação: \[y
-              = \frac{1}{8}x^2.\] Identifique o vértice e determine a posição do
-              foco e da diretriz a partir da forma canônica.
+              A figura mostra uma parábola com vértice na origem. O foco F está em (0, 2) e a diretriz é y = -2. O ponto P(4, 2) pertence à curva. Determine a equação desta parábola na forma y = ax².
             </p>
 <p>
-              Abaixo, apresentamos a representação dessa parábola para \(-10 \le
-              x \le 10\):
-            </p>
 <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
-<!-- Zoom com foco na região de interesse -->
+<!-- Parábola: vértice (0,0), foco (0,2), p=2 -->
 <g transform="translate(200,300) scale(25,-25)">
-<!-- Eixos -->
+<!-- Eixo X -->
 <line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
-<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-3" y2="8"></line>
-<!-- Grade de referência (opcional) -->
-<line stroke="lightgray" stroke-dasharray="0.1,0.1" stroke-width="0.02" x1="-6" x2="6" y1="2" y2="2"></line>
-<line stroke="lightgray" stroke-dasharray="0.1,0.1" stroke-width="0.02" x1="-6" x2="6" y1="-2" y2="-2"></line>
-<line stroke="lightgray" stroke-dasharray="0.1,0.1" stroke-width="0.02" x1="4" x2="4" y1="-3" y2="8"></line>
-<line stroke="lightgray" stroke-dasharray="0.1,0.1" stroke-width="0.02" x1="-4" x2="-4" y1="-3" y2="8"></line>
-<!-- Parábola y = (1/8)x^2 usando pontos discretos mas precisos -->
+<!-- Eixo Y -->
+<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-4" y2="8"></line>
+<!-- Diretriz y = -2 -->
+<line stroke="red" stroke-width="0.1" x1="-6" x2="6" y1="-2" y2="-2"></line>
+<!-- Parábola y = (1/8)x² -->
 <path d="M -6 4.5
                  L -5 3.125
                  L -4 2
@@ -35,41 +28,38 @@
                  L 4 2
                  L 5 3.125
                  L 6 4.5" fill="none" stroke="blue" stroke-width="0.15"></path>
-<!-- Diretriz em y = -2 -->
-<line stroke="red" stroke-width="0.1" x1="-6" x2="6" y1="-2" y2="-2"></line>
-<!-- Destaque do segmento p = 2 entre foco e vértice -->
-<line stroke="purple" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="0" x2="0" y1="0" y2="2"></line>
-<!-- Vértice (0,0) -->
+<!-- Linha PF -->
+<line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="0" y1="2" y2="2"></line>
+<!-- Linha PD (projeção na diretriz) -->
+<line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="4" y1="2" y2="-2"></line>
+<!-- Vértice V(0,0) -->
 <circle cx="0" cy="0" fill="red" r="0.15"></circle>
-<!-- Foco em (0, 2) -->
-<circle cx="0" cy="2" fill="green" r="0.15"></circle>
-<!-- Legenda para pontos importantes -->
-<text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.3" y="-0.3">
-                  V
-                </text>
-<text fill="green" font-size="0.7" transform="scale(1,-1)" x="0.3" y="-2">
-                  F
-                </text>
-<text fill="red" font-size="0.7" transform="scale(1,-1)" x="-5.8" y="1.5">
-                  Diretriz
-                </text>
-<!-- Ponto P na parábola para ilustrar equidistância -->
-<circle cx="4" cy="2" fill="orange" r="0.15"></circle>
-<text fill="orange" font-size="0.7" transform="scale(1,-1)" x="4.2" y="-2.3">
-                  P
-                </text>
-<!-- Linhas mostrando equidistância (PF = PD) -->
-<line stroke="orange" stroke-dasharray="0.1,0.1" stroke-width="0.05" x1="4" x2="0" y1="2" y2="2"></line>
-<line stroke="orange" stroke-dasharray="0.1,0.1" stroke-width="0.05" x1="4" x2="4" y1="2" y2="-2"></line>
+<!-- Foco F(0,2) -->
+<circle cx="0" cy="2" fill="red" r="0.15"></circle>
+<!-- Ponto P(4,2) -->
+<circle cx="4" cy="2" fill="black" r="0.15"></circle>
+<!-- Texto -->
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.3">V(0, 0)</text>
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-2.3">F(0, 2)</text>
+<text fill="black" font-size="0.7" transform="scale(1,-1)" x="4.2" y="-2.3">P(4, 2)</text>
+<text fill="red" font-size="0.6" transform="scale(1,-1)" x="-5.8" y="1.5">y = −2</text>
 </g>
 </svg>
+</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+<div class="hint">[NOTA TÉCNICA]: Para uma parábola vertical com vértice na origem, a forma é \(y = ax^2\). O foco está em \((0, p)\) onde \(p = \frac{1}{4a}\). Substitua o ponto P(4, 2) na equação para encontrar o valor de \(a\), ou use a relação entre \(a\) e o foco para verificar.</div>
+</details>
 <details>
-<summary>Solução</summary>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-7 REQUERIDO]</summary>
 <p>
-                A forma padrão é y = ax², com a = 1/8.<br/>
-                Vértice em (0,0).<br/>
-                Foco em (0, 1/(4a)) = (0, 1/(4*(1/8))) = (0, 2).<br/>
-                Diretriz: y = -2.
+                O foco está em (0, 2), logo p = 2.<br>
+                A relação entre p e a é \(p = \frac{1}{4a}\), portanto:<br>
+                \[a = \frac{1}{4p} = \frac{1}{8}.\]<br>
+                Verificando com o ponto P(4, 2):<br>
+                \[y = \frac{1}{8}(4)^2 = \frac{16}{8} = 2.\] ✓<br>
+                A equação da parábola é:<br>
+                \[y = \frac{1}{8}x^2.\]
               </p>
 </details>
 </li>

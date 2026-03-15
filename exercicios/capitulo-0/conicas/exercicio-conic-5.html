@@ -1,60 +1,43 @@
 <li class="exercise-item">
 <div class="exercise-number">EXERCÍCIO CONIC-5</div>
-<div class="context">
-              ORIGEM: Análise de Diagrama [PROJETO [REDACTED]]
-            </div>
+<div class="context">ORIGEM: Mapeamento de Zonas de Aterrissagem [PROGRAMA MERCURY, 1961]</div>
 <p>
-              (Atividade orientada) Considere a circunferência descrita pela
-              equação: \[x^2 + y^2 = 25.\] Identifique o centro, o raio, e um
-              diâmetro qualquer. Explique por que todos os pontos que satisfazem
-              a equação estão à mesma distância do centro.
+              A figura mostra uma circunferência. O centro C está em (3, -2) e o ponto P(3, 3) pertence à curva. Determine a equação desta circunferência.
             </p>
 <p>
-              A figura abaixo mostra uma representação exata desta
-              circunferência no plano cartesiano:
-              <svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
-<!-- Usando transform para "simular" eixos de -6..6, com 25 px por unidade -->
+<svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
+<!-- Centro C(3,-2), ponto P(3,3) => raio = 5 -->
 <g transform="translate(150,150) scale(25,-25)">
 <!-- Eixo X -->
-<line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
+<line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
 <!-- Eixo Y -->
-<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-6" y2="6"></line>
-<!-- Circunferência x^2 + y^2 = 25 => raio=5 -->
-<circle cx="0" cy="0" fill="none" r="5" stroke="blue" stroke-width="0.1"></circle>
-<!-- Diâmetro de exemplo: A(-5,0) e B(5,0) -->
-<line stroke="green" stroke-width="0.1" x1="-5" x2="5" y1="0" y2="0"></line>
-<!-- Pontos -->
-<circle cx="0" cy="0" fill="red" r="0.15"></circle>
-<!-- Centro -->
-<circle cx="-5" cy="0" fill="black" r="0.15"></circle>
-<!-- A -->
-<circle cx="5" cy="0" fill="black" r="0.15"></circle>
-<!-- B -->
-<text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.2">
-                    O
-                  </text>
-<text fill="white" font-size="0.7" transform="scale(1,-1)" x="-5.4" y="0.3">
-                    A
-                  </text>
-<text fill="white" font-size="0.7" transform="scale(1,-1)" x="5.2" y="0.3">
-                    B
-                  </text>
+<line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
+<!-- Circunferência: centro (3,-2), raio=5 -->
+<circle cx="3" cy="-2" fill="none" r="5" stroke="blue" stroke-width="0.1"></circle>
+<!-- Linha do raio: C(3,-2) a P(3,3) -->
+<line stroke="green" stroke-width="0.08" stroke-dasharray="0.15,0.15" x1="3" x2="3" y1="-2" y2="3"></line>
+<!-- Centro C -->
+<circle cx="3" cy="-2" fill="red" r="0.15"></circle>
+<!-- Ponto P na curva -->
+<circle cx="3" cy="3" fill="black" r="0.15"></circle>
+<!-- Texto -->
+<text fill="red" font-size="0.7" transform="scale(1,-1)" x="3.2" y="2.3">C(3, −2)</text>
+<text fill="black" font-size="0.7" transform="scale(1,-1)" x="3.2" y="-3.3">P(3, 3)</text>
 </g>
 </svg>
 </p>
-<p>
-<em>Instrução:</em> Observe que a equação \(x^2 + y^2 = 25\)
-              descreve todos os pontos (\(x, y\)) a uma distância 5 da origem.
-            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+<div class="hint">[NOTA TÉCNICA]: Lembre-se que a equação geral de uma circunferência com centro (h, k) e raio r é \[(x - h)^2 + (y - k)^2 = r^2.\] O raio pode ser obtido calculando a distância entre o centro C e o ponto P que pertence à curva.</div>
+</details>
 <details>
-<summary>Solução</summary>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-5 REQUERIDO]</summary>
 <p>
-<strong>Centro:</strong> (0,0). <strong>Raio:</strong> 5.
-                <strong>Exemplo de diâmetro:</strong> segmento ligando A(-5,0) e
-                B(5,0).<br/>
-                Todo ponto (x,y) que satisfaz x^2 + y^2 = 25 está a distância
-                \(\sqrt{x^2 + y^2} = 5\) do centro (0,0), definindo assim uma
-                circunferência de raio 5.
+                O centro está em C(3, -2), logo h = 3 e k = -2.<br>
+                O raio é a distância de C(3, −2) a P(3, 3):<br>
+                \[r = \sqrt{(3-3)^2 + (3-(-2))^2} = \sqrt{0 + 25} = 5.\]<br>
+                Portanto, a equação da circunferência é:<br>
+                \[(x - 3)^2 + (y + 2)^2 = 25.\]
               </p>
 </details>
 </li>
