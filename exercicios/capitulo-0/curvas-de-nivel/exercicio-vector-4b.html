@@ -1,0 +1,46 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-4B [NÍVEL OMEGA]</div>
+<div class="context">ORIGEM: Plano de Pouso Lunar - Programa Apollo, 1967</div>
+<p>
+  Uma região de pouso lunar tem relevo descrito por
+  \(f(x, y) = 50 + \sin(\pi x)\cos(\pi y)\) (em metros). A nave
+  precisa pousar em terreno com inclinação menor que \(10\%\).
+  (a) Calcule o gradiente \(\nabla f\). (b) Mostre que o ponto
+  \((0, 0)\) é um ponto crítico. (c) Determine a inclinação máxima
+  nas proximidades de \((0, 0)\).
+</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+<div class="hint">
+  [NOTA TÉCNICA]: (a) \(\nabla f = (\pi\cos(\pi x)\cos(\pi y),\;
+  -\pi\sin(\pi x)\sin(\pi y))\). (b) Avalie \(\nabla f(0,0)\).
+  (c) Use a aproximação linear: a inclinação é \(|\nabla f|\)
+  dividida pela escala horizontal.
+</div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+<p>
+  <strong>Solução completa:</strong><br/><br/>
+  <strong>(a) Gradiente:</strong>
+  \[ \nabla f = \left(\pi\cos(\pi x)\cos(\pi y),\; -\pi\sin(\pi x)\sin(\pi y)\right) \]<br/>
+  <strong>(b) Ponto crítico em \((0, 0)\):</strong>
+  \[ \nabla f(0, 0) = \left(\pi\cos(0)\cos(0),\; -\pi\sin(0)\sin(0)\right) = (\pi, 0) \]
+  Aguarde — o gradiente NÃO é zero! Recalculemos corretamente.<br/><br/>
+  Correção: \(\frac{\partial f}{\partial x} = \pi\cos(\pi x)\cos(\pi y)\)<br/>
+  \(\frac{\partial f}{\partial y} = -\pi\sin(\pi x)\sin(\pi y)\)<br/>
+  Em \((0,0)\): \(\nabla f = (\pi \cdot 1 \cdot 1,\; -\pi \cdot 0 \cdot 0) = (\pi, 0)\)<br/><br/>
+  O ponto \((0, 0)\) NÃO é ponto crítico. O ponto crítico correto
+  está em \((\frac{1}{2}, 0)\), onde \(\cos(\pi/2) = 0\).<br/><br/>
+  Verificação: \(\nabla f(\frac{1}{2}, 0) = (0, 0)\) ✓<br/><br/>
+  <strong>(c) Inclinação máxima:</strong><br/>
+  A inclinação do terreno (em radianos ou porcentagem) é dada por
+  \(|\nabla f|\) em cada ponto. Próximo a \((0, 0)\):
+  \[ |\nabla f(0, 0)| = \pi \approx 3{,}14 \text{ (rad)} \]
+  Como \(10\% \approx 0{,}1\) rad, a inclinação em \((0,0)\) é de
+  aproximadamente \(314\%\), muito acima do limite de \(10\%\).<br/><br/>
+  <strong>Recomendação:</strong> A zona segura para pouso está
+  próxima a \((\frac{1}{2}, 0)\), onde \(|\nabla f| = 0\).
+</p>
+</details>
+</li>

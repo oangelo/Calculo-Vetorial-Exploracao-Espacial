@@ -1,0 +1,44 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3A [NÍVEL GAMMA]</div>
+<div class="context">ORIGEM: Cartografia Tática - Operação Mongoose, 1962</div>
+<p>
+  Esboce o mapa de curvas de nível da função
+  \(f(x, y) = x^2 + y\) para os valores \(c = -2, -1, 0, 1, 2\).
+  Descreva a direção em que a função cresce mais rapidamente.
+</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+<div class="hint">
+  [NOTA TÉCNICA]: Para cada \(c\), isole \(y\): \(y = c - x^2\).
+  Todas são parábolas com vértice em \((0, c)\) que se abrem para
+  baixo. O crescimento máximo ocorre na direção perpendicular às
+  curvas de nível.
+</div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+<p>
+  <strong>Solução completa:</strong><br/><br/>
+  <strong>Passo 1:</strong> Encontrar as equações das curvas de nível:
+  \[ x^2 + y = c \implies y = c - x^2 \]
+  <strong>Passo 2:</strong> Descrever cada curva:
+  <ul style="margin: 10px 0 10px 20px;">
+    <li>\(c = -2\): \(y = -2 - x^2\) — parábola, vértice em \((0, -2)\)</li>
+    <li>\(c = -1\): \(y = -1 - x^2\) — parábola, vértice em \((0, -1)\)</li>
+    <li>\(c = 0\): \(y = -x^2\) — parábola, vértice na origem</li>
+    <li>\(c = 1\): \(y = 1 - x^2\) — parábola, vértice em \((0, 1)\)</li>
+    <li>\(c = 2\): \(y = 2 - x^2\) — parábola, vértice em \((0, 2)\)</li>
+  </ul>
+  Todas as parábolas são congruentes (mesmo formato), deslocadas
+  verticalmente. As curvas para \(c\) maior ficam acima das de \(c\)
+  menor.<br/><br/>
+  <strong>Passo 3:</strong> Direção de crescimento mais rápido:
+  O gradiente é \(\nabla f = (2x, 1)\). No ponto \((0, 0)\):
+  \(\nabla f = (0, 1)\), ou seja, a função cresce mais rápido
+  na direção do eixo \(y\) positivo (para cima). A magnitude do
+  crescimento é \(|\nabla f| = \sqrt{4x^2 + 1}\), que é mínima
+  (\(= 1\)) sobre o eixo \(y\) e aumenta conforme nos afastamos
+  desse eixo.
+</p>
+</details>
+</li>
