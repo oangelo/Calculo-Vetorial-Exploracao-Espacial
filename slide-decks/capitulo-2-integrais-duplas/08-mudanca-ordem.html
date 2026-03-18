@@ -159,30 +159,24 @@
       <section>
         <h2>Visualização das Ordens de Integração</h2>
 
+        <div class="math-section">
+          <p>Veja animações das duas ordens de integração sobre o triângulo:</p>
+        </div>
+
         <div class="canvas-container">
-          <canvas
-            id="integrationCanvas"
-            class="visualization-canvas"
-            width="700"
-            height="400"
-          ></canvas>
+          <a
+            href="./canvas/integracao.html"
+            target="_blank"
+            class="control-button"
+          >
+            Abrir Visualização Interativa
+          </a>
         </div>
 
-        <div class="controls-container">
-          <button id="btnVertical" class="control-button active">
-            Ordem dy dx (Vertical)
-          </button>
-          <button id="btnHorizontal" class="control-button">
-            Ordem dx dy (Horizontal)
-          </button>
-          <button id="btnPause" class="control-button">Pausar</button>
-          <button id="btnReset" class="control-button">Reiniciar</button>
-
-          <div class="control-slider">
-            <label for="speedSlider">Velocidade:</label>
-            <input type="range" id="speedSlider" min="1" max="10" value="3" />
-          </div>
-        </div>
+        <p class="note">
+          Compare visualmente como dy dx (varre verticalmente) e dx dy (varre
+          horizontalmente) calculam a mesma região.
+        </p>
       </section>
 
       <!-- Slide 7: Quando Escolher Cada Ordem -->
@@ -310,45 +304,6 @@
             Observação: Ambas as ordens produziram o mesmo resultado, como
             esperado.
           </p>
-        </div>
-      </section>
-
-      <!-- Slide 11: Aplicações Práticas -->
-      <section>
-        <h2>Aplicações Práticas</h2>
-
-        <div class="dual-panel">
-          <div class="math-section">
-            <p><strong>Aplicações em Engenharia Espacial:</strong></p>
-            <ul>
-              <li>
-                Cálculo da distribuição de estresse em painéis triangulares
-              </li>
-              <li>Análise térmica em elementos finitos triangulares</li>
-              <li>Otimização de materiais compósitos com estrutura variável</li>
-              <li>Modelagem de fluxo de radiação através de superfícies</li>
-              <li>Cálculo de centros de massa de componentes não-homogêneos</li>
-            </ul>
-          </div>
-
-          <div class="math-section">
-            <p><strong>Melhores Práticas:</strong></p>
-            <ul>
-              <li>
-                Sempre desenhe a região de integração antes de escolher a ordem
-              </li>
-              <li>
-                Avalie a complexidade da função e dos limites de integração
-              </li>
-              <li>
-                Considere se a função apresenta descontinuidades ou
-                singularidades
-              </li>
-              <li>
-                Quando possível, use simetrias para simplificar a integração
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
     </section>

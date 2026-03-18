@@ -1,31 +1,4 @@
-    <!-- Script para inicialização -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        // Inicialização do RevealJS
-        Reveal.initialize({
-          hash: true,
-          center: true,
-          slideNumber: true,
-          transition: 'slide',
-          navigationMode: 'default',
-          plugins: [RevealMath.MathJax3],
-          math: {
-            mathjax:
-              'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js',
-            config: 'TeX-AMS_HTML-full',
-            TeX: {
-              Macros: {},
-            },
-          },
-        });
-
-        // Inicializar visualizações
-        initRiemannVisualization();
-        initVolumeVisualization();
-        initApplicationVisualization();
-        initIntegrationVisualization();
-      });
-
+// Visualizações para Capítulo 2 - Integrais Duplas
       // =============================================
       // VISUALIZAÇÃO DA SOMA DE RIEMANN
       // =============================================
@@ -1087,6 +1060,4 @@
           }
         });
       }
-    </script>
-  </body>
-</html>
+    

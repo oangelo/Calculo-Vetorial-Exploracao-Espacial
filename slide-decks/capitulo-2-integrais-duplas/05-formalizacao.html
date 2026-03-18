@@ -57,33 +57,25 @@
         </div>
       </section>
 
-      <!-- Slide: Visualização tridimensional -->
+      <!-- Slide: Link para visualização de volume -->
       <section>
         <h2>Volume como Integral Dupla</h2>
 
-        <canvas
-          id="volumeCanvas"
-          class="visualization-canvas"
-          width="700"
-          height="400"
-        ></canvas>
-
-        <div class="controls-container">
-          <div class="control-slider">
-            <label for="limitRange">Tamanho da Região:</label>
-            <input type="range" id="limitRange" min="2" max="10" value="5" />
-            <span id="limitValue">1</span>
-          </div>
-
-          <button class="control-button" onclick="resetVolumeVisualization()">
-            Reiniciar
-          </button>
+        <div class="math-section">
+          <p>
+            Visualize como a integral dupla calcula o volume sob uma superfície:
+          </p>
         </div>
 
-        <div class="value-display">
-          Volume = <span id="volumeValue">0</span>
+        <div class="canvas-container">
+          <a href="./canvas/volume.html" target="_blank" class="control-button">
+            Abrir Visualização de Volume
+          </a>
         </div>
-        <div class="formula-display">f(x,y) = x²/4 + y²/9</div>
+
+        <p class="note">
+          Superfície: \(f(x,y) = x^2/4 + y^2/9\). Arraste para rotacionar.
+        </p>
       </section>
     </section>
   </body>

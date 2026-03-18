@@ -5,27 +5,6 @@
   </head>
   <body>
     <section>
-      <!-- Slide: Da integral simples à dupla -->
-      <section>
-        <h2>Da Integral Simples à Dupla</h2>
-
-        <div class="math-section">
-          <p>A integral simples acumula valores ao longo de um intervalo:</p>
-          <p>\[ \int_a^b f(x) \, dx \]</p>
-
-          <p>
-            A integral dupla estende este conceito para regiões bidimensionais:
-          </p>
-          <p>\[ \iint_D f(x,y) \, dA \]</p>
-
-          <p>
-            Enquanto a integral simples representa uma
-            <strong>área</strong>, a integral dupla frequentemente representa um
-            <strong>volume</strong>.
-          </p>
-        </div>
-      </section>
-
       <!-- Slide: Visualização da soma de Riemann -->
       <section>
         <h2>Da Soma de Riemann à Integral Dupla</h2>
@@ -48,32 +27,31 @@
         </div>
       </section>
 
-      <!-- Slide: Visualização interativa da soma de Riemann -->
+      <!-- Slide: Link para visualização interativa -->
       <section>
         <h2>Visualização da Soma de Riemann</h2>
 
-        <canvas
-          id="riemannCanvas"
-          class="visualization-canvas"
-          width="700"
-          height="400"
-        ></canvas>
-
-        <div class="controls-container">
-          <div class="control-slider">
-            <label for="subdivSlider">Número de Subdivisões:</label>
-            <input type="range" id="subdivSlider" min="2" max="10" value="4" />
-            <span id="subdivValue">4</span>
-          </div>
-
-          <button class="control-button" onclick="resetRiemannVisualization()">
-            Reiniciar
-          </button>
+        <div class="math-section">
+          <p>
+            Explore interativamente como a soma de Riemann se aproxima da
+            integral dupla à medida que aumentamos o número de subdivisões:
+          </p>
         </div>
 
-        <div class="value-display">
-          Valor da Soma: <span id="integralValue">0</span>
+        <div class="canvas-container">
+          <a
+            href="./canvas/riemann.html"
+            target="_blank"
+            class="control-button"
+          >
+            Abrir Visualização Interativa
+          </a>
         </div>
+
+        <p class="note">
+          Arraste para rotacionar. Use o controle deslizante para ajustar o
+          número de subdivisões.
+        </p>
       </section>
 
       <!-- Slide: Interpretação geométrica -->

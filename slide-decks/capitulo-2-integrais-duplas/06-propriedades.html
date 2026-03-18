@@ -40,7 +40,7 @@
 
       <!-- Slide: Propriedades adicionais -->
       <section>
-        <h2>Mais Propriedades</h2>
+        <h2>Ordem e Estimativas</h2>
 
         <div class="math-section">
           <ul>
@@ -60,116 +60,32 @@
             </li>
           </ul>
           <p>
-            Estas propriedades fornecem ferramentas poderosas para manipular e
-            estimar integrais duplas.
+            Estas propriedades fornecem ferramentas para manipular e estimar
+            integrais duplas antes mesmo de calcular seu valor exato.
           </p>
         </div>
       </section>
 
-      <!-- Slide: Teorema de Fubini -->
+      <!-- Slide: Interpretação do valor médio -->
       <section>
-        <h2>Integração Iterada (Teorema de Fubini)</h2>
+        <h2>Valor Médio: Aplicação Espacial</h2>
+
+        <div class="history-section">
+          <div class="history-label">APLICAÇÃO</div>
+          <p><strong>Distribuição de Temperatura</strong></p>
+          <p>
+            O valor médio de uma integral dupla permite calcular a temperatura
+            média em um painel solar, a densidade média de um escudo térmico ou
+            a pressão média sobre uma superfície aerodinâmica.
+          </p>
+        </div>
 
         <div class="math-section">
           <p>
-            O <strong>Teorema de Fubini</strong> permite transformar uma
-            integral dupla em integrais simples aninhadas:
+            <strong>Exemplo:</strong> Se a temperatura \(T(x,y)\) varia sobre um
+            painel de área \(A\), a temperatura média é:
           </p>
-          <p>
-            \(\displaystyle \iint_D f(x,y)\,dA = \int_a^b
-            \left(\int_{g_1(x)}^{g_2(x)} f(x,y)\,dy\right) dx\)
-          </p>
-
-          <p>
-            Esta abordagem converte um problema bidimensional em dois problemas
-            unidimensionais sequenciais:
-          </p>
-          <ol>
-            <li>
-              Para cada valor fixo de \(x\), integramos \(f(x,y)\) em relação a
-              \(y\)
-            </li>
-            <li>
-              Integramos o resultado em relação a \(x\) ao longo do intervalo
-              \([a,b]\)
-            </li>
-          </ol>
-
-          <p>
-            Alternativamente, podemos integrar primeiro em relação a \(x\) e
-            depois em relação a \(y\).
-          </p>
-        </div>
-      </section>
-      <!-- Slide: Exemplo 1 - Região retangular -->
-      <section>
-        <h2>Exemplo: Região Retangular</h2>
-
-        <div class="problem-section">
-          <p>
-            <strong>Problema:</strong> Calcular a integral dupla da função
-            \(f(x,y) = x + 2y\) sobre a região retangular \(D = [0,2] \times
-            [1,3]\).
-          </p>
-
-          <p>
-            <strong>Interpretação física:</strong> Esta integral representa o
-            volume sob a superfície plana \(z = x + 2y\) sobre o retângulo
-            definido.
-          </p>
-
-          <p><strong>Dados:</strong></p>
-          <ul>
-            <li>Função: \(f(x,y) = x + 2y\)</li>
-            <li>Região: \(D = [0,2] \times [1,3]\)</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Slide: Solução passo a passo (Parte 1) -->
-      <section>
-        <h2>Solução: Aplicando o Teorema de Fubini</h2>
-
-        <div class="compact-solution">
-          <p><strong>Passo 1:</strong> Expressar como integral iterada</p>
-          <p>
-            \[ \iint_D (x + 2y)\, dA = \int_0^2 \int_1^3 (x + 2y)\, dy\, dx \]
-          </p>
-
-          <p>
-            <strong>Passo 2:</strong> Resolver a integral interna (em \(y\))
-          </p>
-          <p>
-            \[ \int_1^3 (x + 2y)\, dy = x \cdot 2 + 2 \cdot \frac{y^2}{2}
-            \Big|_1^3 = 2x + 2(4.5 - 0.5) = 2x + 8 \]
-          </p>
-        </div>
-      </section>
-
-      <!-- Slide: Solução passo a passo (Parte 2) -->
-      <section>
-        <h2>Solução: Continuação</h2>
-
-        <div class="compact-solution">
-          <p>
-            <strong>Passo 3:</strong> Resolver a integral externa (em \(x\))
-          </p>
-          <p>
-            \[ \int_0^2 (2x + 8)\, dx = 2 \cdot \frac{x^2}{2} \Big|_0^2 + 8
-            \cdot 2 = 2 + 16 = 18 \]
-          </p>
-
-          <p>
-            <strong>Resultado final:</strong> \(\iint_D (x + 2y)\, dA = 18\)
-            unidades cúbicas
-          </p>
-
-          <p>
-            <strong>Interpretação física:</strong> Se \(f(x,y)\) representasse a
-            distribuição de densidade de um material, o valor 18 representaria a
-            massa total do objeto. Se representasse a intensidade solar sobre um
-            painel, representaria a energia total capturada.
-          </p>
+          <p>\[ T_{avg} = \frac{1}{A} \iint_{\text{painel}} T(x,y) \, dA \]</p>
         </div>
       </section>
     </section>
