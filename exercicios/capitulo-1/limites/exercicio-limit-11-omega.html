@@ -1,0 +1,44 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
+  <div class="context">
+    ORIGEM: Seção de Modelagem Matemática [Programa Skylab, 1974]
+  </div>
+  <p>
+    Determinar todos os valores de \(k\) para os quais o limite existe: \[
+    \lim_{(x,y)\to(0,0)} \frac{x^2 y^k}{x^4 + y^2}. \] Para cada valor de \(k\)
+    encontrado, calcular o valor do limite.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        <strong>Teste ao longo de \(y = 0\):</strong> \(\frac{0}{x^4} = 0\) para
+        todo \(x \neq 0\).
+      </p>
+      <p>
+        <strong>Teste ao longo de \(x = 0\):</strong> \(\frac{0}{y^2} = 0\) para
+        todo \(y \neq 0\).
+      </p>
+      <p>
+        <strong>Teste ao longo de \(y = x^2\):</strong>
+        \[\frac{x^2 \cdot (x^2)^k}{x^4 + (x^2)^2} = \frac{x^{2+2k}}{2x^4} =
+        \frac{x^{2k-2}}{2}\]
+      </p>
+      <p>
+        Para que o limite seja 0 quando \(x \to 0\): precisamos \(2k - 2 > 0\),
+        ou seja, \(k > 1\).
+      </p>
+      <p>
+        <strong>Verificação com \(k > 1\):</strong> Usando \(|x^2 y^k| \leq x^2
+        |y|^k\) e a desigualdade AM-GM: \[\left|\frac{x^2 y^k}{x^4 + y^2}\right|
+        \leq \frac{x^2 |y|^k}{2x^2|y|} = \frac{|y|^{k-1}}{2} \to 0\] quando
+        \((x,y) \to (0,0)\) e \(k > 1\).
+      </p>
+      <p>
+        <strong>Conclusão:</strong> O limite existe e vale 0 se e somente se \(k
+        > 1\).
+      </p>
+    </div>
+  </details>
+</li>
