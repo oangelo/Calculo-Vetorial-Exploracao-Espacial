@@ -9,7 +9,31 @@
       rel="stylesheet"
     />
     <link href="../../styles.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
   </head>
   <body>
     <div class="container">
@@ -55,10 +79,18 @@
       async function loadExercises() {
         try {
           const exercises = [
-            'exercicio-vector-2a.html',
-            'exercicio-vector-2b.html',
-            'exercicio-vector-2c.html',
-            'exercicio-vector-2d.html',
+            'exercicio-rot-01-alfa.html',
+            'exercicio-rot-02-alfa.html',
+            'exercicio-rot-03-alfa.html',
+            'exercicio-rot-04-beta.html',
+            'exercicio-rot-05-beta.html',
+            'exercicio-rot-06-beta.html',
+            'exercicio-rot-07-gamma.html',
+            'exercicio-rot-08-gamma.html',
+            'exercicio-rot-09-gamma.html',
+            'exercicio-rot-10-omega.html',
+            'exercicio-rot-11-omega.html',
+            'exercicio-rot-12-omega.html',
           ];
 
           const list = document.getElementById('exercises');

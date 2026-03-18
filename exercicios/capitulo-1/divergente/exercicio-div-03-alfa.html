@@ -1,0 +1,48 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Propulsão Avançada – Programa Gemini [REGISTRO
+    PARCIAL OBTIDO EM 12/OUT/1962]
+  </div>
+  <p>
+    Dado o campo vetorial \(\vec{H}(x, y, z) = \bigl(e^{x}y,\; x y^2,\; z^3 -
+    x\bigr)\), calcule a divergência \(\nabla \cdot \vec{H}\).
+  </p>
+  <p>
+    <strong>Tarefa adicional:</strong> Verifique se existe algum ponto onde
+    \(\nabla \cdot \vec{H} = 0\). Em caso afirmativo, discuta a relevância de
+    tais pontos para o balanceamento de forças em um sistema de propulsão.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>Cálculo da divergência:</strong></p>
+      <p>
+        \[ \nabla \cdot \vec{H} = \frac{\partial}{\partial x}\bigl(e^x y\bigr) +
+        \frac{\partial}{\partial y}\bigl(x y^2\bigr) + \frac{\partial}{\partial
+        z}\bigl(z^3 - x\bigr). \]
+      </p>
+      <p>
+        <em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[e^x y] = e^x y.\)
+        <br />
+        <em>Segundo termo:</em> \(\frac{\partial}{\partial y}[x y^2] = x (2y).\)
+        <br />
+        <em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[z^3 - x] = 3
+        z^2.\)
+      </p>
+      <p>Portanto, \[ \nabla \cdot \vec{H} = e^x y + 2xy + 3z^2. \]</p>
+      <p>
+        Para investigar se \(\nabla \cdot \vec{H}\) pode ser igual a zero,
+        resolvemos: \[ e^x y + 2xy + 3z^2 = 0. \] De modo geral, pode haver
+        pontos específicos satisfazendo a equação; por exemplo, \(x=0, y=0,
+        z=0\) resulta em \(0 + 0 + 0 = 0\). Assim, a origem é um ponto onde a
+        divergência se anula.
+      </p>
+      <p>
+        Em termos de propulsão, pontos onde \(\nabla \cdot \vec{H} = 0\) podem
+        indicar regiões de equilíbrio de fluxo, relevantes para ajustes de
+        trajetória.
+      </p>
+    </div>
+  </details>
+</li>

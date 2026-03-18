@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Cálculo Vetorial</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
       MathJax = {
         tex: {
@@ -29,102 +36,113 @@
     <style>
       /* … (mesma folha de estilo do template-espacial-atualizado.html) … */
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><div class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
           DATA: <span class="censored">15</span> DE NOVEMBRO DE
-          <span class="censored">1962</span><br/>
+          <span class="censored">1962</span><br />
           LOCALIZAÇÃO:
           <span class="censored">CENTRO DE ANÁLISE INTERNACIONAL</span>
-</div>
-<div class="document-intro">
-          RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO – FUNÇÕES VETORIAIS<br/><br/>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO – FUNÇÕES VETORIAIS<br /><br />
           Esta lista consolida os principais conceitos de
           <em>campo vetorial</em>, <em>rotacional</em> e <em>divergente</em>,
           preparando a equipe para os testes de desempenho previstos. A
           exposição histórica foi minimizada para manter o foco nos cálculos.
         </div>
-<div class="warning-box">
+        <div class="warning-box">
           Difusão não autorizada resultará em
           <span class="censored">sanções imediatas</span>.
         </div>
-<div class="metadata">
-<span>REF: RVW-<span class="censored">0420</span>-C</span>
-<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
-<span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-            <span class="censored">3</span></span>
-</div>
-</div>
-<div class="section-title">
+        <div class="metadata">
+          <span>REF: RVW-<span class="censored">0420</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
         FUNDAMENTAÇÃO TEÓRICA: REVISÃO – FUNÇÕES VETORIAIS
       </div>
-<div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
-<p class="formula-highlight">
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
           \[\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
           \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\quad
           ;\quad \nabla \times \vec{F} = \begin{pmatrix} \partial_y F_z -
           \partial_z F_y \\ \partial_z F_x - \partial_x F_z \\ \partial_x F_y -
           \partial_y F_x \end{pmatrix}\]
         </p>
-<p>
+        <p>
           O <em>divergente</em> mede fontes e sumidouros locais, enquanto o
           <em>rotacional</em> avalia a tendência de rotação de um campo
           vetorial. Ambos são cruciais para modelar fluxos em engenharia
           espacial.
         </p>
-</div>
-<div class="mission-context">
+      </div>
+      <div class="mission-context">
         Dominar estas operações diferenciais permite prever trajetórias, ajustar
         propulsão e avaliar estabilidade de veículos orbitais.
       </div>
-<div class="historical-note">
-<strong>NOTA:</strong> Cálculos análogos sustentaram simulações de voo
+      <div class="historical-note">
+        <strong>NOTA:</strong> Cálculos análogos sustentaram simulações de voo
         realizadas durante programas pioneiros de 1961‑1962.
       </div>
-      
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
-      <div class="page-number">        PÁGINA 1 DE <span class="censored">8</span> • DOCUMENTO RVW‑<span class="censored">0420</span>-C      </div>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">8</span> • DOCUMENTO RVW‑<span
+          class="censored"
+          >0420</span
+        >-C
+      </div>
     </div>
 
     <script>
       async function loadExercises() {
         try {
           const exercises = [
-            'exercicio-vector‑review‑1.html',
-            'exercicio-vector‑review‑2.html',
-            'exercicio-vector‑review‑3.html',
-            'exercicio-vector‑review‑4.html',
-            'exercicio-vector‑review‑5.html',
-            'exercicio-vector‑review‑6.html',
-            'exercicio-vector‑review‑7.html',
-            'exercicio-vector‑review‑8.html'
+            'exercicio-review-01-alfa.html',
+            'exercicio-review-02-alfa.html',
+            'exercicio-review-03-alfa.html',
+            'exercicio-review-04-beta.html',
+            'exercicio-review-05-beta.html',
+            'exercicio-review-06-beta.html',
+            'exercicio-review-07-gamma.html',
+            'exercicio-review-08-gamma.html',
+            'exercicio-review-09-gamma.html',
+            'exercicio-review-10-omega.html',
+            'exercicio-review-11-omega.html',
+            'exercicio-review-12-omega.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>
