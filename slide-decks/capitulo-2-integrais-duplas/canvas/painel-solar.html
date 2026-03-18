@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Painel Solar em Órbita Elíptica - Visualização Interativa</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0a0a0f;
+        color: #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        color: #4fc3f7;
+        text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+        margin-bottom: 10px;
+      }
+      canvas {
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #111;
+      }
+      .controls {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      button {
+        background: #1a237e;
+        color: #4fc3f7;
+        border: 1px solid #4fc3f7;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #283593;
+      }
+      button.active {
+        background: #4fc3f7;
+        color: #0a0a0f;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      input[type='range'] {
+        width: 150px;
+      }
+      .value-display {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #ffb300;
+      }
+      .formula {
+        margin-top: 10px;
+        font-family: monospace;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Painel Solar em Órbita Elíptica</h1>
+    <canvas id="applicationVisual" width="700" height="400"></canvas>
+
+    <script>
+      function initApplicationVisualization() {
+        const canvas = document.getElementById('applicationVisual');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Parâmetros da órbita
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const a = 120; // Semi-eixo maior da elipse
+        const b = 70; // Semi-eixo menor da elipse
+
+        // Parâmetros de animação
+        let orbitAngle = 0;
+        let animationFrameId;
+
+        function drawApplicationVisualization() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Desenhar órbita elíptica
+          ctx.beginPath();
+          ctx.ellipse(centerX, centerY, a, b, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+          ctx.setLineDash([2, 3]);
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Desenhar Sol
+          drawSun();
+
+          // Calcular posição atual do satélite na órbita
+          const satellitePos = getPositionOnOrbit(orbitAngle);
+
+          // Desenhar linhas de distância
+          drawDistanceLines(satellitePos);
+
+          // Desenhar o satélite com painéis solares
+          const panelPositions = drawSatellite(satellitePos);
+
+          // Desenhar raios solares diretamente para os painéis
+          drawSolarRays(panelPositions);
+
+          // Atualizar ângulo para animação
+          orbitAngle += 0.005;
+          if (orbitAngle > Math.PI * 2) orbitAngle = 0;
+
+          // Continuar animação
+          animationFrameId = requestAnimationFrame(
+            drawApplicationVisualization
+          );
+        }
+
+        function drawSun() {
+          // Sol no centro
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, 20, 0, Math.PI * 2);
+
+          // Gradiente para o sol
+          const sunGradient = ctx.createRadialGradient(
+            centerX,
+            centerY,
+            0,
+            centerX,
+            centerY,
+            20
+          );
+          sunGradient.addColorStop(0, '#FFFFFF');
+          sunGradient.addColorStop(0.7, '#FFFF00');
+          sunGradient.addColorStop(1, '#FFA500');
+          ctx.fillStyle = sunGradient;
+          ctx.fill();
+
+          // Aura solar
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, 25, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(255, 215, 0, 0.2)';
+          ctx.fill();
+        }
+
+        function getPositionOnOrbit(angle) {
+          // Equações paramétricas da elipse
+          const x = centerX + a * Math.cos(angle);
+          const y = centerY + b * Math.sin(angle);
+
+          return { x, y };
+        }
+
+        function drawDistanceLines(position) {
+          // Linha do satélite até o sol
+          ctx.beginPath();
+          ctx.moveTo(centerX, centerY);
+          ctx.lineTo(position.x, position.y);
+          ctx.strokeStyle = 'rgba(255, 255, 0, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        function drawSatellite(position) {
+          // Calcular ângulo para orientar os painéis em direção ao sol
+          const dx = centerX - position.x;
+          const dy = centerY - position.y;
+          const angle = Math.atan2(dy, dx);
+
+          // Corpo do satélite
+          ctx.beginPath();
+          ctx.arc(position.x, position.y, 6, 0, Math.PI * 2);
+          ctx.fillStyle = '#CCCCCC';
+          ctx.fill();
+          ctx.strokeStyle = '#999999';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Painéis solares (sempre orientados para o sol)
+          ctx.save();
+          ctx.translate(position.x, position.y);
+          ctx.rotate(angle);
+
+          // Painel da esquerda
+          ctx.beginPath();
+          ctx.rect(-30, -5, 20, 10);
+          const panelGradient = ctx.createLinearGradient(-30, 0, -10, 0);
+          panelGradient.addColorStop(0, '#4fc3f7');
+          panelGradient.addColorStop(1, '#1a237e');
+          ctx.fillStyle = panelGradient;
+          ctx.fill();
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Painel da direita
+          ctx.beginPath();
+          ctx.rect(10, -5, 20, 10);
+          const panelGradient2 = ctx.createLinearGradient(10, 0, 30, 0);
+          panelGradient2.addColorStop(0, '#1a237e');
+          panelGradient2.addColorStop(1, '#4fc3f7');
+          ctx.fillStyle = panelGradient2;
+          ctx.fill();
+          ctx.strokeStyle = '#64b5f6';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          // Calcular as posições dos centros dos painéis em coordenadas do mundo
+          const leftPanelCenter = {
+            x: position.x + Math.cos(angle) * -20,
+            y: position.y + Math.sin(angle) * -20,
+          };
+
+          const rightPanelCenter = {
+            x: position.x + Math.cos(angle) * 20,
+            y: position.y + Math.sin(angle) * 20,
+          };
+
+          ctx.restore();
+
+          return {
+            left: leftPanelCenter,
+            right: rightPanelCenter,
+            angle: angle,
+          };
+        }
+
+        function drawSolarRays(panelPositions) {
+          // Desenhar apenas dois raios solares, um para cada painel
+          const distanceFromSun = Math.sqrt(
+            Math.pow(panelPositions.left.x - centerX, 2) +
+              Math.pow(panelPositions.left.y - centerY, 2)
+          );
+
+          // Intensidade baseada na distância
+          const normalizedIntensity = Math.min(
+            1,
+            (a * a) / (distanceFromSun * distanceFromSun)
+          );
+
+          // Raio para o painel esquerdo
+          drawRayToPanel(panelPositions.left, normalizedIntensity);
+
+          // Raio para o painel direito
+          drawRayToPanel(panelPositions.right, normalizedIntensity);
+        }
+
+        function drawRayToPanel(panelCenter, intensity) {
+          // Calcular direção do sol ao painel
+          const dx = panelCenter.x - centerX;
+          const dy = panelCenter.y - centerY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          // Normalizar o vetor direção
+          const dirX = dx / distance;
+          const dirY = dy / distance;
+
+          // Ponto de partida no sol
+          const startX = centerX + dirX * 20; // Borda do sol
+          const startY = centerY + dirY * 20;
+
+          // Desenhar raio solar
+          ctx.beginPath();
+          ctx.moveTo(startX, startY);
+
+          // Usar 5 segmentos para o raio
+          for (let i = 1; i <= 4; i++) {
+            const segRatio = i / 5;
+            const midX = startX + dx * segRatio;
+            const midY = startY + dy * segRatio;
+
+            // Pequena variação perpendicular para efeito visual
+            const perpX = -dirY * (i % 2 === 0 ? 2 : -2);
+            const perpY = dirX * (i % 2 === 0 ? 2 : -2);
+
+            ctx.lineTo(midX + perpX, midY + perpY);
+          }
+
+          // Terminar no centro do painel
+          ctx.lineTo(panelCenter.x, panelCenter.y);
+
+          // Estilo do raio
+          ctx.strokeStyle = `rgba(255, 215, 0, ${0.4 + intensity * 0.6})`;
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Brilho no ponto de impacto
+          ctx.beginPath();
+          ctx.arc(panelCenter.x, panelCenter.y, 3, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255, 255, 0, ${0.5 + intensity * 0.5})`;
+          ctx.fill();
+        }
+
+        // Iniciar a animação
+        drawApplicationVisualization();
+
+        // Função para limpar a animação quando o slide mudar
+        Reveal.addEventListener('slidechanged', function (event) {
+          // Verificar se o canvas está no slide atual
+          const currentSlide = event.currentSlide;
+          const canvasInCurrentSlide = currentSlide.contains(canvas);
+
+          if (canvasInCurrentSlide) {
+            // Reiniciar a animação se o slide se tornou visível
+            if (!animationFrameId) {
+              animationFrameId = requestAnimationFrame(
+                drawApplicationVisualization
+              );
+            }
+          } else {
+            // Parar a animação se o slide não está mais visível
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO INTERATIVA DE ORDEM DE INTEGRAÇÃO
+      // =============================================
+
+      document.addEventListener('DOMContentLoaded', function () {
+        initApplicationVisualization();
+      });
+    </script>
+  </body>
+</html>
