@@ -53,6 +53,22 @@
         font-style: italic;
         margin-top: 20px;
       }
+
+      .visualization-canvas {
+        max-width: 100%;
+        height: auto;
+        background-color: #1a1a2e;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .reveal section {
+        overflow: visible;
+      }
+
+      .reveal .slides {
+        overflow: visible;
+      }
     </style>
   </head>
   <body>
@@ -86,25 +102,57 @@
             // Parse HTML e extrair <section>
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+            
+            // Extrair scripts do fragmento antes de injetar
+            const scriptTags = doc.querySelectorAll('script[src]');
+            for (const script of scriptTags) {
+              const src = script.getAttribute('src');
+              if (src) {
+                // Criar e inserir script no head principal
+                const newScript = document.createElement('script');
+                newScript.src = src;
+                document.head.appendChild(newScript);
+              }
+            }
+
+            // Extrair o conteúdo inline dos script tags sem src
+            const inlineScripts = doc.querySelectorAll('script:not([src])');
+            
             const sections = doc.querySelectorAll('body > section');
 
             // Inserir cada seção no container
             sections.forEach((section) => {
               container.appendChild(section);
             });
+
+            // Executar scripts inline manualmente após a injeção do DOM
+            for (const script of inlineScripts) {
+              const scriptContent = script.textContent;
+              if (scriptContent.trim()) {
+                const newScript = document.createElement('script');
+                newScript.textContent = scriptContent;
+                document.body.appendChild(newScript);
+              }
+            }
+
           } catch (error) {
             console.error(`Error loading ${sectionFile}:`, error);
           }
         }
 
         // Inicializar Reveal.js após carregar todas as seções
-        Reveal.initialize({
+        const revealInstance = await Reveal.initialize({
           controls: true,
           progress: true,
           center: true,
           hash: true,
           plugins: [RevealMath.MathJax3],
         });
+
+        // Após inicialização, chamar init() de qualquer viz que existam
+        setTimeout(function() {
+          if (window.lagrangeViz) window.lagrangeViz.init();
+        }, 100);
       }
 
       // Carregar slides quando a página carregar
