@@ -323,8 +323,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
