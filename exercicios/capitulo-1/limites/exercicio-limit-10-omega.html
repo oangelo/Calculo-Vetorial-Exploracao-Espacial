@@ -1,0 +1,40 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
+  <div class="context">
+    ORIGEM: Divisão de Análise Avançada [Missão Apollo-Soyuz, 1975]
+  </div>
+  <p>
+    Verificar se o limite existe, calculando-o em coordenadas polares: \[
+    \lim_{(x,y)\to(0,0)} \frac{x^3 y}{x^6 + y^2}. \]
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        Usando coordenadas polares: \(x = r\cos\theta\), \(y = r\sin\theta\):
+      </p>
+      <p>
+        \[\frac{x^3 y}{x^6 + y^2} =
+        \frac{r^4\cos^3\theta\sin\theta}{r^6\cos^6\theta + r^2\sin^2\theta} =
+        \frac{r^2\cos^3\theta\sin\theta}{r^4\cos^6\theta + \sin^2\theta}\]
+      </p>
+      <p>
+        Para \(\theta \neq 0\): quando \(r \to 0\), o numerador \(\to 0\) e o
+        denominador \(\to \sin^2\theta \neq 0\), logo o limite é 0.
+      </p>
+      <p>
+        Para \(\theta = 0\) (eixo \(x\)): a expressão vale \(\frac{r^2 \cdot 1
+        \cdot 0}{r^4 \cdot 1 + 0} = 0\).
+      </p>
+      <p>
+        Contudo, ao longo da curva \(y = x^3\): \[\frac{x^3 \cdot x^3}{x^6 +
+        (x^3)^2} = \frac{x^6}{x^6 + x^6} = \frac{1}{2}\]
+      </p>
+      <p>
+        Como os limites ao longo de diferentes caminhos são diferentes (\(0 \neq
+        \frac{1}{2}\)), o limite não existe.
+      </p>
+    </div>
+  </details>
+</li>

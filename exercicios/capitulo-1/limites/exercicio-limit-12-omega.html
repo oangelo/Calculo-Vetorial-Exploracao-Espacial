@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
+  <div class="context">
+    ORIGEM: Departamento de Análise Funcional [Pesquisa Avançada, 1978]
+  </div>
+  <p>
+    Considere a função: \[ f(x,y) = \frac{xy}{x^2 + y^2} \quad \text{para }
+    (x,y) \neq (0,0). \] (a) Calcule os limites iterados \(\lim_{x\to
+    0}\lim_{y\to 0} f(x,y)\) e \(\lim_{y\to 0}\lim_{x\to 0} f(x,y)\).
+    <br />
+    (b) Calcule \(\lim_{(x,y)\to(0,0)} f(x,y)\) ao longo das retas \(y = mx\).
+    <br />
+    (c) Prove rigorosamente que \(\lim_{(x,y)\to(0,0)} f(x,y)\) não existe.
+    <br />
+    (d) Pode-se definir \(f(0,0)\) para que \(f\) seja contínua na origem?
+    Justifique.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        <strong>(a) Limites iterados:</strong>
+      </p>
+      <p>
+        \[\lim_{x\to 0}\left(\lim_{y\to 0} \frac{xy}{x^2 + y^2}\right) =
+        \lim_{x\to 0} \frac{0}{x^2} = 0\]
+      </p>
+      <p>
+        \[\lim_{y\to 0}\left(\lim_{x\to 0} \frac{xy}{x^2 + y^2}\right) =
+        \lim_{y\to 0} \frac{0}{y^2} = 0\]
+      </p>
+      <p>Os limites iterados existem e ambos valem 0.</p>
+      <p>
+        <strong>(b) Ao longo de \(y = mx\):</strong>
+      </p>
+      <p>
+        \[\lim_{x\to 0} \frac{x(mx)}{x^2 + (mx)^2} = \lim_{x\to 0}
+        \frac{mx^2}{x^2(1+m^2)} = \frac{m}{1+m^2}\]
+      </p>
+      <p>
+        O limite depende de \(m\): para \(m = 1\) vale \(\frac{1}{2}\), para \(m
+        = 0\) vale \(0\).
+      </p>
+      <p>
+        <strong>(c) Prova de não-existência:</strong>
+      </p>
+      <p>
+        Como os limites ao longo de \(y = 0\) (\(m = 0\)) e \(y = x\) (\(m =
+        1\)) são diferentes (\(0 \neq \frac{1}{2}\)), o limite geral não existe.
+      </p>
+      <p>
+        <strong>(d) Continuidade:</strong>
+      </p>
+      <p>
+        Não. Para que \(f\) seja contínua na origem, seria necessário que
+        \(\lim_{(x,y)\to(0,0)} f(x,y) = f(0,0)\). Como o limite não existe,
+        nenhum valor de \(f(0,0)\) torna a função contínua.
+      </p>
+    </div>
+  </details>
+</li>
