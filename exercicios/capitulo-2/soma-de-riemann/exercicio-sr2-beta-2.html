@@ -1,0 +1,41 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO SR2-BETA-2</div>
+  <div class="context">ORIGEM: Seção de Testes Térmicos - Foguete Saturn V</div>
+  <p>
+    Use uma soma de Riemann com \(m=3\) e \(n=3\) em \(D=[0,3]\times[0,3]\) para
+    estimar \(\iint_D \sqrt{x^2 + y^2}\, dA\) com pontos no canto inferior
+    esquerdo. Considere apenas a forma simbólica da soma, sem necessariamente
+    calcular a parte numérica.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Cada sub-retângulo tem dimensões \(\Delta x = 1\) e
+      \(\Delta y = 1\), e os pontos inferiores esquerdos são inteiros.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Divisão: 3 partes em \(x\), 3 partes em \(y\). \(\Delta x = 1\),
+        \(\Delta y = 1\).
+      </p>
+      <p>
+        Pontos inferiores esquerdos: \((0,0), (1,0), (2,0)\), depois \((0,1),
+        (1,1), (2,1)\), e \((0,2), (1,2), (2,2)\).
+      </p>
+      <p>
+        Soma de Riemann: \[ \sum_{i=0}^{2}\sum_{j=0}^{2} \sqrt{i^2 +
+        j^2}\,\Delta x \,\Delta y. \] Explicitamente: \[ (\sqrt{0+0} +
+        \sqrt{1+0} + \sqrt{4+0} + \sqrt{0+1} + \sqrt{1+1} + \sqrt{4+1} +
+        \sqrt{0+4} + \sqrt{1+4} + \sqrt{4+4}) \times 1 \times 1. \]
+      </p>
+      <p>
+        Logo, \(\sqrt{0} + \sqrt{1} + \sqrt{4} + \sqrt{1} + \sqrt{2} + \sqrt{5}
+        + \sqrt{4} + \sqrt{5} + \sqrt{8}\). Esse valor multiplicado por 1 é a
+        soma solicitada.
+      </p>
+    </div>
+  </details>
+</li>

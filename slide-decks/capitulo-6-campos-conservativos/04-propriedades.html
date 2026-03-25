@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>A Liberdade do Caminho</h2>
+        <p class="fragment">
+          Teorema fundamental: Em campos conservativos, a integral de linha
+          independe do caminho escolhido.
+        </p>
+        <p class="fragment">
+          Matematicamente, temos duas condições equivalentes:
+        </p>
+        <ul>
+          <li class="fragment">
+            \(\vec{F}\) é conservativo \(\iff\) a integral de \(\vec{F}\) ao
+            longo de qualquer caminho fechado é zero
+          </li>
+          <li class="fragment">
+            \(\oint_C \vec{F} \cdot d\vec{r} = 0\) para qualquer curva fechada
+            \(C\)
+          </li>
+        </ul>
+        <p class="fragment">
+          Esta propriedade revolucionou o planejamento de missões espaciais.
+        </p>
+      </section>
+
+      <section>
+        <h3>Encontrando a Função Potencial</h3>
+        <p>
+          Para um campo conservativo \(\vec{F}(x,y,z) = (P, Q, R)\), podemos
+          encontrar o potencial \(f\) através de integração:
+        </p>
+        <div class="fragment">
+          <p>\[f(x,y,z) = \int P(x,y,z) \, dx + C(y,z)\]</p>
+          <p>Onde \(C(y,z)\) é determinado por:</p>
+          <p>
+            \[\frac{\partial f}{\partial y} = Q \quad \text{e} \quad
+            \frac{\partial f}{\partial z} = R\]
+          </p>
+        </div>
+        <p class="fragment">
+          Esta técnica foi essencial para os primeiros computadores da NASA
+          calcularem trajetórias eficientes.
+        </p>
+      </section>
+
+      <section>
+        <h3>Função Potencial e Equipotenciais</h3>
+        <p>
+          Um campo conservativo \(\vec{F} = \nabla f\) é perpendicular às curvas
+          de nível (equipotenciais) da função \(f\).
+        </p>
+        <p>
+          Em uma equipotencial, o valor da função potencial é constante. Ao
+          atravessar diferentes equipotenciais, o potencial muda.
+        </p>
+      </section>
+
+      <section>
+        <h3>Visualização de Equipotenciais</h3>
+        <svg
+          width="650"
+          height="350"
+          viewBox="0 0 650 350"
+          xmlns="http://www.w3.org/2000/svg"
+          class="visualization"
+          aria-label="Ilustração de curvas equipotenciais (círculos concêntricos) e vetores de campo (gradiente) perpendiculares a elas, saindo do centro."
+        >
+          <defs>
+            <marker
+              id="arrowhead-potential"
+              markerWidth="10"
+              markerHeight="7"
+              refX="8"
+              refY="3.5"
+              orient="auto"
+              fill="var(--accent-color)"
+            >
+              <polygon points="0 0, 10 3.5, 0 7" />
+            </marker>
+          </defs>
+          <g id="contours">
+            <circle
+              cx="325"
+              cy="175"
+              r="50"
+              stroke="var(--star-blue)"
+              stroke-width="2"
+              fill="none"
+              opacity="0.8"
+            />
+            <text
+              x="380"
+              y="170"
+              fill="var(--star-blue)"
+              font-size="14"
+              font-family="Arial, sans-serif"
+              font-style="italic"
+            >
+              f = c₁
+            </text>
+            <circle
+              cx="325"
+              cy="175"
+              r="100"
+              stroke="var(--star-blue)"
+              stroke-width="2"
+              fill="none"
+              opacity="0.8"
+            />
+            <text
+              x="430"
+              y="170"
+              fill="var(--star-blue)"
+              font-size="14"
+              font-family="Arial, sans-serif"
+              font-style="italic"
+            >
+              f = c₂
+            </text>
+            <circle
+              cx="325"
+              cy="175"
+              r="150"
+              stroke="var(--star-blue)"
+              stroke-width="2"
+              fill="none"
+              opacity="0.8"
+            />
+            <text
+              x="480"
+              y="170"
+              fill="var(--star-blue)"
+              font-size="14"
+              font-family="Arial, sans-serif"
+              font-style="italic"
+            >
+              f = c₃
+            </text>
+          </g>
+          <g
+            id="field-vectors"
+            stroke="var(--accent-color)"
+            stroke-width="1.5"
+            marker-end="url(#arrowhead-potential)"
+          >
+            <!-- Vetores saindo radialmente de (325,175) até r=150 -->
+            <line x1="325" y1="175" x2="325" y2="175-150" />
+            <line x1="325" y1="175" x2="325+106.06" y2="175-106.06" />
+            <!-- 45 graus -->
+            <line x1="325" y1="175" x2="325+150" y2="175" />
+            <line x1="325" y1="175" x2="325+106.06" y2="175+106.06" />
+            <line x1="325" y1="175" x2="325" y2="175+150" />
+            <line x1="325" y1="175" x2="325-106.06" y2="175+106.06" />
+            <line x1="325" y1="175" x2="325-150" y2="175" />
+            <line x1="325" y1="175" x2="325-106.06" y2="175-106.06" />
+          </g>
+          <text
+            x="325"
+            y="30"
+            text-anchor="middle"
+            fill="var(--text-color)"
+            font-size="16"
+            font-family="Arial, sans-serif"
+          >
+            Campo Vetorial (∇
+            <tspan font-style="italic">f</tspan>
+            ) perpendicular às Curvas Equipotenciais (
+            <tspan font-style="italic">f</tspan>
+            =constante)
+          </text>
+        </svg>
+        <p>
+          <small
+            ><em
+              >A imagem ilustra o campo vetorial (setas) perpendicular às curvas
+              equipotenciais (onde a função potencial f é constante).</em
+            ></small
+          >
+        </p>
+        <!-- O div info-panel foi removido -->
+      </section>
+
+      <section>
+        <h3>Aplicação Espacial: Campos de Energia</h3>
+        <p>
+          A Guerra Fria impulsionou o desenvolvimento de "mapas gravitacionais":
+        </p>
+        <ul>
+          <li class="fragment">
+            Representações do potencial gravitacional da Terra e Lua
+          </li>
+          <li class="fragment">
+            Permitiam calcular trajetórias com eficiência energética máxima
+          </li>
+          <li class="fragment">
+            Desafio: computadores dos anos 60 tinham memória extremamente
+            limitada
+          </li>
+        </ul>
+        <p class="fragment">
+          Solução: usar a propriedade de independência do caminho para armazenar
+          apenas valores do potencial em pontos-chave, reduzindo drasticamente
+          as necessidades computacionais.
+        </p>
+      </section>
+    </section>
+
+    <!-- SEÇÃO 4: Condições de Conservação -->
+  </body>
+</html>

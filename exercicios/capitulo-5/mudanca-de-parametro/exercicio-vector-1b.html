@@ -1,0 +1,46 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+<div class="context">
+              ORIGEM: <span class="censored">Setor de Navegação</span> - Dados
+              Interceptados [MAIO/1965]
+            </div>
+<p>
+              Considere \(\vec{r}(t) = \begin{pmatrix} \cos t \\ \sin t
+              \end{pmatrix}\) para \(t\) em \([0, \pi]\). Sugira uma
+              reparametrização \(u(\tau)\) que simplifique o termo \(\sin t\)
+              para \(\sin(u(\tau))\). Calcule a integral de linha \(\int_C
+              f(\vec{r}(t))\,|\vec{r}'(t)|\,dt\) assumindo \(f(\vec{r}) = 1\),
+              isto é, apenas o comprimento da curva.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as funções
+                trigonométricas para reduzir complexidade.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  PROTOCOLO: Se \(\vec{r}(t)\) descreve semicircunferência,
+                  temos \(|\vec{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2} = 1.\)
+                </p>
+<p>
+                  UMA POSSÍVEL REPARAMETRIZAÇÃO: \(u(\tau) = \tau^2\), definindo
+                  \(t = u(\tau)\). Podem-se escolher faixas de \(\tau\)
+                  adequadas para cobrir \([0,\pi]\).
+                </p>
+<p>
+                  AO REPARAMETRIZAR, segue \(\frac{d\vec{r}}{d\tau} =
+                  \vec{r}'(u(\tau)) \cdot u'(\tau)\). Como a função
+                  \(f(\vec{r})=1\), a integral reduz-se ao cálculo de
+                  comprimento via \(\int |\vec{r}'(\tau)|\, d\tau\).
+                </p>
+<p>
+                  COMPRIMENTO FINAL: \(\pi\) (pois o arco semicircular de raio 1
+                  tem comprimento \(\pi\)).
+                </p>
+</div>
+</details>
+</li>

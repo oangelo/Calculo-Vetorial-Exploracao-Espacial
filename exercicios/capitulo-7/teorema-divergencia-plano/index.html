@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      }
+      .censored {
+        background: var(--censored-bg);
+        color: var(--censored-bg);
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+      }
+      .document-date,
+      .document-intro {
+        margin-bottom: 10px;
+      }
+      .warning-box {
+        border: 2px dashed #800;
+        font-size: 0.9em;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        background: rgba(139, 0, 0, 0.05);
+      }
+      .metadata span {
+        display: inline-block;
+        margin-right: 15px;
+      }
+      .section-title {
+        font-size: 1.2em;
+        text-align: center;
+        margin: 25px 0;
+        font-weight: bold;
+      }
+      .concept-definition,
+      .mission-context,
+      .historical-note {
+        margin-bottom: 20px;
+        padding: 10px;
+        border-left: 3px solid var(--accent-color);
+      }
+      .exercise-list {
+        counter-reset: ex;
+        list-style: none;
+        margin-top: 10px;
+      }
+      .exercise-item {
+        margin-bottom: 25px;
+        padding: 15px;
+        border: 1px solid #888;
+        background: rgba(255, 255, 255, 0.7);
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      .context {
+        font-size: 0.9em;
+        margin-bottom: 10px;
+      }
+      details {
+        margin-top: 8px;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+      }
+      .hint {
+        padding: 8px;
+        border: 1px dashed #999;
+        margin-top: 6px;
+      }
+      .solution {
+        padding: 15px;
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .footer-stamp {
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10px;
+        color: var(--stamp-color);
+        letter-spacing: 2px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE --><div class="document-header">
+<div class="document-stamp">SIGILOSO</div>
+<div class="document-date">
+          14/JUL/1969 • LOCALIZAÇÃO:
+          <span class="censored">BASE APOLLO-11</span> • SETOR
+          <span class="censored">Λ-4</span>
+</div>
+<div class="document-intro">
+          PROJETO <span class="censored">ORION-Δ</span> — Aplicações do Teorema
+          da Divergência no plano no monitoramento de fluxos estruturais durante
+          a descida lunar.
+        </div>
+<div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada poderá resultar em
+          <span class="censored">graves consequências</span>.
+        </div>
+<div class="metadata">
+<span>REF: VX-<span class="censored">2049</span>-Λ</span>
+<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+<span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span>
+</div>
+</div>
+<div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA NO PLANO
+      </div>
+<div class="concept-definition">
+<p>
+          \[\iint_{A} \nabla\!\cdot\!\vec{F}\, dA \;=\; \oint_{\partial A}
+          \vec{F}\cdot\vec{n}\, ds\]
+        </p>
+<p>
+          Para um campo vetorial \(\vec{F}(x,y)=(P,Q)\) de classe \(C^1\)
+          definido numa região simplesmente conexa \(A\subset\mathbb{R}^2\) com
+          fronteira \(C^1\) orientada positivamente \(\partial A\), a integral
+          do divergente \(\nabla\!\cdot\!\vec{F}=P_x+Q_y\) sobre \(A\) é igual
+          ao fluxo de \(\vec{F}\) através de \(\partial A\).
+        </p>
+</div>
+<div class="mission-context">
+        Técnicos <span class="censored">especificamente designados</span>
+        aplicaram esta relação para estimar, em tempo real, vazamentos de gases
+        no escudo térmico do módulo lunar, onde medições diretas eram
+        impossíveis.
+      </div>
+<div class="historical-note">
+<strong>NOTA HISTÓRICA:</strong> Na madrugada de 20/JUL/1969, antes da
+        alunissagem, engenheiros da missão utilizaram o teorema em cálculos
+        emergenciais para garantir a integridade dos tanques de hélio do LEM. O
+        relatório permanece
+        <span class="censored">parcialmente não divulgado</span>.
+      </div>
+ ─────────── Lista de Exercícios ───────────
+      
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+      
+      <div class="page-number">        PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span class="censored">2049</span>-Λ      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html'
+          ];
+          
+          const list = document.getElementById('exercises');
+          
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+          
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+      
+      loadExercises();
+    </script>
+  </body>
+</html>

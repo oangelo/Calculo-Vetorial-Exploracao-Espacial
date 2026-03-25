@@ -1,0 +1,44 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+<div class="context">
+              ORIGEM: Análise de Percurso - Dados
+              <span class="censored">Internos</span> do Projeto Gemini
+            </div>
+<p>
+              A curva \(C\) no espaço é dada pela parametrização \(\vec{r}(t) =
+              \begin{pmatrix} \cos t \\ \sin t \\ t \end{pmatrix}\), \(t \in [0,
+              \pi]\). Calcule o comprimento dessa curva e interprete o resultado
+              em termos de deslocamento vertical acumulado.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: A projeção no plano \(xy\) pode auxiliar na
+                compreensão da variação vertical.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Derivando, temos: \(\vec{r}'(t) = \begin{pmatrix} -\sin t \\
+                  \cos t \\ 1 \end{pmatrix}\).
+                </p>
+<p>
+                  Logo, \[ \|\vec{r}'(t)\| = \sqrt{(-\sin t)^2 + (\cos t)^2 +
+                  1^2} = \sqrt{\sin^2 t + \cos^2 t + 1} = \sqrt{1 + 1} =
+                  \sqrt{2}. \]
+                </p>
+<p>
+                  O comprimento é constante em função de \(t\), então \[
+                  \int_0^\pi \sqrt{2}\, dt = \sqrt{2} \cdot \pi. \]
+                </p>
+<p>
+                  Interpretação: o termo \(\pi\sqrt{2}\) representa a soma do
+                  deslocamento vertical (em \(\vec{k}\)) com a variação circular
+                  no plano \(xy\). A manobra seria análoga a um “giro” enquanto
+                  a cápsula se desloca em altitude.
+                </p>
+</div>
+</details>
+</li>

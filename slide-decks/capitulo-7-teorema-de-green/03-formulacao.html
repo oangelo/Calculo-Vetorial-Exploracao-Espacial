@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Teorema de Green em Retângulos</h2>
+        <p>
+          O caso mais simples e fundamental para compreender a aplicação do
+          teorema.
+        </p>
+        <div class="math-box">
+          <p>
+            Para um retângulo $R = [a,b] \times [c,d]$, o teorema assume a
+            forma:
+          </p>
+          <p>
+            $$\oint_{\partial R} (P\,dx + Q\,dy) = \int_a^b \int_c^d
+            \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+            y}\right)\,dy\,dx$$
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Demonstração para Retângulos</h2>
+        <p>Vamos decompor a integral de linha em quatro segmentos de reta:</p>
+        <ol>
+          <li>
+            $C_1$: de $(a,c)$ a $(b,c)$ → $dy = 0$, então $\int_{C_1} (P\,dx +
+            Q\,dy) = \int_a^b P(x,c)\,dx$
+          </li>
+          <li>
+            $C_2$: de $(b,c)$ a $(b,d)$ → $dx = 0$, então $\int_{C_2} (P\,dx +
+            Q\,dy) = \int_c^d Q(b,y)\,dy$
+          </li>
+          <li>
+            $C_3$: de $(b,d)$ a $(a,d)$ → $dy = 0$, então $\int_{C_3} (P\,dx +
+            Q\,dy) = \int_b^a P(x,d)\,dx = -\int_a^b P(x,d)\,dx$
+          </li>
+          <li>
+            $C_4$: de $(a,d)$ a $(a,c)$ → $dx = 0$, então $\int_{C_4} (P\,dx +
+            Q\,dy) = \int_d^c Q(a,y)\,dy = -\int_c^d Q(a,y)\,dy$
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Demonstração (continuação)</h2>
+        <p>Somando as quatro integrais:</p>
+        <div class="math-box">
+          <p>
+            $$\begin{align} \oint_{\partial R} (P\,dx + Q\,dy) &= \int_a^b
+            P(x,c)\,dx + \int_c^d Q(b,y)\,dy - \int_a^b P(x,d)\,dx - \int_c^d
+            Q(a,y)\,dy\\ &= \int_a^b [P(x,c) - P(x,d)]\,dx + \int_c^d [Q(b,y) -
+            Q(a,y)]\,dy \end{align}$$
+          </p>
+        </div>
+        <p>
+          Usando o Teorema Fundamental do Cálculo e propriedades de derivadas
+          parciais, podemos mostrar que esta expressão é igual à integral dupla
+          de $\left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+          y}\right)$ sobre o retângulo.
+        </p>
+      </section>
+
+      <section>
+        <h2>Aplicação: Controle de Satélites</h2>
+        <p>
+          O cálculo preciso do momento angular é crucial para manter a
+          orientação de satélites em órbita.
+        </p>
+        <div class="historical-note">
+          <p>
+            Em 1962, o satélite Telstar 1 utilizava um sistema de controle
+            magnético para manter sua orientação. Os engenheiros da Bell Labs
+            aplicaram o Teorema de Green para calcular o momento angular
+            induzido pelo campo magnético terrestre.
+          </p>
+        </div>
+        <p>
+          A transformação de integrais de linha em integrais de área reduzia
+          significativamente o tempo de cálculo necessário para determinar
+          ajustes nas manobras do satélite.
+        </p>
+      </section>
+
+      <section>
+        <h2>Exercício Prático: Manobra Orbital</h2>
+        <p>
+          Uma sonda espacial está mapeando um campo magnético retangular na
+          superfície lunar. Dado o campo:
+        </p>
+        <p>$$\vec{B}(x,y) = (y^2, x^3 - 2xy)$$</p>
+        <p>
+          Calcule o fluxo magnético total através da região retangular $R =
+          [1,4] \times [2,5]$ usando o Teorema de Green.
+        </p>
+        <div class="spacer"></div>
+        <p>
+          <em
+            >Dica: Calcule $\frac{\partial Q}{\partial x} - \frac{\partial
+            P}{\partial y}$ e aplique a integral dupla.</em
+          >
+        </p>
+      </section>
+    </section>
+
+    <!-- 3. TEOREMA DE GREEN PARA CONJUNTOS COM FRONTEIRA C¹ -->
+  </body>
+</html>

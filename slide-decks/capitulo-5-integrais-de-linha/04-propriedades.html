@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Visualização do Campo e Trajetória -->
+      <section>
+        <h2>Visualização: Campo de Força e Trajetória</h2>
+
+        <canvas
+          id="canvasFieldLine"
+          class="visualization-canvas"
+          width="700"
+          height="400"
+        ></canvas>
+
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="pathSlider">Trajetória:</label>
+            <input type="range" id="pathSlider" min="0" max="100" value="0" />
+            <span id="pathValue">0%</span>
+          </div>
+
+          <div class="control-slider">
+            <label for="pathTypeSelector">Tipo de Caminho:</label>
+            <select id="pathTypeSelector">
+              <option value="ellipse">Elipse</option>
+              <option value="spiral">Espiral</option>
+              <option value="circle">Círculo</option>
+            </select>
+          </div>
+
+          <div class="control-slider">
+            <label for="fieldScaleSlider">Escala do Campo:</label>
+            <input
+              type="range"
+              id="fieldScaleSlider"
+              min="20"
+              max="100"
+              value="50"
+            />
+            <span id="fieldScaleValue">50</span>
+          </div>
+        </div>
+
+        <div class="controls-container">
+          <button id="btnResetPath" class="control-button">Reiniciar</button>
+          <button id="btnToggleField" class="control-button">
+            Mostrar/Ocultar Campo
+          </button>
+        </div>
+      </section>
+
+      <!-- Slide 2: Explicação da Visualização -->
+      <section>
+        <h2>Interpretação da Visualização</h2>
+
+        <div class="math-section">
+          <p>Na visualização anterior:</p>
+          <ul>
+            <li>
+              <span style="color: #64b5f6">▶</span>
+              <strong>Vetor azul</strong> - Campo de força (gravitacional)
+              atuando no objeto
+            </li>
+            <li>
+              <span style="color: #ffd54f">▶</span>
+              <strong>Vetor amarelo</strong> - Vetor d\(\vec{r}\) (direção e
+              sentido do movimento)
+            </li>
+            <li>
+              <span style="color: #ff5a5f">●</span>
+              <strong>Ponto vermelho</strong> - Posição atual do objeto na
+              trajetória
+            </li>
+          </ul>
+          <p>
+            A integral acumula o produto escalar \(\vec{F} \cdot d\vec{r}\) em
+            cada ponto da trajetória.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>Interpretação física do produto escalar:</p>
+          <ul>
+            <li>
+              Quando \(\vec{F}\) e d\(\vec{r}\) são paralelos e no mesmo
+              sentido: contribuição positiva máxima
+            </li>
+            <li>
+              Quando \(\vec{F}\) e d\(\vec{r}\) são paralelos e em sentidos
+              opostos: contribuição negativa máxima
+            </li>
+            <li>
+              Quando \(\vec{F}\) e d\(\vec{r}\) são perpendiculares:
+              contribuição zero
+            </li>
+          </ul>
+          <p>O cosseno do ângulo entre os vetores determina a contribuição!</p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+    <!-- SEÇÃO 3: MUDANÇA DE PARÂMETRO -->
+    <!-- =========================== -->
+  </body>
+</html>

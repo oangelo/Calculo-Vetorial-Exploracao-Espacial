@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>A Elegância da Integral de Linha</h2>
+        <p class="fragment">
+          Para um campo conservativo \(\vec{F} = \nabla f\), o trabalho entre
+          pontos \(A\) e \(B\) é dado por:
+        </p>
+        <p class="fragment">\[\int_C \vec{F} \cdot d\vec{r} = f(B) - f(A)\]</p>
+        <p class="fragment">
+          Esta é a essência do
+          <strong>Teorema Fundamental para Integrais de Linha</strong>.
+        </p>
+        <p class="fragment">
+          Uma propriedade poderosa: o resultado depende apenas dos pontos
+          extremos, não do caminho \(C\).
+        </p>
+      </section>
+
+      <section>
+        <h3>Demonstração da Independência do Caminho</h3>
+        <svg
+          width="650"
+          height="350"
+          viewBox="0 0 650 350"
+          xmlns="http://www.w3.org/2000/svg"
+          class="visualization"
+          aria-label="Ilustração da independência do caminho da integral de linha. Mostra pontos A e B e três caminhos diferentes (C₁, C₂, C₃) entre eles. Uma legenda indica que a integral de linha é a mesma para todos os caminhos."
+        >
+          <defs>
+            <marker
+              id="arrowhead-field1"
+              markerWidth="8"
+              markerHeight="5.6"
+              refX="7"
+              refY="2.8"
+              orient="auto"
+              fill="rgba(79, 195, 247, 0.7)"
+            >
+              <polygon points="0 0, 8 2.8, 0 5.6" />
+            </marker>
+          </defs>
+          <!-- Campo Vetorial Simples F(x,y) = (k, kx) -->
+          <g
+            stroke="rgba(79, 195, 247, 0.4)"
+            stroke-width="1"
+            marker-end="url(#arrowhead-field1)"
+          >
+            <script>
+              // Script para gerar linhas do campo vetorial (não interativo, apenas para desenho)
+              // Este script será executado pelo navegador ao renderizar o SVG
+              // No entanto, é melhor evitar scripts em SVGs por segurança e compatibilidade
+              // Para uma versão puramente estática, estas linhas seriam pré-calculadas:
+            </script>
+            <!-- Exemplo de vetores de campo pré-calculados -->
+            <line x1="50" y1="50" x2="70" y2="50" />
+            <line x1="50" y1="100" x2="70" y2="100" />
+            <line x1="50" y1="150" x2="70" y2="150" />
+            <line x1="50" y1="200" x2="70" y2="200" />
+            <line x1="50" y1="250" x2="70" y2="250" />
+            <line x1="50" y1="300" x2="70" y2="300" />
+            <line x1="150" y1="50" x2="190" y2="50" />
+            <line x1="150" y1="100" x2="190" y2="100" />
+            <line x1="150" y1="150" x2="190" y2="150" />
+            <line x1="150" y1="200" x2="190" y2="200" />
+            <line x1="150" y1="250" x2="190" y2="250" />
+            <line x1="150" y1="300" x2="190" y2="300" />
+            <line x1="250" y1="50" x2="310" y2="50" />
+            <line x1="250" y1="100" x2="310" y2="100" />
+            <line x1="250" y1="150" x2="310" y2="150" />
+            <line x1="250" y1="200" x2="310" y2="200" />
+            <line x1="250" y1="250" x2="310" y2="250" />
+            <line x1="250" y1="300" x2="310" y2="300" />
+            <line x1="350" y1="50" x2="430" y2="50" />
+            <line x1="350" y1="100" x2="430" y2="100" />
+            <line x1="350" y1="150" x2="430" y2="150" />
+            <line x1="350" y1="200" x2="430" y2="200" />
+            <line x1="350" y1="250" x2="430" y2="250" />
+            <line x1="350" y1="300" x2="430" y2="300" />
+            <line x1="450" y1="50" x2="550" y2="50" />
+            <line x1="450" y1="100" x2="550" y2="100" />
+            <line x1="450" y1="150" x2="550" y2="150" />
+            <line x1="450" y1="200" x2="550" y2="200" />
+            <line x1="450" y1="250" x2="550" y2="250" />
+            <line x1="450" y1="300" x2="550" y2="300" />
+            <line x1="550" y1="50" x2="610" y2="50" />
+            <line x1="550" y1="100" x2="610" y2="100" />
+            <line x1="550" y1="150" x2="610" y2="150" />
+            <line x1="550" y1="200" x2="610" y2="200" />
+            <line x1="550" y1="250" x2="610" y2="250" />
+            <line x1="550" y1="300" x2="610" y2="300" />
+          </g>
+          <!-- Pontos A e B -->
+          <circle cx="100" cy="175" r="10" fill="var(--accent-color)" />
+          <text
+            x="100"
+            y="175"
+            dy="5"
+            text-anchor="middle"
+            fill="white"
+            font-size="18"
+            font-weight="bold"
+          >
+            A
+          </text>
+          <circle cx="550" cy="175" r="10" fill="#FF6F61" />
+          <!-- Cor para B -->
+          <text
+            x="550"
+            y="175"
+            dy="5"
+            text-anchor="middle"
+            fill="white"
+            font-size="18"
+            font-weight="bold"
+          >
+            B
+          </text>
+          <!-- Caminhos -->
+          <path
+            d="M 100 175 L 550 175"
+            stroke="white"
+            stroke-width="2.5"
+            fill="none"
+          />
+          <text x="325" y="160" fill="white" font-size="16" font-style="italic">
+            C₁
+          </text>
+          <path
+            d="M 100 175 Q 325 100 550 175"
+            stroke="#FFEB3B"
+            stroke-width="2.5"
+            fill="none"
+          />
+          <!-- Amarelo -->
+          <text
+            x="325"
+            y="90"
+            fill="#FFEB3B"
+            font-size="16"
+            font-style="italic"
+          >
+            C₂
+          </text>
+          <path
+            d="M 100 175 C 250 275, 400 275, 550 175"
+            stroke="#8BC34A"
+            stroke-width="2.5"
+            fill="none"
+          />
+          <!-- Verde -->
+          <text
+            x="325"
+            y="285"
+            fill="#8BC34A"
+            font-size="16"
+            font-style="italic"
+          >
+            C₃
+          </text>
+          <!-- Legenda -->
+          <text
+            x="325"
+            y="330"
+            text-anchor="middle"
+            fill="var(--text-color)"
+            font-size="16"
+            font-family="Arial, sans-serif"
+          >
+            <tspan font-style="italic">∫</tspan>
+            <tspan font-size="0.7em" dy="-0.3em">C₁</tspan>
+            <tspan font-style="italic">F·dr =</tspan>
+            <tspan font-style="italic">∫</tspan>
+            <tspan font-size="0.7em" dy="-0.3em">C₂</tspan>
+            <tspan font-style="italic">F·dr =</tspan>
+            <tspan font-style="italic">∫</tspan>
+            <tspan font-size="0.7em" dy="-0.3em">C₃</tspan>
+            <tspan font-style="italic">F·dr = f(B) - f(A)</tspan>
+          </text>
+        </svg>
+        <p>
+          <small
+            ><em
+              >A imagem ilustra que a integral de linha entre A e B é a mesma
+              para os caminhos C₁, C₂ e C₃ em um campo conservativo.</em
+            ></small
+          >
+        </p>
+      </section>
+
+      <section>
+        <h3>Análise da Independência do Caminho</h3>
+        <!-- O div info-panel foi removido -->
+        <p>
+          Esta propriedade de independência do caminho é a essência dos campos
+          conservativos.
+        </p>
+        <p>
+          A integral de linha em qualquer caminho fechado será sempre zero, pois
+          os pontos inicial e final coincidem.
+        </p>
+      </section>
+
+      <section>
+        <h3>Aplicação: Manobras Orbitais</h3>
+        <p>
+          A corrida espacial elevou estes conceitos matemáticos à importância
+          estratégica nacional:
+        </p>
+        <ul>
+          <li class="fragment">
+            Transferência de Hohmann: trajetória elíptica ótima para mudar entre
+            órbitas circulares
+          </li>
+          <li class="fragment">
+            Baseada diretamente no princípio de conservação de energia
+          </li>
+          <li class="fragment">
+            Usada para as missões Luna, Apollo e Soyuz na década de 1960
+          </li>
+        </ul>
+        <p class="fragment">
+          O campo gravitacional terrestre, sendo conservativo, permitiu estes
+          cálculos precisos com recursos computacionais limitados da época.
+        </p>
+      </section>
+
+      <section>
+        <h3>Cálculo Passo a Passo</h3>
+        <p>
+          Exemplo: Para um campo \(\vec{F}(x,y) = (2x)\hat{\imath} +
+          (2y)\hat{\jmath}\)
+        </p>
+        <ol>
+          <li class="fragment">
+            Identifique a função potencial \(f(x,y) = x^2 + y^2\) (verificamos
+            que \(\nabla f = \vec{F}\))
+          </li>
+          <li class="fragment">
+            Para calcular o trabalho de \((1,1)\) a \((3,4)\):
+          </li>
+          <li class="fragment">
+            \[\int_C \vec{F} \cdot d\vec{r} = f(3,4) - f(1,1) = (3^2 + 4^2) -
+            (1^2 + 1^2) = 25 - 2 = 23\]
+          </li>
+        </ol>
+        <p class="fragment">
+          O resultado 23 é independente do caminho escolhido entre os pontos!
+        </p>
+      </section>
+    </section>
+
+    <!-- SEÇÃO 3: Independência do Caminho e Função Potencial -->
+  </body>
+</html>

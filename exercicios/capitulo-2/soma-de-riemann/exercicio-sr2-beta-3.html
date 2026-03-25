@@ -1,0 +1,40 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO SR2-BETA-3</div>
+  <div class="context">
+    ORIGEM: Equipe de Dinâmica de Voos Espaciais - Iniciativa Gemini
+  </div>
+  <p>
+    Calcule a soma de Riemann de \(\iint_D \cos(xy)\, dA\) no domínio
+    \(D=[0,2]\times [1,2]\), com \(m=2\) e \(n=1\) subdivisões, usando pontos
+    médios.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Cada subdivisão em \(x\) terá largura 1. No eixo \(y\), há
+      apenas uma subdivisão de altura 1.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Divisão: em \(x\), \(\Delta x = 1\); em \(y\), \(\Delta y = 1\). O
+        intervalo em \(y\) é [1,2], uma única faixa.
+      </p>
+      <p>
+        Pontos médios no eixo \(x\): \(0.5\) e \(1.5\). No eixo \(y\), ponto
+        médio: \(1.5\).
+      </p>
+      <p>
+        Assim, temos dois sub-retângulos. Seus pontos médios: \((0.5,1.5)\) e
+        \((1.5,1.5)\).
+      </p>
+      <p>
+        Soma de Riemann: \[ \bigl[\cos(0.5\times 1.5) + \cos(1.5\times
+        1.5)\bigr]\,\Delta x\,\Delta y = \bigl[\cos(0.75) +
+        \cos(2.25)\bigr]\times 1\times 1. \]
+      </p>
+    </div>
+  </details>
+</li>

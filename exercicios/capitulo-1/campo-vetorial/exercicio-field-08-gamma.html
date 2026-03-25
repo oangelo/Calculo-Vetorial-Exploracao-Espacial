@@ -1,0 +1,112 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
+<div class="context">
+              ORIGEM: Laboratório de Física Espacial - Projeto Ranger [DADOS DE
+              18/AGO/1961]
+            </div>
+<p>
+              Considere um campo elétrico em torno de duas cargas pontuais de
+              sinais opostos, modelado simplificadamente como: \[\vec{E}(x,y) =
+              \begin{pmatrix} \frac{k(x+1)}{[(x+1)^2 + y^2]^{3/2}} -
+              \frac{k(x-1)}{[(x-1)^2 + y^2]^{3/2}} \\ \frac{ky}{[(x+1)^2 +
+              y^2]^{3/2}} - \frac{ky}{[(x-1)^2 + y^2]^{3/2}} \end{pmatrix}\]
+              onde \(k\) é uma constante positiva, a carga negativa está
+              localizada em \((-1,0)\) e a positiva em \((1,0)\). DETERMINAR:
+              (a) Descreva o comportamento do campo ao longo do eixo \(x\). (b)
+              Identifique onde o campo é nulo. (c) Analise o comportamento do
+              campo a grandes distâncias da origem.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+<div class="hint">
+
+                [NOTA TÉCNICA]: Este campo representa um dipolo elétrico.
+                Concentre-se em pontos específicos do eixo x e na simetria do
+                problema para simplificar a análise.
+              
+</div>
+</details>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+<div class="solution">
+<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+<p>(a) COMPORTAMENTO AO LONGO DO EIXO \(x\):</p>
+<p>No eixo \(x\), temos \(y = 0\), então o campo se reduz a:</p>
+<p>
+                  \[\vec{E}(x,0) = \begin{pmatrix} \frac{k(x+1)}{|x+1|^3} -
+                  \frac{k(x-1)}{|x-1|^3} \\ 0 \end{pmatrix}\]
+                </p>
+<p>Analisando por regiões:</p>
+<p>1. Para \(x &lt; -1\) (à esquerda da carga negativa):</p>
+<p>
+                  Ambos os termos são negativos, indicando um campo apontando
+                  para a esquerda (sentido negativo do eixo \(x\)). A
+                  intensidade diminui com o aumento da distância.
+                </p>
+<p>
+                  2. Para \(-1 &lt; x &lt; 0\) (entre a carga negativa e a origem):
+                </p>
+<p>
+                  O campo aponta para a direita (sentido positivo do eixo
+                  \(x\)), afastando-se da carga negativa e direcionando-se à
+                  carga positiva.
+                </p>
+<p>
+                  3. Para \(0 &lt; x &lt; 1\) (entre a origem e a carga positiva):
+                </p>
+<p>
+                  O campo continua apontando para a direita, direcionando-se à
+                  carga positiva.
+                </p>
+<p>4. Para \(x &gt; 1\) (à direita da carga positiva):</p>
+<p>
+                  Ambos os termos são positivos, indicando um campo apontando
+                  para a direita. A intensidade diminui com o aumento da
+                  distância.
+                </p>
+<p>(b) PONTOS DE CAMPO NULO:</p>
+<p>
+                  Para encontrar onde \(\vec{E} = \vec{0}\), devido à simetria
+                  do problema, sabemos que os únicos pontos de campo nulo estão
+                  no eixo \(y\) (onde \(x = 0\)).
+                </p>
+<p>
+                  Por simetria, no ponto \((0,0)\) (origem), as contribuições
+                  das duas cargas se cancelam exatamente, resultando em campo
+                  nulo.
+                </p>
+<p>
+                  Existem outros pontos de campo nulo, localizados no eixo \(y\)
+                  a distâncias específicas, onde as contribuições das duas
+                  cargas se cancelam devido ao equilíbrio entre suas
+                  influências.
+                </p>
+<p>(c) COMPORTAMENTO A GRANDES DISTÂNCIAS:</p>
+<p>
+                  Para \(|(x,y)| \gg 1\) (pontos muito distantes da origem), o
+                  campo se comporta como o de um dipolo elétrico, com magnitude
+                  proporcional a \(1/r^3\), onde \(r\) é a distância à origem.
+                </p>
+<p>
+                  O campo tende a apontar do polo positivo para o polo negativo
+                  para pontos próximos ao eixo \(x\), e paralelo ao eixo \(x\)
+                  para pontos próximos ao eixo \(y\).
+                </p>
+<p>
+                  A distâncias muito grandes, a configuração específica das
+                  cargas se torna menos relevante, e o sistema pode ser
+                  aproximado como um dipolo pontual localizado na origem.
+                </p>
+<p>
+                  APLICAÇÃO: Este modelo é fundamental para entender como
+                  veículos espaciais interagem com campos eletromagnéticos
+                  naturais (como o campo magnético terrestre) e artificiais. O
+                  conhecimento desses padrões permite o desenvolvimento de
+                  sistemas de proteção contra interferências eletromagnéticas e
+                  o design de instrumentos que utilizam esses campos para
+                  orientação e comunicação.
+                </p>
+</div>
+</details>
+</li>

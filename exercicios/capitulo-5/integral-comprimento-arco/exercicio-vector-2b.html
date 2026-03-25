@@ -1,0 +1,45 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+<div class="context">
+              ORIGEM: Simulação de Acoplamento Orbital [Programa
+              <span class="censored">Gemini</span>]
+            </div>
+<p>
+              A trajetória de aproximação entre dois módulos é descrita em 3D:
+              \(\vec{r}(t) = \bigl(2t,\ 3\sin(0.5t),\ 3\cos(0.5t)\bigr)\), com
+              \(t\) de 0 a 4. Determinar o comprimento da curva, que modela o
+              movimento relativo entre as naves.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades de funções seno e cosseno podem
+                ajudar na soma de quadrados.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  \(\frac{dx}{dt} = 2,\quad \frac{dy}{dt} = 3\cdot
+                  0.5\cos(0.5t),\quad \frac{dz}{dt} = -3\cdot 0.5\sin(0.5t)\).
+                </p>
+<p>
+                  Logo, \[ \frac{dy}{dt} = 1.5\cos\left(0.5t\right), \quad
+                  \frac{dz}{dt} = -1.5\sin\left(0.5t\right). \]
+                </p>
+<p>
+                  Então, \[ L = \int_{0}^{4} \sqrt{(2)^2 +
+                  \bigl(1.5\cos(0.5t)\bigr)^2 + \bigl(-1.5\sin(0.5t)\bigr)^2}\,
+                  dt. \] \[ = \int_{0}^{4} \sqrt{4 + 2.25\cos^2(0.5t) +
+                  2.25\sin^2(0.5t)}\, dt = \int_{0}^{4} \sqrt{4 + 2.25}\, dt =
+                  \int_{0}^{4} \sqrt{6.25}\, dt = \int_{0}^{4} 2.5 \, dt. \] \[
+                  = 2.5 \times 4 = 10. \]
+                </p>
+<p>
+                  Conclusão: O comprimento total é 10, confirmando a distância a
+                  ser percorrida para o acoplamento.
+                </p>
+</div>
+</details>
+</li>

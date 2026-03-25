@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">17</span> DE SETEMBRO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: BASE GEMINI <span class="censored">██████</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">FUBINI-X</span><br /><br />
+          Em consonância com os avanços recentes do
+          <span class="censored">Programa Gemini</span>, nossa equipe de análise
+          vetorial reúne, no presente documento, estudos detalhados sobre o
+          <span class="censored">Teorema de Fubini</span> aplicado à avaliação
+          de integrais duplas. Tais resultados fornecem subsídios cruciais para
+          o planejamento de <span class="censored">rendezvous orbitais</span> e
+          controle de trajetória.
+        </div>
+        <div class="warning-box">
+          Esta publicação contém informações técnicas classificadas de valor
+          estratégico. A violação dos protocolos de sigilo poderá acarretar
+          <span class="censored">sanções irreversíveis</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2501</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES:
+            <span class="censored">2</span>
+            DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE FUBINI</div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \iint_{D} f(x,y)\, dA = \int_{a}^{b} \left(\int_{c}^{d} f(x,y)\,
+          dy\right) dx = \int_{c}^{d} \left(\int_{a}^{b} f(x,y)\, dx\right) dy
+          \]
+        </p>
+        <p>
+          O Teorema de Fubini estabelece que, sob condições apropriadas de
+          continuidade ou integrabilidade, a integral dupla de uma função
+          \(f(x,y)\) sobre uma região \(D\) pode ser computada por meio de
+          integrais iteradas, invertendo a ordem de integração conforme
+          necessário. Tal resultado é fundamental na análise de problemas em
+          duas dimensões, permitindo cálculos simplificados e verificações de
+          consistência.
+        </p>
+      </div>
+      <div class="mission-context">
+        Aplicar o Teorema de Fubini às cargas termodinâmicas em componentes
+        orbitais permite estimar pressões e temperaturas em placas de
+        revestimento, garantindo a segurança das manobras durante missões
+        espaciais. Esses métodos se mostraram essenciais para prever o
+        comportamento de
+        <span class="censored">módulos pressurizados</span>
+        em ambientes extremos.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Após os primeiros voos do
+        <span class="censored">Programa Mercury</span>, as exigências técnicas
+        para missões orbitais prolongadas se intensificaram. O
+        <span class="censored">Programa Gemini</span> (1965-1966) trouxe novos
+        desafios, exigindo métodos de cálculo mais robustos. O Teorema de Fubini
+        foi empregado para avaliar distribuições de temperatura em superfícies
+        de módulos espaciais, tornando-se parte do conjunto de técnicas
+        consideradas prioritárias pelos engenheiros.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">10</span> • DOCUMENTO VX-
+        <span class="censored">2501</span>-C
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-tdf-alfa-1.html',
+            'exercicio-tdf-alfa-2.html',
+            'exercicio-tdf-alfa-3.html',
+            'exercicio-tdf-beta-1.html',
+            'exercicio-tdf-beta-2.html',
+            'exercicio-tdf-beta-3.html',
+            'exercicio-tdf-gamma-1.html',
+            'exercicio-tdf-gamma-2.html',
+            'exercicio-tdf-gamma-3.html',
+            'exercicio-tdf-omega-1.html',
+            'exercicio-tdf-omega-2.html',
+            'exercicio-tdf-omega-3.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

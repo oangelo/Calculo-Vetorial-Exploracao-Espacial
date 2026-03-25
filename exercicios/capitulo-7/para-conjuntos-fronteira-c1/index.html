@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /* (estilos idênticos ao template - mantidos) */
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE --><div class="document-header">
+<div class="document-stamp">SIGILOSO</div>
+<div class="document-date">
+          DATA: <span class="censored">14</span> DE ABRIL DE
+          <span class="censored">1965</span><br/>
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO AEROSPACIAL [REDACTED]</span>
+</div>
+<div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">GREEN-VECTOR</span><br/><br/>
+          Na corrida para aperfeiçoar manobras orbitais de encontro entre
+          cápsulas Gemini, nossos analistas identificaram que o
+          <span class="censored">controle de circulação</span> em torno de
+          trajetórias fechadas exige domínio absoluto do **Teorema de Green**. O
+          material abaixo foi extraído dos cadernos do Dr.
+          <span class="censored">████████</span>, matemático-chefe da operação
+          <span class="censored">GATEWAY</span>.
+        </div>
+<div class="warning-box">
+          Este documento contém informações matemáticas classificadas como
+          vitais. Divulgação não autorizada resultará em
+          <span class="censored">sanções severas</span>.
+        </div>
+<div class="metadata">
+<span>REF: GV-<span class="censored">027</span></span>
+<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+<span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span>
+</div>
+</div>
+<div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN (FRONTEIRA \(C^1\))
+      </div>
+<div class="concept-definition">
+<p><strong>DEFINIÇÃO FORMAL:</strong></p>
+<p class="formula-highlight">
+          \[\iint_{D}\!\left(\frac{\partial Q}{\partial x}-\frac{\partial
+          P}{\partial y}\right)\,dA \;=\;\oint_{\partial D} P\,dx+Q\,dy\]
+        </p>
+<p>
+          Seja \(D\subset\mathbb{R}^2\) uma região simplesmente conexa com
+          fronteira \(C^1\) positiva e orientada no sentido anti-horário. Para
+          um campo \(\vec F=(P,Q)\) cujas derivadas parciais são contínuas em
+          uma vizinhança de \(D\), a equação acima relaciona a circulação de
+          \(\vec F\) ao fluxo de sua “rotacional escalar” no interior.
+        </p>
+</div>
+<div class="mission-context">
+        Durante o acoplamento em órbita baixa, calcular a circulação de campos
+        de velocidade ao redor da cápsula permite estimar torques indesejados
+        sobre o módulo de serviço. O Teorema de Green fornece o elo entre
+        medidas de superfície (dentro da nave) e leituras de sensores ao longo
+        do casco.
+      </div>
+<div class="historical-note">
+<strong>NOTA HISTÓRICA:</strong> Em 23 / 03 / 1965, a missão Gemini 3
+        executou o primeiro “roll maneuver” dos EUA. As correções de atitude
+        empregaram algoritmos baseados em
+        <span class="censored">integrais de linha</span> validados por Green
+        apenas dois meses antes do lançamento.
+      </div>
+ ===== LISTA DE EXERCÍCIOS =====
+      
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+      
+      <div class="page-number">        PÁGINA 1 DE <span class="censored">5</span> • DOCUMENTO GV-<span class="censored">027</span></div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html'
+          ];
+          
+          const list = document.getElementById('exercises');
+          
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+          
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+      
+      loadExercises();
+    </script>
+  </body>
+</html>

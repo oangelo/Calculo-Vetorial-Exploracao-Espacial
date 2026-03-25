@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Conceito Principal -->
+      <section>
+        <h2>Teorema da Mudança de Variáveis</h2>
+
+        <div class="math-section">
+          <p>
+            <strong>Enunciado formal:</strong> Se \(T: S \to R\) é uma
+            transformação bijetora e continuamente diferenciável com Jacobiano
+            não-nulo em \(S\), então:
+          </p>
+          <p>
+            \[\iint_R f(x,y)\,dA = \iint_S f(x(u,v),
+            y(u,v))\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,du\,dv\]
+          </p>
+
+          <p>
+            <strong>Interpretação geométrica:</strong> O Jacobiano compensa a
+            distorção de área causada pela mudança de coordenadas, garantindo
+            que as medidas físicas permaneçam corretas.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p><strong>Condições de validade:</strong></p>
+          <ul>
+            <li>A transformação deve ser bijetora</li>
+            <li>Continuamente diferenciável</li>
+            <li>Jacobiano não-nulo em \(S\)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide 2: Aplicação em Coordenadas Polares -->
+      <section>
+        <h2>Aplicação: Coordenadas Polares</h2>
+
+        <div class="math-section">
+          <p>
+            A transformação para coordenadas polares é particularmente útil para
+            regiões com simetria circular:
+          </p>
+          <p>
+            \begin{align} x &= r\cos\theta\\ y &= r\sin\theta\\ dA &= r \, dr \,
+            d\theta \quad \text{(Jacobiano = r)} \end{align}
+          </p>
+
+          <p>
+            Para calcular a massa de um disco de raio \(R\) com densidade
+            \(\rho(x,y)\):
+          </p>
+          <p>
+            \[\iint_R \rho(x,y) \, dx \, dy = \int_{0}^{2\pi} \int_{0}^{R}
+            \rho(r\cos\theta, r\sin\theta) \cdot r \, dr \, d\theta\]
+          </p>
+        </div>
+
+        <div class="history-section">
+          <div class="history-label">APLICAÇÃO</div>
+          <p><strong>Cálculo de Massa (1960-1963)</strong></p>
+          <p>
+            Essa simplificação foi crucial para engenheiros calcularem a massa
+            de componentes circulares (como placas de proteção) nas cápsulas
+            Mercury e Vostok, fundamental para o controle de trajetória e
+            consumo de combustível.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Problema -->
+      <section>
+        <h2>Problema: Simplificação de Integrais Complexas</h2>
+
+        <div class="problem-section">
+          <p>
+            <strong>Problema:</strong> Um engenheiro da NASA em 1962 precisa
+            calcular a integral \(\iint_R e^{-(x^2+y^2)} \, dA\), onde \(R\) é o
+            disco \(x^2 + y^2 \leq 4\), para analisar a distribuição de energia
+            em um sensor circular.
+          </p>
+
+          <p><strong>Desafio:</strong> Calcular esta integral usando:</p>
+          <ol>
+            <li>Coordenadas cartesianas (difícil)</li>
+            <li>Coordenadas polares (mudança de variáveis)</li>
+          </ol>
+
+          <p><strong>Dados:</strong></p>
+          <ul>
+            <li>
+              Região: \(R = \{(x,y) \in \mathbb{R}^2 : x^2 + y^2 \leq 4\}\)
+            </li>
+            <li>
+              Função integrando: \(f(x,y) = e^{-(x^2+y^2)}\) (relacionada à
+              intensidade de energia)
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Slide 4: Solução -->
+      <section>
+        <h2>Solução: Transformação para Coordenadas Polares</h2>
+
+        <div class="compact-solution">
+          <p><strong>Transformação para coordenadas polares:</strong></p>
+          <p>
+            \begin{align} x &= r\cos\theta, \quad y = r\sin\theta\\ x^2 + y^2 &=
+            r^2\\ dA &= r \, dr \, d\theta \quad \text{(Jacobiano = r)}
+            \end{align}
+          </p>
+
+          <p>
+            Novos limites de integração: \(0 \leq r \leq 2\) e \(0 \leq \theta
+            \leq 2\pi\)
+          </p>
+
+          <p>A integral torna-se:</p>
+          <p>
+            \begin{align} \iint_R e^{-(x^2+y^2)} \, dA &= \int_{0}^{2\pi}
+            \int_{0}^{2} e^{-r^2} \cdot r \, dr \, d\theta\\ &= \left(
+            \int_{0}^{2\pi} d\theta \right) \left( \int_{0}^{2} r e^{-r^2} \, dr
+            \right) \\ &= 2\pi \left[ -\frac{1}{2}e^{-r^2} \right]_{0}^{2} \quad
+            (\text{Substituição } u = -r^2, du = -2r dr) \\ &= 2\pi \left(
+            -\frac{1}{2}e^{-4} - (-\frac{1}{2}e^{0}) \right) \\ &= \pi(1-e^{-4})
+            \approx 3.08 \text{ unidades de energia total} \end{align}
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+  </body>
+</html>

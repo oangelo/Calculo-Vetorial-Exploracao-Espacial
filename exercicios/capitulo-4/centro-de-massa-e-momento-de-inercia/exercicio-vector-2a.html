@@ -1,0 +1,55 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+<div class="context">
+              ORIGEM: Programa Gemini - 1965 [Avaliação de Módulo Pressurizado]
+            </div>
+<p>
+              Um sólido ocupa a região
+              \(\{(x,y,z): 0 \le z \le 2, \ x^2 + y^2 \le (z+1)^2\}\). Admita
+              densidade variável \(\rho(x,y,z) = 2(z+1)\). Calcule a massa total
+              desse sólido usando integrais triplas.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria podem simplificar o
+                resultado.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Em coordenadas cilíndricas: \(r = z+1\), \(\theta\) de 0 a
+                  \(2\pi\), \(z\) de 0 a 2.
+                </p>
+<p>
+                  A densidade é \(\rho = 2(z+1)\). O volume elementar:
+                  \(dV = r\,dr\,d\theta\,dz\).
+                </p>
+<p>\[
+                  M = \int_{z=0}^{2}\int_{\theta=0}^{2\pi}\int_{r=0}^{z+1}
+                  2(z+1)\, r \, dr\, d\theta\, dz.
+                \]</p>
+<p>
+                  Integração em \(r\): \(\int_{0}^{z+1} 2(z+1)r\,dr =
+                  2(z+1)\cdot \frac{(z+1)^2}{2} = (z+1)^3.\)
+                </p>
+<p>
+                  Depois em \(\theta\): \(\int_{0}^{2\pi} (z+1)^3 \,d\theta =
+                  2\pi (z+1)^3.\)
+                </p>
+<p>
+                  Finalmente em \(z\):
+                  \(\int_{0}^{2} 2\pi (z+1)^3 \, dz =
+                  2\pi \left[\frac{(z+1)^4}{4}\right]_{0}^{2}
+                  = \frac{2\pi}{4} \left[(3)^4 - (1)^4\right]
+                  = \frac{\pi}{2}\left[81 - 1\right] = \frac{\pi}{2} \cdot 80
+                  = 40\pi.\)
+                </p>
+<p>
+                  Conclusão: \(M = 40\pi.\)
+                </p>
+</div>
+</details>
+</li>

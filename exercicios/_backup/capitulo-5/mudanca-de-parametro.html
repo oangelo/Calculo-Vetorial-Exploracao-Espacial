@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE JUNHO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ORION-7</span> <br /><br />
+          Em consonância com as operações estratégicas do
+          <span class="censored">Programa Gemini</span>, nossos especialistas em
+          Cálculo Vetorial conduziram estudos sobre integrais de linha e suas
+          aplicações em trajetórias espaciais. Este material aborda métodos de
+          <span class="censored">mudança de parâmetro</span> críticos para o
+          sucesso das manobras orbitais planejadas. <br /><br />
+          Documentos correlatos do Dr.
+          <span class="censored">██████</span> confirmam o potencial
+          revolucionário da técnica de reparametrização em
+          <span class="censored">órbitas de aproximação</span>.
+        </div>
+
+        <div class="warning-box">
+          A difusão não autorizada deste conteúdo poderá resultar em
+          <span class="censored">sanções imediatas</span>. O nível de acesso
+          SIGMA-<span class="censored">4</span> é obrigatório para toda e
+          qualquer consulta.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1971</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE PARÂMETRO EM INTEGRAIS DE LINHA
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\int_{C} f(\vec{r}(t))\,|\vec{r}'(t)|\, dt = \int_{u(a)}^{u(b)}
+          f(\vec{r}(u(\tau)))\, \bigl|\frac{d\vec{r}(u(\tau))}{d\tau}\bigr|\,
+          d\tau\]
+        </p>
+        <p>
+          A mudança de parâmetro consiste em substituir a variável \(t\) por uma
+          nova variável \(\tau\) através de uma função invertível \(u(\tau)\),
+          reparametrizando a curva \(C\). Isso permite facilitar o cálculo de
+          integrais de linha quando a parametrização original não é a mais
+          conveniente.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Na prática de exploração espacial, a reparametrização de trajetórias é
+        vital para ajustar velocidades de inserção orbital e coordenadas de
+        encontro com módulos de reabastecimento, garantindo a
+        <span class="censored">estabilidade tática</span> das manobras em torno
+        de corpos celestes.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> O
+        <span class="censored">Programa Gemini</span>
+        utilizou reparametrizações sofisticadas para executar
+        <span class="censored">rendezvous orbitais</span>, estabelecendo bases
+        para futuras missões tripuladas à Lua sob o Programa Apollo.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (1-3) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Simulações - Missão
+              <span class="censored">ÁRTEMIS</span> [NOTA DE MAR/1965]
+            </div>
+            <p>
+              Uma trajetória simples é dada por \(\vec{r}(t) = \begin{pmatrix} t
+              \\ t^2 \end{pmatrix}\) para \(t\) no intervalo \([0, 2]\).
+              Reparametrize a curva usando uma função \(u(\tau) = \tau^2\) que
+              mapeia \(\tau\) em \([0, \sqrt{2}]\). Calcule a integral de linha
+              \(\displaystyle \int_C |\vec{r}'(t)|\, dt\) usando a nova
+              parametrização.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar as expressões de
+                \(\vec{r}'(u(\tau))\) antes de integrar.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  PRIMEIRO, DERIVADA ORIGINAL: \(\vec{r}'(t) = \begin{pmatrix} 1
+                  \\ 2t \end{pmatrix}\).
+                </p>
+                <p>
+                  MAGNITUDE: \[|\vec{r}'(t)| = \sqrt{(1)^2 + (2t)^2} = \sqrt{1 +
+                  4t^2}.\]
+                </p>
+                <p>
+                  NOVA PARAMETRIZAÇÃO: \(t = u(\tau) = \tau^2\). Então
+                  \(\frac{d\vec{r}}{d\tau} = \vec{r}'(u(\tau)) \cdot
+                  \frac{du}{d\tau}.\)
+                </p>
+                <p>
+                  COMO \(\frac{du}{d\tau} = 2\tau\), temos: \[
+                  \frac{d\vec{r}}{d\tau} = \begin{pmatrix} 1 \\ 2(\tau^2)
+                  \end{pmatrix} \cdot 2\tau = \begin{pmatrix} 2\tau \\ 4\tau^3
+                  \end{pmatrix}. \]
+                </p>
+                <p>
+                  LOGO, \[\bigl|\frac{d\vec{r}}{d\tau}\bigr| = \sqrt{(2\tau)^2 +
+                  (4\tau^3)^2} = \sqrt{4\tau^2 + 16\tau^6} = 2\tau \sqrt{1 +
+                  4\tau^4}.\]
+                </p>
+                <p>
+                  INTEGRAL: \[ \int_{0}^{\sqrt{2}} 2\tau \sqrt{1 + 4\tau^4}\,
+                  d\tau. \] (Cálculo numérico ou simbólico pode ser aplicado
+                  conforme necessário.)
+                </p>
+                <p>
+                  STATUS: Valor resultante determina o comprimento da trajetória
+                  reparametrizada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: <span class="censored">Setor de Navegação</span> - Dados
+              Interceptados [MAIO/1965]
+            </div>
+            <p>
+              Considere \(\vec{r}(t) = \begin{pmatrix} \cos t \\ \sin t
+              \end{pmatrix}\) para \(t\) em \([0, \pi]\). Sugira uma
+              reparametrização \(u(\tau)\) que simplifique o termo \(\sin t\)
+              para \(\sin(u(\tau))\). Calcule a integral de linha \(\int_C
+              f(\vec{r}(t))\,|\vec{r}'(t)|\,dt\) assumindo \(f(\vec{r}) = 1\),
+              isto é, apenas o comprimento da curva.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as funções
+                trigonométricas para reduzir complexidade.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  PROTOCOLO: Se \(\vec{r}(t)\) descreve semicircunferência,
+                  temos \(|\vec{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2} = 1.\)
+                </p>
+                <p>
+                  UMA POSSÍVEL REPARAMETRIZAÇÃO: \(u(\tau) = \tau^2\), definindo
+                  \(t = u(\tau)\). Podem-se escolher faixas de \(\tau\)
+                  adequadas para cobrir \([0,\pi]\).
+                </p>
+                <p>
+                  AO REPARAMETRIZAR, segue \(\frac{d\vec{r}}{d\tau} =
+                  \vec{r}'(u(\tau)) \cdot u'(\tau)\). Como a função
+                  \(f(\vec{r})=1\), a integral reduz-se ao cálculo de
+                  comprimento via \(\int |\vec{r}'(\tau)|\, d\tau\).
+                </p>
+                <p>
+                  COMPRIMENTO FINAL: \(\pi\) (pois o arco semicircular de raio 1
+                  tem comprimento \(\pi\)).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: <span class="censored">Universidade</span> Soviética
+              [Relatório de <span class="censored">████</span>, 1965]
+            </div>
+            <p>
+              Dada a curva parametrizada por \(\vec{r}(t) = \begin{pmatrix} e^t
+              \\ t \end{pmatrix}\) no intervalo \([0, 1]\), proponha uma função
+              \(u(\tau)\) que possa simplificar a componente exponencial. Avalie
+              a integral de linha \(\int_C |\vec{r}'(t)|\, dt\) pela nova
+              parametrização.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar a transformação de
+                variável para \(\ln\) ou equivalentes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  PROCEDIMENTO: \(\vec{r}'(t) = \begin{pmatrix} e^t \\ 1
+                  \end{pmatrix}\), então \(|\vec{r}'(t)| = \sqrt{e^{2t} + 1}.\)
+                </p>
+                <p>
+                  PROPOSTA: Use \(\tau = e^t\) para simplificar o termo. Então
+                  \(t = \ln(\tau)\) e \(\frac{d\tau}{dt} = e^t = \tau\).
+                </p>
+                <p>
+                  SOB A NOVA VARIÁVEL: \(\tau\) varia de \(\tau(0)=1\) até
+                  \(\tau(1)=e\). A expressão \[ \int_1^{e} \sqrt{\tau^2 + 1}
+                  \,\frac{d t}{d \tau}\, d\tau \] demanda computar
+                  \(\frac{dt}{d\tau} = \frac{1}{\tau}\).
+                </p>
+                <p>
+                  ASSIM, \[ \int_1^{e} \sqrt{\tau^2 + 1} \cdot \frac{1}{\tau} \,
+                  d\tau. \] A partir daí, aplica-se o método adequado para
+                  avaliação (simbólica ou numérica).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (4-6) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: <span class="censored">Setor Avançado</span> - Projeto
+              Gemini [JUL/1965]
+            </div>
+            <p>
+              Uma trajetória em 3D é dada por \(\vec{r}(t) = \begin{pmatrix}
+              \sqrt{t} \\ t \\ 2t \end{pmatrix}\) no intervalo \([0,4]\).
+              Encontre uma reparametrização \(u(\tau)\) que torne a componente
+              \(\sqrt{t}\) linear em \(\tau\). Calcule a integral de linha
+              \(\displaystyle \int_C |\vec{r}'(t)|\, dt\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de reparametrização podem
+                simplificar raízes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  DEFINIÇÃO: Se \(\tau = \sqrt{t}\), então \(t = \tau^2\). Nesse
+                  caso, \(\vec{r}(\tau) = \begin{pmatrix} \tau \\ \tau^2 \\
+                  2\tau^2 \end{pmatrix}\) e \(\frac{d\vec{r}}{d\tau}\)
+                  simplifica.
+                </p>
+                <p>
+                  A MAGNITUDE \(\left|\frac{d\vec{r}}{d\tau}\right|\) torna a
+                  integral mais direta. O intervalo \(\tau\) vai de 0 até 2
+                  (pois quando \(t=4\), \(\tau=2\)).
+                </p>
+                <p>
+                  LOGO, \[ \int_0^{2} \bigl|\frac{d\vec{r}}{d\tau}\bigr|\, d\tau
+                  \] representa o mesmo comprimento que a integral original.
+                  Cálculos adicionais são análogos aos passos anteriores.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Encontro Orbital [Dados do Módulo
+              <span class="censored">███</span>]
+            </div>
+            <p>
+              A curva parametrizada \(\vec{r}(t) = \begin{pmatrix} 2\sin t \\
+              2\cos t \\ t \end{pmatrix}\) em \([0, \pi]\) descreve uma hélice
+              circular parcial. Proponha uma reparametrização com base em \(\tau
+              = t^2\). Calcule \(\displaystyle \int_C
+              f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\) para \(f(\vec{r}) = 2 + t\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de escalonamento paramétrico podem
+                ser úteis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  DERIVADA ORIGINAL: \(\vec{r}'(t) = \begin{pmatrix} 2\cos t \\
+                  -2\sin t \\ 1 \end{pmatrix}\).
+                </p>
+                <p>
+                  MAGNITUDE: \[ |\vec{r}'(t)| = \sqrt{(2\cos t)^2 + (-2\sin t)^2
+                  + 1^2} = \sqrt{4\cos^2 t + 4\sin^2 t + 1} = \sqrt{4 + 1} =
+                  \sqrt{5}. \]
+                </p>
+                <p>
+                  FUNÇÃO: \(f(\vec{r}) = 2 + t\). Assim, \[ \int_0^{\pi} (2 +
+                  t)\sqrt{5}\, dt = \sqrt{5} \int_0^{\pi} (2 + t)\, dt. \]
+                </p>
+                <p>
+                  Reparametrização \(\tau = t^2\) pode ser feita, embora aqui a
+                  forma original já seja simples. Em casos gerais, a mudança de
+                  parâmetro ajusta melhor intervalos de integração.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Documentos
+              <span class="censored">Classificados</span> do
+              <span class="censored">Instituto</span>
+              de Pesquisa [OUT/1965]
+            </div>
+            <p>
+              Para a curva \(\vec{r}(t) = \begin{pmatrix} t \\ 3t^2 \\ 4
+              \end{pmatrix}\), \(t \in [1,3]\), encontre a reparametrização \(t
+              = \alpha(\tau)\) que normalize o intervalo de integração para
+              \([0,1]\). Calcule a integral de linha \(\displaystyle \int_C
+              3\,|\vec{r}'(t)|\, dt\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integral escalar simplificam a
+                soma.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  DEFINIÇÃO: Se desejamos \(\tau \in [0,1]\), podemos aplicar
+                  \(\tau = \frac{t - 1}{2}\). Assim, quando \(t=1\), \(\tau=0\),
+                  e quando \(t=3\), \(\tau=1\).
+                </p>
+                <p>
+                  ENTÃO \(t = 2\tau + 1\). Derivando, \(\frac{dt}{d\tau} = 2\).
+                </p>
+                <p>
+                  CÁLCULO: \[ \vec{r}'(t) = \begin{pmatrix} 1 \\ 6t \\ 0
+                  \end{pmatrix}, \quad |\vec{r}'(t)| = \sqrt{1 + 36t^2}. \]
+                </p>
+                <p>
+                  AO MUDAR DE PARÂMETRO: \(\int_0^1 3 \,\sqrt{1 +
+                  36(2\tau+1)^2}\, \cdot 2\, d\tau.\)
+                </p>
+                <p>
+                  O resultado final depende de integração específica, mas a
+                  técnica geral ilustra o método de normalização do intervalo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (7-9) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Laboratório Avançado - Programa Apollo [NOV/1966]
+            </div>
+            <p>
+              Uma manobra de injeção translunar usa a curva: \(\vec{r}(t) =
+              \begin{pmatrix} e^{2t} \\ \ln(1 + t^2) \\ t \end{pmatrix}\) em
+              \([0,2]\). Reparametrize para eliminar o expoente \(2t\) na
+              primeira componente. Calcule a integral de linha \(\displaystyle
+              \int_C f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\) para \(f(\vec{r}) =
+              2e^{-2t}\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob certas
+                transformações paramétricas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  DEFINIÇÃO: Para eliminar \(e^{2t}\), uma escolha possível:
+                  \(\tau = e^{2t}\). Daí \(t = \frac{1}{2}\ln(\tau)\).
+                </p>
+                <p>
+                  CÁLCULO: \(\vec{r}(\tau) = \begin{pmatrix} \tau \\ \ln\bigl(1
+                  + \bigl(\tfrac{1}{2}\ln(\tau)\bigr)^2\bigr) \\
+                  \tfrac{1}{2}\ln(\tau) \end{pmatrix}\).
+                </p>
+                <p>
+                  COM \(f(\vec{r}) = 2e^{-2t} =
+                  2e^{-2\cdot(\frac{1}{2}\ln(\tau))} = 2\tau^{-1}\).
+                </p>
+                <p>
+                  DERIVADA e limites de integração \(\tau(0)=1\),
+                  \(\tau(2)=e^4\) completam o procedimento. Integra-se \[
+                  \int_1^{e^4} 2\tau^{-1}\,\Bigl|\frac{d\vec{r}}{d\tau}\Bigr|\,
+                  d\tau. \] O resultado final depende do processamento
+                  específico.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Sistema de Acoplamento Orbital [Setor
+              <span class="censored">XX</span> - JAN/1967]
+            </div>
+            <p>
+              Seja \(\vec{r}(t) = \begin{pmatrix} t^3 \\ e^t - t
+              \end{pmatrix}\), \(t \in [0,1]\). Usar \(\tau = t^3\) e avaliar
+              \(\displaystyle \int_C (1 + t)\,|\vec{r}'(t)|\, dt\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Há simetrias não aparentes que se simplificam
+                sob \(\tau\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  ANÁLISE: Derivada original \(\vec{r}'(t) = \begin{pmatrix}
+                  3t^2 \\ e^t - 1 \end{pmatrix}\).
+                </p>
+                <p>
+                  REPARAMETRIZANDO COM \(\tau = t^3\), obtemos \(t =
+                  \tau^{1/3}\). Então, \(\frac{dt}{d\tau} =
+                  \frac{1}{3\tau^{2/3}}\) e a derivada da curva em função de
+                  \(\tau\) ajusta a integral.
+                </p>
+                <p>
+                  RESULTADO: Intervalo de \(\tau\) vai de 0 até 1,
+                  possibilitando uma eventual simplificação no cálculo numérico
+                  de \(\int_0^1 (1 + \tau^{1/3}) \ldots\, d\tau\).
+                </p>
+                <p>
+                  DETALHES ALGÉBRICOS FICAM EM SIGILO:
+                  <span class="censored">████████</span>.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Arquivos <span class="censored">Secretos</span>
+              - Cálculo Vetorial Avançado [MAR/1967]
+            </div>
+            <p>
+              Dada \(\vec{r}(t) = \begin{pmatrix} \sin(t^2) \\ t
+              \end{pmatrix}\), reparametrize para que a componente \(\sin(t^2)\)
+              se torne \(\sin(\tau)\). Calcule o comprimento da curva se \(t\)
+              varia em \([0,\sqrt{\pi}]\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique invariantes por trás de \(\sin(t^2)\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  SEJA \(\tau = t^2\). Então \(t = \sqrt{\tau}\),
+                  \(\frac{dt}{d\tau} = \frac{1}{2\sqrt{\tau}}\).
+                </p>
+                <p>
+                  DERIVADA: \(\vec{r}'(t) = \begin{pmatrix} 2t\cos(t^2) \\ 1
+                  \end{pmatrix}\).
+                </p>
+                <p>
+                  MAGNITUDE: \[ |\vec{r}'(t)| = \sqrt{(2t\cos(t^2))^2 + 1}. \] O
+                  novo intervalo de \(\tau\) será \([0,\pi]\).
+                </p>
+                <p>
+                  O CÁLCULO FINAL ENVOLVE: \(\int_0^\pi \sqrt{(2\sqrt{\tau}\cos
+                  \tau)^2 + 1}\,\cdot \frac{d\tau}{2\sqrt{\tau}}\).
+                </p>
+                <p>
+                  RESULTADO: Interpreta-se como comprimento de arco com mudança
+                  de parâmetro.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (10-12) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Módulo de Testes - Programa Apollo 11 [ABR/1969]
+            </div>
+            <p>
+              A trajetória proposta para rendezvous em órbita lunar é descrita
+              por \(\vec{r}(t) = \begin{pmatrix} \ln(1 + t) \\ \sqrt{1 + t^2} \\
+              t \end{pmatrix}\). Estabelecer mudança de parâmetro para reduzir
+              \(\sqrt{1 + t^2}\). Calcular a integral de linha \(\displaystyle
+              \int_C f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\), onde \(f(\vec{r})\)
+              relaciona-se à energia consumida.
+            </p>
+            <!-- Sem dicas para a série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  ABORDAGEM: Reparametrizar via \(\tau = \sqrt{1 + t^2}\) ou
+                  outra escolha. Definir limites e efetuar integração.
+                </p>
+                <p>
+                  NOTA: O valor de \(f(\vec{r})\) permanece restrito aos dados
+                  de consumo energético do módulo.
+                </p>
+                <p>
+                  CONCLUSÃO:
+                  <span class="censored">RESULTADO DISSIMULADO</span>
+                  (Uso exclusivo do setor orbital).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Laboratório <span class="censored">Lunar</span> - Projeto
+              <span class="censored">Stone</span> [JUN/1969]
+            </div>
+            <p>
+              A curva espacial \(\vec{r}(t) = \begin{pmatrix} \sin t + t \\ \cos
+              t \\ e^t \end{pmatrix}\) é avaliada no intervalo \([0,1]\).
+              Proponha uma mudança de parâmetro que simplifique duas das três
+              componentes. Calcule a integral \(\displaystyle \int_C (t^2 +
+              3)\,|\vec{r}'(t)|\, dt\).
+            </p>
+            <!-- Sem dicas para a série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  POSSÍVEL REPARAMETRIZAÇÃO: \(\tau = e^t\) ou \(\tau = \sin t +
+                  t\). Passos de cálculo envolvem derivadas, módulo e
+                  substituição em \(\int (t^2 + 3)|\vec{r}'(t)|\, dt\).
+                </p>
+                <p>
+                  USO TÁTICO: Ajustes de trajetória para aproximação lunar
+                  exigem controle preciso do consumo de propelente.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Missão Skylab - Documentos Internos [AGO/1973]
+            </div>
+            <p>
+              A órbita de estabilização descrita por \(\vec{r}(t) =
+              \begin{pmatrix} t^3 + 2t \\ \sqrt{4 + t^4} \\ \ln(2 + t^2)
+              \end{pmatrix}\) é analisada no intervalo \([0,2]\). Estabeleça
+              mudança de parâmetro para normalizar o intervalo em \([0,1]\).
+              Calcule a integral de linha \(\displaystyle \int_C
+              5\,|\vec{r}'(t)|\, dt\).
+            </p>
+            <!-- Sem dicas para a série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  PROCEDIMENTO: Normalização típica \(\tau = \frac{t}{2}\), de
+                  modo que \(t=2\tau\) mapeie \([0,2]\) em \([0,1]\). Outras
+                  transformações podem ser consideradas.
+                </p>
+                <p>
+                  MAGNITUDE DE \(\vec{r}'(t)\) e multiplicador
+                  \(\frac{dt}{d\tau}\) definem a integral a ser computada.
+                </p>
+                <p>
+                  AVALIAÇÃO: Resultados numéricos podem servir de parâmetro para
+                  verificação de estabilidade orbital.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VX-<span
+          class="censored"
+          >1971</span
+        >-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+<div class="context">
+              ORIGEM: Resumo Técnico [SETOR <span class="censored">Δ-OPS</span>]
+            </div>
+<p>
+              Suponha agora a mesma região do exercício anterior, \(x^2 + y^2
+              \le 9\), mas com densidade \(\rho(x,y) = 2 + x^2\).
+              <br/>
+              DETERMINAR: A massa total usando coordenadas polares.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integrais radiais podem
+                simplificar o termo \(x^2\).
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Em polares, \(x = r\cos\theta\). Então \(\rho(r,\theta) = 2 +
+                  r^2 \cos^2\theta\).
+                </p>
+<p>
+                  \[ m = \int_{0}^{2\pi}\int_{0}^{3} \left(2 + r^2
+                  \cos^2\theta\right) r \, dr\, d\theta. \]
+                </p>
+<p>
+                  SEPAREMOS: \[ m = \int_{0}^{2\pi}\int_{0}^{3} 2r \, dr\,
+                  d\theta + \int_{0}^{2\pi}\int_{0}^{3} r^3 \cos^2\theta \, dr\,
+                  d\theta. \]
+                </p>
+<p>
+                  PRIMEIRO TERMO: \[ \int_{0}^{3} 2r \, dr = \left[ r^2
+                  \right]_{0}^{3} = 9. \] \[ \int_{0}^{2\pi} 9 \, d\theta = 9
+                  \cdot 2\pi = 18\pi. \]
+                </p>
+<p>
+                  SEGUNDO TERMO: \[ \int_{0}^{3} r^3 \, dr =
+                  \left[\frac{r^4}{4}\right]_{0}^{3} = \frac{81}{4}. \] \[
+                  \int_{0}^{2\pi} \cos^2\theta \, d\theta = \pi, \] pois a
+                  integral de \(\cos^2\theta\) em um período completo é \(\pi\).
+                </p>
+<p>Assim, o segundo termo = \(\frac{81}{4} \times \pi\).</p>
+<p>
+                  CONCLUSÃO: \[ m = 18\pi + \frac{81\pi}{4} = \frac{72\pi +
+                  81\pi}{4} = \frac{153\pi}{4}. \]
+                </p>
+</div>
+</details>
+</li>

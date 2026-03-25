@@ -1,0 +1,51 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+<div class="context">
+              ORIGEM: Análise Inercial - Projeto <span class="censored">TESEU</span>
+</div>
+<p>
+              Seja \(D\) a região limitada pelo cone \(z = \sqrt{x^2 + y^2}\) e
+              pelo plano \(z = 3\). Calcule
+              \(\iiint_D (z)\,dx\,dy\,dz\) aplicando mudança de variáveis
+              compatível com o cone.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Há superfícies de revolução notáveis no domínio.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Em coordenadas cilíndricas, o cone \(z = r\). Então
+                  \(r \le z \le 3\) e \(0 \le r \le 3\). Para cada \(r\),
+                  \(z\) inicia em \(r\) e vai até 3.
+                </p>
+<p>
+                  A projeção no plano \(xy\) é \(0 \le r \le 3,\)
+                  \(\theta \in [0, 2\pi].\)
+                </p>
+<p>
+                  Integral:
+                  \[
+                    \int_{0}^{2\pi}\int_{0}^{3}\int_{z=r}^{3}
+                      z \cdot r \; dz\,dr\,d\theta.
+                  \]
+                </p>
+<p>
+                  Integrando em \(z\):
+                  \(\int_{z=r}^{3} z\,dz = \frac{9}{2} - \frac{r^2}{2}.\)
+                </p>
+<p>
+                  Resta
+                  \(\int_{0}^{2\pi}\int_{0}^{3}
+                    r\left(\frac{9}{2} - \frac{r^2}{2}\right)\,dr\,d\theta.\)
+                  Após resolver em \(r\) e multiplicar por \(2\pi\), encontra-se
+                  \(\displaystyle 2\pi \cdot \left(\frac{9}{2}\cdot\frac{9}{2} - \frac{3^4}{8}\right)\)
+                  = valor resultante de \(\frac{81\pi}{4}.\)
+                </p>
+</div>
+</details>
+</li>

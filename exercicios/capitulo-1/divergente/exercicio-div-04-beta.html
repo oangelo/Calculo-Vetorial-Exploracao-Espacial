@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
+  <div class="context">
+    ORIGEM: Seção de Análises Orbitais – Programa Apollo [DOCUMENTO PARCIALMENTE
+    CENSURADO]
+  </div>
+  <p>
+    Considere o campo \(\vec{M}(x,y,z) = (x^2 - y^2,\; xy,\; x + y + z)\).
+    Determine \(\nabla \cdot \vec{M}\) e conclua se o campo pode ser
+    classificado como “irrotacional” ou “solenoidal” somente com base no valor
+    da divergência. Justifique sua resposta.
+  </p>
+  <p>
+    <strong>Dica:</strong> Lembre-se de que a condição para um campo ser
+    solenoidal é \(\nabla \cdot \vec{M} = 0\), mas a condição para ser
+    irrotacional envolve o rotacional e não apenas o divergente.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para classificar o campo, calcule \(\nabla \cdot \vec{F}\)
+      e analise o sinal do resultado: positivo indica fonte, negativo indica
+      sumidouro.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>Cálculo da divergência:</strong></p>
+      <p>
+        \[ \nabla \cdot \vec{M} = \frac{\partial}{\partial x}(x^2 - y^2) +
+        \frac{\partial}{\partial y}(xy) + \frac{\partial}{\partial z}(x + y +
+        z). \]
+      </p>
+      <p>
+        <em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[x^2 - y^2] =
+        2x.\)
+        <br />
+        <em>Segundo termo:</em> \(\frac{\partial}{\partial y}[xy] = x.\)
+        <br />
+        <em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[x + y + z] = 1.\)
+      </p>
+      <p>Portanto, \[ \nabla \cdot \vec{M} = 2x + x + 1 = 3x + 1. \]</p>
+      <p>
+        <strong>Análise:</strong> O campo não é solenoidal em todo o espaço,
+        pois \(\nabla \cdot \vec{M}\) não é identicamente zero. Ele se anula
+        apenas em \(x = -\frac{1}{3}\).
+      </p>
+      <p>
+        Com relação à irrotacionalidade, é preciso calcular o rotacional
+        \(\nabla \times \vec{M}\). Logo, saber apenas o divergente não permite
+        concluir se o campo é ou não irrotacional.
+      </p>
+    </div>
+  </details>
+</li>

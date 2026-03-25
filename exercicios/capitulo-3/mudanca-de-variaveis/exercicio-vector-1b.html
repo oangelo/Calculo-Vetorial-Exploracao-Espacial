@@ -1,0 +1,89 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+<div class="context">
+              ORIGEM: Área Retangular Deformada - Laboratório de <span class="censored">Coordenadas</span>
+</div>
+<p>
+              Seja \(\iint_{R} (3x - y)\,dx\,dy\) onde a região \(R\) é descrita
+              em termos das variáveis \(u\) e \(v\) pela transformação
+              \[
+                \begin{cases}
+                x = u + 1 \\
+                y = v - 2
+                \end{cases}
+              \]
+              com \(0 \le u \le 2\) e \(1 \le v \le 3\). Calcule a integral via
+              mudança de variáveis.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Operações elementares de translação podem
+                simplificar consideravelmente o cálculo.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  A Jacobiana da transformação é
+                  \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\) = 1,
+                  pois
+                  \[
+                    x = u + 1,\quad
+                    y = v - 2 \implies
+                    \frac{\partial(x,y)}{\partial(u,v)} =
+                    \begin{pmatrix}
+                      1 &amp; 0 \\
+                      0 &amp; 1
+                    \end{pmatrix}
+                  \]
+                </p>
+<p>
+                  Portanto,
+                  \[
+                    \iint_{R} (3x - y)\,dx\,dy
+                    = \int_{v=1}^{3} \int_{u=0}^{2}
+                      \bigl(3(u+1) - (v-2)\bigr)\cdot 1\, du\, dv.
+                  \]
+                </p>
+<p>
+                  Expande-se em
+                  \(\int_{1}^{3}\int_{0}^{2} (3u + 3 - v + 2)\,du\,dv\)
+                  = 
+                  \(\int_{1}^{3}\int_{0}^{2} (3u + 5 - v)\,du\,dv.\)
+                </p>
+<p>
+                  Primeiro em \(u\):
+                  \[
+                    \int_{0}^{2} (3u + 5 - v)\,du
+                    =
+                    \left[\frac{3u^2}{2} + 5u - vu\right]_{0}^{2}
+                    =
+                    \left[\frac{3\cdot 4}{2} + 10 - 2v\right] - 0
+                    =
+                    6 + 10 - 2v
+                    =
+                    16 - 2v.
+                  \]
+                </p>
+<p>
+                  Em seguida, integrando em \(v\) de 1 a 3:
+                  \[
+                    \int_{1}^{3} (16 - 2v)\,dv
+                    =
+                    \left[16v - v^2\right]_{1}^{3}
+                    =
+                    (16\cdot 3 - 9) - (16\cdot 1 - 1)
+                    =
+                    (48 - 9) - (16 - 1)
+                    =
+                    39 - 15
+                    =
+                    24.
+                  \]
+                </p>
+<p>CONCLUSÃO: O valor da integral é 24.</p>
+</div>
+</details>
+</li>

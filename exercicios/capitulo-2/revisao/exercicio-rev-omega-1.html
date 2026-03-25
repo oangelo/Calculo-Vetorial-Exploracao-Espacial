@@ -1,0 +1,38 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO REV-OMEGA-1</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Trajetórias – Documento Ultra
+    <span class="censored">Ψ‑23</span>
+  </div>
+  <p>
+    A região \(D\) é limitada por \(y=x^2\), \(y=4\) e \(x=0\) (com \(x\ge0\)).
+    Expresse \(\iint_D f(x,y)\,dA\) como integral iterada de duas formas:<br />
+    (a) Integrando primeiro em \(y\), depois em \(x\);<br />
+    (b) Integrando primeiro em \(x\), depois em \(y\).<br />
+    Para \(f(x,y)=xy\), calcule a integral usando a ordem mais conveniente.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA‑4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Esboce a região. Note que \(x\) vai de 0 a 2 quando
+      \(y=x^2\) encontra \(y=4\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑5 REQUERIDO]</summary>
+    <div class="solution">
+      <p>A região tem \(x\in[0,2]\) e, para cada \(x\), \(y\in[x^2,4]\).</p>
+      <p>(a) Ordem \(dy\,dx\): \[\int_0^2\int_{x^2}^{4} xy\,dy\,dx\]</p>
+      <p>
+        (b) Ordem \(dx\,dy\): Para \(y\in[0,4]\), temos \(x\in[0,\sqrt{y}]\):
+        \[\int_0^4\int_0^{\sqrt{y}} xy\,dx\,dy\]
+      </p>
+      <p>
+        Calculando com (a): \[\int_0^2 x\Bigl[\frac{y^2}{2}\Bigr]_{x^2}^{4} dx =
+        \int_0^2 x(8-\frac{x^4}{2})dx = \int_0^2(8x-\frac{x^5}{2})dx =
+        \Bigl[4x^2-\frac{x^6}{12}\Bigr]_0^2 =
+        16-\frac{64}{12}=16-\frac{16}{3}=\boxed{\frac{32}{3}}.\]
+      </p>
+    </div>
+  </details>
+</li>

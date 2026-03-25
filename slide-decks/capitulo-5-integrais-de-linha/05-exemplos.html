@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Invariância Paramétrica -->
+      <section>
+        <h2>Mudança de Parâmetro</h2>
+
+        <div class="math-section">
+          <p>
+            A integral de linha é <em>invariante</em> a mudanças de
+            parametrização:
+          </p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \int_\alpha^\beta
+            \vec{F}(\vec{r}(u)) \cdot \frac{d\vec{r}}{du} \, du\]
+          </p>
+
+          <p>
+            Para qualquer reparametrização \(u = g(t)\) com \(g(a) = \alpha\) e
+            \(g(b) = \beta\), desde que:
+          </p>
+          <ul>
+            <li>\(g\) seja crescente (preserve a orientação)</li>
+            <li>\(g\) seja diferenciável (garanta suavidade)</li>
+          </ul>
+        </div>
+
+        <div class="math-section">
+          <p>
+            Aplicação espacial: Para economizar combustível em trajetórias
+            orbitais, engenheiros podem reparametrizar uma órbita para otimizar
+            quanto tempo o veículo passa em cada região da órbita.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOVO SLIDE: Exemplo de Mudança de Parâmetro -->
+      <section>
+        <h2>Exemplo: Mudança de Parâmetro em Órbita Elíptica</h2>
+
+        <div class="math-section">
+          <p><strong>Parametrização por tempo \(t\):</strong></p>
+          <p>
+            Uma órbita elíptica pode ser parametrizada usando a anomalia
+            excêntrica \(E\) (proporcional ao tempo):
+          </p>
+          <p>
+            \[\vec{r}(E) = a\cos E \, \hat{\imath} + b\sin E \, \hat{\jmath}\]
+          </p>
+          <p>
+            O vetor velocidade (d\(\vec{r}/dt\)) varia em magnitude ao longo da
+            órbita, sendo maior no periélio e menor no afélio.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p><strong>Reparametrização por ângulo \(\theta\):</strong></p>
+          <p>
+            Podemos definir uma nova parametrização usando o ângulo polar
+            \(\theta\):
+          </p>
+          <p>
+            \[\vec{r}(\theta) = \frac{p}{1+e\cos\theta}(\cos\theta \,
+            \hat{\imath} + \sin\theta \, \hat{\jmath})\]
+          </p>
+          <p>
+            Onde \(p\) é o parâmetro semi-latus rectum e \(e\) é a
+            excentricidade.
+          </p>
+
+          <p>
+            Em qualquer uma destas parametrizações, o valor da integral de linha
+            \(\int_C \vec{F} \cdot d\vec{r}\) permanece o mesmo!
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Integrais sobre Curvas de Classe C¹ -->
+      <section>
+        <h2>Integrais sobre Curvas de Classe C¹</h2>
+
+        <div class="math-section">
+          <p>
+            Uma curva é de classe C¹ quando sua derivada (tangente) é contínua.
+          </p>
+          <p>
+            Para curvas descritas por partes, podemos somar as integrais em cada
+            segmento:
+          </p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \sum_{i=1}^n \int_{C_i} \vec{F}
+            \cdot d\vec{r}\]
+          </p>
+
+          <p>
+            Esta propriedade é essencial quando a trajetória é composta por
+            diferentes fases:
+          </p>
+          <ul>
+            <li>Subida inicial do foguete</li>
+            <li>Circularização da órbita</li>
+            <li>Transferência entre órbitas (manobra de Hohmann)</li>
+            <li>Fase de inserção orbital final</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+    <!-- SEÇÃO 4: PARAMETRIZAÇÃO POR COMPRIMENTO DE ARCO -->
+    <!-- =========================== -->
+  </body>
+</html>

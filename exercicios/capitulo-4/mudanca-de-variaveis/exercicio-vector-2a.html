@@ -1,0 +1,48 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+<div class="context">
+              ORIGEM: Plataforma de Testes - <span class="censored">ÆTHER</span>
+</div>
+<p>
+              No domínio limitado pela superfície elipsoide
+              \(\frac{x^2}{4} + \frac{y^2}{1} + \frac{z^2}{9} = 1\), determine
+              \(\iiint_D x^2\,dx\,dy\,dz\). Use uma mudança de variáveis que
+              transforme este elipsoide em uma esfera.
+            </p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+<div class="hint">
+                [NOTA TÉCNICA]: Propriedades de escalonamento podem ser úteis
+                para elipsoides.
+              </div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+<div class="solution">
+<p>
+                  Faça \(u = \frac{x}{2},\; v = y,\; w = \frac{z}{3}\). Então a
+                  equação torna-se \(u^2 + v^2 + w^2 = 1.\)
+                </p>
+<p>
+                  O jacobiano é
+                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 2 \times 1 \times 3 = 6.\)
+                </p>
+<p>
+                  Em termos de \(u,v,w\),
+                  \(\iiint_D x^2\,dx\,dy\,dz 
+                    = \iiint_{u^2 + v^2 + w^2 \le 1} (2u)^2 \cdot 6 \;du\,dv\,dw.
+                  \)
+                </p>
+<p>
+                  Assim, \(\iiint_{B} 6 \cdot 4u^2 \;du\,dv\,dw 
+                      = 24 \iiint_{B} u^2\,du\,dv\,dw,\)
+                  onde \(B\) é a esfera unitária em \((u,v,w)\).
+                </p>
+<p>
+                  Para a esfera de raio 1, a integral de \(u^2\) é
+                  \(\frac{4\pi}{15}\) (com fator volumétrico), logo o resultado
+                  final é \(\frac{96\pi}{15} = \frac{32\pi}{5}.\)
+                </p>
+</div>
+</details>
+</li>

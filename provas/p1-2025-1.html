@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      Prova de Cálculo Vetorial – P1 – 2025.1 - Campos, Integrais & Aplicações
+    </title>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.5;
+        margin: 2rem auto;
+        max-width: 900px;
+        padding: 0 1rem;
+        color: #222;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      ol > li {
+        margin: 1rem 0;
+      }
+      .subitens {
+        margin-top: 0.5rem;
+      }
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 0.5rem;
+      }
+      details {
+        margin-top: 0.5rem;
+        background: #f7f7f7;
+        padding: 0.5rem 1rem;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Prova – Cálculo Vetorial (Capítulo 1)</h1>
+
+    <p>
+      <strong>Instruções gerais:</strong> responda <em>todos</em> os itens
+      justificando cada passo. Utilize notação clara e comente a interpretação
+      física/geométrica sempre que for solicitado. Não é permitido o uso de
+      calculadoras programáveis ou dispositivos conectados à internet.
+    </p>
+
+    <ol>
+      <!-- Questão 1 -->
+      <li>
+        Considere os campos vetoriais planos \[ \vec F(x,y)=\langle
+        x,\,y\rangle,\qquad \vec G(x,y)=\langle -y,\,x\rangle. \] Para
+        <strong>cada</strong> um dos campos execute os itens seguintes.
+        <div class="subitens">
+          <ol type="a">
+            <li>Esboce o campo em, pelo menos, quatro pontos distintos.</li>
+            <li>Calcule a divergente \(\nabla\!\cdot\!\vec V\).</li>
+            <li>
+              Calcule o rotacional (no plano) \(\operatorname{rot}\,\vec V\).
+            </li>
+            <li>
+              Interprete os resultados de (b) e (c) em termos de
+              <em>fontes/sumidouros</em> e <em>rotação local</em>.
+            </li>
+          </ol>
+        </div>
+
+        <details>
+          <summary>Solução</summary>
+          <p><strong>Para \(\vec F\):</strong></p>
+          <ul>
+            <li>
+              Divergente: \(\nabla\!\cdot\!\vec F = \partial_x x + \partial_y y
+              = 1+1 = 2.\)
+            </li>
+            <li>
+              Rotacional (2‑D): \(\mathrm{rot}\,\vec F = (\partial_x y -
+              \partial_y x) \hat k = (0-0) \hat k = 0 \hat k .\)
+            </li>
+            <li>
+              Interpretação: há <em>fonte uniforme</em> (divergência positiva
+              constante) mas ausência de rotação local (rotacional nulo).
+            </li>
+          </ul>
+          <p><strong>Para \(\vec G\):</strong></p>
+          <ul>
+            <li>
+              Divergente: \(\nabla\!\cdot\!\vec G = \partial_x(-y)+\partial_y x
+              = 0+0 = 0.\)
+            </li>
+            <li>
+              Rotacional: \(\mathrm{rot}\,\vec G = (\partial_x x -
+              \partial_y(-y)) \hat k = (1-(-1)) \hat k =2 \hat k .\)
+            </li>
+            <li>
+              Interpretação: o escoamento é <em>incompressível</em> (divergência
+              nula) mas apresenta <em>vorticidade constante</em>.
+            </li>
+          </ul>
+        </details>
+      </li>
+
+      <!-- Questão 2 -->
+      <li>
+        Seja \(T\) o triângulo de vértices \((1,1)\), \((0,3)\) e \((2,2)\).
+        <div class="subitens">
+          <ol type="a">
+            <li>
+              Escreva, <strong>sem executar a integração</strong>, a integral
+              dupla \(\displaystyle \iint_T f(x,y)\,dA\) na ordem \(dy\,dx\).
+            </li>
+            <li>
+              Assuma \(f(x,y)=1\). Calcule o valor da integral obtida no
+              item (a).
+            </li>
+            <li>
+              Determine a área de \(T\) usando o produto vetorial entre dois
+              lados.
+            </li>
+            <li>
+              Compare os resultados dos itens (b) e (c) e discuta sua coerência.
+            </li>
+          </ol>
+        </div>
+
+        <details>
+          <summary>Solução</summary>
+          <p>
+            <strong>(a) Limites em \(dy\,dx\):</strong> o domínio pode ser
+            dividido em dois intervalos de \(x\):
+          </p>
+          <p>
+            Para \(0\le x\le 1\): \(y\) varia de \(-2x+3\) até
+            \(-\frac{x}{2}+3\). Para \(1\le x\le 2\): \(y\) varia de \(x\) até
+            \(-2x+3\) .<br />
+          </p>
+          <p>
+            Assim, \[\iint_T f\,dA = \int_{0}^{1}\!\int_{-2x+3}^{-\frac{x}{2}+3}
+            f(x,y)\,dy\,dx + \int_{1}^{2}\!\int_{x}^{-2x+3} f(x,y)\,dy\,dx.\]
+          </p>
+          <p>
+            <strong>(b)</strong> Para \(f\equiv1\) a integral devolve a área do
+            triângulo.
+          </p>
+          <p>
+            <strong>(c) Área via produto vetorial:</strong>
+            escolhendo vetores \(\vec a = (0,3)-(1,1)=(-1,2)\) e \(\vec b =
+            (2,2)-(1,1)=(1,1)\), temos \[\text{Área}=\tfrac12\,|\vec a\times\vec
+            b|=\tfrac12\,|(-1,2,0)\times(1,1,0)|=\tfrac12\,|(-2,-1,-3)|=\tfrac32.\]
+          </p>
+          <p>
+            <strong>(d)</strong> A integral de (b) vale \(\dfrac32\),
+            coincidindo com o resultado de (c), validando os limites propostos.
+          </p>
+        </details>
+      </li>
+
+      <!-- Questão 3 -->
+      <li>
+        Considere a função \(g(x,y)=x^{2}+y^{2}\) sobre o retângulo
+        \(R=[0,2]\times[0,1]\).
+        <div class="subitens">
+          <ol type="a">
+            <li>
+              Particione \(R\) em \(m=4\) subintervalos em \(x\) e \(n=2\) em
+              \(y\), utilizando pontos médios.
+            </li>
+            <li>
+              Escreva a soma de Riemann correspondente e encontre um valor
+              numérico aproximado para \(\iint_R g(x,y)\,dA\) (quatro casas
+              decimais).
+            </li>
+            <li>
+              Comente qualitativamente como o erro da aproximação evolui quando
+              \(m,n\to\infty\), relacionando sua resposta à definição de
+              integral dupla.
+            </li>
+          </ol>
+        </div>
+
+        <details>
+          <summary>Solução</summary>
+          <p>
+            Com \(\Delta x = 0.5\) e \(\Delta y = 0.5\), os pontos médios são
+            \((x_i, y_j)\) com \(x_i=0.25,0.75,1.25,1.75\) e \(y_j=0.25,0.75\).
+          </p>
+          <p>
+            A soma de Riemann é \[\sum_{i=1}^{4}\sum_{j=1}^{2}
+            g(x_i,y_j)\,\Delta x\,\Delta y = 3.25.\]
+          </p>
+          <p>
+            O valor exato da integral é
+            \[\int_{0}^{2}\!\int_{0}^{1}(x^{2}+y^{2})\,dy\,dx=\frac{10}{3}\approx3.3333,\]
+            resultando em erro relativo \(\approx2.5\%\).
+          </p>
+          <p>
+            À medida que \(m,n\to\infty\) (ou seja, \(\Delta x,\Delta y\to0\)),
+            a soma de Riemann converge para o valor exato pela definição da
+            integral dupla.
+          </p>
+        </details>
+      </li>
+
+      <!-- Questão 4 -->
+      <li>
+        Considere a elipse completa no primeiro quadrante dada por \[
+        \frac{(x-a)^{2}}{a^{2}}+\frac{(y-b)^{2}}{b^{2}}=1,\quad a,b>0,\qquad
+        x\ge 0,\;y\ge 0, \] cuja densidade superficial varia linearmente com
+        \(x\): \(\rho(x,y)=k\,x\) (\(k>0\)).
+        <div class="subitens">
+          <ol type="a">
+            <li>
+              Escreva as integrais que definem as coordenadas do centro de massa
+              \((\bar x,\bar y)\) da placa elíptica.
+            </li>
+            <li>
+              Calcule \(\bar x\) e \(\bar y\) em função de \(a, b\) e \(k\).
+            </li>
+            <li>
+              Explique se o resultado obtido respeita a simetria geométrica
+              esperada.
+            </li>
+            <li>
+              Sem refazer os cálculos, discuta o que mudaria se a densidade
+              fosse \(\rho(x,y)=k\,y\).
+            </li>
+          </ol>
+        </div>
+
+        <details>
+          <summary>Solução</summary>
+          <p><strong>Integrais fundamentais:</strong></p>
+          <p>
+            \[M=\iint_D kx\,dA,\qquad \bar x = \frac{1}{M}\iint_D
+            kx^{2}\,dA,\qquad \bar y = \frac{1}{M}\iint_D kxy\,dA.\]
+          </p>
+          <p>
+            Aplicando a mudança \(x=a u + a\), \(y=b v + b\) com
+            \(u^{2}+v^{2}\le1\) e \(dA=ab\,du\,dv\):
+          </p>
+          <p>
+            \[ M = k\,ab\int_{\text{disk}} (a u + a)\,du\,dv = k\,ab\,a\,\pi =
+            k\pi a^{2}b. \]
+          </p>
+          <p>Analogamente,</p>
+          <p>
+            \[\iint_D kx^{2}\,dA = k\,ab\,\int (a u + a)^{2}\,du\,dv =
+            k\,ab\,a^{2}\,\frac{5\pi}{4},\] \[\iint_D kxy\,dA = k\,ab\,\int (a u
+            + a)(b v + b)\,du\,dv = k\,ab\,ab\,\pi. \]
+          </p>
+          <p>Portanto,</p>
+          <p>\[\boxed{\bar x = \dfrac{5a}{4}},\qquad\boxed{\bar y = b}.\]</p>
+          <p>
+            <strong>Simetria:</strong> a densidade depende apenas de \(x\), logo
+            o centro de massa desloca‑se no eixo \(x\) mas mantém a mesma
+            coordenada \(y=b\), coerente com a simetria horizontal da elipse.
+          </p>
+          <p>
+            <strong>Densidade \(k\,y\):</strong> por analogia, teríamos \(\bar x
+            = a\) (simetria em \(x\)) e \(\bar y = \dfrac{5b}{4}\),
+            deslocando‑se verticalmente.
+          </p>
+        </details>
+      </li>
+
+      <!-- Questão 5 -->
+      <li>
+        Considere a integral dupla \[ I =
+        \int_{x=0}^{1}\!\int_{y=x^{2}}^{\sqrt{x}} (x+2y)\,dy\,dx. \]
+        <div class="subitens">
+          <ol type="a">
+            <li>
+              Calcule \(I\) invertendo a ordem de integração (isto é,
+              escrevendo-a na forma \(dx\,dy\)).
+            </li>
+          </ol>
+        </div>
+
+        <details>
+          <summary>Solução</summary>
+          <p>
+            A região é limitada pelas curvas \(y=x^{2}\) (inferior) e
+            \(y=\sqrt{x}\) (superior); ambas se intersectam em \((0,0)\) e
+            \((1,1)\).
+          </p>
+          <p>
+            Ao inverter a ordem, \(y\) varia de 0 a 1. Para cada \(y\), \(x\)
+            varia de \(y^{2}\) (da equação \(y=x^{2}\)) até \(\sqrt{y}\) (de
+            \(y=\sqrt{x}\)). Assim,
+          </p>
+          <p>\[I=\int_{y=0}^{1}\!\int_{x=y^{2}}^{\sqrt{y}} (x+2y)\,dx\,dy.\]</p>
+          <p>Integrando:</p>
+          <p>
+            \[\int_{y=0}^{1}\left[\tfrac{1}{2}x^{2}+2yx\right]_{x=y^{2}}^{\sqrt{y}}\!dy
+            =\int_{0}^{1}\left(\tfrac12 y+2y\sqrt{y}-\tfrac12
+            y^{4}-2y^{3}\right)dy =\frac{9}{20}.\]
+          </p>
+          <p>
+            O mesmo valor se obtém pela ordem original, confirmando a
+            consistência do processo.
+          </p>
+        </details>
+      </li>
+    </ol>
+
+    <hr />
+    <p style="text-align: center; font-size: 0.85rem">Boa prova!</p>
+  </body>
+</html>

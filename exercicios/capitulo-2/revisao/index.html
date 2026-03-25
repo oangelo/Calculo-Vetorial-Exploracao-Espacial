@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Revisão Integral Dupla</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">05</span> DE AGOSTO DE
+          <span class="censored">1966</span><br />LOCALIZAÇÃO: INSTALAÇÃO
+          <span class="censored">███</span> – SETOR
+          <span class="censored">█</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE COMPILAÇÃO: PROJETO
+          <span class="censored">DOUBLE‑CHECK</span><br /><br />
+          Em meio às revisões finais do
+          <span class="censored">Programa Gemini</span>, a equipe de matemática
+          aplicada foi instruída a consolidar o<br />conhecimento obtido sobre
+          <span class="censored">integrais em duas dimensões</span>. O presente
+          dossiê reúne problemas estratégicos destinados a aferir a<br />profundidade de
+          compreensão antes da avaliação interna de
+          <span class="censored">rendimento orbital</span>.
+        </div>
+        <div class="warning-box">
+          Este volume contém tópicos vitais para o êxito das manobras em órbita
+          baixa. Qualquer divulgação acarretará
+          <span class="censored">sanções operacionais</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX‑<span class="censored">3210</span>‑R</span
+          ><span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span
+          ><span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: REVISÃO DE INTEGRAIS DUPLAS
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iint_D f(x,y)\,dA = \lim_{\|P\| \to 0} \sum_{(x_i^*,y_i^*) \in P}
+          f(x_i^*,y_i^*)\,\Delta A_i\]
+        </p>
+        <p>
+          Onde \(D\) é uma região limitada do plano, \(P\) uma partição de \(D\)
+          e \(\Delta A_i\) as áreas das sub‑regiões. A convergência da soma de
+          Riemann estabelece a existência da integral dupla, permitindo
+          estimativas de <span class="censored">fluxo térmico</span>,
+          <span class="censored">distribuição de massa</span> e outras grandezas
+          bidimensionais.
+        </p>
+      </div>
+      <div class="mission-context">
+        Aplicações no cálculo da carga estrutural de painéis, na predição de
+        <span class="censored">hot‑spots</span> de reentrada e no balanço de
+        propelente em tanques segmentados.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o teste
+        <span class="censored">Gemini X</span> (1966), falhas de telemetria
+        exigiram recomputações manuais de áreas sob curvas de pressão; o domínio
+        descrito exigia somente a definição de integral dupla.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VX‑<span
+          class="censored"
+          >3210</span
+        >‑R
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-rev-alfa-1.html',
+            'exercicio-rev-alfa-2.html',
+            'exercicio-rev-alfa-3.html',
+            'exercicio-rev-beta-1.html',
+            'exercicio-rev-beta-2.html',
+            'exercicio-rev-beta-3.html',
+            'exercicio-rev-gamma-1.html',
+            'exercicio-rev-gamma-2.html',
+            'exercicio-rev-gamma-3.html',
+            'exercicio-rev-omega-1.html',
+            'exercicio-rev-omega-2.html',
+            'exercicio-rev-omega-3.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && window.MathJax.Hub) {
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

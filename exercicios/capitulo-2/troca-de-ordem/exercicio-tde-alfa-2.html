@@ -1,0 +1,50 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDE-ALFA-2</div>
+  <div class="context">
+    ORIGEM: Verificação de Procedimentos - CENTRO DE CONTROLE [1960]
+  </div>
+  <p>
+    Dada a função contínua \(f(x,y) = x + y\) sobre a região \(R = [0, 2] \times
+    [1, 3]\), calcule a integral dupla de duas formas diferentes e verifique que
+    os resultados coincidem.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>(a) Calcule \(\displaystyle\int_1^3 \int_0^2 (x+y)\,dx\,dy\)</li>
+    <li>(b) Calcule \(\displaystyle\int_0^2 \int_1^3 (x+y)\,dy\,dx\)</li>
+    <li>
+      (c) Confirme que os valores obtidos são idênticos, demonstrando o Teorema
+      de Fubini.
+    </li>
+  </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Integre termo a termo. Lembre que \(\int (x+y)\,dx =
+      \frac{x^2}{2} + xy + C\) quando integra em \(x\), tratando \(y\) como
+      constante.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) Calculando na ordem \(dx\,dy\): \[\int_1^3 \int_0^2 (x+y)\,dx\,dy =
+        \int_1^3 \left[\frac{x^2}{2} + xy\right]_0^2\,dy = \int_1^3 (2 +
+        2y)\,dy\] \[= \left[2y + y^2\right]_1^3 = (6 + 9) - (2 + 1) = 12\]
+      </p>
+      <p>
+        (b) Calculando na ordem \(dy\,dx\): \[\int_0^2 \int_1^3 (x+y)\,dy\,dx =
+        \int_0^2 \left[xy + \frac{y^2}{2}\right]_1^3\,dx = \int_0^2 (2x +
+        4)\,dx\] \[= \left[x^2 + 4x\right]_0^2 = (4 + 8) - 0 = 12\]
+      </p>
+      <p>
+        (c) Ambos os cálculos resultam em 12, confirmando que: \[\int_1^3
+        \int_0^2 (x+y)\,dx\,dy = \int_0^2 \int_1^3 (x+y)\,dy\,dx = 12\] Isto
+        demonstra o Teorema de Fubini: para funções contínuas em retângulos, a
+        ordem de integração não afeta o resultado.
+      </p>
+    </div>
+  </details>
+</li>

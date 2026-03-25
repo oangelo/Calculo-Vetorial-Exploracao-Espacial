@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Limite e Continuidade</h2>
+        <p>
+          Definição formal: Uma função vetorial \(\vec{F}: D \subset
+          \mathbb{R}^n \to \mathbb{R}^m\) é contínua em \(\vec{a}\) se:
+        </p>
+        <div class="fragment">
+          <p>
+            \[\lim_{\vec{x} \to \vec{a}} \vec{F}(\vec{x}) = \vec{F}(\vec{a})\]
+          </p>
+          <p>
+            Ou seja, para todo \(\varepsilon > 0\), existe \(\delta > 0\) tal
+            que:
+          </p>
+          <p>
+            \[\|\vec{x} - \vec{a}\| < \delta \implies \|\vec{F}(\vec{x}) -
+            \vec{F}(\vec{a})\| < \varepsilon\]
+          </p>
+        </div>
+      </section>
+
+      <!-- Interpretação Geométrica -->
+      <section>
+        <h2>Interpretação Geométrica</h2>
+        <p>Imagine um satélite em órbita:</p>
+        <div class="fragment">
+          <p>
+            Sua trajetória é descrita por uma função vetorial contínua
+            \(\vec{r}(t)\)
+          </p>
+          <p>
+            \[\vec{r}(t) = \begin{pmatrix} x(t) \\ y(t) \\ z(t) \end{pmatrix}\]
+          </p>
+        </div>
+        <div class="fragment">
+          <p>A continuidade garante que não há "saltos" na trajetória</p>
+        </div>
+      </section>
+
+      <!-- Exemplo Prático -->
+      <section>
+        <h2>Exemplo: Trajetória de Lançamento</h2>
+        <p>Considere a trajetória simplificada de um foguete:</p>
+        <div class="fragment">
+          <p>
+            \[\vec{r}(t) = \begin{pmatrix} v_0t \\ h_0 + v_0t - \frac{1}{2}gt^2
+            \end{pmatrix}\]
+          </p>
+          <p>Onde:</p>
+          <ul>
+            <li>\(v_0\): velocidade inicial</li>
+            <li>\(h_0\): altura inicial</li>
+            <li>\(g\): aceleração da gravidade</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Aplicação: Detecção de Descontinuidades -->
+      <section>
+        <h2>Aplicação: Detecção de Falhas</h2>
+        <p>
+          Durante a corrida espacial, detectar descontinuidades era crucial:
+        </p>
+        <div class="fragment">
+          <ul>
+            <li>Falhas em sensores</li>
+            <li>Interferências em sinais de rádio</li>
+            <li>Anomalias em trajetórias</li>
+          </ul>
+        </div>
+        <div class="fragment">
+          <p>Uma descontinuidade pode indicar:</p>
+          <p>
+            \[\lim_{t \to t_0^-} \vec{F}(t) \neq \lim_{t \to t_0^+} \vec{F}(t)\]
+          </p>
+        </div>
+      </section>
+
+      <!-- Critério de Continuidade -->
+      <section>
+        <h2>Critério de Continuidade</h2>
+        <p>
+          Uma função vetorial \(\vec{F}(x,y) = \begin{pmatrix} F_1(x,y) \\
+          F_2(x,y) \end{pmatrix}\) é contínua se e somente se:
+        </p>
+        <div class="fragment">
+          <p>Cada componente \(F_1(x,y)\) e \(F_2(x,y)\) é contínua</p>
+          <p>Exemplo: Campo gravitacional da Terra</p>
+          <p>
+            \[\vec{g}(x,y,z) = -G\frac{M}{r^3}\begin{pmatrix} x \\ y \\ z
+            \end{pmatrix}\]
+          </p>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>
