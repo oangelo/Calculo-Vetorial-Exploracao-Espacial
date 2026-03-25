@@ -1,54 +1,45 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO SR2-BETA-1</div>
-<div class="context">
-              ORIGEM: Análise de Painéis Solares - Projeto de Estação Orbital
-            </div>
-<p>
-              Seja \(D = [1,2]\times [2,4]\). Considere a função
-              \(\displaystyle f(x,y) = \ln(xy)\) e aplique
-              \(m=2, n=2\) subdivisões. Use pontos amostrais no canto superior
-              esquerdo. Calcule a soma de Riemann aproximada.
-            </p>
-<div class="hint">
-              [SUGESTÃO]: Lembre-se de que \(\ln(ab) = \ln(a) + \ln(b)\).
-            </div>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  \(\Delta x = \frac{2-1}{2} = 0.5\),
-                  \(\Delta y = \frac{4-2}{2} = 1.\)
-                </p>
-<p>
-                  Canto superior esquerdo de cada retângulo:
-                  <br/>
-                  1º retângulo: \((x,y)\approx(1,3)\);
-                  2º retângulo: \((1.5,3)\);
-                  3º retângulo: \((1,4)\);
-                  4º retângulo: \((1.5,4)\).
-                </p>
-<p>
-                  Avaliando \(f\):
-                  \(\ln(1\times 3) = \ln(3)\),
-                  \(\ln(1.5\times 3)=\ln(4.5)\),
-                  \(\ln(1\times 4)=\ln(4)\),
-                  \(\ln(1.5\times 4)=\ln(6)\).
-                </p>
-<p>
-                  Soma:
-                  \[
-                    (\ln 3 + \ln 4.5 + \ln 4 + \ln 6)\times 0.5 \times 1.
-                  \]
-                  <br/>
-                  \(\ln(4.5)\approx 1.5041\); \(\ln(3)\approx 1.0986\);
-                  \(\ln(4)\approx 1.3863\); \(\ln(6)\approx 1.7918\).
-                </p>
-<p>
-                  Somando:
-                  \(1.0986 + 1.5041 + 1.3863 + 1.7918 \approx 5.7808.\)
-                  Multiplicando por \(0.5\),
-                  obtemos aproximadamente \(2.8904\).
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO SR2-BETA-1</div>
+  <div class="context">
+    ORIGEM: Análise de Painéis Solares - Projeto de Estação Orbital
+  </div>
+  <p>
+    Seja \(D = [1,2]\times [2,4]\). Considere a função \(\displaystyle f(x,y) =
+    \ln(xy)\) e aplique \(m=2, n=2\) subdivisões. Use pontos amostrais no canto
+    superior esquerdo. Calcule a soma de Riemann aproximada.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Lembre-se de que \(\ln(ab) = \ln(a) + \ln(b)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(\Delta x = \frac{2-1}{2} = 0.5\), \(\Delta y = \frac{4-2}{2} = 1.\)
+      </p>
+      <p>
+        Canto superior esquerdo de cada retângulo:
+        <br />
+        1º retângulo: \((x,y)\approx(1,3)\); 2º retângulo: \((1.5,3)\); 3º
+        retângulo: \((1,4)\); 4º retângulo: \((1.5,4)\).
+      </p>
+      <p>
+        Avaliando \(f\): \(\ln(1\times 3) = \ln(3)\), \(\ln(1.5\times
+        3)=\ln(4.5)\), \(\ln(1\times 4)=\ln(4)\), \(\ln(1.5\times 4)=\ln(6)\).
+      </p>
+      <p>
+        Soma: \[ (\ln 3 + \ln 4.5 + \ln 4 + \ln 6)\times 0.5 \times 1. \]
+        <br />
+        \(\ln(4.5)\approx 1.5041\); \(\ln(3)\approx 1.0986\); \(\ln(4)\approx
+        1.3863\); \(\ln(6)\approx 1.7918\).
+      </p>
+      <p>
+        Somando: \(1.0986 + 1.5041 + 1.3863 + 1.7918 \approx 5.7808.\)
+        Multiplicando por \(0.5\), obtemos aproximadamente \(2.8904\).
+      </p>
+    </div>
+  </details>
 </li>
