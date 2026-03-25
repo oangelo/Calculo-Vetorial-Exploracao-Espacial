@@ -1,0 +1,45 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO OMEGA-2</div>
+  <div class="context">
+    ORIGEM: Divisão de Cálculo Numérico – Relatório Secreto
+    <span class="censored">Λ‑42</span>
+  </div>
+  <p>
+    Estime \(\iint_D (x^2+y^2)\,dA\) onde \(D=[0,2]\times[0,2]\) usando uma soma
+    de Riemann com partição em 4 sub-retângulos iguais, tomando o ponto superior
+    direito de cada um. Compare com o valor exato e calcule o erro percentual.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA‑4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Divida cada intervalo ao meio: pontos em x: 0,1,2 e y:
+      0,1,2.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑5 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Cada sub-retângulo tem área \(\Delta A = 1\times1 = 1\). Pontos superior
+        direito: (1,1), (2,1), (1,2), (2,2).
+      </p>
+      <p>
+        Soma de Riemann: \[f(1,1)+f(2,1)+f(1,2)+f(2,2) = (1+1)+(4+1)+(1+4)+(4+4)
+        = 2+5+5+8 = \boxed{20}.\]
+      </p>
+      <p>
+        Valor exato: \[\int_0^2\int_0^2(x^2+y^2)\,dy\,dx =
+        \int_0^2\Bigl[x^2y+\frac{y^3}{3}\Bigr]_0^2 dx =
+        \int_0^2(2x^2+\frac{8}{3})dx =
+        \Bigl[\frac{2x^3}{3}+\frac{8x}{3}\Bigr]_0^2 = \frac{16}{3}+\frac{16}{3}
+        = \frac{32}{3} \approx 10.67.\]
+      </p>
+      <p>
+        Erro: A estimativa de 20 está acima do valor exato devido à escolha dos
+        pontos. Erro percentual: \(\frac{|20-32/3|}{32/3}\times100\% =
+        \frac{28/3}{32/3}\times100\% = 87.5\%.\) Note: com mais subdivisões, a
+        aproximação melhora.
+      </p>
+    </div>
+  </details>
+</li>

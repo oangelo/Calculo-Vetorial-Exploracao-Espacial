@@ -1,55 +1,47 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO SR2-ALFA-3</div>
-<div class="context">
-              ORIGEM: Sistemas de Reentrada Atmosférica - Centro de Pesquisas
-              [REDACTED]
-            </div>
-<p>
-              Calcule a soma de Riemann aproximada para
-              \(\iint_D e^x \,dA\) em \(D = [0,1]\times [0,1]\), com
-              \(m=2\) e \(n=2\) divisões, usando pontos médios como amostras.
-            </p>
-<div class="hint">
-              [SUGESTÃO]: Pontos médios em cada sub-retângulo ficam a
-              \(\Delta x/2\) e \(\Delta y/2\) do canto inferior esquerdo.
-            </div>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Cada sub-retângulo terá dimensão
-                  \(\Delta x = \tfrac{1-0}{2} = 0.5\),
-                  \(\Delta y = 0.5\).
-                </p>
-<p>
-                  Ponto médio do primeiro sub-retângulo: \((0.25, 0.25)\),
-                  do segundo: \((0.75, 0.25)\), terceiro: \((0.25, 0.75)\),
-                  quarto: \((0.75, 0.75)\).
-                </p>
-<p>
-                  Soma de Riemann (pontos médios):
-                  \[
-                    \Bigl(e^{0.25} + e^{0.75} + e^{0.25} + e^{0.75}\Bigr) \times (0.5)\times (0.5).
-                  \]
-                  Observa-se que \(e^{0.25}\) aparece duas vezes e
-                  \(e^{0.75}\) aparece duas vezes.
-                </p>
-<p>
-                  Fator comum:
-                  \[
-                    2\,e^{0.25} + 2\,e^{0.75}.
-                  \]
-                  Multiplicando por \(0.5 \times 0.5 = 0.25\), obtemos:
-                  \[
-                    0.25 \bigl(2\,e^{0.25} + 2\,e^{0.75}\bigr) = 0.5\,\bigl(e^{0.25} + e^{0.75}\bigr).
-                  \]
-                </p>
-<p>
-                  Valor aproximado numérico (se desejado) pode ser calculado
-                  tomando \(e^{0.25}\approx 1.2840\) e \(e^{0.75}\approx 2.1170\).
-                  A soma ficaria em torno de
-                  \(0.5 \times (1.2840 + 2.1170) \approx 0.5 \times 3.401 = 1.7005.\)
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO SR2-ALFA-3</div>
+  <div class="context">
+    ORIGEM: Sistemas de Reentrada Atmosférica - Centro de Pesquisas [REDACTED]
+  </div>
+  <p>
+    Calcule a soma de Riemann aproximada para \(\iint_D e^x \,dA\) em \(D =
+    [0,1]\times [0,1]\), com \(m=2\) e \(n=2\) divisões, usando pontos médios
+    como amostras.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pontos médios em cada sub-retângulo ficam a \(\Delta x/2\)
+      e \(\Delta y/2\) do canto inferior esquerdo.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Cada sub-retângulo terá dimensão \(\Delta x = \tfrac{1-0}{2} = 0.5\),
+        \(\Delta y = 0.5\).
+      </p>
+      <p>
+        Ponto médio do primeiro sub-retângulo: \((0.25, 0.25)\), do segundo:
+        \((0.75, 0.25)\), terceiro: \((0.25, 0.75)\), quarto: \((0.75, 0.75)\).
+      </p>
+      <p>
+        Soma de Riemann (pontos médios): \[ \Bigl(e^{0.25} + e^{0.75} + e^{0.25}
+        + e^{0.75}\Bigr) \times (0.5)\times (0.5). \] Observa-se que
+        \(e^{0.25}\) aparece duas vezes e \(e^{0.75}\) aparece duas vezes.
+      </p>
+      <p>
+        Fator comum: \[ 2\,e^{0.25} + 2\,e^{0.75}. \] Multiplicando por \(0.5
+        \times 0.5 = 0.25\), obtemos: \[ 0.25 \bigl(2\,e^{0.25} +
+        2\,e^{0.75}\bigr) = 0.5\,\bigl(e^{0.25} + e^{0.75}\bigr). \]
+      </p>
+      <p>
+        Valor aproximado numérico (se desejado) pode ser calculado tomando
+        \(e^{0.25}\approx 1.2840\) e \(e^{0.75}\approx 2.1170\). A soma ficaria
+        em torno de \(0.5 \times (1.2840 + 2.1170) \approx 0.5 \times 3.401 =
+        1.7005.\)
+      </p>
+    </div>
+  </details>
 </li>

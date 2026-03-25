@@ -1,0 +1,55 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDE-ALFA-1</div>
+  <div class="context">
+    ORIGEM: Treinamento Básico de Integração - PROGRAMA MERCURY [1959]
+  </div>
+  <p>
+    Considere a integral dupla sobre a região retangular \(R = [0, 1] \times [0,
+    2]\):
+  </p>
+  <p class="formula-highlight">\[\iint_R f(x,y)\,dA\]</p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Escreva a integral iterada na ordem \(dx\,dy\) (integrando primeiro em
+      \(x\), depois em \(y\)).
+    </li>
+    <li>
+      (b) Escreva a integral iterada na ordem \(dy\,dx\) (integrando primeiro em
+      \(y\), depois em \(x\)).
+    </li>
+    <li>
+      (c) Verifique que as hipóteses do Teorema de Fubini estão satisfeitas para
+      regiões retangulares.
+    </li>
+  </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em regiões retangulares, os limites de integração são
+      constantes. O Teorema de Fubini garante que as integrais iteradas são
+      iguais quando \(f\) é contínua em \(R\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) Ordem \(dx\,dy\): a região é descrita por \(0 \leq y \leq 2\) e \(0
+        \leq x \leq 1\): \[\int_0^2 \int_0^1 f(x,y)\,dx\,dy\]
+      </p>
+      <p>
+        (b) Ordem \(dy\,dx\): a região é descrita por \(0 \leq x \leq 1\) e \(0
+        \leq y \leq 2\): \[\int_0^1 \int_0^2 f(x,y)\,dy\,dx\]
+      </p>
+      <p>
+        (c) Pelo Teorema de Fubini, se \(f(x,y)\) é contínua no retângulo
+        fechado \(R = [a,b] \times [c,d]\), então: \[\iint_R f(x,y)\,dA =
+        \int_c^d \int_a^b f(x,y)\,dx\,dy = \int_a^b \int_c^d f(x,y)\,dy\,dx\]
+        Como \(R = [0,1] \times [0,2]\) é um retângulo fechado e limitado, as
+        hipóteses estão satisfeitas para funções contínuas.
+      </p>
+    </div>
+  </details>
+</li>
