@@ -1,179 +1,310 @@
-# Guia para Agentes de IA - Cálculo Vetorial Exploração Espacial
+# Guia para Agentes de IA - Exercícios de Sala
 
 ## Visão Geral
 
-Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
+**Exercícios de sala** são folhas A4 coluna dupla para resolução em aula, com:
 
-- **48 exercícios** interativos no formato "documento sigiloso"
-- **20+ apresentações** Reveal.js com visualizações interativas
-- **3 temas CSS** distintos (industrial, arcade, espacial)
+- Diálogo guiado (baby steps)
+- Lacunas para preencher
+- Sem tema narrativo (diferente dos exercícios de casa)
 
-## Estrutura de Diretórios
+**Características:**
 
-```
-/
-├── exercicios/           # 48 exercícios HTML por capítulo
-│   ├── capitulo-0/       # Revisão (geometria, derivadas, integrais)
-│   ├── capitulo-1/       # Funções vetoriais
-│   ├── capitulo-2/       # Integrais duplas
-│   ├── capitulo-3/       # Mudança de variáveis
-│   ├── capitulo-4/       # Integrais triplas
-│   ├── capitulo-5/       # Integrais de linha
-│   ├── capitulo-6/       # Campos conservativos
-│   ├── capitulo-7/       # Teorema de Green
-│   ├── capitulo-8/       # Integral de superfície
-│   ├── capitulo-9/       # Teorema da divergência
-│   ├── template.html     # Template base
-│   └── styles.css        # Tema industrial/cobre
-├── slide-decks/          # Apresentações Reveal.js organizadas por capítulo
-│   ├── capitulo-0-revisao/
-│   ├── capitulo-1-funcoes-vetoriais/
-│   ├── capitulo-2-integrais-duplas/
-│   ├── capitulo-3-mudanca-de-variaveis/
-│   ├── capitulo-4-integrais-triplas/
-│   ├── capitulo-5-integrais-de-linha/
-│   ├── capitulo-6-campos-conservativos/
-│   ├── capitulo-7-teorema-de-green/
-│   ├── capitulo-8-integral-de-superficie/
-│   ├── capitulo-9-teorema-da-divergencia/
-│   ├── reveal.js/        # Framework
-│   └── space-theme.css   # Tema espacial
-├── docs/                 # Documentação
-│   ├── prompts/          # Instruções para criar conteúdo
-│   │   ├── exercicios.md # Prompt para exercícios
-│   │   └── slides.md     # Prompt para slides
-│   └── css/              # Documentação de estilos
-│       ├── inventory.md  # Status e problemas CSS
-│       └── themes.md     # Documentação dos 3 temas
-├── planejamento/         # Cronogramas e planejamentos semestrais
-├── investigacao/         # Material de pesquisa histórica
-├── notas/                # Notas do curso
-└── .tree/                # Git worktrees (ignorado pelo git)
-```
+- Objetivo e direto
+- Foco em reforço do conteúdo
+- Perguntas que levam o aluno a pensar
+- Checkpoints de verificação
 
-## Para Agentes de IA: Como Contribuir
-
-### Criar Exercícios
-
-**Arquivos:** `/docs/prompts/exercicios.md` + `/exercicios/template.html`
-
-**Passos:**
-
-1. Leia o prompt completamente
-2. Identifique o tópico (ver sequência no final do prompt)
-3. Use o template como base
-4. Salve em `/exercicios/capitulo-N/nome-do-topico.html`
-
-**Regras críticas:**
-
-- 12 exercícios por arquivo (ALFA/BETA/GAMMA/OMEGA)
-- Use APENAS conceitos já abordados na progressão
-- MathJax: `\(inline\)` e `\[bloco\]` (uma barra)
-- Classes CSS do template (não invente novas)
-
-### Criar Slides
-
-**Arquivos:** `/docs/prompts/slides.md` + Reveal.js
-
-**Passos:**
-
-1. Leia o prompt completamente
-2. Identifique tópico e período histórico (ver cronologia no prompt)
-3. Gere HTML seguindo estrutura Reveal.js
-4. Salve em `/slide-decks/capitulo-N-nome-do-capitulo/NN-nome-da-secao.html`
-5. Crie ou atualize o `index.html` (loader) na pasta do capítulo
-
-**Estrutura de uma pasta de capítulo:**
+## Estrutura de Arquivos
 
 ```
-slide-decks/capitulo-N-nome/
-├── index.html              # Loader que faz fetch das seções
-├── 01-titulo.html          # Seção 1
-├── 02-conceito.html        # Seção 2
-├── 03-exemplos.html        # Seção 3
-└── ...
+sala/
+├── capitulo-0-revisao.html
+├── capitulo-1-funcoes-vetoriais.html
+├── capitulo-2-integrais-duplas.html
+├── capitulo-3-mudanca-de-variaveis.html
+├── capitulo-4-integrais-triplas.html
+├── capitulo-5-integrais-de-linha.html
+├── capitulo-6-campos-conservativos.html
+├── capitulo-7-teorema-de-green.html
+├── capitulo-8-integral-de-superficie.html
+└── capitulo-9-teorema-da-divergencia.html
 ```
 
-**Regras críticas:**
+## Template
 
-- Separe matemática (`math-section`) de história (`history-section`)
-- Canvas 2D preferível a Three.js
-- Limite: 250 palavras/slide, 2-3 fórmulas complexas
-- Navegação horizontal (tópicos) e vertical (aprofundamento)
+Use `sala-template.html` como base.
 
-## Contexto dos Capítulos
+## Estrutura da Folha
 
-| Cap | Tópico                 | Período    | Contexto                        |
-| --- | ---------------------- | ---------- | ------------------------------- |
-| 0   | Revisão                | Pré-Guerra | Geometria, derivadas, integrais |
-| 1   | Funções vetoriais      | 1945-1956  | Era dos Mísseis (V-2, Redstone) |
-| 2   | Integrais duplas       | 1957-1961  | Era Sputnik                     |
-| 3   | Mudança de variáveis   | 1961-1964  | Primeiros Astronautas           |
-| 4   | Integrais triplas      | 1965-1966  | Programa Gemini                 |
-| 5   | Integrais de linha     | 1967-1969  | Primeiras Apollo                |
-| 6   | Campos conservativos   | 1967-1969  | Missões Apollo                  |
-| 7   | Teorema de Green       | 1969-1970  | Pouso Lunar (Apollo 11)         |
-| 8   | Integral de superfície | 1971-1972  | Apollo avançadas                |
-| 9   | Teorema da divergência | 1973-1985  | Estações Espaciais (Skylab)     |
+### Cabeçalho
 
-## Arquivos Importantes
+```html
+<header class="header">
+  <div class="header-left">
+    <h1 class="title">Capítulo N: Título</h1>
+    <p class="subtitle">Tópico Principal</p>
+  </div>
+  <div class="header-right">
+    <p class="course-info">Cálculo Vetorial - 2026/1</p>
+    <p class="course-info">Nome: _______________________</p>
+    <p class="course-info">Data: ___/___/___</p>
+  </div>
+</header>
+```
 
-**Para criar conteúdo:**
+### Instruções
 
-- `/docs/prompts/exercicios.md` - Instruções para exercícios
-- `/docs/prompts/slides.md` - Instruções para slides
-- `/exercicios/template.html` - Template base
+```html
+<div class="instructions">
+  <p>Resolva os exercícios seguindo o raciocínio proposto...</p>
+</div>
+```
 
-**Para entender estilos:**
+### Exercício
 
-- `/docs/css/themes.md` - Documentação dos temas
-- `/docs/css/inventory.md` - Problemas conhecidos de CSS
+Cada exercício tem:
 
-**Para workflow:**
+1. **Enunciado** (`exercicio-enunciado`)
+2. **Questões** (`questao`)
+3. **Diálogo** (`dialogo`) - texto explicativo
+4. **Subitens** (`subitem`) - passos a), b), c)
+5. **Lacunas** (`lacuna` ou `lacuna-grande`)
+6. **Dica** (`dica`)
+7. **Checkpoint** (`checkpoint`)
 
-- `/docs/workflow.md` - Processo passo a passo
+## Classes Disponíveis
 
-## Convenções
+### Exercício
 
-**Nomenclatura:** kebab-case.html
+```html
+<section class="exercicio">
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">1.</span>
+    Enunciado do exercício.
+  </p>
+  <!-- conteúdo -->
+</section>
+```
 
-- Exercícios: `exercicios/capitulo-N/nome-do-topico.html`
-- Slides: `slide-decks/capitulo-N-nome-do-capitulo/index.html` (arquivo principal do capítulo)
-- Seções de slides: `slide-decks/capitulo-N-nome/NN-nome-da-secao.html`
+### Questão
 
-**CSS:**
+```html
+<p class="questao">Pergunta que o aluno deve responder.</p>
+```
 
-- Exercícios: usar `../styles.css` (relativo ao capítulo)
-- Slides: usar `../space-theme.css` (relativo à pasta do capítulo)
+### Diálogo
 
-## O que Evitar
+```html
+<p class="dialogo">
+  Texto explicativo que guia o aluno, fazendo perguntas retóricas ou dando
+  contexto.
+</p>
+```
 
-- NÃO quebrar links existentes
-- NÃO mudar IDs/classes CSS sem atualizar TODOS os arquivos
-- NÃO antecipar conceitos de capítulos posteriores
-- NÃO misturar temas CSS
-- NÃO usar jQuery (use DOM nativo)
-- NÃO criar Three.js se Canvas 2D basta
+### Subitens
 
-## Problemas Conhecidos
+```html
+<p class="subitem">a) Primeiro passo: <span class="lacuna"></span></p>
+<p class="subitem">b) Segundo passo: <span class="lacuna"></span></p>
+<p class="subitem">c) Resultado: <span class="lacuna"></span></p>
 
-Ver `/docs/css/inventory.md` para detalhes:
+<!-- Subitens numerados (a.1, a.2, etc.) -->
+<p class="subitem">a.1) Primeiro subpasso:</p>
+<p class="subitem">a.2) Segundo subpasso:</p>
+```
 
-- 38 arquivos com CSS inline (deveriam usar externo)
-- 4 arquivos com referência quebrada
-- 1 arquivo vazio
+### Lacunas
 
-## Teste Manual
+```html
+<!-- Inline (dentro da linha) -->
+Resultado: <span class="lacuna"></span>
 
-Antes de commitar, abra no navegador e verifique:
+<!-- Bloco (linha inteira) -->
+<p class="subitem">Resultado final: <span class="lacuna-grande"></span></p>
+```
 
-1. CSS carregou
-2. MathJax renderizou
-3. Interatividade funciona
-4. Links funcionam
+### Fórmula Destacada
 
-## Recursos Adicionais
+```html
+<p class="formula">$$(x - h)^2 + (y - k)^2 = r^2$$</p>
+```
 
-- `/docs/workflow.md` - Processo detalhado de criação
-- `/CONTRIBUTING.md` - Guia para contribuidores humanos
-- `/investigacao/` - Material histórico de referência
+**IMPORTANTE:** Não coloque `<span class="lacuna">` dentro de equações LaTeX. Use:
+
+- Texto simples para fórmulas com lacunas
+- Ou separe a lacuna da equação
+
+**Errado:** `$(x - $<span class="lacuna"></span>$)^2$`
+**Certo:** `(x − <span class="lacuna"></span>)²` ou texto simples
+
+### Dica
+
+```html
+<p class="dica">Texto de ajuda para o aluno.</p>
+```
+
+### Checkpoint
+
+```html
+<p class="checkpoint">
+  <span class="checkmark"></span>
+  Verificação: o resultado faz sentido?
+</p>
+```
+
+## Exemplo Completo
+
+```html
+<section class="exercicio">
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">1.</span>
+    Considere os pontos A(1, 2) e B(4, 8).
+  </p>
+
+  <p class="questao">
+    Encontre o vetor diretor da reta que passa por esses dois pontos.
+  </p>
+
+  <p class="dialogo">
+    Para ir do ponto A até o ponto B, precisamos saber quanto nos deslocamos em
+    cada direção.
+  </p>
+
+  <p class="subitem">
+    a) O deslocamento em x é: <strong>Δx</strong> = <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) O deslocamento em y é: <strong>Δy</strong> = <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) O vetor diretor é: <strong>v⃗</strong> = (<span class="lacuna"></span>,
+    <span class="lacuna"></span>)
+  </p>
+
+  <p class="questao">Encontre a equação paramétrica dessa reta.</p>
+
+  <p class="dialogo">
+    A equação paramétrica descreve todos os pontos da reta usando um parâmetro
+    t.
+  </p>
+
+  <p class="subitem">
+    a) Usando A como ponto inicial: <strong>r(t)</strong> = A + t v⃗
+  </p>
+  <p class="subitem">
+    b) Em coordenadas: <strong>r(t)</strong> = (1, 2) + t(<span
+      class="lacuna"
+    ></span
+    >, <span class="lacuna"></span>)
+  </p>
+  <p class="subitem">
+    c) Componentes: <strong>x(t)</strong> = <span class="lacuna"></span>,
+    <strong>y(t)</strong> = <span class="lacuna"></span>
+  </p>
+</section>
+```
+
+## Estilo de Diálogo
+
+**Objetivo:** Guiar o aluno sem dar a resposta diretamente.
+
+**Exemplos:**
+
+❌ **Errado (muito óbvio):**
+
+> O vetor perpendicular a (a, b) é (-b, a). Escreva o vetor perpendicular.
+
+✅ **Certo (guia o pensamento):**
+
+> O produto escalar de dois vetores perpendiculares é zero: u⃗ · v⃗ = 0. Se v⃗ = (v₁, v₂), como escolher as coordenadas de u⃗ = (u₁, u₂) para que u₁ · v₁ + u₂ · v₂ = 0?
+
+❌ **Errado (fórmula pronta):**
+
+> A fórmula do ponto médio é M = ((x₁+x₂)/2, (y₁+y₂)/2).
+
+✅ **Certo (pede dedução):**
+
+> O ponto médio está "no meio do caminho" entre A e B. Imagine que você sai de A e quer chegar no ponto exatamente no meio. Quanto do trajeto você precisa percorrer?
+
+## Matemática
+
+**KaTeX** (não MathJax) para renderização.
+
+- Inline: `$...$`
+- Bloco: `$$...$$`
+
+**Variáveis simples:** Use `<strong>` em vez de LaTeX:
+
+- `<strong>x</strong>` em vez de `$x$`
+- `<strong>v⃗</strong>` em vez de `$\vec{v}$`
+
+Isso melhora performance e evita problemas com lacunas.
+
+## Quantidade de Exercícios
+
+- **4-6 exercícios por folha**
+- **2-4 questões por exercício**
+- **2-4 subitens por questão**
+- **Total: ~15-25 interações**
+
+## Nível de Dificuldade
+
+**Reforço:** aluno já viu o conteúdo em aula.
+
+- Não explicar conceitos do zero
+- Focar em aplicação
+- Fazer perguntas que levam ao raciocínio
+- Checkpoints para auto-verificação
+
+## Tópicos por Capítulo
+
+| Capítulo | Tópicos Principais                             |
+| -------- | ---------------------------------------------- |
+| 0        | Geometria analítica, derivadas, integrais      |
+| 1        | Funções vetoriais, limites, derivadas parciais |
+| 2        | Integrais duplas, regiões de integração        |
+| 3        | Mudança de variáveis, Jacobiano                |
+| 4        | Integrais triplas, coordenadas esféricas       |
+| 5        | Integrais de linha, campos conservativos       |
+| 6        | Potencial, trabalho, independência de caminho  |
+| 7        | Teorema de Green, aplicações                   |
+| 8        | Integrais de superfície, fluxo                 |
+| 9        | Teorema da divergência, aplicações             |
+
+## Regras
+
+1. Sem tema narrativo - direto ao ponto
+2. Use apenas conceitos já abordados - não antecipe
+3. KaTeX para matemática complexa, `<strong>` para variáveis simples
+4. Classes CSS do template - não invente novas
+5. 4-6 exercícios por folha
+6. Perguntas que guiam, não dão respostas
+7. Lacunas nos pontos chave
+
+## Fluxo de Criação
+
+1. Identifique o capítulo
+2. Escolha 4-6 exercícios de reforço
+3. Divida cada exercício em questões e subitens
+4. Adicione diálogo explicativo entre questões
+5. Inclua checkpoints e dicas quando relevante
+6. Salve em `sala/capitulo-N-nome.html`
+7. Teste no navegador e impressão
+
+## Teste
+
+Antes de commitar:
+
+```bash
+# Visualizar no navegador
+cd /home/oangelo/github/Calculo-Vetorial-Exploracao-Espacial/.trees/exercicios-sala
+firefox sala/capitulo-N-nome.html
+
+# Testar impressão (Ctrl+P ou Cmd+P)
+# Verificar:
+# - Coluna dupla
+# - Math renderizado
+# - Lacunas com espaço adequado
+# - Exercícios separados visualmente
+```
