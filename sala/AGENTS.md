@@ -1,5 +1,7 @@
 # Guia para Agentes de IA - Exercícios de Sala
 
+> **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
+
 ## Visão Geral
 
 **Exercícios de sala** são folhas A4 coluna dupla para resolução em aula, com:

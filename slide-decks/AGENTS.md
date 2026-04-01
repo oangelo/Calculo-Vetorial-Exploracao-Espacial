@@ -1,5 +1,7 @@
 # Slide Decks — Instruções para Claude Code
 
+> **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
+
 Prompt completo: `docs/prompts/slides-full.md`
 Referência rápida: `docs/prompts/slides-quick.md`
 CSS: `slide-decks/space-theme.css` (tema espacial)
@@ -36,15 +38,15 @@ slide-decks/capitulo-N-nome/
 
 ## Classes CSS obrigatórias
 
-| Classe | Uso |
-|---|---|
-| `math-section` | Conteúdo matemático formal |
-| `history-section` | Contextualização histórica (com `history-label`) |
-| `visualization-canvas` | Elementos canvas |
-| `problem-section` | Enunciados de problemas |
-| `controls-container` | Controles de interação |
-| `compact-solution` | Soluções de problemas |
-| `dual-panel` | Dois painéis lado a lado |
+| Classe                 | Uso                                              |
+| ---------------------- | ------------------------------------------------ |
+| `math-section`         | Conteúdo matemático formal                       |
+| `history-section`      | Contextualização histórica (com `history-label`) |
+| `visualization-canvas` | Elementos canvas                                 |
+| `problem-section`      | Enunciados de problemas                          |
+| `controls-container`   | Controles de interação                           |
+| `compact-solution`     | Soluções de problemas                            |
+| `dual-panel`           | Dois painéis lado a lado                         |
 
 ## Padrão JavaScript para visualizações
 
@@ -64,14 +66,14 @@ slide-decks/capitulo-N-nome/
 
 ## Cronologia histórica por capítulo
 
-| Capítulo | Período | Contexto |
-|---|---|---|
-| 0 | Pré-Guerra | Revisão |
-| 1 | 1945-1956 | Era dos Mísseis (V-2, Redstone) |
-| 2 | 1957-1961 | Era Sputnik |
-| 3 | 1961-1964 | Primeiros Astronautas |
-| 4 | 1965-1966 | Programa Gemini |
-| 5-6 | 1967-1969 | Missões Apollo |
-| 7 | 1969-1970 | Pouso Lunar (Apollo 11) |
-| 8 | 1971-1972 | Apollo avançadas |
-| 9 | 1973-1985 | Estações Espaciais (Skylab) |
+| Capítulo | Período    | Contexto                        |
+| -------- | ---------- | ------------------------------- |
+| 0        | Pré-Guerra | Revisão                         |
+| 1        | 1945-1956  | Era dos Mísseis (V-2, Redstone) |
+| 2        | 1957-1961  | Era Sputnik                     |
+| 3        | 1961-1964  | Primeiros Astronautas           |
+| 4        | 1965-1966  | Programa Gemini                 |
+| 5-6      | 1967-1969  | Missões Apollo                  |
+| 7        | 1969-1970  | Pouso Lunar (Apollo 11)         |
+| 8        | 1971-1972  | Apollo avançadas                |
+| 9        | 1973-1985  | Estações Espaciais (Skylab)     |

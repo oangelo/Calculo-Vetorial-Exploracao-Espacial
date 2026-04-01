@@ -245,6 +245,46 @@ Antes de commitar, abra no navegador e verifique:
 3. Interatividade funciona
 4. Links funcionam
 
+## Workflow de Entrega
+
+### Commits incrementais
+
+Após criar ou editar **1-3 arquivos** de um mesmo tópico, faça commit:
+
+```bash
+git add <arquivos> && git commit -m "<tipo>: <descrição>"
+```
+
+**Tipos:** `feat`, `fix`, `refactor`, `docs`, `style`
+
+**Regras:**
+
+- Não acumular mudanças de capítulos diferentes no mesmo commit
+- Não deixar arquivos soltos sem commit por muito tempo
+- Após commitar, perguntar ao usuário se deve fazer `git push`
+
+### Visualização
+
+Ao terminar uma tarefa de criação de conteúdo, **sempre perguntar**:
+
+> "Quer abrir no Firefox para visualizar?"
+
+Para abrir:
+
+```bash
+# Iniciar servidor (se necessário)
+cd pasta/do/conteudo && python3 -m http.server 8080 &
+
+# Abrir no Firefox
+firefox http://localhost:8080/caminho/arquivo.html &
+```
+
+### Fluxo completo
+
+```
+Criar/editar conteúdo → Perguntar visualização → Ajustar se necessário → Commit → Push
+```
+
 ## Recursos Adicionais
 
 - `/docs/workflow.md` - Processo detalhado de criação
