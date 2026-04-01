@@ -1,68 +1,91 @@
 <section
   class="exercicio"
-  data-topico="derivadas-parciais"
+  data-topico="interpretacao-fisica"
   data-dificuldade="medio"
 >
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">4.</span>
-    Considere o campo vetorial $\vec{F}(x, y, z) = (xy, yz, xz)$. Calcule as
-    derivadas parciais em $(1, 2, 3)$.
+    Em mecânica dos fluidos, um campo vetorial pode representar o campo de
+    velocidades do fluido. Considere dois campos:
   </p>
 
-  <p class="questao">Calcule as derivadas parciais de primeira ordem.</p>
+  <p class="formula">
+    $\vec{V}_1(x, y, z) = (x,\; y,\; z) \qquad \vec{V}_2(x, y, z) = (-y,\; x,\;
+    0)$
+  </p>
+
+  <p class="questao">
+    Calcule o divergente, o rotacional e o módulo de cada campo.
+  </p>
 
   <p class="dialogo">
-    As derivadas parciais são calculadas derivando cada componente em relação a
-    cada variável, mantendo as outras constantes.
+    O <strong>divergente</strong> mede se o fluido está se expandindo (div > 0)
+    ou contraindo (div < 0) naquele ponto. O <strong>rotacional</strong> mede se
+    há rotação local (vórtice). O <strong>módulo</strong> é a rapidez do fluido.
   </p>
 
-  <p>
-    a) $\frac{\partial}{\partial x}(xy) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial y}(xy) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial z}(xy) =$ <span class="lacuna"></span>
-  </p>
-  <p>
-    b) $\frac{\partial}{\partial x}(yz) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial y}(yz) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial z}(yz) =$ <span class="lacuna"></span>
-  </p>
-  <p>
-    c) $\frac{\partial}{\partial x}(xz) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial y}(xz) =$ <span class="lacuna"></span>,
-    $\frac{\partial}{\partial z}(xz) =$ <span class="lacuna"></span>
-  </p>
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th></th>
+        <th>$\nabla \cdot \vec{V}$</th>
+        <th>$\nabla \times \vec{V}$</th>
+        <th>$\|\vec{V}\|$</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>$\vec{V}_1 = (x, y, z)$</td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+      </tr>
+      <tr>
+        <td>$\vec{V}_2 = (-y, x, 0)$</td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <p class="questao">Escreva a matriz Jacobiana em $(1, 2, 3)$.</p>
+  <p class="questao">Interprete fisicamente cada campo.</p>
 
   <p class="dialogo">
-    A matriz Jacobiana de $\vec{F} = (F_1, F_2, F_3)$ é a matriz $3 \times 3$
-    cujas linhas são as derivadas parciais de cada componente.
+    Pense no que acontece com uma partícula de fluido em cada campo. O
+    divergente indica expansão. O rotacional indica rotação. O módulo indica a
+    rapidez.
   </p>
 
   <p>
-    $$J\vec{F}(1, 2, 3) = \begin{bmatrix} \frac{\partial F_1}{\partial x} &
-    \frac{\partial F_1}{\partial y} & \frac{\partial F_1}{\partial z} \\
-    \frac{\partial F_2}{\partial x} & \frac{\partial F_2}{\partial y} &
-    \frac{\partial F_2}{\partial z} \\ \frac{\partial F_3}{\partial x} &
-    \frac{\partial F_3}{\partial y} & \frac{\partial F_3}{\partial z}
-    \end{bmatrix} = \begin{bmatrix}
-    <span class="lacuna"></span> & <span class="lacuna"></span> &
-    <span class="lacuna"></span> \\ <span class="lacuna"></span> &
-    <span class="lacuna"></span> & <span class="lacuna"></span> \\
-    <span class="lacuna"></span> & <span class="lacuna"></span> &
-    <span class="lacuna"></span>
-    \end{bmatrix}$$
-  </p>
-
-  <p class="questao">Interprete o significado da Jacobiana.</p>
-
-  <p>
-    a) Cada coluna da Jacobiana indica como o vetor muda quando variamos
-    <span class="lacuna"></span> (uma coordenada/todas coordenadas) de cada vez
+    a) $\vec{V}_1$: divergente <span class="lacuna"></span> (positivo / zero /
+    negativo), rotacional <span class="lacuna"></span>. Isso significa que o
+    fluido está <span class="lacuna"></span> (ex: saindo de um ponto fonte /
+    girando / parado).
   </p>
   <p>
-    b) A primeira coluna $(\frac{\partial F_1}{\partial x}, \frac{\partial
-    F_2}{\partial x}, \frac{\partial F_3}{\partial x})$ representa a taxa de
-    variação do campo na direção do eixo <span class="lacuna"></span>
+    b) $\vec{V}_2$: divergente <span class="lacuna"></span>, rotacional
+    <span class="lacuna"></span>. Isso significa que o fluido está
+    <span class="lacuna"></span> (ex: girando como um redemoinho / expandindo).
+  </p>
+
+  <p class="questao">Em qual campo o módulo depende da posição?</p>
+
+  <p class="dialogo">
+    Observe as expressões de $\|\vec{V}_1\|$ e $\|\vec{V}_2\|$.
+  </p>
+
+  <p>
+    a) $\|\vec{V}_1\| = $ <span class="lacuna"></span> (depende de $x, y, z$ / é
+    constante)
+  </p>
+  <p>
+    b) $\|\vec{V}_2\| = $ <span class="lacuna"></span> (depende de $x, y, z$ / é
+    constante)
+  </p>
+  <p>
+    c) No campo $\vec{V}_2$, a rapidez é a mesma em todos os pontos a mesma
+    distância da origem, como num <span class="lacuna"></span> (ex: carrossel /
+    jato / etc.)
   </p>
 </section>
