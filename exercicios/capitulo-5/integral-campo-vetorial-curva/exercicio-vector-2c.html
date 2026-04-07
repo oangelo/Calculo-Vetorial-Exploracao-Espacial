@@ -1,57 +1,52 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
-<div class="context">
-              ORIGEM: <span class="censored">DIVISÃO DE ÓRBITAS</span> - 1965
-            </div>
-<p>
-              Uma curva fechada \(C\) em \(\mathbb{R}^2\) é composta pelo
-              semicírculo superior de raio 1 centrado na origem, mais o eixo
-              \(x\) de \(-1\) até \(+1\). O campo é \(\vec{F}(x,y) =
-              \begin{pmatrix} x^2 + y^2 \\ 0 \end{pmatrix}\). Calcule \(\int_C
-              \vec{F}\cdot d\vec{r}\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Propriedades de simetria podem auxiliar.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  1) No semicírculo: \(\vec{r}(\theta) = ( \cos\theta,
-                  \sin\theta )\), \(\theta \in [0,\pi]\). Então, \(x^2 + y^2 =
-                  1\).
-                </p>
-<p>
-                  \(\frac{d\vec{r}}{d\theta} = \begin{pmatrix}-\sin\theta \\
-                  \cos\theta\end{pmatrix}\).<br/>
-                  \(\vec{F}(\vec{r}(\theta)) = \begin{pmatrix}1 \\
-                  0\end{pmatrix}.\)
-                </p>
-<p>
-                  Integral no semicírculo: \(\int_{0}^{\pi} \begin{pmatrix}1 \\
-                  0\end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\
-                  \cos\theta\end{pmatrix} d\theta = \int_{0}^{\pi} -\sin\theta
-                  \, d\theta = [\cos\theta]_0^\pi = -2.\)
-                </p>
-<p>
-                  2) No eixo \(x\), de \(-1\) a \(+1\): Parametrize \(\vec{r}(x)
-                  = (x,0)\). Então, \(\vec{F}(\vec{r}(x)) = \begin{pmatrix}x^2
-                  \\ 0\end{pmatrix}\), \(\frac{d\vec{r}}{dx} = \begin{pmatrix}1
-                  \\ 0\end{pmatrix}.\)
-                </p>
-<p>
-                  \(\int_{-1}^{1} \begin{pmatrix}x^2 \\ 0\end{pmatrix}\cdot
-                  \begin{pmatrix}1 \\ 0\end{pmatrix} dx = \int_{-1}^{1} x^2 \,
-                  dx = \left[\frac{x^3}{3}\right]_{-1}^{1} = \frac{1}{3} -
-                  \left(-\frac{1}{3}\right) = \frac{2}{3}.\)
-                </p>
-<p>Soma final: \(-2 + \frac{2}{3} = -\frac{4}{3}.\)</p>
-<p>
-                  CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = -\frac{4}{3}.\)
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: <span class="censored">DIVISÃO DE ÓRBITAS</span> - 1965
+  </div>
+  <p>
+    Uma curva fechada \(C\) em \(\mathbb{R}^2\) é composta pelo semicírculo
+    superior de raio 1 centrado na origem, mais o eixo \(x\) de \(-1\) até
+    \(+1\). O campo é \(\vec{F}(x,y) = \begin{pmatrix} x^2 + y^2 \\ 0
+    \end{pmatrix}\). Calcule \(\int_C \vec{F}\cdot d\vec{r}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de simetria podem auxiliar.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        1) No semicírculo: \(\vec{r}(\theta) = ( \cos\theta, \sin\theta )\),
+        \(\theta \in [0,\pi]\). Então, \(x^2 + y^2 = 1\).
+      </p>
+      <p>
+        \(\frac{d\vec{r}}{d\theta} = \begin{pmatrix}-\sin\theta \\
+        \cos\theta\end{pmatrix}\).<br />
+        \(\vec{F}(\vec{r}(\theta)) = \begin{pmatrix}1 \\ 0\end{pmatrix}.\)
+      </p>
+      <p>
+        Integral no semicírculo: \(\int_{0}^{\pi} \begin{pmatrix}1 \\
+        0\end{pmatrix}\cdot \begin{pmatrix}-\sin\theta \\
+        \cos\theta\end{pmatrix} d\theta = \int_{0}^{\pi} -\sin\theta \, d\theta
+        = [\cos\theta]_0^\pi = -2.\)
+      </p>
+      <p>
+        2) No eixo \(x\), de \(-1\) a \(+1\): Parametrize \(\vec{r}(x) =
+        (x,0)\). Então, \(\vec{F}(\vec{r}(x)) = \begin{pmatrix}x^2 \\
+        0\end{pmatrix}\), \(\frac{d\vec{r}}{dx} = \begin{pmatrix}1 \\
+        0\end{pmatrix}.\)
+      </p>
+      <p>
+        \(\int_{-1}^{1} \begin{pmatrix}x^2 \\ 0\end{pmatrix}\cdot
+        \begin{pmatrix}1 \\ 0\end{pmatrix} dx = \int_{-1}^{1} x^2 \, dx =
+        \left[\frac{x^3}{3}\right]_{-1}^{1} = \frac{1}{3} -
+        \left(-\frac{1}{3}\right) = \frac{2}{3}.\)
+      </p>
+      <p>Soma final: \(-2 + \frac{2}{3} = -\frac{4}{3}.\)</p>
+      <p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = -\frac{4}{3}.\)</p>
+    </div>
+  </details>
 </li>

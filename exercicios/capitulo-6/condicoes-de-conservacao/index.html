@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Condições de Conservação</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
       MathJax = {
         tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
@@ -257,32 +264,32 @@
         margin-bottom: 0;
       }
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><header class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">Base Orbital ████, 27/05/2025</div>
-<p class="document-intro">
+      <!-- INTRO - INLINE -->
+      <header class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">Base Orbital ████, 27/05/2025</div>
+        <p class="document-intro">
           PROJETO <span class="censored">ORION‑VECTOR</span> — Manual de
           Operações Matemáticas
         </p>
-<div class="warning-box">
+        <div class="warning-box">
           Atenção: A reprodução não autorizada destas instruções compromete a
           segurança da missão e resultará em ação disciplinar imediata.
         </div>
-<div class="metadata">
-<span>REF: VX‑2025‑CC‑17</span>
-<span>NÍVEL DE ACESSO: Σ‑3</span>
-<span>CÓPIAS EXISTENTES: <span class="censored">08</span></span>
-</div>
-</header>
-      
+        <div class="metadata">
+          <span>REF: VX‑2025‑CC‑17</span>
+          <span>NÍVEL DE ACESSO: Σ‑3</span>
+          <span>CÓPIAS EXISTENTES: <span class="censored">08</span></span>
+        </div>
+      </header>
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
+
       <div class="page-number">Página 1 de 1</div>
     </div>
 
@@ -301,26 +308,26 @@
             'exercicio-vector‑3c.html',
             'exercicio-vector‑4a.html',
             'exercicio-vector‑4b.html',
-            'exercicio-vector‑4c.html'
+            'exercicio-vector‑4c.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>

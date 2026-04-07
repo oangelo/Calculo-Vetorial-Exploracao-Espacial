@@ -1,44 +1,40 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
-<div class="context">
-              ORIGEM: <span class="censored">SEÇÃO OMEGA</span> - Ajuste Fine-Tuning
-            </div>
-<p>
-              A densidade de radiação no interior de um módulo é dada por
-              \(\rho(x,y,z) = x^2 + y^2 + z^2\). O volume interno é limitado
-              pela esfera \(x^2 + y^2 + z^2 \le 9\). Calcule
-              \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) usando mudança de variáveis
-              adequada.
-            </p>
-<!-- Sem dica para série OMEGA -->
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Em coordenadas esféricas,
-                  \(\rho = r^2,\; 0 \le r \le 3,\; 0 \le \phi \le \pi,\; 0 \le \theta \le 2\pi.\)
-                </p>
-<p>
-                  O jacobiano esférico é \(r^2\sin\phi.\) Assim,
-                  \[
-                    \iiint_D (r^2)\,dx\,dy\,dz
-                    = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3}
-                      r^2 \cdot r^2\sin\phi \; dr\,d\phi\,d\theta.
-                  \]
-                </p>
-<p>
-                  Isso se torna
-                  \(\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3}
-                    r^4 \sin\phi \; dr\,d\phi\,d\theta.\)
-                </p>
-<p>
-                  Integração em \(r\): \(\int_{0}^{3} r^4\,dr = \frac{3^5}{5} = \frac{243}{5}.\)
-                </p>
-<p>
-                  Em \(\phi\): \(\int_{0}^{\pi}\sin\phi\,d\phi = 2.\)
-                  Multiplicando por \(2\pi\), chegamos a
-                  \(\displaystyle 2\pi \cdot 2 \cdot \frac{243}{5} = \frac{972\pi}{5}.\)
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: <span class="censored">SEÇÃO OMEGA</span> - Ajuste Fine-Tuning
+  </div>
+  <p>
+    A densidade de radiação no interior de um módulo é dada por \(\rho(x,y,z) =
+    x^2 + y^2 + z^2\). O volume interno é limitado pela esfera \(x^2 + y^2 + z^2
+    \le 9\). Calcule \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) usando mudança de
+    variáveis adequada.
+  </p>
+  <!-- Sem dica para série OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em coordenadas esféricas, \(\rho = r^2,\; 0 \le r \le 3,\; 0 \le \phi
+        \le \pi,\; 0 \le \theta \le 2\pi.\)
+      </p>
+      <p>
+        O jacobiano esférico é \(r^2\sin\phi.\) Assim, \[ \iiint_D
+        (r^2)\,dx\,dy\,dz = \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3} r^2 \cdot
+        r^2\sin\phi \; dr\,d\phi\,d\theta. \]
+      </p>
+      <p>
+        Isso se torna \(\int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{3} r^4 \sin\phi
+        \; dr\,d\phi\,d\theta.\)
+      </p>
+      <p>
+        Integração em \(r\): \(\int_{0}^{3} r^4\,dr = \frac{3^5}{5} =
+        \frac{243}{5}.\)
+      </p>
+      <p>
+        Em \(\phi\): \(\int_{0}^{\pi}\sin\phi\,d\phi = 2.\) Multiplicando por
+        \(2\pi\), chegamos a \(\displaystyle 2\pi \cdot 2 \cdot \frac{243}{5} =
+        \frac{972\pi}{5}.\)
+      </p>
+    </div>
+  </details>
 </li>

@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Cálculo Vetorial</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
       MathJax = {
         tex: {
@@ -241,19 +248,20 @@
         border-left: 3px solid #777;
       }
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><div class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
           DATA: <span class="censored">23</span> DE ABRIL DE
-          <span class="censored">1966</span><br/>LOCALIZAÇÃO:
+          <span class="censored">1966</span><br />LOCALIZAÇÃO:
           <span class="censored">SEÇÃO DE CÁLCULOS AVANÇADOS GEMINI</span>
-</div>
-<div class="document-intro">
-          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">PHOENIX‑Δ</span><br/><br/>Esta lista de revisão integra
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">PHOENIX‑Δ</span
+          ><br /><br />Esta lista de revisão integra
           <span class="censored">técnicas de mudança de variáveis</span> às
           aplicações de <span class="censored">massa e centro de massa</span>.
           Cada exercício exige não apenas o cálculo, mas também reflexão sobre
@@ -261,53 +269,63 @@
           volumes familiares, preparando os cadetes para interpretar resultados
           em missões reais.
         </div>
-<div class="warning-box">
+        <div class="warning-box">
           Material protegido pelo protocolo S‑4. Divulgação não autorizada
           resultará em <span class="censored">sanções imediatas</span>.
         </div>
-<div class="metadata">
-<span>REF: MV‑<span class="censored">441</span>‑R</span><span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span><span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-            <span class="censored">3</span></span>
-</div>
-</div>
-<div class="section-title">
+        <div class="metadata">
+          <span>REF: MV‑<span class="censored">441</span>‑R</span
+          ><span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span
+          ><span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
         FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS, MASSA E CENTRO DE MASSA
       </div>
-<div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
-<p class="formula-highlight">
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
           \[ \iint_R f(x,y)\,dx\,dy = \iint_S
           f\bigl(x(u,v),y(u,v)\bigr)\,\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,du\,dv
           \]
         </p>
-<p>
+        <p>
           Para densidade \(\rho(x,y)\), a massa é \(m=\iint_R \rho\,dA\). Se a
           simetria de \(R\) permitir, o centro de massa muitas vezes cai sobre
           eixos ou pontos especiais, simplificando cálculos de momento.
         </p>
-<div class="sub-box">
-<strong>CASO POLAR  \((x=r\cos\theta,\,y=r\sin\theta)\):</strong><br/>\[ dA = r\,dr\,d\theta \quad\text{e}\quad m=\int\!\int
+        <div class="sub-box">
+          <strong>CASO POLAR  \((x=r\cos\theta,\,y=r\sin\theta)\):</strong
+          ><br />\[ dA = r\,dr\,d\theta \quad\text{e}\quad m=\int\!\int
           \rho(r,\theta)\,r\,dr\,d\theta \]
         </div>
-</div>
-<div class="mission-context">
+      </div>
+      <div class="mission-context">
         Durante manobras de acoplamento, prever a posição do centro de massa — e
         sua variação com mudanças de carga — é vital para gasto mínimo de
         combustível em correções de atitude.
       </div>
-<div class="historical-note">
-<strong>NOTA HISTÓRICA:</strong> A falha parcial no
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A falha parcial no
         <span class="censored">módulo 5</span> (1965) originou‑se de um cálculo
         equivocado do centro de massa após desprendimento de painéis. A comissão
         determinou treinamento compulsório em <em>simetria</em> e
         <em>interpretação de resultados</em>.
       </div>
-      
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
-      <div class="page-number">        PÁGINA 1 DE <span class="censored">10</span> • DOCUMENTO MV‑<span class="censored">441</span>‑R      </div>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">10</span> • DOCUMENTO MV‑<span
+          class="censored"
+          >441</span
+        >‑R
+      </div>
     </div>
 
     <script>
@@ -321,26 +339,26 @@
             'exercicio-vector‑review‑5.html',
             'exercicio-vector‑review‑6.html',
             'exercicio-vector‑review‑7.html',
-            'exercicio-vector‑review‑8.html'
+            'exercicio-vector‑review‑8.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>

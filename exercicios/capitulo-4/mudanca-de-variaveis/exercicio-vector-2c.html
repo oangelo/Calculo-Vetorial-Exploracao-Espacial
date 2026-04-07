@@ -1,60 +1,46 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
-<div class="context">
-              ORIGEM: Programas de Controle Térmico [MEMÓRIAS CONFIDENCIAIS]
-            </div>
-<p>
-              A densidade de um material varia com as coordenadas segundo
-              \(\rho(x,y,z) = e^{-(x+y+z)}\). Avalie
-              \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) na região \(x,y,z \ge 0\) e
-              \(x + y + z \le 2\). Efetue uma mudança de variáveis que torne a
-              fronteira do domínio mais simples.
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Propriedades de coordenadas lineares podem
-                ajudar na simplificação de expoentes.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Considere \(u = x + y + z,\; v = y,\; w = z.\) Assim,
-                  \(\rho = e^{-u}\).
-                </p>
-<p>
-                  O domínio \(x+y+z \le 2\) com \(x,y,z \ge 0\) converte-se em
-                  \(0 \le u \le 2,\; 0 \le v \le u,\; 0 \le w \le u-v.\)
-                </p>
-<p>
-                  Jacobiano:
-                  \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1.\)
-                </p>
-<p>
-                  A integral torna-se
-                  \[
-                    \int_{u=0}^{2}\int_{v=0}^{u}\int_{w=0}^{u-v}
-                      e^{-u}\;dw\,dv\,du,
-                  \]
-                  resultando em
-                  \[
-                    \int_{0}^{2} e^{-u}
-                      \left(\int_{0}^{u}\int_{0}^{u-v} dw\,dv\right)\,du.
-                  \]
-                </p>
-<p>
-                  A área em \(v,w\) é \(\frac{u^2}{2}\). Portanto,
-                  \[
-                    \int_{0}^{2} e^{-u} \frac{u^2}{2} \,du.
-                  \]
-                  O valor final é
-                  \(\frac{1}{2}\int_{0}^{2} u^2 e^{-u}\,du,\)
-                  que pode ser calculado via integração por partes, resultando
-                  em \(\frac{1}{2}\bigl(2 - (5e^{-2})\bigr)\) (ou forma
-                  equivalente).
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Programas de Controle Térmico [MEMÓRIAS CONFIDENCIAIS]
+  </div>
+  <p>
+    A densidade de um material varia com as coordenadas segundo \(\rho(x,y,z) =
+    e^{-(x+y+z)}\). Avalie \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) na região
+    \(x,y,z \ge 0\) e \(x + y + z \le 2\). Efetue uma mudança de variáveis que
+    torne a fronteira do domínio mais simples.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de coordenadas lineares podem ajudar na
+      simplificação de expoentes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Considere \(u = x + y + z,\; v = y,\; w = z.\) Assim, \(\rho = e^{-u}\).
+      </p>
+      <p>
+        O domínio \(x+y+z \le 2\) com \(x,y,z \ge 0\) converte-se em \(0 \le u
+        \le 2,\; 0 \le v \le u,\; 0 \le w \le u-v.\)
+      </p>
+      <p>
+        Jacobiano: \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1.\)
+      </p>
+      <p>
+        A integral torna-se \[ \int_{u=0}^{2}\int_{v=0}^{u}\int_{w=0}^{u-v}
+        e^{-u}\;dw\,dv\,du, \] resultando em \[ \int_{0}^{2} e^{-u}
+        \left(\int_{0}^{u}\int_{0}^{u-v} dw\,dv\right)\,du. \]
+      </p>
+      <p>
+        A área em \(v,w\) é \(\frac{u^2}{2}\). Portanto, \[ \int_{0}^{2} e^{-u}
+        \frac{u^2}{2} \,du. \] O valor final é \(\frac{1}{2}\int_{0}^{2} u^2
+        e^{-u}\,du,\) que pode ser calculado via integração por partes,
+        resultando em \(\frac{1}{2}\bigl(2 - (5e^{-2})\bigr)\) (ou forma
+        equivalente).
+      </p>
+    </div>
+  </details>
 </li>

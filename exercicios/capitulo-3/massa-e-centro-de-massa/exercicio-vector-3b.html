@@ -1,86 +1,74 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
-<div class="context">
-              ORIGEM: Setor de Análise <span class="censored">Ômega-Sul</span> -
-              AGO/1966
-            </div>
-<p>
-              Região \(D\) no primeiro quadrante limitada por \(y = x^2\) e \(y
-              = \sqrt{x}\). A densidade \(\rho(x,y) = x + 3y\). <br/>
-              DETERMINAR: A massa total. (Sugere-se analisar a intersecção
-              dessas curvas para definir os limites.)
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Existirão pontos de encontro que dividem o
-                domínio, atente para esses traços.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  As curvas \(y = x^2\) e \(y = \sqrt{x}\) se intersectam quando
-                  \(x^2 = \sqrt{x}\). Para \(x \ge 0\), isto implica \(x^4 = x
-                  \implies x^3 = 1 \implies x = 1\). Logo, \(y=1\).
-                </p>
-<p>
-                  Portanto, \(0 \le x \le 1\), com \(x^2 \le y \le \sqrt{x}\).
-                </p>
-<p>
-                  \[ m = \int_{0}^{1}\int_{x^2}^{\sqrt{x}} (x + 3y) \, dy\, dx.
-                  \]
-                </p>
-<p>
-                  \[ \int_{x^2}^{\sqrt{x}} (x + 3y)\,dy = \int_{x^2}^{\sqrt{x}}
-                  x\,dy + 3 \int_{x^2}^{\sqrt{x}} y\,dy. \]
-                </p>
-<p>
-                  PRIMEIRO TERMO: \[ x(y)\Big|_{y=x^2}^{y=\sqrt{x}} = x(\sqrt{x}
-                  - x^2). \]
-                </p>
-<p>
-                  SEGUNDO TERMO: \[ 3
-                  \left[\frac{y^2}{2}\right]_{x^2}^{\sqrt{x}} =
-                  \frac{3}{2}\left((\sqrt{x})^2 - (x^2)^2\right) = \frac{3}{2}(x
-                  - x^4). \]
-                </p>
-<p>
-                  SOMANDO: \[ x(\sqrt{x} - x^2) + \frac{3}{2}(x - x^4). \] Vamos
-                  integrar em \(x\) de 0 a 1:
-                </p>
-<p>
-                  \[ \int_{0}^{1} \left[x\sqrt{x} - x^3 + \frac{3}{2}x -
-                  \frac{3}{2}x^4\right] dx. \]
-                </p>
-<p>
-                  DETALHES: \[ \int_{0}^{1} x\sqrt{x}\, dx = \int_{0}^{1}
-                  x^{3/2}\, dx =
-                  \left[\frac{x^{5/2}}{\frac{5}{2}}\right]_{0}^{1} =
-                  \frac{2}{5}. \] \[ \int_{0}^{1} x^3\, dx = \frac{1}{4}, \quad
-                  \int_{0}^{1} x\, dx = \frac{1}{2}, \quad \int_{0}^{1} x^4\, dx
-                  = \frac{1}{5}. \]
-                </p>
-<p>
-                  ENTÃO: \[ \int_{0}^{1} x\sqrt{x} \,dx = \frac{2}{5}, \quad
-                  -\int_{0}^{1} x^3\,dx = -\frac{1}{4}, \quad
-                  \frac{3}{2}\int_{0}^{1} x\,dx =
-                  \frac{3}{2}\left(\frac{1}{2}\right) = \frac{3}{4}, \] \[
-                  -\frac{3}{2}\int_{0}^{1} x^4\,dx =
-                  -\frac{3}{2}\left(\frac{1}{5}\right) = -\frac{3}{10}. \]
-                </p>
-<p>
-                  SOMANDO TUDO: \[ \frac{2}{5} - \frac{1}{4} + \frac{3}{4} -
-                  \frac{3}{10} = \frac{2}{5} + \left(-\frac{1}{4} +
-                  \frac{3}{4}\right) - \frac{3}{10}. \] \[ = \frac{2}{5} +
-                  \frac{2}{4} - \frac{3}{10} = \frac{2}{5} + \frac{1}{2} -
-                  \frac{3}{10}. \] Convertendo para décimos: \(\frac{2}{5} =
-                  \frac{4}{10}, \quad \frac{1}{2} = \frac{5}{10}\). Logo, \[
-                  \frac{4}{10} + \frac{5}{10} - \frac{3}{10} = \frac{6}{10} =
-                  0.6. \]
-                </p>
-<p>CONCLUSÃO: Massa total = \(0.6\).</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Setor de Análise <span class="censored">Ômega-Sul</span> - AGO/1966
+  </div>
+  <p>
+    Região \(D\) no primeiro quadrante limitada por \(y = x^2\) e \(y =
+    \sqrt{x}\). A densidade \(\rho(x,y) = x + 3y\). <br />
+    DETERMINAR: A massa total. (Sugere-se analisar a intersecção dessas curvas
+    para definir os limites.)
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Existirão pontos de encontro que dividem o domínio, atente
+      para esses traços.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        As curvas \(y = x^2\) e \(y = \sqrt{x}\) se intersectam quando \(x^2 =
+        \sqrt{x}\). Para \(x \ge 0\), isto implica \(x^4 = x \implies x^3 = 1
+        \implies x = 1\). Logo, \(y=1\).
+      </p>
+      <p>Portanto, \(0 \le x \le 1\), com \(x^2 \le y \le \sqrt{x}\).</p>
+      <p>\[ m = \int_{0}^{1}\int_{x^2}^{\sqrt{x}} (x + 3y) \, dy\, dx. \]</p>
+      <p>
+        \[ \int_{x^2}^{\sqrt{x}} (x + 3y)\,dy = \int_{x^2}^{\sqrt{x}} x\,dy + 3
+        \int_{x^2}^{\sqrt{x}} y\,dy. \]
+      </p>
+      <p>
+        PRIMEIRO TERMO: \[ x(y)\Big|_{y=x^2}^{y=\sqrt{x}} = x(\sqrt{x} - x^2).
+        \]
+      </p>
+      <p>
+        SEGUNDO TERMO: \[ 3 \left[\frac{y^2}{2}\right]_{x^2}^{\sqrt{x}} =
+        \frac{3}{2}\left((\sqrt{x})^2 - (x^2)^2\right) = \frac{3}{2}(x - x^4).
+        \]
+      </p>
+      <p>
+        SOMANDO: \[ x(\sqrt{x} - x^2) + \frac{3}{2}(x - x^4). \] Vamos integrar
+        em \(x\) de 0 a 1:
+      </p>
+      <p>
+        \[ \int_{0}^{1} \left[x\sqrt{x} - x^3 + \frac{3}{2}x -
+        \frac{3}{2}x^4\right] dx. \]
+      </p>
+      <p>
+        DETALHES: \[ \int_{0}^{1} x\sqrt{x}\, dx = \int_{0}^{1} x^{3/2}\, dx =
+        \left[\frac{x^{5/2}}{\frac{5}{2}}\right]_{0}^{1} = \frac{2}{5}. \] \[
+        \int_{0}^{1} x^3\, dx = \frac{1}{4}, \quad \int_{0}^{1} x\, dx =
+        \frac{1}{2}, \quad \int_{0}^{1} x^4\, dx = \frac{1}{5}. \]
+      </p>
+      <p>
+        ENTÃO: \[ \int_{0}^{1} x\sqrt{x} \,dx = \frac{2}{5}, \quad -\int_{0}^{1}
+        x^3\,dx = -\frac{1}{4}, \quad \frac{3}{2}\int_{0}^{1} x\,dx =
+        \frac{3}{2}\left(\frac{1}{2}\right) = \frac{3}{4}, \] \[
+        -\frac{3}{2}\int_{0}^{1} x^4\,dx = -\frac{3}{2}\left(\frac{1}{5}\right)
+        = -\frac{3}{10}. \]
+      </p>
+      <p>
+        SOMANDO TUDO: \[ \frac{2}{5} - \frac{1}{4} + \frac{3}{4} - \frac{3}{10}
+        = \frac{2}{5} + \left(-\frac{1}{4} + \frac{3}{4}\right) - \frac{3}{10}.
+        \] \[ = \frac{2}{5} + \frac{2}{4} - \frac{3}{10} = \frac{2}{5} +
+        \frac{1}{2} - \frac{3}{10}. \] Convertendo para décimos: \(\frac{2}{5} =
+        \frac{4}{10}, \quad \frac{1}{2} = \frac{5}{10}\). Logo, \[ \frac{4}{10}
+        + \frac{5}{10} - \frac{3}{10} = \frac{6}{10} = 0.6. \]
+      </p>
+      <p>CONCLUSÃO: Massa total = \(0.6\).</p>
+    </div>
+  </details>
 </li>

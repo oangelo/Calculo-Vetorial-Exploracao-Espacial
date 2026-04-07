@@ -1,64 +1,53 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
-<div class="context">
-              ORIGEM: Análise de Setor Circular - Programa Interno [ARQUIVOS DE
-              <span class="censored">1964</span>]
-            </div>
-<p>
-              Calcular \(\iint_{R} (x+2y)\,dx\,dy\) em que \(R\) é a região no
-              primeiro quadrante delimitada por \(x^2 + y^2 \le 4\). Use
-              coordenadas polares para efetuar a mudança de variáveis.
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Considere relacionar as variáveis de forma a
-                aproveitar simetria do setor.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Em coordenadas polares, \(x = r\cos\theta\) e
-                  \(y = r\sin\theta\). A região \(R\) no primeiro quadrante
-                  implica \(0 \le r \le 2\) e \(0 \le \theta \le \frac{\pi}{2}\).
-                </p>
-<p>
-                  O Jacobiano resulta em \(\left|\frac{\partial(x,y)}{\partial(r,\theta)}\right| = r\).
-                </p>
-<p>
-                  Logo,
-                  \[
-                    \iint_{R} (x+2y)\,dx\,dy
-                    =
-                    \int_{0}^{\pi/2}\!\!\int_{0}^{2}
-                    \bigl(r\cos\theta + 2r\sin\theta\bigr)\,
-                    r\,dr\,d\theta.
-                  \]
-                </p>
-<p>
-                  Ao expandir,
-                  \[
-                    \int_{0}^{\pi/2}\!\!\int_{0}^{2}
-                    r^2 \cos\theta
-                    + 2r^2 \sin\theta\,
-                    dr\,d\theta.
-                  \]
-                </p>
-<p>
-                  Resulta no valor numérico 
-                  \(\int_{0}^{\pi/2} \bigl[\frac{r^3}{3}\cos\theta + \frac{2r^3}{3}\sin\theta\bigr]_0^2 \, d\theta\)
-                  = 
-                  \(\int_{0}^{\pi/2} \left(\frac{8}{3}\cos\theta + \frac{16}{3}\sin\theta\right) d\theta\).
-                </p>
-<p>
-                  Solucionando,
-                  \(\left[\frac{8}{3}\sin\theta - \frac{16}{3}\cos\theta \right]_{0}^{\pi/2}
-                  = \frac{8}{3}\cdot 1 - \frac{16}{3}\cdot 0 - \left(0 - \frac{16}{3}\right)
-                  = \frac{8}{3} + \frac{16}{3} = \frac{24}{3} = 8.\)
-                </p>
-<p>CONCLUSÃO: O valor da integral é 8.</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Análise de Setor Circular - Programa Interno [ARQUIVOS DE
+    <span class="censored">1964</span>]
+  </div>
+  <p>
+    Calcular \(\iint_{R} (x+2y)\,dx\,dy\) em que \(R\) é a região no primeiro
+    quadrante delimitada por \(x^2 + y^2 \le 4\). Use coordenadas polares para
+    efetuar a mudança de variáveis.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Considere relacionar as variáveis de forma a aproveitar
+      simetria do setor.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em coordenadas polares, \(x = r\cos\theta\) e \(y = r\sin\theta\). A
+        região \(R\) no primeiro quadrante implica \(0 \le r \le 2\) e \(0 \le
+        \theta \le \frac{\pi}{2}\).
+      </p>
+      <p>
+        O Jacobiano resulta em
+        \(\left|\frac{\partial(x,y)}{\partial(r,\theta)}\right| = r\).
+      </p>
+      <p>
+        Logo, \[ \iint_{R} (x+2y)\,dx\,dy = \int_{0}^{\pi/2}\!\!\int_{0}^{2}
+        \bigl(r\cos\theta + 2r\sin\theta\bigr)\, r\,dr\,d\theta. \]
+      </p>
+      <p>
+        Ao expandir, \[ \int_{0}^{\pi/2}\!\!\int_{0}^{2} r^2 \cos\theta + 2r^2
+        \sin\theta\, dr\,d\theta. \]
+      </p>
+      <p>
+        Resulta no valor numérico \(\int_{0}^{\pi/2}
+        \bigl[\frac{r^3}{3}\cos\theta + \frac{2r^3}{3}\sin\theta\bigr]_0^2 \,
+        d\theta\) = \(\int_{0}^{\pi/2} \left(\frac{8}{3}\cos\theta +
+        \frac{16}{3}\sin\theta\right) d\theta\).
+      </p>
+      <p>
+        Solucionando, \(\left[\frac{8}{3}\sin\theta - \frac{16}{3}\cos\theta
+        \right]_{0}^{\pi/2} = \frac{8}{3}\cdot 1 - \frac{16}{3}\cdot 0 - \left(0
+        - \frac{16}{3}\right) = \frac{8}{3} + \frac{16}{3} = \frac{24}{3} = 8.\)
+      </p>
+      <p>CONCLUSÃO: O valor da integral é 8.</p>
+    </div>
+  </details>
 </li>

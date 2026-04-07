@@ -1,14 +1,13 @@
 <!doctype html>
 <html lang="pt-BR">
-  
   <body>
     <div class="container">
       <div id="intro"></div>
-      
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
+
       <div id="footer"></div>
     </div>
 
@@ -20,14 +19,12 @@
           if (introResp.ok) {
             document.getElementById('intro').innerHTML = await introResp.text();
           }
-          
+
           // Lista de exercícios em ordem
-          const exercises = [
-            
-          ];
-          
+          const exercises = [];
+
           const list = document.getElementById('exercises');
-          
+
           // Carregar cada exercício
           for (const file of exercises) {
             const resp = await fetch(file);
@@ -35,22 +32,22 @@
               list.innerHTML += await resp.text();
             }
           }
-          
+
           // Footer
           document.getElementById('footer').innerHTML = ``;
-          
+
           // Re-renderizar MathJax
           if (window.MathJax && window.MathJax.typesetPromise) {
             MathJax.typesetPromise();
           } else if (window.MathJax && window.MathJax.Hub) {
             // MathJax 2.x
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar conteúdo:', error);
         }
       }
-      
+
       loadContent();
     </script>
   </body>

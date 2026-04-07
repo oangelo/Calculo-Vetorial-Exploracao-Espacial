@@ -18,14 +18,20 @@
     <script>
       MathJax = {
         tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
           processEscapes: true,
-          processEnvironments: true
+          processEnvironments: true,
         },
         options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-        }
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
       };
     </script>
     <style>
@@ -288,8 +294,8 @@
           <span class="censored">TRIPLO-X</span><br /><br />
           Em resposta à crescente demanda de análises em
           <span class="censored">ambientes tridimensionais</span> no âmbito da
-          corrida espacial, nossa equipe trabalhou em estudos avançados sobre
-          as condições de integrabilidade de funções em domínios
+          corrida espacial, nossa equipe trabalhou em estudos avançados sobre as
+          condições de integrabilidade de funções em domínios
           <span class="censored">volumétricos</span>. <br /><br />
           Os exercícios a seguir foram compilados pelos especialistas do
           programa <span class="censored">APOLLO</span>, visando garantir a
@@ -299,8 +305,8 @@
 
         <div class="warning-box">
           Este documento contém dados e técnicas essenciais à
-          <span class="censored">dinâmica espacial</span>. A divulgação
-          indevida pode causar <span class="censored">danos irreversíveis</span>
+          <span class="censored">dinâmica espacial</span>. A divulgação indevida
+          pode causar <span class="censored">danos irreversíveis</span>
           à segurança das operações.
         </div>
 
@@ -336,12 +342,12 @@
       </div>
 
       <div class="mission-context">
-        A aplicação prática desses critérios de integrabilidade impacta o cálculo
-        de trajetórias espaciais em três dimensões, auxiliando na determinação
-        de parâmetros como empuxo resultante, energia acumulada e
-        <span class="censored">cálculos orbitais críticos</span>. O
-        entendimento das condições de integrabilidade garante maior confiabilidade
-        na etapa de planejamento das missões.
+        A aplicação prática desses critérios de integrabilidade impacta o
+        cálculo de trajetórias espaciais em três dimensões, auxiliando na
+        determinação de parâmetros como empuxo resultante, energia acumulada e
+        <span class="censored">cálculos orbitais críticos</span>. O entendimento
+        das condições de integrabilidade garante maior confiabilidade na etapa
+        de planejamento das missões.
       </div>
 
       <div class="historical-note">
@@ -359,12 +365,13 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
             <div class="context">
-              ORIGEM: Estudo Preliminar de Volume - Dados de Simulação [JUN/1971]
+              ORIGEM: Estudo Preliminar de Volume - Dados de Simulação
+              [JUN/1971]
             </div>
             <p>
               Considere a função \[f(x,y,z) = x + y + z\] definida no domínio
-              \(D\) limitado pelo cubo
-              \[0 \le x \le 2, \, 0 \le y \le 2, \, 0 \le z \le 2.\]
+              \(D\) limitado pelo cubo \[0 \le x \le 2, \, 0 \le y \le 2, \, 0
+              \le z \le 2.\]
             </p>
             <p>
               Verifique se as condições de integrabilidade estão satisfeitas e,
@@ -387,21 +394,17 @@
                   condições de integrabilidade são satisfeitas.
                 </p>
                 <p>
-                  Para o cálculo:
-                  \[\iiint_{D} (x + y + z)\, dV,\quad D=[0,2]\times[0,2]\times[0,2].\]
+                  Para o cálculo: \[\iiint_{D} (x + y + z)\, dV,\quad
+                  D=[0,2]\times[0,2]\times[0,2].\]
                 </p>
                 <p>
-                  Integração passo a passo:
-                  \[
-                    \int_{0}^{2} \int_{0}^{2} \int_{0}^{2} (x + y + z)\, dx\, dy\, dz.
-                  \]
+                  Integração passo a passo: \[ \int_{0}^{2} \int_{0}^{2}
+                  \int_{0}^{2} (x + y + z)\, dx\, dy\, dz. \]
                 </p>
                 <p>
-                  A resolução conduz a
-                  \[
-                    \int_{0}^{2} \int_{0}^{2} \left[\frac{x^2}{2} + xy + xz\right]_{x=0}^{2}\, dy\, dz
-                  \]
-                  e, procedendo, obtemos o valor final \(\boxed{24}\).
+                  A resolução conduz a \[ \int_{0}^{2} \int_{0}^{2}
+                  \left[\frac{x^2}{2} + xy + xz\right]_{x=0}^{2}\, dy\, dz \] e,
+                  procedendo, obtemos o valor final \(\boxed{24}\).
                 </p>
               </div>
             </details>
@@ -443,8 +446,8 @@
                 </p>
                 <p>
                   Como \(D\) é limitado, o volume total de integração é finito,
-                  assegurando que
-                  \(\left|\iiint_{D} \rho(x,y,z)\, dV\right|\) seja finito.
+                  assegurando que \(\left|\iiint_{D} \rho(x,y,z)\, dV\right|\)
+                  seja finito.
                 </p>
                 <p>
                   Conclusão: A soma (integral tripla) da densidade ao longo do
@@ -463,10 +466,10 @@
             </div>
             <p>
               A função \[g(x,y,z) = e^{-x^2-y^2-z^2}\] aparece em modelos de
-              dispersão de gases no interior do módulo. Verifique se esta
-              função atende aos critérios de integrabilidade no domínio
-              \(\{(x,y,z)\in \mathbb{R}^3 \mid |x|\le 2, |y|\le 2, |z|\le 2\}\),
-              descrevendo sucintamente a razão.
+              dispersão de gases no interior do módulo. Verifique se esta função
+              atende aos critérios de integrabilidade no domínio \(\{(x,y,z)\in
+              \mathbb{R}^3 \mid |x|\le 2, |y|\le 2, |z|\le 2\}\), descrevendo
+              sucintamente a razão.
             </p>
 
             <details class="hint-container">
@@ -482,13 +485,13 @@
               <div class="solution">
                 <p>
                   A função \(e^{-x^2-y^2-z^2}\) é contínua e limitada em todo
-                  \(\mathbb{R}^3\). Em particular, dentro do cubo
-                  \([-2,2]^3\), não há pontos de descontinuidade.
+                  \(\mathbb{R}^3\). Em particular, dentro do cubo \([-2,2]^3\),
+                  não há pontos de descontinuidade.
                 </p>
                 <p>
                   Portanto, as condições de integrabilidade são atendidas no
                   referido domínio. Uma vez que \(D\) é limitado, a integral
-                  tripla é finita. 
+                  tripla é finita.
                 </p>
                 <p>
                   A relevância prática está na estimativa de
@@ -507,17 +510,16 @@
             </div>
             <p>
               Seja \[h(x,y,z) = \frac{1}{1 + x^2 + y^2 + z^2}.\] Analisar a
-              integrabilidade de \(h\) no domínio
-              \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le 4\}\), indicando se
-              descontinuidades ou comportamentos assintóticos podem comprometer
-              a existência da integral tripla.
+              integrabilidade de \(h\) no domínio \(\{(x,y,z)\mid x^2 + y^2 +
+              z^2 \le 4\}\), indicando se descontinuidades ou comportamentos
+              assintóticos podem comprometer a existência da integral tripla.
             </p>
 
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Propriedades de
-                \(\frac{1}{1 + r^2}\) podem ser relevantes.
+                [NOTA TÉCNICA]: Propriedades de \(\frac{1}{1 + r^2}\) podem ser
+                relevantes.
               </div>
             </details>
 
@@ -531,8 +533,8 @@
                   garantida.
                 </p>
                 <p>
-                  A ausência de pontos de descontinuidade ou termos que tornem
-                  o denominador nulo assegura que a integral tripla existe e é
+                  A ausência de pontos de descontinuidade ou termos que tornem o
+                  denominador nulo assegura que a integral tripla existe e é
                   finita nesse volume esférico.
                 </p>
               </div>
@@ -545,9 +547,8 @@
               ORIGEM: Setor de Propulsão - Análise Energética [AGOSTO/1971]
             </div>
             <p>
-              Considere o campo de temperatura
-              \(\Theta(x,y,z)=\ln(1 + x + y + z)\) definido para
-              \(x+y+z > -1\). Discuta se a região
+              Considere o campo de temperatura \(\Theta(x,y,z)=\ln(1 + x + y +
+              z)\) definido para \(x+y+z > -1\). Discuta se a região
               \(\{(x,y,z)\mid x\ge0,\,y\ge0,\,z\ge0,\,x+y+z\le 5\}\) satisfaz
               completamente as condições para a integral tripla de \(\Theta\).
             </p>
@@ -575,8 +576,8 @@
                   interior, cumprindo as condições de integrabilidade.
                 </p>
                 <p>
-                  A integral tripla resultante fornecerá um indicador
-                  energético relevante para
+                  A integral tripla resultante fornecerá um indicador energético
+                  relevante para
                   <span class="censored">avaliação térmica</span> do sistema de
                   propulsão.
                 </p>
@@ -590,12 +591,11 @@
               ORIGEM: Departamento de Dinâmica - Lab. Secreto [AGOSTO/1971]
             </div>
             <p>
-              Na região definida por \(0 \le x \le 1\), \(0 \le y \le 1\) e
-              \(-1 \le z \le 1\), a função
-              \[F(x,y,z) = \frac{\sin(\pi x)\,\sin(\pi y)\,\sin(\pi z)}{\pi(x+y+1)}\]
-              é analisada para verificar eventuais problemas de integrabilidade.
-              Investigue a existência de pontos de descontinuidade ou
-              indeterminação no denominador.
+              Na região definida por \(0 \le x \le 1\), \(0 \le y \le 1\) e \(-1
+              \le z \le 1\), a função \[F(x,y,z) = \frac{\sin(\pi x)\,\sin(\pi
+              y)\,\sin(\pi z)}{\pi(x+y+1)}\] é analisada para verificar
+              eventuais problemas de integrabilidade. Investigue a existência de
+              pontos de descontinuidade ou indeterminação no denominador.
             </p>
 
             <details class="hint-container">
@@ -611,8 +611,8 @@
               <div class="solution">
                 <p>
                   No domínio especificado, temos \(x \ge 0\), \(y \ge 0\) e
-                  portanto \(x + y + 1 \ge 1\). Isto impede que
-                  \(\pi(x+y+1)\) seja zero.
+                  portanto \(x + y + 1 \ge 1\). Isto impede que \(\pi(x+y+1)\)
+                  seja zero.
                 </p>
                 <p>
                   As funções \(\sin(\pi x)\), \(\sin(\pi y)\) e \(\sin(\pi z)\)
@@ -635,13 +635,12 @@
               ORIGEM: Módulo de Observação - Programa Apollo [SET/1971]
             </div>
             <p>
-              Considere a função
-              \[u(x,y,z) = \begin{cases}
-                \sin\bigl(\frac{1}{x^2+y^2+z^2}\bigr) & \text{se } x^2+y^2+z^2 \neq 0,\\
-                0 & \text{se } x=y=z=0.
-              \end{cases}\]
-              Avalie se a continuidade desta função em \(D\) = \(\{(x,y,z)\mid 0 \le x^2+y^2+z^2 \le 4\}\)
-              é suficiente para garantir a integrabilidade.
+              Considere a função \[u(x,y,z) = \begin{cases}
+              \sin\bigl(\frac{1}{x^2+y^2+z^2}\bigr) & \text{se } x^2+y^2+z^2
+              \neq 0,\\ 0 & \text{se } x=y=z=0. \end{cases}\] Avalie se a
+              continuidade desta função em \(D\) = \(\{(x,y,z)\mid 0 \le
+              x^2+y^2+z^2 \le 4\}\) é suficiente para garantir a
+              integrabilidade.
             </p>
 
             <details class="hint-container">
@@ -658,8 +657,8 @@
                   A função é contínua em quase todos os pontos de \(D\), mas o
                   ponto \((0,0,0)\) requer atenção: por construção,
                   \(u(0,0,0)=0\). Graças à definição, o limite de
-                  \(\sin\bigl(\frac{1}{r^2}\bigr)\) quando \(r\to 0\) é
-                  mantido em \(0\) pela escolha conveniente de valor.
+                  \(\sin\bigl(\frac{1}{r^2}\bigr)\) quando \(r\to 0\) é mantido
+                  em \(0\) pela escolha conveniente de valor.
                 </p>
                 <p>
                   Assim, \(\sin\bigl(\frac{1}{x^2+y^2+z^2}\bigr)\) não cria
@@ -681,16 +680,12 @@
               ORIGEM: Seção de Controle Térmico - Apollo 14 [OUT/1971]
             </div>
             <p>
-              Uma distribuição de temperatura local é dada por:
-              \[
-                T(x,y,z) = \begin{cases}
-                  \frac{1}{\sqrt{x^2 + y^2 + z^2}}, & \text{se } x^2 + y^2 + z^2 \neq 0, \\
-                  100, & \text{se } x = y = z = 0.
-                \end{cases}
-              \]
-              Investigue se a presença de \(\frac{1}{\sqrt{r^2}}\) no
-              denominador afeta a integrabilidade em
-              \(\{(x,y,z)\mid 0 \le r\le 3\}\).
+              Uma distribuição de temperatura local é dada por: \[ T(x,y,z) =
+              \begin{cases} \frac{1}{\sqrt{x^2 + y^2 + z^2}}, & \text{se } x^2 +
+              y^2 + z^2 \neq 0, \\ 100, & \text{se } x = y = z = 0. \end{cases}
+              \] Investigue se a presença de \(\frac{1}{\sqrt{r^2}}\) no
+              denominador afeta a integrabilidade em \(\{(x,y,z)\mid 0 \le r\le
+              3\}\).
             </p>
 
             <details class="hint-container">
@@ -708,8 +703,8 @@
                   Em coordenadas esféricas, a função se torna aproximadamente
                   \(\frac{1}{r}\). O volume infinitesimal é proporcional a
                   \(r^2\, dr\). Assim, ao integrar \(\frac{1}{r}\cdot r^2\) em
-                  \(r\), a integral se comporta como
-                  \(\int r\, dr\), que converge para \(r\le3\).
+                  \(r\), a integral se comporta como \(\int r\, dr\), que
+                  converge para \(r\le3\).
                 </p>
                 <p>
                   No ponto \((0,0,0)\), foi atribuído o valor 100, mas isso não
@@ -730,11 +725,8 @@
               ORIGEM: Cálculos Orbitais - Laboratório Secreto [OUT/1971]
             </div>
             <p>
-              O potencial gravitacional de um asteroide hipotético é
-              aproximado por
-              \[
-                \Phi(x,y,z) = \frac{1}{(1 + x^2 + y^2 + z^2)^2}.
-              \]
+              O potencial gravitacional de um asteroide hipotético é aproximado
+              por \[ \Phi(x,y,z) = \frac{1}{(1 + x^2 + y^2 + z^2)^2}. \]
               Explique por que esta função não apresenta problemas de
               integrabilidade em qualquer domínio limitado que inclua a origem.
             </p>
@@ -777,11 +769,8 @@
             </div>
             <p>
               Um estudo de formação de crateras em um satélite é modelado pela
-              integral tripla de
-              \[
-                M(x,y,z) = \max\{0, 5 - (x^2 + y^2 + z^2)\}.
-              \]
-              Justifique a integrabilidade de \(M\) e calcule seu valor total
+              integral tripla de \[ M(x,y,z) = \max\{0, 5 - (x^2 + y^2 + z^2)\}.
+              \] Justifique a integrabilidade de \(M\) e calcule seu valor total
               para o domínio onde a função é positiva.
             </p>
             <!-- SÉRIE OMEGA NÃO TEM DICAS -->
@@ -790,26 +779,23 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  \(M\) é contínua em \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le \sqrt{5}\}\)
-                  e zero fora desse raio, logo limitada e sem descontinuidades.
+                  \(M\) é contínua em \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le
+                  \sqrt{5}\}\) e zero fora desse raio, logo limitada e sem
+                  descontinuidades.
                 </p>
                 <p>
                   A região de integração é uma esfera de raio \(\sqrt{5}\). Para
                   \(r^2 \le 5\), \(M= 5 - r^2\). A integral em coordenadas
-                  esféricas:
-                  \[
-                    \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\sqrt{5}}
-                      \bigl(5 - r^2\bigr)\, r^2 \sin\phi\, dr\, d\phi\, d\theta.
-                  \]
+                  esféricas: \[ \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\sqrt{5}}
+                  \bigl(5 - r^2\bigr)\, r^2 \sin\phi\, dr\, d\phi\, d\theta. \]
                 </p>
                 <p>
                   O resultado numérico (após a computação passo a passo) conduz
-                  ao valor exato:
-                  \[
-                    \boxed{\frac{500\pi}{3}}.
-                  \]
+                  ao valor exato: \[ \boxed{\frac{500\pi}{3}}. \]
                 </p>
-                <p>Conclusão: o valor total de massa/volume associado é finito.</p>
+                <p>
+                  Conclusão: o valor total de massa/volume associado é finito.
+                </p>
               </div>
             </details>
           </li>
@@ -820,17 +806,11 @@
               ORIGEM: Simulação 3D - Apollo 16 [NOV/1971]
             </div>
             <p>
-              A função
-              \[
-                Q(x,y,z) = \begin{cases}
-                  \frac{x}{\sqrt{x^2 + y^2}} & \text{se } y \neq 0,\\
-                  0 & \text{se } y = 0,
-                \end{cases}
-              \]
-              é utilizada num modelo de rotação parcial para eixo \(z\). Avalie
-              se existem regiões onde \(\frac{x}{\sqrt{x^2 + y^2}}\) possa
-              impedir a integrabilidade em um bloco
-              \([-1,1]\times[-1,1]\times[0,2]\].
+              A função \[ Q(x,y,z) = \begin{cases} \frac{x}{\sqrt{x^2 + y^2}} &
+              \text{se } y \neq 0,\\ 0 & \text{se } y = 0, \end{cases} \] é
+              utilizada num modelo de rotação parcial para eixo \(z\). Avalie se
+              existem regiões onde \(\frac{x}{\sqrt{x^2 + y^2}}\) possa impedir
+              a integrabilidade em um bloco \([-1,1]\times[-1,1]\times[0,2]\].
             </p>
             <!-- SEM DICAS NA SÉRIE OMEGA -->
 
@@ -838,19 +818,19 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  A função é indefinida apenas na linha onde \(y=0\) e
-                  \(x\neq 0\). Entretanto, o valor foi definido como 0
-                  explicitamente nessa linha, evitando descontinuidade. 
+                  A função é indefinida apenas na linha onde \(y=0\) e \(x\neq
+                  0\). Entretanto, o valor foi definido como 0 explicitamente
+                  nessa linha, evitando descontinuidade.
                 </p>
                 <p>
                   Em \([-1,1]\times[-1,1]\times[0,2]\), \(\frac{x}{\sqrt{x^2 +
                   y^2}}\) é limitada e não introduz singularidades de grande
-                  ordem (não há divisão por zero para pontos fora de
-                  \(y=0\), e no próprio \(y=0\) foi atribuída continuidade).
+                  ordem (não há divisão por zero para pontos fora de \(y=0\), e
+                  no próprio \(y=0\) foi atribuída continuidade).
                 </p>
                 <p>
-                  Conclusão: A integrabilidade é garantida no bloco, pois não
-                  há conjunto significativo de descontinuidade.
+                  Conclusão: A integrabilidade é garantida no bloco, pois não há
+                  conjunto significativo de descontinuidade.
                 </p>
               </div>
             </details>
@@ -862,13 +842,10 @@
               ORIGEM: Projeto Póstumo - Apollo 17 [DEZ/1971]
             </div>
             <p>
-              Uma função experimental
-              \[
-                \Gamma(x,y,z) = \frac{\ln(2 + x^2 + z^4)}{1 + y^4}
-              \]
-              é empregada na análise de vibrações mecânicas do módulo lunar.
-              Verifique, sem a realização da integral completa, se a condição
-              de integrabilidade em \([-1,1]^3\) permanece válida.
+              Uma função experimental \[ \Gamma(x,y,z) = \frac{\ln(2 + x^2 +
+              z^4)}{1 + y^4} \] é empregada na análise de vibrações mecânicas do
+              módulo lunar. Verifique, sem a realização da integral completa, se
+              a condição de integrabilidade em \([-1,1]^3\) permanece válida.
             </p>
             <!-- SEM DICAS NA SÉRIE OMEGA -->
 
@@ -876,16 +853,16 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Em \([-1,1]^3\), a expressão \(2 + x^2 + z^4\) permanece
-                  acima de 1, evitando possíveis problemas no logaritmo.
+                  Em \([-1,1]^3\), a expressão \(2 + x^2 + z^4\) permanece acima
+                  de 1, evitando possíveis problemas no logaritmo.
                 </p>
                 <p>
                   A parte \(1 + y^4\) nunca se anula, mantendo a fração
                   \(\frac{\ln(\dots)}{1 + y^4}\) livre de singularidades.
                 </p>
                 <p>
-                  Consequentemente, \(\Gamma\) é limitada e contínua em todo
-                  o cubo \([-1,1]^3\). Logo, a integral tripla é finita e
+                  Consequentemente, \(\Gamma\) é limitada e contínua em todo o
+                  cubo \([-1,1]^3\). Logo, a integral tripla é finita e
                   bem-definida.
                 </p>
               </div>

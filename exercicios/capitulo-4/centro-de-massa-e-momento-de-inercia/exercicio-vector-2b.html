@@ -1,111 +1,80 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
-<div class="context">
-              ORIGEM: Programa Gemini - 1966 [Testes de Estruturas Cônicas]
-            </div>
-<p>
-              Considere um cone sólido definido por
-              \(0 \le z \le 3\), \(x^2 + y^2 \le \left(\frac{z}{3}\right)^2\).
-              Suponha densidade variável \(\rho(x,y,z) = 4z\). Calcule o centro
-              de massa \(\vec{R}_C\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Propriedades de volumes cônicos podem ser úteis.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Em coordenadas cilíndricas: \(r \le \frac{z}{3}\), \(\theta\)
-                  de 0 a \(2\pi\), \(z\) de 0 a 3.
-                </p>
-<p>
-                  A densidade: \(\rho = 4z\). O elemento de volume:
-                  \(dV = r\,dr\,d\theta\,dz\).
-                </p>
-<p>
-                  Coordenadas do centro de massa:
-                  \[
-                    x_C = 0, \quad
-                    y_C = 0,
-                    \quad
-                    z_C = \frac{1}{M}
-                    \iiint_V z \cdot \rho \, dV,
-                  \]
-                  pois a simetria anula \(x_C\) e \(y_C\).
-                </p>
-<p>
-                  Primeiro, calculamos a massa:
-                  \[
-                    M = \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
-                    4z \, r \, dr\, d\theta\, dz.
-                  \]
-                </p>
-<p>
-                  Integração em \(r\):
-                  \(\int_{0}^{\frac{z}{3}} 4z \, r \, dr
-                  = 4z \cdot \frac{1}{2}\left(\frac{z}{3}\right)^2
-                  = 2z \cdot \frac{z^2}{9} = \frac{2z^3}{9}.
-                </p>
-<p>
-                  Em \(\theta\):
-                  \(\int_{0}^{2\pi} \frac{2z^3}{9} \, d\theta
-                  = \frac{2z^3}{9} \cdot 2\pi = \frac{4\pi z^3}{9}.\)
-                </p>
-<p>
-                  Em \(z\):
-                  \(\int_{0}^{3} \frac{4\pi z^3}{9}\,dz
-                  = \frac{4\pi}{9} \left[\frac{z^4}{4}\right]_{0}^{3}
-                  = \frac{4\pi}{9} \cdot \frac{81}{4} = \frac{324\pi}{36}
-                  = 9\pi.
-                </p>
-<p>
-                  Portanto, \(M = 9\pi.\)
-                </p>
-<p>
-                  Agora, para \(z_C\):
-                  \[
-                    z_C = \frac{1}{9\pi}
-                    \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
-                    z \cdot (4z) \, r\,dr\, d\theta \, dz
-                    = \frac{1}{9\pi}
-                    \int_{0}^{3} \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}}
-                    4z^2 \, r\,dr\, d\theta \, dz.
-                  \]
-                </p>
-<p>
-                  Repetindo o processo:
-                  \(\int_{0}^{\frac{z}{3}} 4z^2 \,r\,dr
-                  = 4z^2 \cdot \frac{1}{2}\left(\frac{z}{3}\right)^2
-                  = 2z^2 \cdot \frac{z^2}{9} = \frac{2z^4}{9}.\)
-                </p>
-<p>
-                  Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^4}{9}\,d\theta
-                  = \frac{2z^4}{9}\cdot 2\pi = \frac{4\pi z^4}{9}.\)
-                </p>
-<p>
-                  Em \(z\):
-                  \(\int_{0}^{3} \frac{4\pi z^4}{9} \, dz
-                  = \frac{4\pi}{9}\left[\frac{z^5}{5}\right]_{0}^{3}
-                  = \frac{4\pi}{9} \cdot \frac{243}{5}
-                  = \frac{972\pi}{45} = \frac{972\pi}{45}.
-                </p>
-<p>
-                  Simplificando: \(\frac{972}{45} = \frac{972}{45} = 21.6.\)
-                  Então o valor integral é \(21.6\pi\).
-                </p>
-<p>
-                  Logo,
-                  \[
-                    z_C = \frac{21.6\pi}{9\pi} = 2.4.
-                  \]
-                </p>
-<p>
-                  Conclusão: \(\vec{R}_C = \begin{pmatrix}0\\0\\2.4\end{pmatrix}\).
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Programa Gemini - 1966 [Testes de Estruturas Cônicas]
+  </div>
+  <p>
+    Considere um cone sólido definido por \(0 \le z \le 3\), \(x^2 + y^2 \le
+    \left(\frac{z}{3}\right)^2\). Suponha densidade variável \(\rho(x,y,z) =
+    4z\). Calcule o centro de massa \(\vec{R}_C\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de volumes cônicos podem ser úteis.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em coordenadas cilíndricas: \(r \le \frac{z}{3}\), \(\theta\) de 0 a
+        \(2\pi\), \(z\) de 0 a 3.
+      </p>
+      <p>
+        A densidade: \(\rho = 4z\). O elemento de volume: \(dV =
+        r\,dr\,d\theta\,dz\).
+      </p>
+      <p>
+        Coordenadas do centro de massa: \[ x_C = 0, \quad y_C = 0, \quad z_C =
+        \frac{1}{M} \iiint_V z \cdot \rho \, dV, \] pois a simetria anula
+        \(x_C\) e \(y_C\).
+      </p>
+      <p>
+        Primeiro, calculamos a massa: \[ M = \int_{0}^{3} \int_{0}^{2\pi}
+        \int_{0}^{\frac{z}{3}} 4z \, r \, dr\, d\theta\, dz. \]
+      </p>
+      <p>
+        Integração em \(r\): \(\int_{0}^{\frac{z}{3}} 4z \, r \, dr = 4z \cdot
+        \frac{1}{2}\left(\frac{z}{3}\right)^2 = 2z \cdot \frac{z^2}{9} =
+        \frac{2z^3}{9}.
+      </p>
+      <p>
+        Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^3}{9} \, d\theta =
+        \frac{2z^3}{9} \cdot 2\pi = \frac{4\pi z^3}{9}.\)
+      </p>
+      <p>
+        Em \(z\): \(\int_{0}^{3} \frac{4\pi z^3}{9}\,dz = \frac{4\pi}{9}
+        \left[\frac{z^4}{4}\right]_{0}^{3} = \frac{4\pi}{9} \cdot \frac{81}{4} =
+        \frac{324\pi}{36} = 9\pi.
+      </p>
+      <p>Portanto, \(M = 9\pi.\)</p>
+      <p>
+        Agora, para \(z_C\): \[ z_C = \frac{1}{9\pi} \int_{0}^{3}
+        \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}} z \cdot (4z) \, r\,dr\, d\theta
+        \, dz = \frac{1}{9\pi} \int_{0}^{3} \int_{0}^{2\pi}
+        \int_{0}^{\frac{z}{3}} 4z^2 \, r\,dr\, d\theta \, dz. \]
+      </p>
+      <p>
+        Repetindo o processo: \(\int_{0}^{\frac{z}{3}} 4z^2 \,r\,dr = 4z^2 \cdot
+        \frac{1}{2}\left(\frac{z}{3}\right)^2 = 2z^2 \cdot \frac{z^2}{9} =
+        \frac{2z^4}{9}.\)
+      </p>
+      <p>
+        Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^4}{9}\,d\theta =
+        \frac{2z^4}{9}\cdot 2\pi = \frac{4\pi z^4}{9}.\)
+      </p>
+      <p>
+        Em \(z\): \(\int_{0}^{3} \frac{4\pi z^4}{9} \, dz =
+        \frac{4\pi}{9}\left[\frac{z^5}{5}\right]_{0}^{3} = \frac{4\pi}{9} \cdot
+        \frac{243}{5} = \frac{972\pi}{45} = \frac{972\pi}{45}.
+      </p>
+      <p>
+        Simplificando: \(\frac{972}{45} = \frac{972}{45} = 21.6.\) Então o valor
+        integral é \(21.6\pi\).
+      </p>
+      <p>Logo, \[ z_C = \frac{21.6\pi}{9\pi} = 2.4. \]</p>
+      <p>Conclusão: \(\vec{R}_C = \begin{pmatrix}0\\0\\2.4\end{pmatrix}\).</p>
+    </div>
+  </details>
 </li>

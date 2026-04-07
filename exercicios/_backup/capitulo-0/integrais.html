@@ -10,19 +10,29 @@
     />
     <!-- Include MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[','\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
     </script>
     <style>
       :root {
@@ -285,8 +295,9 @@
           Em atenção às necessidades de
           <span class="censored">cálculos orbitais</span> e à crescente
           importância de modelos matemáticos avançados, este dossiê apresenta
-          exercícios focados em <span class="censored">técnicas de integração</span>.
-          As soluções foram registradas pelos pesquisadores do programa
+          exercícios focados em
+          <span class="censored">técnicas de integração</span>. As soluções
+          foram registradas pelos pesquisadores do programa
           <span class="censored">███████</span>.
         </div>
 
@@ -306,13 +317,13 @@
         </div>
       </div>
 
-      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: TÉCNICAS DE INTEGRAÇÃO</div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TÉCNICAS DE INTEGRAÇÃO
+      </div>
 
       <div class="concept-definition">
         <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\int f(x)\,dx = F(x) + C\]
-        </p>
+        <p class="formula-highlight">\[\int f(x)\,dx = F(x) + C\]</p>
         <p>
           As técnicas de integração consistem em métodos para encontrar a
           antiderivada de uma função, incluindo substituição, integração por
@@ -390,7 +401,8 @@
               <div class="solution">
                 <p>
                   Definindo \(u = \ln(x)\), então \(du = (1/x)\,dx\). A integral
-                  torna-se \(\int \frac{1}{u}\,du = \ln|u| + C = \ln|\ln(x)| + C.\)
+                  torna-se \(\int \frac{1}{u}\,du = \ln|u| + C = \ln|\ln(x)| +
+                  C.\)
                 </p>
               </div>
             </details>
@@ -419,7 +431,7 @@
               <div class="solution">
                 <p>
                   Seja \(I = \int e^x \sin(x)\,dx\). Integra-se por partes:
-                  <br>
+                  <br />
                   \(I = e^x \sin(x) - \int e^x \cos(x)\,dx\).
                 </p>
                 <p>
@@ -443,8 +455,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Use integração por partes com \(u = x\) e
-                \(dv = \cos(x)\,dx\).
+                [NOTA TÉCNICA]: Use integração por partes com \(u = x\) e \(dv =
+                \cos(x)\,dx\).
               </div>
             </details>
 
@@ -515,7 +527,9 @@
                   \(\frac{x+2}{x^2 + x} = \frac{x+2}{x(x+1)}\). Dividindo,
                   obtemos \(\frac{2}{x} - \frac{1}{x+1}\). Assim,
                 </p>
-                <p>\(\int \frac{x+2}{x^2 + x}\,dx = 2\ln|x| - \ln|x+1| + C.\)</p>
+                <p>
+                  \(\int \frac{x+2}{x^2 + x}\,dx = 2\ln|x| - \ln|x+1| + C.\)
+                </p>
               </div>
             </details>
           </li>
@@ -532,8 +546,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Use \(x = a\sin(\theta)\). Então
-                \(\sqrt{a^2 - x^2} = a\cos(\theta)\).
+                [NOTA TÉCNICA]: Use \(x = a\sin(\theta)\). Então \(\sqrt{a^2 -
+                x^2} = a\cos(\theta)\).
               </div>
             </details>
 
@@ -549,8 +563,8 @@
                   \cos^2(\theta)d\theta.\)
                 </p>
                 <p>
-                  Resulta
-                  \(\frac{a^2}{2}\arcsin(\frac{x}{a}) + \frac{x}{2}\sqrt{a^2 - x^2} + C.\)
+                  Resulta \(\frac{a^2}{2}\arcsin(\frac{x}{a}) +
+                  \frac{x}{2}\sqrt{a^2 - x^2} + C.\)
                 </p>
               </div>
             </details>
@@ -568,8 +582,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Use a identidade
-                \(\sin^2(x) = \tfrac{1 - \cos(2x)}{2}\).
+                [NOTA TÉCNICA]: Use a identidade \(\sin^2(x) = \tfrac{1 -
+                \cos(2x)}{2}\).
               </div>
             </details>
 
@@ -577,9 +591,9 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  \(\sin^2(x) = \frac{1 - \cos(2x)}{2}\). Logo,
-                  \(\int \sin^2(x)\,dx = \int \frac{1 - \cos(2x)}{2}dx = \frac{x}{2}
-                  - \frac{\sin(2x)}{4} + C.\)
+                  \(\sin^2(x) = \frac{1 - \cos(2x)}{2}\). Logo, \(\int
+                  \sin^2(x)\,dx = \int \frac{1 - \cos(2x)}{2}dx = \frac{x}{2} -
+                  \frac{\sin(2x)}{4} + C.\)
                 </p>
               </div>
             </details>
@@ -630,9 +644,9 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Multiplique e divida por
-                \(\sec(x) + \tan(x)\). Verifique que a derivada de
-                \(\sec(x) + \tan(x)\) ajuda na integração.
+                [NOTA TÉCNICA]: Multiplique e divida por \(\sec(x) + \tan(x)\).
+                Verifique que a derivada de \(\sec(x) + \tan(x)\) ajuda na
+                integração.
               </div>
             </details>
 
@@ -640,13 +654,13 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  \(\int \sec(x)\,dx = \int \sec(x)\frac{\sec(x) + \tan(x)}{\sec(x) + \tan(x)}
-                  \,dx\).
+                  \(\int \sec(x)\,dx = \int \sec(x)\frac{\sec(x) +
+                  \tan(x)}{\sec(x) + \tan(x)} \,dx\).
                 </p>
                 <p>
-                  Seja \(u = \sec(x) + \tan(x)\). Então,
-                  \(du = (\sec(x)\tan(x) + \sec^2(x))\,dx\). A integral
-                  simplifica para \(\ln|\sec(x) + \tan(x)| + C.\)
+                  Seja \(u = \sec(x) + \tan(x)\). Então, \(du = (\sec(x)\tan(x)
+                  + \sec^2(x))\,dx\). A integral simplifica para \(\ln|\sec(x) +
+                  \tan(x)| + C.\)
                 </p>
               </div>
             </details>
@@ -656,7 +670,8 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO 11</div>
             <div class="context">
-              ORIGEM: Substituições Trigonométricas - Equipe de Pesquisa [SET/1962]
+              ORIGEM: Substituições Trigonométricas - Equipe de Pesquisa
+              [SET/1962]
             </div>
             <p>Calcule a integral, onde \(a\) é constante:</p>
             <p>\[\int \sqrt{x^2 - a^2}\,dx\]</p>
@@ -664,8 +679,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Use \(x = a\sec(\theta)\). Então
-                \(\sqrt{x^2 - a^2} = a\tan(\theta)\).
+                [NOTA TÉCNICA]: Use \(x = a\sec(\theta)\). Então \(\sqrt{x^2 -
+                a^2} = a\tan(\theta)\).
               </div>
             </details>
 
@@ -673,18 +688,17 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Com \(x = a\sec(\theta)\), obtemos
-                  \(\sqrt{x^2 - a^2} = a\tan(\theta)\) e
-                  \(dx = a\sec(\theta)\tan(\theta)\,d\theta\).
+                  Com \(x = a\sec(\theta)\), obtemos \(\sqrt{x^2 - a^2} =
+                  a\tan(\theta)\) e \(dx = a\sec(\theta)\tan(\theta)\,d\theta\).
                 </p>
                 <p>
-                  A integral fica
-                  \(\int a\tan(\theta)\cdot a\sec(\theta)\tan(\theta)\,d\theta\),
-                  o que exige manipulação de \(\tan^2(\theta)\). Resulta
+                  A integral fica \(\int a\tan(\theta)\cdot
+                  a\sec(\theta)\tan(\theta)\,d\theta\), o que exige manipulação
+                  de \(\tan^2(\theta)\). Resulta
                 </p>
                 <p>
-                  \(\frac{x}{2}\sqrt{x^2 - a^2} - \frac{a^2}{2}
-                  \ln\bigl|x + \sqrt{x^2 - a^2}\bigr| + C.\)
+                  \(\frac{x}{2}\sqrt{x^2 - a^2} - \frac{a^2}{2} \ln\bigl|x +
+                  \sqrt{x^2 - a^2}\bigr| + C.\)
                 </p>
               </div>
             </details>
@@ -702,8 +716,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Pode-se usar \(x = a\tan(\theta)\) ou
-                \(x = a\sinh(t)\). Observe o retorno para a variável original.
+                [NOTA TÉCNICA]: Pode-se usar \(x = a\tan(\theta)\) ou \(x =
+                a\sinh(t)\). Observe o retorno para a variável original.
               </div>
             </details>
 
@@ -711,19 +725,19 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Com \(x = a\tan(\theta)\), \(\sqrt{x^2 + a^2} = a\sec(\theta)\)
-                  e \(dx = a\sec^2(\theta)\,d\theta\). Então,
+                  Com \(x = a\tan(\theta)\), \(\sqrt{x^2 + a^2} =
+                  a\sec(\theta)\) e \(dx = a\sec^2(\theta)\,d\theta\). Então,
                 </p>
                 <p>
-                  \(\int \sqrt{x^2 + a^2}\,dx = a^2 \int \sec^3(\theta)\,d\theta.\)
-                  Conhece-se que
-                  \(\int \sec^3(\theta)\,d\theta = \frac{1}{2}\sec(\theta)\tan(\theta)
+                  \(\int \sqrt{x^2 + a^2}\,dx = a^2 \int
+                  \sec^3(\theta)\,d\theta.\) Conhece-se que \(\int
+                  \sec^3(\theta)\,d\theta = \frac{1}{2}\sec(\theta)\tan(\theta)
                   + \frac{1}{2}\ln|\sec(\theta) + \tan(\theta)| + C.\)
                 </p>
                 <p>
                   Substituindo de volta para \(x\), obtemos
-                  \(\frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2}
-                  \ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.\)
+                  \(\frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2} \ln\bigl|x +
+                  \sqrt{x^2 + a^2}\bigr| + C.\)
                 </p>
               </div>
             </details>
@@ -749,9 +763,9 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Definindo \(u = \ln(x)\), então
-                  \(\int \frac{(\ln x)^2}{x}\,dx = \int u^2\,du = \frac{u^3}{3} + C
-                  = \frac{(\ln x)^3}{3} + C.\)
+                  Definindo \(u = \ln(x)\), então \(\int \frac{(\ln x)^2}{x}\,dx
+                  = \int u^2\,du = \frac{u^3}{3} + C = \frac{(\ln x)^3}{3} +
+                  C.\)
                 </p>
               </div>
             </details>
@@ -782,14 +796,14 @@
                   \frac{1}{2}\int e^x\cos(2x)\,dx.\)
                 </p>
                 <p>
-                  O primeiro termo é \(\frac{e^x}{2}\). Para
-                  \(\int e^x \cos(2x)\,dx\), a forma padrão é
-                  \(\int e^x \cos(ax)\,dx = \frac{e^x}{a^2+1}\bigl(a\sin(ax) + \cos(ax)\bigr)\).
+                  O primeiro termo é \(\frac{e^x}{2}\). Para \(\int e^x
+                  \cos(2x)\,dx\), a forma padrão é \(\int e^x \cos(ax)\,dx =
+                  \frac{e^x}{a^2+1}\bigl(a\sin(ax) + \cos(ax)\bigr)\).
                 </p>
                 <p>
                   Ao final, resulta em combinação de \(e^x\sin(2x)\) e
-                  \(e^x\cos(2x)\), mais as constantes, formando
-                  \(\frac{e^x}{2} +\) termos envolvendo \(\sin(2x), \cos(2x)\).
+                  \(e^x\cos(2x)\), mais as constantes, formando \(\frac{e^x}{2}
+                  +\) termos envolvendo \(\sin(2x), \cos(2x)\).
                 </p>
               </div>
             </details>
@@ -820,8 +834,8 @@
                   \(dv = e^x\,dx\). Então \(du = 2x\,dx\), \(v = e^x\).
                 </p>
                 <p>
-                  \(I = x^2 e^x - \int 2x e^x\,dx.\) Em seguida, integre
-                  \(\int 2x e^x\,dx\) por partes novamente. Ao fim, obtemos
+                  \(I = x^2 e^x - \int 2x e^x\,dx.\) Em seguida, integre \(\int
+                  2x e^x\,dx\) por partes novamente. Ao fim, obtemos
                 </p>
                 <p>\[(x^2 - 2x + 2)e^x + C.\]</p>
               </div>
@@ -848,12 +862,13 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Com \(u = \ln(x)\), \(du = \frac{1}{x}dx\). E
-                  \(dv = x\,dx\), \(v = \frac{x^2}{2}\). Logo,
+                  Com \(u = \ln(x)\), \(du = \frac{1}{x}dx\). E \(dv = x\,dx\),
+                  \(v = \frac{x^2}{2}\). Logo,
                 </p>
                 <p>
                   \(\int x\ln(x)\,dx = \frac{x^2}{2}\ln(x) - \int \frac{x^2}{2}
-                  \cdot \frac{1}{x}dx = \frac{x^2}{2}\ln(x) - \frac{x^2}{4} + C.\)
+                  \cdot \frac{1}{x}dx = \frac{x^2}{2}\ln(x) - \frac{x^2}{4} +
+                  C.\)
                 </p>
               </div>
             </details>
@@ -871,8 +886,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Observe que a derivada de \(x^2 + x + 1\) é
-                \(2x + 1\). Separe o numerador para usar essa informação.
+                [NOTA TÉCNICA]: Observe que a derivada de \(x^2 + x + 1\) é \(2x
+                + 1\). Separe o numerador para usar essa informação.
               </div>
             </details>
 
@@ -890,7 +905,8 @@
                 </p>
                 <p>
                   \(\int \frac{2x+3}{x^2 + x + 1}\,dx = \ln|x^2 + x + 1| +
-                  \frac{4}{\sqrt{3}}\arctan\Bigl(\frac{2x+1}{\sqrt{3}}\Bigr) + C.\)
+                  \frac{4}{\sqrt{3}}\arctan\Bigl(\frac{2x+1}{\sqrt{3}}\Bigr) +
+                  C.\)
                 </p>
               </div>
             </details>
@@ -908,9 +924,9 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Substituição de Weierstrass:
-                \(t = \tan\bigl(\frac{x}{2}\bigr)\). Lembre-se
-                \(\sin(x) = \frac{2t}{1+t^2}\).
+                [NOTA TÉCNICA]: Substituição de Weierstrass: \(t =
+                \tan\bigl(\frac{x}{2}\bigr)\). Lembre-se \(\sin(x) =
+                \frac{2t}{1+t^2}\).
               </div>
             </details>
 
@@ -942,8 +958,8 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Relacionar
-                \(\cot^2(x) = \csc^2(x) - 1\). Dividir em \(\cot(x)\cot^2(x)\).
+                [NOTA TÉCNICA]: Relacionar \(\cot^2(x) = \csc^2(x) - 1\).
+                Dividir em \(\cot(x)\cot^2(x)\).
               </div>
             </details>
 
@@ -955,12 +971,10 @@
                   \cot(x)\,dx.\)
                 </p>
                 <p>
-                  Com \(u = \cot(x)\), temos \(du = -\csc^2(x)\,dx\). E
-                  \(\int \cot(x)\,dx = \ln|\sin(x)|\). O resultado é
+                  Com \(u = \cot(x)\), temos \(du = -\csc^2(x)\,dx\). E \(\int
+                  \cot(x)\,dx = \ln|\sin(x)|\). O resultado é
                 </p>
-                <p>
-                  \(-\frac{\cot^2(x)}{2} - \ln|\sin(x)| + C.\)
-                </p>
+                <p>\(-\frac{\cot^2(x)}{2} - \ln|\sin(x)| + C.\)</p>
               </div>
             </details>
           </li>

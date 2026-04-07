@@ -1,60 +1,48 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
-<div class="context">
-              ORIGEM: Missão Skylab - Setor de <span class="censored">Cálculo Exclusivo</span> [1973]
-            </div>
-<p>
-              Investigar o valor de
-              \(\iint_{R} (x^2 - y^2)\,dx\,dy\), onde \(R\) é definido em
-              coordenadas polares como
-              \(\{(r,\theta)\mid 0 \le r \le 2,\; \frac{\pi}{6} \le \theta \le \frac{5\pi}{6}\}\).
-              Discutir qualquer possível simplificação e se o resultado é
-              nulo ou não.
-            </p>
-<!-- SEM DICAS PARA SÉRIE OMEGA -->
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  [SUGESTÃO DE PROCEDIMENTO]: Em polares, \(x = r\cos\theta,\;
-                  y = r\sin\theta\). Então \(x^2 - y^2 = r^2(\cos^2\theta -
-                  \sin^2\theta) = r^2 \cos(2\theta)\).
-                </p>
-<p>
-                  A integral torna-se
-                  \[
-                    \int_{\theta=\pi/6}^{5\pi/6}\int_{r=0}^{2}
-                    r^2 \cos(2\theta)\,r\,dr\,d\theta
-                    =
-                    \int_{\pi/6}^{5\pi/6} \cos(2\theta)\,
-                    \left[\int_{0}^{2} r^3\,dr\right]
-                    d\theta.
-                  \]
-                  A parte de \(r\) rende \(\frac{2^4}{4} = 4\).
-                </p>
-<p>
-                  Logo,
-                  \[
-                    4 \int_{\pi/6}^{5\pi/6} \cos(2\theta)\, d\theta
-                    =
-                    4 \left[ \frac{\sin(2\theta)}{2} \right]_{\pi/6}^{5\pi/6}
-                    =
-                    2 \bigl(\sin\bigl(\frac{10\pi}{6}\bigr) - \sin\bigl(\frac{\pi}{3}\bigr)\bigr).
-                  \]
-                </p>
-<p>
-                  \(\sin\bigl(\frac{10\pi}{6}\bigr) = \sin\bigl(\frac{5\pi}{3}\bigr) = -\sin\bigl(\frac{\pi}{3}\bigr)\).
-                  Assim, a diferença torna-se
-                  \(-\sin(\frac{\pi}{3}) - \sin(\frac{\pi}{3}) = -2\sin(\frac{\pi}{3}) = -\sqrt{3}\).
-                </p>
-<p>
-                  Portanto o valor é \(2 \times (-\sqrt{3}) = -2\sqrt{3}\).
-                </p>
-<p>
-                  CONCLUSÃO: O resultado não é zero. A assimetria no intervalo
-                  de \(\theta\) (de \(\pi/6\) a \(5\pi/6\)) impede o cancelamento
-                  total da função \(\cos(2\theta)\).
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Missão Skylab - Setor de
+    <span class="censored">Cálculo Exclusivo</span> [1973]
+  </div>
+  <p>
+    Investigar o valor de \(\iint_{R} (x^2 - y^2)\,dx\,dy\), onde \(R\) é
+    definido em coordenadas polares como \(\{(r,\theta)\mid 0 \le r \le 2,\;
+    \frac{\pi}{6} \le \theta \le \frac{5\pi}{6}\}\). Discutir qualquer possível
+    simplificação e se o resultado é nulo ou não.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        [SUGESTÃO DE PROCEDIMENTO]: Em polares, \(x = r\cos\theta,\; y =
+        r\sin\theta\). Então \(x^2 - y^2 = r^2(\cos^2\theta - \sin^2\theta) =
+        r^2 \cos(2\theta)\).
+      </p>
+      <p>
+        A integral torna-se \[ \int_{\theta=\pi/6}^{5\pi/6}\int_{r=0}^{2} r^2
+        \cos(2\theta)\,r\,dr\,d\theta = \int_{\pi/6}^{5\pi/6} \cos(2\theta)\,
+        \left[\int_{0}^{2} r^3\,dr\right] d\theta. \] A parte de \(r\) rende
+        \(\frac{2^4}{4} = 4\).
+      </p>
+      <p>
+        Logo, \[ 4 \int_{\pi/6}^{5\pi/6} \cos(2\theta)\, d\theta = 4 \left[
+        \frac{\sin(2\theta)}{2} \right]_{\pi/6}^{5\pi/6} = 2
+        \bigl(\sin\bigl(\frac{10\pi}{6}\bigr) -
+        \sin\bigl(\frac{\pi}{3}\bigr)\bigr). \]
+      </p>
+      <p>
+        \(\sin\bigl(\frac{10\pi}{6}\bigr) = \sin\bigl(\frac{5\pi}{3}\bigr) =
+        -\sin\bigl(\frac{\pi}{3}\bigr)\). Assim, a diferença torna-se
+        \(-\sin(\frac{\pi}{3}) - \sin(\frac{\pi}{3}) = -2\sin(\frac{\pi}{3}) =
+        -\sqrt{3}\).
+      </p>
+      <p>Portanto o valor é \(2 \times (-\sqrt{3}) = -2\sqrt{3}\).</p>
+      <p>
+        CONCLUSÃO: O resultado não é zero. A assimetria no intervalo de
+        \(\theta\) (de \(\pi/6\) a \(5\pi/6\)) impede o cancelamento total da
+        função \(\cos(2\theta)\).
+      </p>
+    </div>
+  </details>
 </li>

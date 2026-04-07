@@ -1,57 +1,53 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
-<div class="context">
-              ORIGEM: <span class="censored">UNIDADE DE OPERAÇÕES</span>
-</div>
-<p>
-              Seja a curva \(C\) parametrizada em 3D por \(\vec{r}(t) =
-              \begin{pmatrix} t^2 \\ t \\ t^3 \end{pmatrix}\), para \(t\) de 0 a
-              1. O campo é \(\vec{F}(x,y,z) = \begin{pmatrix} z \\ x+y \\ y
-              \end{pmatrix}\). Calcule \(\int_C \vec{F}\cdot d\vec{r}\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: A coordenada \(z\) pode conter informação-chave.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Substituindo: \(x = t^2, y = t, z = t^3.\)<br/>
-                  \(\vec{F}(\vec{r}(t)) = \begin{pmatrix} t^3 \\ t^2 + t \\ t
-                  \end{pmatrix}.\)
-                </p>
-<p>
-                  \(\frac{d\vec{r}}{dt} = \begin{pmatrix} 2t \\ 1 \\ 3t^2
-                  \end{pmatrix}.\)
-                </p>
-<p>
-                  Produto escalar: \(\begin{pmatrix} t^3 \\ t^2 + t \\ t
-                  \end{pmatrix} \cdot \begin{pmatrix} 2t \\ 1 \\ 3t^2
-                  \end{pmatrix} = t^3(2t) + (t^2 + t)(1) + t(3t^2).\)
-                </p>
-<p>Isso é \(2t^4 + t^2 + t + 3t^3.\)</p>
-<p>
-                  \(\int_{0}^{1} \big(2t^4 + t^2 + t + 3t^3\big)\, dt =
-                  \left[\frac{2t^5}{5} + \frac{t^3}{3} + \frac{t^2}{2} +
-                  \frac{3t^4}{4}\right]_0^1.\)
-                </p>
-<p>
-                  Avaliando em \(t=1\): \( \frac{2}{5} + \frac{1}{3} +
-                  \frac{1}{2} + \frac{3}{4}.\)
-                </p>
-<p>
-                  Convertendo para denominadores comuns: \(\frac{2}{5} =
-                  \frac{24}{60}, \quad \frac{1}{3} = \frac{20}{60}, \quad
-                  \frac{1}{2} = \frac{30}{60}, \quad \frac{3}{4} =
-                  \frac{45}{60}.\)
-                </p>
-<p>Soma = \(\frac{24 + 20 + 30 + 45}{60} = \frac{119}{60}.\)</p>
-<p>
-                  CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = \frac{119}{60}.\)
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: <span class="censored">UNIDADE DE OPERAÇÕES</span>
+  </div>
+  <p>
+    Seja a curva \(C\) parametrizada em 3D por \(\vec{r}(t) = \begin{pmatrix}
+    t^2 \\ t \\ t^3 \end{pmatrix}\), para \(t\) de 0 a 1. O campo é
+    \(\vec{F}(x,y,z) = \begin{pmatrix} z \\ x+y \\ y \end{pmatrix}\). Calcule
+    \(\int_C \vec{F}\cdot d\vec{r}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A coordenada \(z\) pode conter informação-chave.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Substituindo: \(x = t^2, y = t, z = t^3.\)<br />
+        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix} t^3 \\ t^2 + t \\ t
+        \end{pmatrix}.\)
+      </p>
+      <p>
+        \(\frac{d\vec{r}}{dt} = \begin{pmatrix} 2t \\ 1 \\ 3t^2 \end{pmatrix}.\)
+      </p>
+      <p>
+        Produto escalar: \(\begin{pmatrix} t^3 \\ t^2 + t \\ t \end{pmatrix}
+        \cdot \begin{pmatrix} 2t \\ 1 \\ 3t^2 \end{pmatrix} = t^3(2t) + (t^2 +
+        t)(1) + t(3t^2).\)
+      </p>
+      <p>Isso é \(2t^4 + t^2 + t + 3t^3.\)</p>
+      <p>
+        \(\int_{0}^{1} \big(2t^4 + t^2 + t + 3t^3\big)\, dt =
+        \left[\frac{2t^5}{5} + \frac{t^3}{3} + \frac{t^2}{2} +
+        \frac{3t^4}{4}\right]_0^1.\)
+      </p>
+      <p>
+        Avaliando em \(t=1\): \( \frac{2}{5} + \frac{1}{3} + \frac{1}{2} +
+        \frac{3}{4}.\)
+      </p>
+      <p>
+        Convertendo para denominadores comuns: \(\frac{2}{5} = \frac{24}{60},
+        \quad \frac{1}{3} = \frac{20}{60}, \quad \frac{1}{2} = \frac{30}{60},
+        \quad \frac{3}{4} = \frac{45}{60}.\)
+      </p>
+      <p>Soma = \(\frac{24 + 20 + 30 + 45}{60} = \frac{119}{60}.\)</p>
+      <p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = \frac{119}{60}.\)</p>
+    </div>
+  </details>
 </li>

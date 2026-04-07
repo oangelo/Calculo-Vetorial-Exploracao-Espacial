@@ -1,24 +1,37 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Cálculo Vetorial</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
     </script>
     <style>
       :root {
@@ -263,52 +276,54 @@
         margin-bottom: 0;
       }
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><div class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
           DATA: <span class="censored">14</span> DE MARÇO DE
           <span class="censored">1974</span>
-<br/>
+          <br />
           LOCALIZAÇÃO: <span class="censored">PLATAFORMA ORBITAL [██████]</span>
-</div>
-<div class="document-intro">
+        </div>
+        <div class="document-intro">
           RELATÓRIO DE PROGRESSO: PROJETO
-          <span class="censored">ASTRO-EULER</span><br/><br/>
+          <span class="censored">ASTRO-EULER</span><br /><br />
           Em resposta à recente <span class="censored">escalada</span> na
           Corrida Espacial, nossa equipe de pesquisa se concentrou em novos
-          métodos de integração no espaço de três dimensões. <br/><br/>
+          métodos de integração no espaço de três dimensões. <br /><br />
           Este dossiê apresenta o estudo de
           <span class="censored">redução volumétrica</span> via integrais
           triplas, com especial ênfase em técnicas de redução para integrais
           duplas aplicadas ao projeto
-          <span class="censored">████████</span>.<br/>
-</div>
-<div class="warning-box">
+          <span class="censored">████████</span>.<br />
+        </div>
+        <div class="warning-box">
           Este documento contém informações críticas sobre técnicas avançadas de
           cálculo. Qualquer divulgação não autorizada resultará em
           <span class="censored">consequências irreversíveis</span>.
         </div>
-<div class="metadata">
-<span>REF: VX-<span class="censored">4001</span>-C</span>
-<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
-<span>CÓPIAS EXISTENTES: <span class="censored">3</span> DE
-            <span class="censored">5</span></span>
-</div>
-</div>
-<div class="section-title">
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">4001</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
         FUNDAMENTAÇÃO TEÓRICA: REDUÇÃO A INTEGRAIS DUPLAS EM INTEGRAIS TRIPLAS
       </div>
-<div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
-<p class="formula-highlight">
-          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D} \left(\int_{z=a(x,y)}^{z=b(x,y)}
-          f(x,y,z)\,dz \right) dA\]
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D}
+          \left(\int_{z=a(x,y)}^{z=b(x,y)} f(x,y,z)\,dz \right) dA\]
         </p>
-<p>
+        <p>
           A redução de uma integral tripla a uma integral dupla ocorre quando a
           região de integração \(V\) pode ser descrita por limites superiores e
           inferiores em uma das variáveis, resultando em uma integração
@@ -316,8 +331,8 @@
           plano e ajustam-se os limites da terceira variável para cada ponto de
           \((x,y)\) em \(D\).
         </p>
-</div>
-<div class="mission-context">
+      </div>
+      <div class="mission-context">
         Em ambientes de microgravidade, a determinação do
         <span class="censored">centro de massa</span> de módulos espaciais
         utiliza métodos de integração em três dimensões. A aplicação de técnicas
@@ -326,19 +341,19 @@
         <span class="censored">regiões irregulares</span>, garantindo maior
         segurança em trajetórias orbitais.
       </div>
-<div class="historical-note">
-<strong>NOTA HISTÓRICA:</strong> Durante a fase final do Programa Apollo
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante a fase final do Programa Apollo
         (1961-1972), cálculos avançados de volumes pressurizados em módulos
         lunares exigiram novas abordagens matemáticas. O sucesso da missão
-        <span class="censored">████</span> inspirou nossa equipe a
-        desenvolver métodos de redução de integrais triplas, antecipando
-        melhorias essenciais para o projeto Skylab (1973-1979).
+        <span class="censored">████</span> inspirou nossa equipe a desenvolver
+        métodos de redução de integrais triplas, antecipando melhorias
+        essenciais para o projeto Skylab (1973-1979).
       </div>
-      
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
+
       <div class="page-number">PÁGINA 1</div>
     </div>
 
@@ -349,26 +364,26 @@
             'exercicio-vector-1a.html',
             'exercicio-vector-1b.html',
             'exercicio-vector-1c.html',
-            'exercicio-vector-2a.html'
+            'exercicio-vector-2a.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>

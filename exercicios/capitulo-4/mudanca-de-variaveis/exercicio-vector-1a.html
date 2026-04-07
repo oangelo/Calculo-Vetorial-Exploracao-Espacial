@@ -1,50 +1,49 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
-<div class="context">
-              ORIGEM: Análise do Módulo Orbital - <span class="censored">MISSÃO β</span>
-</div>
-<p>
-              Considere a região \(D\) definida no primeiro octante pela
-              ineficiência do motor: \[x^2 + y^2 + z^2 \leq 4.\] Calcule a
-              integral \(\iiint_D 2\,dx\,dy\,dz\) mudando para coordenadas
-              esféricas apropriadas.
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Considere relacionar o volume a um setor de
-                esfera usando o jacobiano esférico.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  Em coordenadas esféricas:
-                  \[x = r\sin\phi\cos\theta, \quad y = r\sin\phi\sin\theta, \quad z = r\cos\phi.\]
-                </p>
-<p>
-                  Região no primeiro octante: \(0 \le r \le 2,\; 0 \le \phi \le \frac{\pi}{2},\; 0 \le \theta \le \frac{\pi}{2}.\)
-                </p>
-<p>
-                  Jacobiano: \(\displaystyle r^2 \sin\phi.\)
-                </p>
-<p>
-                  Portanto,
-                  \[\iiint_D 2\,dx\,dy\,dz 
-                    = \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{2} 
-                    2 \cdot r^2 \sin\phi \; dr\,d\theta\,d\phi.\]
-                </p>
-<p>Cálculo resulta em \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot \int_{0}^{\frac{\pi}{2}}\sin\phi\,d\phi \cdot \int_{0}^{2} r^2\,dr.\)</p>
-<p>
-                  Avaliando:
-                  \(\int_{0}^{2} r^2\,dr = \frac{8}{3}\) e
-                  \(\int_{0}^{\frac{\pi}{2}} \sin\phi\,d\phi = 1.\)
-                </p>
-<p>
-                  Logo, o resultado é
-                  \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot 1 \cdot \frac{8}{3} = \frac{8\pi}{3}.\)
-                </p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Análise do Módulo Orbital - <span class="censored">MISSÃO β</span>
+  </div>
+  <p>
+    Considere a região \(D\) definida no primeiro octante pela ineficiência do
+    motor: \[x^2 + y^2 + z^2 \leq 4.\] Calcule a integral \(\iiint_D
+    2\,dx\,dy\,dz\) mudando para coordenadas esféricas apropriadas.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Considere relacionar o volume a um setor de esfera usando
+      o jacobiano esférico.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em coordenadas esféricas: \[x = r\sin\phi\cos\theta, \quad y =
+        r\sin\phi\sin\theta, \quad z = r\cos\phi.\]
+      </p>
+      <p>
+        Região no primeiro octante: \(0 \le r \le 2,\; 0 \le \phi \le
+        \frac{\pi}{2},\; 0 \le \theta \le \frac{\pi}{2}.\)
+      </p>
+      <p>Jacobiano: \(\displaystyle r^2 \sin\phi.\)</p>
+      <p>
+        Portanto, \[\iiint_D 2\,dx\,dy\,dz =
+        \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{2} 2 \cdot r^2
+        \sin\phi \; dr\,d\theta\,d\phi.\]
+      </p>
+      <p>
+        Cálculo resulta em \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot
+        \int_{0}^{\frac{\pi}{2}}\sin\phi\,d\phi \cdot \int_{0}^{2} r^2\,dr.\)
+      </p>
+      <p>
+        Avaliando: \(\int_{0}^{2} r^2\,dr = \frac{8}{3}\) e
+        \(\int_{0}^{\frac{\pi}{2}} \sin\phi\,d\phi = 1.\)
+      </p>
+      <p>
+        Logo, o resultado é \(\displaystyle 2 \cdot \frac{\pi}{2} \cdot 1 \cdot
+        \frac{8}{3} = \frac{8\pi}{3}.\)
+      </p>
+    </div>
+  </details>
 </li>

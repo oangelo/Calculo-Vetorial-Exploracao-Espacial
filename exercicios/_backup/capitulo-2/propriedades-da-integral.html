@@ -10,19 +10,29 @@
     />
     <!-- Include MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
     </script>
     <style>
       :root {
@@ -313,9 +323,7 @@
 
       <div class="concept-definition">
         <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\iint_{D} f(x,y)\, dA\]
-        </p>
+        <p class="formula-highlight">\[\iint_{D} f(x,y)\, dA\]</p>
         <p>
           Uma integral dupla é definida como o limite de somas de Riemann de
           \(f(x,y)\) sobre pequenas subdivisões de uma região \(D\subset
@@ -331,9 +339,8 @@
         foguetes e para o estudo de
         <span class="censored">fluxos de propelente</span>, cruciais na fase de
         injeção orbital. Durante o
-        <span class="censored">Programa Gemini</span>, engenheiros e
-        matemáticos ajustaram tanques e módulos de serviço embasados em tais
-        conceitos.
+        <span class="censored">Programa Gemini</span>, engenheiros e matemáticos
+        ajustaram tanques e módulos de serviço embasados em tais conceitos.
       </div>
 
       <div class="historical-note">
@@ -347,7 +354,6 @@
 
       <main>
         <ol class="exercise-list">
-
           <!-- ========================== SÉRIE ALFA (1 a 3) ========================== -->
           <!-- 1A -->
           <li class="exercise-item">
@@ -361,7 +367,8 @@
               propriedade de aditividade é válida:
             </p>
             <p>
-              \[\iint_D \bigl(f(x,y) + g(x,y)\bigr)\, dA \stackrel{?}{=} \iint_D f(x,y)\, dA \;+\; \iint_D g(x,y)\, dA.\]
+              \[\iint_D \bigl(f(x,y) + g(x,y)\bigr)\, dA \stackrel{?}{=} \iint_D
+              f(x,y)\, dA \;+\; \iint_D g(x,y)\, dA.\]
             </p>
             <p>
               Julgue a legitimidade dessa operação sem recorrer ao cálculo
@@ -382,10 +389,9 @@
                 <p>
                   A integral dupla possui a propriedade de linearidade em
                   relação à soma de funções. Dessa forma, é
-                  <strong>válido</strong> escrever
-                  \(\iint_D (f+g) = \iint_D f + \iint_D g\), pois, na definição
-                  de soma de Riemann, os valores de \(f\) e \(g\) se
-                  adicionam parcela a parcela.
+                  <strong>válido</strong> escrever \(\iint_D (f+g) = \iint_D f +
+                  \iint_D g\), pois, na definição de soma de Riemann, os valores
+                  de \(f\) e \(g\) se adicionam parcela a parcela.
                 </p>
               </div>
             </details>
@@ -400,11 +406,12 @@
             </div>
             <p>
               Para uma constante real \(c\) e uma função
-              <span class="censored">h(x,y)</span> definida na região de
-              estudo, avalie se:
+              <span class="censored">h(x,y)</span> definida na região de estudo,
+              avalie se:
             </p>
             <p>
-              \[\iint_D \bigl(c\,h(x,y)\bigr)\, dA \stackrel{?}{=} c \;\iint_D h(x,y)\, dA.\]
+              \[\iint_D \bigl(c\,h(x,y)\bigr)\, dA \stackrel{?}{=} c \;\iint_D
+              h(x,y)\, dA.\]
             </p>
             <p>
               Explique por que (ou se) o fator constante pode ser destacado da
@@ -444,9 +451,7 @@
               <span class="censored">D</span>. Verificar se a seguinte
               proposição faz sentido sem qualquer integração explícita:
             </p>
-            <p>
-              \[\iint_D \phi(x,y)\, dA = 0.\]
-            </p>
+            <p>\[\iint_D \phi(x,y)\, dA = 0.\]</p>
             <p>
               Discuta brevemente por que a integral de uma função nula deve ser
               nula.
@@ -478,15 +483,14 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
             <div class="context">
-              ORIGEM: Equipe de Propulsão - Levantamento de Parâmetros (ABR/1966)
+              ORIGEM: Equipe de Propulsão - Levantamento de Parâmetros
+              (ABR/1966)
             </div>
             <p>
               Se \(f(x,y)\ge 0\) para todos os \((x,y)\) em
               <span class="censored">D</span>, discuta a validade da sentença:
             </p>
-            <p>
-              \[\iint_D f(x,y)\, dA \;\ge\; 0.\]
-            </p>
+            <p>\[\iint_D f(x,y)\, dA \;\ge\; 0.\]</p>
             <p>
               Justifique sem computar a integral, apenas analisando a natureza
               dos valores de \(f\).
@@ -527,7 +531,8 @@
               se:
             </p>
             <p>
-              \[\iint_D f(x,y)\, dA \;=\; \iint_{D_1} f(x,y)\, dA + \iint_{D_2} f(x,y)\, dA.\]
+              \[\iint_D f(x,y)\, dA \;=\; \iint_{D_1} f(x,y)\, dA + \iint_{D_2}
+              f(x,y)\, dA.\]
             </p>
             <p>
               Nenhum método de integração deve ser usado; apenas discuta a
@@ -546,11 +551,10 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Se \(D_1\) e \(D_2\) formam uma partição exata de \(D\),
-                  então as somas de Riemann em \(D\) podem ser vistas como
-                  combinações das somas em \(D_1\) e \(D_2\). Dessa forma, a
-                  integral sobre \(D\) é <strong>a soma</strong> das integrais
-                  sobre as partes.
+                  Se \(D_1\) e \(D_2\) formam uma partição exata de \(D\), então
+                  as somas de Riemann em \(D\) podem ser vistas como combinações
+                  das somas em \(D_1\) e \(D_2\). Dessa forma, a integral sobre
+                  \(D\) é <strong>a soma</strong> das integrais sobre as partes.
                 </p>
               </div>
             </details>
@@ -563,8 +567,7 @@
               ORIGEM: Equipe de Ensaios Estruturais (ABR/1966)
             </div>
             <p>
-              Analise a afirmação:
-              \[\iint_D 1\, dA = \text{(área de D)}.\]
+              Analise a afirmação: \[\iint_D 1\, dA = \text{(área de D)}.\]
               Explique se essa identidade faz ou não sentido no âmbito das
               propriedades gerais da integral dupla.
             </p>
@@ -602,9 +605,7 @@
               Suponha \(f(x,y) \ge g(x,y)\) em todo ponto de
               <span class="censored">D</span>. Discuta a validade de
             </p>
-            <p>
-              \[\iint_D f(x,y)\, dA \;\ge\; \iint_D g(x,y)\, dA,\]
-            </p>
+            <p>\[\iint_D f(x,y)\, dA \;\ge\; \iint_D g(x,y)\, dA,\]</p>
             <p>
               levando em conta apenas a comparação pontual entre as funções e a
               definição básica da integral dupla.
@@ -671,16 +672,15 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
             <div class="context">
-              ORIGEM: Seção de Modelagem Numérica - Dados Experenciais (JUN/1966)
+              ORIGEM: Seção de Modelagem Numérica - Dados Experenciais
+              (JUN/1966)
             </div>
             <p>
               Se duas funções \(f\) e \(g\) diferem apenas em um conjunto de
               pontos de medida nula (ou seja, em um conjunto "muito pequeno"
               dentro de <span class="censored">D</span>), discuta a validade de
             </p>
-            <p>
-              \[\iint_D f(x,y)\, dA = \iint_D g(x,y)\, dA.\]
-            </p>
+            <p>\[\iint_D f(x,y)\, dA = \iint_D g(x,y)\, dA.\]</p>
             <p>
               Aborde a noção de que valores em um conjunto de "massa zero" não
               afetam o resultado total.
@@ -716,10 +716,10 @@
               ORIGEM: Departamento de Consistência Estrutural (JUL/1966)
             </div>
             <p>
-              Se \(f(x,y)\ge 0\) em <span class="censored">D</span> e
-              \(\iint_D f(x,y)\, dA = 0\), discuta a possibilidade de \(f\) ser
-              não-nula em algum subconjunto de \(D\). Em outras palavras, pode
-              \(f\) assumir valores positivos e ainda ter integral igual a zero?
+              Se \(f(x,y)\ge 0\) em <span class="censored">D</span> e \(\iint_D
+              f(x,y)\, dA = 0\), discuta a possibilidade de \(f\) ser não-nula
+              em algum subconjunto de \(D\). Em outras palavras, pode \(f\)
+              assumir valores positivos e ainda ter integral igual a zero?
             </p>
 
             <!-- Sem dicas para OMEGA -->
@@ -748,9 +748,7 @@
               Suponha que \(D_1 \subset D_2\) e \(f(x,y)\ge 0\) em todas as
               regiões consideradas. Avalie a afirmação:
             </p>
-            <p>
-              \[\iint_{D_1} f(x,y)\, dA \;\le\; \iint_{D_2} f(x,y)\, dA.\]
-            </p>
+            <p>\[\iint_{D_1} f(x,y)\, dA \;\le\; \iint_{D_2} f(x,y)\, dA.\]</p>
             <p>
               Discorra por que o fato de \(D_1\) ser estritamente contida em
               \(D_2\) influi, mesmo sem calcular as integrais.
@@ -762,12 +760,11 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Como \(D_1\) é parte de \(D_2\) e \(f\) é não-negativa, a
-                  soma de Riemann sobre \(D_1\) será um subconjunto (ou igual)
-                  da soma sobre \(D_2\). Logo,
-                  \(\iint_{D_1} f \le \iint_{D_2} f\). Se
-                  \(D_1 \neq D_2\), essa desigualdade é estrita se \(f\) assume
-                  valor positivo em algum ponto de \(D_2\setminus D_1\).
+                  Como \(D_1\) é parte de \(D_2\) e \(f\) é não-negativa, a soma
+                  de Riemann sobre \(D_1\) será um subconjunto (ou igual) da
+                  soma sobre \(D_2\). Logo, \(\iint_{D_1} f \le \iint_{D_2} f\).
+                  Se \(D_1 \neq D_2\), essa desigualdade é estrita se \(f\)
+                  assume valor positivo em algum ponto de \(D_2\setminus D_1\).
                 </p>
               </div>
             </details>
@@ -783,9 +780,7 @@
               Seja \(f(x,y) = c\), uma constante qualquer, definida sobre
               <span class="censored">D</span>. Justifique a relação:
             </p>
-            <p>
-              \[\iint_D c \, dA = c \cdot \bigl(\text{área de }D\bigr).\]
-            </p>
+            <p>\[\iint_D c \, dA = c \cdot \bigl(\text{área de }D\bigr).\]</p>
             <p>
               Explique por que, mesmo sem integrar diretamente, esse resultado é
               consistente com a definição de integral dupla.
@@ -798,15 +793,14 @@
               <div class="solution">
                 <p>
                   Em cada subdivisão de área \(\Delta A\), o valor de \(f\) é
-                  \(c\). Somando-se todas as parcelas
-                  \(c \cdot \Delta A\) obtém-se \(c\) multiplicado pela soma de
-                  todas as áreas (a área total de \(D\)). Assim, o resultado é
-                  exatamente \(c \times \text{área}(D)\).
+                  \(c\). Somando-se todas as parcelas \(c \cdot \Delta A\)
+                  obtém-se \(c\) multiplicado pela soma de todas as áreas (a
+                  área total de \(D\)). Assim, o resultado é exatamente \(c
+                  \times \text{área}(D)\).
                 </p>
               </div>
             </details>
           </li>
-
         </ol>
       </main>
 

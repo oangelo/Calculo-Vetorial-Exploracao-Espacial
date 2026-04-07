@@ -1,57 +1,55 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
-<div class="context">
-              ORIGEM: Simulação de Placa Triangular [LAB.
-              <span class="censored">E14</span>]
-            </div>
-<p>
-              Mesma região do exercício anterior, porém agora DETERMINAR: As
-              coordenadas do centro de massa \((\bar{x}, \bar{y})\), mantendo
-              \(\rho(x,y) = 2x\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Relembre a definição de \(\bar{x} =
-                \frac{1}{m}\iint x \rho(x,y)\, dA\) e similar para \(\bar{y}\).
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-<div class="solution">
-<p>JÁ SABEMOS: \(m = \frac{128}{3}\).</p>
-<p>
-                  CÁLCULO DE \(\bar{x}\): \[ \bar{x} = \frac{1}{m} \iint_{D} x
-                  \cdot (2x)\, dA = \frac{1}{\frac{128}{3}}
-                  \int_{0}^{4}\int_{0}^{x} 2x^2 \, dy\, dx. \]
-                </p>
-<p>
-                  \[ \int_{0}^{x} 2x^2 \, dy = 2x^2 \cdot (y)\Big|_{0}^{x} =
-                  2x^3. \] Logo, \[ \int_{0}^{4} 2x^3 \, dx = 2 \int_{0}^{4} x^3
-                  \, dx = 2 \left[ \frac{x^4}{4} \right]_{0}^{4} = 2 \left(
-                  \frac{256}{4} \right) = 2 \times 64 = 128. \]
-                </p>
-<p>
-                  Assim, \[ \bar{x} = \frac{128}{\frac{128}{3}} = \frac{128}{1}
-                  \times \frac{3}{128} = 3. \]
-                </p>
-<p>
-                  CÁLCULO DE \(\bar{y}\): \[ \bar{y} = \frac{1}{m} \iint_{D} y
-                  \cdot (2x)\, dA = \frac{1}{\frac{128}{3}}
-                  \int_{0}^{4}\int_{0}^{x} 2xy \, dy\, dx. \]
-                </p>
-<p>
-                  \[ \int_{0}^{x} 2xy \, dy = 2x \int_{0}^{x} y \, dy = 2x
-                  \left[\frac{y^2}{2}\right]_{0}^{x} = 2x
-                  \left(\frac{x^2}{2}\right) = x^3. \] Logo, \[ \int_{0}^{4} x^3
-                  \, dx = \left[\frac{x^4}{4}\right]_{0}^{4} = \frac{256}{4} =
-                  64. \]
-                </p>
-<p>
-                  Assim, \[ \bar{y} = \frac{64}{\frac{128}{3}} = 64 \times
-                  \frac{3}{128} = \frac{192}{128} = \frac{3}{2}. \]
-                </p>
-<p>CONCLUSÃO: \(\bar{x} = 3\) e \(\bar{y} = 1.5\).</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Simulação de Placa Triangular [LAB.
+    <span class="censored">E14</span>]
+  </div>
+  <p>
+    Mesma região do exercício anterior, porém agora DETERMINAR: As coordenadas
+    do centro de massa \((\bar{x}, \bar{y})\), mantendo \(\rho(x,y) = 2x\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Relembre a definição de \(\bar{x} = \frac{1}{m}\iint x
+      \rho(x,y)\, dA\) e similar para \(\bar{y}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>JÁ SABEMOS: \(m = \frac{128}{3}\).</p>
+      <p>
+        CÁLCULO DE \(\bar{x}\): \[ \bar{x} = \frac{1}{m} \iint_{D} x \cdot
+        (2x)\, dA = \frac{1}{\frac{128}{3}} \int_{0}^{4}\int_{0}^{x} 2x^2 \,
+        dy\, dx. \]
+      </p>
+      <p>
+        \[ \int_{0}^{x} 2x^2 \, dy = 2x^2 \cdot (y)\Big|_{0}^{x} = 2x^3. \]
+        Logo, \[ \int_{0}^{4} 2x^3 \, dx = 2 \int_{0}^{4} x^3 \, dx = 2 \left[
+        \frac{x^4}{4} \right]_{0}^{4} = 2 \left( \frac{256}{4} \right) = 2
+        \times 64 = 128. \]
+      </p>
+      <p>
+        Assim, \[ \bar{x} = \frac{128}{\frac{128}{3}} = \frac{128}{1} \times
+        \frac{3}{128} = 3. \]
+      </p>
+      <p>
+        CÁLCULO DE \(\bar{y}\): \[ \bar{y} = \frac{1}{m} \iint_{D} y \cdot
+        (2x)\, dA = \frac{1}{\frac{128}{3}} \int_{0}^{4}\int_{0}^{x} 2xy \, dy\,
+        dx. \]
+      </p>
+      <p>
+        \[ \int_{0}^{x} 2xy \, dy = 2x \int_{0}^{x} y \, dy = 2x
+        \left[\frac{y^2}{2}\right]_{0}^{x} = 2x \left(\frac{x^2}{2}\right) =
+        x^3. \] Logo, \[ \int_{0}^{4} x^3 \, dx =
+        \left[\frac{x^4}{4}\right]_{0}^{4} = \frac{256}{4} = 64. \]
+      </p>
+      <p>
+        Assim, \[ \bar{y} = \frac{64}{\frac{128}{3}} = 64 \times \frac{3}{128} =
+        \frac{192}{128} = \frac{3}{2}. \]
+      </p>
+      <p>CONCLUSÃO: \(\bar{x} = 3\) e \(\bar{y} = 1.5\).</p>
+    </div>
+  </details>
 </li>

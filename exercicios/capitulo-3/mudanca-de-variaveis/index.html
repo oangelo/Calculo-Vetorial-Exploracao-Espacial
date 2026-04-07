@@ -1,24 +1,37 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Cálculo Vetorial</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
     </script>
     <style>
       :root {
@@ -264,82 +277,89 @@
         margin-bottom: 0;
       }
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><div class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
           DATA: <span class="censored">4</span> DE AGOSTO DE
-          <span class="censored">1965</span><br/>
+          <span class="censored">1965</span><br />
           LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO GEMINI</span>
-</div>
-<div class="document-intro">
+        </div>
+        <div class="document-intro">
           RELATÓRIO DE PROGRESSO: PROJETO
-          <span class="censored">ZETA-OMEGA</span><br/><br/>
+          <span class="censored">ZETA-OMEGA</span><br /><br />
           Após eventos recentes envolvendo
           <span class="censored">a órbita terrestre baixa</span>, nossa equipe
           concentrou esforços em aprimorar métodos de cálculo para
           <span class="censored">trajetórias de voo suborbital e orbital</span>.
-          <br/><br/>
+          <br /><br />
           As técnicas aqui compiladas baseiam-se nos manuscritos do Dr.
           <span class="censored">█████████</span>, cujo trabalho em
-          <span class="censored">geometria analítica</span> e transformações
-          de coordenadas oferece subsídios críticos para o programa
+          <span class="censored">geometria analítica</span> e transformações de
+          coordenadas oferece subsídios críticos para o programa
           <span class="censored">GEMINI</span>.
         </div>
-<div class="warning-box">
-          Divulgação não autorizada deste material constitui violação do protocolo
+        <div class="warning-box">
+          Divulgação não autorizada deste material constitui violação do
+          protocolo
           <span class="censored">S-9</span> e poderá resultar em
           <span class="censored">sanções severas</span>.
         </div>
-<div class="metadata">
-<span>REF: MX-<span class="censored">268</span>-C</span>
-<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
-<span>CÓPIAS EXISTENTES: <span class="censored">3</span> DE
-            <span class="censored">5</span></span>
-</div>
-</div>
-<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS EM INTEGRAIS DUPLAS</div>
-<div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
-<p class="formula-highlight">
-          \[
-            \iint_{R} f(x,y)\, dx\, dy \;=\;
-            \iint_{S} 
-            f\bigl(x(u,v),\, y(u,v)\bigr)\;
-            \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\; du\, dv
-          \]
+        <div class="metadata">
+          <span>REF: MX-<span class="censored">268</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS EM INTEGRAIS DUPLAS
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \iint_{R} f(x,y)\, dx\, dy \;=\; \iint_{S} f\bigl(x(u,v),\,
+          y(u,v)\bigr)\; \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\; du\,
+          dv \]
         </p>
-<p>
+        <p>
           Nesta transformação, \( (x,y) \) é reescrito como função de novas
           variáveis \((u,v)\). O determinante do Jacobiano
           \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\) ajusta o elemento
-          de área ao novo sistema de coordenadas, garantindo equivalência
-          entre a área original e a área transformada.
+          de área ao novo sistema de coordenadas, garantindo equivalência entre
+          a área original e a área transformada.
         </p>
-</div>
-<div class="mission-context">
+      </div>
+      <div class="mission-context">
         O uso de coordenadas polares, cilíndricas e outras formas de mudança de
         variáveis permite simplificar o cálculo de integrais em regiões
         complexas. No contexto da exploração espacial, tais transformações são
         vitais para estimar parâmetros em trajetórias que fogem dos eixos
         cartesianamente definidos.
       </div>
-<div class="historical-note">
-<strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
         cálculos de mudança de variáveis se mostraram essenciais para
-        <span class="censored">otimizar as órbitas</span>, bem como para
-        avaliar projeções de voo em regiões cujo formato não era perfeitamente
+        <span class="censored">otimizar as órbitas</span>, bem como para avaliar
+        projeções de voo em regiões cujo formato não era perfeitamente
         retilíneo.
       </div>
-      
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
-      <div class="page-number">        PÁGINA <span class="censored">3</span> DE        <span class="censored">12</span> • DOCUMENTO MX-<span class="censored">268</span>-C      </div>
+
+      <div class="page-number">
+        PÁGINA <span class="censored">3</span> DE
+        <span class="censored">12</span> • DOCUMENTO MX-<span class="censored"
+          >268</span
+        >-C
+      </div>
     </div>
 
     <script>
@@ -357,26 +377,26 @@
             'exercicio-vector-3c.html',
             'exercicio-vector-4a.html',
             'exercicio-vector-4b.html',
-            'exercicio-vector-4c.html'
+            'exercicio-vector-4c.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>

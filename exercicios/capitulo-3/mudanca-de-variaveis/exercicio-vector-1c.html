@@ -1,76 +1,54 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
-<div class="context">
-              ORIGEM: Registro de <span class="censored">Análises Civis</span> - Setor Acadêmico
-            </div>
-<p>
-              Na região \(R\) dada por \(\{(x,y)\mid 0 \le x \le 1,\; 0 \le y \le 2\}\),
-              considere a função \(f(x,y)=x^2 + xy\). Proponha uma transformação
-              linear simples \(u=x,\;v=y/2\). Calcule \(\iint_{R} f(x,y)\,dx\,dy\)
-              por meio da nova parametrização.
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Considere a reescala de uma das variáveis para
-                reduzir a extensão do intervalo.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  A transformação proposta: \(x=u,\;y=2v\). Então
-                  \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right| = 
-                  \begin{vmatrix}
-                    1 &amp; 0\\
-                    0 &amp; 2
-                  \end{vmatrix} = 2.\)
-                </p>
-<p>
-                  A região \(0 \le x \le 1,\; 0 \le y \le 2\) torna-se
-                  \(0 \le u \le 1,\; 0 \le v \le 1\).
-                </p>
-<p>
-                  Assim,
-                  \[
-                    \iint_{R} (x^2 + xy)\,dx\,dy 
-                    = \int_{0}^{1}\int_{0}^{1} \bigl(u^2 + u(2v)\bigr)\cdot 2\,du\,dv.
-                  \]
-                </p>
-<p>
-                  Simplificando,
-                  \[
-                    2 \int_{0}^{1}\int_{0}^{1} \bigl(u^2 + 2uv\bigr)\,du\,dv
-                    =
-                    2 \int_{0}^{1}\left[\int_{0}^{1} (u^2 + 2uv)\,du\right] dv.
-                  \]
-                </p>
-<p>
-                  Integre em \(u\):
-                  \[
-                    \int_{0}^{1} (u^2 + 2uv)\,du
-                    = \left[\frac{u^3}{3} + u^2v\right]_0^1
-                    = \frac{1}{3} + v.
-                  \]
-                </p>
-<p>
-                  Agora, em \(v\) de 0 a 1:
-                  \[
-                    2 \int_{0}^{1} \left(\frac{1}{3} + v\right)\,dv
-                    =
-                    2 \left[\frac{v}{3} + \frac{v^2}{2}\right]_0^1
-                    =
-                    2 \left(\frac{1}{3} + \frac{1}{2}\right)
-                    =
-                    2 \left(\frac{5}{6}\right)
-                    =
-                    \frac{10}{6}
-                    =
-                    \frac{5}{3}.
-                  \]
-                </p>
-<p>CONCLUSÃO: O valor da integral é \(\frac{5}{3}\).</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Registro de <span class="censored">Análises Civis</span> - Setor
+    Acadêmico
+  </div>
+  <p>
+    Na região \(R\) dada por \(\{(x,y)\mid 0 \le x \le 1,\; 0 \le y \le 2\}\),
+    considere a função \(f(x,y)=x^2 + xy\). Proponha uma transformação linear
+    simples \(u=x,\;v=y/2\). Calcule \(\iint_{R} f(x,y)\,dx\,dy\) por meio da
+    nova parametrização.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Considere a reescala de uma das variáveis para reduzir a
+      extensão do intervalo.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A transformação proposta: \(x=u,\;y=2v\). Então
+        \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right| = \begin{vmatrix} 1
+        &amp; 0\\ 0 &amp; 2 \end{vmatrix} = 2.\)
+      </p>
+      <p>
+        A região \(0 \le x \le 1,\; 0 \le y \le 2\) torna-se \(0 \le u \le 1,\;
+        0 \le v \le 1\).
+      </p>
+      <p>
+        Assim, \[ \iint_{R} (x^2 + xy)\,dx\,dy = \int_{0}^{1}\int_{0}^{1}
+        \bigl(u^2 + u(2v)\bigr)\cdot 2\,du\,dv. \]
+      </p>
+      <p>
+        Simplificando, \[ 2 \int_{0}^{1}\int_{0}^{1} \bigl(u^2 +
+        2uv\bigr)\,du\,dv = 2 \int_{0}^{1}\left[\int_{0}^{1} (u^2 +
+        2uv)\,du\right] dv. \]
+      </p>
+      <p>
+        Integre em \(u\): \[ \int_{0}^{1} (u^2 + 2uv)\,du = \left[\frac{u^3}{3}
+        + u^2v\right]_0^1 = \frac{1}{3} + v. \]
+      </p>
+      <p>
+        Agora, em \(v\) de 0 a 1: \[ 2 \int_{0}^{1} \left(\frac{1}{3} +
+        v\right)\,dv = 2 \left[\frac{v}{3} + \frac{v^2}{2}\right]_0^1 = 2
+        \left(\frac{1}{3} + \frac{1}{2}\right) = 2 \left(\frac{5}{6}\right) =
+        \frac{10}{6} = \frac{5}{3}. \]
+      </p>
+      <p>CONCLUSÃO: O valor da integral é \(\frac{5}{3}\).</p>
+    </div>
+  </details>
 </li>

@@ -18,8 +18,14 @@
     <script>
       MathJax = {
         tex: {
-          inlineMath: [['$', '$'], ['\\(', '\\)']],
-          displayMath: [['$$', '$$'], ['\\[', '\\]']],
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
           processEscapes: true,
           processEnvironments: true,
         },
@@ -286,11 +292,11 @@
           Em conformidade com as diretrizes estabelecidas após o
           <span class="censored">último lançamento suborbital</span>, nossa
           equipe apresenta os avanços no estudo das integrais em duas dimensões,
-          visando aprimorar <span class="censored">cálculos de rendimento</span>
-          em sistemas de propulsão. A definição rigorosa destas integrais é
-          fundamental para <span class="censored">estimar cargas</span> e
-          avaliar <span class="censored">riscos térmicos</span> em futuras
-          missões.
+          visando aprimorar
+          <span class="censored">cálculos de rendimento</span> em sistemas de
+          propulsão. A definição rigorosa destas integrais é fundamental para
+          <span class="censored">estimar cargas</span> e avaliar
+          <span class="censored">riscos térmicos</span> em futuras missões.
         </div>
 
         <div class="warning-box">
@@ -303,7 +309,10 @@
         <div class="metadata">
           <span>REF: VX-<span class="censored">1138</span>-B</span>
           <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
-          <span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE <span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
         </div>
       </div>
 
@@ -314,11 +323,8 @@
       <div class="concept-definition">
         <p><strong>DEFINIÇÃO FORMAL:</strong></p>
         <p class="formula-highlight">
-          \[
-            \iint_{D} f(x,y)\, dA 
-            = \lim_{\|P\|\to 0} 
-            \sum_{(x_i^*,\,y_i^*) \in P} f(x_i^*,y_i^*)\, \Delta A_i
-          \]
+          \[ \iint_{D} f(x,y)\, dA = \lim_{\|P\|\to 0} \sum_{(x_i^*,\,y_i^*) \in
+          P} f(x_i^*,y_i^*)\, \Delta A_i \]
         </p>
         <p>
           Onde \(D\) é um subconjunto limitado do plano, \(\|P\|\) representa o
@@ -343,9 +349,9 @@
         <span class="censored">Programa Mercury</span> (1958-1963), estudos
         sobre integrais duplas ajudaram no dimensionamento de certos componentes
         críticos. A compreensão rigorosa da soma de Riemann em duas variáveis
-        suportou cálculos iniciais de <span class="censored">trajetórias</span>
-        e de áreas sujeitas a <span class="censored">aquecimento</span> durante
-        a reentrada.
+        suportou cálculos iniciais de
+        <span class="censored">trajetórias</span> e de áreas sujeitas a
+        <span class="censored">aquecimento</span> durante a reentrada.
       </div>
 
       <main>
@@ -354,15 +360,16 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
             <div class="context">
-              ORIGEM: Caderno de Notas - Laboratório de Testes do Programa Mercury
+              ORIGEM: Caderno de Notas - Laboratório de Testes do Programa
+              Mercury
             </div>
             <p>
-              Considere uma região retangular \(D\) limitada por
-              \[0 \le x \le 2\] e \[0 \le y \le 3\], subdividida em
-              partições retangulares de mesma dimensão. Defina
-              \(\Delta A_i\) como a área de cada sub-região e explique como
-              proceder para construir a soma de Riemann bidimensional de uma
-              função \(f(x,y)\) ainda sem utilizar o Teorema de Fubini.
+              Considere uma região retangular \(D\) limitada por \[0 \le x \le
+              2\] e \[0 \le y \le 3\], subdividida em partições retangulares de
+              mesma dimensão. Defina \(\Delta A_i\) como a área de cada
+              sub-região e explique como proceder para construir a soma de
+              Riemann bidimensional de uma função \(f(x,y)\) ainda sem utilizar
+              o Teorema de Fubini.
             </p>
 
             <details class="hint-container">
@@ -401,8 +408,7 @@
               Sabe-se que linhas e curvas regulares no plano têm conteúdo nulo
               (medida de área zero). Explique, no contexto de uma soma de
               Riemann bidimensional, por que um conjunto formado apenas por
-              linhas não afeta o valor da integral dupla em uma região
-              limitada.
+              linhas não afeta o valor da integral dupla em uma região limitada.
             </p>
 
             <details class="hint-container">
@@ -418,9 +424,9 @@
               <div class="solution">
                 <p>
                   Em uma partição bidimensional, cada sub-região possui área
-                  finita (por menor que seja). Uma linha isolada não
-                  "preenche" essas sub-regiões, pois seu conteúdo (área)
-                  permanece zero, mesmo ao refinar a partição.
+                  finita (por menor que seja). Uma linha isolada não "preenche"
+                  essas sub-regiões, pois seu conteúdo (área) permanece zero,
+                  mesmo ao refinar a partição.
                 </p>
                 <p>
                   Portanto, conjuntos de medida zero não alteram o valor final
@@ -433,7 +439,8 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
             <div class="context">
-              ORIGEM: Diário Técnico - Equipe de Propulsão [SETOR <span class="censored">██</span>]
+              ORIGEM: Diário Técnico - Equipe de Propulsão [SETOR
+              <span class="censored">██</span>]
             </div>
             <p>
               Uma função \(f(x,y)\) está definida e é limitada em um domínio
@@ -473,7 +480,8 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
             <div class="context">
-              ORIGEM: Documentos Classificados - Projeto Mercury [ANÁLISE COMBINADA]
+              ORIGEM: Documentos Classificados - Projeto Mercury [ANÁLISE
+              COMBINADA]
             </div>
             <p>
               Sejam \(m\) e \(M\) funções constantes que limitam \(f(x,y)\) de
@@ -496,8 +504,8 @@
               <div class="solution">
                 <p>
                   Se \(m \leq f(x,y) \leq M\), então as somas de Riemann
-                  inferiores e superiores são limitadas por
-                  \(m \times \text{área}(D)\) e \(M \times \text{área}(D)\),
+                  inferiores e superiores são limitadas por \(m \times
+                  \text{área}(D)\) e \(M \times \text{área}(D)\),
                   respectivamente.
                 </p>
                 <p>
@@ -513,15 +521,15 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
             <div class="context">
-              ORIGEM: Sessão de Treinamento - Equipe de Análise [BASE <span class="censored">REDACTED</span>]
+              ORIGEM: Sessão de Treinamento - Equipe de Análise [BASE
+              <span class="censored">REDACTED</span>]
             </div>
             <p>
               Seja \(f(x,y)\) uma função limitada em \(D\). Defina as
               <em>somas inferiores</em> \(\underline{S}(P,f)\) e as
-              <em>somas superiores</em> \(\overline{S}(P,f)\) para cada
-              partição \(P\). Descreva, conceitualmente, como o refinamento de
-              \(P\) influencia a aproximação desses valores rumo à integral
-              dupla.
+              <em>somas superiores</em> \(\overline{S}(P,f)\) para cada partição
+              \(P\). Descreva, conceitualmente, como o refinamento de \(P\)
+              influencia a aproximação desses valores rumo à integral dupla.
             </p>
 
             <details class="hint-container">
@@ -554,20 +562,22 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
             <div class="context">
-              ORIGEM: Grupo de Cálculo Avançado - Programa Gemini [RELATÓRIOS CRUZADOS]
+              ORIGEM: Grupo de Cálculo Avançado - Programa Gemini [RELATÓRIOS
+              CRUZADOS]
             </div>
             <p>
               Demonstre, em termos de ideia geral, como a linearidade da soma de
-              Riemann bidimensional permite concluir que a integral de
-              \(\alpha f(x,y) + \beta g(x,y)\) (onde \(\alpha\) e \(\beta\) são
-              constantes) pode ser decomposta na soma das integrais de
-              \(\alpha f\) e \(\beta g\).
+              Riemann bidimensional permite concluir que a integral de \(\alpha
+              f(x,y) + \beta g(x,y)\) (onde \(\alpha\) e \(\beta\) são
+              constantes) pode ser decomposta na soma das integrais de \(\alpha
+              f\) e \(\beta g\).
             </p>
 
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Propriedades de conservação podem ser relevantes.
+                [NOTA TÉCNICA]: Propriedades de conservação podem ser
+                relevantes.
               </div>
             </details>
 
@@ -576,15 +586,15 @@
               <div class="solution">
                 <p>
                   Ao somar as contribuições de \(\alpha f\) e \(\beta g\) em
-                  cada sub-região, obtemos
-                  \(\sum [\alpha f(x_i^*,y_i^*) + \beta g(x_i^*,y_i^*)]\Delta A_i\).
+                  cada sub-região, obtemos \(\sum [\alpha f(x_i^*,y_i^*) + \beta
+                  g(x_i^*,y_i^*)]\Delta A_i\).
                 </p>
                 <p>
-                  Essa expressão se separa em
-                  \(\alpha \sum f(x_i^*,y_i^*)\Delta A_i + \beta \sum g(x_i^*,y_i^*)\Delta A_i\),
-                  indicando que o limite da soma (ou seja, a integral) também se
-                  decomporá linearmente, respeitando
-                  \(\iint(\alpha f+\beta g)=\alpha\iint f+\beta\iint g\).
+                  Essa expressão se separa em \(\alpha \sum f(x_i^*,y_i^*)\Delta
+                  A_i + \beta \sum g(x_i^*,y_i^*)\Delta A_i\), indicando que o
+                  limite da soma (ou seja, a integral) também se decomporá
+                  linearmente, respeitando \(\iint(\alpha f+\beta g)=\alpha\iint
+                  f+\beta\iint g\).
                 </p>
               </div>
             </details>
@@ -598,9 +608,9 @@
             </div>
             <p>
               Analise se uma função \(f(x,y)\), cuja principal dificuldade está
-              na existência de linhas de descontinuidade ao longo de
-              \(x = y\), pode ser integrável num domínio quadrado \(D\). Suponha
-              que fora dessas linhas, \(f\) seja contínua e limitada.
+              na existência de linhas de descontinuidade ao longo de \(x = y\),
+              pode ser integrável num domínio quadrado \(D\). Suponha que fora
+              dessas linhas, \(f\) seja contínua e limitada.
             </p>
 
             <details class="hint-container">
@@ -636,8 +646,8 @@
             <p>
               Dado um domínio \(D\) que pode ser decomposto em duas regiões
               adjacentes \(D_1\) e \(D_2\), explique como é possível relacionar
-              \(\iint_{D} f(x,y)\,dA\) às integrais sobre \(D_1\) e \(D_2\),
-              sem recorrer a propriedades de <span class="censored">Fubini</span>
+              \(\iint_{D} f(x,y)\,dA\) às integrais sobre \(D_1\) e \(D_2\), sem
+              recorrer a propriedades de <span class="censored">Fubini</span>
               ou outras ferramentas avançadas.
             </p>
 
@@ -670,7 +680,8 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
             <div class="context">
-              ORIGEM: Informes Técnicos do <span class="censored">Departamento Avançado</span>
+              ORIGEM: Informes Técnicos do
+              <span class="censored">Departamento Avançado</span>
             </div>
             <p>
               Considere um domínio \(D\) poligonal e uma função \(f\)
@@ -715,8 +726,8 @@
               Investigue as condições para que uma função \(f\) definida em um
               domínio irregular \(D\) seja integrável via soma de Riemann, mesmo
               que \(D\) apresente partes convexas e côncavas. Analise se a forma
-              de \(D\) interfere no processo ou apenas a natureza de \(f\) e
-              seu comportamento em conjuntos de medida não nula.
+              de \(D\) interfere no processo ou apenas a natureza de \(f\) e seu
+              comportamento em conjuntos de medida não nula.
             </p>
 
             <!-- SÉRIE OMEGA: Sem dicas -->
@@ -730,10 +741,10 @@
                   todo \(D\).
                 </p>
                 <p>
-                  Ainda que a fronteira de \(D\) seja complexa, o refinamento das
-                  partições em regiões pequenas permite aproximar a área total
-                  e, se \(f\) for limitada e suas descontinuidades estiverem em
-                  conjuntos de medida zero, a integral existe.
+                  Ainda que a fronteira de \(D\) seja complexa, o refinamento
+                  das partições em regiões pequenas permite aproximar a área
+                  total e, se \(f\) for limitada e suas descontinuidades
+                  estiverem em conjuntos de medida zero, a integral existe.
                 </p>
               </div>
             </details>
@@ -742,7 +753,8 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
             <div class="context">
-              ORIGEM: Seção de Estudos Internos [Programa <span class="censored">█</span>]
+              ORIGEM: Seção de Estudos Internos [Programa
+              <span class="censored">█</span>]
             </div>
             <p>
               Seja \(f\) uma função que assume valores distintos em regiões de
@@ -766,8 +778,8 @@
                   Esse processo de refinamento localizado, juntamente com a
                   compreensão de que descontinuidades limitadas ocorrem em
                   conjuntos de área nula, garante que a integral dupla exista
-                  quando \(f\) se mantém limitada e não exibe
-                  "descontinuidades" de grande medida.
+                  quando \(f\) se mantém limitada e não exibe "descontinuidades"
+                  de grande medida.
                 </p>
               </div>
             </details>
@@ -776,14 +788,15 @@
           <li class="exercise-item">
             <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
             <div class="context">
-              ORIGEM: Painel Avançado de Pesquisa - Setor <span class="censored">X</span>
+              ORIGEM: Painel Avançado de Pesquisa - Setor
+              <span class="censored">X</span>
             </div>
             <p>
               Construa um raciocínio sobre como as propriedades básicas
               (lineares, monotônicas, limitadas) da soma de Riemann em duas
-              variáveis são suficientes para garantir uma formulação coerente
-              do conceito de integral dupla, mesmo antes da aplicação de
-              teoremas posteriores (como Fubini).
+              variáveis são suficientes para garantir uma formulação coerente do
+              conceito de integral dupla, mesmo antes da aplicação de teoremas
+              posteriores (como Fubini).
             </p>
 
             <!-- SÉRIE OMEGA: Sem dicas -->

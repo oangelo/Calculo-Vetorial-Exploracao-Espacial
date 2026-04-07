@@ -1,35 +1,34 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
-<div class="context">
-              ORIGEM: Centro de <span class="censored">Convergência</span> - Dados
-              Confidenciais
-            </div>
-<p>
-              Calcular \(\iint_{R} \sin(x + y)\,dx\,dy\) onde \(R\) se define
-              pelos vértices \((0,0), (3,0), (3,3)\) com exclusão da parte em que
-              \(y &lt; x\). Proponha a mudança de variáveis apropriada para que
-              a diagonal seja convertida em um novo limite simples.
-            </p>
-<!-- SEM DICAS PARA SÉRIE OMEGA -->
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  [SUGESTÃO DE PROCEDIMENTO]: Uma opção é fazer:
-                  \[
-                    u = x, \quad v = y - x,
-                  \]
-                  transformando a região triangular acima da reta \(y=x\)
-                  em um conjunto de limites retangulares em \((u,v)\).
-                  Calcular o Jacobiano \(\begin{vmatrix}1 &amp; 0 \\ -1 &amp; 1\end{vmatrix} = 1\).
-                </p>
-<p>
-                  Então \(\sin(x+y) = \sin\bigl(u + (v + u)\bigr)
-                  = \sin(2u + v)\).
-                  Ajustar os limites de \(u\) e \(v\) adequadamente leva a uma
-                  integral aninhada, mas sem limites oblíquos.
-                </p>
-<p>CONCLUSÃO: Mudança de variáveis facilita a análise geométrica, apesar de não trivializar a função trigonométrica.</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Centro de <span class="censored">Convergência</span> - Dados
+    Confidenciais
+  </div>
+  <p>
+    Calcular \(\iint_{R} \sin(x + y)\,dx\,dy\) onde \(R\) se define pelos
+    vértices \((0,0), (3,0), (3,3)\) com exclusão da parte em que \(y &lt; x\).
+    Proponha a mudança de variáveis apropriada para que a diagonal seja
+    convertida em um novo limite simples.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        [SUGESTÃO DE PROCEDIMENTO]: Uma opção é fazer: \[ u = x, \quad v = y -
+        x, \] transformando a região triangular acima da reta \(y=x\) em um
+        conjunto de limites retangulares em \((u,v)\). Calcular o Jacobiano
+        \(\begin{vmatrix}1 &amp; 0 \\ -1 &amp; 1\end{vmatrix} = 1\).
+      </p>
+      <p>
+        Então \(\sin(x+y) = \sin\bigl(u + (v + u)\bigr) = \sin(2u + v)\).
+        Ajustar os limites de \(u\) e \(v\) adequadamente leva a uma integral
+        aninhada, mas sem limites oblíquos.
+      </p>
+      <p>
+        CONCLUSÃO: Mudança de variáveis facilita a análise geométrica, apesar de
+        não trivializar a função trigonométrica.
+      </p>
+    </div>
+  </details>
 </li>

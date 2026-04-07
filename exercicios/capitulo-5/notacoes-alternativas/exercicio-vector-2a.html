@@ -1,54 +1,51 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
-<div class="context">
-              ORIGEM: Simulação de Força Eletromagnética - Dados Internos
-              [MAR/1967]
-            </div>
-<p>
-              Seja \(\vec{F}(x,y,z) = \begin{pmatrix} x+y \\ y+z \\ z+x
-              \end{pmatrix}\). Calcular a integral de linha \(\displaystyle
-              \int_C \vec{F}\cdot d\vec{r}\) ao longo da curva parametrizada
-              pela hélice \(\vec{r}(t) = (t, \cos t, \sin t)\) para \(t\) de 0 a
-              \(2\pi\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Propriedades de periodicidade podem ser
-                relevantes.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-<div class="solution">
-<p>PARAMETRIZAÇÃO:</p>
-<p>
-                  \(x(t) = t,\quad y(t) = \cos t,\quad z(t) = \sin t.\)
-                  <br/>
-                  Logo, \(\vec{r}'(t) = \bigl(1, -\sin t, \cos t\bigr)\).
-                </p>
-<p>
-                  \(\vec{F}(x(t), y(t), z(t)) = \begin{pmatrix} t + \cos t \\
-                  \cos t + \sin t \\ \sin t + t \end{pmatrix}.\)
-                </p>
-<p>INTEGRANDO:</p>
-<p>
-                  \[ \int_0^{2\pi} \begin{pmatrix} t + \cos t \\ \cos t + \sin t
-                  \\ \sin t + t \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -\sin t
-                  \\ \cos t \end{pmatrix} dt. \]
-                </p>
-<p>
-                  Expanda e integre termo a termo. Alguns termos terão média
-                  nula sobre um período \(2\pi\). Depois dos cálculos (omitidos
-                  aqui em detalhe), obtém-se: \[ \int_C \vec{F}\cdot d\vec{r} =
-                  \left.\frac{t^2}{2}\right|_{0}^{2\pi} + \text{(termos de
-                  integração de funções trigonométricas)}. \]
-                </p>
-<p>
-                  As partes trigonométricas se anulam no intervalo \([0,
-                  2\pi]\), resultando em \(\frac{(2\pi)^2}{2} = 2\pi^2.\)
-                </p>
-<p>CONCLUSÃO: A integral de linha é \(2\pi^2.\)</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Simulação de Força Eletromagnética - Dados Internos [MAR/1967]
+  </div>
+  <p>
+    Seja \(\vec{F}(x,y,z) = \begin{pmatrix} x+y \\ y+z \\ z+x \end{pmatrix}\).
+    Calcular a integral de linha \(\displaystyle \int_C \vec{F}\cdot d\vec{r}\)
+    ao longo da curva parametrizada pela hélice \(\vec{r}(t) = (t, \cos t, \sin
+    t)\) para \(t\) de 0 a \(2\pi\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de periodicidade podem ser relevantes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PARAMETRIZAÇÃO:</p>
+      <p>
+        \(x(t) = t,\quad y(t) = \cos t,\quad z(t) = \sin t.\)
+        <br />
+        Logo, \(\vec{r}'(t) = \bigl(1, -\sin t, \cos t\bigr)\).
+      </p>
+      <p>
+        \(\vec{F}(x(t), y(t), z(t)) = \begin{pmatrix} t + \cos t \\ \cos t +
+        \sin t \\ \sin t + t \end{pmatrix}.\)
+      </p>
+      <p>INTEGRANDO:</p>
+      <p>
+        \[ \int_0^{2\pi} \begin{pmatrix} t + \cos t \\ \cos t + \sin t \\ \sin t
+        + t \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -\sin t \\ \cos t
+        \end{pmatrix} dt. \]
+      </p>
+      <p>
+        Expanda e integre termo a termo. Alguns termos terão média nula sobre um
+        período \(2\pi\). Depois dos cálculos (omitidos aqui em detalhe),
+        obtém-se: \[ \int_C \vec{F}\cdot d\vec{r} =
+        \left.\frac{t^2}{2}\right|_{0}^{2\pi} + \text{(termos de integração de
+        funções trigonométricas)}. \]
+      </p>
+      <p>
+        As partes trigonométricas se anulam no intervalo \([0, 2\pi]\),
+        resultando em \(\frac{(2\pi)^2}{2} = 2\pi^2.\)
+      </p>
+      <p>CONCLUSÃO: A integral de linha é \(2\pi^2.\)</p>
+    </div>
+  </details>
 </li>

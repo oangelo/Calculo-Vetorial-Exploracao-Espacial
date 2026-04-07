@@ -10,19 +10,29 @@
     />
     <!-- Include MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
-    MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-      }
-    };
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
     </script>
     <style>
       :root {
@@ -315,8 +325,8 @@
       <div class="concept-definition">
         <p><strong>DEFINIÇÃO FORMAL:</strong></p>
         <p class="formula-highlight">
-          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D} \left(\int_{z=a(x,y)}^{z=b(x,y)}
-          f(x,y,z)\,dz \right) dA\]
+          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D}
+          \left(\int_{z=a(x,y)}^{z=b(x,y)} f(x,y,z)\,dz \right) dA\]
         </p>
         <p>
           A redução de uma integral tripla a uma integral dupla ocorre quando a
@@ -342,9 +352,9 @@
         <strong>NOTA HISTÓRICA:</strong> Durante a fase final do Programa Apollo
         (1961-1972), cálculos avançados de volumes pressurizados em módulos
         lunares exigiram novas abordagens matemáticas. O sucesso da missão
-        <span class="censored">████</span> inspirou nossa equipe a
-        desenvolver métodos de redução de integrais triplas, antecipando
-        melhorias essenciais para o projeto Skylab (1973-1979).
+        <span class="censored">████</span> inspirou nossa equipe a desenvolver
+        métodos de redução de integrais triplas, antecipando melhorias
+        essenciais para o projeto Skylab (1973-1979).
       </div>
 
       <main>
@@ -365,30 +375,30 @@
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
               <div class="hint">
-                [NOTA TÉCNICA]: Considere como relacionar limites superiores e inferiores para \(z\).
+                [NOTA TÉCNICA]: Considere como relacionar limites superiores e
+                inferiores para \(z\).
               </div>
             </details>
             <details>
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  O volume pode ser descrito por \(0 \le x \le 2\), \(0 \le y \le 3\) e \(0 \le z \le 4\).
+                  O volume pode ser descrito por \(0 \le x \le 2\), \(0 \le y
+                  \le 3\) e \(0 \le z \le 4\).
                 </p>
+                <p>Redução para integral dupla:</p>
                 <p>
-                  Redução para integral dupla:
-                </p>
-                <p>
-                  \[\iiint_V 1\, dV = \iint_D \left(\int_{z=0}^{z=4} 1\, dz \right)dA.\]
+                  \[\iiint_V 1\, dV = \iint_D \left(\int_{z=0}^{z=4} 1\, dz
+                  \right)dA.\]
                 </p>
                 <p>
                   Integração interna em \(z\): \(\int_{0}^{4} 1 \, dz = 4.\)
                 </p>
                 <p>
-                  Assim, \[\iint_D 4 \, dA = 4 \times \text{Área de }D = 4 \times (2 \times 3) = 24.\]
+                  Assim, \[\iint_D 4 \, dA = 4 \times \text{Área de }D = 4
+                  \times (2 \times 3) = 24.\]
                 </p>
-                <p>
-                  Conclusão: O volume buscado é \(24\) unidades cúbicas.
-                </p>
+                <p>Conclusão: O volume buscado é \(24\) unidades cúbicas.</p>
               </div>
             </details>
           </li>
@@ -400,9 +410,9 @@
               <span class="censored">Setor de Propulsão</span>
             </div>
             <p>
-              Seja \(V\) o volume limitado acima pelo cone \(z = \sqrt{x^2 + y^2}\)
-              e abaixo pelo plano \(z=0\) na região \(D\). Considere \(D\) o
-              círculo \(x^2 + y^2 \le 4\). Escreva a integral tripla de
+              Seja \(V\) o volume limitado acima pelo cone \(z = \sqrt{x^2 +
+              y^2}\) e abaixo pelo plano \(z=0\) na região \(D\). Considere
+              \(D\) o círculo \(x^2 + y^2 \le 4\). Escreva a integral tripla de
               \(\iiint_V x\, dV\) reduzindo-a a uma integral dupla.
             </p>
             <details class="hint-container">
@@ -419,22 +429,16 @@
                   \(\sqrt{x^2 + y^2}\).
                 </p>
                 <p>
-                  Portanto:
-                  \[
-                  \iiint_V x \, dV 
-                  = \iint_D \left(\int_{z=0}^{z=\sqrt{x^2 + y^2}} x \, dz\right) dA.
-                  \]
+                  Portanto: \[ \iiint_V x \, dV = \iint_D
+                  \left(\int_{z=0}^{z=\sqrt{x^2 + y^2}} x \, dz\right) dA. \]
                 </p>
                 <p>
-                  Integração interna:
-                  \(\int_{0}^{\sqrt{x^2 + y^2}} x \, dz = x \cdot \sqrt{x^2 + y^2}.\)
+                  Integração interna: \(\int_{0}^{\sqrt{x^2 + y^2}} x \, dz = x
+                  \cdot \sqrt{x^2 + y^2}.\)
                 </p>
                 <p>
-                  Logo, a integral reduzida é:
-                  \[
-                  \iint_D x \sqrt{x^2 + y^2} \, dA,
-                  \quad \text{onde } D: x^2 + y^2 \le 4.
-                  \]
+                  Logo, a integral reduzida é: \[ \iint_D x \sqrt{x^2 + y^2} \,
+                  dA, \quad \text{onde } D: x^2 + y^2 \le 4. \]
                 </p>
                 <p>
                   O problema se torna mais simples em coordenadas polares, mas a
@@ -467,25 +471,17 @@
             <details>
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
+                <p>Região \(V\): \(0 \le z \le 5\), \(x^2 + y^2 \le 9\).</p>
                 <p>
-                  Região \(V\): \(0 \le z \le 5\), \(x^2 + y^2 \le 9\).
+                  Integral tripla: \[ \iiint_V 2\, dV = \iint_D
+                  \left(\int_{z=0}^{5} 2 \, dz \right) dA. \]
                 </p>
+                <p>Integração em \(z\): \(\int_{0}^{5} 2 \, dz = 10.\)</p>
                 <p>
-                  Integral tripla:
-                  \[
-                  \iiint_V 2\, dV 
-                  = \iint_D \left(\int_{z=0}^{5} 2 \, dz \right) dA.
-                  \]
+                  Assim, \(\iint_D 10 \, dA = 10 \cdot \text{Área do disco} = 10
+                  \times \pi \cdot 3^2 = 90\pi.\)
                 </p>
-                <p>
-                  Integração em \(z\): \(\int_{0}^{5} 2 \, dz = 10.\)
-                </p>
-                <p>
-                  Assim, \(\iint_D 10 \, dA = 10 \cdot \text{Área do disco} = 10 \times \pi \cdot 3^2 = 90\pi.\)
-                </p>
-                <p>
-                  Massa total = \(90\pi\) unidades de massa.
-                </p>
+                <p>Massa total = \(90\pi\) unidades de massa.</p>
               </div>
             </details>
           </li>
@@ -499,9 +495,9 @@
             </div>
             <p>
               Calcular \(\iiint_V (x^2 + y^2)\, dV\) onde \(V\) é o sólido
-              limitado pelo paraboloide \(z = x^2 + y^2\) e pelo plano
-              \(z = 9\). Reduza a integral tripla a uma integral dupla no
-              domínio projetado sobre o plano \(xy\).
+              limitado pelo paraboloide \(z = x^2 + y^2\) e pelo plano \(z =
+              9\). Reduza a integral tripla a uma integral dupla no domínio
+              projetado sobre o plano \(xy\).
             </p>
             <details class="hint-container">
               <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
@@ -513,20 +509,26 @@
               <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
               <div class="solution">
                 <p>
-                  Interseção: \(z = 9 = x^2 + y^2\) implica \(x^2 + y^2 = 9\). 
+                  Interseção: \(z = 9 = x^2 + y^2\) implica \(x^2 + y^2 = 9\).
                 </p>
                 <p>
-                  Portanto, \(V\) é limitado no \(xy\)-plano pelo círculo
-                  \(x^2 + y^2 \le 9\) e \(0 \le z \le 9 - (x^2 + y^2)\).
+                  Portanto, \(V\) é limitado no \(xy\)-plano pelo círculo \(x^2
+                  + y^2 \le 9\) e \(0 \le z \le 9 - (x^2 + y^2)\).
                 </p>
                 <p>
-                  A integral tripla:
-                  \[
-                  \iiint_V (x^2 + y^2)\, dV
-                  = \iint_D \left( \int_{z=0}^{9 - (x^2 + y^2)} (x^2 + y^2)\, dz \right) dA.
-                  \]
+                  A integral tripla: \[ \iiint_V (x^2 + y^2)\, dV = \iint_D
+                  \left( \int_{z=0}^{9 - (x^2 + y^2)} (x^2 + y^2)\, dz \right)
+                  dA. \]
                 </p>
                 <p>
-                  Integração em \(z\):
-                  \(\int_{0}^{9 - (x^2 + y^2)} (x^2 + y^2) \, dz
-                  = (x^2 + y^2) \bigl[\,z
+                  Integração em \(z\): \(\int_{0}^{9 - (x^2 + y^2)} (x^2 + y^2)
+                  \, dz = (x^2 + y^2) \bigl[\,z
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+    </div>
+  </body>
+</html>

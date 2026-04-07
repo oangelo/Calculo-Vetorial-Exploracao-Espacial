@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Documento Sigiloso - Teorema de Green (Retângulos)</title>
-    <link href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap" rel="stylesheet"/>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      async=""
+      id="MathJax-script"
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
     <script>
       MathJax = {
         tex: {
@@ -248,20 +255,21 @@
         margin-bottom: 0;
       }
     </style>
-
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE --><div class="document-header">
-<div class="document-stamp">SIGILOSO</div>
-<div class="document-date">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
           DATA: <span class="censored">14</span> DE SETEMBRO DE
-          <span class="censored">1965</span><br/>
+          <span class="censored">1965</span><br />
           LOCALIZAÇÃO:
           <span class="censored">COMPLEXO DE LANÇAMENTO [REDACTED]</span>
-</div>
-<div class="document-intro">
-          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-G</span><br/><br/>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-G</span
+          ><br /><br />
           Após os êxitos iniciais do Programa Gemini, a necessidade de modelar
           trajetórias de reentrada com maior precisão levou nossa equipe a um
           estudo intensivo de circulação de campos vetoriais sobre regiões
@@ -271,29 +279,31 @@
           vetorial permitiu otimizações de correção de atitude em módulos de
           comando.
         </div>
-<div class="warning-box">
+        <div class="warning-box">
           Este documento contém material considerado vital para a segurança
           nacional. Qualquer divulgação não autorizada poderá resultar em
           <span class="censored">consequências severas</span>.
         </div>
-<div class="metadata">
-<span>REF: VG-<span class="censored">1965</span>-R</span>
-<span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
-<span>CÓPIAS EXISTENTES: <span class="censored">2</span> DE
-            <span class="censored">4</span></span>
-</div>
-</div>
-<div class="section-title">
+        <div class="metadata">
+          <span>REF: VG-<span class="censored">1965</span>-R</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
         FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN EM RETÂNGULOS
       </div>
-<div class="concept-definition">
-<p><strong>DEFINIÇÃO FORMAL:</strong></p>
-<p class="formula-highlight">
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
           \[\oint_{\partial R} \bigl(P\,dx + Q\,dy\bigr) = \iint_R \left(
           \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
           dA \]
         </p>
-<p>
+        <p>
           Para um campo vetorial \(\vec{F}(x,y) = \bigl(P(x,y), Q(x,y)\bigr)\)
           de classe \(C^1\) definido em um retângulo fechado \(R = [a,b] \times
           [c,d]\), o <em>Teorema de Green</em> relaciona a circulação ao redor
@@ -301,29 +311,34 @@
           <em>componente de rotação</em> \(\dfrac{\partial Q}{\partial x} -
           \dfrac{\partial P}{\partial y}\) sobre a área de \(R\).
         </p>
-</div>
-<div class="mission-context">
+      </div>
+      <div class="mission-context">
         O controle de atitude durante as fases de encontro em órbita baixa exige
         o cálculo rápido de circulações em superfícies simplificadas. O
         retângulo surge naturalmente quando sensores de telemetria produzem
         dados em grelhas cartesianas discretas, permitindo o uso direto deste
         teorema para validar algoritmos de navegação.
       </div>
-<div class="historical-note">
-<strong>NOTA HISTÓRICA:</strong> Durante o voo
-        <span class="censored">Gemini VII</span> (1965), correções de
-        trajetória usaram estimativas derivadas de integrais de linha que,
-        segundo relatórios, foram verificadas por um “método retangular”
-        compatível com o Teorema de Green, reduzindo o tempo de cálculo em
-        computadores a bordo.
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o voo
+        <span class="censored">Gemini VII</span> (1965), correções de trajetória
+        usaram estimativas derivadas de integrais de linha que, segundo
+        relatórios, foram verificadas por um “método retangular” compatível com
+        o Teorema de Green, reduzindo o tempo de cálculo em computadores a
+        bordo.
       </div>
- EXERCISES LIST
-      
+      EXERCISES LIST
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
-      <div class="page-number">        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VG-<span class="censored">1965</span>-R      </div>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VG-<span
+          class="censored"
+          >1965</span
+        >-R
+      </div>
     </div>
 
     <script>
@@ -341,26 +356,26 @@
             'exercicio-vector-3c.html',
             'exercicio-vector-4a.html',
             'exercicio-vector-4b.html',
-            'exercicio-vector-4c.html'
+            'exercicio-vector-4c.html',
           ];
-          
+
           const list = document.getElementById('exercises');
-          
+
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
               list.innerHTML += await resp.text();
             }
           }
-          
+
           if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
         }
       }
-      
+
       loadExercises();
     </script>
   </body>

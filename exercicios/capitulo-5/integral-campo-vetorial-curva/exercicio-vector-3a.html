@@ -1,66 +1,56 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
-<div class="context">
-              ORIGEM: <span class="censored">SALA DE CONTROLE - GEMINI</span>
-</div>
-<p>
-              Analise o campo tridimensional \(\vec{F}(x,y,z) = \begin{pmatrix}
-              y \\ z \\ x \end{pmatrix}\) ao longo da curva paramétrica
-              \(\vec{r}(t) = \begin{pmatrix} \cos t \\ \sin t \\ t
-              \end{pmatrix}\), com \(t\) de 0 a \(2\pi\). Calcule \(\int_C
-              \vec{F}\cdot d\vec{r}\).
-            </p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-<div class="hint">
-                [NOTA TÉCNICA]: Existem rotações envolvidas na estrutura do
-                vetor.
-              </div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-<div class="solution">
-<p>
-                  \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}\sin t \\ t \\ \cos
-                  t\end{pmatrix}\).<br/>
-                  \(\frac{d\vec{r}}{dt} = \begin{pmatrix}-\sin t \\ \cos t \\
-                  1\end{pmatrix}.\)
-                </p>
-<p>
-                  Produto escalar: \(\begin{pmatrix}\sin t \\ t \\ \cos
-                  t\end{pmatrix} \cdot \begin{pmatrix}-\sin t \\ \cos t \\
-                  1\end{pmatrix} = \sin t(-\sin t) + t(\cos t) + \cos t(1).\)
-                </p>
-<p>Isso é: \(-\sin^2 t + t \cos t + \cos t.\)</p>
-<p>
-                  \(\int_{0}^{2\pi} \big[-\sin^2 t + t \cos t + \cos t\big] \,
-                  dt.\)
-                </p>
-<p>
-                  Para \(-\sin^2 t\), lembramos que \(\int_{0}^{2\pi} \sin^2 t
-                  \, dt = \pi.\) Portanto, \(\int_{0}^{2\pi} -\sin^2 t \, dt =
-                  -\pi.\)
-                </p>
-<p>
-                  \(\int_{0}^{2\pi} \cos t \, dt = \sin t \big|_{0}^{2\pi} =
-                  0.\)
-                </p>
-<p>
-                  \(\int_{0}^{2\pi} t \cos t \, dt\) é uma integral por partes:
-                  \(u = t, dv = \cos t\, dt.\) <br/>
-                  \(u' = 1,\ v = \sin t.\)<br/>
-                  \(\int t \cos t \, dt = t \sin t - \int 1 \cdot \sin t \, dt =
-                  t\sin t + \cos t.\)
-                </p>
-<p>
-                  Avaliando de 0 a \(2\pi\): \(\left[t \sin t + \cos
-                  t\right]_0^{2\pi}.\) Em \(t=2\pi\): \(2\pi \sin(2\pi) +
-                  \cos(2\pi) = 0 + 1 = 1.\)<br/>
-                  Em \(t=0\): \(0 \cdot 0 + \cos(0) = 1.\)<br/>
-                  Diferença: \(1 - 1 = 0.\)
-                </p>
-<p>Somando: \(-\pi + 0 + 0 = -\pi.\)</p>
-<p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = -\pi.\)</p>
-</div>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: <span class="censored">SALA DE CONTROLE - GEMINI</span>
+  </div>
+  <p>
+    Analise o campo tridimensional \(\vec{F}(x,y,z) = \begin{pmatrix} y \\ z \\
+    x \end{pmatrix}\) ao longo da curva paramétrica \(\vec{r}(t) =
+    \begin{pmatrix} \cos t \\ \sin t \\ t \end{pmatrix}\), com \(t\) de 0 a
+    \(2\pi\). Calcule \(\int_C \vec{F}\cdot d\vec{r}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Existem rotações envolvidas na estrutura do vetor.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}\sin t \\ t \\ \cos
+        t\end{pmatrix}\).<br />
+        \(\frac{d\vec{r}}{dt} = \begin{pmatrix}-\sin t \\ \cos t \\
+        1\end{pmatrix}.\)
+      </p>
+      <p>
+        Produto escalar: \(\begin{pmatrix}\sin t \\ t \\ \cos t\end{pmatrix}
+        \cdot \begin{pmatrix}-\sin t \\ \cos t \\ 1\end{pmatrix} = \sin t(-\sin
+        t) + t(\cos t) + \cos t(1).\)
+      </p>
+      <p>Isso é: \(-\sin^2 t + t \cos t + \cos t.\)</p>
+      <p>\(\int_{0}^{2\pi} \big[-\sin^2 t + t \cos t + \cos t\big] \, dt.\)</p>
+      <p>
+        Para \(-\sin^2 t\), lembramos que \(\int_{0}^{2\pi} \sin^2 t \, dt =
+        \pi.\) Portanto, \(\int_{0}^{2\pi} -\sin^2 t \, dt = -\pi.\)
+      </p>
+      <p>\(\int_{0}^{2\pi} \cos t \, dt = \sin t \big|_{0}^{2\pi} = 0.\)</p>
+      <p>
+        \(\int_{0}^{2\pi} t \cos t \, dt\) é uma integral por partes: \(u = t,
+        dv = \cos t\, dt.\) <br />
+        \(u' = 1,\ v = \sin t.\)<br />
+        \(\int t \cos t \, dt = t \sin t - \int 1 \cdot \sin t \, dt = t\sin t +
+        \cos t.\)
+      </p>
+      <p>
+        Avaliando de 0 a \(2\pi\): \(\left[t \sin t + \cos t\right]_0^{2\pi}.\)
+        Em \(t=2\pi\): \(2\pi \sin(2\pi) + \cos(2\pi) = 0 + 1 = 1.\)<br />
+        Em \(t=0\): \(0 \cdot 0 + \cos(0) = 1.\)<br />
+        Diferença: \(1 - 1 = 0.\)
+      </p>
+      <p>Somando: \(-\pi + 0 + 0 = -\pi.\)</p>
+      <p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = -\pi.\)</p>
+    </div>
+  </details>
 </li>
