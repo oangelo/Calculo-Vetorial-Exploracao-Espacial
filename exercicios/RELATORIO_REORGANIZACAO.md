@@ -6,14 +6,14 @@
 
 ## 📊 Estatísticas
 
-| Item | Quantidade |
-|------|------------|
-| **Arquivos originais processados** | 48 |
-| **Exercícios individuais criados** | 474 |
-| **Arquivos intro.html** | 43 |
-| **Arquivos index.html (loaders)** | 48 |
-| **Total de arquivos HTML** | 564 |
-| **Arquivos originais em backup** | 48 |
+| Item                               | Quantidade |
+| ---------------------------------- | ---------- |
+| **Arquivos originais processados** | 48         |
+| **Exercícios individuais criados** | 474        |
+| **Arquivos intro.html**            | 43         |
+| **Arquivos index.html (loaders)**  | 48         |
+| **Total de arquivos HTML**         | 564        |
+| **Arquivos originais em backup**   | 48         |
 
 ---
 
@@ -54,6 +54,7 @@ exercicios/
 ## 🔍 Arquivos Especiais
 
 ### Pastas sem intro.html (5 arquivos)
+
 Arquivos originais vazios/template sem document-header nem exercícios:
 
 - `capitulo-6/definicao-e-forma-diferencial-exata/` (0 exercícios)
@@ -69,19 +70,25 @@ Arquivos originais vazios/template sem document-header nem exercícios:
 ## 🎯 Como Funciona
 
 ### index.html (Loader)
+
 Arquivo HTML completo que:
+
 1. Faz fetch de `intro.html`
 2. Faz fetch de cada `exercicio-*.html` em ordem
 3. Monta a página completa dinamicamente
 4. Re-renderiza MathJax após carregar
 
 ### intro.html (Fragmento)
+
 Contém apenas:
+
 - `<div class="document-header">...</div>`
 - Seção teórica (se existir)
 
-### exercicio-*.html (Fragmentos)
+### exercicio-\*.html (Fragmentos)
+
 Contém apenas:
+
 - `<li class="exercise-item">...</li>`
 
 ---
@@ -89,12 +96,14 @@ Contém apenas:
 ## 🧪 Como Testar
 
 1. Inicie um servidor HTTP local:
+
    ```bash
    cd exercicios
    python3 -m http.server 8080
    ```
 
 2. Abra no navegador:
+
    ```
    http://localhost:8080/capitulo-1/rotacional/
    ```
@@ -111,9 +120,10 @@ Contém apenas:
 ## 🔧 Scripts Utilizados
 
 1. **reorganizar_exercicios.py** - Script principal
+
    - Processa todos os 48 arquivos
    - Extrai intro, exercícios e cria index.html
-   - Move originais para _backup/
+   - Move originais para \_backup/
 
 2. **reprocessar_sem_intro.py** - Script de correção
    - Reprocessa arquivos que ficaram sem intro
@@ -123,7 +133,7 @@ Contém apenas:
 
 ## 📝 Notas Técnicas
 
-- **Fragmentos HTML:** intro.html e exercicio-*.html são fragmentos (sem `<html>`, `<head>`, `<body>`)
+- **Fragmentos HTML:** intro.html e exercicio-\*.html são fragmentos (sem `<html>`, `<head>`, `<body>`)
 - **MathJax:** Suporta MathJax 2.x e 3.x
 - **CSS:** Preservado do original (inline ou externo)
 - **Navegação:** Via fetch em index.html
@@ -136,7 +146,7 @@ Contém apenas:
 1. **Contexto modular:** Cada exercício em arquivo separado
 2. **Fácil manutenção:** Editar um exercício não afeta os outros
 3. **Carregamento dinâmico:** index.html carrega tudo via fetch
-4. **Backup seguro:** Originais preservados em _backup/
+4. **Backup seguro:** Originais preservados em \_backup/
 5. **Estrutura clara:** Fácil navegação por capítulo/tópico
 
 ---

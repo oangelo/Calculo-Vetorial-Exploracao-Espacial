@@ -44,14 +44,16 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 ### Notas técnicas (hints)
 
 - **Sempre dentro de `<details>`**, nunca como `<p>` solto:
+
 ```html
 <details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">
-[NOTA TÉCNICA]: conteúdo da dica com \(math\) se necessário
-</div>
+  <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+  <div class="hint">
+    [NOTA TÉCNICA]: conteúdo da dica com \(math\) se necessário
+  </div>
 </details>
 ```
+
 - **OMEGA (exercício 12)**: sem dica — omitir completamente o hint-container
 
 ### Imagens e SVGs
@@ -101,41 +103,43 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 ```html
 <!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" .../>
-  <title>Documento Sigiloso - Cálculo Vetorial</title>
-  <link href="...Share+Tech+Mono..." rel="stylesheet"/>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-  <style>/* CSS inline (copiar de outro tópico) */</style>
-</head>
-<body>
-  <div class="container">
-    <!-- INTRO INLINE (copiar do intro.html) -->
-    <div class="document-header">...</div>
-    <div class="section-title">...</div>
-    <div class="concept-definition">...</div>
-    ...
-    <main>
-      <ol class="exercise-list" id="exercises"></ol>
-    </main>
-    <div class="page-number">...</div>
-  </div>
-  <script>
-    async function loadExercises() {
-      const exercises = ['exercicio-1.html', ...];
-      const list = document.getElementById('exercises');
-      for (const file of exercises) {
-        const resp = await fetch(file);
-        if (resp.ok) list.innerHTML += await resp.text();
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" ... />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link href="...Share+Tech+Mono..." rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      /* CSS inline (copiar de outro tópico) */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO INLINE (copiar do intro.html) -->
+      <div class="document-header">...</div>
+      <div class="section-title">...</div>
+      <div class="concept-definition">...</div>
+      ...
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+      <div class="page-number">...</div>
+    </div>
+    <script>
+      async function loadExercises() {
+        const exercises = ['exercicio-1.html', ...];
+        const list = document.getElementById('exercises');
+        for (const file of exercises) {
+          const resp = await fetch(file);
+          if (resp.ok) list.innerHTML += await resp.text();
+        }
+        if (window.MathJax && typeof MathJax.typeset === 'function') {
+          MathJax.typeset();
+        }
       }
-      if (window.MathJax && typeof MathJax.typeset === 'function') {
-        MathJax.typeset();
-      }
-    }
-    loadExercises();
-  </script>
-</body>
+      loadExercises();
+    </script>
+  </body>
 </html>
 ```
 
@@ -143,18 +147,18 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 
 ```html
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-XY</div>
-<div class="context">ORIGEM: [Missão/Programa] - [Data/Evento]</div>
-<p>enunciado com \(math\) e \[equações\]</p>
-<p>SVG inline (se houver imagem)</p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">[NOTA TÉCNICA]: dica...</div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
-<p>solução completa...</p>
-</details>
+  <div class="exercise-number">EXERCÍCIO VECTOR-XY</div>
+  <div class="context">ORIGEM: [Missão/Programa] - [Data/Evento]</div>
+  <p>enunciado com \(math\) e \[equações\]</p>
+  <p>SVG inline (se houver imagem)</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">[NOTA TÉCNICA]: dica...</div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>solução completa...</p>
+  </details>
 </li>
 ```
 
@@ -181,8 +185,8 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 
 ## Tópicos com problemas conhecidos
 
-| Tópico | Problema |
-|--------|----------|
+| Tópico                                    | Problema                                        |
+| ----------------------------------------- | ----------------------------------------------- |
 | cap-6/definicao-e-forma-diferencial-exata | VAZIO — só index.html, sem intro nem exercícios |
-| cap-8/integral-de-superficie | VAZIO — só index.html |
-| cap-9/* (todos os 3 tópicos) | VAZIO — só index.html |
+| cap-8/integral-de-superficie              | VAZIO — só index.html                           |
+| cap-9/\* (todos os 3 tópicos)             | VAZIO — só index.html                           |

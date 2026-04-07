@@ -1,5 +1,7 @@
 # Análise: revisão
+
 ## Justificativas pedagógicas
+
 - EX-01-ALFA: Ensina cálculo básico de divergente e rotacional em campos 2D, interpretação física de combinação de compressão e rotação, e visualização de linhas de fluxo.
 - EX-02-ALFA: Expande para campos 3D, demonstra divergente nulo (preservação de volume) vs rotacional não nulo, e conecta com exemplos cotidianos como redemoinhos.
 - EX-03-ALFA: Introduz campos dependentes do tempo com magnitude constante (rotação rígida), destacando divergente zero e relação entre preservação de área 2D vs volume 3D.
@@ -14,6 +16,7 @@
 - EX-12-OMEGA: Revisa coplanaridade via produto misto, conectando geometria espacial com operações vetoriais.
 
 ## Ordem sugerida
+
 A ordem atual **não é progressiva**. Os exercícios 9-12 (álgebra vetorial básica) deveriam vir antes dos exercícios 1-8 (campos vetoriais avançados). Sugere-se reorganizar:
 
 1. **Pré-requisitos básicos** (atualmente exercícios 9-12): magnitude, produto escalar, produto vetorial, coplanaridade.
@@ -26,6 +29,7 @@ A ordem atual **não é progressiva**. Os exercícios 9-12 (álgebra vetorial b�
 8. **Análise paramétrica** (exercício 8).
 
 ## Gaps identificados
+
 1. **Derivadas parciais**: não há exercícios focados em cálculo de derivadas parciais de funções vetoriais.
 2. **Limites e continuidade**: ausência de exercícios sobre limites de funções vetoriais.
 3. **Coordenadas curvilíneas**: falta de exercícios em coordenadas cilíndricas e esféricas.
@@ -34,6 +38,7 @@ A ordem atual **não é progressiva**. Os exercícios 9-12 (álgebra vetorial b�
 6. **Aplicações espaciais específicas**: faltam exercícios contextualizados na exploração espacial (trajetórias orbitais, campos gravitacionais reais, etc.).
 
 ## Exercícios adicionais sugeridos
+
 1. **EX-REVISAO-13**: Cálculo de derivadas parciais de funções vetoriais em coordenadas cartesianas.
 2. **EX-REVISAO-14**: Avaliação de limites e continuidade de funções vetoriais.
 3. **EX-REVISAO-15**: Conversão de campos entre coordenadas cartesianas, cilíndricas e esféricas.

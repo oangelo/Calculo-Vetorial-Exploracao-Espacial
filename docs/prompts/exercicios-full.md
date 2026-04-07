@@ -1,6 +1,7 @@
 Crie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando EXATAMENTE o template HTML fornecido, com tema de documento sigiloso da Guerra Fria e exploração espacial.
 
 ### IMPORTANTE: RESPEITAR A PROGRESSÃO DOS TÓPICOS
+
 - Os exercícios DEVEM usar APENAS conceitos já abordados até o tópico atual
 - NUNCA antecipe conceitos de tópicos posteriores na progressão do curso
 - Consulte a sequência de tópicos ao final deste prompt
@@ -8,19 +9,22 @@ Crie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPE
 - Relacione o contexto histórico à época apropriada (ex: tópicos iniciais com Sputnik/Mercury, mais avançados com Apollo)
 
 ### IMPORTANTE: USO CORRETO DE FÓRMULAS LATEX
+
 - No corpo do HTML, use APENAS:
-  * `\[fórmula\]` para fórmulas em bloco (display mode)
-  * `\(fórmula\)` para fórmulas inline
+  - `\[fórmula\]` para fórmulas em bloco (display mode)
+  - `\(fórmula\)` para fórmulas inline
 - NUNCA use barras duplas (`\\[` ou `\\(`) no corpo do HTML
 - EXEMPLOS CORRETOS:
-  * Bloco: `<p>\[|\vec{v}| = \sqrt{v_x^2 + v_y^2}\]</p>`
-  * Inline: `<p>O vetor \(\vec{v}\) tem magnitude \(|\vec{v}|\)</p>`
+  - Bloco: `<p>\[|\vec{v}| = \sqrt{v_x^2 + v_y^2}\]</p>`
+  - Inline: `<p>O vetor \(\vec{v}\) tem magnitude \(|\vec{v}|\)</p>`
 - Mesmo que você veja `\\[` na configuração do MathJax, no corpo do HTML use apenas UMA barraCrie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando EXATAMENTE o template HTML fornecido, com tema de documento sigiloso da Guerra Fria e exploração espacial.
 
 ### Estrutura Exata do Documento
+
 Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e estrutura:
 
 1. **Cabeçalho do Documento** (classe "document-header")
+
    - Carimbo "SIGILOSO" (classe "document-stamp")
    - Data e localização (classe "document-date") com partes censuradas
    - Introdução do projeto (classe "document-intro") com nome de projeto fictício
@@ -28,12 +32,14 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Metadados (classe "metadata") com REF, NÍVEL DE ACESSO, CÓPIAS EXISTENTES
 
 2. **Seção de Fundamentação Teórica**
+
    - Título (classe "section-title"): "FUNDAMENTAÇÃO TEÓRICA: [TÓPICO]"
    - Definição formal (classe "concept-definition") com fórmula matemática principal
    - Contextualização na exploração espacial (classe "mission-context")
    - Nota histórica (classe "historical-note")
 
 3. **Lista de Exercícios** (tag main, classe "exercise-list")
+
    - 12 exercícios (classe "exercise-item") em progressão de dificuldade
    - Cada exercício com número, contexto, enunciado, dica (opcional), solução
 
@@ -42,6 +48,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Carimbo "ULTRASSECRETO" (classe "footer-stamp")
 
 ### Requisitos Técnicos Específicos
+
 - Use HTML/CSS EXATAMENTE como no template fornecido
 - Todas as fórmulas matemáticas com LaTeX via MathJax
 - SEMPRE use \vec{} para vetores (ex: \vec{v})
@@ -51,7 +58,9 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
 - NUNCA use o termo "classificado" para sigilo (falso cognato em português)
 
 ### Progressão de 12 Exercícios
+
 1. **Série ALFA (Exercícios 1-3)**
+
    - Nomenclatura: VECTOR-1A, VECTOR-1B, VECTOR-1C
    - Nível: Básico (aplicação direta de conceitos)
    - Dicas: Completas e detalhadas
@@ -59,6 +68,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Use números simples e contextos elementares
 
 2. **Série BETA (Exercícios 4-6)**
+
    - Nomenclatura: VECTOR-2A, VECTOR-2B, VECTOR-2C
    - Nível: Intermediário (múltiplos conceitos combinados)
    - Dicas: Parciais
@@ -66,6 +76,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Problemas com múltiplos passos
 
 3. **Série GAMMA (Exercícios 7-9)**
+
    - Nomenclatura: VECTOR-3A, VECTOR-3B, VECTOR-3C
    - Nível: Avançado (aplicações complexas)
    - Dicas: Mínimas
@@ -80,16 +91,18 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Problemas complexos da exploração espacial
 
 ### Formato Padrão de Cada Exercício
+
 - **Número** (classe "exercise-number"): "EXERCÍCIO VECTOR-XY"
 - **Contexto** (classe "context"): "ORIGEM: [Missão/Programa] - [Data/Evento]"
 - **Enunciado**: Descrição do problema com aplicação prática
 - **Dica** (classe "hint"): "[NOTA TÉCNICA]: [Sugestão]" (omitir para série OMEGA)
 - **Solução** (tags details/summary): Título "RELATÓRIO DE CÁLCULO [SIGMA-X REQUERIDO]"
-  * Dentro da classe "solution": Explicação passo a passo
-  * Fórmulas relevantes em LaTeX
-  * Conclusão ou interpretação dos resultados
+  - Dentro da classe "solution": Explicação passo a passo
+  - Fórmulas relevantes em LaTeX
+  - Conclusão ou interpretação dos resultados
 
 ### Eventos Históricos para Contextualização
+
 - Lançamento do Sputnik (1957) - primeiros tópicos
 - Programa Mercury (1958-1963) - tópicos iniciais
 - Programa Gemini (1965-1966) - tópicos intermediários
@@ -98,6 +111,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
 - Skylab (1973-1979) - tópicos muito avançados
 
 ### Sequência de Tópicos do Curso
+
 0. **Revisão**: Geometria Analítica, Cônicas, Derivadas, Integrais
 
 1. **Funções Vetoriais**:

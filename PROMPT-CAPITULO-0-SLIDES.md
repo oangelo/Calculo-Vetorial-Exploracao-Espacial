@@ -28,12 +28,14 @@ Pasta dos slides: slide-decks/capitulo-0-revisao/
 ## Regras CRÍTICAS (aprendidas na marra)
 
 ### LaTeX — USA EXATAMENTE ASSIM:
+
 - Inline: `\(f(x)\)` — barra simples + parênteses
 - Display: `\[f(x) = c\]` — barra simples + colchetes
 - **NÃO usar** `$...$` nem `$$...$$`
 - **NÃO usar** `\\` (barra dupla) — era `\\vec{v}` no arquivo fonte mas o sed corrompeu
 
 ### Visualizações — SEGUE O PADRÃO EXATO:
+
 ```javascript
 (function () {
   let canvas, ctx, slider;
@@ -64,12 +66,18 @@ Pasta dos slides: slide-decks/capitulo-0-revisao/
 ```
 
 ### HTML dos slides:
+
 ```html
 <section class="math-section">
   <h3>Título</h3>
   <p>Texto com \(inline\) math</p>
   \[equação display\]
-  <canvas id="meu-canvas" class="visualization-canvas" width="500" height="350"></canvas>
+  <canvas
+    id="meu-canvas"
+    class="visualization-canvas"
+    width="500"
+    height="350"
+  ></canvas>
   <div class="controls-container">
     <div class="control-slider">
       <label for="meu-slider">label =</label>
@@ -83,11 +91,13 @@ Pasta dos slides: slide-decks/capitulo-0-revisao/
 ### Inicialização no visualizacoes.js
 
 No handler `Reveal.on('ready', ...)` adicionar:
+
 ```javascript
 if (window.vizMeuNome) window.vizMeuNome.init();
 ```
 
 No handler `Reveal.on('slidechanged', ...)` adicionar:
+
 ```javascript
 if (event.currentSlide.querySelector('#meu-canvas') && window.vizMeuNome) {
   window.vizMeuNome.init();
@@ -148,11 +158,11 @@ if (event.currentSlide.querySelector('#meu-canvas') && window.vizMeuNome) {
 ## Paleta de cores (visualizações)
 
 ```javascript
-const COR_POSICAO = '#1E88E5';    // azul
+const COR_POSICAO = '#1E88E5'; // azul
 const COR_VELOCIDADE = '#43A047'; // verde
 const COR_ACELERACAO = '#E53935'; // vermelho
-const COR_FORCA = '#FFB300';      // amarelo
-const COR_FUNDO = '#0a0a0f';      // fundo escuro
+const COR_FORCA = '#FFB300'; // amarelo
+const COR_FUNDO = '#0a0a0f'; // fundo escuro
 ```
 
 ## Verificação

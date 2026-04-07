@@ -6,12 +6,12 @@
 
 ### Estatísticas Finais
 
-| Item | Quantidade | Status |
-|------|------------|--------|
-| **Total de tópicos** | 48 | ✅ |
-| **Com intro inline** | 43 | ✅ |
-| **Templates vazios** | 5 | ⚠️ Normal |
-| **CSS consistente** | 48 | ✅ |
+| Item                 | Quantidade | Status    |
+| -------------------- | ---------- | --------- |
+| **Total de tópicos** | 48         | ✅        |
+| **Com intro inline** | 43         | ✅        |
+| **Templates vazios** | 5          | ⚠️ Normal |
+| **CSS consistente**  | 48         | ✅        |
 
 ---
 
@@ -32,12 +32,12 @@
         <div class="document-stamp">SIGILOSO</div>
         ...
       </div>
-      
+
       <!-- EXERCÍCIOS (via fetch) -->
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
-      
+
       <!-- FOOTER -->
       <div class="page-number">...</div>
     </div>
@@ -48,11 +48,13 @@
 ### 2. CSS
 
 **Padrão:**
+
 - ✅ 37 arquivos: CSS inline (no `<head>`)
 - ✅ 11 arquivos: CSS externo (`../../styles.css`)
 - ✅ 0 arquivos: caminho errado
 
 **styles.css:**
+
 - ✅ Formato flat (sem nesting)
 - ✅ Todas as classes necessárias
 - ✅ Compatível com todos navegadores
@@ -60,6 +62,7 @@
 ### 3. JavaScript
 
 **Padrão:**
+
 - ✅ Intro: Inline (sem fetch)
 - ✅ Exercícios: Carregam via fetch
 - ✅ MathJax: Re-renderiza após carregar
@@ -140,8 +143,8 @@ Acesse: `http://localhost:8080/capitulo-1/rotacional/`
 
 1. **Abra o index.html** → Carrega intro + exercícios
 2. **Edite intro.html** → Modifica o contexto
-3. **Edite exercicio-*.html** → Modifica exercício específico
-4. **Originais em _backup/** → Referência segura
+3. **Edite exercicio-\*.html** → Modifica exercício específico
+4. **Originais em \_backup/** → Referência segura
 
 ---
 
@@ -165,6 +168,7 @@ Acesse: `http://localhost:8080/capitulo-1/rotacional/`
 **Status:** ✅ **100% PADRONIZADO**
 
 Todos os exercícios seguem o mesmo padrão:
+
 - Intro inline para carregamento imediato
 - Exercícios via fetch para manter modularidade
 - CSS consistente em todos os arquivos

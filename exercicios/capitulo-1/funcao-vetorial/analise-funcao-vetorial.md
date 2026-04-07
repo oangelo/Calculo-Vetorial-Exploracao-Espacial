@@ -18,10 +18,12 @@
 ## Ordem sugerida
 
 A ordem atual (agrupada por dificuldade: alfa, beta, gamma, omega) tem alguns problemas progressivos:
+
 1. EX-03-ALFA (transformações lineares) e EX-04-BETA (campos vetoriais) são conceitos adjacentes, mas não core de "funções vetoriais do tempo".
 2. A progressão dentro de cada grupo nem sempre segue do mais simples ao mais complexo.
 
 **Ordem sugerida para melhor progressão pedagógica:**
+
 1. EX-01-ALFA: Definição e componentes básicas (circular)
 2. EX-06-BETA: Derivação componente a componente (fundamental)
 3. EX-02-ALFA: Avaliação em ponto + derivada (conecta com anterior)
@@ -34,6 +36,7 @@ A ordem atual (agrupada por dificuldade: alfa, beta, gamma, omega) tem alguns pr
 10. EX-12-OMEGA: Espiral logarítmica (conversão polar-paramétrica)
 
 **Exercícios que poderiam ser movidos para outros tópicos:**
+
 - EX-03-ALFA: Transformações lineares → tópico de Álgebra Linear ou Transformações.
 - EX-04-BETA: Campos vetoriais → tópico dedicado a Campos Vetoriais.
 

@@ -8,12 +8,14 @@ O arquivo `styles.css` usava **CSS Nesting** (aninhamento), que não é suportad
 /* ❌ CSS Nesting - não funciona em navegadores antigos */
 .exercise-item {
   background-color: var(--bg-darker);
-  
-  .exercise-number {  /* Aninhado */
+
+  .exercise-number {
+    /* Aninhado */
     color: var(--primary-light);
   }
-  
-  .context {  /* Aninhado */
+
+  .context {
+    /* Aninhado */
     color: var(--text-faded);
   }
 }
@@ -55,6 +57,7 @@ Convertido para **CSS Flat** (formato plano):
 ## 🧪 Teste
 
 Acesse novamente:
+
 ```
 http://localhost:8080/capitulo-1/rotacional/
 http://localhost:8080/capitulo-0/conicas/

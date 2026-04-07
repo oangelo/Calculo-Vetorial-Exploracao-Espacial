@@ -36,12 +36,14 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
 **Sub-seções (vertical):**
 
 1. **Coordenadas no Espaço 3D**
+
    - Sistema de coordenadas cartesianas
    - Distância: \(d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}\)
    - Esfera: \((x-a)^2 + (y-b)^2 + (z-c)^2 = r^2\)
    - Contexto: Posicionamento de satélites, GPS rudimentar
 
 2. **Vetores: Fundamentos**
+
    - Definição: magnitude e direção
    - Notação: \(\vec{v} = \langle v_x, v_y, v_z \rangle\)
    - Vetor unitário: \(\hat{v} = \frac{\vec{v}}{|\vec{v}|}\)
@@ -49,13 +51,15 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
    - Contexto: Vetores deslocamento em missões espaciais
 
 3. **Produto Escalar**
+
    - Definição: \(\vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z\)
    - Interpretação geométrica: \(|\vec{u}||\vec{v}|\cos\theta\)
-   - Projeção: \(\text{proj}_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{|\vec{v}|^2}\vec{v}\)
+   - Projeção: \(\text{proj}\_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{|\vec{v}|^2}\vec{v}\)
    - Ortogonalidade: \(\vec{u} \cdot \vec{v} = 0 \iff \vec{u} \perp \vec{v}\)
    - Contexto: Cálculo de trabalho (força × deslocamento), ângulo de reentrada
 
 4. **Produto Vetorial**
+
    - Definição via determinante
    - Regra da mão direita
    - Propriedades: anticomutatividade, \(|\vec{u} \times \vec{v}| = |\vec{u}||\vec{v}|\sin\theta\)
@@ -64,6 +68,7 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
    - Contexto: Torque, momento angular, rotação de módulos espaciais
 
 5. **Retas no Espaço**
+
    - Forma vetorial: \(\vec{r}(t) = \vec{r_0} + t\vec{d}\)
    - Forma paramétrica: \(x = x_0 + at, \quad y = y_0 + bt, \quad z = z_0 + ct\)
    - Intersecção de retas (ou verificar se são paralelas/esquew)
@@ -76,6 +81,7 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
    - Contexto: Planos de acoplamento, janelas de lançamento
 
 **Visualizações propostas (Canvas 2D):**
+
 - Vetores no plano (arrastáveis)
 - Demonstração do produto escalar (ângulo mudando)
 - Produto vetorial e regra da mão direita
@@ -89,16 +95,19 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
 **Sub-seções (vertical):**
 
 1. **Seções Cônicas: Motivação**
+
    - Intersecção cone-plano
    - Curvas de nível de funções quadráticas
    - Contexto: Órbitas planetárias (Kepler)
 
 2. **Elipse**
+
    - Equação padrão: \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)
    - Focos, excentricidade
    - Contexto: Órbitas de planetas e satélites
 
 3. **Parábola**
+
    - Equação padrão: \(y^2 = 4px\) ou \(x^2 = 4py\)
    - Foco e diretriz
    - Contexto: Trajetórias balísticas, antenas parabólicas
@@ -109,6 +118,7 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
    - Contexto: Trajetórias hiperbólicas (sondas interplanetárias)
 
 **Visualizações propostas (Canvas 2D):**
+
 - Elipse com focos animados
 - Parábola com foco e diretriz
 - Hipérbole com assíntotas
@@ -131,12 +141,12 @@ Referências: APEX Calculus (UND), MIT 18.02SC, Stewart Calculus, Khan Academy, 
 
 ## Arquivos a Criar/Modificar
 
-| Arquivo | Ação |
-|---------|------|
-| `03-geometria-analitica.html` | CRIAR |
-| `04-conicas.html` | CRIAR |
-| `index.html` | MODIFICAR (nova ordem) |
-| `visualizacoes.js` | ADICIONAR novas visualizações |
+| Arquivo                       | Ação                          |
+| ----------------------------- | ----------------------------- |
+| `03-geometria-analitica.html` | CRIAR                         |
+| `04-conicas.html`             | CRIAR                         |
+| `index.html`                  | MODIFICAR (nova ordem)        |
+| `visualizacoes.js`            | ADICIONAR novas visualizações |
 
 ## Requisitos Técnicos
 

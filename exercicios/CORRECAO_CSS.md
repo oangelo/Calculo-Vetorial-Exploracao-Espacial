@@ -5,12 +5,13 @@
 Alguns exercícios não estavam carregando o CSS corretamente.
 
 ### Causa
+
 Caminho relativo incorreto no `index.html`:
 
 ```
 ❌ href="../styles.css"
    → Resolve para: capitulo-N/styles.css (NÃO EXISTE)
-   
+
 ✅ href="../../styles.css"
    → Resolve para: exercicios/styles.css (EXISTE)
 ```
@@ -24,6 +25,7 @@ Caminho relativo incorreto no `index.html`:
 3. **capitulo-1/rotacional/index.html**
 
 **Comando usado:**
+
 ```bash
 sed -i 's|href="../styles.css"|href="../../styles.css"|g' [arquivos]
 ```
@@ -33,12 +35,14 @@ sed -i 's|href="../styles.css"|href="../../styles.css"|g' [arquivos]
 ## 📊 Sobre a Fundamentação Teórica
 
 ### Arquivos COM teoria (originam tinham):
+
 - ✅ geometria-analitica (80 linhas de intro)
 - ✅ derivadas
 - ✅ integrais
 - ✅ campo-vetorial
 
 ### Arquivos SEM teoria (originais não tinham):
+
 - ⚠️ rotacional (só document-header)
 - ⚠️ conicas (só document-header)
 - ⚠️ funcao-vetorial (só document-header)
@@ -63,6 +67,7 @@ sed -i 's|href="../styles.css"|href="../../styles.css"|g' [arquivos]
 ### Teste no navegador:
 
 **Antes com problema (agora funcionando):**
+
 ```
 http://localhost:8080/capitulo-1/rotacional/
 http://localhost:8080/capitulo-0/conicas/
@@ -70,6 +75,7 @@ http://localhost:8080/capitulo-1/funcao-vetorial/
 ```
 
 **Sempre funcionaram:**
+
 ```
 http://localhost:8080/capitulo-0/geometria-analitica/
 http://localhost:8080/capitulo-1/campo-vetorial/
@@ -77,6 +83,7 @@ http://localhost:8080/capitulo-0/integrais/
 ```
 
 ### Verificar se aparece:
+
 - ✅ Papel envelhecido (bege)
 - ✅ Bordas douradas
 - ✅ Carimbo "SIGILOSO"
@@ -88,11 +95,11 @@ http://localhost:8080/capitulo-0/integrais/
 
 ## 📈 Estatísticas
 
-| Tipo de CSS | Quantidade |
-|-------------|------------|
-| CSS inline (`<style>`) | 37 arquivos |
-| CSS externo (`../../styles.css`) | 11 arquivos |
-| **Total de index.html** | **48 arquivos** |
+| Tipo de CSS                      | Quantidade      |
+| -------------------------------- | --------------- |
+| CSS inline (`<style>`)           | 37 arquivos     |
+| CSS externo (`../../styles.css`) | 11 arquivos     |
+| **Total de index.html**          | **48 arquivos** |
 
 ---
 

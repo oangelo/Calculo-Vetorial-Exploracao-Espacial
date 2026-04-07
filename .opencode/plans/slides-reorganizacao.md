@@ -417,18 +417,18 @@ git push origin main
 
 Todos os 10 capítulos foram modularizados com sucesso:
 
-| Capítulo | Pasta | Estrutura | Status |
-|----------|-------|-----------|--------|
-| 0 | capitulo-0-revisao/ | 6 seções + JS + loader | ✅ |
-| 1 | capitulo-1-funcoes-vetoriais/ | 7 seções + JS + loader | ✅ |
-| 2 | capitulo-2-integrais-duplas/ | 8 seções + JS + loader | ✅ |
-| 3 | capitulo-3-mudanca-de-variaveis/ | 6 seções + JS + loader | ✅ |
-| 4 | capitulo-4-integrais-triplas/ | 3 arquivos + loader | ✅ |
-| 5 | capitulo-5-integrais-de-linha/ | 9 seções + JS + loader | ✅ |
-| 6 | capitulo-6-campos-conservativos/ | 7 seções + loader | ✅ |
-| 7 | capitulo-7-teorema-de-green/ | 7 seções + CSS + JS + loader | ✅ |
-| 8 | capitulo-8-integral-de-superficie/ | arquivo completo | ✅ |
-| 9 | capitulo-9-teorema-da-divergencia/ | arquivo completo | ✅ |
+| Capítulo | Pasta                              | Estrutura                    | Status |
+| -------- | ---------------------------------- | ---------------------------- | ------ |
+| 0        | capitulo-0-revisao/                | 6 seções + JS + loader       | ✅     |
+| 1        | capitulo-1-funcoes-vetoriais/      | 7 seções + JS + loader       | ✅     |
+| 2        | capitulo-2-integrais-duplas/       | 8 seções + JS + loader       | ✅     |
+| 3        | capitulo-3-mudanca-de-variaveis/   | 6 seções + JS + loader       | ✅     |
+| 4        | capitulo-4-integrais-triplas/      | 3 arquivos + loader          | ✅     |
+| 5        | capitulo-5-integrais-de-linha/     | 9 seções + JS + loader       | ✅     |
+| 6        | capitulo-6-campos-conservativos/   | 7 seções + loader            | ✅     |
+| 7        | capitulo-7-teorema-de-green/       | 7 seções + CSS + JS + loader | ✅     |
+| 8        | capitulo-8-integral-de-superficie/ | arquivo completo             | ✅     |
+| 9        | capitulo-9-teorema-da-divergencia/ | arquivo completo             | ✅     |
 
 ### Documentação Atualizada
 
@@ -448,4 +448,3 @@ Todos os 10 capítulos foram modularizados com sucesso:
 - [ ] Testar todos os loaders no navegador
 - [ ] Remover arquivos .backup após validação completa
 - [ ] Otimizar capítulos 8 e 9 (dividir em seções menores se necessário)
-
