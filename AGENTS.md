@@ -1,311 +1,149 @@
-# Guia para Agentes de IA - Exercícios de Sala
+# Guia para Agentes de IA - Cálculo Vetorial Espacial
 
-## Visão Geral
-
-**Exercícios de sala** são folhas A4 coluna dupla para resolução em aula, com:
-
-- Diálogo guiado (baby steps)
-- Lacunas para preencher
-- Sem tema narrativo (diferente dos exercícios de casa)
-
-**Características:**
-
-- Objetivo e direto
-- Foco em reforço do conteúdo
-- Perguntas que levam o aluno a pensar
-- Checkpoints de verificação
-
-## Estrutura de Arquivos
-
-```
-sala/
-├── capitulo-0-revisao/
-│   ├── index.html              # Monta a folha final
-│   ├── exercicio-1.html       # Fragmento HTML
-│   ├── exercicio-2.html
-│   ├── exercicio-3.html
-│   ├── exercicio-4.html
-│   ├── exercicio-5.html
-│   └── exercicio-6.html
-├── capitulo-1-funcoes-vetoriais/
-│   ├── index.html
-│   └── exercicio-*.html
-├── ...
-├── sala-template.html          # Template para novos exercícios
-└── sala-styles.css             # CSS compartilhado
-```
-
-## Como Funciona
-
-### Montagem (index.html)
-
-O arquivo `index.html` usa JavaScript `fetch()` para carregar os exercícios:
-
-```javascript
-const EXERCICIOS = [
-  'exercicio-1.html',
-  'exercicio-2.html',
-  // ... na ordem desejada
-];
-
-async function carregarExercicios() {
-  const container = document.getElementById('exercicios-container');
-
-  for (const arquivo of EXERCICIOS) {
-    const response = await fetch(arquivo);
-    const html = await response.text();
-    container.insertAdjacentHTML('beforeend', html);
-  }
-
-  // Renderiza matemática após carregar todos
-  renderMathInElement(document.body, {...});
-}
-```
-
-**Vantagens:**
-
-- Reordenar exercícios = mudar a lista
-- Remover exercício = tirar da lista
-- Editar um exercício = modificar apenas aquele arquivo
-
-### Exercício Individual (exercicio-N.html)
-
-Cada exercício é um **fragmento HTML** (sem `<html>`, `<head>`, `<body>`):
-
-```html
-<section class="exercicio" data-topico="retas" data-dificuldade="medio">
-  <p class="exercicio-enunciado">
-    <span class="exercicio-numero">1.</span>
-    Enunciado do exercício.
-  </p>
-
-  <p class="questao">Pergunta principal.</p>
-  <p class="dialogo">Texto explicativo.</p>
-  <p class="subitem">a) Item: <span class="lacuna"></span></p>
-  <p class="subitem">b) Item: <span class="lacuna"></span></p>
-  <p class="dica">Dica opcional.</p>
-  <p class="checkpoint">
-    <span class="checkmark"></span>
-    Verificação.
-  </p>
-</section>
-```
-
-## Metadados (data-attributes)
-
-Atributos opcionais no `<section>`:
-
-| Atributo           | Valores                                      | Descrição            |
-| ------------------ | -------------------------------------------- | -------------------- |
-| `data-topico`      | `retas`, `circunferencia`, `integrais`, etc. | Tópico matemático    |
-| `data-dificuldade` | `facil`, `medio`, `dificil`                  | Nível de dificuldade |
-
-## Classes CSS Disponíveis
-
-### Exercício
-
-```html
-<section class="exercicio">
-  <p class="exercicio-enunciado">
-    <span class="exercicio-numero">N.</span>
-    Texto do enunciado.
-  </p>
-</section>
-```
-
-### Questão
-
-```html
-<p class="questao">Pergunta que o aluno deve responder.</p>
-```
-
-### Diálogo
-
-```html
-<p class="dialogo">Texto explicativo que guia o aluno.</p>
-```
-
-### Subitens
-
-```html
-<p class="subitem">a) Passo: <span class="lacuna"></span></p>
-<p class="subitem">b) Passo: <span class="lacuna"></span></p>
-```
-
-### Lacunas
-
-```html
-<!-- Inline -->
-<span class="lacuna"></span>
-
-<!-- Bloco (linha inteira) -->
-<span class="lacuna-grande"></span>
-```
-
-### Fórmula Destacada
-
-```html
-<p class="formula">$$\int_a^b f(x)\,dx = F(b) - F(a)$$</p>
-```
-
-**IMPORTANTE:** Não coloque `<span class="lacuna">` dentro de equações LaTeX. Use texto simples para fórmulas com lacunas.
-
-### Dica
-
-```html
-<p class="dica">Texto de ajuda para o aluno.</p>
-```
-
-### Checkpoint
-
-```html
-<p class="checkpoint">
-  <span class="checkmark"></span>
-  Verificação: o resultado faz sentido?
-</p>
-```
-
-## Matemática
-
-**KaTeX** (não MathJax) para renderização.
-
-- Inline: `$...$`
-- Bloco: `$$...$$`
-
-**Variáveis simples:** Use `<strong>` em vez de LaTeX:
-
-- `<strong>x</strong>` em vez de `$x$`
-- `<strong>v⃗</strong>` em vez de `$\vec{v}$`
-
-Isso melhora performance e evita problemas com lacunas.
-
-## Quantidade de Exercícios
-
-- **4-6 exercícios por folha**
-- **2-4 questões por exercício**
-- **2-4 subitens por questão**
-- **Total: ~15-25 interações**
-
-## Nível de Dificuldade
-
-**Reforço:** aluno já viu o conteúdo em aula.
-
-- Não explicar conceitos do zero
-- Focar em aplicação
-- Fazer perguntas que levam ao raciocínio
-- Checkpoints para auto-verificação
-
-## Estilo de Diálogo
-
-**Objetivo:** Guiar o aluno sem dar a resposta diretamente.
-
-**Exemplos:**
-
-❌ **Errado (muito óbvio):**
-
-> O vetor perpendicular a (a, b) é (-b, a). Escreva o vetor perpendicular.
-
-✅ **Certo (guia o pensamento):**
-
-> O produto escalar de dois vetores perpendiculares é zero. Como escolher as coordenadas de um vetor para que o produto escalar seja zero?
-
-## Fluxo de Criação
-
-### Criar Novo Capítulo
-
-1. Criar pasta: `sala/capitulo-N-nome/`
-2. Criar `index.html` (copiar de capítulo existente ou template)
-3. Criar `exercicio-1.html` a `exercicio-6.html`
-4. Atualizar lista `EXERCICIOS` no `index.html`
-5. Testar no navegador
-
-### Criar/Editar Exercício
-
-1. Abrir `exercicio-N.html`
-2. Seguir a estrutura de classes CSS
-3. Usar `<strong>` para variáveis simples
-4. Usar LaTeX apenas para fórmulas complexas
-5. Incluir `data-topico` e `data-dificuldade`
-
-### Reordenar Exercícios
-
-Basta mudar a ordem no array `EXERCICIOS` em `index.html`:
-
-```javascript
-const EXERCICIOS = [
-  'exercicio-3.html', // Mudou ordem
-  'exercicio-1.html',
-  'exercicio-2.html',
-  // ...
-];
-```
-
-## Teste
+## Comandos Principais
 
 ```bash
-# Navegar para a pasta do capítulo
-cd sala/capitulo-N-nome/
+# Formatação (Prettier)
+npm run format              # Formata todos os arquivos
 
-# Iniciar servidor local
-python3 -m http.server 8080
+# Linting HTML
+npm run lint:html           # Valida HTML com HTMLHint
 
-# Abrir no navegador
-firefox http://localhost:8080
+# Servidor local para teste
+python3 -m http.server 8080  # Inicia servidor na porta 8080
 
-# Testar impressão (Ctrl+P ou Cmd+P)
+# Instalar dependências
+npm install                 # Instala husky + prettier
 ```
 
-## Exemplo Completo
+**Não há testes automatizados.** Teste manualmente abrindo no navegador (Firefox recomendado).
 
-```html
-<!-- exercicio-1.html -->
-<section class="exercicio" data-topico="retas" data-dificuldade="medio">
-  <p class="exercicio-enunciado">
-    <span class="exercicio-numero">1.</span>
-    Considere os pontos A(1, 2) e B(4, 8).
-  </p>
+## Estrutura do Projeto
 
-  <p class="questao">
-    Encontre o vetor diretor da reta que passa por esses dois pontos.
-  </p>
-
-  <p class="dialogo">
-    Para ir do ponto A até o ponto B, precisamos saber quanto nos deslocamos em
-    cada direção.
-  </p>
-
-  <p class="subitem">
-    a) O deslocamento em <strong>x</strong> é: <strong>Δx</strong> =
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    b) O deslocamento em <strong>y</strong> é: <strong>Δy</strong> =
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    c) O vetor diretor é: <strong>v⃗</strong> = (<span class="lacuna"></span>,
-    <span class="lacuna"></span>)
-  </p>
-
-  <p class="questao">Encontre a equação paramétrica dessa reta.</p>
-
-  <p class="dialogo">
-    A equação paramétrica descreve todos os pontos da reta usando um parâmetro
-    <strong>t</strong>.
-  </p>
-
-  <p class="subitem">
-    a) Usando A como ponto inicial: <strong>r(t)</strong> = A + t v⃗
-  </p>
-  <p class="subitem">
-    b) Em coordenadas: <strong>r(t)</strong> = (1, 2) + t(<span
-      class="lacuna"
-    ></span
-    >, <span class="lacuna"></span>)
-  </p>
-  <p class="subitem">
-    c) Componentes: <strong>x(t)</strong> = <span class="lacuna"></span>,
-    <strong>y(t)</strong> = <span class="lacuna"></span>
-  </p>
-</section>
 ```
+├── exercicios/          # Exercícios de casa (tema espacial)
+├── sala/                # Exercícios de sala (resolução em aula)
+├── slide-decks/         # Apresentações Reveal.js
+├── provas/              # Provas e avaliações
+├── visualizacao/        # Visualizações interativas
+├── docs/                # Documentação e prompts
+├── sala-styles.css      # CSS compartilhado (sala)
+└── sala-template.html   # Template para exercícios de sala
+```
+
+## Estilo de Código
+
+### Formatação
+
+- **Prettier** com: 2 espaços, aspas simples, semicolons, trailing comma (es5)
+- Execute `npm run format` antes de commitar
+
+### HTML
+
+- Fragmentos HTML sem `<html>`, `<head>`, `<body>` para exercícios individuais
+- Use classes CSS definidas (veja abaixo)
+- Atributos `data-topico` e `data-dificuldade` em `<section>`
+
+### JavaScript
+
+- Funções simples, sem frameworks
+- IIFE para visualizações canvas
+- Cleanup ao mudar de slide/contexto
+
+### Matemática
+
+- **Sala:** KaTeX com `$...$` (inline) e `$$...$$` (bloco)
+- **Exercícios/Slides:** MathJax com `\(inline\)` e `\[bloco\]`
+- Use `<strong>` para variáveis simples em vez de LaTeX
+- **NUNCA** coloque `<span class="lacuna">` dentro de equações LaTeX
+
+## Convenções de Nomenclatura
+
+| Tipo       | Padrão                         | Exemplo               |
+| ---------- | ------------------------------ | --------------------- |
+| Pastas     | `capitulo-N-nome/`             | `capitulo-0-revisao/` |
+| Exercícios | `exercicio-N.html`             | `exercicio-1.html`    |
+| Slides     | `01-titulo.html`, `index.html` | `02-introducao.html`  |
+| CSS        | `styles.css`, `*-theme.css`    | `space-theme.css`     |
+
+## Classes CSS (Exercícios de Sala)
+
+| Classe                | Uso                          |
+| --------------------- | ---------------------------- |
+| `exercicio`           | Container principal          |
+| `exercicio-enunciado` | Texto do problema            |
+| `exercicio-numero`    | Número do exercício          |
+| `questao`             | Pergunta principal           |
+| `dialogo`             | Texto explicativo guiado     |
+| `subitem`             | Itens a), b), c)             |
+| `lacuna`              | Espaço inline para preencher |
+| `lacuna-grande`       | Espaço grande para resposta  |
+| `formula`             | Fórmula destacada            |
+| `dica`                | Dica opcional                |
+| `checkpoint`          | Verificação com checkmark    |
+
+## Diretrizes de Conteúdo
+
+### Exercícios de Sala
+
+- 4-6 exercícios por folha
+- 2-4 questões por exercício
+- 2-4 subitens por questão
+- Total: ~15-25 interações
+- Diálogo guiado, não dar respostas diretas
+- Checkpoints para auto-verificação
+
+### Exercícios de Casa
+
+- 12 exercícios (níveis: ALFA, BETA, GAMMA, OMEGA)
+- Tema narrativo espacial
+- 8-10 partes censuradas com `.censored`
+- Contexto histórico
+
+### Slides (Reveal.js)
+
+- Máximo 250 palavras/slide
+- 2-3 fórmulas complexas máximo
+- Canvas 2D para visualizações
+- Classes: `math-section`, `history-section`, `visualization-canvas`
+
+## Fluxo de Trabalho
+
+### Criar Exercício de Sala
+
+1. Criar pasta: `sala/capitulo-N-nome/`
+2. Copiar `index.html` de capítulo existente
+3. Criar `exercicio-1.html` a `exercicio-6.html`
+4. Atualizar array `EXERCICIOS` no `index.html`
+5. Testar: `python3 -m http.server 8080` → Firefox
+
+### Criar Slide
+
+1. Usar template em `slide-decks/template.html`
+2. Estrutura: `01-titulo.html`, `02-introducao.html`, etc.
+3. Incluir `index.html` como entry point
+4. Testar navegação horizontal/vertical
+
+### Git
+
+```bash
+git checkout -b feature/nome-da-feature
+# Fazer alterações
+npm run format
+git add .
+git commit -m "Descrição clara da mudança"
+git push origin feature/nome-da-feature
+```
+
+## Teste Manual
+
+1. Abrir no Firefox: `firefox arquivo.html`
+2. Verificar: CSS carregou, matemática renderizou, interatividade funciona
+3. Para impressão: Ctrl+P → verificar layout A4
+
+## Recursos
+
+- `/docs/workflow.md` - Processo detalhado
+- `/docs/prompts/` - Prompts para geração
+- `/docs/css/themes.md` - Documentação CSS
+- `/CONTRIBUTING.md` - Guia de contribuição
