@@ -1603,16 +1603,27 @@ const COR_UNITARIO = '#FFFFFF';
 
   function init() {
     canvas = document.getElementById('coordenadas-3d');
-    if (!canvas) { console.log('canvas coordenadas-3d não encontrado'); return; }
+    if (!canvas) {
+      console.log('canvas coordenadas-3d não encontrado');
+      return;
+    }
     ctx = canvas.getContext('2d');
-    if (!ctx) { console.log('context 2d não disponível'); return; }
+    if (!ctx) {
+      console.log('context 2d não disponível');
+      return;
+    }
     slider = document.getElementById('coord3d-rot');
     if (slider) {
-      slider.addEventListener('input', function() {
+      slider.addEventListener('input', function () {
         draw();
       });
     }
-    console.log('coordenadas-3d init OK, canvas:', canvas.width, 'x', canvas.height);
+    console.log(
+      'coordenadas-3d init OK, canvas:',
+      canvas.width,
+      'x',
+      canvas.height
+    );
     draw();
   }
 
@@ -1631,7 +1642,7 @@ const COR_UNITARIO = '#FFFFFF';
     function proj(x, y, z) {
       return {
         x: cx + (x - y) * Math.cos(rad) * 60,
-        y: cy - z * 50 + (x + y) * Math.sin(rad) * 20
+        y: cy - z * 50 + (x + y) * Math.sin(rad) * 20,
       };
     }
 
@@ -1643,50 +1654,85 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(79,195,247,0.15)';
     ctx.lineWidth = 0.5;
     for (let i = -3; i <= 3; i++) {
-      let s = proj(i, -3, 0), e = proj(i, 3, 0);
-      ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(e.x, e.y); ctx.stroke();
-      s = proj(-3, i, 0); e = proj(3, i, 0);
-      ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(e.x, e.y); ctx.stroke();
+      let s = proj(i, -3, 0),
+        e = proj(i, 3, 0);
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(e.x, e.y);
+      ctx.stroke();
+      s = proj(-3, i, 0);
+      e = proj(3, i, 0);
+      ctx.beginPath();
+      ctx.moveTo(s.x, s.y);
+      ctx.lineTo(e.x, e.y);
+      ctx.stroke();
     }
 
     const o = proj(0, 0, 0);
 
     // Eixo X - azul
     let p = proj(2.5, 0, 0);
-    ctx.strokeStyle = '#1E88E5'; ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(p.x, p.y); ctx.stroke();
-    ctx.fillStyle = '#1E88E5'; ctx.font = 'bold 20px Arial';
+    ctx.strokeStyle = '#1E88E5';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(o.x, o.y);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    ctx.fillStyle = '#1E88E5';
+    ctx.font = 'bold 20px Arial';
     ctx.fillText('x', p.x + 8, p.y + 5);
 
     // Eixo Y - verde
     p = proj(0, 2.5, 0);
     ctx.strokeStyle = '#43A047';
-    ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(o.x, o.y);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
     ctx.fillStyle = '#43A047';
     ctx.fillText('y', p.x + 8, p.y + 5);
 
     // Eixo Z - vermelho
     p = proj(0, 0, 2.5);
     ctx.strokeStyle = '#E53935';
-    ctx.beginPath(); ctx.moveTo(o.x, o.y); ctx.lineTo(p.x, p.y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(o.x, o.y);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
     ctx.fillStyle = '#E53935';
     ctx.fillText('z', p.x + 5, p.y - 10);
 
     // Ponto P(2,1,1.5)
     const pp = proj(2, 1, 1.5);
     ctx.fillStyle = '#FFB300';
-    ctx.beginPath(); ctx.arc(pp.x, pp.y, 8, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#fff'; ctx.font = '14px Arial';
+    ctx.beginPath();
+    ctx.arc(pp.x, pp.y, 8, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#fff';
+    ctx.font = '14px Arial';
     ctx.fillText('P(2,1,1.5)', pp.x + 12, pp.y - 5);
 
     // Linhas pontilhadas até eixos
     ctx.setLineDash([4, 4]);
-    ctx.strokeStyle = 'rgba(255,179,0,0.5)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,179,0,0.5)';
+    ctx.lineWidth = 1;
     const pxy = proj(2, 1, 0);
-    ctx.beginPath(); ctx.moveTo(pp.x, pp.y); ctx.lineTo(pxy.x, pxy.y); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(pxy.x, pxy.y); ctx.lineTo(proj(2,0,0).x, proj(2,0,0).y); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(pxy.x, pxy.y); ctx.lineTo(proj(0,1,0).x, proj(0,1,0).y); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(pp.x, pp.y); ctx.lineTo(proj(0,0,1.5).x, proj(0,0,1.5).y); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(pp.x, pp.y);
+    ctx.lineTo(pxy.x, pxy.y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(pxy.x, pxy.y);
+    ctx.lineTo(proj(2, 0, 0).x, proj(2, 0, 0).y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(pxy.x, pxy.y);
+    ctx.lineTo(proj(0, 1, 0).x, proj(0, 1, 0).y);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(pp.x, pp.y);
+    ctx.lineTo(proj(0, 0, 1.5).x, proj(0, 0, 1.5).y);
+    ctx.stroke();
     ctx.setLineDash([]);
 
     const span = document.getElementById('coord3d-rot-value');
@@ -1729,33 +1775,55 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -5; x <= 5; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -3; y <= 3; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.5)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Vetor
     const endX = cx + vx * scale;
     const endY = cy - vy * scale;
     ctx.strokeStyle = COR_POSICAO;
     ctx.lineWidth = 3;
-    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(endX, endY); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(endX, endY);
+    ctx.stroke();
 
     // Seta
     const angle = Math.atan2(cy - endY, endX - cx);
     ctx.fillStyle = COR_POSICAO;
     ctx.beginPath();
     ctx.moveTo(endX, endY);
-    ctx.lineTo(endX - 10 * Math.cos(angle - 0.4), endY + 10 * Math.sin(angle - 0.4));
-    ctx.lineTo(endX - 10 * Math.cos(angle + 0.4), endY + 10 * Math.sin(angle + 0.4));
-    ctx.closePath(); ctx.fill();
+    ctx.lineTo(
+      endX - 10 * Math.cos(angle - 0.4),
+      endY + 10 * Math.sin(angle - 0.4)
+    );
+    ctx.lineTo(
+      endX - 10 * Math.cos(angle + 0.4),
+      endY + 10 * Math.sin(angle + 0.4)
+    );
+    ctx.closePath();
+    ctx.fill();
 
     // Labels
     const mag = Math.sqrt(vx * vx + vy * vy);
@@ -1804,21 +1872,35 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -5; x <= 5; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -4; y <= 4; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.4)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Reta: r(t) = r0 + t*d, com r0=(1,1), d=(2,1)
-    const r0x = 1, r0y = 1;
-    const dx = 2, dy = 1;
+    const r0x = 1,
+      r0y = 1;
+    const dx = 2,
+      dy = 1;
 
     // Desenhar reta completa (linha tracejada)
     ctx.strokeStyle = 'rgba(79,195,247,0.3)';
@@ -1847,7 +1929,11 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.arc(cx + rx * scale, cy - ry * scale, 6, 0, Math.PI * 2);
     ctx.fill();
     ctx.fillStyle = '#e0e0e0';
-    ctx.fillText(`r(${t.toFixed(1)})`, cx + rx * scale + 8, cy - ry * scale - 8);
+    ctx.fillText(
+      `r(${t.toFixed(1)})`,
+      cx + rx * scale + 8,
+      cy - ry * scale - 8
+    );
 
     // Vetor direção
     ctx.strokeStyle = COR_ACELERACAO;
@@ -1858,13 +1944,20 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.moveTo(cx + r0x * scale, cy - r0y * scale);
     ctx.lineTo(dEndX, dEndY);
     ctx.stroke();
-    const angle = Math.atan2(-(dy), dx);
+    const angle = Math.atan2(-dy, dx);
     ctx.fillStyle = COR_ACELERACAO;
     ctx.beginPath();
     ctx.moveTo(dEndX, dEndY);
-    ctx.lineTo(dEndX - 8 * Math.cos(angle - 0.4), dEndY - 8 * Math.sin(angle - 0.4));
-    ctx.lineTo(dEndX - 8 * Math.cos(angle + 0.4), dEndY - 8 * Math.sin(angle + 0.4));
-    ctx.closePath(); ctx.fill();
+    ctx.lineTo(
+      dEndX - 8 * Math.cos(angle - 0.4),
+      dEndY - 8 * Math.sin(angle - 0.4)
+    );
+    ctx.lineTo(
+      dEndX - 8 * Math.cos(angle + 0.4),
+      dEndY - 8 * Math.sin(angle + 0.4)
+    );
+    ctx.closePath();
+    ctx.fill();
     ctx.fillText('d⃗', dEndX + 5, dEndY - 5);
 
     // Labels
@@ -1896,24 +1989,24 @@ const COR_UNITARIO = '#FFFFFF';
     canvas = document.getElementById('plano-espaco');
     if (!canvas) return;
     ctx = canvas.getContext('2d');
-    
+
     sliderA = document.getElementById('plano-a');
     sliderB = document.getElementById('plano-b');
     sliderC = document.getElementById('plano-c');
-    
+
     if (sliderA) sliderA.addEventListener('input', draw);
     if (sliderB) sliderB.addEventListener('input', draw);
     if (sliderC) sliderC.addEventListener('input', draw);
-    
+
     // Controles de rotação com mouse
     canvas.addEventListener('mousedown', onMouseDown);
     canvas.addEventListener('mousemove', onMouseMove);
     canvas.addEventListener('mouseup', onMouseUp);
     canvas.addEventListener('mouseleave', onMouseUp);
-    
+
     // Instrução visível
     canvas.title = 'Clique e arraste para rotacionar a vista 3D';
-    
+
     draw();
   }
 
@@ -1941,35 +2034,38 @@ const COR_UNITARIO = '#FFFFFF';
     const w = canvas.width;
     const h = canvas.height;
     ctx.clearRect(0, 0, w, h);
-    
+
     // Fundo
     ctx.fillStyle = '#0a0a0f';
     ctx.fillRect(0, 0, w, h);
-    
+
     const a = parseFloat(sliderA ? sliderA.value : 1);
     const b = parseFloat(sliderB ? sliderB.value : 1);
     const c = parseFloat(sliderC ? sliderC.value : 1);
-    
+
     const cx = w / 2;
     const cy = h / 2;
     const scale = 40;
-    
+
     // Projeção 3D
     function proj(x, y, z) {
       return {
         x: cx + (x - y) * Math.cos(rotationAngle) * scale,
-        y: cy - z * scale * 0.8 + (x + y) * Math.sin(rotationAngle) * scale * 0.3
+        y:
+          cy -
+          z * scale * 0.8 +
+          (x + y) * Math.sin(rotationAngle) * scale * 0.3,
       };
     }
-    
+
     // Grid de fundo no plano XY
     ctx.strokeStyle = 'rgba(79,195,247,0.08)';
     ctx.lineWidth = 0.5;
     for (let i = -5; i <= 5; i++) {
       for (let j = -5; j <= 5; j++) {
         const p1 = proj(i, j, 0);
-        const p2 = proj(i+1, j, 0);
-        const p3 = proj(i, j+1, 0);
+        const p2 = proj(i + 1, j, 0);
+        const p3 = proj(i, j + 1, 0);
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
@@ -1980,9 +2076,9 @@ const COR_UNITARIO = '#FFFFFF';
         ctx.stroke();
       }
     }
-    
+
     const origin = proj(0, 0, 0);
-    
+
     // Eixos 3D
     // Eixo X - azul
     const xAxis = proj(3, 0, 0);
@@ -1995,7 +2091,7 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.fillStyle = '#1E88E5';
     ctx.font = 'bold 16px Arial';
     ctx.fillText('x', xAxis.x + 8, xAxis.y + 5);
-    
+
     // Eixo Y - verde
     const yAxis = proj(0, 3, 0);
     ctx.strokeStyle = '#43A047';
@@ -2005,7 +2101,7 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.stroke();
     ctx.fillStyle = '#43A047';
     ctx.fillText('y', yAxis.x + 8, yAxis.y + 5);
-    
+
     // Eixo Z - vermelho
     const zAxis = proj(0, 0, 3);
     ctx.strokeStyle = '#E53935';
@@ -2015,88 +2111,119 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.stroke();
     ctx.fillStyle = '#E53935';
     ctx.fillText('z', zAxis.x + 5, zAxis.y - 10);
-    
+
     // Calcular vetor normal normalizado
-    const normMag = Math.sqrt(a*a + b*b + c*c);
+    const normMag = Math.sqrt(a * a + b * b + c * c);
     if (normMag < 0.001) return; // Evitar divisão por zero
-    
+
     const nx = a / normMag;
     const ny = b / normMag;
     const nz = c / normMag;
-    
+
     // Encontrar dois vetores perpendiculares ao normal (tangent vectors)
     let t1x, t1y, t1z;
     let t2x, t2y, t2z;
-    
+
     if (Math.abs(nz) > 0.9) {
       // Normal quase paralela ao eixo Z
-      t1x = 1; t1y = 0; t1z = 0;
-      t2x = 0; t2y = 1; t2z = 0;
+      t1x = 1;
+      t1y = 0;
+      t1z = 0;
+      t2x = 0;
+      t2y = 1;
+      t2z = 0;
     } else {
       // Normal não paralela ao Z
-      t1x = ny; t1y = -nx; t1z = 0;
-      const t1Mag = Math.sqrt(t1x*t1x + t1y*t1y);
-      t1x /= t1Mag; t1y /= t1Mag;
-      
+      t1x = ny;
+      t1y = -nx;
+      t1z = 0;
+      const t1Mag = Math.sqrt(t1x * t1x + t1y * t1y);
+      t1x /= t1Mag;
+      t1y /= t1Mag;
+
       // Produto vetorial para o segundo vetor tangente
-      t2x = ny*t1z - nz*t1y;
-      t2y = nz*t1x - nx*t1z;
-      t2z = nx*t1y - ny*t1x;
-      const t2Mag = Math.sqrt(t2x*t2x + t2y*t2y + t2z*t2z);
-      t2x /= t2Mag; t2y /= t2Mag; t2z /= t2Mag;
+      t2x = ny * t1z - nz * t1y;
+      t2y = nz * t1x - nx * t1z;
+      t2z = nx * t1y - ny * t1x;
+      const t2Mag = Math.sqrt(t2x * t2x + t2y * t2y + t2z * t2z);
+      t2x /= t2Mag;
+      t2y /= t2Mag;
+      t2z /= t2Mag;
     }
-    
+
     // Desenhar o plano como um grid rotacionado
     const planeSize = 3;
     const gridLines = 5;
-    
+
     // Cor do plano
     ctx.fillStyle = 'rgba(79,195,247,0.15)';
     ctx.strokeStyle = 'rgba(79,195,247,0.4)';
     ctx.lineWidth = 1;
-    
+
     // Desenhar grid no plano
     for (let i = -gridLines; i <= gridLines; i++) {
       for (let j = -gridLines; j <= gridLines; j++) {
         // Linhas na direção t1
         const p1 = proj(
-          (i/gridLines)*planeSize*t1x + (j/gridLines)*planeSize*t2x,
-          (i/gridLines)*planeSize*t1y + (j/gridLines)*planeSize*t2y,
-          (i/gridLines)*planeSize*t1z + (j/gridLines)*planeSize*t2z
+          (i / gridLines) * planeSize * t1x + (j / gridLines) * planeSize * t2x,
+          (i / gridLines) * planeSize * t1y + (j / gridLines) * planeSize * t2y,
+          (i / gridLines) * planeSize * t1z + (j / gridLines) * planeSize * t2z
         );
         const p2 = proj(
-          ((i+1)/gridLines)*planeSize*t1x + (j/gridLines)*planeSize*t2x,
-          ((i+1)/gridLines)*planeSize*t1y + (j/gridLines)*planeSize*t2y,
-          ((i+1)/gridLines)*planeSize*t1z + (j/gridLines)*planeSize*t2z
+          ((i + 1) / gridLines) * planeSize * t1x +
+            (j / gridLines) * planeSize * t2x,
+          ((i + 1) / gridLines) * planeSize * t1y +
+            (j / gridLines) * planeSize * t2y,
+          ((i + 1) / gridLines) * planeSize * t1z +
+            (j / gridLines) * planeSize * t2z
         );
-        
+
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p2.x, p2.y);
         ctx.stroke();
-        
+
         // Linhas na direção t2
         const p3 = proj(
-          (i/gridLines)*planeSize*t1x + ((j+1)/gridLines)*planeSize*t2x,
-          (i/gridLines)*planeSize*t1y + ((j+1)/gridLines)*planeSize*t2y,
-          (i/gridLines)*planeSize*t1z + ((j+1)/gridLines)*planeSize*t2z
+          (i / gridLines) * planeSize * t1x +
+            ((j + 1) / gridLines) * planeSize * t2x,
+          (i / gridLines) * planeSize * t1y +
+            ((j + 1) / gridLines) * planeSize * t2y,
+          (i / gridLines) * planeSize * t1z +
+            ((j + 1) / gridLines) * planeSize * t2z
         );
-        
+
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y);
         ctx.lineTo(p3.x, p3.y);
         ctx.stroke();
       }
     }
-    
+
     // Desenhar o contorno do plano (losango)
     const corners = [
-      proj(planeSize*t1x + planeSize*t2x, planeSize*t1y + planeSize*t2y, planeSize*t1z + planeSize*t2z),
-      proj(planeSize*t1x - planeSize*t2x, planeSize*t1y - planeSize*t2y, planeSize*t1z - planeSize*t2z),
-      proj(-planeSize*t1x - planeSize*t2x, -planeSize*t1y - planeSize*t2y, -planeSize*t1z - planeSize*t2z),
-      proj(-planeSize*t1x + planeSize*t2x, -planeSize*t1y + planeSize*t2y, -planeSize*t1z + planeSize*t2z)
+      proj(
+        planeSize * t1x + planeSize * t2x,
+        planeSize * t1y + planeSize * t2y,
+        planeSize * t1z + planeSize * t2z
+      ),
+      proj(
+        planeSize * t1x - planeSize * t2x,
+        planeSize * t1y - planeSize * t2y,
+        planeSize * t1z - planeSize * t2z
+      ),
+      proj(
+        -planeSize * t1x - planeSize * t2x,
+        -planeSize * t1y - planeSize * t2y,
+        -planeSize * t1z - planeSize * t2z
+      ),
+      proj(
+        -planeSize * t1x + planeSize * t2x,
+        -planeSize * t1y + planeSize * t2y,
+        -planeSize * t1z + planeSize * t2z
+      ),
     ];
-    
+
     ctx.beginPath();
     ctx.moveTo(corners[0].x, corners[0].y);
     for (let i = 1; i < 4; i++) {
@@ -2105,49 +2232,71 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
-    
+
     // Vetor normal (partindo do centro do plano)
     const normalScale = 2.5;
-    const normalEnd = proj(nx*normalScale, ny*normalScale, nz*normalScale);
-    
+    const normalEnd = proj(
+      nx * normalScale,
+      ny * normalScale,
+      nz * normalScale
+    );
+
     // Cor do vetor normal - AMARELO para destaque
     const corNormal = '#FFB300';
-    
+
     ctx.strokeStyle = corNormal;
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(origin.x, origin.y);
     ctx.lineTo(normalEnd.x, normalEnd.y);
     ctx.stroke();
-    
+
     // Seta no vetor normal
     const angle = Math.atan2(origin.y - normalEnd.y, normalEnd.x - origin.x);
     ctx.fillStyle = corNormal;
     ctx.beginPath();
     ctx.moveTo(normalEnd.x, normalEnd.y);
-    ctx.lineTo(normalEnd.x - 12 * Math.cos(angle - 0.4), normalEnd.y + 12 * Math.sin(angle - 0.4));
-    ctx.lineTo(normalEnd.x - 12 * Math.cos(angle + 0.4), normalEnd.y + 12 * Math.sin(angle + 0.4));
+    ctx.lineTo(
+      normalEnd.x - 12 * Math.cos(angle - 0.4),
+      normalEnd.y + 12 * Math.sin(angle - 0.4)
+    );
+    ctx.lineTo(
+      normalEnd.x - 12 * Math.cos(angle + 0.4),
+      normalEnd.y + 12 * Math.sin(angle + 0.4)
+    );
     ctx.closePath();
     ctx.fill();
-    
+
     // Label do vetor normal no topo da seta
     ctx.fillStyle = corNormal;
     ctx.font = 'bold 18px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('n⃗', normalEnd.x + 15 * Math.cos(angle), normalEnd.y - 15 * Math.sin(angle));
-    
+    ctx.fillText(
+      'n⃗',
+      normalEnd.x + 15 * Math.cos(angle),
+      normalEnd.y - 15 * Math.sin(angle)
+    );
+
     // Labels informativos
     ctx.fillStyle = '#e0e0e0';
     ctx.font = '14px Arial';
     ctx.textAlign = 'left';
-    ctx.fillText(`n⃗ = ⟨${a.toFixed(1)}, ${b.toFixed(1)}, ${c.toFixed(1)}⟩`, 10, 25);
-    ctx.fillText(`Plano: ${a.toFixed(1)}x + ${b.toFixed(1)}y + ${c.toFixed(1)}z = 0`, 10, 45);
-    
+    ctx.fillText(
+      `n⃗ = ⟨${a.toFixed(1)}, ${b.toFixed(1)}, ${c.toFixed(1)}⟩`,
+      10,
+      25
+    );
+    ctx.fillText(
+      `Plano: ${a.toFixed(1)}x + ${b.toFixed(1)}y + ${c.toFixed(1)}z = 0`,
+      10,
+      45
+    );
+
     // Instrução
     ctx.fillStyle = 'rgba(224,224,224,0.5)';
     ctx.font = '12px Arial';
     ctx.fillText('Clique e arraste para rotacionar', 10, h - 10);
-    
+
     // Atualizar spans dos sliders
     const spanA = document.getElementById('plano-a-value');
     const spanB = document.getElementById('plano-b-value');
@@ -2195,20 +2344,33 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -4; x <= 4; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -2; y <= 2; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.4)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Vetor u (fixo)
-    const ux = 2, uy = 0.5;
+    const ux = 2,
+      uy = 0.5;
     desenharVetor(ctx, cx, cy, ux, uy, scale, COR_VELOCIDADE, 'u⃗');
 
     // Vetor v (girando)
@@ -2242,14 +2404,18 @@ const COR_UNITARIO = '#FFFFFF';
     const endY = cy - vy * scale;
     ctx.strokeStyle = cor;
     ctx.lineWidth = 2.5;
-    ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(endX, endY); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(endX, endY);
+    ctx.stroke();
     const a = Math.atan2(cy - endY, endX - cx);
     ctx.fillStyle = cor;
     ctx.beginPath();
     ctx.moveTo(endX, endY);
     ctx.lineTo(endX - 8 * Math.cos(a - 0.4), endY + 8 * Math.sin(a - 0.4));
     ctx.lineTo(endX - 8 * Math.cos(a + 0.4), endY + 8 * Math.sin(a + 0.4));
-    ctx.closePath(); ctx.fill();
+    ctx.closePath();
+    ctx.fill();
     ctx.fillStyle = cor;
     ctx.font = '14px Arial';
     ctx.fillText(label, endX + 5, endY - 5);
@@ -2290,17 +2456,29 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -4; x <= 4; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -3; y <= 3; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.4)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Elipse
     ctx.strokeStyle = COR_VELOCIDADE;
@@ -2311,8 +2489,12 @@ const COR_UNITARIO = '#FFFFFF';
 
     // Focos
     ctx.fillStyle = COR_ACELERACAO;
-    ctx.beginPath(); ctx.arc(cx - c * scale, cy, 5, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(cx + c * scale, cy, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx - c * scale, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx + c * scale, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
 
     // Labels
     ctx.fillStyle = '#e0e0e0';
@@ -2363,17 +2545,29 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -4; x <= 4; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -3; y <= 3; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.4)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Diretriz (linha vertical x = -p)
     ctx.strokeStyle = 'rgba(229,57,53,0.5)';
@@ -2394,18 +2588,24 @@ const COR_UNITARIO = '#FFFFFF';
       const px = (py * py) / (4 * p);
       const sx = cx + px * scale;
       const sy = cy - py * scale;
-      if (!started) { ctx.moveTo(sx, sy); started = true; }
-      else ctx.lineTo(sx, sy);
+      if (!started) {
+        ctx.moveTo(sx, sy);
+        started = true;
+      } else ctx.lineTo(sx, sy);
     }
     ctx.stroke();
 
     // Foco
     ctx.fillStyle = COR_ACELERACAO;
-    ctx.beginPath(); ctx.arc(cx + p * scale, cy, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx + p * scale, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
 
     // Vértice
     ctx.fillStyle = COR_VELOCIDADE;
-    ctx.beginPath(); ctx.arc(cx, cy, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+    ctx.fill();
 
     // Labels
     ctx.fillStyle = '#e0e0e0';
@@ -2458,25 +2658,43 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.1)';
     ctx.lineWidth = 0.5;
     for (let x = -5; x <= 5; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -4; y <= 4; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Eixos
     ctx.strokeStyle = 'rgba(224,224,224,0.4)';
     ctx.lineWidth = 1;
-    ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(canvas.width, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, canvas.height);
+    ctx.stroke();
 
     // Assíntotas
     ctx.strokeStyle = 'rgba(224,224,224,0.3)';
     ctx.lineWidth = 1;
     ctx.setLineDash([4, 4]);
     const slope = b / a;
-    ctx.beginPath(); ctx.moveTo(0, cy + slope * cx); ctx.lineTo(canvas.width, cy - slope * (canvas.width - cx)); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(0, cy - slope * cx); ctx.lineTo(canvas.width, cy + slope * (canvas.width - cx)); ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy + slope * cx);
+    ctx.lineTo(canvas.width, cy - slope * (canvas.width - cx));
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(0, cy - slope * cx);
+    ctx.lineTo(canvas.width, cy + slope * (canvas.width - cx));
+    ctx.stroke();
     ctx.setLineDash([]);
 
     // Hipérbole (ramo direito e esquerdo)
@@ -2490,8 +2708,10 @@ const COR_UNITARIO = '#FFFFFF';
       const px = a * Math.sqrt(1 + (py * py) / (b * b));
       const sx = cx + px * scale;
       const sy = cy - py * scale;
-      if (!started) { ctx.moveTo(sx, sy); started = true; }
-      else ctx.lineTo(sx, sy);
+      if (!started) {
+        ctx.moveTo(sx, sy);
+        started = true;
+      } else ctx.lineTo(sx, sy);
     }
     ctx.stroke();
 
@@ -2502,20 +2722,30 @@ const COR_UNITARIO = '#FFFFFF';
       const px = -a * Math.sqrt(1 + (py * py) / (b * b));
       const sx = cx + px * scale;
       const sy = cy - py * scale;
-      if (!started) { ctx.moveTo(sx, sy); started = true; }
-      else ctx.lineTo(sx, sy);
+      if (!started) {
+        ctx.moveTo(sx, sy);
+        started = true;
+      } else ctx.lineTo(sx, sy);
     }
     ctx.stroke();
 
     // Vértices
     ctx.fillStyle = COR_VELOCIDADE;
-    ctx.beginPath(); ctx.arc(cx - a * scale, cy, 4, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(cx + a * scale, cy, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx - a * scale, cy, 4, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx + a * scale, cy, 4, 0, Math.PI * 2);
+    ctx.fill();
 
     // Focos
     ctx.fillStyle = COR_FORCA;
-    ctx.beginPath(); ctx.arc(cx - c * scale, cy, 5, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(cx + c * scale, cy, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx - c * scale, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(cx + c * scale, cy, 5, 0, Math.PI * 2);
+    ctx.fill();
 
     // Labels
     ctx.fillStyle = '#e0e0e0';
@@ -2564,10 +2794,16 @@ const COR_UNITARIO = '#FFFFFF';
     ctx.strokeStyle = 'rgba(224,224,224,0.05)';
     ctx.lineWidth = 0.5;
     for (let x = -8; x <= 8; x++) {
-      ctx.beginPath(); ctx.moveTo(cx + x * scale, 0); ctx.lineTo(cx + x * scale, canvas.height); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(cx + x * scale, 0);
+      ctx.lineTo(cx + x * scale, canvas.height);
+      ctx.stroke();
     }
     for (let y = -5; y <= 5; y++) {
-      ctx.beginPath(); ctx.moveTo(0, cy - y * scale); ctx.lineTo(canvas.width, cy - y * scale); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(0, cy - y * scale);
+      ctx.lineTo(canvas.width, cy - y * scale);
+      ctx.stroke();
     }
 
     // Desenhar órbita baseada na excentricidade
@@ -2585,11 +2821,12 @@ const COR_UNITARIO = '#FFFFFF';
 
       // Sol no foco
       ctx.fillStyle = '#FFD700';
-      ctx.beginPath(); ctx.arc(solX, solY, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath();
+      ctx.arc(solX, solY, 10, 0, Math.PI * 2);
+      ctx.fill();
       ctx.fillStyle = '#e0e0e0';
       ctx.font = '12px Arial';
       ctx.fillText('Sol', solX + 12, solY + 4);
-
     } else if (Math.abs(e - 1) < 0.05) {
       // Parábola
       const p = 3;
@@ -2601,14 +2838,17 @@ const COR_UNITARIO = '#FFFFFF';
         const sx = cx + px * scale;
         const sy = cy - py * scale;
         if (sx < 0 || sx > canvas.width) continue;
-        if (!started) { ctx.moveTo(sx, sy); started = true; }
-        else ctx.lineTo(sx, sy);
+        if (!started) {
+          ctx.moveTo(sx, sy);
+          started = true;
+        } else ctx.lineTo(sx, sy);
       }
       ctx.stroke();
 
       ctx.fillStyle = '#FFD700';
-      ctx.beginPath(); ctx.arc(cx - p * scale, cy, 10, 0, Math.PI * 2); ctx.fill();
-
+      ctx.beginPath();
+      ctx.arc(cx - p * scale, cy, 10, 0, Math.PI * 2);
+      ctx.fill();
     } else {
       // Hipérbole (ramo mais próximo)
       const a = 3;
@@ -2622,20 +2862,29 @@ const COR_UNITARIO = '#FFFFFF';
         const sx = cx + px * scale;
         const sy = cy - py * scale;
         if (sx < 0 || sx > canvas.width) continue;
-        if (!started) { ctx.moveTo(sx, sy); started = true; }
-        else ctx.lineTo(sx, sy);
+        if (!started) {
+          ctx.moveTo(sx, sy);
+          started = true;
+        } else ctx.lineTo(sx, sy);
       }
       ctx.stroke();
 
       ctx.fillStyle = '#FFD700';
-      ctx.beginPath(); ctx.arc(cx, cy, 10, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath();
+      ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+      ctx.fill();
     }
 
     // Label
     ctx.fillStyle = '#e0e0e0';
     ctx.font = '14px Arial';
     ctx.textAlign = 'left';
-    let tipo = e < 0.95 ? 'Elipse (órbita fechada)' : e < 1.05 ? 'Parábola (vel. escape)' : 'Hipérbole (traj. aberta)';
+    let tipo =
+      e < 0.95
+        ? 'Elipse (órbita fechada)'
+        : e < 1.05
+          ? 'Parábola (vel. escape)'
+          : 'Hipérbole (traj. aberta)';
     ctx.fillText(`e = ${e.toFixed(2)} → ${tipo}`, 10, 25);
 
     const span = document.getElementById('orbita-e-value');

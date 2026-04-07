@@ -14,18 +14,18 @@
   --text-color: #e0e0e0;
   --accent-color: #64b5f6;
   --highlight-color: #ff5a5f;
-  
+
   /* Cores para seções específicas */
   --math-bg: rgba(79, 195, 247, 0.05);
   --history-bg: rgba(26, 35, 126, 0.2);
   --problem-bg: rgba(26, 35, 126, 0.1);
-  
+
   /* Cores para vetores */
-  --vector-position: #1E88E5;  /* Azul */
-  --vector-velocity: #43A047;  /* Verde */
-  --vector-acceleration: #E53935;  /* Vermelho */
-  --vector-force: #FFB300;  /* Amarelo */
-  --vector-unit: #FFFFFF;  /* Branco */
+  --vector-position: #1e88e5; /* Azul */
+  --vector-velocity: #43a047; /* Verde */
+  --vector-acceleration: #e53935; /* Vermelho */
+  --vector-force: #ffb300; /* Amarelo */
+  --vector-unit: #ffffff; /* Branco */
 }
 
 /* =============================================
@@ -77,17 +77,37 @@
    ASTEROIDES (SIMPLIFICADOS)
    ============================================= */
 @keyframes asteroid1 {
-  from { transform: translate(-100vw, -50vh) rotate(30deg); opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  to { transform: translate(100vw, 50vh) rotate(30deg); opacity: 0; }
+  from {
+    transform: translate(-100vw, -50vh) rotate(30deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  to {
+    transform: translate(100vw, 50vh) rotate(30deg);
+    opacity: 0;
+  }
 }
 
 @keyframes asteroid2 {
-  from { transform: translate(100vw, -30vh) rotate(-45deg); opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  to { transform: translate(-100vw, 30vh) rotate(-45deg); opacity: 0; }
+  from {
+    transform: translate(100vw, -30vh) rotate(-45deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  to {
+    transform: translate(-100vw, 30vh) rotate(-45deg);
+    opacity: 0;
+  }
 }
 
 .reveal .asteroid {
@@ -215,8 +235,8 @@
   z-index: 1;
 }
 
-.katex { 
-  font-size: 1em; 
+.katex {
+  font-size: 1em;
 }
 
 /* =============================================
@@ -258,7 +278,9 @@
 .reveal a {
   color: var(--star-blue);
   text-decoration: none;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease;
 }
 
 .reveal a:hover {
@@ -412,7 +434,9 @@
   padding: 4px 12px;
   font-size: 0.9em;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
 }
 
 .control-button:hover {
@@ -448,36 +472,36 @@
   .reveal h1 {
     font-size: 2em;
   }
-  
+
   .reveal h2 {
     font-size: 1.5em;
   }
-  
+
   .reveal pre {
     font-size: 0.9em;
   }
-  
+
   .reveal .slides section {
     padding: 10px;
   }
-  
-  .math-section, 
-  .history-section, 
+
+  .math-section,
+  .history-section,
   .problem-section,
   .compact-solution {
     padding: 10px;
   }
-  
+
   .dual-panel {
     flex-direction: column;
     gap: 10px;
   }
-  
+
   .control-slider {
     width: 100%;
     justify-content: space-between;
   }
-  
+
   .control-slider input {
     width: 120px;
   }

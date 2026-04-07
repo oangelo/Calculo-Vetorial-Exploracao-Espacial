@@ -25,7 +25,10 @@
       <!-- Sub-slide 1: Elipse - conceito -->
       <section class="math-section">
         <h3>Elipse: Órbitas Planetárias</h3>
-        <p>A elipse é o lugar geométrico dos pontos cuja soma das distâncias a dois focos é constante:</p>
+        <p>
+          A elipse é o lugar geométrico dos pontos cuja soma das distâncias a
+          dois focos é constante:
+        </p>
         \[d(P, F_1) + d(P, F_2) = 2a\]
         <p><strong>Equação padrão (centro na origem):</strong></p>
         \[\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\]
@@ -41,25 +44,43 @@
       <!-- Visualização: Elipse -->
       <section class="math-section">
         <h3>Visualização: Elipse Interativa</h3>
-        <canvas id="elipse-canvas" class="visualization-canvas" width="500" height="350"></canvas>
+        <canvas
+          id="elipse-canvas"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
         <div class="controls-container">
           <div class="control-slider">
             <label for="elipse-e">Excentricidade e =</label>
-            <input type="range" id="elipse-e" min="0.1" max="0.9" step="0.05" value="0.5" />
+            <input
+              type="range"
+              id="elipse-e"
+              min="0.1"
+              max="0.9"
+              step="0.05"
+              value="0.5"
+            />
             <span id="elipse-e-value">0.5</span>
           </div>
         </div>
-        <p class="note">Arraste o slider para ver como a excentricidade afeta a forma da elipse.</p>
+        <p class="note">
+          Arraste o slider para ver como a excentricidade afeta a forma da
+          elipse.
+        </p>
       </section>
 
       <!-- Sub-slide 2: Parábola - conceito -->
       <section class="math-section">
         <h3>Parábola: Trajetórias e Antenas</h3>
-        <p>A parábola é o lugar geométrico dos pontos equidistantes do foco e da diretriz:</p>
+        <p>
+          A parábola é o lugar geométrico dos pontos equidistantes do foco e da
+          diretriz:
+        </p>
         \[d(P, F) = d(P, \text{diretriz})\]
         <p><strong>Equações padrão:</strong></p>
-        \[y^2 = 4px \quad \text{(eixo horizontal)}\]
-        \[x^2 = 4py \quad \text{(eixo vertical)}\]
+        \[y^2 = 4px \quad \text{(eixo horizontal)}\] \[x^2 = 4py \quad
+        \text{(eixo vertical)}\]
         <p><strong>Elementos:</strong></p>
         <ul>
           <li>Foco: \((p, 0)\) ou \((0, p)\)</li>
@@ -71,21 +92,38 @@
       <!-- Visualização: Parábola -->
       <section class="math-section">
         <h3>Visualização: Parábola Interativa</h3>
-        <canvas id="parabola-canvas" class="visualization-canvas" width="500" height="350"></canvas>
+        <canvas
+          id="parabola-canvas"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
         <div class="controls-container">
           <div class="control-slider">
             <label for="parabola-p">Parâmetro p =</label>
-            <input type="range" id="parabola-p" min="0.5" max="3" step="0.25" value="1" />
+            <input
+              type="range"
+              id="parabola-p"
+              min="0.5"
+              max="3"
+              step="0.25"
+              value="1"
+            />
             <span id="parabola-p-value">1</span>
           </div>
         </div>
-        <p class="note">A linha tracejada é a diretriz. O ponto vermelho é o foco.</p>
+        <p class="note">
+          A linha tracejada é a diretriz. O ponto vermelho é o foco.
+        </p>
       </section>
 
       <!-- Sub-slide 3: Hipérbole - conceito -->
       <section class="math-section">
         <h3>Hipérbole: Trajetórias Hiperbólicas</h3>
-        <p>A hipérbole é o lugar geométrico dos pontos cuja diferença das distâncias a dois focos é constante:</p>
+        <p>
+          A hipérbole é o lugar geométrico dos pontos cuja diferença das
+          distâncias a dois focos é constante:
+        </p>
         \[|d(P, F_1) - d(P, F_2)| = 2a\]
         <p><strong>Equação padrão:</strong></p>
         \[\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\]
@@ -101,11 +139,23 @@
       <!-- Visualização: Hipérbole -->
       <section class="math-section">
         <h3>Visualização: Hipérbole Interativa</h3>
-        <canvas id="hiperbole-canvas" class="visualization-canvas" width="500" height="350"></canvas>
+        <canvas
+          id="hiperbole-canvas"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
         <div class="controls-container">
           <div class="control-slider">
             <label for="hiperbole-e">Excentricidade e =</label>
-            <input type="range" id="hiperbole-e" min="1.1" max="3" step="0.1" value="1.5" />
+            <input
+              type="range"
+              id="hiperbole-e"
+              min="1.1"
+              max="3"
+              step="0.1"
+              value="1.5"
+            />
             <span id="hiperbole-e-value">1.5</span>
           </div>
         </div>
@@ -130,22 +180,38 @@
         <p><strong>Órbitas abertas (\(e \geq 1\)):</strong></p>
         <ul>
           <li><strong>Parábola:</strong> velocidade de escape (\(e = 1\))</li>
-          <li><strong>Hipérbole:</strong> sondas interplanetárias (\(e > 1\))</li>
+          <li>
+            <strong>Hipérbole:</strong> sondas interplanetárias (\(e > 1\))
+          </li>
         </ul>
       </section>
 
       <!-- Visualização: Órbitas -->
       <section class="math-section">
         <h3>Visualização: Tipos de Órbita</h3>
-        <canvas id="orbitas-canvas" class="visualization-canvas" width="600" height="400"></canvas>
+        <canvas
+          id="orbitas-canvas"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
         <div class="controls-container">
           <div class="control-slider">
             <label for="orbita-e">Excentricidade e =</label>
-            <input type="range" id="orbita-e" min="0" max="2" step="0.05" value="0.5" />
+            <input
+              type="range"
+              id="orbita-e"
+              min="0"
+              max="2"
+              step="0.05"
+              value="0.5"
+            />
             <span id="orbita-e-value">0.5</span>
           </div>
         </div>
-        <p class="note">Mude a excentricidade para ver elipse, parábola ou hipérbole.</p>
+        <p class="note">
+          Mude a excentricidade para ver elipse, parábola ou hipérbole.
+        </p>
       </section>
     </section>
   </body>

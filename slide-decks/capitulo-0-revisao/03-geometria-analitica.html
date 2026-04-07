@@ -41,7 +41,14 @@
         <div class="controls-container">
           <div class="control-slider">
             <label for="coord3d-rot">Rotação =</label>
-            <input type="range" id="coord3d-rot" min="0" max="360" step="5" value="30" />
+            <input
+              type="range"
+              id="coord3d-rot"
+              min="0"
+              max="360"
+              step="5"
+              value="30"
+            />
             <span id="coord3d-rot-value">30°</span>
           </div>
         </div>
@@ -56,8 +63,12 @@
         </p>
         \[\vec{v} = \langle v_x, v_y, v_z \rangle = v_x\hat{i} + v_y\hat{j} +
         v_z\hat{k}\]
-        <p><strong>Magnitude:</strong> $|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}$</p>
-        <p><strong>Vetor unitário:</strong> $\hat{v} = \frac{\vec{v}}{|\vec{v}|}$</p>
+        <p>
+          <strong>Magnitude:</strong> $|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}$
+        </p>
+        <p>
+          <strong>Vetor unitário:</strong> $\hat{v} = \frac{\vec{v}}{|\vec{v}|}$
+        </p>
       </section>
 
       <!-- Visualização: Vetor interativo -->
@@ -72,12 +83,26 @@
         <div class="controls-container">
           <div class="control-slider">
             <label for="vetor-x">vx =</label>
-            <input type="range" id="vetor-x" min="-3" max="3" step="0.5" value="2" />
+            <input
+              type="range"
+              id="vetor-x"
+              min="-3"
+              max="3"
+              step="0.5"
+              value="2"
+            />
             <span id="vetor-x-value">2</span>
           </div>
           <div class="control-slider">
             <label for="vetor-y">vy =</label>
-            <input type="range" id="vetor-y" min="-3" max="3" step="0.5" value="1" />
+            <input
+              type="range"
+              id="vetor-y"
+              min="-3"
+              max="3"
+              step="0.5"
+              value="1"
+            />
             <span id="vetor-y-value">1</span>
           </div>
         </div>
@@ -97,7 +122,10 @@
           <li>$\vec{u} \cdot \vec{v} > 0 \implies$ ângulo agudo</li>
           <li>$\vec{u} \cdot \vec{v} < 0 \implies$ ângulo obtuso</li>
         </ul>
-        <p><strong>Projeção:</strong> $\text{proj}_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{|\vec{v}|^2}\vec{v}$</p>
+        <p>
+          <strong>Projeção:</strong> $\text{proj}_{\vec{v}}\vec{u} =
+          \frac{\vec{u}\cdot\vec{v}}{|\vec{v}|^2}\vec{v}$
+        </p>
       </section>
 
       <!-- Sub-slide 4: Produto Vetorial -->
@@ -107,15 +135,20 @@
           O produto vetorial produz um <strong>vetor</strong> perpendicular a
           ambos:
         </p>
-        \[\vec{u} \times \vec{v} = \begin{vmatrix} \hat{i} & \hat{j} &
-        \hat{k} \\ u_x & u_y & u_z \\ v_x & v_y & v_z \end{vmatrix}\]
+        \[\vec{u} \times \vec{v} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k}
+        \\ u_x & u_y & u_z \\ v_x & v_y & v_z \end{vmatrix}\]
         <p><strong>Propriedades:</strong></p>
         <ul>
-          <li>Anticomutativo: $\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}$</li>
+          <li>
+            Anticomutativo: $\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}$
+          </li>
           <li>$|\vec{u} \times \vec{v}| = |\vec{u}||\vec{v}|\sin\theta$</li>
           <li>Área do paralelogramo: $A = |\vec{u} \times \vec{v}|$</li>
         </ul>
-        <p><strong>Produto Misto (Volume):</strong> $V = |\vec{a} \cdot (\vec{b} \times \vec{c})|$</p>
+        <p>
+          <strong>Produto Misto (Volume):</strong> $V = |\vec{a} \cdot (\vec{b}
+          \times \vec{c})|$
+        </p>
       </section>
 
       <!-- Visualização: Produto Vetorial animado -->
@@ -127,13 +160,18 @@
           width="500"
           height="350"
         ></canvas>
-        <p class="note">O paralelogramo amarelo tem área igual a $|\vec{u} \times \vec{v}|$</p>
+        <p class="note">
+          O paralelogramo amarelo tem área igual a $|\vec{u} \times \vec{v}|$
+        </p>
       </section>
 
       <!-- Sub-slide 5: Retas no Espaço -->
       <section class="math-section">
         <h3>Retas no Espaço</h3>
-        <p>Uma reta é definida por um ponto $\vec{r_0}$ e um vetor direção $\vec{d}$:</p>
+        <p>
+          Uma reta é definida por um ponto $\vec{r_0}$ e um vetor direção
+          $\vec{d}$:
+        </p>
         <p><strong>Forma vetorial:</strong></p>
         \[\vec{r}(t) = \vec{r_0} + t\vec{d}\]
         <p><strong>Forma paramétrica:</strong></p>
@@ -153,7 +191,14 @@
         <div class="controls-container">
           <div class="control-slider">
             <label for="reta-t">t =</label>
-            <input type="range" id="reta-t" min="-2" max="4" step="0.2" value="1" />
+            <input
+              type="range"
+              id="reta-t"
+              min="-2"
+              max="4"
+              step="0.2"
+              value="1"
+            />
             <span id="reta-t-value">1</span>
           </div>
         </div>
@@ -162,9 +207,14 @@
       <!-- Sub-slide 6: Planos no Espaço -->
       <section class="math-section">
         <h3>Planos no Espaço</h3>
-        <p>Um plano é definido por um ponto $P_0$ e um vetor normal $\vec{n}$:</p>
+        <p>
+          Um plano é definido por um ponto $P_0$ e um vetor normal $\vec{n}$:
+        </p>
         \[\vec{n} \cdot (\vec{r} - \vec{r_0}) = 0\]
-        <p>Forma geral: $ax + by + cz + d = 0$, onde $\vec{n} = \langle a, b, c \rangle$</p>
+        <p>
+          Forma geral: $ax + by + cz + d = 0$, onde $\vec{n} = \langle a, b, c
+          \rangle$
+        </p>
         <p><strong>Distância ponto-plano:</strong></p>
         \[d = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}}\]
       </section>
@@ -181,17 +231,38 @@
         <div class="controls-container">
           <div class="control-slider">
             <label for="plano-a">a =</label>
-            <input type="range" id="plano-a" min="-2" max="2" step="0.5" value="1" />
+            <input
+              type="range"
+              id="plano-a"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
             <span id="plano-a-value">1</span>
           </div>
           <div class="control-slider">
             <label for="plano-b">b =</label>
-            <input type="range" id="plano-b" min="-2" max="2" step="0.5" value="1" />
+            <input
+              type="range"
+              id="plano-b"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
             <span id="plano-b-value">1</span>
           </div>
           <div class="control-slider">
             <label for="plano-c">c =</label>
-            <input type="range" id="plano-c" min="-2" max="2" step="0.5" value="1" />
+            <input
+              type="range"
+              id="plano-c"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
             <span id="plano-c-value">1</span>
           </div>
         </div>

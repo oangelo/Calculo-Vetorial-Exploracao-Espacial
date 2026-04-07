@@ -102,7 +102,7 @@
             // Parse HTML e extrair <section>
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
-            
+
             // Extrair scripts do fragmento antes de injetar
             const scriptTags = doc.querySelectorAll('script[src]');
             for (const script of scriptTags) {
@@ -117,7 +117,7 @@
 
             // Extrair o conteúdo inline dos script tags sem src
             const inlineScripts = doc.querySelectorAll('script:not([src])');
-            
+
             const sections = doc.querySelectorAll('body > section');
 
             // Inserir cada seção no container
@@ -134,7 +134,6 @@
                 document.body.appendChild(newScript);
               }
             }
-
           } catch (error) {
             console.error(`Error loading ${sectionFile}:`, error);
           }
@@ -150,7 +149,7 @@
         });
 
         // Após inicialização, chamar init() de qualquer viz que existam
-        setTimeout(function() {
+        setTimeout(function () {
           if (window.lagrangeViz) window.lagrangeViz.init();
         }, 100);
       }
