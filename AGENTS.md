@@ -31,6 +31,52 @@ npm install                 # Instala husky + prettier
 └── sala-template.html   # Template para exercícios de sala
 ```
 
+## Worktrees e Branches (Gitflow)
+
+Este projeto usa **git worktrees** para trabalhar em múltiplas áreas simultaneamente. Cada worktree tem seu próprio branch `feature/`.
+
+| Worktree                     | Branch                    | Conteúdo                           |
+| ---------------------------- | ------------------------- | ---------------------------------- |
+| `worktrees/exercicios/`      | `feature/exercicios`      | Exercícios de casa (`exercicios/`) |
+| `worktrees/exercicios-sala/` | `feature/exercicios-sala` | Exercícios de sala (`sala/`)       |
+| `worktrees/slide-decks/`     | `feature/slide-decks`     | Apresentações (`slide-decks/`)     |
+
+### Regras de Gitflow
+
+1. **SEMPRE** trabalhe no worktree/branch correto para o tipo de conteúdo
+2. **NUNCA** commite direto no `main`
+3. **SEMPRE** use o prefixo `feature/` para branches de desenvolvimento
+4. Ao terminar: `npm run format` → commit → push → pull request → merge em `main`
+
+### Trabalhando em um Worktree
+
+```bash
+# Entrar no worktree de exercícios de sala
+cd worktrees/exercicios-sala
+
+# Fazer alterações...
+
+# Commitar
+npm run format
+git add .
+git commit -m "feat: criar capítulo 1 de exercícios de sala"
+git push origin feature/exercicios-sala
+```
+
+### Criar Novo Worktree (se necessário)
+
+```bash
+git worktree add worktrees/nome -b feature/nome main
+cd worktrees/nome
+```
+
+### Remover Worktree
+
+```bash
+git worktree remove worktrees/nome
+git branch -d feature/nome
+```
+
 ## Estilo de Código
 
 ### Formatação
@@ -111,29 +157,31 @@ npm install                 # Instala husky + prettier
 
 ### Criar Exercício de Sala
 
-1. Criar pasta: `sala/capitulo-N-nome/`
-2. Copiar `index.html` de capítulo existente
-3. Criar `exercicio-1.html` a `exercicio-6.html`
-4. Atualizar array `EXERCICIOS` no `index.html`
-5. Testar: `python3 -m http.server 8080` → Firefox
+1. Ir para `worktrees/exercicios-sala/`
+2. Criar pasta: `sala/capitulo-N-nome/`
+3. Copiar `index.html` de capítulo existente
+4. Criar `exercicio-1.html` a `exercicio-6.html`
+5. Atualizar array `EXERCICIOS` no `index.html`
+6. Testar: `python3 -m http.server 8080` → Firefox
+7. Commitar e push para `feature/exercicios-sala`
+
+### Criar Exercício de Casa
+
+1. Ir para `worktrees/exercicios/`
+2. Criar pasta: `exercicios/capitulo-N/`
+3. Usar template em `exercicios/template.html`
+4. Criar HTMLs com tema espacial e censuras
+5. Testar no Firefox
+6. Commitar e push para `feature/exercicios`
 
 ### Criar Slide
 
-1. Usar template em `slide-decks/template.html`
-2. Estrutura: `01-titulo.html`, `02-introducao.html`, etc.
-3. Incluir `index.html` como entry point
-4. Testar navegação horizontal/vertical
-
-### Git
-
-```bash
-git checkout -b feature/nome-da-feature
-# Fazer alterações
-npm run format
-git add .
-git commit -m "Descrição clara da mudança"
-git push origin feature/nome-da-feature
-```
+1. Ir para `worktrees/slide-decks/`
+2. Usar template em `slide-decks/template.html`
+3. Estrutura: `01-titulo.html`, `02-introducao.html`, etc.
+4. Incluir `index.html` como entry point
+5. Testar navegação horizontal/vertical
+6. Commitar e push para `feature/slide-decks`
 
 ## Teste Manual
 
