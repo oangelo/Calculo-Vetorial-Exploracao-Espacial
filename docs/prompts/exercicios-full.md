@@ -40,7 +40,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
 
 3. **Lista de Exercícios** (tag main, classe "exercise-list")
 
-   - 12 exercícios (classe "exercise-item") em progressão de dificuldade
+   - Exercícios (classe "exercise-item") em progressão de dificuldade — quantos forem necessários para cobrir a narrativa
    - Cada exercício com número, contexto, enunciado, dica (opcional), solução
 
 4. **Rodapé**

@@ -107,7 +107,7 @@ O worktree deve ser criado em uma **pasta separada** (ex: `.trees/exercicios-sal
 
 **Regras críticas:**
 
-- 12 exercícios por arquivo (ALFA/BETA/GAMMA/OMEGA)
+- Exercícios por tópico: quantos forem necessários para cobrir a narrativa matemática (ALFA/BETA/GAMMA/OMEGA)
 - Use APENAS conceitos já abordados na progressão
 - MathJax: `\(inline\)` e `\[bloco\]` (uma barra)
 - Classes CSS do template (não invente novas)

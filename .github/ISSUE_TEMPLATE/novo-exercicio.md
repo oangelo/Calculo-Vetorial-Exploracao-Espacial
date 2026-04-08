@@ -25,7 +25,7 @@ labels: ['exercicios']
 
 - [ ] 1 exercício individual
 - [ ] Folha completa (4-6 exercícios de sala)
-- [ ] Conjunto temático (12 exercícios de casa)
+- [ ] Conjunto temático (exercícios de casa, sem limite de quantidade)
 
 ## Worktree
 

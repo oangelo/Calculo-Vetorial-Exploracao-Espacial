@@ -50,7 +50,7 @@ Referência rápida para criação de conteúdo.
 
 ## Estrutura de Exercícios
 
-**12 exercícios por arquivo:**
+**Exercícios por tópico (sem limite de quantidade):**
 
 1. **ALFA (1-3):** Básico, dicas completas
 2. **BETA (4-6):** Intermediário, dicas parciais

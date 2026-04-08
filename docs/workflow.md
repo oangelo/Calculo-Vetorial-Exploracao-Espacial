@@ -25,7 +25,7 @@ Guia passo a passo para agentes de IA criarem novos exercícios e slides.
 **Estrutura:**
 
 - HTML válido com classes CSS do template
-- 12 exercícios (ALFA/BETA/GAMMA/OMEGA)
+- Exercícios: quantos forem necessários (ALFA/BETA/GAMMA/OMEGA)
 - Contexto histórico apropriado
 
 **MathJax:**
