@@ -1,5 +1,7 @@
 # Exercícios — Instruções para Agentes
 
+> **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
+
 Prompt completo: `docs/prompts/exercicios-full.md`
 Referência rápida: `docs/prompts/exercicios-quick.md`
 Template base: `exercicios/template.html`

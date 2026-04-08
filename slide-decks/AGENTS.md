@@ -1,5 +1,7 @@
 # Slide Decks — Instruções para Claude Code
 
+> **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
+
 Prompt completo: `docs/prompts/slides-full.md`
 Referência rápida: `docs/prompts/slides-quick.md`
 CSS: `slide-decks/space-theme.css` (tema espacial)

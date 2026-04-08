@@ -84,16 +84,18 @@
     column-gap: 8mm;
   }
 
-  /* Evitar quebra dentro de exercícios */
-  .exercicio {
+  /* Evitar quebra dentro de questões/tabelas */
+  .questao,
+  .tabela,
+  .checkpoint {
     break-inside: avoid;
   }
 
   /* Evitar órfãs e viúvas */
   p,
   li {
-    orphans: 3;
-    widows: 3;
+    orphans: 2;
+    widows: 2;
   }
 
   /* Links em cinza */
@@ -324,6 +326,44 @@
   content: 'Dica: ';
   font-weight: bold;
   font-style: normal;
+}
+
+/* === TABELA DE AVALIAÇÃO === */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2mm 0;
+  font-size: 9pt;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid var(--color-border);
+  padding: 1.5mm 2mm;
+  text-align: center;
+}
+
+.tabela th {
+  background: #eee;
+  font-weight: 600;
+}
+
+.tabela td {
+  background: white;
+}
+
+.tabela td.lacuna-cell {
+  min-width: 12mm;
+  background: #fafafa;
+}
+
+@media print {
+  .tabela th {
+    background: #f0f0f0;
+  }
+  .tabela td.lacuna-cell {
+    background: transparent;
+  }
 }
 
 /* === FÓRMULAS === */
