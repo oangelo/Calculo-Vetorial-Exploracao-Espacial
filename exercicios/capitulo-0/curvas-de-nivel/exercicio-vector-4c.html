@@ -13,8 +13,10 @@
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
       [NOTA TÉCNICA]: (b) Resolva \(\nabla T = 0\): \(-20x + 4y = 0\) e \(-10y +
-      4x = 0\). (c) Use a matriz Hessiana: \(H = \begin{pmatrix} -20 & 4 \\ 4 &
-      -10 \end{pmatrix}\). Analise os autovalores ou o determinante.
+      4x = 0\). (c) Para classificar, observe que a forma quadrática \(10x^2 -
+      4xy + 5y^2\) é sempre positiva para \((x,y) \neq (0,0)\) (complete os
+      quadrados ou teste com valores). Se \(T\) decresce em todas as direções a
+      partir do ponto crítico, ele é um máximo.
     </div>
   </details>
   <details>
@@ -38,13 +40,14 @@
       5x\). Substituindo no segundo: \[ -10(5x) + 4x = 0 \implies -50x + 4x = 0
       \implies -46x = 0 \] Portanto \(x = 0\) e \(y = 0\).
       <strong>Único ponto crítico: \((0, 0)\)</strong>.<br /><br />
-      <strong>(c) Classificação via Hessiana:</strong>
-      \[ H = \begin{pmatrix} -20 & 4 \\ 4 & -10 \end{pmatrix} \] Determinante:
-      \(\det(H) = (-20)(-10) - (4)(4) = 200 - 16 = 184 > 0\)<br />
-      Traço: \(\text{tr}(H) = -30 < 0\)<br /><br />
-      Como \(\det(H) > 0\) e ambos os autovalores são negativos, o ponto \((0,
-      0)\) é um <strong>máximo local</strong> (e global) com \(T(0,0) =
-      1500°C\).<br /><br />
+      <strong>(c) Classificação via completar quadrados:</strong>
+      Temos \(T(x,y) = 1500 - (10x^2 - 4xy + 5y^2)\). Complete os quadrados: \[
+      10x^2 - 4xy + 5y^2 = 10\left(x - \frac{y}{5}\right)^2 + \frac{24}{5}y^2 \]
+      Como ambos os termos são sempre \(\geq 0\) e só se anulam simultaneamente
+      quando \(x = y = 0\), a forma quadrática é estritamente positiva para
+      \((x,y) \neq (0,0)\). Logo \(T(x,y) < 1500\) sempre que \((x,y) \neq
+      (0,0)\), e o ponto \((0, 0)\) é um <strong>máximo global</strong> com
+      \(T(0,0) = 1500°C\).<br /><br />
       <strong>Interpretação:</strong> O centro do escudo térmico atinge a
       temperatura máxima de 1500°C. A temperatura decresce em todas as direções
       a partir do centro, seguindo curvas de nível elípticas devido à

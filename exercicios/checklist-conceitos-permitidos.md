@@ -37,7 +37,9 @@ conceitos de capítulos posteriores ao que está sendo revisado.
 - Esboço de mapas de curvas de nível
 - Gradiente como direção de crescimento (conceitual, sem derivadas parciais)
 
-**NÃO usar:** Hessiana, derivadas parciais, autovalores, matriz de segundas derivadas
+**Permitido como revisão de Cálculo 2:** derivadas parciais, gradiente ∇f, pontos críticos (∇f = 0)
+
+**NÃO usar:** Hessiana, autovalores, classificação de pontos críticos via determinante de H
 
 **Derivadas:**
 
