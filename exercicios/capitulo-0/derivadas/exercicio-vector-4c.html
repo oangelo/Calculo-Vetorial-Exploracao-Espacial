@@ -7,20 +7,32 @@
     Encontrar a derivada de \[ \phi(x) = \sqrt{\ln( x^2 + e^x )} \biggl/ ( \sin
     x + 2 ) . \] Combinação de todas as regras abordadas.
   </p>
-  <!-- Sem dicas para OMEGA -->
+  <!-- Série OMEGA => sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Analisar \(\phi(x)\) como \(\frac{(\ln( x^2 + e^x ))^{1/2}}{\sin x +
-        2}\).
+        Seja \(g(x) = \ln(x^2 + e^x)\) e \(h(x) = \sin x + 2\), então \(\phi(x)
+        = \dfrac{\sqrt{g(x)}}{h(x)}\).
       </p>
       <p>
-        Usar <strong>Regra da Cadeia</strong> para a raiz e o log;
-        <strong>Regra Exponencial</strong> em \(e^x\);
-        <strong>Regra do Quociente</strong> para o denominador.
+        Derivada de \(g\): \(g'(x) = \dfrac{2x + e^x}{x^2 + e^x}\) (Regra da
+        Cadeia).
       </p>
-      <p>O resultado final concentra derivadas parciais em cada fator.</p>
+      <p>
+        Derivada de \(\sqrt{g}\): \(\dfrac{g'(x)}{2\sqrt{g(x)}}\) (Regra da
+        Cadeia).
+      </p>
+      <p>Derivada de \(h\): \(h'(x) = \cos x\).</p>
+      <p>
+        Regra do Quociente: \[ \phi'(x) = \frac{\dfrac{g'(x)}{2\sqrt{g(x)}}
+        \cdot h(x) - \sqrt{g(x)} \cdot h'(x)}{[h(x)]^2} \]
+      </p>
+      <p>
+        Substituindo: \[ \phi'(x) = \frac{\dfrac{2x +
+        e^x}{2(x^2+e^x)\sqrt{\ln(x^2+e^x)}}(\sin x + 2) - \sqrt{\ln(x^2+e^x)}
+        \cdot \cos x}{(\sin x + 2)^2}. \]
+      </p>
     </div>
   </details>
 </li>

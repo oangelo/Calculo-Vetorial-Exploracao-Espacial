@@ -8,17 +8,26 @@
     Envolve combinação de <strong>produto</strong>,
     <strong>exponencial</strong> e <strong>quociente</strong>.
   </p>
-  <!-- Sem dicas para OMEGA -->
+  <!-- Série OMEGA => sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Separar em \(u(x) = x e^x\) e \(v(x) = (x^2 + 4)^2\); aplicar a Regra do
-        Quociente. Cada parcela exigirá regras combinadas.
+        Seja \(u(x) = x e^x\) e \(v(x) = (x^2 + 4)^2\). Pela Regra do Quociente:
       </p>
       <p>
-        \(u'(x) = e^x + x e^x\) e \(v'(x) = 2(x^2 + 4) \cdot 2x\) são partes
-        centrais.
+        \(u'(x) = e^x + x e^x = e^x(1+x)\) (Regra do Produto).<br />
+        \(v'(x) = 2(x^2 + 4) \cdot 2x = 4x(x^2+4)\) (Regra da Cadeia).
+      </p>
+      <p>
+        \[ y'(x) = \frac{u'v - uv'}{v^2} = \frac{e^x(1+x)(x^2+4)^2 - xe^x \cdot
+        4x(x^2+4)}{(x^2+4)^4} \]
+      </p>
+      <p>
+        Fatorando \(e^x(x^2+4)\) no numerador: \[ y'(x) =
+        \frac{e^x(x^2+4)\bigl[(1+x)(x^2+4) - 4x^2\bigr]}{(x^2+4)^4} =
+        \frac{e^x\bigl[x^3 + x^2 + 4x + 4 - 4x^2\bigr]}{(x^2+4)^3} \] \[ =
+        \frac{e^x(x^3 - 3x^2 + 4x + 4)}{(x^2+4)^3}. \]
       </p>
     </div>
   </details>
