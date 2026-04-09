@@ -2,6 +2,14 @@
 
 > **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
 
+## Issue Epic
+
+- **Slides:** https://github.com/oangelo/Calculo-Vetorial-Exploracao-Espacial/issues/2
+
+Antes de começar, verifique o status das sub-issues na epic para saber onde parou e qual capítulo deve ser trabalhado a seguir:
+
+gh issue list --label slides --state open --limit 5
+
 Prompt completo: `docs/prompts/slides-full.md`
 Referência rápida: `docs/prompts/slides-quick.md`
 CSS: `slide-decks/space-theme.css` (tema espacial)

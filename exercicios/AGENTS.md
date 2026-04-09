@@ -2,6 +2,14 @@
 
 > **Workflow:** Consulte `/AGENTS.md` para regras de commits, visualização no Firefox e fluxo de entrega.
 
+## Issue Epic
+
+- **Exercícios:** https://github.com/oangelo/Calculo-Vetorial-Exploracao-Espacial/issues/3
+
+Antes de começar, verifique o status das sub-issues na epic para saber onde parou e qual tópico deve ser trabalhado a seguir:
+
+gh issue list --label exercicios --state open --limit 5
+
 Prompt completo: `docs/prompts/exercicios-full.md`
 Referência rápida: `docs/prompts/exercicios-quick.md`
 Template base: `exercicios/template.html`
