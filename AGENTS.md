@@ -56,7 +56,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 ├── planejamento/         # Cronogramas e planejamentos semestrais
 ├── investigacao/         # Material de pesquisa histórica
 ├── notas/                # Notas do curso
-└── .tree/                # Git worktrees (ignorado pelo git)
+└── worktrees/            # Git worktrees (ignorado pelo git)
 ```
 
 ## ⚠️ Importante: Dois Tipos de Exercícios
@@ -86,11 +86,15 @@ Ao criar um **worktree** para trabalhar em uma branch separada, use:
 # Errado: cria worktree na raiz, embaralha tudo
 git worktree add ../minha-branch
 
-# Correto: especifica o caminho correto
-git worktree add ../minha-branch -b minha-branch
+# Correto: cria dentro de worktrees/
+git worktree add worktrees/minha-branch -b minha-branch
 ```
 
-O worktree deve ser criado em uma **pasta separada** (ex: `.trees/exercicios-sala/`), não na raiz do projeto.
+Os worktrees ficam em `worktrees/` (ignorado pelo git). Cada tipo de conteúdo tem sua pasta:
+
+- `worktrees/exercicios/` — exercícios de casa
+- `worktrees/exercicios-sala/` — exercícios de sala
+- `worktrees/slides/` — slides
 
 ## Para Agentes de IA: Como Contribuir
 
