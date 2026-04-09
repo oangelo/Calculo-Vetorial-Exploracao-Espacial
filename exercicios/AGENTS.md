@@ -192,3 +192,95 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 | cap-6/definicao-e-forma-diferencial-exata | VAZIO — só index.html, sem intro nem exercícios |
 | cap-8/integral-de-superficie              | VAZIO — só index.html                           |
 | cap-9/\* (todos os 3 tópicos)             | VAZIO — só index.html                           |
+
+## Pipeline de Revisão (3 Agentes)
+
+Cada tópico de exercício passa por 4 etapas com 3 agentes distintos.
+
+### Visão geral
+
+```
+Etapa 1: Agente Explore (Revisor)
+  → Lê exercícios, busca na web, gera RTC como comentário na issue
+  → Ferramentas: read, firecrawl_search, firecrawl_scrape, bash (gh)
+
+         ↓ Revisão humana (professor aprova/ajusta RTC)
+
+Etapa 2: Agente General (Implementador)
+  → Lê RTC, implementa correções, cria exercícios, adiciona sub-itens
+  → Ferramentas: read, edit, write, bash (gh)
+
+Etapa 3: Agente Explore (Resumidor)
+  → Lê exercícios finais, gera resumo de pré-requisitos
+  → Insere na seção de fundamentação teórica do intro.html
+  → Ferramentas: read, edit, firecrawl_search
+```
+
+### Como invocar cada agente
+
+**Etapa 1 — Revisor:**
+
+> Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
+> Leia todos os exercícios em exercicios/capitulo-N/PASTA/,
+> busque ideias na web com firecrawl_search (busque em português e inglês),
+> verifique que não antecipa conteúdo de capítulos futuros,
+> e gere um RTC como comentário na issue #N do GitHub usando `gh issue comment`.
+> O RTC deve incluir: análise de qualidade, problemas encontrados,
+> sugestões de melhoria, e a narrativa matemática da lista.
+
+**Etapa 2 — Implementador:**
+
+> Execute o Agente 2 (implementador) no issue #N.
+> Leia o RTC nos comentários da issue #N usando `gh issue view N --comments`.
+> Implemente as correções nos exercícios de exercicios/capitulo-N/PASTA/.
+> Crie novos exercícios conforme o RTC, adicione sub-itens (a, b, c),
+> reescreva hints inúteis, reordene por dificuldade real.
+
+**Etapa 3 — Resumidor:**
+
+> Execute o Agente 3 (resumidor) no issue #N.
+> Leia todos os exercícios em exercicios/capitulo-N/PASTA/
+> e gere um resumo de pré-requisitos na seção de fundamentação
+> teórica do intro.html do tópico. O resumo deve cobrir todos
+> os conceitos que o aluno precisa saber antes de fazer os exercícios.
+
+## Requisito de Narrativa Matemática
+
+### Princípio
+
+Cada exercício deve ter uma **motivação clara** e **construir sobre o anterior**.
+O aluno precisa entender **por que** está aprendendo cada conceito e **para onde**
+a lista o leva. A lista de exercícios conta uma **história da matemática**.
+
+### O que cada exercício precisa ter
+
+- **Motivação clara**: "por que precisamos aprender isso?"
+- **Construção sobre o anterior**: "já sabemos X, agora vamos fazer Y porque..."
+- **Utilidade para o próximo**: "isso vai nos ajudar quando..."
+- **Hints úteis**: apontar para o conceito relevante, não ser genérico
+
+### Exemplo de progressão (Geometria Analítica)
+
+```
+Pontos → Vetores → Norma
+  ↓
+Dois vetores → Produto escalar → Ângulo → Projeção
+  ↓
+Dois vetores → Produto vetorial → Área
+  ↓
+Três vetores → Produto misto → Volume
+  ↓
+Ponto + Direção → Reta (vetorial, paramétrica, simétrica)
+  ↓
+Três pontos / Ponto + Normal → Plano
+  ↓
+Reta + Plano → Interseção
+  ↓
+Distâncias: ponto-reta, ponto-plano, retas reversas
+```
+
+### Referência
+
+Ver issue #3 no GitHub para o requisito completo e exemplos de progressão
+por capítulo. Cada sub-issue de exercício tem o requisito de narrativa
+como comentário.
