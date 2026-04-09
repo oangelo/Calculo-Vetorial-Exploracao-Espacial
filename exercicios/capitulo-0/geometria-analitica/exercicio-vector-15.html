@@ -1,0 +1,42 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-15</div>
+  <div class="context">
+    ORIGEM: Prevenção de Colisão - Monitoramento de Órbitas [SIGMA-4]
+  </div>
+  <p>
+    Duas trajetórias orbitais podem passar perto uma da outra sem nunca se
+    encontrar. Essa distância mínima entre retas reversas é crucial para evitar
+    colisões. <br /><br />
+    Retas \(r_1: (1,0,0) + t(1,1,0)\) e \(r_2: (0,1,1) + s(0,1,1)\):
+  </p>
+  <p>
+    (a) Mostre que as retas são reversas (não se intersectam e não são
+    paralelas).<br />
+    (b) Calcule o produto vetorial dos diretores
+    \(\vec{d_1}\times\vec{d_2}\).<br />
+    (c) Calcule a distância mínima entre as retas.
+  </p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE DISTÂNCIA ENTRE RETAS REVERSAS:</p>
+      <p>
+        (a) \(\vec{d_1}=(1,1,0)\), \(\vec{d_2}=(0,1,1)\). Não são paralelos
+        (razões não coincidem). Para intersectar: \((1+t, t, 0) = (s, 1+s,
+        1+s)\). De \(z\): \(0 = 1+s \implies s=-1\). De \(x\): \(1+t=s=-1
+        \implies t=-2\). De \(y\): \(t=-2 \neq 1+s=0\). Contradição — são
+        reversas.
+      </p>
+      <p>(b) \(\vec{d_1}\times\vec{d_2} = (1,-1,1)\).</p>
+      <p>
+        (c) \(\vec{P_1P_2} = (0-1, 1-0, 1-0) = (-1, 1, 1)\).<br />
+        \(\vec{P_1P_2}\cdot(\vec{d_1}\times\vec{d_2}) = (-1)(1)+(1)(-1)+(1)(1) =
+        -1 -1 + 1 = -1\).<br />
+        Distância =
+        \(\dfrac{|\vec{P_1P_2}\cdot(\vec{d_1}\times\vec{d_2})|}{\|\vec{d_1}\times\vec{d_2}\|}
+        = \dfrac{|-1|}{\sqrt{3}} = \dfrac{\sqrt{3}}{3}\).
+      </p>
+    </div>
+  </details>
+</li>
