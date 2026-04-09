@@ -1,20 +1,44 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-15</div>
-  <div class="context">ORIGEM: Setor de Mecânica Celeste</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-15 [NÍVEL GAMMA]</div>
+  <div class="context">
+    ORIGEM: Análise de Estrutura Assintótica - Setor de Trajetórias [SIGMA-3]
+  </div>
   <p>
-    (Atividade prática) Uma hipérbole apresenta focos em \((0, -5)\) e \((0,
-    5)\). A diferença das distâncias a esses focos é igual a 6. Obtenha a
-    equação da hipérbole e discuta brevemente por que o centro da hipérbole está
-    em \((0,0)\).
+    As assíntotas de uma hipérbole são fundamentais para prever o comportamento
+    assintótico de uma trajetória de escape.
   </p>
+  <p>
+    (a) Dada a hipérbole \(\dfrac{x^2}{9} - \dfrac{y^2}{16} = 1\), derive as
+    equações das assíntotas a partir da definição (o que acontece quando \(x \to
+    \infty\)?).<br />
+    (b) Verifique que as assíntotas passam pelo centro e têm inclinação \(\pm
+    \dfrac{b}{a}\).<br />
+    (c) Escreva as assíntotas na forma \(y = mx + b\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Isolando \(y\) da equação da hipérbole: \(y = \pm
+      \dfrac{b}{a}\sqrt{x^2 - a^2}\). Quando \(x \to \infty\), \(\sqrt{x^2-a^2}
+      \approx x\), então \(y \approx \pm\dfrac{b}{a}x\).
+    </div>
+  </details>
   <details>
-    <summary>Solução</summary>
-    <p>
-      Focos em (0,±5) =&gt; c=5, centro em (0,0). Diferença = 2a=6 =&gt; a=3.
-      Então b²=c²-a²=25-9=16 =&gt; b=4. <br />
-      Hipérbole vertical: \(\frac{y^2}{a^2} - \frac{x^2}{b^2}=1\) =&gt;
-      \(\frac{y^2}{9}-\frac{x^2}{16}=1\).<br />
-      O centro é o ponto médio entre os focos, logo (0,0).
-    </p>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Da equação: \(y = \pm\dfrac{4}{3}\sqrt{x^2-9}\). Quando \(x \to
+        \infty\), \(\sqrt{x^2-9} \to x\), portanto \(y \to \pm\dfrac{4}{3}x\).
+      </p>
+      <p>
+        (b) As assíntotas são retas \(y = \pm\dfrac{b}{a}x\) que passam pela
+        origem (centro da hipérbole). Inclinação: \(m = \pm\dfrac{4}{3}\).
+      </p>
+      <p>
+        (c) Assíntota 1: \(y = \dfrac{4}{3}x\). Assíntota 2: \(y =
+        -\dfrac{4}{3}x\). (Forma \(y = mx + b\) com \(b=0\) pois o centro é a
+        origem.)
+      </p>
+    </div>
   </details>
 </li>

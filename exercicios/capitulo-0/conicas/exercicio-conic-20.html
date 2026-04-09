@@ -1,23 +1,43 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-20</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-20 [NÍVEL OMEGA]</div>
   <div class="context">
-    ORIGEM: Seção de Projetos Experimentais [CLASSIFICADO]
+    ORIGEM: Verificação de Dados Interceptados - Centro de Análise [SIGMA-4]
   </div>
   <p>
-    (Problema avançado) Investigue a relação entre o foco de uma elipse e o
-    sistema de coordenadas polares (focal) para descrever a forma da órbita de
-    um objeto lançado do
-    <span class="censored">Centro Espacial [REDACTED]</span>. Explique como essa
-    relação facilita o cálculo de apogeu e perigeu em missões orbitais.
+    Interceptamos uma equação que pode representar qualquer tipo de cônica.
+    Classifique, determine a forma canônica e todos os elementos relevantes:
   </p>
+  <p>\[ 3x^2 + 2xy + 3y^2 - 8 = 0 \]</p>
+  <!-- Série OMEGA => sem dicas -->
   <details>
-    <summary>Solução</summary>
-    <p>
-      No sistema de coordenadas polares focal, a distância r é descrita por
-      r(\theta) = \(\frac{a(1 - e^2)}{1 + e cos\theta}\) para elipses. O foco
-      num dos focos facilita encontrar rapidamente distâncias mínimas (perigeu)
-      e máximas (apogeu). Esse enquadramento simplifica equações de manobra
-      orbital.
-    </p>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>Classificação:</strong> \(A=3, B=2, C=3\). Discriminante: \(4 -
+        36 = -32 < 0\) → elipse.
+      </p>
+      <p>
+        <strong>Rotação para eliminar \(Bxy\):</strong> O ângulo de rotação
+        satisfaz \(\cot(2\theta) = \dfrac{A-C}{B} = 0\), logo \(2\theta = 90°\)
+        e \(\theta = 45°\).
+      </p>
+      <p>
+        Com \(x = \dfrac{X-Y}{\sqrt{2}}\) e \(y = \dfrac{X+Y}{\sqrt{2}}\): \[
+        3\left(\frac{X-Y}{\sqrt{2}}\right)^2 +
+        2\left(\frac{X-Y}{\sqrt{2}}\right)\left(\frac{X+Y}{\sqrt{2}}\right) +
+        3\left(\frac{X+Y}{\sqrt{2}}\right)^2 - 8 = 0 \] Expandindo:
+        \(3(X^2+Y^2)/2 + (X^2-Y^2)/1 + 3(X^2+Y^2)/2 = 8\).<br />
+        Simplificando: \(4X^2 + 2Y^2 = 8\), ou \(\dfrac{X^2}{2} + Y^2 = 1\).
+      </p>
+      <p>
+        <strong>Resultado:</strong> Elipse com semi-eixo \(a = \sqrt{2}\) na
+        direção \(X\) e semi-eixo \(b = 1\) na direção \(Y\), rotacionada de
+        \(45°\) em relação aos eixos originais. Centro na origem.
+      </p>
+      <p>
+        <strong>Excentricidade:</strong> \(c^2 = 2 - 1 = 1\), logo \(c = 1\) e
+        \(e = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}\).
+      </p>
+    </div>
   </details>
 </li>
