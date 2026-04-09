@@ -229,12 +229,15 @@ Etapa 3: Agente Explore (Resumidor)
 **Etapa 1 — Revisor:**
 
 > Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
+> Leia `checklist-conceitos-permitidos.md` ANTES de começar — identifique
+> o capítulo do tópico e os conceitos permitidos. QUALQUER exercício que
+> exija conceitos de capítulos posteriores DEVE ser sinalizado no RTC.
 > Leia todos os exercícios em exercicios/capitulo-N/PASTA/,
 > busque ideias na web com firecrawl_search (busque em português e inglês),
-> verifique que não antecipa conteúdo de capítulos futuros,
 > e gere um RTC como comentário na issue #N do GitHub usando `gh issue comment`.
 > O RTC deve incluir: análise de qualidade, problemas encontrados,
-> sugestões de melhoria, e a narrativa matemática da lista.
+> seção "Conceitos Fora do Escopo" (se houver), sugestões de melhoria,
+> e a narrativa matemática da lista.
 
 **Etapa 2 — Implementador:**
 
