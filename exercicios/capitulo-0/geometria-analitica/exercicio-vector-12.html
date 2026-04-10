@@ -1,35 +1,48 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-12</div>
+  <div class="exercise-number">EXERCÍCIO VECTOR-12 <span class="difficulty-badge difficulty-gamma">GAMMA</span></div>
   <div class="context">
-    ORIGEM: Cruzamento de Trajetória - Análise de Rota de Aterrissagem [SIGMA-4]
+    ORIGEM: Cruzamento de Trajetória — Análise de Rota de Aterrissagem [SIGMA-4]
+  </div>
+  <div class="narrative">
+    <em>Agora combinamos <strong>tudo</strong>: uma reta (exercícios 08-09) e um
+    plano (exercícios 10-11). Quando a trajetória de aterrissagem cruza o plano?
+    Substituímos as equações paramétricas na equação do plano e resolvemos. Este
+    é o primeiro exercício do bloco de "combinações" — onde os conceitos se
+    encontram.</em>
   </div>
   <p>
-    Uma trajetória (reta) cruza o plano de aterrissagem. Em que ponto?
-    Precisamos substituir as equações paramétricas na equação do plano.
-    <br /><br />
-    Dada a reta \(x = 1 + t\), \(y = 2t\), \(z = 3 - t\) e o plano \(2x - y + z
-    = 5\):
+    Dada a reta \\(x = 1 + t\\), \\(y = 2t\\), \\(z = 3 - t\\) e o plano \\(2x
+    - y + z = 5\\):
   </p>
   <p>
-    (a) Encontre o valor de \(t\) no ponto de interseção.<br />
+    (a) Substitua as equações paramétricas na equação do plano e resolva para
+    \\(t\\).<br />
     (b) Encontre o ponto de interseção.<br />
-    (c) Verifique se a reta pode ser paralela ao plano — para isso, o vetor
-    diretor deve ser perpendicular à normal do plano. É o caso?
+    (c) Verifique: o vetor diretor da reta é perpendicular à normal do plano? Se
+    fosse, a reta seria paralela ao plano (sem interseção). É o caso?
   </p>
-  <!-- Série OMEGA => sem dicas -->
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Substitua \\(x(t), y(t), z(t)\\) na equação do plano e
+      resolva para \\(t\\). Para testar paralelismo, calcule o produto escalar
+      do vetor diretor com a normal (como no VECTOR-04). Se for zero, a reta é
+      paralela.
+    </div>
+  </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>PROTOCOLO DE INTERSEÇÃO RETA-PLANO:</p>
       <p>
-        (a) Substituindo: \(2(1+t) - (2t) + (3-t) = 5\).<br />
-        \(2 + 2t - 2t + 3 - t = 5 \implies 5 - t = 5 \implies t = 0\).
+        (a) Substituindo: \\(2(1+t) - (2t) + (3-t) = 5\\).<br />
+        \\(2 + 2t - 2t + 3 - t = 5 \\implies 5 - t = 5 \\implies t = 0\\).
       </p>
-      <p>(b) Para \(t=0\): ponto \((1, 0, 3)\).</p>
+      <p>(b) Para \\(t=0\\): ponto \\((1, 0, 3)\\).</p>
       <p>
-        (c) Diretor da reta: \(\vec{d} = (1,2,-1)\). Normal do plano:
-        \(\vec{n}=(2,-1,1)\).<br />
-        \(\vec{d}\cdot\vec{n} = 2 - 2 - 1 = -1 \neq 0\).<br />
+        (c) Diretor da reta: \\(\\vec{d} = (1,2,-1)\\). Normal do plano:
+        \\(\\vec{n}=(2,-1,1)\\).<br />
+        \\(\\vec{d}\\cdot\\vec{n} = 2 - 2 - 1 = -1 \\neq 0\\).<br />
         A reta NÃO é paralela ao plano (cruza-o em um único ponto).
       </p>
     </div>

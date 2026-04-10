@@ -1,24 +1,32 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-05</div>
+  <div class="exercise-number">EXERCÍCIO VECTOR-05 <span class="difficulty-badge difficulty-beta">BETA</span></div>
   <div class="context">
-    ORIGEM: Decomposição de Forças - Análise de Trajetória [SIGMA-2]
+    ORIGEM: Decomposição de Forças — Análise de Trajetória [SIGMA-2]
+  </div>
+  <div class="narrative">
+    <em>No exercício anterior, usamos o produto escalar para calcular o ângulo
+    entre vetores. Agora vamos usá-lo para algo mais prático: <strong>decompor um
+    vetor</strong> em componente na direção de outro e componente perpendicular.
+    Isso é a projeção ortogonal — a "sombra" de um vetor sobre a direção de
+    outro.</em>
   </div>
   <p>
-    Às vezes precisamos decompor um movimento em componente na direção de e
-    perpendicular a outro vetor. Isso é projeção. <br /><br />
-    Dado \(\vec{v} = (3, 4, 0)\) e \(\vec{u} = (1, 0, 0)\):
+    Dado \\(\\vec{v} = (3, 4, 0)\\) e \\(\\vec{u} = (1, 0, 0)\\):
   </p>
   <p>
-    (a) Encontre a projeção de \(\vec{v}\) sobre \(\vec{u}\).<br />
+    (a) Encontre a projeção de \\(\\vec{v}\\) sobre \\(\\vec{u}\\).<br />
     (b) Encontre o componente perpendicular.<br />
-    (c) Verifique que os dois componentes são ortogonais.
+    (c) Verifique que os dois componentes são ortogonais (use o produto
+    escalar).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: \(\text{proj}_{\vec{u}}\vec{v} =
-      \dfrac{\vec{v}\cdot\vec{u}}{\|\vec{u}\|^2}\,\vec{u}\). O perpendicular é
-      \(\vec{v} - \text{proj}_{\vec{u}}\vec{v}\).
+      [NOTA TÉCNICA]: \\(\\text{proj}_{\\vec{u}}\\vec{v} =
+      \\dfrac{\\vec{v}\\cdot\\vec{u}}{\\|\\vec{u}\\|^2}\\,\\vec{u}\\). O
+      perpendicular é \\(\\vec{v} - \\text{proj}_{\\vec{u}}\\vec{v}\\). Para
+      verificar ortogonalidade, basta mostrar que o produto escalar é zero (como
+      no VECTOR-04).
     </div>
   </details>
   <details>
@@ -26,11 +34,12 @@
     <div class="solution">
       <p>PROTOCOLO DE PROJEÇÃO:</p>
       <p>
-        (a) \(\vec{v}\cdot\vec{u} = 3\), \(\|\vec{u}\|^2 = 1\).<br />
-        \(\text{proj}_{\vec{u}}\vec{v} = \dfrac{3}{1}(1,0,0) = (3, 0, 0)\).
+        (a) \\(\\vec{v}\\cdot\\vec{u} = 3\\), \\(\\|\\vec{u}\\|^2 = 1\\).<br />
+        \\(\\text{proj}_{\\vec{u}}\\vec{v} = \\dfrac{3}{1}(1,0,0) = (3, 0,
+        0)\\).
       </p>
-      <p>(b) \(\vec{v}_{\perp} = (3,4,0) - (3,0,0) = (0, 4, 0)\).</p>
-      <p>(c) \((3,0,0)\cdot(0,4,0) = 0\). Confirmado: são ortogonais.</p>
+      <p>(b) \\(\\vec{v}_{\\perp} = (3,4,0) - (3,0,0) = (0, 4, 0)\\).</p>
+      <p>(c) \\((3,0,0)\\cdot(0,4,0) = 0\\). Confirmado: são ortogonais.</p>
     </div>
   </details>
 </li>
