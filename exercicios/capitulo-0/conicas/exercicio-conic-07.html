@@ -1,114 +1,58 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-4</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-7 [NÍVEL BETA]</div>
   <div class="context">
-    ORIGEM: Arquivos Secretos [NÍVEL OMEGA - DADOS DESCRIPTOGRAFADOS]
+    ORIGEM: Estudo de Trajetórias de Reentrada [PROGRAMA GEMINI, 1964]
   </div>
   <p>
-    (Atividade orientada) Interceptamos quatro equações de trajetórias
-    codificadas em sua forma geral \(Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\). Sua
-    missão é classificar cada cônica e, quando possível, obter sua forma
-    canônica com todos os parâmetros.
+    Nos exercícios anteriores, extraímos informações de equações já escritas.
+    Agora vamos ao inverso: <strong>a partir de dados geométricos (foco,
+    diretriz, ponto), determinar a equação</strong>. A figura mostra uma
+    parábola com vértice na origem, foco em \(F(0, 2)\) e diretriz \(y = -2\).
+    O ponto \(P(4, 2)\) pertence à curva.
   </p>
   <p>
-    <strong>Trajetórias interceptadas:</strong><br /><br />
-    <strong>Trajetória Alfa:</strong> \(4x^2 + 9y^2 - 16x + 18y - 11 = 0\)<br />
-    <strong>Trajetória Beta:</strong> \(x^2 - 4y^2 - 6x - 16y - 19 = 0\)<br />
-    <strong>Trajetória Gama:</strong> \(y^2 - 8x + 6y + 1 = 0\)<br />
-    <strong>Trajetória Delta:</strong> \(9x^2 + 4y^2 - 36 = 0\)
+    <strong>Tarefa:</strong><br />
+    (a) Use a relação \(p = \frac{1}{4a}\) (onde \(p\) é a distância do
+    vértice ao foco) para encontrar o coeficiente \(a\).<br />
+    (b) Escreva a equação na forma \(y = ax^2\).<br />
+    (c) Verifique que o ponto \(P(4, 2)\) satisfaz a equação.
   </p>
-  <p>
-    <strong>Tarefa para cada trajetória:</strong><br />
-    (a) Use o discriminante \(\Delta = B^2 - 4AC\) para classificar a cônica.<br />
-    (b) Complete quadrados e reescreva na forma canônica.<br />
-    (c) Determine os parâmetros fundamentais (\(a\), \(b\), \(c\), \(e\) quando
-    aplicável).
-  </p>
+  <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
+    <g transform="translate(200,300) scale(25,-25)">
+      <line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
+      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-4" y2="8"></line>
+      <line stroke="red" stroke-width="0.1" x1="-6" x2="6" y1="-2" y2="-2"></line>
+      <path d="M -6 4.5 L -5 3.125 L -4 2 L -3 1.125 L -2 0.5 L -1 0.125 L 0 0 L 1 0.125 L 2 0.5 L 3 1.125 L 4 2 L 5 3.125 L 6 4.5" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="0" y1="2" y2="2"></line>
+      <line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="4" y1="2" y2="-2"></line>
+      <circle cx="0" cy="0" fill="red" r="0.15"></circle>
+      <circle cx="0" cy="2" fill="red" r="0.15"></circle>
+      <circle cx="4" cy="2" fill="black" r="0.15"></circle>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.3">V(0, 0)</text>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-2.3">F(0, 2)</text>
+      <text fill="black" font-size="0.7" transform="scale(1,-1)" x="4.2" y="-2.3">P(4, 2)</text>
+      <text fill="red" font-size="0.6" transform="scale(1,-1)" x="-5.8" y="1.5">y = −2</text>
+    </g>
+  </svg>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O foco está a \(p = 2\) unidades do vértice. A relação
+      \(p = \frac{1}{4a}\) dá \(a = \frac{1}{4p} = \frac{1}{8}\).
+    </div>
+  </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-7 REQUERIDO]</summary>
     <p>
-      <strong
-        >=== TRAJETÓRIA ALFA: \(4x^2 + 9y^2 - 16x + 18y - 11 = 0\) ===</strong
-      >
+      <strong>(a) Coeficiente:</strong> \(p = 2\), logo
+      \(a = \frac{1}{4p} = \frac{1}{8}\).
     </p>
     <p>
-      <strong>(a) Discriminante:</strong> \(A = 4,\ B = 0,\ C = 9\)<br />
-      \[\Delta = 0^2 - 4(4)(9) = -144 < 0 \implies \textbf{ELIPSE}\]
+      <strong>(b) Equação:</strong> \(y = \frac{1}{8}x^2\).
     </p>
     <p>
-      <strong>(b) Completando quadrados:</strong><br />
-      \[4(x^2 - 4x) + 9(y^2 + 2y) = 11\]<br />
-      \[4(x^2 - 4x + 4) + 9(y^2 + 2y + 1) = 11 + 16 + 9\]<br />
-      \[4(x - 2)^2 + 9(y + 1)^2 = 36\]<br />
-      \[\frac{(x - 2)^2}{9} + \frac{(y + 1)^2}{4} = 1\]
-    </p>
-    <p>
-      <strong>(c) Parâmetros:</strong> Centro em \((2,\, -1)\)<br />
-      \(a^2 = 9 \implies a = 3\), \(b^2 = 4 \implies b = 2\)<br />
-      \(c^2 = 9 - 4 = 5 \implies c = \sqrt{5} \approx 2{,}236\)<br />
-      \(e = \frac{\sqrt{5}}{3} \approx 0{,}745\)
-    </p>
-    <p>
-      <strong
-        >=== TRAJETÓRIA BETA: \(x^2 - 4y^2 - 6x - 16y - 19 = 0\) ===</strong
-      >
-    </p>
-    <p>
-      <strong>(a) Discriminante:</strong> \(A = 1,\ B = 0,\ C = -4\)<br />
-      \[\Delta = 0^2 - 4(1)(-4) = 16 > 0 \implies \textbf{HIPÉRBOLE}\]
-    </p>
-    <p>
-      <strong>(b) Completando quadrados:</strong><br />
-      \[(x^2 - 6x) - 4(y^2 + 4y) = 19\]<br />
-      \[(x^2 - 6x + 9) - 4(y^2 + 4y + 4) = 19 + 9 - 16\]<br />
-      \[(x - 3)^2 - 4(y + 2)^2 = 12\]<br />
-      \[\frac{(x - 3)^2}{12} - \frac{(y + 2)^2}{3} = 1\]
-    </p>
-    <p>
-      <strong>(c) Parâmetros:</strong> Centro em \((3,\, -2)\)<br />
-      \(a^2 = 12 \implies a = 2\sqrt{3} \approx 3{,}464\)<br />
-      \(b^2 = 3 \implies b = \sqrt{3} \approx 1{,}732\)<br />
-      \(c^2 = 12 + 3 = 15 \implies c = \sqrt{15} \approx 3{,}873\)<br />
-      \(e = \frac{\sqrt{15}}{2\sqrt{3}} = \frac{\sqrt{5}}{2} \approx 1{,}118\)
-    </p>
-    <p>
-      <strong>=== TRAJETÓRIA GAMA: \(y^2 - 8x + 6y + 1 = 0\) ===</strong>
-    </p>
-    <p>
-      <strong>(a) Discriminante:</strong> \(A = 0,\ B = 0,\ C = 1\)<br />
-      \[\Delta = 0^2 - 4(0)(1) = 0 \implies \textbf{PARÁBOLA}\]
-    </p>
-    <p>
-      <strong>(b) Isolando e completando quadrado:</strong><br />
-      \[y^2 + 6y = 8x - 1\]<br />
-      \[(y^2 + 6y + 9) = 8x - 1 + 9\]<br />
-      \[(y + 3)^2 = 8x + 8 = 8(x + 1)\]<br />
-      \[(y + 3)^2 = 8(x + 1)\]
-    </p>
-    <p>
-      <strong>(c) Parâmetros:</strong> Vértice em \((-1,\, -3)\)<br />
-      Forma: \((y - k)^2 = 4p(x - h)\) com \(4p = 8 \implies p = 2\)<br />
-      Foco: \((-1 + 2,\, -3) = (1,\, -3)\)<br />
-      Diretriz: \(x = -1 - 2 = -3\)
-    </p>
-    <p>
-      <strong>=== TRAJETÓRIA DELTA: \(9x^2 + 4y^2 - 36 = 0\) ===</strong>
-    </p>
-    <p>
-      <strong>(a) Discriminante:</strong> \(A = 9,\ B = 0,\ C = 4\)<br />
-      \[\Delta = 0^2 - 4(9)(4) = -144 < 0 \implies \textbf{ELIPSE}\]
-    </p>
-    <p>
-      <strong>(b) Forma canônica:</strong><br />
-      \[9x^2 + 4y^2 = 36\]<br />
-      \[\frac{x^2}{4} + \frac{y^2}{9} = 1\]
-    </p>
-    <p>
-      <strong>(c) Parâmetros:</strong> Centro na origem<br />
-      \(a^2 = 9 \implies a = 3\), \(b^2 = 4 \implies b = 2\)<br />
-      Eixo maior ao longo do eixo \(y\) (pois \(9 > 4\))<br />
-      \(c^2 = 9 - 4 = 5 \implies c = \sqrt{5} \approx 2{,}236\)<br />
-      \(e = \frac{\sqrt{5}}{3} \approx 0{,}745\)<br />
-      Focos: \((0,\, -\sqrt{5})\) e \((0,\, \sqrt{5})\)
+      <strong>(c) Verificação com P(4, 2):</strong>
+      \[y = \frac{1}{8}(4)^2 = \frac{16}{8} = 2.\] ✓
     </p>
   </details>
 </li>

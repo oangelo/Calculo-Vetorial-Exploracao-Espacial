@@ -1,46 +1,51 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-08 [NÍVEL BETA]</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-8 [NÍVEL BETA]</div>
   <div class="context">
-    ORIGEM: Classificação de Trajetórias - Centro de Análise Orbital [SIGMA-2]
+    ORIGEM: Mapeamento de Zonas de Aterrissagem [PROGRAMA MERCURY, 1961]
   </div>
   <p>
-    Classifique cada equação abaixo como círculo, elipse, parábola ou hipérbole
-    usando apenas o discriminante \(B^2 - 4AC\) da forma geral \(Ax^2 + Bxy +
-    Cy^2 + Dx + Ey + F = 0\):
+    A figura mostra uma circunferência com centro \(C(3, -2)\). O ponto
+    \(P(3, 3)\) pertence à curva. Determine a equação desta circunferência.
   </p>
   <p>
-    (a) \(4x^2 + y^2 - 8x + 4y + 4 = 0\)<br />
-    (b) \(x^2 - 4y^2 + 6x + 8y - 11 = 0\)<br />
-    (c) \(9x^2 + 6xy + y^2 - 4 = 0\)<br />
-    (d) \(x^2 + y^2 - 6x + 2y + 1 = 0\)
+    <strong>Tarefa:</strong><br />
+    (a) Calcule o raio medindo a distância de \(C\) a \(P\).<br />
+    (b) Escreva a equação na forma \((x - h)^2 + (y - k)^2 = r^2\).<br />
+    (c) Expandindo, obtenha a forma geral \(x^2 + y^2 + Dx + Ey + F = 0\).
   </p>
+  <svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
+    <g transform="translate(150,150) scale(25,-25)">
+      <line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
+      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
+      <circle cx="3" cy="-2" fill="none" r="5" stroke="blue" stroke-width="0.1"></circle>
+      <line stroke="green" stroke-width="0.08" stroke-dasharray="0.15,0.15" x1="3" x2="3" y1="-2" y2="3"></line>
+      <circle cx="3" cy="-2" fill="red" r="0.15"></circle>
+      <circle cx="3" cy="3" fill="black" r="0.15"></circle>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="3.2" y="2.3">C(3, −2)</text>
+      <text fill="black" font-size="0.7" transform="scale(1,-1)" x="3.2" y="-3.3">P(3, 3)</text>
+    </g>
+  </svg>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Se \(B^2 - 4AC < 0\) → elipse (ou círculo se \(A=C,
-      B=0\)). Se \(B^2 - 4AC = 0\) → parábola. Se \(B^2 - 4AC > 0\) → hipérbole.
-      Identifique \(A\), \(B\), \(C\) de cada equação.
+      [NOTA TÉCNICA]: O raio é a distância entre \(C(3, -2)\) e \(P(3, 3)\).
+      Para a forma geral, expanda \((x-3)^2 + (y+2)^2 = 25\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        (a) \(A=4, B=0, C=1\). Discriminante: \(0 - 16 = -16 < 0\). Como \(A
-        \neq C\): <strong>elipse</strong>.
-      </p>
-      <p>
-        (b) \(A=1, B=0, C=-4\). Discriminante: \(0 - (-16) = 16 > 0\):
-        <strong>hipérbole</strong>.
-      </p>
-      <p>
-        (c) \(A=9, B=6, C=1\). Discriminante: \(36 - 36 = 0\):
-        <strong>parábola</strong>.
-      </p>
-      <p>
-        (d) \(A=1, B=0, C=1\). Discriminante: \(0 - 4 = -4 < 0\). Como \(A=C\) e
-        \(B=0\): <strong>círculo</strong>.
-      </p>
-    </div>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-8 REQUERIDO]</summary>
+    <p>
+      <strong>(a) Raio:</strong><br />
+      \[r = \sqrt{(3-3)^2 + (3-(-2))^2} = \sqrt{0 + 25} = 5\]
+    </p>
+    <p>
+      <strong>(b) Forma canônica:</strong><br />
+      \[(x - 3)^2 + (y + 2)^2 = 25\]
+    </p>
+    <p>
+      <strong>(c) Forma geral:</strong><br />
+      \[x^2 - 6x + 9 + y^2 + 4y + 4 = 25\]<br />
+      \[x^2 + y^2 - 6x + 4y - 12 = 0\]
+    </p>
   </details>
 </li>

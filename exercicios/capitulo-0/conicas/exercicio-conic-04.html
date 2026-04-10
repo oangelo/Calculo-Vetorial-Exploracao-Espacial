@@ -1,100 +1,64 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-5</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-4 [NÍVEL ALFA]</div>
   <div class="context">
-    ORIGEM: Mapeamento de Zonas de Aterrissagem [PROGRAMA MERCURY, 1961]
+    ORIGEM: Seção Teórica de Conicidade [ARQUIVO [REDACTED], 01/OUT/1962]
   </div>
   <p>
-    A figura mostra uma circunferência. O centro C está em (3, -2) e o ponto
-    P(3, 3) pertence à curva. Determine a equação desta circunferência.
+    Nos três exercícios anteriores, construímos equações a partir de definições
+    geométricas. Agora vamos fazer o caminho inverso: <strong>dada uma equação,
+    descobrir o que ela conta sobre a curva</strong>.
   </p>
   <p>
-    <svg
-      height="300"
-      style="border: 1px solid #999; margin: 10px 0"
-      width="300"
-    >
-      <!-- Centro C(3,-2), ponto P(3,3) => raio = 5 -->
-      <g transform="translate(150,150) scale(25,-25)">
-        <!-- Eixo X -->
-        <line
-          stroke="gray"
-          stroke-width="0.04"
-          x1="-7"
-          x2="7"
-          y1="0"
-          y2="0"
-        ></line>
-        <!-- Eixo Y -->
-        <line
-          stroke="gray"
-          stroke-width="0.04"
-          x1="0"
-          x2="0"
-          y1="-7"
-          y2="7"
-        ></line>
-        <!-- Circunferência: centro (3,-2), raio=5 -->
-        <circle
-          cx="3"
-          cy="-2"
-          fill="none"
-          r="5"
-          stroke="blue"
-          stroke-width="0.1"
-        ></circle>
-        <!-- Linha do raio: C(3,-2) a P(3,3) -->
-        <line
-          stroke="green"
-          stroke-width="0.08"
-          stroke-dasharray="0.15,0.15"
-          x1="3"
-          x2="3"
-          y1="-2"
-          y2="3"
-        ></line>
-        <!-- Centro C -->
-        <circle cx="3" cy="-2" fill="red" r="0.15"></circle>
-        <!-- Ponto P na curva -->
-        <circle cx="3" cy="3" fill="black" r="0.15"></circle>
-        <!-- Texto -->
-        <text
-          fill="red"
-          font-size="0.7"
-          transform="scale(1,-1)"
-          x="3.2"
-          y="2.3"
-        >
-          C(3, −2)
-        </text>
-        <text
-          fill="black"
-          font-size="0.7"
-          transform="scale(1,-1)"
-          x="3.2"
-          y="-3.3"
-        >
-          P(3, 3)
-        </text>
-      </g>
-    </svg>
+    Interceptamos a equação de uma trajetória orbital suspeita:
+  </p>
+  <p style="text-align: center">\[\frac{x^2}{16} + \frac{y^2}{9} = 1\]</p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) O que acontece quando você faz \(y = 0\) na equação? O que os valores
+    de \(x\) representam geometricamente?<br />
+    (b) O que acontece quando você faz \(x = 0\)? O que os valores de \(y\)
+    representam?<br />
+    (c) Identifique o tipo de cônica e determine \(a\) e \(b\).<br />
+    (d) Calcule \(c\) e a excentricidade \(e = \frac{c}{a}\).<br />
+    (e) Determine as coordenadas dos focos e os comprimentos dos eixos maior e
+    menor.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre-se que a equação geral de uma circunferência com
-      centro (h, k) e raio r é \[(x - h)^2 + (y - k)^2 = r^2.\] O raio pode ser
-      obtido calculando a distância entre o centro C e o ponto P que pertence à
-      curva.
+      [NOTA TÉCNICA]: Quando \(y = 0\), a equação vira \(\frac{x^2}{16} = 1\).
+      Resolva para \(x\). Esses pontos são onde a curva cruza o eixo \(x\) —
+      são os vértices do eixo horizontal.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-5 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <p>
-      O centro está em C(3, -2), logo h = 3 e k = -2.<br />
-      O raio é a distância de C(3, −2) a P(3, 3):<br />
-      \[r = \sqrt{(3-3)^2 + (3-(-2))^2} = \sqrt{0 + 25} = 5.\]<br />
-      Portanto, a equação da circunferência é:<br />
-      \[(x - 3)^2 + (y + 2)^2 = 25.\]
+      <strong>(a) Fazendo \(y = 0\):</strong><br />
+      \[\frac{x^2}{16} = 1 \implies x^2 = 16 \implies x = \pm 4\]<br />
+      A curva cruza o eixo \(x\) nos pontos \((-4, 0)\) e \((4, 0)\).
+      São os <strong>vértices do eixo maior</strong>.
+    </p>
+    <p>
+      <strong>(b) Fazendo \(x = 0\):</strong><br />
+      \[\frac{y^2}{9} = 1 \implies y^2 = 9 \implies y = \pm 3\]<br />
+      A curva cruza o eixo \(y\) nos pontos \((0, -3)\) e \((0, 3)\).
+      São os <strong>vértices do eixo menor</strong>.
+    </p>
+    <p>
+      <strong>(c) Identificação:</strong> Forma \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)
+      com ambos os termos positivos → <strong>elipse</strong>.<br />
+      \(a^2 = 16 \implies a = 4\), \(b^2 = 9 \implies b = 3\).
+    </p>
+    <p>
+      <strong>(d) Excentricidade:</strong><br />
+      \[c^2 = a^2 - b^2 = 16 - 9 = 7 \implies c = \sqrt{7}\]<br />
+      \[e = \frac{c}{a} = \frac{\sqrt{7}}{4} \approx 0{,}661\]
+    </p>
+    <p>
+      <strong>(e) Focos e eixos:</strong><br />
+      Focos: \(F_1 = (-\sqrt{7}, 0)\) e \(F_2 = (\sqrt{7}, 0)\)<br />
+      Eixo maior: \(2a = 8\) unidades. Eixo menor: \(2b = 6\) unidades.
     </p>
   </details>
 </li>

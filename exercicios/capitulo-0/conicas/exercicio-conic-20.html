@@ -4,39 +4,40 @@
     ORIGEM: Verificação de Dados Interceptados - Centro de Análise [SIGMA-4]
   </div>
   <p>
-    Interceptamos uma equação que pode representar qualquer tipo de cônica.
-    Classifique, determine a forma canônica e todos os elementos relevantes:
+    Interceptamos uma equação com termo misto \(xy\). Sem usar rotação de
+    coordenadas, classifique a cônica e determine se representa uma curva real
+    ou imaginária:
   </p>
   <p>\[ 3x^2 + 2xy + 3y^2 - 8 = 0 \]</p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Calcule o discriminante \(B^2 - 4AC\) e classifique o tipo de
+    cônica.<br />
+    (b) Complete os quadrados agrupando termos. Dica: \(3x^2 + 2xy + 3y^2\)
+    pode ser reescrito como soma de quadrados. Tente \(2(x^2 + y^2) + (x+y)^2\).<br />
+    (c) A equação descreve uma curva real? Se sim, determine os semi-eixos.
+  </p>
   <!-- Série OMEGA => sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>Classificação:</strong> \(A=3, B=2, C=3\). Discriminante: \(4 -
-        36 = -32 < 0\) → elipse.
+        <strong>(a) Discriminante:</strong> \(A = 3, B = 2, C = 3\).
+        \[\Delta = 4 - 36 = -32 < 0 \implies \textbf{ELIPSE}\]
       </p>
       <p>
-        <strong>Rotação para eliminar \(Bxy\):</strong> O ângulo de rotação
-        satisfaz \(\cot(2\theta) = \dfrac{A-C}{B} = 0\), logo \(2\theta = 90°\)
-        e \(\theta = 45°\).
+        <strong>(b) Completando quadrados sem rotação:</strong><br />
+        Observe que \(3x^2 + 2xy + 3y^2 = 2(x^2 + y^2) + (x^2 + 2xy + y^2) = 2(x^2 + y^2) + (x+y)^2\).<br />
+        A equação fica: \(2(x^2 + y^2) + (x+y)^2 = 8\).<br />
+        Como \(x^2 + y^2 \geq 0\) e \((x+y)^2 \geq 0\), a curva existe
+        (é uma elipse real, rotacionada de 45°).
       </p>
       <p>
-        Com \(x = \dfrac{X-Y}{\sqrt{2}}\) e \(y = \dfrac{X+Y}{\sqrt{2}}\): \[
-        3\left(\frac{X-Y}{\sqrt{2}}\right)^2 +
-        2\left(\frac{X-Y}{\sqrt{2}}\right)\left(\frac{X+Y}{\sqrt{2}}\right) +
-        3\left(\frac{X+Y}{\sqrt{2}}\right)^2 - 8 = 0 \] Expandindo:
-        \(3(X^2+Y^2)/2 + (X^2-Y^2)/1 + 3(X^2+Y^2)/2 = 8\).<br />
-        Simplificando: \(4X^2 + 2Y^2 = 8\), ou \(\dfrac{X^2}{2} + Y^2 = 1\).
-      </p>
-      <p>
-        <strong>Resultado:</strong> Elipse com semi-eixo \(a = \sqrt{2}\) na
-        direção \(X\) e semi-eixo \(b = 1\) na direção \(Y\), rotacionada de
-        \(45°\) em relação aos eixos originais. Centro na origem.
-      </p>
-      <p>
-        <strong>Excentricidade:</strong> \(c^2 = 2 - 1 = 1\), logo \(c = 1\) e
-        \(e = \dfrac{1}{\sqrt{2}} = \dfrac{\sqrt{2}}{2}\).
+        <strong>(c) Semi-eixos:</strong> Substituindo \(u = \frac{x+y}{\sqrt{2}}\)
+        e \(v = \frac{x-y}{\sqrt{2}}\) (rotação de 45°), obtemos:<br />
+        \(4u^2 + 2v^2 = 8\), ou \(\frac{u^2}{2} + v^2 = 1\).<br />
+        Semi-eixo maior: \(a = \sqrt{2}\) na direção \(u\). Semi-eixo
+        menor: \(b = 1\) na direção \(v\).
       </p>
     </div>
   </details>

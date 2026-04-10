@@ -1,20 +1,63 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-15</div>
-  <div class="context">ORIGEM: Setor de Mecânica Celeste</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-9 [NÍVEL BETA]</div>
+  <div class="context">
+    ORIGEM: Configurações de Trajetória Interplanetária [PROGRAMA VOYAGER, 1965]
+  </div>
   <p>
-    (Atividade prática) Uma hipérbole apresenta focos em \((0, -5)\) e \((0,
-    5)\). A diferença das distâncias a esses focos é igual a 6. Obtenha a
-    equação da hipérbole e discuta brevemente por que o centro da hipérbole está
-    em \((0,0)\).
+    A figura mostra uma hipérbole horizontal com vértices em \(V_1(-4, 0)\) e
+    \(V_2(4, 0)\). As assíntotas são \(y = \frac{3}{4}x\) e
+    \(y = -\frac{3}{4}x\). Determine a equação canônica e calcule a posição
+    dos focos.
   </p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Identifique \(a\) a partir dos vértices.<br />
+    (b) Usando a inclinação \(\frac{b}{a} = \frac{3}{4}\), determine
+    \(b\).<br />
+    (c) Calcule \(c\) e as coordenadas dos focos.<br />
+    (d) Escreva a equação canônica.
+  </p>
+  <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
+    <g transform="translate(200,200) scale(25,-25)">
+      <line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
+      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
+      <line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="-5.25" y2="5.25"></line>
+      <line stroke="green" stroke-dasharray="0.15,0.15" stroke-width="0.08" x1="-7" x2="7" y1="5.25" y2="-5.25"></line>
+      <text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="-2.8">y = (3/4)x</text>
+      <text fill="green" font-size="0.6" transform="scale(1,-1)" x="3" y="3.2">y = −(3/4)x</text>
+      <path d="M 4 0 L 4.04 0.3 L 4.16 0.6 L 4.36 0.9 L 4.64 1.2 L 4.96 1.5 L 5.33 1.8 L 5.73 2.1 L 6.16 2.4 L 6.61 2.7 L 7.07 3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <path d="M 4 0 L 4.04 -0.3 L 4.16 -0.6 L 4.36 -0.9 L 4.64 -1.2 L 4.96 -1.5 L 5.33 -1.8 L 5.73 -2.1 L 6.16 -2.4 L 6.61 -2.7 L 7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <path d="M -4 0 L -4.04 0.3 L -4.16 0.6 L -4.36 0.9 L -4.64 1.2 L -4.96 1.5 L -5.33 1.8 L -5.73 2.1 L -6.16 2.4 L -6.61 2.7 L -7.07 3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <path d="M -4 0 L -4.04 -0.3 L -4.16 -0.6 L -4.36 -0.9 L -4.64 -1.2 L -4.96 -1.5 L -5.33 -1.8 L -5.73 -2.1 L -6.16 -2.4 L -6.61 -2.7 L -7.07 -3.0" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <circle cx="4" cy="0" fill="red" r="0.15"></circle>
+      <circle cx="-4" cy="0" fill="red" r="0.15"></circle>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="4.1" y="0.5">V₂(4, 0)</text>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="-6.5" y="0.5">V₁(−4, 0)</text>
+    </g>
+  </svg>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A distância do centro a cada vértice é \(a = 4\). A
+      inclinação das assíntotas é \(\pm\frac{b}{a}\). Use \(c^2 = a^2 + b^2\)
+      para os focos.
+    </div>
+  </details>
   <details>
-    <summary>Solução</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-9 REQUERIDO]</summary>
     <p>
-      Focos em (0,±5) =&gt; c=5, centro em (0,0). Diferença = 2a=6 =&gt; a=3.
-      Então b²=c²-a²=25-9=16 =&gt; b=4. <br />
-      Hipérbole vertical: \(\frac{y^2}{a^2} - \frac{x^2}{b^2}=1\) =&gt;
-      \(\frac{y^2}{9}-\frac{x^2}{16}=1\).<br />
-      O centro é o ponto médio entre os focos, logo (0,0).
+      <strong>(a) Vértices:</strong> \(V_1(-4, 0)\) e \(V_2(4, 0)\) → \(a = 4\).
+    </p>
+    <p>
+      <strong>(b) Assíntotas:</strong> \(\frac{b}{a} = \frac{3}{4}\) →
+      \(b = \frac{3}{4} \times 4 = 3\).
+    </p>
+    <p>
+      <strong>(c) Focos:</strong> \(c^2 = 16 + 9 = 25 \implies c = 5\).
+      Focos em \((\pm 5, 0)\).
+    </p>
+    <p>
+      <strong>(d) Equação:</strong> \(\frac{x^2}{16} - \frac{y^2}{9} = 1\).
     </p>
   </details>
 </li>

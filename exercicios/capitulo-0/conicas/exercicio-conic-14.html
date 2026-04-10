@@ -1,44 +1,42 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO CONIC-14 [NÍVEL GAMMA]</div>
   <div class="context">
-    ORIGEM: Trajetória Hiperbólica Deslocada - Análise de Interceptação
-    [SIGMA-3]
+    ORIGEM: Classificação de Trajetórias Codificadas - Projeto Interceptação [SIGMA-3]
   </div>
   <p>
-    A equação \(4x^2 - y^2 - 24x - 4y + 16 = 0\) descreve uma trajetória
-    hiperbólica com centro fora da origem.
+    Mais dois casos para treinar a classificação por discriminante:
   </p>
   <p>
-    (a) Complete os quadrados para obter a forma canônica.<br />
-    (b) Identifique o centro, vértices e assíntotas.<br />
-    (c) Calcule os focos e a excentricidade.
+    (a) \(x^2 + 4y^2 - 6x + 16y + 21 = 0\)<br />
+    (b) \(2x^2 - 3y^2 + 8x + 12y - 4 = 0\)
+  </p>
+  <p>
+    Para cada uma:<br />
+    (i) Classifique pelo discriminante \(B^2 - 4AC\).<br />
+    (ii) Complete os quadrados para obter a forma canônica.<br />
+    (iii) Determine centro, eixos e focos (quando aplicável).
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-14]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: \(4(x^2-6x) - (y^2+4y) + 16 = 0\). Complete: \(4[(x-3)^2 -
-      9] - [(y+2)^2 - 4] + 16 = 0\). Cuidado com os sinais ao expandir.
+      [NOTA TÉCNICA]: Use o discriminante para classificar primeiro. Depois
+      complete os quadrados para obter a forma canônica.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        (a) \(4[(x-3)^2-9] - [(y+2)^2-4] + 16 = 0\).<br />
-        \(4(x-3)^2 - 36 - (y+2)^2 + 4 + 16 = 0\).<br />
-        \(4(x-3)^2 - (y+2)^2 = 16\).<br />
-        \(\dfrac{(x-3)^2}{4} - \dfrac{(y+2)^2}{16} = 1\).
-      </p>
-      <p>
-        (b) Centro: \((3, -2)\). Vértices: \((3\pm 2, -2)\), ou \((1,-2)\) e
-        \((5,-2)\). Assíntotas: \(y+2 = \pm\dfrac{4}{2}(x-3)\), ou \(y = 2x-8\)
-        e \(y = -2x+4\).
-      </p>
-      <p>
-        (c) \(c^2 = 4 + 16 = 20\), logo \(c = 2\sqrt{5}\). Focos: \((3 \pm
-        2\sqrt{5}, -2)\). Excentricidade: \(e = \dfrac{2\sqrt{5}}{2} =
-        \sqrt{5}\).
-      </p>
-    </div>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-14 REQUERIDO]</summary>
+    <p>
+      <strong>(a) Discriminante:</strong> \(0 - 4(1)(4) = -16 < 0\) →
+      <strong>elipse</strong>.<br />
+      \[(x-3)^2 + 4(y+2)^2 = 4\]<br />
+      \[\frac{(x-3)^2}{4} + (y+2)^2 = 1\]<br />
+      Centro \((3, -2)\), \(a = 2, b = 1\), \(c = \sqrt{3}\).
+    </p>
+    <p>
+      <strong>(b) Discriminante:</strong> \(0 - 4(2)(-3) = 24 > 0\) →
+      <strong>hipérbole</strong>.<br />
+      \[\frac{(x+2)^2}{2} - \frac{(y-2)^2}{4/3} = 1\]<br />
+      Centro \((-2, 2)\), \(a = \sqrt{2}, b = \frac{2}{\sqrt{3}}\).
+    </p>
   </details>
 </li>

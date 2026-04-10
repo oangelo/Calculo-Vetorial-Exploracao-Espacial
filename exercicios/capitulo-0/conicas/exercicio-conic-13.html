@@ -1,45 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO CONIC-13 [NÍVEL GAMMA]</div>
   <div class="context">
-    ORIGEM: Análise de Órbitas Deslocadas - Programa Vostok [SIGMA-3]
+    ORIGEM: Arquivos Secretos [NÍVEL OMEGA - DADOS DESCRIPTOGRAFADOS]
   </div>
   <p>
-    A equação \(9x^2 + 4y^2 - 36x + 8y + 4 = 0\) descreve uma trajetória orbital
-    com centro deslocado da origem.
+    Já sabemos construir cônicas pela definição, extrair informações de equações
+    canônicas e completar quadrados. Mas e quando a equação vem na forma geral,
+    sem sabermos de antemão se é elipse, parábola ou hipérbole? O
+    <strong>discriminante</strong> \(\Delta = B^2 - 4AC\) permite classificar
+    sem resolver nada.
   </p>
   <p>
-    (a) Complete os quadrados em \(x\) e \(y\) para reescrever na forma
-    canônica.<br />
-    (b) Identifique o centro, os semi-eixos e a orientação (eixo maior
-    horizontal ou vertical).<br />
-    (c) Calcule os focos e a excentricidade.
+    Classifique as seguintes equações usando o discriminante e, em seguida,
+    confirme completando os quadrados:
+  </p>
+  <p>
+    <strong>Trajetória Alfa:</strong> \(4x^2 + 9y^2 - 16x + 18y - 11 = 0\)<br />
+    <strong>Trajetória Beta:</strong> \(y^2 - 8x + 6y + 1 = 0\)
+  </p>
+  <p>
+    <strong>Tarefa para cada trajetória:</strong><br />
+    (a) Identifique \(A\), \(B\), \(C\) e calcule \(\Delta = B^2 - 4AC\).<br />
+    (b) Classifique: \(\Delta < 0\) → elipse, \(\Delta = 0\) → parábola,
+    \(\Delta > 0\) → hipérbole.<br />
+    (c) Complete os quadrados e obtenha a forma canônica. Confirme a
+    classificação.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-13]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Agrupe os termos em \(x\) e em \(y\). Para completar
-      quadrados: \(9(x^2 - 4x) = 9[(x-2)^2 - 4]\) e \(4(y^2 + 2y) = 4[(y+1)^2 -
-      1]\).
+      [NOTA TÉCNICA]: Na equação geral \(Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\),
+      identifique os coeficientes dos termos quadráticos. Para Trajetória Alfa:
+      \(A = 4, B = 0, C = 9\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        (a) \(9(x^2-4x) + 4(y^2+2y) + 4 = 0\).<br />
-        \(9[(x-2)^2-4] + 4[(y+1)^2-1] + 4 = 0\).<br />
-        \(9(x-2)^2 - 36 + 4(y+1)^2 - 4 + 4 = 0\).<br />
-        \(9(x-2)^2 + 4(y+1)^2 = 36\).<br />
-        \(\dfrac{(x-2)^2}{4} + \dfrac{(y+1)^2}{9} = 1\).
-      </p>
-      <p>
-        (b) Centro: \((2, -1)\). Semi-eixo vertical (maior): \(b = 3\).
-        Semi-eixo horizontal: \(a = 2\). Eixo maior na direção \(y\).
-      </p>
-      <p>
-        (c) \(c^2 = 9 - 4 = 5\), logo \(c = \sqrt{5}\). Focos: \((2, -1 \pm
-        \sqrt{5})\). Excentricidade: \(e = \dfrac{\sqrt{5}}{3}\).
-      </p>
-    </div>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-13 REQUERIDO]</summary>
+    <p><strong>=== TRAJETÓRIA ALFA ===</strong></p>
+    <p>
+      <strong>(a) Discriminante:</strong> \(A = 4, B = 0, C = 9\)<br />
+      \[\Delta = 0 - 4(4)(9) = -144 < 0 \implies \textbf{ELIPSE}\]
+    </p>
+    <p>
+      <strong>(c) Completando quadrados:</strong><br />
+      \[4(x^2 - 4x) + 9(y^2 + 2y) = 11\]<br />
+      \[4(x-2)^2 + 9(y+1)^2 = 36\]<br />
+      \[\frac{(x-2)^2}{9} + \frac{(y+1)^2}{4} = 1\]<br />
+      Centro \((2, -1)\), \(a = 3, b = 2\). Confirmado: elipse. ✓
+    </p>
+    <p><strong>=== TRAJETÓRIA BETA ===</strong></p>
+    <p>
+      <strong>(a) Discriminante:</strong> \(A = 0, B = 0, C = 1\)<br />
+      \[\Delta = 0 - 4(0)(1) = 0 \implies \textbf{PARÁBOLA}\]
+    </p>
+    <p>
+      <strong>(c) Completando quadrado:</strong><br />
+      \[(y+3)^2 = 8(x+1)\]<br />
+      Vértice \((-1, -3)\), \(p = 2\). Confirmado: parábola. ✓
+    </p>
   </details>
 </li>

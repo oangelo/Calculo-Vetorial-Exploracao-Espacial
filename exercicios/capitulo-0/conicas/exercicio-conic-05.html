@@ -1,152 +1,48 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-7</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-5 [NÍVEL ALFA]</div>
   <div class="context">
     ORIGEM: Estudo de Trajetórias de Reentrada [PROGRAMA GEMINI, 1964]
   </div>
   <p>
-    A figura mostra uma parábola com vértice na origem. O foco F está em (0, 2)
-    e a diretriz é y = -2. O ponto P(4, 2) pertence à curva. Determine a equação
-    desta parábola na forma y = ax².
+    Assim como fizemos com a elipse, vamos extrair informações de uma parábola
+    a partir de sua equação. Interceptamos:
   </p>
+  <p style="text-align: center">\[y = \frac{1}{8}x^2\]</p>
   <p>
-    <svg
-      height="400"
-      style="border: 1px solid #999; margin: 10px 0"
-      width="400"
-    >
-      <!-- Parábola: vértice (0,0), foco (0,2), p=2 -->
-      <g transform="translate(200,300) scale(25,-25)">
-        <!-- Eixo X -->
-        <line
-          stroke="gray"
-          stroke-width="0.04"
-          x1="-6"
-          x2="6"
-          y1="0"
-          y2="0"
-        ></line>
-        <!-- Eixo Y -->
-        <line
-          stroke="gray"
-          stroke-width="0.04"
-          x1="0"
-          x2="0"
-          y1="-4"
-          y2="8"
-        ></line>
-        <!-- Diretriz y = -2 -->
-        <line
-          stroke="red"
-          stroke-width="0.1"
-          x1="-6"
-          x2="6"
-          y1="-2"
-          y2="-2"
-        ></line>
-        <!-- Parábola y = (1/8)x² -->
-        <path
-          d="M -6 4.5
-                 L -5 3.125
-                 L -4 2
-                 L -3 1.125
-                 L -2 0.5
-                 L -1 0.125
-                 L 0 0
-                 L 1 0.125
-                 L 2 0.5
-                 L 3 1.125
-                 L 4 2
-                 L 5 3.125
-                 L 6 4.5"
-          fill="none"
-          stroke="blue"
-          stroke-width="0.15"
-        ></path>
-        <!-- Linha PF -->
-        <line
-          stroke="orange"
-          stroke-width="0.05"
-          stroke-dasharray="0.1,0.1"
-          x1="4"
-          x2="0"
-          y1="2"
-          y2="2"
-        ></line>
-        <!-- Linha PD (projeção na diretriz) -->
-        <line
-          stroke="orange"
-          stroke-width="0.05"
-          stroke-dasharray="0.1,0.1"
-          x1="4"
-          x2="4"
-          y1="2"
-          y2="-2"
-        ></line>
-        <!-- Vértice V(0,0) -->
-        <circle cx="0" cy="0" fill="red" r="0.15"></circle>
-        <!-- Foco F(0,2) -->
-        <circle cx="0" cy="2" fill="red" r="0.15"></circle>
-        <!-- Ponto P(4,2) -->
-        <circle cx="4" cy="2" fill="black" r="0.15"></circle>
-        <!-- Texto -->
-        <text
-          fill="red"
-          font-size="0.7"
-          transform="scale(1,-1)"
-          x="0.2"
-          y="-0.3"
-        >
-          V(0, 0)
-        </text>
-        <text
-          fill="red"
-          font-size="0.7"
-          transform="scale(1,-1)"
-          x="0.2"
-          y="-2.3"
-        >
-          F(0, 2)
-        </text>
-        <text
-          fill="black"
-          font-size="0.7"
-          transform="scale(1,-1)"
-          x="4.2"
-          y="-2.3"
-        >
-          P(4, 2)
-        </text>
-        <text
-          fill="red"
-          font-size="0.6"
-          transform="scale(1,-1)"
-          x="-5.8"
-          y="1.5"
-        >
-          y = −2
-        </text>
-      </g>
-    </svg>
+    <strong>Tarefa:</strong><br />
+    (a) Reescreva na forma \(x^2 = 4py\). Qual é o valor de \(4p\)?<br />
+    (b) Determine \(p\). Onde está o foco?<br />
+    (c) Onde está a diretriz?<br />
+    (d) O vértice está na origem. A parábola abre para cima ou para baixo?
+    Justifique.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para uma parábola vertical com vértice na origem, a forma
-      é \(y = ax^2\). O foco está em \((0, p)\) onde \(p = \frac{1}{4a}\).
-      Substitua o ponto P(4, 2) na equação para encontrar o valor de \(a\), ou
-      use a relação entre \(a\) e o foco para verificar.
+      [NOTA TÉCNICA]: A forma \(y = \frac{1}{8}x^2\) equivale a \(x^2 = 8y\).
+      Compare com \(x^2 = 4py\) para identificar \(4p = 8\). O foco de uma
+      parábola vertical \(x^2 = 4py\) está em \((0, p)\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-7 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-5 REQUERIDO]</summary>
     <p>
-      O foco está em (0, 2), logo p = 2.<br />
-      A relação entre p e a é \(p = \frac{1}{4a}\), portanto:<br />
-      \[a = \frac{1}{4p} = \frac{1}{8}.\]<br />
-      Verificando com o ponto P(4, 2):<br />
-      \[y = \frac{1}{8}(4)^2 = \frac{16}{8} = 2.\] ✓<br />
-      A equação da parábola é:<br />
-      \[y = \frac{1}{8}x^2.\]
+      <strong>(a) Reescrevendo:</strong><br />
+      \[y = \frac{1}{8}x^2 \implies x^2 = 8y\]<br />
+      Comparando com \(x^2 = 4py\): \(4p = 8\).
+    </p>
+    <p>
+      <strong>(b) Valor de \(p\) e foco:</strong><br />
+      \[4p = 8 \implies p = 2\]<br />
+      Foco: \(F(0, 2)\).
+    </p>
+    <p>
+      <strong>(c) Diretriz:</strong> \(y = -p = -2\).
+    </p>
+    <p>
+      <strong>(d) Orientação:</strong> Como o coeficiente de \(x^2\) é positivo
+      (\(\frac{1}{8} > 0\)), a parábola abre para <strong>cima</strong>.
+      O vértice é o ponto mais baixo da curva em \(V(0, 0)\).
     </p>
   </details>
 </li>

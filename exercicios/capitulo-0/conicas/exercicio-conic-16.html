@@ -1,49 +1,41 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-16 [NÍVEL GAMMA]</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-16 [NÍVEL OMEGA]</div>
   <div class="context">
-    ORIGEM: Classificação de Trajetórias Codificadas - Projeto Interceptação
-    [SIGMA-3]
+    ORIGEM: Equipe de Simulações Orbitais [RELAÇÃO COM PROJETO [REDACTED]]
   </div>
   <p>
-    Identifique o tipo de cônica e reescreva na forma canônica (completo os
-    quadrados se necessário):
+    Mostre que a seção cônica resultante do corte de um cone reto por um plano
+    paralelo a uma geratriz é uma parábola.
   </p>
   <p>
-    (a) \(x^2 + 4y^2 - 6x + 16y + 21 = 0\)<br />
-    (b) \(2x^2 - 3y^2 + 8x + 12y - 4 = 0\)<br />
-    (c) \(y^2 - 10x + 6y + 29 = 0\)
+    <strong>Dica:</strong> use a definição de foco e diretriz a partir da
+    geometria do cone. Considere uma esfera inscrita no cone (tangente ao plano
+    de corte) e prove que todo ponto do corte equidista do ponto de tangência
+    (foco) e da interseção do plano com o plano da base do cone (diretriz).
   </p>
-  <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-    <div class="hint">
-      [NOTA TÉCNICA]: Use o discriminante para classificar primeiro. Depois
-      complete os quadrados para obter a forma canônica. Lembre-se: para
-      parábolas, isole a variável que não está ao quadrado.
-    </div>
-  </details>
+  <!-- Série OMEGA => sem dicas -->
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Discriminante: \(0 - 4(1)(4) = -16 < 0\) → elipse.<br />
-        \((x-3)^2 - 9 + 4(y+2)^2 - 16 + 21 = 0\).<br />
-        \((x-3)^2 + 4(y+2)^2 = 4\).<br />
-        \(\dfrac{(x-3)^2}{4} + (y+2)^2 = 1\). Centro \((3,-2)\), \(a=2\),
-        \(b=1\).
+        Considere um cone circular reto com vértice \(V\) e eixo vertical.
+        Insira uma esfera \(S\) dentro do cone, tangente ao cone ao longo de
+        um círculo \(C_1\) e tangente ao plano de corte \(\pi\) no ponto
+        \(F\).
       </p>
       <p>
-        (b) Discriminante: \(0 - 4(2)(-3) = 24 > 0\) → hipérbole.<br />
-        \(2(x^2+4x) - 3(y^2-4y) = 4\).<br />
-        \(2[(x+2)^2-4] - 3[(y-2)^2-4] = 4\).<br />
-        \(2(x+2)^2 - 3(y-2)^2 = 4 + 8 - 12 = 0\).<br />
-        \(\dfrac{(x+2)^2}{2} - \dfrac{(y-2)^2}{4/3} = 1\). Centro \((-2,2)\).
+        Para qualquer ponto \(P\) na interseção (a cônica), a distância
+        \(PF\) é a distância de \(P\) à esfera (pois \(F\) é ponto de
+        tangência). Mas a distância de \(P\) à esfera também é a distância de
+        \(P\) ao círculo \(C_1\) medida ao longo da geratriz do cone
+        (propriedade de esferas inscritas).
       </p>
       <p>
-        (c) Discriminante: \(0 - 0 = 0\) → parábola (sem \(x^2\)).<br />
-        \((y+3)^2 - 9 - 10x + 29 = 0\).<br />
-        \((y+3)^2 = 10x - 20 = 10(x-2)\).<br />
-        \((y+3)^2 = 10(x-2)\). Vértice \((2,-3)\), \(p = 5/2\), abre para a
-        direita.
+        A interseção de \(\pi\) com o plano de \(C_1\) é uma reta \(d\)
+        (a diretriz). A distância de \(P\) a \(d\) é proporcional à
+        distância de \(P\) ao círculo \(C_1\) pela mesma constante de
+        semelhança. Como o plano é paralelo à geratriz, essa constante é 1,
+        logo \(PF = PD\). Portanto, a cônica é uma parábola.
       </p>
     </div>
   </details>
