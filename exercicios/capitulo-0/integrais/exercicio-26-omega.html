@@ -1,0 +1,27 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 26 [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Desafio de Identificação - Departamento de Cálculos Orbitais [SIGMA-4]
+  </div>
+  <p>Este exercício não fornece dica. Você deve identificar qual técnica de
+  integração aplicar.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int \frac{1}{\cos^3(x)}\,dx\]</p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Note que \(\frac{1}{\cos^3(x)} = \sec^3(x)\). Esta é a integral do
+      Exercício 20 — mas sem dica, o aluno deve reconhecer a forma e lembrar
+      (ou derivar) o método.</p>
+      <p>Escreva \(\sec^3(x) = \sec(x)\cdot\sec^2(x)\) e aplique integração por
+      partes com \(u = \sec(x)\), \(dv = \sec^2(x)\,dx\). Então \(du =
+      \sec(x)\tan(x)\,dx\) e \(v = \tan(x)\).</p>
+      <p>\[I = \sec(x)\tan(x) - \int \sec(x)\tan^2(x)\,dx =
+      \sec(x)\tan(x) - \int \sec(x)(\sec^2(x) - 1)\,dx\]</p>
+      <p>\[= \sec(x)\tan(x) - I + \int \sec(x)\,dx\]</p>
+      <p>Resolvendo para \(I\):
+      \[I = \frac{1}{2}\sec(x)\tan(x) + \frac{1}{2}\ln|\sec(x) + \tan(x)| + C.\]</p>
+    </div>
+  </details>
+</li>

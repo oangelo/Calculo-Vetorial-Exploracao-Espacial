@@ -1,0 +1,28 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 18 [NÍVEL BETA]</div>
+  <div class="context">
+    ORIGEM: Substituições Trigonométricas - Equipe de Aplicações [OUT/1962]
+  </div>
+  <p>Antes de irmos para os exercícios OMEGA, vamos praticar uma substituição
+  trigonométrica mais direta. A substituição de Weierstrass (\(t = \tan(x/2)\))
+  é uma técnica avançada que fica para estudos futuros. Em vez disso, vamos
+  resolver uma integral trigonométrica com substituição simples.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int \frac{\sin(x)}{1 + \cos(x)}\,dx\]</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Observe que a derivada de \(1 + \cos(x)\) é
+      \(-\sin(x)\). Tente \(u = 1 + \cos(x)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Seja \(u = 1 + \cos(x)\). Então \(du = -\sin(x)\,dx\), ou seja
+      \(\sin(x)\,dx = -du\).</p>
+      <p>\(\int \frac{\sin(x)}{1 + \cos(x)}\,dx = \int \frac{-du}{u} =
+      -\ln|u| + C = -\ln|1 + \cos(x)| + C.\)</p>
+    </div>
+  </details>
+</li>

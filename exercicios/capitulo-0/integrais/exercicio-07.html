@@ -1,10 +1,22 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO 7</div>
+  <div class="exercise-number">EXERCÍCIO 7 [NÍVEL GAMMA]</div>
   <div class="context">
     ORIGEM: Setor de Substituições Trigonométricas [AGO/1962]
   </div>
-  <p>Calcule a integral, onde \(a\) é constante:</p>
+  <p>Esta integral envolve uma raiz quadrada de uma expressão quadrática. O formato
+  \(\sqrt{a^2 - x^2}\) sugere uma substituição trigonométrica — a mesma técnica
+  que resolveria o problema do semicírculo (Ex. 4 da Seção I). Vamos guiá-la
+  passo a passo.</p>
+  <p>Calcule a integral, onde \(a\) é constante positiva:</p>
   <p>\[\int \sqrt{a^2 - x^2}\,dx\]</p>
+  <p><em>(a)</em> Faça a substituição \(x = a\sin(\theta)\). Encontre \(dx\) em
+  termos de \(\theta\).</p>
+  <p><em>(b)</em> Simplifique \(\sqrt{a^2 - x^2}\) em termos de \(\theta\).
+  (Dica: use \(\sin^2(\theta) + \cos^2(\theta) = 1\).)</p>
+  <p><em>(c)</em> A integral em \(\theta\) é \(\int a^2\cos^2(\theta)\,d\theta\).
+  Resolva-a usando a identidade de potência.</p>
+  <p><em>(d)</em> Converta o resultado de volta para \(x\), usando
+  \(\theta = \arcsin(x/a)\).</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
@@ -15,18 +27,19 @@
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        Com \(x = a\sin(\theta)\), temos \(dx = a\cos(\theta)d\theta\) e
-        \(\sqrt{a^2 - x^2} = a\cos(\theta)\). A integral vira
-      </p>
-      <p>
-        \(\int a\cos(\theta)\cdot a\cos(\theta)d\theta = a^2 \int
-        \cos^2(\theta)d\theta.\)
-      </p>
-      <p>
-        Resulta \(\frac{a^2}{2}\arcsin(\frac{x}{a}) + \frac{x}{2}\sqrt{a^2 -
-        x^2} + C.\)
-      </p>
+      <p><strong>(a)</strong> Com \(x = a\sin(\theta)\), temos \(dx = a\cos(\theta)\,d\theta\).</p>
+      <p><strong>(b)</strong> \(\sqrt{a^2 - x^2} = \sqrt{a^2 - a^2\sin^2(\theta)} =
+      \sqrt{a^2\cos^2(\theta)} = a\cos(\theta)\) (para \(\theta \in [-\pi/2, \pi/2]\)).</p>
+      <p><strong>(c)</strong> A integral vira:
+      \(\int a\cos(\theta)\cdot a\cos(\theta)\,d\theta = a^2\int\cos^2(\theta)\,d\theta.\)
+      Usando \(\cos^2(\theta) = \frac{1 + \cos(2\theta)}{2}\):
+      \(\frac{a^2}{2}\int(1 + \cos(2\theta))\,d\theta = \frac{a^2}{2}\left(\theta +
+      \frac{\sin(2\theta)}{2}\right) + C.\)</p>
+      <p><strong>(d)</strong> Como \(\theta = \arcsin(x/a)\), temos
+      \(\sin(\theta) = x/a\) e \(\cos(\theta) = \sqrt{1 - x^2/a^2} = \frac{\sqrt{a^2 - x^2}}{a}\).
+      Além disso \(\sin(2\theta) = 2\sin(\theta)\cos(\theta) = \frac{2x\sqrt{a^2 - x^2}}{a^2}\).</p>
+      <p>Resultado final:
+      \(\frac{a^2}{2}\arcsin\!\left(\frac{x}{a}\right) + \frac{x}{2}\sqrt{a^2 - x^2} + C.\)</p>
     </div>
   </details>
 </li>

@@ -290,6 +290,32 @@
         </div>
       </div>
       <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: O SIGNIFICADO GEOMÉTRICO DA INTEGRAL
+      </div>
+      <div class="concept-definition">
+        <p><strong>INTEGRAL DEFINIDA COMO ÁREA:</strong></p>
+        <p class="formula-highlight">
+          \[ \int_a^b f(x)\,dx = \text{área (com sinal) sob o gráfico de } f
+          \text{ entre } a \text{ e } b \]
+        </p>
+        <p>
+          Se \(f(x) \geq 0\) em \([a,b]\), a integral é a área da região
+          delimitada pelo gráfico, o eixo \(x\), e as retas verticais \(x = a\)
+          e \(x = b\). Para figuras geométricas simples, podemos
+          <strong>conferir o resultado</strong> usando fórmulas de área
+          conhecidas (triângulo, trapézio, círculo).
+        </p>
+        <p class="formula-highlight">
+          \[ \int_a^b f(x)\,dx = F(b) - F(a) \quad \text{(Teorema
+          Fundamental do Cálculo)} \]
+        </p>
+        <p>
+          onde \(F\) é qualquer antiderivada de \(f\). Este teorema nos dá um
+          <strong>atalho</strong>: em vez de calcular limites de somas (somas de
+          Riemann), basta encontrar uma antiderivada e avaliá-la nos limites.
+        </p>
+      </div>
+      <div class="section-title">
         FUNDAMENTAÇÃO TEÓRICA: TÉCNICAS DE INTEGRAÇÃO
       </div>
       <div class="concept-definition">
@@ -386,7 +412,7 @@
       </main>
 
       <div class="page-number">
-        PÁGINA 1 DE <span class="censored">20</span> • DOCUMENTO VX-<span
+        PÁGINA 1 DE <span class="censored">26</span> • DOCUMENTO VX-<span
           class="censored"
           >2023</span
         >-B
@@ -397,29 +423,42 @@
       async function loadExercises() {
         try {
           const exercises = [
-            'exercicio-01.html',
-            'exercicio-02.html',
-            'exercicio-04.html',
-            'exercicio-05.html',
-            'exercicio-06.html',
-            'exercicio-08.html',
-            'exercicio-13.html',
-            'exercicio-16.html',
-            'exercicio-03.html',
-            'exercicio-07.html',
-            'exercicio-09.html',
-            'exercicio-10.html',
-            'exercicio-11.html',
-            'exercicio-15.html',
-            'exercicio-19.html',
-            'exercicio-12.html',
-            'exercicio-14.html',
-            'exercicio-17.html',
-            'exercicio-18.html',
-            'exercicio-20.html',
-            'exercicio-21.html',
-            'exercicio-22.html',
-            'exercicio-23.html',
+            "exercicio-01-geometrico.html",
+            "exercicio-02-geometrico.html",
+            "exercicio-03-geometrico.html",
+            "exercicio-04-geometrico.html",
+            "exercicio-05-geometrico.html",
+            "section-substituicao.html",
+            "exercicio-01.html",
+            "exercicio-02.html",
+            "exercicio-13.html",
+            "section-partes.html",
+            "exercicio-04.html",
+            "exercicio-16.html",
+            "exercicio-03.html",
+            "exercicio-15.html",
+            "section-parciais.html",
+            "exercicio-05.html",
+            "exercicio-06.html",
+            "exercicio-17.html",
+            "section-trigonometria.html",
+            "exercicio-08.html",
+            "exercicio-09.html",
+            "exercicio-19.html",
+            "exercicio-07.html",
+            "exercicio-11.html",
+            "exercicio-12.html",
+            "exercicio-10.html",
+            "exercicio-14.html",
+            "exercicio-18-novo.html",
+            "exercicio-20.html",
+            "section-omega.html",
+            "exercicio-21.html",
+            "exercicio-22.html",
+            "exercicio-23.html",
+            "exercicio-24-omega.html",
+            "exercicio-25-omega.html",
+            "exercicio-26-omega.html",
           ];
 
           const list = document.getElementById('exercises');

@@ -1,8 +1,16 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO 14</div>
+  <div class="exercise-number">EXERCÍCIO 14 [NÍVEL GAMMA]</div>
   <div class="context">ORIGEM: Equipe de Pesquisas Exponenciais [OUT/1962]</div>
+  <p>Esta integral combina uma exponencial com uma função trigonométrica ao quadrado.
+  A estratégia é: primeiro simplifique o \(\cos^2(x)\) com uma identidade, depois
+  aplique integração por partes no termo restante.</p>
   <p>Calcule a integral:</p>
   <p>\[\int e^x \cos^2(x)\,dx\]</p>
+  <p><em>(a)</em> Use a identidade \(\cos^2(x) = \frac{1 + \cos(2x)}{2}\) para
+  reescrever a integral como soma de duas integrais.</p>
+  <p><em>(b)</em> A primeira integral é simples. Para a segunda (\(\int e^x\cos(2x)\,dx\)),
+  aplique integração por partes <strong>duas vezes</strong> e resolva a equação resultante.</p>
+  <p><em>(c)</em> Combine os resultados.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
@@ -13,20 +21,19 @@
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        \(\int e^x \cos^2(x)\,dx = \frac{1}{2}\int e^x\,dx + \frac{1}{2}\int
-        e^x\cos(2x)\,dx.\)
-      </p>
-      <p>
-        O primeiro termo é \(\frac{e^x}{2}\). Para \(\int e^x \cos(2x)\,dx\), a
-        forma padrão é \(\int e^x \cos(ax)\,dx =
-        \frac{e^x}{a^2+1}\bigl(a\sin(ax) + \cos(ax)\bigr)\).
-      </p>
-      <p>
-        Ao final, resulta em combinação de \(e^x\sin(2x)\) e \(e^x\cos(2x)\),
-        mais as constantes, formando \(\frac{e^x}{2} +\) termos envolvendo
-        \(\sin(2x), \cos(2x)\).
-      </p>
+      <p><strong>(a)</strong> \(\int e^x \cos^2(x)\,dx = \frac{1}{2}\int e^x\,dx +
+      \frac{1}{2}\int e^x\cos(2x)\,dx.\)</p>
+      <p><strong>(b)</strong> O primeiro termo é \(\frac{e^x}{2}\). Para
+      \(\int e^x\cos(2x)\,dx\), integre por partes duas vezes.
+      Defina \(K = \int e^x\cos(2x)\,dx\).</p>
+      <p>Primeira partes (\(u = \cos(2x)\), \(dv = e^x\,dx\)):
+      \(K = e^x\cos(2x) + 2\int e^x\sin(2x)\,dx.\)</p>
+      <p>Segunda partes no segundo termo (\(u = \sin(2x)\), \(dv = e^x\,dx\)):
+      \(\int e^x\sin(2x)\,dx = e^x\sin(2x) - 2K.\)</p>
+      <p>Substituindo: \(K = e^x\cos(2x) + 2e^x\sin(2x) - 4K\), logo
+      \(5K = e^x(\cos(2x) + 2\sin(2x))\).</p>
+      <p><strong>(c)</strong> Resultado final:
+      \(\frac{e^x}{2} + \frac{e^x}{10}(\cos(2x) + 2\sin(2x)) + C.\)</p>
     </div>
   </details>
 </li>

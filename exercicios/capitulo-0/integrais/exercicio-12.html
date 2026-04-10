@@ -1,10 +1,21 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO 12</div>
+  <div class="exercise-number">EXERCÍCIO 12 [NÍVEL GAMMA]</div>
   <div class="context">
     ORIGEM: Substituições Avançadas - Seção Hiperbólica [SET/1962]
   </div>
-  <p>Calcule a integral, onde \(a\) é constante:</p>
+  <p>Esta integral envolve \(\sqrt{x^2 + a^2}\), o terceiro formato clássico de
+  substituição trigonométrica. A técnica gera uma integral de \(\sec^3(\theta)\),
+  que é resolvida por partes. Vamos guiá-la.</p>
+  <p>Calcule a integral, onde \(a\) é constante positiva:</p>
   <p>\[\int \sqrt{x^2 + a^2}\,dx\]</p>
+  <p><em>(a)</em> Faça a substituição \(x = a\tan(\theta)\). Encontre \(dx\) e
+  simplifique \(\sqrt{x^2 + a^2}\) em termos de \(\theta\).</p>
+  <p><em>(b)</em> A integral resultante é \(\int a^2\sec^3(\theta)\,d\theta\).
+  Escreva \(\sec^3(\theta) = \sec(\theta)\cdot\sec^2(\theta)\) e aplique
+  integração por partes.</p>
+  <p><em>(c)</em> A integração por partes gera uma equação com \(I =
+  \int\sec^3(\theta)\,d\theta\) dos dois lados. Resolva essa equação para \(I\).</p>
+  <p><em>(d)</em> Converta o resultado de volta para \(x\).</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
@@ -15,20 +26,19 @@
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        Com \(x = a\tan(\theta)\), \(\sqrt{x^2 + a^2} = a\sec(\theta)\) e \(dx =
-        a\sec^2(\theta)\,d\theta\). Então,
-      </p>
-      <p>
-        \(\int \sqrt{x^2 + a^2}\,dx = a^2 \int \sec^3(\theta)\,d\theta.\)
-        Conhece-se que \(\int \sec^3(\theta)\,d\theta =
-        \frac{1}{2}\sec(\theta)\tan(\theta) + \frac{1}{2}\ln|\sec(\theta) +
-        \tan(\theta)| + C.\)
-      </p>
-      <p>
-        Substituindo de volta para \(x\), obtemos \(\frac{x}{2}\sqrt{x^2 + a^2}
-        + \frac{a^2}{2} \ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.\)
-      </p>
+      <p><strong>(a)</strong> Com \(x = a\tan(\theta)\): \(\sqrt{x^2 + a^2} =
+      a\sec(\theta)\) e \(dx = a\sec^2(\theta)\,d\theta\).</p>
+      <p><strong>(b)</strong> A integral fica \(a^2\int\sec^3(\theta)\,d\theta\).
+      Por partes com \(u = \sec(\theta)\), \(dv = \sec^2(\theta)\,d\theta\):
+      \(du = \sec(\theta)\tan(\theta)\,d\theta\), \(v = \tan(\theta)\).</p>
+      <p>\(I = \sec(\theta)\tan(\theta) - \int\sec(\theta)\tan^2(\theta)\,d\theta\)</p>
+      <p><strong>(c)</strong> Usando \(\tan^2(\theta) = \sec^2(\theta) - 1\):
+      \(I = \sec(\theta)\tan(\theta) - I + \int\sec(\theta)\,d\theta\).
+      Portanto \(2I = \sec(\theta)\tan(\theta) + \ln|\sec(\theta) + \tan(\theta)|\).</p>
+      <p>\(\int\sec^3(\theta)\,d\theta = \frac{1}{2}\sec(\theta)\tan(\theta) +
+      \frac{1}{2}\ln|\sec(\theta) + \tan(\theta)| + C.\)</p>
+      <p><strong>(d)</strong> Substituindo de volta para \(x\):
+      \(\frac{x}{2}\sqrt{x^2 + a^2} + \frac{a^2}{2}\ln\bigl|x + \sqrt{x^2 + a^2}\bigr| + C.\)</p>
     </div>
   </details>
 </li>
