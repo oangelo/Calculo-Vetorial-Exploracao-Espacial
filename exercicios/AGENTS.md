@@ -30,10 +30,13 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 
 ## Criar um exercício
 
-1. Leia `docs/prompts/exercicios-full.md` e `exercicios/template.html`
-2. Identifique o tópico na sequência de progressão
-3. Use APENAS conceitos já abordados até aquele ponto
-4. Salve como arquivo individual na pasta do tópico
+1. Leia `diretrizes-listas-de-exercicios.md` — entenda os 7 princípios (narrativa, scaffolding, significado antes da álgebra, etc.)
+2. Leia `checklist-conceitos-permitidos.md` — identifique a progressão narrativa do capítulo e os conceitos permitidos
+3. Leia `docs/prompts/exercicios-full.md` e `exercicios/template.html`
+4. Identifique o tópico na sequência de progressão
+5. Use APENAS conceitos já abordados até aquele ponto
+6. Cada exercício deve explicitar por que está ali e como se conecta ao anterior
+7. Salve como arquivo individual na pasta do tópico
 
 ## Regras críticas
 
@@ -224,36 +227,56 @@ Etapa 3: Agente Explore (Resumidor)
   → Ferramentas: read, edit, firecrawl_search
 ```
 
+### Antes de gerar qualquer RTC
+
+1. Ler `diretrizes-listas-de-exercicios.md` — entender os 7 princípios
+2. Ler a seção do capítulo correspondente em `checklist-conceitos-permitidos.md`
+3. Verificar: a progressão atual segue o princípio "significado antes da álgebra"?
+4. Se não, o RTC deve propor uma reestruturação narrativa (como fez a #32 Geometria Analítica)
+
 ### Como invocar cada agente
 
 **Etapa 1 — Revisor:**
 
 > Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
-> Leia `checklist-conceitos-permitidos.md` ANTES de começar — identifique
-> o capítulo do tópico e os conceitos permitidos. QUALQUER exercício que
-> exija conceitos de capítulos posteriores DEVE ser sinalizado no RTC.
-> Leia todos os exercícios em exercicios/capitulo-N/PASTA/,
-> busque ideias na web com firecrawl_search (busque em português e inglês),
-> e gere um RTC como comentário na issue #N do GitHub usando `gh issue comment`.
-> O RTC deve incluir: análise de qualidade, problemas encontrados,
-> seção "Conceitos Fora do Escopo" (se houver), sugestões de melhoria,
-> e a narrativa matemática da lista.
+>
+> ANTES de começar:
+> 1. Leia `diretrizes-listas-de-exercicios.md` — os 7 princípios de design de listas
+> 2. Leia `checklist-conceitos-permitidos.md` — conceitos permitidos E progressão narrativa do capítulo
+>
+> Depois:
+> - Leia todos os exercícios em exercicios/capitulo-N/PASTA/
+> - Busque ideias na web com firecrawl_search (português e inglês)
+> - Gere um RTC como comentário na issue #N usando `gh issue comment`
+>
+> O RTC DEVE incluir:
+> - **Análise de progressão narrativa**: a lista segue a sequência do checklist? Cada exercício motiva o próximo?
+> - **Significado antes da álgebra**: os exercícios começam pelo conceito/interpretação ou já caem em manipulação algébrica?
+> - **Scaffolding**: exercícios complexos estão quebrados em sub-itens (a, b, c)?
+> - **Conexão entre exercícios**: há texto explícito conectando cada exercício ao anterior?
+> - **Conceitos Fora do Escopo** (se houver): QUALQUER exercício que exija conceitos de capítulos posteriores DEVE ser sinalizado
+> - **Sugestões de reordenação/se reestruturação** se a progressão não seguir as diretrizes
 
 **Etapa 2 — Implementador:**
 
 > Execute o Agente 2 (implementador) no issue #N.
+> Leia `diretrizes-listas-de-exercicios.md` antes de implementar.
 > Leia o RTC nos comentários da issue #N usando `gh issue view N --comments`.
 > Implemente as correções nos exercícios de exercicios/capitulo-N/PASTA/.
 > Crie novos exercícios conforme o RTC, adicione sub-itens (a, b, c),
 > reescreva hints inúteis, reordene por dificuldade real.
+> Cada exercício deve ter: motivação clara, conexão com o anterior,
+> e texto que justifique o próximo. Seguir os 7 princípios das diretrizes.
 
 **Etapa 3 — Resumidor:**
 
 > Execute o Agente 3 (resumidor) no issue #N.
+> Leia `checklist-conceitos-permitidos.md` — a progressão narrativa do capítulo.
 > Leia todos os exercícios em exercicios/capitulo-N/PASTA/
 > e gere um resumo de pré-requisitos na seção de fundamentação
 > teórica do intro.html do tópico. O resumo deve cobrir todos
-> os conceitos que o aluno precisa saber antes de fazer os exercícios.
+> os conceitos que o aluno precisa saber antes de fazer os exercícios,
+> incluindo a sequência esperada de progressão.
 
 ## Requisito de Narrativa Matemática
 
