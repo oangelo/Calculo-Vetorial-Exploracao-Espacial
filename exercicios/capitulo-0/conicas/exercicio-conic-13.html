@@ -1,62 +1,57 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-13 [NÍVEL GAMMA]</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-13 [NÍVEL BETA]</div>
   <div class="context">
-    ORIGEM: Arquivos Secretos [NÍVEL OMEGA - DADOS DESCRIPTOGRAFADOS]
+    ORIGEM: Agência [REDACTED] - Seção Órbitas Hiperbólicas
   </div>
   <p>
-    Já sabemos construir cônicas pela definição, extrair informações de equações
-    canônicas e completar quadrados. Mas e quando a equação vem na forma geral,
-    sem sabermos de antemão se é elipse, parábola ou hipérbole? O
-    <strong>discriminante</strong> \(\Delta = B^2 - 4AC\) permite classificar
-    sem resolver nada.
+    Assim como fizemos com a elipse e a parábola, vamos extrair informações
+    de uma <strong>hipérbole</strong> a partir de sua equação. Detectamos uma
+    trajetória de passagem (flyby) de um objeto não identificado. A equação
+    interceptada é:
   </p>
+  <p style="text-align: center">\[\frac{x^2}{9} - \frac{y^2}{16} = 1\]</p>
   <p>
-    Classifique as seguintes equações usando o discriminante e, em seguida,
-    confirme completando os quadrados:
-  </p>
-  <p>
-    <strong>Trajetória Alfa:</strong> \(4x^2 + 9y^2 - 16x + 18y - 11 = 0\)<br />
-    <strong>Trajetória Beta:</strong> \(y^2 - 8x + 6y + 1 = 0\)
-  </p>
-  <p>
-    <strong>Tarefa para cada trajetória:</strong><br />
-    (a) Identifique \(A\), \(B\), \(C\) e calcule \(\Delta = B^2 - 4AC\).<br />
-    (b) Classifique: \(\Delta < 0\) → elipse, \(\Delta = 0\) → parábola,
-    \(\Delta > 0\) → hipérbole.<br />
-    (c) Complete os quadrados e obtenha a forma canônica. Confirme a
-    classificação.
+    <strong>Tarefa:</strong><br />
+    (a) Identifique o tipo de cônica. O sinal de subtração entre os termos
+    quadráticos indica o quê?<br />
+    (b) Faça \(y = 0\). O que os valores de \(x\) representam?<br />
+    (c) Determine \(a\), \(b\) e calcule \(c\).<br />
+    (d) Calcule as equações das assíntotas. (Dica: para \(|x|\) grande, o que
+    acontece com \(y\)? A curva se aproxima de quais retas?)<br />
+    (e) Calcule a excentricidade. Ela é maior ou menor que 1? Por quê?
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-13]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Na equação geral \(Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\),
-      identifique os coeficientes dos termos quadráticos. Para Trajetória Alfa:
-      \(A = 4, B = 0, C = 9\).
+      [NOTA TÉCNICA]: Para hipérboles, \(c^2 = a^2 + b^2\) (diferente da elipse
+      onde é \(c^2 = a^2 - b^2\)). As assíntotas são \(y = \pm\frac{b}{a}x\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-13 REQUERIDO]</summary>
-    <p><strong>=== TRAJETÓRIA ALFA ===</strong></p>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-6 REQUERIDO]</summary>
     <p>
-      <strong>(a) Discriminante:</strong> \(A = 4, B = 0, C = 9\)<br />
-      \[\Delta = 0 - 4(4)(9) = -144 < 0 \implies \textbf{ELIPSE}\]
+      <strong>(a) Identificação:</strong> Sinal de subtração →
+      <strong>hipérbole</strong>. O termo positivo é \(x^2\), logo o eixo
+      transverso é horizontal.
     </p>
     <p>
-      <strong>(c) Completando quadrados:</strong><br />
-      \[4(x^2 - 4x) + 9(y^2 + 2y) = 11\]<br />
-      \[4(x-2)^2 + 9(y+1)^2 = 36\]<br />
-      \[\frac{(x-2)^2}{9} + \frac{(y+1)^2}{4} = 1\]<br />
-      Centro \((2, -1)\), \(a = 3, b = 2\). Confirmado: elipse. ✓
-    </p>
-    <p><strong>=== TRAJETÓRIA BETA ===</strong></p>
-    <p>
-      <strong>(a) Discriminante:</strong> \(A = 0, B = 0, C = 1\)<br />
-      \[\Delta = 0 - 4(0)(1) = 0 \implies \textbf{PARÁBOLA}\]
+      <strong>(b) Fazendo \(y = 0\):</strong><br />
+      \[\frac{x^2}{9} = 1 \implies x = \pm 3\]<br />
+      Os pontos \((-3, 0)\) e \((3, 0)\) são os <strong>vértices</strong>.
     </p>
     <p>
-      <strong>(c) Completando quadrado:</strong><br />
-      \[(y+3)^2 = 8(x+1)\]<br />
-      Vértice \((-1, -3)\), \(p = 2\). Confirmado: parábola. ✓
+      <strong>(c) Parâmetros:</strong><br />
+      \(a = 3\), \(b = 4\), \(c^2 = 9 + 16 = 25 \implies c = 5\).
+    </p>
+    <p>
+      <strong>(d) Assíntotas:</strong><br />
+      \[y = \pm\frac{b}{a}x = \pm\frac{4}{3}x\]
+    </p>
+    <p>
+      <strong>(e) Excentricidade:</strong><br />
+      \[e = \frac{c}{a} = \frac{5}{3} \approx 1{,}667 > 1\]<br />
+      Hipérboles sempre têm \(e > 1\), pois \(c > a\) (ao contrário da
+      elipse onde \(c < a\)).
     </p>
   </details>
 </li>

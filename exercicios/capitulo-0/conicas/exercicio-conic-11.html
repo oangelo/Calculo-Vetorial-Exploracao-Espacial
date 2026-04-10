@@ -1,47 +1,70 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO CONIC-11 [NÍVEL GAMMA]</div>
+  <div class="exercise-number">EXERCÍCIO CONIC-11 [NÍVEL ALFA]</div>
   <div class="context">
-    ORIGEM: Setor de Trajetória Balística [SIGMA-3]
+    ORIGEM: Análise de Trajetórias Interceptadas [PROGRAMA MERCURY, 1962]
   </div>
   <p>
-    Uma parábola com centro deslocado. Dado o foco \((4, 4)\) e a diretriz
-    \(y = -2\), encontre a equação na forma \(y = ax^2 + bx + c\).
+    Nos exercícios anteriores, construímos equações a partir de definições
+    geométricas. Agora vamos fazer o caminho inverso: <strong>dada uma equação,
+    descobrir o que ela conta sobre a curva</strong>. Esta habilidade é
+    essencial quando interceptamos equações de trajetórias desconhecidas.
   </p>
   <p>
+    Interceptamos a equação de uma trajetória orbital suspeita:
+  </p>
+  <p style="text-align: center">\[\frac{x^2}{16} + \frac{y^2}{9} = 1\]</p>
+  <p>
     <strong>Tarefa:</strong><br />
-    (a) Determine o vértice (ponto médio entre foco e diretriz).<br />
-    (b) Calcule \(p\) (distância do vértice ao foco).<br />
-    (c) Escreva a equação na forma canônica centrada no vértice e expanda para
-    a forma geral.
+    (a) O que acontece quando você faz \(y = 0\) na equação? O que os valores
+    de \(x\) representam geometricamente?<br />
+    (b) O que acontece quando você faz \(x = 0\)? O que os valores de \(y\)
+    representam?<br />
+    (c) Identifique o tipo de cônica e determine \(a\) e \(b\).<br />
+    (d) Calcule \(c\) e a excentricidade \(e = \frac{c}{a}\).<br />
+    (e) Determine as coordenadas dos focos e os comprimentos dos eixos maior e
+    menor.
+  </p>
+  <p>
+    <em>Nota: Você já derivou a equação da elipse a partir da definição
+    (exercício 4). Agora está fazendo o caminho inverso — e descobrindo que
+    toda a informação geométrica está codificada na equação.</em>
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-11]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O vértice está a meio caminho entre o foco e a diretriz.
-      A distância vertical do foco \((4, 4)\) à diretriz \(y = -2\) é 6
-      unidades, então \(p = 3\).
+      [NOTA TÉCNICA]: Quando \(y = 0\), a equação vira \(\frac{x^2}{16} = 1\).
+      Resolva para \(x\). Esses pontos são onde a curva cruza o eixo \(x\) —
+      são os vértices do eixo horizontal.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-11 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <p>
-      <strong>(a) Vértice:</strong> Ponto médio entre foco \((4, 4)\) e
-      diretriz \(y = -2\). A coordenada \(x\) do vértice é \(h = 4\).
-      A coordenada \(y\) é \(k = \frac{4 + (-2)}{2} = 1\).
-      Vértice: \((4, 1)\).
+      <strong>(a) Fazendo \(y = 0\):</strong><br />
+      \[\frac{x^2}{16} = 1 \implies x^2 = 16 \implies x = \pm 4\]<br />
+      A curva cruza o eixo \(x\) nos pontos \((-4, 0)\) e \((4, 0)\).
+      São os <strong>vértices do eixo maior</strong>.
     </p>
     <p>
-      <strong>(b) Valor de \(p\):</strong> Distância do vértice ao foco:
-      \(p = 4 - 1 = 3\).
+      <strong>(b) Fazendo \(x = 0\):</strong><br />
+      \[\frac{y^2}{9} = 1 \implies y^2 = 9 \implies y = \pm 3\]<br />
+      A curva cruza o eixo \(y\) nos pontos \((0, -3)\) e \((0, 3)\).
+      São os <strong>vértices do eixo menor</strong>.
     </p>
     <p>
-      <strong>(c) Equação:</strong><br />
-      Forma canônica (parábola vertical, abre para cima):<br />
-      \[(x - h)^2 = 4p(y - k)\]<br />
-      \[(x - 4)^2 = 12(y - 1)\]<br />
-      Expandindo:<br />
-      \[y - 1 = \frac{1}{12}(x - 4)^2\]<br />
-      \[y = \frac{1}{12}(x^2 - 8x + 16) + 1 = \frac{1}{12}x^2 - \frac{2}{3}x + \frac{7}{3}\]
+      <strong>(c) Identificação:</strong> Forma \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\)
+      com ambos os termos positivos → <strong>elipse</strong>.<br />
+      \(a^2 = 16 \implies a = 4\), \(b^2 = 9 \implies b = 3\).
+    </p>
+    <p>
+      <strong>(d) Excentricidade:</strong><br />
+      \[c^2 = a^2 - b^2 = 16 - 9 = 7 \implies c = \sqrt{7}\]<br />
+      \[e = \frac{c}{a} = \frac{\sqrt{7}}{4} \approx 0{,}661\]
+    </p>
+    <p>
+      <strong>(e) Focos e eixos:</strong><br />
+      Focos: \(F_1 = (-\sqrt{7}, 0)\) e \(F_2 = (\sqrt{7}, 0)\)<br />
+      Eixo maior: \(2a = 8\) unidades. Eixo menor: \(2b = 6\) unidades.
     </p>
   </details>
 </li>

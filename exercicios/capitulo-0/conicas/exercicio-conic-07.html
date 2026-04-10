@@ -1,58 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO CONIC-7 [NÍVEL BETA]</div>
   <div class="context">
-    ORIGEM: Estudo de Trajetórias de Reentrada [PROGRAMA GEMINI, 1964]
+    ORIGEM: Seção de Interceptação Orbital [PROGRAMA GEMINI, 1965]
   </div>
   <p>
-    Nos exercícios anteriores, extraímos informações de equações já escritas.
-    Agora vamos ao inverso: <strong>a partir de dados geométricos (foco,
-    diretriz, ponto), determinar a equação</strong>. A figura mostra uma
-    parábola com vértice na origem, foco em \(F(0, 2)\) e diretriz \(y = -2\).
-    O ponto \(P(4, 2)\) pertence à curva.
+    Nos exercícios anteriores, construímos hipérboles com focos no eixo \(y\).
+    Agora vamos praticar com focos no eixo \(x\). A definição é a mesma —
+    diferença das distâncias constante — mas a orientação muda.
+  </p>
+  <p>
+    Os focos estão em \(F_1(-4, 0)\) e \(F_2(4, 0)\), e a diferença absoluta
+    das distâncias vale \(2a = 2\) (logo \(a = 1\)).
   </p>
   <p>
     <strong>Tarefa:</strong><br />
-    (a) Use a relação \(p = \frac{1}{4a}\) (onde \(p\) é a distância do
-    vértice ao foco) para encontrar o coeficiente \(a\).<br />
-    (b) Escreva a equação na forma \(y = ax^2\).<br />
-    (c) Verifique que o ponto \(P(4, 2)\) satisfaz a equação.
+    (a) Determine \(c\) e \(a\).<br />
+    (b) Calcule \(b\).<br />
+    (c) Escreva a equação canônica. É uma hipérbole horizontal ou vertical?<br />
+    (d) Determine as assíntotas.<br />
+    (e) Calcule a excentricidade. O valor alto de \(e\) indica o quê sobre a
+    forma da hipérbole?
   </p>
-  <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
-    <g transform="translate(200,300) scale(25,-25)">
-      <line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
-      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-4" y2="8"></line>
-      <line stroke="red" stroke-width="0.1" x1="-6" x2="6" y1="-2" y2="-2"></line>
-      <path d="M -6 4.5 L -5 3.125 L -4 2 L -3 1.125 L -2 0.5 L -1 0.125 L 0 0 L 1 0.125 L 2 0.5 L 3 1.125 L 4 2 L 5 3.125 L 6 4.5" fill="none" stroke="blue" stroke-width="0.15"></path>
-      <line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="0" y1="2" y2="2"></line>
-      <line stroke="orange" stroke-width="0.05" stroke-dasharray="0.1,0.1" x1="4" x2="4" y1="2" y2="-2"></line>
-      <circle cx="0" cy="0" fill="red" r="0.15"></circle>
-      <circle cx="0" cy="2" fill="red" r="0.15"></circle>
-      <circle cx="4" cy="2" fill="black" r="0.15"></circle>
-      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.3">V(0, 0)</text>
-      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-2.3">F(0, 2)</text>
-      <text fill="black" font-size="0.7" transform="scale(1,-1)" x="4.2" y="-2.3">P(4, 2)</text>
-      <text fill="red" font-size="0.6" transform="scale(1,-1)" x="-5.8" y="1.5">y = −2</text>
-    </g>
-  </svg>
+  <p>
+    <em>Nota: Quando a excentricidade é muito maior que 1, a hipérbole é
+    muito "aberta" — os ramos se afastam rapidamente das assíntotas.</em>
+  </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O foco está a \(p = 2\) unidades do vértice. A relação
-      \(p = \frac{1}{4a}\) dá \(a = \frac{1}{4p} = \frac{1}{8}\).
+      [NOTA TÉCNICA]: Focos em \((\pm 4, 0)\) → \(c = 4\). Diferença = \(2a = 2\) → \(a = 1\).
+      \(b^2 = c^2 - a^2 = 16 - 1 = 15\). Para hipérbole horizontal:
+      \(\frac{x^2}{a^2} - \frac{y^2}{b^2} = 1\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-7 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <p>
-      <strong>(a) Coeficiente:</strong> \(p = 2\), logo
-      \(a = \frac{1}{4p} = \frac{1}{8}\).
+      <strong>(a) Parâmetros:</strong><br />
+      \(c = 4\) (meia-distância entre focos), \(a = 1\) (da diferença).
     </p>
     <p>
-      <strong>(b) Equação:</strong> \(y = \frac{1}{8}x^2\).
+      <strong>(b) Valor de b:</strong><br />
+      \(b^2 = c^2 - a^2 = 16 - 1 = 15\) → \(b = \sqrt{15}\).
     </p>
     <p>
-      <strong>(c) Verificação com P(4, 2):</strong>
-      \[y = \frac{1}{8}(4)^2 = \frac{16}{8} = 2.\] ✓
+      <strong>(c) Equação canônica:</strong><br />
+      Como os focos estão no eixo \(x\), é horizontal:
+      \[\frac{x^2}{1} - \frac{y^2}{15} = 1\]
+    </p>
+    <p>
+      <strong>(d) Assíntotas:</strong><br />
+      \[y = \pm\frac{b}{a}x = \pm\sqrt{15}\, x\]
+    </p>
+    <p>
+      <strong>(e) Excentricidade:</strong><br />
+      \[e = \frac{c}{a} = \frac{4}{1} = 4\]<br />
+      Com \(e = 4 \gg 1\), a hipérbole é extremamente aberta. Os ramos
+      se afastam muito rapidamente do centro.
     </p>
   </details>
 </li>

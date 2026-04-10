@@ -1,37 +1,47 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO CONIC-18 [NÍVEL OMEGA]</div>
   <div class="context">
-    ORIGEM: Análise de Estrutura Assintótica - Setor de Trajetórias [SIGMA-4]
+    ORIGEM: Arquivos Secretos [NÍVEL OMEGA - DADOS DESCRIPTOGRAFADOS]
   </div>
   <p>
-    As assíntotas de uma hipérbole são fundamentais para prever o
-    comportamento assintótico de uma trajetória de escape.
+    Mostre que a seção cônica resultante do corte de um cone reto por um plano
+    paralelo a uma geratriz é uma parábola.
   </p>
   <p>
     <strong>Tarefa:</strong><br />
-    (a) Dada a hipérbole \(\dfrac{x^2}{9} - \dfrac{y^2}{16} = 1\), isole
-    \(y\) e analise o limite quando \(x \to \infty\). Mostre que
-    \(y \to \pm\frac{b}{a}x\).<br />
-    (b) Verifique que as assíntotas passam pelo centro da hipérbole.<br />
-    (c) Escreva as assíntotas na forma \(y = mx + b\).
+    (a) Defina o cone e o plano de corte. Descreva a configuração geométrica.<br />
+    (b) Identifique a interseção do plano com o cone.<br />
+    (c) Use a definição PF=PD para provar que a curva resultante é uma parábola.
+  </p>
+  <p>
+    <em>Dica geométrica: Considere uma esfera inscrita no cone (tangente ao
+    plano de corte) e prove que todo ponto do corte equidista do ponto de
+    tangência (foco) e da interseção do plano com o plano da base do cone
+    (diretriz).</em>
   </p>
   <!-- Série OMEGA => sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Da equação: \(y = \pm\dfrac{4}{3}\sqrt{x^2-9}\). Quando
-        \(x \to \infty\), \(\sqrt{x^2-9} \to x\), portanto
-        \(y \to \pm\dfrac{4}{3}x\).
+        Considere um cone circular reto com vértice \(V\) e eixo vertical.
+        Insira uma esfera \(S\) dentro do cone, tangente ao cone ao longo de
+        um círculo \(C_1\) e tangente ao plano de corte \(\pi\) no ponto
+        \(F\).
       </p>
       <p>
-        (b) As assíntotas são retas \(y = \pm\frac{4}{3}x\) que passam
-        pela origem (centro da hipérbole). Inclinação: \(m = \pm\frac{4}{3}\).
+        Para qualquer ponto \(P\) na interseção (a cônica), a distância
+        \(PF\) é a distância de \(P\) à esfera (pois \(F\) é ponto de
+        tangência). Mas a distância de \(P\) à esfera também é a distância de
+        \(P\) ao círculo \(C_1\) medida ao longo da geratriz do cone
+        (propriedade de esferas inscritas).
       </p>
       <p>
-        (c) Assíntota 1: \(y = \frac{4}{3}x\). Assíntota 2:
-        \(y = -\frac{4}{3}x\). (Forma \(y = mx + b\) com \(b = 0\)
-        pois o centro é a origem.)
+        A interseção de \(\pi\) com o plano de \(C_1\) é uma reta \(d\)
+        (a diretriz). A distância de \(P\) a \(d\) é proporcional à
+        distância de \(P\) ao círculo \(C_1\) pela mesma constante de
+        semelhança. Como o plano é paralelo à geratriz, essa constante é 1,
+        logo \(PF = PD\). Portanto, a cônica é uma parábola.
       </p>
     </div>
   </details>
