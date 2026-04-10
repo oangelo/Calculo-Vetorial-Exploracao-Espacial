@@ -5,7 +5,7 @@ Use este checklist ao gerar RTCs. Ele define:
 2. **Como deve ser a progressão narrativa** (sequência pedagógica obrigatória)
 
 Antes de gerar qualquer RTC, leia também `diretrizes-listas-de-exercicios.md`
-para entender os 7 princípios de design de listas.
+para entender os 8 princípios de design de listas.
 
 ---
 
@@ -115,13 +115,13 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 **Progressão sugerida (obrigatório seguir):**
 
-1. **Reta tangente à parábola** — caso clássico, o aluno calcula o coeficiente angular e monta a equação da reta tangente.
-2. **Reta tangente ao círculo** — introduz a complicação de que o círculo não é função; discutir a necessidade de trocar eixos ou trabalhar com funções implícitas.
-3. **Retas verticais e troca de variáveis** — explorar situações onde dy/dx não funciona e é preciso pensar em dx/dy.
-4. **Exercícios de notação** — quem é a variável independente? O que muda se escrevemos dy/dx vs. dx/dt?
-5. **Regras algébricas de derivação** — só agora, com o conceito bem assentado, entrar nas propriedades e técnicas algébricas.
+1. **Reta tangente a uma parábola** — retomando equação ponto-inclinação (geom. analítica). O aluno calcula o coeficiente angular pela derivada e monta a equação da reta tangente.
+2. **Verificação de tangência por interseção** — retomando discriminante de equações do 2º grau (cônicas). Igualando curva e reta, o aluno verifica que o discriminante é zero (um único ponto de contato).
+3. **Reta tangente a uma circunferência** — retomando x² + y² = r². O círculo não é função y = f(x), então o aluno usa derivação implícita. Verifica tangência por interseção também.
+4. **Notação de derivadas** — exercícios que forcem o aluno a pensar em quem é a variável. Comparar notação de Lagrange (f'), Leibniz (dy/dx) e Newton (ẏ). Comparar dy/dx vs. dx/dt.
+5. **Regras algébricas de derivação** — só agora, com o conceito bem assentado e conectado à geometria, entrar nas propriedades e técnicas algébricas (potência, produto, quociente, cadeia).
 
-**NÃO começar com:** regras de derivação. Começar pelo significado geométrico (reta tangente).
+**NÃO começar com:** regras de derivação. Começar pelo significado geométrico (reta tangente) e retomar conceitos de geometria analítica (ponto-inclinação, discriminante, equação de circunferência).
 
 ---
 

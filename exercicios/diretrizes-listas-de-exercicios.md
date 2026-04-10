@@ -8,19 +8,22 @@ A sequência de exercícios deve contar uma história com progressão lógica. N
 ### 2. Transparência na progressão (estilo Netflix)
 Cada exercício deve explicitar por que está ali e qual é sua conexão com os anteriores. Exemplo: *"No exercício anterior você encontrou a reta tangente à parábola. Agora vamos ver o que acontece quando a curva é um círculo."* O aluno enxerga o fio condutor.
 
-### 3. Scaffolding com subitens
+### 3. Construir sobre o já sabido
+Quando fizer sentido, a lista deve retomar conceitos de tópicos já estudados e mostrar como o novo assunto nasce deles ou os generaliza. O aluno não começa do zero a cada lista — ele reconhece ferramentas que já usou e vê o novo conceito como uma extensão natural. Exemplos: pedir para verificar tangência por interseção (retomando equações de cônicas); comparar notações Leibniz e Lagrange antes de aplicar regras; pedir para esboçar a curva e a reta tangente juntas (retomando geometria analítica). A lista não é uma ilha — ela é um elo na corrente.
+
+### 4. Scaffolding com subitens
 Exercícios complexos que exigem vários passos devem ser quebrados em itens (a, b, c...) que guiem o aluno na decomposição do problema. O objetivo é ensinar a habilidade de quebrar problemas grandes em partes menores.
 
-### 4. Significado antes da álgebra
+### 5. Significado antes da álgebra
 Sempre começar pelo conceito e pela interpretação (geométrica, física, visual) antes de entrar nas manipulações algébricas. Exercícios puramente algébricos são importantes, mas não podem ser o único tipo.
 
-### 5. Notação como conteúdo
+### 6. Notação como conteúdo
 Trabalhar explicitamente a notação em exercícios dedicados. Alunos se perdem em símbolos (dy/dx, quem é a variável, o que muda quando se troca), e isso raramente é tratado como conteúdo.
 
-### 6. Desenhar e esquematizar
+### 7. Desenhar e esquematizar
 Os exercícios devem pedir que o aluno faça esboços e diagramas, conectando equações com geometria.
 
-### 7. Autonomia sobre decoreba
+### 8. Autonomia sobre decoreba
 O objetivo é que, com as definições básicas, o aluno consiga derivar resultados sozinho, sem depender de fórmulas memorizadas.
 
 ---
@@ -29,13 +32,13 @@ O objetivo é que, com as definições básicas, o aluno consiga derivar resulta
 
 ### Derivadas
 
-A lista não deve começar com regras de derivação. A progressão deve ser:
+A lista não deve começar com regras de derivação. A progressão deve retomar conceitos de geometria analítica (reta tangente, interseção de curvas, equações de cônicas) antes de entrar nas técnicas algébricas.
 
-1. **Reta tangente à parábola** — caso clássico, o aluno calcula o coeficiente angular e monta a equação da reta tangente.
-2. **Reta tangente ao círculo** — introduz a complicação de que o círculo não é função; discutir a necessidade de trocar eixos ou trabalhar com funções implícitas.
-3. **Retas verticais e troca de variáveis** — explorar situações onde dy/dx não funciona e é preciso pensar em dx/dy.
-4. **Exercícios de notação** — quem é a variável independente? O que muda se escrevemos dy/dx vs. dx/dt? Exercícios que forcem o aluno a pensar sobre o significado da notação.
-5. **Regras algébricas de derivação** — só agora, com o conceito bem assentado, entrar nas propriedades e técnicas algébricas.
+1. **Reta tangente a uma parábola** — retomando a equação ponto-inclinação de geometria analítica. O aluno calcula o coeficiente angular pela derivada e monta a equação da reta tangente. Exemplo: *"Você já usou a forma y - y₀ = m(x - x₀) para retas. Agora o coeficiente angular m vem da derivada."*
+2. **Verificação de tangência por interseção** — retomando discriminante de equações do 2º grau. Igualando a curva e a reta, o aluno verifica que o discriminante é zero (exatamente um ponto de contato). Conexão explícita com cônicas: *"Na lista de cônicas, você classificou curvas pelo discriminante. Agora usa a mesma ideia para confirmar que uma reta é tangente."*
+3. **Reta tangente a uma circunferência** — retomando x² + y² = r². O círculo não é função y = f(x), então o aluno precisa usar derivação implícita. Verifica tangência por interseção também. Conexão com o exercício anterior: *"Agora a curva não é função — mas a verificação por interseção funciona do mesmo jeito."*
+4. **Notação de derivadas** — exercícios que forcem o aluno a pensar em quem é a variável. Escrever o mesmo resultado em notação de Lagrange (f'), Leibniz (dy/dx) e Newton (ẏ). Comparar dy/dx vs. dx/dt. Conexão com o princípio 6 (Notação como conteúdo): *"Diferentes laboratórios usam notações diferentes. Você precisa reconhecer que todas representam a mesma operação."*
+5. **Regras algébricas de derivação** — só agora, com o conceito bem assentado e conectado à geometria, entrar nas propriedades e técnicas algébricas (potência, produto, quociente, cadeia).
 
 ### Cônicas
 

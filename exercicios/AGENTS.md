@@ -30,7 +30,7 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 
 ## Criar um exercício
 
-1. Leia `diretrizes-listas-de-exercicios.md` — entenda os 7 princípios (narrativa, scaffolding, significado antes da álgebra, etc.)
+1. Leia `diretrizes-listas-de-exercicios.md` — entenda os 8 princípios (narrativa, conexão com tópicos anteriores, scaffolding, significado antes da álgebra, etc.)
 2. Leia `checklist-conceitos-permitidos.md` — identifique a progressão narrativa do capítulo e os conceitos permitidos
 3. Leia `docs/prompts/exercicios-full.md` e `exercicios/template.html`
 4. Identifique o tópico na sequência de progressão
@@ -229,7 +229,7 @@ Etapa 3: Agente Explore (Resumidor)
 
 ### Antes de gerar qualquer RTC
 
-1. Ler `diretrizes-listas-de-exercicios.md` — entender os 7 princípios
+1. Ler `diretrizes-listas-de-exercicios.md` — entender os 8 princípios
 2. Ler a seção do capítulo correspondente em `checklist-conceitos-permitidos.md`
 3. Verificar: a progressão atual segue o princípio "significado antes da álgebra"?
 4. Se não, o RTC deve propor uma reestruturação narrativa (como fez a #32 Geometria Analítica)
@@ -241,7 +241,7 @@ Etapa 3: Agente Explore (Resumidor)
 > Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
 >
 > ANTES de começar:
-> 1. Leia `diretrizes-listas-de-exercicios.md` — os 7 princípios de design de listas
+> 1. Leia `diretrizes-listas-de-exercicios.md` — os 8 princípios de design de listas
 > 2. Leia `checklist-conceitos-permitidos.md` — conceitos permitidos E progressão narrativa do capítulo
 >
 > Depois:
@@ -266,7 +266,7 @@ Etapa 3: Agente Explore (Resumidor)
 > Crie novos exercícios conforme o RTC, adicione sub-itens (a, b, c),
 > reescreva hints inúteis, reordene por dificuldade real.
 > Cada exercício deve ter: motivação clara, conexão com o anterior,
-> e texto que justifique o próximo. Seguir os 7 princípios das diretrizes.
+> e texto que justifique o próximo. Seguir os 8 princípios das diretrizes.
 
 **Etapa 3 — Resumidor:**
 
