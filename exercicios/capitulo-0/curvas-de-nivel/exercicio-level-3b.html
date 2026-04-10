@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO LEVEL-3B [NÍVEL GAMMA]</div>
+  <div class="context">
+    ORIGEM: Análise de Relevo - Zona de Pouso de Emergência, 1964
+  </div>
+  <p>
+    No exercício anterior, as curvas de nível eram parábolas transladadas.
+    Agora vamos complicar: uma função com periodicidade em ambas as direções,
+    produzindo um mapa de curvas com padrões repetitivos. Observe como os
+    máximos e mínimos se alternam — isso é fundamental para identificar
+    pontos de pouso seguros.
+  </p>
+  <p>
+    Considere a função \(f(x, y) = \sin(x) \cdot \sin(y)\). Esboce
+    as curvas de nível para \(c = 0\), \(c = 0{,}5\) e \(c = -0{,}5\)
+    na região \(-\pi \leq x \leq \pi\), \(-\pi \leq y \leq \pi\).
+    Quantos pontos de máximo local existem nesta região?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para \(c = 0\): \(\sin(x)\sin(y) = 0\), ou seja,
+      \(\sin(x) = 0\) OU \(\sin(y) = 0\). Os máximos ocorrem quando
+      ambos \(\sin(x) = 1\) e \(\sin(y) = 1\), isto é, em
+      \((\pi/2, \pi/2)\) e combinações de sinais.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>
+      <strong>Solução completa:</strong><br/><br/>
+      <strong>Curva de nível \(c = 0\):</strong>
+      \[ \sin(x)\sin(y) = 0 \implies \sin(x) = 0 \text{ ou } \sin(y) = 0 \]
+      Isto dá as retas \(x = -\pi, 0, \pi\) e \(y = -\pi, 0, \pi\).
+      A curva \(c = 0\) forma uma grade de linhas horizontais e verticais.<br/><br/>
+      <strong>Curva de nível \(c = 0{,}5\):</strong>
+      \[ \sin(x)\sin(y) = \frac{1}{2} \]
+      Como \(|\sin| \leq 1\), precisamos de ambos \(\sin(x)\) e \(\sin(y)\)
+      com mesmo sinal. As curvas são fechadas ao redor dos pontos de
+      máximo em \((\pi/2, \pi/2)\) e \((-\pi/2, -\pi/2)\).<br/><br/>
+      <strong>Curva de nível \(c = -0{,}5\):</strong>
+      \[ \sin(x)\sin(y) = -\frac{1}{2} \]
+      Curvas fechadas ao redor dos pontos de mínimo em
+      \((\pi/2, -\pi/2)\) e \((-\pi/2, \pi/2)\).<br/><br/>
+      <strong>Pontos de máximo local:</strong><br/>
+      Os máximos \(f = 1\) ocorrem quando \(\sin(x) = \pm 1\) e
+      \(\sin(y) = \pm 1\) com mesmo sinal:
+      <ul style="margin: 10px 0 10px 20px;">
+        <li>\((\pi/2, \pi/2)\): \(f = (+1)(+1) = 1\)</li>
+        <li>\((-\pi/2, -\pi/2)\): \(f = (-1)(-1) = 1\)</li>
+      </ul>
+      Existem <strong>2 pontos de máximo local</strong> com valor 1.
+      Similarmente, 2 pontos de mínimo local com valor \(-1\).
+    </p>
+  </details>
+</li>
