@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-0D</div>
+  <div class="context">
+    ORIGEM: Departamento de <span class="censored">Padronização de Notação</span> - Comunicado Interno
+  </div>
+  <div class="mission-context">
+    <strong>CONTEXTO:</strong> Diferentes laboratórios do programa espacial utilizam notações distintas para representar a mesma derivada. Seu trabalho como analista é reconhecer que todas são <strong>equivalentes</strong> — e saber qual usar em cada contexto.
+  </div>
+  <p>
+    Três notações principais são usadas para representar derivadas:
+  </p>
+  <div class="concept-definition">
+    <p><strong>NOTAÇÕES DE DERIVADA:</strong></p>
+    <p class="formula-highlight">
+      \[ \begin{aligned} &\text{Lagrange:} & f'(x) &\quad \text{(a derivada é uma nova função)} \\ &\text{Leibniz:} & \frac{dy}{dx} &\quad \text{(enfatiza a razão de variação)} \\ &\text{Newton:} & \dot{y} \text{ ou } \ddot{y} &\quad \text{(usado para derivadas temporais)} \end{aligned} \]
+    </p>
+  </div>
+  <p>
+    <strong>(a)</strong> Dada \(f(x) = x^3 + 2x\), calcule a derivada. Escreva o resultado usando: (i) notação de Lagrange \(f'(x)\), (ii) notação de Leibniz \(\frac{dy}{dx}\) (onde \(y = f(x)\)), (iii) notação de Newton \(\dot{y}\) (considerando \(t\) como variável, i.e., \(y = t^3 + 2t\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Se \(y = \sin(t)\), o que significam \(\frac{dy}{dt}\), \(y'\), e \(\dot{y}\)? São a mesma coisa? Em que contexto cada notação é preferível?
+  </p>
+  <p>
+    <strong>(c)</strong> A posição de um foguete é dada por \(s(t) = 3t^2\) (em metros). A velocidade é escrita como \(\frac{ds}{dt}\) ou como \(v(t) = s'(t)\). Calcule \(v(2)\) e interprete: o que significa dizer que o foguete tem velocidade 12 m/s no instante \(t = 2\)?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Leibniz (\(\frac{dy}{dx}\)) enfatiza a <strong>razão de variação</strong> entre duas grandezas. Lagrange (\(f'\)) enfatiza que a derivada é uma <strong>nova função</strong>. Newton (ponto) enfatiza derivada em relação ao <strong>tempo</strong>. Todas representam a mesma operação, em contextos diferentes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> A derivada de \(f(x) = x^3 + 2x\) é:</p>
+      <p>\[ \frac{d}{dx}(x^3 + 2x) = 3x^2 + 2. \]</p>
+      <p>Nas três notações:</p>
+      <p>\[ \begin{aligned} \text{(i) Lagrange:} &\quad f'(x) = 3x^2 + 2 \\ \text{(ii) Leibniz:} &\quad \frac{dy}{dx} = 3x^2 + 2 \\ \text{(iii) Newton:} &\quad \dot{y} = 3t^2 + 2 \end{aligned} \]</p>
+      <p>Todas representam o <strong>mesmo resultado</strong>: a função que mede a taxa de variação instantânea.</p>
+
+      <p><strong>(b)</strong> Se \(y = \sin(t)\), então:</p>
+      <p>\[ \frac{dy}{dt} = \cos(t), \quad y' = \cos(t), \quad \dot{y} = \cos(t). \]</p>
+      <p>São <strong>a mesma coisa</strong> — todas valem \(\cos(t)\). A diferença é de contexto:</p>
+      <p>- \(\frac{dy}{dt}\): usado quando queremos enfatizar <strong>qual variável</strong> estamos derivando (útil quando há mais de uma variável).<br />
+      - \(y'\): usado quando a variável é clara pelo contexto (ex: \(x\)).<br />
+      - \(\dot{y}\): usado para derivadas em relação ao <strong>tempo</strong> (física, engenharia).</p>
+
+      <p><strong>(c)</strong> A posição é \(s(t) = 3t^2\). A velocidade é:</p>
+      <p>\[ v(t) = s'(t) = \frac{ds}{dt} = 6t. \]</p>
+      <p>Avaliando em \(t = 2\):</p>
+      <p>\[ v(2) = 6 \cdot 2 = 12 \text{ m/s}. \]</p>
+      <p><strong>Interpretação:</strong> No instante \(t = 2\) s, o foguete está se deslocando a 12 metros por segundo. A derivada da posição em relação ao tempo é a <strong>velocidade instantânea</strong> — a taxa na qual a posição muda naquele exato momento.</p>
+    </div>
+  </details>
+</li>

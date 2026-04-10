@@ -4,31 +4,44 @@
     ORIGEM: Subsetor de Análises Mistas - Registros de
     <span class="censored">23/05/1961</span>
   </div>
+  <div class="mission-context">
+    <strong>CONTEXTO:</strong> No exercício anterior, derivamos um produto. Mas e quando uma grandeza é <strong>dividida</strong> por outra? A eficiência de um motor pode ser expressa como a razão entre potência produzida e combustível consumido — ambos variam com o tempo.
+  </div>
   <p>
-    Calcular a derivada da função \[ p(x) = \frac{x^2 - 1}{x^2 + 1}, \]
-    aplicando a <strong>Regra do Quociente</strong>.
+    A <strong>Regra do Quociente</strong> é análoga à do produto, mas com sinal de subtração no numerador:
+  </p>
+  <p class="formula-highlight">
+    \[ \left(\frac{u}{v}\right)' = \frac{u'v - uv'}{v^2} \]
+  </p>
+  <p>
+    Calcular a derivada de \(p(x) = \dfrac{x^2 - 1}{x^2 + 1}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique \(u(x) = x^2 - 1\) e \(v(x) = x^2 + 1\). Calcule \(u'(x)\) e \(v'(x)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a Regra do Quociente: \(\frac{u'v - uv'}{v^2}\).
+  </p>
+  <p>
+    <strong>(c)</strong> Simplifique o numerador e escreva o resultado final.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de diferenças e somas no numerador podem ser
-      úteis.
+      [NOTA TÉCNICA]: Identifique \(u(x) = x^2 - 1\) e \(v(x) = x^2 + 1\). Calcule \(u'\) e \(v'\) primeiro. O numerador da Regra do Quociente é \(u'v - uv'\) — note o sinal de <strong>menos</strong> (diferença do produto).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        Pela Regra do Quociente: \[ p'(x) = \frac{(2x)(x^2 + 1) - (x^2 -
-        1)(2x)}{(x^2 + 1)^2}. \]
-      </p>
-      <p>
-        Numerador: \[ (2x)(x^2 + 1) - (x^2 - 1)(2x) = 2x(x^2 + 1) - 2x(x^2 - 1).
-        \]
-        <br />
-        \[ = 2x^3 + 2x - 2x^3 + 2x = 4x. \]
-      </p>
-      <p>Logo, \[ p'(x) = \frac{4x}{(x^2 + 1)^2}. \]</p>
+      <p><strong>(a)</strong> \(u(x) = x^2 - 1\), \(v(x) = x^2 + 1\):</p>
+      <p>\[ u'(x) = 2x, \quad v'(x) = 2x. \]</p>
+      <p><strong>(b)</strong> Pela Regra do Quociente:</p>
+      <p>\[ p'(x) = \frac{(2x)(x^2 + 1) - (x^2 - 1)(2x)}{(x^2 + 1)^2}. \]</p>
+      <p><strong>(c)</strong> Simplificando o numerador:</p>
+      <p>\[ 2x(x^2 + 1) - 2x(x^2 - 1) = 2x^3 + 2x - 2x^3 + 2x = 4x. \]</p>
+      <p>Logo,</p>
+      <p>\[ p'(x) = \frac{4x}{(x^2 + 1)^2}. \]</p>
     </div>
   </details>
 </li>

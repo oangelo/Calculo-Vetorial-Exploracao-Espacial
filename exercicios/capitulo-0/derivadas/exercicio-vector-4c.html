@@ -3,36 +3,41 @@
   <div class="context">
     ORIGEM: Arquivos de <span class="censored">Recursos Orbitais</span> - 1963
   </div>
+  <div class="mission-context">
+    <strong>CONTEXTO:</strong> Este é o desafio final. A função envolve uma composição de <strong>quatro camadas</strong> dentro de um quociente. Cada fator contribui com sua derivada pela Regra da Cadeia, e o resultado é combinado pela Regra do Quociente. Todas as regras trabalham juntas.
+  </div>
   <p>
-    Encontrar a derivada de \[ \phi(x) = \sqrt{\ln( x^2 + e^x )} \biggl/ ( \sin
-    x + 2 ) . \] Combinação de todas as regras abordadas.
+    Encontrar a derivada de \(\phi(x) = \dfrac{\sqrt{\ln(x^2 + e^x)}}{\sin x + 2}\).
   </p>
-  <!-- Série OMEGA => sem dicas -->
+  <p>
+    <strong>(a)</strong> Identifique os componentes: o numerador \(\sqrt{\ln(x^2+e^x)}\) e o denominador \(\sin x + 2\). Reconheça as 4 camadas de composição no numerador.
+  </p>
+  <p>
+    <strong>(b)</strong> Derive o numerador aplicando a Regra da Cadeia de fora para dentro.
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique a Regra do Quociente e simplifique.
+  </p>
+  <!-- Série OMEGA: sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        Seja \(g(x) = \ln(x^2 + e^x)\) e \(h(x) = \sin x + 2\), então \(\phi(x)
-        = \dfrac{\sqrt{g(x)}}{h(x)}\).
-      </p>
-      <p>
-        Derivada de \(g\): \(g'(x) = \dfrac{2x + e^x}{x^2 + e^x}\) (Regra da
-        Cadeia).
-      </p>
-      <p>
-        Derivada de \(\sqrt{g}\): \(\dfrac{g'(x)}{2\sqrt{g(x)}}\) (Regra da
-        Cadeia).
-      </p>
-      <p>Derivada de \(h\): \(h'(x) = \cos x\).</p>
-      <p>
-        Regra do Quociente: \[ \phi'(x) = \frac{\dfrac{g'(x)}{2\sqrt{g(x)}}
-        \cdot h(x) - \sqrt{g(x)} \cdot h'(x)}{[h(x)]^2} \]
-      </p>
-      <p>
-        Substituindo: \[ \phi'(x) = \frac{\dfrac{2x +
-        e^x}{2(x^2+e^x)\sqrt{\ln(x^2+e^x)}}(\sin x + 2) - \sqrt{\ln(x^2+e^x)}
-        \cdot \cos x}{(\sin x + 2)^2}. \]
-      </p>
+      <p><strong>(a)</strong> Seja \(g(x) = \ln(x^2 + e^x)\) e \(h(x) = \sin x + 2\), então \(\phi(x) = \frac{\sqrt{g(x)}}{h(x)}\).</p>
+      <p>As 4 camadas no numerador são: \(\sqrt{\;\cdot\;} \circ \ln \circ (\;\cdot\; + e^{\;\cdot\;}) \circ x\).</p>
+
+      <p><strong>(b)</strong> Derivando o numerador \(\sqrt{g(x)} = [g(x)]^{1/2}\) pela Regra da Cadeia:</p>
+      <p>\[ \frac{d}{dx}\sqrt{g(x)} = \frac{g'(x)}{2\sqrt{g(x)}}. \]</p>
+      <p>Para \(g'(x) = \frac{d}{dx}\ln(x^2 + e^x)\), aplicamos a Regra da Cadeia novamente:</p>
+      <p>\[ g'(x) = \frac{2x + e^x}{x^2 + e^x}. \]</p>
+      <p>Logo, a derivada do numerador é:</p>
+      <p>\[ \frac{2x + e^x}{2(x^2 + e^x)\sqrt{\ln(x^2 + e^x)}}. \]</p>
+      <p>A derivada do denominador: \(h'(x) = \cos x\).</p>
+
+      <p><strong>(c)</strong> Pela Regra do Quociente:</p>
+      <p>\[ \phi'(x) = \frac{\dfrac{2x + e^x}{2(x^2+e^x)\sqrt{\ln(x^2+e^x)}} \cdot (\sin x + 2) - \sqrt{\ln(x^2+e^x)} \cdot \cos x}{(\sin x + 2)^2}. \]</p>
+      <p>Para simplificar, multiplique numerador e denominador por \(2(x^2+e^x)\sqrt{\ln(x^2+e^x)}\):</p>
+      <p>\[ \phi'(x) = \frac{(2x + e^x)(\sin x + 2) - 2(x^2+e^x)\ln(x^2+e^x)\cos x}{2(x^2+e^x)\sqrt{\ln(x^2+e^x)}\,(\sin x + 2)^2}. \]</p>
+      <p><strong>Conclusão:</strong> Cada fator contribui com sua derivada pela Regra da Cadeia, e o resultado é combinado pela Regra do Quociente. O denominador nunca se anula pois \(\sin x + 2 \geq 1 > 0\).</p>
     </div>
   </details>
 </li>

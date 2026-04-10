@@ -1,29 +1,37 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
   <div class="context">
-    ORIGEM: Observações Iniciais - Setor de
-    <span class="censored">Cálculos Operacionais</span>
+    ORIGEM: Seção de <span class="censored">Análise de Composição</span> - Observações Iniciais
+  </div>
+  <div class="mission-context">
+    <strong>CONTEXTO:</strong> A altitude de uma sonda é dada por \(h(r) = \sqrt{r^2 + 1}\), onde \(r\) depende do tempo. Temos uma <strong>função dentro de outra função</strong> — uma composição. Como derivamos algo assim?
   </div>
   <p>
-    Calcular \(\frac{d}{dx}\bigl[h(x)\bigr]\) para \[h(x) = \sqrt{x^2 + 1}.\]
-    <br />
-    <strong>Método:</strong> Interpretar \(\sqrt{x^2 + 1}\) como \(\bigl(x^2 +
-    1\bigr)^{1/2}\) e usar a <strong>Regra da Cadeia</strong>.
+    A <strong>Regra da Cadeia</strong> nos diz: se \(h(x) = f(g(x))\), então \(h'(x) = f'(g(x)) \cdot g'(x)\). Derivamos de "fora para dentro".
+  </p>
+  <p>
+    Calcular \(\frac{d}{dx}\bigl[h(x)\bigr]\) para \(h(x) = \sqrt{x^2 + 1}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Reescreva \(\sqrt{x^2 + 1}\) como \((x^2 + 1)^{1/2}\). Identifique a função externa \(f(u) = u^{1/2}\) e a função interna \(g(x) = x^2 + 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(f'(u) = \frac{1}{2}u^{-1/2}\) e \(g'(x) = 2x\). Aplique a Regra da Cadeia: \(h'(x) = f'(g(x)) \cdot g'(x)\).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre que se \(f(x) = (x^2+1)\), então
-      \(\frac{d}{dx}[f(x)^{1/2}] = \frac{1}{2\sqrt{f(x)}} \cdot f'(x)\).
+      [NOTA TÉCNICA]: Escreva \(\sqrt{x^2+1} = (x^2+1)^{1/2}\). A regra da cadeia: \(\frac{d}{dx}[f(g(x))] = f'(g(x)) \cdot g'(x)\). Derive a parte externa primeiro (mantendo a interna), depois multiplique pela derivada da parte interna.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        Considere \(h(x) = (x^2 + 1)^{1/2}\). Então: \[ h'(x) = \frac{1}{2}(x^2
-        + 1)^{-1/2} \cdot 2x = \frac{x}{\sqrt{x^2 + 1}}. \]
-      </p>
+      <p><strong>(a)</strong> Temos \(h(x) = (x^2 + 1)^{1/2}\), com \(f(u) = u^{1/2}\) e \(g(x) = x^2 + 1\).</p>
+      <p><strong>(b)</strong> Derivando:</p>
+      <p>\[ f'(u) = \frac{1}{2}u^{-1/2}, \quad g'(x) = 2x. \]</p>
+      <p>Pela Regra da Cadeia:</p>
+      <p>\[ h'(x) = f'(g(x)) \cdot g'(x) = \frac{1}{2}(x^2 + 1)^{-1/2} \cdot 2x = \frac{x}{\sqrt{x^2 + 1}}. \]</p>
     </div>
   </details>
 </li>

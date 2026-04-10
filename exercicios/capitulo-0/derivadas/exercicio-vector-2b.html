@@ -4,27 +4,35 @@
     ORIGEM: Painel de Estudos - Departamento de
     <span class="censored">Otimização Balística</span>
   </div>
+  <div class="mission-context">
+    <strong>CONTEXTO:</strong> Já dominamos produto e quociente separadamente. Agora vamos <strong>combinar</strong> regras: o que acontece quando derivamos o produto de funções que internamente precisam da Regra da Cadeia? Este é o passo para problemas mais realistas.
+  </div>
   <p>
-    Use a <strong>Regra da Cadeia</strong> combinada à
-    <strong>Regra do Produto</strong> para encontrar \(\frac{d}{dx}\) de \[ q(x)
-    = (x + 1)^3 \cdot \bigl(\sin(2x)\bigr). \]
+    Encontre \(\frac{d}{dx}\) de \(q(x) = (x + 1)^3 \cdot \sin(2x)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique \(u(x) = (x + 1)^3\) e \(v(x) = \sin(2x)\). Calcule \(u'(x)\) usando a Regra da Cadeia e \(v'(x)\) também (pois \(\sin(2x)\) é uma composição).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a Regra do Produto: \(q'(x) = u'(x)v(x) + u(x)v'(x)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva o resultado final sem expandir desnecessariamente.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de funções trigonométricas podem auxiliar no
-      resultado final.
+      [NOTA TÉCNICA]: Para \(u(x) = (x+1)^3\): use potência + cadeia, obtendo \(3(x+1)^2\). Para \(v(x) = \sin(2x)\): a derivada de \(\sin(g(x))\) é \(\cos(g(x)) \cdot g'(x)\), logo \(\cos(2x) \cdot 2\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
-      <p>Seja \(u(x) = (x + 1)^3\) e \(v(x) = \sin(2x)\). Então:</p>
+      <p><strong>(a)</strong> Seja \(u(x) = (x + 1)^3\) e \(v(x) = \sin(2x)\):</p>
       <p>\[ u'(x) = 3(x+1)^2, \quad v'(x) = \cos(2x) \cdot 2 = 2\cos(2x). \]</p>
-      <p>
-        Pela Regra do Produto: \[ q'(x) = u'(x)v(x) + u(x)v'(x) = 3(x+1)^2
-        \sin(2x) + (x+1)^3 \cdot 2\cos(2x). \]
-      </p>
+      <p><strong>(b)</strong> Pela Regra do Produto:</p>
+      <p>\[ q'(x) = u'(x)v(x) + u(x)v'(x) = 3(x+1)^2 \sin(2x) + (x+1)^3 \cdot 2\cos(2x). \]</p>
+      <p><strong>(c)</strong> Resultado final:</p>
       <p>\[ q'(x) = 3(x+1)^2 \sin(2x) + 2(x+1)^3 \cos(2x). \]</p>
     </div>
   </details>
