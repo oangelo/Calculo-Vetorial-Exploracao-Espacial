@@ -4,7 +4,8 @@
     DATA: <span class="censored">11</span> DE OUTUBRO DE
     <span class="censored">1962</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">BASE DE LANÇAMENTOS [REDACTED]</span>
+    LOCALIZAÇÃO:
+    <span class="censored">BASE DE LANÇAMENTOS [REDACTED]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">DIVER-X</span>
@@ -18,9 +19,67 @@
     O desenvolvimento destes exercícios faz parte dos estudos secretos sobre a
     trajetória de novos veículos orbitais, com ênfase no
     <span class="censored">Programa Mercury</span>. Seu objetivo principal:
-    avaliar a existência de pontos de fuga (fontes) ou colapsos (sumidouros) em
-    campos de força associados ao voo espacial.
+    avaliar a existência de pontos de fuga (fontes) ou colapsos (sumidouros)
+    em campos de força associados ao voo espacial.
   </div>
+
+  <div class="concept-definition">
+    <div class="section-title">PRÉ-REQUISITOS</div>
+    <p>
+      Para resolver estes exercícios, você deve estar confortável com os
+      seguintes conceitos dos capítulos e tópicos anteriores:
+    </p>
+    <ul>
+      <li>
+        <strong>Derivadas parciais</strong> (Cap 1 — Derivadas Parciais):
+        \\(\\frac{\\partial f}{\\partial x}\\) como derivada de \\(f\\) em
+        relação a \\(x\\), tratando as outras variáveis como constantes. A
+        operação que usamos para calcular divergência é exatamente a soma de
+        três derivadas parciais — cada componente do campo é derivada em
+        relação à sua variável.
+      </li>
+      <li>
+        <strong>Regras de derivação</strong> (Cap 0 — Derivadas): regra da
+        potência, produto, quociente e cadeia. Você precisará delas para
+        derivar componentes como \\(x^2 y\\), \\(e^x \\sin y\\) e
+        \\(\\frac{x}{\\sqrt{x^2+y^2+z^2}}\\).
+      </li>
+      <li>
+        <strong>Campos vetoriais</strong> (Cap 1 — Campo Vetorial): um campo
+        \\(\\vec{F}(x,y,z) = P\\hat{i} + Q\\hat{j} + R\\hat{k}\\) associa um
+        vetor a cada ponto do espaço. A divergência extrai uma informação
+        <em>escalar</em> desse campo.
+      </li>
+      <li>
+        <strong>Rotacional</strong> (Cap 1 — Rotacional): o operador \\(\\nabla
+        \\times \\vec{F}\\) mede a "rotação" do campo. A divergência é o
+        "companheiro" que mede a "expansão". Nos exercícios finais, você verá
+        que os dois operadores dão informações complementares sobre um campo.
+      </li>
+      <li>
+        <strong>Derivada de funções de uma variável</strong> (Cap 0 —
+        Derivadas): \\(\\frac{d}{dx}(e^x) = e^x\\), \\(\\frac{d}{dx}(\\ln x)
+        = \\frac{1}{x}\\), derivadas trigonométricas. A derivada parcial usa
+        exatamente as mesmas regras.
+      </li>
+    </ul>
+    <p>
+      <em>Resumo rápido:</em> divergência \\(\\nabla \\cdot \\vec{F} =
+      \\frac{\\partial P}{\\partial x} + \\frac{\\partial Q}{\\partial y} +
+      \\frac{\\partial R}{\\partial z}\\) = soma das derivadas parciais de cada
+      componente em relação à sua variável. Valor positivo → fonte (expansão).
+      Valor negativo → sumidouro (compressão). Valor zero → solenoidal (sem
+      fontes nem sumidouros).
+    </p>
+  </div>
+
+  <div class="mission-context">
+    <strong>Contexto destes exercícios:</strong> Estamos analisando campos de
+    força associados a sistemas de propulsão espacial. A divergência nos diz se
+    há pontos de "vazamento" (fontes) ou "absorção" (sumidouros) de energia no
+    campo — informação vital para o controle de trajetória orbital.
+  </div>
+
   <div class="warning-box">
     Este documento contém análises de campos vetoriais classificadas como VITAIS
     para a segurança nacional. A reprodução não autorizada acarretará

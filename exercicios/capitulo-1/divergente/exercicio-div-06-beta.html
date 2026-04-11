@@ -1,21 +1,53 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-06-BETA</div>
   <div class="context">
-    ORIGEM: Análise de Campos Vetoriais [Programa Apollo, 1969]
+    ORIGEM: Análise de Campos Vetoriais — Programa Apollo [RELATÓRIO TÉCNICO,
+    1963]
   </div>
-  <p>Calcule o divergente de \[\vec{F}(x,y,z) = (x^2y, y^2z, z^2x)\].</p>
+  <p>
+    Vamos agora encontrar um campo cuja divergência seja <em>constante</em> —
+    sempre o mesmo valor, independentemente do ponto.
+  </p>
+  <p>
+    Para \\[\\vec{F}(x,y,z) = (e^x \\sin y,\\; e^x \\cos y,\\; z)\\],
+  </p>
+  <ul>
+    <li>(a) Calcule \\(\\frac{\\partial}{\\partial x}(e^x \\sin y)\\) e
+      \\(\\frac{\\partial}{\\partial y}(e^x \\cos y)\\). O que acontece quando
+      você soma esses dois termos?</li>
+    <li>(b) Calcule \\(\\nabla \\cdot \\vec{F}\\) completo. O resultado é
+      constante?</li>
+    <li>(c) Interprete: se a divergência é constante e positiva, o que isso
+      significa para o campo como um todo?</li>
+  </ul>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Use \(\nabla \cdot \vec{F} = \frac{\partial F_1}{\partial
-      x} + \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}\).
+      [NOTA TÉCNICA]: Observe que \\(\\frac{\\partial}{\\partial x}(e^x \\sin y)
+      = e^x \\sin y\\) e \\(\\frac{\\partial}{\\partial y}(e^x \\cos y) =
+      -e^x \\sin y\\). Estes dois termos se cancelam!
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \cdot \vec{F} = 2xy + 2yz + 2zx\]</p>
+      <p><strong>(a) Cálculos individuais:</strong></p>
+      <p>
+        \\[ \\frac{\\partial}{\\partial x}(e^x \\sin y) = e^x \\sin y \\]
+        \\[ \\frac{\\partial}{\\partial y}(e^x \\cos y) = -e^x \\sin y \\]
+      </p>
+      <p>A soma dos dois primeiros termos é \\(e^x \\sin y - e^x \\sin y = 0\\)!
+        Os termos em \\(x\\) e \\(y\\) se cancelam perfeitamente.</p>
+
+      <p><strong>(b) Divergência total:</strong></p>
+      <p>\\[ \\nabla \\cdot \\vec{F} = e^x \\sin y - e^x \\sin y + 1 = 1 \\]</p>
+      <p>Sim, o resultado é constante (= 1) em todo o espaço.</p>
+
+      <p><strong>(c) Interpretação:</strong></p>
+      <p>Divergência constante e positiva (\\(= 1\\)) significa que o campo
+        tem uma taxa de expansão uniforme em todos os pontos do espaço. É como
+        se houvesse uma fonte distribuída homogeneamente — não concentrada em um
+        ponto, mas espalhada por todo o espaço.</p>
     </div>
   </details>
 </li>

@@ -1,68 +1,60 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-02-ALFA</div>
   <div class="context">
-    ORIGEM: Departamento de Dinâmica de Voos [RELATÓRIO CONFIDENCIAL DO PROJETO
-    [REDACTED]]
+    ORIGEM: Equipe de Análise Vetorial — Projeto Mercury [TRANSMISSÃO INTERNA
+    APROVADA EM 08/OUT/1962]
   </div>
   <p>
-    Seja \(\vec{G}(x,y,z) = \bigl(\sin(xy),\; y^2 + z,\; xz - y \bigr)\).
-    Determine se \(\vec{G}\) é <em>solenoidal</em>, isto é, se \(\nabla \cdot
-    \vec{G} = 0\) em todo o espaço.
+    No exercício anterior, identificamos visualmente um campo expansivo.
+    Agora vamos <em>quantificar</em> essa expansão. A divergência é a medida
+    exata de quanto o campo "jorra" em cada ponto.
   </p>
   <p>
-    <strong>Desafio adicional:</strong> Caso a divergência não seja zero,
-    indique as regiões (se houver) onde ela se anula. Aplique este resultado
-    para discutir possíveis implicações em trajetórias orbitais sujeitas a
-    forças variáveis em diferentes pontos do espaço.
+    Considere o campo vetorial \\[ \\vec{F}(x, y, z) = \\bigl( x^2 y,\\; 2y
+    z,\\; 3z \\bigr). \\]
   </p>
-  <p>
-    Observação: Este problema requer manipulação de derivadas parciais com
-    produtos de funções trigonométricas e polinomiais. Utilize protocolos
-    avançados de computação ou derive cuidadosamente cada componente.
-  </p>
+  <ul>
+    <li>(a) Identifique as componentes \\(P = x^2 y\\), \\(Q = 2yz\\) e
+      \\(R = 3z\\). Lembre-se que o operador divergente soma as derivadas
+      parciais de cada componente em relação à "sua" variável: \\(\\nabla
+      \\cdot \\vec{F} = \\frac{\\partial P}{\\partial x} + \\frac{\\partial
+      Q}{\\partial y} + \\frac{\\partial R}{\\partial z}\\). Calcule cada
+      termo separadamente.</li>
+    <li>(b) Some os três termos para obter a divergência em função de
+      \\(x\\), \\(y\\) e \\(z\\).</li>
+    <li>(c) Avalie a divergência na origem \\((0,0,0)\\). O resultado é
+      positivo, negativo ou zero? O que isso indica sobre o comportamento
+      do campo na origem?</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para verificar se um campo é solenoidal (divergente zero),
-      calcule \(\nabla \cdot \vec{F} = \frac{\partial F_1}{\partial x} +
-      \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}\) e
-      verifique se o resultado é identicamente zero.
+      [NOTA TÉCNICA]: Para \\(\\frac{\\partial}{\\partial x}(x^2 y)\\),
+      tratamos \\(y\\) como constante. A derivada de \\(x^2\\) é \\(2x\\),
+      então o resultado é \\(2xy\\). Repita o mesmo raciocínio para os outros
+      termos.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p><strong>Cálculo da divergência:</strong></p>
+      <p><strong>(a) Cálculos parciais:</strong></p>
       <p>
-        \[ \nabla \cdot \vec{G} = \frac{\partial}{\partial
-        x}\bigl(\sin(xy)\bigr) + \frac{\partial}{\partial y}\bigl(y^2 + z\bigr)
-        + \frac{\partial}{\partial z}\bigl(xz - y\bigr). \]
+        \\[ \\frac{\\partial P}{\\partial x} = \\frac{\\partial}{\\partial
+        x}(x^2 y) = 2x y \\]
+        \\[ \\frac{\\partial Q}{\\partial y} = \\frac{\\partial}{\\partial
+        y}(2 y z) = 2z \\]
+        \\[ \\frac{\\partial R}{\\partial z} = \\frac{\\partial}{\\partial
+        z}(3 z) = 3 \\]
       </p>
+      <p><strong>(b) Divergência total:</strong></p>
+      <p>\\[ \\nabla \\cdot \\vec{F} = 2xy + 2z + 3 \\]</p>
+      <p><strong>(c) Avaliação na origem:</strong></p>
       <p>
-        <em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[\sin(xy)] = y
-        \cos(xy).\)
-        <br />
-        <em>Segundo termo:</em> \(\frac{\partial}{\partial y}[y^2 + z] = 2y.\)
-        <br />
-        <em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[xz - y] = x.\)
-      </p>
-      <p>Logo, \[ \nabla \cdot \vec{G} = y\cos(xy) + 2y + x. \]</p>
-      <p>
-        <strong>Análise:</strong> Este valor não é, em geral, zero para todos
-        \(x, y, z\). Logo, \(\vec{G}\) não é solenoidal em todo o espaço.
-      </p>
-      <p>
-        Para encontrar as regiões onde a divergência se anula, resolvemos: \[
-        y\cos(xy) + 2y + x = 0. \] Dependendo dos valores de \(x\) e \(y\), pode
-        haver soluções específicas. Por exemplo, se \(y=0\), então o termo \(x\)
-        deve ser \(0\), implicando \(x=0\). Assim, a origem \((0,0,z)\) é uma
-        região onde a divergência é nula.
-      </p>
-      <p>
-        Fisicamente, em trajetórias orbitais, regiões onde \(\nabla \cdot
-        \vec{G} = 0\) podem implicar balanço entre componentes do campo;
-        entretanto, por não ser nulo globalmente, tais equilíbrios podem ser
-        pontuais ou limitados.
+        \\(\\nabla \\cdot \\vec{F}(0,0,0) = 2(0)(0) + 2(0) + 3 = 3\\).<br />
+        Divergência positiva indica <em>fonte</em> neste ponto — o campo
+        "jorra para fora" na origem, confirmando nossa intuição do exercício
+        anterior.
       </p>
     </div>
   </details>

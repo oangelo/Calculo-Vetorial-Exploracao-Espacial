@@ -1,20 +1,69 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-07-BETA</div>
+  <div class="exercise-number">EXERCÍCIO VECTOR-07-GAMMA</div>
   <div class="context">
-    ORIGEM: Dinâmica de Fluidos Espaciais [Relatório Técnico RT-1970]
+    ORIGEM: Análise de Estabilidade — Programa Shuttle [RELATÓRIO TÉCNICO,
+    1981]
   </div>
   <p>
-    Para \[\vec{F}(x,y,z) = (e^x \sin y, e^x \cos y, z)\], calcule o divergente.
+    No exercício anterior, encontramos um campo com divergência constante.
+    Agora vamos investigar o caso contrário: um campo radial cuja divergência
+    diminui com a distância.
   </p>
+  <p>
+    Calcule o divergente de \\[\\vec{F}(x,y,z) = \\left(\\frac{x}{r},\\;
+    \\frac{y}{r},\\; \\frac{z}{r}\\right)\\] onde \\(r =
+    \\sqrt{x^2+y^2+z^2}\\).
+  </p>
+  <ul>
+    <li>(a) O campo \\(\\vec{F}\\) é o vetor unitário na direção radial: ele
+      aponta para fora a partir da origem com magnitude 1. Antes de calcular,
+      qual é sua expectativa: a divergência deve ser positiva, negativa ou
+      zero? Por quê?</li>
+    <li>(b) Para calcular \\(\\frac{\\partial}{\\partial x}\\left(\\frac{x}{r}\\
+      right)\\), use a regra do quociente. Lembre-se de que \\(r =
+      \\sqrt{x^2 + y^2 + z^2}\\), então \\(\\frac{\\partial r}{\\partial x} =
+      \\frac{x}{r}\\). Calcule o termo em \\(x\\).</li>
+    <li>(c) Some os três termos e simplifique. (Dica: \\(x^2 + y^2 + z^2 =
+      r^2\\).) Interprete o resultado: a divergência depende da distância à
+      origem?</li>
+  </ul>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Derive cada componente.</div>
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pela regra do quociente: \\(\\frac{\\partial}{\\partial
+      x}\\left(\\frac{x}{r}\\right) = \\frac{1 \\cdot r - x \\cdot
+      \\frac{x}{r}}{r^2} = \\frac{r^2 - x^2}{r^3}\\). Repita para \\(y\\) e
+      \\(z\\), depois some.
+    </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \cdot \vec{F} = e^x \sin y - e^x \sin y + 1 = 1\]</p>
+      <p><strong>(a) Expectativa:</strong></p>
+      <p>O campo aponta para fora com magnitude constante (1) em todos os
+        pontos. Como os vetores não "abrem" nem "fecham" com a distância,
+        esperamos divergência não nula, mas decrescente com a distância.</p>
+
+      <p><strong>(b) Termo em \\(x\\):</strong></p>
+      <p>
+        \\[ \\frac{\\partial}{\\partial x}\\left(\\frac{x}{r}\\right) =
+        \\frac{r - x \\cdot \\frac{x}{r}}{r^2} = \\frac{r^2 - x^2}{r^3} \\]
+      </p>
+      <p>Por simetria: \\(\\frac{\\partial}{\\partial y}\\left(\\frac{y}{r}\\
+        right) = \\frac{r^2 - y^2}{r^3}\\) e \\(\\frac{\\partial}{\\partial
+        z}\\left(\\frac{z}{r}\\right) = \\frac{r^2 - z^2}{r^3}\\).</p>
+
+      <p><strong>(c) Divergência total e simplificação:</strong></p>
+      <p>
+        \\[ \\nabla \\cdot \\vec{F} = \\frac{r^2 - x^2}{r^3} +
+        \\frac{r^2 - y^2}{r^3} + \\frac{r^2 - z^2}{r^3} =
+        \\frac{3r^2 - (x^2 + y^2 + z^2)}{r^3} = \\frac{3r^2 - r^2}{r^3} =
+        \\frac{2r^2}{r^3} = \\frac{2}{r} \\]
+      </p>
+      <p>A divergência \\(\\frac{2}{r}\\) é sempre positiva (expansiva), mas
+        decresce com a distância à origem. Quanto mais longe, menor a taxa de
+        expansão — faz sentido: o campo se "espalha" pela esfera de raio
+        \\(r\\).</p>
     </div>
   </details>
 </li>

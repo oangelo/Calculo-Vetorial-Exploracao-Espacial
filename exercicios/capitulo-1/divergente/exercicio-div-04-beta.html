@@ -1,56 +1,67 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
   <div class="context">
-    ORIGEM: Seção de Análises Orbitais – Programa Apollo [DOCUMENTO PARCIALMENTE
+    ORIGEM: Seção de Análises Orbitais — Programa Apollo [DOCUMENTO PARCIALMENTE
     CENSURADO]
   </div>
   <p>
-    Considere o campo \(\vec{M}(x,y,z) = (x^2 - y^2,\; xy,\; x + y + z)\).
-    Determine \(\nabla \cdot \vec{M}\) e conclua se o campo pode ser
-    classificado como “irrotacional” ou “solenoidal” somente com base no valor
-    da divergência. Justifique sua resposta.
+    Já calculamos divergências de vários campos. Agora vamos examinar um
+    conceito importante: quando um campo é chamado de <em>solenoidal</em>.
   </p>
   <p>
-    <strong>Dica:</strong> Lembre-se de que a condição para um campo ser
-    solenoidal é \(\nabla \cdot \vec{M} = 0\), mas a condição para ser
-    irrotacional envolve o rotacional e não apenas o divergente.
+    Um campo \\(\\vec{F}\\) é <strong>solenoidal</strong> se \\(\\nabla \\cdot
+    \\vec{F} = 0\\) em todo o espaço. Isso significa que o campo não tem fontes
+    nem sumidouros — o que "entra" em qualquer região é igual ao que "sai".
   </p>
+  <p>
+    Considere o campo \\(\\vec{M}(x,y,z) = (x^2 - y^2,\\; xy,\\; x + y +
+    z)\\).
+  </p>
+  <ul>
+    <li>(a) Calcule \\(\\nabla \\cdot \\vec{M}\\). O resultado é identicamente
+      zero?</li>
+    <li>(b) Se o campo <em>não</em> é solenoidal, encontre as regiões onde
+      \\(\\nabla \\cdot \\vec{M} = 0\\). (Dica: a equação depende apenas de
+      uma variável.)</li>
+    <li>(c) <strong>Cuidado com a armadilha conceitual:</strong> Um campo
+      com divergência zero (solenoidal) não é o mesmo que um campo sem
+      <em>rotação</em> (irrotacional). O rotacional \\(\\nabla \\times
+      \\vec{F}\\) é uma informação diferente. Portanto, saber apenas o valor da
+      divergência <em>não permite</em> concluir se o campo é irrotacional.
+      Justifique por que são propriedades independentes.</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para classificar o campo, calcule \(\nabla \cdot \vec{F}\)
-      e analise o sinal do resultado: positivo indica fonte, negativo indica
-      sumidouro.
+      [NOTA TÉCNICA]: Para \\(\\frac{\\partial}{\\partial x}(x^2 - y^2)\\),
+      \\(y^2\\) é constante. Para \\(\\frac{\\partial}{\\partial y}(xy)\\),
+      \\(x\\) é constante, e a derivada de \\(y\\) é \\(1\\), então o
+      resultado é \\(x\\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p><strong>Cálculo da divergência:</strong></p>
+      <p><strong>(a) Cálculo da divergência:</strong></p>
       <p>
-        \[ \nabla \cdot \vec{M} = \frac{\partial}{\partial x}(x^2 - y^2) +
-        \frac{\partial}{\partial y}(xy) + \frac{\partial}{\partial z}(x + y +
-        z). \]
+        \\[ \\nabla \\cdot \\vec{M} = \\frac{\\partial}{\\partial x}(x^2 - y^2)
+        + \\frac{\\partial}{\\partial y}(xy) + \\frac{\\partial}{\\partial
+        z}(x + y + z) \\]
+        \\[ = 2x + x + 1 = 3x + 1 \\]
       </p>
-      <p>
-        <em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[x^2 - y^2] =
-        2x.\)
-        <br />
-        <em>Segundo termo:</em> \(\frac{\partial}{\partial y}[xy] = x.\)
-        <br />
-        <em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[x + y + z] = 1.\)
-      </p>
-      <p>Portanto, \[ \nabla \cdot \vec{M} = 2x + x + 1 = 3x + 1. \]</p>
-      <p>
-        <strong>Análise:</strong> O campo não é solenoidal em todo o espaço,
-        pois \(\nabla \cdot \vec{M}\) não é identicamente zero. Ele se anula
-        apenas em \(x = -\frac{1}{3}\).
-      </p>
-      <p>
-        Com relação à irrotacionalidade, é preciso calcular o rotacional
-        \(\nabla \times \vec{M}\). Logo, saber apenas o divergente não permite
-        concluir se o campo é ou não irrotacional.
-      </p>
+      <p>O resultado \\(3x + 1\\) não é identicamente zero. Logo, o campo
+        <strong>não</strong> é solenoidal.</p>
+
+      <p><strong>(b) Região onde a divergência se anula:</strong></p>
+      <p>\\(3x + 1 = 0 \\implies x = -\\frac{1}{3}\\). O campo tem divergência
+        nula apenas no plano \\(x = -1/3\\).</p>
+
+      <p><strong>(c) Propriedades independentes:</strong></p>
+      <p>Um campo pode ser solenoidal mas não irrotacional (ex:
+        \\((-y, x, 0)\\) — divergência zero, mas gira). Pode ser irrotacional
+        mas não solenoidal (ex: \\((x, 0, 0)\\) — rotacional zero, mas divergência
+        1). A divergência mede expansão; o rotacional mede rotação. São
+        "direções" diferentes de análise do campo.</p>
     </div>
   </details>
 </li>

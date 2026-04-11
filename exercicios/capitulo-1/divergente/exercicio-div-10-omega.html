@@ -1,20 +1,66 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
   <div class="context">
-    ORIGEM: Teoria de Campos Avançada [Pesquisa Classificada, 1985]
+    ORIGEM: Laboratório de Análise Avançada — Projeto Mercury [DOCUMENTO
+    ULTRASECRETO, 1958]
   </div>
   <p>
-    Prove que se \[\nabla \cdot \vec{F} = 0\] e \[\nabla \times \vec{F} = 0\],
-    então \(\vec{F}\) é constante.
+    Nos exercícios anteriores, calculamos divergências de campos dados. Agora
+    vamos ao inverso: <em>construir</em> um campo com uma propriedade desejada.
+    Este tipo de problema exige criatividade — não existe fórmula, apenas
+    raciocínio.
   </p>
+  <p>
+    Encontre um campo vetorial \\(\\vec{F}(x,y,z)\\) que satisfaça
+    <strong>ambas</strong> as condições:
+    \\[\\nabla \\cdot \\vec{F} = 3 \\quad \\text{(divergência constante)}\\]
+    \\[\\nabla \\times \\vec{F} = \\vec{0} \\quad \\text{(rotacional nulo)}\\]
+  </p>
+  <ul>
+    <li>(a) Dica para o início: se o rotacional é nulo, o campo não pode ter
+      componentes "cruzadas" como \\((-y, x, 0)\\). Tente um campo da forma
+      \\(\\vec{F} = (f(x,y,z),\\; g(x,y,z),\\; h(x,y,z))\\) onde cada
+      componente depende apenas de "sua" variável. Por exemplo:
+      \\(\\vec{F} = (ax,\\; by,\\; cz)\\). Calcule a divergência e o
+      rotacional deste campo.</li>
+    <li>(b) Que valores de \\(a\\), \\(b\\) e \\(c\\) satisfazem as duas
+      condições?</li>
+    <li>(c) Verifique: \\(\\nabla \\times \\vec{F} = 0\\) significa que as
+      "derivadas cruzadas" se igualam. Confirme explicitamente que seu campo
+      satisfaz essa condição.</li>
+  </ul>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>(a) Tentativa:</strong></p>
+      <p>Seja \\(\\vec{F} = (ax,\\; by,\\; cz)\\).</p>
       <p>
-        Pelo teorema de Helmholtz, um campo vetorial é determinado pelo seu
-        divergente e rotacional. Se ambos são zero, o campo é constante.
+        \\[ \\nabla \\cdot \\vec{F} = a + b + c \\]
+        \\[ \\nabla \\times \\vec{F} = \\left(\\frac{\\partial h}{\\partial y} -
+        \\frac{\\partial g}{\\partial z},\\; \\frac{\\partial f}{\\partial z} -
+        \\frac{\\partial h}{\\partial x},\\; \\frac{\\partial g}{\\partial x} -
+        \\frac{\\partial f}{\\partial y}\\right) = (0 - 0,\\; 0 - 0,\\; 0 - 0)
+        = \\vec{0} \\]
       </p>
+      <p>O rotacional é zero automaticamente, pois cada componente depende
+        apenas de sua própria variável.</p>
+
+      <p><strong>(b) Valores de \\(a\\), \\(b\\), \\(c\\):</strong></p>
+      <p>Precisamos de \\(a + b + c = 3\\). A escolha mais simples:
+        \\(a = b = c = 1\\), ou seja,
+        \\[\\vec{F} = \\frac{3}{3}(x,\\; y,\\; z) = (x,\\; y,\\; z)\\]</p>
+
+      <p><strong>(c) Verificação do rotacional:</strong></p>
+      <p>
+        \\[ \\nabla \\times (x, y, z) = \\left(\\frac{\\partial z}{\\partial y}
+        - \\frac{\\partial y}{\\partial z},\\; \\frac{\\partial x}{\\partial z} -
+        \\frac{\\partial z}{\\partial x},\\; \\frac{\\partial y}{\\partial x} -
+        \\frac{\\partial x}{\\partial y}\\right) = (0, 0, 0) \\quad \\checkmark
+        \\]
+      </p>
+      <p>\\[ \\nabla \\cdot (x, y, z) = 1 + 1 + 1 = 3 \\quad \\checkmark \\]</p>
+      <p>O campo \\(\\vec{F}(x,y,z) = (x, y, z)\\) satisfaz ambas as
+        condições.</p>
     </div>
   </details>
 </li>

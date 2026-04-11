@@ -1,42 +1,73 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-01-ALFA</div>
   <div class="context">
-    ORIGEM: Equipe de Análise Vetorial - Projeto Mercury [TRANSMISSÃO INTERNA
-    APROVADA EM 08/OUT/1962]
+    ORIGEM: Departamento de Análise de Campos — Projeto Redstone [RELATÓRIO
+    TÉCNICO CLASSIFICADO, 1953]
   </div>
   <p>
-    Considere o campo vetorial \[ \vec{F}(x, y, z) = \bigl( x^2 y,\; 2y z,\; 3z
-    \bigr). \] Determine a divergência \(\nabla \cdot \vec{F}\) e avalie, com
-    base no resultado, se este campo apresenta fontes ou sumidouros na origem.
+    Na análise de um campo vetorial, a <em>divergência</em> nos diz se o campo
+    "se expande" ou "se comprime" em cada ponto. Antes de calcular, vamos
+    aprender a <em>enxergar</em> essa propriedade.
   </p>
+  <p>
+    Considere o campo vetorial \\[\\vec{F}(x, y) = (x,\\; y).\\] Este campo
+    aponta radialmente para fora a partir da origem — cada vetor aponta
+    "afastando-se" do centro.
+  </p>
+  <ul>
+    <li>(a) Desenhe (ou visualize mentalmente) o campo nos pontos \\((1,0)\\),
+      \\((0,1)\\), \\((-1,0)\\) e \\((0,-1)\\). Em qual desses pontos o campo
+      "jorra para fora"? Em qual ele "converge para dentro"?</li>
+    <li>(b) Agora considere o campo \\(\\vec{G}(x,y) = (-y,\\; x)\\). Este
+      campo gira em torno da origem (sentido anti-horário). Compare: em
+      \\(\\vec{G}\\), o campo se expande, se comprime, ou apenas gira?
+      Justifique.</li>
+    <li>(c) Com base nas suas observações, classifique intuitivamente qual
+      desses dois campos deve ter divergência positiva na origem e qual deve ter
+      divergência zero. (Não calcule ainda — apenas argumente.)</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembrar que \(\nabla \cdot \vec{F} = \frac{\partial
-      P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial
-      R}{\partial z}\).
+      [NOTA TÉCNICA]: Para desenhar o campo \\(\\vec{F}(x,y) = (x,y)\\) no
+      ponto \\((1,0)\\), o vetor é \\((1,0)\\) — uma seta apontando para a
+      direita. No ponto \\((0,1)\\), o vetor é \\((0,1)\\) — uma seta para
+      cima. O padrão é: todas as setas apontam para longe da origem.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>PROTOCOLO DE CÁLCULO DA DIVERGÊNCIA:</p>
-      <p>
-        \[ \nabla \cdot \vec{F} = \frac{\partial}{\partial x}(x^2 y) +
-        \frac{\partial}{\partial y}(2 y z) + \frac{\partial}{\partial z}(3 z).
-        \]
-      </p>
-      <p>
-        Cálculos: \[ \frac{\partial}{\partial x}(x^2 y) = 2x y, \quad
-        \frac{\partial}{\partial y}(2 y z) = 2z, \quad \frac{\partial}{\partial
-        z}(3 z) = 3. \]
-      </p>
-      <p>Portanto: \[ \nabla \cdot \vec{F} = 2xy + 2z + 3. \]</p>
-      <p>
-        <strong>Análise na origem (\(x=0, y=0, z=0\)):</strong><br />
-        \(\nabla \cdot \vec{F}(0,0,0) = 3\).<br />
-        Divergência positiva indica <em>fonte</em> neste ponto.
-      </p>
+      <p><strong>(a) Visualização de \\(\\vec{F} = (x,y)\\):</strong></p>
+      <ul>
+        <li>No ponto \\((1,0)\\): vetor \\((1,0)\\) — aponta para a direita
+          (para fora).</li>
+        <li>No ponto \\((0,1)\\): vetor \\((0,1)\\) — aponta para cima
+          (para fora).</li>
+        <li>No ponto \\((-1,0)\\): vetor \\((-1,0)\\) — aponta para a esquerda
+          (para fora).</li>
+        <li>No ponto \\((0,-1)\\): vetor \\((0,-1)\\) — aponta para baixo
+          (para fora).</li>
+      </ul>
+      <p>Em todos os pontos, o campo aponta para fora — há uma "fonte" na
+        origem.</p>
+
+      <p><strong>(b) Comparação com \\(\\vec{G} = (-y, x)\\):</strong></p>
+      <p>No ponto \\((1,0)\\): vetor \\((0,1)\\) — para cima. No ponto
+        \\((0,1)\\): vetor \\((-1,0)\\) — para a esquerda. O campo gira em
+        torno da origem sem se expandir nem comprimir. Nenhum ponto parece ser
+        fonte ou sumidouro.</p>
+
+      <p><strong>(c) Classificação intuitiva:</strong></p>
+      <p>\\(\\vec{F} = (x,y)\\) deve ter divergência positiva (expansão).
+        \\(\\vec{G} = (-y,x)\\) deve ter divergência zero (apenas rotação, sem
+        expansão).</p>
+      <p><em>Verificação (adiantamento):</em> \\(\\nabla \\cdot \\vec{F} =
+        \\frac{\\partial x}{\\partial x} + \\frac{\\partial y}{\\partial y} =
+        1 + 1 = 2 > 0\\). Correto — campo expansivo. \\(\\nabla \\cdot
+        \\vec{G} = \\frac{\\partial(-y)}{\\partial x} +
+        \\frac{\\partial x}{\\partial y} = 0 + 0 = 0\\). Correto — campo
+        sem expansão.</p>
     </div>
   </details>
 </li>

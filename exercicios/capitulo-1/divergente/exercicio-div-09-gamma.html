@@ -1,24 +1,54 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
   <div class="context">
-    ORIGEM: Análise de Estabilidade [Programa Shuttle, 1981]
+    ORIGEM: Análise Dinâmica de Fluidos — Projeto Skylab [RELATÓRIO TÉCNICO,
+    1973]
   </div>
   <p>
-    Calcule o divergente de \[\vec{F}(x,y,z) = (\frac{x}{r}, \frac{y}{r},
-    \frac{z}{r})\] onde \(r = \sqrt{x^2+y^2+z^2}\).
+    Já vimos campos com divergência positiva, negativa, constante e zero. Agora
+    vamos combinar: um campo onde a divergência pode mudar de sinal dependendo
+    do ponto.
   </p>
+  <p>
+    Considere o campo \\[\\vec{F}(x,y,z) = (x^2 z,\\; -2xyz,\\; xy^2)\\].
+  </p>
+  <ul>
+    <li>(a) Calcule cada termo da divergência separadamente. Note que o campo
+      tem uma "simetria" entre os termos.</li>
+    <li>(b) Simplifique a soma total. O resultado depende de quais variáveis?</li>
+    <li>(c) Classifique as regiões do espaço: onde a divergência é positiva,
+      onde é negativa, e onde é zero? (Dica: analise o sinal do resultado como
+      função de \\(x\\) e \\(z\\).)</li>
+  </ul>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Use a regra do quociente.</div>
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \\(\\frac{\\partial}{\\partial x}(x^2 z) = 2xz\\),
+      \\(\\frac{\\partial}{\\partial y}(-2xyz) = -2xz\\), e
+      \\(\\frac{\\partial}{\\partial z}(xy^2) = 0\\). Note a cancelação entre
+      os dois primeiros termos!
+    </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>(a) Termos individuais:</strong></p>
       <p>
-        \[\nabla \cdot \vec{F} = \frac{3}{r} - \frac{x^2+y^2+z^2}{r^3} =
-        \frac{3}{r} - \frac{1}{r} = \frac{2}{r}\]
+        \\[ \\frac{\\partial}{\\partial x}(x^2 z) = 2xz \\]
+        \\[ \\frac{\\partial}{\\partial y}(-2xyz) = -2xz \\]
+        \\[ \\frac{\\partial}{\\partial z}(xy^2) = 0 \\]
       </p>
+      <p><strong>(b) Divergência total:</strong></p>
+      <p>\\[ \\nabla \\cdot \\vec{F} = 2xz - 2xz + 0 = 0 \\]</p>
+      <p>O resultado é zero em todo o espaço! Este campo é
+        <strong>solenoidal</strong>.</p>
+
+      <p><strong>(c) Análise:</strong></p>
+      <p>Com divergência identicamente zero, o campo não possui nem fontes nem
+        sumidouros em lugar algum. O que "entra" em qualquer região fechada é
+        exatamente o que "sai" pela fronteira. Note como o termo \\(x^2 z\\) no
+        primeiro componente e \\(-2xyz\\) no segundo se "compensam"
+        perfeitamente — uma construção intencional de campo solenoidal.</p>
     </div>
   </details>
 </li>

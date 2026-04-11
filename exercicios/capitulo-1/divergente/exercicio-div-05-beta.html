@@ -4,52 +4,55 @@
     ORIGEM: Equipe de Inteligência Científica [REDACTED] [ARQUIVO CLASSIFICADO]
   </div>
   <p>
-    Suponha que \(\vec{K}(x,y,z) = (xyz,\; x^2 + z^2,\; \ln(1 + x^2 + y^2))\).
-    Calcule \(\nabla \cdot \vec{K}\). Investigue se existem regiões no espaço
-    nas quais esse divergente seja negativo, e interprete fisicamente o que isso
-    implicaria para um campo de forças.
+    No exercício anterior, vimos que um campo pode não ser solenoidal em todo o
+    espaço, mas ter regiões específicas onde a divergência se anula. Agora vamos
+    investigar algo mais sutil: um campo cuja divergência pode ser
+    <em>negativa</em>, indicando sumidouros.
   </p>
   <p>
-    <strong>Observação:</strong> A presença de funções logarítmicas pode exigir
-    cuidado especial em pontos onde o argumento seja zero.
+    Suponha que \\(\\vec{K}(x,y,z) = (xyz,\\; x^2 + z^2,\\; \\ln(1 + x^2 +
+    y^2))\\).
   </p>
+  <ul>
+    <li>(a) Calcule \\(\\nabla \\cdot \\vec{K}\\). (Atenção: a componente
+      \\(\\ln(1 + x^2 + y^2)\\) não depende de \\(z\\).)</li>
+    <li>(b) A divergência resultante depende de quais variáveis? Em que
+      regiões do espaço ela é positiva, negativa ou zero?</li>
+    <li>(c) Interprete fisicamente: se este campo representasse um campo de
+      forças, o que significaria uma divergência negativa em certas regiões?</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Investigue onde \(\nabla \cdot \vec{K} = 0\) resolvendo a
-      equação resultante. A função \(\ln\) impõe restrições ao domínio.
+      [NOTA TÉCNICA]: A terceira componente \\(\\ln(1 + x^2 + y^2)\\) depende
+      apenas de \\(x\\) e \\(y\\). Quando derivamos em relação a \\(z\\), o
+      resultado é \\(0\\). Para o primeiro termo, \\(\\frac{\\partial}{\\partial
+      x}(xyz) = yz\\) (tratando \\(y\\) e \\(z\\) como constantes).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p><strong>Cálculo da divergência:</strong></p>
+      <p><strong>(a) Cálculo da divergência:</strong></p>
       <p>
-        \[ \nabla \cdot \vec{K} = \frac{\partial}{\partial x}(xyz) +
-        \frac{\partial}{\partial y}(x^2 + z^2) + \frac{\partial}{\partial
-        z}[\ln(1 + x^2 + y^2)]. \]
+        \\[ \\nabla \\cdot \\vec{K} = \\frac{\\partial}{\\partial x}(xyz) +
+        \\frac{\\partial}{\\partial y}(x^2 + z^2) + \\frac{\\partial}{\\partial
+        z}[\\ln(1 + x^2 + y^2)] \\]
+        \\[ = yz + 0 + 0 = yz \\]
       </p>
-      <p>
-        <em>Primeiro termo:</em> \(\frac{\partial}{\partial x}[xyz] = yz.\)
-        <br />
-        <em>Segundo termo:</em> \(\frac{\partial}{\partial y}[x^2 + z^2] = 0\),
-        pois não depende de \(y\).
-        <br />
-        <em>Terceiro termo:</em> \(\frac{\partial}{\partial z}[\ln(1 + x^2 +
-        y^2)] = 0\), pois não depende de \(z\).
-      </p>
-      <p>Portanto, \[ \nabla \cdot \vec{K} = yz. \]</p>
-      <p>
-        <strong>Análise de sinal:</strong> \(yz\) pode assumir valores
-        positivos, negativos ou zero, dependendo dos sinais de \(y\) e \(z\). Se
-        \(yz &lt; 0\), o divergente é negativo, implicando um comportamento de
-        sumidouro (ou colapso local) no campo de forças.
-      </p>
-      <p>
-        Fisicamente, divergência negativa em regiões específicas pode indicar
-        pontos onde o campo "entra" mais do que "sai" — relevante em cenários
-        orbitais onde forças convergem.
-      </p>
+      <p><strong>(b) Análise de sinal:</strong></p>
+      <p>A divergência \\(yz\\) depende apenas de \\(y\\) e \\(z\\):</p>
+      <ul>
+        <li>\\(yz > 0\\) quando \\(y\\) e \\(z\\) têm o mesmo sinal (quadrantes
+          onde os sinais coincidem)</li>
+        <li>\\(yz < 0\\) quando \\(y\\) e \\(z\\) têm sinais opostos</li>
+        <li>\\(yz = 0\\) quando \\(y = 0\\) ou \\(z = 0\\) (planos
+          coordenados)</li>
+      </ul>
+      <p><strong>(c) Interpretação física:</strong></p>
+      <p>Divergência negativa em uma região indica um <em>sumidouro</em> — o
+        campo "converge" para lá, mais entra do que sai. Em um campo de forças,
+        isso poderia significar pontos de atração onde a energia se concentra.</p>
     </div>
   </details>
 </li>
