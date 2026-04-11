@@ -1,26 +1,75 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
   <div class="context">
-    ORIGEM: Teoria de Controle Avançada [Projeto Secreto, 1975]
+    ORIGEM: Dinâmica de Sistemas Complexos [Classificado, 1978]
   </div>
   <p>
-    Dada \[\vec{r}(t) = (a\cos(\omega t), a\sin(\omega t), bt)\], encontre as
-    condições para que a trajetória seja uma hélice circular uniforme.
+    No exercício da hélice (anterior), vimos que quando um objeto gira com
+    velocidade angular constante, o vetor velocidade gira junto — mas o
+    <strong>módulo</strong> da posição permanece constante (no plano \(xy\)).
+    Isso levanta uma pergunta geral: quando \(\|\vec{r}(t)\|\) é constante,
+    o que acontece com \(\vec{r}'(t)\)?
   </p>
+  <p>
+    Prove que se \(\vec{r}(t) \cdot \vec{r}'(t) = 0\) para todo \(t\),
+    então \(\|\vec{r}(t)\|\) é constante.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Escreva \(\|\vec{r}\|^2\) como um produto escalar. Qual é a
+      propriedade do produto escalar que relaciona \(\vec{v} \cdot \vec{v}\)
+      com \(\|\vec{v}\|\)?
+    </li>
+    <li>
+      (b) Derive \(\|\vec{r}(t)\|^2 = \vec{r}(t) \cdot \vec{r}(t)\) em
+      relação a \(t\). Use a regra de derivação do produto escalar:
+      \(\frac{d}{dt}(\vec{u} \cdot \vec{v}) = \vec{u}' \cdot \vec{v} +
+      \vec{u} \cdot \vec{v}'\).
+    </li>
+    <li>
+      (c) Use a hipótese \(\vec{r} \cdot \vec{r}' = 0\) para concluir que
+      \(\|\vec{r}\|\) é constante. Interprete: geometricamente, o que
+      significa \(\vec{r} \cdot \vec{r}' = 0\)?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-10]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Analise a velocidade e aceleração.</div>
+    <div class="hint">
+      [DICA OPERACIONAL]: Lembre do Cap 0 (Produto Escalar): o produto
+      escalar de um vetor consigo mesmo é o quadrado do módulo:
+      \(\vec{v} \cdot \vec{v} = \|\vec{v}\|^2\). Para derivar o produto
+      escalar, trate cada componente como uma função e aplique a regra do
+      produto.
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        Para hélice circular uniforme: \[\vec{v}(t) = (-a\omega\sin(\omega t),
-        a\omega\cos(\omega t), b)\] \[|\vec{v}| = \sqrt{a^2\omega^2 + b^2} =
-        \text{constante}\] \[\vec{a}(t) = (-a\omega^2\cos(\omega t),
-        -a\omega^2\sin(\omega t), 0)\] \[|\vec{a}| = a\omega^2 =
-        \text{constante}\] Condições: \(a, \omega, b\) constantes.
+        (a) Temos \(\|\vec{r}\|^2 = \vec{r} \cdot \vec{r}\). A propriedade
+        fundamental é: o produto escalar de um vetor consigo mesmo é o
+        quadrado de seu módulo.
+      </p>
+      <p>
+        (b) Derivando ambos os lados:
+        \[\frac{d}{dt}\|\vec{r}\|^2 = \frac{d}{dt}(\vec{r} \cdot \vec{r})
+        = \vec{r}' \cdot \vec{r} + \vec{r} \cdot \vec{r}'
+        = 2\,\vec{r} \cdot \vec{r}'.\]
+      </p>
+      <p>
+        (c) Pela hipótese, \(\vec{r} \cdot \vec{r}' = 0\), então
+        \(\frac{d}{dt}\|\vec{r}\|^2 = 0\). Isso significa que
+        \(\|\vec{r}\|^2\) é constante, e portanto \(\|\vec{r}\|\) também é
+        constante.
+      </p>
+      <p>
+        <strong>Interpretação geométrica:</strong> A condição
+        \(\vec{r} \cdot \vec{r}' = 0\) significa que o vetor velocidade é
+        sempre <strong>perpendicular</strong> à posição. Quando isso acontece,
+        o objeto se move sempre na direção tangencial (nunca se afasta nem se
+        aproxima da origem) — exatamente como numa órbita circular.
       </p>
     </div>
   </details>

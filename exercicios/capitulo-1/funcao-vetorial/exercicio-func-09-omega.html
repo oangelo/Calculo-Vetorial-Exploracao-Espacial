@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-09-OMEGA</div>
+  <div class="context">
+    ORIGEM: Teoria de Controle Avançada [Projeto Secreto, 1975]
+  </div>
+  <p>
+    Uma das trajetórias mais importantes em dinâmica orbital é a
+    <strong>hélice circular</strong>: o objeto gira em torno de um eixo
+    enquanto avança ao longo dele. Pense em uma escada em espiral vista de
+    lado. A hélice uniforme tem velocidade constante (magnitude fixa) e
+    aceleração centrípeta constante (sempre apontando para o eixo).
+  </p>
+  <p>
+    Dada a função vetorial:
+    \[ \vec{r}(t) = \bigl(a\cos(\omega t),\; a\sin(\omega t),\; bt\bigr) \]
+    onde \(a\), \(\omega\) e \(b\) são constantes positivas.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Calcule o vetor velocidade \(\vec{v}(t) = \vec{r}'(t)\). Use a
+      regra da cadeia: \(\frac{d}{dt}\cos(\omega t) = -\omega\sin(\omega t)\).
+    </li>
+    <li>
+      (b) Calcule o módulo \(\|\vec{v}(t)\|\). Ele depende de \(t\)?
+    </li>
+    <li>
+      (c) Calcule o vetor aceleração \(\vec{a}(t) = \vec{r}''(t)\).
+    </li>
+    <li>
+      (d) Determine as condições sobre \(a\), \(\omega\) e \(b\) para que
+      \(\|\vec{v}\|\) e \(\|\vec{a}\|\) sejam constantes (hélice uniforme).
+    </li>
+  </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [DICA OPERACIONAL]: Para o módulo da velocidade, use
+      \(\sin^2(\omega t) + \cos^2(\omega t) = 1\). Para o item (d), observe
+      que se \(a\), \(\omega\) e \(b\) são constantes, então \(\|\vec{v}\|\)
+      é automaticamente constante (não depende de \(t\)).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(\vec{v}(t) = \bigl(-a\omega\sin(\omega t),\;
+        a\omega\cos(\omega t),\; b\bigr)\).
+      </p>
+      <p>
+        (b) \(\|\vec{v}\| = \sqrt{a^2\omega^2\sin^2(\omega t) +
+        a^2\omega^2\cos^2(\omega t) + b^2}
+        = \sqrt{a^2\omega^2 + b^2}\).
+        O módulo NÃO depende de \(t\) — é constante.
+      </p>
+      <p>
+        (c) \(\vec{a}(t) = \bigl(-a\omega^2\cos(\omega t),\;
+        -a\omega^2\sin(\omega t),\; 0\bigr)\).
+      </p>
+      <p>
+        (d) Para \(\|\vec{v}\| = \sqrt{a^2\omega^2 + b^2}\) ser constante,
+        basta que \(a\), \(\omega\) e \(b\) sejam constantes (o que já
+        assumimos). Para \(\|\vec{a}\| = a\omega^2\) ser constante, mesma
+        condição. Portanto, a condição para hélice circular uniforme é
+        simplesmente: \(a\), \(\omega\), \(b\) constantes, com \(a > 0\)
+        e \(\omega > 0\). A aceleração tem magnitude fixa e aponta sempre
+        para o eixo \(z\) (componente \(z\) é zero), como uma
+        <strong>aceleração centrípeta</strong>.
+      </p>
+    </div>
+  </details>
+</li>

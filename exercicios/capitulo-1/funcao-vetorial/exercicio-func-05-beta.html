@@ -1,30 +1,37 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
   <div class="context">
-    ARQUIVO: Projeto Skylab (1973) — [DADOS PARCIALMENTE DESCLASSIFICADOS]
+    ARQUIVO: Dinâmica Orbital [Relatório Técnico RT-1967]
   </div>
   <p>
-    Analise o movimento descrito por: \[ \vec{v}(t) = \bigl(e^t\cos t,\; e^t\sin
-    t\bigr). \] Esse tipo de trajetória pode ser usado para simular
-    <em>movimentos combinados de rotação e expansão</em> em condições de
-    gravidade reduzida.
+    A trajetória de uma hélice é um dos modelos mais importantes em dinâmica
+    orbital. Antes de estudar hélices completas (que veremos mais adiante),
+    vamos calcular a velocidade em um instante específico de uma curva
+    geométrica clássica — a <strong>hélice circular</strong>:
+    \[ \vec{r}(t) = (\cos t,\; \sin t,\; t). \]
   </p>
   <strong>Solicitação:</strong>
   <ul>
-    <li>(a) Verifique se o movimento é circular ou espiral.</li>
     <li>
-      (b) Calcule a velocidade \(\vec{v}'(t)\) e a aceleração \(\vec{v}''(t)\).
+      (a) Calcule \(\vec{r}'(t)\). Use as derivadas trigonométricas de
+      Cap 0: \(\frac{d}{dt}\cos t = -\sin t\) e
+      \(\frac{d}{dt}\sin t = \cos t\).
     </li>
     <li>
-      (c) Discuta como \(\|\vec{v}(t)\|\) se comporta à medida que \(t\)
-      aumenta.
+      (b) Avalie o vetor velocidade em \(t = \pi/2\).
+    </li>
+    <li>
+      (c) Descreva a direção do vetor velocidade nesse instante. Em que
+      sentido o objeto se move no plano \(xy\)? A componente \(z\) da
+      velocidade nos diz algo sobre a subida ao longo da hélice?
     </li>
   </ul>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [DICA OPERACIONAL]: Analise o módulo da função: \(\sqrt{(e^t\cos t)^2 +
-      (e^t\sin t)^2}\).
+      [DICA OPERACIONAL]: Lembre que \(\sin(\pi/2) = 1\) e
+      \(\cos(\pi/2) = 0\). Para a componente \(z\), note que
+      \(z(t) = t\) tem derivada constante.
     </div>
   </details>
   <details>
@@ -32,22 +39,19 @@
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) Observamos que \(\|\vec{v}(t)\| = \sqrt{ e^{2t}(\cos^2 t + \sin^2 t)
-        } = e^t\). Assim, o raio não é constante; ele cresce exponencialmente.
-        Logo, trata-se de uma <em>espiral</em> (não é um círculo de raio fixo).
+        (a) \(\vec{r}'(t) = (-\sin t,\; \cos t,\; 1)\).
       </p>
       <p>
-        (b) \[ \vec{v}'(t) = \frac{d}{dt}\bigl(e^t\cos t,\; e^t\sin t\bigr) =
-        \bigl(e^t\cos t - e^t\sin t,\; e^t\sin t + e^t\cos t\bigr). \]
-        <br />
-        \[ \vec{v}''(t) = \frac{d}{dt}\bigl(e^t\cos t - e^t\sin t,\; e^t\sin t +
-        e^t\cos t\bigr). \] O cálculo detalhado mostra termos mistos de
-        \(e^t\cos t\) e \(e^t\sin t\) em cada derivada.
+        (b) Em \(t = \pi/2\): \(\vec{v}(\pi/2) = (-1,\; 0,\; 1)\).
       </p>
       <p>
-        (c) Como \(\|\vec{v}(t)\| = e^t\), seu módulo cresce exponencialmente
-        com o tempo \(t\). Em um contexto físico, isso poderia representar um
-        afastamento acelerado do centro de rotação.
+        (c) O vetor velocidade \((-1, 0, 1)\) indica que, no instante
+        \(t = \pi/2\), o objeto se move na direção \(-x\) (sentido horário
+        no plano \(xy\)) e sobe com velocidade constante 1 na direção \(z\).
+        A componente \(y\) da velocidade é zero — o objeto está passando pelo
+        ponto mais extremo na direção \(y\) (como um pêndulo no ponto de
+        máxima amplitude). Isso é consistente com o fato de que
+        \(\vec{r}(\pi/2) = (0, 1, \pi/2)\), o ponto mais alto em \(y\).
       </p>
     </div>
   </details>

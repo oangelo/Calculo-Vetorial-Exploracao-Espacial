@@ -1,30 +1,64 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
   <div class="context">
-    ARQUIVO: Projeto Gemini (1965) — [DADOS PARCIALMENTE DESCLASSIFICADOS]
+    ARQUIVO: Missão Apollo (1970) — [DADOS PARCIALMENTE DESCLASSIFICADOS]
   </div>
   <p>
-    Suponha que uma <strong>transformação vetorial</strong> 2D, que descreve a
-    mudança de coordenadas em um sistema de navegação, seja dada por:
+    No exercício anterior, vimos que retas são funções vetoriais com velocidade
+    constante. Mas trajetórias reais de naves não são retas — os sensores
+    registram variações não-lineares. Um experimento de microgravidade a bordo
+    da Apollo é descrito pela função:
+    \[ \vec{r}(t) = \bigl(t,\; t^2,\; e^t\bigr), \]
+    onde cada componente representa um sensor de deslocamento no eixo
+    correspondente (em metros, com \(t\) em segundos).
   </p>
-  <p>\[ \vec{T}(x, y) = \bigl(2x + y,\; -x + 3y\bigr). \]</p>
   <strong>Solicitação:</strong>
   <ul>
-    <li>(a) Calcule \(\vec{T}(1, 2)\).</li>
     <li>
-      (b) Interprete como essa transformação afeta um vetor arbitrário do plano.
+      (a) Calcule a posição no tempo \(t = 0\), isto é, \(\vec{r}(0)\).
+      O que esse vetor representa fisicamente?
+    </li>
+    <li>
+      (b) Determine a <em>derivada</em> \(\vec{r}'(t)\) derivando cada
+      componente separadamente, usando as regras de derivação de Cálculo
+      Diferencial (Cap 0).
+    </li>
+    <li>
+      (c) Interprete \(\vec{r}'(t)\): o que cada componente da derivada
+      nos diz sobre o movimento do sensor correspondente?
     </li>
   </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [DICA OPERACIONAL]: Para derivar uma função vetorial, derive cada
+      componente como faria com uma função escalar comum. Se
+      \(\vec{r}(t) = \bigl(x(t),\, y(t),\, z(t)\bigr)\), então
+      \(\vec{r}'(t) = \bigl(x'(t),\, y'(t),\, z'(t)\bigr)\).
+      As regras são as mesmas de Cap 0: \(\frac{d}{dt}t^n = nt^{n-1}\) e
+      \(\frac{d}{dt}e^t = e^t\).
+    </div>
+  </details>
   <details>
     <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
-      <p>(a) \(\vec{T}(1, 2) = (2\cdot1 + 2,\; -1 + 3\cdot2) = (4, 5)\).</p>
       <p>
-        (b) A transformação combina operações lineares (escala e rotação/shear).
-        Ou seja, cada par \((x, y)\) é mapeado para um novo par que mistura os
-        valores de \(x\) e \(y\). Isso pode representar, por exemplo, uma
-        mudança de base ou de perspectiva num sistema de navegação.
+        (a) Em \(t = 0\): \(\vec{r}(0) = (0,\, 0^2,\, e^0) = (0, 0, 1)\).
+        Isso indica que no instante inicial, o sensor de deslocamento no eixo
+        \(z\) já está em 1 m, enquanto nos eixos \(x\) e \(y\) está na origem.
+      </p>
+      <p>
+        (b) Derivando componente a componente:
+        \[ \vec{r}'(t) = \bigl(1,\; 2t,\; e^t\bigr). \]
+      </p>
+      <p>
+        (c) A primeira componente (\(1\)) indica que o sensor \(x\) avança a
+        velocidade constante 1 m/s. A segunda (\(2t\)) mostra que o sensor
+        \(y\) acelera — sua velocidade cresce linearmente com o tempo. A
+        terceira (\(e^t\)) revela que o sensor \(z\) acelera exponencialmente.
+        Ou seja: \(\vec{r}'(t)\) é o <strong>vetor velocidade</strong> da
+        trajetória — ele nos diz a taxa de variação instantânea da posição.
       </p>
     </div>
   </details>

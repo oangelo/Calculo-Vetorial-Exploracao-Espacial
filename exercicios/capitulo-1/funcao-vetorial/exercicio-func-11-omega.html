@@ -1,26 +1,67 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
   <div class="context">
-    ORIGEM: Dinâmica de Sistemas Complexos [Classificado, 1978]
+    ORIGEM: Teoria de Sistemas Dinâmicos [Pesquisa Avançada, 1980]
   </div>
   <p>
-    Prove que se \[\vec{r}(t) \cdot \vec{r}'(t) = 0\] para todo \(t\), então
-    \(|\vec{r}(t)|\) é constante.
+    No início da lista, vimos que \(\vec{r}(t) = (R\cos t, R\sin t)\) descreve
+    um círculo (raio constante). Depois, analisamos
+    \(\vec{r}(t) = (e^t \cos t, e^t \sin t)\) como uma espiral exponencial.
+    Agora vamos completar o ciclo: construir uma função vetorial que descreva
+    uma <strong>espiral logarítmica</strong>, uma curva clássica encontrada na
+    natureza (cascas de conchas, galáxias, padrões de crescimento biológico).
   </p>
+  <p>
+    A equação polar da espiral logarítmica é \(r = e^{\theta}\). Encontre uma
+    função vetorial \(\vec{r}(t)\) que descreva essa curva no plano.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Lembre que em coordenadas polares, \(x = r\cos\theta\) e
+      \(y = r\sin\theta\). Use o parâmetro \(t = \theta\) e substitua
+      \(r = e^t\) para escrever \(\vec{r}(t) = (x(t), y(t))\).
+    </li>
+    <li>
+      (b) Verifique que \(\|\vec{r}(t)\| = e^t\). Use \(\cos^2 t + \sin^2 t = 1\).
+    </li>
+    <li>
+      (c) Confirme que \(\|\vec{r}(t)\| = e^{\theta}\) quando \(\theta = t\),
+      ou seja, o raio cresce exponencialmente com o ângulo — característica
+      da espiral logarítmica.
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-11]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Derive \(|\vec{r}|^2 = \vec{r} \cdot \vec{r}\).
+      [DICA OPERACIONAL]: A conversão de coordenadas polares para
+      retangulares (\(x = r\cos\theta\), \(y = r\sin\theta\)) foi vista em
+      Cap 0 (Cônicas). Substitua \(r = e^t\) e \(\theta = t\) diretamente
+      nessas fórmulas.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        \[\frac{d}{dt}|\vec{r}|^2 = \frac{d}{dt}(\vec{r} \cdot \vec{r}) =
-        2\vec{r} \cdot \vec{r}'(t) = 0\] Logo \(|\vec{r}|^2\) é constante,
-        portanto \(|\vec{r}|\) é constante.
+        (a) Com \(r = e^t\) e \(\theta = t\):
+        \[\vec{r}(t) = (e^t \cos t,\; e^t \sin t).\]
+        Note que esta é exatamente a mesma função do exercício da espiral
+        (VECTOR-07)! A diferença está na interpretação: lá analisávamos
+        como um movimento de rotação e expansão; aqui, a enxergamos como
+        a conversão da equação polar \(r = e^{\theta}\).
+      </p>
+      <p>
+        (b) \(\|\vec{r}(t)\| = \sqrt{e^{2t}\cos^2 t + e^{2t}\sin^2 t}
+        = \sqrt{e^{2t}(\cos^2 t + \sin^2 t)} = \sqrt{e^{2t}} = e^t\).
+      </p>
+      <p>
+        (c) Com \(\theta = t\), temos \(\|\vec{r}\| = e^t = e^{\theta}\),
+        que é exatamente a equação polar \(r = e^{\theta}\). A espiral
+        logarítmica tem a propriedade de que o raio cresce
+        exponencialmente a cada volta completa — cada volta é uma versão
+        ampliada da anterior por um fator \(e^{2\pi}\).
       </p>
     </div>
   </details>
