@@ -10,29 +10,29 @@
     de forma rigorosa, provando uma identidade vetorial fundamental.
   </p>
   <p>
-    A identidade \\(\nabla \times (\nabla f) = \vec{0}\\) diz que o
+    A identidade \(\nabla \times (\nabla f) = \vec{0}\) diz que o
     <strong>rotacional de um gradiente é sempre nulo</strong>. Geometricamente:
     um campo que aponta na "direção de maior crescimento" de uma função
     não pode ter rotação.
   </p>
-<p><strong>(a)</strong> Calcule o gradiente de \\(f(x,y,z) = x^2 y + yz^3\\). Ou seja,
-      encontre \\(\nabla f = \left(\frac{\partial f}{\partial x},\;
-      \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)\\).</p>
-  <p><strong>(b)</strong> Agora calcule o rotacional \\(\nabla \times (\nabla f)\\).
-      Lembre-se: para \\(\vec{G} = (G_1, G_2, G_3)\\),
-      \\[\nabla \times \vec{G} = \left(\frac{\partial G_3}{\partial y}
+<p><strong>(a)</strong> Calcule o gradiente de \(f(x,y,z) = x^2 y + yz^3\). Ou seja,
+      encontre \(\nabla f = \left(\frac{\partial f}{\partial x},\;
+      \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)\).</p>
+  <p><strong>(b)</strong> Agora calcule o rotacional \(\nabla \times (\nabla f)\).
+      Lembre-se: para \(\vec{G} = (G_1, G_2, G_3)\),
+      \[\nabla \times \vec{G} = \left(\frac{\partial G_3}{\partial y}
       - \frac{\partial G_2}{\partial z},\; \frac{\partial G_1}{\partial z}
       - \frac{\partial G_3}{\partial x},\; \frac{\partial G_2}{\partial x}
-      - \frac{\partial G_1}{\partial y}\right)\\]
-      Substitua \\(\vec{G} = \nabla f\\) e verifique que cada componente
+      - \frac{\partial G_1}{\partial y}\right)\]
+      Substitua \(\vec{G} = \nabla f\) e verifique que cada componente
       do rotacional é zero.</p>
   <p><strong>(c)</strong> Observe que, no cálculo, aparecem "derivadas mistas" como
-      \\(\frac{\partial^2 f}{\partial y \partial x}\\) e
-      \\(\frac{\partial^2 f}{\partial x \partial y}\\). Pelo
+      \(\frac{\partial^2 f}{\partial y \partial x}\) e
+      \(\frac{\partial^2 f}{\partial x \partial y}\). Pelo
       <strong>Teorema de Clairaut</strong> (ou "igualdade das derivadas
-      mistas"), se \\(f\\) tem derivadas parciais contínuas, então
-      \\(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}
-      {\partial y \partial x}\\). É isso que faz cada componente do
+      mistas"), se \(f\) tem derivadas parciais contínuas, então
+      \(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}
+      {\partial y \partial x}\). É isso que faz cada componente do
       rotacional se anular. Explique como cada termo do rotacional envolve
       um par de derivadas mistas que se cancelam.</p>
 <details>
@@ -45,37 +45,37 @@
     <p>\[\nabla f = (2xy,\; x^2 + z^3,\; 3yz^2)\]</p>
 
     <p><strong>(b) Rotacional do gradiente:</strong></p>
-    <p>Seja \\(\vec{G} = \nabla f = (2xy, x^2 + z^3, 3yz^2)\\).</p>
-    <p>Componente \\(\hat{i}\\): \\(\frac{\partial G_3}{\partial y} -
+    <p>Seja \(\vec{G} = \nabla f = (2xy, x^2 + z^3, 3yz^2)\).</p>
+    <p>Componente \(\hat{i}\): \(\frac{\partial G_3}{\partial y} -
       \frac{\partial G_2}{\partial z} = \frac{\partial(3yz^2)}{\partial y}
-      - \frac{\partial(x^2+z^3)}{\partial z} = 3z^2 - 3z^2 = 0\\)</p>
-    <p>Componente \\(\hat{j}\\): \\(\frac{\partial G_1}{\partial z} -
+      - \frac{\partial(x^2+z^3)}{\partial z} = 3z^2 - 3z^2 = 0\)</p>
+    <p>Componente \(\hat{j}\): \(\frac{\partial G_1}{\partial z} -
       \frac{\partial G_3}{\partial x} = \frac{\partial(2xy)}{\partial z}
-      - \frac{\partial(3yz^2)}{\partial x} = 0 - 0 = 0\\)</p>
-    <p>Componente \\(\hat{k}\\): \\(\frac{\partial G_2}{\partial x} -
+      - \frac{\partial(3yz^2)}{\partial x} = 0 - 0 = 0\)</p>
+    <p>Componente \(\hat{k}\): \(\frac{\partial G_2}{\partial x} -
       \frac{\partial G_1}{\partial y} = \frac{\partial(x^2+z^3)}{\partial x}
-      - \frac{\partial(2xy)}{\partial y} = 2x - 2x = 0\\)</p>
+      - \frac{\partial(2xy)}{\partial y} = 2x - 2x = 0\)</p>
     <p>\[\nabla \times (\nabla f) = (0, 0, 0) = \vec{0} \quad \checkmark\]</p>
 
     <p><strong>(c) Derivadas mistas e Clairaut:</strong></p>
     <p>Cada componente do rotacional envolve derivadas de <em>componentes
       diferentes</em> do gradiente em <em>variáveis diferentes</em>:</p>
-    <p>Componente \\(\hat{i}\\): \\(\frac{\partial}{\partial y}\left(
+    <p>Componente \(\hat{i}\): \(\frac{\partial}{\partial y}\left(
       \frac{\partial f}{\partial z}\right) - \frac{\partial}{\partial z}
       \left(\frac{\partial f}{\partial y}\right) =
       \frac{\partial^2 f}{\partial y \partial z} - \frac{\partial^2 f}
-      {\partial z \partial y} = 0\\) (Clairaut).</p>
-    <p>Componente \\(\hat{j}\\): \\(\frac{\partial}{\partial z}\left(
+      {\partial z \partial y} = 0\) (Clairaut).</p>
+    <p>Componente \(\hat{j}\): \(\frac{\partial}{\partial z}\left(
       \frac{\partial f}{\partial x}\right) - \frac{\partial}{\partial x}
       \left(\frac{\partial f}{\partial z}\right) =
       \frac{\partial^2 f}{\partial z \partial x} - \frac{\partial^2 f}
-      {\partial x \partial z} = 0\\) (Clairaut).</p>
-    <p>Componente \\(\hat{k}\\): \\(\frac{\partial}{\partial x}\left(
+      {\partial x \partial z} = 0\) (Clairaut).</p>
+    <p>Componente \(\hat{k}\): \(\frac{\partial}{\partial x}\left(
       \frac{\partial f}{\partial y}\right) - \frac{\partial}{\partial y}
       \left(\frac{\partial f}{\partial x}\right) =
       \frac{\partial^2 f}{\partial x \partial y} - \frac{\partial^2 f}
-      {\partial y \partial x} = 0\\) (Clairaut).</p>
-    <p>A identidade \\(\nabla \times (\nabla f) = \vec{0}\\) é uma
+      {\partial y \partial x} = 0\) (Clairaut).</p>
+    <p>A identidade \(\nabla \times (\nabla f) = \vec{0}\) é uma
       consequência direta da simetria das derivadas mistas. Qualquer
       campo que seja o gradiente de uma função escalar é
       <strong>irrotacional</strong> — não possui rotação.</p>

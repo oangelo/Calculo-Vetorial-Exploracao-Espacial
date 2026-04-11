@@ -10,34 +10,34 @@
     derivadas parciais. Agora vamos formalizar essa conexão.
   </p>
   <p>
-    A <strong>divergência</strong> de um campo \\(\vec{F} = (P, Q, R)\\) no
-    ponto \\((x_0, y_0, z_0)\\) é definida como:
-    \\[\nabla \cdot \vec{F}(x_0, y_0, z_0) = \lim_{V \to 0}
-    \frac{1}{V} \oint_S \vec{F} \cdot \hat{n}\; dS\\]
-    onde \\(S\\) é a superfície fechada que envolve o volume \\(V\\) em
-    torno do ponto, e \\(\hat{n}\\) é a normal para fora.
+    A <strong>divergência</strong> de um campo \(\vec{F} = (P, Q, R)\) no
+    ponto \((x_0, y_0, z_0)\) é definida como:
+    \[\nabla \cdot \vec{F}(x_0, y_0, z_0) = \lim_{V \to 0}
+    \frac{1}{V} \oint_S \vec{F} \cdot \hat{n}\; dS\]
+    onde \(S\) é a superfície fechada que envolve o volume \(V\) em
+    torno do ponto, e \(\hat{n}\) é a normal para fora.
   </p>
   <p>
     Pode-se demonstrar que essa definição é equivalente à fórmula:
-    \\[\nabla \cdot \vec{F} = \frac{\partial P}{\partial x}
-    + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\\]
+    \[\nabla \cdot \vec{F} = \frac{\partial P}{\partial x}
+    + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\]
   </p>
-<p><strong>(a)</strong> Usando a fórmula, calcule \\(\nabla \cdot \vec{F}\\) para
-      \\(\vec{F}(x,y,z) = (x^2 y,\; 2yz,\; 3z)\\). Identifique cada
+<p><strong>(a)</strong> Usando a fórmula, calcule \(\nabla \cdot \vec{F}\) para
+      \(\vec{F}(x,y,z) = (x^2 y,\; 2yz,\; 3z)\). Identifique cada
       componente e derive separadamente.</p>
   <p><strong>(b)</strong> Some os três termos. A divergência resultante depende de quais
       variáveis?</p>
-  <p><strong>(c)</strong> Avalie a divergência na origem \\((0,0,0)\\). O resultado é
+  <p><strong>(c)</strong> Avalie a divergência na origem \((0,0,0)\). O resultado é
       positivo, negativo ou zero? Interprete fisicamente: se a vazão líquida
       por unidade de volume é positiva na origem, o que acontece com o campo
       ali?</p>
 <details class="hint-container">
   <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
   <div class="hint">
-    [NOTA TÉCNICA]: Para \\(\frac{\partial}{\partial x}(x^2 y)\\), tratamos
-    \\(y\\) como constante. A derivada de \\(x^2\\) é \\(2x\\), então o
-    resultado é \\(2xy\\). Para \\(\frac{\partial}{\partial y}(2yz)\\),
-    \\(z\\) é constante, e a derivada de \\(2y\\) é \\(2\\).
+    [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(x^2 y)\), tratamos
+    \(y\) como constante. A derivada de \(x^2\) é \(2x\), então o
+    resultado é \(2xy\). Para \(\frac{\partial}{\partial y}(2yz)\),
+    \(z\) é constante, e a derivada de \(2y\) é \(2\).
   </div>
 </details>
 <details>
@@ -53,7 +53,7 @@
 
     <p><strong>(b) Divergência total:</strong></p>
     <p>\[\nabla \cdot \vec{F} = 2xy + 2z + 3\]</p>
-    <p>A divergência depende de \\(x\\), \\(y\\) e \\(z\\) — não é constante.
+    <p>A divergência depende de \(x\), \(y\) e \(z\) — não é constante.
       Em cada ponto do espaço, o campo tem uma taxa de expansão diferente.</p>
 
     <p><strong>(c) Avaliação na origem:</strong></p>
@@ -65,10 +65,10 @@
       É como uma <em>fonte</em>: o campo "brota" daquela região.</p>
 
     <p><em>Conexão com o Ex 03:</em> No exercício anterior, vimos que a
-      vazão líquida por unidade de volume (\\(32/8 = 4\\)) coincidia com
+      vazão líquida por unidade de volume (\(32/8 = 4\)) coincidia com
       a soma das derivadas parciais. Aqui confirmamos: a fórmula
-      \\(\nabla \cdot \vec{F} = \partial P/\partial x + \partial Q/\partial y
-      + \partial R/\partial z\\) é exatamente essa "vazão por unidade de
+      \(\nabla \cdot \vec{F} = \partial P/\partial x + \partial Q/\partial y
+      + \partial R/\partial z\) é exatamente essa "vazão por unidade de
       volume" quando o volume tende a zero.</p>
   </div>
 </details>

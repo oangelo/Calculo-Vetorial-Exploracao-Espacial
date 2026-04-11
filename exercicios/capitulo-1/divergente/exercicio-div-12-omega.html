@@ -11,21 +11,21 @@
   </p>
   <p>
     A Lei da Gravitação Universal de Newton diz que a força gravitacional
-    exercida por uma massa \\(M\\) (na origem) sobre uma massa de prova
-    no ponto \\((x,y,z)\\) é:
-    \\[\vec{g}(x,y,z) = -\frac{GM}{(x^2+y^2+z^2)^{3/2}}(x,\; y,\; z)\\]
-    onde \\(G\\) é a constante gravitacional e \\(r = \sqrt{x^2+y^2+z^2}\\).
+    exercida por uma massa \(M\) (na origem) sobre uma massa de prova
+    no ponto \((x,y,z)\) é:
+    \[\vec{g}(x,y,z) = -\frac{GM}{(x^2+y^2+z^2)^{3/2}}(x,\; y,\; z)\]
+    onde \(G\) é a constante gravitacional e \(r = \sqrt{x^2+y^2+z^2}\).
     O sinal negativo indica que a força é <em>atratora</em> — aponta
     <em>para</em> a origem, não para fora.
   </p>
-<p><strong>(a)</strong> Compare \\(\vec{g}\\) com o campo \\(\vec{F}\\) do Exercício 08
-      (onde mostramos que \\(\nabla \cdot \vec{F} = 0\\) para
-      \\((x,y,z) \neq (0,0,0)\\)). Qual é a relação entre \\(\vec{g}\\)
-      e \\(\vec{F}\\)?</p>
+<p><strong>(a)</strong> Compare \(\vec{g}\) com o campo \(\vec{F}\) do Exercício 08
+      (onde mostramos que \(\nabla \cdot \vec{F} = 0\) para
+      \((x,y,z) \neq (0,0,0)\)). Qual é a relação entre \(\vec{g}\)
+      e \(\vec{F}\)?</p>
   <p><strong>(b)</strong> Usando o resultado do Exercício 08 e a linearidade do
-      operador divergente (\\(\nabla \cdot (c\vec{F}) = c\,\nabla \cdot
-      \vec{F}\\)), determine \\(\nabla \cdot \vec{g}\\) para
-      \\((x,y,z) \neq (0,0,0)\\) <em>sem recalcular derivadas</em>.</p>
+      operador divergente (\(\nabla \cdot (c\vec{F}) = c\,\nabla \cdot
+      \vec{F}\)), determine \(\nabla \cdot \vec{g}\) para
+      \((x,y,z) \neq (0,0,0)\) <em>sem recalcular derivadas</em>.</p>
   <p><strong>(c)</strong> Interprete o resultado fisicamente: se a divergência do campo
       gravitacional é zero fora da massa, o que isso implica sobre "fontes"
       e "sumidouros" do campo? Onde está a "fonte" (ou "sumidouro") de
@@ -34,19 +34,19 @@
 <details>
   <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
   <div class="solution">
-    <p><strong>(a) Relação entre \\(\vec{g}\\) e \\(\vec{F}\\):</strong></p>
-    <p>Do Exercício 08: \\(\vec{F} = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\\).
+    <p><strong>(a) Relação entre \(\vec{g}\) e \(\vec{F}\):</strong></p>
+    <p>Do Exercício 08: \(\vec{F} = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\).
       Então:</p>
     <p>\[\vec{g} = -GM \cdot \vec{F}\]</p>
-    <p>O campo gravitacional é o campo radial \\(1/r^2\\) multiplicado
-      pela constante \\(-GM\\).</p>
+    <p>O campo gravitacional é o campo radial \(1/r^2\) multiplicado
+      pela constante \(-GM\).</p>
 
     <p><strong>(b) Divergência sem recalcular:</strong></p>
     <p>Pela linearidade:</p>
     <p>\[\nabla \cdot \vec{g} = \nabla \cdot (-GM \cdot \vec{F})
       = -GM \cdot \nabla \cdot \vec{F}\]</p>
-    <p>Do Exercício 08, \\(\nabla \cdot \vec{F} = 0\\) para
-      \\((x,y,z) \neq (0,0,0)\\). Portanto:</p>
+    <p>Do Exercício 08, \(\nabla \cdot \vec{F} = 0\) para
+      \((x,y,z) \neq (0,0,0)\). Portanto:</p>
     <p>\[\nabla \cdot \vec{g} = -GM \cdot 0 = 0\]</p>
     <p>A divergência do campo gravitacional é <strong>zero</strong>
       em qualquer ponto fora da massa central.</p>
@@ -55,20 +55,20 @@
     <p>Fora da massa, o campo gravitacional é <strong>solenoidal</strong>:
       o que "entra" em qualquer região é exatamente o que "sai". Não há
       criação nem destruição de fluxo gravitacional no espaço vazio.</p>
-    <p>A "fonte" de todo o fluxo gravitacional está na massa \\(M\\) na
+    <p>A "fonte" de todo o fluxo gravitacional está na massa \(M\) na
       origem. É como se toda a "criação" de campo estivesse concentrada
       em um único ponto. A divergência não captura isso porque o campo
-      \\(\vec{g}\\) não está definido na origem (\\(1/r^2 \to \infty\\)
-      quando \\(r \to 0\\)).</p>
+      \(\vec{g}\) não está definido na origem (\(1/r^2 \to \infty\)
+      quando \(r \to 0\)).</p>
     <p><em>Significado para navegação orbital:</em> No espaço entre
       corpos celestes (longe de massas), o campo gravitacional não cria
       nem destrói fluxo. Ele simplesmente "flui" das regiões de alta
       para baixa intensidade. A divergência zero nessa região significa
       que as órbitas são estáveis — não há "vazamentos" de força
       gravitacional no caminho.</p>
-    <p><em>Nota:</em> O caso \\(r = 0\\) (na massa) requer o conceito
+    <p><em>Nota:</em> O caso \(r = 0\) (na massa) requer o conceito
       de função delta de Dirac para ser tratado rigorosamente — o que
-      está além do escopo deste curso. Para \\(r \neq 0\\), o resultado
-      \\(\nabla \cdot \vec{g} = 0\\) é exato e completo.</p>
+      está além do escopo deste curso. Para \(r \neq 0\), o resultado
+      \(\nabla \cdot \vec{g} = 0\) é exato e completo.</p>
   </div>
 </details>

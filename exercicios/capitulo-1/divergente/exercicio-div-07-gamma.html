@@ -5,71 +5,71 @@
     CONFIDENCIAL, 1962]
   </div>
   <p>
-    Já vimos campos com divergência constante (\\(\vec{F} = (x,y,z)\\),
-    div = 3) e com divergência zero (\\(\vec{G} = (-y,x,0)\\), div = 0).
+    Já vimos campos com divergência constante (\(\vec{F} = (x,y,z)\),
+    div = 3) e com divergência zero (\(\vec{G} = (-y,x,0)\), div = 0).
     Agora vamos investigar um campo mais sutil: um campo radial cuja
     divergência <em>varia com a distância</em>.
   </p>
   <p>
-    Considere o campo \\(\vec{H}(x,y,z) = \left(\frac{x}{r},\;
-    \frac{y}{r},\; \frac{z}{r}\right)\\) onde \\(r =
-    \sqrt{x^2 + y^2 + z^2}\\). Este é o <em>vetor unitário radial</em>:
+    Considere o campo \(\vec{H}(x,y,z) = \left(\frac{x}{r},\;
+    \frac{y}{r},\; \frac{z}{r}\right)\) onde \(r =
+    \sqrt{x^2 + y^2 + z^2}\). Este é o <em>vetor unitário radial</em>:
     aponta para fora com magnitude 1 em todos os pontos.
   </p>
-<p><strong>(a)</strong> Antes de calcular: o campo \\(\vec{H}\\) aponta para fora,
-      mas ao contrário de \\(\vec{F} = (x,y,z)\\), sua magnitude não
+<p><strong>(a)</strong> Antes de calcular: o campo \(\vec{H}\) aponta para fora,
+      mas ao contrário de \(\vec{F} = (x,y,z)\), sua magnitude não
       cresce com a distância — é sempre 1. Em uma esfera de raio grande,
       os vetores são "paralelos" e espaçados. A divergência deve ser
       positiva, zero ou negativa longe da origem? E perto?</p>
-  <p><strong>(b)</strong> Para calcular \\(\frac{\partial}{\partial x}\left(\frac{x}{r}\right)\\),
-      use a regra do quociente. Lembre-se de que \\(r = \sqrt{x^2+y^2+z^2}\\),
-      então \\(\frac{\partial r}{\partial x} = \frac{x}{r}\\). Calcule
-      \\(\frac{\partial}{\partial x}\left(\frac{x}{r}\right) = \frac{r^2 - x^2}{r^3}\\).</p>
-  <p><strong>(c)</strong> Por simetria, escreva os termos em \\(y\\) e \\(z\\), some os
-      três e simplifique usando \\(x^2 + y^2 + z^2 = r^2\\). Interprete o
-      resultado: a divergência depende de \\(r\\)? Ela é positiva ou
+  <p><strong>(b)</strong> Para calcular \(\frac{\partial}{\partial x}\left(\frac{x}{r}\right)\),
+      use a regra do quociente. Lembre-se de que \(r = \sqrt{x^2+y^2+z^2}\),
+      então \(\frac{\partial r}{\partial x} = \frac{x}{r}\). Calcule
+      \(\frac{\partial}{\partial x}\left(\frac{x}{r}\right) = \frac{r^2 - x^2}{r^3}\).</p>
+  <p><strong>(c)</strong> Por simetria, escreva os termos em \(y\) e \(z\), some os
+      três e simplifique usando \(x^2 + y^2 + z^2 = r^2\). Interprete o
+      resultado: a divergência depende de \(r\)? Ela é positiva ou
       negativa? Diminui ou cresce com a distância?</p>
 <details class="hint-container">
   <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
   <div class="hint">
     [NOTA TÉCNICA]: Pela regra do quociente:
-    \\(\frac{\partial}{\partial x}\left(\frac{x}{r}\right) =
+    \(\frac{\partial}{\partial x}\left(\frac{x}{r}\right) =
     \frac{1 \cdot r - x \cdot \frac{x}{r}}{r^2} = \frac{r - x^2/r}{r^2}
-    = \frac{r^2 - x^2}{r^3}\\). Repita para \\(y\\) e \\(z\\), depois some.
-    A soma \\((r^2 - x^2) + (r^2 - y^2) + (r^2 - z^2)\\) simplifica-se
-    usando \\(x^2 + y^2 + z^2 = r^2\\).
+    = \frac{r^2 - x^2}{r^3}\). Repita para \(y\) e \(z\), depois some.
+    A soma \((r^2 - x^2) + (r^2 - y^2) + (r^2 - z^2)\) simplifica-se
+    usando \(x^2 + y^2 + z^2 = r^2\).
   </div>
 </details>
 <details>
   <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
   <div class="solution">
     <p><strong>(a) Intuição:</strong></p>
-    <p>\\(\vec{F} = (x,y,z)\\) tem magnitude \\(r\\) que cresce — os vetores
-      se "abrem" rapidamente. \\(\vec{H}\\) tem magnitude 1 — os vetores
+    <p>\(\vec{F} = (x,y,z)\) tem magnitude \(r\) que cresce — os vetores
+      se "abrem" rapidamente. \(\vec{H}\) tem magnitude 1 — os vetores
       mantêm tamanho constante. Longe da origem, os vetores estão quase
       "paralelos" (a curvatura da esfera é pequena), então a divergência
       deve ser <strong>pequena</strong>. Perto da origem, os vetores se
       espalham mais rapidamente — divergência maior.</p>
 
-    <p><strong>(b) Termo em \\(x\\):</strong></p>
+    <p><strong>(b) Termo em \(x\):</strong></p>
     <p>\[\frac{\partial}{\partial x}\left(\frac{x}{r}\right) =
       \frac{r - x \cdot \frac{x}{r}}{r^2} = \frac{r^2 - x^2}{r^3}\]</p>
 
     <p><strong>(c) Divergência total:</strong></p>
     <p>Por simetria:
-      \\(\frac{\partial}{\partial y}\left(\frac{y}{r}\right) = \frac{r^2 - y^2}{r^3}\\)
-      e \\(\frac{\partial}{\partial z}\left(\frac{z}{r}\right) = \frac{r^2 - z^2}{r^3}\\).</p>
+      \(\frac{\partial}{\partial y}\left(\frac{y}{r}\right) = \frac{r^2 - y^2}{r^3}\)
+      e \(\frac{\partial}{\partial z}\left(\frac{z}{r}\right) = \frac{r^2 - z^2}{r^3}\).</p>
     <p>\[\nabla \cdot \vec{H} = \frac{r^2 - x^2}{r^3} + \frac{r^2 - y^2}{r^3}
       + \frac{r^2 - z^2}{r^3} = \frac{3r^2 - (x^2 + y^2 + z^2)}{r^3}
       = \frac{3r^2 - r^2}{r^3} = \frac{2r^2}{r^3} = \frac{2}{r}\]</p>
-    <p>A divergência é \\(\frac{2}{r}\\): sempre <strong>positiva</strong>
+    <p>A divergência é \(\frac{2}{r}\): sempre <strong>positiva</strong>
       (expansiva), mas <strong>decresce</strong> com a distância à origem.</p>
-    <p><em>Interpretação:</em> Perto da origem (\\(r \to 0\\)), a
+    <p><em>Interpretação:</em> Perto da origem (\(r \to 0\)), a
       divergência é grande — o campo se espalha intensamente. Longe
-      (\\(r \to \infty\\)), a divergência tende a zero — os vetores estão
+      (\(r \to \infty\)), a divergência tende a zero — os vetores estão
       quase paralelos, pouco fluxo "novo" é criado. Isso faz sentido
       físico: com magnitude constante (=1), o campo não "acelera" para
-      fora como \\((x,y,z)\\). A expansão que resta vem apenas da
+      fora como \((x,y,z)\). A expansão que resta vem apenas da
       geometria — os vetores se afastam uns dos outros pela curvatura
       da esfera.</p>
   </div>
