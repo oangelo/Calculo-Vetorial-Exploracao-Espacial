@@ -7,6 +7,8 @@ Use este checklist ao gerar RTCs. Ele define:
 Antes de gerar qualquer RTC, leia também `diretrizes-listas-de-exercicios.md`
 para entender os 8 princípios de design de listas.
 
+⚠️ **MathJax:** Use `\(inline\)` e `\[bloco\]` — UMA barra no HTML. NUNCA `\\(`, `\\[`, `\\frac`. Após ESCREVER CADA arquivo, execute `grep -c '\\\\\\\\' arquivo.html` — se > 0, corrija.
+
 ---
 
 ## Cap 0 — Revisão
