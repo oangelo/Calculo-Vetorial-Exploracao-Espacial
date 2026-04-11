@@ -37,21 +37,70 @@
     >
   </div>
 </div>
+<div class="concept-definition">
+  <strong>PRÉ-REQUISITOS</strong>
+  <br /><br />
+  Esta lista pressupõe os seguintes conceitos de capítulos anteriores:
+  <br /><br />
+  <strong>De Cap 0 — Geometria Analítica:</strong>
+  <ul>
+    <li>Vetores: componentes, soma, multiplicação por escalar</li>
+    <li>Norma de vetor: \(\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2}\)</li>
+    <li>Produto escalar e ortogonalidade: \(\vec{u} \cdot \vec{v} = 0 \Leftrightarrow\) perpendiculares</li>
+    <li>Vetor unitário: \(\hat{v} = \vec{v}/\|\vec{v}\|\)</li>
+  </ul>
+  <br />
+  <strong>De Cap 0 — Cônicas:</strong>
+  <ul>
+    <li>Identidade trigonométrica: \(\cos^2\theta + \sin^2\theta = 1\)</li>
+    <li>Coordenadas polares básicas: \(x = r\cos\theta\), \(y = r\sin\theta\)</li>
+  </ul>
+  <br />
+  <strong>De Cap 0 — Derivadas:</strong>
+  <ul>
+    <li>Regra da potência: \(\frac{d}{dx}x^n = nx^{n-1}\)</li>
+    <li>Derivada exponencial: \(\frac{d}{dx}e^x = e^x\)</li>
+    <li>Regra do produto e regra da cadeia</li>
+    <li>Máximos e mínimos: \(f'(x)=0\) encontra pontos críticos</li>
+  </ul>
+  <br />
+  <strong>Do tópico anterior (Função Vetorial):</strong>
+  <ul>
+    <li>\(\vec{r}(t) = (x(t), y(t), z(t))\) como posição no tempo</li>
+    <li>\(\vec{r}'(t)\) como velocidade, \(\vec{r}''(t)\) como aceleração</li>
+    <li>Interpretação de trajetórias parametrizadas</li>
+  </ul>
+  <br />
+  <strong>Progressão esperada nesta lista:</strong>
+  <ol>
+    <li>Campo vetorial como mapa de vetores — avaliar em pontos, desenhar setas (EX-01 a EX-03)</li>
+    <li>Campos não-lineares e singularidades — onde o campo é nulo ou infinito (EX-04 a EX-06)</li>
+    <li>Campos complexos: termos cruzados, superposição, dependência temporal (EX-07 a EX-09)</li>
+    <li>Análise qualitativa: pontos críticos, estabilidade, decaimento (EX-10 a EX-12)</li>
+  </ol>
+  <br />
+  <strong>Conexão com próximos tópicos de Cap 1:</strong>
+  <ul>
+    <li><em>Limites de funções vetoriais:</em> generaliza o conceito de limite para campos vetoriais</li>
+    <li><em>Derivadas parciais:</em> como varia \(F\) quando movemos em apenas uma direção</li>
+    <li><em>Gradiente:</em> campo vetorial derivado de uma função escalar — conecta curvas de nível com campos</li>
+    <li><em>Rotacional e divergente:</em> "medem" propriedades do campo (rotação, expansão)</li>
+  </ul>
+</div>
 <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: CAMPO VETORIAL</div>
 <div class="concept-definition">
   <p><strong>DEFINIÇÃO FORMAL:</strong></p>
   <p class="formula-highlight">
-    \[F: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m, \quad \text{onde }
-    F(\vec{x}) = \vec{y}\]
+    \[F: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m, \quad \text{onde
+    } F(\vec{x}) = \vec{y}\]
   </p>
   <p>
     Um campo vetorial é uma função que associa um vetor a cada ponto de uma
-    região do espaço. Em aplicações de engenharia espacial, trabalha-se
-    principalmente com campos que associam vetores a pontos nos espaços
-    bidimensional ou tridimensional. Formalmente, um campo vetorial é uma função
-    \(F\) que atribui a cada ponto \(\vec{x} = (x_1, x_2, \ldots, x_n)\) de um
-    domínio \(D \subset \mathbb{R}^n\) um vetor \(\vec{y} = F(\vec{x})\) em
-    \(\mathbb{R}^m\).
+    região do espaço. Enquanto uma função vetorial \(\vec{r}(t)\) (tópico
+    anterior) dá um vetor para cada valor do parâmetro \(t\), um campo vetorial
+    \(\vec{F}(x,y)\) dá um vetor para cada PONTO \((x,y)\) do espaço. Pense
+    nele como um mapa meteorológico: cada posição tem uma seta indicando
+    direção e intensidade.
   </p>
 </div>
 <div class="mission-context">
@@ -65,9 +114,9 @@
 </div>
 <div class="historical-note">
   <strong>NOTA HISTÓRICA:</strong> Durante a primeira órbita terrestre tripulada
-  pelo cosmonauta Yuri Gagarin em 12 de abril de 1961, a capacidade soviética de
-  calcular com precisão campos vetoriais gravitacionais permitiu um controle de
-  trajetória que surpreendeu analistas ocidentais. Nossas equipes agora buscam
-  superar essa capacidade para garantir o sucesso do Programa Mercury e futuros
-  voos tripulados.
+  pelo cosmonauta Yuri Gagarin em 12 de abril de 1961, a capacidade soviética
+  de calcular com precisão campos vetoriais gravitacionais permitiu um controle
+  de trajetória que surpreendeu analistas ocidentais. Nossas equipes agora
+  buscam superar essa capacidade para garantir o sucesso do Programa Mercury e
+  futuros voos tripulados.
 </div>
