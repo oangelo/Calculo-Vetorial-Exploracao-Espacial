@@ -1,24 +1,55 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-07-BETA</div>
+  <div class="exercise-number">EXERCÍCIO VECTOR-07-GAMMA</div>
   <div class="context">
     ORIGEM: Modelagem de Campos Gravitacionais [Relatório Técnico RT-1966]
   </div>
   <p>
+    Nos exercícios anteriores, retas (\(y = mx\)) bastaram para provar que o
+    limite não existe. Mas e se TODAS as retas derem o mesmo resultado? Quando
+    retas não distinguem, tente curvas de grau superior — parábolas
+    (\(y = kx^2\)) são o próximo passo natural.
+  </p>
+  <p>
     Verificar se o limite existe: \[ \lim_{(x,y)\to(0,0)} \frac{x^2y}{x^4 +
     y^2}. \]
   </p>
+  <ul>
+    <li>(a) Teste o limite ao longo de \(y = mx\). O que acontece? O limite
+    existe por retas?</li>
+    <li>(b) Agora teste ao longo de \(y = kx^2\) (parábolas). O resultado
+    depende de \(k\)?</li>
+    <li>(c) Com base em (a) e (b), o limite existe? Justifique.</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Teste caminhos como \(y = kx^2\).</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: As retas (\(y=mx\)) dão limite \(0\) em todos os casos.
+      Quando retas não distinguem, tente curvas de grau superior — parábolas
+      (\(y=kx^2\)) são o próximo passo natural.
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p>SOLUÇÃO:</p>
       <p>
-        Aproximando por \(y = kx^2\): \[\frac{x^2(kx^2)}{x^4 + (kx^2)^2} =
-        \frac{kx^4}{x^4(1+k^2)} = \frac{k}{1+k^2}\] O valor depende de \(k\),
-        logo o limite não existe.
+        <strong>(a) Retas \(y = mx\):</strong> \[\frac{x^2(mx)}{x^4 +
+        (mx)^2} = \frac{mx^3}{x^4 + m^2x^2} = \frac{mx}{x^2 + m^2}\]
+        Quando \(x \to 0\), o limite é \(0\) para todo \(m\). As retas NÃO
+        detectam a não-existência.
+      </p>
+      <p>
+        <strong>(b) Parábolas \(y = kx^2\):</strong>
+        \[\frac{x^2(kx^2)}{x^4 + (kx^2)^2} = \frac{kx^4}{x^4(1+k^2)} =
+        \frac{k}{1+k^2}\] O valor depende de \(k\). Para \(k = 1\): vale
+        \(\frac{1}{2}\). Para \(k = 0\): vale \(0\).
+      </p>
+      <p>
+        <strong>(c) Conclusão:</strong> Como parábolas diferentes dão valores
+        diferentes (\(0 \neq \frac{1}{2}\)), o limite não existe. Este
+        exercício mostra que o método de retas pode falhar — é preciso
+        testar curvas de grau mais alto quando as retas não revelam a
+        divergência.
       </p>
     </div>
   </details>
