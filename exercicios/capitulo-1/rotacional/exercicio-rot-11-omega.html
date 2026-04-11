@@ -4,16 +4,56 @@
     ORIGEM: Teoria de Sistemas Dinâmicos [Pesquisa Fundamental, 1995]
   </div>
   <p>
-    Encontre um campo vetorial \(\vec{F}\) com rotacional constante \((0,0,c)\)
-    e divergente zero.
+    Até agora, calculamos o rotacional de campos dados. Agora vamos
+    inverter o problema: e se quisermos <em>construir</em> um campo
+    com um rotacional específico? Encontre um campo vetorial
+    \(\vec{F}\) que tenha rotacional constante \((0, 0, c)\) e
+    divergente zero.
   </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Considere o campo \(\vec{F} = \left(-\frac{c}{2}y,
+      \frac{c}{2}x, 0\right)\). Calcule o rotacional e verifique
+      que é \((0, 0, c)\).
+    </li>
+    <li>
+      (b) Calcule o divergente
+      \(\nabla \cdot \vec{F} = \frac{\partial F_1}{\partial x} +
+      \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}\).
+      Verifique que é zero.
+    </li>
+    <li>
+      (c) Para \(c = 2\), desenhe o campo no plano \(xy\) nos pontos
+      \((\pm 1, 0)\), \((0, \pm 1)\). O campo se parece com qual
+      exercício anterior?
+    </li>
+    <li>
+      (d) O que acontece quando \(c = 0\)? E quando \(c < 0\)?
+    </li>
+  </ul>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        \[\vec{F} = (-\frac{c}{2}y, \frac{c}{2}x, 0)\] \[\nabla \times \vec{F} =
-        (0,0,c)\] \[\nabla \cdot \vec{F} = 0\]
+        (a) \(\nabla \times \vec{F} = \left(0, 0,
+        \frac{\partial (cx/2)}{\partial x} -
+        \frac{\partial (-cy/2)}{\partial y}\right)
+        = \left(0, 0, \frac{c}{2} + \frac{c}{2}\right) = (0, 0, c)\).
+      </p>
+      <p>
+        (b) \(\nabla \cdot \vec{F} = \frac{\partial (-cy/2)}{\partial x} +
+        \frac{\partial (cx/2)}{\partial y} + 0 = 0 + 0 = 0\).
+      </p>
+      <p>
+        (c) Para \(c=2\): \(\vec{F} = (-y, x, 0)\) — é o mesmo campo
+        do EX-01! O campo circula no sentido anti-horário.
+      </p>
+      <p>
+        (d) Quando \(c = 0\), \(\vec{F} = (0, 0, 0)\) — campo nulo,
+        sem rotação. Quando \(c < 0\), o campo gira no sentido horário
+        (rotação oposta).
       </p>
     </div>
   </details>

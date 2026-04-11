@@ -1,23 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-07-GAMMA</div>
   <div class="context">
-    ORIGEM: Teoria Eletromagnética [Projeto Skylab, 1973]
+    ORIGEM: Análise Comparativa de Campos [Programa Skylab, 1973]
   </div>
   <p>
-    Verifique se o campo \[\vec{F}(x,y,z) = \frac{(-y, x, 0)}{x^2+y^2}\] tem
-    rotacional zero para \((x,y) \neq (0,0)\).
+    Vamos agora confrontar dois campos que parecem similares mas têm
+    comportamentos diferentes. Considere:
   </p>
+  <ul>
+    <li>\(\vec{F}_1 = (-y, x, 0)\) — campo circular</li>
+    <li>\(\vec{F}_2 = (x, y, 0)\) — campo radial</li>
+  </ul>
+  <p>
+    Ambos estão no plano \(xy\). Ambos são não-zero na maioria dos pontos.
+    Mas a "geometria" deles é muito diferente.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Calcule o rotacional de \(\vec{F}_1 = (-y, x, 0)\).
+    </li>
+    <li>
+      (b) Calcule o rotacional de \(\vec{F}_2 = (x, y, 0)\).
+    </li>
+    <li>
+      (c) Desenhe ambos os campos em uma grade de pontos no plano \(xy\)
+      (use os pontos \((\pm 1, 0)\), \((0, \pm 1)\), \((\pm 1, \pm 1)\)).
+      Como as setas de \(\vec{F}_1\) se diferenciam das de \(\vec{F}_2\)?
+    </li>
+    <li>
+      (d) Explique, com base nos desenhos, por que \(\vec{F}_1\) tem
+      rotacional não-zero e \(\vec{F}_2\) tem rotacional zero.
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Use coordenadas cilíndricas.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em \(\vec{F}_1\), a componente \(x\) depende de \(y\)
+      e vice-versa — há "acoplamento cruzado". Em \(\vec{F}_2\), cada
+      componente depende apenas de sua própria variável. Esse acoplamento
+      cruzado é o que gera rotação.
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        Em coordenadas cilíndricas: \[\vec{F} = \frac{\hat{\theta}}{r}\]
-        \[\nabla \times \vec{F} = 0\]
+        (a) \(\nabla \times \vec{F}_1 = (0, 0, 1 - (-1)) = (0, 0, 2)\).
+        O campo circular tem rotação constante na direção \(+z\).
+      </p>
+      <p>
+        (b) \(\nabla \times \vec{F}_2 = (0, 0, 0 - 0) = (0, 0, 0)\).
+        O campo radial é irrotacional.
+      </p>
+      <p>
+        (c) \(\vec{F}_1\): as setas circulam ao redor da origem (sentido
+        anti-horário). \(\vec{F}_2\): as setas apontam para fora da origem
+        (radialmente).
+      </p>
+      <p>
+        (d) O campo \(\vec{F}_1\) "gira" — cada ponto tem uma tendência
+        de rotação. O campo \(\vec{F}_2\) "explode" — aponta para fora
+        sem girar. O rotacional captura essa diferença: rotação local vs.
+        expansão pura.
       </p>
     </div>
   </details>

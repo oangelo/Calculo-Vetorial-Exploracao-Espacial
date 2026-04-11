@@ -4,22 +4,78 @@
     ORIGEM: Teoria de Campos Avançada [Pesquisa Classificada, 1985]
   </div>
   <p>
-    Prove que se \[\nabla \times \vec{F} = 0\], então \(\vec{F}\) pode ser
-    escrito como o gradiente de uma função escalar.
+    Nos exercícios EX-07 e EX-08, você calculou o rotacional de
+    \(\vec{F}_1 = (-y, x, 0)\) e \(\vec{F}_2 = \frac{(-y, x, 0)}{x^2+y^2}\).
+    Ambos os campos "giram" ao redor da origem — se você desenhar as setas,
+    elas circulam. Mas os rotacionais são diferentes:
+    \(\nabla \times \vec{F}_1 = (0,0,2)\) e
+    \(\nabla \times \vec{F}_2 = (0,0,0)\).
   </p>
+  <p>
+    Este paradoxo merece uma investigação mais profunda.
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Desenhe \(\vec{F}_1\) nos pontos \((1,0)\), \((0,1)\),
+      \((-1,0)\), \((0,-1)\). Todas as setas têm o mesmo comprimento?
+    </li>
+    <li>
+      (b) Desenhe \(\vec{F}_2\) nos mesmos pontos. As setas têm o mesmo
+      comprimento? Qual é mais longa?
+    </li>
+    <li>
+      (c) Em \(\vec{F}_1\), a "velocidade de giro" é constante — todos
+      os pontos circulam com a mesma intensidade. Em \(\vec{F}_2\), a
+      intensidade varia com \(\frac{1}{r}\). Calcule a intensidade
+      \(|\vec{F}_2|\) nos pontos \((1,0)\) e \((2,0)\).
+    </li>
+    <li>
+      (d) O rotacional mede a rotação <em>local</em> — a tendência
+      infinitesimal de rotação em cada ponto. Por que \(\vec{F}_2\)
+      "gira" mas tem rotacional zero? Dica: pense no que acontece com
+      uma partícula pequena colocada no campo — em \(\vec{F}_1\) ela
+      gira; em \(\vec{F}_2\), ela se move ao redor da origem mas não
+      gira em torno de si mesma.
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Use o teorema fundamental do cálculo vetorial.
+      [NOTA TÉCNICA]: A diferença está no <em>cisalhamento</em>. Em
+      \(\vec{F}_1\), pontos mais distantes se movem na mesma velocidade
+      angular — há tensão de cisalhamento que gera rotação local. Em
+      \(\vec{F}_2\), a velocidade angular diminui com a distância de
+      forma que não há cisalhamento.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        Se \(\nabla \times \vec{F} = 0\), então \(\vec{F} = \nabla \phi\) para
-        alguma função escalar \(\phi\).
+        (a) Em \((1,0)\): \((0,1)\). Em \((0,1)\): \((-1,0)\).
+        Em \((-1,0)\): \((0,-1)\). Em \((0,-1)\): \((1,0)\).
+        Todas têm comprimento 1 — o campo é uniforme em magnitude.
+      </p>
+      <p>
+        (b) Em \((1,0)\): \((0,1)\) — comprimento 1.
+        Em \((0,1)\): \((-1,0)\) — comprimento 1.
+        Em \((2,0)\): \((0, 1/4)\) — comprimento 1/4.
+        As setas perto da origem são maiores.
+      </p>
+      <p>
+        (c) \(|\vec{F}_2| = \frac{1}{\sqrt{x^2+y^2}} = \frac{1}{r}\).
+        Em \((1,0)\): \(|\vec{F}_2| = 1\). Em \((2,0)\): \(|\vec{F}_2| = 1/2\).
+      </p>
+      <p>
+        (d) O rotacional é uma medida <em>local</em> e <em>infinitesimal</em>.
+        Em \(\vec{F}_1\), a velocidade angular é constante — uma partícula
+        pequena é "estirada" de um lado e "comprimida" do outro, gerando
+        rotação em torno de si mesma. Em \(\vec{F}_2\), a velocidade diminui
+        com a distância de forma que a partícula se move ao redor da origem
+        mas não gira em torno de si mesma — não há rotação local, apenas
+        órbita global.
       </p>
     </div>
   </details>

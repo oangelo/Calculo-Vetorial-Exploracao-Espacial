@@ -2,26 +2,60 @@
   <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
   <div class="context">ORIGEM: Forças Aerodinâmicas em Retorno Orbital</div>
   <p>
+    No exercício anterior, você viu um campo irrotacional onde as derivadas
+    parciais se cancelavam por simetria. Agora vamos ver outro tipo de campo
+    irrotacional — um onde cada componente depende apenas de uma variável.
     O campo \(\vec{V} = (x^2, y^2, z^2)\) representa a distribuição de
     velocidades de reentrada.
   </p>
-  <p>
-    DETERMINAR: O rotacional de \(\vec{V}\) e seu impacto na estabilidade do
-    módulo.
-  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Note que \(P = x^2\) depende apenas de \(x\), \(Q = y^2\) apenas
+      de \(y\), e \(R = z^2\) apenas de \(z\). Calcule
+      \(\frac{\partial R}{\partial y}\) e \(\frac{\partial Q}{\partial z}\).
+      O que acontece?
+    </li>
+    <li>
+      (b) Calcule as outras duas componentes do rotacional.
+    </li>
+    <li>
+      (c) Todas são zero. Interprete: este campo não tem rotação local.
+      Mas o fluxo é "reto"? Pense no que o campo faz no ponto \((1,1,1)\):
+      o vetor é \((1,1,1)\), apontando na diagonal. O campo não é uniforme,
+      mas não gira.
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para \(\vec{V} = (x^2, y^2, z^2)\), note que cada
-      componente depende apenas de uma variável. Isso simplifica o cálculo do
-      rotacional.
+      [NOTA TÉCNICA]: Quando cada componente depende apenas de sua própria
+      variável, as derivadas cruzadas são sempre zero — e o rotacional
+      se anula. Isso é diferente da simetria do exercício anterior.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      \[ \nabla \times \vec{V} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \]
-      <p>O campo não gera vórtices significativos.</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(\frac{\partial R}{\partial y} = \frac{\partial (z^2)}{\partial y}
+        = 0\) e \(\frac{\partial Q}{\partial z} =
+        \frac{\partial (y^2)}{\partial z} = 0\). Componente \(i = 0 - 0 = 0\).
+      </p>
+      <p>
+        (b) Componente \(j\): \(\frac{\partial P}{\partial z} -
+        \frac{\partial R}{\partial x} = 0 - 0 = 0\).
+        Componente \(k\): \(\frac{\partial Q}{\partial x} -
+        \frac{\partial P}{\partial y} = 0 - 0 = 0\).
+      </p>
+      <p>
+        (c) \(\nabla \times \vec{V} = (0, 0, 0)\). O campo não gira
+        localmente. No ponto \((1,1,1)\), o vetor \((1,1,1)\) aponta
+        para fora — é um fluxo de expansão, não de rotação. O rotacional
+        mede rotação, não expansão (essa é a função do divergente, que
+        veremos no próximo tópico).
+      </p>
     </div>
   </details>
 </li>

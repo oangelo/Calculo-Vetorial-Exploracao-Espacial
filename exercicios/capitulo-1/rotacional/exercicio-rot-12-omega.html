@@ -4,16 +4,68 @@
     ORIGEM: Teoria de Sistemas Avançados [Projeto Especial, 2000]
   </div>
   <p>
-    Prove a identidade \[\nabla \times (\phi \vec{F}) = \phi (\nabla \times
-    \vec{F}) + (\nabla \phi) \times \vec{F}\].
+    Se o vento sopra com força \(\vec{F}\) e a temperatura varia com
+    uma função escalar \(\phi\), o fluxo de calor é \(\phi\vec{F}\).
+    Como o rotacional desse produto se compara com o rotacional de
+    \(\vec{F}\)? A identidade que vamos verificar responde essa
+    pergunta: \[\nabla \times (\phi \vec{F}) = \phi (\nabla \times
+    \vec{F}) + (\nabla \phi) \times \vec{F}.\]
   </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Considere o caso concreto: \(\vec{F} = (x, y, z)\) e
+      \(\phi = x^2\). Calcule \(\phi \vec{F} = (x^3, x^2y, x^2z)\).
+    </li>
+    <li>
+      (b) Calcule \(\nabla \times (\phi \vec{F})\) diretamente.
+    </li>
+    <li>
+      (c) Calcule \(\nabla \times \vec{F}\) e depois
+      \(\phi(\nabla \times \vec{F})\).
+    </li>
+    <li>
+      (d) Calcule \(\nabla \phi = (2x, 0, 0)\) e depois
+      \((\nabla \phi) \times \vec{F}\).
+    </li>
+    <li>
+      (e) Some os resultados de (c) e (d) e verifique que é igual ao
+      resultado de (b).
+    </li>
+  </ul>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        Pela regra do produto: \[\nabla \times (\phi \vec{F}) = \phi (\nabla
-        \times \vec{F}) + (\nabla \phi) \times \vec{F}\]
+        (a) \(\phi \vec{F} = x^2 \cdot (x, y, z) = (x^3, x^2y, x^2z)\).
+      </p>
+      <p>
+        (b) \(\nabla \times (x^3, x^2y, x^2z)\):
+        componente \(i\): \(\frac{\partial (x^2z)}{\partial y} -
+        \frac{\partial (x^2y)}{\partial z} = 0 - 0 = 0\).
+        componente \(j\): \(\frac{\partial (x^3)}{\partial z} -
+        \frac{\partial (x^2z)}{\partial x} = 0 - 2xz = -2xz\).
+        componente \(k\): \(\frac{\partial (x^2y)}{\partial x} -
+        \frac{\partial (x^3)}{\partial y} = 2xy - 0 = 2xy\).
+        Resultado: \((0, -2xz, 2xy)\).
+      </p>
+      <p>
+        (c) \(\nabla \times \vec{F} = \nabla \times (x,y,z) = (0, 0, 0)\).
+        Logo \(\phi(\nabla \times \vec{F}) = x^2 \cdot (0,0,0) = (0,0,0)\).
+      </p>
+      <p>
+        (d) \(\nabla \phi = (2x, 0, 0)\).
+        \((2x, 0, 0) \times (x, y, z)\):
+        \(i\): \(0 \cdot z - 0 \cdot y = 0\).
+        \(j\): \(0 \cdot x - 2x \cdot z = -2xz\).
+        \(k\): \(2x \cdot y - 0 \cdot x = 2xy\).
+        Resultado: \((0, -2xz, 2xy)\).
+      </p>
+      <p>
+        (e) \(\phi(\nabla \times \vec{F}) + (\nabla \phi) \times \vec{F}
+        = (0,0,0) + (0, -2xz, 2xy) = (0, -2xz, 2xy)\).
+        É igual ao resultado de (b). A identidade se verifica!
       </p>
     </div>
   </details>

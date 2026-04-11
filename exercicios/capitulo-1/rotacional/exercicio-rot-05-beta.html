@@ -3,21 +3,60 @@
   <div class="context">
     ORIGEM: Análise de Campos Vetoriais [Programa Apollo, 1969]
   </div>
-  <p>Calcule o rotacional de \[\vec{F}(x,y,z) = (y^2, z^2, x^2)\].</p>
+  <p>
+    Nos exercícios anteriores, você viu campos irrotacionais (rotacional zero).
+    Agora vamos ver um campo onde o rotacional tem todas as três componentes
+    não-zero — a rotação acontece simultaneamente em múltiplas direções.
+    Considere \(\vec{F}(x,y,z) = (y^2, z^2, x^2)\).
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Calcule a componente \(i\) do rotacional:
+      \(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\).
+    </li>
+    <li>
+      (b) Calcule a componente \(j\):
+      \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\).
+    </li>
+    <li>
+      (c) Calcule a componente \(k\):
+      \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).
+    </li>
+    <li>
+      (d) Escreva o vetor rotacional completo. No ponto \((1, 1, 1)\),
+      em que direção aponta?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Use \(\nabla \times \vec{F} = \begin{vmatrix} \hat{i} &
-      \hat{j} & \hat{k} \\ \frac{\partial}{\partial x} &
-      \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\ F_1 & F_2 &
-      F_3 \end{vmatrix}\).
+      [NOTA TÉCNICA]: Note o padrão: \(P\) depende de \(y\), \(Q\) de \(z\),
+      \(R\) de \(x\). Cada componente "cicla" para a próxima variável.
+      Isso gera derivadas parciais não-zero nas direções cruzadas.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \times \vec{F} = (0-2z, 0-2x, 0-2y) = (-2z, -2x, -2y)\]</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) Componente \(i\): \(\frac{\partial (x^2)}{\partial y} -
+        \frac{\partial (z^2)}{\partial z} = 0 - 2z = -2z\).
+      </p>
+      <p>
+        (b) Componente \(j\): \(\frac{\partial (y^2)}{\partial z} -
+        \frac{\partial (x^2)}{\partial x} = 0 - 2x = -2x\).
+      </p>
+      <p>
+        (c) Componente \(k\): \(\frac{\partial (z^2)}{\partial x} -
+        \frac{\partial (y^2)}{\partial y} = 0 - 2y = -2y\).
+      </p>
+      <p>
+        (d) \(\nabla \times \vec{F} = (-2z, -2x, -2y)\).
+        No ponto \((1,1,1)\): \((-2, -2, -2)\), apontando na direção
+        \((-1,-1,-1)\) — oposta à diagonal principal.
+      </p>
     </div>
   </details>
 </li>

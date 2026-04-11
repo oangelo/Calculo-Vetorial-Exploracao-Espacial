@@ -4,18 +4,78 @@
     ORIGEM: Análise de Estabilidade [Programa Shuttle, 1981]
   </div>
   <p>
-    Calcule o rotacional de \[\vec{F}(x,y,z) = (\frac{-y}{r^2}, \frac{x}{r^2},
-    0)\] onde \(r^2 = x^2+y^2\).
+    No EX-01, o campo \((-y, x, 0)\) tinha rotacional \((0,0,2)\).
+    Agora vamos dividir esse campo por \(r^2 = x^2 + y^2\), obtendo
+    \(\vec{F} = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}, 0\right)\).
+    As setas ainda circulam ao redor da origem, mas a intensidade diminui
+    com a distância. Será que o rotacional muda?
   </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Escreva \(F_1 = \frac{-y}{x^2+y^2}\) e \(F_2 = \frac{x}{x^2+y^2}\).
+      Calcule \(\frac{\partial F_2}{\partial x}\) usando a regra do
+      quociente: se \(F_2 = \frac{x}{u}\) com \(u = x^2+y^2\), então
+      \(\frac{\partial F_2}{\partial x} = \frac{1 \cdot u - x \cdot 2x}{u^2}\).
+    </li>
+    <li>
+      (b) Calcule \(\frac{\partial F_1}{\partial y}\) usando a regra do
+      quociente de forma análoga.
+    </li>
+    <li>
+      (c) Calcule a componente \(k\) do rotacional:
+      \(\frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y}\).
+      Simplifique.
+    </li>
+    <li>
+      (d) Por simetria (ou cálculo análogo), verifique que as componentes
+      \(i\) e \(j\) também são zero. O rotacional vale para \((x,y) \neq (0,0)\).
+    </li>
+    <li>
+      (e) Interprete: o campo gira ao redor da origem, mas o rotacional
+      é zero! Como isso é possível?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Use a regra do quociente.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Lembre-se da regra do quociente:
+      \(\frac{d}{dx}\left(\frac{f}{g}\right) = \frac{f'g - fg'}{g^2}\).
+      A componente \(k\) do rotacional será a diferença de duas frações
+      com denominador \((x^2+y^2)^2\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \times \vec{F} = (0, 0, 0)\]</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(\frac{\partial F_2}{\partial x} = \frac{1 \cdot (x^2+y^2) -
+        x \cdot 2x}{(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+      </p>
+      <p>
+        (b) \(\frac{\partial F_1}{\partial y} = \frac{(-1)(x^2+y^2) -
+        (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2 - y^2 + 2y^2}{(x^2+y^2)^2}
+        = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+      </p>
+      <p>
+        (c) Componente \(k\): \(\frac{y^2 - x^2}{(x^2+y^2)^2} -
+        \frac{y^2 - x^2}{(x^2+y^2)^2} = 0\).
+      </p>
+      <p>
+        (d) As componentes \(i\) e \(j\) também são zero (cálculo análogo
+        ou por simetria). \(\nabla \times \vec{F} = (0, 0, 0)\) para
+        \((x,y) \neq (0,0)\).
+      </p>
+      <p>
+        (e) O rotacional mede rotação LOCAL (infinitesimal). O campo
+        \(\vec{F}\) "gira" globalmente ao redor da origem, mas em cada
+        ponto individual não há tendência de rotação — as derivadas
+        parciais se cancelam porque a intensidade do campo decresce
+        exatamente na proporção certa. É como um redemoinho onde a
+        velocidade diminui com a distância de forma que não há
+        "cisalhamento" local.
+      </p>
     </div>
   </details>
 </li>

@@ -4,14 +4,58 @@
     ORIGEM: Dinâmica de Campos Gravitacionais [Teoria Geral, 1990]
   </div>
   <p>
-    Mostre que o rotacional do campo gravitacional \[\vec{g} =
-    -\frac{GM}{r^3}\vec{r}\] é zero.
+    O campo gravitacional produzido por uma massa \(M\) na origem é
+    \[\vec{g} = -\frac{GM}{r^3}\vec{r},\]
+    onde \(\vec{r} = (x, y, z)\) e \(r = \sqrt{x^2+y^2+z^2}\).
+    Vamos verificar que este campo não tem rotação — a gravidade puxa
+    sempre em direção ao centro, sem "giro".
   </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Escreva as componentes: \(g_1 = \frac{-GMx}{r^3}\),
+      \(g_2 = \frac{-GMy}{r^3}\), \(g_3 = \frac{-GMz}{r^3}\).
+      Calcule \(\frac{\partial g_3}{\partial y}\). Dica: use a regra
+      da cadeia com \(r^3 = (x^2+y^2+z^2)^{3/2}\).
+    </li>
+    <li>
+      (b) Calcule \(\frac{\partial g_2}{\partial z}\) de forma análoga.
+    </li>
+    <li>
+      (c) Verifique que a componente \(i\) do rotacional é zero:
+      \(\frac{\partial g_3}{\partial y} - \frac{\partial g_2}{\partial z}
+      = 0\).
+    </li>
+    <li>
+      (d) Por simetria, as componentes \(j\) e \(k\) também são zero.
+      Interprete: por que o campo gravitacional não tem rotação?
+    </li>
+  </ul>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \times \vec{g} = 0\] (campo conservativo)</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(g_3 = -GMz \cdot r^{-3}\).
+        \(\frac{\partial g_3}{\partial y} = -GMz \cdot (-3)r^{-4}
+        \cdot \frac{\partial r}{\partial y} = 3GMz \cdot r^{-4}
+        \cdot \frac{y}{r} = \frac{3GMzy}{r^5}\).
+      </p>
+      <p>
+        (b) \(g_2 = -GMy \cdot r^{-3}\).
+        \(\frac{\partial g_2}{\partial z} = -GMy \cdot (-3)r^{-4}
+        \cdot \frac{z}{r} = \frac{3GMyz}{r^5}\).
+      </p>
+      <p>
+        (c) Componente \(i\): \(\frac{3GMzy}{r^5} - \frac{3GMyz}{r^5} = 0\).
+      </p>
+      <p>
+        (d) As componentes \(j\) e \(k\) também são zero por simetria
+        (o cálculo é análogo, ciclando as variáveis).
+        \(\nabla \times \vec{g} = (0, 0, 0)\). A gravidade puxa
+        sempre em direção ao centro — não há componente tangencial
+        que cause rotação. O campo é puramente "afunilante".
+      </p>
     </div>
   </details>
 </li>

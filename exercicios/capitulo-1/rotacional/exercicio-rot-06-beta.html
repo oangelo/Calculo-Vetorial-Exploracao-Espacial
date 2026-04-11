@@ -3,16 +3,66 @@
   <div class="context">
     ORIGEM: Dinâmica de Fluidos Espaciais [Relatório Técnico RT-1970]
   </div>
-  <p>Para \[\vec{F}(x,y,z) = (xz, yz, xy)\], calcule o rotacional.</p>
+  <p>
+    No exercício anterior, o rotacional tinha três componentes não-zero.
+    Agora vamos ver um caso intermediário: um campo onde apenas algumas
+    componentes do rotacional são não-zero, e as derivadas parciais se
+    cancelam parcialmente. Considere \(\vec{F}(x,y,z) = (xz, yz, xy)\).
+  </p>
+  <p>
+    Note a semelhança com o EX-03: lá o campo era \((yz, xz, xy)\) e o
+    rotacional era zero. Aqui a ordem das variáveis mudou — a componente
+    \(P\) é \(xz\) em vez de \(yz\). Será que o rotacional ainda é zero?
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique \(P = xz\), \(Q = yz\), \(R = xy\). Calcule a
+      componente \(i\): \(\frac{\partial (xy)}{\partial y} -
+      \frac{\partial (yz)}{\partial z}\).
+    </li>
+    <li>
+      (b) Calcule a componente \(j\): \(\frac{\partial (xz)}{\partial z} -
+      \frac{\partial (xy)}{\partial x}\).
+    </li>
+    <li>
+      (c) Calcule a componente \(k\).
+    </li>
+    <li>
+      (d) Interprete: por que apenas certas componentes são não-zero?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Derive componente a componente.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Compare com EX-03. Lá, \(P=yz\) dava
+      \(\frac{\partial P}{\partial z} = y\) que cancelava com
+      \(\frac{\partial R}{\partial x} = y\). Aqui, \(P=xz\) dá
+      \(\frac{\partial P}{\partial z} = x\), que não cancela.
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
-      <p>\[\nabla \times \vec{F} = (x-y, y-x, 0)\]</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) Componente \(i\): \(\frac{\partial (xy)}{\partial y} -
+        \frac{\partial (yz)}{\partial z} = x - y\).
+      </p>
+      <p>
+        (b) Componente \(j\): \(\frac{\partial (xz)}{\partial z} -
+        \frac{\partial (xy)}{\partial x} = x - y\).
+      </p>
+      <p>
+        (c) Componente \(k\): \(\frac{\partial (yz)}{\partial x} -
+        \frac{\partial (xz)}{\partial y} = 0 - 0 = 0\).
+      </p>
+      <p>
+        (d) \(\nabla \times \vec{F} = (x - y, x - y, 0)\).
+        As componentes \(i\) e \(j\) são iguais — a rotação tem a mesma
+        intensidade nas direções \(x\) e \(y\). A componente \(k\) é zero
+        porque as derivadas em \(x\) e \(y\) de \(yz\) e \(xz\) são zero.
+      </p>
     </div>
   </details>
 </li>

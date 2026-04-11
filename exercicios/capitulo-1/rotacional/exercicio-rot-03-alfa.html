@@ -2,22 +2,60 @@
   <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
   <div class="context">ORIGEM: Fluxo de Plasma no Espaço Próximo à Lua</div>
   <p>
-    O campo vetorial \(\vec{E} = (yz, xz, xy)\) descreve um fluxo elétrico
-    variável.
+    Nos dois exercícios anteriores, os campos tinham rotacional não-zero —
+    havia rotação local. Nem todo campo é assim. O campo vetorial
+    \(\vec{E} = (yz, xz, xy)\) descreve um fluxo elétrico variável.
+    Antes de calcular, observe o campo: as componentes são produtos de
+    duas variáveis, com uma simetria particular.
   </p>
-  <p>DETERMINAR: O rotacional de \(\vec{E}\) e interpretar o resultado.</p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique \(P\), \(Q\) e \(R\). Note a simetria: cada componente
+      é o produto das outras duas variáveis.
+    </li>
+    <li>
+      (b) Calcule a componente \(i\) do rotacional:
+      \(\frac{\partial (xy)}{\partial y} - \frac{\partial (xz)}{\partial z}\).
+    </li>
+    <li>
+      (c) Calcule a componente \(j\) e a componente \(k\).
+    </li>
+    <li>
+      (d) O rotacional é zero? O campo é irrotacional? O que isso significa
+      fisicamente?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O campo \(\vec{E} = (yz, xz, xy)\) é simétrico. Verifique
-      se o rotacional se anula calculando todas as três componentes.
+      [NOTA TÉCNICA]: A simetria do campo faz com que as derivadas parciais
+      se cancelem. Quando \(\frac{\partial R}{\partial y} =
+      \frac{\partial Q}{\partial z}\), a componente \(i\) do rotacional é zero.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      \[ \nabla \times \vec{E} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} \]
-      <p>O campo é irrotacional.</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(P = yz\), \(Q = xz\), \(R = xy\).
+      </p>
+      <p>
+        (b) Componente \(i\): \(\frac{\partial (xy)}{\partial y} -
+        \frac{\partial (xz)}{\partial z} = x - x = 0\).
+      </p>
+      <p>
+        (c) Componente \(j\): \(\frac{\partial (yz)}{\partial z} -
+        \frac{\partial (xy)}{\partial x} = y - y = 0\).
+        Componente \(k\): \(\frac{\partial (xz)}{\partial x} -
+        \frac{\partial (yz)}{\partial y} = z - z = 0\).
+      </p>
+      <p>
+        (d) \(\nabla \times \vec{E} = (0, 0, 0)\). O campo é
+        <strong>irrotacional</strong> — não há rotação local em nenhum ponto.
+        Isso significa que, localmente, o fluxo não gira.
+      </p>
     </div>
   </details>
 </li>

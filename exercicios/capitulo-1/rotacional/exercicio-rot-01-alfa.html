@@ -4,26 +4,73 @@
     ORIGEM: Simulação de Rotacional - Módulo Lunar Eagle
   </div>
   <p>
-    O campo vetorial \(\vec{F} = \begin{pmatrix} -y \\ x \\ 0 \end{pmatrix}\)
-    representa um fluxo.
+    Na lista de derivadas parciais, você aprendeu como uma função escalar muda
+    em cada direção. Agora vamos ver uma aplicação poderosa desse conceito:
+    medir a tendência de <em>rotação</em> de um campo vetorial. Imagine um rio
+    fluindo — em alguns pontos a água gira como um redemoinho, em outros flui
+    reto. O rotacional mede exatamente isso.
   </p>
   <p>
-    DETERMINAR: O rotacional de \(\vec{F}\) e interpretar seu significado
-    físico.
+    O campo vetorial \(\vec{F} = \begin{pmatrix} -y \\ x \\ 0 \end{pmatrix}\)
+    representa um fluxo que circula ao redor da origem.
   </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique as componentes \(P(x,y,z)\), \(Q(x,y,z)\) e \(R(x,y,z)\)
+      do campo \(\vec{F} = (P, Q, R)\).
+    </li>
+    <li>
+      (b) No ponto \((1, 0)\), qual vetor o campo atribui? Desenhe essa seta
+      em um sistema de coordenadas. Faça o mesmo para os pontos \((0, 1)\),
+      \((-1, 0)\) e \((0, -1)\).
+    </li>
+    <li>
+      (c) Observando seu desenho, as setas circulam ao redor de qual eixo?
+      No sentido horário ou anti-horário?
+    </li>
+    <li>
+      (d) Agora calcule o rotacional \(\nabla \times \vec{F}\) usando a fórmula
+      das componentes. Confirme se a direção do vetor resultante coincide com
+      sua previsão do item (c).
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O rotacional de \(\vec{F} = (-y, x, 0)\) é calculado com
-      \(\nabla \times \vec{F}\). Use o determinante formal ou as fórmulas das
-      componentes.
+      [NOTA TÉCNICA]: O rotacional combina derivadas parciais das componentes
+      do campo: a componente \(k\) é \(\frac{\partial Q}{\partial x} -
+      \frac{\partial P}{\partial y}\). Você já sabe calcular essas derivadas
+      parciais — agora vamos combiná-las de uma forma nova.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      \[ \nabla \times \vec{F} = \begin{pmatrix} 0 \\ 0 \\ 2 \end{pmatrix} \]
-      <p>O campo tem um vórtice girando ao redor do eixo \(z\).</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(P = -y\), \(Q = x\), \(R = 0\).
+      </p>
+      <p>
+        (b) Em \((1,0)\): \(\vec{F} = (0, 1, 0)\) — seta apontando para cima.
+        Em \((0,1)\): \(\vec{F} = (-1, 0, 0)\) — seta apontando para a esquerda.
+        Em \((-1,0)\): \(\vec{F} = (0, -1, 0)\) — seta para baixo.
+        Em \((0,-1)\): \(\vec{F} = (1, 0, 0)\) — seta para a direita.
+      </p>
+      <p>
+        (c) As setas circulam ao redor do eixo \(z\), no sentido anti-horário
+        (visto de cima).
+      </p>
+      <p>
+        (d) \[ \nabla \times \vec{F} = \begin{pmatrix}
+        \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \\
+        \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \\
+        \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+        \end{pmatrix} = \begin{pmatrix} 0 - 0 \\ 0 - 0 \\ 1 - (-1) \end{pmatrix}
+        = \begin{pmatrix} 0 \\ 0 \\ 2 \end{pmatrix} \]
+        O rotacional aponta na direção \(+z\), confirmando a previsão: o campo
+        gira no sentido anti-horário ao redor do eixo \(z\).
+      </p>
     </div>
   </details>
 </li>
