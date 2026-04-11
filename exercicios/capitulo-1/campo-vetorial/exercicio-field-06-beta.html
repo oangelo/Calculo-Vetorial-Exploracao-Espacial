@@ -5,78 +5,59 @@
               [DADOS DE 18/FEV/1961]
             </div>
 <p>
-              Considere um campo magnético simplificado ao redor de um fio
-              condutor longo, representado por: \[\vec{B}(x,y) = \frac{k}{x^2 +
-              y^2} \begin{pmatrix} -y \\ x \end{pmatrix}\] onde \(k\) é uma
-              constante positiva. DETERMINAR: (a) O padrão geométrico do campo
-              magnético. (b) Como a intensidade do campo varia com a distância
-              ao fio. (c) Se existem pontos onde o campo é nulo ou infinito.
+              CONEXÃO: No EX-03, a intensidade do campo gravitacional caía com
+              \(1/r^2\). Este campo magnético também enfraquece com a distância —
+              mas o padrão de direção é circular, como no EX-02. É a combinação
+              dos dois conceitos: direção tangente + intensidade decrescente.
             </p>
+<p>
+              Considere um campo magnético simplificado ao redor de um fio
+              condutor: \[\vec{B}(x,y) = \frac{k}{x^2 + y^2} \begin{pmatrix} -y
+              \\ x \end{pmatrix}\] onde \(k\) é uma constante positiva.
+            </p>
+<ul>
+<li>(a) Identifique os dois "efeitos" combinados neste campo: qual parte controla a direção e qual controla a intensidade?</li>
+<li>(b) Calcule a magnitude \(|\vec{B}|\) em função de \(r = \sqrt{x^2 + y^2}\). Como a intensidade varia com a distância?</li>
+<li>(c) Existe algum ponto onde o campo não está definido? O que isso significa fisicamente?</li>
+</ul>
 <details class="hint-container">
 <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
 <div class="hint">
 
-                [NOTA TÉCNICA]: Relacione o formato deste campo com a Lei de
-                Ampère e identifique a localização do fio condutor no plano. A
-                distância ao fio é representada pelo denominador da equação.
+                [NOTA TÉCNICA]: Separe o campo em duas partes: o vetor
+                \((-y, x)\) (que você viu no EX-02) dá a DIREÇÃO, e o fator
+                \(k/(x^2+y^2)\) dá a INTENSIDADE. Para a magnitude, lembre
+                que \(\sqrt{(-y)^2 + x^2} = \sqrt{x^2 + y^2} = r\).
               
 </div>
-</details>
 </details>
 <details>
 <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
 <div class="solution">
 <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) PADRÃO GEOMÉTRICO:</p>
+<p>(a) DECOMPOSIÇÃO DO CAMPO:</p>
 <p>
-                  O termo \(\begin{pmatrix} -y \\ x \end{pmatrix}\) cria um
-                  campo circular em torno da origem. Para qualquer ponto
-                  \((x,y)\), o vetor do campo é perpendicular ao raio vetor da
-                  origem até o ponto, formando círculos concêntricos em torno da
-                  origem.
+                  O vetor \((-y, x)\) (direção) cria o padrão circular do EX-02
+                  — tangente aos círculos centrados na origem, sentido
+                  anti-horário. O fator \(k/(x^2 + y^2) = k/r^2\) (intensidade)
+                  faz o campo enfraquecer com a distância ao quadrado, como a
+                  gravidade do EX-03.
                 </p>
+<p>(b) MAGNITUDE:</p>
+<p>\[|\vec{B}| = \frac{k}{r^2} \cdot \sqrt{(-y)^2 + x^2} = \frac{k}{r^2} \cdot r = \frac{k}{r}\]</p>
 <p>
-                  Fisicamente, isto corresponde à configuração do campo
-                  magnético ao redor de um fio condutor reto transportando
-                  corrente elétrica, onde o fio está localizado
-                  perpendicularmente ao plano \(xy\), passando pela origem. As
-                  linhas de campo magnético formam círculos concêntricos ao
-                  redor do fio, como previsto pela Lei de Ampère.
+                  A intensidade é inversamente proporcional à distância \(r\)
+                  (não ao quadrado como na gravidade). Quando a distância dobra,
+                  a intensidade cai pela metade.
                 </p>
-<p>(b) VARIAÇÃO DA INTENSIDADE:</p>
-<p>A magnitude do campo é dada por:</p>
+<p>(c) PONTO DE SINGULARIDADE:</p>
 <p>
-                  \[|\vec{B}(x,y)| = \frac{k}{x^2 + y^2} \cdot \sqrt{(-y)^2 +
-                  x^2} = \frac{k}{x^2 + y^2} \cdot \sqrt{x^2 + y^2} =
-                  \frac{k}{\sqrt{x^2 + y^2}}\]
-                </p>
-<p>
-                  Sendo \(r = \sqrt{x^2 + y^2}\) a distância do ponto \((x,y)\)
-                  à origem (onde o fio está localizado), temos:
-                </p>
-<p>\[|\vec{B}(x,y)| = \frac{k}{r}\]</p>
-<p>
-                  Portanto, a intensidade do campo magnético é inversamente
-                  proporcional à distância ao fio condutor, seguindo a Lei de
-                  Biot-Savart para um fio condutor infinito.
-                </p>
-<p>(c) PONTOS DE CAMPO NULO OU INFINITO:</p>
-<p>
-                  O campo é nulo apenas no infinito, onde \(r \to \infty\) e,
-                  consequentemente, \(|\vec{B}| \to 0\).
-                </p>
-<p>
-                  O campo se torna infinito quando \(r \to 0\), ou seja,
-                  exatamente no local do fio condutor (origem). Matematicamente,
-                  isto ocorre porque \(x^2 + y^2 = 0\) no denominador da
-                  expressão.
-                </p>
-<p>
-                  APLICAÇÃO: Este modelo é crucial para entender como os campos
-                  magnéticos interagem com veículos espaciais e para desenvolver
-                  proteções contra radiação para astronautas, uma vez que a
-                  Terra e outros corpos celestes possuem campos magnéticos que
-                  afetam a navegação e segurança das missões.
+                  Na origem \((0,0)\), o denominador \(x^2 + y^2 = 0\), então
+                  o campo é indefinido (tende ao infinito). Fisicamente, isto
+                  corresponde ao local exato do fio condutor — o campo
+                  magnético é teoricamente infinito sobre o próprio fio. Na
+                  prática, o fio tem espessura finita, mas o modelo simplificado
+                  prevê essa singularidade.
                 </p>
 </div>
 </details>

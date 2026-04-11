@@ -1,108 +1,81 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
-  <div class="context">
-    ORIGEM: Departamento de Propulsão Avançada - [PROJETO CLASSIFICADO] [DADOS
-    DE 03/OUT/1963]
-  </div>
-  <p>
-    Um campo de propulsão iônica experimental é modelado pelo campo vetorial:
-    \[\vec{P}(x,y,z) = \begin{pmatrix} e^{-r^2}x \\ e^{-r^2}y \\ e^{-r^2}z
-    \end{pmatrix}\] onde \(r^2 = x^2 + y^2 + z^2\) é o quadrado da distância à
-    origem. DETERMINAR: (a) A direção do campo em qualquer ponto do espaço. (b)
-    Como a magnitude do campo varia com a distância à origem. (c) Calcule o
-    trabalho realizado pelo campo para mover uma partícula da origem até o ponto
-    \((1,1,1)\) ao longo de uma linha reta.
-  </p>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
-    <div class="solution">
-      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-      <p>(a) DIREÇÃO DO CAMPO:</p>
-      <p>O campo em qualquer ponto \((x,y,z)\) pode ser escrito como:</p>
-      <p>
-        \[\vec{P}(x,y,z) = e^{-r^2} \begin{pmatrix} x \\ y \\ z \end{pmatrix} =
-        e^{-r^2} \vec{r}\]
-      </p>
-      <p>onde \(\vec{r} = (x,y,z)\) é o vetor posição a partir da origem.</p>
-      <p>
-        Portanto, a direção do campo em qualquer ponto coincide com a direção do
-        vetor posição desse ponto em relação à origem. Em outras palavras, o
-        campo aponta radialmente para fora a partir da origem em todos os pontos
-        do espaço (exceto na própria origem, onde o campo é nulo).
-      </p>
-      <p>(b) VARIAÇÃO DA MAGNITUDE COM A DISTÂNCIA:</p>
-      <p>A magnitude do campo é:</p>
-      <p>\[|\vec{P}(x,y,z)| = e^{-r^2} \cdot |\vec{r}| = r \cdot e^{-r^2}\]</p>
-      <p>
-        Para analisar como esta magnitude varia com \(r\), calculamos a
-        derivada:
-      </p>
-      <p>
-        \[\frac{d}{dr}(r e^{-r^2}) = e^{-r^2} - 2r^2 e^{-r^2} = e^{-r^2}(1 -
-        2r^2)\]
-      </p>
-      <p>
-        Esta derivada se anula quando \(1 - 2r^2 = 0\), ou seja, quando \(r =
-        \frac{1}{\sqrt{2}}\).
-      </p>
-      <p>
-        Para \(r &lt; \frac{1}{\sqrt{2}}\), a derivada é positiva, indicando que
-        a magnitude do campo aumenta com \(r\).
-      </p>
-      <p>
-        Para \(r &gt; \frac{1}{\sqrt{2}}\), a derivada é negativa, indicando que
-        a magnitude do campo diminui com \(r\).
-      </p>
-      <p>
-        Portanto, a magnitude do campo atinge seu valor máximo em \(r =
-        \frac{1}{\sqrt{2}} \approx 0.7071\), e diminui assintoticamente para
-        zero à medida que \(r\) aumenta além desse valor.
-      </p>
-      <p>(c) TRABALHO REALIZADO PELO CAMPO:</p>
-      <p>
-        O trabalho realizado por um campo vetorial ao mover uma partícula ao
-        longo de um caminho \(C\) é dado pela integral de linha:
-      </p>
-      <p>\[W = \int_C \vec{P} \cdot d\vec{r}\]</p>
-      <p>
-        Para uma linha reta da origem \((0,0,0)\) ao ponto \((1,1,1)\),
-        parametrizamos o caminho como:
-      </p>
-      <p>
-        \[\vec{r}(t) = t \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}, \quad 0 \leq
-        t \leq 1\]
-      </p>
-      <p>Com \(d\vec{r} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} dt\).</p>
-      <p>
-        Ao longo deste caminho, temos \(r^2 = 3t^2\) e \(\vec{P}(\vec{r}(t)) =
-        e^{-3t^2} \cdot t \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}\).
-      </p>
-      <p>O trabalho é então:</p>
-      <p>
-        \[W = \int_0^1 e^{-3t^2} \cdot t \begin{pmatrix} 1 \\ 1 \\ 1
-        \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix} dt = 3
-        \int_0^1 t e^{-3t^2} dt\]
-      </p>
-      <p>
-        Usando a substituição \(u = 3t^2\), temos \(du = 6t dt\), ou \(t dt =
-        \frac{du}{6}\):
-      </p>
-      <p>
-        \[W = 3 \int_0^3 \frac{e^{-u}}{6} du = \frac{1}{2} \int_0^3 e^{-u} du =
-        \frac{1}{2} [-e^{-u}]_0^3 = \frac{1}{2} [-(e^{-3} - 1)] = \frac{1}{2} (1
-        - e^{-3})\]
-      </p>
-      <p>Aproximadamente: \(W \approx 0.475\) unidades de trabalho.</p>
-      <p>
-        APLICAÇÃO TECNOLÓGICA: Este modelo representa um campo de propulsão
-        iônica experimental que poderia ser utilizado em sistemas de navegação
-        de precisão para sondas espaciais. A capacidade de gerar campos
-        vetoriais com decaimento gaussiano permite o controle finamente ajustado
-        do impulso em diferentes regiões do espaço, otimizando o uso de energia
-        e aumentando a eficiência de manobras orbitais complexas. Este tipo de
-        tecnologia seria especialmente valioso para missões de longa duração,
-        onde a eficiência de combustível é crítica.
-      </p>
-    </div>
-  </details>
+<div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
+<div class="context">
+              ORIGEM: Departamento de Propulsão Avançada - [PROJETO CLASSIFICADO]
+              [DADOS DE 03/OUT/1963]
+            </div>
+<p>
+              CONEXÃO: Vamos analisar um campo com decaimento suave — não
+              abrupto como os campos com singularidades dos exercícios
+              anteriores. Este tipo de campo modela propulsão iônica, onde a
+              força é máxima a uma certa distância e depois decai. Note como
+              combinamos campos vetoriais com máximos e mínimos de Cap 0 —
+              Derivadas.
+            </p>
+<p>
+              Um campo de propulsão iônica experimental é modelado por:
+              \[\vec{P}(x,y,z) = e^{-r^2} \begin{pmatrix} x \\ y \\ z
+              \end{pmatrix}\] onde \(r^2 = x^2 + y^2 + z^2\) é o quadrado da
+              distância à origem.
+            </p>
+<ul>
+<li>(a) Escreva \(\vec{P}\) como o produto de um escalar por um vetor. Em que direção o campo aponta em qualquer ponto do espaço?</li>
+<li>(b) Calcule a magnitude \(|\vec{P}|\) em função de \(r\). (Dica: lembre que \(\sqrt{x^2+y^2+z^2} = r\).)</li>
+<li>(c) Encontre o valor de \(r\) onde a magnitude é MÁXIMA. (Dica: isto é um problema de máximos e mínimos de Cap 0 — Derivadas. Calcule \(\frac{d}{dr}(r \cdot e^{-r^2})\).)</li>
+<li>(d) Esboce o gráfico de \(|\vec{P}|\) em função de \(r\). O campo é mais intenso perto da origem ou a uma certa distância dela?</li>
+</ul>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+<div class="hint">
+
+                [NOTA TÉCNICA]: Para (a), note que \(\vec{P} = e^{-r^2} \cdot \vec{r}\), onde \(\vec{r} = (x,y,z)\) é o vetor posição. Para (c), use a regra do produto: \(\frac{d}{dr}(r \cdot e^{-r^2}) = e^{-r^2} + r \cdot (-2r) \cdot e^{-r^2} = e^{-r^2}(1 - 2r^2)\). Onde isso se anula?
+              
+</div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+<div class="solution">
+<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+<p>(a) DECOMPOSIÇÃO:</p>
+<p>\[\vec{P}(x,y,z) = e^{-r^2} \cdot \vec{r}\]</p>
+<p>
+                  onde \(\vec{r} = (x,y,z)\) é o vetor posição. O campo aponta
+                  sempre na direção RADIAL (para fora a partir da origem). O
+                  fator escalar \(e^{-r^2}\) controla a intensidade.
+                </p>
+<p>(b) MAGNITUDE:</p>
+<p>\[|\vec{P}| = e^{-r^2} \cdot |\vec{r}| = r \cdot e^{-r^2}\]</p>
+<p>(c) PONTO DE MÁXIMA INTENSIDADE:</p>
+<p>
+                  Calculando a derivada (regra do produto de Cap 0):
+                  \[\frac{d}{dr}(r \cdot e^{-r^2}) = e^{-r^2} + r \cdot (-2r) \cdot e^{-r^2} = e^{-r^2}(1 - 2r^2)\]
+                </p>
+<p>
+                  A derivada se anula quando \(1 - 2r^2 = 0\), ou seja,
+                  \(r = \frac{1}{\sqrt{2}} \approx 0{,}707\).
+                </p>
+<p>
+                  Para \(r < \frac{1}{\sqrt{2}}\): a derivada é positiva
+                  (magnitude crescente).
+                  Para \(r > \frac{1}{\sqrt{2}}\): a derivada é negativa
+                  (magnitude decrescente).
+                  Portanto, a intensidade máxima ocorre em \(r = \frac{1}{\sqrt{2}}\).
+                </p>
+<p>(d) GRÁFICO:</p>
+<p>
+                  O gráfico de \(|\vec{P}| = r \cdot e^{-r^2}\) começa em zero
+                  (na origem), cresce até o máximo em \(r \approx 0{,}707\), e
+                  depois decai suavemente para zero quando \(r \to \infty\). O
+                  campo é MAIS INTENSO a uma certa distância da origem, não na
+                  própria origem. Isso é diferente dos campos com singularidade
+                  dos exercícios anteriores, onde o máximo era na origem.
+                </p>
+<p>
+                  INTERPRETAÇÃO: Este perfil de intensidade é útil em propulsão
+                  iônica — a zona de máxima força está a uma distância ótima do
+                  propulsor, permitindo controle preciso do impulso em regiões
+                  específicas do espaço.
+                </p>
+</div>
+</details>
 </li>

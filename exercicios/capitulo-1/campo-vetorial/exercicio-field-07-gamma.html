@@ -5,103 +5,67 @@
               DE 30/NOV/1960]
             </div>
 <p>
-              Um campo de vento atmosférico é modelado por: \[\vec{W}(x,y,z) =
-              \begin{pmatrix} x + yz \\ y - xz \\ z \end{pmatrix}\] DETERMINAR:
-              (a) O comportamento do vento no plano \(z = 0\). (b) Analise como
-              a direção do vento muda quando \(z\) varia de valores negativos
-              para positivos. (c) Identifique regiões onde o vento tem maior
-              intensidade.
+              CONEXÃO: Nos BETA, as componentes \(x\) e \(y\) do campo eram
+              independentes. Agora vamos ver ACOPLAMENTO: termos como \(yz\) e
+              \(xz\) fazem as direções se misturarem. É como se o vento mudasse
+              de direção conforme você muda de altitude.
             </p>
+<p>
+              Um campo de vento atmosférico é modelado por: \[\vec{W}(x,y,z) =
+              \begin{pmatrix} x + yz \\ y - xz \\ z \end{pmatrix}\]
+            </p>
+<ul>
+<li>(a) Calcule o campo no plano \(z = 0\). Que padrão você reconhece? (Compare com exercícios anteriores.)</li>
+<li>(b) Agora calcule o campo no plano \(z = 1\) nos pontos \((1,0,1)\) e \((0,1,1)\). Como os termos \(yz\) e \(xz\) alteram o padrão de \(z=0\)?</li>
+<li>(c) Calcule o campo no plano \(z = -1\) nos pontos \((1,0,-1)\) e \((0,1,-1)\). A rotação que os termos cruzados introduzem tem o mesmo sentido para \(z>0\) e \(z<0\)?</li>
+<li>(d) Onde a intensidade do campo é maior — perto da origem ou longe dela? Justifique.</li>
+</ul>
 <details class="hint-container">
 <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
 <div class="hint">
 
-                [NOTA TÉCNICA]: Examine como os termos cruzados \(yz\) e \(xz\)
-                afetam o comportamento do vento em diferentes altitudes.
-                Considere casos específicos para visualizar o padrão geral.
+                [NOTA TÉCNICA]: Comece SEMPRE pelo caso mais simples: \(z=0\).
+                O campo fica \((x, y, 0)\) — radial como no EX-01, mas em 3D.
+                Depois, para \(z \neq 0\), os termos \(yz\) e \(xz\) "torcem"
+                esse padrão radial. Teste com valores concretos.
               
 </div>
-</details>
 </details>
 <details>
 <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
 <div class="solution">
 <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
 <p>(a) COMPORTAMENTO NO PLANO \(z = 0\):</p>
-<p>Substituindo \(z = 0\) no campo, obtemos:</p>
+<p>\[\vec{W}(x,y,0) = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}\]</p>
 <p>
-                  \[\vec{W}(x,y,0) = \begin{pmatrix} x \\ y \\ 0 \end{pmatrix}\]
+                  Campo radial — os vetores apontam para fora a partir da
+                  origem, como no EX-01, mas agora em 3D (a componente \(z\)
+                  é zero neste plano).
                 </p>
+<p>(b) COMPORTAMENTO NO PLANO \(z = 1\):</p>
+<p>\[\vec{W}(1,0,1) = \begin{pmatrix} 1+0 \\ 0-1 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}\]</p>
+<p>\[\vec{W}(0,1,1) = \begin{pmatrix} 0+1 \\ 1-0 \\ 1 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ 1 \end{pmatrix}\]</p>
 <p>
-                  Neste plano, o vento flui radialmente para fora a partir da
-                  origem, com intensidade proporcional à distância da origem. Em
-                  cada ponto \((x,y,0)\), o vetor vento aponta diretamente para
-                  fora, na mesma direção do vetor posição \((x,y,0)\).
+                  Comparando com \(z=0\): em \((1,0)\), a componente \(y\) era
+                  0, mas agora é \(-1\) (o termo \(xz = 1\) a subtrai). Em
+                  \((0,1)\), a componente \(x\) era 0, mas agora é \(+1\) (o
+                  termo \(yz = 1\) a adiciona). Os termos cruzados introduzem
+                  uma rotação anti-horária sobreposta ao fluxo radial.
                 </p>
-<p>(b) VARIAÇÃO COM A ALTITUDE \(z\):</p>
-<p>Analisando o campo para diferentes valores de \(z\):</p>
-<p>Para \(z &lt; 0\) (altitudes negativas):</p>
+<p>(c) COMPORTAMENTO NO PLANO \(z = -1\):</p>
+<p>\[\vec{W}(1,0,-1) = \begin{pmatrix} 1+0 \\ 0-(-1) \\ -1 \end{pmatrix} = \begin{pmatrix} 1 \\ 1 \\ -1 \end{pmatrix}\]</p>
+<p>\[\vec{W}(0,1,-1) = \begin{pmatrix} 0+(-1) \\ 1-0 \\ -1 \end{pmatrix} = \begin{pmatrix} -1 \\ 1 \\ -1 \end{pmatrix}\]</p>
 <p>
-                  - A componente \(x\) é reduzida pelo termo \(yz\) quando \(y &gt;
-                  0\) e aumentada quando \(y &lt; 0\)
+                  Para \(z<0\), o sentido da rotação se INVERTE (fica
+                  horário em vez de anti-horário). A altitude determina o
+                  sentido de rotação do vento.
                 </p>
+<p>(d) INTENSIDADE:</p>
 <p>
-                  - A componente \(y\) é aumentada pelo termo \(xz\) quando \(x
-                  &gt; 0\) e reduzida quando \(x &lt; 0\)
-                </p>
-<p>
-                  - Isso cria um padrão de rotação anti-horária sobreposto ao
-                  fluxo radial
-                </p>
-<p>Para \(z &gt; 0\) (altitudes positivas):</p>
-<p>
-                  - A componente \(x\) é aumentada pelo termo \(yz\) quando \(y
-                  &gt; 0\) e reduzida quando \(y &lt; 0\)
-                </p>
-<p>
-                  - A componente \(y\) é reduzida pelo termo \(xz\) quando \(x &gt;
-                  0\) e aumentada quando \(x &lt; 0\)
-                </p>
-<p>
-                  - Isso cria um padrão de rotação horária sobreposto ao fluxo
-                  radial
-                </p>
-<p>
-                  Além disso, a componente vertical do vento (\(z\)) faz com que
-                  o ar suba quando \(z &gt; 0\) e desça quando \(z &lt; 0\), criando
-                  um fluxo convergente para o plano \(z = 0\) em altitudes
-                  negativas e divergente deste plano em altitudes positivas.
-                </p>
-<p>(c) REGIÕES DE MAIOR INTENSIDADE:</p>
-<p>A magnitude do campo é dada por:</p>
-<p>\[|\vec{W}(x,y,z)| = \sqrt{(x+yz)^2 + (y-xz)^2 + z^2}\]</p>
-<p>
-                  Para valores fixos de \(z\), a intensidade aumenta à medida
-                  que nos afastamos da origem no plano \(xy\). Além disso, para
-                  \(x\) e \(y\) fixos, a intensidade geralmente aumenta com
-                  \(|z|\) devido aos termos cruzados.
-                </p>
-<p>
-                  Específicamente, a intensidade será maior em regiões onde:
-                </p>
-<p>
-                  - \(|x|\) e \(|y|\) são grandes (longe da origem no plano
-                  horizontal)
-                </p>
-<p>
-                  - \(|z|\) é grande (altitudes extremas, positivas ou
-                  negativas)
-                </p>
-<p>
-                  - Os produtos \(|yz|\) e \(|xz|\) são grandes (combinação de
-                  coordenadas com valores absolutos elevados)
-                </p>
-<p>
-                  APLICAÇÃO: Este modelo é crucial para prever condições
-                  atmosféricas durante lançamentos e reentradas de veículos
-                  espaciais, permitindo identificar zonas de turbulência e
-                  cisalhamento de vento que podem comprometer a integridade
-                  estrutural da espaçonave.
+                  A magnitude é \(|\vec{W}| = \sqrt{(x+yz)^2 + (y-xz)^2 + z^2}\).
+                  Quanto maior \(|x|\), \(|y|\) ou \(|z|\), maior a intensidade.
+                  Portanto, a intensidade é maior em regiões afastadas da
+                  origem e em altitudes extremas.
                 </p>
 </div>
 </details>

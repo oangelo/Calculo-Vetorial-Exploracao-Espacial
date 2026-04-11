@@ -5,76 +5,60 @@
               [DADOS DE 07/DEZ/1960]
             </div>
 <p>
+              CONEXÃO: Até agora todos os campos eram 2D (plano \(xy\)). Mas
+              naves espaciais voam no ESPAÇO 3D — precisamos de campos que
+              dependam de \(x\), \(y\) e \(z\). Este exercício mostra como
+              decompor um campo 3D em comportamentos que você já entende dos
+              exercícios anteriores.
+            </p>
+<p>
               Um campo de velocidades de um fluido é modelado por:
               \[\vec{V}(x,y,z) = \begin{pmatrix} y \\ -x \\ z \end{pmatrix}\]
-              DETERMINAR: (a) O fluxo do fluido nos pontos \(P_1(1,1,1)\) e
-              \(P_2(2,-2,3)\). (b) Classifique o comportamento do fluido no
-              plano \(xy\) (ignore a componente \(z\)). (c) Como o movimento de
-              uma partícula varia ao longo do eixo \(z\).
             </p>
+<ul>
+<li>(a) Calcule o valor do campo nos pontos \(P_1(1,1,1)\) e \(P_2(2,-2,3)\).</li>
+<li>(b) Restrinja o campo ao plano \(xy\) (ou seja, fixe \(z=0\)). O campo resultante \(\vec{V}_{xy}(x,y) = (y, -x)\) lembra algum exercício anterior? Que padrão ele forma?</li>
+<li>(c) Analise a componente \(z\) isoladamente: o que acontece com a velocidade vertical quando \(z > 0\)? E quando \(z < 0\)? Combine com (b) para descrever o tipo de movimento 3D resultante.</li>
+</ul>
 <details class="hint-container">
 <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
 <div class="hint">
 
-                [NOTA TÉCNICA]: Observe o padrão de comportamento das
-                componentes \(x\) e \(y\) do campo e relacione com movimentos
-                circulares. Para a componente \(z\), analise sua dependência das
-                outras variáveis.
+                [NOTA TÉCNICA]: Para (b), compare com o EX-02 — o campo
+                \((y, -x)\) é o negativo de \((-y, x)\). Para (c), pense
+                em como a rotação no plano \(xy\) combinada com o movimento
+                vertical cria um padrão helicoidal (em espiral).
               
 </div>
-</details>
 </details>
 <details>
 <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
 <div class="solution">
 <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) Calculando o fluxo nos pontos dados:</p>
-<p>Para \(P_1(1,1,1)\):</p>
-<p>
-                  \[\vec{V}(1,1,1) = \begin{pmatrix} 1 \\ -1 \\ 1
-                  \end{pmatrix}\]
-                </p>
-<p>Para \(P_2(2,-2,3)\):</p>
-<p>
-                  \[\vec{V}(2,-2,3) = \begin{pmatrix} -2 \\ -2 \\ 3
-                  \end{pmatrix}\]
-                </p>
+<p>(a) Valores do campo:</p>
+<p>\[\vec{V}(1,1,1) = \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}\]</p>
+<p>\[\vec{V}(2,-2,3) = \begin{pmatrix} -2 \\ -2 \\ 3 \end{pmatrix}\]</p>
 <p>(b) COMPORTAMENTO NO PLANO \(xy\):</p>
-<p>Restringindo o campo ao plano \(xy\), temos:</p>
 <p>
-                  \[\vec{V}_{xy}(x,y) = \begin{pmatrix} y \\ -x \end{pmatrix}\]
+                  Com \(z=0\), o campo fica \(\vec{V}_{xy}(x,y) = (y, -x)\).
+                  Note que este é o negativo do campo do EX-02, que era
+                  \((-y, x)\). O campo \((y, -x)\) também é circular, mas com
+                  sentido HORÁRIO (em vez de anti-horário). Os vetores são
+                  tangentes aos círculos centrados na origem.
                 </p>
-<p>
-                  Este campo corresponde a um movimento de rotação horária
-                  centrado na origem. Para qualquer ponto \((x,y)\), o vetor
-                  velocidade é perpendicular ao raio vetor que liga a origem ao
-                  ponto, formando um padrão circular. A magnitude da velocidade
-                  aumenta proporcionalmente à distância da origem.
-                </p>
-<p>(c) VARIAÇÃO AO LONGO DO EIXO \(z\):</p>
-                A componente \(z\) do campo de velocidade é simplesmente \(z\),
-                o que significa que:
-                <ul>
-<li>
-                    Se \(z &gt; 0\), a partícula se move para cima (sentido
-                    positivo do eixo \(z\))
-                  </li>
-<li>
-                    Se \(z &lt; 0\), a partícula se move para baixo (sentido
-                    negativo do eixo \(z\))
-                  </li>
-<li>Se \(z = 0\), não há movimento vertical</li>
+<p>(c) COMPONENTE \(z\) E MOVIMENTO 3D:</p>
+<ul>
+<li>Se \(z > 0\): a componente vertical é positiva, a partícula sobe.</li>
+<li>Se \(z < 0\): a componente vertical é negativa, a partícula desce.</li>
+<li>Se \(z = 0\): não há movimento vertical.</li>
 </ul>
 <p>
-                  A velocidade na direção \(z\) aumenta linearmente com a
-                  distância ao plano \(xy\). Combinando este movimento vertical
-                  com a rotação no plano \(xy\), obtemos um movimento helicoidal
-                  (em espiral) cuja "abertura" aumenta com \(|z|\).
-                </p>
-<p>
-                  APLICAÇÃO: Este tipo de campo é relevante para modelar
-                  vórtices atmosféricos e turbulências que podem afetar veículos
-                  espaciais durante a reentrada.
+                  A velocidade vertical cresce linearmente com \(|z|\).
+                  Combinando a rotação horária no plano \(xy\) com o movimento
+                  vertical, obtemos um movimento HELICOIDAL (em espiral) — a
+                  partícula gira enquanto sobe ou desce. A "abertura" da
+                  espiral aumenta com \(|z|\). Este tipo de campo é relevante
+                  para modelar vórtices atmosféricos durante reentrada.
                 </p>
 </div>
 </details>
