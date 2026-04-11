@@ -5,55 +5,64 @@
     APROVADA EM 08/OUT/1962]
   </div>
   <p>
-    No exercício anterior, identificamos visualmente um campo expansivo.
-    Agora vamos <em>quantificar</em> essa expansão. A divergência é a medida
-    exata de quanto o campo "jorra" em cada ponto.
+    No exercício anterior, vimos que o fluxo de um campo constante por uma
+    superfície plana é simples: \\(\Phi = \vec{F} \cdot \hat{n} \times
+    \text{área}\\). Agora vamos aplicar esse conceito a um campo que
+    <em>varia no espaço</em> — o primeiro passo rumo à divergência.
   </p>
   <p>
-    Considere o campo vetorial \[ \vec{F}(x, y, z) = \bigl( x^2 y,\; 2y
-    z,\; 3z \bigr). \]
+    Considere o campo vetorial \\(\vec{F}(x, y, z) = (x,\; 0,\; 0)\\) — um
+    campo que aponta na direção \\(x\\) com magnitude crescente.
+    Imagine "vento" que sopra mais forte conforme avançamos em \\(x\\).
   </p>
-<p><strong>(a)</strong> Identifique as componentes \(P = x^2 y\), \(Q = 2yz\) e
-      \(R = 3z\). Lembre-se que o operador divergente soma as derivadas
-      parciais de cada componente em relação à "sua" variável: \(\nabla
-      \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial
-      Q}{\partial y} + \frac{\partial R}{\partial z}\). Calcule cada
-      termo separadamente.</p>
-    <p><strong>(b)</strong> Some os três termos para obter a divergência em função de
-      \(x\), \(y\) e \(z\).</p>
-    <p><strong>(c)</strong> Avalie a divergência na origem \((0,0,0)\). O resultado é
-      positivo, negativo ou zero? O que isso indica sobre o comportamento
-      do campo na origem?</p>
+<p><strong>(a)</strong> Calcule o fluxo de \\(\vec{F}\\) pela face \\(x = +1\\) do cubo
+      \\([-1, 1]^3\\). Nessa face, \\(\hat{n} = (1, 0, 0)\\) (normal para
+      fora). Qual é o valor de \\(\vec{F}\\) em todos os pontos dessa face?
+      E o fluxo?</p>
+  <p><strong>(b)</strong> Agora calcule o fluxo pela face \\(x = -1\\). A normal aponta
+      <em>para fora</em>, então \\(\hat{n} = (-1, 0, 0)\\). Qual é o
+      valor de \\(\vec{F}\\) nessa face? O fluxo é positivo ou negativo?</p>
+  <p><strong>(c)</strong> Subtraia o fluxo que entra (face \\(x=-1\\)) do fluxo que sai
+      (face \\(x=+1\\)). Esse é o <em>fluxo líquido</em> nas duas faces
+      \\(x\\). O resultado é positivo, negativo ou zero? O que isso indica
+      sobre esse campo na região do cubo?</p>
 <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-    <div class="hint">
-      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(x^2 y)\),
-      tratamos \(y\) como constante. A derivada de \(x^2\) é \(2x\),
-      então o resultado é \(2xy\). Repita o mesmo raciocínio para os outros
-      termos.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Cálculos parciais:</strong></p>
-      <p>
-        \[ \frac{\partial P}{\partial x} = \frac{\partial}{\partial
-        x}(x^2 y) = 2x y \]
-        \[ \frac{\partial Q}{\partial y} = \frac{\partial}{\partial
-        y}(2 y z) = 2z \]
-        \[ \frac{\partial R}{\partial z} = \frac{\partial}{\partial
-        z}(3 z) = 3 \]
-      </p>
-      <p><strong>(b) Divergência total:</strong></p>
-      <p>\[ \nabla \cdot \vec{F} = 2xy + 2z + 3 \]</p>
-      <p><strong>(c) Avaliação na origem:</strong></p>
-      <p>
-        \(\nabla \cdot \vec{F}(0,0,0) = 2(0)(0) + 2(0) + 3 = 3\).<br />
-        Divergência positiva indica <em>fonte</em> neste ponto — o campo
-        "jorra para fora" na origem, confirmando nossa intuição do exercício
-        anterior.
-      </p>
-    </div>
-  </details>
+  <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+  <div class="hint">
+    [NOTA TÉCNICA]: Na face \\(x = +1\\), todos os pontos têm \\(x = 1\\),
+    então \\(\vec{F} = (1, 0, 0)\\) em toda a face. O produto escalar
+    \\(\vec{F} \cdot \hat{n} = (1,0,0) \cdot (1,0,0) = 1\\). A face
+    é um quadrado de lado 2 (vai de \\(y=-1\\) a \\(y=1\\) e \\(z=-1\\) a
+    \\(z=1\\)), então a área é \\(2^2 = 4\\).
+  </div>
+</details>
+<details>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Fluxo pela face \\(x = +1\\):</strong></p>
+    <p>Nessa face: \\(\vec{F} = (1, 0, 0)\\), \\(\hat{n} = (1, 0, 0)\\).
+      \\[\Phi_{+} = \vec{F} \cdot \hat{n} \times \text{área} = 1 \times 4
+      = 4\\]</p>
+    <p>O fluxo é positivo: o campo "sai" pela face direita.</p>
 
+    <p><strong>(b) Fluxo pela face \\(x = -1\\):</strong></p>
+    <p>Nessa face: \\(\vec{F} = (-1, 0, 0)\\), \\(\hat{n} = (-1, 0, 0)\\).
+      \\[\Phi_{-} = \vec{F} \cdot \hat{n} \times \text{área} = (-1)(-1)
+      \times 4 = +4\\]</p>
+    <p>O fluxo também é positivo (em relação à normal para fora). Mas
+      fisicamente, o campo aponta <em>para dentro</em> do cubo nesta face.
+      O campo "entra" pela esquerda.</p>
+
+    <p><strong>(c) Fluxo líquido nas faces \\(x\\):</strong></p>
+    <p>\\[\Phi_{\text{líquido}} = \Phi_{+} + \Phi_{-} = 4 + 4 = 8\\]</p>
+    <p>Resultado <strong>positivo</strong>: mais campo sai do que entra
+      pelas faces \\(x\\). Isso indica que o campo se "expande" na direção
+      \\(x\\) — há um "excesso" de fluxo saindo. Compare com o campo
+      constante do Ex 01, onde o fluxo que entrava equilibrava o que saía.
+      Aqui o campo <em>varia com \\(x\\)</em>, e essa variação cria um
+      desequilíbrio.</p>
+    <p><em>Significado:</em> Quando um campo muda de intensidade ao longo
+      de uma direção, o fluxo que sai de um volume não é igual ao que
+      entra. Essa diferença é justamente o que a divergência medirá.</p>
+  </div>
+</details>

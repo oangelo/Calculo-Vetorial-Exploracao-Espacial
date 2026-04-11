@@ -5,48 +5,67 @@
     1973]
   </div>
   <p>
-    Já vimos campos com divergência positiva, negativa, constante e zero. Agora
-    vamos combinar: um campo onde a divergência pode mudar de sinal dependendo
-    do ponto.
+    Já calculamos divergências de vários campos e interpretamos seus
+    significados. Agora vamos abordar um problema mais abstrato: se
+    alguém nos diz o valor da divergência em cada ponto, o que podemos
+    concluir sobre o campo?
   </p>
   <p>
-    Considere o campo \[\vec{F}(x,y,z) = (x^2 z,\; -2xyz,\; xy^2)\].
+    Suponha que um campo \\(\vec{F}(x,y,z)\\) tem divergência
+    \\(\nabla \cdot \vec{F} = 3\\) (constante positiva) em todo o espaço.
   </p>
-<p><strong>(a)</strong> Calcule cada termo da divergência separadamente. Note que o campo
-      tem uma "simetria" entre os termos.</p>
-    <p><strong>(b)</strong> Simplifique a soma total. O resultado depende de quais variáveis?</p>
-    <p><strong>(c)</strong> Classifique as regiões do espaço: onde a divergência é positiva,
-      onde é negativa, e onde é zero? (Dica: analise o sinal do resultado como
-      função de \(x\) e \(z\).)</p>
+<p><strong>(a)</strong> Sabemos que \\(\vec{F} = (x, y, z)\\) satisfaz essa condição
+      (Ex 05). Mas \\(\vec{F}_2 = (3x, 0, 0)\\) também funciona — verifique
+      que \\(\nabla \cdot \vec{F}_2 = 3\\). E \\(\vec{F}_3 = (x+y+z,\; x,\;
+      y)\\)? Calcule e verifique.</p>
+  <p><strong>(b)</strong> Dado apenas o valor da divergência, é possível determinar
+      \\(\vec{F}\\) de forma única? Justifique com os exemplos do item (a).</p>
+  <p><strong>(c)</strong> O que a divergência nos diz, então? Se \\(\nabla \cdot
+      \vec{F} = 3\\) em todos os pontos, qual propriedade do campo
+      <em>todos</em> os campos com essa divergência compartilham? (Dica:
+      pense na vazão líquida por unidade de volume.)</p>
 <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-    <div class="hint">
-      [NOTA TÉCNICA]: \(\frac{\partial}{\partial x}(x^2 z) = 2xz\),
-      \(\frac{\partial}{\partial y}(-2xyz) = -2xz\), e
-      \(\frac{\partial}{\partial z}(xy^2) = 0\). Note a cancelação entre
-      os dois primeiros termos!
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Termos individuais:</strong></p>
-      <p>
-        \[ \frac{\partial}{\partial x}(x^2 z) = 2xz \]
-        \[ \frac{\partial}{\partial y}(-2xyz) = -2xz \]
-        \[ \frac{\partial}{\partial z}(xy^2) = 0 \]
-      </p>
-      <p><strong>(b) Divergência total:</strong></p>
-      <p>\[ \nabla \cdot \vec{F} = 2xz - 2xz + 0 = 0 \]</p>
-      <p>O resultado é zero em todo o espaço! Este campo é
-        <strong>solenoidal</strong>.</p>
+  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+  <div class="hint">
+    [NOTA TÉCNICA]: Para \\(\vec{F}_2 = (3x, 0, 0)\\), apenas o primeiro
+    termo contribui: \\(\frac{\partial(3x)}{\partial x} = 3\\). Para
+    \\(\vec{F}_3 = (x+y+z, x, y)\\): \\(\frac{\partial(x+y+z)}{\partial x}
+    = 1\\), \\(\frac{\partial x}{\partial y} = 0\\),
+    \\(\frac{\partial y}{\partial z} = 0\\).
+  </div>
+</details>
+<details>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Verificação dos exemplos:</strong></p>
+    <p>\\(\vec{F} = (x, y, z)\\): \\(\nabla \cdot \vec{F} = 1 + 1 + 1
+      = 3\\). ✓</p>
+    <p>\\(\vec{F}_2 = (3x, 0, 0)\\): \\(\nabla \cdot \vec{F}_2 = 3 + 0
+      + 0 = 3\\). ✓</p>
+    <p>\\(\vec{F}_3 = (x+y+z, x, y)\\): \\(\nabla \cdot \vec{F}_3 = 1
+      + 0 + 0 = 1 \neq 3\\). ✗ — este campo <em>não</em> satisfaz.</p>
+    <p>Mas \\(\vec{F}_4 = (3x+y, y, z)\\) funciona: \\(\nabla \cdot
+      \vec{F}_4 = 3 + 1 + 1 = 5 \neq 3\\). ✗.</p>
+    <p>Exemplo que funciona: \\(\vec{F}_5 = (3x+y, -y, 0)\\):
+      \\(\nabla \cdot \vec{F}_5 = 3 + (-1) + 0 = 2 \neq 3\\).</p>
+    <p>Melhor exemplo: \\(\vec{F}_6 = (3x, y, -y)\\):
+      \\(\nabla \cdot \vec{F}_6 = 3 + 1 + (-1) = 3\\). ✓</p>
+    <p>Conclusão: há <strong>infinitos</strong> campos com divergência 3.</p>
 
-      <p><strong>(c) Análise:</strong></p>
-      <p>Com divergência identicamente zero, o campo não possui nem fontes nem
-        sumidouros em lugar algum. O que "entra" em qualquer região fechada é
-        exatamente o que "sai" pela fronteira. Note como o termo \(x^2 z\) no
-        primeiro componente e \(-2xyz\) no segundo se "compensam"
-        perfeitamente — uma construção intencional de campo solenoidal.</p>
-    </div>
-  </details>
+    <p><strong>(b) Unicidade:</strong></p>
+    <p>A divergência <em>não</em> determina \\(\vec{F}\\) de forma única.
+      Dois campos completamente diferentes podem ter a mesma divergência.
+      A divergência é uma informação escalar (um número por ponto), mas
+      o campo é um vetor (três números por ponto). É como saber que um
+      objeto tem massa \\(m\\) — isso não determina sua forma.</p>
 
+    <p><strong>(c) O que a divergência nos diz:</strong></p>
+    <p>Todos os campos com \\(\nabla \cdot \vec{F} = 3\\) compartilham
+      a mesma propriedade: em qualquer volume \\(V\\), a vazão líquida
+      total é \\(3V\\). A taxa de "expansão" por unidade de volume é 3,
+      independentemente de como o campo se comporta em detalhe.</p>
+    <p>A diverência é uma informação sobre o comportamento
+      <em>macroscópico</em> (quanto sai vs. quanto entra), não sobre a
+      direção ou forma dos vetores individuais.</p>
+  </div>
+</details>

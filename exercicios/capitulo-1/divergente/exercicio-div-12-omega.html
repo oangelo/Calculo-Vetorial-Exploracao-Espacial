@@ -1,51 +1,74 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
   <div class="context">
-    ORIGEM: Seção de Teoria de Campos — Pesquisa Fundamental [DOCUMENTO
-    ULTRASECRETO, 1960]
+    ORIGEM: Departamento de Gravimetria Espacial — Projeto Vanguard [RELATÓRIO
+    CLASSIFICADO, 1957]
   </div>
   <p>
-    Para encerrar esta lista, um problema de construção que exige todo o
-    conhecimento acumulado. Você deve <em>criar</em> um campo com propriedades
-    específicas — uma habilidade essencial para engenheiros e físicos.
+    Para encerrar esta lista, vamos aplicar tudo que aprendemos sobre
+    divergência a um dos campos mais importantes da física: o campo
+    gravitacional.
   </p>
   <p>
-    Encontre um campo vetorial \(\vec{F}\) com divergência constante \(c\)
-    e rotacional zero. Diferente do Exercício 10 (onde \(c = 3\) e a resposta
-    era \((x,y,z)\)), agora queremos a solução <em>geral</em> para qualquer
-    \(c\).
+    A Lei da Gravitação Universal de Newton diz que a força gravitacional
+    exercida por uma massa \\(M\\) (na origem) sobre uma massa de prova
+    no ponto \\((x,y,z)\\) é:
+    \\[\vec{g}(x,y,z) = -\frac{GM}{(x^2+y^2+z^2)^{3/2}}(x,\; y,\; z)\\]
+    onde \\(G\\) é a constante gravitacional e \\(r = \sqrt{x^2+y^2+z^2}\\).
+    O sinal negativo indica que a força é <em>atratora</em> — aponta
+    <em>para</em> a origem, não para fora.
   </p>
-<p><strong>(a)</strong> Generalize o raciocínio do Exercício 10. Se \(\vec{F} =
-      (ax,\; by,\; cz)\), a divergência é \(a + b + c\) e o rotacional
-      é zero. Como escolher \(a\), \(b\), \(c\) de modo que
-      \(a + b + c = c\) (constante desejada)?</p>
-    <p><strong>(b)</strong> Existem múltiplas respostas? Justifique. (Dica: a escolha
-      \(a = b = c/3\) funciona, mas é a única?)</p>
-    <p><strong>(c)</strong> Verifique explicitamente que seu campo satisfaz ambas as
-      condições.</p>
+<p><strong>(a)</strong> Compare \\(\vec{g}\\) com o campo \\(\vec{F}\\) do Exercício 08
+      (onde mostramos que \\(\nabla \cdot \vec{F} = 0\\) para
+      \\((x,y,z) \neq (0,0,0)\\)). Qual é a relação entre \\(\vec{g}\\)
+      e \\(\vec{F}\\)?</p>
+  <p><strong>(b)</strong> Usando o resultado do Exercício 08 e a linearidade do
+      operador divergente (\\(\nabla \cdot (c\vec{F}) = c\,\nabla \cdot
+      \vec{F}\\)), determine \\(\nabla \cdot \vec{g}\\) para
+      \\((x,y,z) \neq (0,0,0)\\) <em>sem recalcular derivadas</em>.</p>
+  <p><strong>(c)</strong> Interprete o resultado fisicamente: se a divergência do campo
+      gravitacional é zero fora da massa, o que isso implica sobre "fontes"
+      e "sumidouros" do campo? Onde está a "fonte" (ou "sumidouro") de
+      todo o fluxo gravitacional? Por que a divergência não captura isso
+      na origem?</p>
 <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Generalização:</strong></p>
-      <p>Queremos \(a + b + c = c\) (constante) e rotacional zero. A escolha
-        mais natural é \(a = b = c/3\) (usando \(c\) como constante,
-        renomeando: \(a = b = k = c/3\)).</p>
-      <p>\[ \vec{F} = \frac{c}{3}(x,\; y,\; z) \]</p>
-      <p>\[ \nabla \cdot \vec{F} = \frac{c}{3}(1 + 1 + 1) = c
-        \quad \checkmark \]</p>
-      <p>\[ \nabla \times \vec{F} = \vec{0} \quad \checkmark \]</p>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Relação entre \\(\vec{g}\\) e \\(\vec{F}\\):</strong></p>
+    <p>Do Exercício 08: \\(\vec{F} = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\\).
+      Então:</p>
+    <p>\[\vec{g} = -GM \cdot \vec{F}\]</p>
+    <p>O campo gravitacional é o campo radial \\(1/r^2\\) multiplicado
+      pela constante \\(-GM\\).</p>
 
-      <p><strong>(b) Unicidade:</strong></p>
-      <p>Não é a única resposta. Qualquer campo da forma \((ax, by, cz)\)
-        com \(a + b + c = c\) funciona. Exemplo: \(\vec{F} = (c \cdot x,
-        0, 0)\) também satisfaz. A escolha simétrica \(a = b = c/3\) é a mais
-        elegante por isotropia — o campo "cresce" igualmente em todas as
-        direções.</p>
+    <p><strong>(b) Divergência sem recalcular:</strong></p>
+    <p>Pela linearidade:</p>
+    <p>\[\nabla \cdot \vec{g} = \nabla \cdot (-GM \cdot \vec{F})
+      = -GM \cdot \nabla \cdot \vec{F}\]</p>
+    <p>Do Exercício 08, \\(\nabla \cdot \vec{F} = 0\\) para
+      \\((x,y,z) \neq (0,0,0)\\). Portanto:</p>
+    <p>\[\nabla \cdot \vec{g} = -GM \cdot 0 = 0\]</p>
+    <p>A divergência do campo gravitacional é <strong>zero</strong>
+      em qualquer ponto fora da massa central.</p>
 
-      <p><strong>(c) Verificação geral:</strong></p>
-      <p>Para \(\vec{F} = \frac{c}{3}(x, y, z)\): o rotacional é zero pois
-        cada componente depende apenas de sua variável, e a divergência é
-        \(\frac{c}{3}(1 + 1 + 1) = c\), como desejado.</p>
-    </div>
-  </details>
-
+    <p><strong>(c) Interpretação física:</strong></p>
+    <p>Fora da massa, o campo gravitacional é <strong>solenoidal</strong>:
+      o que "entra" em qualquer região é exatamente o que "sai". Não há
+      criação nem destruição de fluxo gravitacional no espaço vazio.</p>
+    <p>A "fonte" de todo o fluxo gravitacional está na massa \\(M\\) na
+      origem. É como se toda a "criação" de campo estivesse concentrada
+      em um único ponto. A divergência não captura isso porque o campo
+      \\(\vec{g}\\) não está definido na origem (\\(1/r^2 \to \infty\\)
+      quando \\(r \to 0\\)).</p>
+    <p><em>Significado para navegação orbital:</em> No espaço entre
+      corpos celestes (longe de massas), o campo gravitacional não cria
+      nem destrói fluxo. Ele simplesmente "flui" das regiões de alta
+      para baixa intensidade. A divergência zero nessa região significa
+      que as órbitas são estáveis — não há "vazamentos" de força
+      gravitacional no caminho.</p>
+    <p><em>Nota:</em> O caso \\(r = 0\\) (na massa) requer o conceito
+      de função delta de Dirac para ser tratado rigorosamente — o que
+      está além do escopo deste curso. Para \\(r \neq 0\\), o resultado
+      \\(\nabla \cdot \vec{g} = 0\\) é exato e completo.</p>
+  </div>
+</details>

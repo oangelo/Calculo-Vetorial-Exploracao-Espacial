@@ -5,49 +5,78 @@
     PARCIAL OBTIDO EM 12/OUT/1962]
   </div>
   <p>
-    Já calculamos divergências de campos polinomiais. Agora vamos enriquecer
-    com funções exponenciais — o mesmo procedimento, mas com derivadas que
-    você já conhece de cálculo de uma variável.
+    Nos dois exercícios anteriores, calculamos o fluxo por superfícies
+    individuais. Agora vamos fazer algo mais ambicioso: calcular o fluxo
+    total por <strong>todas as seis faces</strong> de um cubo. Esse é o
+    conceito de <em>vazão líquida</em> — a diferença total entre o que
+    sai e o que entra.
   </p>
   <p>
-    Dado o campo vetorial \(\vec{H}(x, y, z) = \bigl(e^{x} y,\; x
-    y^2,\; z^3 - x\bigr)\), calcule a divergência \(\nabla \cdot
-    \vec{H}\).
+    Considere o campo \\(\vec{F}(x, y, z) = (2x,\; y,\; z)\\) e o cubo
+    \\([-1, 1]^3\\).
   </p>
-<p><strong>(a)</strong> Calcule separadamente \(\frac{\partial}{\partial x}(e^x y)\),
-      \(\frac{\partial}{\partial y}(x y^2)\) e \(\frac{\partial}{\partial
-      z}(z^3 - x)\).</p>
-    <p><strong>(b)</strong> Some os três termos. A divergência resultante depende de quais
-      variáveis?</p>
-    <p><strong>(c)</strong> Existe algum ponto onde \(\nabla \cdot \vec{H} = 0\)? Tente
-      encontrar. (Dica: comece pela origem.)</p>
+<p><strong>(a)</strong> Calcule o fluxo pela face \\(x = +1\\) (normal \\(\hat{n} =
+      (1,0,0)\\)). Nessa face, \\(\vec{F} = (2, y, z)\\). O produto
+      escalar \\(\vec{F} \cdot \hat{n}\\) dá um valor que depende de
+      \\(y\\) e \\(z\\)? Calcule a integral sobre a face (dica: para um
+      campo constante em relação às variáveis da face, o fluxo é o produto
+      escalar vezes a área).</p>
+  <p><strong>(b)</strong> Repita para a face \\(x = -1\\) (normal \\(\hat{n} =
+      (-1,0,0)\\)). Some os fluxos das duas faces \\(x\\).</p>
+  <p><strong>(c)</strong> Faça o mesmo para as faces \\(y = +1\\) e \\(y = -1\\),
+      e para \\(z = +1\\) e \\(z = -1\\). Some <em>todos</em> os fluxos
+      das 6 faces para obter a vazão líquida total. O resultado é positivo,
+      negativo ou zero? Interprete.</p>
 <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-    <div class="hint">
-      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(e^x y)\),
-      lembre-se de que \(\frac{d}{dx}(e^x) = e^x\), e \(y\) é tratado
-      como constante. Para \(\frac{\partial}{\partial y}(x y^2)\), use a
-      regra da potência em \(y\) (tratando \(x\) como constante).
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Cálculos parciais:</strong></p>
-      <p>
-        \[ \frac{\partial}{\partial x}(e^x y) = e^x y \]
-        \[ \frac{\partial}{\partial y}(x y^2) = 2xy \]
-        \[ \frac{\partial}{\partial z}(z^3 - x) = 3z^2 \]
-      </p>
-      <p><strong>(b) Divergência total:</strong></p>
-      <p>\[ \nabla \cdot \vec{H} = e^x y + 2xy + 3z^2 \]</p>
-      <p>A divergência depende de \(x\), \(y\) e \(z\).</p>
-      <p><strong>(c) Ponto onde divergência se anula:</strong></p>
-      <p>
-        Na origem \((0,0,0)\): \(e^0 \cdot 0 + 2(0)(0) + 3(0)^2 = 0 + 0 + 0 = 0\).
-        A origem é um ponto onde a divergência se anula — nem fonte nem
-        sumidouro.
-      </p>
-    </div>
-  </details>
+  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+  <div class="hint">
+    [NOTA TÉCNICA]: Na face \\(x = +1\\), \\(\vec{F} \cdot \hat{n} = 2x = 2(1) = 2\\).
+    Na face \\(x = -1\\), \\(\vec{F} \cdot \hat{n} = 2x = 2(-1) = -2\\), mas
+    como \\(\hat{n} = (-1,0,0)\\), o produto escalar é \\((-2)(-1) = 2\\).
+    Para \\(y\\): na face \\(y=+1\\), \\(\vec{F} \cdot \hat{n} = y \cdot 1 = 1\\).
+    Na face \\(y=-1\\), \\(\vec{F} \cdot \hat{n} = y \cdot (-1) = (-1)(-1) = 1\\).
+    Área de cada face: \\(2 \times 2 = 4\\).
+  </div>
+</details>
+<details>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Faces \\(x\\):</strong></p>
+    <p>Face \\(x = +1\\): \\(\vec{F} \cdot \hat{n} = 2x = 2\\). Fluxo:
+      \\(2 \times 4 = 8\\).</p>
+    <p>Face \\(x = -1\\): \\(\vec{F} \cdot \hat{n} = 2x \cdot (-1) = -2 \cdot (-1) = 2\\).
+      Fluxo: \\(2 \times 4 = 8\\).</p>
+    <p>Total faces \\(x\\): \\(8 + 8 = 16\\).</p>
 
+    <p><strong>(b) Faces \\(y\\):</strong></p>
+    <p>Face \\(y = +1\\): \\(\vec{F} \cdot \hat{n} = y = 1\\). Fluxo:
+      \\(1 \times 4 = 4\\).</p>
+    <p>Face \\(y = -1\\): \\(\vec{F} \cdot \hat{n} = y \cdot (-1) = (-1)(-1) = 1\\).
+      Fluxo: \\(1 \times 4 = 4\\).</p>
+    <p>Total faces \\(y\\): \\(4 + 4 = 8\\).</p>
+
+    <p><strong>(c) Faces \\(z\\) e vazão total:</strong></p>
+    <p>Face \\(z = +1\\): \\(\vec{F} \cdot \hat{n} = z = 1\\). Fluxo:
+      \\(1 \times 4 = 4\\).</p>
+    <p>Face \\(z = -1\\): \\(\vec{F} \cdot \hat{n} = z \cdot (-1) = (-1)(-1) = 1\\).
+      Fluxo: \\(1 \times 4 = 4\\).</p>
+    <p>Total faces \\(z\\): \\(4 + 4 = 8\\).</p>
+
+    <p>\\[\Phi_{\text{total}} = 16 + 8 + 8 = 32\\]</p>
+
+    <p>A vazão líquida é <strong>positiva</strong>: mais campo sai do cubo
+      do que entra. O cubo comporta-se como uma "fonte" — o campo se
+      expande dentro dele.</p>
+
+    <p><em>Significado:</em> A vazão líquida (fluxo total pela superfície
+      fechada) mede se há mais "nascimento" ou "desaparecimento" de campo
+      dentro do volume. Esse é exatamente o conceito que a divergência
+      quantificará: vazão líquida por unidade de volume, quando o volume
+      tende a zero.</p>
+
+    <p><em>Verificação rápida:</em> O volume do cubo é \\(2^3 = 8\\).
+      A vazão por unidade de volume é \\(32/8 = 4\\). Compare com
+      \\(\nabla \cdot \vec{F} = 2 + 1 + 1 = 4\\). Coincidência? Não —
+      é a definição de divergência!</p>
+  </div>
+</details>

@@ -1,51 +1,83 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
   <div class="context">
-    ORIGEM: Departamento de Gravimetria Espacial — Projeto Vanguard [RELATÓRIO
-    CLASSIFICADO, 1957]
+    ORIGEM: Seção de Teoria de Campos — Pesquisa Fundamental [DOCUMENTO
+    ULTRASECRETO, 1960]
   </div>
   <p>
-    Muitos campos físicos importantes são radiais — apontam diretamente para
-    longe (ou em direção) de um centro. Vamos investigar como a divergência
-    se comporta para diferentes "forças" radiais.
+    Ao longo desta lista, trabalhamos com divergência e, em momentos
+    anteriores, com rotacional. Agora vamos conectar os dois conceitos
+    de forma rigorosa, provando uma identidade vetorial fundamental.
   </p>
   <p>
-    Considere o campo gravitacional simplificado \[\vec{g}(x,y,z) =
-    -\frac{1}{(x^2 + y^2 + z^2)^{3/2}}(x,\; y,\; z)\] para
-    \((x,y,z) \neq (0,0,0)\).
+    A identidade \\(\nabla \times (\nabla f) = \vec{0}\\) diz que o
+    <strong>rotacional de um gradiente é sempre nulo</strong>. Geometricamente:
+    um campo que aponta na "direção de maior crescimento" de uma função
+    não pode ter rotação.
   </p>
-<p><strong>(a)</strong> Compare \(\vec{g}\) com o campo do Exercício 08. Qual é a
-      relação entre eles? (Dica: \(\vec{g}\) é \(-\vec{F}\) do Ex 08,
-      multiplicado por uma constante.)</p>
-    <p><strong>(b)</strong> Usando o resultado do Exercício 08 (onde mostramos que
-      \(\nabla \cdot \vec{F} = 0\) para esse campo), determine
-      \(\nabla \cdot \vec{g}\) <em>sem recalcular</em>. Explique sua
-      linha de raciocínio.</p>
-    <p><strong>(c)</strong> O resultado significa que a divergência do campo gravitacional é
-      zero fora da massa. O que isso implica sobre fontes e sumidouros? (Dica:
-      pense no que acontece perto da massa — a divergência não é bem definida
-      na origem.)</p>
+<p><strong>(a)</strong> Calcule o gradiente de \\(f(x,y,z) = x^2 y + yz^3\\). Ou seja,
+      encontre \\(\nabla f = \left(\frac{\partial f}{\partial x},\;
+      \frac{\partial f}{\partial y},\; \frac{\partial f}{\partial z}\right)\\).</p>
+  <p><strong>(b)</strong> Agora calcule o rotacional \\(\nabla \times (\nabla f)\\).
+      Lembre-se: para \\(\vec{G} = (G_1, G_2, G_3)\\),
+      \\[\nabla \times \vec{G} = \left(\frac{\partial G_3}{\partial y}
+      - \frac{\partial G_2}{\partial z},\; \frac{\partial G_1}{\partial z}
+      - \frac{\partial G_3}{\partial x},\; \frac{\partial G_2}{\partial x}
+      - \frac{\partial G_1}{\partial y}\right)\\]
+      Substitua \\(\vec{G} = \nabla f\\) e verifique que cada componente
+      do rotacional é zero.</p>
+  <p><strong>(c)</strong> Observe que, no cálculo, aparecem "derivadas mistas" como
+      \\(\frac{\partial^2 f}{\partial y \partial x}\\) e
+      \\(\frac{\partial^2 f}{\partial x \partial y}\\). Pelo
+      <strong>Teorema de Clairaut</strong> (ou "igualdade das derivadas
+      mistas"), se \\(f\\) tem derivadas parciais contínuas, então
+      \\(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}
+      {\partial y \partial x}\\). É isso que faz cada componente do
+      rotacional se anular. Explique como cada termo do rotacional envolve
+      um par de derivadas mistas que se cancelam.</p>
 <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Comparação:</strong></p>
-      <p>Do Ex 08, \(\vec{F} = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\).
-        Então \(\vec{g} = -\vec{F}\).</p>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Gradiente:</strong></p>
+    <p>\[\frac{\partial f}{\partial x} = 2xy\]
+      \[\frac{\partial f}{\partial y} = x^2 + z^3\]
+      \[\frac{\partial f}{\partial z} = 3yz^2\]</p>
+    <p>\[\nabla f = (2xy,\; x^2 + z^3,\; 3yz^2)\]</p>
 
-      <p><strong>(b) Divergência:</strong></p>
-      <p>\(\nabla \cdot \vec{g} = \nabla \cdot (-\vec{F}) =
-        -\nabla \cdot \vec{F}\). Do Ex 08, \(\nabla \cdot \vec{F} = 0\)
-        para \((x,y,z) \neq (0,0,0)\). Portanto:
-        \[ \nabla \cdot \vec{g} = -0 = 0 \]</p>
-      <p>Não precisamos recalcular — usamos o resultado anterior por
-        linearidade do operador divergente.</p>
+    <p><strong>(b) Rotacional do gradiente:</strong></p>
+    <p>Seja \\(\vec{G} = \nabla f = (2xy, x^2 + z^3, 3yz^2)\\).</p>
+    <p>Componente \\(\hat{i}\\): \\(\frac{\partial G_3}{\partial y} -
+      \frac{\partial G_2}{\partial z} = \frac{\partial(3yz^2)}{\partial y}
+      - \frac{\partial(x^2+z^3)}{\partial z} = 3z^2 - 3z^2 = 0\\)</p>
+    <p>Componente \\(\hat{j}\\): \\(\frac{\partial G_1}{\partial z} -
+      \frac{\partial G_3}{\partial x} = \frac{\partial(2xy)}{\partial z}
+      - \frac{\partial(3yz^2)}{\partial x} = 0 - 0 = 0\\)</p>
+    <p>Componente \\(\hat{k}\\): \\(\frac{\partial G_2}{\partial x} -
+      \frac{\partial G_1}{\partial y} = \frac{\partial(x^2+z^3)}{\partial x}
+      - \frac{\partial(2xy)}{\partial y} = 2x - 2x = 0\\)</p>
+    <p>\[\nabla \times (\nabla f) = (0, 0, 0) = \vec{0} \quad \checkmark\]</p>
 
-      <p><strong>(c) Interpretação:</strong></p>
-      <p>Fora da massa (origem), o campo gravitacional não tem nem fontes nem
-        sumidouros — o campo "flui" sem se criar nem destruir. Na origem, onde
-        está a massa, a divergência não está definida (o campo diverge). É
-        como se toda a "fonte" estivesse concentrada em um único ponto. Esse
-        tipo de análise é fundamental em eletrostática e gravidade.</p>
-    </div>
-  </details>
-
+    <p><strong>(c) Derivadas mistas e Clairaut:</strong></p>
+    <p>Cada componente do rotacional envolve derivadas de <em>componentes
+      diferentes</em> do gradiente em <em>variáveis diferentes</em>:</p>
+    <p>Componente \\(\hat{i}\\): \\(\frac{\partial}{\partial y}\left(
+      \frac{\partial f}{\partial z}\right) - \frac{\partial}{\partial z}
+      \left(\frac{\partial f}{\partial y}\right) =
+      \frac{\partial^2 f}{\partial y \partial z} - \frac{\partial^2 f}
+      {\partial z \partial y} = 0\\) (Clairaut).</p>
+    <p>Componente \\(\hat{j}\\): \\(\frac{\partial}{\partial z}\left(
+      \frac{\partial f}{\partial x}\right) - \frac{\partial}{\partial x}
+      \left(\frac{\partial f}{\partial z}\right) =
+      \frac{\partial^2 f}{\partial z \partial x} - \frac{\partial^2 f}
+      {\partial x \partial z} = 0\\) (Clairaut).</p>
+    <p>Componente \\(\hat{k}\\): \\(\frac{\partial}{\partial x}\left(
+      \frac{\partial f}{\partial y}\right) - \frac{\partial}{\partial y}
+      \left(\frac{\partial f}{\partial x}\right) =
+      \frac{\partial^2 f}{\partial x \partial y} - \frac{\partial^2 f}
+      {\partial y \partial x} = 0\\) (Clairaut).</p>
+    <p>A identidade \\(\nabla \times (\nabla f) = \vec{0}\\) é uma
+      consequência direta da simetria das derivadas mistas. Qualquer
+      campo que seja o gradiente de uma função escalar é
+      <strong>irrotacional</strong> — não possui rotação.</p>
+  </div>
+</details>

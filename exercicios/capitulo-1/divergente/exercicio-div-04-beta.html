@@ -5,61 +5,70 @@
     CENSURADO]
   </div>
   <p>
-    Já calculamos divergências de vários campos. Agora vamos examinar um
-    conceito importante: quando um campo é chamado de <em>solenoidal</em>.
+    Nos exercícios anteriores, calculamos a vazão líquida de um volume e
+    percebemos que a "vazão por unidade de volume" coincide com a soma das
+    derivadas parciais. Agora vamos formalizar essa conexão.
   </p>
   <p>
-    Um campo \(\vec{F}\) é <strong>solenoidal</strong> se \(\nabla \cdot
-    \vec{F} = 0\) em todo o espaço. Isso significa que o campo não tem fontes
-    nem sumidouros — o que "entra" em qualquer região é igual ao que "sai".
+    A <strong>divergência</strong> de um campo \\(\vec{F} = (P, Q, R)\\) no
+    ponto \\((x_0, y_0, z_0)\\) é definida como:
+    \\[\nabla \cdot \vec{F}(x_0, y_0, z_0) = \lim_{V \to 0}
+    \frac{1}{V} \oint_S \vec{F} \cdot \hat{n}\; dS\\]
+    onde \\(S\\) é a superfície fechada que envolve o volume \\(V\\) em
+    torno do ponto, e \\(\hat{n}\\) é a normal para fora.
   </p>
   <p>
-    Considere o campo \(\vec{M}(x,y,z) = (x^2 - y^2,\; xy,\; x + y +
-    z)\).
+    Pode-se demonstrar que essa definição é equivalente à fórmula:
+    \\[\nabla \cdot \vec{F} = \frac{\partial P}{\partial x}
+    + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\\]
   </p>
-<p><strong>(a)</strong> Calcule \(\nabla \cdot \vec{M}\). O resultado é identicamente
-      zero?</p>
-    <p><strong>(b)</strong> Se o campo <em>não</em> é solenoidal, encontre as regiões onde
-      \(\nabla \cdot \vec{M} = 0\). (Dica: a equação depende apenas de
-      uma variável.)</p>
-    <p><strong>(c)</strong> <strong>Cuidado com a armadilha conceitual:</strong> Um campo
-      com divergência zero (solenoidal) não é o mesmo que um campo sem
-      <em>rotação</em> (irrotacional). O rotacional \(\nabla \times
-      \vec{F}\) é uma informação diferente. Portanto, saber apenas o valor da
-      divergência <em>não permite</em> concluir se o campo é irrotacional.
-      Justifique por que são propriedades independentes.</p>
+<p><strong>(a)</strong> Usando a fórmula, calcule \\(\nabla \cdot \vec{F}\\) para
+      \\(\vec{F}(x,y,z) = (x^2 y,\; 2yz,\; 3z)\\). Identifique cada
+      componente e derive separadamente.</p>
+  <p><strong>(b)</strong> Some os três termos. A divergência resultante depende de quais
+      variáveis?</p>
+  <p><strong>(c)</strong> Avalie a divergência na origem \\((0,0,0)\\). O resultado é
+      positivo, negativo ou zero? Interprete fisicamente: se a vazão líquida
+      por unidade de volume é positiva na origem, o que acontece com o campo
+      ali?</p>
 <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-    <div class="hint">
-      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(x^2 - y^2)\),
-      \(y^2\) é constante. Para \(\frac{\partial}{\partial y}(xy)\),
-      \(x\) é constante, e a derivada de \(y\) é \(1\), então o
-      resultado é \(x\).
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p><strong>(a) Cálculo da divergência:</strong></p>
-      <p>
-        \[ \nabla \cdot \vec{M} = \frac{\partial}{\partial x}(x^2 - y^2)
-        + \frac{\partial}{\partial y}(xy) + \frac{\partial}{\partial
-        z}(x + y + z) \]
-        \[ = 2x + x + 1 = 3x + 1 \]
-      </p>
-      <p>O resultado \(3x + 1\) não é identicamente zero. Logo, o campo
-        <strong>não</strong> é solenoidal.</p>
+  <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+  <div class="hint">
+    [NOTA TÉCNICA]: Para \\(\frac{\partial}{\partial x}(x^2 y)\\), tratamos
+    \\(y\\) como constante. A derivada de \\(x^2\\) é \\(2x\\), então o
+    resultado é \\(2xy\\). Para \\(\frac{\partial}{\partial y}(2yz)\\),
+    \\(z\\) é constante, e a derivada de \\(2y\\) é \\(2\\).
+  </div>
+</details>
+<details>
+  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+  <div class="solution">
+    <p><strong>(a) Cálculos parciais:</strong></p>
+    <p>\[\frac{\partial P}{\partial x} = \frac{\partial}{\partial x}(x^2 y)
+      = 2xy\]
+      \[\frac{\partial Q}{\partial y} = \frac{\partial}{\partial y}(2yz)
+      = 2z\]
+      \[\frac{\partial R}{\partial z} = \frac{\partial}{\partial z}(3z)
+      = 3\]</p>
 
-      <p><strong>(b) Região onde a divergência se anula:</strong></p>
-      <p>\(3x + 1 = 0 \implies x = -\frac{1}{3}\). O campo tem divergência
-        nula apenas no plano \(x = -1/3\).</p>
+    <p><strong>(b) Divergência total:</strong></p>
+    <p>\[\nabla \cdot \vec{F} = 2xy + 2z + 3\]</p>
+    <p>A divergência depende de \\(x\\), \\(y\\) e \\(z\\) — não é constante.
+      Em cada ponto do espaço, o campo tem uma taxa de expansão diferente.</p>
 
-      <p><strong>(c) Propriedades independentes:</strong></p>
-      <p>Um campo pode ser solenoidal mas não irrotacional (ex:
-        \((-y, x, 0)\) — divergência zero, mas gira). Pode ser irrotacional
-        mas não solenoidal (ex: \((x, 0, 0)\) — rotacional zero, mas divergência
-        1). A divergência mede expansão; o rotacional mede rotação. São
-        "direções" diferentes de análise do campo.</p>
-    </div>
-  </details>
+    <p><strong>(c) Avaliação na origem:</strong></p>
+    <p>\[\nabla \cdot \vec{F}(0,0,0) = 2(0)(0) + 2(0) + 3 = 3\]</p>
+    <p>Divergência <strong>positiva</strong> na origem. Fisicamente: se
+      colocássemos um pequeno cubo centrado na origem e medíssemos a vazão
+      líquida (fluxo que sai menos fluxo que entra), ela seria positiva.
+      O campo se "expande" na origem — há mais saindo do que entrando.
+      É como uma <em>fonte</em>: o campo "brota" daquela região.</p>
 
+    <p><em>Conexão com o Ex 03:</em> No exercício anterior, vimos que a
+      vazão líquida por unidade de volume (\\(32/8 = 4\\)) coincidia com
+      a soma das derivadas parciais. Aqui confirmamos: a fórmula
+      \\(\nabla \cdot \vec{F} = \partial P/\partial x + \partial Q/\partial y
+      + \partial R/\partial z\\) é exatamente essa "vazão por unidade de
+      volume" quando o volume tende a zero.</p>
+  </div>
+</details>
