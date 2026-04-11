@@ -14,6 +14,12 @@ Quando fizer sentido, a lista deve retomar conceitos de tópicos já estudados e
 ### 4. Scaffolding com subitens
 Exercícios complexos que exigem vários passos devem ser quebrados em itens (a, b, c...) que guiem o aluno na decomposição do problema. O objetivo é ensinar a habilidade de quebrar problemas grandes em partes menores.
 
+**Formato:** Sem `<ul><li>` (gera bullet points). Usar `<p><strong>(a)</strong> texto...</p>`:
+```html
+<p><strong>(a)</strong> Primeira parte...</p>
+<p><strong>(b)</strong> Segunda parte...</p>
+```
+
 ### 5. Significado antes da álgebra
 Sempre começar pelo conceito e pela interpretação (geométrica, física, visual) antes de entrar nas manipulações algébricas. Exercícios puramente algébricos são importantes, mas não podem ser o único tipo.
 
