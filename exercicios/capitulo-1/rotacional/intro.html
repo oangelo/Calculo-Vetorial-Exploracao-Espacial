@@ -16,9 +16,66 @@
     relatório detalha os cálculos necessários para avaliar o impacto
     dessas forças.
   </div>
+
+  <div class="concept-definition">
+    <div class="section-title">PRÉ-REQUISITOS</div>
+    <p>
+      Para resolver estes exercícios, você deve estar confortável com os seguintes
+      conceitos dos tópicos anteriores:
+    </p>
+    <ul>
+      <li>
+        <strong>Derivadas parciais</strong> (Cap 1 — Derivadas Parciais):
+        \(\frac{\partial f}{\partial x}\) como derivada de \(f\) em relação a
+        \(x\), tratando as outras variáveis como constantes. O rotacional é
+        construído combinando derivadas parciais das componentes do campo:
+        por exemplo, a componente \(k\) do rotacional envolve
+        \(\frac{\partial Q}{\partial x}\) e \(\frac{\partial P}{\partial y}\).
+      </li>
+      <li>
+        <strong>Campos vetoriais</strong> (Cap 1 — Campo Vetorial): um campo
+        \(\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}\) associa um vetor
+        a cada ponto do espaço. O rotacional é uma propriedade desse campo —
+        mede a tendência de rotação local.
+      </li>
+      <li>
+        <strong>Regra do quociente</strong> (Cap 0 — Derivadas): para derivar
+        frações como \(\frac{-y}{x^2+y^2}\), usamos
+        \(\frac{d}{dx}\left(\frac{f}{g}\right) = \frac{f'g - fg'}{g^2}\).
+        Essa técnica aparece nos exercícios de nível GAMMA.
+      </li>
+      <li>
+        <strong>Produto vetorial</strong> (Cap 0 — Geometria Analítica):
+        o rotacional pode ser escrito como o "produto vetorial" do operador
+        \(\nabla\) com o campo \(\vec{F}\), usando o determinante formal.
+        Se você sabe calcular \(\vec{a} \times \vec{b}\), a estrutura é a mesma.
+      </li>
+      <li>
+        <strong>Regra da cadeia</strong> (Cap 0 — Derivadas): quando uma
+        componente do campo depende de \(r = \sqrt{x^2+y^2+z^2}\), precisamos
+        derivar compostas — por exemplo,
+        \(\frac{\partial}{\partial y}(r^{-3}) = -3r^{-4} \cdot
+        \frac{y}{r}\).
+      </li>
+    </ul>
+    <p>
+      <em>Resumo rápido:</em> o rotacional \(\nabla \times \vec{F}\) é um
+      <strong>vetor</strong> cujas componentes são combinações de derivadas
+      parciais das componentes de \(\vec{F}\). Ele mede a tendência de rotação
+      do campo em cada ponto — se você colocar uma pequena pá de moinho na
+      corrente, o rotacional diz como ela giraria.
+    </p>
+  </div>
+
   <div class="warning-box">
-    Este documento contém informações matemáticas consideradas vitais para
-    a segurança nacional. A divulgação não autorizada deste material pode
+    Este documento contém informações matemáticas consideradas vitais para a
+    segurança nacional. A divulgação não autorizada deste material pode
     resultar em <span class="censored">graves consequências</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: AP-<span class="censored">1969</span>-R</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+    <span class="censored">3</span></span>
   </div>
 </div>
