@@ -9,34 +9,34 @@
     conceito importante: quando um campo é chamado de <em>solenoidal</em>.
   </p>
   <p>
-    Um campo \\(\\vec{F}\\) é <strong>solenoidal</strong> se \\(\\nabla \\cdot
-    \\vec{F} = 0\\) em todo o espaço. Isso significa que o campo não tem fontes
+    Um campo \(\vec{F}\) é <strong>solenoidal</strong> se \(\nabla \cdot
+    \vec{F} = 0\) em todo o espaço. Isso significa que o campo não tem fontes
     nem sumidouros — o que "entra" em qualquer região é igual ao que "sai".
   </p>
   <p>
-    Considere o campo \\(\\vec{M}(x,y,z) = (x^2 - y^2,\\; xy,\\; x + y +
-    z)\\).
+    Considere o campo \(\vec{M}(x,y,z) = (x^2 - y^2,\; xy,\; x + y +
+    z)\).
   </p>
   <ul>
-    <li>(a) Calcule \\(\\nabla \\cdot \\vec{M}\\). O resultado é identicamente
+    <li>(a) Calcule \(\nabla \cdot \vec{M}\). O resultado é identicamente
       zero?</li>
     <li>(b) Se o campo <em>não</em> é solenoidal, encontre as regiões onde
-      \\(\\nabla \\cdot \\vec{M} = 0\\). (Dica: a equação depende apenas de
+      \(\nabla \cdot \vec{M} = 0\). (Dica: a equação depende apenas de
       uma variável.)</li>
     <li>(c) <strong>Cuidado com a armadilha conceitual:</strong> Um campo
       com divergência zero (solenoidal) não é o mesmo que um campo sem
-      <em>rotação</em> (irrotacional). O rotacional \\(\\nabla \\times
-      \\vec{F}\\) é uma informação diferente. Portanto, saber apenas o valor da
+      <em>rotação</em> (irrotacional). O rotacional \(\nabla \times
+      \vec{F}\) é uma informação diferente. Portanto, saber apenas o valor da
       divergência <em>não permite</em> concluir se o campo é irrotacional.
       Justifique por que são propriedades independentes.</li>
   </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para \\(\\frac{\\partial}{\\partial x}(x^2 - y^2)\\),
-      \\(y^2\\) é constante. Para \\(\\frac{\\partial}{\\partial y}(xy)\\),
-      \\(x\\) é constante, e a derivada de \\(y\\) é \\(1\\), então o
-      resultado é \\(x\\).
+      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(x^2 - y^2)\),
+      \(y^2\) é constante. Para \(\frac{\partial}{\partial y}(xy)\),
+      \(x\) é constante, e a derivada de \(y\) é \(1\), então o
+      resultado é \(x\).
     </div>
   </details>
   <details>
@@ -44,22 +44,22 @@
     <div class="solution">
       <p><strong>(a) Cálculo da divergência:</strong></p>
       <p>
-        \\[ \\nabla \\cdot \\vec{M} = \\frac{\\partial}{\\partial x}(x^2 - y^2)
-        + \\frac{\\partial}{\\partial y}(xy) + \\frac{\\partial}{\\partial
-        z}(x + y + z) \\]
-        \\[ = 2x + x + 1 = 3x + 1 \\]
+        \[ \nabla \cdot \vec{M} = \frac{\partial}{\partial x}(x^2 - y^2)
+        + \frac{\partial}{\partial y}(xy) + \frac{\partial}{\partial
+        z}(x + y + z) \]
+        \[ = 2x + x + 1 = 3x + 1 \]
       </p>
-      <p>O resultado \\(3x + 1\\) não é identicamente zero. Logo, o campo
+      <p>O resultado \(3x + 1\) não é identicamente zero. Logo, o campo
         <strong>não</strong> é solenoidal.</p>
 
       <p><strong>(b) Região onde a divergência se anula:</strong></p>
-      <p>\\(3x + 1 = 0 \\implies x = -\\frac{1}{3}\\). O campo tem divergência
-        nula apenas no plano \\(x = -1/3\\).</p>
+      <p>\(3x + 1 = 0 \implies x = -\frac{1}{3}\). O campo tem divergência
+        nula apenas no plano \(x = -1/3\).</p>
 
       <p><strong>(c) Propriedades independentes:</strong></p>
       <p>Um campo pode ser solenoidal mas não irrotacional (ex:
-        \\((-y, x, 0)\\) — divergência zero, mas gira). Pode ser irrotacional
-        mas não solenoidal (ex: \\((x, 0, 0)\\) — rotacional zero, mas divergência
+        \((-y, x, 0)\) — divergência zero, mas gira). Pode ser irrotacional
+        mas não solenoidal (ex: \((x, 0, 0)\) — rotacional zero, mas divergência
         1). A divergência mede expansão; o rotacional mede rotação. São
         "direções" diferentes de análise do campo.</p>
     </div>
