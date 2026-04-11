@@ -1,22 +1,23 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
-  <div class="context">ORIGEM: Revisão Avançada [Projeto Skylab, 1973]</div>
-  <p>
-    Calcule o produto vetorial \[\vec{a} \times \vec{b}\] para \[\vec{a} = (1,
-    0, 1)\] e \[\vec{b} = (0, 1, 1)\].
-  </p>
+  <div class="exercise-number">EXERCÍCIO VECTOR-REVIEW-3</div>
+  <div class="context">ORIGEM: Revisão Avançada [Projeto Skylab, 1973] — Depois do produto escalar (que gera um escalar), agora o produto vetorial (que gera um vetor). Esta é a operação-chave por trás do cálculo do rotacional que veremos no Bloco 4. Note a semelhança estrutural: o rotacional usa o mesmo determinante formal.</div>
+  <p>Considere os vetores \\[\vec{a} = (1, 0, 1)\\] e \\[\vec{b} = (0, 1, 1).\\]</p>
+  <ul>
+    <li>(a) Calcule o produto vetorial \\(\\vec{a} \\times \\vec{b}\\) usando o determinante formal.</li>
+    <li>(b) Verifique que \\(\\vec{a} \\times \\vec{b}\\) é ortogonal tanto a \\(\\vec{a}\\) quanto a \\(\\vec{b}\\), calculando os produtos escalar correspondentes.</li>
+    <li>(c) Calcule a área do paralelogramo determinado por \\(\\vec{a}\\) e \\(\\vec{b}\\).</li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-11]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Use a matriz determinante.</div>
+    <div class="hint">[NOTA TÉCNICA]: Use a matriz determinante com os vetores unitários \\(\\hat{i}, \\hat{j}, \\hat{k}\\) na primeira linha. A área do paralelogramo é \\(|\\vec{a} \\times \\vec{b}|\\).</div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p>SOLUÇÃO:</p>
-      <p>
-        \[\vec{a} \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k}
-        \\ 1 & 0 & 1 \\ 0 & 1 & 1 \end{vmatrix} = (-1, -1, 1)\]
-      </p>
+      <p>(a) \\[\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 0 & 1 \\\\ 0 & 1 & 1 \\end{vmatrix} = (0-1)\\hat{i} - (1-0)\\hat{j} + (1-0)\\hat{k} = (-1, -1, 1)\\]</p>
+      <p>(b) \\[(-1,-1,1)\\cdot(1,0,1) = -1+0+1 = 0 \\quad \\checkmark\\] \\[(-1,-1,1)\\cdot(0,1,1) = 0-1+1 = 0 \\quad \\checkmark\\]</p>
+      <p>(c) \\[|\\vec{a} \\times \\vec{b}| = \\sqrt{1+1+1} = \\sqrt{3}\\]</p>
     </div>
   </details>
 </li>

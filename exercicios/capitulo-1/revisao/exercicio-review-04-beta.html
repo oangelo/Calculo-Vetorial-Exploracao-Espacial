@@ -1,37 +1,24 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑4</div>
-  <div class="context">ORIGEM: Avaliação de Mistura Radial + Rotacional</div>
-  <p>
-    Analise o campo em 3D \[\vec
-    G(x,y,z)=\begin{pmatrix}x\\y\\0\end{pmatrix}+\begin{pmatrix}-y\\x\\0\end{pmatrix}.\]
-    (a) Determine \(\nabla\cdot\vec G\) e \(\nabla\times\vec G\).<br />
-    (b) Mostre que as linhas de fluxo formam espirais logarítmicas no
-    plano \(xy\).<br />
-    (c) Discuta como tal combinação modela sistemas de injeção combustível onde
-    expansão e torção coexistem.
-  </p>
+  <div class="exercise-number">EXERCÍCIO VECTOR-REVIEW-7</div>
+  <div class="context">ORIGEM: Avaliação de Mistura Radial + Rotacional — Você viu campos radiais (que apontam para fora) e campos rotacionais (que giram) separadamente. Agora vamos combiná-los. Para calcular o divergente e o rotacional deste campo, você precisará aplicar derivadas parciais (Cap 1 — Derivadas Parciais) a cada componente. Note como as derivadas parciais das componentes \\(P\\) e \\(Q\\) aparecem naturalmente nas fórmulas de \\(\\nabla\\cdot\\vec{G}\\) e \\(\\nabla\\times\\vec{G}\\).</div>
+  <p>Analise o campo em 3D \\[\\vec{G}(x,y,z)=\\begin{pmatrix}x\\\\y\\\\0\\end{pmatrix}+\\begin{pmatrix}-y\\\\x\\\\0\\end{pmatrix}.\\]</p>
+  <ul>
+    <li>(a) Determine \\(\\nabla\\cdot\\vec{G}\\) e \\(\\nabla\\times\\vec{G}\\). Identifique qual parcela do campo contribui para o divergente e qual contribui para o rotacional.</li>
+    <li>(b) Mostre que as linhas de fluxo formam espirais logarítmicas no plano \\(xy\\). Dica: escreva o sistema \\(dx/dt = x-y\\), \\(dy/dt = y+x\\) e converta para coordenadas polares.</li>
+    <li>(c) Discuta como tal combinação modela sistemas de injeção de combustível onde expansão e torção coexistem.</li>
+  </ul>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
-    <details class="hint-container">
-      <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-      <div class="hint">Observe o cancelamento parcial entre efeitos.</div>
-    </details>
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">Observe que o campo é \\(\\vec{G} = \\vec{G}_{\\text{radial}} + \\vec{G}_{\\text{rotacional}}\\). O divergente vem da parte radial, o rotacional da parte rotacional. Para (b), em coordenadas polares \\(x = r\\cos\\theta\\), \\(y = r\\sin\\theta\\), calcule \\(dr/d\\theta\\).</div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>
-        (a) Divergente: \(\nabla\cdot\vec G = 2.\) Rotacional:
-        \(\nabla\times\vec G = \begin{pmatrix}0\\0\\2\end{pmatrix}.\)
-      </p>
-      <p>
-        (b) Em coordenadas polares \(r,\theta\) obtém‑se
-        \(\dfrac{dr}{d\theta}=\dfrac{r}{1}\Rightarrow r=C e^{\theta}.\)
-      </p>
-      <p>
-        (c) Motores swirl utilizam essa geometria para homogeneizar mistura
-        ar‑combustível mantendo pressão interna.
-      </p>
+      <p>(a) O campo é \\(\\vec{G} = (x-y, y+x, 0)\\).</p>
+      <p>Divergente: \\[\\nabla\\cdot\\vec{G} = \\frac{\\partial(x-y)}{\\partial x} + \\frac{\\partial(y+x)}{\\partial y} + 0 = 1 + 1 = 2.\\] A parte radial \\((x,y,0)\\) contribui com 2; a parte rotacional \\((-y,x,0)\\) contribui com 0.</p>
+      <p>Rotacional: \\[\\nabla\\times\\vec{G} = \\begin{pmatrix}0\\\\0\\\\\\frac{\\partial(y+x)}{\\partial x} - \\frac{\\partial(x-y)}{\\partial y}\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\\\1-(-1)\\end{pmatrix} = \\begin{pmatrix}0\\\\0\\\\2\\end{pmatrix}.\\] A parte rotacional contribui com 2; a parte radial contribui com 0.</p>
+      <p>(b) Em coordenadas polares: \\(x-y = r(\\cos\\theta - \\sin\\theta)\\) e \\(y+x = r(\\sin\\theta + \\cos\\theta)\\). Usando \\(\\dot{r} = \\dot{x}\\cos\\theta + \\dot{y}\\sin\\theta\\) e \\(r\\dot{\\theta} = -\\dot{x}\\sin\\theta + \\dot{y}\\cos\\theta\\): \\[\\dot{r} = r(\\cos\\theta - \\sin\\theta)\\cos\\theta + r(\\sin\\theta + \\cos\\theta)\\sin\\theta = r(\\cos^2\\theta + \\sin^2\\theta) = r\\] \\[r\\dot{\\theta} = -r(\\cos\\theta - \\sin\\theta)\\sin\\theta + r(\\sin\\theta + \\cos\\theta)\\cos\\theta = r\\] Logo \\(dr/d\\theta = r/1 = r \\Rightarrow r = Ce^{\\theta}\\), uma espiral logarítmica.</p>
+      <p>(c) Motores swirl utilizam essa geometria para homogeneizar mistura ar-combustível mantendo pressão interna.</p>
     </div>
   </details>
 </li>
