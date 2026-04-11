@@ -1,57 +1,52 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-02-ALFA</div>
   <div class="context">
-    ORIGEM: Projeto <span class="censored">VECTOR-Z</span>
-    [RELACIONADO AO MÓDULO DE ATERRISSAGEM]
+    ORIGEM: Análise Básica de Funções Escalares [DADOS INTERCEPTADOS DE
+    LABORATÓRIO [REDACTED]]
   </div>
   <p>
-    Temos a função de potencial gravitacional simplificada em 2D: \[ \phi(x,y) =
-    -\frac{G M}{\sqrt{x^2 + y^2}}. \] Calcule: \[ \frac{\partial \phi}{\partial
-    x} \quad \text{e} \quad \frac{\partial \phi}{\partial y}. \] Faça a análise
-    do sinal físico de cada componente.
+    Agora que você entende o significado geométrico da derivada parcial — a
+    derivada de uma seção da superfície — vamos aplicar a técnica de cálculo.
+    O procedimento é simples: para \\(\\frac{\\partial f}{\\partial x}\\),
+    tratamos \\(y\\) como constante e derivamos como sempre.
   </p>
+  <p>
+    Considere a função: \\[ f(x,y) = x^2 \\, y + e^y \\, x \\]
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Calcule \\(\\frac{\\partial f}{\\partial x}\\), tratando \\(y\\) como constante.
+    </li>
+    <li>
+      (b) Calcule \\(\\frac{\\partial f}{\\partial y}\\), tratando \\(x\\) como constante.
+    </li>
+    <li>
+      (c) Verifique seu resultado: avalie \\(\\frac{\\partial f}{\\partial x}\\) no ponto \\((1, 0)\\).
+    </li>
+  </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (a), o termo \\(x^2 y\\) vira \\(y \\cdot x^2\\) (y é constante,
+      derivada é \\(2xy\\)). O termo \\(e^y x\\) vira \\(e^y \\cdot x\\) (eʸ é constante, derivada é \\(e^y\\)).
+    </div>
+  </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p><strong>Passo 1:</strong> Identificar \(r = \sqrt{x^2 + y^2}\).</p>
-      <p><strong>Passo 2:</strong> Derivar usando regra da cadeia.</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        \[ \frac{\partial \phi}{\partial x} = -GM \, \frac{\partial}{\partial x}
-        \left(\frac{1}{r}\right) = -GM \left(-\frac{1}{r^2}\right)
-        \frac{\partial r}{\partial x} = \frac{GM}{r^2} \cdot \frac{x}{\sqrt{x^2
-        + y^2}}. \]
-        <br />
-        \[ \frac{\partial \phi}{\partial x} = \frac{GM\, x}{(x^2 + y^2)^{3/2}}.
-        \]
+        (a) \\[ \\frac{\\partial f}{\\partial x} = \\frac{\\partial}{\\partial x}\\bigl(x^2
+        y + e^y x\\bigr) = 2xy + e^y. \\]
       </p>
       <p>
-        \[ \frac{\partial \phi}{\partial y} = \frac{GM\, y}{(x^2 + y^2)^{3/2}}.
-        \]
+        (b) \\[ \\frac{\\partial f}{\\partial y} = \\frac{\\partial}{\\partial y}\\bigl(x^2
+        y + e^y x\\bigr) = x^2 + x e^y. \\]
       </p>
       <p>
-        <strong>Análise de sinal e direção da força:</strong> Note que
-        \(\frac{\partial \phi}{\partial x}\) ou \(\frac{\partial \phi}{\partial
-        y}\) podem ser positivos ou negativos conforme \(x\) ou \(y\) sejam
-        positivos ou negativos, refletindo que o potencial \(\phi(x,y) =
-        -\frac{GM}{\sqrt{x^2 + y^2}}\) torna-se menos negativo à medida que nos
-        afastamos da origem em qualquer direção positiva. Entretanto, a
-        <em>força</em> associada é dada por \[ \mathbf{F} = -\nabla \phi, \] ou
-        seja, é o <em>negativo</em> dessas derivadas. Isso garante que o vetor
-        força aponte sempre em direção à origem (atração gravitacional), mesmo
-        quando as derivadas parciais do potencial em relação a \(x\) e \(y\)
-        sejam positivas
-        <strong>Análise de sinal e direção da força:</strong> Note que
-        \(\frac{\partial \phi}{\partial x}\) ou \(\frac{\partial \phi}{\partial
-        y}\) podem ser positivos ou negativos conforme \(x\) ou \(y\) sejam
-        positivos ou negativos, refletindo que o potencial \(\phi(x,y) =
-        -\frac{GM}{\sqrt{x^2 + y^2}}\) torna-se menos negativo à medida que nos
-        afastamos da origem em qualquer direção positiva. Entretanto, a
-        <em>força</em> associada é dada por \[ \mathbf{F} = -\nabla \phi, \] ou
-        seja, é o <em>negativo</em> dessas derivadas. Isso garante que o vetor
-        força aponte sempre em direção à origem (atração gravitacional), mesmo
-        quando as derivadas parciais do potencial em relação a \(x\) e \(y\)
-        sejam positivas para valores positivos de \(x\) ou \(y\). para valores
-        positivos de \(x\) ou \(y\).
+        (c) Em \\((1,0)\\): \\(\\frac{\\partial f}{\\partial x}(1,0) = 2(1)(0) + e^0 = 0 + 1 = 1\\).
+        A superfízie cresce com taxa 1 na direção \\(x\\), quando partimos do ponto \\((1,0)\\).
       </p>
     </div>
   </details>

@@ -1,38 +1,54 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
   <div class="context">
-    ORIGEM: Departamento de Dinâmica de Fluidos [COLABORAÇÃO COM PROJETO
+    ORIGEM: Departamento de Dinâmica Orbital [COLABORAÇÃO COM PROJETO
     [REDACTED]]
   </div>
   <p>
-    Considere o campo vetorial planar: \[ \vec{F}(x,y) = \bigl(x^3 +
-    2y\bigr)\hat{i} + \bigl(x\,y^2 - y\bigr)\hat{j}. \] Calcule as derivadas
-    parciais: \[ \frac{\partial \vec{F}}{\partial x} \quad \text{e} \quad
-    \frac{\partial \vec{F}}{\partial y}. \]
+    Nos exercícios anteriores, cada termo da função dependia de uma variável por vez.
+    Mas e quando a variável aparece <em>dentro</em> de outra função — como \\(e^{xy}\\)?
+    Aí precisamos da <strong>regra da cadeia para derivadas parciais</strong>:
+    a mesma regra que você já conhece, mas aplicada a funções de várias variáveis.
   </p>
+  <p>
+    Considere: \\[ f(x,y,z) = e^{xyz}. \\]
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique a função externa (exponencial) e a função interna \\(u = xyz\\).
+    </li>
+    <li>
+      (b) Use a regra da cadeia \\(\\frac{\\partial f}{\\partial x} = \\frac{df}{du} \\cdot \\frac{\\partial u}{\\partial x}\\)
+      para calcular \\(\\frac{\\partial f}{\\partial x}\\).
+    </li>
+    <li>
+      (c) Calcule \\(\\frac{\\partial f}{\\partial y}\\) e \\(\\frac{\\partial f}{\\partial z}\\) pelo mesmo método.
+    </li>
+    <li>
+      (d) Avalie \\(\\frac{\\partial f}{\\partial x}\\) no ponto \\((1,1,1)\\).
+    </li>
+  </ul>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \\(\\frac{d}{du}(e^u) = e^u\\). Para \\(\\frac{\\partial u}{\\partial x}\\),
+      onde \\(u = xyz\\), tratamos \\(y\\) e \\(z\\) como constantes, obtendo \\(yz\\).
+    </div>
+  </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p><strong>Em notação de componentes:</strong></p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>(a) Função externa: \\(g(u) = e^u\\). Função interna: \\(u = xyz\\).</p>
       <p>
-        \(\vec{F}(x,y) = P(x,y)\hat{i} + Q(x,y)\hat{j}\), <br />
-        onde \(P(x,y) = x^3 + 2y\) e \(Q(x,y) = x\,y^2 - y\).
-      </p>
-      <p><strong>Derivada parcial em relação a \(x\):</strong></p>
-      <p>
-        \[ \frac{\partial \vec{F}}{\partial x} = \left(\frac{\partial
-        P}{\partial x}\right)\hat{i} + \left(\frac{\partial Q}{\partial
-        x}\right)\hat{j} = \bigl(3x^2\bigr)\hat{i} + \bigl(y^2\bigr)\hat{j}. \]
-      </p>
-      <p><strong>Derivada parcial em relação a \(y\):</strong></p>
-      <p>
-        \[ \frac{\partial \vec{F}}{\partial y} = \left(\frac{\partial
-        P}{\partial y}\right)\hat{i} + \left(\frac{\partial Q}{\partial
-        y}\right)\hat{j} = \bigl(2\bigr)\hat{i} + \bigl(2xy - 1\bigr)\hat{j}. \]
+        (b) \\[ \\frac{\\partial f}{\\partial x} = e^{xyz} \\cdot \\frac{\\partial}{\\partial x}(xyz) = yz\\, e^{xyz}. \\]
       </p>
       <p>
-        Análise confirma influências significativas da componente \(\hat{j}\) na
-        estabilidade de trajetória.
+        (c) \\[ \\frac{\\partial f}{\\partial y} = xz\\, e^{xyz}, \\qquad \\frac{\\partial f}{\\partial z} = xy\\, e^{xyz}. \\]
+      </p>
+      <p>
+        (d) \\[ \\frac{\\partial f}{\\partial x}(1,1,1) = 1 \\cdot 1 \\cdot e^{1} = e. \\]
       </p>
     </div>
   </details>

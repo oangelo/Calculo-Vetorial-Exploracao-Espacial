@@ -1,26 +1,65 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
   <div class="context">
-    ORIGEM: Modelagem de Movimento [Programa Skylab, 1973]
+    ORIGEM: Projeto <span class="censored">VECTOR-Z</span>
+    [RELACIONADO AO MÓDULO DE ATERRISSAGEM]
   </div>
   <p>
-    Para \[f(x,y) = \sin(xy)\], calcule \(\frac{\partial^2 f}{\partial x
-    \partial y}\).
+    Nos exercícios anteriores, você calculou derivadas parciais e verificou propriedades
+    algébricas. Agora vamos analisar o <strong>significado físico</strong> das derivadas:
+    o sinal de \\(\\frac{\\partial f}{\\partial x}\\) nos diz se a função cresce ou decresce
+    quando nos movemos na direção \\(x\\). Para um potencial gravitacional, isso nos diz
+    a direção da força.
   </p>
+  <p>
+    Temos a função de potencial gravitacional simplificada em 2D: \\[ \\phi(x,y) = -\\frac{G M}{\\sqrt{x^2 + y^2}}. \\]
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique \\(r = \\sqrt{x^2 + y^2}\\) e escreva \\(\\phi\\) como \\(-GM/r\\).
+      Calcule \\(\\frac{\\partial \\phi}{\\partial x}\\) usando a regra da cadeia.
+    </li>
+    <li>
+      (b) Calcule \\(\\frac{\\partial \\phi}{\\partial y}\\) pelo mesmo método.
+    </li>
+    <li>
+      (c) Avalie \\(\\frac{\\partial \\phi}{\\partial x}\\) no ponto \\((r_0, 0)\\) onde \\(r_0 > 0\\).
+      Qual é o sinal? O que isso diz sobre como o potencial varia quando nos afastamos na direção \\(x\\)?
+    </li>
+    <li>
+      (d) A força gravitacional na direção \\(x\\) é \\(F_x = -\\frac{\\partial \\phi}{\\partial x}\\).
+      Calcule \\(F_x\\) em \\((r_0, 0)\\). A força aponta em qual direção?
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Primeiro derive em relação a \(x\), depois em relação a
-      \(y\).
+      [NOTA TÉCNICA]: \\(\\frac{\\partial r}{\\partial x} = \\frac{x}{\\sqrt{x^2+y^2}} = \\frac{x}{r}\\).
+      A regra da cadeia: \\(\\frac{\\partial}{\\partial x}\\left(-\\frac{GM}{r}\\right) = \\frac{GM}{r^2} \\cdot \\frac{x}{r} = \\frac{GMx}{r^3}\\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        \[\frac{\partial f}{\partial x} = y \cos(xy)\] \[\frac{\partial^2
-        f}{\partial x \partial y} = \cos(xy) - xy \sin(xy)\]
+        (a) \\(\\phi = -GM/r\\). Usando a regra da cadeia com \\(\\frac{\\partial r}{\\partial x} = \\frac{x}{r}\\):
+        \\[ \\frac{\\partial \\phi}{\\partial x} = \\frac{GM}{r^2} \\cdot \\frac{x}{r} = \\frac{GM\\, x}{(x^2 + y^2)^{3/2}}. \\]
+      </p>
+      <p>
+        (b) Por simetria:
+        \\[ \\frac{\\partial \\phi}{\\partial y} = \\frac{GM\\, y}{(x^2 + y^2)^{3/2}}. \\]
+      </p>
+      <p>
+        (c) Em \\((r_0, 0)\\): \\(\\frac{\\partial \\phi}{\\partial x} = \\frac{GM r_0}{r_0^3} = \\frac{GM}{r_0^2} > 0\\).
+        O potencial <em>cresce</em> quando nos afastamos da origem na direção \\(x\\) —
+        ele é menos negativo (menos "profundo").
+      </p>
+      <p>
+        (d) \\(F_x = -\\frac{\\partial \\phi}{\\partial x} = -\\frac{GM}{r_0^2} < 0\\).
+        A força aponta <em>em direção à origem</em> (sentido negativo de \\(x\\)), confirmando
+        a atração gravitacional.
       </p>
     </div>
   </details>

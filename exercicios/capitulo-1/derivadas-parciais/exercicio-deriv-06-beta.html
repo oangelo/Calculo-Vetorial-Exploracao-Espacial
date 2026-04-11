@@ -4,23 +4,42 @@
     ORIGEM: Análise de Funções Multivariáveis [Programa Gemini, 1966]
   </div>
   <p>
-    Calcule \(\frac{\partial f}{\partial x}\) e \(\frac{\partial f}{\partial
-    y}\) para \[f(x,y) = x^2 y + xy^2\].
+    Até agora derivamos funções escalares. Mas e quando a função é <em>vetorial</em>,
+    como um campo de velocidades \\(\\vec{F}(x,y) = P(x,y)\\hat{i} + Q(x,y)\\hat{j}\\)?
+    A ideia é a mesma: derivamos componente a componente, tratando a outra variável como constante.
   </p>
+  <p>
+    Considere o campo vetorial planar: \\[ \\vec{F}(x,y) = \\bigl(x^3 + 2y\\bigr)\\hat{i} + \\bigl(x\\,y^2 - y\\bigr)\\hat{j}. \\]
+  </p>
+  <strong>Solicitação:</strong>
+  <ul>
+    <li>
+      (a) Identifique as funções componente \\(P(x,y)\\) e \\(Q(x,y)\\).
+    </li>
+    <li>
+      (b) Calcule \\(\\frac{\\partial \\vec{F}}{\\partial x} = \\frac{\\partial P}{\\partial x}\\hat{i} + \\frac{\\partial Q}{\\partial x}\\hat{j}\\).
+    </li>
+    <li>
+      (c) Calcule \\(\\frac{\\partial \\vec{F}}{\\partial y} = \\frac{\\partial P}{\\partial y}\\hat{i} + \\frac{\\partial Q}{\\partial y}\\hat{j}\\).
+    </li>
+  </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Derive em relação a uma variável, tratando a outra como
-      constante.
+      [NOTA TÉCNICA]: Derivamos cada componente separadamente. Para \\(\\frac{\\partial Q}{\\partial x}\\),
+      onde \\(Q = xy^2 - y\\), o termo \\(y^2\\) é constante em relação a \\(x\\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
-      <p>SOLUÇÃO:</p>
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>(a) \\(P(x,y) = x^3 + 2y\\) e \\(Q(x,y) = xy^2 - y\\).</p>
       <p>
-        \[\frac{\partial f}{\partial x} = 2xy + y^2\] \[\frac{\partial
-        f}{\partial y} = x^2 + 2xy\]
+        (b) \\[ \\frac{\\partial \\vec{F}}{\\partial x} = \\bigl(3x^2\\bigr)\\hat{i} + \\bigl(y^2\\bigr)\\hat{j}. \\]
+      </p>
+      <p>
+        (c) \\[ \\frac{\\partial \\vec{F}}{\\partial y} = \\bigl(2\\bigr)\\hat{i} + \\bigl(2xy - 1\\bigr)\\hat{j}. \\]
       </p>
     </div>
   </details>
