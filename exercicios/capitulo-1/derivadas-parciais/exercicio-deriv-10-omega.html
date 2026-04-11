@@ -10,32 +10,32 @@
     das derivadas parciais iguais.
   </p>
   <p>
-    Seja \\(f(x,y)\\) uma função diferenciável tal que \\[ \\frac{\\partial f}{\\partial x} = \\frac{\\partial f}{\\partial y}. \\]
+    Seja \(f(x,y)\) uma função diferenciável tal que \[ \frac{\partial f}{\partial x} = \frac{\partial f}{\partial y}. \]
   </p>
   <strong>Solicitação:</strong>
   <ul>
     <li>
-      (a) Primeiro, verifique a propriedade no sentido direto: se \\(g(u)\\) é uma função de uma variável
-      e definimos \\(f(x,y) = g(x+y)\\), use a regra da cadeia para mostrar que
-      \\(\\frac{\\partial f}{\\partial x} = g'(x+y)\\) e \\(\\frac{\\partial f}{\\partial y} = g'(x+y)\\).
+      (a) Primeiro, verifique a propriedade no sentido direto: se \(g(u)\) é uma função de uma variável
+      e definimos \(f(x,y) = g(x+y)\), use a regra da cadeia para mostrar que
+      \(\frac{\partial f}{\partial x} = g'(x+y)\) e \(\frac{\partial f}{\partial y} = g'(x+y)\).
     </li>
     <li>
-      (b) Considere o caso particular: \\(\\frac{\\partial f}{\\partial x} = 2x + 2y\\).
-      Se \\(\\frac{\\partial f}{\\partial x} = \\frac{\\partial f}{\\partial y}\\), então \\(f\\)
-      satisfaz a condição. Tente encontrar \\(f(x,y)\\) integrando mentalmente
-      (dica: \\(f\\) é função de \\(x+y\\)).
+      (b) Considere o caso particular: \(\frac{\partial f}{\partial x} = 2x + 2y\).
+      Se \(\frac{\partial f}{\partial x} = \frac{\partial f}{\partial y}\), então \(f\)
+      satisfaz a condição. Tente encontrar \(f(x,y)\) integrando mentalmente
+      (dica: \(f\) é função de \(x+y\)).
     </li>
     <li>
-      (c) Generalize: por que, intuitivamente, \\(\\frac{\\partial f}{\\partial x} = \\frac{\\partial f}{\\partial y}\\)
-      implica que \\(f\\) depende apenas de \\(x+y\\)?
+      (c) Generalize: por que, intuitivamente, \(\frac{\partial f}{\partial x} = \frac{\partial f}{\partial y}\)
+      implica que \(f\) depende apenas de \(x+y\)?
     </li>
   </ul>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-10]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para (c), pense assim: se mudar \\(x\\) e mudar \\(y\\) produzem o
-      mesmo efeito em \\(f\\), então \\(f\\) não se importa com a diferença \\(x - y\\), apenas
-      com a soma \\(x + y\\).
+      [NOTA TÉCNICA]: Para (c), pense assim: se mudar \(x\) e mudar \(y\) produzem o
+      mesmo efeito em \(f\), então \(f\) não se importa com a diferença \(x - y\), apenas
+      com a soma \(x + y\).
     </div>
   </details>
   <details>
@@ -43,21 +43,21 @@
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) Se \\(f(x,y) = g(x+y)\\), com \\(u = x+y\\):
-        \\[ \\frac{\\partial f}{\\partial x} = g'(u) \\cdot \\frac{\\partial u}{\\partial x} = g'(x+y) \\cdot 1 = g'(x+y). \\]
-        \\[ \\frac{\\partial f}{\\partial y} = g'(u) \\cdot \\frac{\\partial u}{\\partial y} = g'(x+y) \\cdot 1 = g'(x+y). \\]
+        (a) Se \(f(x,y) = g(x+y)\), com \(u = x+y\):
+        \[ \frac{\partial f}{\partial x} = g'(u) \cdot \frac{\partial u}{\partial x} = g'(x+y) \cdot 1 = g'(x+y). \]
+        \[ \frac{\partial f}{\partial y} = g'(u) \cdot \frac{\partial u}{\partial y} = g'(x+y) \cdot 1 = g'(x+y). \]
         São iguais, confirmando a propriedade.
       </p>
       <p>
-        (b) Se \\(\\frac{\\partial f}{\\partial x} = 2x + 2y = 2(x+y)\\), e \\(f\\) depende de \\(u = x+y\\):
-        \\(f(x,y) = g(x+y)\\) com \\(g'(u) = 2u\\), logo \\(g(u) = u^2 + C\\).
-        Portanto \\(f(x,y) = (x+y)^2 + C\\).
+        (b) Se \(\frac{\partial f}{\partial x} = 2x + 2y = 2(x+y)\), e \(f\) depende de \(u = x+y\):
+        \(f(x,y) = g(x+y)\) com \(g'(u) = 2u\), logo \(g(u) = u^2 + C\).
+        Portanto \(f(x,y) = (x+y)^2 + C\).
       </p>
       <p>
-        (c) A condição \\(\\frac{\\partial f}{\\partial x} = \\frac{\\partial f}{\\partial y}\\)
-        diz que a "sensibilidade" de \\(f\\) a \\(x\\) e a \\(y\\) é idêntica.
-        Isso significa que \\(f\\) só depende da combinação \\(x + y\\) — não de \\(x\\) e \\(y\\) separadamente.
-        A direção \\(x - y\\) (perpendicular a \\(x + y\\)) não afeta \\(f\\).
+        (c) A condição \(\frac{\partial f}{\partial x} = \frac{\partial f}{\partial y}\)
+        diz que a "sensibilidade" de \(f\) a \(x\) e a \(y\) é idêntica.
+        Isso significa que \(f\) só depende da combinação \(x + y\) — não de \(x\) e \(y\) separadamente.
+        A direção \(x - y\) (perpendicular a \(x + y\)) não afeta \(f\).
       </p>
     </div>
   </details>
