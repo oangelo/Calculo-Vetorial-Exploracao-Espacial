@@ -45,11 +45,11 @@ O objetivo é que, com as definições básicas, o aluno consiga derivar resulta
 
 **Por que acontece o erro:** Quando um agente gera conteúdo via Python (`'\\\\(x\\\\)'`), o resultado no arquivo é `\\(x\\)`. Mas MathJax precisa de `\(x\)`. A solução é usar `'(x)'` no Python ou escrever diretamente no arquivo com uma barra só.
 
-**Verificação:** Após criar/editar qualquer exercício, confira:
+**Verificação OBRIGATÓRIO após cada arquivo escrito:**
 ```bash
-grep -n '\\\\\\\\' exercicios/capitulo-N/pasta/*.html
+grep -c '\\\\\\\\' exercicios/capitulo-N/pasta/arquivo.html
 ```
-Se encontrar `\\\\` seguido de letra ou delimitador, está errado.
+Se resultado > 0, CORRIJA antes de continuar. Execute este grep em TODO arquivo .html que criar ou editar. Não pule este passo.
 
 ---
 

@@ -23,11 +23,11 @@ Crie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPE
 - Bloco: `<p>\[|\\vec{v}| = \\sqrt{v_x^2 + v_y^2}\]</p>`
 - Inline: `<p>O vetor \(\\vec{v}\) tem magnitude \(|\\vec{v}|\)</p>`
 
-**Verificação obrigatória após criar/editar:**
+**Verificação OBRIGATÓRIA após ESCREVER CADA arquivo:**
 ```bash
-grep -n '\\\\\\\\' exercicios/capitulo-N/pasta/*.html
+grep -c '\\\\\\\\\\\\\\\\' exercicios/capitulo-N/pasta/arquivo.html
 ```
-Se encontrar `\\\\` seguido de letra ou delimitador, corrija antes de commit.
+Se resultado > 0, CORRIJA imediatamente. Execute este grep em TODO arquivo .html que criar ou editar. Não pule este passo — é o erro mais comum e quebra a renderização.
 
 ### Estrutura Exata do Documento
 
