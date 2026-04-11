@@ -11,10 +11,71 @@
     RELATÓRIO DE ANÁLISE: PROJETO <span class="censored">APOLLO-11</span>
     <br /><br />
     Durante a alunissagem, nossa equipe de engenharia identificou padrões
-    inesperados nos campos aerodinâmicos, sugerindo efeitos não triviais
-    do rotacional do campo atmosférico residual na Lua. O presente
-    relatório detalha os cálculos necessários para avaliar o impacto
-    dessas forças.
+    inesperados nos campos aerodinâmicos lunares. Antes de calcular qualquer
+    coisa, precisamos entender uma pergunta fundamental: se colocarmos uma
+    pequena roda de pá nesse fluxo, ela gira? Em que direção? Com que
+    intensidade? O conceito que responde a essa pergunta é o
+    <strong>rotacional</strong>.
+  </div>
+
+  <div class="concept-definition">
+    <div class="section-title">FUNDAMENTAÇÃO TEÓRICA</div>
+
+    <p>
+      <strong>1. Torque — a origem da rotação.</strong>
+      Quando uma força \(\vec{F}\) é aplicada em um ponto cuja posição
+      relativa ao pivô é \(\vec{r}\), o <em>torque</em> é
+      \(\vec{\tau} = \vec{r} \times \vec{F}\). Se \(\vec{\tau} \neq \vec{0}\),
+      o objeto gira. A direção de \(\vec{\tau}\) indica o eixo de rotação
+      (regra da mão direita).
+    </p>
+
+    <p>
+      <strong>2. Campo vetorial como distribuição de forças.</strong>
+      Um campo \(\vec{F}(x,y,z)\) associa um vetor a cada ponto do espaço.
+      Se colocarmos uma pequena pá de moinho em um ponto \((x_0, y_0, z_0)\),
+      cada lado da pá sente uma força ligeiramente diferente — e a diferença
+      pode causar rotação.
+    </p>
+
+    <p>
+      <strong>3. Circulação — a medida "macro".</strong>
+      Antes de definir o rotacional formalmente, podemos medir a tendência
+      de rotação calculando a integral de linha
+      \(\oint \vec{F} \cdot d\vec{r}\) ao redor de uma pequena curva fechada.
+      Se a circulação é positiva, o campo "empurra" no sentido de percurso.
+    </p>
+
+    <p>
+      <strong>4. Rotacional — o limite da circulação.</strong>
+      O rotacional \(\nabla \times \vec{F}\) é definido como o limite da
+      circulação por unidade de área quando a área tende a zero. Na prática,
+      calculamos usando a fórmula:
+    </p>
+
+    <div class="formula-highlight">
+      \[
+      \nabla \times \vec{F} = \begin{vmatrix}
+      \hat{i} & \hat{j} & \hat{k} \\
+      \frac{\partial}{\partial x} & \frac{\partial}{\partial y} &
+      \frac{\partial}{\partial z} \\
+      P & Q & R
+      \end{vmatrix}
+      = \begin{pmatrix}
+      \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \\[6pt]
+      \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \\[6pt]
+      \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+      \end{pmatrix}
+      \]
+    </div>
+
+    <p>
+      <strong>Interpretação:</strong> o rotacional é um <strong>vetor</strong>.
+      Sua direção indica o eixo de rotação (regra da mão direita).
+      Sua magnitude indica a intensidade da rotação local.
+      Se \(\nabla \times \vec{F} = \vec{0}\), o campo é <em>irrotacional</em>:
+      não há rotação local em nenhum ponto.
+    </p>
   </div>
 
   <div class="concept-definition">
@@ -23,45 +84,44 @@
       Para resolver estes exercícios, você deve estar confortável com os seguintes
       conceitos dos tópicos anteriores:
     </p>
-<li>
-        <strong>Derivadas parciais</strong> (Cap 1 — Derivadas Parciais):
-        \(\frac{\partial f}{\partial x}\) como derivada de \(f\) em relação a
-        \(x\), tratando as outras variáveis como constantes. O rotacional é
-        construído combinando derivadas parciais das componentes do campo:
-        por exemplo, a componente \(k\) do rotacional envolve
-        \(\frac{\partial Q}{\partial x}\) e \(\frac{\partial P}{\partial y}\).
-      </li>
-      <li>
-        <strong>Campos vetoriais</strong> (Cap 1 — Campo Vetorial): um campo
-        \(\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}\) associa um vetor
-        a cada ponto do espaço. O rotacional é uma propriedade desse campo —
-        mede a tendência de rotação local.
-      </li>
-      <li>
-        <strong>Regra do quociente</strong> (Cap 0 — Derivadas): para derivar
-        frações como \(\frac{-y}{x^2+y^2}\), usamos
-        \(\frac{d}{dx}\left(\frac{f}{g}\right) = \frac{f'g - fg'}{g^2}\).
-        Essa técnica aparece nos exercícios de nível GAMMA.
-      </li>
-      <li>
-        <strong>Produto vetorial</strong> (Cap 0 — Geometria Analítica):
-        o rotacional pode ser escrito como o "produto vetorial" do operador
-        \(\nabla\) com o campo \(\vec{F}\), usando o determinante formal.
-        Se você sabe calcular \(\vec{a} \times \vec{b}\), a estrutura é a mesma.
-      </li>
-      <li>
-        <strong>Regra da cadeia</strong> (Cap 0 — Derivadas): quando uma
-        componente do campo depende de \(r = \sqrt{x^2+y^2+z^2}\), precisamos
-        derivar compostas — por exemplo,
-        \(\frac{\partial}{\partial y}(r^{-3}) = -3r^{-4} \cdot
-        \frac{y}{r}\).
-      </li>
-<p>
-      <em>Resumo rápido:</em> o rotacional \(\nabla \times \vec{F}\) é um
-      <strong>vetor</strong> cujas componentes são combinações de derivadas
-      parciais das componentes de \(\vec{F}\). Ele mede a tendência de rotação
-      do campo em cada ponto — se você colocar uma pequena pá de moinho na
-      corrente, o rotacional diz como ela giraria.
+
+    <p>
+      <strong>Produto vetorial</strong> (Cap 0 — Geometria Analítica):
+      o rotacional usa a mesma estrutura do determinante que você já conhece
+      do produto vetorial \(\vec{a} \times \vec{b}\). Se você sabe calcular
+      \(\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\
+      b_1 & b_2 & b_3 \end{vmatrix}\), a fórmula do rotacional é análoga.
+    </p>
+
+    <p>
+      <strong>Derivadas parciais</strong> (Cap 1 — Derivadas Parciais):
+      \(\frac{\partial f}{\partial x}\) como derivada de \(f\) em relação a
+      \(x\), tratando as outras variáveis como constantes. O rotacional é
+      construído combinando derivadas parciais das componentes do campo:
+      por exemplo, a componente \(k\) envolve
+      \(\frac{\partial Q}{\partial x}\) e \(\frac{\partial P}{\partial y}\).
+    </p>
+
+    <p>
+      <strong>Campos vetoriais</strong> (Cap 1 — Campo Vetorial): um campo
+      \(\vec{F}(x,y,z) = P\hat{i} + Q\hat{j} + R\hat{k}\) associa um vetor
+      a cada ponto do espaço. O rotacional é uma propriedade desse campo —
+      mede a tendência de rotação local.
+    </p>
+
+    <p>
+      <strong>Regra do quociente</strong> (Cap 0 — Derivadas): para derivar
+      frações como \(\frac{-y}{x^2+y^2}\), usamos
+      \(\frac{d}{dx}\left(\frac{f}{g}\right) = \frac{f'g - fg'}{g^2}\).
+      Essa técnica aparece nos exercícios de nível GAMMA.
+    </p>
+
+    <p>
+      <strong>Regra da cadeia</strong> (Cap 0 — Derivadas): quando uma
+      componente do campo depende de \(r = \sqrt{x^2+y^2+z^2}\), precisamos
+      derivar compostas — por exemplo,
+      \(\frac{\partial}{\partial y}(r^{-3}) = -3r^{-4} \cdot
+      \frac{y}{r}\).
     </p>
   </div>
 

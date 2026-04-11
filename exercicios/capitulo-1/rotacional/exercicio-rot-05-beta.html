@@ -1,51 +1,83 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
   <div class="context">
-    ORIGEM: Análise de Campos Vetoriais [Programa Apollo, 1969]
+    ORIGEM: Análise de Campos Radiais — Propulsão Saturn V
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No EX-04, o campo
+    \((0,x,0)\) tinha rotacional não-zero — a pá girava. Agora vamos
+    ver o oposto: um campo onde, por mais que a força seja intensa,
+    não há rotação. Se colocarmos uma pá de moinho neste campo,
+    ela não gira — apenas se desloca.
+  </div>
+
   <p>
-    Nos exercícios anteriores, você viu campos irrotacionais (rotacional zero).
-    Agora vamos ver um campo onde o rotacional tem todas as três componentes
-    não-zero — a rotação acontece simultaneamente em múltiplas direções.
-    Considere \(\vec{F}(x,y,z) = (y^2, z^2, x^2)\).
+    No EX-04, calculamos o rotacional de \(\vec{F} = (0, x, 0)\) e
+    obtivemos \((0, 0, 1)\) — o campo gira. Agora considere o campo
+    radial \(\vec{G}(x,y,z) = (x, y, z)\): em cada ponto, o vetor
+    aponta diretamente para fora da origem.
   </p>
-<p><strong>(a)</strong> Calcule a componente \(i\) do rotacional:
-      \(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\).</p>
-    <p><strong>(b)</strong> Calcule a componente \(j\):
-      \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\).</p>
-    <p><strong>(c)</strong> Calcule a componente \(k\):
-      \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).</p>
-    <p><strong>(d)</strong> Escreva o vetor rotacional completo. No ponto \((1, 1, 1)\),
-      em que direção aponta?</p>
-<details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+
+  <p><strong>(a)</strong> Identifique \(P = x\), \(Q = y\), \(R = z\).
+    Calcule a componente \(i\) do rotacional:
+    \(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\).</p>
+
+  <p><strong>(b)</strong> Calcule a componente \(j\):
+    \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\).</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\):
+    \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).</p>
+
+  <p><strong>(d)</strong> O rotacional é zero. Se colocarmos uma pequena
+    pá de moinho no ponto \((1, 1, 0)\), ela gira? Por que o rotacional
+    zero não significa "campo fraco"?</p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Note o padrão: \(P\) depende de \(y\), \(Q\) de \(z\),
-      \(R\) de \(x\). Cada componente "cicla" para a próxima variável.
-      Isso gera derivadas parciais não-zero nas direções cruzadas.
+      [NOTA TÉCNICA]: Cada componente depende apenas de sua própria
+      variável: \(P = x\) (só depende de \(x\)), \(Q = y\) (só de \(y\)),
+      \(R = z\) (só de \(z\)). As derivadas "cruzadas" são sempre zero.
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) Componente \(i\): \(\frac{\partial (x^2)}{\partial y} -
-        \frac{\partial (z^2)}{\partial z} = 0 - 2z = -2z\).
+        (a) \(\frac{\partial R}{\partial y} = \frac{\partial z}{\partial y} = 0\).
+        \(\frac{\partial Q}{\partial z} = \frac{\partial y}{\partial z} = 0\).
+        Componente \(i\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (b) Componente \(j\): \(\frac{\partial (y^2)}{\partial z} -
-        \frac{\partial (x^2)}{\partial x} = 0 - 2x = -2x\).
+        (b) \(\frac{\partial P}{\partial z} = 0\), \(\frac{\partial R}{\partial x} = 0\).
+        Componente \(j\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (c) Componente \(k\): \(\frac{\partial (z^2)}{\partial x} -
-        \frac{\partial (y^2)}{\partial y} = 0 - 2y = -2y\).
+        (c) \(\frac{\partial Q}{\partial x} = 0\), \(\frac{\partial P}{\partial y} = 0\).
+        Componente \(k\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (d) \(\nabla \times \vec{F} = (-2z, -2x, -2y)\).
-        No ponto \((1,1,1)\): \((-2, -2, -2)\), apontando na direção
-        \((-1,-1,-1)\) — oposta à diagonal principal.
+        (d) \(\nabla \times \vec{G} = (0, 0, 0)\). No ponto \((1,1,0)\),
+        o vetor é \((1,1,0)\) — força intensa apontando para fora. Mas
+        uma pá de moinho ali não gira, porque a força empurra
+        <em>igualmente</em> em todas as direções radiais. Não há
+        "cisalhamento" (diferença de força entre um lado da pá e o
+        outro).
+      </p>
+
+      <p>
+        Isso mostra que rotacional zero ≠ campo fraco. Um campo pode
+        ser intenso e ainda assim irrotacional. O rotacional mede
+        <em>rotação</em>, não intensidade. Um campo com rotacional
+        zero é chamado <em>irrotacional</em>.
       </p>
     </div>
   </details>
-
+</li>

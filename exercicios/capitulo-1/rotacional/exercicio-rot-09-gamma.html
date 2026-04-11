@@ -1,71 +1,79 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
   <div class="context">
-    ORIGEM: Teoria de Campos Avançada [Pesquisa Classificada, 1985]
+    ORIGEM: Dinâmica de Fluidos — Programa Skylab, 1975
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Até agora, quando o
+    rotacional era não-zero, ele apontava em uma única direção (geralmente
+    \(z\)). Agora vamos ver um campo onde a rotação acontece
+    simultaneamente em múltiplas direções — o rotacional tem três
+    componentes não-zero.
+  </div>
+
   <p>
-    Nos exercícios EX-07 e EX-08, você calculou o rotacional de
-    \(\vec{F}_1 = (-y, x, 0)\) e \(\vec{F}_2 = \frac{(-y, x, 0)}{x^2+y^2}\).
-    Ambos os campos "giram" ao redor da origem — se você desenhar as setas,
-    elas circulam. Mas os rotacionais são diferentes:
-    \(\nabla \times \vec{F}_1 = (0,0,2)\) e
-    \(\nabla \times \vec{F}_2 = (0,0,0)\).
+    Nos exercícios anteriores, os rotacionais não-zero tinham apenas
+    uma componente (sempre na direção \(z\)). Agora considere o campo
+    \(\vec{F}(x,y,z) = (y^2, z^2, x^2)\): aqui cada componente depende
+    de uma variável <em>diferente</em> da "sua", criando um padrão
+    de rotação mais complexo.
   </p>
-  <p>
-    Este paradoxo merece uma investigação mais profunda.
-  </p>
-<p><strong>(a)</strong> Desenhe \(\vec{F}_1\) nos pontos \((1,0)\), \((0,1)\),
-      \((-1,0)\), \((0,-1)\). Todas as setas têm o mesmo comprimento?</p>
-    <p><strong>(b)</strong> Desenhe \(\vec{F}_2\) nos mesmos pontos. As setas têm o mesmo
-      comprimento? Qual é mais longa?</p>
-    <p><strong>(c)</strong> Em \(\vec{F}_1\), a "velocidade de giro" é constante — todos
-      os pontos circulam com a mesma intensidade. Em \(\vec{F}_2\), a
-      intensidade varia com \(\frac{1}{r}\). Calcule a intensidade
-      \(|\vec{F}_2|\) nos pontos \((1,0)\) e \((2,0)\).</p>
-    <p><strong>(d)</strong> O rotacional mede a rotação <em>local</em> — a tendência
-      infinitesimal de rotação em cada ponto. Por que \(\vec{F}_2\)
-      "gira" mas tem rotacional zero? Dica: pense no que acontece com
-      uma partícula pequena colocada no campo — em \(\vec{F}_1\) ela
-      gira; em \(\vec{F}_2\), ela se move ao redor da origem mas não
-      gira em torno de si mesma.</p>
-<details class="hint-container">
+
+  <p><strong>(a)</strong> Identifique \(P = y^2\), \(Q = z^2\),
+    \(R = x^2\). Note o padrão: \(P\) depende de \(y\), \(Q\) de \(z\),
+    \(R\) de \(x\). Calcule a componente \(i\):
+    \(\frac{\partial (x^2)}{\partial y} - \frac{\partial (z^2)}{\partial z}\).</p>
+
+  <p><strong>(b)</strong> Calcule a componente \(j\):
+    \(\frac{\partial (y^2)}{\partial z} - \frac{\partial (x^2)}{\partial x}\).</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\):
+    \(\frac{\partial (z^2)}{\partial x} - \frac{\partial (y^2)}{\partial y}\).</p>
+
+  <p><strong>(d)</strong> Escreva o vetor rotacional completo. No ponto
+    \((1, 1, 1)\), em que direção aponta? Descreva como seria o movimento
+    de uma pequena pá de moinho colocada neste ponto.</p>
+
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A diferença está no <em>cisalhamento</em>. Em
-      \(\vec{F}_1\), pontos mais distantes se movem na mesma velocidade
-      angular — há tensão de cisalhamento que gera rotação local. Em
-      \(\vec{F}_2\), a velocidade angular diminui com a distância de
-      forma que não há cisalhamento.
+      [NOTA TÉCNICA]: Note o padrão: \(P\) depende de \(y\), \(Q\) de \(z\),
+      \(R\) de \(x\). Cada componente "cicla" para a próxima variável.
+      A componente \(i\) envolve derivadas de \(R\) em \(y\) e \(Q\) em \(z\):
+      \(\frac{\partial (x^2)}{\partial y} = 0\) e
+      \(\frac{\partial (z^2)}{\partial z} = 2z\).
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) Em \((1,0)\): \((0,1)\). Em \((0,1)\): \((-1,0)\).
-        Em \((-1,0)\): \((0,-1)\). Em \((0,-1)\): \((1,0)\).
-        Todas têm comprimento 1 — o campo é uniforme em magnitude.
+        (a) \(\frac{\partial (x^2)}{\partial y} = 0\), \(\frac{\partial
+        (z^2)}{\partial z} = 2z\). Componente \(i\): \(0 - 2z = -2z\).
       </p>
+
       <p>
-        (b) Em \((1,0)\): \((0,1)\) — comprimento 1.
-        Em \((0,1)\): \((-1,0)\) — comprimento 1.
-        Em \((2,0)\): \((0, 1/4)\) — comprimento 1/4.
-        As setas perto da origem são maiores.
+        (b) \(\frac{\partial (y^2)}{\partial z} = 0\), \(\frac{\partial
+        (x^2)}{\partial x} = 2x\). Componente \(j\): \(0 - 2x = -2x\).
       </p>
+
       <p>
-        (c) \(|\vec{F}_2| = \frac{1}{\sqrt{x^2+y^2}} = \frac{1}{r}\).
-        Em \((1,0)\): \(|\vec{F}_2| = 1\). Em \((2,0)\): \(|\vec{F}_2| = 1/2\).
+        (c) \(\frac{\partial (z^2)}{\partial x} = 0\), \(\frac{\partial
+        (y^2)}{\partial y} = 2y\). Componente \(k\): \(0 - 2y = -2y\).
       </p>
+
       <p>
-        (d) O rotacional é uma medida <em>local</em> e <em>infinitesimal</em>.
-        Em \(\vec{F}_1\), a velocidade angular é constante — uma partícula
-        pequena é "estirada" de um lado e "comprimida" do outro, gerando
-        rotação em torno de si mesma. Em \(\vec{F}_2\), a velocidade diminui
-        com a distância de forma que a partícula se move ao redor da origem
-        mas não gira em torno de si mesma — não há rotação local, apenas
-        órbita global.
+        (d) \(\nabla \times \vec{F} = (-2z, -2x, -2y)\).
+        No ponto \((1,1,1)\): \((-2, -2, -2)\), apontando na direção
+        \((-1,-1,-1)\). A rotação acontece simultaneamente nas três
+        direções — o eixo de rotação é a diagonal oposta ao primeiro
+        octante. Uma pequena pá de moinho neste campo giraria em torno
+        desse eixo inclinado, não em torno de um eixo coordenado.
       </p>
     </div>
   </details>
-
+</li>

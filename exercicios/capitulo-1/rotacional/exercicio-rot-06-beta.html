@@ -1,57 +1,84 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-06-BETA</div>
   <div class="context">
-    ORIGEM: Dinâmica de Fluidos Espaciais [Relatório Técnico RT-1970]
+    ORIGEM: Vórtice Atmosférico — Previsão de Trajetória Apollo
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No EX-04, o campo
+    \((0,x,0)\) tinha rotacional \((0,0,1)\). No EX-05, o campo
+    radial \((x,y,z)\) tinha rotacional zero. Agora vamos ver o
+    caso mais "puro" de rotação: um campo que circula ao redor da
+    origem com intensidade constante.
+  </div>
+
   <p>
-    No exercício anterior, o rotacional tinha três componentes não-zero.
-    Agora vamos ver um caso intermediário: um campo onde apenas algumas
-    componentes do rotacional são não-zero, e as derivadas parciais se
-    cancelam parcialmente. Considere \(\vec{F}(x,y,z) = (xz, yz, xy)\).
+    Nos dois exercícios anteriores, vimos um campo que gira (rotacional
+    não-zero) e um que não gira (rotacional zero). Agora vamos analisar
+    o campo \(\vec{F}(x,y,z) = (-y, x, 0)\): em cada ponto do plano
+    \(xy\), o vetor é perpendicular ao vetor posição — é um campo
+    puramente circular.
   </p>
-  <p>
-    Note a semelhança com o EX-03: lá o campo era \((yz, xz, xy)\) e o
-    rotacional era zero. Aqui a ordem das variáveis mudou — a componente
-    \(P\) é \(xz\) em vez de \(yz\). Será que o rotacional ainda é zero?
-  </p>
-<p><strong>(a)</strong> Identifique \(P = xz\), \(Q = yz\), \(R = xy\). Calcule a
-      componente \(i\): \(\frac{\partial (xy)}{\partial y} -
-      \frac{\partial (yz)}{\partial z}\).</p>
-    <p><strong>(b)</strong> Calcule a componente \(j\): \(\frac{\partial (xz)}{\partial z} -
-      \frac{\partial (xy)}{\partial x}\).</p>
-    <p><strong>(c)</strong> Calcule a componente \(k\).</p>
-    <p><strong>(d)</strong> Interprete: por que apenas certas componentes são não-zero?</p>
-<details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
+
+  <p><strong>(a)</strong> Identifique \(P\), \(Q\) e \(R\).
+    Calcule as derivadas parciais \(\frac{\partial R}{\partial y}\) e
+    \(\frac{\partial Q}{\partial z}\). Qual é a componente \(i\)?</p>
+
+  <p><strong>(b)</strong> Calcule a componente \(j\):
+    \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\).</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\):
+    \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).
+    Compare com o rotacional de \((0, x, 0)\) do EX-04.</p>
+
+  <p><strong>(d)</strong> Desenhe o campo nos pontos \((1,0)\),
+    \((0,1)\), \((-1,0)\), \((0,-1)\). Todas as setas têm o mesmo
+    comprimento? Como isso difere do campo \((0, x, 0)\) do EX-02?</p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Compare com EX-03. Lá, \(P=yz\) dava
-      \(\frac{\partial P}{\partial z} = y\) que cancelava com
-      \(\frac{\partial R}{\partial x} = y\). Aqui, \(P=xz\) dá
-      \(\frac{\partial P}{\partial z} = x\), que não cancela.
+      [NOTA TÉCNICA]: Para a componente \(k\), note que \(\frac{\partial
+      Q}{\partial x} = \frac{\partial (x)}{\partial x} = 1\) e
+      \(\frac{\partial P}{\partial y} = \frac{\partial (-y)}{\partial y}
+      = -1\). A componente \(k\) será \(1 - (-1) = 2\).
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) Componente \(i\): \(\frac{\partial (xy)}{\partial y} -
-        \frac{\partial (yz)}{\partial z} = x - y\).
+        (a) \(P = -y\), \(Q = x\), \(R = 0\).
+        \(\frac{\partial R}{\partial y} = 0\), \(\frac{\partial Q}{\partial z} = 0\).
+        Componente \(i\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (b) Componente \(j\): \(\frac{\partial (xz)}{\partial z} -
-        \frac{\partial (xy)}{\partial x} = x - y\).
+        (b) \(\frac{\partial P}{\partial z} = 0\), \(\frac{\partial R}{\partial x} = 0\).
+        Componente \(j\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (c) Componente \(k\): \(\frac{\partial (yz)}{\partial x} -
-        \frac{\partial (xz)}{\partial y} = 0 - 0 = 0\).
+        (c) \(\frac{\partial Q}{\partial x} = 1\), \(\frac{\partial P}{\partial y} = -1\).
+        Componente \(k\): \(1 - (-1) = 2\).
+        \(\nabla \times \vec{F} = (0, 0, 2)\).
+        Comparando com o EX-04: o campo \((0, x, 0)\) tinha rotacional
+        \((0,0,1)\). Este campo tem rotacional \((0,0,2)\) — gira o
+        dobro de rápido! Isso faz sentido: o campo \((-y, x, 0)\)
+        circula "por inteiro", enquanto \((0, x, 0)\) tinha apenas
+        componente \(y\).
       </p>
+
       <p>
-        (d) \(\nabla \times \vec{F} = (x - y, x - y, 0)\).
-        As componentes \(i\) e \(j\) são iguais — a rotação tem a mesma
-        intensidade nas direções \(x\) e \(y\). A componente \(k\) é zero
-        porque as derivadas em \(x\) e \(y\) de \(yz\) e \(xz\) são zero.
+        (d) Em \((1,0)\): \(\vec{F} = (0, 1)\). Em \((0,1)\): \(\vec{F}
+        = (-1, 0)\). Em \((-1,0)\): \(\vec{F} = (0, -1)\). Em \((0,-1)\):
+        \(\vec{F} = (1, 0)\). Todas as setas têm comprimento 1 — o campo
+        é uniforme em magnitude e puramente circular. Diferente de
+        \((0, x, 0)\), onde a intensidade dependia de \(x\).
       </p>
     </div>
   </details>
-
+</li>

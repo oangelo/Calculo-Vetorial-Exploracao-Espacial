@@ -1,51 +1,96 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
-  <div class="context">ORIGEM: Forças Aerodinâmicas em Retorno Orbital</div>
+  <div class="context">
+    ORIGEM: Formalismo Matemático — Divisão de Análise de Missão
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Nos três primeiros
+    exercícios, você entendeu que torque causa rotação, que campos
+    vetoriais podem causar torque em páginas de moinho, e que a circulação
+    mede essa rotação. Agora vamos ver como o rotacional captura tudo
+    isso em uma fórmula compacta.
+  </div>
+
   <p>
-    No exercício anterior, você viu um campo irrotacional onde as derivadas
-    parciais se cancelavam por simetria. Agora vamos ver outro tipo de campo
-    irrotacional — um onde cada componente depende apenas de uma variável.
-    O campo \(\vec{V} = (x^2, y^2, z^2)\) representa a distribuição de
-    velocidades de reentrada.
+    Nos exercícios anteriores, vimos que o campo \(\vec{F} = (0, x, 0)\)
+    causa rotação em uma pá de moinho, e que a circulação ao redor de
+    um quadrado de lado \(a\) é \(a^2\), dando circulação/área \(= 1\).
+    Agora vamos verificar isso com a fórmula do rotacional.
   </p>
-<p><strong>(a)</strong> Note que \(P = x^2\) depende apenas de \(x\), \(Q = y^2\) apenas
-      de \(y\), e \(R = z^2\) apenas de \(z\). Calcule
-      \(\frac{\partial R}{\partial y}\) e \(\frac{\partial Q}{\partial z}\).
-      O que acontece?</p>
-    <p><strong>(b)</strong> Calcule as outras duas componentes do rotacional.</p>
-    <p><strong>(c)</strong> Todas são zero. Interprete: este campo não tem rotação local.
-      Mas o fluxo é "reto"? Pense no que o campo faz no ponto \((1,1,1)\):
-      o vetor é \((1,1,1)\), apontando na diagonal. O campo não é uniforme,
-      mas não gira.</p>
-<details class="hint-container">
+
+  <p>
+    O rotacional de \(\vec{F} = (P, Q, R)\) é definido como:
+  </p>
+
+  <div class="formula-highlight">
+    \[
+    \nabla \times \vec{F} = \begin{pmatrix}
+    \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \\[6pt]
+    \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \\[6pt]
+    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
+    \end{pmatrix}
+    \]
+  </div>
+
+  <p><strong>(a)</strong> Para \(\vec{F} = (0, x, 0)\), identifique
+    \(P\), \(Q\) e \(R\). Calcule cada derivada parcial envolvida
+    na componente \(i\) do rotacional:
+    \(\frac{\partial R}{\partial y}\) e \(\frac{\partial Q}{\partial z}\).</p>
+
+  <p><strong>(b)</strong> Calcule a componente \(j\):
+    \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\).</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\):
+    \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).
+    Este valor é familiar?</p>
+
+  <p><strong>(d)</strong> O rotacional é \((0, 0, 1)\). Compare com
+    o resultado do EX-03: a circulação/área era \(1\). Confirma que
+    o rotacional é o limite da circulação por unidade de área?</p>
+
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Quando cada componente depende apenas de sua própria
-      variável, as derivadas cruzadas são sempre zero — e o rotacional
-      se anula. Isso é diferente da simetria do exercício anterior.
+      [NOTA TÉCNICA]: As derivadas parciais que você já domina são os
+      blocos de construção do rotacional. Para \(P = 0\), todas as
+      derivadas de \(P\) são zero. Para \(Q = x\), apenas
+      \(\frac{\partial Q}{\partial x} = 1\) é não-zero.
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(\frac{\partial R}{\partial y} = \frac{\partial (z^2)}{\partial y}
-        = 0\) e \(\frac{\partial Q}{\partial z} =
-        \frac{\partial (y^2)}{\partial z} = 0\). Componente \(i = 0 - 0 = 0\).
+        (a) \(P = 0\), \(Q = x\), \(R = 0\).
+        \(\frac{\partial R}{\partial y} = 0\), \(\frac{\partial Q}{\partial z} = 0\).
+        Componente \(i\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (b) Componente \(j\): \(\frac{\partial P}{\partial z} -
-        \frac{\partial R}{\partial x} = 0 - 0 = 0\).
-        Componente \(k\): \(\frac{\partial Q}{\partial x} -
-        \frac{\partial P}{\partial y} = 0 - 0 = 0\).
+        (b) \(\frac{\partial P}{\partial z} = 0\), \(\frac{\partial R}{\partial x} = 0\).
+        Componente \(j\): \(0 - 0 = 0\).
       </p>
+
       <p>
-        (c) \(\nabla \times \vec{V} = (0, 0, 0)\). O campo não gira
-        localmente. No ponto \((1,1,1)\), o vetor \((1,1,1)\) aponta
-        para fora — é um fluxo de expansão, não de rotação. O rotacional
-        mede rotação, não expansão (essa é a função do divergente, que
-        veremos no próximo tópico).
+        (c) \(\frac{\partial Q}{\partial x} = 1\), \(\frac{\partial P}{\partial y} = 0\).
+        Componente \(k\): \(1 - 0 = 1\). Sim — este é o valor da
+        circulação/área que calculamos no EX-03!
+      </p>
+
+      <p>
+        (d) \(\nabla \times \vec{F} = (0, 0, 1)\). O rotacional aponta
+        na direção \(+z\) com magnitude 1. Isso confirma que:
+        <p>
+        <strong>•</strong> A direção \(+z\) indica rotação no plano \(xy\) (eixo perpendicular ao plano de rotação).
+        <strong>•</strong> A magnitude 1 é exatamente a circulação/área que calculamos.
+        </p>
+        O rotacional é, portanto, uma "medida local de rotação" —
+        ele resume em um único vetor tudo que a pá de moinho e a
+        circulação nos disseram.
       </p>
     </div>
   </details>

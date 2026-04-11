@@ -1,50 +1,87 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
   <div class="context">
-    ORIGEM: Dinâmica de Campos Gravitacionais [Teoria Geral, 1990]
+    ORIGEM: Paradoxo Hidrodinâmico — Pesquisa Fundamental, 1980
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Este exercício revela
+    uma sutileza profunda: um campo pode "girar" globalmente ao redor
+    de um ponto e ainda ter rotacional zero. A rotação que o rotacional
+    mede é <em>local</em> — uma partícula gira em torno de si mesma,
+    não apenas ao redor de um ponto distante.
+  </div>
+
   <p>
-    O campo gravitacional produzido por uma massa \(M\) na origem é
-    \[\vec{g} = -\frac{GM}{r^3}\vec{r},\]
-    onde \(\vec{r} = (x, y, z)\) e \(r = \sqrt{x^2+y^2+z^2}\).
-    Vamos verificar que este campo não tem rotação — a gravidade puxa
-    sempre em direção ao centro, sem "giro".
+    No EX-06, o campo \(\vec{F}_1 = (-y, x, 0)\) tinha rotacional
+    \((0, 0, 2)\). Agora vamos dividir esse campo por
+    \(r^2 = x^2 + y^2\), obtendo:
+    \[\vec{F}_2 = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}, 0\right).\]
+    Ambos os campos "giram" ao redor da origem. Será que o rotacional
+    de \(\vec{F}_2\) também é não-zero?
   </p>
-<p><strong>(a)</strong> Escreva as componentes: \(g_1 = \frac{-GMx}{r^3}\),
-      \(g_2 = \frac{-GMy}{r^3}\), \(g_3 = \frac{-GMz}{r^3}\).
-      Calcule \(\frac{\partial g_3}{\partial y}\). Dica: use a regra
-      da cadeia com \(r^3 = (x^2+y^2+z^2)^{3/2}\).</p>
-    <p><strong>(b)</strong> Calcule \(\frac{\partial g_2}{\partial z}\) de forma análoga.</p>
-    <p><strong>(c)</strong> Verifique que a componente \(i\) do rotacional é zero:
-      \(\frac{\partial g_3}{\partial y} - \frac{\partial g_2}{\partial z}
-      = 0\).</p>
-    <p><strong>(d)</strong> Por simetria, as componentes \(j\) e \(k\) também são zero.
-      Interprete: por que o campo gravitacional não tem rotação?</p>
-<details>
+
+  <p><strong>(a)</strong> Escreva \(F_{2x} = \frac{-y}{x^2+y^2}\) e
+    \(F_{2y} = \frac{x}{x^2+y^2}\). Calcule \(\frac{\partial
+    F_{2y}}{\partial x}\) usando a regra do quociente: se
+    \(F_{2y} = \frac{x}{u}\) com \(u = x^2+y^2\), então
+    \(\frac{\partial F_{2y}}{\partial x} = \frac{1 \cdot u - x \cdot
+    2x}{u^2}\).</p>
+
+  <p><strong>(b)</strong> Calcule \(\frac{\partial F_{2x}}{\partial y}\)
+    usando a regra do quociente de forma análoga.</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\) do rotacional:
+    \(\frac{\partial F_{2y}}{\partial x} - \frac{\partial
+    F_{2x}}{\partial y}\). Simplifique.</p>
+
+  <p><strong>(d)</strong> O rotacional vale \((0, 0, 0)\) para
+    \((x,y) \neq (0,0)\). O campo "gira" ao redor da origem, mas
+    o rotacional é zero! Explique: pense no que acontece com uma
+    partícula pequena colocada no campo — em \(\vec{F}_1\) ela gira
+    em torno de si mesma; em \(\vec{F}_2\), ela orbita ao redor da
+    origem mas não gira em torno de si.</p>
+
+  <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(g_3 = -GMz \cdot r^{-3}\).
-        \(\frac{\partial g_3}{\partial y} = -GMz \cdot (-3)r^{-4}
-        \cdot \frac{\partial r}{\partial y} = 3GMz \cdot r^{-4}
-        \cdot \frac{y}{r} = \frac{3GMzy}{r^5}\).
+        (a) \(u = x^2 + y^2\).
+        \(\frac{\partial F_{2y}}{\partial x} = \frac{1 \cdot (x^2+y^2) -
+        x \cdot 2x}{(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
       </p>
+
       <p>
-        (b) \(g_2 = -GMy \cdot r^{-3}\).
-        \(\frac{\partial g_2}{\partial z} = -GMy \cdot (-3)r^{-4}
-        \cdot \frac{z}{r} = \frac{3GMyz}{r^5}\).
+        (b) \(F_{2x} = \frac{-y}{u}\).
+        \(\frac{\partial F_{2x}}{\partial y} = \frac{(-1)(x^2+y^2) -
+        (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2 - y^2 + 2y^2}
+        {(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
       </p>
+
       <p>
-        (c) Componente \(i\): \(\frac{3GMzy}{r^5} - \frac{3GMyz}{r^5} = 0\).
+        (c) Componente \(k\): \(\frac{y^2 - x^2}{(x^2+y^2)^2} -
+        \frac{y^2 - x^2}{(x^2+y^2)^2} = 0\).
       </p>
+
       <p>
-        (d) As componentes \(j\) e \(k\) também são zero por simetria
-        (o cálculo é análogo, ciclando as variáveis).
-        \(\nabla \times \vec{g} = (0, 0, 0)\). A gravidade puxa
-        sempre em direção ao centro — não há componente tangencial
-        que cause rotação. O campo é puramente "afunilante".
+        (d) \(\nabla \times \vec{F}_2 = (0, 0, 0)\) para \((x,y) \neq
+        (0,0)\). O rotacional mede rotação <em>local</em> (infinitesimal).
+        O campo \(\vec{F}_2\) "gira" globalmente ao redor da origem, mas
+        em cada ponto individual não há cisalhamento — a velocidade
+        angular diminui com a distância de forma que não há tendência
+        de rotação local. É como um redemoinho onde a velocidade
+        diminui exatamente na proporção certa.
+      </p>
+
+      <p>
+        Em \(\vec{F}_1\), a velocidade angular é constante — uma
+        partícula pequena é "esticada" de um lado e "comprimida" do
+        outro, gerando rotação em torno de si mesma. Em \(\vec{F}_2\),
+        a partícula se move ao redor da origem mas não gira em torno
+        de si — não há rotação local, apenas órbita global.
       </p>
     </div>
   </details>
-
+</li>

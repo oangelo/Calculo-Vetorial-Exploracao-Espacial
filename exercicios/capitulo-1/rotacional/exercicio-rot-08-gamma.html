@@ -1,70 +1,78 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
   <div class="context">
-    ORIGEM: Análise de Estabilidade [Programa Shuttle, 1981]
+    ORIGEM: Análise de Fluxo Elétrico — Sistemas de Proteção Térmica
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No EX-05, o campo
+    radial \((x,y,z)\) era irrotacional porque cada componente dependia
+    apenas de "sua" variável. Agora vamos ver um caso mais sutil: um
+    campo onde as derivadas cruzadas existem, mas se cancelam
+    perfeitamente por simetria.
+  </div>
+
   <p>
-    No EX-01, o campo \((-y, x, 0)\) tinha rotacional \((0,0,2)\).
-    Agora vamos dividir esse campo por \(r^2 = x^2 + y^2\), obtendo
-    \(\vec{F} = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}, 0\right)\).
-    As setas ainda circulam ao redor da origem, mas a intensidade diminui
-    com a distância. Será que o rotacional muda?
+    Nos exercícios anteriores, vimos campos irrotacionais onde cada
+    componente dependia apenas de sua própria variável. Agora considere
+    o campo \(\vec{F}(x,y,z) = (yz, xz, xy)\): aqui as componentes
+    dependem de <em>outras</em> variáveis. Será que o rotacional
+    ainda é zero?
   </p>
-<p><strong>(a)</strong> Escreva \(F_1 = \frac{-y}{x^2+y^2}\) e \(F_2 = \frac{x}{x^2+y^2}\).
-      Calcule \(\frac{\partial F_2}{\partial x}\) usando a regra do
-      quociente: se \(F_2 = \frac{x}{u}\) com \(u = x^2+y^2\), então
-      \(\frac{\partial F_2}{\partial x} = \frac{1 \cdot u - x \cdot 2x}{u^2}\).</p>
-    <p><strong>(b)</strong> Calcule \(\frac{\partial F_1}{\partial y}\) usando a regra do
-      quociente de forma análoga.</p>
-    <p><strong>(c)</strong> Calcule a componente \(k\) do rotacional:
-      \(\frac{\partial F_2}{\partial x} - \frac{\partial F_1}{\partial y}\).
-      Simplifique.</p>
-    <p><strong>(d)</strong> Por simetria (ou cálculo análogo), verifique que as componentes
-      \(i\) e \(j\) também são zero. O rotacional vale para \((x,y) \neq (0,0)\).</p>
-    
-      (e) Interprete: o campo gira ao redor da origem, mas o rotacional
-      é zero! Como isso é possível?
-    
-<details class="hint-container">
+
+  <p><strong>(a)</strong> Identifique \(P = yz\), \(Q = xz\), \(R = xy\).
+    Observe a simetria: cada componente é o produto das outras duas
+    variáveis. Calcule a componente \(i\) do rotacional:
+    \(\frac{\partial (xy)}{\partial y} - \frac{\partial (xz)}{\partial z}\).</p>
+
+  <p><strong>(b)</strong> Calcule a componente \(j\):
+    \(\frac{\partial (yz)}{\partial z} - \frac{\partial (xy)}{\partial x}\).</p>
+
+  <p><strong>(c)</strong> Calcule a componente \(k\):
+    \(\frac{\partial (xz)}{\partial x} - \frac{\partial (yz)}{\partial y}\).</p>
+
+  <p><strong>(d)</strong> O rotacional é zero. Diferente do EX-05 (onde
+    cada componente dependia de uma variável só), aqui as derivadas
+    cruzadas são não-zero — mas se cancelam. Explique como a simetria
+    do campo causa esse cancelamento.</p>
+
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre-se da regra do quociente:
-      \(\frac{d}{dx}\left(\frac{f}{g}\right) = \frac{f'g - fg'}{g^2}\).
-      A componente \(k\) do rotacional será a diferença de duas frações
-      com denominador \((x^2+y^2)^2\).
+      [NOTA TÉCNICA]: Para a componente \(i\): \(\frac{\partial (xy)}{\partial y}
+      = x\) e \(\frac{\partial (xz)}{\partial z} = x\). A diferença
+      \(x - x = 0\). O mesmo padrão se repete nas outras componentes.
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(\frac{\partial F_2}{\partial x} = \frac{1 \cdot (x^2+y^2) -
-        x \cdot 2x}{(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+        (a) \(\frac{\partial (xy)}{\partial y} = x\), \(\frac{\partial
+        (xz)}{\partial z} = x\). Componente \(i\): \(x - x = 0\).
       </p>
+
       <p>
-        (b) \(\frac{\partial F_1}{\partial y} = \frac{(-1)(x^2+y^2) -
-        (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2 - y^2 + 2y^2}{(x^2+y^2)^2}
-        = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+        (b) \(\frac{\partial (yz)}{\partial z} = y\), \(\frac{\partial
+        (xy)}{\partial x} = y\). Componente \(j\): \(y - y = 0\).
       </p>
+
       <p>
-        (c) Componente \(k\): \(\frac{y^2 - x^2}{(x^2+y^2)^2} -
-        \frac{y^2 - x^2}{(x^2+y^2)^2} = 0\).
+        (c) \(\frac{\partial (xz)}{\partial x} = z\), \(\frac{\partial
+        (yz)}{\partial y} = z\). Componente \(k\): \(z - z = 0\).
       </p>
+
       <p>
-        (d) As componentes \(i\) e \(j\) também são zero (cálculo análogo
-        ou por simetria). \(\nabla \times \vec{F} = (0, 0, 0)\) para
-        \((x,y) \neq (0,0)\).
-      </p>
-      <p>
-        (e) O rotacional mede rotação LOCAL (infinitesimal). O campo
-        \(\vec{F}\) "gira" globalmente ao redor da origem, mas em cada
-        ponto individual não há tendência de rotação — as derivadas
-        parciais se cancelam porque a intensidade do campo decresce
-        exatamente na proporção certa. É como um redemoinho onde a
-        velocidade diminui com a distância de forma que não há
-        "cisalhamento" local.
+        (d) \(\nabla \times \vec{F} = (0, 0, 0)\). O campo é
+        <em>irrotacional</em>. A simetria "cada componente é o produto
+        das outras duas variáveis" garante que as derivadas parciais
+        cruzadas são iguais e se cancelam. Este é um caso onde a
+        estrutura do campo, e não a simplicidade de suas dependências,
+        é responsável pela ausência de rotação.
       </p>
     </div>
   </details>
-
+</li>

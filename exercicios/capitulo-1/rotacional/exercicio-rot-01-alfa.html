@@ -1,65 +1,87 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-01-ALFA</div>
   <div class="context">
-    ORIGEM: Simulação de Rotacional - Módulo Lunar Eagle
+    ORIGEM: Princípios de Mecânica Orbital — Programa V-2
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Antes de calcular qualquer
+    rotacional, precisamos entender o que causa rotação. Em mecânica, a resposta
+    é o <em>torque</em>. Este exercício estabelece a conexão entre torque
+    físico e a ideia de "rotação de um campo" que perseguiremos nos próximos
+    exercícios.
+  </div>
+
   <p>
-    Na lista de derivadas parciais, você aprendeu como uma função escalar muda
-    em cada direção. Agora vamos ver uma aplicação poderosa desse conceito:
-    medir a tendência de <em>rotação</em> de um campo vetorial. Imagine um rio
-    fluindo — em alguns pontos a água gira como um redemoinho, em outros flui
-    reto. O rotacional mede exatamente isso.
+    Quando uma força \(\vec{F}\) é aplicada em um ponto cuja posição
+    relativa ao pivô é \(\vec{r}\), o efeito rotacional é descrito pelo
+    <em>torque</em> (ou momento):
+    \(\vec{\tau} = \vec{r} \times \vec{F}\).
+    Se \(\vec{\tau} \neq \vec{0}\), o objeto gira em torno do pivô.
   </p>
-  <p>
-    O campo vetorial \(\vec{F} = \begin{pmatrix} -y \ x \ 0 \end{pmatrix}\)
-    representa um fluxo que circula ao redor da origem.
-  </p>
-<p><strong>(a)</strong> Identifique as componentes \(P(x,y,z)\), \(Q(x,y,z)\) e \(R(x,y,z)\)
-      do campo \(\vec{F} = (P, Q, R)\).</p>
-    <p><strong>(b)</strong> No ponto \((1, 0)\), qual vetor o campo atribui? Desenhe essa seta
-      em um sistema de coordenadas. Faça o mesmo para os pontos \((0, 1)\),
-      \((-1, 0)\) e \((0, -1)\).</p>
-    <p><strong>(c)</strong> Observando seu desenho, as setas circulam ao redor de qual eixo?
-      No sentido horário ou anti-horário?</p>
-    <p><strong>(d)</strong> Agora calcule o rotacional \(\nabla \times \vec{F}\) usando a fórmula
-      das componentes. Confirme se a direção do vetor resultante coincide com
-      sua previsão do item (c).</p>
-<details class="hint-container">
+
+  <p><strong>(a)</strong> Um braço de alavanca se estende do pivô até o ponto
+    \(\vec{r} = (2, 0, 0)\) metros. Uma força \(\vec{F} = (0, 5, 0)\) Newtons
+    é aplicada na extremidade. Calcule o torque \(\vec{\tau} = \vec{r} \times
+    \vec{F}\).</p>
+
+  <p><strong>(b)</strong> Em que eixo o objeto gira? O vetor torque aponta
+    em que direção e sentido? Use a regra da mão direita para verificar.</p>
+
+  <p><strong>(c)</strong> Agora a força é \(\vec{F} = (3, 0, 0)\) — aplicada
+    na mesma extremidade \(\vec{r} = (2, 0, 0)\). Calcule o torque. O objeto
+    gira? Por quê?</p>
+
+  <p><strong>(d)</strong> Resuma: quando o torque é zero, o que acontece
+    com a rotação? Quando é diferente de zero, como a direção do torque
+    se relaciona com o eixo de rotação?</p>
+
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O rotacional combina derivadas parciais das componentes
-      do campo: a componente \(k\) é \(\frac{\partial Q}{\partial x} -
-      \frac{\partial P}{\partial y}\). Você já sabe calcular essas derivadas
-      parciais — agora vamos combiná-las de uma forma nova.
+      [NOTA TÉCNICA]: O produto vetorial \(\vec{a} \times \vec{b}\)
+      pode ser calculado pelo determinante
+      \(\begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\
+      b_1 & b_2 & b_3 \end{vmatrix}\).
+      Se \(\vec{a}\) e \(\vec{b}\) são paralelos (ou um deles é zero),
+      o resultado é \(\vec{0}\).
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(P = -y\), \(Q = x\), \(R = 0\).
+        (a) \(\vec{\tau} = (2, 0, 0) \times (0, 5, 0)\).
+        Componente \(\hat{i}\): \(0 \cdot 0 - 0 \cdot 5 = 0\).
+        Componente \(\hat{j}\): \(0 \cdot 0 - 2 \cdot 0 = 0\).
+        Componente \(\hat{k}\): \(2 \cdot 5 - 0 \cdot 0 = 10\).
+        \(\vec{\tau} = (0, 0, 10)\) N·m.
       </p>
+
       <p>
-        (b) Em \((1,0)\): \(\vec{F} = (0, 1, 0)\) — seta apontando para cima.
-        Em \((0,1)\): \(\vec{F} = (-1, 0, 0)\) — seta apontando para a esquerda.
-        Em \((-1,0)\): \(\vec{F} = (0, -1, 0)\) — seta para baixo.
-        Em \((0,-1)\): \(\vec{F} = (1, 0, 0)\) — seta para a direita.
+        (b) O torque aponta na direção \(+z\) (para cima). Pela regra da
+        mão direita, o objeto gira no sentido anti-horário visto de cima
+        (no plano \(xy\)).
       </p>
+
       <p>
-        (c) As setas circulam ao redor do eixo \(z\), no sentido anti-horário
-        (visto de cima).
+        (c) \(\vec{\tau} = (2, 0, 0) \times (3, 0, 0) = (0, 0, 0)\).
+        O torque é zero — a força é paralela ao braço. O objeto NÃO gira;
+        ele apenas se translada.
       </p>
+
       <p>
-        (d) \[ \nabla \times \vec{F} = \begin{pmatrix}
-        \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \\
-        \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \\
-        \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}
-        \end{pmatrix} = \begin{pmatrix} 0 - 0 \ 0 - 0 \ 1 - (-1) \end{pmatrix}
-        = \begin{pmatrix} 0 \ 0 \ 2 \end{pmatrix} \]
-        O rotacional aponta na direção \(+z\), confirmando a previsão: o campo
-        gira no sentido anti-horário ao redor do eixo \(z\).
+        (d) Torque zero significa que a força não causa rotação (a força
+        passa pelo pivô ou é paralela ao braço). Torque diferente de zero
+        causa rotação: a direção do torque é o eixo de rotação, e o
+        sentido (regra da mão direita) indica o sentido de giro. Essa
+        conexão entre torque e rotação será a base para entender o
+        rotacional — que mede a "tendência de torque" de um campo vetorial
+        em cada ponto.
       </p>
     </div>
   </details>
-
+</li>

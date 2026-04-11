@@ -1,61 +1,76 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
   <div class="context">
-    ORIGEM: Teoria de Sistemas Avançados [Projeto Especial, 2000]
+    ORIGEM: Mecânica Orbital — Aplicações Apollo-Soyuz, 1975
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Vamos encerrar esta
+    lista com uma aplicação concreta: o campo de velocidade de um
+    objeto em órbita circular. Esse campo gira — e o rotacional
+    captura exatamente a velocidade angular da órbita.
+  </div>
+
   <p>
-    Se o vento sopra com força \(\vec{F}\) e a temperatura varia com
-    uma função escalar \(\phi\), o fluxo de calor é \(\phi\vec{F}\).
-    Como o rotacional desse produto se compara com o rotacional de
-    \(\vec{F}\)? A identidade que vamos verificar responde essa
-    pergunta: \[\nabla \times (\phi \vec{F}) = \phi (\nabla \times
-    \vec{F}) + (\nabla \phi) \times \vec{F}.\]
+    Uma estação espacial orbita a Terra em um círculo de raio \(R\)
+    no plano \(xy\), com velocidade angular constante \(\omega\).
+    O campo de velocidades é:
+    \[\vec{v}(x,y,z) = (-\omega y, \omega x, 0).\]
+    Este campo é idêntico ao do EX-06, com \(\omega\) como parâmetro.
   </p>
-<p><strong>(a)</strong> Considere o caso concreto: \(\vec{F} = (x, y, z)\) e
-      \(\phi = x^2\). Calcule \(\phi \vec{F} = (x^3, x^2y, x^2z)\).</p>
-    <p><strong>(b)</strong> Calcule \(\nabla \times (\phi \vec{F})\) diretamente.</p>
-    <p><strong>(c)</strong> Calcule \(\nabla \times \vec{F}\) e depois
-      \(\phi(\nabla \times \vec{F})\).</p>
-    <p><strong>(d)</strong> Calcule \(\nabla \phi = (2x, 0, 0)\) e depois
-      \((\nabla \phi) \times \vec{F}\).</p>
-    
-      (e) Some os resultados de (c) e (d) e verifique que é igual ao
-      resultado de (b).
-    
-<details>
+
+  <p><strong>(a)</strong> Calcule o rotacional de \(\vec{v}\).
+    Mostre que \(\nabla \times \vec{v} = (0, 0, 2\omega)\).</p>
+
+  <p><strong>(b)</strong> O rotacional é proporcional a \(\omega\).
+    Explique: por que o rotacional do campo de velocidades é
+    diretamente ligado à velocidade angular da órbita?</p>
+
+  <p><strong>(c)</strong> Se \(\omega = 0\) (estação parada), qual é
+    o rotacional? Isso faz sentido fisicamente?</p>
+
+  <p><strong>(d)</strong> Calcule o divergente de \(\vec{v}\).
+    O campo de velocidades de uma órbita circular tem expansão?
+    O que isso diz sobre o volume de fluido ao redor da estação?</p>
+
+  <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(\phi \vec{F} = x^2 \cdot (x, y, z) = (x^3, x^2y, x^2z)\).
+        (a) \(P = -\omega y\), \(Q = \omega x\), \(R = 0\).
+        Componente \(i\): \(0 - 0 = 0\).
+        Componente \(j\): \(0 - 0 = 0\).
+        Componente \(k\): \(\frac{\partial (\omega x)}{\partial x} -
+        \frac{\partial (-\omega y)}{\partial y} = \omega - (-\omega)
+        = 2\omega\).
+        \(\nabla \times \vec{v} = (0, 0, 2\omega)\).
       </p>
+
       <p>
-        (b) \(\nabla \times (x^3, x^2y, x^2z)\):
-        componente \(i\): \(\frac{\partial (x^2z)}{\partial y} -
-        \frac{\partial (x^2y)}{\partial z} = 0 - 0 = 0\).
-        componente \(j\): \(\frac{\partial (x^3)}{\partial z} -
-        \frac{\partial (x^2z)}{\partial x} = 0 - 2xz = -2xz\).
-        componente \(k\): \(\frac{\partial (x^2y)}{\partial x} -
-        \frac{\partial (x^3)}{\partial y} = 2xy - 0 = 2xy\).
-        Resultado: \((0, -2xz, 2xy)\).
+        (b) O rotacional mede a "intensidade de rotação local" do campo.
+        Para um campo de velocidades que representa rotação rígida
+        (todos os pontos giram com a mesma velocidade angular), o
+        rotacional é exatamente \(2\omega\) na direção do eixo de
+        rotação. O fator 2 vem da definição geométrica do rotacional
+        (circulação/área). O rotacional é, portanto, o "vetor de
+        vorticidade" — mede quão rápido o fluido gira.
       </p>
+
       <p>
-        (c) \(\nabla \times \vec{F} = \nabla \times (x,y,z) = (0, 0, 0)\).
-        Logo \(\phi(\nabla \times \vec{F}) = x^2 \cdot (0,0,0) = (0,0,0)\).
+        (c) Se \(\omega = 0\): \(\vec{v} = (0, 0, 0)\) e
+        \(\nabla \times \vec{v} = (0, 0, 0)\). Sem velocidade angular,
+        sem rotação — faz sentido perfeito.
       </p>
+
       <p>
-        (d) \(\nabla \phi = (2x, 0, 0)\).
-        \((2x, 0, 0) \times (x, y, z)\):
-        \(i\): \(0 \cdot z - 0 \cdot y = 0\).
-        \(j\): \(0 \cdot x - 2x \cdot z = -2xz\).
-        \(k\): \(2x \cdot y - 0 \cdot x = 2xy\).
-        Resultado: \((0, -2xz, 2xy)\).
-      </p>
-      <p>
-        (e) \(\phi(\nabla \times \vec{F}) + (\nabla \phi) \times \vec{F}
-        = (0,0,0) + (0, -2xz, 2xy) = (0, -2xz, 2xy)\).
-        É igual ao resultado de (b). A identidade se verifica!
+        (d) \(\nabla \cdot \vec{v} = \frac{\partial(-\omega y)}
+        {\partial x} + \frac{\partial(\omega x)}{\partial y} + 0
+        = 0 + 0 = 0\). O divergente é zero — não há expansão nem
+        contração. O fluido gira sem se expandir. Isso é esperado
+        para rotação rígida: o volume se preserva, apenas gira.
       </p>
     </div>
   </details>
-
+</li>

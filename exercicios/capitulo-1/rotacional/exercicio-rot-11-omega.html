@@ -1,49 +1,108 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
   <div class="context">
-    ORIGEM: Teoria de Sistemas Dinâmicos [Pesquisa Fundamental, 1995]
+    ORIGEM: Propriedades dos Operadores — Pesquisa Fundamental, 1985
   </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Até agora calculamos
+    rotacionais de campos dados. Agora vamos provar uma propriedade
+    fundamental: o divergente do rotacional de qualquer campo é sempre
+    zero. Isso tem uma consequência profunda — não é possível criar
+    uma "fonte" de rotação.
+  </div>
+
   <p>
-    Até agora, calculamos o rotacional de campos dados. Agora vamos
-    inverter o problema: e se quisermos <em>construir</em> um campo
-    com um rotacional específico? Encontre um campo vetorial
-    \(\vec{F}\) que tenha rotacional constante \((0, 0, c)\) e
-    divergente zero.
+    Uma identidade importante do cálculo vetorial afirma que o divergente
+    do rotacional de qualquer campo é sempre zero:
+    \[\nabla \cdot (\nabla \times \vec{F}) = 0.\]
+    Vamos verificar isso com um cálculo explícito.
   </p>
-<p><strong>(a)</strong> Considere o campo \(\vec{F} = \left(-\frac{c}{2}y,
-      \frac{c}{2}x, 0\right)\). Calcule o rotacional e verifique
-      que é \((0, 0, c)\).</p>
-    <p><strong>(b)</strong> Calcule o divergente
-      \(\nabla \cdot \vec{F} = \frac{\partial F_1}{\partial x} +
-      \frac{\partial F_2}{\partial y} + \frac{\partial F_3}{\partial z}\).
-      Verifique que é zero.</p>
-    <p><strong>(c)</strong> Para \(c = 2\), desenhe o campo no plano \(xy\) nos pontos
-      \((\pm 1, 0)\), \((0, \pm 1)\). O campo se parece com qual
-      exercício anterior?</p>
-    <p><strong>(d)</strong> O que acontece quando \(c = 0\)? E quando \(c < 0\)?</p>
-<details>
+
+  <p><strong>(a)</strong> Seja \(\vec{F} = (P, Q, R)\) um campo
+    genérico. Escreva a componente \(i\) do rotacional:
+    \(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\).
+    Escreva as componentes \(j\) e \(k\) de forma análoga.</p>
+
+  <p><strong>(b)</strong> O divergente do rotacional é:
+    \[\frac{\partial}{\partial x}\left(\frac{\partial R}{\partial y}
+    - \frac{\partial Q}{\partial z}\right) + \frac{\partial}{\partial
+    y}\left(\frac{\partial P}{\partial z} - \frac{\partial R}
+    {\partial x}\right) + \frac{\partial}{\partial z}\left(
+    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+    y}\right).\]
+    Expanda em seis termos.</p>
+
+  <p><strong>(c)</strong> Use o teorema de Clairaut (derivadas mistas
+    são iguais quando contínuas:
+    \(\frac{\partial^2 f}{\partial x \partial y} =
+    \frac{\partial^2 f}{\partial y \partial x}\)) para mostrar que
+    os seis termos se cancelam dois a dois.</p>
+
+  <p><strong>(d)</strong> Verifique a identidade com o campo concreto
+    \(\vec{F} = (y^2, z^2, x^2)\) (do EX-09): calcule
+    \(\nabla \times \vec{F}\) e depois \(\nabla \cdot (\nabla \times
+    \vec{F})\).</p>
+
+  <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(\nabla \times \vec{F} = \left(0, 0,
-        \frac{\partial (cx/2)}{\partial x} -
-        \frac{\partial (-cy/2)}{\partial y}\right)
-        = \left(0, 0, \frac{c}{2} + \frac{c}{2}\right) = (0, 0, c)\).
+        (a) Componente \(i\): \(\frac{\partial R}{\partial y} -
+        \frac{\partial Q}{\partial z}\).
+        Componente \(j\): \(\frac{\partial P}{\partial z} -
+        \frac{\partial R}{\partial x}\).
+        Componente \(k\): \(\frac{\partial Q}{\partial x} -
+        \frac{\partial P}{\partial y}\).
       </p>
+
       <p>
-        (b) \(\nabla \cdot \vec{F} = \frac{\partial (-cy/2)}{\partial x} +
-        \frac{\partial (cx/2)}{\partial y} + 0 = 0 + 0 = 0\).
+        (b) Expandindo:
       </p>
+
       <p>
-        (c) Para \(c=2\): \(\vec{F} = (-y, x, 0)\) — é o mesmo campo
-        do EX-01! O campo circula no sentido anti-horário.
+        \(\frac{\partial^2 R}{\partial x \partial y} -
+        \frac{\partial^2 Q}{\partial x \partial z} +
+        \frac{\partial^2 P}{\partial y \partial z} -
+        \frac{\partial^2 R}{\partial y \partial x} +
+        \frac{\partial^2 Q}{\partial z \partial x} -
+        \frac{\partial^2 P}{\partial z \partial y}\).
       </p>
+
       <p>
-        (d) Quando \(c = 0\), \(\vec{F} = (0, 0, 0)\) — campo nulo,
-        sem rotação. Quando \(c < 0\), o campo gira no sentido horário
-        (rotação oposta).
+        (c) Pelo teorema de Clairaut (derivadas parciais contínuas):
+      </p>
+
+      <p>
+        \(\frac{\partial^2 R}{\partial x \partial y} =
+        \frac{\partial^2 R}{\partial y \partial x}\) — estes dois
+        termos se cancelam.
+      </p>
+
+      <p>
+        \(\frac{\partial^2 Q}{\partial x \partial z} =
+        \frac{\partial^2 Q}{\partial z \partial x}\) — estes dois
+        se cancelam.
+      </p>
+
+      <p>
+        \(\frac{\partial^2 P}{\partial y \partial z} =
+        \frac{\partial^2 P}{\partial z \partial y}\) — estes dois
+        se cancelam.
+      </p>
+
+      <p>
+        A soma é zero. Logo \(\nabla \cdot (\nabla \times \vec{F}) = 0\).
+      </p>
+
+      <p>
+        (d) Do EX-09: \(\nabla \times \vec{F} = (-2z, -2x, -2y)\).
+        \(\nabla \cdot (-2z, -2x, -2y) = \frac{\partial(-2z)}{\partial x}
+        + \frac{\partial(-2x)}{\partial y} + \frac{\partial(-2y)}
+        {\partial z} = 0 + 0 + 0 = 0\). Confirma a identidade!
       </p>
     </div>
   </details>
-
+</li>

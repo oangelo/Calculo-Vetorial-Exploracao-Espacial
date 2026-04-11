@@ -1,50 +1,106 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
-  <div class="context">ORIGEM: Fluxo de Plasma no Espaço Próximo à Lua</div>
+  <div class="context">
+    ORIGEM: Análise de Circulação — Sistemas de Navegação Apollo
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No exercício anterior,
+    você viu qualitativamente que o campo \((0,x,0)\) faz uma pá girar.
+    Agora vamos quantificar essa rotação calculando a circulação — a
+    integral de linha ao redor de uma curva fechada. É a versão
+    "macroscópica" do que o rotacional mede infinitesimalmente.
+  </div>
+
   <p>
-    Nos dois exercícios anteriores, os campos tinham rotacional não-zero —
-    havia rotação local. Nem todo campo é assim. O campo vetorial
-    \(\vec{E} = (yz, xz, xy)\) descreve um fluxo elétrico variável.
-    Antes de calcular, observe o campo: as componentes são produtos de
-    duas variáveis, com uma simetria particular.
+    Nos dois exercícios anteriores, vimos que torque causa rotação e que
+    o campo \(\vec{F} = (0, x, 0)\) faz uma pá de moinho girar. Agora
+    vamos medir essa rotação de forma quantitativa, calculando a
+    <em>circulação</em> \(\oint \vec{F} \cdot d\vec{r}\) ao redor de
+    uma curva fechada.
   </p>
-<p><strong>(a)</strong> Identifique \(P\), \(Q\) e \(R\). Note a simetria: cada componente
-      é o produto das outras duas variáveis.</p>
-    <p><strong>(b)</strong> Calcule a componente \(i\) do rotacional:
-      \(\frac{\partial (xy)}{\partial y} - \frac{\partial (xz)}{\partial z}\).</p>
-    <p><strong>(c)</strong> Calcule a componente \(j\) e a componente \(k\).</p>
-    <p><strong>(d)</strong> O rotacional é zero? O campo é irrotacional? O que isso significa
-      fisicamente?</p>
-<details class="hint-container">
+
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (0, x, 0)\) e um quadrado de lado
+    \(a\) centrado na origem, com vértices em \((\pm a/2, \pm a/2)\).
+    O percurso é no sentido anti-horário.
+  </p>
+
+  <p><strong>(a)</strong> No lado inferior (de \((-a/2, -a/2)\) a
+    \((a/2, -a/2)\)), o deslocamento é \(d\vec{r} = (dx, 0, 0)\).
+    Calcule \(\vec{F} \cdot d\vec{r}\) e integre ao longo deste lado.</p>
+
+  <p><strong>(b)</strong> No lado direito (de \((a/2, -a/2)\) a
+    \((a/2, a/2)\)), o deslocamento é \(d\vec{r} = (0, dy, 0)\).
+    Note que \(x = a/2\) neste lado. Calcule \(\vec{F} \cdot d\vec{r}\)
+    e integre.</p>
+
+  <p><strong>(c)</strong> Repita para o lado superior (de \((a/2, a/2)\)
+    a \((-a/2, a/2)\)) e o lado esquerdo (de \((-a/2, a/2)\) a
+    \((-a/2, -a/2)\)). Some as quatro contribuições.</p>
+
+  <p><strong>(d)</strong> A circulação é positiva, negativa ou zero?
+    Divida a circulação pela área \(a^2\) do quadrado. O que esse
+    quociente representa? O que acontece quando \(a \to 0\)?</p>
+
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A simetria do campo faz com que as derivadas parciais
-      se cancelem. Quando \(\frac{\partial R}{\partial y} =
-      \frac{\partial Q}{\partial z}\), a componente \(i\) do rotacional é zero.
+      [NOTA TÉCNICA]: No lado inferior, \(y = -a/2\) é constante e
+      \(\vec{F} = (0, x, 0)\), então \(\vec{F} \cdot (dx, 0, 0) = 0\).
+      No lado direito, \(x = a/2\) fixo, então \(\vec{F} \cdot (0, dy, 0)
+      = (a/2) \, dy\). No lado esquerdo, \(x = -a/2\) e o percurso é
+      descendente: \(d\vec{r} = (0, -dy)\).
     </div>
   </details>
+
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+
       <p>
-        (a) \(P = yz\), \(Q = xz\), \(R = xy\).
+        (a) Lado inferior: \(y = -a/2\), \(d\vec{r} = (dx, 0, 0)\).
+        \(\vec{F} \cdot d\vec{r} = 0 \cdot dx = 0\).
+        Contribuição: \(0\).
       </p>
+
       <p>
-        (b) Componente \(i\): \(\frac{\partial (xy)}{\partial y} -
-        \frac{\partial (xz)}{\partial z} = x - x = 0\).
+        (b) Lado direito: \(x = a/2\), \(d\vec{r} = (0, dy, 0)\).
+        \(\vec{F} \cdot d\vec{r} = (a/2) \, dy\).
+        Integrando de \(y = -a/2\) a \(y = a/2\):
+        \(\int_{-a/2}^{a/2} \frac{a}{2} \, dy = \frac{a}{2} \cdot a
+        = \frac{a^2}{2}\).
       </p>
+
       <p>
-        (c) Componente \(j\): \(\frac{\partial (yz)}{\partial z} -
-        \frac{\partial (xy)}{\partial x} = y - y = 0\).
-        Componente \(k\): \(\frac{\partial (xz)}{\partial x} -
-        \frac{\partial (yz)}{\partial y} = z - z = 0\).
+        (c) Lado superior: \(y = a/2\), \(d\vec{r} = (-dx, 0, 0)\).
+        \(\vec{F} \cdot d\vec{r} = 0 \cdot (-dx) = 0\).
+        Contribuição: \(0\).
       </p>
+
       <p>
-        (d) \(\nabla \times \vec{E} = (0, 0, 0)\). O campo é
-        <strong>irrotacional</strong> — não há rotação local em nenhum ponto.
-        Isso significa que, localmente, o fluxo não gira.
+        Lado esquerdo: \(x = -a/2\), percurso de \(y = a/2\) a
+        \(y = -a/2\). Usando \(y = t\), com \(t\) de \(a/2\) a \(-a/2\):
+        \(d\vec{r} = (0, dt, 0)\), \(\vec{F} = (0, -a/2, 0)\).
+        \(\vec{F} \cdot d\vec{r} = (-a/2) \, dt\).
+        \(\int_{a/2}^{-a/2} \left(-\frac{a}{2}\right) dt
+        = \left(-\frac{a}{2}\right)(-a) = \frac{a^2}{2}\).
+      </p>
+
+      <p>
+        Circulação total: \(0 + \frac{a^2}{2} + 0 + \frac{a^2}{2}
+        = a^2\).
+      </p>
+
+      <p>
+        (d) A circulação é positiva — o campo circula no sentido
+        anti-horário ao redor da origem, confirmando a intuição do EX-02.
+        Dividindo pela área: \(\frac{a^2}{a^2} = 1\). Quando \(a \to 0\),
+        esse quociente permanece igual a \(1\). Este é exatamente o
+        significado do rotacional: ele é o limite da circulação por
+        unidade de área quando a área tende a zero.
       </p>
     </div>
   </details>
-
+</li>
