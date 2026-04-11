@@ -8,16 +8,26 @@ Crie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPE
 - Se o tópico solicitado for "Funções Vetoriais", não use conceitos de "Derivadas Parciais" ou posteriores
 - Relacione o contexto histórico à época apropriada (ex: tópicos iniciais com Sputnik/Mercury, mais avançados com Apollo)
 
-### IMPORTANTE: USO CORRETO DE FÓRMULAS LATEX
+### ⚠️ IMPORTANTE: USO CORRETO DE FÓRMULAS LATEX (REGRA CRÍTICA)
 
-- No corpo do HTML, use APENAS:
-  - `\[fórmula\]` para fórmulas em bloco (display mode)
-  - `\(fórmula\)` para fórmulas inline
-- NUNCA use barras duplas (`\\[` ou `\\(`) no corpo do HTML
-- EXEMPLOS CORRETOS:
-  - Bloco: `<p>\[|\vec{v}| = \sqrt{v_x^2 + v_y^2}\]</p>`
-  - Inline: `<p>O vetor \(\vec{v}\) tem magnitude \(|\vec{v}|\)</p>`
-- Mesmo que você veja `\\[` na configuração do MathJax, no corpo do HTML use apenas UMA barraCrie materiais didáticos para um curso de Cálculo Vetorial sobre [TÓPICO ESPECÍFICO] usando EXATAMENTE o template HTML fornecido, com tema de documento sigiloso da Guerra Fria e exploração espacial.
+**No arquivo HTML, use SEMPRE UMA barra:**
+- Bloco: `\[fórmula\]` (no arquivo: exatamente `\[`)
+- Inline: `\(fórmula\)` (no arquivo: exatamente `\(`)
+- Comandos: `\frac`, `\partial`, `\vec`, `\left`, `\right`, etc.
+
+**NUNCA use barras duplas:** `\\(`, `\\[`, `\\frac`, `\\partial` — isso quebra o MathJax.
+
+**Por que o erro acontece:** Ao gerar conteúdo via Python (`'\\\\(x\\\\)'`), o resultado no arquivo é `\\(x\\)`. Mas MathJax precisa de `\(x\)`. Use `'(x)'` no Python ou escreva direto no arquivo.
+
+**EXEMPLOS CORRETOS:**
+- Bloco: `<p>\[|\\vec{v}| = \\sqrt{v_x^2 + v_y^2}\]</p>`
+- Inline: `<p>O vetor \(\\vec{v}\) tem magnitude \(|\\vec{v}|\)</p>`
+
+**Verificação obrigatória após criar/editar:**
+```bash
+grep -n '\\\\\\\\' exercicios/capitulo-N/pasta/*.html
+```
+Se encontrar `\\\\` seguido de letra ou delimitador, corrija antes de commit.
 
 ### Estrutura Exata do Documento
 

@@ -9,11 +9,13 @@ Criar exercícios de Cálculo Vetorial sobre [TÓPICO] usando o template HTML co
 - Use APENAS conceitos já abordados (ver sequência abaixo)
 - NÃO antecipe tópicos posteriores
 
-**MathJax:**
+**MathJax (REGRA CRÍTICA — erro comum que quebra renderização):**
 
-- Inline: `\(fórmula\)`
-- Bloco: `\[fórmula\]`
-- Uma barra apenas
+- Inline: `\(fórmula\)` ← UMA barra no arquivo HTML
+- Bloco: `\[fórmula\]` ← UMA barra no arquivo HTML
+- Comandos: `\frac`, `\partial`, `\vec`, etc. (uma barra)
+- NUNCA usar `\\(`, `\\[`, `\\frac` — barra dupla quebra o MathJax
+- Após criar/editar, verifique: `grep -n '\\\\\\\\' arquivo.html`
 
 ## Estrutura do Documento
 

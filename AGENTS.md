@@ -114,7 +114,7 @@ Os worktrees ficam em `worktrees/` (ignorado pelo git). Cada tipo de conteúdo t
 - Exercícios por tópico: quantos forem necessários para cobrir a narrativa matemática (ALFA/BETA/GAMMA/OMEGA)
 - **Narrativa matemática:** cada exercício deve ter motivação clara e construir sobre o anterior. O aluno precisa entender por que está aprendendo cada conceito e para onde a lista o leva. A lista conta uma história da matemática.
 - Use APENAS conceitos já abordados na progressão
-- MathJax: `\(inline\)` e `\[bloco\]` (uma barra)
+- **MathJax (REGRA CRÍTICA):** `\(inline\)` e `\[bloco\]` — UMA barra no arquivo HTML. NUNCA `\\(`, `\\[`, `\\frac`. Barra dupla quebra MathJax. Após editar, rode `grep -n '\\\\\\\\' arquivo.html` para verificar.
 - Classes CSS do template (não invente novas)
 
 ### Criar Exercícios de Sala

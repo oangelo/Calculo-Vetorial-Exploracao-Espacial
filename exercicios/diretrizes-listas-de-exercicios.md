@@ -28,6 +28,25 @@ O objetivo é que, com as definições básicas, o aluno consiga derivar resulta
 
 ---
 
+## Regra Crítica: MathJax no HTML
+
+**Delimitadores (uma barra só no arquivo HTML):**
+- Inline: `\(fórmula\)`  ← o arquivo HTML contém exatamente `\(`
+- Bloco: `\[fórmula\]`  ← o arquivo HTML contém exatamente `\[`
+- Comandos LaTeX: `\frac`, `\partial`, `\vec`, `\left`, `\right`, etc.
+
+**NUNCA usar `\\(`, `\\[`, `\\frac`** — barra dupla no arquivo quebra o MathJax.
+
+**Por que acontece o erro:** Quando um agente gera conteúdo via Python (`'\\\\(x\\\\)'`), o resultado no arquivo é `\\(x\\)`. Mas MathJax precisa de `\(x\)`. A solução é usar `'(x)'` no Python ou escrever diretamente no arquivo com uma barra só.
+
+**Verificação:** Após criar/editar qualquer exercício, confira:
+```bash
+grep -n '\\\\\\\\' exercicios/capitulo-N/pasta/*.html
+```
+Se encontrar `\\\\` seguido de letra ou delimitador, está errado.
+
+---
+
 ## Exemplos por Conteúdo
 
 ### Derivadas
