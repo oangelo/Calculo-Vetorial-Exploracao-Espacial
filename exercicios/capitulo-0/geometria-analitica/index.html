@@ -128,7 +128,6 @@
 
       .concept-definition {
         background-color: rgba(212, 175, 55, 0.1);
-        border-left: 3px solid var(--accent-color);
         padding: 10px;
         margin: 15px 0;
       }
@@ -290,7 +289,6 @@
         margin-bottom: 12px;
         padding: 8px 12px;
         background-color: rgba(212, 175, 55, 0.08);
-        border-left: 3px solid var(--accent-color);
         font-size: 0.9em;
       }
 
@@ -339,49 +337,228 @@
         </div>
       </div>
       <div class="section-title">
-        FUNDAMENTAÇÃO TEÓRICA: REVISÃO DE GEOMETRIA ANALÍTICA
+        FUNDAMENTAÇÃO TEÓRICA: GEOMETRIA ANALÍTICA
       </div>
+
+      <!-- MOTIVAÇÃO -->
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL E PRINCIPAIS FÓRMULAS:</strong></p>
-        <p class="formula-highlight">
-          Distância entre dois pontos \(A(x_1,y_1,z_1)\) e \(B(x_2,y_2,z_2)\):
-          \[ d(A,B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \]
-          <br />
-          Produto Escalar (\(\vec{u}\cdot \vec{v}\)): \[ \vec{u}\cdot \vec{v} =
-          u_xv_x + u_yv_y + u_zv_z \]
-          <br />
-          Produto Vetorial (\(\vec{u}\times \vec{v}\)): \[ \vec{u}\times \vec{v}
-          = \begin{vmatrix} \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k}\ u_x
-          &amp; u_y &amp; u_z\ v_x &amp; v_y &amp; v_z \end{vmatrix} \]
-          <br />
-          Equação de Reta (forma vetorial): \[ \vec{r}(t) = \vec{r_0} +
-          t\,\vec{d} \]
-          <br />
-          Equação de Plano (\(\vec{n}\) normal): \[ n_x(x - x_0) + n_y(y - y_0)
-          + n_z(z - z_0) = 0 \]
-          <br />
-          Volume (Produto Misto) \(\vec{a}\cdot(\vec{b}\times\vec{c})\) e áreas
-          derivadas de \(\|\vec{u}\times \vec{v}\|\).
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Toda operação de exploração espacial começa com uma pergunta simples:
+          <em>onde estamos e para onde vamos?</em> Para responder, precisamos de uma
+          linguagem que descreva posições, deslocamentos e orientações no espaço. Essa
+          linguagem é a geometria analítica — a ponte entre a geometria intuitiva (que
+          vemos) e a álgebra (que calculamos).
         </p>
         <p>
-          Esses conceitos fundamentais suportam análises de posicionamento,
-          orientação e estabilidade de módulos espaciais em diversas missões.
+          Neste módulo, construímos essa linguagem do zero. Começamos com
+          <strong>pontos</strong> (onde algo está), avançamos para
+          <strong>vetores</strong> (como se desloca), e depois combinamos vetores para
+          medir <strong>ângulos</strong>, <strong>áreas</strong> e
+          <strong>volumes</strong>. Com essas ferramentas, descrevemos
+          <strong>retas</strong> (trajetórias) e <strong>planos</strong> (superfícies
+          de aterrissagem), e calculamos <strong>distâncias</strong> entre eles. Cada
+          conceito depende do anterior — e todos aparecem nos exercícios que seguem.
         </p>
       </div>
-      <div class="mission-context">
-        O domínio de vetores, retas e planos permite calcular trajetórias de
-        lançamento, manobras de acoplamento, ângulos de reentrada e outras
-        variáveis estratégicas na corrida espacial. Tais aplicações reforçam a
-        importância de um conhecimento sólido em geometria analítica.
+
+      <!-- PONTOS -->
+      <div class="concept-definition">
+        <p><strong>1. PONTOS NO ESPAÇO</strong></p>
+        <p>
+          Um ponto no espaço tridimensional é identificado por três coordenadas:
+          \(P = (x, y, z)\). Cada coordenada mede a distância do ponto a um plano
+          de referência: \(x\) ao plano \(yz\), \(y\) ao plano \(xz\), e
+          \(z\) ao plano \(xy\). A ferramenta mais fundamental é a
+          <strong>distância entre dois pontos</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[ d(A,B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \]
+        </p>
+        <p>
+          onde \(A = (x_1, y_1, z_1)\) e \(B = (x_2, y_2, z_2)\). Esta fórmula
+          é uma generalização do teorema de Pitágoras para três dimensões.
+        </p>
       </div>
+
+      <!-- VETORES -->
+      <div class="concept-definition">
+        <p><strong>2. VETORES: DESLOCAMENTOS NO ESPAÇO</strong></p>
+        <p>
+          Se sabemos onde algo está (ponto \(A\)) e para onde vai (ponto \(B\)),
+          o <strong>vetor deslocamento</strong> \(\vec{AB}\) descreve o "passo" de
+          \(A\) até \(B\):
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{AB} = (x_2 - x_1,\; y_2 - y_1,\; z_2 - z_1) \]
+        </p>
+        <p>
+          Um vetor tem <strong>magnitude</strong> (tamanho) e <strong>direção</strong>
+          (para onde aponta), mas não tem posição fixa — pode ser deslizado pelo
+          espaço sem mudar. A magnitude é a norma:
+        </p>
+        <p class="formula-highlight">
+          \[ \|\vec{v}\| = \sqrt{v_x^2 + v_y^2 + v_z^2} \]
+        </p>
+        <p>
+          onde \(v_x\), \(v_y\), \(v_z\) são as componentes do vetor. A norma
+          de \(\vec{AB}\) é exatamente a distância \(d(A,B)\). Um
+          <strong>vetor unitário</strong> \(\hat{v} = \vec{v}/\|\vec{v}\|\) tem
+          magnitude 1 e aponta na mesma direção.
+        </p>
+      </div>
+
+      <!-- PRODUTO ESCALAR -->
+      <div class="concept-definition">
+        <p><strong>3. PRODUTO ESCALAR: ÂNGULOS E PROJEÇÕES</strong></p>
+        <p>
+          O produto escalar mede o <strong>quanto dois vetores apontam na mesma
+          direção</strong>. Se ambos apontam exatamente juntos, o produto é máximo;
+          se são perpendiculares, é zero. A definição algébrica é:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z \]
+        </p>
+        <p>
+          e a definição geométrica, equivalente:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \cdot \vec{v} = \|\vec{u}\| \, \|\vec{v}\| \cos\theta \]
+        </p>
+        <p>
+          onde \(\theta\) é o ângulo entre \(\vec{u}\) e \(\vec{v}\).
+          Igualando as duas expressões, obtemos o ângulo:
+          \(\cos\theta = \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|}\).
+          Um caso importante: \(\vec{u}\cdot\vec{v} = 0\) significa que os
+          vetores são <strong>perpendiculares</strong> (\(\theta = 90°\)).
+        </p>
+        <p>
+          A <strong>projeção</strong> de \(\vec{u}\) sobre \(\vec{v}\) é o
+          "sombra" de \(\vec{u}\) na direção de \(\vec{v}\):
+          \(\text{proj}_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{\|\vec{v}\|^2}\,\vec{v}\).
+        </p>
+      </div>
+
+      <!-- PRODUTO VETORIAL -->
+      <div class="concept-definition">
+        <p><strong>4. PRODUTO VETORIAL: ÁREAS E ORIENTAÇÃO</strong></p>
+        <p>
+          O produto vetorial cria um <strong>novo vetor</strong>, perpendicular a
+          ambos os originais, cuja magnitude é a <strong>área do
+          paralelogramo</strong> que eles formam:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \times \vec{v} = \begin{vmatrix} \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\ u_x &amp; u_y &amp; u_z \\ v_x &amp; v_y &amp; v_z \end{vmatrix} = (u_y v_z - u_z v_y,\; u_z v_x - u_x v_z,\; u_x v_y - u_y v_x) \]
+        </p>
+        <p>
+          A norma do resultado é \(\|\vec{u}\times\vec{v}\| = \|\vec{u}\|\|\vec{v}\|\sin\theta\),
+          que é a área do paralelogramo. A área do triângulo é a metade:
+          \(A_{\triangle} = \frac{1}{2}\|\vec{u}\times\vec{v}\|\).
+          A direção do vetor resultado segue a regra da mão direita.
+        </p>
+      </div>
+
+      <!-- PRODUTO MISTO -->
+      <div class="concept-definition">
+        <p><strong>5. PRODUTO MISTO: VOLUMES</strong></p>
+        <p>
+          O produto misto combina os dois produtos anteriores para medir o
+          <strong>volume do paralelepípedo</strong> definido por três vetores:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{a} \cdot (\vec{b} \times \vec{c}) = \begin{vmatrix} a_x &amp; a_y &amp; a_z \\ b_x &amp; b_y &amp; b_z \\ c_x &amp; c_y &amp; c_z \end{vmatrix} \]
+        </p>
+        <p>
+          O valor absoluto do resultado é o volume. Se o produto misto é zero, os
+          três vetores são <strong>coplanares</strong> (estão no mesmo plano, volume
+          zero).
+        </p>
+      </div>
+
+      <!-- RETAS -->
+      <div class="concept-definition">
+        <p><strong>6. EQUAÇÃO DE RETA: TRAJETÓRIAS</strong></p>
+        <p>
+          Uma reta no espaço é determinada por um <strong>ponto</strong> \(P_0\)
+          por onde passa e um <strong>vetor diretor</strong> \(\vec{d}\) que indica
+          sua direção. A forma paramétrica, onde \(t\) é o parâmetro:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}(t) = \vec{r}_0 + t\,\vec{d} \quad \Longleftrightarrow \quad \begin{cases} x = x_0 + t\,d_x \\ y = y_0 + t\,d_y \\ z = z_0 + t\,d_z \end{cases} \]
+        </p>
+        <p>
+          onde \(\vec{r}_0 = (x_0, y_0, z_0)\) é o ponto e \(\vec{d} = (d_x, d_y, d_z)\)
+          é o vetor diretor. Cada valor de \(t\) dá um ponto diferente na reta.
+          Eliminando \(t\) das três equações, obtemos a <strong>forma
+          simétrica</strong>:
+          \(\frac{x - x_0}{d_x} = \frac{y - y_0}{d_y} = \frac{z - z_0}{d_z}\).
+        </p>
+      </div>
+
+      <!-- PLANOS -->
+      <div class="concept-definition">
+        <p><strong>7. EQUAÇÃO DE PLANO: SUPERFÍCIES DE REFERÊNCIA</strong></p>
+        <p>
+          Um plano é determinado por um <strong>ponto</strong> \(P_0\) e um vetor
+          <strong>normal</strong> \(\vec{n} = (n_x, n_y, n_z)\) perpendicular ao
+          plano. Um ponto \(P = (x,y,z)\) está no plano se e somente se o vetor
+          \(\vec{P_0P}\) é perpendicular a \(\vec{n}\), ou seja,
+          \(\vec{n} \cdot \vec{P_0P} = 0\):
+        </p>
+        <p class="formula-highlight">
+          \[ n_x(x - x_0) + n_y(y - y_0) + n_z(z - z_0) = 0 \]
+        </p>
+        <p>
+          Expandindo, obtemos a forma geral:
+          \(n_x x + n_y y + n_z z = d\), onde
+          \(d = n_x x_0 + n_y y_0 + n_z z_0\). Para encontrar a normal a partir
+          de três pontos \(A\), \(B\), \(C\) no plano, basta calcular
+          \(\vec{n} = \vec{AB} \times \vec{AC}\).
+        </p>
+      </div>
+
+      <!-- DISTÂNCIAS -->
+      <div class="concept-definition">
+        <p><strong>8. DISTÂNCIAS: PROXIMIDADE NO ESPAÇO</strong></p>
+        <p>
+          As distâncias entre objetos geométricos são construídas combinando as
+          ferramentas anteriores. A <strong>distância ponto-plano</strong> usa a
+          projeção do vetor \(\vec{P_0P}\) na direção da normal:
+        </p>
+        <p class="formula-highlight">
+          \[ d(P, \pi) = \frac{|n_x(x_P - x_0) + n_y(y_P - y_0) + n_z(z_P - z_0)|}{\sqrt{n_x^2 + n_y^2 + n_z^2}} \]
+        </p>
+        <p>
+          A <strong>distância ponto-reta</strong> usa o produto vetorial:
+          \(d(P, r) = \frac{\|\vec{P_0P} \times \vec{d}\|}{\|\vec{d}\|}\),
+          onde \(\vec{d}\) é o vetor diretor da reta. Para <strong>retas
+          reversas</strong> (que não se encontram nem são paralelas), a distância usa
+          o produto misto:
+          \(d(r_1, r_2) = \frac{|\vec{P_1P_2} \cdot (\vec{d}_1 \times \vec{d}_2)|}{\|\vec{d}_1 \times \vec{d}_2\|}\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os conceitos deste módulo
+        aparecem em praticamente toda operação orbital. O <strong>produto
+        escalar</strong> calcula o ângulo de lançamento e verifica perpendicularidade
+        de painéis solares ao raio solar. O <strong>produto vetorial</strong> determina
+        a área de superfícies de aterrissagem e a normal de planos de acoplamento.
+        As <strong>equações de reta</strong> descrevem trajetórias de mísseis e
+        satélites. As <strong>equações de plano</strong> definem janelas de lançamento
+        e planos orbitais. As <strong>distâncias</strong> entre retas e planos são
+        essenciais para calcular a distância mínima de aproximação entre objetos em
+        órbitas diferentes — um cálculo que evitou mais de um
+        <span class="censored">incidente de colisão</span> durante o programa
+        <span class="censored">Mercury</span>.
+      </div>
+
       <div class="historical-note">
         <strong>NOTA HISTÓRICA:</strong> A disputa tecnológica na década de 1960
-        evidenciou que a precisão de cálculos de rotas e órbitas era decisiva
-        para o sucesso de programas como Mercury, Gemini e Apollo, culminando em
-        avanços expressivos em métodos de
-        <span class="censored">cálculo vetorial</span>.
+        evidenciou que a precisão de cálculos de rotas e órbitas era decisiva para o
+        sucesso de programas como Mercury, Gemini e Apollo, culminando em avanços
+        expressivos em métodos de <span class="censored">cálculo vetorial</span>.
       </div>
-      FIM SEÇÃO TEÓRICA
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
