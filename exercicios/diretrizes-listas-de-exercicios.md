@@ -11,6 +11,27 @@ Cada exercício deve explicitar por que está ali e qual é sua conexão com os 
 ### 3. Construir sobre o já sabido
 Quando fizer sentido, a lista deve retomar conceitos de tópicos já estudados e mostrar como o novo assunto nasce deles ou os generaliza. O aluno não começa do zero a cada lista — ele reconhece ferramentas que já usou e vê o novo conceito como uma extensão natural. Exemplos: pedir para verificar tangência por interseção (retomando equações de cônicas); comparar notações Leibniz e Lagrange antes de aplicar regras; pedir para esboçar a curva e a reta tangente juntas (retomando geometria analítica). A lista não é uma ilha — ela é um elo na corrente.
 
+### Formato do Enunciado (dentro de `<li class="exercise-item">`)
+
+O enunciado deve ser **texto corrido** — parágrafos `<p>` puros, sem wrappers extras.
+
+**Permitido:**
+- Múltiplos `<p>` para separar parágrafos
+- `<strong>` ou `<em>` para ênfase ocasional (destacar um dado, uma condição importante)
+
+**NÃO incluir:**
+- `<div>` wrapper dentro do exercício (nada de `.narrative`, `.mission-context`, `.narrative-connection`)
+- `<ul><li>` — já estabelecido acima
+- `<strong>Solicitação:</strong>` ou labels extras antes dos sub-itens
+- Qualquer tag estrutural além de `<p>`, `<strong>`, `<em>`
+
+**Referências a outros exercícios:**
+- Sempre pelo **conceito**, nunca pelo número/nome do exercício
+- ✅ "No exercício anterior, você calculou o produto escalar..."
+- ✅ "Agora que sabemos calcular ângulos entre vetores, vamos usar isso para..."
+- ❌ "No VECTOR-03, você calculou..." — quebra se reordenar
+- ❌ "Conforme feito no EXERCÍCIO 7..." — frágil
+
 ### 4. Scaffolding com subitens
 Exercícios complexos que exigem vários passos devem ser quebrados em itens (a, b, c...) que guiem o aluno na decomposição do problema. O objetivo é ensinar a habilidade de quebrar problemas grandes em partes menores.
 

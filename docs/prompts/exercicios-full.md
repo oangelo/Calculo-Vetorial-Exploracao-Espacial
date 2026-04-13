@@ -112,7 +112,7 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
 
 - **Número** (classe "exercise-number"): "EXERCÍCIO VECTOR-XY"
 - **Contexto** (classe "context"): "ORIGEM: [Missão/Programa] - [Data/Evento]"
-- **Enunciado**: Descrição do problema com aplicação prática
+- **Enunciado**: Texto corrido com `<p>`. Pode ter múltiplos parágrafos e `<strong>`/`<em>` para ênfase ocasional. SEM `<div>` wrapper, SEM `<ul><li>`, SEM labels como "Solicitação:". Referências a outros exercícios pelo conceito, nunca pelo número.
 - **Dica** (classe "hint"): "[NOTA TÉCNICA]: [Sugestão]" (omitir para série OMEGA)
 - **Solução** (tags details/summary): Título "RELATÓRIO DE CÁLCULO [SIGMA-X REQUERIDO]"
   - Dentro da classe "solution": Explicação passo a passo

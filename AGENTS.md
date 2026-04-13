@@ -119,6 +119,7 @@ Detalhes completos em `diretrizes-listas-de-exercicios.md` (seção "Fundamenta�
 
 - Exercícios por tópico: quantos forem necessários para cobrir a narrativa matemática (ALFA/BETA/GAMMA/OMEGA)
 - **Narrativa matemática:** cada exercício deve ter motivação clara e construir sobre o anterior. O aluno precisa entender por que está aprendendo cada conceito e para onde a lista o leva. A lista conta uma história da matemática.
+- **Formato do enunciado:** texto corrido com `<p>`. Pode ter múltiplos parágrafos e `<strong>`/`<em>` para ênfase ocasional. SEM `<div>` wrapper (nada de `.narrative`, `.mission-context`), SEM `<ul><li>`, SEM labels como "Solicitação:". Referências a outros exercícios sempre pelo conceito, nunca pelo número.
 - Use APENAS conceitos já abordados na progressão
 - **MathJax (REGRA CRÍTICA):** `\(inline\)` e `\[bloco\]` — UMA barra no arquivo HTML. NUNCA `\\(`, `\\[`, `\\frac`. Barra dupla quebra MathJax. **APÓS ESCREVER CADA ARQUIVO, execute `grep -c '\\\\\\\\' arquivo.html` — se > 0, corrija antes de continuar.**
 - Classes CSS do template (não invente novas)
