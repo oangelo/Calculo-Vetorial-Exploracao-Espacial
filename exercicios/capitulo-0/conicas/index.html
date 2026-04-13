@@ -255,186 +255,347 @@
   <body>
     <div class="container">
       <!-- INTRO - INLINE -->
-      <div class="document-header">
-        <div class="document-stamp">SIGILOSO</div>
-        <div class="document-date">
-          DATA: <span class="censored">09</span> DE NOVEMBRO DE
-          <span class="censored">1963</span><br />
-          LOCALIZAÇÃO: <span class="censored">LABORATÓRIO [REDACTED]</span>
-        </div>
-        <div class="document-intro">
-          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">CONIC-X</span
-          ><br /><br />
-          Em resposta à necessidade de compreender trajetórias de reentrada e
-          saída orbital, nossa equipe de especialistas reuniu estudos sobre
-          seções cônicas, essenciais para projetar lançamentos e interceptações.
-          Estes exercícios foram adaptados dos relatórios do Dr.
-          <span class="censored">█████</span>, que investigou aplicações
-          avançadas de cônicas para manobras espaciais durante a
-          <span class="censored">corrida tecnológica</span>.<br /><br />
-          Os exercícios a seguir foram classificados como essenciais para o
-          domínio das "cônicas". A falta de entendimento de seus parâmetros pode
-          comprometer
-          <span class="censored">operações estratégicas de órbita</span>.
-        </div>
-        <div class="warning-box">
-          Este documento contém informações científicas altamente confidenciais.
-          Divulgação não autorizada resultará em
-          <span class="censored">medidas disciplinares</span>.
-        </div>
-        <div class="metadata">
-          <span>REF: VX-<span class="censored">1730</span>-C</span>
-          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
-          <span
-            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-            <span class="censored">2</span></span
-          >
-        </div>
-      </div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS:</strong></p>
+  <p>
+    Para resolver os exercícios desta lista, o estudante deve dominar os seguintes
+    conceitos e técnicas, organizados por área de origem:
+  </p>
+  <p>
+    <strong>Geometria Analítica (Cap 0):</strong> Pontos no plano cartesiano
+    \(P(x, y)\) e notação de coordenadas. <strong>Fórmula de distância</strong>
+    entre dois pontos: \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\).
+    <strong>Ponto médio</strong> entre dois pontos:
+    \(M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\).
+    Equação de reta — formas ponto-inclinação e vertical/horizontal
+    (\(x = c\), \(y = c\)).
+  </p>
+  <p>
+    <strong>Álgebra:</strong> <strong>Produto notável</strong>:
+    \((a \pm b)^2 = a^2 \pm 2ab + b^2\).
+    <strong>Completar quadrados</strong>: transformar \(x^2 + bx\)
+    em \((x + b/2)^2 - (b/2)^2\). Manipulação de raízes quadradas e
+    elevação ao quadrado de ambos os lados. Resolver equações do 2º grau:
+    \(ax^2 + bx + c = 0\). Valor absoluto: \(|x|\) e sua interpretação
+    como distância.
+  </p>
+</div>
 
-      <div class="concept-definition">
-        <p><strong>PRÉ-REQUISITOS:</strong></p>
-        <p>
-          Para resolver os exercícios desta lista, o estudante deve dominar os seguintes
-          conceitos e técnicas, organizados por área de origem:
-        </p>
-        <p class="formula-highlight">
-          <strong>Geometria Analítica (Cap 0):</strong><br />
-          &bull; Pontos no plano cartesiano \(P(x, y)\) e notação de coordenadas.<br />
-          &bull; <strong>Fórmula de distância</strong> entre dois pontos: \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\).<br />
-          &bull; <strong>Ponto médio</strong> entre dois pontos: \(M = \left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\).<br />
-          &bull; Equação de reta — formas ponto-inclinação e vertical/horizontal (\(x = c\), \(y = c\)).<br />
-          &bull; Distância de um ponto a uma reta (horizontal ou vertical).
-        </p>
-        <p class="formula-highlight">
-          <strong>Álgebra:</strong><br />
-          &bull; <strong>Produto notável</strong>: \((a \pm b)^2 = a^2 \pm 2ab + b^2\).<br />
-          &bull; <strong>Completar quadrados</strong>: transformar \(x^2 + bx\) em \((x + b/2)^2 - (b/2)^2\).<br />
-          &bull; Manipulação de raízes quadradas e elevação ao quadrado de ambos os lados.<br />
-          &bull; Simplificação de expressões algébricas (cancelamento, fatoração).<br />
-          &bull; Resolver equações do 2º grau: \(ax^2 + bx + c = 0\).<br />
-          &bull; Valor absoluto: \(|x|\) e sua interpretação como distância.
-        </p>
-        <p>
-          <strong>Progressão esperada pelos exercícios:</strong>
-        </p>
-        <p>
-          Os 20 exercícios seguem uma narrativa pedagógica que vai da construção à análise:
-        </p>
-        <p class="formula-highlight">
-          <strong>Fase 1 — Construção pela definição (CONIC-1 a CONIC-7):</strong><br />
-          O aluno deriva cada equação a partir da definição geométrica:<br />
-          &bull; CONIC-1: Circunferência como lugar geométrico dos pontos equidistantes de um centro.<br />
-          &bull; CONIC-2 a CONIC-3: Parábola pela definição PF=PD (diretriz horizontal e vertical).<br />
-          &bull; CONIC-4 e CONIC-6: Elipse pela definição PF₁ + PF₂ = 2a, incluindo excentricidade.<br />
-          &bull; CONIC-5 e CONIC-7: Hipérbole pela definição |PF₁ − PF₂| = 2a, incluindo assíntotas e excentricidade.<br /><br />
-          <strong>Fase 2 — Cônicas translacionadas (CONIC-8 a CONIC-10):</strong><br />
-          Centro fora da origem. O aluno aplica completar quadrados para:<br />
-          &bull; CONIC-8: Elipse translacionada.<br />
-          &bull; CONIC-9: Parábola com vértice deslocado.<br />
-          &bull; CONIC-10: Hipérbole translacionada.<br /><br />
-          <strong>Fase 3 — Extrair informações da equação (CONIC-11 a CONIC-13):</strong><br />
-          Caminho inverso: dada a equação, descobrir tipo, parâmetros e elementos.<br />
-          &bull; CONIC-11: Elipse — vértices, focos, excentricidade.<br />
-          &bull; CONIC-12: Parábola — foco, diretriz, orientação.<br />
-          &bull; CONIC-13: Hipérbole — vértices, assíntotas, excentricidade.<br /><br />
-          <strong>Fase 4 — Classificação e síntese (CONIC-14 a CONIC-17):</strong><br />
-          &bull; CONIC-14: Discriminante \(B^2 - 4AC\) para classificar sem resolver.<br />
-          &bull; CONIC-15 a CONIC-17: Equações a partir de dados geométricos (figuras).<br /><br />
-          <strong>Fase 5 — Desafio (CONIC-18 a CONIC-20):</strong><br />
-          &bull; CONIC-18: Prova geométrica (seção de cone = parábola via PF=PD).<br />
-          &bull; CONIC-19: Classificação por excentricidade — elipse como órbita, hipérbole como escape.<br />
-          &bull; CONIC-20: Derivar assíntotas por limite — conexão com cálculo.
-        </p>
-        <p>
-          <strong>Conexões com outros tópicos do Capítulo 0:</strong>
-        </p>
-        <p>
-          &bull; <strong>Geometria Analítica:</strong> toda a lista depende da fórmula de distância e de conceitos
-          básicos de coordenadas. As cônicas são uma aplicação direta desses conceitos.<br />
-          &bull; <strong>Derivadas:</strong> o exercício CONIC-20 usa limite para derivar as assíntotas,
-          antecipando o conceito de derivada. A tangente a uma cônica no vértice (parábola)
-          também será explorada no tópico de Derivadas.<br />
-          &bull; <strong>Curvas de Nível:</strong> as cônicas aparecem como curvas de nível de funções
-          quadráticas \(f(x,y) = Ax^2 + Bxy + Cy^2 + \ldots\), tema abordado posteriormente.
-        </p>
-      </div>
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">09</span> DE NOVEMBRO DE
+    <span class="censored">1963</span><br />
+    LOCALIZAÇÃO: <span class="censored">LABORATÓRIO [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">CONIC-X</span
+    ><br /><br />
+    Em resposta à necessidade de compreender trajetórias de reentrada e saída
+    orbital, nossa equipe de especialistas reuniu estudos sobre seções cônicas,
+    essenciais para projetar lançamentos e interceptações. Estes exercícios
+    foram adaptados dos relatórios do Dr.
+    <span class="censored">█████</span>, que investigou aplicações avançadas de
+    cônicas para manobras espaciais durante a
+    <span class="censored">corrida tecnológica</span>.<br /><br />
+    Os exercícios a seguir foram classificados como essenciais para o domínio
+    das "cônicas". A falta de entendimento de seus parâmetros pode comprometer
+    <span class="censored">operações estratégicas de órbita</span>.
+  </div>
+  <div class="warning-box">
+    Este documento contém informações científicas altamente confidenciais.
+    Divulgação não autorizada resultará em
+    <span class="censored">medidas disciplinares</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">1730</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">2</span></span
+    >
+  </div>
+</div>
 
-      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: SEÇÕES CÔNICAS</div>
-      <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p>
-          Uma <strong>cônica</strong> é definida como a curva obtida pela
-          interseção de um cone circular reto com um plano. A posição relativa
-          entre o plano e o eixo do cone determina a forma resultante:
-          <strong>elipse</strong>, <strong>parábola</strong> ou
-          <strong>hipérbole</strong>.
-        </p>
-        <p class="formula-highlight">
-          Equação Geral de Segundo Grau (duas variáveis): \[ Ax^2 + Bxy + Cy^2 +
-          Dx + Ey + F = 0 \]
-        </p>
-      </div>
-      <div class="concept-definition">
-        <p><strong>EQUAÇÕES PADRÃO E ELEMENTOS:</strong></p>
-        <p class="formula-highlight">
-          <strong>1. Elipse</strong> (centro na origem, eixos alinhados): \[
-          \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, \quad a > b > 0 \] Focos:
-          \(F_1(-c, 0)\) e \(F_2(c, 0)\), onde \(c^2 = a^2 - b^2\).
-          <br />
-          Relação focal: \(d(P, F_1) + d(P, F_2) = 2a\) para todo ponto \(P\) na
-          elipse.
-          <br /><br />
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: SEÇÕES CÔNICAS</div>
 
-          <strong>2. Parábola</strong> (vértice na origem, eixo vertical): \[
-          y^2 = 4px, \quad p \neq 0 \] Foco: \(F(p, 0)\). Diretriz: \(x = -p\).
-          <br />
-          Relação focal: \(d(P, F) = d(P, \text{diretriz})\) para todo ponto
-          \(P\) na parábola.
-          <br /><br />
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Observe o céu à noite: os planetas traçam elipses ao redor do Sol. Lance
+    uma pedra em diagonal: ela descreve uma parábola antes de cair. Aponte uma
+    lanterna contra a parede e gire-a lentamente — a borda do feixe forma uma
+    hipérbole. Essas três formas, junto com a circunferência, são chamadas
+    <strong>seções cônicas</strong>, porque surgem ao cortar um cone com um
+    plano em diferentes ângulos.
+  </p>
+  <p>
+    As cônicas aparecem em órbitas de satélites, antenas parabólicas, espelhos
+    telescópicos e trajetórias de reentrada atmosférica. A diferença entre uma
+    órbita estável e uma rota de escape depende de um único parâmetro: a
+    <strong>excentricidade</strong> \(e\). Neste módulo, construímos cada
+    cônica a partir de sua definição geométrica — não por fórmulas decoradas —
+    e depois extraímos parâmetros (focos, vértices, eixos) por raciocínio.
+  </p>
+</div>
 
-          <strong>3. Hipérbole</strong> (centro na origem, eixos alinhados): \[
-          \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \quad a, b > 0 \] Focos:
-          \(F_1(-c, 0)\) e \(F_2(c, 0)\), onde \(c^2 = a^2 + b^2\).
-          <br />
-          Assíntotas: \(y = \pm \dfrac{b}{a}\, x\).
-          <br />
-          Relação focal: \(|d(P, F_1) - d(P, F_2)| = 2a\) para todo ponto \(P\)
-          na hipérbole.
-        </p>
-      </div>
-      <div class="concept-definition">
-        <p><strong>EXCENTRICIDADE E CLASSIFICAÇÃO:</strong></p>
-        <p class="formula-highlight">
-          A <strong>excentricidade</strong> \(e\) mede o grau de achatamento ou
-          abertura da cônica, definida por: \[ e = \frac{c}{a} \] onde \(c\) é a
-          distância do centro ao foco e \(a\) é o semi-eixo principal.
-          <br /><br />
+<!-- ========== 1. LUGAR GEOMÉTRICO ========== -->
+<div class="concept-definition">
+  <p><strong>1. LUGAR GEOMÉTRICO</strong></p>
+  <p>
+    Antes de estudar as cônicas, precisamos de um conceito-chave: o
+    <strong>lugar geométrico</strong>. É o conjunto de todos os pontos do plano
+    que satisfazem uma determinada condição de posição. Cada cônica é, em
+    essência, um lugar geométrico definido por uma relação entre distâncias.
+  </p>
+  <p>
+    Exemplos simples: a circunferência é o lugar dos pontos que estão a uma
+    distância fixa \(r\) de um centro \(C\). A mediatriz de um segmento é o
+    lugar dos pontos equidistantes de suas extremidades. A ideia unificadora é:
+    <strong>uma condição de distância define uma curva</strong>.
+  </p>
+</div>
 
-          <strong>Classificação:</strong>
-          \[ \begin{cases} e = 0 &\Rightarrow \text{Círculo (caso especial da
-          elipse)} \ 0 < e < 1 &\Rightarrow \text{Elipse} \ e = 1 &\Rightarrow
-          \text{Parábola} \ e > 1 &\Rightarrow \text{Hipérbole} \end{cases} \]
-        </p>
-      </div>
-      <div class="mission-context">
-        O domínio das seções cônicas é indispensável para a engenharia
-        aeroespacial. As trajetórias de satélites, sondas interplanetárias e
-        veículos de reentrada seguem curvas cônicas regidas pela mecânica
-        celeste. A elipse descreve órbitas estáveis (Kepler), a parábola define
-        trajetórias de escape marginal, e a hipérbole modela encontros
-        gravitacionais e manobras de
-        <span class="censored">transferência de energia</span>.
-      </div>
-      <div class="historical-note">
-        <strong>NOTA HISTÓRICA:</strong>
-        A teoria das cônicas remonta a Apolônio de Perga (séc. III a.C.), mas
-        sua aplicação prática foi revolucionada por Kepler e Newton. Durante a
-        corrida espacial dos anos 1960, o cálculo preciso de parâmetros cônicos
-        foi decisivo para o sucesso das missões do programa
-        <span class="censored">Apollo</span> e para o lançamento de satélites de
-        reconhecimento.
-      </div>
+<!-- ========== 2. CIRCUNFERÊNCIA ========== -->
+<div class="concept-definition">
+  <p><strong>2. CIRCUNFERÊNCIA: O CASO MAIS SIMPLES</strong></p>
+  <p>
+    A circunferência é o lugar geométrico dos pontos do plano que estão a uma
+    distância fixa \(r\) (o <strong>raio</strong>) de um ponto fixo \(C(h, k)\)
+    (o <strong>centro</strong>). Usando a fórmula de distância e elevando ao
+    quadrado para eliminar a raiz:
+  </p>
+  <p class="formula-highlight">
+    \[ (x - h)^2 + (y - k)^2 = r^2 \]
+  </p>
+  <p>
+    onde \(h\) e \(k\) são as coordenadas do centro e \(r > 0\) é o raio.
+    Quando o centro está na origem \((0, 0)\), a equação simplifica para
+    \(x^2 + y^2 = r^2\). A circunferência é um caso especial da elipse
+    com excentricidade \(e = 0\) — veremos por quê na seção 6.
+  </p>
+</div>
+
+<!-- ========== 3. ELIPSE ========== -->
+<div class="concept-definition">
+  <p><strong>3. ELIPSE: ÓRBITAS ESTÁVEIS</strong></p>
+  <p>
+    A elipse é o lugar geométrico dos pontos \(P\) do plano cuja
+    <strong>soma das distâncias</strong> a dois pontos fixos \(F_1\) e \(F_2\)
+    (os <strong>focos</strong>) é constante e igual a \(2a\):
+  </p>
+  <p class="formula-highlight">
+    \[ d(P, F_1) + d(P, F_2) = 2a \]
+  </p>
+  <p>
+    onde \(a\) é o <strong>semi-eixo maior</strong> (metade do eixo maior).
+    Os focos estão no eixo maior, cada um a uma distância \(c\) do centro,
+    onde \(c^2 = a^2 - b^2\) e \(b\) é o <strong>semi-eixo menor</strong>.
+    A equação canônica, com centro na origem e eixo maior sobre o eixo \(x\):
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1, \quad a > b > 0 \]
+  </p>
+  <p>
+    Os <strong>vértices</strong> são os pontos \((\pm a, 0)\) (extremidades
+    do eixo maior) e \((0, \pm b)\) (extremidades do eixo menor). Se \(a = b\),
+    a elipse degenera em uma circunferência de raio \(a\).
+  </p>
+</div>
+
+<!-- ========== 4. PARÁBOLA ========== -->
+<div class="concept-definition">
+  <p><strong>4. PARÁBOLA: TRAJETÓRIAS E ANTENAS</strong></p>
+  <p>
+    A parábola é o lugar geométrico dos pontos \(P\) do plano que estão à
+    <strong>mesma distância</strong> de um ponto fixo \(F\) (o
+    <strong>foco</strong>) e de uma reta fixa \(d\) (a
+    <strong>diretriz</strong>):
+  </p>
+  <p class="formula-highlight">
+    \[ d(P, F) = d(P, d) \]
+  </p>
+  <p>
+    Essa é a definição que unifica todas as parábolas. Para uma parábola com
+    vértice na origem e eixo horizontal, a equação canônica é:
+  </p>
+  <p class="formula-highlight">
+    \[ y^2 = 4px, \quad p \neq 0 \]
+  </p>
+  <p>
+    onde \(p\) é a distância do vértice ao foco. O foco está em \(F(p, 0)\) e
+    a diretriz é a reta \(x = -p\). O parâmetro \(p\) controla a "abertura"
+    da parábola: quanto maior \(|p|\), mais larga ela é. A parábola tem
+    excentricidade \(e = 1\) — o caso de fronteira entre a elipse e a
+    hipérbole. Curiosidade: todo feixe paralelo ao eixo de uma parábola se
+    concentra no foco — princípio usado em antenas parabólicas e espelhos
+    de telescópios.
+  </p>
+</div>
+
+<!-- ========== 5. HIPÉRBOLE ========== -->
+<div class="concept-definition">
+  <p><strong>5. HIPÉRBOLE: ROTAS DE ESCAPE</strong></p>
+  <p>
+    A hipérbole é o lugar geométrico dos pontos \(P\) do plano cuja
+    <strong>diferença das distâncias</strong> absolutas a dois pontos fixos
+    \(F_1\) e \(F_2\) (os <strong>focos</strong>) é constante e igual a
+    \(2a\):
+  </p>
+  <p class="formula-highlight">
+    \[ |d(P, F_1) - d(P, F_2)| = 2a \]
+  </p>
+  <p>
+    onde \(a\) é a distância do centro a cada vértice. A relação entre os
+    semi-eixos é \(c^2 = a^2 + b^2\) (note o sinal de mais — diferente da
+    elipse). A equação canônica, com centro na origem e eixo transverso
+    sobre o eixo \(x\):
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{x^2}{a^2} - \frac{y^2}{b^2} = 1, \quad a, b > 0 \]
+  </p>
+  <p>
+    Os <strong>vértices</strong> são \((\pm a, 0)\). A hipérbole possui duas
+    <strong>assíntotas</strong> que passam pela origem:
+    \(y = \pm \frac{b}{a}\, x\). Quando \(x \to \pm\infty\), os ramos da
+    hipérbole se aproximam cada vez mais dessas retas sem nunca tocá-las.
+    As assíntotas são fundamentais: definem o comportamento assintótico
+    da curva e aparecem naturalmente em trajetórias de escape gravitacional.
+  </p>
+</div>
+
+<!-- ========== 6. EXCENTRICIDADE ========== -->
+<div class="concept-definition">
+  <p><strong>6. EXCENTRICIDADE: O PARÂMETRO UNIFICADOR</strong></p>
+  <p>
+    A <strong>excentricidade</strong> \(e\) é o parâmetro que classifica uma
+    cônica e mede seu "achatamento" ou "abertura". Ela é definida como a razão
+    entre a distância do centro ao foco (\(c\)) e o semi-eixo principal
+    (\(a\)):
+  </p>
+  <p class="formula-highlight">
+    \[ e = \frac{c}{a} \]
+  </p>
+  <p>
+    onde \(c\) é a distância do centro a cada foco e \(a\) é o semi-eixo
+    maior (na elipse) ou a distância do centro ao vértice (na hipérbole).
+    O valor de \(e\) determina o tipo de cônica:
+  </p>
+  <p>
+    <strong>\(e = 0\)</strong> — circunferência (focos coincidem no centro,
+    \(c = 0\), a curva é "redonda").
+  </p>
+  <p>
+    <strong>\(0 < e < 1\)</strong> — elipse (focos separados, a curva é
+    "oval"). Quanto mais próximo de 1, mais achatada.
+  </p>
+  <p>
+    <strong>\(e = 1\)</strong> — parábola (um foco, uma diretriz, a curva
+    "abre" indefinidamente).
+  </p>
+  <p>
+    <strong>\(e > 1\)</strong> — hipérbole (a curva se "abre" em dois ramos
+    separados).
+  </p>
+  <p>
+    Em mecânica orbital, a excentricidade determina a forma da órbita:
+    \(e = 0\) é uma órbita circular, \(0 < e < 1\) é uma órbita elíptica
+    (satélites e planetas), \(e = 1\) é uma trajetória parabólica (escape
+    marginal), e \(e > 1\) é uma trajetória hiperbólica (escape definitivo).
+  </p>
+</div>
+
+<!-- ========== 7. CLASSIFICAÇÃO POR DISCRIMINANTE ========== -->
+<div class="concept-definition">
+  <p><strong>7. CLASSIFICAÇÃO POR DISCRIMINANTE: \(B^2 - 4AC\)</strong></p>
+  <p>
+    Toda equação de segundo grau em duas variáveis pode ser escrita na forma
+    geral:
+  </p>
+  <p class="formula-highlight">
+    \[ Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0 \]
+  </p>
+  <p>
+    onde \(A\), \(B\) e \(C\) não são todos nulos. O <strong>discriminante</strong>
+    \(\Delta = B^2 - 4AC\) classifica a cônica sem precisar resolver a equação:
+  </p>
+  <p>
+    <strong>\(B^2 - 4AC < 0\)</strong> — a curva é uma <strong>elipse</strong>
+    (ou circunferência se \(A = C\) e \(B = 0\)).
+  </p>
+  <p>
+    <strong>\(B^2 - 4AC = 0\)</strong> — a curva é uma <strong>parábola</strong>
+    (ou uma degeneração: reta, duas retas paralelas, ou nenhuma curva).
+  </p>
+  <p>
+    <strong>\(B^2 - 4AC > 0\)</strong> — a curva é uma <strong>hipérbole</strong>
+    (ou uma degeneração: duas retas que se cruzam).
+  </p>
+  <p>
+    Este discriminante é análogo ao discriminante de uma equação do 2º grau
+    em uma variável. A presença do termo \(Bxy\) indica que os eixos da cônica
+    estão rotacionados — uma rotação que pode ser eliminada por uma mudança
+    de coordenadas para obter a forma canônica.
+  </p>
+</div>
+
+<!-- ========== 8. FORMAS CANÔNICAS E TRANSLADADAS ========== -->
+<div class="concept-definition">
+  <p><strong>8. FORMAS CANÔNICAS E TRANSLADADAS</strong></p>
+  <p>
+    As equações canônicas vistas acima assumem centro (ou vértice) na origem
+    e eixos alinhados com os eixos coordenados. Na prática, uma cônica pode
+    estar deslocada. A técnica para "encontrar" o centro é
+    <strong>completar quadrados</strong>.
+  </p>
+  <p>
+    Para uma elipse com centro \((h, k)\), por exemplo, substituímos
+    \(x \to (x - h)\) e \(y \to (y - k)\):
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 \]
+  </p>
+  <p>
+    onde \((h, k)\) são as coordenadas do centro. O mesmo procedimento vale
+    para a hipérbole e a parábola. Para identificar o tipo e os parâmetros
+    a partir de uma equação geral, o processo é: (1) agrupar termos em
+    \(x\) e \(y\), (2) completar quadrados em cada grupo, (3) reescrever na
+    forma canônica transladada, (4) ler os parâmetros diretamente da equação
+    resultante.
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> As seções cônicas
+  governam praticamente toda trajetória no espaço. As <strong>órbitas de
+  satélites</strong> são elipses descritas pela lei de Kepler, com a Terra
+  em um dos focos. A <strong>parábola</strong> aparece em antenas de
+  comunicação — todo sinal que chega paralelo ao eixo se concentra no foco,
+  amplificando a recepção. A <strong>hipérbole</strong> modela trajetórias
+  de sobrevoo planetário (<em>gravity assist</em>) e rotas de reentrada
+  atmosférica, onde a sonda se aproxima rapidamente e escapa com velocidade
+  alterada. O parâmetro de excentricidade \(e\) determina se uma missão
+  ficará em órbita (elipse), escapará do campo gravitacional (hipérbole)
+  ou seguirá a fronteira entre ambas (parábola) — uma decisão que define o
+  destino de toda a
+  <span class="censored">missão interplanetária</span>.
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> A teoria das cônicas remonta a Apolônio
+  de Perga (séc. III a.C.), mas sua aplicação prática foi revolucionada por
+  Kepler (leis do movimento planetário, 1609-1619) e Newton (gravitação
+  universal, 1687). Durante a corrida espacial dos anos 1960, o cálculo
+  preciso de parâmetros cônicos foi decisivo para o sucesso das missões
+  <span class="censored">Apollo</span>, incluindo o cálculo das janelas de
+  lançamento e das trajetórias de transferência lunar. A mesma matemática
+  que Apolônio estudou por curiosidade intelectual tornou-se a base
+  tecnológica para colocar humanos na
+  <span class="censored">Lua</span>.
+</div>
+
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
