@@ -31,6 +31,134 @@
   FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS
 </div>
 
+<!-- ========== PRÉ-REQUISITOS ========== -->
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS: O QUE VOCÊ PRECISA SABER ANTES DE INTEGRAR</strong></p>
+  <p>
+    A integral é a operação inversa da derivada — por isso, dominar
+    derivação é o pré-requisito mais importante deste módulo. Além disso,
+    a integração depende fortemente de <strong>álgebra</strong>,
+    <strong>trigonometria</strong> e <strong>geometria analítica</strong>.
+    Esta seção resume tudo o que você deve rever antes de começar.
+  </p>
+  <p><strong>PR1. DERIVADAS DE FUNÇÕES ELEMENTARES:</strong>
+    A integral indefinida \(\int f(x)\,dx = F(x) + C\) pede que você
+    encontre \(F\) tal que \(F'(x) = f(x)\). Sem conhecer as regras de
+    derivação ao contrário, você não consegue integrar. As derivadas
+    essenciais são:
+  </p>
+  <p>
+    \(\frac{d}{dx}[x^n] = nx^{n-1}\),
+    \(\frac{d}{dx}[e^x] = e^x\),
+    \(\frac{d}{dx}[\ln x] = \frac{1}{x}\),
+    \(\frac{d}{dx}[\sin x] = \cos x\),
+    \(\frac{d}{dx}[\cos x] = -\sin x\),
+    \(\frac{d}{dx}[\tan x] = \sec^2 x\),
+    \(\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}\),
+    \(\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}\).
+  </p>
+  <p>
+    Reconhecer essas derivadas "de trás para frente" é o que permite
+    identificar antiderivadas. Se você soube que \(F'(x) = 2x\), agora
+    precisa concluir que \(\int 2x\,dx = x^2 + C\).
+  </p>
+
+  <p><strong>PR2. REGRA DA CADEIA E REGRA DO PRODUTO:</strong>
+    Duas técnicas de integração são diretamente as inversas dessas regras.
+    A <strong>substituição</strong> é a regra da cadeia ao contrário: se
+    \(\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)\), então
+    \(\int f'(g(x))\,g'(x)\,dx = f(g(x)) + C\). A
+    <strong>integração por partes</strong> é a regra do produto ao contrário:
+    se \((uv)' = u'v + uv'\), então \(\int u\,dv = uv - \int v\,du\).
+    Sem essas regras de derivação, as técnicas correspondentes não fazem
+    sentido.
+  </p>
+
+  <p><strong>PR3. ÁLGEBRA: FATORAÇÃO E COMPLETAR QUADRADOS:</strong>
+    A técnica de <strong>frações parciais</strong> exige fatorar polinômios
+    — decompor \(x^2 + x = x(x+1)\), por exemplo. Muitas integrais
+    trigonométricas e racionais exigem <strong>completar o quadrado</strong>:
+    \(x^2 + x + 1 = \left(x + \frac{1}{2}\right)^2 + \frac{3}{4}\).
+    Reconhecer padrões algébricos (diferença de quadrados,
+    trinômios perfeitos) é essencial para escolher a técnica correta.
+  </p>
+
+  <p><strong>PR4. FUNÇÕES TRIGONOMÉTRICAS E IDENTIDADES:</strong>
+    Integrais trigonométricas e substituições trigonométricas dependem
+    diretamente das identidades pitagóricas e de potência:
+  </p>
+  <p>
+    \(\sin^2\theta + \cos^2\theta = 1\),
+    \(\quad \tan^2\theta + 1 = \sec^2\theta\),
+    \(\quad \sin^2\theta = \frac{1 - \cos 2\theta}{2}\),
+    \(\quad \cos^2\theta = \frac{1 + \cos 2\theta}{2}\).
+  </p>
+  <p>
+    Além disso, conhecer as derivadas e integrais básicas de
+    \(\sin\), \(\cos\), \(\tan\) e \(\sec\) é indispensável. A
+    substituição trigonométrica transforma radicais como
+    \(\sqrt{a^2 - x^2}\) em \(\cos^2\theta\) usando exatamente essas
+    identidades.
+  </p>
+
+  <p><strong>PR5. GEOMETRIA ANALÍTICA: FIGURAS E GRÁFICOS:</strong>
+    A integral definida calcula <strong>área com sinal</strong>. Para
+    conferir resultados e construir intuição, você precisa lembrar as
+    fórmulas de área de triângulos, trapézios e círculos. Saber esboçar
+    gráficos de funções (lineares, quadráticas, trigonométricas) permite
+    visualizar a região sob a curva — o que a integral realmente mede.
+    A equação do círculo \(x^2 + y^2 = r^2\) aparece no exercício do
+    semicírculo, que motiva a substituição trigonométrica.
+  </p>
+
+  <p><strong>PR6. CONCEITO DE DERIVADA COMO TAXA DE VARIAÇÃO:</strong>
+    O Teorema Fundamental do Cálculo conecta a integral à derivada:
+    \(\int_a^b f(x)\,dx = F(b) - F(a)\), onde \(F' = f\). Se você
+    entende a derivada como a taxa instantânea de variação, a integral
+    é o <strong>acumulado</strong> dessa taxa. Essa ponte conceitual —
+    derivada como "velocidade", integral como "distância percorrida" —
+    é o fio condutor de todo o cálculo.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PROGRESSÃO ALFA → BETA → GAMMA → OMEGA</strong></p>
+  <p>
+    Os exercícios deste módulo estão organizados em quatro níveis de
+    complexidade, cada um com um propósito pedagógico específico:
+  </p>
+  <p>
+    <strong>ALFA</strong> — Fundamentos. Integrais que podem ser resolvidas
+    por reconhecimento direto ou aplicação imediata do Teorema Fundamental
+    do Cálculo. A verificação geométrica é possível (triângulos, trapézios,
+    semicírculos). Aqui o aluno constrói a intuição: a integral
+    <em>mede</em> área. As técnicas de substituição simples são
+    introduzidas com exemplos guiados e dicas.
+  </p>
+  <p>
+    <strong>BETA</strong> — Aplicações. Integrais que exigem uma etapa
+    intermediária — fatorar, escolher \(u\) e \(dv\), ou reconhecer um
+    padrão — mas ainda com orientação. O aluno aplica as técnicas
+    aprendidas no nível ALFA para resolver problemas um pouco mais
+    elaborados (frações parciais simples, integração por partes básica).
+  </p>
+  <p>
+    <strong>GAMMA</strong> — Combinações. Integrais que exigem
+    <strong>combinar duas ou mais técnicas</strong>: primeiro uma
+    identidade trigonométrica, depois integração por partes; ou primeiro
+    completar o quadrado, depois arctangente. O aluno deve analisar o
+    integrando, identificar os padrões e montar a estratégia.
+  </p>
+  <p>
+    <strong>OMEGA</strong> — Síntese total. Integrais sem dicas, onde o
+    aluno deve <strong>escolher sozinho</strong> qual técnica aplicar — ou
+    combinação de técnicas. É aqui que a autonomia sobre a decoreba se
+    prova: com as definições básicas, o aluno deriva o caminho sozinho.
+    Estes exercícios simulam situações reais onde não há enunciado
+    indicando o método.
+  </p>
+</div>
+
 <!-- ========== CONTEXTUALIZAÇÃO ========== -->
 <div class="concept-definition">
   <p><strong>CONTEXTUALIZAÇÃO</strong></p>
