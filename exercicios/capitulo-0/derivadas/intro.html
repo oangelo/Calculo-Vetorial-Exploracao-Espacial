@@ -37,6 +37,152 @@
 
 <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: DERIVADAS</div>
 
+<!-- ========== PRÉ-REQUISITOS E PROGRESSÃO ========== -->
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS E PROGRESSÃO ESPERADA</strong></p>
+  <p>
+    Antes de iniciar os exercícios de derivadas, certifique-se de dominar os
+    conceitos listados abaixo. Eles são organizados em ordem de dependência:
+    cada item depende dos anteriores. Os exercícios deste módulo avançam em
+    quatro fases — <strong>ALFA</strong>, <strong>BETA</strong>,
+    <strong>GAMMA</strong> e <strong>OMEGA</strong> — e cada fase exige
+    um subconjunto específico destes pré-requisitos.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-1. EQUAÇÃO PONTO-INCLINAÇÃO DE RETA (Geometria Analítica)</strong></p>
+  <p>
+    Dado um ponto \((x_0, y_0)\) e uma inclinação \(m\), a equação da reta
+    que passa por esse ponto é \(y - y_0 = m(x - x_0)\). Esta é a ferramenta
+    fundamental para construir retas tangentes: o ponto é o ponto de tangência
+    e a inclinação é a derivada avaliada nesse ponto. Sem esta equação, não
+    é possível escrever a reta tangente — mesmo sabendo a derivada.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0A).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-2. EQUAÇÃO DE CIRCUNFERÊNCIA (Geometria Analítica / Cônicas)</strong></p>
+  <p>
+    A circunferência de centro \((a, b)\) e raio \(r\) tem equação
+    \((x - a)^2 + (y - b)^2 = r^2\). O caso mais simples é \(x^2 + y^2 = r^2\),
+    centrado na origem. Importante: a circunferência <strong>não é uma função</strong>
+    \(y = f(x)\) (falha no teste da linha vertical), o que motiva a derivação
+    implícita. Os exercícios usam a circunferência como primeiro caso de curva
+    que não é função.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0C).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-3. DISCRIMINANTE E INTERSEÇÃO DE CURVAS (Cônicas / Álgebra)</strong></p>
+  <p>
+    Ao igualar duas equações — por exemplo, uma curva \(y = f(x)\) e uma reta
+    \(y = mx + b\) — obtemos uma equação nas incógnitas. Se o resultado for
+    uma equação do 2º grau \(ax^2 + bx + c = 0\), o discriminante
+    \(\Delta = b^2 - 4ac\) determina o número de soluções:
+    \(\Delta > 0\) indica dois pontos de interseção, \(\Delta = 0\) indica
+    tangência (um único ponto) e \(\Delta < 0\) indica ausência de interseção.
+    Este critério é usado para <strong>verificar</strong> se uma reta é tangente
+    a uma curva, confirmando o resultado obtido pela derivada.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0B).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-4. LIMITES DE FUNÇÕES (Cálculo 1 — revisão)</strong></p>
+  <p>
+    A derivada é definida como um limite:
+    \(\displaystyle f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\).
+    Para acompanhar esta definição, o aluno precisa entender o conceito de
+    limite de uma função em um ponto, incluindo a notação
+    \(\lim_{x \to a} f(x)\) e a ideia de que \(x\) se aproxima de \(a\) sem
+    necessariamente atingi-lo. As propriedades algébricas de limites (soma,
+    produto, quociente) facilitam os cálculos.
+  </p>
+  <p><em>Necessário para compreender a definição de derivada no intro.</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-5. FUNÇÕES ELEMENTARES (Cálculo 1 — revisão)</strong></p>
+  <p>
+    Reconhecer e manipular os tipos básicos de funções que aparecem nos
+    exercícios: <strong>polinômios</strong> (\(x^n\), \(3x^2 + 4x - 1\)),
+    <strong>trigonométricas</strong> (\(\sin x\), \(\cos x\)),
+    <strong>exponenciais</strong> (\(e^x\), \(e^{3x}\)) e
+    <strong>logarítmicas</strong> (\(\ln x\), \(\ln(x^2 + 1)\)). Os exercícios
+    avançados combinam essas funções em composições, produtos e quocientes.
+    Saber simplificar expressões com radicais e expoentes fracionários
+    (\(\sqrt{x} = x^{1/2}\)) é igualmente essencial.
+  </p>
+  <p><em>Necessário desde a fase BETA em diante.</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-6. ÁLGEBRA DE DERIVAÇÃO (Cálculo 1 — revisão)</strong></p>
+  <p>
+    As operações algébricas básicas que sustentam as regras de derivação:
+    linearidade (\((af + bg)' = af' + bg'\)), derivada de constante
+    (\(c' = 0\)), e a regra da potência (\(\frac{d}{dx}(x^n) = n \cdot x^{n-1}\)).
+    Na fase ALFA, basta a derivada de \(x^2\) e de \(x^n\). A partir da fase
+    BETA, as regras do produto, quociente e cadeia exigem que o aluno já
+    domine a derivação termo a termo.
+  </p>
+  <p><em>Necessário desde a fase BETA (exercício 1A).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PROGRESSÃO ESPERADA DOS EXERCÍCIOS</strong></p>
+  <p>
+    Os exercícios estão organizados em quatro fases que constroem o domínio
+    das derivadas de forma incremental:
+  </p>
+  <p>
+    <strong>Fase ALFA (0A–0D): Fundamentos geométricos.</strong> O aluno
+    encontra retas tangentes a parábolas e circunferências, verifica tangência
+    pelo discriminante e compara as três notações de derivada (Lagrange,
+    Leibniz, Newton). A conexão com a geometria analítica (PR-1, PR-2, PR-3)
+    é explícita — o aluno entende <em>o que</em> a derivada mede antes de
+    aprender <em>como</em> calculá-la mecanicamente.
+  </p>
+  <p>
+    <strong>Fase BETA (1A–1C): Regras básicas.</strong> O aluno aplica a regra
+    da potência a polinômios (1A), depois a regra do produto (1B) e por fim a
+    regra da cadeia para composições simples (1C). Cada exercício retoma o
+    anterior e acrescenta uma nova ferramenta.
+  </p>
+  <p>
+    <strong>Fase GAMMA (2A–3C): Combinações de regras.</strong> Os exercícios
+    exigem que o aluno combine duas ou mais regras simultaneamente: quociente
+    (2A), produto com cadeia (2B), quociente com cadeia (2C), composições com
+    funções exponenciais (3A), trigonométricas (3B) e cadeia tripla (3C). Cada
+    exercício é um degrau de complexidade sobre o anterior.
+  </p>
+  <p>
+    <strong>Fase OMEGA (4A–4C): Síntese.</strong> Os exercícios finais
+    combinam todas as regras em problemas de alta complexidade: diferenciação
+    logarítmica (4A), produto + exponencial + quociente + cadeia (4B), e uma
+    composição de quatro camadas dentro de um quociente (4C). Os alunos que
+    chegaram até aqui dominam o ferramental de derivadas ordinárias.
+  </p>
+  <p>
+    <strong>Conexão com Cônicas:</strong> A fase ALFA retoma diretamente
+    conceitos de cônicas — parábola (\(y = x^2\)) e circunferência
+    (\(x^2 + y^2 = r^2\)). O discriminante para verificar tangência (PR-3)
+    foi estudado na seção de cônicas do capítulo. Este módulo mostra que
+    derivadas e cônicas não são tópicos isolados: a reta tangente a uma
+    cônica é um problema que pertence a ambos.
+  </p>
+  <p>
+    <strong>Conexão com Curvas de Nível:</strong> A ideia de que a derivada
+    dá a taxa de variação instantânea será retomada no módulo de curvas de
+    nível, onde o gradiente indica a direção de maior crescimento —
+    perpendicular às curvas de nível. O conceito de taxa de variação em uma
+    direção particular é uma generalização direta do que estudamos aqui.
+  </p>
+</div>
+
 <!-- ========== CONTEXTUALIZAÇÃO ========== -->
 <div class="concept-definition">
   <p><strong>CONTEXTUALIZAÇÃO</strong></p>
