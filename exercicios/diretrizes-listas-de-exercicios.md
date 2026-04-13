@@ -34,6 +34,33 @@ O objetivo é que, com as definições básicas, o aluno consiga derivar resulta
 
 ---
 
+## Fundamentação Teórica (intro.html e index.html)
+
+A fundamentação teórica é uma **mini-aula passiva** — diferente dos exercícios ativos. O aluno lê para rever o panorama antes de resolver.
+
+**Estrutura obrigatória:**
+
+1. **CONTEXTUALIZAÇÃO** — 1-2 parágrafos motivando o tópico. "Por que precisamos disso? Para onde leva?" O aluno vê o mapa antes dos detalhes.
+
+2. **CONCEITOS NUMERADOS** — Cada conceito é uma seção `<div class="concept-definition">` com:
+   - Título: `<strong>N. NOME: SUBTÍTULO</strong>` (ex: "3. PRODUTO ESCALAR: ÂNGULOS E PROJEÇÕES")
+   - 1-2 parágrafos explicando O QUE é e POR QUE importa
+   - Fórmula principal em `<p class="formula-highlight">` (bloco destacado)
+   - Fórmulas secundárias inline `\(...\)` dentro do texto
+   - Parâmetros explicados logo após a fórmula (o que é \\(v_x\\)? o que é \\(\\theta\\)?)
+   - Conexão para o próximo conceito ("com isso, podemos agora...")
+
+3. **APLICAÇÕES** — `<div class="mission-context">` com exemplos concretos de uso na exploração espacial.
+
+4. **NOTA HISTÓRICA** — `<div class="historical-note">` opcional.
+
+**Regras de formatação:**
+- Uma seção `<div class="concept-definition">` por conceito (não agrupar tudo num bloco só)
+- NÃO usar `<ul><li>` — texto corrido com `<p>` e `<strong>`
+- Fórmulas principais: `<p class="formula-highlight">\\[...\\]</p>`
+- Fórmulas secundárias: inline `\\(...\\)` dentro de `<p>`
+- CSS: `.concept-definition` tem `background-color` e `padding`, SEM `border-left`
+
 ## Regra Crítica: MathJax no HTML
 
 **Delimitadores (uma barra só no arquivo HTML):**

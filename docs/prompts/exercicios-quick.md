@@ -22,7 +22,7 @@ Criar exercícios de Cálculo Vetorial sobre [TÓPICO] usando o template HTML co
 Seguir template HTML em `/exercicios/template.html`:
 
 1. **Cabeçalho**: Carimbo SIGILOSO, data censurada, metadados
-2. **Fundamentação**: Definição formal, contexto espacial, nota histórica
+2. **Fundamentação Teórica** (mini-aula passiva): contextualização + conceitos numerados (cada um em `<div class="concept-definition">` separado, com narrativa, fórmula destacada, parâmetros explicados) + aplicações + nota histórica. SEM `<ul><li>`, SEM `border-left` no CSS. Modelo: `exercicios/capitulo-0/geometria-analitica/intro.html`
 3. **12 Exercícios**: Progressão ALFA → BETA → GAMMA → OMEGA
 4. **Rodapé**: Numeração, carimbo ULTRASSECRETO
 

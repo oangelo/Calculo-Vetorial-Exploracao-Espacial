@@ -41,12 +41,20 @@ Siga RIGOROSAMENTE o template HTML fornecido, mantendo todas as tags, classes e 
    - Aviso de segurança (classe "warning-box")
    - Metadados (classe "metadata") com REF, NÍVEL DE ACESSO, CÓPIAS EXISTENTES
 
-2. **Seção de Fundamentação Teórica**
+2. **Seção de Fundamentação Teórica** (mini-aula passiva — NÃO é um bloco de fórmulas jogadas)
 
    - Título (classe "section-title"): "FUNDAMENTAÇÃO TEÓRICA: [TÓPICO]"
-   - Definição formal (classe "concept-definition") com fórmula matemática principal
-   - Contextualização na exploração espacial (classe "mission-context")
-   - Nota histórica (classe "historical-note")
+   - **CONTEXTUALIZAÇÃO** — `<div class="concept-definition">` com 1-2 parágrafos motivando o tópico ("por que estudar isso?")
+   - **CONCEITOS NUMERADOS** — cada um em `<div class="concept-definition">` separado:
+     - Título: `<strong>N. NOME: SUBTÍTULO</strong>` (ex: "3. PRODUTO ESCALAR: ÂNGULOS E PROJEÇÕES")
+     - 1-2 parágrafos explicando O QUE é e POR QUE importa
+     - Fórmula principal em `<p class="formula-highlight">\\[...\\]</p>`
+     - Fórmulas secundárias inline `\\(...\\)` no texto
+     - Parâmetros explicados logo após a fórmula
+   - **APLICAÇÕES** — `<div class="mission-context">` com exemplos na exploração espacial
+   - **NOTA HISTÓRICA** — `<div class="historical-note">` opcional
+   - SEM `<ul><li>`, SEM `border-left` no CSS de `.concept-definition`
+   - Modelo de referência: `exercicios/capitulo-0/geometria-analitica/intro.html`
 
 3. **Lista de Exercícios** (tag main, classe "exercise-list")
 

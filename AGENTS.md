@@ -98,6 +98,12 @@ Os worktrees ficam em `worktrees/` (ignorado pelo git). Cada tipo de conteúdo t
 
 ## Para Agentes de IA: Como Contribuir
 
+### Fundamentação Teórica
+
+A seção teórica (intro.html e index.html) é uma **mini-aula passiva**. Cada conceito em `<div class="concept-definition">` separado, com narrativa, fórmulas destacadas/inline, parâmetros explicados. SEM `<ul><li>`, SEM `border-left` no CSS. Ver modelo: `exercicios/capitulo-0/geometria-analitica/intro.html`.
+
+Detalhes completos em `diretrizes-listas-de-exercicios.md` (seção "Fundamentação Teórica").
+
 ### Criar Exercícios de Casa
 
 **Arquivos:** `/docs/prompts/exercicios.md` + `/exercicios/template.html`
