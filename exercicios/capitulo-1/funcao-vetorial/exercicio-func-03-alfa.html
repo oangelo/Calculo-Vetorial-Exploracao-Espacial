@@ -7,50 +7,55 @@
     No exercício anterior, vimos que retas são funções vetoriais com velocidade
     constante. Mas trajetórias reais de naves não são retas — os sensores
     registram variações não-lineares. Um experimento de microgravidade a bordo
-    da Apollo é descrito pela função:
-    \[ \vec{r}(t) = \bigl(t,\; t^2,\; e^t\bigr), \]
-    onde cada componente representa um sensor de deslocamento no eixo
-    correspondente (em metros, com \(t\) em segundos).
+    da Apollo é descrito pela função: \[ \vec{r}(t) = \bigl(t,\; t^2,\;
+    e^t\bigr), \] onde cada componente representa um sensor de deslocamento no
+    eixo correspondente (em metros, com \(t\) em segundos).
   </p>
-<p><strong>(a)</strong> Calcule a posição no tempo \(t = 0\), isto é, \(\vec{r}(0)\).
-      O que esse vetor representa fisicamente?</p>
-    <p><strong>(b)</strong> Determine a <em>derivada</em> \(\vec{r}'(t)\) derivando cada
-      componente separadamente, usando as regras de derivação de Cálculo
-      Diferencial (Cap 0).</p>
-    <p><strong>(c)</strong> Interprete \(\vec{r}'(t)\): o que cada componente da derivada
-      nos diz sobre o movimento do sensor correspondente?</p>
-<details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+  <p>
+    <strong>(a)</strong> Calcule a posição no tempo \(t = 0\), isto é,
+    \(\vec{r}(0)\). O que esse vetor representa fisicamente?
+  </p>
+  <p>
+    <strong>(b)</strong> Determine a <em>derivada</em> \(\vec{r}'(t)\) derivando
+    cada componente separadamente. Use as regras de derivação de Cálculo
+    Diferencial (Cap 0): \(\frac{d}{dt}t^n = nt^{n-1}\) e \(\frac{d}{dt}e^t =
+    e^t\).
+  </p>
+  <p>
+    <strong>(c)</strong> Interprete \(\vec{r}'(t)\): o que cada componente da
+    derivada nos diz sobre o movimento do sensor correspondente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
       [DICA OPERACIONAL]: Para derivar uma função vetorial, derive cada
-      componente como faria com uma função escalar comum. Se
-      \(\vec{r}(t) = \bigl(x(t),\, y(t),\, z(t)\bigr)\), então
-      \(\vec{r}'(t) = \bigl(x'(t),\, y'(t),\, z'(t)\bigr)\).
-      As regras são as mesmas de Cap 0: \(\frac{d}{dt}t^n = nt^{n-1}\) e
-      \(\frac{d}{dt}e^t = e^t\).
+      componente como faria com uma função escalar comum. Se \(\vec{r}(t) =
+      \bigl(x(t),\, y(t),\, z(t)\bigr)\), então \(\vec{r}'(t) = \bigl(x'(t),\,
+      y'(t),\, z'(t)\bigr)\). As regras são as mesmas de Cap 0:
+      \(\frac{d}{dt}t^n = nt^{n-1}\) e \(\frac{d}{dt}e^t = e^t\).
     </div>
   </details>
   <details>
-    <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) Em \(t = 0\): \(\vec{r}(0) = (0,\, 0^2,\, e^0) = (0, 0, 1)\).
-        Isso indica que no instante inicial, o sensor de deslocamento no eixo
-        \(z\) já está em 1 m, enquanto nos eixos \(x\) e \(y\) está na origem.
+        (a) Em \(t = 0\): \(\vec{r}(0) = (0,\, 0^2,\, e^0) = (0, 0, 1)\). Isso
+        indica que no instante inicial, o sensor de deslocamento no eixo \(z\)
+        já está em 1 m, enquanto nos eixos \(x\) e \(y\) está na origem.
       </p>
       <p>
-        (b) Derivando componente a componente:
-        \[ \vec{r}'(t) = \bigl(1,\; 2t,\; e^t\bigr). \]
+        (b) Derivando componente a componente: \[ \vec{r}'(t) = \bigl(1,\; 2t,\;
+        e^t\bigr). \]
       </p>
       <p>
         (c) A primeira componente (\(1\)) indica que o sensor \(x\) avança a
-        velocidade constante 1 m/s. A segunda (\(2t\)) mostra que o sensor
-        \(y\) acelera — sua velocidade cresce linearmente com o tempo. A
-        terceira (\(e^t\)) revela que o sensor \(z\) acelera exponencialmente.
-        Ou seja: \(\vec{r}'(t)\) é o <strong>vetor velocidade</strong> da
-        trajetória — ele nos diz a taxa de variação instantânea da posição.
+        velocidade constante 1 m/s. A segunda (\(2t\)) mostra que o sensor \(y\)
+        acelera — sua velocidade cresce linearmente com o tempo. A terceira
+        (\(e^t\)) revela que o sensor \(z\) acelera exponencialmente. Ou seja:
+        \(\vec{r}'(t)\) é o <strong>vetor velocidade</strong> da trajetória —
+        ele nos diz a taxa de variação instantânea da posição.
       </p>
     </div>
   </details>
-
+</li>

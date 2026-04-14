@@ -1,57 +1,71 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
-<div class="context">
-              ORIGEM: Análise de Sistemas - Projeto Atlas [DADOS DE 24/MAI/1959]
-            </div>
-<p>
-              CONEXÃO: Nos exercícios ALFA, os campos eram lineares — as
-              componentes eram polinômios de grau 1. Agora vamos ver o que
-              acontece quando as componentes são de grau 2 (quadráticas). Um
-              conceito novo aparece: o ponto onde o campo se anula, chamado
-              singularidade.
-            </p>
-<p>
-              Considere o campo vetorial: \[\vec{H}(x,y) = \begin{pmatrix} x^2 -
-              y^2 \ 2xy \end{pmatrix}\]
-            </p>
-<p><strong>(a)</strong> Calcule o valor do campo nos pontos \(A(1,1)\), \(B(2,0)\) e \(C(0,2)\).</p>
-<p><strong>(b)</strong> Encontre todos os pontos onde o campo é nulo, ou seja, resolva \(\vec{H}(x,y) = \vec{0}\). (Dica: monte um sistema de duas equações.)</p>
-<p><strong>(c)</strong> Se este campo representasse um fluxo de fluido, o que significaria um ponto onde o campo é nulo? Que nome damos a esse tipo de ponto?</p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">
-
-                [NOTA TÉCNICA]: Para (b), resolva o sistema \(x^2 - y^2 = 0\)
-                e \(2xy = 0\) simultaneamente. Para (c), pense: se a
-                velocidade do fluido é zero em um ponto, o fluido não se
-                move ali — é um ponto de estagnação.
-              
-</div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
-<div class="solution">
-<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) Valores do campo:</p>
-<p>\[\vec{H}(1,1) = \begin{pmatrix} 1-1 \ 2 \end{pmatrix} = \begin{pmatrix} 0 \ 2 \end{pmatrix}\]</p>
-<p>\[\vec{H}(2,0) = \begin{pmatrix} 4-0 \ 0 \end{pmatrix} = \begin{pmatrix} 4 \ 0 \end{pmatrix}\]</p>
-<p>\[\vec{H}(0,2) = \begin{pmatrix} 0-4 \ 0 \end{pmatrix} = \begin{pmatrix} -4 \ 0 \end{pmatrix}\]</p>
-<p>(b) PONTOS DE CAMPO NULO:</p>
-<p>
-                  Resolvendo \(x^2 - y^2 = 0\) e \(2xy = 0\):
-                  da segunda equação, \(xy = 0\), logo \(x = 0\) ou \(y = 0\).
-                  Se \(x = 0\): \(0 - y^2 = 0 \Rightarrow y = 0\).
-                  Se \(y = 0\): \(x^2 - 0 = 0 \Rightarrow x = 0\).
-                  Portanto, o único ponto onde o campo é nulo é a origem
-                  \(O(0,0)\).
-                </p>
-<p>
-                  (c) INTERPRETAÇÃO: Em um fluxo de fluido, um ponto de campo
-                  nulo é chamado de ponto de estagnação — ali o fluido não se
-                  move. É como se a água chegasse ao ponto e não pudesse
-                  prosseguir. Em sistemas dinâmicos, esses pontos são chamados
-                  de singularidades e governam o comportamento global do campo.
-                </p>
-</div>
-</details>
-
+  <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
+  <div class="context">
+    ORIGEM: Análise de Sistemas - Projeto Atlas [DADOS DE 24/MAI/1959]
+  </div>
+  <p>
+    CONEXÃO: Nos exercícios ALFA, os campos eram lineares — as componentes eram
+    polinômios de grau 1. Agora vamos ver o que acontece quando as componentes
+    são de grau 2 (quadráticas). Um conceito novo aparece: o ponto onde o campo
+    se anula, chamado singularidade.
+  </p>
+  <p>
+    Considere o campo vetorial: \[\vec{H}(x,y) = \begin{pmatrix} x^2 - y^2 \ 2xy
+    \end{pmatrix}\]
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o valor do campo nos pontos \(A(1,1)\),
+    \(B(2,0)\) e \(C(0,2)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre todos os pontos onde o campo é nulo, ou seja,
+    resolva \(\vec{H}(x,y) = \vec{0}\). (Dica: monte um sistema de duas
+    equações.)
+  </p>
+  <p>
+    <strong>(c)</strong> Se este campo representasse um fluxo de fluido, o que
+    significaria um ponto onde o campo é nulo? Que nome damos a esse tipo de
+    ponto?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (b), resolva o sistema \(x^2 - y^2 = 0\) e \(2xy =
+      0\) simultaneamente. Para (c), pense: se a velocidade do fluido é zero em
+      um ponto, o fluido não se move ali — é um ponto de estagnação.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) Valores do campo:</p>
+      <p>
+        \[\vec{H}(1,1) = \begin{pmatrix} 1-1 \ 2 \end{pmatrix} = \begin{pmatrix}
+        0 \ 2 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{H}(2,0) = \begin{pmatrix} 4-0 \ 0 \end{pmatrix} = \begin{pmatrix}
+        4 \ 0 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{H}(0,2) = \begin{pmatrix} 0-4 \ 0 \end{pmatrix} = \begin{pmatrix}
+        -4 \ 0 \end{pmatrix}\]
+      </p>
+      <p>(b) PONTOS DE CAMPO NULO:</p>
+      <p>
+        Resolvendo \(x^2 - y^2 = 0\) e \(2xy = 0\): da segunda equação, \(xy =
+        0\), logo \(x = 0\) ou \(y = 0\). Se \(x = 0\): \(0 - y^2 = 0
+        \Rightarrow y = 0\). Se \(y = 0\): \(x^2 - 0 = 0 \Rightarrow x = 0\).
+        Portanto, o único ponto onde o campo é nulo é a origem \(O(0,0)\).
+      </p>
+      <p>
+        (c) INTERPRETAÇÃO: Em um fluxo de fluido, um ponto de campo nulo é
+        chamado de ponto de estagnação — ali o fluido não se move. É como se a
+        água chegasse ao ponto e não pudesse prosseguir. Em sistemas dinâmicos,
+        esses pontos são chamados de singularidades e governam o comportamento
+        global do campo.
+      </p>
+    </div>
+  </details>
+</li>

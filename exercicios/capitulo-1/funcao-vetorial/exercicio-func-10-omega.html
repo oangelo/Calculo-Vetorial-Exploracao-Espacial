@@ -7,61 +7,67 @@
     No exercício da hélice (anterior), vimos que quando um objeto gira com
     velocidade angular constante, o vetor velocidade gira junto — mas o
     <strong>módulo</strong> da posição permanece constante (no plano \(xy\)).
-    Isso levanta uma pergunta geral: quando \(\|\vec{r}(t)\|\) é constante,
-    o que acontece com \(\vec{r}'(t)\)?
+    Isso levanta uma pergunta geral: quando \(\|\vec{r}(t)\|\) é constante, o
+    que acontece com \(\vec{r}'(t)\)? Para responder, precisamos da regra de
+    derivação do produto escalar de Cap 0 (Produto Escalar):
+    \(\frac{d}{dt}(\vec{u} \cdot \vec{v}) = \vec{u}' \cdot \vec{v} + \vec{u}
+    \cdot \vec{v}'\).
   </p>
   <p>
-    Prove que se \(\vec{r}(t) \cdot \vec{r}'(t) = 0\) para todo \(t\),
-    então \(\|\vec{r}(t)\|\) é constante.
+    Prove que se \(\vec{r}(t) \cdot \vec{r}'(t) = 0\) para todo \(t\), então
+    \(\|\vec{r}(t)\|\) é constante.
   </p>
-<p><strong>(a)</strong> Escreva \(\|\vec{r}\|^2\) como um produto escalar. Qual é a
-      propriedade do produto escalar que relaciona \(\vec{v} \cdot \vec{v}\)
-      com \(\|\vec{v}\|\)?</p>
-    <p><strong>(b)</strong> Derive \(\|\vec{r}(t)\|^2 = \vec{r}(t) \cdot \vec{r}(t)\) em
-      relação a \(t\). Use a regra de derivação do produto escalar:
-      \(\frac{d}{dt}(\vec{u} \cdot \vec{v}) = \vec{u}' \cdot \vec{v} +
-      \vec{u} \cdot \vec{v}'\).</p>
-    <p><strong>(c)</strong> Use a hipótese \(\vec{r} \cdot \vec{r}' = 0\) para concluir que
-      \(\|\vec{r}\|\) é constante. Interprete: geometricamente, o que
-      significa \(\vec{r} \cdot \vec{r}' = 0\)?</p>
-<details class="hint-container">
+  <p>
+    <strong>(a)</strong> Escreva \(\|\vec{r}\|^2\) como um produto escalar. Qual
+    é a propriedade do produto escalar que relaciona \(\vec{v} \cdot \vec{v}\)
+    com \(\|\vec{v}\|\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Derive \(\|\vec{r}(t)\|^2 = \vec{r}(t) \cdot
+    \vec{r}(t)\) em relação a \(t\). Use a regra de derivação do produto
+    escalar.
+  </p>
+  <p>
+    <strong>(c)</strong> Use a hipótese \(\vec{r} \cdot \vec{r}' = 0\) para
+    concluir que \(\|\vec{r}\|\) é constante. Interprete: geometricamente, o que
+    significa \(\vec{r} \cdot \vec{r}' = 0\)?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-10]</summary>
     <div class="hint">
-      [DICA OPERACIONAL]: Lembre do Cap 0 (Produto Escalar): o produto
-      escalar de um vetor consigo mesmo é o quadrado do módulo:
-      \(\vec{v} \cdot \vec{v} = \|\vec{v}\|^2\). Para derivar o produto
-      escalar, trate cada componente como uma função e aplique a regra do
-      produto.
+      [DICA OPERACIONAL]: Lembre do Cap 0 (Produto Escalar): o produto escalar
+      de um vetor consigo mesmo é o quadrado do módulo: \(\vec{v} \cdot \vec{v}
+      = \|\vec{v}\|^2\). Para derivar o produto escalar, trate cada componente
+      como uma função e aplique a regra do produto. Se o produto escalar é zero,
+      os vetores são perpendiculares (ortogonalidade, Cap 0).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-10 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
         (a) Temos \(\|\vec{r}\|^2 = \vec{r} \cdot \vec{r}\). A propriedade
-        fundamental é: o produto escalar de um vetor consigo mesmo é o
-        quadrado de seu módulo.
+        fundamental é: o produto escalar de um vetor consigo mesmo é o quadrado
+        de seu módulo (Cap 0, Produto Escalar).
       </p>
       <p>
-        (b) Derivando ambos os lados:
-        \[\frac{d}{dt}\|\vec{r}\|^2 = \frac{d}{dt}(\vec{r} \cdot \vec{r})
-        = \vec{r}' \cdot \vec{r} + \vec{r} \cdot \vec{r}'
-        = 2\,\vec{r} \cdot \vec{r}'.\]
+        (b) Derivando ambos os lados: \[\frac{d}{dt}\|\vec{r}\|^2 =
+        \frac{d}{dt}(\vec{r} \cdot \vec{r}) = \vec{r}' \cdot \vec{r} + \vec{r}
+        \cdot \vec{r}' = 2\,\vec{r} \cdot \vec{r}'.\]
       </p>
       <p>
         (c) Pela hipótese, \(\vec{r} \cdot \vec{r}' = 0\), então
-        \(\frac{d}{dt}\|\vec{r}\|^2 = 0\). Isso significa que
-        \(\|\vec{r}\|^2\) é constante, e portanto \(\|\vec{r}\|\) também é
-        constante.
+        \(\frac{d}{dt}\|\vec{r}\|^2 = 0\). Isso significa que \(\|\vec{r}\|^2\)
+        é constante, e portanto \(\|\vec{r}\|\) também é constante.
       </p>
       <p>
-        <strong>Interpretação geométrica:</strong> A condição
-        \(\vec{r} \cdot \vec{r}' = 0\) significa que o vetor velocidade é
-        sempre <strong>perpendicular</strong> à posição. Quando isso acontece,
-        o objeto se move sempre na direção tangencial (nunca se afasta nem se
-        aproxima da origem) — exatamente como numa órbita circular.
+        <strong>Interpretação geométrica:</strong> A condição \(\vec{r} \cdot
+        \vec{r}' = 0\) significa que o vetor velocidade é sempre
+        <strong>perpendicular</strong> à posição. Quando isso acontece, o objeto
+        se move sempre na direção tangencial (nunca se afasta nem se aproxima da
+        origem) — exatamente como numa órbita circular.
       </p>
     </div>
   </details>
-
+</li>

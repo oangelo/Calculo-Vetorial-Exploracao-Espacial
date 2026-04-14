@@ -19,54 +19,6 @@
     <span class="censored">análises orbitais avançadas</span>
     e forneceu subsídios matemáticos para futuras missões.
   </div>
-
-  <div class="concept-definition">
-    <div class="section-title">PRÉ-REQUISITOS</div>
-    <p>
-      Para resolver estes exercícios, você deve estar confortável com os seguintes
-      conceitos dos capítulos anteriores:
-    </p>
-<li>
-        <strong>Derivada de funções de uma variável</strong> (Cap 0 — Derivadas):
-        regras de derivação (potência, produto, quociente, cadeia), derivadas de
-        funções trigonométricas, exponenciais e logarítmicas. A derivada parcial
-        é a mesma operação, só que aplicada a uma variável de cada vez.
-      </li>
-      <li>
-        <strong>Equação ponto-inclinação da reta tangente</strong> (Cap 0 — Geometria):
-        \(y - y_0 = m(x - x_0)\), onde \(m = f'(x_0)\). A derivada parcial
-        nos dá a inclinação da reta tangente a uma <em>seção</em> da superfície.
-      </li>
-      <li>
-        <strong>Curvas de nível</strong> (Cap 0 — Curvas de Nível): as curvas onde
-        \(f(x,y) = c\) são constantes. A derivada parcial nos diz como a função
-        muda quando caminhamos paralelamente a um eixo — e é perpendicular às curvas de nível.
-      </li>
-      <li>
-        <strong>Funções vetoriais de uma variável</strong> (Cap 1 — Função Vetorial):
-        \(\vec{r}(t) = (x(t), y(t))\) como trajetória parametrizada. A derivada
-        \(\vec{r}'(t)\) é o vetor velocidade. Analogia: a derivada parcial mede
-        a "velocidade" da função escalar em cada direção.
-      </li>
-      <li>
-        <strong>Campo vetorial</strong> (Cap 1 — Campo Vetorial): um campo
-        \(\vec{F}(x,y) = P(x,y)\hat{i} + Q(x,y)\hat{j}\) associa um vetor a cada
-        ponto. As derivadas parciais das componentes \(P\) e \(Q\) aparecem em
-        exercícios sobre derivadas de campos.
-      </li>
-      <li>
-        <strong>Limites de funções</strong> (Cap 1 — Limites): a noção de que o
-        limite pode não existir se os caminhos de aproximação dão resultados
-        diferentes. A derivada parcial é, em essência, um limite na direção de um eixo.
-      </li>
-<p>
-      <em>Resumo rápido:</em> derivada parcial \(\frac{\partial f}{\partial x}\) =
-      derivada ordinária de \(f\) em relação a \(x\), tratando todas as outras
-      variáveis como constantes. É a generalização natural do conceito de derivada
-      que você já conhece.
-    </p>
-  </div>
-
   <div class="warning-box">
     Este documento contém informações matemáticas classificadas. Qualquer
     divulgação não autorizada pode resultar em
@@ -81,4 +33,190 @@
       <span class="censored">2</span></span
     >
   </div>
+</div>
+
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: DERIVADAS PARCIAIS</div>
+
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Você já sabe derivar funções de uma variável: a derivada \(\frac{dy}{dx}\)
+    mede como \(y\) muda quando \(x\) varia. Mas e quando a grandeza que nos
+    interessa depende de <em>várias</em> variáveis simultaneamente — como a
+    temperatura em um módulo espacial, que varia com a posição \((x, y, z)\)?
+  </p>
+  <p>
+    A derivada parcial é a resposta: em vez de derivar tudo de uma vez,
+    derivamos em relação a <strong>uma variável por vez</strong>, tratando as
+    outras como constantes. Essa operação é o alicerce de praticamente toda a
+    análise de funções multivariáveis — do gradiente (direção de maior
+    crescimento) ao rotacional e divergente (rotação e expansão de campos
+    vetoriais). Neste módulo, construímos esse conceito do zero.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>1. DERIVADA PARCIAL EM RELAÇÃO A x: INCLINAÇÃO DE UMA SEÇÃO</strong>
+  </p>
+  <p>
+    Se fixarmos \(y = y_0\) na superfície \(z = f(x,y)\), obtemos uma curva no
+    plano \(xz\): \(z = f(x, y_0)\). Essa curva é uma <em>seção</em> da
+    superfície. A derivada parcial \(\frac{\partial f}{\partial x}\) é
+    simplesmente a derivada ordinária dessa seção:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial f}{\partial x}(x_0, y_0) = \lim_{h \to 0} \frac{f(x_0 + h,
+    y_0) - f(x_0, y_0)}{h} \]
+  </p>
+  <p>
+    Geometricamente, \(\frac{\partial f}{\partial x}\) é a inclinação da reta
+    tangente à curva de seção quando caminhamos na direção \(x\). A notação
+    \(\partial\) (\"d curvo\") distingue a derivada parcial da derivada total
+    ordinária. O procedimento de cálculo é direto: trate \(y\) como constante e
+    derive como se fosse uma função de \(x\) só.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>2. DERIVADA PARCIAL EM RELAÇÃO A y: A OUTRA SEÇÃO</strong></p>
+  <p>
+    Analogamente, fixando \(x = x_0\), obtemos a seção \(z = f(x_0, y)\) no
+    plano \(yz\). A derivada parcial em relação a \(y\) é:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial f}{\partial y}(x_0, y_0) = \lim_{h \to 0} \frac{f(x_0, y_0
+    + h) - f(x_0, y_0)}{h} \]
+  </p>
+  <p>
+    Ela mede a inclinação da superfície quando caminhamos na direção \(y\), com
+    \(x\) fixo. Para uma função de três variáveis \(f(x,y,z)\), existe também
+    \(\frac{\partial f}{\partial z}\) — a variação na direção vertical. Cada
+    derivada parcial \"enxerga\" apenas os termos que contêm sua variável: os
+    demais desaparecem (sua derivada é zero).
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong
+      >3. REGRA DA CADEIA PARA DERIVADAS PARCIAIS: FUNÇÕES COMPOSTAS</strong
+    >
+  </p>
+  <p>
+    Quando a variável aparece dentro de outra função — como em \(f(x,y) =
+    e^{xy}\) — precisamos da regra da cadeia. Se \(f = g(u)\) com \(u =
+    u(x,y)\), então:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial f}{\partial x} = \frac{dg}{du} \cdot \frac{\partial
+    u}{\partial x}, \qquad \frac{\partial f}{\partial y} = \frac{dg}{du} \cdot
+    \frac{\partial u}{\partial y} \]
+  </p>
+  <p>
+    Esta é a mesma regra da cadeia que você já conhece, mas aplicada a cada
+    variável separadamente. Um caso comum: quando \(f\) depende de \(r =
+    \sqrt{x^2 + y^2}\), usamos \(\frac{\partial r}{\partial x} = \frac{x}{r}\).
+    A regra da cadeia aparece em cálculos de potenciais gravitacionais, campos
+    de temperatura e funções exponenciais compostas.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong
+      >4. DERIVADAS PARCIAIS DE FUNÇÕES VETORIAIS: COMPONENTE A
+      COMPONENTE</strong
+    >
+  </p>
+  <p>
+    Um campo vetorial \(\vec{F}(x,y) = P(x,y)\hat{i} + Q(x,y)\hat{j}\) também
+    pode ser derivado parcialmente. A ideia é a mesma: derivamos componente a
+    componente, tratando a outra variável como constante:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial \vec{F}}{\partial x} = \frac{\partial P}{\partial
+    x}\,\hat{i} + \frac{\partial Q}{\partial x}\,\hat{j} \]
+  </p>
+  <p>
+    Cada componente \(P\) e \(Q\) é uma função escalar — e você já sabe derivar
+    escalares. A derivada parcial de um campo mede como o campo muda quando nos
+    deslocamos em uma direção. Esta operação aparece diretamente nas fórmulas de
+    rotacional e divergente.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>5. DERIVADAS PARCIAIS SEGUNDAS E MISTAS: TEOREMA DE SCHWARZ</strong>
+  </p>
+  <p>
+    Podemos derivar uma derivada parcial novamente, obtendo derivadas segundas:
+    \(\frac{\partial^2 f}{\partial x^2}\), \(\frac{\partial^2 f}{\partial
+    y^2}\), e as <strong>derivadas mistas</strong> \(\frac{\partial^2
+    f}{\partial x \partial y}\) e \(\frac{\partial^2 f}{\partial y \partial
+    x}\). Uma propriedade fundamental é:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial^2 f}{\partial x \, \partial y} = \frac{\partial^2
+    f}{\partial y \, \partial x} \]
+  </p>
+  <p>
+    Esta igualdade, chamada <strong>Teorema de Schwarz</strong> (ou de
+    Clairaut), vale sempre que as derivadas mistas sejam contínuas — condição
+    que as funções \"bem-comportadas\" sempre satisfazem. A consequência
+    prática: a ordem de derivação não importa. Isso simplifica muitos cálculos e
+    é essencial para provar identidades como \(\nabla \cdot (\nabla \times
+    \vec{F}) = 0\).
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>6. GRADIENTE: O VETOR DAS DERIVADAS PARCIAIS</strong></p>
+  <p>
+    O <strong>gradiente</strong> de uma função escalar \(f(x,y)\) é o vetor
+    formado por suas derivadas parciais:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial
+    f}{\partial y}\right) \]
+  </p>
+  <p>
+    O gradiente aponta na <strong>direção de maior crescimento</strong> de
+    \(f\), e sua magnitude é a taxa máxima de crescimento. Uma propriedade
+    geométrica fundamental: o gradiente é sempre
+    <strong>perpendicular às curvas de nível</strong>
+    de \(f\). Se \(f(x,y) = c\) define uma curva de nível, então \(\nabla f\)
+    aponta perpendicular a essa curva. Nos exercícios deste módulo, você verá
+    isso explicitamente ao calcular o vetor \((\frac{\partial T}{\partial x},
+    \frac{\partial T}{\partial y})\) e observar sua direção em relação às curvas
+    de temperatura.
+  </p>
+</div>
+
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> As derivadas parciais
+  aparecem em praticamente toda análise de sistemas espaciais. O
+  <strong>gradiente de temperatura</strong> indica para onde o calor flui dentro
+  de um módulo — informação vital para o controle térmico durante a reentrada
+  atmosférica. As
+  <strong>derivadas parciais de um potencial gravitacional</strong> dão as
+  componentes da força gravitacional em cada direção. A
+  <strong>equação de Laplace</strong>, que envolve derivadas segundas, descreve
+  o equilíbrio térmico de painéis solares e o potencial eletrostático de
+  blindagens. O <strong>Teorema de Schwarz</strong>
+  garante que os cálculos de engenharia sejam independentes da ordem de
+  derivação — essencial quando equipes diferentes calculam componentes
+  separadamente.
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> As derivadas parciais foram formalizadas por
+  Leonhard Euler no século XVIII, no contexto da mecânica dos fluidos e da
+  teoria de cordas vibrantes. Durante a corrida espacial da década de 1960,
+  tornaram-se indispensáveis: o programa Apollo usava equações diferenciais
+  parciais para modelar trajetórias orbitais, campos térmicos e dinâmica
+  estrutural. A precisão desses cálculos — baseada no domínio de derivadas
+  parciais — foi um dos fatores que permitiu o
+  <span class="censored">sucesso da alunissagem</span> em 1969.
 </div>

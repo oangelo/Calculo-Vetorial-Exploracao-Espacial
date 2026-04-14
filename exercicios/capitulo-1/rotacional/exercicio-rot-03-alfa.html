@@ -1,105 +1,106 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
   <div class="context">
-    ORIGEM: Análise de Circulação — Sistemas de Navegação Apollo
+    ORIGEM: Análise de Rotação Local — Sistemas de Navegação Apollo
   </div>
 
   <div class="mission-context">
-    <strong>Significado antes da álgebra:</strong> No exercício anterior,
-    você viu qualitativamente que o campo \((0,x,0)\) faz uma pá girar.
-    Agora vamos quantificar essa rotação calculando a circulação — a
-    integral de linha ao redor de uma curva fechada. É a versão
-    "macroscópica" do que o rotacional mede infinitesimalmente.
+    <strong>Significado antes da álgebra:</strong> No exercício anterior, você
+    viu qualitativamente que o campo \((0,x,0)\) faz uma pá girar. Agora vamos
+    analisar isso de forma mais sistemática: em cada lado de um quadrado, o
+    campo contribui para rotação? A ferramenta é o produto escalar \(\vec{F}
+    \cdot \hat{t}\) — a componente do campo na direção tangente ao percurso.
   </div>
 
   <p>
-    Nos dois exercícios anteriores, vimos que torque causa rotação e que
-    o campo \(\vec{F} = (0, x, 0)\) faz uma pá de moinho girar. Agora
-    vamos medir essa rotação de forma quantitativa, calculando a
-    <em>circulação</em> \(\oint \vec{F} \cdot d\vec{r}\) ao redor de
-    uma curva fechada.
+    Nos dois exercícios anteriores, vimos que torque causa rotação e que o campo
+    \(\vec{F} = (0, x, 0)\) faz uma pá de moinho girar. Agora vamos analisar
+    essa rotação de forma quantitativa, lado a lado de um quadrado.
   </p>
 
   <p>
-    Considere o campo \(\vec{F}(x,y) = (0, x, 0)\) e um quadrado de lado
-    \(a\) centrado na origem, com vértices em \((\pm a/2, \pm a/2)\).
-    O percurso é no sentido anti-horário.
+    Considere o campo \(\vec{F}(x,y) = (0, x, 0)\) e um quadrado de lado \(a\)
+    centrado na origem, com vértices em \((\pm a/2, \pm a/2)\). O percurso é no
+    sentido anti-horário.
   </p>
 
-  <p><strong>(a)</strong> No lado inferior (de \((-a/2, -a/2)\) a
-    \((a/2, -a/2)\)), o deslocamento é \(d\vec{r} = (dx, 0, 0)\).
-    Calcule \(\vec{F} \cdot d\vec{r}\) e integre ao longo deste lado.</p>
+  <p>
+    <strong>(a)</strong> Calcule o vetor do campo nos quatro vértices do
+    quadrado: \((-a/2, -a/2)\), \((a/2, -a/2)\), \((a/2, a/2)\) e \((-a/2,
+    a/2)\). Em que direção aponta cada vetor?
+  </p>
 
-  <p><strong>(b)</strong> No lado direito (de \((a/2, -a/2)\) a
-    \((a/2, a/2)\)), o deslocamento é \(d\vec{r} = (0, dy, 0)\).
-    Note que \(x = a/2\) neste lado. Calcule \(\vec{F} \cdot d\vec{r}\)
-    e integre.</p>
+  <p>
+    <strong>(b)</strong> Analise cada lado do quadrado separadamente. No lado
+    inferior (\(y = -a/2\)) e no lado superior (\(y = a/2\)), o campo \(\vec{F}
+    = (0, x, 0)\) aponta na direção \(y\), enquanto o deslocamento ao longo do
+    lado é na direção \(x\). O campo contribui para rotação nestes lados?
+    Justifique pensando no produto escalar \(\vec{F} \cdot \hat{t}\) (componente
+    tangente).
+  </p>
 
-  <p><strong>(c)</strong> Repita para o lado superior (de \((a/2, a/2)\)
-    a \((-a/2, a/2)\)) e o lado esquerdo (de \((-a/2, a/2)\) a
-    \((-a/2, -a/2)\)). Some as quatro contribuições.</p>
+  <p>
+    <strong>(c)</strong> No lado direito (\(x = a/2\)), o campo vale \((0, a/2,
+    0)\) e o deslocamento é na direção \(+y\). No lado esquerdo (\(x = -a/2\)),
+    o campo vale \((0, -a/2, 0)\) e o deslocamento é na direção \(-y\). Em qual
+    dos dois lados o campo "empurra" no sentido do percurso, e em qual
+    "resiste"? A contribuição líquida é positiva ou negativa?
+  </p>
 
-  <p><strong>(d)</strong> A circulação é positiva, negativa ou zero?
-    Divida a circulação pela área \(a^2\) do quadrado. O que esse
-    quociente representa? O que acontece quando \(a \to 0\)?</p>
+  <p>
+    <strong>(d)</strong> Com base na análise dos itens (b) e (c), o campo
+    contribui positivamente para rotação ao redor do quadrado? O que isso diz
+    sobre o rotacional do campo na origem?
+  </p>
 
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: No lado inferior, \(y = -a/2\) é constante e
-      \(\vec{F} = (0, x, 0)\), então \(\vec{F} \cdot (dx, 0, 0) = 0\).
-      No lado direito, \(x = a/2\) fixo, então \(\vec{F} \cdot (0, dy, 0)
-      = (a/2) \, dy\). No lado esquerdo, \(x = -a/2\) e o percurso é
-      descendente: \(d\vec{r} = (0, -dy)\).
+      [NOTA TÉCNICA]: Pense no produto escalar \(\vec{F} \cdot \hat{t}\) como a
+      "projeção" do campo na direção do percurso. Se o campo é perpendicular ao
+      deslocamento, a contribuição é zero. Se o campo aponta no mesmo sentido do
+      percurso, a contribuição é positiva; se aponta contra, é negativa.
     </div>
   </details>
 
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
 
       <p>
-        (a) Lado inferior: \(y = -a/2\), \(d\vec{r} = (dx, 0, 0)\).
-        \(\vec{F} \cdot d\vec{r} = 0 \cdot dx = 0\).
-        Contribuição: \(0\).
+        (a) Em \((-a/2, -a/2)\): \(\vec{F} = (0, -a/2, 0)\) — aponta para baixo.
+        Em \((a/2, -a/2)\): \(\vec{F} = (0, a/2, 0)\) — aponta para cima. Em
+        \((a/2, a/2)\): \(\vec{F} = (0, a/2, 0)\) — aponta para cima. Em
+        \((-a/2, a/2)\): \(\vec{F} = (0, -a/2, 0)\) — aponta para baixo.
       </p>
 
       <p>
-        (b) Lado direito: \(x = a/2\), \(d\vec{r} = (0, dy, 0)\).
-        \(\vec{F} \cdot d\vec{r} = (a/2) \, dy\).
-        Integrando de \(y = -a/2\) a \(y = a/2\):
-        \(\int_{-a/2}^{a/2} \frac{a}{2} \, dy = \frac{a}{2} \cdot a
-        = \frac{a^2}{2}\).
+        (b) No lado inferior: o deslocamento é na direção \(+x\), mas o campo
+        aponta na direção \(y\). O produto escalar \(\vec{F} \cdot \hat{t} = 0\)
+        — o campo é perpendicular ao percurso. Contribuição: zero. No lado
+        superior: mesma situação — deslocamento na direção \(-x\), campo na
+        direção \(y\). Produto escalar nulo. Contribuição: zero.
       </p>
 
       <p>
-        (c) Lado superior: \(y = a/2\), \(d\vec{r} = (-dx, 0, 0)\).
-        \(\vec{F} \cdot d\vec{r} = 0 \cdot (-dx) = 0\).
-        Contribuição: \(0\).
+        (c) No lado direito: \(x = a/2\), o campo é \((0, a/2, 0)\) e o vetor
+        tangente é \(\hat{t} = (0, 1, 0)\) (sentido \(+y\)). \(\vec{F} \cdot
+        \hat{t} = a/2\) — positivo! O campo empurra no sentido do percurso. No
+        lado esquerdo: \(x = -a/2\), o campo é \((0, -a/2, 0)\) e o vetor
+        tangente é \(\hat{t} = (0, -1, 0)\) (sentido \(-y\)). \(\vec{F} \cdot
+        \hat{t} = (-a/2)(-1) = a/2\) — também positivo! Mesmo apontando para
+        baixo, o campo "empurra" no sentido descendente do percurso. Ambos os
+        lados verticais contribuem positivamente para a rotação.
       </p>
 
       <p>
-        Lado esquerdo: \(x = -a/2\), percurso de \(y = a/2\) a
-        \(y = -a/2\). Usando \(y = t\), com \(t\) de \(a/2\) a \(-a/2\):
-        \(d\vec{r} = (0, dt, 0)\), \(\vec{F} = (0, -a/2, 0)\).
-        \(\vec{F} \cdot d\vec{r} = (-a/2) \, dt\).
-        \(\int_{a/2}^{-a/2} \left(-\frac{a}{2}\right) dt
-        = \left(-\frac{a}{2}\right)(-a) = \frac{a^2}{2}\).
-      </p>
-
-      <p>
-        Circulação total: \(0 + \frac{a^2}{2} + 0 + \frac{a^2}{2}
-        = a^2\).
-      </p>
-
-      <p>
-        (d) A circulação é positiva — o campo circula no sentido
-        anti-horário ao redor da origem, confirmando a intuição do EX-02.
-        Dividindo pela área: \(\frac{a^2}{a^2} = 1\). Quando \(a \to 0\),
-        esse quociente permanece igual a \(1\). Este é exatamente o
-        significado do rotacional: ele é o limite da circulação por
-        unidade de área quando a área tende a zero.
+        (d) A contribuição total é positiva — o campo favorece rotação no
+        sentido anti-horário ao redor da origem. Os lados horizontais não
+        contribuem (campo perpendicular ao percurso), mas os lados verticais
+        empurram consistentemente no sentido do percurso. Isso confirma que o
+        rotacional do campo \((0, x, 0)\) na origem é não-zero e aponta na
+        direção \(+z\).
       </p>
     </div>
   </details>

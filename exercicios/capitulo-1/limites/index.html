@@ -257,7 +257,6 @@
   </head>
   <body>
     <div class="container">
-      <!-- INTRO - INLINE -->
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
@@ -283,7 +282,8 @@
         <div class="warning-box">
           Este documento contém informações matemáticas consideradas vitais para
           a segurança nacional. A divulgação não autorizada deste material pode
-          resultar em <span class="censored">consequências graves</span>.
+          resultar em <span class="censored">consequências graves</span>
+          conforme legislação vigente.
         </div>
         <div class="metadata">
           <span>REF: LM-<span class="censored">202</span>-B</span>
@@ -295,12 +295,266 @@
         </div>
       </div>
 
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: LIMITES</div>
+
+      <!-- ========== CONTEXTUALIZAÇÃO ========== -->
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Imagine uma sonda se aproximando de um planeta: a cada instante, ela
+          está mais perto — mas ela realmente chega ao solo, ou apenas orbita
+          indefinidamente? Para responder perguntas assim, precisamos de uma
+          ferramenta que descreva o
+          <strong
+            >comportamento de uma função quando nos aproximamos de um
+            ponto</strong
+          >, mesmo que a função não esteja definida exatamente nele. Essa
+          ferramenta é o conceito de <strong>limite</strong>.
+        </p>
+        <p>
+          Em Cálculo 1, você já calculou limites de funções de uma variável:
+          bastava olhar pela esquerda e pela direita. Agora vamos para funções
+          de
+          <strong>duas variáveis</strong> \(f(x,y)\), onde nos aproximamos de um
+          ponto não por uma reta, mas por um <strong>plano inteiro</strong> —
+          com infinitos caminhos possíveis. Essa mudança torna o conceito mais
+          forte e mais sutil. Neste módulo, construímos o conceito passo a
+          passo: primeiro limites de funções vetoriais (uma variável), depois o
+          salto para duas variáveis, e as técnicas para decidir se um limite
+          existe ou não.
+        </p>
+      </div>
+
+      <!-- ========== 1. LIMITES DE FUNÇÕES VETORIAIS ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong
+            >1. LIMITES DE FUNÇÕES VETORIAIS: COMPONENTE A COMPONENTE</strong
+          >
+        </p>
+        <p>
+          Uma função vetorial \(\vec{r}(t) = (f(t), g(t))\) é contínua quando
+          cada componente é contínua. O limite funciona da mesma forma: para
+          calcular \(\lim_{t \to a} \vec{r}(t)\), calculamos o limite de cada
+          componente separadamente:
+        </p>
+        <p class="formula-highlight">
+          \[ \lim_{t \to a} \vec{r}(t) = \left(\lim_{t \to a} f(t),\; \lim_{t
+          \to a} g(t)\right) \]
+        </p>
+        <p>
+          onde \(f(t)\) e \(g(t)\) são funções escalares. Se alguma componente
+          não tem limite finito, o limite vetorial não existe. Tudo o que você
+          sabe de Cálculo 1 (substituição direta, limite lateral, L'Hôpital) se
+          aplica componente a componente. Com essa ferramenta, podemos agora dar
+          o salto para o caso mais desafiador: funções de duas variáveis.
+        </p>
+      </div>
+
+      <!-- ========== 2. LIMITE EM DUAS VARIÁVEIS ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong
+            >2. LIMITE EM DUAS VARIÁVEIS: O DESAFIO DOS INFINITOS
+            CAMINHOS</strong
+          >
+        </p>
+        <p>
+          Para uma função \(f(x,y)\), dizemos que \(\lim_{(x,y)\to(a,b)} f(x,y)
+          = L\) se, <strong>independente do caminho</strong> que o ponto
+          \((x,y)\) escolha para se aproximar de \((a,b)\), o valor de
+          \(f(x,y)\) se aproxima de \(L\). Em uma variável, bastavam dois lados
+          (esquerda e direita). Em duas variáveis, existem infinitos caminhos:
+          retas, parábolas, espirais — e todos devem convergir para o mesmo
+          valor.
+        </p>
+        <p class="formula-highlight">
+          \[ \lim_{(x,y)\to(a,b)} f(x,y) = L \quad \Longleftrightarrow \quad
+          \forall \varepsilon > 0,\; \exists \delta > 0 \text{ tal que } 0 <
+          \sqrt{(x-a)^2 + (y-b)^2} < \delta \Rightarrow |f(x,y) - L| <
+          \varepsilon \]
+        </p>
+        <p>
+          A distância agora é medida no plano: \(\sqrt{(x-a)^2 + (y-b)^2}\). A
+          consequência prática: para provar que o limite
+          <strong>não existe</strong>, basta encontrar dois caminhos com
+          resultados diferentes. Para provar que <strong>existe</strong>, é
+          preciso uma técnica que cubra todos os caminhos de uma vez — veremos
+          três delas a seguir.
+        </p>
+      </div>
+
+      <!-- ========== 3. TESTE DE DOIS CAMINHOS ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong>3. TESTE DE DOIS CAMINHOS: PROVANDO A NÃO-EXISTÊNCIA</strong>
+        </p>
+        <p>
+          O método mais direto para mostrar que um limite
+          <strong>não existe</strong>: se dois caminhos diferentes levam a
+          valores diferentes ao se aproximar de \((a,b)\), o limite não existe.
+          A lógica é simples: se o limite existisse, todos os caminhos dariam o
+          mesmo valor — então dois caminhos diferentes bastam para refutar.
+        </p>
+        <p>
+          Os caminhos mais comuns são: eixos coordenados (\(y = 0\), \(x = 0\)),
+          retas pela origem (\(y = mx\)), e parábolas (\(y = kx^2\)). Para cada
+          caminho, substituímos a equação do caminho na função e calculamos o
+          limite restante — que se reduz a um limite de uma variável (Cálculo
+          1).
+        </p>
+        <p>
+          <strong>Atenção:</strong> dois caminhos com resultados iguais
+          <strong>não provam</strong> que o limite existe — apenas que o teste
+          não detectou problema. Outro caminho pode dar valor diferente. Quando
+          retas não bastam, o próximo conceito nos oferece uma ferramenta mais
+          abrangente.
+        </p>
+      </div>
+
+      <!-- ========== 4. COORDENADAS POLARES ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong
+            >4. COORDENADAS POLARES: VERIFICANDO TODOS OS CAMINHOS RETOS</strong
+          >
+        </p>
+        <p>
+          Substituindo \(x = r\cos\theta\) e \(y = r\sin\theta\), o limite
+          \(\lim_{(x,y)\to(0,0)} f(x,y)\) se transforma em \(\lim_{r \to 0}
+          f(r\cos\theta, r\sin\theta)\). O ponto-chave: cada ângulo \(\theta\)
+          fixo corresponde a um caminho reto pela origem, e todos os caminhos
+          retos se reduzem a \(r \to 0\).
+        </p>
+        <p class="formula-highlight">
+          \[ \lim_{(x,y)\to(0,0)} f(x,y) = \lim_{r \to 0} f(r\cos\theta,
+          r\sin\theta) \]
+        </p>
+        <p>
+          Se o resultado simplificar para \(r \cdot g(\theta)\) com
+          \(g(\theta)\) limitada (não depende de \(r\)), o limite é zero por
+          todos os caminhos retos. Este é um método poderoso, mas tem uma
+          <strong>limitação importante</strong>: coordenadas polares só
+          verificam caminhos retos (\(\theta\) fixo). Um caminho curvo, como \(y
+          = x^2\), corresponde a \(\theta\) variando com \(r\) — e pode escapar
+          desta análise. Quando precisamos de uma prova que funcione para
+          qualquer caminho, recorremos ao próximo conceito.
+        </p>
+      </div>
+
+      <!-- ========== 5. DESIGUALDADE DO SANDUÍCHE ========== -->
+      <div class="concept-definition">
+        <p><strong>5. DESIGUALDADE DO SANDUÍCHE (SQUEEZE THEOREM)</strong></p>
+        <p>
+          Quando a função envolve \(\sin\), \(\cos\) ou outras funções
+          limitadas, o squeeze theorem é a ferramenta ideal. A ideia: se
+          conseguirmos cercar \(|f(x,y)|\) por uma função \(g(x,y)\) que vai a
+          zero, então \(f(x,y)\) também vai a zero — independentemente do
+          caminho de aproximação.
+        </p>
+        <p class="formula-highlight">
+          \[ |f(x,y)| \leq g(x,y) \quad \text{e} \quad \lim_{(x,y)\to(a,b)}
+          g(x,y) = 0 \quad \Longrightarrow \quad \lim_{(x,y)\to(a,b)} f(x,y) = 0
+          \]
+        </p>
+        <p>
+          As desigualdades mais usadas para construir a cota são \(|\sin u| \leq
+          |u|\) e \(|\cos u| \leq 1\). Combine-as com coordenadas polares ou
+          simplificações algébricas para obter uma cota que vá a zero quando
+          \((x,y) \to (a,b)\). Diferente das coordenadas polares, o sanduíche é
+          válido para
+          <strong>qualquer caminho</strong> — desde que a cota seja correta. A
+          dificuldade está em encontrar a cota certa.
+        </p>
+      </div>
+
+      <!-- ========== 6. LIMITES ITERADOS ========== -->
+      <div class="concept-definition">
+        <p><strong>6. LIMITES ITERADOS VS. LIMITE DUPLO</strong></p>
+        <p>
+          Um <strong>limite iterado</strong> calcula o limite de uma variável de
+          cada vez, em uma ordem fixa. Por exemplo: \(\lim_{x \to 0}\lim_{y \to
+          0} f(x,y)\) primeiro faz \(y \to 0\) (com \(x\) fixo), depois \(x \to
+          0\). Podemos também inverter a ordem: \(\lim_{y \to 0}\lim_{x \to 0}
+          f(x,y)\).
+        </p>
+        <p>
+          A regra fundamental: limites iterados são condições
+          <strong>necessárias mas não suficientes</strong>. Se os limites
+          iterados existem e são iguais, isso <strong>não garante</strong> que o
+          limite duplo \(\lim_{(x,y)\to(0,0)} f(x,y)\) existe. O contrário sim:
+          se o limite duplo existe, então todos os limites iterados (em qualquer
+          ordem) existem e são iguais a ele.
+        </p>
+        <p>
+          O contraexemplo clássico é \(f(x,y) = \frac{xy}{x^2 + y^2}\): os
+          limites iterados valem ambos \(0\), mas o limite duplo não existe
+          (retas \(y = mx\) dão valores diferentes). Essa distinção importa
+          especialmente em simulações numéricas, onde a ordem de cálculo pode
+          produzir resultados aparentemente consistentes que escondem uma
+          não-existência.
+        </p>
+      </div>
+
+      <!-- ========== 7. CONTINUIDADE ========== -->
+      <div class="concept-definition">
+        <p><strong>7. CONTINUIDADE: CONECTANDO LIMITES E FUNÇÕES</strong></p>
+        <p>
+          Uma função \(f(x,y)\) é <strong>contínua</strong> no ponto \((a,b)\)
+          se três condições se cumprem: (i) \(f\) está definida em \((a,b)\),
+          (ii) o limite \(\lim_{(x,y)\to(a,b)} f(x,y)\) existe, e (iii) o limite
+          é igual ao valor da função:
+        </p>
+        <p class="formula-highlight">
+          \[ \lim_{(x,y)\to(a,b)} f(x,y) = f(a,b) \]
+        </p>
+        <p>
+          Para funções vetoriais \(\vec{F}(x,y) = (P(x,y), Q(x,y))\), a
+          continuidade exige que cada componente seja contínua no ponto — e que
+          o ponto esteja no domínio de ambas. Se uma componente não está
+          definida em \((a,b)\), a função toda não pode ser contínua ali.
+          Funções elementares (polinômios, exponenciais, trigonométricas) são
+          contínuas onde estão definidas — o que nos permite concluir
+          continuidade por inspeção na maioria dos casos práticos.
+        </p>
+      </div>
+
+      <!-- ========== APLICAÇÕES ========== -->
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> O conceito de limite
+        aparece em toda análise de trajetória orbital. Quando uma sonda se
+        aproxima de um planeta, a função que descreve sua posição em função do
+        tempo pode ter <strong>descontinuidades</strong> — pontos onde o modelo
+        quebra (colisão, ignição de motor, mudança de fase). O limite nos diz se
+        o comportamento é <strong>previsível</strong> perto desses pontos. Em
+        controle de atitude, os limites de funções de duas variáveis verificam
+        se a superfície de potencial é suave — uma descontinuidade pode indicar
+        uma região de instabilidade. A distinção entre limites iterados e limite
+        duplo é essencial para simulações numéricas: a ordem de integração
+        importa, e resultados aparentemente consistentes podem ser artefatos de
+        uma ordem de cálculo específica. O squeeze theorem aparece na análise de
+        vibrações de painéis solares, onde funções senoidais modelam oscilações
+        que precisam convergir para zero.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> O conceito de limite rigoroso foi
+        estabelecido por Augustin-Louis Cauchy (1821) e Karl Weierstrass (séc.
+        XIX), com a definição \(\varepsilon\)-\(\delta\). A extensão para
+        funções de várias variáveis exigiu novas ferramentas, como o teste de
+        caminhos e coordenadas polares. Durante a corrida espacial dos anos
+        1960, a análise rigorosa de limites e continuidade de funções vetoriais
+        foi essencial para prever trajetórias com precisão — um erro de
+        continuidade no modelo matemático poderia significar a perda de uma
+        missão <span class="censored">no valor de bilhões</span>.
+      </div>
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
 
       <div class="page-number">
-        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO LM-<span
+        PÁGINA 1 DE <span class="censored">13</span> • DOCUMENTO LM-<span
           class="censored"
           >202</span
         >-B

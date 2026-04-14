@@ -279,37 +279,7 @@
           O desenvolvimento destes exercícios faz parte dos estudos secretos
           sobre a trajetória de novos veículos orbitais, com ênfase no
           <span class="censored">Programa Mercury</span>. Seu objetivo
-          principal: avaliar a existência de pontos de fuga (fontes) ou colapsos
-          (sumidouros) em campos de força associados ao voo espacial.
-        </div>
-        <div class="concept-definition">
-          <div class="section-title">PRÉ-REQUISITOS</div>
-          <p>
-            Para resolver estes exercícios, você deve estar confortável com os
-            seguintes conceitos dos capítulos e tópicos anteriores:
-          </p>
-<li>
-              <strong>Derivadas parciais</strong> (Cap 1 — Derivadas Parciais):
-              \(\frac{\partial f}{\partial x}\) como derivada de \(f\) em
-              relação a \(x\), tratando as outras variáveis como constantes.
-              A operação que usamos para calcular divergência é exatamente a soma
-              de três derivadas parciais.
-            </li>
-            <li>
-              <strong>Regras de derivação</strong> (Cap 0 — Derivadas): regra da
-              potência, produto, quociente e cadeia.
-            </li>
-            <li>
-              <strong>Campos vetoriais</strong> (Cap 1 — Campo Vetorial): um
-              campo associa um vetor a cada ponto do espaço.
-            </li>
-            <li>
-              <strong>Rotacional</strong> (Cap 1 — Rotacional): o operador
-              \(\nabla \times \vec{F}\) mede a rotação.
-            </li>
-</div>
-        <div class="mission-context">
-          <strong>Contexto:</strong> Campos de força em propulsão espacial.
+          principal: detectar regiões onde o campo "cria" ou "destroi" energia.
         </div>
         <div class="warning-box">
           Este documento contém análises de campos vetoriais classificadas como
@@ -324,6 +294,120 @@
             <span class="censored">5</span></span
           >
         </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: DIVERGENTE</div>
+
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Imagine a água saindo de uma torneira. O jato se espalha — o campo de
+          velocidades se expande à medida que a água cai. Agora imagine um ralo:
+          a água converge para um ponto — o campo se contrai. A pergunta central
+          deste módulo é:
+          <em>em cada ponto do espaço, o campo se expande ou se contrai?</em>
+        </p>
+        <p>
+          A <strong>divergência</strong> responde exatamente essa pergunta. Ela
+          nos diz, em cada ponto do espaço, se o campo "cria" valor (\(\nabla
+          \cdot \vec{F} > 0\)), "destroi" valor (\(\nabla \cdot \vec{F} < 0\))
+          ou simplesmente passa (\(\nabla \cdot \vec{F} = 0\)).
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p>
+          <strong>1. FLUXO SIMPLES: O CAMPO PASSANDO POR UMA JANELA</strong>
+        </p>
+        <p>
+          Imagine o vento soprando com velocidade constante. Colocamos uma
+          janela plana perpendicular ao vento. A quantidade de vento que
+          atravessa a janela por unidade de tempo é o <strong>fluxo</strong>.
+          Para um campo constante \(\vec{F}\) e uma janela plana de área \(A\)
+          com vetor normal unitário \(\hat{n}\):
+        </p>
+        <p class="formula-highlight">
+          \[ \Phi = \vec{F} \cdot \hat{n} \times A \]
+        </p>
+        <p>
+          O fluxo é positivo quando o campo atravessa no sentido da normal;
+          negativo quando atravessa no sentido contrário; zero quando o campo é
+          paralelo à janela.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p>
+          <strong>2. DIVERGÊNCIA: QUÃO O CAMPO CRIA OU DESTROI VALOR</strong>
+        </p>
+        <p>
+          A <strong>divergência</strong> de um campo mede, em cada ponto do
+          espaço, a taxa na qual o campo "expande" ou "comprime". Para um campo
+          \(\vec{F} = (P, Q, R)\):
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} +
+          \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \]
+        </p>
+        <p>
+          A divergência é um <strong>escalar</strong> — resume o campo (três
+          números por ponto) em um único número (a taxa de expansão).
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p>
+          <strong>3. INTERPRETAÇÃO: FONTES, SUMIDOUROS E SOLENODAIS</strong>
+        </p>
+        <p>
+          <strong>\(\nabla \cdot \vec{F} > 0\)</strong> — fonte: o campo "brota"
+          daquele ponto. O campo radial \(\vec{F} = (x, y, z)\) tem divergência
+          constante 3: expansão uniforme.
+        </p>
+        <p>
+          <strong>\(\nabla \cdot \vec{F} < 0\)</strong> — sumidouro: o campo
+          "desaparece" naquele ponto. O campo \(\vec{F} = (-x, -y, -z)\) tem
+          divergência \(-3\): compressão uniforme.
+        </p>
+        <p>
+          <strong>\(\nabla \cdot \vec{F} = 0\)</strong> — solenoidal: o campo
+          apenas passa, sem criar nem destruir. O campo rotacional \(\vec{G} =
+          (-y, x, 0)\) e o campo gravitacional \(\vec{g} = -GM\vec{r}/r^3\) são
+          solenoidais.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>4. LINEARIDADE E PROPRIEDADES</strong></p>
+        <p>O operador divergente é <strong>linear</strong>:</p>
+        <p class="formula-highlight">
+          \[ \nabla \cdot (c_1 \vec{F} + c_2 \vec{G}) = c_1 \, \nabla \cdot
+          \vec{F} + c_2 \, \nabla \cdot \vec{G} \]
+        </p>
+        <p>
+          Uma conexão importante: para qualquer campo suave \(\vec{A}\), vale
+          \(\nabla \cdot (\nabla \times \vec{A}) = 0\) — a divergência de um
+          rotacional é sempre nula.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> A divergência
+        aparece em toda análise de campos em engenharia espacial. O campo
+        gravitacional tem divergência zero fora das massas — garantindo órbitas
+        estáveis. Em propulsão, a divergência do campo de velocidades indica a
+        taxa de expansão do jato. Na eletrostática, a divergência do campo
+        elétrico revela a densidade de carga (Lei de Gauss).
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> O conceito de divergência foi
+        formalizado por Carl Friedrich Gauss no início do século XIX. A fórmula
+        \(\nabla \cdot \vec{F} = \partial P/\partial x + \partial Q/\partial y +
+        \partial R/\partial z\) tornou-se uma das equações de Maxwell. Durante a
+        <span class="censored">corrida espacial dos anos 1960</span>, o cálculo
+        preciso de divergências foi essencial para as missões
+        <span class="censored">Mercury, Gemini e Apollo</span>.
       </div>
 
       <main>

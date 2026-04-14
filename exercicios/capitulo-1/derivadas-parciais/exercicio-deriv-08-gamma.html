@@ -1,28 +1,33 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
+  <div class="exercise-number">EXERCÍCIO DERIV-08-GAMMA</div>
   <div class="context">ORIGEM: Sistemas de Controle [Projeto Apollo, 1968]</div>
   <p>
     No exercício anterior, vimos que as derivadas mistas são iguais (Schwarz).
     Agora vamos explorar uma propriedade surpreendente de certas funções: a
     <strong>equação de Laplace</strong>. Funções que satisfazem
-    \(\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = 0\)
-    são chamadas <em>harmônicas</em> — elas descrevem temperatura em equilíbrio,
-    potencial eléstico, e muitos outros fenômenos físicos.
+    \(\frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} =
+    0\) são chamadas <em>harmônicas</em> — elas descrevem temperatura em
+    equilíbrio, potencial eléstico, e muitos outros fenômenos físicos.
+  </p>
+  <p>Considere: \[ f(x,y) = \ln(x^2 + y^2). \]</p>
+  <p><strong>(a)</strong> Calcule \(\frac{\partial f}{\partial x}\).</p>
+  <p>
+    <strong>(b)</strong> Derive o resultado de (a) em \(x\) novamente para obter
+    \(\frac{\partial^2 f}{\partial x^2}\). Dica: use a regra do quociente.
   </p>
   <p>
-    Considere: \[ f(x,y) = \ln(x^2 + y^2). \]
+    <strong>(c)</strong> Por simetria (troque \(x\) por \(y\)), escreva
+    \(\frac{\partial^2 f}{\partial y^2}\).
   </p>
-<p><strong>(a)</strong> Calcule \(\frac{\partial f}{\partial x}\).</p>
-    <p><strong>(b)</strong> Derive o resultado de (a) em \(x\) novamente para obter \(\frac{\partial^2 f}{\partial x^2}\).
-      Dica: use a regra do quociente.</p>
-    <p><strong>(c)</strong> Por simetria (troque \(x\) por \(y\)), escreva \(\frac{\partial^2 f}{\partial y^2}\).</p>
-    <p><strong>(d)</strong> Some os dois resultados e verifique que o total é zero.</p>
-<details class="hint-container">
+  <p>
+    <strong>(d)</strong> Some os dois resultados e verifique que o total é zero.
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para (b), \(\frac{\partial}{\partial x}\left(\frac{2x}{x^2+y^2}\right)\):
-      regra do quociente com \(u = 2x\), \(v = x^2 + y^2\).
-      Resultado: \(\frac{2v - u \cdot 2x}{v^2}\).
+      [NOTA TÉCNICA]: Para (b), \(\frac{\partial}{\partial
+      x}\left(\frac{2x}{x^2+y^2}\right)\): regra do quociente com \(u = 2x\),
+      \(v = x^2 + y^2\). Resultado: \(\frac{2v - u \cdot 2x}{v^2}\).
     </div>
   </details>
   <details>
@@ -30,21 +35,23 @@
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) \[ \frac{\partial f}{\partial x} = \frac{1}{x^2+y^2} \cdot 2x = \frac{2x}{x^2+y^2}. \]
+        (a) \[ \frac{\partial f}{\partial x} = \frac{1}{x^2+y^2} \cdot 2x =
+        \frac{2x}{x^2+y^2}. \]
       </p>
       <p>
-        (b) Regra do quociente:
-        \[ \frac{\partial^2 f}{\partial x^2} = \frac{2(x^2+y^2) - 2x \cdot 2x}{(x^2+y^2)^2} = \frac{2y^2 - 2x^2}{(x^2+y^2)^2} = \frac{2(y^2-x^2)}{(x^2+y^2)^2}. \]
+        (b) Regra do quociente: \[ \frac{\partial^2 f}{\partial x^2} =
+        \frac{2(x^2+y^2) - 2x \cdot 2x}{(x^2+y^2)^2} = \frac{2y^2 -
+        2x^2}{(x^2+y^2)^2} = \frac{2(y^2-x^2)}{(x^2+y^2)^2}. \]
       </p>
       <p>
-        (c) Por simetria, trocando \(x \leftrightarrow y\):
-        \[ \frac{\partial^2 f}{\partial y^2} = \frac{2(x^2-y^2)}{(x^2+y^2)^2}. \]
+        (c) Por simetria, trocando \(x \leftrightarrow y\): \[ \frac{\partial^2
+        f}{\partial y^2} = \frac{2(x^2-y^2)}{(x^2+y^2)^2}. \]
       </p>
       <p>
-        (d) Somando:
-        \[ \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2 f}{\partial y^2} = \frac{2(y^2-x^2) + 2(x^2-y^2)}{(x^2+y^2)^2} = \frac{0}{(x^2+y^2)^2} = 0. \]
-        A função \(\ln(x^2+y^2)\) é harmônica!
+        (d) Somando: \[ \frac{\partial^2 f}{\partial x^2} + \frac{\partial^2
+        f}{\partial y^2} = \frac{2(y^2-x^2) + 2(x^2-y^2)}{(x^2+y^2)^2} =
+        \frac{0}{(x^2+y^2)^2} = 0. \] A função \(\ln(x^2+y^2)\) é harmônica!
       </p>
     </div>
   </details>
-
+</li>

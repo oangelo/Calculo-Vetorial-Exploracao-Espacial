@@ -4,46 +4,48 @@
     ARQUIVO: Dinâmica Orbital [Relatório Técnico RT-1967]
   </div>
   <p>
-    A trajetória de uma hélice é um dos modelos mais importantes em dinâmica
-    orbital. Antes de estudar hélices completas (que veremos mais adiante),
-    vamos calcular a velocidade em um instante específico de uma curva
-    geométrica clássica — a <strong>hélice circular</strong>:
-    \[ \vec{r}(t) = (\cos t,\; \sin t,\; t). \]
+    Nos exercícios anteriores, derivamos funções vetoriais polinomiais e
+    exponenciais. Agora vamos aplicar a derivação a funções trigonométricas —
+    essenciais para descrever movimentos periódicos como órbitas e hélices.
+    Considere a trajetória: \[ \vec{r}(t) = (\cos t,\; \sin t,\; t). \] Esta
+    curva combina rotação no plano \(xy\) com avanço constante na direção \(z\)
+    — uma hélice ascendente.
   </p>
-<p><strong>(a)</strong> Calcule \(\vec{r}'(t)\). Use as derivadas trigonométricas de
-      Cap 0: \(\frac{d}{dt}\cos t = -\sin t\) e
-      \(\frac{d}{dt}\sin t = \cos t\).</p>
-    <p><strong>(b)</strong> Avalie o vetor velocidade em \(t = \pi/2\).</p>
-    <p><strong>(c)</strong> Descreva a direção do vetor velocidade nesse instante. Em que
-      sentido o objeto se move no plano \(xy\)? A componente \(z\) da
-      velocidade nos diz algo sobre a subida ao longo da hélice?</p>
-<details class="hint-container">
+  <p>
+    <strong>(a)</strong> Calcule \(\vec{r}'(t)\). Use as derivadas
+    trigonométricas de Cap 0: \(\frac{d}{dt}\cos t = -\sin t\) e
+    \(\frac{d}{dt}\sin t = \cos t\).
+  </p>
+  <p><strong>(b)</strong> Avalie o vetor velocidade em \(t = \pi/2\).</p>
+  <p>
+    <strong>(c)</strong> Descreva a direção do vetor velocidade nesse instante.
+    Em que sentido o objeto se move no plano \(xy\)? A componente \(z\) da
+    velocidade nos diz algo sobre a subida ao longo da hélice?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [DICA OPERACIONAL]: Lembre que \(\sin(\pi/2) = 1\) e
-      \(\cos(\pi/2) = 0\). Para a componente \(z\), note que
-      \(z(t) = t\) tem derivada constante.
+      [DICA OPERACIONAL]: Lembre que \(\sin(\pi/2) = 1\) e \(\cos(\pi/2) = 0\).
+      Para a componente \(z\), note que \(z(t) = t\) tem derivada constante
+      (igual a 1). Pense no que significa uma velocidade com componente \(x\)
+      negativa: o objeto está se movendo na direção \(-x\).
     </div>
   </details>
   <details>
-    <summary>ACESSAR SOLUÇÃO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-5 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
+      <p>(a) \(\vec{r}'(t) = (-\sin t,\; \cos t,\; 1)\).</p>
+      <p>(b) Em \(t = \pi/2\): \(\vec{v}(\pi/2) = (-1,\; 0,\; 1)\).</p>
       <p>
-        (a) \(\vec{r}'(t) = (-\sin t,\; \cos t,\; 1)\).
-      </p>
-      <p>
-        (b) Em \(t = \pi/2\): \(\vec{v}(\pi/2) = (-1,\; 0,\; 1)\).
-      </p>
-      <p>
-        (c) O vetor velocidade \((-1, 0, 1)\) indica que, no instante
-        \(t = \pi/2\), o objeto se move na direção \(-x\) (sentido horário
-        no plano \(xy\)) e sobe com velocidade constante 1 na direção \(z\).
-        A componente \(y\) da velocidade é zero — o objeto está passando pelo
-        ponto mais extremo na direção \(y\) (como um pêndulo no ponto de
-        máxima amplitude). Isso é consistente com o fato de que
-        \(\vec{r}(\pi/2) = (0, 1, \pi/2)\), o ponto mais alto em \(y\).
+        (c) O vetor velocidade \((-1, 0, 1)\) indica que, no instante \(t =
+        \pi/2\), o objeto se move na direção \(-x\) (sentido horário no plano
+        \(xy\)) e sobe com velocidade constante 1 na direção \(z\). A componente
+        \(y\) da velocidade é zero — o objeto está passando pelo ponto mais
+        extremo na direção \(y\) (como um pêndulo no ponto de máxima amplitude).
+        Isso é consistente com o fato de que \(\vec{r}(\pi/2) = (0, 1, \pi/2)\),
+        o ponto mais alto em \(y\).
       </p>
     </div>
   </details>
-
+</li>

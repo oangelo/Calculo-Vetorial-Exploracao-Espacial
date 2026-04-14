@@ -1,25 +1,80 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-REVIEW-12</div>
-  <div class="context">ORIGEM: Estudo de Zona Crítica – Compressão x Rotação — Este é o exercício final da lista de revisão. Nele, os parâmetros \(\alpha\) e \(\beta\) controlam a "dose" de rotação versus expansão em um mesmo campo. Ao variar a razão \(\alpha/\beta\), você explorará como o equilíbrio entre divergente e rotacional define regimes de fluxo completamente diferentes — a síntese perfeita para encerrar o Capítulo 1.</div>
-  <p>Seja o campo parametrizado \[\vec{P}(x,y)=\alpha\begin{pmatrix}-y\\x\end{pmatrix}+\beta\begin{pmatrix}x\\y\end{pmatrix}\] com constantes \(\alpha, \beta > 0\).</p>
-<p><strong>(a)</strong> Calcule \(\nabla\cdot\vec{P}\) e \(\nabla\times\vec{P}\) em função de \(\alpha\) e \(\beta\).</p>
-    <p><strong>(b)</strong> Existe algum valor de \(\alpha/\beta\) que anule o rotacional mantendo divergente positivo? Justifique.</p>
-    <p><strong>(c)</strong> Descreva fisicamente a configuração de fluxo em três regimes: \(\alpha \ll \beta\) (expansão dominante), \(\alpha \approx \beta\) (equilibrado), \(\alpha \gg \beta\) (rotação dominante). Quando \(\beta\) predomina, o efeito expansivo é mais forte; quando \(\alpha\) predomina, surge um giro dominante.</p>
-<details class="hint-container">
+  <div class="context">
+    ORIGEM: Estudo de Zona Crítica – Compressão x Rotação — Este é o exercício
+    final da lista de revisão. Nele, os parâmetros \(\alpha\) e \(\beta\)
+    controlam a "dose" de rotação versus expansão em um mesmo campo. Ao variar a
+    razão \(\alpha/\beta\), você explorará como o equilíbrio entre divergente e
+    rotacional define regimes de fluxo completamente diferentes — a síntese
+    perfeita para encerrar o Capítulo 1.
+  </div>
+  <p>
+    Seja o campo parametrizado
+    \[\vec{P}(x,y)=\alpha\begin{pmatrix}-y\\x\end{pmatrix}+\beta\begin{pmatrix}x\\y\end{pmatrix}\]
+    com constantes \(\alpha, \beta > 0\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla\cdot\vec{P}\) e
+    \(\nabla\times\vec{P}\) em função de \(\alpha\) e \(\beta\).
+  </p>
+  <p>
+    <strong>(b)</strong> Existe algum valor de \(\alpha/\beta\) que anule o
+    rotacional mantendo divergente positivo? Justifique.
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva fisicamente a configuração de fluxo em três
+    regimes: \(\alpha \ll \beta\) (expansão dominante), \(\alpha \approx \beta\)
+    (equilibrado), \(\alpha \gg \beta\) (rotação dominante). Quando \(\beta\)
+    predomina, o efeito expansivo é mais forte; quando \(\alpha\) predomina,
+    surge um giro dominante.
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
-    <div class="hint">O campo total é \(\vec{P} = (\beta x - \alpha y, \alpha x + \beta y)\). O divergente vem de \(\partial P_1/\partial x + \partial P_2/\partial y\). O rotacional vem de \(\partial P_2/\partial x - \partial P_1/\partial y\).</div>
+    <div class="hint">
+      O campo total é \(\vec{P} = (\beta x - \alpha y, \alpha x + \beta y)\). O
+      divergente vem de \(\partial P_1/\partial x + \partial P_2/\partial y\). O
+      rotacional vem de \(\partial P_2/\partial x - \partial P_1/\partial y\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>(a) O campo é \(\vec{P} = (\beta x - \alpha y, \alpha x + \beta y)\).</p>
-      <p>\[\nabla\cdot\vec{P} = \frac{\partial(\beta x - \alpha y)}{\partial x} + \frac{\partial(\alpha x + \beta y)}{\partial y} = \beta + \beta = 2\beta.\]</p>
-      <p>\[\nabla\times\vec{P} = \frac{\partial(\alpha x + \beta y)}{\partial x} - \frac{\partial(\beta x - \alpha y)}{\partial y} = \alpha - (-\alpha) = 2\alpha.\]</p>
-      <p>(b) O rotacional é \(2\alpha\), que é zero apenas quando \(\alpha = 0\). Mas \(\alpha > 0\) por hipótese, logo não há valor de \(\alpha/\beta\) que anule o rotacional. O inverso é possível: se \(\beta = 0\), o divergente zera mas o rotacional permanece não nulo. Coexistência de ambos efeitos requer \(\alpha, \beta \neq 0\).</p>
+      <p>
+        (a) O campo é \(\vec{P} = (\beta x - \alpha y, \alpha x + \beta y)\).
+      </p>
+      <p>
+        \[\nabla\cdot\vec{P} = \frac{\partial(\beta x - \alpha y)}{\partial x} +
+        \frac{\partial(\alpha x + \beta y)}{\partial y} = \beta + \beta =
+        2\beta.\]
+      </p>
+      <p>
+        \[\nabla\times\vec{P} = \frac{\partial(\alpha x + \beta y)}{\partial x}
+        - \frac{\partial(\beta x - \alpha y)}{\partial y} = \alpha - (-\alpha) =
+        2\alpha.\]
+      </p>
+      <p>
+        (b) O rotacional é \(2\alpha\), que é zero apenas quando \(\alpha = 0\).
+        Mas \(\alpha > 0\) por hipótese, logo não há valor de \(\alpha/\beta\)
+        que anule o rotacional. O inverso é possível: se \(\beta = 0\), o
+        divergente zera mas o rotacional permanece não nulo. Coexistência de
+        ambos efeitos requer \(\alpha, \beta \neq 0\).
+      </p>
       <p>(c) Três regimes:</p>
-      <p>\(\alpha \ll \beta\): fluxo predominantemente expansivo (divergente \(= 2\beta \gg 2\alpha\) = rotacional). As linhas de fluxo se afastam da origem com leve curvatura. Desejável para estabilidade de discos aerodinâmicos durante frenagem orbital.</p>
-      <p>\(\alpha \approx \beta\): fluxo espiral equilibrado, com expansão e rotação comparáveis. Semelhante ao EX-REVIEW-8.</p>
-      <p>\(\alpha \gg \beta\): rotação dominante. As linhas de fluxo são quase circulares com leve tendência a se afastar. Próximo de um vórtice com leve expansão.</p>
+      <p>
+        \(\alpha \ll \beta\): fluxo predominantemente expansivo (divergente \(=
+        2\beta \gg 2\alpha\) = rotacional). As linhas de fluxo se afastam da
+        origem com leve curvatura. Desejável para estabilidade de discos
+        aerodinâmicos durante frenagem orbital.
+      </p>
+      <p>
+        \(\alpha \approx \beta\): fluxo espiral equilibrado, com expansão e
+        rotação comparáveis. Semelhante ao EX-REVIEW-8.
+      </p>
+      <p>
+        \(\alpha \gg \beta\): rotação dominante. As linhas de fluxo são quase
+        circulares com leve tendência a se afastar. Próximo de um vórtice com
+        leve expansão.
+      </p>
     </div>
   </details>
-
+</li>

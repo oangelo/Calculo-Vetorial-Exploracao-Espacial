@@ -1,81 +1,102 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
-<div class="context">
-              ORIGEM: Laboratório de Física Espacial - Projeto Ranger [DADOS DE
-              18/AGO/1961]
-            </div>
-<p>
-              CONEXÃO: Até agora, cada campo tinha UMA fonte. Mas na prática,
-              temos MÚLTIPLAS fontes (dois planetas, duas cargas). O campo total
-              é a SOMA dos campos individuais — este é o princípio de
-              superposição. Vamos trabalhar com um dipolo elétrico.
-            </p>
-<p>
-              Considere o campo elétrico de duas cargas pontuais:
-              \[\vec{E}(x,y) = \vec{E}_- + \vec{E}_+\]
-              onde a carga negativa em \((-1,0)\) produz:
-              \[\vec{E}_-(x,y) = \frac{k}{[(x+1)^2 + y^2]^{3/2}} \begin{pmatrix} -(x+1) \ -y \end{pmatrix}\]
-              e a carga positiva em \((1,0)\) produz:
-              \[\vec{E}_+(x,y) = \frac{k}{[(x-1)^2 + y^2]^{3/2}} \begin{pmatrix} (x-1) \ y \end{pmatrix}\]
-            </p>
-<p>
-              NOTA: o campo de uma carga aponta PARA a carga (se negativa) ou
-              PARA LONGE da carga (se positiva), com intensidade proporcional a
-              \(1/r^2\).
-            </p>
-<p><strong>(a)</strong> Calcule \(\vec{E}_-\) e \(\vec{E}_+\) separadamente no ponto \((0,1)\). Use \(k=1\) para simplificar.</p>
-<p><strong>(b)</strong> Some os dois para obter \(\vec{E}(0,1)\). Em que direção o campo resultante aponta?</p>
-<p><strong>(c)</strong> Por simetria, o campo é nulo em algum ponto do eixo \(y\)? Explique.</p>
-<p><strong>(d)</strong> Esboce o campo ao longo do eixo \(x\) para \(x > 1\). Para que lado aponta?</p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">
-
-                [NOTA TÉCNICA]: Para (a), calcule cada campo separadamente — não
-                tente simplificar a fórmula completa de uma vez. Para (c),
-                pense na simetria: o ponto \((0,y)\) está à mesma distância de
-                ambas as cargas.
-              
-</div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
-<div class="solution">
-<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) CAMPOS SEPARADOS EM \((0,1)\):</p>
-<p>
-                  Para \(\vec{E}_-\) com a carga em \((-1,0)\):
-                  distância = \(\sqrt{(0+1)^2 + 1^2} = \sqrt{2}\),
-                  então \(\vec{E}_-(0,1) = \frac{1}{(\sqrt{2})^3} \begin{pmatrix} -1 \ -1 \end{pmatrix} = \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ -1 \end{pmatrix}\).
-                </p>
-<p>
-                  Para \(\vec{E}_+\) com a carga em \((1,0)\):
-                  distância = \(\sqrt{(0-1)^2 + 1^2} = \sqrt{2}\),
-                  então \(\vec{E}_+(0,1) = \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ 1 \end{pmatrix}\).
-                </p>
-<p>(b) CAMPO RESULTANTE:</p>
-<p>
-                  \[\vec{E}(0,1) = \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ -1 \end{pmatrix} + \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ 1 \end{pmatrix} = \frac{1}{2\sqrt{2}} \begin{pmatrix} -2 \ 0 \end{pmatrix}\]
-                  O campo resultante aponta para a ESQUERDA (sentido negativo
-                  do eixo \(x\)). As componentes \(y\) se cancelaram por
-                  simetria, restando apenas a componente horizontal.
-                </p>
-<p>(c) SIMETRIA:</p>
-<p>
-                  Por simetria, o campo na origem \((0,0)\) é nulo: as
-                  contribuições das duas cargas se cancelam exatamente. Em
-                  qualquer ponto \((0,y)\) do eixo \(y\), as componentes \(x\)
-                  dos dois campos são iguais (por simetria), mas ambas apontam
-                  para a esquerda (atraídas pela carga negativa à esquerda e
-                  repelidas pela positiva à direita). Portanto, o campo só é
-                  nulo na origem.
-                </p>
-<p>(d) CAMPO NO EIXO \(x\) PARA \(x > 1\):</p>
-<p>
-                  Ambos os campos apontam para a direita (a carga positiva
-                  repele, a negativa atrai), então o campo resultante aponta
-                  para a DIREITA. A intensidade diminui com a distância.
-                </p>
-</div>
-</details>
-
+  <div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Física Espacial - Projeto Ranger [DADOS DE
+    18/AGO/1961]
+  </div>
+  <p>
+    CONEXÃO: Até agora, cada campo tinha UMA fonte. Mas na prática, temos
+    MÚLTIPLAS fontes (dois planetas, duas cargas). O campo total é a SOMA dos
+    campos individuais — este é o princípio de superposição. Vamos trabalhar com
+    um dipolo elétrico.
+  </p>
+  <p>
+    Considere o campo elétrico de duas cargas pontuais: \[\vec{E}(x,y) =
+    \vec{E}_- + \vec{E}_+\] onde a carga negativa em \((-1,0)\) produz:
+    \[\vec{E}_-(x,y) = \frac{k}{[(x+1)^2 + y^2]^{3/2}} \begin{pmatrix} -(x+1) \
+    -y \end{pmatrix}\] e a carga positiva em \((1,0)\) produz: \[\vec{E}_+(x,y)
+    = \frac{k}{[(x-1)^2 + y^2]^{3/2}} \begin{pmatrix} (x-1) \ y \end{pmatrix}\]
+  </p>
+  <p>
+    NOTA: o campo de uma carga aponta PARA a carga (se negativa) ou PARA LONGE
+    da carga (se positiva), com intensidade proporcional a \(1/r^2\).
+  </p>
+  <p>
+    <strong>(a)</strong> Antes de calcular: as duas cargas são simétricas em
+    relação ao eixo \(y\). Onde você esperaria que o campo resultante seja nulo
+    por simetria? Por quê?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\vec{E}_-\) e \(\vec{E}_+\) separadamente no
+    ponto \((0,1)\). Use \(k=1\) para simplificar.
+  </p>
+  <p>
+    <strong>(c)</strong> Some os dois para obter \(\vec{E}(0,1)\). Em que
+    direção o campo resultante aponta?
+  </p>
+  <p>
+    <strong>(d)</strong> Por simetria, o campo é nulo em algum ponto do eixo
+    \(y\)? Explique.
+  </p>
+  <p>
+    <strong>(e)</strong> Esboce o campo ao longo do eixo \(x\) para \(x > 1\).
+    Para que lado aponta?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (b), calcule cada campo separadamente — não tente
+      simplificar a fórmula completa de uma vez. Para (d), pense na simetria: o
+      ponto \((0,y)\) está à mesma distância de ambas as cargas.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) PREVISÃO POR SIMETRIA:</p>
+      <p>
+        As duas cargas são simétricas em relação ao eixo \(y\). Na origem
+        \((0,0)\), as contribuições das duas cargas se cancelam exatamente pela
+        simetria do arranjo. É razoável esperar que o campo resultante seja nulo
+        na origem.
+      </p>
+      <p>(b) CAMPOS SEPARADOS EM \((0,1)\):</p>
+      <p>
+        Para \(\vec{E}_-\) com a carga em \((-1,0)\): distância =
+        \(\sqrt{(0+1)^2 + 1^2} = \sqrt{2}\), então \(\vec{E}_-(0,1) =
+        \frac{1}{(\sqrt{2})^3} \begin{pmatrix} -1 \ -1 \end{pmatrix} =
+        \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ -1 \end{pmatrix}\).
+      </p>
+      <p>
+        Para \(\vec{E}_+\) com a carga em \((1,0)\): distância = \(\sqrt{(0-1)^2
+        + 1^2} = \sqrt{2}\), então \(\vec{E}_+(0,1) = \frac{1}{2\sqrt{2}}
+        \begin{pmatrix} -1 \ 1 \end{pmatrix}\).
+      </p>
+      <p>(c) CAMPO RESULTANTE:</p>
+      <p>
+        \[\vec{E}(0,1) = \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ -1
+        \end{pmatrix} + \frac{1}{2\sqrt{2}} \begin{pmatrix} -1 \ 1 \end{pmatrix}
+        = \frac{1}{2\sqrt{2}} \begin{pmatrix} -2 \ 0 \end{pmatrix}\] O campo
+        resultante aponta para a ESQUERDA (sentido negativo do eixo \(x\)). As
+        componentes \(y\) se cancelaram por simetria, restando apenas a
+        componente horizontal.
+      </p>
+      <p>(d) SIMETRIA:</p>
+      <p>
+        Por simetria, o campo na origem \((0,0)\) é nulo: as contribuições das
+        duas cargas se cancelam exatamente. Em qualquer ponto \((0,y)\) do eixo
+        \(y\), as componentes \(x\) dos dois campos são iguais (por simetria),
+        mas ambas apontam para a esquerda (atraídas pela carga negativa à
+        esquerda e repelidas pela positiva à direita). Portanto, o campo só é
+        nulo na origem.
+      </p>
+      <p>(e) CAMPO NO EIXO \(x\) PARA \(x > 1\):</p>
+      <p>
+        Ambos os campos apontam para a direita (a carga positiva repele, a
+        negativa atrai), então o campo resultante aponta para a DIREITA. A
+        intensidade diminui com a distância.
+      </p>
+    </div>
+  </details>
+</li>

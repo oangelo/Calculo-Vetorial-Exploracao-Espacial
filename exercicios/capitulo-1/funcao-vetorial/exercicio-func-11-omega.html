@@ -5,55 +5,67 @@
   </div>
   <p>
     No início da lista, vimos que \(\vec{r}(t) = (R\cos t, R\sin t)\) descreve
-    um círculo (raio constante). Depois, analisamos
-    \(\vec{r}(t) = (e^t \cos t, e^t \sin t)\) como uma espiral exponencial.
-    Agora vamos completar o ciclo: construir uma função vetorial que descreva
-    uma <strong>espiral logarítmica</strong>, uma curva clássica encontrada na
-    natureza (cascas de conchas, galáxias, padrões de crescimento biológico).
+    um círculo (raio constante). Depois, analisamos \(\vec{r}(t) = (e^t \cos t,
+    e^t \sin t)\) como uma espiral exponencial. Agora vamos completar o ciclo:
+    construir uma função vetorial que descreva uma
+    <strong>espiral logarítmica</strong>, uma curva clássica encontrada na
+    natureza (cascas de conchas, galáxias, padrões de crescimento biológico). A
+    conversão de coordenadas polares para retangulares (\(x = r\cos\theta\), \(y
+    = r\sin\theta\)) foi vista em Cap 0 (Cônicas).
   </p>
   <p>
     A equação polar da espiral logarítmica é \(r = e^{\theta}\). Encontre uma
     função vetorial \(\vec{r}(t)\) que descreva essa curva no plano.
   </p>
-<p><strong>(a)</strong> Lembre que em coordenadas polares, \(x = r\cos\theta\) e
-      \(y = r\sin\theta\). Use o parâmetro \(t = \theta\) e substitua
-      \(r = e^t\) para escrever \(\vec{r}(t) = (x(t), y(t))\).</p>
-    <p><strong>(b)</strong> Verifique que \(\|\vec{r}(t)\| = e^t\). Use \(\cos^2 t + \sin^2 t = 1\).</p>
-    <p><strong>(c)</strong> Confirme que \(\|\vec{r}(t)\| = e^{\theta}\) quando \(\theta = t\),
-      ou seja, o raio cresce exponencialmente com o ângulo — característica
-      da espiral logarítmica.</p>
-<details class="hint-container">
+  <p>
+    <strong>(a)</strong> Use o parâmetro \(t = \theta\) e substitua \(r = e^t\)
+    nas fórmulas de conversão polar-retangular para escrever \(\vec{r}(t) =
+    (x(t), y(t))\).
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique que \(\|\vec{r}(t)\| = e^t\). Use \(\cos^2 t
+    + \sin^2 t = 1\) (identidade trigonométrica fundamental, Cap 0).
+  </p>
+  <p>
+    <strong>(c)</strong> Confirme que \(\|\vec{r}(t)\| = e^{\theta}\) quando
+    \(\theta = t\), ou seja, o raio cresce exponencialmente com o ângulo —
+    característica definidora da espiral logarítmica. Compare com a espiral
+    exponencial que analisamos anteriormente.
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-11]</summary>
     <div class="hint">
-      [DICA OPERACIONAL]: A conversão de coordenadas polares para
-      retangulares (\(x = r\cos\theta\), \(y = r\sin\theta\)) foi vista em
-      Cap 0 (Cônicas). Substitua \(r = e^t\) e \(\theta = t\) diretamente
-      nessas fórmulas.
+      [DICA OPERACIONAL]: A conversão de coordenadas polares para retangulares
+      (\(x = r\cos\theta\), \(y = r\sin\theta\)) foi vista em Cap 0 (Cônicas).
+      Substitua \(r = e^t\) e \(\theta = t\) diretamente nessas fórmulas. Para o
+      item (b), note que \(e^{2t}\) é fator comum nas duas componentes ao
+      quadrado.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-11 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) Com \(r = e^t\) e \(\theta = t\):
-        \[\vec{r}(t) = (e^t \cos t,\; e^t \sin t).\]
-        Note que esta é exatamente a mesma função do exercício da espiral
-        (VECTOR-07)! A diferença está na interpretação: lá analisávamos
-        como um movimento de rotação e expansão; aqui, a enxergamos como
-        a conversão da equação polar \(r = e^{\theta}\).
+        (a) Com \(r = e^t\) e \(\theta = t\): \[\vec{r}(t) = (e^t \cos t,\; e^t
+        \sin t).\] Note que esta é exatamente a mesma função do exercício da
+        espiral (VECTOR-07)! A diferença está na interpretação: lá analisávamos
+        como um movimento de rotação e expansão; aqui, a enxergamos como a
+        conversão da equação polar \(r = e^{\theta}\).
       </p>
       <p>
-        (b) \(\|\vec{r}(t)\| = \sqrt{e^{2t}\cos^2 t + e^{2t}\sin^2 t}
-        = \sqrt{e^{2t}(\cos^2 t + \sin^2 t)} = \sqrt{e^{2t}} = e^t\).
+        (b) \(\|\vec{r}(t)\| = \sqrt{e^{2t}\cos^2 t + e^{2t}\sin^2 t} =
+        \sqrt{e^{2t}(\cos^2 t + \sin^2 t)} = \sqrt{e^{2t}} = e^t\).
       </p>
       <p>
-        (c) Com \(\theta = t\), temos \(\|\vec{r}\| = e^t = e^{\theta}\),
-        que é exatamente a equação polar \(r = e^{\theta}\). A espiral
-        logarítmica tem a propriedade de que o raio cresce
-        exponencialmente a cada volta completa — cada volta é uma versão
-        ampliada da anterior por um fator \(e^{2\pi}\).
+        (c) Com \(\theta = t\), temos \(\|\vec{r}\| = e^t = e^{\theta}\), que é
+        exatamente a equação polar \(r = e^{\theta}\). A espiral logarítmica tem
+        a propriedade de que o raio cresce exponencialmente a cada volta
+        completa — cada volta é uma versão ampliada da anterior por um fator
+        \(e^{2\pi}\). Diferentemente da espiral exponencial analisada
+        anteriormente, aqui a relação \(r = e^{\theta}\) revela a conexão
+        profunda entre crescimento radial e rotação angular.
       </p>
     </div>
   </details>
-
+</li>

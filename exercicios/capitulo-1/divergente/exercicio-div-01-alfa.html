@@ -6,65 +6,84 @@
   </div>
   <p>
     Antes de calcularmos qualquer coisa, precisamos entender um conceito
-    fundamental que está por trás da divergência: o <em>fluxo</em>.
+    fundamental que está por trás da divergência: o <em>fluxo</em>. A pergunta
+    que guia toda esta lista é: como detectar se um campo "cria" ou "destroi"
+    energia em cada ponto do espaço? Começamos pelo conceito mais básico — o
+    fluxo.
   </p>
   <p>
     Imagine um rio. A água flui com velocidade constante. Colocamos uma janela
     retangular vertical no rio, perpendicular à correnteza. A pergunta é
-    simples: <strong>quantos litros de água passam pela janela a cada
-    segundo?</strong> Essa quantidade é o <em>fluxo</em> — a taxa de
-    passagem de um campo (aqui, velocidade da água) através de uma
-    superfície.
+    simples:
+    <strong>quantos litros de água passam pela janela a cada segundo?</strong>
+    Essa quantidade é o <em>fluxo</em> — a taxa de passagem de um campo (aqui,
+    velocidade da água) através de uma superfície.
   </p>
   <p>
-    Considere o campo vetorial constante \(\vec{F} = (0, 0, 1)\) — um
-    "fluxo" que aponta verticalmente para cima com magnitude 1 (pense nele
-    como água subindo uniformemente). Temos uma janela quadrada de lado
-    \(a\), no plano \(xy\), centrada na origem.
+    Considere o campo vetorial constante \(\vec{F} = (0, 0, 1)\) — um "fluxo"
+    que aponta verticalmente para cima com magnitude 1 (pense nele como água
+    subindo uniformemente). Temos uma janela quadrada de lado \(a\), no plano
+    \(xy\), centrada na origem.
   </p>
-<p><strong>(a)</strong> Desenhe a situação: o campo \(\vec{F}\) são setas verticais para cima,
-      a janela é um quadrado no plano \(xy\). Qual é o vetor normal
-      \(\hat{n}\) à janela? (Lembre-se: a normal a uma superfície no plano
-      \(xy\) aponta na direção \(z\).)</p>
-  <p><strong>(b)</strong> O fluxo pela janela é \(\Phi = \vec{F} \cdot \hat{n}
-      \times \text{área}\). Calcule \(\Phi\). A resposta é positiva ou
-      negativa? O que isso significa fisicamente?</p>
-  <p><strong>(c)</strong> Se dobrarmos o lado da janela (de \(a\) para
-      \(2a\)), como o fluxo muda? E se triplicarmos? O fluxo é
-      proporcional ao quê?</p>
-<details class="hint-container">
-  <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-  <div class="hint">
-    [NOTA TÉCNICA]: O produto escalar \(\vec{F} \cdot \hat{n}\) mede
-    "quanto do campo aponta na direção da normal". Se o campo aponta
-    perpendicularmente à superfície, o produto é simplesmente o produto
-    das magnitudes: \(|\vec{F}| \cdot |\hat{n}| = |\vec{F}| \cdot 1\).
-    A área de um quadrado de lado \(a\) é \(a^2\).
-  </div>
-</details>
-<details>
-  <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-  <div class="solution">
-    <p><strong>(a) Visualização e normal:</strong></p>
-    <p>O campo \(\vec{F} = (0,0,1)\) são setas verticais para cima.
-      A janela está no plano \(xy\), então sua normal aponta na direção
-      \(z\): \(\hat{n} = (0, 0, 1)\).</p>
+  <p>
+    <strong>(a)</strong> Desenhe a situação: o campo \(\vec{F}\) são setas
+    verticais para cima, a janela é um quadrado no plano \(xy\). Qual é o vetor
+    normal \(\hat{n}\) à janela? (Lembre-se: a normal a uma superfície no plano
+    \(xy\) aponta na direção \(z\).)
+  </p>
+  <p>
+    <strong>(b)</strong> O fluxo pela janela é \(\Phi = \vec{F} \cdot \hat{n}
+    \times \text{área}\). Calcule \(\Phi\). A resposta é positiva ou negativa? O
+    que isso significa fisicamente?
+  </p>
+  <p>
+    <strong>(c)</strong> Se dobrarmos o lado da janela (de \(a\) para \(2a\)),
+    como o fluxo muda? E se triplicarmos? O fluxo é proporcional ao quê?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O produto escalar \(\vec{F} \cdot \hat{n}\) mede "quanto
+      do campo aponta na direção da normal". Se o campo aponta
+      perpendicularmente à superfície, o produto é simplesmente o produto das
+      magnitudes: \(|\vec{F}| \cdot |\hat{n}| = |\vec{F}| \cdot 1\). A área de
+      um quadrado de lado \(a\) é \(a^2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Visualização e normal:</strong></p>
+      <p>
+        O campo \(\vec{F} = (0,0,1)\) são setas verticais para cima. A janela
+        está no plano \(xy\), então sua normal aponta na direção \(z\):
+        \(\hat{n} = (0, 0, 1)\).
+      </p>
 
-    <p><strong>(b) Cálculo do fluxo:</strong></p>
-    <p>\[\Phi = \vec{F} \cdot \hat{n} \times a^2 = (0,0,1) \cdot (0,0,1)
-      \times a^2 = 1 \times a^2 = a^2\]</p>
-    <p>O fluxo é <strong>positivo</strong>. Isso significa que o campo
-      "atravessa" a janela no sentido da normal (para cima). Mais
-      fluido está <em>saindo</em> pela face superior do que entrando pela
-      inferior — há fluxo líquido positivo.</p>
+      <p><strong>(b) Cálculo do fluxo:</strong></p>
+      <p>
+        \[\Phi = \vec{F} \cdot \hat{n} \times a^2 = (0,0,1) \cdot (0,0,1) \times
+        a^2 = 1 \times a^2 = a^2\]
+      </p>
+      <p>
+        O fluxo é <strong>positivo</strong>. Isso significa que o campo
+        "atravessa" a janela no sentido da normal (para cima). Mais fluido está
+        <em>saindo</em> pela face superior do que entrando pela inferior — há
+        fluxo líquido positivo.
+      </p>
 
-    <p><strong>(c) Efeito do tamanho da janela:</strong></p>
-    <p>Se \(a \to 2a\): \(\Phi = (2a)^2 = 4a^2\) — quadruplicou.<br/>
-      Se \(a \to 3a\): \(\Phi = (3a)^2 = 9a^2\) — novuplicou.<br/>
-      O fluxo é proporcional à <strong>área</strong> da superfície.
-      Fluxo dobrado = área dobrada, não lado dobrado.</p>
-    <p><em>Significado:</em> Quanto maior a "janela" que intercepta o
-      campo, mais fluxo passa por ela. Isso será fundamental quando
-      calcularmos o fluxo total por superfícies fechadas.</p>
-  </div>
-</details>
+      <p><strong>(c) Efeito do tamanho da janela:</strong></p>
+      <p>
+        Se \(a \to 2a\): \(\Phi = (2a)^2 = 4a^2\) — quadruplicou.<br />
+        Se \(a \to 3a\): \(\Phi = (3a)^2 = 9a^2\) — novuplicou.<br />
+        O fluxo é proporcional à <strong>área</strong> da superfície. Fluxo
+        dobrado = área dobrada, não lado dobrado.
+      </p>
+      <p>
+        <em>Significado:</em> Quanto maior a "janela" que intercepta o campo,
+        mais fluxo passa por ela. Isso será fundamental quando calcularmos a
+        passagem do campo por múltiplas janelas.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,59 +1,66 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
-  <div class="context">
-    ORIGEM: Sistemas de Controle [Projeto Apollo, 1968]
-  </div>
+  <div class="context">ORIGEM: Sistemas de Controle [Projeto Apollo, 1968]</div>
   <p>
-    Nos exercícios anteriores, derivamos \(\vec{r}(t)\) e usamos o resultado.
-    Agora vamos fazer o caminho inverso: <strong>verificar</strong> se uma
-    dada função satisfaz uma equação diferencial vetorial. Esse tipo de
-    verificação é fundamental em controle de voo — os engenheiros precisam
-    confirmar que a trajetória planejada satisfaz as equações de movimento.
+    Nos exercícios anteriores, derivamos \(\vec{r}(t)\) e usamos o resultado
+    para analisar velocidade e aceleração. Agora vamos fazer o caminho inverso:
+    <strong>verificar</strong> se uma dada função satisfaz uma equação
+    diferencial vetorial. Esse tipo de verificação é fundamental em controle de
+    voo — os engenheiros precisam confirmar que a trajetória planejada satisfaz
+    as equações de movimento.
   </p>
   <p>
     Verifique se \(\vec{r}(t) = (e^t \cos t,\; e^t \sin t)\) é solução da
-    equação:
-    \[ \vec{r}''(t) - 2\vec{r}'(t) + 2\vec{r}(t) = \vec{0}. \]
+    equação: \[ \vec{r}''(t) - 2\vec{r}'(t) + 2\vec{r}(t) = \vec{0}. \]
   </p>
-<p><strong>(a)</strong> Calcule \(\vec{r}'(t)\) e \(\vec{r}''(t)\). (Você já calculou
-      ambos no exercício anterior — verifique se os resultados coincidem.)</p>
-    <p><strong>(b)</strong> Substitua \(\vec{r}\), \(\vec{r}'\) e \(\vec{r}''\) na equação
-      diferencial. Some as componentes de cada eixo separadamente.</p>
-    <p><strong>(c)</strong> O resultado é \(\vec{0}\)? Conclua se \(\vec{r}(t)\) satisfaz ou
-      não a equação.</p>
-<details class="hint-container">
+  <p>
+    <strong>(a)</strong> Calcule \(\vec{r}'(t)\) e \(\vec{r}''(t)\). (Você já
+    calculou ambos no exercício da espiral — verifique se os resultados
+    coincidem.)
+  </p>
+  <p>
+    <strong>(b)</strong> Substitua \(\vec{r}\), \(\vec{r}'\) e \(\vec{r}''\) na
+    equação diferencial. Some as componentes de cada eixo separadamente.
+  </p>
+  <p>
+    <strong>(c)</strong> O resultado é \(\vec{0}\)? Conclua se \(\vec{r}(t)\)
+    satisfaz ou não a equação. O que isso significa sobre a trajetória descrita
+    por \(\vec{r}(t)\)?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
     <div class="hint">
-      [DICA OPERACIONAL]: Para cada componente, some:
-      \(\text{componente de } \vec{r}'' - 2 \cdot \text{componente de } \vec{r}' + 2 \cdot \text{componente de } \vec{r}\).
-      Use a identidade trigonométrica \(\cos^2 t + \sin^2 t = 1\) para simplificar.
+      [DICA OPERACIONAL]: Para cada componente, some: \(\text{componente de }
+      \vec{r}'' - 2 \cdot \text{componente de } \vec{r}' + 2 \cdot
+      \text{componente de } \vec{r}\). Fatorize \(e^t\) antes de simplificar —
+      ele aparece em todos os termos. Use a identidade trigonométrica \(\cos^2 t
+      + \sin^2 t = 1\) se necessário.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-8 REQUERIDO]</summary>
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) Do exercício anterior:
-        \[ \vec{r}'(t) = \bigl(e^t(\cos t - \sin t),\; e^t(\sin t + \cos t)\bigr) \]
-        \[ \vec{r}''(t) = \bigl(-2e^t \sin t,\; 2e^t \cos t\bigr) \]
+        (a) Do exercício da espiral: \[ \vec{r}'(t) = \bigl(e^t(\cos t - \sin
+        t),\; e^t(\sin t + \cos t)\bigr) \] \[ \vec{r}''(t) = \bigl(-2e^t \sin
+        t,\; 2e^t \cos t\bigr) \]
       </p>
       <p>
-        (b) Componente \(x\):
-        \(-2e^t \sin t - 2e^t(\cos t - \sin t) + 2e^t \cos t\)
-        \(= -2e^t \sin t - 2e^t \cos t + 2e^t \sin t + 2e^t \cos t = 0\).
+        (b) Componente \(x\): \(-2e^t \sin t - 2e^t(\cos t - \sin t) + 2e^t \cos
+        t\) \(= -2e^t \sin t - 2e^t \cos t + 2e^t \sin t + 2e^t \cos t = 0\).
       </p>
       <p>
-        Componente \(y\):
-        \(2e^t \cos t - 2e^t(\sin t + \cos t) + 2e^t \sin t\)
+        Componente \(y\): \(2e^t \cos t - 2e^t(\sin t + \cos t) + 2e^t \sin t\)
         \(= 2e^t \cos t - 2e^t \sin t - 2e^t \cos t + 2e^t \sin t = 0\).
       </p>
       <p>
-        (c) Ambas as componentes resultam em zero. Portanto,
-        \(\vec{r}''(t) - 2\vec{r}'(t) + 2\vec{r}(t) = \vec{0}\), e
-        concluímos que \(\vec{r}(t)\) é de fato solução da equação
-        diferencial vetorial.
+        (c) Ambas as componentes resultam em zero. Portanto, \(\vec{r}''(t) -
+        2\vec{r}'(t) + 2\vec{r}(t) = \vec{0}\), e concluímos que \(\vec{r}(t)\)
+        é de fato solução da equação diferencial vetorial. Isso significa que a
+        espiral exponencial satisfaz uma lei dinâmica bem definida — não é uma
+        trajetória arbitrária, mas uma solução natural do sistema.
       </p>
     </div>
   </details>
-
+</li>

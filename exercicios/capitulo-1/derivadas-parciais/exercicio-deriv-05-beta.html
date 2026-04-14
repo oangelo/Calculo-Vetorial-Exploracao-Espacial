@@ -1,28 +1,39 @@
 <li class="exercise-item">
-  <div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
+  <div class="exercise-number">EXERCÍCIO DERIV-05-BETA</div>
   <div class="context">
     ORIGEM: Equipe de Controle Ambiental Orbital [RELATÓRIOS CRIPTOGRAFADOS DE
     [REDACTED]]
   </div>
   <p>
-    A regra da cadeia funciona para funções de quantas variáveis forem necessárias.
-    Neste exercício, aplicamos derivadas parciais a três variáveis — \(x\), \(y\) e \(z\) —
-    para modelar a temperatura dentro de um módulo espacial.
+    A regra da cadeia funciona para funções de quantas variáveis forem
+    necessárias. Neste exercício, aplicamos derivadas parciais a três variáveis
+    — \(x\), \(y\) e \(z\) — para modelar a temperatura dentro de um módulo
+    espacial.
   </p>
   <p>
     Uma função para descrever o perfil de temperatura em um módulo espacial é:
-    \[ T(x,y,z) = A e^{-k(x^2 + y^2)} + Bz, \]
-    onde \(A\), \(B\) e \(k\) são constantes positivas, e \(z\) é a altura dentro do módulo.
+    \[ T(x,y,z) = A e^{-k(x^2 + y^2)} + Bz, \] onde \(A\), \(B\) e \(k\) são
+    constantes positivas, e \(z\) é a altura dentro do módulo.
   </p>
-<p><strong>(a)</strong> Calcule \(\frac{\partial T}{\partial x}\). Note que \(Bz\) não depende de \(x\).</p>
-    <p><strong>(b)</strong> Calcule \(\frac{\partial T}{\partial y}\). Compare com o resultado de (a) — por que são "simétricos"?</p>
-    <p><strong>(c)</strong> Calcule \(\frac{\partial T}{\partial z}\).</p>
-    <p><strong>(d)</strong> Por que \(\frac{\partial T}{\partial z}\) é uma constante? O que isso significa fisicamente?</p>
-<details class="hint-container">
+  <p>
+    <strong>(a)</strong> Calcule \(\frac{\partial T}{\partial x}\). Note que
+    \(Bz\) não depende de \(x\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial T}{\partial y}\). Compare com
+    o resultado de (a) — por que são "simétricos"?
+  </p>
+  <p><strong>(c)</strong> Calcule \(\frac{\partial T}{\partial z}\).</p>
+  <p>
+    <strong>(d)</strong> Por que \(\frac{\partial T}{\partial z}\) é uma
+    constante? O que isso significa fisicamente?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para \(\frac{\partial T}{\partial x}\), use a regra da cadeia
-      com \(u = -k(x^2 + y^2)\): \(\frac{\partial u}{\partial x} = -2kx\).
+      [NOTA TÉCNICA]: Para \(\frac{\partial T}{\partial x}\), use a regra da
+      cadeia com \(u = -k(x^2 + y^2)\): \(\frac{\partial u}{\partial x} =
+      -2kx\).
     </div>
   </details>
   <details>
@@ -30,20 +41,20 @@
     <div class="solution">
       <p><strong>SOLUÇÃO:</strong></p>
       <p>
-        (a) \[ \frac{\partial T}{\partial x} = A \bigl(-2kx \bigr) e^{-k(x^2 + y^2)} = -2Akx\, e^{-k(x^2 + y^2)}. \]
+        (a) \[ \frac{\partial T}{\partial x} = A \bigl(-2kx \bigr) e^{-k(x^2 +
+        y^2)} = -2Akx\, e^{-k(x^2 + y^2)}. \]
       </p>
       <p>
-        (b) \[ \frac{\partial T}{\partial y} = -2Aky\, e^{-k(x^2 + y^2)}. \]
-        São simétricos porque \(x\) e \(y\) aparecem de forma idêntica no expoente: \(x^2 + y^2\).
-        Isso reflete a simetria radial do decaimento exponencial.
+        (b) \[ \frac{\partial T}{\partial y} = -2Aky\, e^{-k(x^2 + y^2)}. \] São
+        simétricos porque \(x\) e \(y\) aparecem de forma idêntica no expoente:
+        \(x^2 + y^2\). Isso reflete a simetria radial do decaimento exponencial.
       </p>
+      <p>(c) \[ \frac{\partial T}{\partial z} = B. \]</p>
       <p>
-        (c) \[ \frac{\partial T}{\partial z} = B. \]
-      </p>
-      <p>
-        (d) É constante porque \(Bz\) é linear em \(z\), e a parte exponencial não depende de \(z\).
-        Fisicamente: a temperatura cresce uniformemente com a altura, a uma taxa constante \(B\).
+        (d) É constante porque \(Bz\) é linear em \(z\), e a parte exponencial
+        não depende de \(z\). Fisicamente: a temperatura cresce uniformemente
+        com a altura, a uma taxa constante \(B\).
       </p>
     </div>
   </details>
-
+</li>

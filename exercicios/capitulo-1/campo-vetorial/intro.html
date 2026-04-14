@@ -37,76 +37,298 @@
     >
   </div>
 </div>
-<div class="concept-definition">
-  <strong>PRÉ-REQUISITOS</strong>
-  <br /><br />
-  Esta lista pressupõe os seguintes conceitos de capítulos anteriores:
-  <br /><br />
-  <strong>De Cap 0 — Geometria Analítica:</strong>
-<li>Vetores: componentes, soma, multiplicação por escalar</li>
-    <li>Norma de vetor: \(\|\vec{v}\| = \sqrt{v_1^2 + v_2^2 + v_3^2}\)</li>
-    <li>Produto escalar e ortogonalidade: \(\vec{u} \cdot \vec{v} = 0 \Leftrightarrow\) perpendiculares</li>
-    <li>Vetor unitário: \(\hat{v} = \vec{v}/\|\vec{v}\|\)</li>
-<br />
-  <strong>De Cap 0 — Cônicas:</strong>
-<li>Identidade trigonométrica: \(\cos^2\theta + \sin^2\theta = 1\)</li>
-    <li>Coordenadas polares básicas: \(x = r\cos\theta\), \(y = r\sin\theta\)</li>
-<br />
-  <strong>De Cap 0 — Derivadas:</strong>
-<li>Regra da potência: \(\frac{d}{dx}x^n = nx^{n-1}\)</li>
-    <li>Derivada exponencial: \(\frac{d}{dx}e^x = e^x\)</li>
-    <li>Regra do produto e regra da cadeia</li>
-    <li>Máximos e mínimos: \(f'(x)=0\) encontra pontos críticos</li>
-<br />
-  <strong>Do tópico anterior (Função Vetorial):</strong>
-<li>\(\vec{r}(t) = (x(t), y(t), z(t))\) como posição no tempo</li>
-    <li>\(\vec{r}'(t)\) como velocidade, \(\vec{r}''(t)\) como aceleração</li>
-    <li>Interpretação de trajetórias parametrizadas</li>
-<br />
-  <strong>Progressão esperada nesta lista:</strong>
-  <ol>
-    <li>Campo vetorial como mapa de vetores — avaliar em pontos, desenhar setas (EX-01 a EX-03)</li>
-    <li>Campos não-lineares e singularidades — onde o campo é nulo ou infinito (EX-04 a EX-06)</li>
-    <li>Campos complexos: termos cruzados, superposição, dependência temporal (EX-07 a EX-09)</li>
-    <li>Análise qualitativa: pontos críticos, estabilidade, decaimento (EX-10 a EX-12)</li>
-  </ol>
-  <br />
-  <strong>Conexão com próximos tópicos de Cap 1:</strong>
-<li><em>Limites de funções vetoriais:</em> generaliza o conceito de limite para campos vetoriais</li>
-    <li><em>Derivadas parciais:</em> como varia \(F\) quando movemos em apenas uma direção</li>
-    <li><em>Gradiente:</em> campo vetorial derivado de uma função escalar — conecta curvas de nível com campos</li>
-    <li><em>Rotacional e divergente:</em> "medem" propriedades do campo (rotação, expansão)</li>
-</div>
+
 <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: CAMPO VETORIAL</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[F: D \subset \mathbb{R}^n \rightarrow \mathbb{R}^m, \quad \text{onde
-    } F(\vec{x}) = \vec{y}\]
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Imagine um mapa meteorológico: em cada cidade há uma seta indicando a
+    direção e a força do vento. Não é uma única trajetória — é um padrão que
+    cobre toda a região. Um <strong>campo vetorial</strong> é exatamente isso:
+    uma regra que associa um vetor a cada ponto do espaço. Enquanto uma função
+    vetorial \(\vec{r}(t)\) (tópico anterior) descreve <em>uma</em> trajetória
+    parametrizada, um campo vetorial \(\vec{F}(x,y)\) descreve o
+    <em>mapa completo</em> de vetores — como o vento sopra em todo lugar, como a
+    gravidade puxa em cada ponto.
   </p>
   <p>
-    Um campo vetorial é uma função que associa um vetor a cada ponto de uma
-    região do espaço. Enquanto uma função vetorial \(\vec{r}(t)\) (tópico
-    anterior) dá um vetor para cada valor do parâmetro \(t\), um campo vetorial
-    \(\vec{F}(x,y)\) dá um vetor para cada PONTO \((x,y)\) do espaço. Pense
-    nele como um mapa meteorológico: cada posição tem uma seta indicando
-    direção e intensidade.
+    Neste módulo, construímos a linguagem dos campos vetoriais passo a passo.
+    Começamos com a <strong>definição</strong> (o que é um campo), depois
+    analisamos <strong>campos lineares</strong> (o padrão mais simples),
+    avançamos para <strong>campos circulares e radiais</strong> (rotação e
+    gravidade), identificamos <strong>singularidades</strong> (onde o campo
+    explode ou desaparece), e finalmente tratamos <strong>campos 3D</strong>,
+    <strong>campos dependentes do tempo</strong> e
+    <strong>análise qualitativa</strong> de pontos críticos e estabilidade. Cada
+    conceito depende do anterior — e todos aparecem nos exercícios que seguem.
   </p>
 </div>
-<div class="mission-context">
-  Os campos vetoriais são ferramentas indispensáveis para modelar fenômenos
-  físicos envolvendo forças direcionais que variam de ponto a ponto no espaço.
-  Na navegação espacial, campos gravitacionais, campos magnéticos e campos de
-  pressão atmosférica podem ser representados matematicamente como campos
-  vetoriais. O domínio preciso dessas ferramentas matemáticas permitirá
-  determinar com exatidão as trajetórias e forças atuantes em veículos
-  espaciais, garantindo a segurança das missões tripuladas.
+
+<!-- ========== 1. DEFINIÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>1. DEFINIÇÃO: O QUE É UM CAMPO VETORIAL</strong></p>
+  <p>
+    Um <strong>campo vetorial</strong> é uma função que associa um vetor a cada
+    ponto de uma região do espaço. Em duas dimensões, escrevemos:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F}(x, y) = \bigl(P(x,y),\; Q(x,y)\bigr)\]
+  </p>
+  <p>
+    onde \(P\) e \(Q\) são funções que determinam as componentes horizontal e
+    vertical do vetor em cada ponto \((x, y)\). Em três dimensões, uma terceira
+    componente aparece: \(\vec{F}(x,y,z) = \bigl(P, Q, R\bigr)\). A
+    <strong>visualização</strong> do campo consiste em desenhar setas saindo de
+    pontos de uma grade — cada seta mostra a direção e a intensidade do campo
+    naquele ponto. A distinção crucial com funções vetoriais é a seguinte: uma
+    função vetorial \(\vec{r}(t)\) dá um vetor para cada <em>instante</em>
+    \(t\), enquanto um campo vetorial \(\vec{F}(x,y)\) dá um vetor para cada
+    <em>posição</em> \((x,y)\).
+  </p>
 </div>
+
+<!-- ========== 2. CAMPO LINEAR ========== -->
+<div class="concept-definition">
+  <p><strong>2. CAMPO LINEAR: EXPANSÃO E CONTRAÇÃO</strong></p>
+  <p>
+    O campo vetorial mais simples tem componentes que são funções lineares das
+    coordenadas:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F}(x,y) = \begin{pmatrix} ax \\ by \end{pmatrix}\]
+  </p>
+  <p>
+    onde \(a\) e \(b\) são constantes. Se \(a > 0\) e \(b > 0\), os vetores
+    apontam para longe da origem (expansão). Se \(a < 0\) e \(b < 0\), apontam
+    para a origem (contração). Se os sinais são mistos, o campo combina atração
+    e repulsão em direções diferentes. Quando \(a \neq b\), o campo "estica"
+    mais em uma direção — como \(\vec{F} = (2x, 3y)\), onde o fator 3 na
+    componente \(y\) faz os vetores serem mais verticais. A magnitude em um
+    ponto \((x,y)\) é calculada pela norma: \(|\vec{F}| = \sqrt{(ax)^2 +
+    (by)^2}\).
+  </p>
+</div>
+
+<!-- ========== 3. CAMPO CIRCULAR ========== -->
+<div class="concept-definition">
+  <p><strong>3. CAMPO CIRCULAR: ROTAÇÃO</strong></p>
+  <p>
+    Um campo circular associa a cada ponto um vetor <strong>tangente</strong> ao
+    círculo centrado na origem que passa por esse ponto:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{G}(x,y) = \begin{pmatrix} -y \\ x \end{pmatrix}\]
+  </p>
+  <p>
+    O vetor \(\vec{G}\) é sempre perpendicular ao vetor posição \((x,y)\). Isso
+    se verifica pelo produto escalar: \(\vec{G} \cdot (x,y) = (-y) \cdot x + x
+    \cdot y = 0\). Geometricamente, o produto escalar nulo significa
+    <strong>ortogonalidade</strong> (Cap 0 — Geometria Analítica), confirmando
+    que o campo é tangente aos círculos centrados na origem, no sentido
+    anti-horário. A magnitude é constante ao longo de cada círculo: \(|\vec{G}|
+    = \sqrt{x^2 + y^2} = r\), ou seja, proporcional à distância à origem. Este
+    padrão aparece em vórtices atmosféricos, correntes oceânicas e campos
+    magnéticos ao redor de fios condutores.
+  </p>
+</div>
+
+<!-- ========== 4. CAMPO RADIAL ========== -->
+<div class="concept-definition">
+  <p><strong>4. CAMPO RADIAL: GRAVIDADE E FORÇAS CENTRAIS</strong></p>
+  <p>
+    O campo gravitacional de um corpo celeste aponta sempre
+    <strong>para o centro</strong> — o oposto do campo linear de expansão. Se
+    \(\vec{r} = (x, y, z)\) é o vetor posição a partir do centro e \(r =
+    |\vec{r}|\) é a distância, o campo gravitacional simplificado é:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F}(x,y,z) = -k \, \frac{\vec{r}}{|\vec{r}|^3}\]
+  </p>
+  <p>
+    onde \(k\) é uma constante positiva. O termo \(\vec{r}/|\vec{r}|\) é o
+    <strong>vetor unitário</strong> (Cap 0) na direção de \(\vec{r}\) (aponta
+    para fora); o sinal negativo inverte a direção (aponta para o centro). A
+    magnitude é \(|\vec{F}| = k/r^2\) — a <strong>Lei de Newton</strong>. Se a
+    distância dobra, a intensidade cai para \(1/4\). Este é o campo radial por
+    excelência: todos os vetores convergem para um centro, ao contrário do campo
+    circular onde são tangentes.
+  </p>
+</div>
+
+<!-- ========== 5. SINGULARIDADES ========== -->
+<div class="concept-definition">
+  <p><strong>5. SINGULARIDADES: ONDE O CAMPO FALHA</strong></p>
+  <p>
+    Uma <strong>singularidade</strong> é um ponto onde o campo vetorial não está
+    definido — tipicamente porque alguma componente tende ao infinito ou ao zero
+    de forma indeterminada. No campo gravitacional, a singularidade ocorre na
+    origem (o denominador \(|\vec{r}|^3\) se anula). Em um campo magnético ao
+    redor de um fio, a singularidade também está no próprio fio:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{B}(x,y) = \frac{k}{x^2 + y^2} \begin{pmatrix} -y \\ x \end{pmatrix}\]
+  </p>
+  <p>
+    onde \(k\) é uma constante. A direção é circular (como no campo \(\vec{G}\)
+    da seção 3), mas a intensidade é \(\frac{k}{r}\) — decrescente com a
+    distância, mas infinita na origem. A singularidade marca o ponto onde o
+    modelo matemático "quebra" e a física real (fio com espessura finita)
+    prevalece. Um <strong>ponto de estagnação</strong> é o caso oposto: o campo
+    vale \(\vec{0}\) (não infinito), significando ausência de movimento — comum
+    em fluxos de fluido.
+  </p>
+</div>
+
+<!-- ========== 6. CAMPOS 3D ========== -->
+<div class="concept-definition">
+  <p><strong>6. CAMPOS EM TRÊS DIMENSÕES: ESPIRAIS E DECOMPOSIÇÃO</strong></p>
+  <p>
+    Naves espaciais voam no espaço tridimensional. Um campo 3D tem três
+    componentes, e sua visualização é mais difícil — por isso, a estratégia é
+    <strong>decompor</strong> em comportamentos já conhecidos. Considere:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{V}(x,y,z) = \begin{pmatrix} y \\ -x \\ z \end{pmatrix}\]
+  </p>
+  <p>
+    Restringindo ao plano \(xy\) (fixando \(z = 0\)), o campo fica
+    \(\vec{V}_{xy} = (y, -x)\) — o negativo do campo circular da seção 3
+    (sentido horário em vez de anti-horário). A componente \(z\) isolada é
+    simplesmente \(z\): positiva quando \(z > 0\), negativa quando \(z < 0\). A
+    combinação de rotação no plano \(xy\) com movimento vertical cria um padrão
+    <strong>helicoidal</strong> (em espiral). Este tipo de decomposição —
+    separar o campo em partes que você já conhece — é uma ferramenta essencial
+    para analisar campos complexos.
+  </p>
+</div>
+
+<!-- ========== 7. CAMPOS DEPENDENTES DO TEMPO ========== -->
+<div class="concept-definition">
+  <p><strong>7. CAMPOS DEPENDENTES DO TEMPO: DINÂMICA</strong></p>
+  <p>
+    Até agora, todos os campos eram <strong>estáticos</strong> — não mudam com o
+    tempo. Mas fenômenos reais evoluem. Um campo dependente do tempo tem a
+    forma:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F}(x,y,t) = \begin{pmatrix} x\cos t - y\sin t \\ x\sin t + y\cos t
+    \end{pmatrix}\]
+  </p>
+  <p>
+    onde \(t\) representa o tempo. Note que esta expressão é a
+    <strong>matriz de rotação</strong> (Cap 0 — Geometria Analítica) aplicada ao
+    vetor posição \((x, y)\): o campo gira continuamente, mas preserva a
+    magnitude. Expandindo \(|\vec{F}|^2\) e usando \(\cos^2 t + \sin^2 t = 1\),
+    obtém-se \(|\vec{F}| = \sqrt{x^2 + y^2} = r\) — a intensidade depende apenas
+    da distância à origem, não do tempo. O campo inteiro "gira como uma
+    catavento" sem esticar nem encolher. Apenas a origem permanece invariante:
+    \(\vec{F}(0,0,t) = \vec{0}\) para qualquer \(t\).
+  </p>
+</div>
+
+<!-- ========== 8. PONTOS CRÍTICOS ========== -->
+<div class="concept-definition">
+  <p><strong>8. PONTOS CRÍTICOS: EQUILÍBRIO DO CAMPO</strong></p>
+  <p>
+    Um <strong>ponto crítico</strong> (ou singularidade nula) é um ponto onde o
+    campo se anula: \(\vec{F}(x_0, y_0) = \vec{0}\). Encontrá-los significa
+    resolver o sistema:
+  </p>
+  <p class="formula-highlight">
+    \[P(x,y) = 0 \quad \text{e} \quad Q(x,y) = 0\]
+  </p>
+  <p>
+    onde \(\vec{F} = (P, Q)\). Esses pontos representam posições de
+    <strong>equilíbrio</strong> — uma partícula parada ali permanece parada
+    (nenhuma força a empurra). Em sistemas dinâmicos, os pontos críticos
+    governam o comportamento global do campo: a análise de como o campo se
+    comporta <em>perto</em> deles revela se o equilíbrio é estável, instável ou
+    de outro tipo.
+  </p>
+</div>
+
+<!-- ========== 9. ANÁLISE QUALITATIVA ========== -->
+<div class="concept-definition">
+  <p><strong>9. ANÁLISE QUALITATIVA: ATRATORES, REPULSORES E SELAS</strong></p>
+  <p>
+    Saber <em>onde</em> o campo é nulo não basta — precisamos saber
+    <em>o que acontece quando perturbamos levemente o equilíbrio</em>. A
+    ferramenta mais acessível é o <strong>produto escalar</strong> (Cap 0) entre
+    o campo e o vetor posição:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F}(x,y) \cdot (x,y) = P \cdot x + Q \cdot y\]
+  </p>
+  <p>
+    Se este produto escalar é <strong>negativo</strong> perto do ponto crítico,
+    o campo aponta "para dentro" — o equilíbrio é um
+    <strong>atrator</strong> (estável). Se é <strong>positivo</strong>, o campo
+    aponta "para fora" — um <strong>repulsor</strong> (instável). Se o sinal
+    muda de região para região, o comportamento é uma
+    <strong>sela</strong> (parcialmente instável). Uma outra abordagem é
+    experimental: calcular o campo em pontos próximos ao equilíbrio e observar a
+    direção dos vetores — se "circulam" ao redor do ponto, é um centro. Estes
+    conceitos são essenciais para analisar a estabilidade de órbitas e pontos de
+    equilíbrio em sistemas gravitacionais, como os pontos de Lagrange.
+  </p>
+</div>
+
+<!-- ========== 10. CAMPOS COMPOSTOS ========== -->
+<div class="concept-definition">
+  <p>
+    <strong>10. CAMPOS COMPOSTOS: DECAIMENTO E PERFIS DE INTENSIDADE</strong>
+  </p>
+  <p>
+    Campos reais raramemente são puros (lineares, circulares ou radiais).
+    Frequentemente combinamos uma <strong>direção</strong> com um perfil de
+    <strong>intensidade</strong>. Um exemplo é o campo de propulsão iônica:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{P}(x,y,z) = e^{-r^2} \begin{pmatrix} x \\ y \\ z \end{pmatrix}\]
+  </p>
+  <p>
+    onde \(r^2 = x^2 + y^2 + z^2\). O campo aponta na direção radial (o vetor
+    posição), mas a intensidade é controlada pelo fator escalar \(e^{-r^2}\). A
+    magnitude é \(|\vec{P}| = r \cdot e^{-r^2}\). Para encontrar onde a
+    intensidade é máxima, usamos <strong>derivadas</strong> (Cap 0): calculando
+    \(\frac{d}{dr}(r \cdot e^{-r^2})\) e igualando a zero, obtém-se o máximo em
+    \(r = 1/\sqrt{2}\). O campo é mais intenso não na origem, mas a uma certa
+    distância dela — um perfil útil em propulsão, onde a zona de máxima força
+    fica a uma distância ótima do propulsor. A estratégia geral é: decompor o
+    campo como o produto de um <strong>escalar</strong> (intensidade) por um
+    <strong>vetor</strong> (direção) e analisar cada parte separadamente.
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os campos vetoriais são a
+  linguagem matemática de praticamente toda força no espaço. O
+  <strong>campo gravitacional</strong> determina as órbitas de satélites e naves
+  — o modelo radial \(1/r^2\) da seção 4 é a base da mecânica orbital. Os
+  <strong>campos circulares</strong> modelam vórtices atmosféricos durante
+  reentrada e correntes oceânicas usadas para planejar almaragens. Os
+  <strong>pontos críticos</strong> e sua estabilidade correspondem aos pontos de
+  Lagrange do sistema Terra-Lua, onde uma nave pode permanecer com mínimo gasto
+  de combustível. O <strong>princípio de superposição</strong> (somar campos
+  individuais) é usado para modelar interações gravitacionais de múltiplos
+  corpos — como a influência conjunta da Terra e da Lua durante uma missão
+  <span class="censored">Apollo</span>. O domínio dessas ferramentas permitiu
+  calcular com precisão as trajetórias que colocaram humanos na
+  <span class="censored">Lua</span>.
+</div>
+
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Durante a primeira órbita terrestre tripulada
-  pelo cosmonauta Yuri Gagarin em 12 de abril de 1961, a capacidade soviética
-  de calcular com precisão campos vetoriais gravitacionais permitiu um controle
-  de trajetória que surpreendeu analistas ocidentais. Nossas equipes agora
-  buscam superar essa capacidade para garantir o sucesso do Programa Mercury e
-  futuros voos tripulados.
+  <strong>NOTA HISTÓRICA:</strong> A formalização matemática dos campos
+  vetoriais foi impulsionada por Michael Faraday (1791-1867), que introduziu o
+  conceito de "linhas de força" para visualizar campos elétricos e magnéticos.
+  James Clerk Maxwell traduziu essas ideias em equações diferenciais na década
+  de 1860, unificando eletricidade, magnetismo e luz. Durante a corrida espacial
+  dos anos 1960, o cálculo preciso de campos gravitacionais e sua interação com
+  múltiplos corpos foi decisivo para o sucesso das missões
+  <span class="censored">Mercury</span>, <span class="censored">Gemini</span> e
+  <span class="censored">Apollo</span> — a mesma matemática que Faraday concebeu
+  por intuição experimental tornou-se a base para navegação interplanetária.
 </div>

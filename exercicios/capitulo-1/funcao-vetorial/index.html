@@ -295,6 +295,170 @@
         </div>
       </div>
 
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: FUNÇÃO VETORIAL</div>
+
+      <!-- ========== CONTEXTUALIZAÇÃO ========== -->
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Em Cap 0, estudamos equações paramétricas de reta: \(\vec{r}(t) = P_0
+          + t\vec{v}\). Essa expressão descreve um ponto que se move ao longo de
+          uma reta com velocidade constante. Mas e quando a trajetória não é
+          retilínea? Uma cápsula em órbita, um satélite em hélice, uma sonda
+          traçando uma espiral — todas essas curvas exigem algo mais geral: uma
+          <strong>função vetorial</strong> \(\vec{r}(t)\) cujas componentes
+          podem ser funções arbitrárias de \(t\).
+        </p>
+        <p>
+          Neste módulo, partimos da reta (revisão de Cap 0) e generalizamos para
+          curvas arbitrárias no espaço. O passo-chave é a
+          <strong>derivação componente a componente</strong>: se \(\vec{r}(t) =
+          (x(t), y(t), z(t))\), então \(\vec{r}'(t) = (x'(t), y'(t), z'(t))\).
+          Com isso, obtemos o vetor velocidade (tangente à curva) e o vetor
+          aceleração (curvatura da trajetória). Essas ferramentas são a base
+          para tudo que vem depois: campos vetoriais, derivadas parciais,
+          gradiente, rotacional e divergente.
+        </p>
+      </div>
+
+      <!-- ========== CONCEITO 1 ========== -->
+      <div class="concept-definition">
+        <p><strong>1. FUNÇÃO VETORIAL: TRAJETÓRIAS NO ESPAÇO</strong></p>
+        <p>
+          Uma <strong>função vetorial</strong> de \(\mathbb{R}\) em
+          \(\mathbb{R}^n\) associa a cada valor de um parâmetro \(t\)
+          (geralmente o tempo) um vetor no espaço. Sua forma geral com três
+          componentes é:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}(t) = \bigl(x(t),\; y(t),\; z(t)\bigr) \]
+        </p>
+        <p>
+          onde \(x(t)\), \(y(t)\) e \(z(t)\) são funções reais de \(t\). O
+          conjunto dos pontos \((x(t), y(t), z(t))\), quando \(t\) percorre um
+          intervalo, descreve uma <strong>curva</strong> no espaço — a
+          trajetória do objeto. A equação paramétrica de reta \(\vec{r}(t) = P_0
+          + t\vec{v}\) é o caso mais simples, com componentes lineares. Quando
+          as componentes são trigonométricas (como \(x = R\cos t\), \(y = R\sin
+          t\)), a curva se fecha em um círculo. A norma \(\|\vec{r}(t)\| =
+          \sqrt{x(t)^2 + y(t)^2 + z(t)^2}\) mede a distância do ponto à origem —
+          e quando essa norma é constante, o objeto permanece sobre uma esfera
+          (ou circunferência, em 2D).
+        </p>
+      </div>
+
+      <!-- ========== CONCEITO 2 ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong>2. DERIVADA DE FUNÇÃO VETORIAL: O VETOR VELOCIDADE</strong>
+        </p>
+        <p>
+          Assim como derivamos funções reais para obter taxas de variação,
+          derivamos funções vetoriais <strong>componente a componente</strong>.
+          Se um objeto segue a trajetória \(\vec{r}(t)\), sua velocidade
+          instantânea é o vetor tangente à curva:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}'(t) = \frac{d\vec{r}}{dt} = \bigl(x'(t),\; y'(t),\;
+          z'(t)\bigr) \]
+        </p>
+        <p>
+          onde \(x'(t)\), \(y'(t)\) e \(z'(t)\) são as derivadas ordinárias de
+          cada componente (usando as regras de Cap 0: potência, trigonométricas,
+          exponencial, regra do produto e da cadeia). O vetor \(\vec{r}'(t)\)
+          aponta na direção do movimento — é o vetor velocidade. Sua norma
+          \(\|\vec{r}'(t)\|\) é a
+          <strong>rapidez</strong> (quão rápido o objeto se move, sem direção).
+          Para a reta \(\vec{r}(t) = P_0 + t\vec{v}\), temos \(\vec{r}'(t) =
+          \vec{v}\) — velocidade constante, como esperado.
+        </p>
+      </div>
+
+      <!-- ========== CONCEITO 3 ========== -->
+      <div class="concept-definition">
+        <p><strong>3. ACELERAÇÃO: A SEGUNDA DERIVADA</strong></p>
+        <p>
+          A <strong>aceleração</strong> é a derivada da velocidade, ou seja, a
+          segunda derivada da posição. Ela mede como o vetor velocidade muda —
+          tanto em magnitude quanto em direção:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}''(t) = \frac{d^2\vec{r}}{dt^2} = \bigl(x''(t),\; y''(t),\;
+          z''(t)\bigr) \]
+        </p>
+        <p>
+          onde \(x''(t)\), \(y''(t)\) e \(z''(t)\) são as derivadas segundas de
+          cada componente. A aceleração tem um papel duplo: uma componente
+          <strong>tangencial</strong> (muda a rapidez) e uma componente
+          <strong>normal</strong> (muda a direção, fazendo a curva "dobrar"). Em
+          uma reta, \(\vec{r}''(t) = \vec{0}\) — não há mudança de direção. Em
+          uma circunferência, toda a aceleração é normal (centrípeta), apontando
+          para o centro. Para uma hélice uniforme \(\vec{r}(t) = (a\cos(\omega
+          t), a\sin(\omega t), bt)\), a aceleração \(\vec{r}''(t) =
+          (-a\omega^2\cos(\omega t), -a\omega^2\sin(\omega t), 0)\) está toda no
+          plano \(xy\) — a componente \(z\) da aceleração é zero porque a subida
+          ao longo do eixo é a velocidade constante.
+        </p>
+      </div>
+
+      <!-- ========== CONCEITO 4 ========== -->
+      <div class="concept-definition">
+        <p><strong>4. ORTOGONALIDADE E NORMA CONSTANTE</strong></p>
+        <p>
+          Uma propriedade fundamental conecta a geometria da trajetória com o
+          cálculo de derivadas: quando a
+          <strong>norma de \(\vec{r}(t)\) é constante</strong> (o objeto
+          permanece a distância fixa da origem), o vetor posição e o vetor
+          velocidade são sempre <strong>perpendiculares</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[ \|\vec{r}(t)\| = c \;\;\Longrightarrow\;\; \vec{r}(t) \cdot
+          \vec{r}'(t) = 0 \]
+        </p>
+        <p>
+          onde \(c\) é a constante. A demonstração é direta: se \(\|\vec{r}\|^2
+          = c^2\), então \(\vec{r} \cdot \vec{r} = c^2\). Derivando ambos os
+          lados em relação a \(t\) e usando a regra do produto, obtemos
+          \(2\,\vec{r}(t) \cdot \vec{r}'(t) = 0\), ou seja, \(\vec{r}(t) \cdot
+          \vec{r}'(t) = 0\). Isso significa que a velocidade é sempre tangente à
+          circunferência (ou esfera) — o objeto nunca se afasta nem se aproxima
+          da origem, apenas circula. Essa propriedade aparece em todo movimento
+          circular e é essencial para analisar órbitas estáveis.
+        </p>
+      </div>
+
+      <!-- ========== APLICAÇÕES ========== -->
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> As funções vetoriais
+        são a linguagem fundamental da <strong>mecânica orbital</strong>. A
+        posição de um satélite ao longo do tempo é descrita por \(\vec{r}(t)\),
+        e sua velocidade \(\vec{r}'(t)\) determina se a órbita é circular,
+        elíptica ou de escape. A aceleração \(\vec{r}''(t)\) está ligada à força
+        gravitacional pela segunda lei de Newton. Durante o
+        <span class="censored">Programa Gemini</span>, a determinação precisa de
+        \(\vec{r}(t)\) era essencial para calcular janelas de encontro orbital e
+        manobras de acoplamento. A hélice uniforme \(\vec{r}(t) = (a\cos(\omega
+        t), a\sin(\omega t), bt)\) modela trajetórias de sondas em transferência
+        helicoidal. A condição de norma constante — \(\vec{r} \cdot \vec{r}' =
+        0\) — é usada para verificar se uma órbita permanece estável sob
+        perturbações, um cálculo que evitou
+        <span class="censored">diversos abortos de missão</span> no programa
+        espacial.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> O conceito de função vetorial foi
+        formalizado no século XIX por matemáticos como Grassmann e Gibbs, que
+        unificaram a álgebra vetorial. No entanto, a ideia de descrever
+        trajetórias por funções paramétricas remonta a Newton, que usou equações
+        paramétricas para descrever movimentos planetários. Durante a corrida
+        espacial dos anos 1960, a diferenciação de funções vetoriais tornou-se
+        uma ferramenta operacional: os engenheiros do
+        <span class="censored">Programa Apollo</span> calculavam \(\vec{r}'(t)\)
+        e \(\vec{r}''(t)\) em tempo real para ajustar trajetórias de translunar,
+        usando computadores com menos poder que uma calculadora moderna.
+      </div>
+
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
@@ -312,7 +476,7 @@
             'exercicio-func-04-beta.html',
             'exercicio-func-05-beta.html',
             'exercicio-func-06-beta.html',
-            'exercicio-func-07-gamma.html',
+            'exercicio-func-07-beta.html',
             'exercicio-func-08-gamma.html',
             'exercicio-func-09-omega.html',
             'exercicio-func-10-omega.html',

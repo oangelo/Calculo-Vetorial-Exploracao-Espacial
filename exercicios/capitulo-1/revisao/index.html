@@ -267,11 +267,13 @@
           <span class="censored">CENTRO DE ANÁLISE INTERNACIONAL</span>
         </div>
         <div class="document-intro">
-          RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO – FUNÇÕES VETORIAIS<br /><br />
+          RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO — FUNÇÕES VETORIAIS
+          <br /><br />
           Esta lista consolida <strong>todos</strong> os principais conceitos do
-          Capítulo 1: <em>função vetorial</em>, <em>limites</em>, <em>campo vetorial</em>, <em>derivadas parciais</em>, <em>gradiente</em>, <em>rotacional</em> e <em>divergente</em>. Retoma também fundamentos de <em>Cap 0</em>.
-          A progressão segue dos fundamentos vetoriais até operadores
-          diferenciais e identidades.
+          Capítulo 1: <em>função vetorial</em>, <em>limites</em>,
+          <em>campo vetorial</em>, <em>derivadas parciais</em>,
+          <em>gradiente</em>, <em>rotacional</em> e <em>divergente</em>. Retoma
+          também fundamentos de <em>Cap 0</em>.
         </div>
         <div class="warning-box">
           Difusão não autorizada resultará em
@@ -286,36 +288,190 @@
           >
         </div>
       </div>
+
       <div class="section-title">
-        FUNDAMENTAÇÃO TEÓRICA: REVISÃO – FUNÇÕES VETORIAIS
+        FUNDAMENTAÇÃO TEÓRICA: REVISÃO DO CAPÍTULO 1
       </div>
+
       <div class="concept-definition">
-        <p><strong>BLOCO 1 — Fundamentos Vetoriais (Cap 0):</strong> norma, produto escalar, produto vetorial, produto misto.</p>
-        <p><strong>BLOCO 2 — Função Vetorial e Limites (Cap 1):</strong> trajetórias, singularidades e continuidade.</p>
-        <p><strong>BLOCO 3 — Derivadas Parciais e Gradiente (Cap 1):</strong> taxas de variação direcionais.</p>
-        <p><strong>BLOCO 4 — Rotacional, Divergente e Identidades (Cap 1):</strong></p>
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
-          \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\quad
-          ;\quad \nabla \times \vec{F} = \begin{pmatrix} \partial_y F_z -
-          \partial_z F_y \ \partial_z F_x - \partial_x F_z \ \partial_x F_y -
-          \partial_y F_x \end{pmatrix}\]
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Ao longo deste capítulo, construímos uma caixa de ferramentas para
+          analisar campos e movimentos no espaço. Começamos com
+          <strong>funções vetoriais</strong> — que descrevem onde algo está e
+          como se move. Depois estudamos <strong>campos vetoriais</strong> — que
+          associam um vetor a cada ponto. E finalmente aprendemos a
+          "diferenciar" esses campos: derivadas parciais, gradiente, rotacional
+          e divergente.
         </p>
         <p>
-          O <em>divergente</em> mede fontes e sumidouros locais, enquanto o
-          <em>rotacional</em> avalia a tendência de rotação de um campo
-          vetorial. Ambos são cruciais para modelar fluxos em engenharia
-          espacial.
+          Esta lista de revisão une tudo. Os exercícios combinam conceitos de
+          Cap 0 com os operadores de Cap 1, mostrando que não são técnicas
+          isoladas — são partes de uma linguagem única para descrever fenômenos
+          físicos.
         </p>
       </div>
-      <div class="mission-context">
-        Dominar estas operações diferenciais permite prever trajetórias, ajustar
-        propulsão e avaliar estabilidade de veículos orbitais.
+
+      <div class="concept-definition">
+        <p><strong>1. FUNÇÃO VETORIAL: TRAJETÓRIAS NO ESPAÇO</strong></p>
+        <p>
+          Uma <strong>função vetorial</strong> \(\vec{r}(t) = (x(t), y(t),
+          z(t))\) descreve a posição de um objeto em função de um parâmetro
+          \(t\).
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}(t) = (x(t),\; y(t),\; z(t)) \]
+        </p>
+        <p>
+          A <strong>derivada</strong> \(\vec{r}'(t) = (x'(t), y'(t), z'(t))\) é
+          o vetor velocidade. A <strong>segunda derivada</strong>
+          \(\vec{r}''(t)\) é o vetor aceleração. Uma reta paramétrica
+          \(\vec{r}(t) = \vec{r}_0 + t\vec{d}\) é o caso mais simples.
+        </p>
       </div>
+
+      <div class="concept-definition">
+        <p><strong>2. LIMITES E SINGULARIDADES</strong></p>
+        <p>
+          O <strong>limite</strong> de uma função vetorial é calculado
+          componente a componente:
+        </p>
+        <p class="formula-highlight">
+          \[ \lim_{t \to a} \vec{r}(t) = \left(\lim_{t \to a} x(t),\; \lim_{t
+          \to a} y(t),\; \lim_{t \to a} z(t)\right) \]
+        </p>
+        <p>
+          Quando um campo não está definido em um ponto (ex: \(\vec{r}/r^3\) na
+          origem), há uma <strong>singularidade</strong>. A análise do limite ao
+          redor da singularidade revela o comportamento do campo próximo ao
+          ponto crítico.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>3. CAMPO VETORIAL: MAPAS DE FORÇA</strong></p>
+        <p>
+          Um <strong>campo vetorial</strong> \(\vec{F}(x,y,z)\) associa um vetor
+          a cada ponto do espaço:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{F}(x,y,z) = P\,\hat{i} + Q\,\hat{j} + R\,\hat{k} \]
+        </p>
+        <p>
+          Campos importantes: radial \((x, y, z)\) (expansão), rotacional \((-y,
+          x, 0)\) (giro), gravitacional \(-GM\vec{r}/r^3\) (atração). Os
+          operadores seguintes extraem informação desse mapa.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>4. DERIVADAS PARCIAIS: VARIAÇÃO EM UMA DIREÇÃO</strong></p>
+        <p>
+          A <strong>derivada parcial</strong> \(\partial f / \partial x\) mede
+          como \(f\) varia quando apenas \(x\) muda, mantendo \(y\) e \(z\)
+          fixos:
+        </p>
+        <p class="formula-highlight">
+          \[ \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h, y, z) -
+          f(x, y, z)}{h} \]
+        </p>
+        <p>
+          As regras de derivação se aplicam normalmente. Pelo Teorema de
+          Clairaut, derivadas mistas são iguais: \(\frac{\partial^2 f}{\partial
+          x \partial y} = \frac{\partial^2 f}{\partial y \partial x}\). Essa
+          simetria é a base das identidades vetoriais.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>5. GRADIENTE: DIREÇÃO DE MAIOR CRESCIMENTO</strong></p>
+        <p>O <strong>gradiente</strong> de \(f(x,y,z)\) é o vetor:</p>
+        <p class="formula-highlight">
+          \[ \nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial
+          f}{\partial y},\; \frac{\partial f}{\partial z}\right) \]
+        </p>
+        <p>
+          Aponta na <strong>direção de maior crescimento</strong> de \(f\), com
+          magnitude \(|\nabla f|\) igual à taxa desse crescimento. É sempre
+          <strong>perpendicular às curvas de nível</strong>.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>6. ROTACIONAL: TENDÊNCIA DE ROTAÇÃO</strong></p>
+        <p>
+          O <strong>rotacional</strong> de \(\vec{F} = (P, Q, R)\) mede a
+          tendência de rotação local:
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k}
+          \\ \partial/\partial x & \partial/\partial y & \partial/\partial z \\
+          P & Q & R \end{vmatrix} \]
+        </p>
+        <p>
+          O resultado é um <strong>vetor</strong>. Em 2D, apenas a componente
+          \(\hat{k}\): \(\partial Q/\partial x - \partial P/\partial y\). Um
+          campo com rotacional nulo é <strong>irrotacional</strong>.
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>7. DIVERGENTE: TAXA DE EXPANSÃO</strong></p>
+        <p>
+          O <strong>divergente</strong> de \(\vec{F} = (P, Q, R)\) mede a taxa
+          de expansão local:
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} +
+          \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} \]
+        </p>
+        <p>
+          É um <strong>escalar</strong>. \(\nabla \cdot \vec{F} > 0\): fonte
+          (expansão). \(\nabla \cdot \vec{F} < 0\): sumidouro (compressão).
+          \(\nabla \cdot \vec{F} = 0\): solenoidal (sem fontes).
+        </p>
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>8. IDENTIDADES VETORIAIS: CONEXÕES PROFUNDAS</strong></p>
+        <p>Os operadores são conectados por identidades fundamentais:</p>
+        <p class="formula-highlight">
+          \[ \nabla \times (\nabla f) = \vec{0} \]
+        </p>
+        <p>
+          O rotacional de um gradiente é sempre nulo — um campo que aponta na
+          direção de maior crescimento não pode ter rotação. Prova: derivadas
+          mistas se cancelam (Clairaut).
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla \cdot (\nabla \times \vec{A}) = 0 \]
+        </p>
+        <p>
+          A divergência de um rotacional é sempre nula — um campo rotacional
+          nunca pode ter fontes. Essas identidades serão cruciais para campos
+          conservativos e o Teorema de Green.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os conceitos
+        revisados aqui aparecem em conjunto em toda operação orbital. Funções
+        vetoriais descrevem trajetórias. Campos vetoriais modelam gravidade e
+        propulsão. O gradiente calcula a direção de maior variação de energia. O
+        rotacional detecta vórtices. A divergência identifica fontes e
+        sumidouros. A identidade \(\nabla \times \nabla f = \vec{0}\) garante
+        que campos potenciais não geram rotação — base para navegação orbital.
+      </div>
+
       <div class="historical-note">
-        <strong>NOTA:</strong> Cálculos análogos sustentaram simulações de voo
-        realizadas durante programas pioneiros de 1961‑1962.
+        <strong>NOTA HISTÓRICA:</strong> O cálculo vetorial foi desenvolvido no
+        século XIX por Gibbs, Maxwell e Stokes. As identidades \(\nabla \times
+        \nabla f = \vec{0}\) e \(\nabla \cdot (\nabla \times \vec{A}) = 0\)
+        refletem a simetria das derivadas parciais mistas, provada por Alexis
+        Clairaut em 1739. Durante a
+        <span class="censored">corrida espacial dos anos 1960</span>, esses
+        operadores foram implementados nos primeiros computadores de bordo das
+        missões <span class="censored">Mercury, Gemini e Apollo</span>.
       </div>
 
       <main>
@@ -340,14 +496,14 @@
             'exercicio-review-11-omega.html', // produto vetorial
             'exercicio-review-12-omega.html', // coplanaridade
             // Bloco 2: Funcao vetorial e limites (Cap 1)
-            'exercicio-review-03-alfa.html',   // REVIEW-5: funcao vetorial
-            'exercicio-review-05-beta.html',   // REVIEW-6: limites e singularidades
-            'exercicio-review-04-beta.html',   // REVIEW-7: derivadas parciais
-            'exercicio-review-01-alfa.html',   // REVIEW-8: div+rot 2D
-            'exercicio-review-02-alfa.html',   // REVIEW-9: div nulo 3D
-            'exercicio-review-06-beta.html',   // REVIEW-10: acoplamento 3D
-            'exercicio-review-07-gamma.html',  // REVIEW-11: identidade vetorial
-            'exercicio-review-08-gamma.html',  // REVIEW-12: analise parametrica
+            'exercicio-review-03-alfa.html', // REVIEW-5: funcao vetorial
+            'exercicio-review-05-beta.html', // REVIEW-6: limites e singularidades
+            'exercicio-review-04-beta.html', // REVIEW-7: derivadas parciais
+            'exercicio-review-01-alfa.html', // REVIEW-8: div+rot 2D
+            'exercicio-review-02-alfa.html', // REVIEW-9: div nulo 3D
+            'exercicio-review-06-beta.html', // REVIEW-10: acoplamento 3D
+            'exercicio-review-07-gamma.html', // REVIEW-11: identidade vetorial
+            'exercicio-review-08-gamma.html', // REVIEW-12: analise parametrica
           ];
 
           const list = document.getElementById('exercises');

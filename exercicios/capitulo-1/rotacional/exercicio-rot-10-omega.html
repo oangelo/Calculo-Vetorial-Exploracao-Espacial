@@ -5,42 +5,46 @@
   </div>
 
   <div class="mission-context">
-    <strong>Significado antes da álgebra:</strong> Este exercício revela
-    uma sutileza profunda: um campo pode "girar" globalmente ao redor
-    de um ponto e ainda ter rotacional zero. A rotação que o rotacional
-    mede é <em>local</em> — uma partícula gira em torno de si mesma,
-    não apenas ao redor de um ponto distante.
+    <strong>Significado antes da álgebra:</strong> Este exercício revela uma
+    sutileza profunda: um campo pode "girar" globalmente ao redor de um ponto e
+    ainda ter rotacional zero. A rotação que o rotacional mede é
+    <em>local</em> — uma partícula gira em torno de si mesma, não apenas ao
+    redor de um ponto distante.
   </div>
 
   <p>
-    No EX-06, o campo \(\vec{F}_1 = (-y, x, 0)\) tinha rotacional
-    \((0, 0, 2)\). Agora vamos dividir esse campo por
-    \(r^2 = x^2 + y^2\), obtendo:
-    \[\vec{F}_2 = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}, 0\right).\]
-    Ambos os campos "giram" ao redor da origem. Será que o rotacional
-    de \(\vec{F}_2\) também é não-zero?
+    No EX-06, o campo \(\vec{F}_1 = (-y, x, 0)\) tinha rotacional \((0, 0, 2)\).
+    Agora vamos dividir esse campo por \(r^2 = x^2 + y^2\), obtendo: \[\vec{F}_2
+    = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}, 0\right).\] Ambos os campos
+    "giram" ao redor da origem. Será que o rotacional de \(\vec{F}_2\) também é
+    não-zero?
   </p>
 
-  <p><strong>(a)</strong> Escreva \(F_{2x} = \frac{-y}{x^2+y^2}\) e
-    \(F_{2y} = \frac{x}{x^2+y^2}\). Calcule \(\frac{\partial
-    F_{2y}}{\partial x}\) usando a regra do quociente: se
-    \(F_{2y} = \frac{x}{u}\) com \(u = x^2+y^2\), então
-    \(\frac{\partial F_{2y}}{\partial x} = \frac{1 \cdot u - x \cdot
-    2x}{u^2}\).</p>
+  <p>
+    <strong>(a)</strong> Escreva \(F_{2x} = \frac{-y}{x^2+y^2}\) e \(F_{2y} =
+    \frac{x}{x^2+y^2}\). Calcule \(\frac{\partial F_{2y}}{\partial x}\) usando a
+    regra do quociente: se \(F_{2y} = \frac{x}{u}\) com \(u = x^2+y^2\), então
+    \(\frac{\partial F_{2y}}{\partial x} = \frac{1 \cdot u - x \cdot 2x}{u^2}\).
+  </p>
 
-  <p><strong>(b)</strong> Calcule \(\frac{\partial F_{2x}}{\partial y}\)
-    usando a regra do quociente de forma análoga.</p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial F_{2x}}{\partial y}\) usando a
+    regra do quociente de forma análoga.
+  </p>
 
-  <p><strong>(c)</strong> Calcule a componente \(k\) do rotacional:
-    \(\frac{\partial F_{2y}}{\partial x} - \frac{\partial
-    F_{2x}}{\partial y}\). Simplifique.</p>
+  <p>
+    <strong>(c)</strong> Calcule a componente \(k\) do rotacional:
+    \(\frac{\partial F_{2y}}{\partial x} - \frac{\partial F_{2x}}{\partial y}\).
+    Simplifique.
+  </p>
 
-  <p><strong>(d)</strong> O rotacional vale \((0, 0, 0)\) para
-    \((x,y) \neq (0,0)\). O campo "gira" ao redor da origem, mas
-    o rotacional é zero! Explique: pense no que acontece com uma
-    partícula pequena colocada no campo — em \(\vec{F}_1\) ela gira
-    em torno de si mesma; em \(\vec{F}_2\), ela orbita ao redor da
-    origem mas não gira em torno de si.</p>
+  <p>
+    <strong>(d)</strong> O rotacional vale \((0, 0, 0)\) para \((x,y) \neq
+    (0,0)\). O campo "gira" ao redor da origem, mas o rotacional é zero!
+    Explique: pense no que acontece com uma partícula pequena colocada no campo
+    — em \(\vec{F}_1\) ela gira em torno de si mesma; em \(\vec{F}_2\), ela
+    orbita ao redor da origem mas não gira em torno de si.
+  </p>
 
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
@@ -48,39 +52,37 @@
       <p><strong>SOLUÇÃO:</strong></p>
 
       <p>
-        (a) \(u = x^2 + y^2\).
-        \(\frac{\partial F_{2y}}{\partial x} = \frac{1 \cdot (x^2+y^2) -
-        x \cdot 2x}{(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+        (a) \(u = x^2 + y^2\). \(\frac{\partial F_{2y}}{\partial x} = \frac{1
+        \cdot (x^2+y^2) - x \cdot 2x}{(x^2+y^2)^2} = \frac{y^2 -
+        x^2}{(x^2+y^2)^2}\).
       </p>
 
       <p>
-        (b) \(F_{2x} = \frac{-y}{u}\).
-        \(\frac{\partial F_{2x}}{\partial y} = \frac{(-1)(x^2+y^2) -
-        (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2 - y^2 + 2y^2}
+        (b) \(F_{2x} = \frac{-y}{u}\). \(\frac{\partial F_{2x}}{\partial y} =
+        \frac{(-1)(x^2+y^2) - (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2 - y^2 + 2y^2}
         {(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
       </p>
 
       <p>
-        (c) Componente \(k\): \(\frac{y^2 - x^2}{(x^2+y^2)^2} -
-        \frac{y^2 - x^2}{(x^2+y^2)^2} = 0\).
+        (c) Componente \(k\): \(\frac{y^2 - x^2}{(x^2+y^2)^2} - \frac{y^2 -
+        x^2}{(x^2+y^2)^2} = 0\).
       </p>
 
       <p>
-        (d) \(\nabla \times \vec{F}_2 = (0, 0, 0)\) para \((x,y) \neq
-        (0,0)\). O rotacional mede rotação <em>local</em> (infinitesimal).
-        O campo \(\vec{F}_2\) "gira" globalmente ao redor da origem, mas
-        em cada ponto individual não há cisalhamento — a velocidade
-        angular diminui com a distância de forma que não há tendência
-        de rotação local. É como um redemoinho onde a velocidade
-        diminui exatamente na proporção certa.
+        (d) \(\nabla \times \vec{F}_2 = (0, 0, 0)\) para \((x,y) \neq (0,0)\). O
+        rotacional mede rotação <em>local</em> (infinitesimal). O campo
+        \(\vec{F}_2\) "gira" globalmente ao redor da origem, mas em cada ponto
+        individual não há cisalhamento — a velocidade angular diminui com a
+        distância de forma que não há tendência de rotação local. É como um
+        redemoinho onde a velocidade diminui exatamente na proporção certa.
       </p>
 
       <p>
-        Em \(\vec{F}_1\), a velocidade angular é constante — uma
-        partícula pequena é "esticada" de um lado e "comprimida" do
-        outro, gerando rotação em torno de si mesma. Em \(\vec{F}_2\),
-        a partícula se move ao redor da origem mas não gira em torno
-        de si — não há rotação local, apenas órbita global.
+        Em \(\vec{F}_1\), a velocidade angular é constante — uma partícula
+        pequena é "esticada" de um lado e "comprimida" do outro, gerando rotação
+        em torno de si mesma. Em \(\vec{F}_2\), a partícula se move ao redor da
+        origem mas não gira em torno de si — não há rotação local, apenas órbita
+        global.
       </p>
     </div>
   </details>

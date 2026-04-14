@@ -1,61 +1,67 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
-<div class="context">
-              ORIGEM: Dinâmica de Fluidos - Setor de Reentrada Atmosférica
-              [DADOS DE 07/DEZ/1960]
-            </div>
-<p>
-              CONEXÃO: Até agora todos os campos eram 2D (plano \(xy\)). Mas
-              naves espaciais voam no ESPAÇO 3D — precisamos de campos que
-              dependam de \(x\), \(y\) e \(z\). Este exercício mostra como
-              decompor um campo 3D em comportamentos que você já entende dos
-              exercícios anteriores.
-            </p>
-<p>
-              Um campo de velocidades de um fluido é modelado por:
-              \[\vec{V}(x,y,z) = \begin{pmatrix} y \ -x \ z \end{pmatrix}\]
-            </p>
-<p><strong>(a)</strong> Calcule o valor do campo nos pontos \(P_1(1,1,1)\) e \(P_2(2,-2,3)\).</p>
-<p><strong>(b)</strong> Restrinja o campo ao plano \(xy\) (ou seja, fixe \(z=0\)). O campo resultante \(\vec{V}_{xy}(x,y) = (y, -x)\) lembra algum exercício anterior? Que padrão ele forma?</p>
-<p><strong>(c)</strong> Analise a componente \(z\) isoladamente: o que acontece com a velocidade vertical quando \(z > 0\)? E quando \(z < 0\)? Combine com (b) para descrever o tipo de movimento 3D resultante.</p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">
-
-                [NOTA TÉCNICA]: Para (b), compare com o EX-02 — o campo
-                \((y, -x)\) é o negativo de \((-y, x)\). Para (c), pense
-                em como a rotação no plano \(xy\) combinada com o movimento
-                vertical cria um padrão helicoidal (em espiral).
-              
-</div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
-<div class="solution">
-<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) Valores do campo:</p>
-<p>\[\vec{V}(1,1,1) = \begin{pmatrix} 1 \ -1 \ 1 \end{pmatrix}\]</p>
-<p>\[\vec{V}(2,-2,3) = \begin{pmatrix} -2 \ -2 \ 3 \end{pmatrix}\]</p>
-<p>(b) COMPORTAMENTO NO PLANO \(xy\):</p>
-<p>
-                  Com \(z=0\), o campo fica \(\vec{V}_{xy}(x,y) = (y, -x)\).
-                  Note que este é o negativo do campo do EX-02, que era
-                  \((-y, x)\). O campo \((y, -x)\) também é circular, mas com
-                  sentido HORÁRIO (em vez de anti-horário). Os vetores são
-                  tangentes aos círculos centrados na origem.
-                </p>
-<p>(c) COMPONENTE \(z\) E MOVIMENTO 3D:</p>
-Se \(z > 0\): a componente vertical é positiva, a partícula sobe.
-Se \(z < 0\): a componente vertical é negativa, a partícula desce.
-Se \(z = 0\): não há movimento vertical.
-<p>
-                  A velocidade vertical cresce linearmente com \(|z|\).
-                  Combinando a rotação horária no plano \(xy\) com o movimento
-                  vertical, obtemos um movimento HELICOIDAL (em espiral) — a
-                  partícula gira enquanto sobe ou desce. A "abertura" da
-                  espiral aumenta com \(|z|\). Este tipo de campo é relevante
-                  para modelar vórtices atmosféricos durante reentrada.
-                </p>
-</div>
-</details>
-
+  <div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
+  <div class="context">
+    ORIGEM: Dinâmica de Fluidos - Setor de Reentrada Atmosférica [DADOS DE
+    07/DEZ/1960]
+  </div>
+  <p>
+    CONEXÃO: Até agora todos os campos eram 2D (plano \(xy\)). Mas naves
+    espaciais voam no ESPAÇO 3D — precisamos de campos que dependam de \(x\),
+    \(y\) e \(z\). Este exercício mostra como decompor um campo 3D em
+    comportamentos que você já entende dos exercícios anteriores.
+  </p>
+  <p>
+    Um campo de velocidades de um fluido é modelado por: \[\vec{V}(x,y,z) =
+    \begin{pmatrix} y \ -x \ z \end{pmatrix}\]
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o valor do campo nos pontos \(P_1(1,1,1)\) e
+    \(P_2(2,-2,3)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Restrinja o campo ao plano \(xy\) (ou seja, fixe
+    \(z=0\)). O campo resultante \(\vec{V}_{xy}(x,y) = (y, -x)\) lembra algum
+    exercício anterior? Que padrão ele forma?
+  </p>
+  <p>
+    <strong>(c)</strong> Analise a componente \(z\) isoladamente: o que acontece
+    com a velocidade vertical quando \(z > 0\)? E quando \(z < 0\)? Combine com
+    (b) para descrever o tipo de movimento 3D resultante.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (b), compare com o campo circular do exercício
+      anterior — o campo \((y, -x)\) é o negativo de \((-y, x)\). Para (c),
+      pense em como a rotação no plano \(xy\) combinada com o movimento vertical
+      cria um padrão helicoidal (em espiral).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) Valores do campo:</p>
+      <p>\[\vec{V}(1,1,1) = \begin{pmatrix} 1 \ -1 \ 1 \end{pmatrix}\]</p>
+      <p>\[\vec{V}(2,-2,3) = \begin{pmatrix} -2 \ -2 \ 3 \end{pmatrix}\]</p>
+      <p>(b) COMPORTAMENTO NO PLANO \(xy\):</p>
+      <p>
+        Com \(z=0\), o campo fica \(\vec{V}_{xy}(x,y) = (y, -x)\). Note que este
+        é o negativo do campo circular do exercício anterior, que era \((-y,
+        x)\). O campo \((y, -x)\) também é circular, mas com sentido HORÁRIO (em
+        vez de anti-horário). tangentes aos círculos centrados na origem.
+      </p>
+      <p>(c) COMPONENTE \(z\) E MOVIMENTO 3D:</p>
+      Se \(z > 0\): a componente vertical é positiva, a partícula sobe. Se \(z <
+      0\): a componente vertical é negativa, a partícula desce. Se \(z = 0\):
+      não há movimento vertical.
+      <p>
+        A velocidade vertical cresce linearmente com \(|z|\). Combinando a
+        rotação horária no plano \(xy\) com o movimento vertical, obtemos um
+        movimento HELICOIDAL (em espiral) — a partícula gira enquanto sobe ou
+        desce. A "abertura" da espiral aumenta com \(|z|\). Este tipo de campo é
+        relevante para modelar vórtices atmosféricos durante reentrada.
+      </p>
+    </div>
+  </details>
+</li>

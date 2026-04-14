@@ -1,66 +1,78 @@
 <li class="exercise-item">
-<div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
-<div class="context">
-              ORIGEM: Laboratório de Dinâmica Orbital - Programa Gemini [DADOS
-              DE 03/MAR/1962]
-            </div>
-<p>
-              CONEXÃO: Todos os campos anteriores eram ESTÁTICOS — não mudam com
-              o tempo. Mas o universo se move! Este campo GIRA com o tempo, como
-              uma catavento. Conecte com a transformação de rotação que você viu
-              em Geometria Analítica (Cap 0): a matriz de rotação
-              \(\begin{pmatrix} \cos\theta & -\sin\theta \ \sin\theta & \cos\theta \end{pmatrix}\).
-            </p>
-<p>
-              Considere o campo vetorial dependente do tempo:
-              \[\vec{F}(x,y,t) = \begin{pmatrix} x\cos(t) - y\sin(t) \ x\sin(t)
-              + y\cos(t) \end{pmatrix}\] onde \(t\) representa o tempo.
-            </p>
-<p><strong>(a)</strong> Calcule o valor do campo no ponto \(P(1,0)\) para \(t = 0\), \(t = \pi/2\), \(t = \pi\) e \(t = 3\pi/2\).</p>
-<p><strong>(b)</strong> Esboce os quatro vetores no mesmo ponto \(P(1,0)\), um para cada tempo. Você consegue ver a rotação?</p>
-<p><strong>(c)</strong> Calcule a magnitude \(|\vec{F}(x,y,t)|\). Ela depende de \(t\)? O que isso significa?</p>
-<p><strong>(d)</strong> Apenas a origem é um ponto onde o campo permanece constante para todo \(t\). Por quê?</p>
-<details class="hint-container">
-<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
-<div class="hint">
-
-                [NOTA TÉCNICA]: Para (c), expanda \(|\vec{F}|^2 = (x\cos t - y\sin t)^2 + (x\sin t + y\cos t)^2\) e use a identidade \(\cos^2 t + \sin^2 t = 1\) (Cap 0 — Cônicas). Para (d), note que \(\vec{F}(0,0,t) = (0,0)\) para qualquer \(t\).
-              
-</div>
-</details>
-<details>
-<summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
-<div class="solution">
-<p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-<p>(a) VALORES EM \(P(1,0)\):</p>
-<p>\[\vec{F}(1,0,0) = \begin{pmatrix} 1 \ 0 \end{pmatrix}\]</p>
-<p>\[\vec{F}(1,0,\pi/2) = \begin{pmatrix} 0 \ 1 \end{pmatrix}\]</p>
-<p>\[\vec{F}(1,0,\pi) = \begin{pmatrix} -1 \ 0 \end{pmatrix}\]</p>
-<p>\[\vec{F}(1,0,3\pi/2) = \begin{pmatrix} 0 \ -1 \end{pmatrix}\]</p>
-<p>
-                  (b) ESBOÇO: Os quatro vetores formam uma cruz rotacionada — o
-                  vetor gira no sentido anti-horário, completando uma volta a
-                  cada \(2\pi\) unidades de tempo. Em \(t=0\) aponta para a
-                  direita, em \(t=\pi/2\) para cima, em \(t=\pi\) para a
-                  esquerda, em \(t=3\pi/2\) para baixo.
-                </p>
-<p>(c) MAGNITUDE:</p>
-<p>\[|\vec{F}|^2 = (x\cos t - y\sin t)^2 + (x\sin t + y\cos t)^2\]</p>
-<p>
-                  Expandindo e usando \(\cos^2 t + \sin^2 t = 1\):
-                  \(|\vec{F}|^2 = x^2 + y^2\), logo \(|\vec{F}| = \sqrt{x^2+y^2}\).
-                </p>
-<p>
-                  A magnitude NÃO depende de \(t\) — é sempre igual à distância
-                  do ponto à origem. O campo gira, mas não "estica" nem
-                  "encolhe". É uma rotação rígida.
-                </p>
-<p>(d) PONTO INVARIANTE:</p>
-<p>
-                  \(\vec{F}(0,0,t) = (0\cdot\cos t - 0\cdot\sin t, 0\cdot\sin t + 0\cdot\cos t) = (0,0)\).
-                  Na origem, o vetor é sempre nulo, independente de \(t\).
-                  Para qualquer outro ponto, o vetor gira continuamente.
-                </p>
-</div>
-</details>
-
+  <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Dinâmica Orbital - Programa Gemini [DADOS DE
+    03/MAR/1962]
+  </div>
+  <p>
+    CONEXÃO: Todos os campos anteriores eram ESTÁTICOS — não mudam com o tempo.
+    Mas o universo se move! Este campo GIRA com o tempo, como uma catavento.
+    Conecte com a transformação de rotação que você viu em Geometria Analítica
+    (Cap 0): a matriz de rotação \(\begin{pmatrix} \cos\theta & -\sin\theta \
+    \sin\theta & \cos\theta \end{pmatrix}\).
+  </p>
+  <p>
+    Considere o campo vetorial dependente do tempo: \[\vec{F}(x,y,t) =
+    \begin{pmatrix} x\cos(t) - y\sin(t) \ x\sin(t) + y\cos(t) \end{pmatrix}\]
+    onde \(t\) representa o tempo.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o valor do campo no ponto \(P(1,0)\) para \(t =
+    0\), \(t = \pi/2\), \(t = \pi\) e \(t = 3\pi/2\).
+  </p>
+  <p>
+    <strong>(b)</strong> Esboce os quatro vetores no mesmo ponto \(P(1,0)\), um
+    para cada tempo. Você consegue ver a rotação?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a magnitude \(|\vec{F}(x,y,t)|\). Ela depende
+    de \(t\)? O que isso significa?
+  </p>
+  <p>
+    <strong>(d)</strong> Apenas a origem é um ponto onde o campo permanece
+    constante para todo \(t\). Por quê?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (c), expanda \(|\vec{F}|^2 = (x\cos t - y\sin t)^2 +
+      (x\sin t + y\cos t)^2\) e use a identidade \(\cos^2 t + \sin^2 t = 1\)
+      (Cap 0 — Cônicas). Para (d), note que \(\vec{F}(0,0,t) = (0,0)\) para
+      qualquer \(t\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) VALORES EM \(P(1,0)\):</p>
+      <p>\[\vec{F}(1,0,0) = \begin{pmatrix} 1 \ 0 \end{pmatrix}\]</p>
+      <p>\[\vec{F}(1,0,\pi/2) = \begin{pmatrix} 0 \ 1 \end{pmatrix}\]</p>
+      <p>\[\vec{F}(1,0,\pi) = \begin{pmatrix} -1 \ 0 \end{pmatrix}\]</p>
+      <p>\[\vec{F}(1,0,3\pi/2) = \begin{pmatrix} 0 \ -1 \end{pmatrix}\]</p>
+      <p>
+        (b) ESBOÇO: Os quatro vetores formam uma cruz rotacionada — o vetor gira
+        no sentido anti-horário, completando uma volta a cada \(2\pi\) unidades
+        de tempo. Em \(t=0\) aponta para a direita, em \(t=\pi/2\) para cima, em
+        \(t=\pi\) para a esquerda, em \(t=3\pi/2\) para baixo.
+      </p>
+      <p>(c) MAGNITUDE:</p>
+      <p>\[|\vec{F}|^2 = (x\cos t - y\sin t)^2 + (x\sin t + y\cos t)^2\]</p>
+      <p>
+        Expandindo e usando \(\cos^2 t + \sin^2 t = 1\): \(|\vec{F}|^2 = x^2 +
+        y^2\), logo \(|\vec{F}| = \sqrt{x^2+y^2}\).
+      </p>
+      <p>
+        A magnitude NÃO depende de \(t\) — é sempre igual à distância do ponto à
+        origem. O campo gira, mas não "estica" nem "encolhe". É uma rotação
+        rígida.
+      </p>
+      <p>(d) PONTO INVARIANTE:</p>
+      <p>
+        \(\vec{F}(0,0,t) = (0\cdot\cos t - 0\cdot\sin t, 0\cdot\sin t +
+        0\cdot\cos t) = (0,0)\). Na origem, o vetor é sempre nulo, independente
+        de \(t\). Para qualquer outro ponto, o vetor gira continuamente.
+      </p>
+    </div>
+  </details>
+</li>
