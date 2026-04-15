@@ -4,16 +4,27 @@
     ORIGEM: Centro de Pesquisas Orbitais [REGISTROS INTERNOS]
   </div>
   <p>
+    Vimos que descontinuidades em linhas não impedem a integrabilidade. Agora
+    precisamos de outra ferramenta essencial: quando o domínio \(D\) pode ser
+    dividido em duas regiões \(D_1\) e \(D_2\) que se encontram apenas na
+    fronteira, a integral sobre \(D\) deve ser a soma das integrais sobre cada
+    parte. Este é o princípio da aditividade, que será formalizado em tópicos
+    posteriores. Aqui, vamos justificá-lo usando apenas a soma de Riemann.
+  </p>
+  <p>
     Dado um domínio \(D\) que pode ser decomposto em duas regiões adjacentes
     \(D_1\) e \(D_2\), explique como é possível relacionar \(\iint_{D}
     f(x,y)\,dA\) às integrais sobre \(D_1\) e \(D_2\), sem recorrer a
-    propriedades de <span class="censored">Fubini</span>
-    ou outras ferramentas avançadas.
+    ferramentas avançadas de integração iterada.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Há invariantes na forma como a soma de Riemann é montada.
+      [NOTA TÉCNICA]: A fronteira comum \(D_1 \cap D_2\) é uma curva (ou união
+      de segmentos), logo tem conteúdo nulo. Construa uma partição de \(D\) que
+      respeite a divisão \(D_1 \cup D_2\): os sub-retângulos inteiramente dentro
+      de \(D_1\) contribuem para \(\iint_{D_1} f\), os de \(D_2\) para
+      \(\iint_{D_2} f\), e os que tocam a fronteira têm \(\Delta A_i \to 0\).
     </div>
   </details>
   <details>

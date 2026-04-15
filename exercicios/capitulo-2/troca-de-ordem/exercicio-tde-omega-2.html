@@ -2,13 +2,48 @@
   <div class="exercise-number">EXERCÍCIO TDE-OMEGA-2</div>
   <div class="context">ORIGEM: Reconhecimento Espacial - Skylab [OUT/1973]</div>
   <p>
-    Reescreva a integral trocando a ordem: \[ \int_0^\pi \int_0^{\sin x} f(x,
-    y)\,dy\,dx \]
+    A parábola, o logaritmo, a cúbica — todas invertidas. Agora, uma curva
+    trigonométrica: \\(y = \\sin x\\), cuja inversa é \\(x = \\arcsin y\\). A
+    região vai de \\(x = 0\\) a \\(x = \\pi\\), cobrindo um arco completo do
+    seno. A inversão é direta, mas o limite superior \\(\\pi\\) se transforma em
+    \\(\\arcsin\\), e você precisa lembrar que \\(\\sin\\) atinge \\(1\\) em
+    \\(\\pi/2\\), não em \\(\\pi\\).
   </p>
+  <p>
+    Reescreva a integral trocando a ordem: \\[ \\int_0^\\pi \\int_0^{\\sin x}
+    f(x, y)\\,dy\\,dx \\]
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região sob \\(y = \\sin x\\) de \\(0\\) a
+    \\(\\pi\\). Note que \\(\\sin x\\) vai de \\(0\\) a \\(1\\) e volta a
+    \\(0\\).
+  </p>
+  <p>
+    <strong>(b)</strong> Ao inverter, \\(y \\in [0, 1]\\). Para cada \\(y\\),
+    \\(x\\) vai de \\(\\arcsin y\\) a \\(\\pi - \\arcsin y\\) (pela simetria do
+    seno). Justifique.
+  </p>
+  <p><strong>(c)</strong> Escreva a integral na ordem \\(dx\\,dy\\).</p>
+  <!-- Série OMEGA: sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      \[ \int_0^1 \int_0^{\arcsin y} f(x, y)\,dx\,dy \]
+      <p>
+        <strong>(a)</strong> A curva \\(y = \\sin x\\) em \\([0, \\pi]\\) forma
+        um arco que sobe de \\(0\\) a \\(1\\) (em \\(\\pi/2\\)) e desce de volta
+        a \\(0\\) (em \\(\\pi\\)).
+      </p>
+      <p>
+        <strong>(b)</strong> Para \\(y \\in [0, 1]\\), os valores de \\(x\\)
+        onde \\(\\sin x = y\\) são \\(x = \\arcsin y\\) e \\(x = \\pi - \\arcsin
+        y\\) (pela identidade \\(\\sin(\\pi - \\theta) = \\sin \\theta\\)). Logo
+        \\(x\\) vai de \\(\\arcsin y\\) a \\(\\pi - \\arcsin y\\).
+      </p>
+      <p><strong>(c)</strong> Nova integral:</p>
+      <p>
+        \\[ \\int_0^1 \\int_{\\arcsin y}^{\\pi - \\arcsin y} f(x, y)\\,dx\\,dy
+        \\]
+      </p>
     </div>
   </details>
 </li>

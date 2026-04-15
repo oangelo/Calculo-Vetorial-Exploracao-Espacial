@@ -5,33 +5,66 @@
     <span class="censored">GAMMA-1</span>
   </div>
   <p>
-    Seja \(D\) o disco \(x^2 + y^2 \le 4\). Calcular \(\iint_D e^{-(x^2 +
-    y^2)}\, dA\) usando integrais iteradas em coordenadas cartesianas (sem
+    Retas e parábolas são curvas analíticas — mas e quando o domínio é um disco?
+    As fronteiras envolvem raízes quadradas de expressões como \\(\\sqrt{4 -
+    x^2}\\), e a integral iterada em coordenadas cartesianas se torna
+    notoriamente difícil. Este exercício não é para obter um número bonito: é
+    para você sentir, na pele, porque coordenadas polares serão necessárias no
+    próximo capítulo.
+  </p>
+  <p>
+    Seja \\(D\\) o disco \\(x^2 + y^2 \\le 4\\). Calcular \\(\\iint_D e^{-(x^2 +
+    y^2)}\\, dA\\) usando integrais iteradas em coordenadas cartesianas (sem
     polar). Comentar a dificuldade em estabelecer os limites e a aplicabilidade
     de Fubini.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce o disco \\(D\\) e descreva-o como Tipo I
+    (limites em \\(y\\) como função de \\(x\\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral iterada e explique por que o cálculo
+    analítico é impraticável em coordenadas cartesianas.
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva \\(D\\) como Tipo II e argumente que Fubini
+    garante a equivalência, mesmo sem conseguirmos calcular a integral
+    explicitamente.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem simetrias, mas a mudança para coordenadas polares
-      não está disponível neste tópico.
+      [NOTA TÉCNICA]: Para cada \\(x \\in [-2, 2]\\), \\(y\\) vai de
+      \\(-\\sqrt{4 - x^2}\\) a \\(\\sqrt{4 - x^2}\\). O integrando
+      \\(e^{-(x^2+y^2)}\\) não tem primitiva elementar em \\(y\\) quando \\(x\\)
+      está fixo — isso motiva coordenadas polares.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Em Cartesianas: \( -2 \le x \le 2,\; -\sqrt{4 - x^2} \le y \le \sqrt{4 -
-        x^2}. \)
+        <strong>(a)</strong> O disco \\(D: x^2 + y^2 \\le 4\\) tem raio 2. Como
+        Tipo I: para \\(x \\in [-2, 2]\\), \\(y \\in [-\\sqrt{4-x^2},
+        \\sqrt{4-x^2}]\\).
+      </p>
+      <p><strong>(b)</strong> A integral iterada é:</p>
+      <p>
+        \\[ \\int_{x=-2}^{2} \\left[\\int_{y=-\\sqrt{4-x^2}}^{\\sqrt{4-x^2}}
+        e^{-(x^2 + y^2)}\\, dy\\right] dx. \\]
       </p>
       <p>
-        \( \iint_D e^{-(x^2 + y^2)}\, dA = \int_{x=-2}^{2}
-        \left[\int_{y=-\sqrt{4 - x^2}}^{\sqrt{4 - x^2}} e^{-(x^2 + y^2)}
-        dy\right] dx. \)
+        A integral interna \\(\\int e^{-x^2} \\cdot e^{-y^2}\\, dy\\) envolve
+        \\(\\int e^{-y^2}\\, dy\\), cuja primitiva é a função erro (não
+        elementar). Não é possível resolver analiticamente em coordenadas
+        cartesianas.
       </p>
       <p>
-        Embora a forma fechada seja complexa, o Teorema de Fubini garante a
-        equivalência de qualquer forma de inteiração iterada.
+        <strong>(c)</strong> Como Tipo II, a descrição é simétrica: \\(y \\in
+        [-2, 2]\\), \\(x \\in [-\\sqrt{4-y^2}, \\sqrt{4-y^2}]\\). O Teorema de
+        Fubini garante que a integral dupla existe e que as duas ordens iteradas
+        são iguais, mesmo que não consigamos calcular o valor explicitamente. (O
+        valor exato, obtido por coordenadas polares, é \\(\\pi(1 - e^{-4})\\).)
       </p>
     </div>
   </details>

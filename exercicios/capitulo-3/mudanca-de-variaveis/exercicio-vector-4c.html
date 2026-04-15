@@ -5,6 +5,25 @@
     <span class="censored">Cálculo Exclusivo</span> [1973]
   </div>
   <p>
+    Encerramos este tópico com um exercício que combina coordenadas polares com
+    análise de simetria. A função \(x^2-y^2 = r^2\cos(2\theta)\) troca de sinal
+    quando \(\theta\) passa de \(\pi/4\) para \(3\pi/4\). Se o setor angular for
+    simétrico em relação a esses pontos, a integral se anula. Caso contrário,
+    sobra um valor não-nulo que revela a assimetria da região.
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva \(x^2-y^2\) em coordenadas polares usando a
+    identidade \(\cos^2\theta - \sin^2\theta = \cos(2\theta)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Separe a integral em \(r\) e \(\theta\) e avalie a
+    parte radial.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a parte angular e conclua se o resultado é nulo
+    ou não.
+  </p>
+  <p>
     Investigar o valor de \(\iint_{R} (x^2 - y^2)\,dx\,dy\), onde \(R\) é
     definido em coordenadas polares como \(\{(r,\theta)\mid 0 \le r \le 2,\;
     \frac{\pi}{6} \le \theta \le \frac{5\pi}{6}\}\). Discutir qualquer possível
@@ -15,33 +34,25 @@
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        [SUGESTÃO DE PROCEDIMENTO]: Em polares, \(x = r\cos\theta,\; y =
-        r\sin\theta\). Então \(x^2 - y^2 = r^2(\cos^2\theta - \sin^2\theta) =
-        r^2 \cos(2\theta)\).
+        Em polares, \(x^2 - y^2 = r^2\cos(2\theta)\). A integral torna-se
+        \[\int_{\pi/6}^{5\pi/6}\int_{0}^{2} r^2\cos(2\theta)\cdot
+        r\,dr\,d\theta.\]
       </p>
       <p>
-        A integral torna-se \[ \int_{\theta=\pi/6}^{5\pi/6}\int_{r=0}^{2} r^2
-        \cos(2\theta)\,r\,dr\,d\theta = \int_{\pi/6}^{5\pi/6} \cos(2\theta)\,
-        \left[\int_{0}^{2} r^3\,dr\right] d\theta. \] A parte de \(r\) rende
-        \(\frac{2^4}{4} = 4\).
+        A parte radial: \(\int_{0}^{2} r^3\,dr = \frac{r^4}{4}\Big|_{0}^{2} =
+        4\).
       </p>
       <p>
-        Logo, \[ 4 \int_{\pi/6}^{5\pi/6} \cos(2\theta)\, d\theta = 4 \left[
-        \frac{\sin(2\theta)}{2} \right]_{\pi/6}^{5\pi/6} = 2
-        \bigl(\sin\bigl(\frac{10\pi}{6}\bigr) -
-        \sin\bigl(\frac{\pi}{3}\bigr)\bigr). \]
+        A parte angular: \(4\int_{\pi/6}^{5\pi/6}\cos(2\theta)\,d\theta =
+        4\bigl[\frac{\sin(2\theta)}{2}\bigr]_{\pi/6}^{5\pi/6}\). Como
+        \(\sin(\frac{5\pi}{3}) = -\sin(\frac{\pi}{3})\), a diferença vale
+        \(-2\sin(\frac{\pi}{3}) = -\sqrt{3}\). Logo o valor é
+        \(2\times(-\sqrt{3}) = -2\sqrt{3}\).
       </p>
       <p>
-        \(\sin\bigl(\frac{10\pi}{6}\bigr) = \sin\bigl(\frac{5\pi}{3}\bigr) =
-        -\sin\bigl(\frac{\pi}{3}\bigr)\). Assim, a diferença torna-se
-        \(-\sin(\frac{\pi}{3}) - \sin(\frac{\pi}{3}) = -2\sin(\frac{\pi}{3}) =
-        -\sqrt{3}\).
-      </p>
-      <p>Portanto o valor é \(2 \times (-\sqrt{3}) = -2\sqrt{3}\).</p>
-      <p>
-        CONCLUSÃO: O resultado não é zero. A assimetria no intervalo de
-        \(\theta\) (de \(\pi/6\) a \(5\pi/6\)) impede o cancelamento total da
-        função \(\cos(2\theta)\).
+        CONCLUSÃO: O resultado não é zero porque o setor angular
+        \(\pi/6\le\theta\le 5\pi/6\) não é simétrico em relação ao ângulo onde
+        \(\cos(2\theta)\) troca de sinal.
       </p>
     </div>
   </details>

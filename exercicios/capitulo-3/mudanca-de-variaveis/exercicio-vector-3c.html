@@ -5,30 +5,50 @@
     <span class="censored">Órbita Sincronizada</span>
   </div>
   <p>
+    No exercício anterior, usamos uma parametrização não-linear \(x=u,\;y=vu\)
+    para retangularizar um triângulo. Agora vamos aplicar a mesma filosofia a
+    uma região cunha delimitada pelas retas \(y=0\) e \(y=2x\). A ideia é a
+    mesma: escolher variáveis que convertam a fronteira oblíqua em um limite
+    constante, transformando a região em um retângulo ou faixa simples no plano
+    \((u,v)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação \(u=x\), \(v=y/(2x)\) e
+    verifique que ela leva a região cunha ao retângulo \(0\le u\le 2\), \(0\le
+    v\le 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o Jacobiano \(\partial(x,y)/\partial(u,v)\) da
+    transformação inversa \(x=u\), \(y=2uv\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a integral transformada e discuta se admite
+    fechamento em funções elementares.
+  </p>
+  <p>
     A região \(R\) está contida entre as retas \(y=0\) e \(y=2x\), e entre
-    \(x=0\) e \(x=2\). Defina uma transformação apropriada para “endireitar” a
+    \(x=0\) e \(x=2\). Defina uma transformação apropriada para "endireitar" a
     faixa de integração e calcule \(\iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy\).
-    Sugira se há possibilidade de simplificação adicional ou não.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Busque uma parametrização que uniformize a inclinação das
-      retas-limite.
+      [NOTA TÉCNICA]: Com \(u=x\) e \(v=y/(2x)\), temos \(y=2uv\). O Jacobiano
+      vale \(|1\cdot 2u - 0\cdot 2v| = 2u\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Podemos adotar \(u = x\) e \(v = \frac{y}{2x}\) (para \(x&gt;0\)), de
-        modo que quando \(y = 0\), \(v=0\), e quando \(y=2x\), \(v=1\). Além
-        disso, \(0 \le x \le 2\) leva \(0 \le u \le 2\).
+        Podemos adotar \(u = x\) e \(v = \frac{y}{2x}\) (para \(x>0\)), de modo
+        que quando \(y = 0\), \(v=0\), e quando \(y=2x\), \(v=1\). Além disso,
+        \(0 \le x \le 2\) leva \(0 \le u \le 2\).
       </p>
       <p>
         A Jacobiana, no entanto, requer cuidado: \[ x = u,\quad y = 2u\,v. \] \[
-        \frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix} 1 &amp; 0\\ 2v
-        &amp; 2u \end{vmatrix} = (1)(2u) - (0)(2v) = 2u. \]
+        \frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix} 1 & 0\\ 2v & 2u
+        \end{vmatrix} = (1)(2u) - (0)(2v) = 2u. \]
       </p>
       <p>
         Logo, \[ \iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy =

@@ -4,16 +4,26 @@
     ORIGEM: Laboratório de Cálculos Orbitais, Programa Apollo
   </div>
   <p>
-    Considere a região retangular \(D = [0,2] \times [0,3]\). Sejam \(m=2\) e
-    \(n=3\) as subdivisões para uma soma de Riemann inicial. Calcule a soma de
-    Riemann de \(\iint_D (x+2y)\, dA\) usando pontos amostrais no canto superior
-    direito de cada sub-retângulo.
+    Você já calculou áreas sob curvas usando somas de Riemann em uma variável.
+    Agora vamos estender essa ideia para duas variáveis: em vez de somar
+    "faixas" de altura, somamos "colunas" de volume. Considere a região
+    retangular \(D = [0,2] \times [0,3]\). Sejam \(m=2\) e \(n=3\) as
+    subdivisões para uma soma de Riemann inicial.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\Delta x\) e \(\Delta y\) e liste as
+    coordenadas de cada canto superior direito nos sub-retângulos.
+  </p>
+  <p>
+    <strong>(b)</b> Calcule a soma de Riemann de \(\iint_D (x+2y)\, dA\) usando
+    esses pontos amostrais.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre-se de que \(\Delta x = \frac{2-0}{m}\) e \(\Delta y
-      = \frac{3-0}{n}\).
+      [NOTA TÉCNICA]: Identifique primeiro os valores de \(\Delta x\) e \(\Delta y\)
+      pela fórmula \(\Delta x = \frac{x_{\max} - x_{\min}}{m}\). Depois, liste
+      explicitamente as coordenadas de cada canto superior direito antes de avaliar \(f\).
     </div>
   </details>
   <details>
@@ -29,17 +39,14 @@
         \((1,1)\), depois \((2,1)\), \((1,2)\), \((2,2)\), \((1,3)\), \((2,3)\).
       </p>
       <p>
-        A soma de Riemann se expressa como \(\sum f(x_{ij}^*, y_{ij}^*) \Delta x
-        \,\Delta y\). Substituindo cada ponto:
+        Substituindo cada ponto amostral:
       </p>
-      <ul>
-        <li>\(f(1,1) = 1 + 2(1) = 3\)</li>
-        <li>\(f(2,1) = 2 + 2(1) = 4\)</li>
-        <li>\(f(1,2) = 1 + 2(2) = 5\)</li>
-        <li>\(f(2,2) = 2 + 2(2) = 6\)</li>
-        <li>\(f(1,3) = 1 + 2(3) = 7\)</li>
-        <li>\(f(2,3) = 2 + 2(3) = 8\)</li>
-      </ul>
+      <p>\(f(1,1) = 1 + 2(1) = 3\)</p>
+      <p>\(f(2,1) = 2 + 2(1) = 4\)</p>
+      <p>\(f(1,2) = 1 + 2(2) = 5\)</p>
+      <p>\(f(2,2) = 2 + 2(2) = 6\)</p>
+      <p>\(f(1,3) = 1 + 2(3) = 7\)</p>
+      <p>\(f(2,3) = 2 + 2(3) = 8\)</p>
       <p>Soma total: \[ (3 + 4 + 5 + 6 + 7 + 8) \times 1 \times 1 = 33. \]</p>
       <p>Portanto, a soma de Riemann aproximada é \(33\).</p>
     </div>

@@ -5,16 +5,38 @@
     <span class="censored">███</span> [MEMO ENVIADO EM 14/MAI/1965]
   </div>
   <p>
+    No exercício anterior vimos que a união <em>finita</em> de conjuntos de
+    conteúdo nulo preserva a propriedade. Mas será que isso vale para uma
+    quantidade <em>enumerável</em> — infinita, mas contável — de conjuntos? O
+    "orçamento" \(\epsilon\) precisa ser dividido entre infinitos pedaços, e
+    isso exige um truque sutil.
+  </p>
+  <p>
     Suponha que haja uma sequência enumerável de conjuntos
     \(\{B_k\}_{k=1}^\infty\) de conteúdo nulo em \(\mathbb{R}^2\). Avalie se a
     união \(\bigcup_{k=1}^\infty B_k\) ainda pode possuir conteúdo nulo.
-    (Indique, em termos conceituais, por que isso ocorre para contagens
-    infinitas.)
+  </p>
+  <p>
+    <strong>(a)</strong> Para cobrir \(B_k\), podemos usar retângulos de área
+    total menor que \(\epsilon \cdot 2^{-k}\). Calcule a soma
+    \(\sum_{k=1}^\infty \epsilon \cdot 2^{-k}\). O que ela vale?
+  </p>
+  <p>
+    <strong>(b)</strong> Usando o resultado do item (a), explique por que a
+    união enumerável pode ser coberta por retângulos de área total menor que
+    \(\epsilon\).
+  </p>
+  <p>
+    <strong>(c)</strong> Por que o argumento com \(\epsilon/n\) (usado na união
+    finita) <strong>não</strong> funcionaria aqui? Qual é a diferença crucial
+    entre \(\sum 2^{-k}\) e \(\sum 1/k\)?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Atenção às somas de séries que podem convergir.
+      [NOTA TÉCNICA]: A série geométrica \(\sum_{k=1}^\infty 2^{-k} = 1\)
+      converge. Essa convergência é o que permite "dividir" o orçamento
+      \(\epsilon\) entre infinitos conjuntos sem estourar o limite.
     </div>
   </details>
   <details>

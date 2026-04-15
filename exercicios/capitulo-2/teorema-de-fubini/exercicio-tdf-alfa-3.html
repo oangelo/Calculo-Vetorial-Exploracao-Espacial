@@ -5,34 +5,75 @@
     <span class="censored">ALFA-03</span>
   </div>
   <p>
-    Seja \(D\) a região delimitada pelas retas \(x=0\), \(y=1\), \(y=2x\) e
-    \(x=2\). Calcular \(\iint_D (3 - xy)\, dA\) e verificar como o Teorema de
-    Fubini assegura a mesma resposta independentemente da ordem de integração.
+    Nos dois exercícios anteriores, o domínio era um triângulo completo —
+    bastava uma descrição simples. Mas e quando a região é um trapézio formado
+    por retas que não se encontram nos eixos? Agora precisamos subdividir ou
+    pensar com mais cuidado nos limites. Este exercício testa se você realmente
+    entendeu como montar integrais iteradas.
+  </p>
+  <p>
+    Seja \\(D\\) a região delimitada pelas retas \\(x=0\\), \\(y=1\\),
+    \\(y=2x\\) e \\(x=2\\). Calcular \\(\\iint_D (3 - xy)\\, dA\\) e verificar
+    como o Teorema de Fubini assegura a mesma resposta independentemente da
+    ordem de integração.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região \\(D\\) no plano \\(xy\\), marcando as
+    quatro retas que delimitam o trapézio e identificando os vértices.
+  </p>
+  <p>
+    <strong>(b)</strong> Descreva \\(D\\) como Tipo II (integre primeiro em
+    \\(x\\), depois em \\(y\\)) e resolva a integral.
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva \\(D\\) como Tipo I e verifique que o
+    resultado coincide.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Identifique a forma de trapézio no plano e escolha a ordem
-      de integração mais simples.
+      [NOTA TÉCNICA]: Ao esboçar, note que \\(y = 2x\\) cruza \\(y = 1\\) em
+      \\(x = 0.5\\). Para Tipo I, será necessário subdividir. Para Tipo II (com
+      \\(y\\) primeiro), a descrição é limpa: \\(y \\in [1, 4]\\) e \\(x \\in
+      [y/2, 2]\\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Ao desenhar as retas, nota-se que para cada \(x\) entre 0 e 2, \(y\)
-        varia de \(y=1\) até \(y=2x\) (quando \(2x > 1\), isto é, \(x > 0.5\)).
-        O domínio pode ser subdividido ou descrito via integração em duas
-        partes.
+        <strong>(a)</strong> As retas \\(x=0\\), \\(y=1\\), \\(y=2x\\),
+        \\(x=2\\) formam um trapézio com vértices em \\((0,1)\\), \\((0.5,
+        1)\\), \\((2,4)\\) e \\((2,1)\\). A interseção de \\(y=1\\) com
+        \\(y=2x\\) ocorre em \\(x = 0.5\\).
       </p>
       <p>
-        Alternativamente, inverter a ordem (integração em \(x\) ou \(y\)
-        primeiro) leva a intervalos distintos, mas o resultado final permanece
-        inalterado por Fubini.
+        <strong>(b)</strong> Como Tipo II: \\(1 \\le y \\le 4\\), e para cada
+        \\(y\\), \\(x\\) vai de \\(y/2\\) a \\(2\\) (pois \\(y = 2x\\) dá \\(x =
+        y/2\\)).
       </p>
       <p>
-        [Detalhes de cálculo podem ser desenvolvidos a partir da parametrização
-        escolhida.]
+        \\[ \\int_{y=1}^{4} \\left(\\int_{x=y/2}^{2} (3 - xy)\\, dx\\right) dy.
+        \\]
+      </p>
+      <p>Integração em \\(x\\):</p>
+      <p>
+        \\[ \\int_{y/2}^{2} (3 - xy)\\, dx = \\left[3x - \\frac{x^2
+        y}{2}\\right]_{y/2}^{2} = 6 - 2y - \\left(\\frac{3y}{2} -
+        \\frac{y^3}{8}\\right) = 6 - \\frac{7y}{2} + \\frac{y^3}{8}. \\]
+      </p>
+      <p>Integração em \\(y\\):</p>
+      <p>
+        \\[ \\int_1^4 \\left(6 - \\frac{7y}{2} + \\frac{y^3}{8}\\right) dy =
+        \\left[6y - \\frac{7y^2}{4} + \\frac{y^4}{32}\\right]_1^4 = (24 - 28 +
+        8) - \\left(6 - \\frac{7}{4} + \\frac{1}{32}\\right) = 4 -
+        \\frac{41}{32} = \\frac{87}{32}. \\]
+      </p>
+      <p>
+        <strong>(c)</strong> Como Tipo I, é necessário subdividir em \\(x =
+        0.5\\). Para \\(x \\in [0.5, 2]\\), \\(y\\) vai de \\(2x\\) a \\(4\\).
+        Resolvendo a integral resultante, obtém-se o mesmo valor \\(87/32\\),
+        confirmando Fubini.
       </p>
     </div>
   </details>

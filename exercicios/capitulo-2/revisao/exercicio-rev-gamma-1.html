@@ -5,18 +5,45 @@
     <span class="censored">Ω‑9</span>
   </div>
   <p>
-    A função \(s(x,y)=\sin(\tfrac{1}{x+y})\) está definida em
-    \(D=(0,1]\times(0,1]\) e estendida por continuidade como zero na borda onde
-    \(x=0\) ou \(y=0\). Argumente sobre a integrabilidade de \(s\) em \(D\)
-    apesar da oscilação infinita próximo à origem.
+    Propriedades algébricas: consolidadas. Agora, um desafio conceitual que
+    conecta conteúdo nulo com integrabilidade. A função \\(\\sin(1/(x+y))\\)
+    oscila infinitamente perto da origem — mas a região problemática pode ter
+    área arbitrariamente pequena. Este exercício retoma o conceito de conjunto
+    de conteúdo nulo (visto em REV-ALFA-3) e aplica-o a uma situação mais sutil:
+    não é a descontinuidade que importa, mas se a oscilação pode ser controlada
+    por partições finas.
   </p>
+  <p>
+    A função \\(s(x,y)=\\sin(\\tfrac{1}{x+y})\\) está definida em
+    \\(D=(0,1]\\times(0,1]\\) e estendida por continuidade como zero na borda
+    onde \\(x=0\\) ou \\(y=0\\). Argumente sobre a integrabilidade de \\(s\\) em
+    \\(D\\) apesar da oscilação infinita próximo à origem.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que \\(|s(x,y)| \\le 1\\) para todo
+    \\((x,y)\\). O que isso garante sobre as somas superior e inferior?
+  </p>
+  <p>
+    <strong>(b)</strong> Identifique o conjunto onde a oscilação é problemática.
+    Esse conjunto pode ser coberto por retângulos de área total arbitrariamente
+    pequena?
+  </p>
+  <p><strong>(c)</strong> Conclua que \\(s\\) é integrável em \\(D\\).</p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        \(|s|\le1\) e o conjunto problemático (uma vizinhança da origem) pode
-        ter área arbitrariamente pequena; a oscilação não impede a convergência
-        das somas de Riemann. Logo \(s\) é integrável.
+        <strong>(a)</strong> \\(|s|\\le1\\) garante que as somas superior e
+        inferior são finitas e limitadas pela área de \\(D\\).
+      </p>
+      <p>
+        <strong>(b)</strong> O conjunto problemático é uma vizinhança da origem
+        \\(\\{(x,y) : x + y < \\epsilon\\}\\), que pode ter área
+        \\(\\epsilon^2/2\\) arbitrariamente pequena.
+      </p>
+      <p>
+        <strong>(c)</strong> A oscilação não impede a convergência das somas de
+        Riemann quando \\(\\|P\\| \\to 0\\). Logo \\(s\\) é integrável.
       </p>
     </div>
   </details>

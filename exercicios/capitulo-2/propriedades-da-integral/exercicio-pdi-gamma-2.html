@@ -2,16 +2,36 @@
   <div class="exercise-number">EXERCÍCIO PDI-GAMMA-2</div>
   <div class="context">ORIGEM: Análise de Restrições Térmicas (MAI/1966)</div>
   <p>
+    Já vimos que funções não-negativas têm integrais não-negativas. Agora vamos
+    a um problema prático de engenharia: se a temperatura em uma placa é
+    limitada por um valor máximo \(M\), como garantir que o "calor total" (a
+    integral) é finito? A propriedade de limitação nos dá essa garantia.
+  </p>
+  <p>
     Considere \(|f(x,y)| \le M\) para todo \((x,y)\) em
     <span class="censored">D</span>, onde \(M\) é uma constante positiva.
     Explique como tal limitação pode influenciar a integrabilidade de \(f\) e a
-    possível finitude do valor de \(\iint_D f(x,y)\, dA\).
+    possível finitude do valor de \(\iint_D f(x,y)\,dA\).
+  </p>
+  <p>
+    <strong>(a)</strong> Se \(|f(x,y)| \le M\), então \(-M \le f(x,y) \le M\).
+    Use a monotonicidade (PDI-GAMMA-1) para mostrar que \(\iint_D (-M)\,dA \le
+    \iint_D f\,dA \le \iint_D M\,dA\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\iint_D M\,dA\) usando a propriedade de
+    constantes (PDI-BETA-3). Qual é o resultado em termos da área de \(D\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Conclua que \(|\iint_D f\,dA| \le M \cdot
+    \text{área}(D)\). Essa desigualdade garante que a integral é finita?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A existência de um limite superior costuma indicar algo
-      sobre somas de Riemann.
+      [NOTA TÉCNICA]: A limitação de \(f\) por \(M\) controla cada termo da soma
+      de Riemann: \(|f(x_i,y_j) \cdot \Delta A| \le M \cdot \Delta A\). A soma
+      de áreas é a área total de \(D\).
     </div>
   </details>
   <details>

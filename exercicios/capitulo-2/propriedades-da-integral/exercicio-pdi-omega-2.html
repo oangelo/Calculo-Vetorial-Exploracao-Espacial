@@ -4,15 +4,32 @@
     ORIGEM: Pesquisa sobre Regiões Poligonais (JUL/1966)
   </div>
   <p>
+    Já usamos monotonicidade ponto a ponto (\(f \ge g \Rightarrow \iint f \ge
+    \iint g\)). Agora vamos ver uma monotonicidade diferente: quando o
+    <em>domínio</em> cresce. Se \(D_1 \subset D_2\) e \(f \ge 0\), a integral
+    sobre o domínio maior é necessariamente maior ou igual? Essa propriedade é
+    intuitiva mas merece verificação formal.
+  </p>
+  <p>
     Suponha que \(D_1 \subset D_2\) e \(f(x,y)\ge 0\) em todas as regiões
     consideradas. Avalie a afirmação:
   </p>
   <p>\[\iint_{D_1} f(x,y)\, dA \;\le\; \iint_{D_2} f(x,y)\, dA.\]</p>
   <p>
-    Discorra por que o fato de \(D_1\) ser estritamente contida em \(D_2\)
-    influi, mesmo sem calcular as integrais.
+    <strong>(a)</strong> Escreva \(D_2 = D_1 \cup (D_2 \setminus D_1)\) com
+    união disjunta. Use aditividade (PDI-BETA-2) para expressar \(\iint_{D_2}
+    f\,dA\) em termos de \(\iint_{D_1} f\,dA\) e \(\iint_{D_2 \setminus D_1}
+    f\,dA\).
   </p>
-  <!-- Sem dicas para OMEGA -->
+  <p>
+    <strong>(b)</strong> O que a não-negatividade de \(f\) diz sobre
+    \(\iint_{D_2 \setminus D_1} f\,dA\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Se \(D_1 \neq D_2\) e \(f > 0\) em algum ponto de \(D_2
+    \setminus D_1\), a desigualdade é estrita?
+  </p>
+  <!-- Série OMEGA: hint específico nos sub-itens -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">

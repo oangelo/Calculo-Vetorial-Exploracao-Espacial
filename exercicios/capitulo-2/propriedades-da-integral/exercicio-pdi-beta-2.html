@@ -4,6 +4,12 @@
     ORIGEM: Projeto de Tanque de Combustível - Seção Aeroespacial (ABR/1966)
   </div>
   <p>
+    Vimos que a integral sobre todo o domínio pode ser decomposta em partes?
+    Essa é a propriedade de <em>aditividade sobre subdomínios</em>: se dividimos
+    a região em pedaços, a integral total é a soma das integrais parciais. É
+    como calcular a massa de um tanque dividindo-o em compartimentos.
+  </p>
+  <p>
     Suponha que a região <span class="censored">D</span> possa ser dividida em
     duas sub-regiões disjuntas \(D_1\) e \(D_2\). Avalie se:
   </p>
@@ -12,14 +18,25 @@
     dA.\]
   </p>
   <p>
-    Nenhum método de integração deve ser usado; apenas discuta a consistência
-    lógica da operação.
+    <strong>(a)</strong> Se \(D = D_1 \cup D_2\) com \(D_1 \cap D_2 =
+    \emptyset\), como ficam os índices \((i,j)\) na soma de Riemann sobre \(D\)?
+    Alguns índices caem em \(D_1\) e outros em \(D_2\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Reescreva a soma de Riemann sobre \(D\) como a união de
+    duas somas: uma sobre \(D_1\) e outra sobre \(D_2\). O que acontece quando
+    tomamos o limite?
+  </p>
+  <p>
+    <strong>(c)</strong> A propriedade vale para mais de duas sub-regiões? E
+    para uma quantidade enumerável de sub-regiões disjuntas?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de decomposição do domínio podem ser
-      relevantes.
+      [NOTA TÉCNICA]: A partição de \(D\) em \(D_1\) e \(D_2\) permite separar a
+      soma de Riemann em duas somas independentes. O limite da soma é a soma dos
+      limites.
     </div>
   </details>
   <details>

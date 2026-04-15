@@ -5,46 +5,69 @@
     <span class="censored">Σ‑99</span>
   </div>
   <p>
-    Seja \(D\) a região triangular com vértices \((0,0)\), \((2,0)\) e
-    \((0,3)\). (a) Expresse \(D\) como tipo I (limitada por funções de x) e tipo
-    II (limitada por funções de y).<br />
-    (b) Calcule \(\iint_D (2x+y)\,dA\) usando ambas as descrições e verifique
-    que os resultados coincidem.<br />
+    O desafio final da revisão do capítulo. Este exercício integra TODOS os
+    conceitos: descrição de regiões como Tipo I e Tipo II (troca de ordem),
+    cálculo de integral dupla por Fubini, comparação de ordens de integração e
+    análise de qual é mais eficiente. O domínio triangular com vértices fora da
+    origem exige que você encontre as equações das retas fronteiriças — uma
+    habilidade de geometria analítica que volta à cena agora, no final, como um
+    lembrete de que cálculo vetorial é, antes de tudo, geometria.
+  </p>
+  <p>
+    Seja \\(D\\) a região triangular com vértices \\((0,0)\\), \\((2,0)\\) e
+    \\((0,3)\\). (a) Expresse \\(D\\) como tipo I (limitada por funções de
+    \\(x\\)) e tipo II (limitada por funções de \\(y\\)).<br />
+    (b) Calcule \\(\\iint_D (2x+y)\\,dA\\) usando ambas as descrições e
+    verifique que os resultados coincidem.<br />
     (c) Qual ordem de integração requer menos cálculo neste caso?
   </p>
+  <p>
+    <strong>(a)</strong> Esboce o triângulo e encontre a equação da reta que une
+    \\((2,0)\\) e \\((0,3)\\).
+  </p>
+  <p>
+    <strong>(b)</strong> Descreva \\(D\\) como Tipo I e Tipo II, e calcule a
+    integral em ambas as ordens.
+  </p>
+  <p><strong>(c)</strong> Compare a complexidade das duas abordagens.</p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑5 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        A reta que une (2,0) e (0,3) tem equação: \(\frac{x}{2}+\frac{y}{3}=1\),
-        ou \(y=3-\frac{3x}{2}\), ou \(x=2-\frac{2y}{3}\).
+        <strong>(a)</strong> A reta que une (2,0) e (0,3) tem equação:
+        \\(\\frac{x}{2}+\\frac{y}{3}=1\\), ou \\(y=3-\\frac{3x}{2}\\), ou
+        \\(x=2-\\frac{2y}{3}\\).
       </p>
       <p>
-        (a) Tipo I: \(x\in[0,2]\), \(y\in[0, 3-\frac{3x}{2}]\).<br />
-        Tipo II: \(y\in[0,3]\), \(x\in[0, 2-\frac{2y}{3}]\).
+        <strong>(b)</strong> Tipo I: \\(x\\in[0,2]\\), \\(y\\in[0,
+        3-\\frac{3x}{2}]\\).<br />
+        Tipo II: \\(y\\in[0,3]\\), \\(x\\in[0, 2-\\frac{2y}{3}]\\).
       </p>
       <p>
-        (b) Usando Tipo I: \[\int_0^2\int_0^{3-3x/2}(2x+y)\,dy\,dx =
-        \int_0^2\Bigl[2xy+\frac{y^2}{2}\Bigr]_0^{3-3x/2}dx\] \[=
-        \int_0^2\Bigl[2x(3-\tfrac{3x}{2})+\tfrac{1}{2}(3-\tfrac{3x}{2})^2\Bigr]dx
-        = \int_0^2\Bigl[6x-3x^2+\tfrac{9}{2}(1-\tfrac{x}{2})^2\Bigr]dx\] \[=
-        \int_0^2\Bigl[6x-3x^2+\tfrac{9}{2}-\tfrac{9x}{2}+\tfrac{9x^2}{8}\Bigr]dx
-        = \int_0^2\Bigl[\tfrac{9}{2}+\tfrac{3x}{2}-\tfrac{15x^2}{8}\Bigr]dx\]
-        \[= \Bigl[\tfrac{9x}{2}+\tfrac{3x^2}{4}-\tfrac{5x^3}{8}\Bigr]_0^2 =
-        9+3-5 = \boxed{7}.\]
+        Usando Tipo I: \\[\\int_0^2\\int_0^{3-3x/2}(2x+y)\\,dy\\,dx =
+        \\int_0^2\\Bigl[2xy+\\frac{y^2}{2}\\Bigr]_0^{3-3x/2}dx\\] \\[=
+        \\int_0^2\\Bigl[2x(3-\\tfrac{3x}{2})+\\tfrac{1}{2}(3-\\tfrac{3x}{2})^2\\Bigr]dx
+        = \\int_0^2\\Bigl[6x-3x^2+\\tfrac{9}{2}(1-\\tfrac{x}{2})^2\\Bigr]dx\\]
+        \\[=
+        \\int_0^2\\Bigl[6x-3x^2+\\tfrac{9}{2}-\\tfrac{9x}{2}+\\tfrac{9x^2}{8}\\Bigr]dx
+        =
+        \\int_0^2\\Bigl[\\tfrac{9}{2}+\\tfrac{3x}{2}-\\tfrac{15x^2}{8}\\Bigr]dx\\]
+        \\[= \\Bigl[\\tfrac{9x}{2}+\\tfrac{3x^2}{4}-\\tfrac{5x^3}{8}\\Bigr]_0^2
+        = 9+3-5 = \\boxed{7}.\\]
       </p>
       <p>
-        Usando Tipo II (verificação): \[\int_0^3\int_0^{2-2y/3}(2x+y)\,dx\,dy =
-        \int_0^3\Bigl[x^2+xy\Bigr]_0^{2-2y/3}dy\] \[=
-        \int_0^3\Bigl[(2-\tfrac{2y}{3})^2+y(2-\tfrac{2y}{3})\Bigr]dy =
-        \int_0^3\Bigl[4-\tfrac{8y}{3}+\tfrac{4y^2}{9}+2y-\tfrac{2y^2}{3}\Bigr]dy\]
-        \[= \int_0^3\Bigl[4-\tfrac{2y}{3}-\tfrac{2y^2}{9}\Bigr]dy =
-        \Bigl[4y-\tfrac{y^2}{3}-\tfrac{2y^3}{27}\Bigr]_0^3 = 12-3-2 =
-        \boxed{7}.\]
+        Usando Tipo II (verificação):
+        \\[\\int_0^3\\int_0^{2-2y/3}(2x+y)\\,dx\\,dy =
+        \\int_0^3\\Bigl[x^2+xy\\Bigr]_0^{2-2y/3}dy\\] \\[=
+        \\int_0^3\\Bigl[(2-\\tfrac{2y}{3})^2+y(2-\\tfrac{2y}{3})\\Bigr]dy =
+        \\int_0^3\\Bigl[4-\\tfrac{8y}{3}+\\tfrac{4y^2}{9}+2y-\\tfrac{2y^2}{3}\\Bigr]dy\\]
+        \\[= \\int_0^3\\Bigl[4-\\tfrac{2y}{3}-\\tfrac{2y^2}{9}\\Bigr]dy =
+        \\Bigl[4y-\\tfrac{y^2}{3}-\\tfrac{2y^3}{27}\\Bigr]_0^3 = 12-3-2 =
+        \\boxed{7}.\\]
       </p>
       <p>
-        (c) Ambos requerem trabalho similar, mas Tipo I é ligeiramente mais
-        direto pois evita frações mais complexas na expansão.
+        <strong>(c)</strong> Ambos requerem trabalho similar, mas Tipo I é
+        ligeiramente mais direto pois evita frações mais complexas na expansão.
       </p>
     </div>
   </details>

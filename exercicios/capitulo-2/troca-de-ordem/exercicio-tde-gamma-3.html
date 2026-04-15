@@ -2,17 +2,45 @@
   <div class="exercise-number">EXERCÍCIO TDE-GAMMA-3</div>
   <div class="context">ORIGEM: Ajuste de Campo de Comunicação - GEMINI-10</div>
   <p>
-    Troque a ordem: \[ \int_0^1 \int_{-\sqrt{1 - x^2}}^{\sqrt{1 - x^2}} f(x,
-    y)\,dy\,dx \]
+    Integrais divididas em duas partes: superado. Agora, um domínio com
+    geometria circular — o semicírculo direito do disco unitário. As fronteiras
+    envolvem \\(\\sqrt{1 - x^2}\\), e a inversão transforma o limite em
+    \\(\\sqrt{1 - y^2}\\). A estrutura é simétrica: o que era horizontal vira
+    vertical e vice-versa. Este é um dos exercícios mais elegantes da lista — a
+    troca de ordem espelha a simetria do domínio.
   </p>
+  <p>
+    Troque a ordem: \\[ \\int_0^1 \\int_{-\\sqrt{1 - x^2}}^{\\sqrt{1 - x^2}}
+    f(x, y)\\,dy\\,dx \\]
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique a região: \\(x \\in [0, 1]\\) e \\(y\\)
+    entre as duas raízes. O que isso representa geometricamente?
+  </p>
+  <p><strong>(b)</strong> Determine os novos limites na ordem \\(dx\\,dy\\).</p>
+  <p><strong>(c)</strong> Escreva a integral invertida.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-    <div class="hint">[NOTA TÉCNICA]: A forma é semicircular.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: A região é o semicírculo direito do disco unitário \\(x^2
+      + y^2 \\le 1\\) com \\(x \\ge 0\\). Ao inverter, \\(y \\in [-1, 1]\\) e
+      \\(x \\in [0, \\sqrt{1-y^2}]\\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      \[ \int_{-1}^1 \int_0^{\sqrt{1 - y^2}} f(x, y)\,dx\,dy \]
+      <p>
+        <strong>(a)</strong> A região é o semicírculo direito: \\(x^2 + y^2 \\le
+        1\\) com \\(x \\ge 0\\). Para cada \\(x \\in [0,1]\\), \\(y\\) vai de
+        \\(-\\sqrt{1-x^2}\\) a \\(\\sqrt{1-x^2}\\).
+      </p>
+      <p>
+        <strong>(b)</strong> Ao inverter: \\(y \\in [-1, 1]\\), e para cada
+        \\(y\\), \\(x\\) vai de \\(0\\) a \\(\\sqrt{1 - y^2}\\).
+      </p>
+      <p><strong>(c)</strong> Nova integral:</p>
+      <p>\\[ \\int_{-1}^1 \\int_0^{\\sqrt{1 - y^2}} f(x, y)\\,dx\\,dy \\]</p>
     </div>
   </details>
 </li>

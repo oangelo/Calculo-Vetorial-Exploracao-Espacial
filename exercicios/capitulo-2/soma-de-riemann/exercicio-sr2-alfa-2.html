@@ -4,16 +4,29 @@
     ORIGEM: Departamento de Análise de Combustível - Projeto Lunar
   </div>
   <p>
+    No exercício anterior, usamos cantos superiores direitos como pontos
+    amostrais. Agora vamos experimentar uma escolha diferente: cantos inferiores
+    esquerdos. A escolha do ponto amostral afeta a aproximação, mas ambas
+    convergem para o mesmo valor no limite.
+  </p>
+  <p>
     Seja \(D\) a região limitada por \(0 \leq x \leq 1\) e \(0 \leq y \leq 2\).
-    Considere a função \(\displaystyle f(x,y) = x^2 + y\). Faça \(m=2\) e
-    \(n=2\) subdivisions para estimar \(\iint_D f(x,y)\, dA\) via soma de
-    Riemann nos cantos inferiores esquerdos de cada retângulo.
+    Considere a função \(\displaystyle f(x,y) = x^2 + y\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine \(\Delta x\), \(\Delta y\) e as coordenadas
+    dos quatro cantos inferiores esquerdos com \(m=2\) e \(n=2\).
+  </p>
+  <p>
+    <strong>(b)</strong> Estime \(\iint_D f(x,y)\, dA\) via soma de Riemann
+    usando esses pontos.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Identifique cuidadosamente cada sub-retângulo e os pontos
-      inferiores esquerdos.
+      [NOTA TÉCNICA]: O canto inferior esquerdo de cada sub-retângulo é o ponto
+      com coordenadas mínimas naquele retângulo. Liste os quatro pontos antes de
+      avaliar \(f\).
     </div>
   </details>
   <details>
@@ -21,12 +34,9 @@
     <div class="solution">
       <p>
         Temos \(\Delta x = \frac{1}{2}\) e \(\Delta y = \frac{2}{2} = 1\). Os
-        pontos amostrais (inferiores esquerdos) são:
+        pontos amostrais (inferiores esquerdos) são: \((0,0)\), \((\frac{1}{2},
+        0)\), \((0,1)\), \((\frac{1}{2}, 1)\).
       </p>
-      <ul>
-        <li>\((0,0)\), \((\frac{1}{2}, 0)\)</li>
-        <li>\((0,1)\), \((\frac{1}{2}, 1)\)</li>
-      </ul>
       <p>
         Avaliando \(f\):
         <br />

@@ -5,6 +5,25 @@
     <span class="censored">Módulo Secreto</span> [Programa Gemini]
   </div>
   <p>
+    No exercício anterior, transformamos uma elipse em disco unitário e usamos
+    simetria para zerar a integral. Agora vamos testar se esse truque funciona
+    quando o integrando não é polinomial. A pergunta central: a função
+    \(\sin(x^2+y^2)\) é par ou ímpar após a mudança? Se não for, a integral não
+    se anula, mas a simplificação geométrica do disco ainda facilita o cálculo.
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação \(x=3u\), \(y=4v\) que leva a
+    elipse ao disco unitário e calcule o Jacobiano.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva o integrando em termos de \(u\) e \(v\) e
+    discuta se há anulação por simetria.
+  </p>
+  <p>
+    <strong>(c)</strong> Caso não haja anulação, escreva a integral final no
+    disco unitário e justifique por que não se reduz a funções elementares.
+  </p>
+  <p>
     Dada a região elíptica \(\frac{x^2}{9} + \frac{y^2}{16} \le 1\), e a função
     \(f(x,y) = \sin(x^2 + y^2)\), aplicar mudança de variáveis que converta a
     elipse em \(\frac{u^2}{1} + \frac{v^2}{1} \le 1\) e avaliar a integral
@@ -13,7 +32,9 @@
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+      [NOTA TÉCNICA]: Após a transformação, o integrando se torna
+      \(\sin(9u^2+16v^2)\). Esta função não é ímpar em \(u\) nem em \(v\) — não
+      há cancelamento por paridade.
     </div>
   </details>
   <details>

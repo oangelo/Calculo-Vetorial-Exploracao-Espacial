@@ -4,20 +4,51 @@
     ORIGEM: Cálculo de Interferência Gravitacional - GEMINI-8
   </div>
   <p>
-    Reescreva a integral trocando a ordem de integração: \[ \int_0^1
-    \int_x^{\sqrt{x}} f(x, y)\,dy\,dx \]
+    Parábolas e logaritmos: uma curva por exercício. Agora, duas curvas na mesma
+    região — \\(y = x\\) e \\(y = \\sqrt{x}\\) — que se intersectam em
+    \\((0,0)\\) e \\((1,1)\\). A região entre elas tem fronteiras curvas tanto
+    na horizontal quanto na vertical. A troca de ordem aqui não é apenas
+    inverter uma função: é redescrever completamente o domínio, trocando quem
+    delimita o quê.
   </p>
+  <p>
+    Reescreva a integral trocando a ordem de integração: \\[ \\int_0^1
+    \\int_x^{\\sqrt{x}} f(x, y)\\,dy\\,dx \\]
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva a região de integração: \\(x \\in [0,1]\\),
+    \\(y\\) entre a reta \\(y = x\\) e a curva \\(y = \\sqrt{x}\\). Esboce a
+    região.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine os novos limites ao integrar primeiro em
+    \\(x\\): para cada \\(y \\in [0,1]\\), entre quais valores de \\(x\\) está a
+    região?
+  </p>
+  <p><strong>(c)</strong> Escreva a integral na ordem \\(dx\\,dy\\).</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A simetria da região pode não ser óbvia.
+      [NOTA TÉCNICA]: Para \\(y \\in [0,1]\\), a região fica entre \\(x = y^2\\)
+      (de \\(y = \\sqrt{x}\\)) e \\(x = y\\) (de \\(y = x\\)). Note que \\(y^2
+      \\le y\\) quando \\(y \\in [0,1]\\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>Nova integral:</p>
-      \[ \int_0^1 \int_{y^2}^y f(x, y)\,dx\,dy \]
+      <p>
+        <strong>(a)</strong> As curvas \\(y = x\\) e \\(y = \\sqrt{x}\\) se
+        intersectam em \\((0,0)\\) e \\((1,1)\\). Entre \\(x = 0\\) e \\(x =
+        1\\), \\(\\sqrt{x} \\ge x\\), então a região fica entre as duas curvas.
+      </p>
+      <p>
+        <strong>(b)</strong> Para \\(y \\in [0,1]\\): a curva \\(y =
+        \\sqrt{x}\\) dá \\(x = y^2\\); a reta \\(y = x\\) dá \\(x = y\\). Como
+        \\(y^2 \\le y\\) neste intervalo, \\(x\\) vai de \\(y^2\\) a \\(y\\).
+      </p>
+      <p><strong>(c)</strong> Nova integral:</p>
+      <p>\\[ \\int_0^1 \\int_{y^2}^y f(x, y)\\,dx\\,dy \\]</p>
     </div>
   </details>
 </li>

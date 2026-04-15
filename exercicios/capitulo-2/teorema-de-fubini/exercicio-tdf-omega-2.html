@@ -5,18 +5,53 @@
     <span class="censored">OMEGA-2</span> - Cálculo Tenso
   </div>
   <p>
-    Determinar \(\iint_D (x^3 - y^3)\, dA\) na região \(D = \{ (x,y) \mid -2 \le
-    x \le 2, -2 \le y \le 2 \}\). Analisar como a simetria pode anular termos,
-    justificando a coerência com o Teorema de Fubini.
+    No exercício anterior, nenhuma ordem era claramente melhor. Agora, uma
+    situação diferente: o domínio é simétrico e o integrando contém termos
+    ímpares. O Teorema de Fubini garante que o valor existe, mas a simetria pode
+    eliminá-lo inteiramente — sem precisar de cálculos detalhados. Este
+    exercício mostra que Fubini não é apenas sobre trocar limites: ele
+    conecta-se à teoria de funções ímpares e pares em integrais duplas.
+  </p>
+  <p>
+    Determinar \\(\\iint_D (x^3 - y^3)\\, dA\\) na região \\(D = \\{ (x,y) \\mid
+    -2 \\le x \\le 2, -2 \\le y \\le 2 \\}\\). Analisar como a simetria pode
+    anular termos, justificando a coerência com o Teorema de Fubini.
+  </p>
+  <p>
+    <strong>(a)</strong> Separe a integral em \\(\\iint_D x^3\\, dA - \\iint_D
+    y^3\\, dA\\) e analise cada termo individualmente.
+  </p>
+  <p>
+    <strong>(b)</strong> Usando Fubini, mostre que \\(\\iint_D x^3\\, dA =
+    \\int_{-2}^2 x^3\\, dx \\cdot \\int_{-2}^2 1\\, dy\\). Por que isso é zero?
+  </p>
+  <p>
+    <strong>(c)</strong> Generalize: para quais funções \\(f(x,y)\\) em domínios
+    simétricos centrados na origem a integral se anula por paridade?
   </p>
   <!-- Série OMEGA: sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        [Explicação sobre funções ímpares em regiões simétricas; Fubini garante
-        a integral nula dos termos ímpares, desde que o domínio seja centrado na
-        origem.]
+        <strong>(a)</strong> Separando: \\(\\iint_D x^3\\, dA - \\iint_D y^3\\,
+        dA\\).
+      </p>
+      <p><strong>(b)</strong> Pelo Teorema de Fubini em um retângulo:</p>
+      <p>
+        \\[ \\iint_D x^3\\, dA = \\int_{-2}^2 \\int_{-2}^2 x^3\\, dy\\, dx =
+        \\int_{-2}^2 x^3 \\cdot 4\\, dx = 4 \\int_{-2}^2 x^3\\, dx = 0, \\]
+      </p>
+      <p>
+        pois \\(x^3\\) é ímpar e o intervalo \\([-2, 2]\\) é simétrico.
+        Analogamente, \\(\\iint_D y^3\\, dA = 0\\).
+      </p>
+      <p>
+        <strong>(c)</strong> Generalização: Se \\(D\\) é simétrico em relação à
+        origem e \\(g(x,y)\\) é ímpar em \\(x\\) (isto é, \\(g(-x,y) =
+        -g(x,y)\\)), então \\(\\iint_D g\\, dA = 0\\). O mesmo vale para funções
+        ímpares em \\(y\\). Fubini permite separar a integral dupla em iteradas
+        onde a paridade se manifesta claramente.
       </p>
     </div>
   </details>

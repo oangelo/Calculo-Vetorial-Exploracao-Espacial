@@ -5,21 +5,41 @@
     <span class="censored">BASE FOWLER-1</span>]
   </div>
   <p>
+    Sabemos agora que um número finito de pontos tem conteúdo nulo. Mas
+    conjuntos contínuos — como uma reta — têm "infinitos pontos". Será que isso
+    impede que sejam cobertos por retângulos de área pequena? Vamos investigar o
+    caso mais simples de conjunto contínuo: uma reta no plano.
+  </p>
+  <p>
     Mostre que uma <em>reta</em> no plano \(\mathbb{R}^2\) também é um conjunto
-    de conteúdo nulo. Sugira uma forma de cobrir toda a reta com retângulos de
-    soma de áreas arbitrariamente pequena.
+    de conteúdo nulo.
+  </p>
+  <p>
+    <strong>(a)</strong> Divida a reta em segmentos de comprimento \(L\). Para
+    cada segmento, construa um retângulo de largura \(\delta\) ao redor dele.
+    Qual é a área de cada retângulo?
+  </p>
+  <p>
+    <strong>(b)</strong> Se você cobre a reta com \(N\) desses retângulos, a
+    soma total das áreas é \(N \cdot L \cdot \delta\). Como escolher \(\delta\)
+    para que essa soma seja menor que qualquer \(\epsilon > 0\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que o fato de a reta ter infinitos pontos
+    não impede que ela seja de conteúdo nulo.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Relacione a espessura de cada faixa que cobre a reta.
+      [NOTA TÉCNICA]: O segredo está na largura \(\delta\) — ela pode ser tão
+      pequena quanto quisermos, independentemente do comprimento dos segmentos.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Cada segmento da reta pode ser coberto por uma “faixa” de largura muito
+        Cada segmento da reta pode ser coberto por uma "faixa" de largura muito
         fina. Ao longo de toda a reta, a soma das áreas dessas faixas pode ser
         reduzida para um valor menor que qualquer \(\epsilon\). Portanto, a reta
         tem conteúdo nulo.

@@ -4,11 +4,26 @@
     ORIGEM: Laboratório <span class="censored">PHI-7</span> - Dossiê Interno
   </div>
   <p>
-    Região \(D\) sob a parábola \(y = 4 - x^2\) (com \(y \ge 0\)), no intervalo
-    \(-2 \le x \le 2\). Densidade \(\rho(x,y) = 1 + \sin(xy)\). <br />
-    DETERMINAR: A massa total, usando integrais duplas em coordenadas
-    cartesianas.
+    Até agora, todas as densidades eram funções polinomiais ou exponenciais.
+    Este exercício introduz uma densidade trigonométrica — \(\sin(xy)\) — que
+    não permite simplificações por simetria e exige atenção especial no ponto
+    \(x = 0\). É um teste final: o aluno deve combinar todas as técnicas
+    anteriores (limites de integração, substituição, avaliação de limites) sem
+    dicas.
   </p>
+  <p>
+    Região \(D\) sob a parábola \(y = 4 - x^2\) (com \(y \ge 0\)), no intervalo
+    \(-2 \le x \le 2\). Densidade \(\rho(x,y) = 1 + \sin(xy)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Separe a integral de massa em duas: a parte constante e
+    a parte com \(\sin(xy)\).
+  </p>
+  <p>
+    <strong>(b)</strong> A primeira integral é direta. Para a segunda, use a
+    substituição \(u = xy\) e avalie o limite quando \(x \to 0\).
+  </p>
+  <p><strong>(c)</strong> Determine a massa total.</p>
   <!-- OMEGA sem dica -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
@@ -22,16 +37,22 @@
         dx. \]
       </p>
       <p>
-        O termo \(\int_{0}^{4-x^2} \sin(xy)\,dy\) pode ser tratado via
-        substituição \(u = xy\). A soma final envolve a avaliação da função
-        \(\frac{1 - \cos(xy)}{x}\) em pontos-limite, embora para \(x=0\) deva-se
-        usar limite apropriado.
+        PARTE CONSTANTE: \(\int_{-2}^{2}(4 - x^2)\,dx = \left[4x -
+        \frac{x^3}{3}\right]_{-2}^{2} = \frac{32}{3}\).
       </p>
       <p>
-        CONCLUSÃO: A parte constante (1) resulta em \(\int_{-2}^{2} (4 - x^2)\,
-        dx\). A parte com \(\sin(xy)\) exige cuidado com a dependência de \(x\)
-        e com a singularidade em \(x=0\). A integral final determina a massa
-        total.
+        O termo \(\int_{0}^{4-x^2} \sin(xy)\,dy\) pode ser tratado via
+        substituição \(u = xy\). Para \(x \ne 0\): \[
+        \int_{0}^{4-x^2}\sin(xy)\,dy = \frac{1 - \cos(x(4-x^2))}{x} = \frac{1 -
+        \cos(4x - x^3)}{x}. \] Quando \(x \to 0\), o limite é \(4 - x^2 \to 4\),
+        e \(\frac{1 - \cos(4x - x^3)}{x} \to 0\). Portanto, a contribuição de
+        \(\sin(xy)\) em \(x = 0\) é nula.
+      </p>
+      <p>
+        CONCLUSÃO: A massa total combina a contribuição constante
+        \(\frac{32}{3}\) com a integral de \(\frac{1 - \cos(4x - x^3)}{x}\) de
+        \(-2\) a \(2\). Por simetria (a função é par em \(x\)), basta calcular
+        de 0 a 2 e dobrar.
       </p>
     </div>
   </details>

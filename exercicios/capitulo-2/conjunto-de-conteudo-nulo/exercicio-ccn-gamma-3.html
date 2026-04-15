@@ -5,23 +5,45 @@
     <span class="censored">█████</span> [JUN/1965]
   </div>
   <p>
+    Agora que sabemos que uniões (finitas e enumeráveis) de conjuntos de
+    conteúdo nulo continuam sendo de conteúdo nulo, vamos investigar uma relação
+    entre um conjunto e seu <em>fecho</em>. Se adicionarmos os pontos-limite a
+    um conjunto, isso pode "engordá-lo" o suficiente para perder a propriedade
+    de conteúdo nulo?
+  </p>
+  <p>
     Seja \(X\subset \mathbb{R}^2\) um conjunto cujo fecho \(\overline{X}\) (isto
     é, \(X\) mais seus pontos-limite) tem conteúdo nulo. Discuta se \(X\) também
-    é de conteúdo nulo, e apresente a justificativa por meio de coberturas
-    retangulares.
+    é de conteúdo nulo.
+  </p>
+  <p>
+    <strong>(a)</strong> Observe que \(X \subseteq \overline{X}\). Se
+    \(\overline{X}\) pode ser coberto por retângulos de área total \(<
+    \epsilon\), o que isso implica para \(X\)?
+  </p>
+  <p>
+    <strong>(b)</strong> A recíproca é verdadeira? Se \(X\) tem conteúdo nulo,
+    então \(\overline{X}\) também tem? (Dica: pense no conjunto dos números
+    racionais no intervalo \([0,1]\).)
+  </p>
+  <p>
+    <strong>(c)</strong> Dê um exemplo concreto de conjunto \(X\) onde
+    \(\overline{X}\) tem conteúdo nulo mas \(X\) é denso em alguma região.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considerar coberturas que incluam possíveis pontos de
-      fronteira.
+      [NOTA TÉCNICA]: Para o item (b), note que o fecho dos racionais em
+      \([0,1]\) é \([0,1]\), que tem medida não nula. Isso mostra que a
+      recíproca falha em geral — mas para conjuntos com fecho de conteúdo nulo,
+      o resultado direto vale por inclusão.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Se \(\overline{X}\) for de conteúdo nulo, então toda a “região” que
+        Se \(\overline{X}\) for de conteúdo nulo, então toda a "região" que
         inclui \(X\) e seus pontos de fronteira pode ser coberta por retângulos
         de área total menor que \(\epsilon\). Como \(X \subset \overline{X}\), a
         mesma cobertura vale para \(X\). Logo, \(X\) também é de conteúdo nulo.

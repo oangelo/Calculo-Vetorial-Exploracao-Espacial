@@ -13,25 +13,6 @@
       id="MathJax-script"
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
     <link rel="stylesheet" href="../styles.css" />
   </head>
   <body>
@@ -121,19 +102,15 @@
       async function loadExercises() {
         try {
           const exercises = [
-            // Série ALFA - Nível Básico (Teorema de Fubini, regiões retangulares)
             'exercicio-tde-alfa-1.html',
             'exercicio-tde-alfa-2.html',
             'exercicio-tde-alfa-3.html',
-            // Série BETA - Nível Intermediário
             'exercicio-tde-beta-1.html',
             'exercicio-tde-beta-2.html',
             'exercicio-tde-beta-3.html',
-            // Série GAMMA - Nível Avançado
             'exercicio-tde-gamma-1.html',
             'exercicio-tde-gamma-2.html',
             'exercicio-tde-gamma-3.html',
-            // Série OMEGA - Nível Especialista
             'exercicio-tde-omega-1.html',
             'exercicio-tde-omega-2.html',
             'exercicio-tde-omega-3.html',
