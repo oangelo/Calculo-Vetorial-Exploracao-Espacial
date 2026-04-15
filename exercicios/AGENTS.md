@@ -38,6 +38,14 @@ O `_backup/` contém os arquivos monolíticos originais (referência).
 6. Cada exercício deve explicitar por que está ali e como se conecta ao anterior
 7. Salve como arquivo individual na pasta do tópico
 
+### Verificação de Escopo
+
+ANTES de criar ou modificar qualquer exercício, verifique os TERMOS PROIBIDOS do capítulo em `checklist-conceitos-permitidos.md`.
+
+Execute: `grep -i "termo" exercicios/capitulo-N/topico/*.html` para cada termo proibido.
+
+Se um exercício precisar de um conceito de capítulo posterior, ele pertence ao capítulo apropriado, não ao atual.
+
 ## Regras críticas
 
 ### MathJax (APRENDIDO NA DURAS)
@@ -241,15 +249,18 @@ Etapa 3: Agente Explore (Resumidor)
 > Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
 >
 > ANTES de começar:
+>
 > 1. Leia `diretrizes-listas-de-exercicios.md` — os 8 princípios de design de listas
 > 2. Leia `checklist-conceitos-permitidos.md` — conceitos permitidos E progressão narrativa do capítulo
 >
 > Depois:
+>
 > - Leia todos os exercícios em exercicios/capitulo-N/PASTA/
 > - Busque ideias na web com firecrawl_search (português e inglês)
 > - Gere um RTC como comentário na issue #N usando `gh issue comment`
 >
 > O RTC DEVE incluir:
+>
 > - **Análise de progressão narrativa**: a lista segue a sequência do checklist? Cada exercício motiva o próximo?
 > - **Significado antes da álgebra**: os exercícios começam pelo conceito/interpretação ou já caem em manipulação algébrica?
 > - **Scaffolding**: exercícios complexos estão quebrados em sub-itens (a, b, c)?

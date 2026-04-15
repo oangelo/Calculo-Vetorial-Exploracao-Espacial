@@ -1,6 +1,7 @@
 # Checklist de Conceitos e Progressão por Capítulo
 
 Use este checklist ao gerar RTCs. Ele define:
+
 1. **O que PODE e NÃO PODE usar** (conceitos permitidos por capítulo)
 2. **Como deve ser a progressão narrativa** (sequência pedagógica obrigatória)
 
@@ -28,6 +29,9 @@ para entender os 8 princípios de design de listas.
 - Distâncias (ponto-reta, ponto-plano, retas reversas)
 
 **NÃO usar:** coordenadas polares, coordenadas polares focais
+
+**TERMOS PROIBIDOS (para verificação automática):**
+derivadas parciais, "função vetorial", "campo vetorial", rotacional, divergente, gradiente, "integral dupla", "integral tripla", "integral de linha", "integral de superfície", Jacobiano, Hessiana, "ponto crítico", "autovalor", "autovalores"
 
 **Progressão sugerida:**
 
@@ -67,6 +71,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 **NÃO usar:** coordenadas polares, coordenadas polares focais
 
+**TERMOS PROIBIDOS (para verificação automática):**
+derivadas parciais, "função vetorial", "campo vetorial", rotacional, divergente, gradiente, "integral dupla", "integral tripla", "integral de linha", "integral de superfície", Jacobiano
+
 **Progressão sugerida (obrigatório seguir):**
 
 1. **Lugar geométrico** — definir o conceito com exemplos simples (reta como lugar geométrico, circunferência como lugar dos pontos equidistantes de um centro).
@@ -93,6 +100,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 **NÃO usar:** Hessiana, autovalores, classificação de pontos críticos via determinante de H
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"função vetorial", "campo vetorial", rotacional, divergente, "integral dupla", "integral tripla", "integral de linha", "integral de superfície", Jacobiano
+
 **Progressão sugerida:**
 
 1. **O que é uma curva de nível** — conectar com o conceito de "fatia" de um gráfico 3D, exemplos visuais (mapa de altitude).
@@ -114,6 +124,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Máximos e mínimos (critério da primeira e segunda derivada)
 
 **NÃO usar:** derivadas parciais, derivadas de funções vetoriais
+
+**TERMOS PROIBIDOS (para verificação automática):**
+derivadas parciais, "derivada parcial", "função vetorial", "campo vetorial", rotacional, divergente, gradiente, "integral dupla", "integral tripla", "integral de linha", "integral de superfície", Jacobiano
 
 **Progressão sugerida (obrigatório seguir):**
 
@@ -138,6 +151,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 **NÃO usar:** integrais duplas, triplas, de linha, de superfície
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"integral dupla", "integral tripla", "integral de linha", "integral de superfície", "função vetorial", "campo vetorial", rotacional, divergente, gradiente, Jacobiano
+
 **Progressão sugerida (obrigatório seguir):**
 
 1. **Integral como área** — começar com o significado geométrico, calculando áreas de figuras simples sob curvas conhecidas.
@@ -161,6 +177,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Divergente (∇ · F)
 
 **NÃO usar:** integrais de qualquer tipo
+
+**TERMOS PROIBIDOS (para verificação automática):**
+"integral de linha", circulação, ∮, "comprimento de arco", "integral dupla", "integral tripla", "campo conservativo", "independência do caminho", "função potencial", "forma diferencial exata", "Teorema de Green", "superfície parametrizada", "plano tangente", "área de superfície", "integral de superfície", "fluxo por superfície", "vazão líquida", "superfície fechada", "Teorema da Divergência", "Teorema de Gauss", "coordenadas cilíndricas", "coordenadas esféricas", Jacobiano, "centro de massa 3D"
 
 **Progressão sugerida:**
 
@@ -189,6 +208,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 **NÃO usar:** integrais triplas, de linha, de superfície
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"integral tripla", "coordenadas cilíndricas", "coordenadas esféricas", Jacobiano, "centro de massa 3D", "momento de inércia", "integral de linha", "campo conservativo", "independência do caminho", "função potencial", "forma diferencial exata", "Teorema de Green", "integral de superfície", "superfície parametrizada"
+
 **Progressão sugerida:**
 
 1. **Soma de Riemann em 2D** — volume como "soma de colunas", conectar com área sob curva (Cap 0 Integrais) estendida para 2D.
@@ -207,6 +229,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Jacobiano
 - Mudança de variáveis em integrais duplas
 - Massa e centro de massa (em 2D)
+
+**TERMOS PROIBIDOS (para verificação automática):**
+"integral tripla", "coordenadas cilíndricas", "coordenadas esféricas", "integral de linha", "campo conservativo", "independência do caminho", "função potencial", "forma diferencial exata", "Teorema de Green", "integral de superfície", "superfície parametrizada", "plano tangente"
 
 **Progressão sugerida:**
 
@@ -227,6 +252,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Coordenadas esféricas (ρ, θ, φ)
 - Centro de massa e momento de inércia (em 3D)
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"integral de linha", "campo conservativo", "independência do caminho", "função potencial", "forma diferencial exata", "Teorema de Green", "integral de superfície", "superfície parametrizada", "plano tangente", "Teorema de Stokes", "Teorema da Divergência", "Teorema de Gauss", "fluxo por superfície"
+
 **Progressão sugerida:**
 
 1. **De dupla para tripla** — volume como "soma de caixas", extensão natural do capítulo anterior.
@@ -245,6 +273,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Integral de linha de campo escalar
 - Integral de linha de campo vetorial
 - Comprimento de arco
+
+**TERMOS PROIBIDOS (para verificação automática):**
+"campo conservativo", "independência do caminho", "função potencial", "forma diferencial exata", "Teorema de Green", "integral de superfície", "superfície parametrizada", "plano tangente", "área de superfície", "Teorema de Stokes", "Teorema da Divergência", "Teorema de Gauss", "fluxo por superfície"
 
 **Progressão sugerida:**
 
@@ -266,6 +297,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Função potencial
 - Forma diferencial exata
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"Teorema de Green", "integral de superfície", "superfície parametrizada", "plano tangente", "área de superfície", "Teorema de Stokes", "Teorema da Divergência", "Teorema de Gauss", "fluxo", "fluxo por superfície"
+
 **Progressão sugerida:**
 
 1. **Quando o caminho não importa?** — comparar integrais de linha em dois caminhos diferentes com o mesmo campo. Se der igual, o campo é conservativo.
@@ -282,6 +316,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Teorema de Green (para retângulos e conjuntos com fronteira C1)
 - Teorema de Stokes no plano
 - Teorema da Divergência no plano
+
+**TERMOS PROIBIDOS (para verificação automática):**
+"superfície parametrizada", "plano tangente", "área de superfície", "integral de superfície", "Teorema de Stokes", "Teorema da Divergência", "fluxo por superfície", "superfície fechada"
 
 **Progressão sugerida:**
 
@@ -302,6 +339,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 - Área de superfície
 - Integral de superfície
 
+**TERMOS PROIBIDOS (para verificação automática):**
+"Teorema da Divergência", "Teorema de Gauss", "fluxo por superfície fechada", "superfície fechada"
+
 **Progressão sugerida:**
 
 1. **Superfície como mapa paramétrico** — r(u,v) como generalização de r(t). Exemplo: esfera com coordenadas esféricas.
@@ -317,6 +357,9 @@ Ex: "Agora que sabemos calcular vetores entre pontos, vamos medir o ângulo entr
 
 - Fluxo de campo vetorial
 - Teorema da Divergência (Gauss)
+
+**TERMOS PROIBIDOS (para verificação automática):**
+(nenhum — capítulo final)
 
 **Progressão sugerida:**
 

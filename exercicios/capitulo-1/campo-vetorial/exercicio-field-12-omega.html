@@ -17,8 +17,9 @@
     z^2\) é o quadrado da distância à origem.
   </p>
   <p>
-    <strong>(a)</strong> Escreva \(\vec{P}\) como o produto de um escalar por um
-    vetor. Em que direção o campo aponta em qualquer ponto do espaço?
+    <strong>(a)</strong> Calcule o valor do campo nos pontos \(A(1, 0, 0)\) e
+    \(B(0, 0, 2)\). Compare com o campo radial puro \(\vec{r} = (x,y,z)\): o
+    fator \(e^{-r^2}\) aumenta ou diminui a intensidade em cada ponto?
   </p>
   <p>
     <strong>(b)</strong> Calcule a magnitude \(|\vec{P}|\) em função de \(r\).
@@ -36,22 +37,43 @@
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para (a), note que \(\vec{P} = e^{-r^2} \cdot \vec{r}\),
-      onde \(\vec{r} = (x,y,z)\) é o vetor posição. Para (c), use a regra do
-      produto: \(\frac{d}{dr}(r \cdot e^{-r^2}) = e^{-r^2} + r \cdot (-2r) \cdot
-      e^{-r^2} = e^{-r^2}(1 - 2r^2)\). Onde isso se anula?
+      [NOTA TÉCNICA]: Para (a), lembre que \(r = \sqrt{x^2 + y^2 + z^2}\). No
+      ponto \(A(1,0,0)\), \(r = 1\); em \(B(0,0,2)\), \(r = 2\). O fator
+      \(e^{-r^2}\) é sempre menor que 1, então o campo é sempre mais fraco que o
+      radial puro. Para (c), use a regra do produto: \(\frac{d}{dr}(r \cdot
+      e^{-r^2}) = e^{-r^2} + r \cdot (-2r) \cdot e^{-r^2} = e^{-r^2}(1 -
+      2r^2)\). Onde isso se anula?
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
     <div class="solution">
       <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
-      <p>(a) DECOMPOSIÇÃO:</p>
-      <p>\[\vec{P}(x,y,z) = e^{-r^2} \cdot \vec{r}\]</p>
+      <p>(a) CÁLCULO EM PONTOS ESPECÍFICOS:</p>
       <p>
-        onde \(\vec{r} = (x,y,z)\) é o vetor posição. O campo aponta sempre na
-        direção RADIAL (para fora a partir da origem). O fator escalar
-        \(e^{-r^2}\) controla a intensidade.
+        No ponto \(A(1, 0, 0)\): \(r^2 = 1\), então \(e^{-r^2} = e^{-1} \approx
+        0{,}368\).
+      </p>
+      <p>
+        \[\vec{P}(1,0,0) = e^{-1} \begin{pmatrix} 1, 0, 0 \end{pmatrix} =
+        \begin{pmatrix} e^{-1}, 0, 0 \end{pmatrix} \approx \begin{pmatrix}
+        0{,}368, 0, 0 \end{pmatrix}\]
+      </p>
+      <p>
+        No ponto \(B(0, 0, 2)\): \(r^2 = 4\), então \(e^{-r^2} = e^{-4} \approx
+        0{,}018\).
+      </p>
+      <p>
+        \[\vec{P}(0,0,2) = e^{-4} \begin{pmatrix} 0, 0, 2 \end{pmatrix} =
+        \begin{pmatrix} 0, 0, 2e^{-4} \end{pmatrix} \approx \begin{pmatrix} 0,
+        0, 0{,}037 \end{pmatrix}\]
+      </p>
+      <p>
+        Comparação com o campo radial puro \(\vec{r}\): em \(A\), o radial puro
+        daria \((1,0,0)\) — o fator \(e^{-1} \approx 0{,}37\) REDUZ a
+        intensidade para 37% do valor. Em \(B\), o radial puro daria \((0,0,2)\)
+        — o fator \(e^{-4} \approx 0{,}02\) reduz drasticamente para apenas 2%.
+        O decaimento gaussiano suprime o campo fortemente em pontos distantes.
       </p>
       <p>(b) MAGNITUDE:</p>
       <p>\[|\vec{P}| = e^{-r^2} \cdot |\vec{r}| = r \cdot e^{-r^2}\]</p>
