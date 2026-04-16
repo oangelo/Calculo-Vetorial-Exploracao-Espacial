@@ -6,61 +6,59 @@
   </div>
   <p>
     A série OMEGA não oferece atalhos. Nos exercícios anteriores, as regiões
-    tinham descricões limpas como Tipo I ou Tipo II. Agora, \\(D\\) é uma faixa
-    diagonal onde \\(y\\) depende de \\(x\\) com uma função não-linear
-    envolvendo exponencial. A inversão da ordem exige manipular \\(e^{xy}\\), e
-    o integrando não se separa facilmente. Este é o tipo de situação onde a
-    escolha da ordem pode tornar o cálculo viável ou impossível.
+    tinham descricões limpas como Tipo I ou Tipo II. Agora, \(D\) é uma faixa
+    diagonal onde \(y\) depende de \(x\) com uma função não-linear envolvendo
+    exponencial. A inversão da ordem exige manipular \(e^{xy}\), e o integrando
+    não se separa facilmente. Este é o tipo de situação onde a escolha da ordem
+    pode tornar o cálculo viável ou impossível.
   </p>
   <p>
-    Analisar \\(\\iint_D (e^{xy} - y^2)\\, dA\\) onde \\(D\\) é delimitado pelos
-    limites \\(0 \\le x \\le 2\\) e \\(x \\le y \\le 3\\). Justificar a
-    aplicação do Teorema de Fubini e avaliar se a inversão (integrar em \\(x\\)
-    primeiro) traz simplificações.
+    Analisar \(\iint_D (e^{xy} - y^2)\, dA\) onde \(D\) é delimitado pelos
+    limites \(0 \le x \le 2\) e \(x \le y \le 3\). Justificar a aplicação do
+    Teorema de Fubini e avaliar se a inversão (integrar em \(x\) primeiro) traz
+    simplificações.
   </p>
   <p>
-    <strong>(a)</strong> Esboce a região \\(D\\): a faixa entre a reta \\(y =
-    x\\) e a horizontal \\(y = 3\\), com \\(x \\in [0, 2]\\).
+    <strong>(a)</strong> Esboce a região \(D\): a faixa entre a reta \(y = x\) e
+    a horizontal \(y = 3\), com \(x \in [0, 2]\).
   </p>
   <p>
-    <strong>(b)</strong> Monte a integral iterada na ordem \\(dy\\,dx\\) e tente
-    calcular o termo \\(\\int_x^3 e^{xy}\\, dy\\).
+    <strong>(b)</strong> Monte a integral iterada na ordem \(dy\,dx\) e tente
+    calcular o termo \(\int_x^3 e^{xy}\, dy\).
   </p>
   <p>
-    <strong>(c)</strong> Reescreva na ordem \\(dx\\,dy\\) e avalie se a
-    separação dos termos fica mais fácil.
+    <strong>(c)</strong> Reescreva na ordem \(dx\,dy\) e avalie se a separação
+    dos termos fica mais fácil.
   </p>
   <!-- Série OMEGA: sem dicas -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> A região \\(D\\) é um triângulo truncado: a reta
-        \\(y = x\\) vai de \\((0,0)\\) a \\((2,2)\\), e \\(y = 3\\) limita por
-        cima. Os vértices são \\((0,0)\\), \\((2,2)\\) e \\((0,3)\\)... mas com
-        \\(x \\le 2\\), o vértice esquerdo superior é \\((0,3)\\).
+        <strong>(a)</strong> A região \(D\) é um triângulo truncado: a reta \(y
+        = x\) vai de \((0,0)\) a \((2,2)\), e \(y = 3\) limita por cima. Os
+        vértices são \((0,0)\), \((2,2)\) e \((0,3)\)... mas com \(x \le 2\), o
+        vértice esquerdo superior é \((0,3)\).
       </p>
-      <p><strong>(b)</strong> Na ordem \\(dy\\,dx\\):</p>
-      <p>\\[ \\int_0^2 \\int_x^3 (e^{xy} - y^2)\\, dy\\, dx. \\]</p>
+      <p><strong>(b)</strong> Na ordem \(dy\,dx\):</p>
+      <p>\[ \int_0^2 \int_x^3 (e^{xy} - y^2)\, dy\, dx. \]</p>
       <p>
-        O termo \\(\\int_x^3 e^{xy}\\, dy\\) quando \\(x \\ne 0\\) vale
-        \\(\\frac{e^{3x} - e^{x^2}}{x}\\), que não tem primitiva elementar
-        simples em \\(x\\).
-      </p>
-      <p>
-        <strong>(c)</strong> Na ordem \\(dx\\,dy\\), subdividimos: para \\(y
-        \\in [0, 2]\\), \\(x \\in [0, y]\\); para \\(y \\in [2, 3]\\), \\(x \\in
-        [0, 2]\\).
+        O termo \(\int_x^3 e^{xy}\, dy\) quando \(x \ne 0\) vale \(\frac{e^{3x}
+        - e^{x^2}}{x}\), que não tem primitiva elementar simples em \(x\).
       </p>
       <p>
-        \\[ \\int_0^2 \\int_0^y (e^{xy} - y^2)\\, dx\\, dy + \\int_2^3 \\int_0^2
-        (e^{xy} - y^2)\\, dx\\, dy. \\]
+        <strong>(c)</strong> Na ordem \(dx\,dy\), subdividimos: para \(y \in [0,
+        2]\), \(x \in [0, y]\); para \(y \in [2, 3]\), \(x \in [0, 2]\).
       </p>
       <p>
-        O termo \\(\\int_0^y e^{xy}\\, dx = \\frac{e^{y^2} - 1}{y}\\) (para \\(y
-        \\ne 0\\)), que ainda é desafiador. Conclusão: ambas as ordens
-        apresentam dificuldades comparáveis com \\(e^{xy}\\). Fubini garante a
-        igualdade, mas nenhuma ordem é claramente mais simples aqui.
+        \[ \int_0^2 \int_0^y (e^{xy} - y^2)\, dx\, dy + \int_2^3 \int_0^2
+        (e^{xy} - y^2)\, dx\, dy. \]
+      </p>
+      <p>
+        O termo \(\int_0^y e^{xy}\, dx = \frac{e^{y^2} - 1}{y}\) (para \(y \ne
+        0\)), que ainda é desafiador. Conclusão: ambas as ordens apresentam
+        dificuldades comparáveis com \(e^{xy}\). Fubini garante a igualdade, mas
+        nenhuma ordem é claramente mais simples aqui.
       </p>
     </div>
   </details>

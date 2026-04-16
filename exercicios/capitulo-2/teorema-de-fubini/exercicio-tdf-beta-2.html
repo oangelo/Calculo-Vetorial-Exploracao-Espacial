@@ -6,74 +6,69 @@
   </div>
   <p>
     A parábola era a curva mais simples. Agora o logaritmo entra em cena — uma
-    função cuja inversa é a exponencial. Se você soube inverter \\(y =
-    \\sqrt{x}\\) para \\(x = y^2\\), o mesmo raciocínio se aplica aqui: \\(y =
-    \\ln x\\) se inverte em \\(x = e^y\\). A mecânica da troca de limites é
-    idêntica.
+    função cuja inversa é a exponencial. Se você soube inverter \(y = \sqrt{x}\)
+    para \(x = y^2\), o mesmo raciocínio se aplica aqui: \(y = \ln x\) se
+    inverte em \(x = e^y\). A mecânica da troca de limites é idêntica.
   </p>
   <p>
-    Considerar \\(D = \\{(x,y) \\mid 1 \\le x \\le 3,\\; 0 \\le y \\le
-    \\ln(x)\\}\\). Calcular \\(\\iint_D \\bigl(2 + e^y\\bigr)\\, dA\\),
-    avaliando primeiro em \\(y\\) e depois invertendo a ordem para checar a
-    consistência.
+    Considerar \(D = \{(x,y) \mid 1 \le x \le 3,\; 0 \le y \le \ln(x)\}\).
+    Calcular \(\iint_D \bigl(2 + e^y\bigr)\, dA\), avaliando primeiro em \(y\) e
+    depois invertendo a ordem para checar a consistência.
   </p>
   <p>
-    <strong>(a)</strong> Esboce a região \\(D\\) e identifique as curvas \\(y =
-    \\ln x\\), \\(x = 1\\) e \\(x = 3\\).
+    <strong>(a)</strong> Esboce a região \(D\) e identifique as curvas \(y = \ln
+    x\), \(x = 1\) e \(x = 3\).
   </p>
-  <p><strong>(b)</strong> Resolva a integral na ordem \\(dy\\,dx\\).</p>
+  <p><strong>(b)</strong> Resolva a integral na ordem \(dy\,dx\).</p>
   <p>
-    <strong>(c)</strong> Reescreva a integral na ordem \\(dx\\,dy\\) e verifique
+    <strong>(c)</strong> Reescreva a integral na ordem \(dx\,dy\) e verifique
     que o resultado é o mesmo.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para inverter os limites, note que \\(y = \\ln x\\)
-      equivale a \\(x = e^y\\). Quando \\(x = 1\\), \\(y = 0\\); quando \\(x =
-      3\\), \\(y = \\ln 3\\).
+      [NOTA TÉCNICA]: Para inverter os limites, note que \(y = \ln x\) equivale
+      a \(x = e^y\). Quando \(x = 1\), \(y = 0\); quando \(x = 3\), \(y = \ln
+      3\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> A região \\(D\\) fica entre \\(x = 1\\) e \\(x =
-        3\\), limitada abaixo pelo eixo \\(x\\) e acima pela curva \\(y = \\ln
-        x\\). O ponto mais alto é \\((3, \\ln 3)\\).
+        <strong>(a)</strong> A região \(D\) fica entre \(x = 1\) e \(x = 3\),
+        limitada abaixo pelo eixo \(x\) e acima pela curva \(y = \ln x\). O
+        ponto mais alto é \((3, \ln 3)\).
       </p>
-      <p><strong>(b)</strong> Integração em \\(y\\) primeiro:</p>
+      <p><strong>(b)</strong> Integração em \(y\) primeiro:</p>
       <p>
-        \\( \\int_{x=1}^{3} \\left[\\int_{y=0}^{\\ln(x)} (2 + e^y)\\, dy\\right]
-        dx. \\)
-      </p>
-      <p>
-        \\( = \\int_{1}^{3} \\left[ 2y + e^y \\right]_{0}^{\\ln(x)} dx =
-        \\int_{1}^{3} \\left[ 2\\ln(x) + x - 1 \\right] dx. \\)
+        \( \int_{x=1}^{3} \left[\int_{y=0}^{\ln(x)} (2 + e^y)\, dy\right] dx. \)
       </p>
       <p>
-        \\[ \\int_1^3 (2\\ln x + x - 1)\\, dx = 2\\left[x\\ln x - x\\right]_1^3
-        + \\left[\\frac{x^2}{2} - x\\right]_1^3 = 2(3\\ln 3 - 3 + 1) +
-        \\left(\\frac{9}{2} - 3 - \\frac{1}{2} + 1\\right) = 6\\ln 3 - 4 + 2 =
-        6\\ln 3 - 2. \\]
+        \( = \int_{1}^{3} \left[ 2y + e^y \right]_{0}^{\ln(x)} dx = \int_{1}^{3}
+        \left[ 2\ln(x) + x - 1 \right] dx. \)
       </p>
       <p>
-        <strong>(c)</strong> Ordem \\(dx\\,dy\\): \\(y\\) vai de \\(0\\) a
-        \\(\\ln 3\\), \\(x\\) de \\(e^y\\) a \\(3\\).
+        \[ \int_1^3 (2\ln x + x - 1)\, dx = 2\left[x\ln x - x\right]_1^3 +
+        \left[\frac{x^2}{2} - x\right]_1^3 = 2(3\ln 3 - 3 + 1) +
+        \left(\frac{9}{2} - 3 - \frac{1}{2} + 1\right) = 6\ln 3 - 4 + 2 = 6\ln 3
+        - 2. \]
       </p>
       <p>
-        \\[ \\int_0^{\\ln 3} \\int_{e^y}^3 (2 + e^y)\\, dx\\, dy = \\int_0^{\\ln
-        3} (2 + e^y)(3 - e^y)\\, dy = \\int_0^{\\ln 3} (6 + 3e^y - 2e^y -
-        e^{2y})\\, dy = \\int_0^{\\ln 3} (6 + e^y - e^{2y})\\, dy. \\]
+        <strong>(c)</strong> Ordem \(dx\,dy\): \(y\) vai de \(0\) a \(\ln 3\),
+        \(x\) de \(e^y\) a \(3\).
       </p>
       <p>
-        \\[ = \\left[6y + e^y - \\frac{e^{2y}}{2}\\right]_0^{\\ln 3} = 6\\ln 3 +
-        3 - \\frac{9}{2} - (0 + 1 - \\frac{1}{2}) = 6\\ln 3 + 3 - 4.5 - 0.5 =
-        6\\ln 3 - 2. \\]
+        \[ \int_0^{\ln 3} \int_{e^y}^3 (2 + e^y)\, dx\, dy = \int_0^{\ln 3} (2 +
+        e^y)(3 - e^y)\, dy = \int_0^{\ln 3} (6 + 3e^y - 2e^y - e^{2y})\, dy =
+        \int_0^{\ln 3} (6 + e^y - e^{2y})\, dy. \]
       </p>
       <p>
-        Ambos os métodos convergem para \\(6\\ln 3 - 2\\), confirmando Fubini.
+        \[ = \left[6y + e^y - \frac{e^{2y}}{2}\right]_0^{\ln 3} = 6\ln 3 + 3 -
+        \frac{9}{2} - (0 + 1 - \frac{1}{2}) = 6\ln 3 + 3 - 4.5 - 0.5 = 6\ln 3 -
+        2. \]
       </p>
+      <p>Ambos os métodos convergem para \(6\ln 3 - 2\), confirmando Fubini.</p>
     </div>
   </details>
 </li>

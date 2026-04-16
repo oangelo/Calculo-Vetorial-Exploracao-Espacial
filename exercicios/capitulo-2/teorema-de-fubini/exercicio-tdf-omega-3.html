@@ -7,25 +7,24 @@
   <p>
     O desafio final da lista de Fubini. Nos exercícios anteriores, o domínio
     sempre tinha uma descrição natural como Tipo I ou Tipo II. Aqui, o trapézio
-    com vértices \\((0,0)\\), \\(2,0)\\), \\((1,1)\\) e \\((0,1)\\) não é
-    paralelo aos eixos — suas fronteiras laterais são inclinadas. Descrevê-lo
-    corretamente exige subdivisão ou uma escolha cuidadosa de qual variável é a
-    externa. O integrando \\(\\arctan(x+y)\\) adiciona complexidade, mas a
-    estrutura geométrica é o verdadeiro teste.
+    com vértices \((0,0)\), \(2,0)\), \((1,1)\) e \((0,1)\) não é paralelo aos
+    eixos — suas fronteiras laterais são inclinadas. Descrevê-lo corretamente
+    exige subdivisão ou uma escolha cuidadosa de qual variável é a externa. O
+    integrando \(\arctan(x+y)\) adiciona complexidade, mas a estrutura
+    geométrica é o verdadeiro teste.
   </p>
   <p>
-    Calcular \\(\\iint_D \\arctan(x + y)\\, dA\\), onde \\(D\\) é o trapézio
-    definido pelos pontos \\((0,0)\\), \\((2,0)\\), \\((1,1)\\), \\((0,1)\\).
-    Verificar se a segmentação em duas regiões facilita a identificação dos
-    limites.
+    Calcular \(\iint_D \arctan(x + y)\, dA\), onde \(D\) é o trapézio definido
+    pelos pontos \((0,0)\), \((2,0)\), \((1,1)\), \((0,1)\). Verificar se a
+    segmentação em duas regiões facilita a identificação dos limites.
   </p>
   <p>
     <strong>(a)</strong> Esboce o trapézio e encontre as equações das retas que
     formam as bordas laterais.
   </p>
   <p>
-    <strong>(b)</strong> Descreva \\(D\\) como Tipo II (com \\(y\\) como
-    variável externa) e monte a integral iterada.
+    <strong>(b)</strong> Descreva \(D\) como Tipo II (com \(y\) como variável
+    externa) e monte a integral iterada.
   </p>
   <p>
     <strong>(c)</strong> Resolva a integral e verifique o resultado por Fubini
@@ -36,37 +35,35 @@
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> O trapézio tem vértices \\((0,0)\\), \\((2,0)\\),
-        \\((1,1)\\), \\((0,1)\\). A borda direita é a reta de \\((2,0)\\) a
-        \\((1,1)\\): equação \\(y = -x + 2\\), ou \\(x = 2 - y\\). A borda
-        esquerda é \\(x = 0\\).
+        <strong>(a)</strong> O trapézio tem vértices \((0,0)\), \((2,0)\),
+        \((1,1)\), \((0,1)\). A borda direita é a reta de \((2,0)\) a \((1,1)\):
+        equação \(y = -x + 2\), ou \(x = 2 - y\). A borda esquerda é \(x = 0\).
       </p>
       <p>
-        <strong>(b)</strong> Como Tipo II: \\(y \\in [0, 1]\\), e para cada
-        \\(y\\), \\(x\\) vai de \\(0\\) a \\(2 - y\\) (note que em \\(y = 0\\),
-        \\(x\\) vai até \\(2\\); em \\(y = 1\\), \\(x\\) vai até \\(1\\)).
+        <strong>(b)</strong> Como Tipo II: \(y \in [0, 1]\), e para cada \(y\),
+        \(x\) vai de \(0\) a \(2 - y\) (note que em \(y = 0\), \(x\) vai até
+        \(2\); em \(y = 1\), \(x\) vai até \(1\)).
       </p>
-      <p>\\[ \\int_0^1 \\int_0^{2-y} \\arctan(x + y)\\, dx\\, dy. \\]</p>
+      <p>\[ \int_0^1 \int_0^{2-y} \arctan(x + y)\, dx\, dy. \]</p>
       <p>
-        <strong>(c)</strong> Fazendo \\(u = x + y\\) na integral interna (com
-        \\(y\\) fixo, \\(du = dx\\)): quando \\(x = 0\\), \\(u = y\\); quando
-        \\(x = 2 - y\\), \\(u = 2\\).
-      </p>
-      <p>
-        \\[ \\int_y^2 \\arctan(u)\\, du = \\left[u \\arctan u -
-        \\frac{1}{2}\\ln(1+u^2)\\right]_y^2 = 2\\arctan 2 - \\frac{1}{2}\\ln 5 -
-        y\\arctan y + \\frac{1}{2}\\ln(1+y^2). \\]
-      </p>
-      <p>Integrando em \\(y\\) de \\(0\\) a \\(1\\):</p>
-      <p>
-        \\[ \\int_0^1 \\left(2\\arctan 2 - \\frac{1}{2}\\ln 5\\right) dy -
-        \\int_0^1 y\\arctan y\\, dy + \\int_0^1 \\frac{1}{2}\\ln(1+y^2)\\, dy.
-        \\]
+        <strong>(c)</strong> Fazendo \(u = x + y\) na integral interna (com
+        \(y\) fixo, \(du = dx\)): quando \(x = 0\), \(u = y\); quando \(x = 2 -
+        y\), \(u = 2\).
       </p>
       <p>
-        O primeiro termo é \\(2\\arctan 2 - \\frac{1}{2}\\ln 5\\). Os outros
-        dois termos requerem integração por partes e resultam em expressões
-        envolvendo \\(\\arctan\\) e logaritmos. A soma final é obtida combinando
+        \[ \int_y^2 \arctan(u)\, du = \left[u \arctan u -
+        \frac{1}{2}\ln(1+u^2)\right]_y^2 = 2\arctan 2 - \frac{1}{2}\ln 5 -
+        y\arctan y + \frac{1}{2}\ln(1+y^2). \]
+      </p>
+      <p>Integrando em \(y\) de \(0\) a \(1\):</p>
+      <p>
+        \[ \int_0^1 \left(2\arctan 2 - \frac{1}{2}\ln 5\right) dy - \int_0^1
+        y\arctan y\, dy + \int_0^1 \frac{1}{2}\ln(1+y^2)\, dy. \]
+      </p>
+      <p>
+        O primeiro termo é \(2\arctan 2 - \frac{1}{2}\ln 5\). Os outros dois
+        termos requerem integração por partes e resultam em expressões
+        envolvendo \(\arctan\) e logaritmos. A soma final é obtida combinando
         todos os termos, confirmando que Fubini assegura a igualdade
         independentemente da ordem escolhida.
       </p>

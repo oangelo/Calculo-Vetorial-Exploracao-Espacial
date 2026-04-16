@@ -11,74 +11,72 @@
     outra. A técnica é a mesma — o que muda é como descrevemos o domínio.
   </p>
   <p>
-    Considere a região \\(D\\) definida pela interseção das retas \\(x \\ge
-    0\\), \\(y \\ge 0\\) e \\(x + y \\le 3\\). Calcular \\(\\iint_D (x + 2y)\\,
-    dA\\) usando o Teorema de Fubini e discutir a possibilidade de trocar a
-    ordem de integração.
+    Considere a região \(D\) definida pela interseção das retas \(x \ge 0\), \(y
+    \ge 0\) e \(x + y \le 3\). Calcular \(\iint_D (x + 2y)\, dA\) usando o
+    Teorema de Fubini e discutir a possibilidade de trocar a ordem de
+    integração.
   </p>
   <p>
-    <strong>(a)</strong> Esboce o triângulo \\(D\\) no plano \\(xy\\) e
-    identifique os vértices.
+    <strong>(a)</strong> Esboce o triângulo \(D\) no plano \(xy\) e identifique
+    os vértices.
   </p>
   <p>
-    <strong>(b)</strong> Descreva \\(D\\) como Tipo I (limites em \\(x\\)
-    primeiro) e monte a integral iterada correspondente.
+    <strong>(b)</strong> Descreva \(D\) como Tipo I (limites em \(x\) primeiro)
+    e monte a integral iterada correspondente.
   </p>
   <p>
-    <strong>(c)</strong> Descreva \\(D\\) como Tipo II (limites em \\(y\\)
-    primeiro) e verifique que o resultado é o mesmo.
+    <strong>(c)</strong> Descreva \(D\) como Tipo II (limites em \(y\) primeiro)
+    e verifique que o resultado é o mesmo.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A reta \\(x + y = 3\\) pode ser reescrita como \\(y = 3 -
-      x\\) (para Tipo I) ou \\(x = 3 - y\\) (para Tipo II). Esboce o triângulo
-      para ver onde ficam os limites.
+      [NOTA TÉCNICA]: A reta \(x + y = 3\) pode ser reescrita como \(y = 3 - x\)
+      (para Tipo I) ou \(x = 3 - y\) (para Tipo II). Esboce o triângulo para ver
+      onde ficam os limites.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> O triângulo \\(D\\) tem vértices em \\((0,0)\\),
-        \\((3,0)\\) e \\((0,3)\\).
+        <strong>(a)</strong> O triângulo \(D\) tem vértices em \((0,0)\),
+        \((3,0)\) e \((0,3)\).
       </p>
       <p>
-        <strong>(b)</strong> Descrição como Tipo I: \\(0 \\le x \\le 3,\\; 0
-        \\le y \\le 3 - x\\).
+        <strong>(b)</strong> Descrição como Tipo I: \(0 \le x \le 3,\; 0 \le y
+        \le 3 - x\).
       </p>
       <p>Portanto, a integral pode ser escrita como:</p>
       <p>
-        \\[ \\int_{x=0}^{3} \\left(\\int_{y=0}^{3-x} (x + 2y)\\, dy\\right) dx.
-        \\]
+        \[ \int_{x=0}^{3} \left(\int_{y=0}^{3-x} (x + 2y)\, dy\right) dx. \]
       </p>
-      <p>Integração interna em \\(y\\):</p>
+      <p>Integração interna em \(y\):</p>
       <p>
-        \\[ \\int_{0}^{3-x} (x + 2y)\\, dy = x\\int_{0}^{3-x} dy +
-        2\\int_{0}^{3-x} y\\, dy. \\]
-      </p>
-      <p>
-        \\[ = x(3 - x) + 2\\left[\\frac{y^2}{2}\\right]_0^{3-x} = x(3 - x) + (3
-        - x)^2. \\]
-      </p>
-      <p>\\(x(3 - x) + (3 - x)^2 = 3x - x^2 + (9 - 6x + x^2) = 9 - 3x.\\)</p>
-      <p>Agora integramos em \\(x\\):</p>
-      <p>
-        \\[ \\int_{0}^{3} (9 - 3x)\\, dx = \\left[ 9x -
-        \\frac{3x^2}{2}\\right]_0^3 = (27 - \\frac{3\\cdot 9}{2}) - 0 = 27 -
-        13.5 = 13.5. \\]
+        \[ \int_{0}^{3-x} (x + 2y)\, dy = x\int_{0}^{3-x} dy + 2\int_{0}^{3-x}
+        y\, dy. \]
       </p>
       <p>
-        <strong>(c)</strong> Descrição como Tipo II: \\(0 \\le y \\le 3,\\; 0
-        \\le x \\le 3 - y\\).
+        \[ = x(3 - x) + 2\left[\frac{y^2}{2}\right]_0^{3-x} = x(3 - x) + (3 -
+        x)^2. \]
+      </p>
+      <p>\(x(3 - x) + (3 - x)^2 = 3x - x^2 + (9 - 6x + x^2) = 9 - 3x.\)</p>
+      <p>Agora integramos em \(x\):</p>
+      <p>
+        \[ \int_{0}^{3} (9 - 3x)\, dx = \left[ 9x - \frac{3x^2}{2}\right]_0^3 =
+        (27 - \frac{3\cdot 9}{2}) - 0 = 27 - 13.5 = 13.5. \]
       </p>
       <p>
-        \\[ \\int_{y=0}^{3} \\left(\\int_{x=0}^{3-y} (x + 2y)\\, dx\\right) dy =
-        \\int_0^3 \\left[\\frac{x^2}{2} + 2xy\\right]_0^{3-y} dy = \\int_0^3
-        \\left[\\frac{(3-y)^2}{2} + 2y(3-y)\\right] dy = 13.5. \\]
+        <strong>(c)</strong> Descrição como Tipo II: \(0 \le y \le 3,\; 0 \le x
+        \le 3 - y\).
       </p>
       <p>
-        Conclusão: O valor da integral é \\(13.5\\), independente da ordem de
+        \[ \int_{y=0}^{3} \left(\int_{x=0}^{3-y} (x + 2y)\, dx\right) dy =
+        \int_0^3 \left[\frac{x^2}{2} + 2xy\right]_0^{3-y} dy = \int_0^3
+        \left[\frac{(3-y)^2}{2} + 2y(3-y)\right] dy = 13.5. \]
+      </p>
+      <p>
+        Conclusão: O valor da integral é \(13.5\), independente da ordem de
         integração. A troca funciona porque Fubini vale para funções contínuas
         em regiões fechadas e limitadas.
       </p>

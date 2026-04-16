@@ -8,76 +8,74 @@
     Até agora, as regiões eram delimitadas por retas. Mas domínios reais muitas
     vezes envolvem curvas — e com curvas, os limites de integração deixam de ser
     constantes ou lineares. O primeiro passo além das retas é a parábola: uma
-    curva simples cuja inversão (de \\(y = \\sqrt{x}\\) para \\(x = y^2\\))
-    revela se você domina a montagem de integrais iteradas.
+    curva simples cuja inversão (de \(y = \sqrt{x}\) para \(x = y^2\)) revela se
+    você domina a montagem de integrais iteradas.
   </p>
   <p>
-    Seja \\(D\\) a região definida por \\(0 \\le x \\le 4\\) e \\(0 \\le y \\le
-    \\sqrt{x}\\). Calcular \\(\\iint_D (x + 1)\\, dA\\) e discutir se a troca da
-    ordem de integração simplifica a resolução.
+    Seja \(D\) a região definida por \(0 \le x \le 4\) e \(0 \le y \le
+    \sqrt{x}\). Calcular \(\iint_D (x + 1)\, dA\) e discutir se a troca da ordem
+    de integração simplifica a resolução.
   </p>
   <p>
-    <strong>(a)</strong> Esboce a região \\(D\\) no plano \\(xy\\),
-    identificando a curva \\(y = \\sqrt{x}\\) e o limite \\(x = 4\\).
+    <strong>(a)</strong> Esboce a região \(D\) no plano \(xy\), identificando a
+    curva \(y = \sqrt{x}\) e o limite \(x = 4\).
   </p>
   <p>
-    <strong>(b)</strong> Resolva a integral na ordem \\(dy\\,dx\\), integrando
-    primeiro em \\(y\\).
+    <strong>(b)</strong> Resolva a integral na ordem \(dy\,dx\), integrando
+    primeiro em \(y\).
   </p>
   <p>
-    <strong>(c)</strong> Reescreva a integral na ordem \\(dx\\,dy\\) e compare a
+    <strong>(c)</strong> Reescreva a integral na ordem \(dx\,dy\) e compare a
     dificuldade das duas abordagens.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Na ordem \\(dy\\,dx\\), a integral interna é simples
-      porque \\(x+1\\) não depende de \\(y\\). Para a ordem inversa, inverta
-      \\(y = \\sqrt{x}\\) para \\(x = y^2\\), e note que \\(y\\) vai de \\(0\\)
-      a \\(2\\).
+      [NOTA TÉCNICA]: Na ordem \(dy\,dx\), a integral interna é simples porque
+      \(x+1\) não depende de \(y\). Para a ordem inversa, inverta \(y =
+      \sqrt{x}\) para \(x = y^2\), e note que \(y\) vai de \(0\) a \(2\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> A região \\(D\\) é delimitada pela curva \\(y =
-        \\sqrt{x}\\), o eixo \\(x\\) e a reta vertical \\(x = 4\\). O ponto alto
-        é \\((4, 2)\\).
+        <strong>(a)</strong> A região \(D\) é delimitada pela curva \(y =
+        \sqrt{x}\), o eixo \(x\) e a reta vertical \(x = 4\). O ponto alto é
+        \((4, 2)\).
       </p>
       <p>
-        <strong>(b)</strong> Em \\(y\\) primeiro: \\( \\int_{x=0}^{4}
-        \\left[\\int_{y=0}^{\\sqrt{x}} (x + 1)\\, dy\\right] dx. \\)
+        <strong>(b)</strong> Em \(y\) primeiro: \( \int_{x=0}^{4}
+        \left[\int_{y=0}^{\sqrt{x}} (x + 1)\, dy\right] dx. \)
       </p>
       <p>
-        Como \\(x+1\\) é independente de \\(y\\), a integral interna vale
-        \\((x+1) \\cdot \\sqrt{x}\\).
+        Como \(x+1\) é independente de \(y\), a integral interna vale \((x+1)
+        \cdot \sqrt{x}\).
       </p>
       <p>
-        \\( \\int_{0}^{4} (x+1)\\sqrt{x}\\, dx = \\int_{0}^{4} (x^{3/2} +
-        x^{1/2})\\, dx = \\left[\\frac{2x^{5/2}}{5} +
-        \\frac{2x^{3/2}}{3}\\right]_0^4 = \\frac{2 \\cdot 32}{5} + \\frac{2
-        \\cdot 8}{3} = \\frac{64}{5} + \\frac{16}{3} = \\frac{192 + 80}{15} =
-        \\frac{272}{15}. \\)
+        \( \int_{0}^{4} (x+1)\sqrt{x}\, dx = \int_{0}^{4} (x^{3/2} + x^{1/2})\,
+        dx = \left[\frac{2x^{5/2}}{5} + \frac{2x^{3/2}}{3}\right]_0^4 = \frac{2
+        \cdot 32}{5} + \frac{2 \cdot 8}{3} = \frac{64}{5} + \frac{16}{3} =
+        \frac{192 + 80}{15} = \frac{272}{15}. \)
       </p>
       <p>
-        <strong>(c)</strong> Ordem \\(dx\\,dy\\): \\(y\\) vai de \\(0\\) a
-        \\(2\\), e \\(x\\) de \\(y^2\\) a \\(4\\).
+        <strong>(c)</strong> Ordem \(dx\,dy\): \(y\) vai de \(0\) a \(2\), e
+        \(x\) de \(y^2\) a \(4\).
       </p>
       <p>
-        \\[ \\int_{y=0}^{2} \\int_{x=y^2}^{4} (x+1)\\, dx\\, dy = \\int_0^2
-        \\left[\\frac{x^2}{2} + x\\right]_{y^2}^{4} dy = \\int_0^2 \\left(8 + 4
-        - \\frac{y^4}{2} - y^2\\right) dy = \\int_0^2 \\left(12 - \\frac{y^4}{2}
-        - y^2\\right) dy. \\]
+        \[ \int_{y=0}^{2} \int_{x=y^2}^{4} (x+1)\, dx\, dy = \int_0^2
+        \left[\frac{x^2}{2} + x\right]_{y^2}^{4} dy = \int_0^2 \left(8 + 4 -
+        \frac{y^4}{2} - y^2\right) dy = \int_0^2 \left(12 - \frac{y^4}{2} -
+        y^2\right) dy. \]
       </p>
       <p>
-        \\[ = \\left[12y - \\frac{y^5}{10} - \\frac{y^3}{3}\\right]_0^2 = 24 -
-        \\frac{32}{10} - \\frac{8}{3} = 24 - 3.2 - \\frac{8}{3} =
-        \\frac{272}{15}. \\]
+        \[ = \left[12y - \frac{y^5}{10} - \frac{y^3}{3}\right]_0^2 = 24 -
+        \frac{32}{10} - \frac{8}{3} = 24 - 3.2 - \frac{8}{3} = \frac{272}{15}.
+        \]
       </p>
       <p>
-        Os resultados coincidem. A ordem \\(dy\\,dx\\) foi mais direta aqui
-        porque o integrando não dependia de \\(y\\).
+        Os resultados coincidem. A ordem \(dy\,dx\) foi mais direta aqui porque
+        o integrando não dependia de \(y\).
       </p>
     </div>
   </details>

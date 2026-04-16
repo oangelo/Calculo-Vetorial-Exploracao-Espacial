@@ -6,22 +6,22 @@
   <p>
     Saber escrever as duas ordens é o primeiro passo. O segundo é calcular ambas
     e verificar que dão o mesmo resultado — não porque acreditamos em Fubini,
-    mas porque vimos com nossas próprias mãos. Neste exercício, \\(f(x,y) = x +
-    y\\) é simples o bastante para que os cálculos sejam rápidos e a verificação
+    mas porque vimos com nossas próprias mãos. Neste exercício, \(f(x,y) = x +
+    y\) é simples o bastante para que os cálculos sejam rápidos e a verificação
     seja inequívoca.
   </p>
   <p>
-    Dada a função contínua \\(f(x,y) = x + y\\) sobre a região \\(R = [0, 2]
-    \\times [1, 3]\\), calcule a integral dupla de duas formas diferentes e
-    verifique que os resultados coincidem.
+    Dada a função contínua \(f(x,y) = x + y\) sobre a região \(R = [0, 2] \times
+    [1, 3]\), calcule a integral dupla de duas formas diferentes e verifique que
+    os resultados coincidem.
   </p>
   <p>
-    <strong>(a)</strong> Calcule \\(\\displaystyle\\int_1^3 \\int_0^2
-    (x+y)\\,dx\\,dy\\)
+    <strong>(a)</strong> Calcule \(\displaystyle\int_1^3 \int_0^2
+    (x+y)\,dx\,dy\)
   </p>
   <p>
-    <strong>(b)</strong> Calcule \\(\\displaystyle\\int_0^2 \\int_1^3
-    (x+y)\\,dy\\,dx\\)
+    <strong>(b)</strong> Calcule \(\displaystyle\int_0^2 \int_1^3
+    (x+y)\,dy\,dx\)
   </p>
   <p>
     <strong>(c)</strong> Confirme que os valores obtidos são idênticos,
@@ -30,31 +30,31 @@
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Integre termo a termo. Lembre que \\(\\int (x+y)\\,dx =
-      \\frac{x^2}{2} + xy + C\\) quando integra em \\(x\\), tratando \\(y\\)
-      como constante.
+      [NOTA TÉCNICA]: Integre termo a termo. Lembre que \(\int (x+y)\,dx =
+      \frac{x^2}{2} + xy + C\) quando integra em \(x\), tratando \(y\) como
+      constante.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        <strong>(a)</strong> Calculando na ordem \\(dx\\,dy\\): \\[\\int_1^3
-        \\int_0^2 (x+y)\\,dx\\,dy = \\int_1^3 \\left[\\frac{x^2}{2} +
-        xy\\right]_0^2\\,dy = \\int_1^3 (2 + 2y)\\,dy\\] \\[= \\left[2y +
-        y^2\\right]_1^3 = (6 + 9) - (2 + 1) = 12\\]
+        <strong>(a)</strong> Calculando na ordem \(dx\,dy\): \[\int_1^3 \int_0^2
+        (x+y)\,dx\,dy = \int_1^3 \left[\frac{x^2}{2} + xy\right]_0^2\,dy =
+        \int_1^3 (2 + 2y)\,dy\] \[= \left[2y + y^2\right]_1^3 = (6 + 9) - (2 +
+        1) = 12\]
       </p>
       <p>
-        <strong>(b)</strong> Calculando na ordem \\(dy\\,dx\\): \\[\\int_0^2
-        \\int_1^3 (x+y)\\,dy\\,dx = \\int_0^2 \\left[xy +
-        \\frac{y^2}{2}\\right]_1^3\\,dx = \\int_0^2 (2x + 4)\\,dx\\] \\[=
-        \\left[x^2 + 4x\\right]_0^2 = (4 + 8) - 0 = 12\\]
+        <strong>(b)</strong> Calculando na ordem \(dy\,dx\): \[\int_0^2 \int_1^3
+        (x+y)\,dy\,dx = \int_0^2 \left[xy + \frac{y^2}{2}\right]_1^3\,dx =
+        \int_0^2 (2x + 4)\,dx\] \[= \left[x^2 + 4x\right]_0^2 = (4 + 8) - 0 =
+        12\]
       </p>
       <p>
         <strong>(c)</strong> Ambos os cálculos resultam em 12, confirmando que:
-        \\[\\int_1^3 \\int_0^2 (x+y)\\,dx\\,dy = \\int_0^2 \\int_1^3
-        (x+y)\\,dy\\,dx = 12\\] Isto demonstra o Teorema de Fubini: para funções
-        contínuas em retângulos, a ordem de integração não afeta o resultado.
+        \[\int_1^3 \int_0^2 (x+y)\,dx\,dy = \int_0^2 \int_1^3 (x+y)\,dy\,dx =
+        12\] Isto demonstra o Teorema de Fubini: para funções contínuas em
+        retângulos, a ordem de integração não afeta o resultado.
       </p>
     </div>
   </details>
