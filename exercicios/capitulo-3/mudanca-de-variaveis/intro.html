@@ -37,6 +37,23 @@
   FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS EM INTEGRAIS DUPLAS
 </div>
 <div class="concept-definition">
+  <p><strong>CONCEITO-CHAVE: O JACOBIANO COMO FATOR DE ESCALA</strong></p>
+  <p>
+    Toda mudança de variáveis "deforma" o plano. O Jacobiano mede essa
+    deformação: é o fator pelo qual uma pequena área \(du \cdot dv\) se expande
+    (ou contrai) ao ser mapeada no plano \((x,y)\). Para coordenadas polares, o
+    Jacobiano vale \(r\), o que significa que quanto mais longe da origem, maior
+    a área de um "pixel" \(dr \cdot d\theta\). Para uma translação, o Jacobiano
+    é 1 (áreas não mudam). Para uma reescala \(x = au, \; y = bv\), o Jacobiano
+    é \(ab\).
+  </p>
+  <p class="formula-highlight">
+    \[ \text{Área no plano }(x,y) \;=\;
+    \left|\frac{\partial(x,y)}{\partial(u,v)}\right| \times \text{Área no plano
+    }(u,v) \]
+  </p>
+</div>
+<div class="concept-definition">
   <p><strong>DEFINIÇÃO FORMAL:</strong></p>
   <p class="formula-highlight">
     \[ \iint_{R} f(x,y)\, dx\, dy \;=\; \iint_{S} f\bigl(x(u,v),\,
