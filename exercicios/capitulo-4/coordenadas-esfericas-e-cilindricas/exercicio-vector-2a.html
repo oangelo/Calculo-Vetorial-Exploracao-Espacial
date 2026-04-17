@@ -4,24 +4,55 @@
     ORIGEM: Análise Estrutural de Tanques - [SETOR [REDACTED]]
   </div>
   <p>
-    Um reservatório em formato de esfera oca possui raio interno \(2\) m e raio
-    externo \(3\) m. Calcular o volume da casca esférica utilizando coordenadas
-    esféricas, comparando com
-    <span class="censored">o relatório anterior</span>.
+    Agora que sabemos como funcionam as coordenadas cilíndricas e esféricas —
+    incluindo os Jacobianos \(r\) e \(\rho^2\sin\phi\) — vamos aplicar isso ao
+    cálculo de volumes. Começando com o caso mais simples: volume de um cone.
+  </p>
+  <p>
+    Calcular o volume interno de um cone cuja base circular está no plano
+    \(z=0\), de raio \(R=2\) m e altura \(H=4\) m, utilizando coordenadas
+    cilíndricas.
+  </p>
+  <p>
+    <strong>(a)</strong> Em coordenadas cilíndricas, encontre a equação da
+    geratriz do cone: qual é o limite superior de \(z\) em função de \(r\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral tripla do volume com os limites
+    adequados, incluindo o Jacobiano \(r\).
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral e confirme o resultado com a fórmula
+    geométrica do volume do cone.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de diferenças de volumes podem ser
-      relevantes.
+      [NOTA TÉCNICA]: A geratriz do cone liga o vértice (ponto mais alto) à
+      base. Quando \(r=0\), \(z=4\); quando \(r=2\), \(z=0\). A equação é linear
+      em \(r\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        VOLUME EXTERNO MENOS VOLUME INTERNO: \(\frac{4}{3}\pi (3^3) -
-        \frac{4}{3}\pi (2^3) = \frac{4}{3}\pi (27 - 8) = \frac{76\pi}{3}\).
+        (a) A superfície do cone é descrita por \(z = 4 - 2r\) para \(0 \le r
+        \le 2\).
+      </p>
+      <p>
+        (b) \[ V = \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{4 - 2r} r \, dz \, dr
+        \, d\theta. \]
+      </p>
+      <p>
+        (c) Integra-se em \(z\): \(\int_0^{4-2r} dz = 4-2r\). Depois: \[V =
+        \int_0^{2\pi}\int_0^2 r(4-2r)\,dr\,d\theta = 2\pi\int_0^2 (4r-2r^2)\,dr
+        = 2\pi\left[2r^2 - \frac{2r^3}{3}\right]_0^2 = 2\pi\left[8 -
+        \frac{16}{3}\right] = 2\pi\cdot\frac{8}{3} = \frac{16\pi}{3}.\]
+      </p>
+      <p>
+        Confirmação: \(\frac{1}{3}\pi R^2 H = \frac{1}{3}\pi(2)^2(4) =
+        \frac{16\pi}{3}\). ✓
       </p>
     </div>
   </details>

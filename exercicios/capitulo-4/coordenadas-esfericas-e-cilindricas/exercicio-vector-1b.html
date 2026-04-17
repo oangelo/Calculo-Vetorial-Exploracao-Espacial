@@ -4,31 +4,57 @@
     ORIGEM: Cápsula Pressurizada - Cálculo de Espaço Interno
   </div>
   <p>
-    Determinar o volume de uma semiesfera de raio \(3\) m, utilizando
-    coordenadas esféricas. A região corresponde a \(\rho\) variando de \(0\) até
-    \(3\), com \(\phi\) de \(0\) até \(\frac{\pi}{2}\), e \(\theta\) de \(0\)
-    até \(2\pi\).
+    No exercício anterior, vimos as coordenadas cilíndricas, ideais para regiões
+    com simetria em torno de um eixo. Agora vamos às coordenadas esféricas
+    \((\rho,\theta,\phi)\), que são naturais quando a região tem simetria
+    esférica.
+  </p>
+  <p>
+    Considere o sistema de coordenadas esféricas \((\rho,\theta,\phi)\), onde
+    \(\rho\) é a distância à origem, \(\theta\) é o ângulo azimutal (como em
+    cilíndricas) e \(\phi\) é o ângulo polar medido a partir do eixo \(z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Desenhe os eixos \(x\), \(y\) e \(z\). Marque o ponto
+    \(P\) a uma distância \(\rho\) da origem. Indique o ângulo \(\theta\) no
+    plano \(xy\) e o ângulo \(\phi\) entre o vetor \(\overrightarrow{OP}\) e o
+    eixo \(z\).
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva \(x\), \(y\) e \(z\) em função de
+    \((\rho,\theta,\phi)\): \[x = \text{?}, \quad y = \text{?}, \quad z =
+    \text{?}\]
+  </p>
+  <p>
+    <strong>(c)</strong> O que acontece quando \(\phi = 0\)? E quando \(\phi =
+    \pi/2\)? Interprete geometricamente.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre-se de considerar o termo \(\rho^2 \sin(\phi)\) na
-      integração.
+      [NOTA TÉCNICA]: A projeção de \(\rho\) no plano \(xy\) é \(\rho\sin\phi\).
+      As coordenadas \(x\) e \(y\) usam essa projeção com \(\cos\theta\) e
+      \(\sin\theta\). Já \(z = \rho\cos\phi\) vem diretamente do triângulo
+      formado com o eixo \(z\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        EM COORDENADAS ESFÉRICAS, O ELEMENTO DE VOLUME É \(\rho^2 \sin(\phi)\).
+        (a) O desenho mostra \(\theta\) como o ângulo no plano \(xy\) e \(\phi\)
+        como o ângulo entre o vetor posição e o eixo \(z\). O ângulo \(\phi\)
+        vai de \(0\) (eixo \(z\) positivo) a \(\pi\) (eixo \(z\) negativo).
       </p>
       <p>
-        \[ V = \int_{0}^{2\pi} \int_{0}^{\frac{\pi}{2}} \int_{0}^{3} \rho^2
-        \sin(\phi)\, d\rho\, d\phi\, d\theta. \]
+        (b) As transformações são: \[x = \rho\sin\phi\cos\theta, \quad y =
+        \rho\sin\phi\sin\theta, \quad z = \rho\cos\phi.\]
       </p>
       <p>
-        O volume da semiesfera deve resultar em \(\frac{2}{3}\pi (3)^3 =
-        18\pi\).
+        (c) Quando \(\phi = 0\), temos \(x = 0\), \(y = 0\), \(z = \rho\): o
+        ponto está sobre o eixo \(z\) positivo. Quando \(\phi = \pi/2\), \(z =
+        0\) e o ponto está no plano \(xy\), com as coordenadas correspondendo a
+        coordenadas polares clássicas.
       </p>
     </div>
   </details>

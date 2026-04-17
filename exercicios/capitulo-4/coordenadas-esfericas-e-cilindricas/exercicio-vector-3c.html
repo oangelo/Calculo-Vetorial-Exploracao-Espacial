@@ -4,30 +4,50 @@
     ORIGEM: Comissão de Observação Lunar [OPERAÇÃO SIGILOSA]
   </div>
   <p>
-    Em um modelo tridimensional aproximado da superfície lunar, considerar uma
-    calota esférica de ângulo sólido \(\phi\) de \(0\) até \(\frac{\pi}{4}\),
-    com \(\rho\) de \(0\) até \(1737\) km (raio lunar). Investigar se a área
-    projetada no plano \(\theta\)-\(\phi\) representa \span
-    class="censored"&gt;valor estratégico.
+    Vimos integrais com densidade e Jacobiano separados. Agora vamos integrar
+    sobre uma calota esférica — uma região delimitada por um cone e uma esfera,
+    em coordenadas esféricas.
+  </p>
+  <p>
+    Considere uma calota esférica com \(\phi\) de \(0\) até \(\frac{\pi}{4}\) e
+    \(\rho\) de \(0\) até \(R = 1737\) km (raio lunar).
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva a integral tripla do volume dessa calota em
+    coordenadas esféricas.
+  </p>
+  <p><strong>(b)</strong> Calcule o volume da calota.</p>
+  <p>
+    <strong>(c)</strong> Compare com o volume total da esfera: que fração da
+    esfera a calota representa?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem invariantes relevantes sob operações específicas.
+      [NOTA TÉCNICA]: A integral em \(\rho\) dá \(\frac{R^3}{3}\), a integral em
+      \(\phi\) de \(\sin\phi\) de \(0\) a \(\pi/4\) dá \(1 -
+      \frac{\sqrt{2}}{2}\), e \(\theta\) contribui \(2\pi\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Deve-se analisar o volume da calota e a área esférica correspondente. A
-        integral tripla poderia fornecer a estimativa de massa, caso houvesse
-        densidade variável. Observa-se que \(\phi = \frac{\pi}{4}\) limita uma
-        fração notável da superfície.
+        (a) \[ V = \int_0^{2\pi}\int_0^{\pi/4}\int_0^{R}
+        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta. \]
       </p>
       <p>
-        Conclusão: a área projetada guarda correlação direta com estratégias de
-        <span class="censored">pouso e coleta de dados</span>.
+        (b) \(\int_0^R\rho^2\,d\rho = \frac{R^3}{3}\),
+        \(\int_0^{\pi/4}\sin\phi\,d\phi = 1-\cos(\pi/4) =
+        1-\frac{\sqrt{2}}{2}\), \(\int_0^{2\pi}d\theta = 2\pi\).
+      </p>
+      <p>Logo, \(V = \frac{2\pi R^3}{3}\left(1-\frac{\sqrt{2}}{2}\right)\).</p>
+      <p>
+        (c) Volume total da esfera: \(\frac{4}{3}\pi R^3\). A fração é:
+        \[\frac{V_{\text{calota}}}{V_{\text{esfera}}} = \frac{\frac{2\pi
+        R^3}{3}(1-\frac{\sqrt{2}}{2})}{\frac{4\pi R^3}{3}} =
+        \frac{1}{2}\left(1-\frac{\sqrt{2}}{2}\right) \approx 0.146.\] A calota
+        representa cerca de \(14,6\%\) do volume total da esfera.
       </p>
     </div>
   </details>

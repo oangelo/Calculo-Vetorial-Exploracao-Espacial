@@ -322,20 +322,43 @@
         ESFÉRICAS
       </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\iiint_{V} f(x,y,z)\, dV\]
-          <br />
-          Nas mudanças para coordenadas cilíndricas: \[\iiint_{V}
-          f(r,\theta,z)\, r \, dr\, d\theta\, dz\]
-          <br />
-          E para coordenadas esféricas: \[\iiint_{V} f(\rho,\theta,\phi)\,
-          \rho^2 \sin(\phi)\, d\rho\, d\theta\, d\phi\]
+        <p>
+          <strong>1. COORDENADAS CILÍNDRICAS: O QUE É E POR QUE IMPORTA</strong>
         </p>
         <p>
-          Essas transformações permitem abordar problemas de volume, massa e
-          densidade em regiões geométricas mais complexas, aproveitando a
-          simetria do domínio para simplificar o processo de integração.
+          As coordenadas cilíndricas \((r,\theta,z)\) estendem as coordenadas
+          polares para três dimensões. A variável \(r\) mede a distância ao eixo
+          \(z\), \(\theta\) é o ângulo azimutal no plano \(xy\), e \(z\)
+          permanece igual: \(x = r\cos\theta\), \(y = r\sin\theta\), \(z = z\).
+        </p>
+        <p>
+          Este sistema é natural quando a região tem simetria em torno do eixo
+          \(z\) (cilindros, cones, paraboloides de revolução).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. COORDENADAS ESFÉRICAS: O QUE É E POR QUE IMPORTA</strong>
+        </p>
+        <p>
+          As coordenadas esféricas \((\rho,\theta,\phi)\) são ideais para
+          regiões com simetria esférica. Aqui \(\rho\) é a distância à origem,
+          \(\theta\) o ângulo azimutal, e \(\phi\) o ângulo polar medido a
+          partir do eixo \(z\): \(x = \rho\sin\phi\cos\theta\), \(y =
+          \rho\sin\phi\sin\theta\), \(z = \rho\cos\phi\).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. JACOBIANOS E ELEMENTOS DE VOLUME</strong></p>
+        <p class="formula-highlight">
+          \[dV_{\text{cil}} = r\,dr\,d\theta\,dz, \qquad dV_{\text{esf}} =
+          \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\]
+        </p>
+        <p>
+          Ao mudar de coordenadas, o elemento de volume \(dx\,dy\,dz\) precisa
+          ser multiplicado pelo Jacobiano. Para cilíndricas, \(|J| = r\). Para
+          esféricas, \(|J| = \rho^2\sin\phi\). Esses fatores vêm do determinante
+          da matriz de derivadas parciais.
         </p>
       </div>
       <div class="mission-context">

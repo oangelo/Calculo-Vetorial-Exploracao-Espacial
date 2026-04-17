@@ -2,35 +2,48 @@
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
   <div class="context">ORIGEM: Centro de Gravidade - Módulo Avançado</div>
   <p>
+    Usamos coordenadas cilíndricas para volumes com simetria axial. Agora vamos
+    usar coordenadas esféricas, onde o Jacobiano \(\rho^2\sin\phi\) aparece
+    naturalmente.
+  </p>
+  <p>
     Determinar a massa de um sólido delimitado por \(\rho\) de \(1\) a \(2\),
     \(\phi\) de \(0\) a \(\frac{\pi}{3}\), e \(\theta\) de \(0\) a \(2\pi\),
-    sabendo que a densidade \(\delta(\rho,\phi) = 200\,\rho\). Use coordenadas
-    esféricas e verifique se <span class="censored">a estimativa de carga</span>
-    está correta.
+    sabendo que a densidade \(\delta(\rho,\phi) = 200\,\rho\).
   </p>
+  <p>
+    <strong>(a)</strong> Escreva o elemento de massa: \(\delta\,dV\),
+    substituindo \(dV\) pela expressão em coordenadas esféricas.
+  </p>
+  <p><strong>(b)</strong> Monte a integral tripla com os limites dados.</p>
+  <p><strong>(c)</strong> Calcule a integral separando as variáveis.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere se a densidade variável afeta diretamente o
-      termo \(\rho^2 \sin(\phi)\).
+      [NOTA TÉCNICA]: Em esféricas, \(dV =
+      \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\). A densidade \(\delta = 200\rho\)
+      multiplica esse elemento. O integrando final é \(200\rho^3\sin\phi\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        EM COORDENADAS ESFÉRICAS: \(\,dV = \rho^2 \sin(\phi)\, d\rho\, d\phi\,
-        d\theta\).
+        (a) O elemento de massa é \(\delta\,dV = 200\rho \cdot
+        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta =
+        200\rho^3\sin\phi\,d\rho\,d\phi\,d\theta\).
       </p>
       <p>
-        \[ M = \int_{0}^{2\pi} \int_{0}^{\frac{\pi}{3}} \int_{1}^{2} 200\,\rho
-        \cdot \rho^2 \sin(\phi) \, d\rho\, d\phi\, d\theta. \]
+        (b) \[ M = \int_{0}^{2\pi} \int_{0}^{\frac{\pi}{3}} \int_{1}^{2}
+        200\rho^3 \sin\phi \, d\rho\, d\phi\, d\theta. \]
       </p>
       <p>
-        Integra-se \(\rho^3\) de \(1\) a \(2\) e \(\sin(\phi)\) de \(0\) a
-        \(\frac{\pi}{3}\). O resultado numérico final será fornecido após
-        avaliação, confirmando a consistência com padrões de massa do módulo.
+        (c) Separando: \(\int_0^{2\pi}d\theta = 2\pi\),
+        \(\int_0^{\pi/3}\sin\phi\,d\phi = [-\cos\phi]_0^{\pi/3} = -\frac{1}{2}+1
+        = \frac{1}{2}\), e \(\int_1^2 200\rho^3\,d\rho =
+        200\cdot\frac{\rho^4}{4}\Big|_1^2 = 50(16-1) = 750\).
       </p>
+      <p>Logo, \(M = 2\pi \cdot \frac{1}{2} \cdot 750 = 750\pi\).</p>
     </div>
   </details>
 </li>

@@ -241,20 +241,6 @@
         background-color: rgba(139, 0, 0, 0.05);
       }
 
-      .footer-stamp {
-        position: absolute;
-        bottom: 50px;
-        right: 30px;
-        opacity: 0.3;
-        transform: rotate(-20deg);
-        font-weight: bold;
-        font-size: 1.5em;
-        color: var(--stamp-color);
-        border: 2px solid var(--stamp-color);
-        padding: 5px 15px;
-        pointer-events: none;
-      }
-
       .hint-container {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -317,18 +303,40 @@
         FUNDAMENTAÇÃO TEÓRICA: REDUÇÃO A INTEGRAIS DUPLAS EM INTEGRAIS TRIPLAS
       </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D}
-          \left(\int_{z=a(x,y)}^{z=b(x,y)} f(x,y,z)\,dz \right) dA\]
+        <p><strong>1. INTEGRAL TRIPLA: O QUE É E POR QUE IMPORTA</strong></p>
+        <p>
+          Uma integral tripla \(\iiint_V f(x,y,z)\,dV\) é a extensão natural da
+          integral dupla para três dimensões. Enquanto a dupla soma valores de
+          \(f(x,y)\) sobre uma região plana, a tripla soma valores de
+          \(f(x,y,z)\) sobre um volume tridimensional. O elemento infinitesimal
+          de volume é \(dV = dx\,dy\,dz\).
         </p>
         <p>
-          A redução de uma integral tripla a uma integral dupla ocorre quando a
-          região de integração \(V\) pode ser descrita por limites superiores e
-          inferiores em uma das variáveis, resultando em uma integração
-          iterativa em duas dimensões. Na prática, define-se a base \(D\) no
-          plano e ajustam-se os limites da terceira variável para cada ponto de
-          \((x,y)\) em \(D\).
+          Quando \(f(x,y,z)=1\), a integral tripla calcula diretamente o
+          <strong>volume</strong> da região \(V\). Quando \(f\) representa
+          densidade, a integral tripla fornece a <strong>massa</strong> do
+          objeto.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. REDUÇÃO A INTEGRAIS DUPLAS: INTEGRAÇÃO ITERADA</strong>
+        </p>
+        <p class="formula-highlight">
+          \[\iiint_{V} f(x,y,z)\, dV = \iint_{D}
+          \left(\int_{z=z_1(x,y)}^{z=z_2(x,y)} f(x,y,z)\,dz \right) dA\]
+        </p>
+        <p>
+          A redução de uma integral tripla a uma integral dupla ocorre quando
+          integramos primeiro em \(z\). Para cada ponto fixo \((x,y)\) na base
+          \(D\) (projeção de \(V\) no plano \(xy\)), a variável \(z\) varia
+          entre limites \(z_1(x,y)\) e \(z_2(x,y)\) que dependem da geometria do
+          sólido.
+        </p>
+        <p>
+          O resultado da integração em \(z\) é uma função de \((x,y)\), que
+          então é integrada sobre a região plana \(D\). Esta técnica é análoga
+          ao Teorema de Fubini em três dimensões.
         </p>
       </div>
       <div class="mission-context">

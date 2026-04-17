@@ -4,21 +4,42 @@
     ORIGEM: Projeto Secreto de Transporte - Análise Final
   </div>
   <p>
+    Nos exercícios anteriores, os limites em \(z\) eram simples. Agora vamos ver
+    um caso onde \(z\) depende de \(r\) de forma não-linear, criando uma região
+    mais complexa.
+  </p>
+  <p>
     Investigar o volume do sólido que satisfaz \(r \le 3\) e \(z \ge \sqrt{r}\),
     em coordenadas cilíndricas, considerando \(\theta\) de \(0\) até \(2\pi\).
-    Avaliar a compatibilidade com
-    <span class="censored">estrutura modular</span>
-    planejada em <span class="censored">████</span>.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região no plano \(rz\): para \(r\) de \(0\) a
+    \(3\), a curva \(z = \sqrt{r}\) delimita o sólido.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine se a região tem limite superior em \(z\). Se
+    não tiver, a integral diverge. Se tiver, defina-o.
+  </p>
+  <p>
+    <strong>(c)</strong> Assumindo um limite superior \(z = H\) (constante),
+    escreva e avalie a integral do volume.
   </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        O limite \(z \ge \sqrt{r}\) implica \(z^2 \ge r\). Usar integrais
-        apropriadas para quantificar o volume, definindo limites superiores para
-        \(z\). A verificação numérica mostrará se a
-        <span class="censored">arquitetura</span> prevista atende aos critérios
-        de volume.
+        (a) A curva \(z = \sqrt{r}\) no plano \(rz\) é uma parábola deitada. A
+        região inclui todos os pontos acima dessa curva com \(r \le 3\).
+      </p>
+      <p>
+        (b) Sem limite superior em \(z\), o volume diverge. Com \(z \le H\):
+        para cada \(r\), \(z\) varia de \(\sqrt{r}\) até \(H\).
+      </p>
+      <p>
+        (c) \[ V = \int_0^{2\pi}\int_0^3\int_{\sqrt{r}}^H r\,dz\,dr\,d\theta =
+        2\pi\int_0^3 r(H-\sqrt{r})\,dr = 2\pi\left[H\frac{r^2}{2} -
+        \frac{2r^{5/2}}{5}\right]_0^3 = 2\pi\left[\frac{9H}{2} - \frac{2\cdot
+        9\sqrt{3}}{5}\right]. \]
       </p>
     </div>
   </details>
