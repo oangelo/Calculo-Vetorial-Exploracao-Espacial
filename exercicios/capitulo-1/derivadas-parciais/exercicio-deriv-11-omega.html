@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DERIV-11-OMEGA</div>
+  <div class="context">
+    ORIGEM: Dinâmica de Sistemas Complexos [Classificado, 1978]
+  </div>
+  <p>
+    No exercício anterior, você inverteu o raciocínio: conhecendo a derivada,
+    encontrou a função. Agora vamos consolidar uma propriedade que simplifica
+    muitos cálculos — a igualdade das derivadas mistas. Você já verificou essa
+    propriedade para \(\sin(xy)\). Vamos verificar para uma função polinomial e
+    entender por que essa simetria é tão importante na matemática aplicada.
+  </p>
+  <p>Considere: \[ f(x,y) = x^3 y^2 + x^2 y. \]</p>
+  <p>
+    <strong>(a)</strong> Calcule \(\frac{\partial f}{\partial x}\) e depois
+    \(\frac{\partial^2 f}{\partial y \, \partial x}\) (derive em \(x\) primeiro,
+    depois em \(y\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial f}{\partial y}\) e depois
+    \(\frac{\partial^2 f}{\partial x \, \partial y}\) (derive em \(y\) primeiro,
+    depois em \(x\)).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que os resultados de (a) e (b) são idênticos.
+  </p>
+  <p>
+    <strong>(d)</strong> Em aplicações de engenharia, por que é útil saber que a
+    ordem de derivação não importa?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-11]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Esta propriedade vale para toda função cujas derivadas
+      parciais mistas são contínuas (condição que as funções "bem-comportadas"
+      sempre satisfazem).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(\frac{\partial f}{\partial x} = 3x^2 y^2 + 2xy\). \[
+        \frac{\partial^2 f}{\partial y \, \partial x} = 6x^2 y + 2x. \]
+      </p>
+      <p>
+        (b) \(\frac{\partial f}{\partial y} = 2x^3 y + x^2\). \[
+        \frac{\partial^2 f}{\partial x \, \partial y} = 6x^2 y + 2x. \]
+      </p>
+      <p>(c) São idênticos: \(6x^2 y + 2x\) nos dois casos.</p>
+      <p>
+        (d) Em engenharia, frequentemente precisamos derivar em relação a duas
+        variáveis (por exemplo, \(x\) = posição, \(y\) = tempo). Saber que a
+        ordem não importa nos permite escolher a ordem mais conveniente para o
+        cálculo, sem se preocupar com o resultado.
+      </p>
+    </div>
+  </details>
+</li>

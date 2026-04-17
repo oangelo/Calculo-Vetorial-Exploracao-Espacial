@@ -1,0 +1,94 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-08-GAMMA</div>
+  <div class="context">
+    ORIGEM: Seção de Eletrostática — Projeto Skylab [RELATÓRIO CONFIDENCIAL,
+    1973]
+  </div>
+  <p>
+    No exercício anterior, o campo unitário \(\hat{r}\) tinha divergência
+    positiva \(2/r\). Agora vamos investigar um campo radial que
+    <em>decresce mais rápido</em> com a distância — o tipo de campo que aparece
+    em gravidade e eletrostática.
+  </p>
+  <p>
+    Considere \(\vec{F}(x,y,z) = \frac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\) para
+    \((x,y,z) \neq (0,0,0)\). Este campo aponta para fora com magnitude
+    \(1/r^2\) — decresce com o quadrado da distância.
+  </p>
+  <p>
+    <strong>(a)</strong> Compare \(\vec{F}\) com o campo \(\vec{H}\) do
+    exercício anterior. \(\vec{H}\) tinha magnitude 1 e divergência \(2/r\).
+    \(\vec{F}\) tem magnitude \(1/r^2\). Se \(\vec{H}\) já era "quase
+    solenoidal" longe da origem (\(2/r \to 0\)), o que esperar de \(\vec{F}\)
+    que decresce ainda mais?
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva \(\vec{F} = (P, Q, R)\) com \(P = x \cdot
+    (x^2+y^2+z^2)^{-3/2}\). Seja \(s = x^2 + y^2 + z^2\). Calcule
+    \(\frac{\partial P}{\partial x}\) usando a regra do produto:
+    \(\frac{\partial}{\partial x}[x \cdot s^{-3/2}]\).
+  </p>
+  <p>
+    <strong>(c)</strong> Por simetria, escreva \(\frac{\partial Q}{\partial y}\)
+    e \(\frac{\partial R}{\partial z}\). Some os três termos e simplifique
+    usando \(x^2 + y^2 + z^2 = s\). O que o resultado mostra?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pela regra do produto: \(\frac{\partial}{\partial x}[x
+      \cdot s^{-3/2}] = 1 \cdot s^{-3/2} + x \cdot (-\frac{3}{2})s^{-5/2} \cdot
+      2x = s^{-3/2} - 3x^2 s^{-5/2}\). A derivada de \(s\) em relação a \(x\) é
+      \(2x\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Intuição:</strong></p>
+      <p>
+        \(\vec{H}\) tinha magnitude constante — divergência \(2/r\). \(\vec{F}\)
+        decresce como \(1/r^2\) — muito mais rápido. Os vetores se "espalham"
+        pela esfera de raio \(r\), mas a magnitude cai rápido o suficiente para
+        compensar. Esperamos divergência <strong>zero</strong> (ou próxima de
+        zero).
+      </p>
+
+      <p><strong>(b) Derivada em \(x\):</strong></p>
+      <p>Seja \(s = x^2 + y^2 + z^2\).</p>
+      <p>
+        \[\frac{\partial P}{\partial x} = \frac{\partial}{\partial x} [x \cdot
+        s^{-3/2}] = 1 \cdot s^{-3/2} + x \cdot \left(-\frac{3}{2}\right)
+        s^{-5/2} \cdot 2x\] \[= s^{-3/2} - 3x^2 s^{-5/2}\]
+      </p>
+
+      <p><strong>(c) Divergência total:</strong></p>
+      <p>
+        Por simetria: \(\frac{\partial Q}{\partial y} = s^{-3/2} - 3y^2
+        s^{-5/2}\) e \(\frac{\partial R}{\partial z} = s^{-3/2} - 3z^2
+        s^{-5/2}\).
+      </p>
+      <p>
+        \[\nabla \cdot \vec{F} = 3s^{-3/2} - 3(x^2 + y^2 + z^2)s^{-5/2} =
+        3s^{-3/2} - 3s \cdot s^{-5/2} = 3s^{-3/2} - 3s^{-3/2} = 0\]
+      </p>
+      <p>
+        A divergência é <strong>zero</strong> para \((x,y,z) \neq (0,0,0)\)!
+      </p>
+      <p>
+        <em>Interpretação:</em> Este campo é <strong>solenoidal</strong> fora da
+        origem. O que "entra" em qualquer região que não contenha a origem é
+        exatamente o que "sai". O campo \(1/r^2\) é o "ponto de equilíbrio":
+        cresce mais rápido que \(1/r\) (que tem div \(2/r > 0\)), mas não tão
+        rápido a ponto de ter divergência negativa.
+      </p>
+      <p>
+        <em>Nota:</em> Na origem, o campo não está definido (\(1/r^2 \to
+        \infty\)). A divergência não é zero lá — é como se toda a "fonte"
+        estivesse concentrada em um único ponto. Esse tipo de campo aparece em
+        gravidade (Lei de Newton) e eletrostática (Lei de Coulomb): fora da
+        massa/carga, não há criação nem destruição de campo.
+      </p>
+    </div>
+  </details>
+</li>

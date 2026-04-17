@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Simulação de Tanque Orbital -
+    <span class="censored">Setor de Propulsão</span>
+  </div>
+  <p>
+    No exercício anterior, calculamos o volume de um paralelepípedo integrando
+    \(1\,dz\) sobre limites constantes. Agora os limites em \(z\) dependem de
+    \((x,y)\), o que é o caso mais geral.
+  </p>
+  <p>
+    Seja \(V\) o volume limitado acima pelo cone \(z = \sqrt{x^2 + y^2}\) e
+    abaixo pelo plano \(z=0\) na região \(D\). Considere \(D\) o círculo \(x^2 +
+    y^2 \le 4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os limites de \(z\) em função de \((x,y)\)
+    para cada ponto da base \(D\). Esboce o sólido mentalmente.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral tripla de \(\iiint_V x\, dV\)
+    reduzindo-a a uma integral dupla.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integração em \(z\) e obtenha a expressão da
+    integral dupla resultante sobre \(D\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para cada \((x,y)\) no disco de raio \(2\), \(z\) vai de
+      \(0\) até \(\sqrt{x^2+y^2}\). Note que \(x\) é independente de \(z\),
+      então na integração em \(z\), ele é constante.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Para cada ponto \((x,y)\) em \(D\), \(z\) varia de \(0\) a \(\sqrt{x^2 +
+        y^2}\).
+      </p>
+      <p>
+        Portanto: \[ \iiint_V x \, dV = \iint_D \left(\int_{z=0}^{z=\sqrt{x^2 +
+        y^2}} x \, dz\right) dA. \]
+      </p>
+      <p>
+        Integração interna: \(\int_{0}^{\sqrt{x^2 + y^2}} x \, dz = x \cdot
+        \sqrt{x^2 + y^2}.\)
+      </p>
+      <p>
+        Logo, a integral reduzida é: \[ \iint_D x \sqrt{x^2 + y^2} \, dA, \quad
+        \text{onde } D: x^2 + y^2 \le 4. \]
+      </p>
+      <p>
+        O problema se torna mais simples em coordenadas polares, mas a
+        solicitação era apenas expressar a redução em forma de dupla integral.
+      </p>
+    </div>
+  </details>
+</li>

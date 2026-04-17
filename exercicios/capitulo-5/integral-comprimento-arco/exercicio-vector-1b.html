@@ -1,0 +1,39 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Centro de Ajuste Orbital - Trajeto Curvo [REGISTROS DE
+    <span class="censored">15/JUN/1965</span>]
+  </div>
+  <p>
+    A trajetória de teste em 2D é descrita por \(\vec{r}(t) = \bigl(4\cos t,\,
+    4\sin t\bigr)\), com \(t\) de 0 a \(\pi/2\). Determinar o comprimento
+    parcial do círculo, usado para manobra de inclinação.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Considere como propriedades geométricas podem simplificar
+      a integral.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>\(\frac{dx}{dt} = -4\sin t\) e \(\frac{dy}{dt} = 4\cos t\).</p>
+      <p>
+        Logo, \[ L = \int_{0}^{\frac{\pi}{2}} \sqrt{(-4\sin t)^2 + (4\cos t)^2}
+        \, dt = \int_{0}^{\frac{\pi}{2}} \sqrt{16(\sin^2 t + \cos^2 t)} \, dt.
+        \]
+      </p>
+      <p>
+        Simplificando, \[ L = \int_{0}^{\frac{\pi}{2}} 4 \, dt = 4 \times
+        \frac{\pi}{2} = 2\pi. \] (equivalente a um quarto da circunferência de
+        raio 4).
+      </p>
+      <p>
+        Conclusão: O arco medido confirma o segmento de trajetória circular
+        compatível com a manobra planejada.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,50 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Programa Apollo - Análise de Combustível Residuário
+  </div>
+  <p>
+    Nos exercícios anteriores, a região era definida diretamente em coordenadas
+    cilíndricas ou esféricas. Agora vamos ver um caso onde a região é limitada
+    por duas superfícies simultaneamente: um cilindro e um cone.
+  </p>
+  <p>
+    Calcular o volume da região limitada pelo cilindro \(r=2\) e pelo cone \(z =
+    2r\), com \(z\ge 0\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os limites de \(r\), \(\theta\) e \(z\) que
+    definem a região. Esboce o sólido.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral tripla do volume em coordenadas
+    cilíndricas.
+  </p>
+  <p><strong>(c)</strong> Calcule o volume.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O cilindro limita \(r \le 2\). Para cada \(r\), o cone
+      limita \(z \le 2r\). A variável \(\theta\) faz volta completa.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Limites: \(r\) de \(0\) a \(2\). Para cada \(r\), \(z\) varia de
+        \(0\) até \(2r\). E \(\theta\) de \(0\) a \(2\pi\).
+      </p>
+      <p>
+        (b) \[ V = \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{2r} r \, dz \, dr \,
+        d\theta. \]
+      </p>
+      <p>
+        (c) Integração em \(z\): \(\int_0^{2r} dz = 2r\). Depois: \[V =
+        \int_0^{2\pi}\int_0^2 r\cdot 2r\,dr\,d\theta = 2\pi\int_0^2 2r^2\,dr =
+        2\pi\cdot\frac{2r^3}{3}\Big|_0^2 = 2\pi\cdot\frac{16}{3} =
+        \frac{32\pi}{3}.\]
+      </p>
+    </div>
+  </details>
+</li>

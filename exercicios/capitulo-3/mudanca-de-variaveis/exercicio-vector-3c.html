@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">
+    EXERCÍCIO 12 — REGIÃO CUNHA E ENDIREITAMENTO
+  </div>
+  <div class="context">
+    ORIGEM: Cálculo Bilateral - Seção de
+    <span class="censored">Órbita Sincronizada</span>
+  </div>
+  <p>
+    No exercício anterior, usamos uma parametrização não-linear \(x=u,\;y=vu\)
+    para retangularizar um triângulo. Agora aplicamos a mesma filosofia à região
+    delimitada pelas retas \(y=0\) e \(y=2x\), com \(0 \le x \le 2\). Calcule
+    \(\iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy\) usando a transformação \(u=x\),
+    \(v=y/(2x)\), que converte a fronteira oblíqua em um limite constante,
+    transformando a região em um retângulo no plano \((u,v)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação \(u=x\), \(v=y/(2x)\) e
+    verifique que ela leva a região cunha ao retângulo \(0\le u\le 2\), \(0\le
+    v\le 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o Jacobiano \(\partial(x,y)/\partial(u,v)\) da
+    transformação inversa \(x=u\), \(y=2uv\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a integral transformada e discuta se admite
+    fechamento em funções elementares.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Com \(u=x\) e \(v=y/(2x)\), temos \(y=2uv\). O Jacobiano
+      vale \(|1\cdot 2u - 0\cdot 2v| = 2u\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Podemos adotar \(u = x\) e \(v = \frac{y}{2x}\) (para \(x>0\)), de modo
+        que quando \(y = 0\), \(v=0\), e quando \(y=2x\), \(v=1\). Além disso,
+        \(0 \le x \le 2\) leva \(0 \le u \le 2\).
+      </p>
+      <p>
+        A Jacobiana, no entanto, requer cuidado: \[ x = u,\quad y = 2u\,v. \] \[
+        \frac{\partial(x,y)}{\partial(u,v)} = \begin{vmatrix} 1 & 0\\ 2v & 2u
+        \end{vmatrix} = (1)(2u) - (0)(2v) = 2u. \]
+      </p>
+      <p>
+        Logo, \[ \iint_{R} \sqrt{1 + x^2 + y^2}\,dx\,dy =
+        \int_{0}^{2}\int_{0}^{1} \sqrt{1 + u^2 + (2uv)^2}\,\bigl(2u\bigr)\,
+        dv\,du. \]
+      </p>
+      <p>
+        A expressão interna resulta em \(\sqrt{1 + u^2 + 4u^2v^2}\). Novamente,
+        a integral não parece conduzir a funções elementares triviais. Pode-se
+        recorrer a expansões ou métodos numéricos para uma avaliação mais
+        precisa.
+      </p>
+      <p>
+        CONCLUSÃO: A mudança de variáveis foi realizada com sucesso, mas a
+        simplificação adicional exige técnicas avançadas.
+      </p>
+    </div>
+  </details>
+</li>

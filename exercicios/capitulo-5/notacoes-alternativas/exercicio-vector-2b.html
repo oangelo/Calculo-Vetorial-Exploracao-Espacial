@@ -1,0 +1,44 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Cálculo de Trabalho Mecânico - Programa Apollo [JAN/1968]
+  </div>
+  <p>
+    Considere a curva fechada no plano \(xy\) descrita por \(\vec{r}(\theta) =
+    (\cos \theta, \sin \theta)\) para \(\theta \in [0,2\pi]\). Se \(\vec{F}(x,y)
+    = \begin{pmatrix} y \\ -x \end{pmatrix}\), calcular \(\int_C \vec{F}\cdot
+    d\vec{r}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de rotação podem ser relevantes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PARAMETRIZAÇÃO:</p>
+      <p>
+        \(x(\theta) = \cos \theta,\quad y(\theta) = \sin \theta.\)
+        <br />
+        \(\vec{r}'(\theta) = (-\sin \theta, \cos \theta).\)
+      </p>
+      <p>
+        \(\vec{F}(\cos \theta, \sin \theta) = \bigl(\sin \theta, -\cos
+        \theta\bigr).\)
+      </p>
+      <p>INTEGRAL:</p>
+      <p>
+        \[ \int_0^{2\pi} \bigl(\sin \theta, -\cos \theta\bigr) \cdot \bigl(-\sin
+        \theta, \cos \theta\bigr) \, d\theta = \int_0^{2\pi} \bigl(-\sin^2
+        \theta - \cos^2 \theta\bigr) \, d\theta. \]
+      </p>
+      <p>
+        \[ \int_0^{2\pi} \bigl(-1\bigr)\, d\theta =
+        -\left.\theta\right|_0^{2\pi} = -2\pi. \]
+      </p>
+      <p>CONCLUSÃO: O valor da integral de linha é \(-2\pi\).</p>
+    </div>
+  </details>
+</li>

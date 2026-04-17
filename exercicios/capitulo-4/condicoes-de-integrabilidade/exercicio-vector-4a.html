@@ -1,0 +1,31 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">ORIGEM: Análise Final - Apollo 15 [NOV/1971]</div>
+  <p>
+    Um estudo de formação de crateras em um satélite é modelado pela integral
+    tripla de \[ M(x,y,z) = \max\{0, 5 - (x^2 + y^2 + z^2)\}. \] Justifique a
+    integrabilidade de \(M\) e calcule seu valor total para o domínio onde a
+    função é positiva.
+  </p>
+  <!-- SÉRIE OMEGA NÃO TEM DICAS -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(M\) é contínua em \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le \sqrt{5}\}\) e
+        zero fora desse raio, logo limitada e sem descontinuidades.
+      </p>
+      <p>
+        A região de integração é uma esfera de raio \(\sqrt{5}\). Para \(r^2 \le
+        5\), \(M= 5 - r^2\). A integral em coordenadas esféricas: \[
+        \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\sqrt{5}} \bigl(5 - r^2\bigr)\,
+        r^2 \sin\phi\, dr\, d\phi\, d\theta. \]
+      </p>
+      <p>
+        O resultado numérico (após a computação passo a passo) conduz ao valor
+        exato: \[ \boxed{\frac{500\pi}{3}}. \]
+      </p>
+      <p>Conclusão: o valor total de massa/volume associado é finito.</p>
+    </div>
+  </details>
+</li>

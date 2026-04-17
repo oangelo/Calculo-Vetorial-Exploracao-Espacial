@@ -1,0 +1,78 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-02-ALFA</div>
+  <div class="context">
+    ORIGEM: Análise de Gradientes - Laboratório de Propulsão [DADOS DE
+    18/JAN/1961]
+  </div>
+  <p>
+    CONEXÃO: No exercício anterior, você avaliou um campo em um único ponto.
+    Agora vamos avaliar um campo em VÁRIOS pontos e descobrir um padrão
+    geométrico. Este padrão aparece em vórtices atmosféricos e dinâmica de
+    fluidos.
+  </p>
+  <p>
+    Seja o campo vetorial: \[\vec{G}(x,y) = \begin{pmatrix} -y, \\ x
+    \end{pmatrix}\]
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o valor do campo nos pontos \(P_1(1,0)\),
+    \(P_2(0,1)\), \(P_3(-1,0)\) e \(P_4(0,-1)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Esboce os quatro vetores no plano cartesiano,
+    desenhando cada vetor saindo do ponto correspondente. Que padrão geométrico
+    você observa?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o produto escalar \(\vec{G}(x,y) \cdot (x,y)\)
+    para um ponto genérico. O resultado é zero? O que isso significa
+    geometricamente? (Dica: lembre de ortogonalidade em Geometria Analítica.)
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (b), desenhe os vetores com cuidado — note que cada
+      vetor é perpendicular ao raio vetor que liga a origem ao ponto. Para (c),
+      lembre que dois vetores são perpendiculares se e somente se seu produto
+      escalar é zero.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) Calculando o campo em cada ponto:</p>
+      <p>
+        \[\vec{G}(1,0) = \begin{pmatrix} -0, \\ 1 \end{pmatrix} =
+        \begin{pmatrix} 0, \\ 1 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{G}(0,1) = \begin{pmatrix} -1, \\ 0 \end{pmatrix} =
+        \begin{pmatrix} -1, \\ 0 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{G}(-1,0) = \begin{pmatrix} -0, \\ -1 \end{pmatrix} =
+        \begin{pmatrix} 0, \\ -1 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{G}(0,-1) = \begin{pmatrix} -(-1), \\ 0 \end{pmatrix} =
+        \begin{pmatrix} 1, \\ 0 \end{pmatrix}\]
+      </p>
+      <p>
+        (b) PADRÃO GEOMÉTRICO: No esboço, os quatro vetores formam um padrão
+        circular — cada vetor é tangente ao círculo unitário centrado na origem.
+        Em \(P_1(1,0)\), o vetor aponta para cima; em \(P_2(0,1)\), aponta para
+        a esquerda; e assim por diante, sempre perpendicular ao raio e no
+        sentido anti-horário.
+      </p>
+      <p>
+        (c) PRODUTO ESCALAR: \(\vec{G}(x,y) \cdot (x,y) = (-y) \cdot x + x \cdot
+        y = -xy + xy = 0\). O produto escalar é SEMPRE zero, o que significa que
+        o vetor do campo é SEMPRE perpendicular ao vetor posição.
+        Geometricamente, isso confirma que o campo é tangente aos círculos
+        centrados na origem — um campo de rotação pura. Este padrão aparece em
+        vórtices atmosféricos e correntes oceânicas.
+      </p>
+    </div>
+  </details>
+</li>

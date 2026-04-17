@@ -1,0 +1,50 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Seção de Propulsão - Inquérito sobre Câmaras Combustíveis
+  </div>
+  <p>
+    No exercício anterior, calculamos o volume de um cone em coordenadas
+    cilíndricas. Agora vamos usar o mesmo sistema para um sólido cujos limites
+    dependem de \(r^2\): um paraboloide de revolução.
+  </p>
+  <p>
+    Uma câmara de combustão em formato de paraboloide de revolução é descrita
+    por \(z = r^2\), para \(0 \leq z \leq 4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine o limite superior de \(r\) quando \(z=4\).
+    Esboce o sólido.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral tripla do volume em coordenadas
+    cilíndricas.
+  </p>
+  <p><strong>(c)</strong> Calcule o volume e confira o resultado.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A equação \(z = r^2\) descreve um paraboloide que se abre
+      para cima. Quando \(z=4\), temos \(r=2\). Para cada \(r\), \(z\) varia de
+      \(0\) a \(r^2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Quando \(z=4\): \(r^2=4\), logo \(r=2\). O sólido vai de \(r=0\) até
+        \(r=2\).
+      </p>
+      <p>
+        (b) \[ V = \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{r^2} r \, dz \, dr \,
+        d\theta. \]
+      </p>
+      <p>
+        (c) Integração em \(z\): \(\int_0^{r^2} dz = r^2\). Depois: \[V =
+        \int_0^{2\pi}\int_0^2 r\cdot r^2\,dr\,d\theta = 2\pi\int_0^2 r^3\,dr =
+        2\pi\cdot\frac{r^4}{4}\Big|_0^2 = 2\pi\cdot\frac{16}{4} = 8\pi.\]
+      </p>
+    </div>
+  </details>
+</li>

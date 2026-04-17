@@ -1,0 +1,33 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Banco de Dados – Propulsor
+    <span class="censored">████</span> [MAR/1966]
+  </div>
+  <p>
+    Para \(\vec{F}(x,y) = (y \cos x, x \sin y)\) em \(R = [0,\pi/2] \times
+    [0,\pi/2]\), compute a circulação.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Observe as derivadas parciais de funções trigonométricas.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Rotação: \(\dfrac{\partial (x \sin y)}{\partial x} - \dfrac{\partial (y
+        \cos x)}{\partial y} = \sin y - \cos x.\)<br />Integral dupla:
+        \[\int_{0}^{\pi/2}\int_{0}^{\pi/2} (\sin y - \cos x)\,dx\,dy
+        =\int_{0}^{\pi/2}\bigl[ x\sin y - \sin x \bigr]_{0}^{\pi/2} dy \]
+      </p>
+      <p>
+        \[= \int_{0}^{\pi/2} \Bigl( \frac{\pi}{2}\sin y - 1 \Bigr) dy =
+        \frac{\pi}{2}\bigl[ -\cos y \bigr]_0^{\pi/2} - y\Big|_{0}^{\pi/2} =
+        \frac{\pi}{2} (1) - \frac{\pi}{2} = 0.\]
+      </p>
+    </div>
+  </details>
+</li>

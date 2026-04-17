@@ -1,0 +1,38 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Seção de Controle Térmico - Apollo 14 [OUT/1971]
+  </div>
+  <p>
+    Uma distribuição de temperatura local é dada por: \[ T(x,y,z) =
+    \begin{cases} \frac{1}{\sqrt{x^2 + y^2 + z^2}}, &amp; \text{se } x^2 + y^2 +
+    z^2 \neq 0, \\ 100, &amp; \text{se } x = y = z = 0. \end{cases} \]
+    Investigue se a presença de \(\frac{1}{\sqrt{r^2}}\) no denominador afeta a
+    integrabilidade em \(\{(x,y,z)\mid 0 \le r\le 3\}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pense na convergência de integrais envolvendo \(r^{-1}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em coordenadas esféricas, a função se torna aproximadamente
+        \(\frac{1}{r}\). O volume infinitesimal é proporcional a \(r^2\, dr\).
+        Assim, ao integrar \(\frac{1}{r}\cdot r^2\) em \(r\), a integral se
+        comporta como \(\int r\, dr\), que converge para \(r\le3\).
+      </p>
+      <p>
+        No ponto \((0,0,0)\), foi atribuído o valor 100, mas isso não afeta a
+        integrabilidade, pois é um único ponto (conjunto de medida nula).
+      </p>
+      <p>
+        Portanto, a função é integrável no volume esférico e não há divergência
+        na vizinhança de \(r=0\).
+      </p>
+    </div>
+  </details>
+</li>

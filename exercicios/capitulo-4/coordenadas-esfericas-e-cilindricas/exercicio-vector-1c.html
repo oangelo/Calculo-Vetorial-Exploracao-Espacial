@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Seção de Controle Térmico [ARQUIVO INTERNO - MISSÃO GEMINI]
+  </div>
+  <p>
+    Já sabemos escrever \((x,y,z)\) em termos de coordenadas cilíndricas e
+    esféricas. Mas quando fazemos uma integral tripla \(\iiint f\,dx\,dy\,dz\),
+    o elemento de volume \(dx\,dy\,dz\) precisa ser convertido para as novas
+    coordenadas. O fator de conversão é o
+    <strong>valor absoluto do Jacobiano</strong>.
+  </p>
+  <p>
+    No capítulo anterior, vimos o Jacobiano em duas variáveis. Agora precisamos
+    estendê-lo para três.
+  </p>
+  <p>
+    <strong>(a)</strong> Para coordenadas cilíndricas, monte a matriz jacobiana
+    \(\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\) calculando as nove
+    derivadas parciais.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o determinante dessa matriz e mostre que \(|J|
+    = r\).
+  </p>
+  <p>
+    <strong>(c)</strong> Repita o processo para coordenadas esféricas e mostre
+    que \(|J| = \rho^2\sin\phi\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para cilíndricas, use \(x = r\cos\theta\), \(y =
+      r\sin\theta\), \(z = z\). As derivadas parciais em relação a \(r\) e
+      \(\theta\) são as que importam. Para esféricas, expanda o determinante
+      pela terceira linha.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Matriz jacobiana para cilíndricas: \[J = \begin{pmatrix} \cos\theta
+        & -r\sin\theta & 0 \\ \sin\theta & r\cos\theta & 0 \\ 0 & 0 & 1
+        \end{pmatrix}\]
+      </p>
+      <p>
+        (b) O determinante é \(\cos\theta(r\cos\theta) -
+        (-r\sin\theta)(\sin\theta) = r\cos^2\theta + r\sin^2\theta = r\). Assim,
+        \(|J| = r\) e o elemento de volume é \(dV = r\,dr\,d\theta\,dz\).
+      </p>
+      <p>
+        (c) Para esféricas, com \(x = \rho\sin\phi\cos\theta\), \(y =
+        \rho\sin\phi\sin\theta\), \(z = \rho\cos\phi\), o determinante jacobiano
+        resulta em \(\rho^2\sin\phi\). Portanto, \(dV =
+        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\).
+      </p>
+    </div>
+  </details>
+</li>

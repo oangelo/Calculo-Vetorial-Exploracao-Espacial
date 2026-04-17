@@ -1,0 +1,66 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
+  <div class="context">
+    ORIGEM: Sistemas de Controle de Atitude [Programa Skylab, 1973]
+  </div>
+  <p>
+    Às vezes, coordenadas polares não bastam — o resultado depende de
+    \(\theta\), e não dá para concluir. Quando isso acontece, uma alternativa é
+    a desigualdade do sanduíche (squeeze theorem): se \(|f(x,y)| \leq g(x,y)\) e
+    \(g(x,y) \to 0\), então \(f(x,y) \to 0\). Combine isso com o teste de dois
+    caminhos para decidir.
+  </p>
+  <p>
+    Verificar se o limite existe: \[ \lim_{(x,y)\to(0,0)} \frac{x^2 \sin^2
+    y}{x^4 + y^4}. \]
+  </p>
+  <p>
+    <strong>(a)</strong> Usando a desigualdade \(|\sin y| \leq |y|\), encontre
+    uma cota superior para \(|f(x,y)|\). O limitante vai a zero quando \((x,y)
+    \to (0,0)\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o limite ao longo de \(y = x\) e ao longo de
+    \(y = 0\). Os valores são iguais?
+  </p>
+  <p>
+    <strong>(c)</strong> O que (b) implica sobre a existência do limite? A cota
+    de (a) resolve o problema?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Quando a função envolve seno ou cosseno, a desigualdade
+      \(|\sin u| \leq |u|\) (ou \(|\cos u| \leq 1\)) permite trocar a função
+      trigonométrica por algo mais simples. Combine isso com o teste de dois
+      caminhos.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        <strong>(a) Tentativa de cota:</strong> Como \(|\sin y| \leq |y|\),
+        temos \[\left|\frac{x^2 \sin^2 y}{x^4 + y^4}\right| \leq \frac{x^2
+        y^2}{x^4 + y^4}\] Infelizmente, o limitante \(\frac{x^2 y^2}{x^4 +
+        y^4}\) NÃO vai a zero por todos os caminhos — como veremos em (b). A
+        cota não resolve o problema sozinha.
+      </p>
+      <p>
+        <strong>(b) Teste de dois caminhos:</strong> Ao longo de \(y = x\):
+        \[\frac{x^4}{2x^4} = \frac{1}{2}\] Ao longo de \(y = 0\):
+        \[\frac{0}{x^4} = 0\]
+      </p>
+      <p>
+        <strong>(c) Conclusão:</strong> Como os limites ao longo de \(y = 0\)
+        (\(m = 0\)) e \(y = x\) (\(m = 1\)) são diferentes (\(0 \neq
+        \frac{1}{2}\)), o limite NÃO existe. A tentativa de usar a desigualdade
+        do sanduíche falhou porque o limitante \(\frac{x^2 y^2}{x^4 + y^4}\) não
+        converge para zero. Este é um caso instrutivo: nem sempre o sanduíche
+        funciona, e o teste de dois caminhos é mais confiável para provar
+        não-existência.
+      </p>
+    </div>
+  </details>
+</li>

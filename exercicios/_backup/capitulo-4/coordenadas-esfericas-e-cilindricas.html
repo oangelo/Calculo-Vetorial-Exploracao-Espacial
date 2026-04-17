@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+      }
+    };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 
+        ATENÇÃO: Este é um modelo de documento histórico da Guerra Fria.
+        O document-header deve conter uma narrativa histórica relacionada à corrida espacial.
+        
+        Este texto foi adaptado para tratar de integrais triplas em coordenadas cilíndricas e esféricas
+        no contexto do programa Gemini/Apollo (meados da década de 1960).
+      -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">1</span> DE JUNHO DE
+          <span class="censored">1966</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE AVANÇADA [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">GEMINI-TRIPLO</span> <br /><br />
+          Em meio à intensificação da corrida espacial e ao avanço no
+          desenvolvimento de módulos de voo tripulado, nossa equipe de
+          pesquisadores dedicou-se ao estudo aprofundado das integrais triplas,
+          especialmente em coordenadas cilíndricas e esféricas. Essas análises
+          são cruciais para estimar volumes e distribuições de massa em
+          cápsulas, estágios de foguetes e outros componentes orbitais. <br /><br />
+          O material a seguir foi compilado a partir das anotações do Dr.
+          <span class="censored">███████</span>, que liderou o
+          <span class="censored">setor de modelagem</span> no programa Gemini,
+          fornecendo bases sólidas para a próxima fase de
+          <span class="censored">operações orbitais</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada deste material pode
+          resultar em <span class="censored">graves consequências</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2207</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS TRIPLAS EM COORDENADAS CILÍNDRICAS E ESFÉRICAS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\iiint_{V} f(x,y,z)\, dV\]
+          <br />
+          Nas mudanças para coordenadas cilíndricas:
+          \[\iiint_{V} f(r,\theta,z)\, r \, dr\, d\theta\, dz\]
+          <br />
+          E para coordenadas esféricas:
+          \[\iiint_{V} f(\rho,\theta,\phi)\, \rho^2 \sin(\phi)\, d\rho\, d\theta\, d\phi\]
+        </p>
+        <p>
+          Essas transformações permitem abordar problemas de volume, massa e
+          densidade em regiões geométricas mais complexas, aproveitando a
+          simetria do domínio para simplificar o processo de integração.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        No contexto do programa Gemini, o estudo de integrais triplas possibilita
+        estimar volumes de reservatórios de combustível, determinar centros de
+        massa de módulos pressurizados e avaliar parâmetros críticos para
+        manobras orbitais, garantindo maior precisão e segurança nas
+        missões tripuladas.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em <span class="censored">1965</span>,
+        durante a preparação de voos espaciais conjuntos, engenheiros
+        norte-americanos lançaram mão de integrais triplas para aperfeiçoar o
+        design de cápsulas tripuladas. O programa Gemini serviu de ponte para o
+        futuro <span class="censored">Projeto Apollo</span>.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (1-3) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Módulo de Reentrada - Análise de Volume [REGISTROS SIGMA-1]
+            </div>
+            <p>
+              Calcular o volume interno de um cone cuja base circular está no
+              plano \(z=0\), de raio \(R=2\) m e altura \(H=4\) m. Utilize
+              coordenadas cilíndricas para efetuar a integral tripla e confirme
+              que <span class="censored">o valor previsto</span> está de acordo
+              com o modelo de projeto.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar o fator \(r\) no
+                cálculo e o limite superior para \(z\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>EM COORDENADAS CILÍNDRICAS:</p>
+                <p>
+                  A superfície do cone pode ser descrita por
+                  \(z = 4 - 2r\) para \(0 \leq r \leq 2\).
+                </p>
+                <p>\[
+                  V = \int_{0}^{2\pi}
+                      \int_{0}^{2}
+                      \int_{0}^{4 - 2r}
+                      r \, dz \, dr \, d\theta.
+                \]</p>
+                <p>
+                  Integra-se em \(z\) de \(0\) até \(4 - 2r\), depois em \(r\)
+                  de \(0\) até \(2\), e por fim em \(\theta\) de \(0\) até
+                  \(2\pi\).
+                </p>
+                <p>
+                  O resultado final deve ser
+                  \(\frac{1}{3}\pi R^2 H = \frac{1}{3}\pi (2)^2 (4) = \frac{16\pi}{3}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Cápsula Pressurizada - Cálculo de Espaço Interno
+            </div>
+            <p>
+              Determinar o volume de uma semiesfera de raio \(3\) m,
+              utilizando coordenadas esféricas. A região corresponde a
+              \(\rho\) variando de \(0\) até \(3\), com \(\phi\) de \(0\) até
+              \(\frac{\pi}{2}\), e \(\theta\) de \(0\) até \(2\pi\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre-se de considerar o termo \(\rho^2
+                \sin(\phi)\) na integração.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  EM COORDENADAS ESFÉRICAS, O ELEMENTO DE VOLUME É
+                  \(\rho^2 \sin(\phi)\).
+                </p>
+                <p>\[
+                  V = \int_{0}^{2\pi}
+                      \int_{0}^{\frac{\pi}{2}}
+                      \int_{0}^{3}
+                      \rho^2 \sin(\phi)\,
+                      d\rho\, d\phi\, d\theta.
+                \]</p>
+                <p>
+                  O volume da semiesfera deve resultar em
+                  \(\frac{2}{3}\pi (3)^3 = 18\pi\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Seção de Controle Térmico [ARQUIVO INTERNO - MISSÃO GEMINI]
+            </div>
+            <p>
+              Calcular a massa de um cilindro circular reto, de raio
+              \(1\) m e altura \(5\) m, cuja densidade é constante e igual a
+              \(\delta = 800\) kg/m³. Use coordenadas cilíndricas para a
+              integral tripla e avaliar a plausibilidade das
+              <span class="censored">leituras</span> fornecidas pelo módulo.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Integre o fator \(\delta\,r\) corretamente.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  FÓRMULA DA MASSA EM COORDENADAS CILÍNDRICAS:
+                  \(\iiint \delta \, dV\).
+                </p>
+                <p>\[
+                  M = \delta \int_{0}^{2\pi}
+                      \int_{0}^{1}
+                      \int_{0}^{5}
+                      r \, dz \, dr \, d\theta
+                \]</p>
+                <p>
+                  Resultado:
+                  \(\delta \cdot (2\pi) \cdot \left(\frac{1^2}{2}\right) \cdot 5 = 800 \times 2\pi \times \frac{1}{2} \times 5 = 800 \times 5\pi = 4000\pi \text{ kg}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (4-6) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Análise Estrutural de Tanques - [SETOR [REDACTED]]
+            </div>
+            <p>
+              Um reservatório em formato de esfera oca possui raio interno
+              \(2\) m e raio externo \(3\) m. Calcular o volume da casca
+              esférica utilizando coordenadas esféricas, comparando com
+              <span class="censored">o relatório anterior</span>.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de diferenças de volumes podem ser relevantes.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  VOLUME EXTERNO MENOS VOLUME INTERNO:
+                  \(\frac{4}{3}\pi (3^3) - \frac{4}{3}\pi (2^3) = \frac{4}{3}\pi (27 - 8) = \frac{76\pi}{3}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Seção de Propulsão - Inquérito sobre Câmaras Combustíveis
+            </div>
+            <p>
+              Uma câmara de combustão em formato de paraboloide de revolução é
+              descrita por \(z = r^2\), para \(0 \leq z \leq 4\). Usar
+              coordenadas cilíndricas para estimar o volume do sólido,
+              identificando se a <span class="censored">capacidade</span> está
+              dentro dos padrões.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de superfícies de revolução podem auxiliar.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  LIMITES: De \(z=0\) até \(z=4\), e em cilíndricas temos
+                  \(z=r^2\). Assim, quando \(z=4\), \(r=2\).
+                </p>
+                <p>\[
+                  V = \int_{0}^{2\pi}
+                      \int_{0}^{2}
+                      \int_{0}^{r^2}
+                      r \, dz \, dr \, d\theta.
+                \]</p>
+                <p>
+                  A integração resulta em
+                  \(\frac{1}{2}\pi(2^4) = 8\pi\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Centro de Gravidade - Módulo Avançado
+            </div>
+            <p>
+              Determinar a massa de um sólido delimitado por
+              \(\rho\) de \(1\) a \(2\), \(\phi\) de \(0\) a \(\frac{\pi}{3}\),
+              e \(\theta\) de \(0\) a \(2\pi\), sabendo que a densidade
+              \(\delta(\rho,\phi) = 200\,\rho\). Use coordenadas esféricas e
+              verifique se <span class="censored">a estimativa de carga</span>
+              está correta.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere se a densidade variável afeta diretamente o termo \(\rho^2 \sin(\phi)\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  EM COORDENADAS ESFÉRICAS:
+                  \(\,dV = \rho^2 \sin(\phi)\, d\rho\, d\phi\, d\theta\).
+                </p>
+                <p>\[
+                  M = \int_{0}^{2\pi}
+                      \int_{0}^{\frac{\pi}{3}}
+                      \int_{1}^{2}
+                      200\,\rho \cdot
+                      \rho^2 \sin(\phi)
+                      \, d\rho\, d\phi\, d\theta.
+                \]</p>
+                <p>
+                  Integra-se \(\rho^3\) de \(1\) a \(2\) e \(\sin(\phi)\) de
+                  \(0\) a \(\frac{\pi}{3}\). O resultado numérico final será
+                  fornecido após avaliação, confirmando a consistência com
+                  padrões de massa do módulo.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (7-9) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Observatório Orbital - Relatório de Densidade de Plasma
+            </div>
+            <p>
+              Em uma região modelada por coordenadas esféricas, o plasma
+              apresenta densidade variável
+              \(\delta(\rho,\phi,\theta)=\alpha\, \rho^2 \sin(\phi)\).
+              Supondo \(\rho\) de \(0\) a \(3\), \(\phi\) de \(0\) a
+              \(\pi\), e \(\theta\) de \(0\) a \(2\pi\), justifique se
+              a massa total do plasma (via integral tripla) teria valor finito
+              ou não, levando em conta possíveis divergências.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sistema.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O elemento de volume em esféricas já inclui \(\rho^2
+                  \sin(\phi)\). Multiplicar por outra \(\rho^2 \sin(\phi)\)
+                  pode suscitar questões de convergência na fronteira de
+                  integração. Entretanto, no intervalo \(\rho=0\) a \(3\),
+                  a integral permanece finita, pois não há singularidade em
+                  \(\rho=0\).
+                </p>
+                <p>
+                  Conclusão: a massa total é finita, embora mais complexa.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Programa Apollo - Análise de Combustível Residuário
+            </div>
+            <p>
+              Calcular o volume da região limitada pelo cilindro
+              \(r=2\) e pelo cone \(z = 2r\), com \(z\ge 0\). Utilize
+              coordenadas cilíndricas e discuta possíveis aplicações para
+              <span class="censored">tanques simulados</span>.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes no sólido formado.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  LIMITE: \(r\) de \(0\) a \(2\). Para cada \(r\),
+                  \(z\) varia de \(0\) até \(2r\). E \(\theta\) de \(0\) a
+                  \(2\pi\).
+                </p>
+                <p>\[
+                  V = \int_{0}^{2\pi}
+                      \int_{0}^{2}
+                      \int_{0}^{2r}
+                      r \, dz \, dr \, d\theta.
+                \]</p>
+                <p>
+                  O resultado numérico é
+                  \(\int_{0}^{2\pi} \int_{0}^{2} (2r^2)\, dr\, d\theta = 2\pi \times \frac{16}{3} = \frac{32\pi}{3}\).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Comissão de Observação Lunar [OPERAÇÃO SIGILOSA]
+            </div>
+            <p>
+              Em um modelo tridimensional aproximado da superfície lunar,
+              considerar uma calota esférica de ângulo sólido \(\phi\) de \(0\)
+              até \(\frac{\pi}{4}\), com \(\rho\) de \(0\) até \(1737\) km
+              (raio lunar). Investigar se a área projetada no plano
+              \(\theta\)-\(\phi\) representa \span class="censored">valor
+              estratégico</span>.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem invariantes relevantes sob operações específicas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Deve-se analisar o volume da calota e a área esférica
+                  correspondente. A integral tripla poderia fornecer a
+                  estimativa de massa, caso houvesse densidade variável.
+                  Observa-se que \(\phi = \frac{\pi}{4}\) limita uma fração
+                  notável da superfície.
+                </p>
+                <p>
+                  Conclusão: a área projetada guarda correlação direta
+                  com estratégias de <span class="censored">pouso e coleta
+                  de dados</span>.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (10-12) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Apollo - Configuração de Módulo Lunar [DADOS ULTRA]
+            </div>
+            <p>
+              Determinar a massa de um sólido definido por
+              \(\rho\) entre \(2\) e \(4\), \(\phi\) entre \(0\) e
+              \(\frac{\pi}{2}\), e \(\theta\) entre \(0\) e \(\pi\), considerando
+              densidade \(\delta(\rho,\phi,\theta)\) arbitrária mas contínua e
+              não-nula no domínio. Interpretar a aplicabilidade no
+              <span class="censored">ensaio de pouso</span>.
+            </p>
+
+            <!-- Sem dicas para a série OMEGA -->
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O cálculo envolve a integral tripla em coordenadas esféricas,
+                  avaliando cuidadosamente limites parciais em \(\rho\) e
+                  \(\theta\). A ausência de singularidades no interior do
+                  domínio indica convergência garantida.
+                </p>
+                <p>
+                  Conclusão: o valor exato depende da forma da função
+                  \(\delta\), mas o método de integração por esféricas
+                  é adequado à região.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Projeto Secreto de Transporte - Análise Final
+            </div>
+            <p>
+              Investigar o volume do sólido que satisfaz
+              \(r \le 3\) e \(z \ge \sqrt{r}\), em coordenadas cilíndricas,
+              considerando \(\theta\) de \(0\) até \(2\pi\). Avaliar a
+              compatibilidade com
+              <span class="censored">estrutura modular</span>
+              planejada em  <span class="censored">████</span>.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O limite \(z \ge \sqrt{r}\) implica \(z^2 \ge r\). Usar
+                  integrais apropriadas para quantificar o volume, definindo
+                  limites superiores para \(z\). A verificação numérica mostrará
+                  se a <span class="censored">arquitetura</span> prevista
+                  atende aos critérios de volume.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Laboratório Orbital Skylab - Estudo de Grandes Estruturas
+            </div>
+            <p>
+              Uma grande estrutura cilíndrica, de altura variável, é descrita
+              por \(z = 8 - r^2\), para \(0 \le z \le 8\). Determinar a massa se
+              a densidade for uma função complexa
+              \(\delta(r,z)\), sem simplificações. Sugerir procedimento para
+              a <span class="censored">otimização do design</span>.
+            </p>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A forma geral da massa:
+                  \(\iiint \delta(r,z)\, dV\) em coordenadas cilíndricas
+                  \((r,\theta,z)\). Implica integrar \(\delta(r,z)\,r\) ao longo
+                  de \(\theta\) de \(0\) a \(2\pi\), \(r\) de \(0\) a \(\sqrt{8}\),
+                  e \(z\) de \(0\) a \(8 - r^2\).
+                </p>
+                <p>
+                  Conclusão: A necessidade de integração simbólica ou numérica
+                  deve ser avaliada conforme a função \(\delta(r,z)\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">14</span> • DOCUMENTO VX-<span
+          class="censored"
+          >2207</span
+        >-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

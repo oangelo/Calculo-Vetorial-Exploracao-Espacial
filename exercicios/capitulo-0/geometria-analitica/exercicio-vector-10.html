@@ -1,0 +1,46 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-10 <span class="difficulty-badge difficulty-gamma">GAMMA</span></div>
+  <div class="context">
+    ORIGEM: Definição de Plano de Aterrissagem — Missão Gemini [SIGMA-3]
+  </div>
+  <div class="narrative">
+    <em>Agora que dominamos retas, vamos para <strong>planos</strong>. Três pontos
+    não colineares definem um plano — construímos dois vetores entre eles,
+    pegamos o produto vetorial para achar a normal, e temos a equação. Esta é a
+    síntese do que fizemos com vetores e produto vetorial.</em>
+  </div>
+  <p>
+    Dados \(A(1,0,0)\), \(B(0,1,0)\) e \(C(0,0,1)\):
+  </p>
+  <p>
+    (a) Encontre os vetores \(\vec{AB}\) e \(\vec{AC}\).<br />
+    (b) Calcule o vetor normal ao plano (use o produto vetorial).<br />
+    (c) Escreva a equação do plano que passa por \(A\), \(B\) e \(C\).
+    Verifique que os três pontos satisfazem a equação.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Vetores entre pontos — mesmo cálculo do VECTOR-01. Normal =
+      \(\vec{AB} \times \vec{AC}\) — mesmo cálculo do VECTOR-06. Equação:
+      \(n_x(x-x_0) + n_y(y-y_0) + n_z(z-z_0) = 0\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE PLANO POR TRÊS PONTOS:</p>
+      <p>(a) \(\vec{AB} = (-1,1,0)\), \(\vec{AC} = (-1,0,1)\).</p>
+      <p>
+        (b) \(\vec{n} = \vec{AB}\times\vec{AC} = \begin{vmatrix}
+        \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\\ -1 &amp; 1 &amp;
+        0 \\\ -1 &amp; 0 &amp; 1 \end{vmatrix} = (1, 1, 1)\).
+      </p>
+      <p>
+        (c) Usando ponto \(A(1,0,0)\): \(1(x-1) + 1(y-0) + 1(z-0) = 0\), ou
+        \(x + y + z = 1\). Verificação: \(A \to 1+0+0=1\checkmark\), \(B
+        \to 0+1+0=1\checkmark\), \(C \to 0+0+1=1\checkmark\).
+      </p>
+    </div>
+  </details>
+</li>

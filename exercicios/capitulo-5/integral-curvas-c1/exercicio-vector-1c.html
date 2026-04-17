@@ -1,0 +1,41 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Sessão de Testes - Centro de Controle
+    <span class="censored">[REDACTED]</span>
+  </div>
+  <p>
+    Seja a curva \(C\) no plano \(xy\) definida por \(\vec{r}(t) =
+    \begin{pmatrix} t \\ e^t \end{pmatrix}\), \(t \in [0, 1]\). Obtenha o
+    comprimento de \(C\). Compare o valor final com a trajetória de referência
+    \(\vec{r}_{\text{ref}}(t) = \begin{pmatrix} t \\ t \end{pmatrix}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A diferença entre \(\sqrt{1 + (e^t)^2}\) e \(\sqrt{1 +
+      1^2}\) pode direcionar a análise comparativa.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Derivando: \(\vec{r}'(t) = \begin{pmatrix} 1 \\ e^t \end{pmatrix}\).
+      </p>
+      <p>
+        Então \(\|\vec{r}'(t)\| = \sqrt{1^2 + (e^t)^2} = \sqrt{1 + e^{2t}}.\)
+      </p>
+      <p>
+        O comprimento: \[ \int_0^1 \sqrt{1 + e^{2t}}\, dt. \] Não possui
+        antiderivada elementar simples, mas pode ser estimado numericamente. Já
+        a curva de referência apresenta \(\|\vec{r}'_{\text{ref}}(t)\| = \sqrt{1
+        + 1} = \sqrt{2}\), resultando em um comprimento exato de \(\sqrt{2}\).
+      </p>
+      <p>
+        Conclusão: o crescimento exponencial de \(e^t\) gera um incremento maior
+        em relação à reta de referência.
+      </p>
+    </div>
+  </details>
+</li>

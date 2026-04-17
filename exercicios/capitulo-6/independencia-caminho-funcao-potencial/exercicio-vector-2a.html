@@ -1,0 +1,29 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">ORIGEM: Plataforma Gemini – Teste de Queima, 1965</div>
+  <p>
+    Verifique se o campo 3D \(\vec{F}(x,y,z)=\begin{pmatrix} 2xz \\ 2yz \\ x^2 +
+    y^2 \end{pmatrix}\) é conservativo. Se for, determine \(\Phi\) e calcule o
+    trabalho para mover a cápsula de (1,0,0) até (0,1,1).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de <em>curl</em> podem ser relevantes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(\nabla\times\vec{F}=\vec{0}\) ⇒ conservativo.<br />Integre \(F_1\):
+        \(\Phi=\int 2xz\,dx = x^2z + g(y,z)\). Derivando em y e igualando a
+        \(F_2=2yz\) resulta \(\partial g/\partial y = 2yz\) ⇒ \(g=y^2 z +
+        h(z)\). Derivando em z e igualando a \(x^2+y^2\) fornece \(x^2 + y^2 =
+        x^2 + y^2 + h'(z)\) ⇒ \(h'(z)=0\).<br />Potencial: \[\Phi(x,y,z)=x^2 z +
+        y^2 z.\]<br />Trabalho = \(\Phi(0,1,1)-\Phi(1,0,0)=
+        (0+1^2\cdot1)-(0)=1.\)
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,54 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Reconfiguração Órbita-Terra - Apollo 11 [AGO/1969]
+  </div>
+  <p>
+    Um campo vetorial em \(\mathbb{R}^3\) é dado por \(\vec{F}(x,y,z) =
+    \bigl(e^x, \sin(y), xz\bigr)\). Deseja-se analisar o trabalho realizado ao
+    longo da curva resultante da concatenação de duas trajetórias:
+    <br />
+    1) \(C_1\): \(\vec{r}_1(t) = (t, 0, 0)\) para \(t \in [0,2]\).
+    <br />
+    2) \(C_2\): \(\vec{r}_2(u) = (2, u, u)\) para \(u \in [0,2]\).
+    <br />
+    Calcular \(\int_{C} \vec{F}\cdot d\vec{r}\), onde \(C = C_1 \cup C_2\).
+  </p>
+  <!-- Série OMEGA: sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Divide-se a integral em dois trechos e soma-se: \(\int_{C_1}
+        \vec{F}\cdot d\vec{r} + \int_{C_2} \vec{F}\cdot d\vec{r}\).
+      </p>
+      <p>
+        <strong>Trecho \(C_1\):</strong>
+        \(\vec{r}_1(t) = (t, 0, 0)\), \(\vec{r}_1'(t) = (1,0,0)\).
+        <br />
+        \(\vec{F}(t, 0, 0) = \bigl(e^t, \sin(0), t\cdot0\bigr) = (e^t, 0, 0).\)
+        <br />
+        Produto escalar: \[ (e^t, 0, 0)\cdot(1,0,0) = e^t. \] \[ \int_0^2 e^t\,
+        dt = \left.e^t\right|_0^2 = e^2 - 1. \]
+      </p>
+      <p>
+        <strong>Trecho \(C_2\):</strong>
+        \(\vec{r}_2(u) = (2, u, u)\), \(\vec{r}_2'(u) = (0,1,1)\).
+        <br />
+        \(\vec{F}(2, u, u) = \bigl(e^2, \sin(u), 2u\bigr).\)
+        <br />
+        Produto escalar: \[ (e^2, \sin(u), 2u)\cdot(0,1,1) = \sin(u) + 2u. \] \[
+        \int_0^2 [\sin(u) + 2u]\, du = \left.-\cos(u)\right|_0^2 +
+        \left.u^2\right|_0^2 = [-\cos(2)+1] + [4]. \] \[ = 5 - \cos(2). \]
+      </p>
+      <p>
+        Soma total: \[ (e^2 - 1) + \bigl[5 - \cos(2)\bigr] = e^2 + 4 - \cos(2).
+        \]
+      </p>
+      <p>
+        CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} = e^2 + 4 -
+        \cos(2).\)
+      </p>
+    </div>
+  </details>
+</li>

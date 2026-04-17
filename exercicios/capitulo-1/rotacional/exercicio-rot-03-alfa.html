@@ -1,0 +1,107 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
+  <div class="context">
+    ORIGEM: Análise de Rotação Local — Sistemas de Navegação Apollo
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No exercício anterior, você
+    viu qualitativamente que o campo \((0,x,0)\) faz uma pá girar. Agora vamos
+    analisar isso de forma mais sistemática: em cada lado de um quadrado, o
+    campo contribui para rotação? A ferramenta é o produto escalar \(\vec{F}
+    \cdot \hat{t}\) — a componente do campo na direção tangente ao percurso.
+  </div>
+
+  <p>
+    Nos dois exercícios anteriores, vimos que torque causa rotação e que o campo
+    \(\vec{F} = (0, x, 0)\) faz uma pá de moinho girar. Agora vamos analisar
+    essa rotação de forma quantitativa, lado a lado de um quadrado.
+  </p>
+
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (0, x, 0)\) e um quadrado de lado \(a\)
+    centrado na origem, com vértices em \((\pm a/2, \pm a/2)\). O percurso é no
+    sentido anti-horário.
+  </p>
+
+  <p>
+    <strong>(a)</strong> Calcule o vetor do campo nos quatro vértices do
+    quadrado: \((-a/2, -a/2)\), \((a/2, -a/2)\), \((a/2, a/2)\) e \((-a/2,
+    a/2)\). Em que direção aponta cada vetor?
+  </p>
+
+  <p>
+    <strong>(b)</strong> Analise cada lado do quadrado separadamente. No lado
+    inferior (\(y = -a/2\)) e no lado superior (\(y = a/2\)), o campo \(\vec{F}
+    = (0, x, 0)\) aponta na direção \(y\), enquanto o deslocamento ao longo do
+    lado é na direção \(x\). O campo contribui para rotação nestes lados?
+    Justifique pensando no produto escalar \(\vec{F} \cdot \hat{t}\) (componente
+    tangente).
+  </p>
+
+  <p>
+    <strong>(c)</strong> No lado direito (\(x = a/2\)), o campo vale \((0, a/2,
+    0)\) e o deslocamento é na direção \(+y\). No lado esquerdo (\(x = -a/2\)),
+    o campo vale \((0, -a/2, 0)\) e o deslocamento é na direção \(-y\). Em qual
+    dos dois lados o campo "empurra" no sentido do percurso, e em qual
+    "resiste"? A contribuição líquida é positiva ou negativa?
+  </p>
+
+  <p>
+    <strong>(d)</strong> Com base na análise dos itens (b) e (c), o campo
+    contribui positivamente para rotação ao redor do quadrado? O que isso diz
+    sobre o rotacional do campo na origem?
+  </p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pense no produto escalar \(\vec{F} \cdot \hat{t}\) como a
+      "projeção" do campo na direção do percurso. Se o campo é perpendicular ao
+      deslocamento, a contribuição é zero. Se o campo aponta no mesmo sentido do
+      percurso, a contribuição é positiva; se aponta contra, é negativa.
+    </div>
+  </details>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) Em \((-a/2, -a/2)\): \(\vec{F} = (0, -a/2, 0)\) — aponta para baixo.
+        Em \((a/2, -a/2)\): \(\vec{F} = (0, a/2, 0)\) — aponta para cima. Em
+        \((a/2, a/2)\): \(\vec{F} = (0, a/2, 0)\) — aponta para cima. Em
+        \((-a/2, a/2)\): \(\vec{F} = (0, -a/2, 0)\) — aponta para baixo.
+      </p>
+
+      <p>
+        (b) No lado inferior: o deslocamento é na direção \(+x\), mas o campo
+        aponta na direção \(y\). O produto escalar \(\vec{F} \cdot \hat{t} = 0\)
+        — o campo é perpendicular ao percurso. Contribuição: zero. No lado
+        superior: mesma situação — deslocamento na direção \(-x\), campo na
+        direção \(y\). Produto escalar nulo. Contribuição: zero.
+      </p>
+
+      <p>
+        (c) No lado direito: \(x = a/2\), o campo é \((0, a/2, 0)\) e o vetor
+        tangente é \(\hat{t} = (0, 1, 0)\) (sentido \(+y\)). \(\vec{F} \cdot
+        \hat{t} = a/2\) — positivo! O campo empurra no sentido do percurso. No
+        lado esquerdo: \(x = -a/2\), o campo é \((0, -a/2, 0)\) e o vetor
+        tangente é \(\hat{t} = (0, -1, 0)\) (sentido \(-y\)). \(\vec{F} \cdot
+        \hat{t} = (-a/2)(-1) = a/2\) — também positivo! Mesmo apontando para
+        baixo, o campo "empurra" no sentido descendente do percurso. Ambos os
+        lados verticais contribuem positivamente para a rotação.
+      </p>
+
+      <p>
+        (d) A contribuição total é positiva — o campo favorece rotação no
+        sentido anti-horário ao redor da origem. Os lados horizontais não
+        contribuem (campo perpendicular ao percurso), mas os lados verticais
+        empurram consistentemente no sentido do percurso. Isso confirma que o
+        rotacional do campo \((0, x, 0)\) na origem é não-zero e aponta na
+        direção \(+z\).
+      </p>
+    </div>
+  </details>
+</li>

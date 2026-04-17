@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE ABRIL DE
+          <span class="censored">1961</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE PESQUISA [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">CAMPO-ALFA</span> <br /><br />
+          Um dia após o histórico voo orbital de
+          <span class="censored">Yuri Gagarin</span>, nossas equipes de
+          matemáticos foram mobilizadas para desenvolver novos modelos para
+          compreensão e controle da navegação espacial. Os recentes avanços
+          soviéticos no <span class="censored">Programa Vostok</span> exigem uma
+          resposta imediata para garantir nossa presença no espaço. <br /><br />
+          A matemática dos campos vetoriais se mostra fundamental para modelar
+          as forças que afetam naves espaciais em órbita. Os exercícios a seguir
+          foram elaborados pelo Prof.
+          <span class="censored">████████</span>, especialista em análise de
+          trajetórias do <span class="censored">Programa Mercury</span>.
+        </div>
+        <div class="warning-box">
+          Este documento contém formulações matemáticas críticas para o
+          desenvolvimento de tecnologia espacial avançada. A divulgação não
+          autorizada é considerada
+          <span class="censored">crime de alta traição</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: CA-<span class="censored">7734</span>-M</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">7</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: CAMPO VETORIAL</div>
+
+      <!-- ========== CONTEXTUALIZAÇÃO ========== -->
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Imagine um mapa meteorológico: em cada cidade há uma seta indicando a
+          direção e a força do vento. Não é uma única trajetória — é um padrão
+          que cobre toda a região. Um <strong>campo vetorial</strong> é
+          exatamente isso: uma regra que associa um vetor a cada ponto do
+          espaço. Enquanto uma função vetorial \(\vec{r}(t)\) (tópico anterior)
+          descreve <em>uma</em> trajetória parametrizada, um campo vetorial
+          \(\vec{F}(x,y)\) descreve o <em>mapa completo</em> de vetores — como o
+          vento sopra em todo lugar, como a gravidade puxa em cada ponto.
+        </p>
+        <p>
+          Neste módulo, construímos a linguagem dos campos vetoriais passo a
+          passo. Começamos com a <strong>definição</strong> (o que é um campo),
+          depois analisamos <strong>campos lineares</strong> (o padrão mais
+          simples), avançamos para
+          <strong>campos circulares e radiais</strong> (rotação e gravidade),
+          identificamos <strong>singularidades</strong> (onde o campo explode ou
+          desaparece), e finalmente tratamos <strong>campos 3D</strong>,
+          <strong>campos dependentes do tempo</strong> e
+          <strong>análise qualitativa</strong> de pontos críticos e
+          estabilidade. Cada conceito depende do anterior — e todos aparecem nos
+          exercícios que seguem.
+        </p>
+      </div>
+
+      <!-- ========== 1. DEFINIÇÃO ========== -->
+      <div class="concept-definition">
+        <p><strong>1. DEFINIÇÃO: O QUE É UM CAMPO VETORIAL</strong></p>
+        <p>
+          Um <strong>campo vetorial</strong> é uma função que associa um vetor a
+          cada ponto de uma região do espaço. Em duas dimensões, escrevemos:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{F}(x, y) = \bigl(P(x,y),\; Q(x,y)\bigr)\]
+        </p>
+        <p>
+          onde \(P\) e \(Q\) são funções que determinam as componentes
+          horizontal e vertical do vetor em cada ponto \((x, y)\). Em três
+          dimensões, uma terceira componente aparece: \(\vec{F}(x,y,z) =
+          \bigl(P, Q, R\bigr)\). A
+          <strong>visualização</strong> do campo consiste em desenhar setas
+          saindo de pontos de uma grade — cada seta mostra a direção e a
+          intensidade do campo naquele ponto. A distinção crucial com funções
+          vetoriais é a seguinte: uma função vetorial \(\vec{r}(t)\) dá um vetor
+          para cada <em>instante</em>
+          \(t\), enquanto um campo vetorial \(\vec{F}(x,y)\) dá um vetor para
+          cada
+          <em>posição</em> \((x,y)\).
+        </p>
+      </div>
+
+      <!-- ========== 2. CAMPO LINEAR ========== -->
+      <div class="concept-definition">
+        <p><strong>2. CAMPO LINEAR: EXPANSÃO E CONTRAÇÃO</strong></p>
+        <p>
+          O campo vetorial mais simples tem componentes que são funções lineares
+          das coordenadas:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{F}(x,y) = \begin{pmatrix} ax \\ by \end{pmatrix}\]
+        </p>
+        <p>
+          onde \(a\) e \(b\) são constantes. Se \(a > 0\) e \(b > 0\), os
+          vetores apontam para longe da origem (expansão). Se \(a < 0\) e \(b <
+          0\), apontam para a origem (contração). Se os sinais são mistos, o
+          campo combina atração e repulsão em direções diferentes. Quando \(a
+          \neq b\), o campo "estica" mais em uma direção — como \(\vec{F} = (2x,
+          3y)\), onde o fator 3 na componente \(y\) faz os vetores serem mais
+          verticais. A magnitude em um ponto \((x,y)\) é calculada pela norma:
+          \(|\vec{F}| = \sqrt{(ax)^2 + (by)^2}\).
+        </p>
+      </div>
+
+      <!-- ========== 3. CAMPO CIRCULAR ========== -->
+      <div class="concept-definition">
+        <p><strong>3. CAMPO CIRCULAR: ROTAÇÃO</strong></p>
+        <p>
+          Um campo circular associa a cada ponto um vetor
+          <strong>tangente</strong> ao círculo centrado na origem que passa por
+          esse ponto:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{G}(x,y) = \begin{pmatrix} -y \\ x \end{pmatrix}\]
+        </p>
+        <p>
+          O vetor \(\vec{G}\) é sempre perpendicular ao vetor posição \((x,y)\).
+          Isso se verifica pelo produto escalar: \(\vec{G} \cdot (x,y) = (-y)
+          \cdot x + x \cdot y = 0\). Geometricamente, o produto escalar nulo
+          significa
+          <strong>ortogonalidade</strong> (Cap 0 — Geometria Analítica),
+          confirmando que o campo é tangente aos círculos centrados na origem,
+          no sentido anti-horário. A magnitude é constante ao longo de cada
+          círculo: \(|\vec{G}| = \sqrt{x^2 + y^2} = r\), ou seja, proporcional à
+          distância à origem. Este padrão aparece em vórtices atmosféricos,
+          correntes oceânicas e campos magnéticos ao redor de fios condutores.
+        </p>
+      </div>
+
+      <!-- ========== 4. CAMPO RADIAL ========== -->
+      <div class="concept-definition">
+        <p><strong>4. CAMPO RADIAL: GRAVIDADE E FORÇAS CENTRAIS</strong></p>
+        <p>
+          O campo gravitacional de um corpo celeste aponta sempre
+          <strong>para o centro</strong> — o oposto do campo linear de expansão.
+          Se \(\vec{r} = (x, y, z)\) é o vetor posição a partir do centro e \(r
+          = |\vec{r}|\) é a distância, o campo gravitacional simplificado é:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{F}(x,y,z) = -k \, \frac{\vec{r}}{|\vec{r}|^3}\]
+        </p>
+        <p>
+          onde \(k\) é uma constante positiva. O termo \(\vec{r}/|\vec{r}|\) é o
+          <strong>vetor unitário</strong> (Cap 0) na direção de \(\vec{r}\)
+          (aponta para fora); o sinal negativo inverte a direção (aponta para o
+          centro). A magnitude é \(|\vec{F}| = k/r^2\) — a
+          <strong>Lei de Newton</strong>. Se a distância dobra, a intensidade
+          cai para \(1/4\). Este é o campo radial por excelência: todos os
+          vetores convergem para um centro, ao contrário do campo circular onde
+          são tangentes.
+        </p>
+      </div>
+
+      <!-- ========== 5. SINGULARIDADES ========== -->
+      <div class="concept-definition">
+        <p><strong>5. SINGULARIDADES: ONDE O CAMPO FALHA</strong></p>
+        <p>
+          Uma <strong>singularidade</strong> é um ponto onde o campo vetorial
+          não está definido — tipicamente porque alguma componente tende ao
+          infinito ou ao zero de forma indeterminada. No campo gravitacional, a
+          singularidade ocorre na origem (o denominador \(|\vec{r}|^3\) se
+          anula). Em um campo magnético ao redor de um fio, a singularidade
+          também está no próprio fio:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{B}(x,y) = \frac{k}{x^2 + y^2} \begin{pmatrix} -y \\ x
+          \end{pmatrix}\]
+        </p>
+        <p>
+          onde \(k\) é uma constante. A direção é circular (como no campo
+          \(\vec{G}\) da seção 3), mas a intensidade é \(\frac{k}{r}\) —
+          decrescente com a distância, mas infinita na origem. A singularidade
+          marca o ponto onde o modelo matemático "quebra" e a física real (fio
+          com espessura finita) prevalece. Um
+          <strong>ponto de estagnação</strong> é o caso oposto: o campo vale
+          \(\vec{0}\) (não infinito), significando ausência de movimento — comum
+          em fluxos de fluido.
+        </p>
+      </div>
+
+      <!-- ========== 6. CAMPOS 3D ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong>6. CAMPOS EM TRÊS DIMENSÕES: ESPIRAIS E DECOMPOSIÇÃO</strong>
+        </p>
+        <p>
+          Naves espaciais voam no espaço tridimensional. Um campo 3D tem três
+          componentes, e sua visualização é mais difícil — por isso, a
+          estratégia é
+          <strong>decompor</strong> em comportamentos já conhecidos. Considere:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{V}(x,y,z) = \begin{pmatrix} y \\ -x \\ z \end{pmatrix}\]
+        </p>
+        <p>
+          Restringindo ao plano \(xy\) (fixando \(z = 0\)), o campo fica
+          \(\vec{V}_{xy} = (y, -x)\) — o negativo do campo circular da seção 3
+          (sentido horário em vez de anti-horário). A componente \(z\) isolada é
+          simplesmente \(z\): positiva quando \(z > 0\), negativa quando \(z <
+          0\). A combinação de rotação no plano \(xy\) com movimento vertical
+          cria um padrão <strong>helicoidal</strong> (em espiral). Este tipo de
+          decomposição — separar o campo em partes que você já conhece — é uma
+          ferramenta essencial para analisar campos complexos.
+        </p>
+      </div>
+
+      <!-- ========== 7. CAMPOS DEPENDENTES DO TEMPO ========== -->
+      <div class="concept-definition">
+        <p><strong>7. CAMPOS DEPENDENTES DO TEMPO: DINÂMICA</strong></p>
+        <p>
+          Até agora, todos os campos eram <strong>estáticos</strong> — não mudam
+          com o tempo. Mas fenômenos reais evoluem. Um campo dependente do tempo
+          tem a forma:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{F}(x,y,t) = \begin{pmatrix} x\cos t - y\sin t \\ x\sin t +
+          y\cos t \end{pmatrix}\]
+        </p>
+        <p>
+          onde \(t\) representa o tempo. Note que esta expressão é a
+          <strong>matriz de rotação</strong> (Cap 0 — Geometria Analítica)
+          aplicada ao vetor posição \((x, y)\): o campo gira continuamente, mas
+          preserva a magnitude. Expandindo \(|\vec{F}|^2\) e usando \(\cos^2 t +
+          \sin^2 t = 1\), obtém-se \(|\vec{F}| = \sqrt{x^2 + y^2} = r\) — a
+          intensidade depende apenas da distância à origem, não do tempo. O
+          campo inteiro "gira como uma catavento" sem esticar nem encolher.
+          Apenas a origem permanece invariante: \(\vec{F}(0,0,t) = \vec{0}\)
+          para qualquer \(t\).
+        </p>
+      </div>
+
+      <!-- ========== 8. PONTOS CRÍTICOS ========== -->
+      <div class="concept-definition">
+        <p><strong>8. PONTOS CRÍTICOS: EQUILÍBRIO DO CAMPO</strong></p>
+        <p>
+          Um <strong>ponto crítico</strong> (ou singularidade nula) é um ponto
+          onde o campo se anula: \(\vec{F}(x_0, y_0) = \vec{0}\). Encontrá-los
+          significa resolver o sistema:
+        </p>
+        <p class="formula-highlight">
+          \[P(x,y) = 0 \quad \text{e} \quad Q(x,y) = 0\]
+        </p>
+        <p>
+          onde \(\vec{F} = (P, Q)\). Esses pontos representam posições de
+          <strong>equilíbrio</strong> — uma partícula parada ali permanece
+          parada (nenhuma força a empurra). Em sistemas dinâmicos, os pontos
+          críticos governam o comportamento global do campo: a análise de como o
+          campo se comporta <em>perto</em> deles revela se o equilíbrio é
+          estável, instável ou de outro tipo.
+        </p>
+      </div>
+
+      <!-- ========== 9. ANÁLISE QUALITATIVA ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong>9. ANÁLISE QUALITATIVA: ATRATORES, REPULSORES E SELAS</strong>
+        </p>
+        <p>
+          Saber <em>onde</em> o campo é nulo não basta — precisamos saber
+          <em>o que acontece quando perturbamos levemente o equilíbrio</em>. A
+          ferramenta mais acessível é o <strong>produto escalar</strong> (Cap 0)
+          entre o campo e o vetor posição:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{F}(x,y) \cdot (x,y) = P \cdot x + Q \cdot y\]
+        </p>
+        <p>
+          Se este produto escalar é <strong>negativo</strong> perto do ponto
+          crítico, o campo aponta "para dentro" — o equilíbrio é um
+          <strong>atrator</strong> (estável). Se é <strong>positivo</strong>, o
+          campo aponta "para fora" — um <strong>repulsor</strong> (instável). Se
+          o sinal muda de região para região, o comportamento é uma
+          <strong>sela</strong> (parcialmente instável). Uma outra abordagem é
+          experimental: calcular o campo em pontos próximos ao equilíbrio e
+          observar a direção dos vetores — se "circulam" ao redor do ponto, é um
+          centro. Estes conceitos são essenciais para analisar a estabilidade de
+          órbitas e pontos de equilíbrio em sistemas gravitacionais, como os
+          pontos de Lagrange.
+        </p>
+      </div>
+
+      <!-- ========== 10. CAMPOS COMPOSTOS ========== -->
+      <div class="concept-definition">
+        <p>
+          <strong
+            >10. CAMPOS COMPOSTOS: DECAIMENTO E PERFIS DE INTENSIDADE</strong
+          >
+        </p>
+        <p>
+          Campos reais raramente são puros (lineares, circulares ou radiais).
+          Frequentemente combinamos uma <strong>direção</strong> com um perfil
+          de <strong>intensidade</strong>. Um exemplo é o campo de propulsão
+          iônica:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{P}(x,y,z) = e^{-r^2} \begin{pmatrix} x \\ y \\ z
+          \end{pmatrix}\]
+        </p>
+        <p>
+          onde \(r^2 = x^2 + y^2 + z^2\). O campo aponta na direção radial (o
+          vetor posição), mas a intensidade é controlada pelo fator escalar
+          \(e^{-r^2}\). A magnitude é \(|\vec{P}| = r \cdot e^{-r^2}\). Para
+          encontrar onde a intensidade é máxima, usamos
+          <strong>derivadas</strong> (Cap 0): calculando \(\frac{d}{dr}(r \cdot
+          e^{-r^2})\) e igualando a zero, obtém-se o máximo em \(r =
+          1/\sqrt{2}\). O campo é mais intenso não na origem, mas a uma certa
+          distância dela — um perfil útil em propulsão, onde a zona de máxima
+          força fica a uma distância ótima do propulsor. A estratégia geral é:
+          decompor o campo como o produto de um
+          <strong>escalar</strong> (intensidade) por um
+          <strong>vetor</strong> (direção) e analisar cada parte separadamente.
+        </p>
+      </div>
+
+      <!-- ========== APLICAÇÕES ========== -->
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os campos vetoriais
+        são a linguagem matemática de praticamente toda força no espaço. O
+        <strong>campo gravitacional</strong> determina as órbitas de satélites e
+        naves — o modelo radial \(1/r^2\) da seção 4 é a base da mecânica
+        orbital. Os <strong>campos circulares</strong> modelam vórtices
+        atmosféricos durante reentrada e correntes oceânicas usadas para
+        planejar almaragens. Os <strong>pontos críticos</strong> e sua
+        estabilidade correspondem aos pontos de Lagrange do sistema Terra-Lua,
+        onde uma nave pode permanecer com mínimo gasto de combustível. O
+        <strong>princípio de superposição</strong> (somar campos individuais) é
+        usado para modelar interações gravitacionais de múltiplos corpos — como
+        a influência conjunta da Terra e da Lua durante uma missão
+        <span class="censored">Apollo</span>. O domínio dessas ferramentas
+        permitiu calcular com precisão as trajetórias que colocaram humanos na
+        <span class="censored">Lua</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A formalização matemática dos campos
+        vetoriais foi impulsionada por Michael Faraday (1791-1867), que
+        introduziu o conceito de "linhas de força" para visualizar campos
+        elétricos e magnéticos. James Clerk Maxwell traduziu essas ideias em
+        equações diferenciais na década de 1860, unificando eletricidade,
+        magnetismo e luz. Durante a corrida espacial dos anos 1960, o cálculo
+        preciso de campos gravitacionais e sua interação com múltiplos corpos
+        foi decisivo para o sucesso das missões
+        <span class="censored">Mercury</span>,
+        <span class="censored">Gemini</span> e
+        <span class="censored">Apollo</span> — a mesma matemática que Faraday
+        concebeu por intuição experimental tornou-se a base para navegação
+        interplanetária.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO CA-<span
+          class="censored"
+          >7734</span
+        >-M
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-field-01-alfa.html',
+            'exercicio-field-02-alfa.html',
+            'exercicio-field-03-alfa.html',
+            'exercicio-field-04-beta.html',
+            'exercicio-field-05-beta.html',
+            'exercicio-field-06-beta.html',
+            'exercicio-field-07-gamma.html',
+            'exercicio-field-09-gamma.html',
+            'exercicio-field-08-gamma.html',
+            'exercicio-field-10-omega.html',
+            'exercicio-field-11-omega.html',
+            'exercicio-field-12-omega.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

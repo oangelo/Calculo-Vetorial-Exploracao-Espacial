@@ -1,0 +1,40 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Manobra de Transferência - Centro
+    <span class="censored">Técnico</span> Gemini
+  </div>
+  <p>
+    Uma nave segue a curva \(C\) parametrizada por \(\vec{r}(t) =
+    \begin{pmatrix} t \\ 3t - t^2 \\ 2t \end{pmatrix}\), \(t \in [0, 3]\).
+    Calcule o comprimento total e discuta se há pontos de inflexão relevantes na
+    projeção \(xy\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de polinômios podem simplificar a verificação
+      de curvatura.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Derivando: \(\vec{r}'(t) = \begin{pmatrix} 1 \\ 3 - 2t \\ 2
+        \end{pmatrix}\).
+      </p>
+      <p>
+        \(\|\vec{r}'(t)\| = \sqrt{1^2 + (3 - 2t)^2 + 2^2} = \sqrt{1 + 9 - 12t +
+        4t^2 + 4} = \sqrt{14 + 4t^2 - 12t}.\)
+      </p>
+      <p>
+        O comprimento: \[ \int_0^3 \sqrt{14 + 4t^2 - 12t}\, dt. \] Após
+        completar quadrado ou usar substituições, o resultado pode ser
+        determinado numericamente. Na projeção \(xy\), a curva \((t, 3t - t^2)\)
+        possui ponto de inflexão em \(t=1.5\). Isso afeta a trajetória ao
+        alterar a curvatura antes de uma queda na componente \(y\).
+      </p>
+    </div>
+  </details>
+</li>

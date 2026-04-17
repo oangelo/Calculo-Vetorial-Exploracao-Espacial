@@ -1,0 +1,38 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Estudo de Trajetória Suborbital [Memorando Interno
+    <span class="censored">██</span>/<span class="censored">65</span>]
+  </div>
+  <p>
+    Um protótipo de trajetória suborbital em 2D é definido por \(\vec{r}(t) =
+    \bigl(t^2,\ 3\sqrt{t}\bigr)\), com \(t\) de 1 a 9. Calcular o comprimento de
+    arco para verificar estabilidade em regime de voo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Examine a raiz quadrada em \(y\) e potência em \(x\)
+      cuidadosamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>\(\frac{dx}{dt} = 2t\), \(\frac{dy}{dt} = \frac{3}{2\sqrt{t}}\).</p>
+      <p>
+        Então, \[ L = \int_{1}^{9} \sqrt{(2t)^2 +
+        \left(\frac{3}{2\sqrt{t}}\right)^2}\, dt = \int_{1}^{9} \sqrt{4t^2 +
+        \frac{9}{4t}}\, dt. \]
+      </p>
+      <p>
+        A forma exata da solução envolve manipulações adicionais. O resultado
+        numérico pode ser computado para aplicação na trajetória suborbital.
+      </p>
+      <p>
+        Conclusão: O estudo confirma que o comprimento de arco se mantém dentro
+        dos limites operacionais propostos.
+      </p>
+    </div>
+  </details>
+</li>

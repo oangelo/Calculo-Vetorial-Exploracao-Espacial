@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>O Teste Definitivo</h2>
+        <p class="fragment">Como determinar se um campo é conservativo?</p>
+        <p class="fragment">Condição necessária e suficiente:</p>
+        <p class="fragment">
+          \[\vec{F} \text{ é conservativo} \iff \nabla \times \vec{F} =
+          \vec{0}\]
+        </p>
+        <p class="fragment">
+          O <strong>rotacional</strong> (curl) nulo é a marca característica dos
+          campos conservativos.
+        </p>
+      </section>
+
+      <section>
+        <h3>Interpretação Física do Rotacional</h3>
+        <p>
+          O rotacional mede a tendência de um campo para criar movimento
+          circular:
+        </p>
+        <ul>
+          <li class="fragment">
+            Campos conservativos não possuem "turbilhões" (rotacional zero)
+          </li>
+          <li class="fragment">
+            Fisicamente, representa a ausência de torque rotacional
+          </li>
+          <li class="fragment">
+            Um fluido neste campo não formaria redemoinhos naturalmente
+          </li>
+        </ul>
+        <p class="fragment">
+          Para um campo \(\vec{F} = (P,Q,R)\) em coordenadas cartesianas:
+        </p>
+        <p class="fragment">
+          \[\nabla \times \vec{F} = \begin{vmatrix} \hat{\imath} & \hat{\jmath}
+          & \hat{k} \\ \frac{\partial}{\partial x} & \frac{\partial}{\partial y}
+          & \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix}\]
+        </p>
+      </section>
+
+      <section>
+        <h3>Derivadas Parciais e Teste de Simetria</h3>
+        <p>
+          Para um campo \(\vec{F}(x,y,z) = (P,Q,R)\), a condição de rotacional
+          nulo se traduz em:
+        </p>
+        <div class="fragment">
+          <p>
+            \[\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x},
+            \quad \frac{\partial P}{\partial z} = \frac{\partial R}{\partial x},
+            \quad \frac{\partial Q}{\partial z} = \frac{\partial R}{\partial
+            y}\]
+          </p>
+          <p>
+            Este é o <strong>teste de simetria</strong> das derivadas parciais
+            cruzadas.
+          </p>
+        </div>
+        <p class="fragment">
+          Exemplo: Verifique se \(\vec{F}(x,y) = (2xy + y^2)\hat{\imath} + (x^2
+          + 2xy)\hat{\jmath}\) é conservativo.
+        </p>
+        <p class="fragment">
+          Solução: \(\frac{\partial}{\partial y}(2xy + y^2) = 2x + 2y\) e
+          \(\frac{\partial}{\partial x}(x^2 + 2xy) = 2x + 2y\)
+        </p>
+        <p class="fragment">Como são iguais, o campo é conservativo.</p>
+      </section>
+
+      <section>
+        <h3>Caso Prático: Campo Gravitacional em Órbitas</h3>
+        <p>O campo gravitacional terrestre é conservativo, expressado como:</p>
+        <p>\[\vec{F}(\vec{r}) = -\frac{GMm}{|\vec{r}|^3}\vec{r}\]</p>
+        <p>Implicações práticas durante a corrida espacial:</p>
+        <ul>
+          <li class="fragment">
+            Permitiu calcular órbitas usando conservação de energia mecânica
+          </li>
+          <li class="fragment">
+            As trajetórias poderiam ser otimizadas para minimizar combustível
+          </li>
+          <li class="fragment">
+            Sistema Terra-Lua: aproximado como campo conservativo
+          </li>
+        </ul>
+        <p class="fragment">
+          Limitação: sistemas de três corpos (Terra-Lua-Sol) não podem ser
+          expressos como campos conservativos simples, complicando o
+          planejamento de missões.
+        </p>
+      </section>
+    </section>
+
+    <!-- SEÇÃO 5: Conjunto Simplesmente Conexo -->
+  </body>
+</html>

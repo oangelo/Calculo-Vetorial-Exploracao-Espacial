@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">10</span> DE JULHO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">PLATAFORMA GEMINI [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">OBLIVION</span>
+          <br /><br />
+          Em resposta às exigências de pesquisa sobre condições de
+          <span class="censored">integrabilidade</span> em domínios limitados,
+          nossa equipe de analistas iniciou a verificação de funções críticas no
+          contexto de <span class="censored">orbital staging</span>.
+          <br /><br />
+          Os registros a seguir foram reunidos pelo Dr.
+          <span class="censored">████████</span>, cujas notas contribuíram de
+          forma crucial para o desenvolvimento do
+          <span class="censored">módulo de descida</span> da missão.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações consideradas
+          <span class="censored">ultrasensíveis</span>. Divulgar estes dados sem
+          permissão resultará em <span class="censored">retenção imediata</span>
+          e possíveis sanções.
+        </div>
+        <div class="metadata">
+          <span>REF: CDI-<span class="censored">202</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE INTEGRABILIDADE EM CONJUNTOS
+        LIMITADOS
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          Seja f: R² → R uma função limitada e D ⊂ R² um conjunto limitado e
+          fechado (Jordan-measurável).<br /><br />
+          Dizemos que f é integrável em D se, para todo ε > 0, existem partições
+          cuja soma superior e soma inferior diferem menos que ε.
+        </p>
+        <p>
+          Assim, a integrabilidade em conjuntos limitados exige que a função
+          seja limitada e que as regiões de descontinuidade estejam controladas
+          em um conjunto de pequena extensão (por exemplo, mensurável de medida
+          nula). Não abordaremos ainda o Teorema de Fubini, apenas as condições
+          gerais de quando uma função é integrável sobre um domínio limitado e
+          bem delimitado.
+        </p>
+      </div>
+      <div class="mission-context">
+        As condições de integrabilidade em domínios limitados permitem prever se
+        um modelo matemático de força ou densidade pode ser aplicado em
+        calibrações de sistemas, garantindo análises confiáveis para
+        <span class="censored">controle de órbita</span> ou testes de
+        <span class="censored">queda livre</span> em módulos espaciais.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+        a exatidão dos sistemas de acoplamento e retorno à Terra dependia de
+        estimativas de grandezas como densidade atmosférica e pressão dinâmica,
+        cujos modelos se baseiam nos conceitos de integrabilidade em domínios
+        restritos.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">14</span> • DOCUMENTO CDI-<span
+          class="censored"
+          >202</span
+        >-D
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-cdi-alfa-1.html',
+            'exercicio-cdi-alfa-2.html',
+            'exercicio-cdi-alfa-3.html',
+            'exercicio-cdi-beta-1.html',
+            'exercicio-cdi-beta-2.html',
+            'exercicio-cdi-beta-3.html',
+            'exercicio-cdi-gamma-1.html',
+            'exercicio-cdi-gamma-2.html',
+            'exercicio-cdi-gamma-3.html',
+            'exercicio-cdi-omega-1.html',
+            'exercicio-cdi-omega-2.html',
+            'exercicio-cdi-omega-3.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

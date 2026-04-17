@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gabarito - Prova Substitutiva de Cálculo Vetorial</title>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+      };
+    </script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+          Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        line-height: 1.6;
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+        background-color: #f9f9f9;
+      }
+      h1,
+      h2 {
+        border-bottom: 2px solid #a04000;
+        padding-bottom: 10px;
+        color: #662500;
+      }
+      h2 {
+        margin-top: 40px;
+      }
+      .question-item {
+        font-weight: bold;
+        margin-top: 20px;
+      }
+      details {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        background-color: #fff;
+        padding: 15px;
+      }
+      summary {
+        font-weight: bold;
+        cursor: pointer;
+        color: #a04000;
+      }
+      .solution {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Gabarito - Prova Substitutiva de Cálculo Vetorial</h1>
+
+    <h2>Questão 1</h2>
+    <p>
+      Deseja-se calcular a área da porção do cone \(z = \sqrt{x^2 + y^2}\) que
+      está abaixo do plano \(z = 3\).
+    </p>
+
+    <div class="question-item">
+      a) Encontre uma parametrização \(\mathbf{r}(x, y)\) para a superfície e
+      descreva o domínio dos parâmetros.
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>
+          A parametrização mais direta é usar \(x\) e \(y\) como parâmetros:
+        </p>
+        <p>\[ \mathbf{r}(x, y) = \langle x, y, \sqrt{x^2 + y^2} \rangle \]</p>
+        <p>
+          O domínio dos parâmetros, \(D\), é a projeção da superfície no plano
+          \(xy\). A condição \(z \le 3\) implica \(\sqrt{x^2+y^2} \le 3\), ou
+          seja, \(x^2+y^2 \le 9\). O domínio é um disco de raio 3 centrado na
+          origem.
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Calcule o vetor normal \(\mathbf{r}_x \times \mathbf{r}_y\) e o módulo
+      deste vetor, \(||\mathbf{r}_x \times \mathbf{r}_y||\).
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>Calculamos as derivadas parciais:</p>
+        <p>
+          \[ \mathbf{r}_x = \left\langle 1, 0, \frac{x}{\sqrt{x^2+y^2}}
+          \right\rangle \quad \text{e} \quad \mathbf{r}_y = \left\langle 0, 1,
+          \frac{y}{\sqrt{x^2+y^2}} \right\rangle \]
+        </p>
+        <p>O produto vetorial é:</p>
+        <p>
+          \[ \mathbf{r}_x \times \mathbf{r}_y = \begin{vmatrix} \mathbf{i} &
+          \mathbf{j} & \mathbf{k} \\ 1 & 0 & \frac{x}{\sqrt{x^2+y^2}} \\ 0 & 1 &
+          \frac{y}{\sqrt{x^2+y^2}} \end{vmatrix} = \left\langle
+          -\frac{x}{\sqrt{x^2+y^2}}, -\frac{y}{\sqrt{x^2+y^2}}, 1 \right\rangle
+          \]
+        </p>
+        <p>O módulo do vetor é:</p>
+        <p>
+          \[ ||\mathbf{r}_x \times \mathbf{r}_y|| = \sqrt{\frac{x^2}{x^2+y^2} +
+          \frac{y^2}{x^2+y^2} + 1} = \sqrt{1 + 1} = \sqrt{2} \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Monte e calcule a integral dupla que fornece a área da superfície.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          A integral da área é \(A = \iint_D ||\mathbf{r}_x \times
+          \mathbf{r}_y|| \,dA\).
+        </p>
+        <p>\[ A = \iint_D \sqrt{2} \,dA = \sqrt{2} \iint_D 1 \,dA \]</p>
+        <p>
+          A integral \(\iint_D 1 \,dA\) é a área do domínio \(D\), que é um
+          disco de raio 3. A área do disco é \(\pi r^2 = \pi (3)^2 = 9\pi\).
+        </p>
+        <p>Portanto, a área da superfície do cone é:</p>
+        <p>\[ A = \sqrt{2} \cdot (9\pi) = 9\pi\sqrt{2} \]</p>
+      </div>
+    </details>
+
+    <h2>Questão 2</h2>
+    <p>
+      Calcule a integral de linha \(\oint_C (-y + \tan(x)) dx + (2x +
+      \sqrt{1+y^4}) dy\), onde C é a fronteira triangular com vértices em (0,
+      0), (2, 0) e (0, 1), orientada no sentido anti-horário.
+    </p>
+
+    <div class="question-item">
+      a) Identifique as funções \(P(x, y)\) e \(Q(x, y)\) da integral e calcule
+      \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>Identificamos \(P\) e \(Q\) da forma \(\oint_C P\,dx + Q\,dy\):</p>
+        <p>
+          \[ P(x, y) = -y + \tan(x) \quad \text{e} \quad Q(x, y) = 2x +
+          \sqrt{1+y^4} \]
+        </p>
+        <p>Calculamos as derivadas parciais:</p>
+        <p>
+          \[ \frac{\partial Q}{\partial x} = 2 \quad \text{e} \quad
+          \frac{\partial P}{\partial y} = -1 \]
+        </p>
+        <p>A expressão para o Teorema de Green é:</p>
+        <p>
+          \[ \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 2 -
+          (-1) = 3 \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Descreva a região de integração \(R\) e calcule sua área.
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          A região de integração \(R\) é o triângulo no plano \(xy\) com
+          vértices em (0, 0), (2, 0) e (0, 1). Este é um triângulo retângulo.
+        </p>
+        <p>
+          Sua base mede 2 unidades (no eixo x) e sua altura mede 1 unidade (no
+          eixo y).
+        </p>
+        <p>A área do triângulo é:</p>
+        <p>
+          \[ \text{Área}(R) = \frac{1}{2} \times \text{base} \times
+          \text{altura} = \frac{1}{2} \times 2 \times 1 = 1 \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Use o Teorema de Green e os resultados anteriores para encontrar o
+      valor da integral de linha.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          O Teorema de Green afirma que \(\oint_C P\,dx + Q\,dy = \iint_R
+          \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+          y}\right) dA\).
+        </p>
+        <p>Substituindo os valores encontrados:</p>
+        <p>
+          \[ \oint_C (-y + \tan(x)) dx + (2x + \sqrt{1+y^4}) dy = \iint_R 3 \,dA
+          \]
+        </p>
+        <p>
+          \[ = 3 \iint_R 1 \,dA = 3 \cdot (\text{Área de } R) = 3 \cdot 1 = 3 \]
+        </p>
+      </div>
+    </details>
+
+    <h2>Questão 3</h2>
+    <p>
+      Seja \(S\) a superfície do hemisfério superior \(z = \sqrt{4 - x^2 -
+      y^2}\), orientada com o vetor normal apontando para fora. Considere o
+      campo vetorial \(\mathbf{F}(x, y, z) = \langle -y, x, z^2 \rangle\).
+    </p>
+
+    <div class="question-item">
+      a) Calcule a integral de linha \(\oint_C \mathbf{F} \cdot d\mathbf{r}\),
+      onde \(C\) é a curva de fronteira de \(S\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>
+          A fronteira \(C\) é o círculo \(x^2+y^2=4\) no plano \(z=0\),
+          orientado no sentido anti-horário. Parametrizamos \(C\):
+        </p>
+        <p>
+          \[ \mathbf{r}(t) = \langle 2\cos t, 2\sin t, 0 \rangle, \quad 0 \le t
+          \le 2\pi \]
+        </p>
+        <p>\[ \mathbf{r}'(t) = \langle -2\sin t, 2\cos t, 0 \rangle \]</p>
+        <p>
+          Avaliamos \(\mathbf{F}\) em \(\mathbf{r}(t)\):
+          \(\mathbf{F}(\mathbf{r}(t)) = \langle -2\sin t, 2\cos t, 0 \rangle\).
+        </p>
+        <p>A integral de linha é:</p>
+        <p>
+          \[ \oint_C \mathbf{F} \cdot d\mathbf{r} = \int_0^{2\pi} \langle -2\sin
+          t, 2\cos t, 0 \rangle \cdot \langle -2\sin t, 2\cos t, 0 \rangle \,dt
+          \]
+        </p>
+        <p>
+          \[ = \int_0^{2\pi} (4\sin^2 t + 4\cos^2 t) \,dt = \int_0^{2\pi} 4 \,dt
+          = [4t]_0^{2\pi} = 8\pi \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Calcule o fluxo do rotacional, \(\iint_S (\text{rot } \mathbf{F}) \cdot
+      d\mathbf{S}\).
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>Primeiro, calculamos o rotacional de \(\mathbf{F}\):</p>
+        <p>
+          \[ \text{rot } \mathbf{F} = \nabla \times \mathbf{F} = \langle 0, 0, 1
+          - (-1) \rangle = \langle 0, 0, 2 \rangle \]
+        </p>
+        <p>
+          A integral de fluxo é \(\iint_S \langle 0, 0, 2 \rangle \cdot
+          d\mathbf{S}\). Esta integral representa \(2\) vezes o fluxo do campo
+          \(\mathbf{k} = \langle 0, 0, 1 \rangle\) através de \(S\). O fluxo do
+          campo \(\mathbf{k}\) é a área da projeção da superfície \(S\) no plano
+          \(xy\).
+        </p>
+        <p>
+          A projeção é o disco \(D: x^2+y^2 \le 4\), cuja área é \(\pi (2)^2 =
+          4\pi\).
+        </p>
+        <p>
+          \[ \text{Fluxo do rotacional} = 2 \times (\text{Área de } D) = 2
+          \times (4\pi) = 8\pi \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Os resultados são iguais? Explique por que, citando o teorema
+      relevante.
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>Sim, os resultados de (a) e (b) são idênticos (\(8\pi\)).</p>
+        <p>
+          Isto é uma verificação do <strong>Teorema de Stokes</strong>, que
+          afirma que \(\iint_S (\text{rot } \mathbf{F}) \cdot d\mathbf{S} =
+          \oint_C \mathbf{F} \cdot d\mathbf{r}\).
+        </p>
+      </div>
+    </details>
+
+    <h2>Questão 4</h2>
+    <p>
+      Calcule o fluxo do campo vetorial \(\mathbf{F}(x, y, z) = \langle x +
+      \sin(z), y + e^x, 2z \rangle\) para fora da superfície fechada \(S\), que
+      é a fronteira do cilindro sólido \(E\) delimitado por \(x^2 + y^2 = 1\),
+      \(z = 0\) e \(z = 4\).
+    </p>
+
+    <div class="question-item">
+      a) Calcule o divergente do campo vetorial \(\mathbf{F}\).
+    </div>
+    <details>
+      <summary>Ver Solução (a)</summary>
+      <div class="solution">
+        <p>O divergente de \(\mathbf{F}\) é:</p>
+        <p>
+          \[ \text{div}(\mathbf{F}) = \frac{\partial}{\partial x}(x + \sin(z)) +
+          \frac{\partial}{\partial y}(y + e^x) + \frac{\partial}{\partial z}(2z)
+          \]
+        </p>
+        <p>\[ = 1 + 1 + 2 = 4 \]</p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      b) Descreva o sólido \(E\) e calcule seu volume.
+    </div>
+    <details>
+      <summary>Ver Solução (b)</summary>
+      <div class="solution">
+        <p>
+          O sólido \(E\) é um cilindro circular reto. A base é o disco \(x^2+y^2
+          \le 1\) no plano \(z=0\), e o topo é o disco \(x^2+y^2 \le 1\) no
+          plano \(z=4\).
+        </p>
+        <p>O raio do cilindro é \(r=1\) e a altura é \(h=4\).</p>
+        <p>O volume do cilindro é:</p>
+        <p>
+          \[ \text{Volume}(E) = \text{Área da base} \times \text{altura} = (\pi
+          r^2) \times h = \pi(1)^2 \times 4 = 4\pi \]
+        </p>
+      </div>
+    </details>
+
+    <div class="question-item">
+      c) Use o Teorema da Divergência e os resultados anteriores para calcular o
+      fluxo de \(\mathbf{F}\) através de \(S\).
+    </div>
+    <details>
+      <summary>Ver Solução (c)</summary>
+      <div class="solution">
+        <p>
+          O Teorema da Divergência (Gauss) afirma que \(\oiint_S \mathbf{F}
+          \cdot d\mathbf{S} = \iiint_E \text{div}(\mathbf{F}) \,dV\).
+        </p>
+        <p>Substituindo os valores encontrados:</p>
+        <p>\[ \text{Fluxo} = \iiint_E 4 \,dV = 4 \iiint_E 1 \,dV \]</p>
+        <p>Como \(\iiint_E 1 \,dV = \text{Volume}(E)\), temos:</p>
+        <p>
+          \[ \text{Fluxo} = 4 \cdot \text{Volume}(E) = 4 \cdot (4\pi) = 16\pi \]
+        </p>
+      </div>
+    </details>
+  </body>
+</html>

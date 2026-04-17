@@ -1,0 +1,42 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Experimentos com Trajetória Reentrante - Dados Parciais [MAI/1968]
+  </div>
+  <p>
+    Seja \(\vec{F}(x,y) = \begin{pmatrix} xy \\ x+y \end{pmatrix}\). Calcular
+    \(\displaystyle \int_C P\,dx + Q\,dy\) ao longo da curva poligonal que segue
+    do ponto \((0,0)\) até \((2,0)\), e então até \((2,2)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de soma de integrais em trechos podem ser
+      úteis.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        DIVIDINDO A CURVA EM DOIS TRECHOS:
+        <br />
+        1) \(C_1\): de \((0,0)\) a \((2,0)\)<br />
+        2) \(C_2\): de \((2,0)\) a \((2,2)\)
+      </p>
+      <p><strong>Trecho \(C_1\):</strong> \(y=0\), \(x\) de 0 a 2.</p>
+      <p>
+        \(P\,dx + Q\,dy = (x\cdot0)\,dx + (x+0)\,d(0) = 0\,dx + 0 = 0.\)
+        <br />
+        Integral no trecho \(C_1 = 0\).
+      </p>
+      <p><strong>Trecho \(C_2\):</strong> \(x=2\), \(y\) de 0 a 2.</p>
+      <p>
+        \(dx=0\). Logo, \[ P\,dx + Q\,dy = (2y)\cdot0 + (2+y)\,dy = (2+y)\,dy.
+        \] \[ \int_0^2 (2 + y)\, dy = \left.2y + \frac{y^2}{2}\right|_0^2 =
+        2\cdot2 + \frac{2^2}{2} = 4 + 2 = 6. \]
+      </p>
+      <p>CONCLUSÃO: Integral total = \(0 + 6 = 6.\)</p>
+    </div>
+  </details>
+</li>

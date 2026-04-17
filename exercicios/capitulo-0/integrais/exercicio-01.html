@@ -1,0 +1,31 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 6 [NÍVEL ALFA]</div>
+  <div class="context">
+    ORIGEM: Relatório de Iniciação - Laboratório de Testes [AGO/1962]
+  </div>
+  <p>Agora que vimos o significado geométrico da integral e o Teorema Fundamental
+  do Cálculo, vamos aprender técnicas para encontrar antiderivadas quando elas
+  não são óbvias. O primeiro método — <strong>substituição</strong> — é a
+  regra da cadeia lida de trás para frente: se o integrando contém uma função
+  composta cuja derivada aparece (ou quase aparece) multiplicando, basta mudar
+  de variável.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int 2x \cos(x^2)\,dx\]</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Observe que \(2x\) é exatamente a derivada de \(x^2\),
+      que aparece como argumento do cosseno. Identifique o "miolo" \(g(x) = x^2\)
+      e tente \(u = x^2\), de modo que \(du = 2x\,dx\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Seja \(u = x^2\). Então, \(du = 2x\,dx\). A integral fica \(\int
+        \cos(u)\,du = \sin(u) + C = \sin(x^2) + C.\)
+      </p>
+    </div>
+  </details>
+</li>

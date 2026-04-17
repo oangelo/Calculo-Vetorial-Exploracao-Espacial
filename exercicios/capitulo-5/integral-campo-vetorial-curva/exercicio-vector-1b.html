@@ -1,0 +1,50 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Simulação Interna -
+    <span class="censored">LABORATÓRIO XX</span>
+  </div>
+  <p>
+    O campo vetorial em análise é \(\vec{G}(x,y) = \begin{pmatrix} -y \\ x
+    \end{pmatrix}\). Deseja-se calcular \(\int_C \vec{G} \cdot d\vec{r}\) ao
+    longo da circunferência de raio 2 centrada na origem, no sentido
+    anti-horário (uma volta completa).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Use uma parametrização circular padrão.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Parâmetros (círculo de raio 2): \(\vec{r}(t) = \begin{pmatrix}2\cos t \\
+        2\sin t\end{pmatrix}\), \(t \in [0,2\pi].\)
+      </p>
+      <p>
+        \(\frac{d\vec{r}}{dt} = \begin{pmatrix}-2\sin t \\ 2\cos
+        t\end{pmatrix}.\)
+      </p>
+      <p>
+        Então, \(\vec{G}(\vec{r}(t)) = \begin{pmatrix}- (2\sin t) \\ 2\cos
+        t\end{pmatrix} = \begin{pmatrix}-2\sin t \\ 2\cos t\end{pmatrix}.\)
+      </p>
+      <p>
+        A integral: \[\int_{0}^{2\pi} \begin{pmatrix}-2\sin t \\ 2\cos
+        t\end{pmatrix} \cdot \begin{pmatrix}-2\sin t \\ 2\cos t\end{pmatrix}
+        dt.\]
+      </p>
+      <p>
+        Produto escalar: \((-2\sin t)(-2\sin t) + (2\cos t)(2\cos t) = 4\sin^2 t
+        + 4\cos^2 t = 4(\sin^2 t + \cos^2 t) = 4.\)
+      </p>
+      <p>
+        Portanto, \(\int_C \vec{G} \cdot d\vec{r} = \int_{0}^{2\pi} 4 \, dt = 4
+        \times (2\pi) = 8\pi.\)
+      </p>
+      <p>CONCLUSÃO: \(\int_C \vec{G}\cdot d\vec{r} = 8\pi\).</p>
+    </div>
+  </details>
+</li>

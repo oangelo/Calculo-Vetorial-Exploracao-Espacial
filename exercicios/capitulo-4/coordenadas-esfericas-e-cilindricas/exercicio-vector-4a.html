@@ -1,0 +1,48 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Missão Apollo - Configuração de Módulo Lunar [DADOS ULTRA]
+  </div>
+  <p>
+    Nas últimas séries, trabalhamos com volumes e massas usando coordenadas
+    cilíndricas e esféricas separadamente. Agora vamos um passo adiante: uma
+    região definida por limites parciais em \(\rho\), \(\phi\) e \(\theta\), com
+    uma densidade contínua mas não-nula.
+  </p>
+  <p>
+    Determinar a massa de um sólido definido por \(\rho\) entre \(2\) e \(4\),
+    \(\phi\) entre \(0\) e \(\frac{\pi}{2}\), e \(\theta\) entre \(0\) e
+    \(\pi\), considerando densidade \(\delta(\rho,\phi,\theta)\) contínua e
+    não-nula no domínio.
+  </p>
+  <p><strong>(a)</strong> Escreva a integral tripla da massa na forma geral.</p>
+  <p>
+    <strong>(b)</strong> Explique por que a integral converge, mesmo sem
+    conhecer a forma explícita de \(\delta\).
+  </p>
+  <p>
+    <strong>(c)</strong> Se \(\delta\) fosse constante igual a \(\delta_0\),
+    calcule o valor da massa.
+  </p>
+  <!-- Sem dicas para a série OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \[ M = \int_0^{\pi}\int_0^{\pi/2}\int_2^4
+        \delta(\rho,\phi,\theta)\,\rho^2\sin\phi\,d\rho\,d\phi\,d\theta. \]
+      </p>
+      <p>
+        (b) A integral converge porque \(\delta\) é contínua em um domínio
+        compacto (limitado e fechado), então é limitada. O Jacobiano
+        \(\rho^2\sin\phi\) também é contínuo e limitado no domínio.
+      </p>
+      <p>
+        (c) Com \(\delta = \delta_0\): \(\int_0^\pi d\theta = \pi\),
+        \(\int_0^{\pi/2}\sin\phi\,d\phi = 1\), \(\int_2^4\rho^2\,d\rho =
+        \frac{64-8}{3} = \frac{56}{3}\). Logo, \(M = \delta_0\cdot\pi\cdot
+        1\cdot\frac{56}{3} = \frac{56\pi\delta_0}{3}\).
+      </p>
+    </div>
+  </details>
+</li>

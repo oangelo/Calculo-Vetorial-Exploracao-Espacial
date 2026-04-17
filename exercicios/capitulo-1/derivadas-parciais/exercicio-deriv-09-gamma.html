@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DERIV-09-GAMMA</div>
+  <div class="context">
+    ORIGEM: Projeto <span class="censored">VECTOR-Z</span>
+    [RELACIONADO AO MÓDULO DE ATERRISSAGEM]
+  </div>
+  <p>
+    Nos exercícios anteriores, você calculou derivadas parciais, verificou a
+    equação de Laplace e viu que funções harmônicas descrevem fenômenos como
+    temperatura em equilíbrio. Agora vamos ver como a derivada parcial de um
+    potencial nos dá a <strong>direção de uma força</strong>.
+  </p>
+  <p>
+    Temos a função de potencial gravitacional simplificada em 2D: \[ \phi(x,y) =
+    -\frac{G M}{\sqrt{x^2 + y^2}}. \]
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique \(r = \sqrt{x^2 + y^2}\) e escreva \(\phi\)
+    como \(-GM/r\). Calcule \(\frac{\partial \phi}{\partial x}\) usando a regra
+    da cadeia.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial \phi}{\partial y}\) pelo mesmo
+    método.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie \(\frac{\partial \phi}{\partial x}\) no ponto
+    \((r_0, 0)\) onde \(r_0 > 0\). Qual é o sinal? O que isso diz sobre como o
+    potencial varia quando nos afastamos na direção \(x\)?
+  </p>
+  <p>
+    <strong>(d)</strong> A força gravitacional na direção \(x\) é \(F_x =
+    -\frac{\partial \phi}{\partial x}\). Calcule \(F_x\) em \((r_0, 0)\). A
+    força aponta em qual direção?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \(\frac{\partial r}{\partial x} = \frac{x}{\sqrt{x^2+y^2}}
+      = \frac{x}{r}\). A regra da cadeia: \(\frac{\partial}{\partial
+      x}\left(-\frac{GM}{r}\right) = \frac{GM}{r^2} \cdot \frac{x}{r} =
+      \frac{GMx}{r^3}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(\phi = -GM/r\). Usando a regra da cadeia com \(\frac{\partial
+        r}{\partial x} = \frac{x}{r}\): \[ \frac{\partial \phi}{\partial x} =
+        \frac{GM}{r^2} \cdot \frac{x}{r} = \frac{GM\, x}{(x^2 + y^2)^{3/2}}. \]
+      </p>
+      <p>
+        (b) Por simetria: \[ \frac{\partial \phi}{\partial y} = \frac{GM\,
+        y}{(x^2 + y^2)^{3/2}}. \]
+      </p>
+      <p>
+        (c) Em \((r_0, 0)\): \(\frac{\partial \phi}{\partial x} = \frac{GM
+        r_0}{r_0^3} = \frac{GM}{r_0^2} > 0\). O potencial <em>cresce</em> quando
+        nos afastamos da origem na direção \(x\) — ele é menos negativo (menos
+        "profundo").
+      </p>
+      <p>
+        (d) \(F_x = -\frac{\partial \phi}{\partial x} = -\frac{GM}{r_0^2} < 0\).
+        A força aponta <em>em direção à origem</em> (sentido negativo de \(x\)),
+        confirmando a atração gravitacional.
+      </p>
+    </div>
+  </details>
+</li>

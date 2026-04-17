@@ -1,0 +1,53 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Cálculo Rápido de Massa - Módulo de
+    <span class="censored">Acoplagem</span>
+  </div>
+  <p>
+    Até agora integramos funções simples (constante \(1\) ou \(x\)). Agora vamos
+    usar a mesma técnica de redução para calcular a massa de um objeto,
+    multiplicando a densidade pelo volume.
+  </p>
+  <p>
+    O módulo cilíndrico possui densidade constante \(\rho=2\). O raio da base é
+    \(3\) e a altura é \(5\). Usando a descrição no espaço com \(z\) variando de
+    \(0\) a \(5\) e \((x,y)\) no disco de raio \(3\), reduza a integral tripla
+    para uma dupla integral para encontrar a massa total: \(\iiint_V 2\, dV\).
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva a integral tripla com os limites adequados para
+    \(z\), \(x\) e \(y\) (ou use coordenadas polares para \(D\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integração em \(z\) primeiro e simplifique.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral dupla restante para obter a massa
+    total.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A altura \(z\) é constante (vai de \(0\) a \(5\)). A
+      integração em \(z\) de \(2\,dz\) resulta em \(2 \times 5 = 10\). Resta
+      integrar \(10\) sobre o disco.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Região \(V\): \(0 \le z \le 5\), \(x^2 + y^2 \le 9\).</p>
+      <p>
+        Integral tripla: \[ \iiint_V 2\, dV = \iint_D \left(\int_{z=0}^{5} 2 \,
+        dz \right) dA. \]
+      </p>
+      <p>Integração em \(z\): \(\int_{0}^{5} 2 \, dz = 10.\)</p>
+      <p>
+        Assim, \(\iint_D 10 \, dA = 10 \cdot \text{Área do disco} = 10 \times
+        \pi \cdot 3^2 = 90\pi.\)
+      </p>
+      <p>Massa total = \(90\pi\) unidades de massa.</p>
+    </div>
+  </details>
+</li>

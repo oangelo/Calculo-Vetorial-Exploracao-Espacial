@@ -1,0 +1,83 @@
+<li class="exercise-item">
+  <div class="exercise-number">
+    EXERCÍCIO 3 — O JACOBIANO: FATOR DE ESCALA DE ÁREA
+  </div>
+  <div class="context">
+    ORIGEM: Documentação Técnica -
+    <span class="censored">Setor de Cálculo</span> [CLASSIFICADO]
+  </div>
+  <p>
+    Nos exercícios anteriores, vimos como coordenadas polares convertem pontos
+    (Exercício 1) e como transformações lineares deformam regiões (Exercício 2).
+    Agora vamos formalizar o conceito-chave: o Jacobiano é o "fator de
+    multiplicação de área" que toda mudança de variáveis introduz. Para
+    coordenadas polares, ele vale \(r\) — o que explica por que o elemento de
+    área é \(r\,dr\,d\theta\) e não simplesmente \(dr\,d\theta\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule as quatro derivadas parciais \(\frac{\partial
+    x}{\partial r}\), \(\frac{\partial x}{\partial \theta}\), \(\frac{\partial
+    y}{\partial r}\), \(\frac{\partial y}{\partial \theta}\) para a
+    transformação \(x = r\cos\theta\), \(y = r\sin\theta\).
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a matriz Jacobiana
+    \(\frac{\partial(x,y)}{\partial(r,\theta)}\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o determinante. Interprete: um pequeno
+    retângulo \(dr \times d\theta\) em coordenadas polares tem área
+    \(r\,dr\,d\theta\) no plano \(xy\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A matriz Jacobiana tem a forma \[\begin{pmatrix}
+      \frac{\partial x}{\partial r} &amp; \frac{\partial x}{\partial \theta} \\
+      \frac{\partial y}{\partial r} &amp; \frac{\partial y}{\partial \theta}
+      \end{pmatrix}\] O determinante de uma matriz \(\begin{pmatrix} a &amp; b
+      \\ c &amp; d \end{pmatrix}\) é \(ad - bc\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Derivadas parciais de \(x = r\cos\theta\), \(y =
+        r\sin\theta\):
+      </p>
+      <p>
+        \[\frac{\partial x}{\partial r} = \cos\theta, \qquad \frac{\partial
+        x}{\partial \theta} = -r\sin\theta.\] \[\frac{\partial y}{\partial r} =
+        \sin\theta, \qquad \frac{\partial y}{\partial \theta} = r\cos\theta.\]
+      </p>
+      <p>
+        <strong>(b)</strong> A matriz Jacobiana:
+        \[\frac{\partial(x,y)}{\partial(r,\theta)} = \begin{pmatrix} \cos\theta
+        &amp; -r\sin\theta \\ \sin\theta &amp; r\cos\theta \end{pmatrix}\]
+      </p>
+      <p>
+        <strong>(c)</strong> O determinante: \[J = \cos\theta \cdot r\cos\theta
+        - (-r\sin\theta)\cdot \sin\theta = r\cos^2\theta + r\sin^2\theta =
+        r(\cos^2\theta + \sin^2\theta) = r.\]
+      </p>
+      <p>Portanto, \(|J| = r\) (já que \(r \ge 0\)).</p>
+      <p>
+        <strong>Interpretação geométrica:</strong> Um pequeno retângulo com
+        lados \(dr\) e \(d\theta\) no plano \((r,\theta)\) corresponde a uma
+        região curvilínea no plano \((x,y)\) com área \(r\,dr\,d\theta\). O
+        fator \(r\) corrige a distorção: quando \(r\) é grande, o arco
+        \(r\,d\theta\) é mais longo que o arco correspondente perto da origem.
+        Este é o motivo pelo qual a fórmula de mudança de variáveis inclui o
+        Jacobiano: \[\iint_{R} f(x,y)\,dx\,dy = \iint_{S} f(r\cos\theta,\,
+        r\sin\theta)\cdot r\,dr\,d\theta.\]
+      </p>
+      <p>
+        CONCLUSÃO: O Jacobiano de coordenadas polares é \(J = r\). Este fator
+        converte o elemento de área \(dr\,d\theta\) (que não tem significado
+        geométrico direto) no elemento de área real \(r\,dr\,d\theta\) no plano
+        cartesiano.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,52 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Observatório Orbital - Relatório de Densidade de Plasma
+  </div>
+  <p>
+    Até agora integramos densidades simples. Agora vamos ver um caso mais sutil:
+    quando o Jacobiano e a densidade compartilham fatores como
+    \(\rho^2\sin\phi\), precisamos analisar a convergência com cuidado.
+  </p>
+  <p>
+    Em uma região modelada por coordenadas esféricas, o plasma apresenta
+    densidade variável \(\delta(\rho,\phi,\theta)=\alpha\, \rho^2 \sin(\phi)\).
+    Supondo \(\rho\) de \(0\) a \(3\), \(\phi\) de \(0\) a \(\pi\), e \(\theta\)
+    de \(0\) a \(2\pi\), justifique se a massa total do plasma (via integral
+    tripla) teria valor finito ou não.
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva o integrando completo: \(\delta\,dV\) em
+    coordenadas esféricas.
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique se há singularidades ou problemas de
+    convergência no domínio de integração.
+  </p>
+  <p><strong>(c)</strong> Conclua sobre a integrabilidade.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O integrando será \(\alpha\rho^4\sin^2\phi\). Em
+      \(\rho=0\), isso vale zero (não há singularidade). O intervalo é finito.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Em esféricas, \(dV = \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\). O
+        integrando completo é \(\alpha\rho^2\sin\phi \cdot \rho^2\sin\phi =
+        \alpha\rho^4\sin^2\phi\).
+      </p>
+      <p>
+        (b) O integrando \(\alpha\rho^4\sin^2\phi\) é contínuo em todo o
+        domínio. Em \(\rho=0\), vale zero. Não há singularidades.
+      </p>
+      <p>
+        (c) Conclusão: a massa total é finita. O integrando é contínuo e
+        limitado em um domínio limitado, garantindo a integrabilidade.
+      </p>
+    </div>
+  </details>
+</li>

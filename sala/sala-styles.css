@@ -1,0 +1,407 @@
+/* =====================================================
+   FOLHA DE EXERCÍCIOS DE SALA - Estilos
+   Formato: A4, coluna dupla, para impressão
+   ===================================================== */
+
+/* === VARIÁVEIS === */
+:root {
+  --font-main: 'Latin Modern Roman', 'Times New Roman', serif;
+  --font-math: 'Latin Modern Math', 'Times New Roman', serif;
+  --color-text: #000;
+  --color-muted: #666;
+  --color-border: #333;
+  --color-accent: #0066cc;
+  --font-size-base: 10pt;
+  --line-height: 1.4;
+}
+
+/* === TELA (Visualização antes de imprimir) === */
+@media screen {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+  }
+
+  body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--color-text);
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 15mm;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .columns {
+    column-count: 2;
+    column-gap: 8mm;
+    column-rule: 1px solid #ccc;
+  }
+}
+
+/* === IMPRESSÃO === */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--color-text);
+  }
+
+  .page {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .columns {
+    column-count: 2;
+    column-gap: 8mm;
+  }
+
+  /* Evitar quebra dentro de questões/tabelas */
+  .questao,
+  .tabela,
+  .checkpoint {
+    break-inside: avoid;
+  }
+
+  /* Evitar órfãs e viúvas */
+  p,
+  li {
+    orphans: 2;
+    widows: 2;
+  }
+
+  /* Links em cinza */
+  a {
+    color: var(--color-muted);
+    text-decoration: none;
+  }
+}
+
+/* === CABEÇALHO === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4mm;
+  padding-bottom: 2mm;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-left {
+  flex: 1;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 9pt;
+  color: var(--color-muted);
+}
+
+.title {
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 0;
+  color: var(--color-text);
+}
+
+.subtitle {
+  font-size: 10pt;
+  color: var(--color-muted);
+  margin: 2pt 0 0 0;
+}
+
+.course-info {
+  font-size: 9pt;
+}
+
+/* === INSTRUÇÕES === */
+.instructions {
+  font-size: 9pt;
+  color: var(--color-muted);
+  margin-bottom: 4mm;
+  padding: 2mm;
+  background: #f9f9f9;
+  border-left: 2pt solid var(--color-muted);
+}
+
+@media print {
+  .instructions {
+    background: transparent;
+    border-left: 2pt solid var(--color-muted);
+  }
+}
+
+/* === CONTEÚDO EM COLUNAS === */
+.columns {
+  column-count: 2;
+  column-gap: 8mm;
+}
+
+/* === EXERCÍCIOS === */
+.exercicio {
+  margin-bottom: 4mm;
+  padding: 3mm;
+  padding-bottom: 2mm;
+  border: 1px solid #ddd;
+  border-left: 3pt solid var(--color-accent);
+  background: #fafafa;
+}
+
+@media print {
+  .exercicio {
+    background: transparent;
+    border: 1px solid #ccc;
+    border-left: 3pt solid var(--color-accent);
+  }
+}
+
+.exercicio-numero {
+  display: inline-block;
+  font-weight: bold;
+  color: white;
+  background: var(--color-accent);
+  padding: 1pt 4pt;
+  margin-right: 2mm;
+  font-size: 11pt;
+}
+
+.exercicio-enunciado {
+  margin: 2mm 0;
+  font-weight: 500;
+}
+
+.exercicio-enunciado p {
+  margin: 1mm 0;
+}
+
+/* === QUESTÃO (subtítulo dentro do exercício) === */
+.questao {
+  font-weight: 600;
+  color: #333;
+  margin: 3mm 0 2mm 0;
+  padding-left: 2mm;
+  border-left: 2pt solid #888;
+}
+
+/* === DIÁLOGO (texto explicativo) === */
+.dialogo {
+  font-size: 9pt;
+  color: #555;
+  margin: 1mm 0;
+  font-style: italic;
+}
+
+/* === PASSOS GUIADOS === */
+.passos {
+  margin: 2mm 0 2mm 4mm;
+  padding: 0;
+  list-style: none;
+}
+
+.passos li {
+  position: relative;
+  padding-left: 5mm;
+  margin: 1mm 0;
+}
+
+.passos li::before {
+  content: counter(step) '.';
+  counter-increment: step;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: var(--color-accent);
+}
+
+.passos {
+  counter-reset: step;
+}
+
+/* === SUBITENS (a, b, c) === */
+.subitem {
+  margin: 2mm 0 1.5mm 0;
+  padding-left: 4mm;
+  line-height: 1.5;
+}
+
+/* === LACUNAS === */
+.lacuna {
+  display: inline-block;
+  min-width: 20mm;
+  border-bottom: 1px solid var(--color-text);
+  text-align: center;
+  margin: 0 1mm;
+}
+
+.lacuna-grande {
+  display: block;
+  min-width: 100%;
+  height: 8mm;
+  border-bottom: 1px solid var(--color-text);
+  margin: 2mm 0;
+}
+
+/* === CAIXA DE TRABALHO === */
+.workspace {
+  height: 15mm;
+  border: 1px dashed var(--color-muted);
+  margin: 2mm 0;
+  background: repeating-linear-gradient(
+    transparent,
+    transparent 4mm,
+    #f0f0f0 4mm,
+    #f0f0f0 4.5mm
+  );
+}
+
+@media print {
+  .workspace {
+    background: transparent;
+    border: 1px dashed var(--color-muted);
+  }
+}
+
+/* === CHECKPOINT === */
+.checkpoint {
+  font-size: 9pt;
+  color: var(--color-muted);
+  margin: 2mm 0;
+  padding: 1mm 2mm;
+  border-left: 2pt solid var(--color-accent);
+  background: #f5f5f5;
+}
+
+@media print {
+  .checkpoint {
+    background: transparent;
+  }
+}
+
+.checkmark {
+  display: inline-block;
+  width: 3mm;
+  height: 3mm;
+  border: 1px solid var(--color-text);
+  vertical-align: middle;
+  margin-right: 1mm;
+}
+
+/* === DICA === */
+.dica {
+  font-size: 9pt;
+  color: var(--color-muted);
+  font-style: italic;
+  margin: 1mm 0;
+}
+
+.dica::before {
+  content: 'Dica: ';
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* === TABELA DE AVALIAÇÃO === */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2mm 0;
+  font-size: 9pt;
+}
+
+.tabela th,
+.tabela td {
+  border: 1px solid var(--color-border);
+  padding: 1.5mm 2mm;
+  text-align: center;
+}
+
+.tabela th {
+  background: #eee;
+  font-weight: 600;
+}
+
+.tabela td {
+  background: white;
+}
+
+.tabela td.lacuna-cell {
+  min-width: 12mm;
+  background: #fafafa;
+}
+
+@media print {
+  .tabela th {
+    background: #f0f0f0;
+  }
+  .tabela td.lacuna-cell {
+    background: transparent;
+  }
+}
+
+/* === FÓRMULAS === */
+.formula {
+  text-align: center;
+  margin: 2mm 0;
+  font-size: 11pt;
+}
+
+/* === RODAPÉ === */
+.footer {
+  margin-top: 4mm;
+  padding-top: 2mm;
+  border-top: 1px solid var(--color-border);
+  font-size: 8pt;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+/* === QUEBRA DE PÁGINA === */
+.page-break {
+  page-break-after: always;
+}
+
+.avoid-break {
+  break-inside: avoid;
+}
+
+/* === UTILITÁRIOS === */
+.center {
+  text-align: center;
+}
+.bold {
+  font-weight: bold;
+}
+.small {
+  font-size: 9pt;
+}
+.muted {
+  color: var(--color-muted);
+}

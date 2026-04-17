@@ -1,0 +1,42 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Encontro Orbital [Dados do Módulo
+    <span class="censored">███</span>]
+  </div>
+  <p>
+    A curva parametrizada \(\vec{r}(t) = \begin{pmatrix} 2\sin t \\ 2\cos t \\ t
+    \end{pmatrix}\) em \([0, \pi]\) descreve uma hélice circular parcial.
+    Proponha uma reparametrização com base em \(\tau = t^2\). Calcule
+    \(\displaystyle \int_C f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\) para \(f(\vec{r})
+    = 2 + t\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de escalonamento paramétrico podem ser úteis.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        DERIVADA ORIGINAL: \(\vec{r}'(t) = \begin{pmatrix} 2\cos t \\ -2\sin t
+        \\ 1 \end{pmatrix}\).
+      </p>
+      <p>
+        MAGNITUDE: \[ |\vec{r}'(t)| = \sqrt{(2\cos t)^2 + (-2\sin t)^2 + 1^2} =
+        \sqrt{4\cos^2 t + 4\sin^2 t + 1} = \sqrt{4 + 1} = \sqrt{5}. \]
+      </p>
+      <p>
+        FUNÇÃO: \(f(\vec{r}) = 2 + t\). Assim, \[ \int_0^{\pi} (2 + t)\sqrt{5}\,
+        dt = \sqrt{5} \int_0^{\pi} (2 + t)\, dt. \]
+      </p>
+      <p>
+        Reparametrização \(\tau = t^2\) pode ser feita, embora aqui a forma
+        original já seja simples. Em casos gerais, a mudança de parâmetro ajusta
+        melhor intervalos de integração.
+      </p>
+    </div>
+  </details>
+</li>

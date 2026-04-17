@@ -1,0 +1,32 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">ORIGEM: Simulação 3D - Apollo 16 [NOV/1971]</div>
+  <p>
+    A função \[ Q(x,y,z) = \begin{cases} \frac{x}{\sqrt{x^2 + y^2}} &amp;
+    \text{se } y \neq 0,\\ 0 &amp; \text{se } y = 0, \end{cases} \] é utilizada
+    num modelo de rotação parcial para eixo \(z\). Avalie se existem regiões
+    onde \(\frac{x}{\sqrt{x^2 + y^2}}\) possa impedir a integrabilidade em um
+    bloco \([-1,1]\times[-1,1]\times[0,2]\].
+  </p>
+  <!-- SEM DICAS NA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A função é indefinida apenas na linha onde \(y=0\) e \(x\neq 0\).
+        Entretanto, o valor foi definido como 0 explicitamente nessa linha,
+        evitando descontinuidade.
+      </p>
+      <p>
+        Em \([-1,1]\times[-1,1]\times[0,2]\), \(\frac{x}{\sqrt{x^2 + y^2}}\) é
+        limitada e não introduz singularidades de grande ordem (não há divisão
+        por zero para pontos fora de \(y=0\), e no próprio \(y=0\) foi atribuída
+        continuidade).
+      </p>
+      <p>
+        Conclusão: A integrabilidade é garantida no bloco, pois não há conjunto
+        significativo de descontinuidade.
+      </p>
+    </div>
+  </details>
+</li>

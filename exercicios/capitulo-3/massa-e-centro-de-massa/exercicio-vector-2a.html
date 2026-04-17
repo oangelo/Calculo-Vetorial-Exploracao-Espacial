@@ -1,0 +1,52 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Análise de Seção Circular - Relatório
+    <span class="censored">Δ4</span>
+  </div>
+  <p>
+    Os três exercícios anteriores usaram coordenadas cartesianas em regiões
+    poligonais. Mas muitas peças estruturais em engenharia espacial — discos,
+    setores, anéis — são naturalmente descritas em coordenadas polares. Quando a
+    região tem simetria circular, as polares não só simplificam os limites como
+    frequentemente revelam cancelamentos que passariam despercebidos em
+    cartesianas. Começamos com o caso mais direto: um semicírculo com densidade
+    constante.
+  </p>
+  <p>
+    A região \(D\) é um semicírculo de raio \(R=2\) no semiplano superior (\(y
+    \ge 0\)). A densidade é constante \(\rho(x,y) = 3\).
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva \(D\) em coordenadas polares, indicando os
+    limites de \(r\) e \(\theta\).
+  </p>
+  <p><strong>(b)</strong> Calcule a massa total da lâmina.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em coordenadas polares, o elemento de área é
+      \(r\,dr\,d\theta\). O semicírculo superior corresponde a \(0 \le \theta
+      \le \pi\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Usando coordenadas polares, o semicírculo superior corresponde a \(r\)
+        de 0 a 2 e \(\theta\) de 0 a \(\pi\). A densidade é 3, constante.
+      </p>
+      <p>
+        \[ m = \iint_{D} 3 \, dA = 3 \int_{0}^{\pi}\int_{0}^{2} r \,dr\,d\theta.
+        \]
+      </p>
+      <p>
+        \[ \int_{0}^{2} r \, dr = \left[\frac{r^2}{2}\right]_{0}^{2} =
+        \frac{4}{2} = 2. \] Logo, \[ m = 3 \int_{0}^{\pi} 2 \, d\theta = 6
+        \int_{0}^{\pi} d\theta = 6 \times \pi = 6\pi. \]
+      </p>
+      <p>CONCLUSÃO: Massa total = \(6\pi\).</p>
+    </div>
+  </details>
+</li>

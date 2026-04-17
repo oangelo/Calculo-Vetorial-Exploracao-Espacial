@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DERIV-07-GAMMA</div>
+  <div class="context">
+    ORIGEM: Modelagem de Movimento [Programa Skylab, 1973]
+  </div>
+  <p>
+    Até aqui, calculamos derivadas primeiras. Agora vamos dar um passo além: o
+    que acontece quando derivamos <em>duas vezes</em>, em variáveis diferentes?
+    Essas <strong>derivadas parciais mistas</strong> revelam como as direções se
+    "misturam" no comportamento da função.
+  </p>
+  <p>Considere: \[ f(x,y) = \sin(xy). \]</p>
+  <p><strong>(a)</strong> Calcule \(\frac{\partial f}{\partial x}\).</p>
+  <p>
+    <strong>(b)</strong> Deriva o resultado de (a) em relação a \(y\) para obter
+    \(\frac{\partial^2 f}{\partial y \, \partial x}\).
+  </p>
+  <p>
+    <strong>(c)</strong> Agora faça ao contrário: calcule \(\frac{\partial
+    f}{\partial y}\) primeiro, depois derive em \(x\) para obter
+    \(\frac{\partial^2 f}{\partial x \, \partial y}\).
+  </p>
+  <p>
+    <strong>(d)</strong> Os resultados de (b) e (c) são iguais? Por que isso não
+    é coincidência?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}\sin(xy)\), use a regra
+      da cadeia: derivada do seno é cosseno, multiplicada por
+      \(\frac{\partial}{\partial x}(xy) = y\). Para a derivada de \(y\cos(xy)\)
+      em relação a \(y\), use a regra do produto.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>(a) \[ \frac{\partial f}{\partial x} = y \cos(xy). \]</p>
+      <p>
+        (b) Derivando \(y\cos(xy)\) em relação a \(y\) (regra do produto): \[
+        \frac{\partial^2 f}{\partial y \, \partial x} = \cos(xy) + y \cdot
+        \bigl(-x\sin(xy)\bigr) = \cos(xy) - xy\sin(xy). \]
+      </p>
+      <p>
+        (c) \(\frac{\partial f}{\partial y} = x\cos(xy)\). Derivando em \(x\):
+        \[ \frac{\partial^2 f}{\partial x \, \partial y} = \cos(xy) + x \cdot
+        \bigl(-y\sin(xy)\bigr) = \cos(xy) - xy\sin(xy). \]
+      </p>
+      <p>
+        (d) Sim, são iguais! Pelo <strong>Teorema de Schwarz</strong>, se as
+        derivadas parciais mistas são contínuas, a ordem de derivação não
+        importa: \(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2
+        f}{\partial y \partial x}\).
+      </p>
+    </div>
+  </details>
+</li>

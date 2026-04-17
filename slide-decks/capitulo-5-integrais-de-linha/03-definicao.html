@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <!-- Slide 1: Conceito Principal -->
+      <section>
+        <h2>Definição Formal</h2>
+
+        <div class="math-section">
+          <p>
+            A integral de linha de um campo vetorial \(\vec{F}\) ao longo de uma
+            curva \(C\) parametrizada por \(\vec{r}(t)\), \(a \leq t \leq b\) é
+            definida como:
+          </p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \int_a^b \vec{F}(\vec{r}(t)) \cdot
+            \vec{r}'(t) \, dt\]
+          </p>
+
+          <p>Propriedades importantes:</p>
+          <ul>
+            <li>
+              Calcula o <em>trabalho realizado</em> pelo campo \(\vec{F}\) ao
+              longo do deslocamento
+            </li>
+            <li>Depende da orientação da curva \(C\)</li>
+            <li>
+              É invariante a reparametrizações da curva (mudança da "velocidade"
+              de percurso)
+            </li>
+          </ul>
+        </div>
+
+        <div class="math-section">
+          <p>Interpretação física:</p>
+          <p>
+            Em campos gravitacionais, esta integral representa a energia
+            transferida pelo campo a um objeto em movimento, permitindo calcular
+            mudanças de órbita com precisão.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOVO SLIDE: Explicação do vetor diferencial d\vec{r} -->
+      <section>
+        <h2>O Vetor Diferencial d\(\vec{r}\)</h2>
+
+        <div class="math-section">
+          <p>
+            O elemento diferencial d\(\vec{r}\) representa um pequeno
+            deslocamento ao longo da curva:
+          </p>
+          <p>\[d\vec{r} = \vec{r}'(t) \, dt\]</p>
+
+          <p>Onde:</p>
+          <ul>
+            <li>
+              \(\vec{r}'(t)\) é o vetor tangente à curva no ponto \(\vec{r}(t)\)
+            </li>
+            <li>\(dt\) é um incremento infinitesimal do parâmetro \(t\)</li>
+          </ul>
+
+          <p>
+            Fisicamente, d\(\vec{r}\) representa a direção e magnitude do
+            deslocamento infinitesimal em cada ponto da trajetória.
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>Em coordenadas cartesianas tridimensionais:</p>
+          <p>
+            \[d\vec{r} = dx\,\hat{\imath} + dy\,\hat{\jmath} + dz\,\hat{k}\]
+          </p>
+          <p>
+            Onde \(dx\), \(dy\) e \(dz\) são as componentes do deslocamento
+            infinitesimal.
+          </p>
+        </div>
+      </section>
+
+      <!-- NOVO SLIDE: Exemplos do cálculo de d\vec{r} para diferentes curvas -->
+      <section>
+        <h2>Exemplos de d\(\vec{r}\) para Diferentes Curvas</h2>
+
+        <div class="math-section">
+          <p>
+            <strong>1. Linha reta:</strong> \(\vec{r}(t) = \vec{a} + t\vec{b}\),
+            \(0 \leq t \leq 1\)
+          </p>
+          <p>
+            \[\vec{r}'(t) = \vec{b} \quad \Rightarrow \quad d\vec{r} = \vec{b}
+            \, dt\]
+          </p>
+          <p>
+            Para uma linha reta, d\(\vec{r}\) tem direção constante (paralela a
+            \(\vec{b}\)).
+          </p>
+
+          <p>
+            <strong>2. Círculo:</strong> \(\vec{r}(t) = R\cos t \, \hat{\imath}
+            + R\sin t \, \hat{\jmath}\), \(0 \leq t \leq 2\pi\)
+          </p>
+          <p>
+            \[\vec{r}'(t) = -R\sin t \, \hat{\imath} + R\cos t \, \hat{\jmath}
+            \quad \Rightarrow \quad d\vec{r} = (-R\sin t \, \hat{\imath} + R\cos
+            t \, \hat{\jmath}) \, dt\]
+          </p>
+          <p>
+            Para um círculo, d\(\vec{r}\) é tangente ao círculo em cada ponto.
+          </p>
+
+          <p>
+            <strong>3. Espiral:</strong> \(\vec{r}(t) = t\cos t \, \hat{\imath}
+            + t\sin t \, \hat{\jmath}\), \(0 \leq t \leq 2\pi\)
+          </p>
+          <p>
+            \[\vec{r}'(t) = (\cos t - t\sin t) \, \hat{\imath} + (\sin t + t\cos
+            t) \, \hat{\jmath}\]
+          </p>
+          <p>
+            \[d\vec{r} = [(\cos t - t\sin t) \, \hat{\imath} + (\sin t + t\cos
+            t) \, \hat{\jmath}] \, dt\]
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 2: Entendimento Intuitivo -->
+      <section>
+        <h2>Entendimento Intuitivo</h2>
+
+        <div class="math-section">
+          <p>Visualize a integral de linha como:</p>
+          <ul>
+            <li>
+              Uma soma de "empurrões" dados pelo campo ao longo do caminho
+            </li>
+            <li>O efeito acumulado do campo durante um deslocamento</li>
+            <li>
+              Uma medida do quanto o campo "favorece" ou "se opõe" ao movimento
+              na curva
+            </li>
+          </ul>
+          <p>
+            Apenas as componentes do campo <em>paralelas</em> ao deslocamento
+            contribuem!
+          </p>
+        </div>
+
+        <div class="math-section">
+          <p>Analogia: Caminhar contra ou a favor do vento</p>
+          <p>
+            O trabalho realizado depende de quanto o vento (campo) sopra na
+            mesma direção ou na direção oposta ao seu movimento (trajetória). Se
+            você caminha perpendicular ao vento, ele não realiza trabalho sobre
+            você.
+          </p>
+        </div>
+      </section>
+
+      <!-- Slide 3: Notações Alternativas -->
+      <section>
+        <h2>Notações Alternativas</h2>
+
+        <div class="math-section">
+          <p>A integral de linha pode ser escrita de várias formas:</p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \int_C \vec{F} \cdot \hat{T} \, ds
+            = \int_C F_T \, ds\]
+          </p>
+
+          <p>Onde:</p>
+          <ul>
+            <li>\(\hat{T}\) é o vetor tangente unitário à curva</li>
+            <li>\(ds\) é o elemento de comprimento de arco</li>
+            <li>\(F_T\) é a componente tangencial de \(\vec{F}\)</li>
+          </ul>
+
+          <p>Em coordenadas cartesianas tridimensionais:</p>
+          <p>
+            \[\int_C \vec{F} \cdot d\vec{r} = \int_C F_x \, dx + F_y \, dy + F_z
+            \, dz\]
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================== -->
+    <!-- SEÇÃO 2: VISUALIZAÇÃO INTERATIVA - CAMPO DE FORÇA -->
+    <!-- =========================== -->
+  </body>
+</html>

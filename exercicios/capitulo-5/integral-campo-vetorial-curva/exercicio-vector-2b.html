@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: <span class="censored">SEÇÃO DE DINÂMICA</span>, GEMINI
+  </div>
+  <p>
+    Sejam dois campos em \(\mathbb{R}^2\): \(\vec{F}(x,y) = \begin{pmatrix} e^x
+    \\ 0 \end{pmatrix}\) e \(\vec{G}(x,y) = \begin{pmatrix} 0 \\ \ln(1+y)
+    \end{pmatrix}\). Calcule \(\int_C (\vec{F}+\vec{G}) \cdot d\vec{r}\) ao
+    longo do caminho que une \(\begin{pmatrix}0 \\ 0\end{pmatrix}\) a
+    \(\begin{pmatrix}1 \\ 1\end{pmatrix}\) em linha reta.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Propriedades de soma podem ser relevantes.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Parametrização da reta: \(\vec{r}(t) = \begin{pmatrix}0 \\
+        0\end{pmatrix} + t \begin{pmatrix}1 \\ 1\end{pmatrix}\), \(t \in
+        [0,1]\).
+      </p>
+      <p>
+        \(\frac{d\vec{r}}{dt} = \begin{pmatrix}1 \\ 1\end{pmatrix}.\) Logo, \(x
+        = t\) e \(y = t\).
+      </p>
+      <p>
+        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}e^t \\ 0\end{pmatrix},\quad
+        \vec{G}(\vec{r}(t)) = \begin{pmatrix}0 \\ \ln(1 + t)\end{pmatrix}.\)
+      </p>
+      <p>
+        \(\vec{F} + \vec{G} = \begin{pmatrix}e^t \\ \ln(1 + t)\end{pmatrix}.\)
+      </p>
+      <p>
+        Integração: \[\int_{0}^{1} \begin{pmatrix}e^t \\ \ln(1 + t)\end{pmatrix}
+        \cdot \begin{pmatrix}1 \\ 1\end{pmatrix} dt = \int_{0}^{1} \big(e^t +
+        \ln(1 + t)\big) \, dt.\]
+      </p>
+      <p>
+        \(\int_{0}^{1} e^t \, dt = e - 1.\)<br />
+        \(\int_{0}^{1} \ln(1 + t)\, dt = [(1+t)\ln(1+t) - t ]_{0}^{1}\).
+        (Processo de integração por partes)
+      </p>
+      <p>
+        Avaliando: Para \(t=1\), \((1+1)\ln(2) - 1 = 2\ln(2) - 1\). Para
+        \(t=0\), \((1+0)\ln(1) - 0 = 0\). Logo, \(\int_{0}^{1} \ln(1 + t)\, dt =
+        2\ln(2) - 1.\)
+      </p>
+      <p>Soma: \((e - 1) + (2\ln(2) - 1) = e + 2\ln(2) - 2.\)</p>
+      <p>
+        CONCLUSÃO: \(\int_C (\vec{F}+\vec{G}) \cdot d\vec{r} = e + 2\ln(2) -
+        2.\)
+      </p>
+    </div>
+  </details>
+</li>

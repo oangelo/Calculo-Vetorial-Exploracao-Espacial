@@ -1,0 +1,46 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Laboratório Orbital Skylab - Estudo de Grandes Estruturas
+  </div>
+  <p>
+    Para encerrar esta série, vamos combinar tudo: coordenadas cilíndricas,
+    Jacobiano, e uma densidade que depende de duas variáveis. O desafio está em
+    organizar a integral e decidir a ordem de integração.
+  </p>
+  <p>
+    Uma grande estrutura cilíndrica é descrita por \(z = 8 - r^2\), para \(0 \le
+    z \le 8\). Determinar a massa se a densidade for \(\delta(r,z) = 3r + z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine o limite superior de \(r\) quando \(z=0\).
+    Escreva os limites completos da integral.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral tripla da massa em coordenadas
+    cilíndricas.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a massa, integrando primeiro em \(z\), depois
+    em \(r\), e finalmente em \(\theta\).
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Quando \(z=0\): \(8-r^2 = 0\), logo \(r = \sqrt{8} = 2\sqrt{2}\).
+        Limites: \(0 \le \theta \le 2\pi\), \(0 \le r \le 2\sqrt{2}\), \(0 \le z
+        \le 8-r^2\).
+      </p>
+      <p>
+        (b) \[ M = \int_0^{2\pi}\int_0^{2\sqrt{2}}\int_0^{8-r^2}
+        (3r+z)\,r\,dz\,dr\,d\theta. \]
+      </p>
+      <p>
+        (c) Integração em \(z\): \[\int_0^{8-r^2}(3r+z)\,dz = 3r(8-r^2) +
+        \frac{(8-r^2)^2}{2}.\] Integração em \(r\) e \(\theta\) segue por
+        expansão e cálculo direto.
+      </p>
+    </div>
+  </details>
+</li>

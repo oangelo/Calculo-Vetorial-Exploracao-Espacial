@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revisão de Fundamentos - Cálculo Vetorial</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../space-theme.css" />
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+    <style>
+      .canvas-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 400px;
+      }
+
+      .side-by-side {
+        display: flex;
+        justify-content: space-around;
+      }
+
+      .side-by-side div {
+        width: 45%;
+      }
+
+      .img-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .interactive-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .slider {
+        width: 200px;
+        margin: 0 10px;
+      }
+
+      .equation-highlight {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+
+      .note {
+        font-size: 0.8em;
+        font-style: italic;
+        margin-top: 20px;
+      }
+
+      .timeline {
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #4a9eff;
+      }
+
+      .timeline-item {
+        margin: 20px 0;
+        padding: 10px 40px;
+        position: relative;
+        width: 45%;
+      }
+
+      .timeline-item:nth-child(odd) {
+        margin-left: 55%;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -6px;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        background: #4a9eff;
+        border-radius: 50%;
+      }
+
+      .timeline-item:nth-child(odd)::before {
+        left: -6px;
+      }
+
+      .timeline-date {
+        color: #4a9eff;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="slides-container"></div>
+    </div>
+
+    <script src="visualizacoes.js"></script>
+    <script>
+      async function loadSlides() {
+        const sections = [
+          '01-titulo.html',
+          '02-introducao.html',
+          '03-geometria-analitica.html',
+          '04-conicas.html',
+          '05-derivadas.html',
+          '06-integrais.html',
+          '07-curvas-de-nivel.html',
+          '08-historia.html',
+          '09-conclusao.html',
+        ];
+
+        const container = document.getElementById('slides-container');
+
+        for (const sectionFile of sections) {
+          try {
+            const response = await fetch(sectionFile);
+            if (!response.ok) {
+              throw new Error(`Failed to load ${sectionFile}`);
+            }
+
+            const html = await response.text();
+
+            // Parse HTML e extrair <section>
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const sections = doc.querySelectorAll('body > section');
+
+            // Inserir cada seção no container
+            sections.forEach((section) => {
+              container.appendChild(section);
+            });
+          } catch (error) {
+            console.error(`Error loading ${sectionFile}:`, error);
+          }
+        }
+
+        // Inicializar Reveal.js após carregar todas as seções
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+        });
+      }
+
+      // Carregar slides quando a página carregar
+      window.addEventListener('load', loadSlides);
+    </script>
+  </body>
+</html>

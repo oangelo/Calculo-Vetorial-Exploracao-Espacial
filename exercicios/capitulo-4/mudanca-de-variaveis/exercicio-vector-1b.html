@@ -1,0 +1,53 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Ajuste de Tanques -
+    <span class="censored">LABORATÓRIO INTERNO</span>
+  </div>
+  <p>
+    No exercício anterior, usamos coordenadas esféricas (cujo Jacobiano já
+    conhecemos). Agora vamos ver uma mudança de variáveis mais geral: uma
+    transformação linear que simplifica um plano inclinado.
+  </p>
+  <p>
+    A região \(D\) é definida por \[0 \le x \le 2, \quad 0 \le y \le 2, \quad 0
+    \le z \le 4 - x - y.\] Calcular \(\iiint_D (x + y)\,dx\,dy\,dz\), propondo
+    uma mudança de variáveis para simplificar o plano \(z = 4 - x - y\).
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação \(u = x\), \(v = y\), \(w = 4
+    - x - y - z\). Verifique que o plano \(z = 4-x-y\) se torna \(w=0\).
+  </p>
+  <p><strong>(b)\)</strong> Calcule o Jacobiano da transformação.</p>
+  <p>
+    <strong>(c)</strong> Reescreva a integral em termos de \((u,v,w)\) e avalie.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A matriz jacobiana dessa transformação é triangular, então
+      o determinante é o produto dos elementos da diagonal.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Com \(u = x,\; v = y,\; w = 4 - x - y - z\), temos \(z = 4 - u - v -
+        w\). A fronteira \(z = 4 - x - y\) passa a ser \(w = 0\).
+      </p>
+      <p>
+        (b) O jacobiano da transformação é
+        \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=1.\)
+      </p>
+      <p>
+        (c) \[\iiint_D (x + y)\,dx\,dy\,dz = \int_{u=0}^{2} \int_{v=0}^{2}
+        \int_{w=0}^{4 - u - v} (u+v)\; dw\, dv\, du.\]
+      </p>
+      <p>
+        Integração resulta em \(\int_{0}^{2}\int_{0}^{2} (u+v)(4 - u -
+        v)\,dv\,du = 16\).
+      </p>
+    </div>
+  </details>
+</li>
