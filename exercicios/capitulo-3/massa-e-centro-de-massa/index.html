@@ -8,31 +8,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      async=""
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\(', '\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\[', '\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -391,8 +367,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
