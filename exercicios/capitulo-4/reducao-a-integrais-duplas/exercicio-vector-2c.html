@@ -1,0 +1,64 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Análise Estrutural - Programa
+    <span class="censored">Gemini</span> [DEZ/1965]
+  </div>
+  <p>
+    Em vez de uma superfície curva e um plano, agora temos duas superfícies
+    curvas que se encontram. O passo crucial é descobrir onde elas se cruzam,
+    pois essa interseção define a projeção no plano \(xy\).
+  </p>
+  <p>
+    Considere o sólido \(V\) entre os paraboloides \(z = x^2+y^2\) (abrindo para
+    cima) e \(z = 4-x^2-y^2\) (abrindo para baixo). Calcule o volume de \(V\).
+  </p>
+  <p>
+    <strong>(a)</strong> Encontre a curva de interseção das duas superfícies.
+    Mostre que a projeção \(D\) é um disco e determine seu raio.
+  </p>
+  <p>
+    <strong>(b)</strong> Para cada \((x,y)\) em \(D\), determine os limites
+    inferior e superior de \(z\).
+  </p>
+  <p>
+    <strong>(c)</strong> Reduza a uma integral dupla e avalie usando coordenadas
+    polares.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Iguale \(x^2+y^2 = 4-x^2-y^2\) para achar a interseção.
+      Simplifica para \(2(x^2+y^2)=4\), ou seja, \(x^2+y^2=2\). Disco de raio
+      \(\sqrt{2}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Interseção: \(x^2+y^2 = 4-x^2-y^2 \implies 2(x^2+y^2) = 4 \implies
+        x^2+y^2 = 2\).
+      </p>
+      <p>Projeção \(D\): disco \(x^2+y^2 \le 2\) (raio \(\sqrt{2}\)).</p>
+      <p>
+        Para cada \((x,y)\) em \(D\), \(z\) varia de \(x^2+y^2\) (paraboloide
+        inferior) a \(4-x^2-y^2\) (paraboloide superior).
+      </p>
+      <p>
+        Integral em \(z\): \(\int_{x^2+y^2}^{4-x^2-y^2} 1\,dz =
+        (4-x^2-y^2)-(x^2+y^2) = 4-2(x^2+y^2)\).
+      </p>
+      <p>
+        Integral dupla em polares: \[ \int_0^{2\pi}\!\int_0^{\sqrt{2}}
+        (4-2r^2)\cdot r\,dr\,d\theta. \]
+      </p>
+      <p>
+        Integral radial: \(\int_0^{\sqrt{2}} (4r-2r^3)\,dr =
+        \left[2r^2-\frac{r^4}{2}\right]_0^{\sqrt{2}} = 4-2 = 2\).
+      </p>
+      <p>Integral angular: \(2\pi \cdot 2 = 4\pi\).</p>
+      <p>Volume = \(4\pi\) unidades cúbicas.</p>
+    </div>
+  </details>
+</li>

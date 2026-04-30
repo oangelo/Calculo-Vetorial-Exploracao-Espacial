@@ -1,53 +1,51 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
   <div class="context">
-    ORIGEM: Cálculo Rápido de Massa - Módulo de
-    <span class="censored">Acoplagem</span>
+    ORIGEM: Simulação de Tanque Orbital -
+    <span class="censored">Setor de Propulsão</span>
   </div>
   <p>
-    Até agora integramos funções simples (constante \(1\) ou \(x\)). Agora vamos
-    usar a mesma técnica de redução para calcular a massa de um objeto,
-    multiplicando a densidade pelo volume.
+    Até agora o integrando era 1 (calculávamos volume puro). Agora a função
+    \(f(x,y,z)\) varia dentro do sólido — isso muda o cálculo, pois o integrando
+    depende da variável que estamos integrando.
   </p>
   <p>
-    O módulo cilíndrico possui densidade constante \(\rho=2\). O raio da base é
-    \(3\) e a altura é \(5\). Usando a descrição no espaço com \(z\) variando de
-    \(0\) a \(5\) e \((x,y)\) no disco de raio \(3\), reduza a integral tripla
-    para uma dupla integral para encontrar a massa total: \(\iiint_V 2\, dV\).
+    Calcule \(\iiint_V z\,dV\) sobre o prisma retangular \(V\) definido por \(0
+    \le x \le 1\), \(0 \le y \le 2\), \(0 \le z \le 3\).
   </p>
   <p>
-    <strong>(a)</strong> Escreva a integral tripla com os limites adequados para
-    \(z\), \(x\) e \(y\) (ou use coordenadas polares para \(D\)).
+    <strong>(a)</strong> Reduza a integral tripla a uma dupla, integrando \(z\)
+    primeiro. Escreva a expressão completa.
   </p>
+  <p><strong>(b)</strong> Calcule a integração interna \(\int_0^3 z\,dz\).</p>
   <p>
-    <strong>(b)</strong> Calcule a integração em \(z\) primeiro e simplifique.
-  </p>
-  <p>
-    <strong>(c)</strong> Avalie a integral dupla restante para obter a massa
-    total.
+    <strong>(c)</strong> Avalie a integral dupla restante e apresente o
+    resultado.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A altura \(z\) é constante (vai de \(0\) a \(5\)). A
-      integração em \(z\) de \(2\,dz\) resulta em \(2 \times 5 = 10\). Resta
-      integrar \(10\) sobre o disco.
+      [NOTA TÉCNICA]: Agora \(z\) está tanto no integrando quanto nos limites de
+      integração. Use \(\int z\,dz = z^2/2\). O resultado da integral em \(z\) é
+      uma constante, que será integrada sobre a base retangular.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      <p>Região \(V\): \(0 \le z \le 5\), \(x^2 + y^2 \le 9\).</p>
       <p>
-        Integral tripla: \[ \iiint_V 2\, dV = \iint_D \left(\int_{z=0}^{5} 2 \,
-        dz \right) dA. \]
+        Redução: \[ \iiint_V z\,dV = \iint_D \left(\int_0^3 z\,dz\right)dA. \]
       </p>
-      <p>Integração em \(z\): \(\int_{0}^{5} 2 \, dz = 10.\)</p>
       <p>
-        Assim, \(\iint_D 10 \, dA = 10 \cdot \text{Área do disco} = 10 \times
-        \pi \cdot 3^2 = 90\pi.\)
+        Integração em \(z\): \(\int_0^3 z\,dz = \frac{z^2}{2}\Big|_0^3 =
+        \frac{9}{2}\).
       </p>
-      <p>Massa total = \(90\pi\) unidades de massa.</p>
+      <p>
+        Integral dupla: \(\iint_D \frac{9}{2}\,dA =
+        \frac{9}{2}\cdot\text{Área}(D) = \frac{9}{2}\cdot(1\times 2) =
+        \frac{9}{2}\cdot 2 = 9.\)
+      </p>
+      <p>Resultado: \(\iiint_V z\,dV = 9\).</p>
     </div>
   </details>
 </li>
