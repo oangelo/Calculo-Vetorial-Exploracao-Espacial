@@ -284,7 +284,7 @@ Etapa 4: Agente Explore (Resumidor)
 > 3. Leia o RTC nos comentários da issue #N usando `gh issue view N --comments`
 > 4. Leia todos os exercícios existentes em exercicios/capitulo-N/PASTA/
 >
-> Depois, gere um **PDI (Plano Detalhado de Implementação)** como comentário na issue usando `gh issue comment`. O PDI é o blueprint do produto final — descreve **como vai ficar** cada exercício, não apenas o que está errado.
+> Depois, gere um **PDI (Plano Detalhado de Implementação)** como comentário na issue usando `gh issue comment`. O PDI é o planejamento holístico da lista — descreve o **quê** e o **porquê** de cada exercício, mas **nunca o como**. Respostas, equações, dados numéricos concretos e hints ficam a cargo do implementador (Etapa 3).
 >
 > O PDI DEVE incluir:
 >
@@ -292,13 +292,18 @@ Etapa 4: Agente Explore (Resumidor)
 > - **Para cada exercício** (12 total: 4 níveis × 3 sub-itens):
 >   - Nome/identificador (ex: VECTOR-1A)
 >   - Nível (ALFA/BETA/GAMMA/OMEGA)
->   - Conexão com o exercício anterior (1 frase)
->   - Descrição do problema (2-3 frases, com dados concretos)
->   - Sub-itens (a)(b)(c) — o que cada um pede
->   - Resposta esperada (resultado numérico ou expressão final)
->   - Hint (conteúdo resumido) ou "sem dica" para OMEGA
+>   - Conexão com o exercício anterior (1 frase — o que motiva este exercício)
+>   - Descrição do problema (2-3 frases — o contexto e o tipo de problema, **sem dados numéricos concretos ou equações**)
+>   - Sub-itens: direção geral do que cada (a)(b)(c) explora (ex: "identificar projeção", "reduzir e integrar", "avaliar")
 >   - Marcação: **manter** / **reescrever** / **novo**
 > - **Alterações técnicas** (MathJax, CSS, index.html, intro.html) em tabela
+>
+> O PDI **NÃO DEVE** incluir:
+>
+> - Respostas ou resultados numéricos
+> - Equações ou expressões matemáticas do enunciado
+> - Conteúdo de hints (apenas indicar "com dica" ou "sem dica" para OMEGA)
+> - Texto final dos enunciados
 
 **Etapa 3 — Implementador (General):**
 
