@@ -1,24 +1,24 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">14</span> DE JUNHO DE
-    <span class="censored">1965</span>
+    DATA: <span class="censored">27</span> DE JANEIRO DE
+    <span class="censored">1967</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">BASE [REDACTED]</span>
+    LOCALIZAÇÃO: <span class="censored">CENTRO DE CONTROLE [██████]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">ORION-7</span> <br /><br />
-    Em consonância com as operações estratégicas do
-    <span class="censored">Programa Gemini</span>, nossos especialistas em
-    Cálculo Vetorial conduziram estudos sobre integrais de linha e suas
-    aplicações em trajetórias espaciais. Este material aborda métodos de
-    <span class="censored">mudança de parâmetro</span> críticos para o sucesso
-    das manobras orbitais planejadas. <br /><br />
+    <span class="censored">APOLLO-PATHFINDER</span><br /><br />
+    Em preparação para as operações lunares tripuladas do Programa Apollo,
+    nossos especialistas em Cálculo Vetorial conduziram estudos sobre a
+    <span class="censored">invariância</span> de integrais de linha sob mudança
+    de parâmetro. Este material aborda métodos de
+    <span class="censored">reparametrização</span> críticos para o sucesso das
+    manobras de navegação e acoplamento orbital.<br /><br />
     Documentos correlatos do Dr.
-    <span class="censored">██████</span> confirmam o potencial revolucionário da
-    técnica de reparametrização em
-    <span class="censored">órbitas de aproximação</span>.
+    <span class="censored">██████</span> confirmam que a compreensão dessa
+    invariância é essencial para o cálculo preciso de trajetórias de
+    <span class="censored">aproximação lunar</span>.
   </div>
   <div class="warning-box">
     A difusão não autorizada deste conteúdo poderá resultar em
@@ -27,11 +27,11 @@
     consulta.
   </div>
   <div class="metadata">
-    <span>REF: VX-<span class="censored">1971</span>-C</span>
+    <span>REF: VX-<span class="censored">5001</span>-C</span>
     <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
     <span
-      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-      <span class="censored">2</span></span
+      >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">5</span></span
     >
   </div>
 </div>
@@ -39,30 +39,87 @@
   FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE PARÂMETRO EM INTEGRAIS DE LINHA
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[\int_{C} f(\vec{r}(t))\,|\vec{r}'(t)|\, dt = \int_{u(a)}^{u(b)}
-    f(\vec{r}(u(\tau)))\, \bigl|\frac{d\vec{r}(u(\tau))}{d\tau}\bigr|\, d\tau\]
+  <p><strong>1. REPARAMETRIZAÇÃO: A MESMA CURVA, VÁRIOS RELÓGIOS</strong></p>
+  <p>
+    Uma curva parametrizada \(\vec{r}:[a,b] \to \mathbb{R}^n\) pode ser descrita
+    por parâmetros diferentes. Se \(t = \varphi(\tau)\) é uma função invertível
+    e derivável, a curva reparametrizada é \(\vec{r}(\varphi(\tau))\). A imagem
+    geométrica — o conjunto de pontos no espaço — é a mesma, mas o "relógio"
+    usado para percorrê-la mudou.
   </p>
   <p>
-    A mudança de parâmetro consiste em substituir a variável \(t\) por uma nova
-    variável \(\tau\) através de uma função invertível \(u(\tau)\),
-    reparametrizando a curva \(C\). Isso permite facilitar o cálculo de
-    integrais de linha quando a parametrização original não é a mais
-    conveniente.
+    A pergunta central é: será que o comprimento da curva, ou qualquer integral
+    de linha, depende do relógio escolhido? A resposta é <strong>não</strong>
+    para integrais escalares, e essa invariância é uma consequência direta da
+    regra da cadeia.
   </p>
 </div>
-<div class="mission-context">
-  Na prática de exploração espacial, a reparametrização de trajetórias é vital
-  para ajustar velocidades de inserção orbital e coordenadas de encontro com
-  módulos de reabastecimento, garantindo a
-  <span class="censored">estabilidade tática</span> das manobras em torno de
-  corpos celestes.
+<div class="concept-definition">
+  <p>
+    <strong>2. INVARIÂNCIA DO COMPRIMENTO: A REGRA DA CADEIA EM AÇÃO</strong>
+  </p>
+  <p class="formula-highlight">
+    \[L = \int_a^b |\vec{r}'(t)|\, dt = \int_c^d |\vec{r}'(\varphi(\tau))| \cdot
+    |\varphi'(\tau)|\, d\tau\]
+  </p>
+  <p>
+    Aqui, \(t = \varphi(\tau)\) é a reparametrização, com \(\tau \in [c,d]\) e
+    \(\varphi(c) = a\), \(\varphi(d) = b\). O fator \(|\varphi'(\tau)|\) aparece
+    pela regra da cadeia: a derivada da curva composta é
+    \(\vec{r}'(\varphi(\tau)) \cdot \varphi'(\tau)\), e a magnitude distribui:
+    \(|\vec{r}'(\varphi(\tau))| \cdot |\varphi'(\tau)|\).
+  </p>
+  <p>
+    A mudança de variável \(dt = \varphi'(\tau)\, d\tau\) garante que o
+    integrando original é recuperado exatamente — é por isso que o comprimento é
+    invariante.
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong
+      >3. PARAMETRIZAÇÃO PELO COMPRIMENTO DE ARCO: VELOCIDADE UNITÁRIA</strong
+    >
+  </p>
+  <p>
+    Dada uma curva \(\vec{r}(t)\), a função comprimento de arco a partir de um
+    ponto fixo é \(s(t) = \int_{t_0}^{t} |\vec{r}'(u)|\, du\). Se invertermos
+    essa relação para obter \(t = t(s)\), a parametrização \(\vec{r}(t(s))\) tem
+    a propriedade especial de que
+  </p>
+  <p class="formula-highlight">\[\left|\frac{d\vec{r}}{ds}\right| = 1\]</p>
+  <p>
+    onde \(s\) é o comprimento percorrido. Na prática, isso significa que o
+    parâmetro avança à mesma taxa que o arco — o ponto se move com velocidade
+    constante igual a 1. Essa parametrização simplifica muitas demonstrações e
+    cálculos, pois elimina a dependência da velocidade.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. ORIENTAÇÃO: O QUE MUDA QUANDO INVERTEMOS A DIREÇÃO</strong></p>
+  <p>
+    Se a reparametrização for <em>decrescente</em> (\(\varphi'(\tau) < 0\)), a
+    orientação da curva é invertida. O comprimento permanece invariante (pois
+    usamos \(|\varphi'|\)), mas a <strong>integral de linha vetorial</strong>
+    muda de sinal:
+  </p>
+  <p class="formula-highlight">
+    \[\int_{C^{-}} \vec{F} \cdot d\vec{r} = -\int_{C} \vec{F} \cdot d\vec{r}\]
+  </p>
+  <p>
+    Isso distingue as integrais escalares (invariantes sob qualquer
+    reparametrização) das vetoriais (dependem da orientação). Essa distinção
+    será fundamental nos capítulos seguintes.
+  </p>
 </div>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> O
-  <span class="censored">Programa Gemini</span>
-  utilizou reparametrizações sofisticadas para executar
-  <span class="censored">rendezvous orbitais</span>, estabelecendo bases para
-  futuras missões tripuladas à Lua sob o Programa Apollo.
+  <strong>NOTA HISTÓRICA:</strong> Durante o Programa Apollo (1967-1969), a
+  necessidade de calcular trajetórias de acoplamento orbital com precisão
+  motivou o desenvolvimento de técnicas avançadas de reparametrização. As
+  manobras de <span class="censored">rendezvous</span> entre o módulo de comando
+  e o módulo lunar exigiam que engenheiros da NASA e consultores do
+  <span class="censored">MIT Instrumentation Laboratory</span> calculassem
+  integrais de linha sobre trajetórias descritas por diferentes sistemas de
+  coordenadas. A invariância sob reparametrização garantia que os resultados
+  eram independentes do referencial escolhido.
 </div>

@@ -1,31 +1,54 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Missão Skylab - Documentos Internos [AGO/1973]
+    ORIGEM: Departamento de Pesquisa Orbital - Apollo 11 [JUL/1969]
   </div>
   <p>
-    A órbita de estabilização descrita por \(\vec{r}(t) = \begin{pmatrix} t^3 +
-    2t \\ \sqrt{4 + t^4} \\ \ln(2 + t^2) \end{pmatrix}\) é analisada no
-    intervalo \([0,2]\). Estabeleça mudança de parâmetro para normalizar o
-    intervalo em \([0,1]\). Calcule a integral de linha \(\displaystyle \int_C
-    5\,|\vec{r}'(t)|\, dt\).
+    Desafio final: construa a parametrização por comprimento de arco de uma
+    curva não-trivial. A hélice circular \(\vec{r}(t) = (R\cos t,\, R\sin t,\,
+    ht)\) com \(t \in [0, 2\pi]\) aparece no estudo de trajetórias de
+    aproximação orbital. Use \(R = 3\) e \(h = 4\).
   </p>
-  <!-- Sem dicas para a série OMEGA -->
+  <p>
+    <strong>(a)</strong> Calcule a função comprimento de arco \(s(t) = \int_0^t
+    |\vec{r}'(u)|\, du\). Mostre que \(s\) é uma função linear de \(t\) e
+    determine \(s(2\pi)\), o comprimento total da curva.
+  </p>
+  <p>
+    <strong>(b)</strong> Inverta a relação \(s(t)\) para obter \(t(s)\) e
+    escreva a parametrização \(\vec{r}(t(s))\) explicitamente em termos de
+    \(s\).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que a velocidade na parametrização por arco é
+    unitária: \(\left|\frac{d\vec{r}}{ds}\right| = 1\). Interprete
+    geometricamente: o que significa percorrer uma hélice com velocidade
+    unitária?
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        PROCEDIMENTO: Normalização típica \(\tau = \frac{t}{2}\), de modo que
-        \(t=2\tau\) mapeie \([0,2]\) em \([0,1]\). Outras transformações podem
-        ser consideradas.
+        (a) \(\vec{r}'(t) = (-3\sin t,\, 3\cos t,\, 4)\). \(|\vec{r}'(t)| =
+        \sqrt{9\sin^2 t + 9\cos^2 t + 16} = \sqrt{9+16} = \sqrt{25} = 5\). Como
+        a magnitude é constante, \(s(t) = \int_0^t 5\, du = 5t\). Comprimento
+        total: \(s(2\pi) = 10\pi\).
       </p>
       <p>
-        MAGNITUDE DE \(\vec{r}'(t)\) e multiplicador \(\frac{dt}{d\tau}\)
-        definem a integral a ser computada.
+        (b) A inversa é imediata: \(t(s) = \frac{s}{5}\), com \(s \in [0,
+        10\pi]\). A parametrização por arco é: \(\vec{r}(s) =
+        \left(3\cos\frac{s}{5},\, 3\sin\frac{s}{5},\, \frac{4s}{5}\right)\).
       </p>
       <p>
-        AVALIAÇÃO: Resultados numéricos podem servir de parâmetro para
-        verificação de estabilidade orbital.
+        (c) \(\frac{d\vec{r}}{ds} = \left(-\frac{3}{5}\sin\frac{s}{5},\,
+        \frac{3}{5}\cos\frac{s}{5},\, \frac{4}{5}\right)\).
+        \(\left|\frac{d\vec{r}}{ds}\right| = \sqrt{\frac{9}{25}\sin^2\frac{s}{5}
+        + \frac{9}{25}\cos^2\frac{s}{5} + \frac{16}{25}} =
+        \sqrt{\frac{9+16}{25}} = 1\). Geometricamente, percorrer a hélice com
+        velocidade unitária significa que a cada unidade de comprimento
+        percorrido ao longo da hélice, o parâmetro \(s\) avança exatamente 1. O
+        ponto se move à mesma taxa em todo o percurso — sem aceleração nem
+        desaceleração.
       </p>
     </div>
   </details>
