@@ -8,31 +8,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      async=""
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -220,14 +196,6 @@
         margin: 15px 0;
       }
 
-      .mission-context {
-        font-style: italic;
-        margin: 15px 0;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
-        border: 1px dashed #555;
-      }
-
       .formula-highlight {
         text-align: center;
         margin: 15px auto;
@@ -284,23 +252,22 @@
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">16</span> DE JULHO DE
-          <span class="censored">1971</span>
+          DATA: <span class="censored">23</span> DE MARÇO DE
+          <span class="censored">1966</span>
           <br />
           LOCALIZAÇÃO:
-          <span class="censored">ESTAÇÃO ORBITAL</span>
+          <span class="censored">CENTRO DE CONTROLE - GEMINI VIII</span>
         </div>
         <div class="document-intro">
           RELATÓRIO DE PROGRESSO: PROJETO
           <span class="censored">VOLUMETRIA-3D</span> <br /><br />
-          Em resposta aos avanços recentes no programa espacial da
-          <span class="censored">███</span>, nossa equipe intensificou os
-          estudos sobre distribuição de massa em módulos orbitais. Os resultados
-          aqui apresentados são fruto das anotações do Dr.
+          No curso das operações do Programa Gemini, tornou-se imperativo
+          dominar as técnicas de cálculo de centro de massa e momento de inércia
+          por integrais triplas. Os resultados aqui apresentados são fruto das
+          anotações do Dr.
           <span class="censored">██████</span> sobre aplicações de integrais
-          triplas no cálculo de centro de massa e momento de inércia, de grande
-          relevância para o
-          <span class="censored">reposicionamento de foguetes</span>.
+          triplas na determinação do ponto de equilíbrio e resistência à rotação
+          de componentes do módulo <span class="censored">GEMINI</span>.
         </div>
         <div class="warning-box">
           Este documento contém informações relacionadas a projetos de
@@ -323,47 +290,61 @@
         E MOMENTO DE INÉRCIA
       </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p><strong>1. CENTRO DE MASSA 3D: O PONTO DE EQUILÍBRIO</strong></p>
+        <p>
+          No Capítulo 3, você aprendeu a calcular o centro de massa de placas
+          planas (regiões bidimensionais) usando integrais duplas. O conceito se
+          estende naturalmente para sólidos tridimensionais: em vez de integrar
+          sobre uma área, integramos sobre um volume. A massa total de um corpo
+          com densidade \(\rho\) é \(\displaystyle M = \iiint_V
+          \rho(\vec{r})\,dV\), e o centro de massa é dado pelas coordenadas:
+        </p>
         <p class="formula-highlight">
-          \[ \text{Centro de Massa: } \vec{R}_C = \frac{1}{M}\iiint_V
-          \vec{r}\,\rho(\vec{r})\, dV \quad\text{e}\quad \text{Momento de
-          Inércia (em torno de } z\text{): } I_z = \iiint_V \rho(\vec{r})(x^2 +
-          y^2)\, dV. \]
+          \[ x_C = \frac{1}{M}\iiint_V x\,\rho\,dV, \quad y_C =
+          \frac{1}{M}\iiint_V y\,\rho\,dV, \quad z_C = \frac{1}{M}\iiint_V
+          z\,\rho\,dV. \]
         </p>
         <p>
-          O cálculo do centro de massa por integrais triplas considera a
-          distribuição volumétrica de densidade \(\rho\) em um corpo, integrando
-          as coordenadas espaciais para obter o ponto de equilíbrio de massa. Já
-          o momento de inércia, também via integrais triplas, representa a
-          resistência que o objeto oferece à variação de rotação em torno de um
-          eixo específico.
+          Aqui, \(\rho(\vec{r})\) é a densidade no ponto \(\vec{r} = (x,y,z)\),
+          e \(dV\) é o elemento de volume. Para densidade constante, o centro de
+          massa coincide com o centro geométrico do corpo.
         </p>
       </div>
-      <div class="mission-context">
-        No contexto de voos espaciais, determinar o centro de massa é
-        fundamental para planejar manobras orbitais e acoplagens. O momento de
-        inércia é igualmente importante para prever a estabilidade de rotação
-        durante operações como desacoplamento de módulos e
-        <span class="censored">ajustes finos de trajetória</span>.
+      <div class="concept-definition">
+        <p><strong>2. MOMENTO DE INÉRCIA: RESISTÊNCIA À ROTAÇÃO</strong></p>
+        <p>
+          Saber onde o corpo se equilibra é fundamental, mas no espaço outra
+          pergunta é igualmente importante: quão difícil é girar esse corpo em
+          torno de um eixo? O momento de inércia mede essa resistência. Cada
+          elementinho de massa contribui proporcionalmente ao
+          <em>quadrado de sua distância</em> ao eixo de rotação:
+        </p>
+        <p class="formula-highlight">
+          \[ I_z = \iiint_V \rho(\vec{r})\,(x^2 + y^2)\,dV. \]
+        </p>
+        <p>
+          O subscrito \(z\) indica o eixo de rotação. A distância ao quadrado de
+          um ponto \((x,y,z)\) ao eixo \(z\) é \(x^2 + y^2\). Em coordenadas
+          cilíndricas, esta distância é \(r^2\); em esféricas, é
+          \(\rho^2\sin^2\phi\). A escolha do sistema de coordenadas é
+          determinada pela geometria do corpo.
+        </p>
       </div>
       <div class="historical-note">
-        <strong>NOTA HISTÓRICA:</strong> Após o sucesso da missão Apollo 14 em
-        fevereiro de 1971, intensificou-se o estudo de novos projetos orbitais
-        que demandavam maior precisão no controle de rotação dos módulos,
-        culminando em pesquisas avançadas sobre a aplicação de integrais triplas
-        para analisar centro de massa e momentos de inércia.
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+        a NASA realizou os primeiros rendezvous e acoplamentos orbitais da
+        história. O sucesso dessas manobras dependia criticamente do
+        conhecimento preciso do centro de massa e do momento de inércia de cada
+        módulo. O Gemini VIII (março de 1966) realizou o primeiro acoplamento
+        orbital, exigindo controle preciso de atitude — o que seria impossível
+        sem dados exatos de momento de inércia.
       </div>
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
 
-      <div class="page-number">
-        PÁGINA <span class="censored">3</span> DE
-        <span class="censored">12</span> • DOCUMENTO CM-<span class="censored"
-          >752</span
-        >-Z
-      </div>
+      <div class="page-number">PÁGINA 1</div>
     </div>
 
     <script>
@@ -393,8 +374,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);

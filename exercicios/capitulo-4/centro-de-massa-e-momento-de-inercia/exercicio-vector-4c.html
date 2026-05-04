@@ -1,34 +1,93 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Programa de Simulação Avançada [Skylab, 1975]
+    ORIGEM: Relatório de Engenharia - Cápsula de Reentrada Gemini [1966]
   </div>
   <p>
-    Em um experimento de formação de microclima interno, o módulo apresenta um
-    gradiente de densidade ao longo do eixo \(z\), \(\rho = \rho_0 + \alpha z\),
-    sobre uma forma cúbica de aresta
-    <span class="censored">Δ</span>. Determine o momento de inércia em torno de
-    um eixo horizontal que atravessa o centro do cubo.
+    Os exercícios anteriores davam a região e a densidade explicitamente. Este
+    último inverte a lógica: você recebe a descrição de um componente em
+    linguagem de engenharia e deve
+    <strong>modelar a região geometricamente</strong>. Um relatório técnico
+    descreve o sistema de propulsão auxiliar: "O componente consiste de um
+    cilindro de raio 1 m e altura 4 m (eixo coincidente com o eixo \(z\), base
+    em \(z=0\)) com um cone fixado ao topo. O cone se estreita do raio 1 m (em
+    \(z=4\)) ao raio 0 (em \(z=5\)). O cilindro tem densidade 2 kg/m\(^3\); o
+    cone tem densidade 5 kg/m\(^3\)."
   </p>
-  <!-- SÉRIE OMEGA: sem dicas -->
+  <p>
+    <strong>(a)</strong> Modele geometricamente: descreva as duas regiões em
+    notação matemática, identificando os limites de integração.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a massa total e o centro de massa do sistema.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o momento de inércia em torno do eixo \(z\) e
+    justifique por que este é o eixo mais relevante para a análise de
+    estabilidade.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a) Modelo geométrico:</strong></p>
+      <p>Cilindro: \(x^2 + y^2 \le 1\), \(0 \le z \le 4\), \(\rho_1 = 2\).</p>
       <p>
-        O problema exige a variação volumétrica de \(\rho\) e a expressão de
-        \((x^2 + z^2)\) ou \((y^2 + z^2)\), conforme o eixo escolhido.
-        Integra-se em \(x,y,z\), considerando a faixa de \(\pm
-        \tfrac{\Delta}{2}\) em cada coordenada e a forma de \(\rho\).
+        Cone: vértice em \(z=5\), base em \(z=4\) com raio 1. Em cilíndricas:
+        \(r \le 5-z\), \(4 \le z \le 5\), \(\rho_2 = 5\).
+      </p>
+      <p><strong>(b) Massa e centro de massa:</strong></p>
+      <p>
+        Cilindro: \(M_1 = 2 \cdot \pi \cdot 1^2 \cdot 4 = 8\pi\). \(z_{C1} =
+        2\).
       </p>
       <p>
-        O resultado final é obtido via \[ I = \iiint_V \rho(x,y,z)\,(\dots)\,
-        dV, \] inserindo \(\rho = \rho_0 + \alpha z\) e usando a simetria do
-        cubo para simplificar termos lineares.
+        Cone: \(M_2 = 5 \cdot \frac{\pi \cdot 1^2 \cdot 1}{3} =
+        \frac{5\pi}{3}\). Para um cone com vértice em \(z=5\) e base em \(z=4\),
+        o centro de massa está a \(h/4\) da base: \(z_{C2} = 4 + 1/4 = 17/4\).
+      </p>
+      <p>Verificação do cone via integral:</p>
+      <p>
+        \(\displaystyle M_2 = 5\int_4^5 \int_0^{2\pi} \int_0^{5-z}
+        r\,dr\,d\theta\,dz = 5 \cdot 2\pi \int_4^5 \frac{(5-z)^2}{2}\,dz = 5\pi
+        \cdot \left[-\frac{(5-z)^3}{3}\right]_4^5 = 5\pi \cdot \frac{1}{3} =
+        \frac{5\pi}{3}.\)
+      </p>
+      <p>Massa total: \(M = 8\pi + 5\pi/3 = 29\pi/3\).</p>
+      <p>
+        Momento linear em \(z\): \(8\pi \cdot 2 + \frac{5\pi}{3} \cdot
+        \frac{17}{4} = 16\pi + \frac{85\pi}{12} = \frac{192\pi + 85\pi}{12} =
+        \frac{277\pi}{12}\).
       </p>
       <p>
-        Conclusão: a contribuição adicional de \(\alpha z\) modifica a
-        distribuição de massa e, por consequência, aumenta o momento de inércia
-        em relação ao cubo de densidade constante.
+        \(\displaystyle z_C = \frac{277\pi/12}{29\pi/3} = \frac{277}{12} \cdot
+        \frac{3}{29} = \frac{277}{116}.\)
+      </p>
+      <p>
+        Centro de massa: \(\vec{R}_C = (0,\, 0,\, 277/116)\). O valor \(277/116
+        \approx 2{,}39\) está acima do centro do cilindro (\(z=2\)) mas abaixo
+        do cone, refletindo que o cilindro (mais volumoso) domina.
+      </p>
+      <p><strong>(c) Momento de inércia:</strong></p>
+      <p>
+        Cilindro: \(I_{z1} = 2 \cdot 4 \cdot \pi \cdot \frac{1}{2} = 4\pi\).
+      </p>
+      <p>
+        Cone: \(\displaystyle I_{z2} = 5\int_4^5 \int_0^{2\pi} \int_0^{5-z}
+        r^3\,dr\,d\theta\,dz = 5 \cdot 2\pi \int_4^5 \frac{(5-z)^4}{4}\,dz\)
+      </p>
+      <p>
+        \(= \frac{5\pi}{2}\left[-\frac{(5-z)^5}{5}\right]_4^5 = \frac{5\pi}{2}
+        \cdot \frac{1}{5} = \frac{\pi}{2}\).
+      </p>
+      <p>\(I_z = 4\pi + \pi/2 = 9\pi/2 \, \text{kg}\cdot\text{m}^2\).</p>
+      <p>
+        O eixo \(z\) é o mais relevante porque é o eixo de simetria do
+        componente. No espaço, o corpo tende a girar em torno do eixo de maior
+        momento de inércia (princípio de estabilidade gyroscópica). Conhecer
+        \(I_z\) permite prever o comportamento de rotação durante manobras. O
+        cone, embora mais denso, contribui com apenas \(\pi/2\) (cerca de 10%)
+        do momento total — sua pequena massa e proximidade ao eixo minimizam sua
+        contribuição.
       </p>
     </div>
   </details>

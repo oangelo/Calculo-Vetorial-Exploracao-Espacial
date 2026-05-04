@@ -1,80 +1,75 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: Programa Gemini - 1966 [Testes de Estruturas Cônicas]
+    ORIGEM: Ponto de Equilíbrio do Módulo de Reentrada - Programa Gemini
+    [Novembro 1965]
   </div>
   <p>
-    Considere um cone sólido definido por \(0 \le z \le 3\), \(x^2 + y^2 \le
-    \left(\frac{z}{3}\right)^2\). Suponha densidade variável \(\rho(x,y,z) =
-    4z\). Calcule o centro de massa \(\vec{R}_C\).
+    No exercício anterior, você calculou a massa do cone com densidade variável
+    \(\rho = 4z\): \(M = 9\pi\) kg. Agora vamos usar esse resultado para
+    encontrar o centro de massa do mesmo corpo — ou seja, o ponto onde o módulo
+    de reentrada se equilibraria. A decomposição é sempre a mesma: primeiro a
+    massa, depois os momentos lineares.
+  </p>
+  <p>
+    <strong>(a)</strong> Recupere a massa \(M = 9\pi\) calculada no exercício
+    anterior e argumente por que \(x_C = 0\) e \(y_C = 0\) por simetria.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte e calcule a integral do momento linear em \(z\):
+    \(\displaystyle \iiint_V z \cdot \rho(z)\,dV\), e obtenha \(z_C\).
+  </p>
+  <p>
+    <strong>(c)</strong> Interprete: o centro de massa está acima ou abaixo do
+    ponto que você esperaria se a densidade fosse constante? Por quê?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de volumes cônicos podem ser úteis.
+      [NOTA TÉCNICA]: Para densidade constante num cone com vértice na origem e
+      base em \(z=3\), o centro de massa ficaria em \(z_C = 3/4 \cdot 3 = 9/4\)
+      (um cone tem centro de massa a \(3/4\) da altura medidos a partir do
+      vértice). Compare com seu resultado: a densidade \(\rho = 4z\) aumenta com
+      \(z\), o que deve deslocar o centro de massa para cima.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Em coordenadas cilíndricas: \(r \le \frac{z}{3}\), \(\theta\) de 0 a
-        \(2\pi\), \(z\) de 0 a 3.
+        <strong>(a) Simetria:</strong> O cone tem simetria axial em torno do
+        eixo \(z\) e é simétrico em relação a qualquer plano contendo o eixo
+        \(z\). Portanto \(x_C = 0\) e \(y_C = 0\). A massa é \(M = 9\pi\) (do
+        exercício anterior).
+      </p>
+      <p><strong>(b) Momento linear em \(z\):</strong></p>
+      <p>
+        \[ \iiint_V z \cdot \rho(z)\,dV = \int_0^3 \int_0^{2\pi} \int_0^{z/3} z
+        \cdot 4z \cdot r\,dr\,d\theta\,dz = \int_0^3 \int_0^{2\pi} \int_0^{z/3}
+        4z^2 \cdot r\,dr\,d\theta\,dz. \]
       </p>
       <p>
-        A densidade: \(\rho = 4z\). O elemento de volume: \(dV =
-        r\,dr\,d\theta\,dz\).
+        Integral em \(r\): \(\displaystyle \int_0^{z/3} 4z^2 \cdot r\,dr = 4z^2
+        \cdot \frac{1}{2}\left(\frac{z}{3}\right)^2 = \frac{2z^4}{9}.\)
       </p>
       <p>
-        Coordenadas do centro de massa: \[ x_C = 0, \quad y_C = 0, \quad z_C =
-        \frac{1}{M} \iiint_V z \cdot \rho \, dV, \] pois a simetria anula
-        \(x_C\) e \(y_C\).
+        Integral em \(\theta\): \(\displaystyle \int_0^{2\pi} \frac{2z^4}{9}\,
+        d\theta = \frac{4\pi z^4}{9}.\)
       </p>
       <p>
-        Primeiro, calculamos a massa: \[ M = \int_{0}^{3} \int_{0}^{2\pi}
-        \int_{0}^{\frac{z}{3}} 4z \, r \, dr\, d\theta\, dz. \]
+        Integral em \(z\): \(\displaystyle \int_0^3 \frac{4\pi z^4}{9}\,dz =
+        \frac{4\pi}{9}\left[\frac{z^5}{5}\right]_0^3 = \frac{4\pi}{9} \cdot
+        \frac{243}{5} = \frac{972\pi}{45} = \frac{108\pi}{5}.\)
       </p>
+      <p>\[ z_C = \frac{108\pi/5}{9\pi} = \frac{108}{45} = \frac{12}{5}. \]</p>
       <p>
-        Integração em \(r\): \(\int_{0}^{\frac{z}{3}} 4z \, r \, dr = 4z \cdot
-        \frac{1}{2}\left(\frac{z}{3}\right)^2 = 2z \cdot \frac{z^2}{9} =
-        \frac{2z^3}{9}.
+        <strong>(c) Interpretação:</strong> Para um cone com densidade
+        constante, o centro de massa ficaria em \(z = \frac{3}{4}\cdot 3 =
+        \frac{9}{4} = 2{,}25\). Obtivemos \(z_C = \frac{12}{5} = 2{,}4 >
+        2{,}25\). Isso faz sentido: como a densidade \(\rho = 4z\) aumenta com
+        \(z\), há mais massa concentrada na parte superior do cone, deslocando o
+        centro de massa para cima. Conclusão: \(\vec{R}_C = (0,\, 0,\, 12/5)\).
       </p>
-      <p>
-        Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^3}{9} \, d\theta =
-        \frac{2z^3}{9} \cdot 2\pi = \frac{4\pi z^3}{9}.\)
-      </p>
-      <p>
-        Em \(z\): \(\int_{0}^{3} \frac{4\pi z^3}{9}\,dz = \frac{4\pi}{9}
-        \left[\frac{z^4}{4}\right]_{0}^{3} = \frac{4\pi}{9} \cdot \frac{81}{4} =
-        \frac{324\pi}{36} = 9\pi.
-      </p>
-      <p>Portanto, \(M = 9\pi.\)</p>
-      <p>
-        Agora, para \(z_C\): \[ z_C = \frac{1}{9\pi} \int_{0}^{3}
-        \int_{0}^{2\pi} \int_{0}^{\frac{z}{3}} z \cdot (4z) \, r\,dr\, d\theta
-        \, dz = \frac{1}{9\pi} \int_{0}^{3} \int_{0}^{2\pi}
-        \int_{0}^{\frac{z}{3}} 4z^2 \, r\,dr\, d\theta \, dz. \]
-      </p>
-      <p>
-        Repetindo o processo: \(\int_{0}^{\frac{z}{3}} 4z^2 \,r\,dr = 4z^2 \cdot
-        \frac{1}{2}\left(\frac{z}{3}\right)^2 = 2z^2 \cdot \frac{z^2}{9} =
-        \frac{2z^4}{9}.\)
-      </p>
-      <p>
-        Em \(\theta\): \(\int_{0}^{2\pi} \frac{2z^4}{9}\,d\theta =
-        \frac{2z^4}{9}\cdot 2\pi = \frac{4\pi z^4}{9}.\)
-      </p>
-      <p>
-        Em \(z\): \(\int_{0}^{3} \frac{4\pi z^4}{9} \, dz =
-        \frac{4\pi}{9}\left[\frac{z^5}{5}\right]_{0}^{3} = \frac{4\pi}{9} \cdot
-        \frac{243}{5} = \frac{972\pi}{45} = \frac{972\pi}{45}.
-      </p>
-      <p>
-        Simplificando: \(\frac{972}{45} = \frac{972}{45} = 21.6.\) Então o valor
-        integral é \(21.6\pi\).
-      </p>
-      <p>Logo, \[ z_C = \frac{21.6\pi}{9\pi} = 2.4. \]</p>
-      <p>Conclusão: \(\vec{R}_C = \begin{pmatrix}0\\0\\2.4\end{pmatrix}\).</p>
     </div>
   </details>
 </li>
