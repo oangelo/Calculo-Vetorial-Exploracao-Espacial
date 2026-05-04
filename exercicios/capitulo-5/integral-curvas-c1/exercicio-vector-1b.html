@@ -1,43 +1,39 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
   <div class="context">
-    ORIGEM: Análise de Percurso - Dados
-    <span class="censored">Internos</span> do Projeto Gemini
+    ORIGEM: Apollo 8 - Análise de Manobra - DEZEMBRO/1968
   </div>
   <p>
-    A curva \(C\) no espaço é dada pela parametrização \(\vec{r}(t) =
-    \begin{pmatrix} \cos t \\ \sin t \\ t \end{pmatrix}\), \(t \in [0, \pi]\).
-    Calcule o comprimento dessa curva e interprete o resultado em termos de
-    deslocamento vertical acumulado.
+    No exercício anterior, você verificou que a curva \(\vec{r}(t) = (t, t^2)\)
+    é de classe \(C^1\) e não apresenta quinas. Mas ser \(C^1\) é suficiente
+    para que a curva seja "suave"? Considere agora a parametrização
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(t) = (t^2,\; t^3), \quad t \in [-1,1]\]
+  </p>
+  <p>que modela uma manobra de aproximação com frenagem.</p>
+  <p>
+    <strong>(a)</strong> Calcule \(\vec{r}\,'(t)\) e verifique que cada
+    componente é contínua em \([-1,1]\). Conclua que a curva é \(C^1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre o valor de \(t\) para o qual \(\vec{r}\,'(t) =
+    \vec{0}\). O que acontece com a velocidade nesse ponto?
+  </p>
+  <p>
+    <strong>(c)</strong> Esboce a curva e identifique o ponto correspondente ao
+    valor encontrado em (b). Descreva o que você observa nesse ponto — é o que
+    chamamos de <strong>cúspide</strong>. Compare com o esboço do exercício
+    anterior: por que aquela curva não tem cúspide?
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A projeção no plano \(xy\) pode auxiliar na compreensão da
-      variação vertical.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        Derivando, temos: \(\vec{r}'(t) = \begin{pmatrix} -\sin t \\ \cos t \\ 1
-        \end{pmatrix}\).
-      </p>
-      <p>
-        Logo, \[ \|\vec{r}'(t)\| = \sqrt{(-\sin t)^2 + (\cos t)^2 + 1^2} =
-        \sqrt{\sin^2 t + \cos^2 t + 1} = \sqrt{1 + 1} = \sqrt{2}. \]
-      </p>
-      <p>
-        O comprimento é constante em função de \(t\), então \[ \int_0^\pi
-        \sqrt{2}\, dt = \sqrt{2} \cdot \pi. \]
-      </p>
-      <p>
-        Interpretação: o termo \(\pi\sqrt{2}\) representa a soma do deslocamento
-        vertical (em \(\vec{k}\)) com a variação circular no plano \(xy\). A
-        manobra seria análoga a um “giro” enquanto a cápsula se desloca em
-        altitude.
-      </p>
+      [NOTA TÉCNICA]: Uma curva \(C^1\) é <strong>suave</strong> apenas se
+      \(\vec{r}\,'(t) \neq \vec{0}\) para <em>todo</em> \(t\) no intervalo. Se o
+      vetor velocidade se anula em algum ponto, a curva pode "dobrar sobre si
+      mesma". Para o esboço, substitua \(t = -1, -1/2, 0, 1/2, 1\) e observe o
+      comportamento em torno de \(t = 0\).
     </div>
   </details>
 </li>

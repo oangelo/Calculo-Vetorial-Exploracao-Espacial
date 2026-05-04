@@ -1,32 +1,33 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Diagnóstico de Retorno - Gemini
-    <span class="censored">Terminal</span>
+    ORIGEM: Apollo 11 - Reparametrização de Trajetória - 1969
   </div>
   <p>
-    Um módulo em reentrada segue a curva \(C\) parametrizada por \(\vec{r}(t) =
-    \begin{pmatrix} \alpha(t) \\ \beta(t) \\ \gamma(t) \end{pmatrix}\) com
-    \(\alpha'(t), \beta'(t), \gamma'(t)\)
-    <span class="censored">secretas</span>. Elaborar o método de cálculo do
-    comprimento sem revelar explicitamente as funções, garantindo proteção das
-    informações classificadas.
+    Tudo o que aprendemos sobre suavidade e orientação leva a uma pergunta
+    natural: podemos mudar a forma de parametrizar uma curva sem perder a
+    suavidade? Esta questão é fundamental para o próximo tópico (Mudança de
+    Parâmetro). Considere a circunferência unitária
   </p>
-  <!-- Sem dicas para série OMEGA -->
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        O procedimento geral: \[ \int_C ds = \int_a^b \sqrt{(\alpha'(t))^2 +
-        (\beta'(t))^2 + (\gamma'(t))^2}\ dt. \] Sem explicitá-las, podemos
-        definir apenas limites e técnicas de integração apropriadas (por
-        exemplo, quadraturas numéricas ou análises de sensibilidade).
-      </p>
-      <p>
-        Conclusão: A reentrada controlada é validada ao demonstrar que o
-        comprimento calculado permanece consistente com margens de segurança
-        definidas pela missão.
-      </p>
-    </div>
-  </details>
+  <p class="formula-highlight">
+    \[\vec{r}(t) = (\cos t,\; \sin t), \quad t \in [0, 2\pi]\]
+  </p>
+  <p>que é uma curva suave. Analise as duas mudanças de variável a seguir:</p>
+  <p><strong>Mudança 1:</strong> \(t = 2s\), com \(s \in [0, \pi]\)</p>
+  <p><strong>Mudança 2:</strong> \(t = s^2\), com \(s \in [0, \sqrt{2\pi}]\)</p>
+  <p>
+    <strong>(a)</strong> Para cada mudança, obtenha a nova parametrização
+    \(\tilde{\vec{r}}(s) = \vec{r}(\varphi(s))\) e calcule sua derivada
+    \(\tilde{\vec{r}}\,'(s)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique se cada nova parametrização é \(C^1\) e
+    suave. Em particular, examine o que acontece em \(s = 0\) na Mudança 2.
+  </p>
+  <p>
+    <strong>(c)</strong> Para cada mudança, determine se a orientação foi
+    preservada ou invertida. Relacione o resultado com o sinal de
+    \(\varphi'(s)\). O que conclui sobre a condição necessária para que uma
+    mudança de parâmetro preserve tanto a suavidade quanto a orientação?
+  </p>
 </li>

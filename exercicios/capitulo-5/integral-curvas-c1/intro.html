@@ -1,22 +1,30 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">05</span> DE AGOSTO DE
-    <span class="censored">1965</span>
+    DATA: <span class="censored">27</span> DE JANEIRO DE
+    <span class="censored">1969</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">BASE GEMINI [REDACTED]</span>
+    LOCALIZAÇÃO: <span class="censored">MCC HOUSTON [██████]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">FLUXUS-LINEAR</span> <br /><br />
-    Em meio aos esforços para aprimorar nossa compreensão de
-    <span class="censored">trajetórias orbitais</span> durante o Programa
-    Gemini, nossa equipe de pesquisa organizou um conjunto de exercícios sobre
-    <span class="censored">integrais de linha</span> aplicadas a curvas de
-    classe <span class="censored">C¹</span>. <br /><br />
-    Estes registros são baseados nos cadernos do Dr.
-    <span class="censored">█████</span>, responsável pelo cálculo de
-    <span class="censored">rotas internas</span> de naves tripuladas.
+    <span class="censored">APOLLO-TRAJECTORY</span> <br /><br />
+    Após o acidente da Apollo 1 em janeiro de 1967, o programa espacial
+    atravessou uma <span class="censored">reavaliação completa</span> de
+    procedimentos e trajetórias. Agora, com as missões Apollo 7 e 8 já
+    concluídas com êxito, nossa equipe de
+    <span class="censored">análise vetorial</span> organiza um estudo
+    sistemático sobre as
+    <span class="censored">propriedades das curvas</span> que descrevem
+    trajetórias de naves. <br /><br />
+    Este dossiê classifica curvas quanto à
+    <span class="censored">suavidade</span>,
+    <span class="censored">orientação</span> e
+    <span class="censored">fechamento</span> — propriedades que determinam se
+    uma integral de linha pode ou não ser calculada ao longo de um percurso. Os
+    registros são baseados nos cadernos do Dr.
+    <span class="censored">█████</span>, responsável pela verificação de
+    <span class="censored">rotas seguras</span> para voos tripulados.
   </div>
   <div class="warning-box">
     Acesso restrito aos pesquisadores com credenciais de
@@ -26,37 +34,135 @@
     <span class="censored">procedimentos de contenção</span>.
   </div>
   <div class="metadata">
-    <span>REF: GL-<span class="censored">1965</span>-B</span>
-    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+    <span>REF: AP-<span class="censored">5001</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
     <span
       >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
       <span class="censored">5</span></span
     >
   </div>
 </div>
-<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: CURVAS DE CLASSE C¹ — SUAVIDADE, ORIENTAÇÃO E
+  FECHAMENTO
+</div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[\int_{C} f(x,y,z)\,ds = \int_a^b f(\vec{r}(t))\,\|\vec{r}'(t)\|\,dt\]
+  <p><strong>1. CURVA PARAMETRIZADA: REVISÃO</strong></p>
+  <p>
+    No Capítulo 1, estudamos funções vetoriais \(\vec{r}\colon [a,b] \to
+    \mathbb{R}^n\) que descrevem a posição de um objeto ao longo do tempo. Cada
+    valor do parâmetro \(t\) corresponde a um ponto \(\vec{r}(t) = (x(t), y(t),
+    z(t))\) no espaço. O conjunto imagem — todos os pontos visitados — é a
+    <strong>curva geométrica</strong> traçada pela parametrização.
   </p>
   <p>
-    Onde \(C\) é uma curva de classe \(C^1\) parametrizada por \(\vec{r}(t)\),
-    \(t \in [a,b]\). As integrais de linha permitem o cálculo de grandezas ao
-    longo de percursos definidos no espaço, possibilitando a análise de
-    comprimento de arco, trabalho (quando aplicado a campos vetoriais) e outras
-    quantidades.
+    Uma mesma curva geométrica pode ser descrita por diferentes parametrizações,
+    assim como uma mesma estrada pode ser percorrida em velocidades diferentes.
+    Esta flexibilidade será central nos próximos tópicos, quando estudarmos
+    mudança de parâmetro e integrais de linha.
   </p>
 </div>
-<div class="mission-context">
-  A determinação precisa de integrais de linha é crucial em manobras orbitais,
-  garantindo que a trajetória de uma cápsula Gemini seja planejada segundo
-  parâmetros de segurança e eficiência. O ajuste de rota depende de integrais
-  que medem esforço propulsivo e consumo de combustível ao longo do percurso.
+<div class="concept-definition">
+  <p><strong>2. CURVA DE CLASSE C¹ (CONTINUAMENTE DIFERENCIÁVEL)</strong></p>
+  <p>
+    Dizemos que uma parametrização \(\vec{r}(t)\) é de
+    <strong>classe \(C^1\)</strong> (ou
+    <strong>continuamente diferenciável</strong>) no intervalo \([a,b]\) se cada
+    componente \(x(t)\), \(y(t)\), \(z(t)\) possui derivada
+    <strong>contínua</strong> em todo o intervalo.
+  </p>
+  <p>
+    Intuitivamente, uma curva \(C^1\) não apresenta "saltos" na direção do
+    movimento — o vetor velocidade \(\vec{r}\,'(t)\) varia sem interrupções. É
+    como uma trajetória de voo sem mudanças bruscas de direção.
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}\,'(t) = \bigl(x'(t),\; y'(t),\; z'(t)\bigr)\]
+  </p>
+  <p>
+    Aqui, \(x'(t)\), \(y'(t)\) e \(z'(t)\) são as derivadas das componentes
+    escalares. Se todas existem e são contínuas, a curva é \(C^1\).
+  </p>
 </div>
+<div class="concept-definition">
+  <p><strong>3. CURVA SUAVE (REGULAR)</strong></p>
+  <p>
+    Uma curva \(C^1\) é chamada <strong>suave</strong> (ou
+    <strong>regular</strong>) se, além de ter derivada contínua, o vetor
+    velocidade <strong>nunca se anula</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}\,'(t) \neq \vec{0} \quad \text{para todo } t \in [a,b]\]
+  </p>
+  <p>
+    Quando \(\vec{r}\,'(t) = \vec{0}\) em algum ponto, a curva pode apresentar
+    uma <strong>cúspide</strong> — um ponto onde a trajetória "dobra sobre si
+    mesma" sem direção bem definida. Geometricamente, uma curva suave admite
+    reta tangente em todos os seus pontos. Para os propósitos de integração ao
+    longo de curvas, exigimos suavidade para garantir que o comprimento de arco
+    e as integrais de linha estejam bem definidos.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. CURVA SUAVE POR PARTES (PIECEWISE SMOOTH)</strong></p>
+  <p>
+    Muitas trajetórias práticas não são suaves em todos os pontos — manobras de
+    correção de curso com queimas de propulsão criam "quinas" na trajetória. Uma
+    curva é <strong>suave por partes</strong> se pode ser escrita como uma
+    <strong>união finita de curvas suaves</strong>
+    \(\vec{r}_1, \vec{r}_2, \ldots, \vec{r}_k\) cujos intervalos de parâmetro se
+    conectam nas extremidades.
+  </p>
+  <p>
+    Nas <strong>emendas</strong> (pontos de junção), a posição é contínua (a
+    nave não "teleporta"), mas a derivada pode ser descontínua — a velocidade
+    muda abruptamente após uma queima. Isso corresponde geometricamente a uma
+    <strong>quina</strong> na curva.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>5. ORIENTAÇÃO DE UMA CURVA</strong></p>
+  <p>
+    A <strong>orientação</strong> de uma curva parametrizada é o sentido de
+    percurso determinado pelo crescimento do parâmetro \(t\). Quando \(t\) vai
+    de \(a\) a \(b\), a curva é percorrida do ponto \(\vec{r}(a)\) ao ponto
+    \(\vec{r}(b)\). Uma mesma curva geométrica pode ser percorrida em
+    <strong>dois sentidos</strong>: o direto e o inverso.
+  </p>
+  <p>
+    A orientação será essencial nas integrais de linha vetoriais (trabalho de
+    uma força ao longo de um caminho), pois inverter a orientação inverte o
+    sinal do resultado.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>6. CURVAS FECHADAS E SIMPLES</strong></p>
+  <p>
+    Uma curva é <strong>fechada</strong> se o ponto inicial coincide com o ponto
+    final: \(\vec{r}(a) = \vec{r}(b)\). É como uma órbita que volta ao ponto de
+    partida. Uma curva fechada é <strong>simples</strong> se não apresenta
+    autointerseções — ou seja, a curva não "cruza consigo mesma" em nenhum ponto
+    além dos extremos.
+  </p>
+  <p>
+    Curvas fechadas e simples delimitam regiões no plano — propriedade que terá
+    consequências importantes em tópicos futuros. Por ora, concentramo-nos em
+    identificá-las e classificá-las.
+  </p>
+</div>
+<p>
+  Na navegação espacial, uma trajetória suave representa um voo sem correções —
+  a nave segue inércia pura. Quinas correspondem a queimas de manobra, onde o
+  motor altera abruptamente a velocidade. Curvas fechadas representam órbitas.
+  Compreender essas classificações é o primeiro passo para calcular integrais ao
+  longo de trajetórias, o que faremos nos tópicos seguintes.
+</p>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966), os
-  voos tripulados ganharam complexidade, exigindo cálculos rigorosos de
-  trajetórias. Técnicas de integrais de linha se mostraram fundamentais para
-  prever estabilidade de órbitas e correções em tempo real.
+  <strong>NOTA HISTÓRICA:</strong> Em 27 de janeiro de 1967, um incêndio na
+  cabine da Apollo 1 durante um teste em solo matou os astronautas Grissom,
+  White e Chaffee. O programa foi reestruturado e, em outubro de 1968, a Apollo
+  7 realizou o primeiro voo tripulado bem-sucedido. Em dezembro de 1968, a
+  Apollo 8 orbitou a Lua — a primeira vez que humanos deixaram a vizinhança da
+  Terra. Estes eventos consolidaram as técnicas de trajetória que analisamos
+  neste dossiê.
 </div>

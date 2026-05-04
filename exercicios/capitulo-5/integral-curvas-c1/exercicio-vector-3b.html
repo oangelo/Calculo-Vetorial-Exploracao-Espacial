@@ -1,40 +1,53 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: Pesquisas de Voo - Equipe
-    <span class="censored">Gêmeos</span>
+    ORIGEM: Apollo 8 - Classificação de Órbitas - DEZEMBRO/1968
   </div>
   <p>
-    Uma manobra orbital requer percorrer a curva \(C\) no espaço \(\vec{r}(t) =
-    \begin{pmatrix} 2t \\ \ln(1+t) \\ \sqrt{1+t^2} \end{pmatrix}\), \(t \in [0,
-    2]\). Calcule o comprimento e avalie se há variação significativa em
-    \(\ln(1+t)\).
+    A orientação que estudamos ganha importância especial quando a curva
+    <strong>volta ao ponto de partida</strong> — uma curva fechada, como uma
+    órbita. Analise as quatro parametrizações a seguir:
+  </p>
+  <p>
+    <strong>Curva I:</strong> \(\vec{r}_1(t) = (\cos t,\; \sin t)\), \(t \in [0,
+    2\pi]\)
+  </p>
+  <p>
+    <strong>Curva II:</strong> \(\vec{r}_2(t) = (\cos t,\; \sin 2t)\), \(t \in
+    [0, 2\pi]\)
+  </p>
+  <p>
+    <strong>Curva III:</strong> \(\vec{r}_3(t) = (t,\; t^2)\), \(t \in [0, 1]\)
+  </p>
+  <p>
+    <strong>Curva IV:</strong> \(\vec{r}_4(t) = (\cos t,\; 2\sin t)\), \(t \in
+    [0, 2\pi]\)
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada curva, verifique a condição de fechamento:
+    \(\vec{r}(a) = \vec{r}(b)\)? Classifique cada curva como fechada ou aberta.
+  </p>
+  <p>
+    <strong>(b)</strong> Entre as curvas fechadas, investigue se há
+    autointerseções — pontos onde a curva cruza consigo mesma em valores
+    diferentes de \(t\). Dica: para a Curva II, verifique se existem \(t_1 \neq
+    t_2\) com \(\vec{r}_2(t_1) = \vec{r}_2(t_2)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Classifique cada curva fechada como
+    <strong>simples</strong> (sem autointerseções) ou
+    <strong>não simples</strong> (com autointerseções). Faça um esboço de cada
+    uma.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Observe cuidadosamente as taxas de crescimento de cada
-      componente.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        \(\vec{r}'(t) = \begin{pmatrix} 2 \\ \frac{1}{1+t} \\
-        \frac{t}{\sqrt{1+t^2}} \end{pmatrix}\).
-      </p>
-      <p>
-        Logo, \[ \|\vec{r}'(t)\| = \sqrt{2^2 + \left(\frac{1}{1+t}\right)^2 +
-        \left(\frac{t}{\sqrt{1+t^2}}\right)^2}. \]
-      </p>
-      <p>
-        A integral \(\int_0^2 \sqrt{4 + \frac{1}{(1+t)^2} + \frac{t^2}{1+t^2}}\,
-        dt\) não admite solução elementar simples. Comparações numéricas mostram
-        que o crescimento de \(\ln(1+t)\) é modesto, enquanto as variações em
-        \(x=2t\) e \(z=\sqrt{1+t^2}\) dominam o comportamento do comprimento
-        total.
-      </p>
+      [NOTA TÉCNICA]: Para verificar autointerseções na Curva II, tente \(t_1 =
+      0\) e \(t_2 = \pi\): \(\vec{r}_2(0) = (1,0)\) e \(\vec{r}_2(\pi) = (1,
+      0)\). A curva passa por \((1,0)\) em dois momentos diferentes — portanto,
+      não é simples. Para as Curvas I e IV, use o fato de que \((\cos t, k\sin
+      t)\) percorre uma elipse sem autointerseções quando \(t\) varia numa volta
+      completa.
     </div>
   </details>
 </li>
