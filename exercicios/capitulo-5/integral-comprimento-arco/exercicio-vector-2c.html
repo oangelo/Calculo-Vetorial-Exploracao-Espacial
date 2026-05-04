@@ -1,37 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
   <div class="context">
-    ORIGEM: Estudo de Trajetória Suborbital [Memorando Interno
-    <span class="censored">██</span>/<span class="censored">65</span>]
+    ORIGEM: Missão Apollo 7 - Monitoramento de Órbita [REF:
+    <span class="censored">AS-205/OUT-1968</span>]
   </div>
   <p>
-    Um protótipo de trajetória suborbital em 2D é definido por \(\vec{r}(t) =
-    \bigl(t^2,\ 3\sqrt{t}\bigr)\), com \(t\) de 1 a 9. Calcular o comprimento de
-    arco para verificar estabilidade em regime de voo.
+    A parametrização não altera o resultado — o comprimento é da curva. Algumas
+    curvas tornam o cálculo especialmente elegante. Vamos para o espaço 3D
+    investigar uma hélice: ao calcular a norma da derivada, o aluno descobrirá
+    que ela se reduz a uma constante, tornando a integral imediata.
+  </p>
+  <p>
+    A curva helicoidal é dada por \(\vec{r}(t) = \bigl(\cos t,\, \sin t,\,
+    t/2\bigr)\), com \(t\) variando de 0 a \(\pi\).
+  </p>
+  <p><strong>(a)</strong> Calcule \(\vec{r}\,'(t)\) e \(\|\vec{r}\,'(t)\|\).</p>
+  <p>
+    <strong>(b)</strong> Identifique a simplificação e explique por que ela
+    ocorre. Que identidade trigonométrica está por trás?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o comprimento \(L\) e interprete: o que
+    significa geometricamente que a norma da velocidade é constante ao longo
+    dessa hélice?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Examine a raiz quadrada em \(y\) e potência em \(x\)
-      cuidadosamente.
+      [NOTA TÉCNICA]: Ao calcular \(\|\vec{r}\,'(t)\|^2\), some os quadrados das
+      componentes. A componente \(z\) contribui com \(1/4\). As componentes
+      \(x\) e \(y\) geram termos em \(\sin^2 t\) e \(\cos^2 t\) — use a
+      identidade fundamental para simplificar.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
-      <p>\(\frac{dx}{dt} = 2t\), \(\frac{dy}{dt} = \frac{3}{2\sqrt{t}}\).</p>
       <p>
-        Então, \[ L = \int_{1}^{9} \sqrt{(2t)^2 +
-        \left(\frac{3}{2\sqrt{t}}\right)^2}\, dt = \int_{1}^{9} \sqrt{4t^2 +
-        \frac{9}{4t}}\, dt. \]
+        <strong>(a)</strong> \(\vec{r}\,'(t) = (-\sin t,\, \cos t,\, 1/2)\).
+      </p>
+      <p>\[\|\vec{r}\,'(t)\|^2 = \sin^2 t + \cos^2 t + \frac{1}{4}\]</p>
+      <p><strong>(b)</strong> Pela identidade \(\sin^2 t + \cos^2 t = 1\):</p>
+      <p>\[\|\vec{r}\,'(t)\|^2 = 1 + \frac{1}{4} = \frac{5}{4}\]</p>
+      <p>
+        Portanto \(\|\vec{r}\,'(t)\| = \frac{\sqrt{5}}{2}\), uma
+        <strong>constante</strong>. A simplificação ocorre porque as componentes
+        \(x\) e \(y\) descrevem uma circunferência — sua contribuição à norma é
+        sempre 1, independentemente de \(t\). A componente \(z\) cresce
+        linearmente com velocidade constante.
       </p>
       <p>
-        A forma exata da solução envolve manipulações adicionais. O resultado
-        numérico pode ser computado para aplicação na trajetória suborbital.
+        <strong>(c)</strong>
       </p>
       <p>
-        Conclusão: O estudo confirma que o comprimento de arco se mantém dentro
-        dos limites operacionais propostos.
+        \[L = \int_0^{\pi} \frac{\sqrt{5}}{2}\, dt = \frac{\sqrt{5}}{2} \cdot
+        \pi = \frac{\pi\sqrt{5}}{2} \approx 3{,}51\]
+      </p>
+      <p>
+        Geometricamente, a norma constante significa que o ponto se move com
+        <strong>velocidade constante</strong> ao longo da hélice. Para cada
+        radiano percorrido na projeção circular, o ponto sobe \(1/2\) unidade no
+        eixo \(z\). Essa regularidade torna a hélice especialmente útil em
+        engenharia — por exemplo, nas roscas de parafusos e em trajetórias de
+        sondas espaciais que combinam rotação com translação.
       </p>
     </div>
   </details>

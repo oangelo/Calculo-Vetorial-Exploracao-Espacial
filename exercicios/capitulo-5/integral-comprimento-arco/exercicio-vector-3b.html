@@ -1,42 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: Cálculo de Pouso Controlado [Relatório
-    <span class="censored">████</span>]
+    ORIGEM: Análise de Trajetória Apollo 8 - Verificação de Parâmetros [REF:
+    <span class="censored">AS-503/DEZ-1968</span>]
   </div>
   <p>
-    A trajetória de pouso controlado é dada pela curva 3D \(\vec{r}(t) =
-    \bigl(\ln(1+t),\ \sqrt{1+t},\ \ln(1+2t)\bigr)\), com \(t\) de 0 a 2.
-    Determinar o comprimento de arco para prever consumo de
-    <span class="censored">combustível</span>.
+    O aluno agora sabe estimar e calcular comprimentos de arco. Vamos investigar
+    uma curva espacial com componentes exponenciais que exige manipulação
+    algébrica cuidadosa. O cálculo da norma da derivada gera uma expressão com
+    exponenciais opostos — o aluno deve reconhecer que a soma permite uma
+    simplificação elegante usando identidade hiperbólica.
   </p>
+  <p>
+    Considere a curva espacial \(\vec{r}(t) = \bigl(e^t,\, e^{-t},\,
+    \sqrt{2}\,t\bigr)\), com \(t\) variando de \(-1\) a \(1\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\vec{r}\,'(t)\) e \(\|\vec{r}\,'(t)\|^2\).
+  </p>
+  <p>
+    <strong>(b)</strong> Reconheça a simplificação: mostre que
+    \(\|\vec{r}\,'(t)\|^2 = (e^t + e^{-t})^2\) e explique que identidade está
+    por trás dessa redução.
+  </p>
+  <p><strong>(c)</strong> Integre e obtenha o comprimento \(L\).</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Busque invariantes em transformações logarítmicas e de
-      raiz.
+      [NOTA TÉCNICA]: Ao calcular \(\|\vec{r}\,'(t)\|^2\), você obterá \(e^{2t}
+      + e^{-2t} + 2\). Compare com o desenvolvimento de \((e^t + e^{-t})^2 =
+      e^{2t} + 2 + e^{-2t}\). A expressão se reduz ao quadrado perfeito, e a
+      norma é \(e^t + e^{-t} = 2\cosh(t)\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        \(\frac{dx}{dt} = \frac{1}{1+t},\quad \frac{dy}{dt} =
-        \frac{1}{2\sqrt{1+t}},\quad \frac{dz}{dt} = \frac{2}{1+2t}.\)
+        <strong>(a)</strong> \(\vec{r}\,'(t) = (e^t,\, -e^{-t},\, \sqrt{2})\).
+      </p>
+      <p>\[\|\vec{r}\,'(t)\|^2 = e^{2t} + e^{-2t} + 2\]</p>
+      <p><strong>(b)</strong> Observando que:</p>
+      <p>\[(e^t + e^{-t})^2 = e^{2t} + 2 + e^{-2t}\]</p>
+      <p>
+        temos \(\|\vec{r}\,'(t)\|^2 = (e^t + e^{-t})^2\). A identidade por trás
+        é a definição do cosseno hiperbólico: \(\cosh(t) = \frac{e^t +
+        e^{-t}}{2}\), logo \(e^t + e^{-t} = 2\cosh(t)\).
       </p>
       <p>
-        Então, \[ L = \int_{0}^{2} \sqrt{\left(\frac{1}{1+t}\right)^2 +
-        \left(\frac{1}{2\sqrt{1+t}}\right)^2 + \left(\frac{2}{1+2t}\right)^2} \,
-        dt. \]
+        Portanto \(\|\vec{r}\,'(t)\| = e^t + e^{-t} = 2\cosh(t)\) (sempre
+        positivo).
       </p>
       <p>
-        A complexidade do integrando exige métodos de integração avançados ou
-        numéricos. No entanto, o valor resultante orienta cálculos de pouso
-        seguro.
+        <strong>(c)</strong>
       </p>
       <p>
-        Conclusão: Mediante avaliação do integral, estimam-se os ajustes finais
-        para manobras de descida.
+        \[L = \int_{-1}^{1} 2\cosh(t)\, dt = 2\bigl[\sinh(t)\bigr]_{-1}^{1} =
+        2\bigl(\sinh(1) - \sinh(-1)\bigr) = 4\sinh(1)\]
+      </p>
+      <p>\[= 4 \cdot \frac{e - e^{-1}}{2} = 2(e - e^{-1}) \approx 4{,}70\]</p>
+      <p>
+        O comprimento é \(4\sinh(1) = 2(e - 1/e)\). A simplificação algébrica
+        transformou uma integral com raiz complexa em uma integral elementar —
+        reconhecer padrões é uma das habilidades mais valiosas em cálculo.
       </p>
     </div>
   </details>
