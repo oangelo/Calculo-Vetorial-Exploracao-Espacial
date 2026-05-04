@@ -1,36 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: Simulação de Combustível - <span class="censored">SETOR-9</span>
+    ORIGEM: Simulação de Trajetória - <span class="censored">GEMINI-IV</span>
   </div>
   <p>
-    Calcule \(\iiint_D (xyz)\,dx\,dy\,dz\) na região definida por \[ 0 \leq x
-    \leq 1,\; 0 \leq y \leq 1-x,\; 0 \leq z \leq 2 - x - y. \] Proponha uma
-    mudança de variáveis para simplificar os limites de integração.
+    Além de escala, podemos usar somas cumulativas — cada variável acumula as
+    anteriores. Isso simplifica regiões onde os limites de cada variável
+    dependem de todas as que vêm antes, criando uma dependência em cascata.
   </p>
+  <p>
+    Calcule \(\iiint_D xz\,dV\) na região definida por \[0 \le x \le 1, \quad 0
+    \le y \le 1-x, \quad 0 \le z \le 1-x-y.\]
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação \(u = x\), \(v = x+y\), \(w =
+    x+y+z\) e obtenha a inversa, expressando \(x\), \(y\), \(z\) em termos de
+    \(u\), \(v\), \(w\).
+  </p>
+  <p>
+    <strong>(b)</strong> Determine os novos limites de integração e calcule o
+    Jacobiano.
+  </p>
+  <p><strong>(c)</strong> Reescreva a integral em \((u,v,w)\) e avalie.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de somas podem ser relevantes no ajuste dos
-      planos.
+      [NOTA TÉCNICA]: A inversa é simples subtração: \(y = v - u\), \(z = w -
+      v\). A matriz jacobiana dessa transformação é triangular inferior com uns
+      na diagonal — o determinante é \(1\). Para os limites, cada restrição
+      original (\(y \ge 0\), \(z \ge 0\)) vira uma desigualdade entre as novas
+      variáveis.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Sejam \(u = x,\; v = x + y,\; w = x + y + z.\) Então, \[ y = v - u,\quad
-        z = w - v,\quad 0 \le u \le 1,\; u \le v \le 1,\; v \le w \le 2. \]
+        (a) A inversa é \(x = u\), \(y = v - u\), \(z = w - v\). Verificação:
+        \(u + (v-u) + (w-v) = w\), consistente.
       </p>
       <p>
-        Jacobiano \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1.\)
+        (b) As restrições originais se traduzem: \(x \ge 0 \Rightarrow u \ge
+        0\); \(y \ge 0 \Rightarrow v \ge u\); \(z \ge 0 \Rightarrow w \ge v\);
+        \(x \le 1 \Rightarrow u \le 1\); \(x+y \le 1 \Rightarrow v \le 1\);
+        \(x+y+z \le 1 \Rightarrow w \le 1\).
       </p>
       <p>
-        Logo, \[ \iiint_D xyz\,dx\,dy\,dz =
-        \int_{u=0}^{1}\int_{v=u}^{1}\int_{w=v}^{2}
-        \bigl(u\,(v-u)\,(w-v)\bigr)\,dw\,dv\,du. \]
+        Os limites são \(0 \le u \le 1\), \(u \le v \le 1\), \(v \le w \le 1\).
+        O Jacobiano é \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| =
+        1\) (matriz triangular com diagonal \(1,1,1\)).
       </p>
-      <p>Integrações sucessivas fornecem o valor final de \(\frac{1}{4}\).</p>
+      <p>
+        (c) A integrando: \(xz = u(w-v)\). A integral fica \[
+        \int_{u=0}^{1}\int_{v=u}^{1}\int_{w=v}^{1} u(w-v)\;dw\,dv\,du.\]
+      </p>
+      <p>Integração em \(w\): \(\int_v^1 (w-v)\,dw = \frac{(1-v)^2}{2}\).</p>
+      <p>
+        Integração em \(v\): \(\int_u^1 u \cdot \frac{(1-v)^2}{2}\,dv =
+        \frac{u}{2}\left[-\frac{(1-v)^3}{3}\right]_u^1 = \frac{u(1-u)^3}{6}\).
+      </p>
+      <p>
+        Integração em \(u\): \(\int_0^1 \frac{u(1-u)^3}{6}\,du =
+        \frac{1}{6}\left[\frac{(1-u)^4(4u+1)}{20}\right]_0^1 = \frac{1}{6} \cdot
+        \frac{1}{20} = \frac{1}{120}.\)
+      </p>
     </div>
   </details>
 </li>

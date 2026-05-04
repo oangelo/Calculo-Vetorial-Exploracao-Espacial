@@ -1,52 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
   <div class="context">
-    ORIGEM: Ajuste de Tanques -
-    <span class="censored">LABORATÓRIO INTERNO</span>
+    ORIGEM: Distribuição de Massa em Componente Tetraédrico - Missão
+    <span class="censored">Gemini VII</span> [DEZ/1965]
   </div>
   <p>
-    No exercício anterior, usamos coordenadas esféricas (cujo Jacobiano já
-    conhecemos). Agora vamos ver uma mudança de variáveis mais geral: uma
-    transformação linear que simplifica um plano inclinado.
+    A transformação anterior simplificava um plano inclinado em \(w =
+    \text{constante}\). Agora vamos mais longe: usamos uma transformação
+    triangular que simplifica uma soma acumulada de coordenadas, mapeando o
+    tetraedro padrão para um prisma de limites decrescentes.
   </p>
   <p>
-    A região \(D\) é definida por \[0 \le x \le 2, \quad 0 \le y \le 2, \quad 0
-    \le z \le 4 - x - y.\] Calcular \(\iiint_D (x + y)\,dx\,dy\,dz\), propondo
-    uma mudança de variáveis para simplificar o plano \(z = 4 - x - y\).
+    Seja \(D\) o tetraedro no primeiro octante limitado por \(x + y + z \le 4\).
+    A densidade de massa no interior do componente é proporcional à distância à
+    origem: \(\delta(x,y,z) = x + y + z\). Calcule a massa total \(\iiint_D (x +
+    y + z)\,dx\,dy\,dz\) usando a transformação \(u = x\), \(v = x + y\), \(w =
+    x + y + z\).
   </p>
   <p>
-    <strong>(a)</strong> Proponha a transformação \(u = x\), \(v = y\), \(w = 4
-    - x - y - z\). Verifique que o plano \(z = 4-x-y\) se torna \(w=0\).
+    <strong>(a)</strong> Inverta a transformação: expresse \(x\), \(y\), \(z\)
+    em termos de \(u\), \(v\), \(w\). Verifique que o plano \(x + y + z = 4\)
+    torna-se \(w = 4\).
   </p>
-  <p><strong>(b)\)</strong> Calcule o Jacobiano da transformação.</p>
   <p>
-    <strong>(c)</strong> Reescreva a integral em termos de \((u,v,w)\) e avalie.
+    <strong>(b)</strong> Determine os novos limites de integração e calcule o
+    Jacobiano da transformação inversa.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral e confira o resultado: o volume do
+    tetraedro é \(V = \frac{a^3}{6}\) com \(a = 4\), e o valor médio de \(x + y
+    + z\) sobre ele é \(3\) (centroide em \((1,1,1)\)).
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A matriz jacobiana dessa transformação é triangular, então
-      o determinante é o produto dos elementos da diagonal.
+      [NOTA TÉCNICA]: As condições do primeiro octante ficam \(u \ge 0\), \(v -
+      u \ge 0\) e \(w - v \ge 0\). Reescreva como limites de integração. Note
+      que o integrando \(x + y + z\) tem uma forma especialmente simples em
+      termos de uma única variável nova.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Com \(u = x,\; v = y,\; w = 4 - x - y - z\), temos \(z = 4 - u - v -
-        w\). A fronteira \(z = 4 - x - y\) passa a ser \(w = 0\).
+        (a) Inversa: \(x = u\), \(y = v - u\), \(z = w - v\). Na fronteira \(x +
+        y + z = 4\) temos \(u + (v - u) + (w - v) = w = 4\).
       </p>
       <p>
-        (b) O jacobiano da transformação é
-        \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|=1.\)
+        (b) As condições \(x \ge 0\), \(y \ge 0\), \(z \ge 0\) e \(x + y + z \le
+        4\) ficam: \[0 \le w \le 4, \quad 0 \le v \le w, \quad 0 \le u \le v.\]
+        A matriz jacobiana: \[ \frac{\partial(x,y,z)}{\partial(u,v,w)} =
+        \begin{pmatrix} 1 & 0 & 0 \\ -1 & 1 & 0 \\ 0 & -1 & 1 \end{pmatrix}, \]
+        com determinante \(1\) (triangular inferior).
       </p>
       <p>
-        (c) \[\iiint_D (x + y)\,dx\,dy\,dz = \int_{u=0}^{2} \int_{v=0}^{2}
-        \int_{w=0}^{4 - u - v} (u+v)\; dw\, dv\, du.\]
+        (c) O integrando \(x + y + z = w\). A integral: \[ \iiint_D (x + y +
+        z)\,dx\,dy\,dz = \int_{0}^{4}\!\int_{0}^{w}\!\int_{0}^{v} w \cdot
+        1\,du\,dv\,dw. \] Integrando em \(u\): \(\int_{0}^{v} du = v\).
+        Integrando em \(v\): \(\int_{0}^{w} wv\,dv = \frac{w^3}{2}\). Integrando
+        em \(w\): \(\int_{0}^{4}\frac{w^3}{2}\,dw = \frac{4^4}{8} = 32\).
       </p>
       <p>
-        Integração resulta em \(\int_{0}^{2}\int_{0}^{2} (u+v)(4 - u -
-        v)\,dv\,du = 16\).
+        Conferência: volume \(V = \frac{4^3}{6} = \frac{32}{3}\). Valor médio de
+        \(x + y + z = 3\). Massa \(= 3 \times \frac{32}{3} = 32\).
       </p>
     </div>
   </details>

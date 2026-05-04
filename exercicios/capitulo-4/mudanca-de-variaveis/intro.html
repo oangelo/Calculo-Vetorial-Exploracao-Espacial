@@ -1,25 +1,21 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">08</span> DE
-    <span class="censored">JANEIRO</span> DE
-    <span class="censored">1972</span>
+    DATA: <span class="censored">23</span> DE
+    <span class="censored">MARÇO</span> DE
+    <span class="censored">1965</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO [REDACTED]</span>
+    LOCALIZAÇÃO: <span class="censored">CENTRO DE CONTROLE GEMINI</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">ORION-TRIPLO</span>
-    <br /><br />
-    Em meio às últimas evoluções do programa
-    <span class="censored">APOLLO</span>, nossa equipe avançou no estudo de
-    integrais triplas com foco em mudanças de variáveis. A aplicação desses
-    métodos permite estimar
-    <span class="censored">distribuições de massa</span> e trajetórias internas
-    de naves em pontos críticos. <br /><br />
-    As atividades foram inspiradas nos cadernos do Dr.
-    <span class="censored">█████</span>, principal especialista em
-    <span class="censored">geometria espacial</span> da época.
+    <span class="censored">ORION-TRIPLO</span><br /><br />
+    Após dominarmos a redução de integrais triplas a duplas e as condições sob
+    as quais essas integrais existem, nossa equipe avança para uma ferramenta
+    mais poderosa: a mudança de variáveis em três dimensões. Os métodos aqui
+    descritos foram fundamentais para o cálculo de
+    <span class="censored">distribuições de massa</span> em módulos do programa
+    Gemini.
   </div>
   <div class="warning-box">
     Este documento contém instruções sobre procedimentos avançados em cálculo
@@ -27,7 +23,7 @@
     <span class="censored">sanções imediatas</span>.
   </div>
   <div class="metadata">
-    <span>REF: VX-<span class="censored">1984</span>-C</span>
+    <span>REF: VX-<span class="censored">4031</span>-C</span>
     <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
     <span
       >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
@@ -39,29 +35,63 @@
   FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS NAS INTEGRAIS TRIPLAS
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+  <p><strong>1. JACOBIANO 3D COMO EXTENSÃO DO 2D</strong></p>
+  <p>
+    No Cap 3, você viu que a mudança de variáveis em integrais duplas multiplica
+    o integrando pelo valor absoluto do Jacobiano 2×2. A mesma ideia se estende
+    para três dimensões: o Jacobiano 3×3 mede como um pequeno volume se deforma
+    sob a transformação.
+  </p>
   <p class="formula-highlight">
-    \[\iiint_{D} f(x,y,z)\, dx\,dy\,dz \;=\; \iiint_{D'}
-    f\bigl(\Phi(u,v,w)\bigr)\, \left|\frac{\partial (x,y,z)}{\partial
-    (u,v,w)}\right|\,du\,dv\,dw.\]
+    \[\iiint_{V} f(x,y,z)\,dx\,dy\,dz = \iiint_{V'}
+    f\bigl(x(u,v,w),y(u,v,w),z(u,v,w)\bigr)\,
+    \left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\,du\,dv\,dw\]
   </p>
   <p>
-    Onde \(\Phi(u,v,w)\) define a transformação para um novo sistema de
-    coordenadas, e \(\left|\frac{\partial (x,y,z)}{\partial (u,v,w)}\right|\) é
-    o determinante da matriz jacobiana. Essa técnica permite avaliar integrais
-    em domínios complexos por meio de coordenadas mais adequadas (cilíndricas,
-    esféricas ou outras).
+    O Jacobiano \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\) é o
+    determinante da matriz 3×3 das derivadas parciais. Quando vale 1, o volume
+    se preserva. Quando é constante, o volume escala uniformemente.
   </p>
 </div>
-<div class="mission-context">
-  Aplicado ao planejamento de voos espaciais, o uso de coordenadas apropriadas
-  facilita a previsão de tensões internas em módulos e tanques de combustível,
-  especialmente quando se lida com regiões tridimensionais irregulares.
+<div class="concept-definition">
+  <p><strong>2. TRANSFORMAÇÕES LINEARES E DETERMINANTE</strong></p>
+  <p>
+    Se \(x = au + bv + cw\) com constantes \(a,b,c\) (e análogas para \(y\) e
+    \(z\)), a transformação é linear. A matriz Jacobiana é constante e o
+    determinante é simplesmente o determinante da matriz dos coeficientes.
+    Transformações lineares preservam planos e paraboloides — regiones
+    poliédricas continuam poliédricas.
+  </p>
 </div>
+<div class="concept-definition">
+  <p><strong>3. ESCALA E DEFORMAÇÃO DE VOLUME</strong></p>
+  <p>
+    Quando esticamos cada eixo por um fator diferente — \(x = au\), \(y = bv\),
+    \(z = cw\) — o Jacobiano é \(abc\). Um cubo unitário no espaço \((u,v,w)\)
+    se torna um paralelepípedo de volume \(abc\) no espaço \((x,y,z)\). Esta é a
+    ideia central para transformar elipsoides em esferas.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. TRANSFORMAÇÕES NÃO-LINEARES E COMPOSIÇÃO</strong></p>
+  <p>
+    Nem toda transformação útil é linear. Substituições como \(u = x^2\)
+    produzem Jacobianos que variam ponto a ponto — o fator de deformação depende
+    de onde estamos. Rotações são lineares com \(|J|=1\): preservam volume mas
+    podem simplificar integrandos eliminando termos cruzados. A escolha da
+    transformação depende tanto da região quanto do integrando.
+  </p>
+</div>
+<p>
+  Aplicado ao planejamento de missões Gemini, o uso de transformações adequadas
+  facilita o cálculo de volumes de tanques de combustível com geometrias
+  complexas, garantindo precisão nas estimativas de
+  <span class="censored">capacidade e distribuição de massa</span>.
+</p>
 <div class="historical-note">
   <strong>NOTA HISTÓRICA:</strong>
-  Durante a fase final do <span class="censored">Programa Apollo</span>, a
-  análise de mudanças de variáveis em integrais triplas foi fundamental para
-  viabilizar missões com módulos adaptados a ambientes de baixa gravidade e alta
-  complexidade geométrica.
+  Durante o Programa Gemini (1965-1966), a análise de mudanças de variáveis em
+  integrais triplas foi fundamental para o projeto de módulos adaptados a
+  ambientes de microgravidade. As missões Gemini III a XII forneceram dados que
+  motivaram o desenvolvimento destas técnicas.
 </div>

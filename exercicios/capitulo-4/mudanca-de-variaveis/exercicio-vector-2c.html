@@ -1,45 +1,73 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
   <div class="context">
-    ORIGEM: Programas de Controle Térmico [MEMÓRIAS CONFIDENCIAIS]
+    ORIGEM: Controle Térmico - <span class="censored">GEMINI-V</span>
   </div>
   <p>
-    A densidade de um material varia com as coordenadas segundo \(\rho(x,y,z) =
-    e^{-(x+y+z)}\). Avalie \(\iiint_D \rho(x,y,z)\,dx\,dy\,dz\) na região
-    \(x,y,z \ge 0\) e \(x + y + z \le 2\). Efetue uma mudança de variáveis que
-    torne a fronteira do domínio mais simples.
+    Combinamos soma com aplicação prática: uma distribuição de densidade que
+    depende da soma das coordenadas. A mudança de variáveis simplifica
+    simultaneamente o domínio e a função integranda — o cenário ideal para
+    mudança de variáveis.
   </p>
+  <p>
+    A densidade de um material no tetraedro \(T\), definido por \(x,y,z \ge 0\)
+    e \(x + y + z \le 2\), é \(\rho(x,y,z) = (x+y+z)^2\). Calcule a massa total
+    \(M = \iiint_T (x+y+z)^2\,dV\) usando a transformação \(u = x\), \(v =
+    x+y\), \(w = x+y+z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o que se simplifica: mostre que a
+    integrando passa a depender de uma única variável e que a fronteira \(x+y+z
+    = 2\) se torna constante.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine os limites de integração em \((u,v,w)\) e
+    monte a integral completa.
+  </p>
+  <p><strong>(c)</strong> Avalie a integral passo a passo.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de coordenadas lineares podem ajudar na
-      simplificação de expoentes.
+      [NOTA TÉCNICA]: Na nova variável \(w = x+y+z\), a densidade é \(w^2\) e a
+      fronteira é \(w = 2\). Integre de dentro para fora: as duas primeiras
+      integrações eliminam a dependência em \(u\) e \(v\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Considere \(u = x + y + z,\; v = y,\; w = z.\) Assim, \(\rho = e^{-u}\).
+        (a) Com \(w = x+y+z\), a integrando \((x+y+z)^2 = w^2\) depende apenas
+        de \(w\). A fronteira \(x+y+z = 2\) se torna \(w = 2\), constante.
       </p>
       <p>
-        O domínio \(x+y+z \le 2\) com \(x,y,z \ge 0\) converte-se em \(0 \le u
-        \le 2,\; 0 \le v \le u,\; 0 \le w \le u-v.\)
+        (b) As restrições: \(x \ge 0 \Rightarrow u \ge 0\); \(y \ge 0
+        \Rightarrow v \ge u\); \(z \ge 0 \Rightarrow w \ge v\); \(x+y+z \le 2
+        \Rightarrow w \le 2\). Logo os limites são \(0 \le u \le 2\), \(u \le v
+        \le 2\), \(v \le w \le 2\). O Jacobiano é \(1\).
       </p>
       <p>
-        Jacobiano: \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1.\)
+        A integral: \[M = \int_{u=0}^{2}\int_{v=u}^{2}\int_{w=v}^{2}
+        w^2\;dw\,dv\,du.\]
       </p>
       <p>
-        A integral torna-se \[ \int_{u=0}^{2}\int_{v=0}^{u}\int_{w=0}^{u-v}
-        e^{-u}\;dw\,dv\,du, \] resultando em \[ \int_{0}^{2} e^{-u}
-        \left(\int_{0}^{u}\int_{0}^{u-v} dw\,dv\right)\,du. \]
+        (c) Integração em \(w\): \(\int_v^2 w^2\,dw =
+        \left[\frac{w^3}{3}\right]_v^2 = \frac{8}{3} - \frac{v^3}{3}\).
       </p>
       <p>
-        A área em \(v,w\) é \(\frac{u^2}{2}\). Portanto, \[ \int_{0}^{2} e^{-u}
-        \frac{u^2}{2} \,du. \] O valor final é \(\frac{1}{2}\int_{0}^{2} u^2
-        e^{-u}\,du,\) que pode ser calculado via integração por partes,
-        resultando em \(\frac{1}{2}\bigl(2 - (5e^{-2})\bigr)\) (ou forma
-        equivalente).
+        Integração em \(v\): \(\int_u^2 \left(\frac{8}{3} -
+        \frac{v^3}{3}\right)dv = \left[\frac{8v}{3} - \frac{v^4}{12}\right]_u^2
+        = \left(\frac{16}{3} - \frac{4}{3}\right) - \left(\frac{8u}{3} -
+        \frac{u^4}{12}\right) = 4 - \frac{8u}{3} + \frac{u^4}{12}\).
+      </p>
+      <p>
+        Integração em \(u\): \(\int_0^2 \left(4 - \frac{8u}{3} +
+        \frac{u^4}{12}\right)du = \left[4u - \frac{4u^2}{3} +
+        \frac{u^5}{60}\right]_0^2 = 8 - \frac{16}{3} + \frac{32}{60}\).
+      </p>
+      <p>
+        Com denominador comum \(15\): \(\frac{120}{15} - \frac{80}{15} +
+        \frac{8}{15} = \frac{48}{15} = \frac{16}{5}\).
       </p>
     </div>
   </details>

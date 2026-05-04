@@ -1,45 +1,79 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: Análise Inercial - Projeto <span class="censored">TESEU</span>
+    ORIGEM: Divisão de Navegação -
+    <span class="censored">GEMINI IX</span> [JUN/1966]
   </div>
   <p>
-    Seja \(D\) a região limitada pelo cone \(z = \sqrt{x^2 + y^2}\) e pelo plano
-    \(z = 3\). Calcule \(\iiint_D (z)\,dx\,dy\,dz\) aplicando mudança de
-    variáveis compatível com o cone.
+    A substituição quadrática do exercício anterior tem Jacobiano variável. Mas
+    rotações são um tipo especial de transformação linear com \(|J| = 1\) — elas
+    preservam volumes e podem eliminar termos cruzados do integrando.
   </p>
+  <p>
+    Considere o paralelepípedo oblíquo definido por \(0 \le x+y \le 2\), \(0 \le
+    x-y \le 2\), \(0 \le z \le 3\), e a integral \(\iiint_D (x^2 + xy +
+    y^2)\,dx\,dy\,dz\). Use a rotação \(u = \frac{x+y}{\sqrt{2}}\), \(v =
+    \frac{x-y}{\sqrt{2}}\), \(w = z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que as fronteiras do domínio se transformam
+    no paralelepípedo retangular \(0 \le u \le \sqrt{2}\), \(0 \le v \le
+    \sqrt{2}\), \(0 \le w \le 3\). Mostre que \(|J| = 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Reescreva o integrando \(x^2 + xy + y^2\) em termos de
+    \(u\) e \(v\). Verifique que o termo cruzado desapareceu.
+  </p>
+  <p><strong>(c)</strong> Avalie a integral.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Há superfícies de revolução notáveis no domínio.
+      [NOTA TÉCNICA]: Substitua \(x = (u+v)/\sqrt{2}\) e \(y = (u-v)/\sqrt{2}\)
+      na forma quadrática. Os termos \(uv\) se cancelam quando os coeficientes
+      de \(x^2\) e \(y^2\) são iguais.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Em coordenadas cilíndricas, o cone \(z = r\). Então \(r \le z \le 3\) e
-        \(0 \le r \le 3\). Para cada \(r\), \(z\) inicia em \(r\) e vai até 3.
+        (a) Com \(u = (x+y)/\sqrt{2}\) e \(v = (x-y)/\sqrt{2}\): as condições
+        \(0 \le x+y \le 2\) e \(0 \le x-y \le 2\) tornam-se \(0 \le u \le
+        \sqrt{2}\) e \(0 \le v \le \sqrt{2}\). A coordenada \(z\) é inalterada:
+        \(0 \le w \le 3\).
       </p>
       <p>
-        A projeção no plano \(xy\) é \(0 \le r \le 3,\) \(\theta \in [0,
-        2\pi].\)
+        Invertendo: \(x = (u+v)/\sqrt{2}\), \(y = (u-v)/\sqrt{2}\), \(z = w\).
+        As derivadas parciais de \(x\) são \(1/\sqrt{2}\) e \(1/\sqrt{2}\); as
+        de \(y\) são \(1/\sqrt{2}\) e \(-1/\sqrt{2}\); as de \(z\) são \(0\) e
+        \(1\). O Jacobiano é \(\frac{1}{\sqrt{2}} \cdot \frac{-1}{\sqrt{2}} -
+        \frac{1}{\sqrt{2}} \cdot \frac{1}{\sqrt{2}} = -1\), logo \(|J| = 1\). A
+        rotação preserva volume.
       </p>
       <p>
-        Integral: \[ \int_{0}^{2\pi}\int_{0}^{3}\int_{z=r}^{3} z \cdot r \;
-        dz\,dr\,d\theta. \]
+        (b) Substituindo: \[x^2 + xy + y^2 = \frac{(u+v)^2}{2} +
+        \frac{(u+v)(u-v)}{2} + \frac{(u-v)^2}{2}\] \[= \frac{u^2 + 2uv + v^2 +
+        u^2 - v^2 + u^2 - 2uv + v^2}{2} = \frac{3u^2 + v^2}{2}.\] O termo
+        cruzado \(uv\) cancelou-se completamente.
       </p>
       <p>
-        Integrando em \(z\): \(\int_{z=r}^{3} z\,dz = \frac{9}{2} -
-        \frac{r^2}{2}.\)
+        (c) A integral torna-se \[\int_0^3 \int_0^{\sqrt{2}} \int_0^{\sqrt{2}}
+        \frac{3u^2 + v^2}{2}\;du\,dv\,dw.\]
+      </p>
+      <p>Integrando em \(w\): fator \(3\).</p>
+      <p>
+        Integrando em \(v\): \(\int_0^{\sqrt{2}} \frac{3u^2 + v^2}{2}\,dv =
+        \frac{3u^2\sqrt{2}}{2} + \frac{(\sqrt{2})^3}{6} =
+        \frac{3\sqrt{2}\,u^2}{2} + \frac{\sqrt{2}}{3}\).
       </p>
       <p>
-        Resta \(\int_{0}^{2\pi}\int_{0}^{3} r\left(\frac{9}{2} -
-        \frac{r^2}{2}\right)\,dr\,d\theta.\) Após resolver em \(r\) e
-        multiplicar por \(2\pi\), encontra-se \(\displaystyle 2\pi \cdot
-        \left(\frac{9}{2}\cdot\frac{9}{2} - \frac{3^4}{8}\right)\) = valor
-        resultante de \(\frac{81\pi}{4}.\)
+        Integrando em \(u\): \[\int_0^{\sqrt{2}} \left(\frac{3\sqrt{2}\,u^2}{2}
+        + \frac{\sqrt{2}}{3}\right)du = \left[\frac{\sqrt{2}\,u^3}{2} +
+        \frac{\sqrt{2}\,u}{3}\right]_0^{\sqrt{2}} = \frac{\sqrt{2} \cdot
+        2\sqrt{2}}{2} + \frac{\sqrt{2} \cdot \sqrt{2}}{3} = 2 + \frac{2}{3} =
+        \frac{8}{3}.\]
       </p>
+      <p>Resultado final: \(3 \times \dfrac{8}{3} = 8\).</p>
     </div>
   </details>
 </li>
