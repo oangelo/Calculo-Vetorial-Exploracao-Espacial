@@ -1,37 +1,65 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
   <div class="context">
-    ORIGEM: Observatório - Programa Apollo [AGOSTO/1971]
+    ORIGEM: Laboratório de Propulsão - Gemini-Titan II [MAR/1965]
   </div>
   <p>
-    A função \[g(x,y,z) = e^{-x^2-y^2-z^2}\] aparece em modelos de dispersão de
-    gases no interior do módulo. Verifique se esta função atende aos critérios
-    de integrabilidade no domínio \(\{(x,y,z)\in \mathbb{R}^3 \mid |x|\le 2,
-    |y|\le 2, |z|\le 2\}\), descrevendo sucintamente a razão.
+    No exercício anterior, verificamos que a integral tripla de \(f(x,y,z) = 2x
+    + yz\) no paralelepípedo \(V = [0,3] \times [0,2] \times [0,1]\) existe. Mas
+    ficou uma pergunta: o que esse número representa fisicamente?
+  </p>
+  <p>
+    Imagine que \(f(x,y,z) = 2x + yz\) representa a densidade de combustível (em
+    kg/m³) distribuída no interior de um tanque com formato de paralelepípedo,
+    onde \(x\), \(y\) e \(z\) estão medidos em metros.
+  </p>
+  <p>
+    <strong>(a)</strong> Monte a integral iterada \(\iiint_{V} f(x,y,z)\,dV\)
+    com os limites apropriados. Escolha a ordem de integração que preferir.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral passo a passo, resolvendo cada
+    integral iterada.
+  </p>
+  <p>
+    <strong>(c)</strong> Interprete o resultado: que quantidade física o valor
+    obtido representa? Qual a unidade?
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre-se de que a função exponencial é infinitamente
-      diferenciável.
+      [NOTA TÉCNICA]: A integral de uma densidade sobre um volume fornece a
+      massa total. Para resolver a integral iterada de \(2x + yz\), integre
+      primeiro em \(z\): cada variável é tratada independentemente. O resultado
+      é \(2xz + \frac{yz^2}{2}\) avaliado entre 0 e 1.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        A função \(e^{-x^2-y^2-z^2}\) é contínua e limitada em todo
-        \(\mathbb{R}^3\). Em particular, dentro do cubo \([-2,2]^3\), não há
-        pontos de descontinuidade.
+        <strong>(a)</strong> A integral iterada com a ordem \(dz\,dy\,dx\) é:
+      </p>
+      <p>\[\int_{0}^{3}\int_{0}^{2}\int_{0}^{1}(2x + yz)\,dz\,dy\,dx\]</p>
+      <p><strong>(b)</strong> Calculando passo a passo:</p>
+      <p>
+        Integrando em \(z\): \(\int_{0}^{1}(2x + yz)\,dz = \left[2xz +
+        \frac{yz^2}{2}\right]_{0}^{1} = 2x + \frac{y}{2}\).
       </p>
       <p>
-        Portanto, as condições de integrabilidade são atendidas no referido
-        domínio. Uma vez que \(D\) é limitado, a integral tripla é finita.
+        Integrando em \(y\): \(\int_{0}^{2}\left(2x + \frac{y}{2}\right)dy =
+        \left[2xy + \frac{y^2}{4}\right]_{0}^{2} = 4x + 1\).
       </p>
       <p>
-        A relevância prática está na estimativa de
-        <span class="censored">concentração de gases</span> dentro do módulo,
-        garantindo segurança ao programa Apollo.
+        Integrando em \(x\): \(\int_{0}^{3}(4x + 1)\,dx = \left[2x^2 +
+        x\right]_{0}^{3} = 18 + 3 = 21\).
+      </p>
+      <p>\[\boxed{\iiint_{V} (2x + yz)\,dV = 21}\]</p>
+      <p>
+        <strong>(c)</strong> O valor 21 representa a
+        <strong>massa total</strong> de combustível no tanque. Como \(f\) tem
+        unidades de kg/m³ e o volume é medido em m³, a integral (densidade
+        \(\times\) volume) resulta em kg. O tanque contém 21 kg de combustível.
       </p>
     </div>
   </details>

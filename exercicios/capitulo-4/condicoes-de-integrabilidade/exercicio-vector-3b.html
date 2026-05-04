@@ -1,37 +1,88 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: Seção de Controle Térmico - Apollo 14 [OUT/1971]
+    ORIGEM: Laboratório de Propulsão - Gemini IX [JUN/1966]
   </div>
   <p>
-    Uma distribuição de temperatura local é dada por: \[ T(x,y,z) =
-    \begin{cases} \frac{1}{\sqrt{x^2 + y^2 + z^2}}, &amp; \text{se } x^2 + y^2 +
-    z^2 \neq 0, \\ 100, &amp; \text{se } x = y = z = 0. \end{cases} \]
-    Investigue se a presença de \(\frac{1}{\sqrt{r^2}}\) no denominador afeta a
-    integrabilidade em \(\{(x,y,z)\mid 0 \le r\le 3\}\).
+    Vimos que falta de limitação impede a integral — a função \(\frac{1}{r^3}\)
+    diverge. Mas será que <em>toda</em> singularidade é fatal? Curiosamente, a
+    dimensão do espaço faz diferença.
+  </p>
+  <p>
+    Considere agora a função com singularidade mais "suave": \[T(x,y,z) =
+    \begin{cases} \frac{1}{\sqrt{x^2 + y^2 + z^2}} &amp; \text{se } (x,y,z) \neq
+    (0,0,0), \\ 100 &amp; \text{se } (x,y,z) = (0,0,0). \end{cases}\] definida
+    na bola \(V = \{(x,y,z) \mid x^2 + y^2 + z^2 \le 4\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique a singularidade: \(T\) é limitada em \(V\)?
+    O que acontece quando \((x,y,z) \to (0,0,0)\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Apesar de não ser limitada, a integral de \(T\) sobre
+    \(V\) ainda <strong>converge</strong>. Argumente por que, em 3D, o elemento
+    de volume \(dV\) cresce como \(r^2\,dr\) ao redor da origem, e isso
+    "amortece" a singularidade \(\frac{1}{r}\).
+  </p>
+  <p>
+    <strong>(c)</strong> Reflexão: em 2D, uma função como
+    \(\frac{1}{\sqrt{x^2+y^2}}\) sobre um disco centrado na origem seria
+    integrável? Por que em 3D funciona mas em 2D talvez não?
+  </p>
+  <p>
+    <strong>(d)</strong> Isso contradiz o que vimos sobre a condição de
+    limitação? Discuta a relação entre este caso especial e a definição rigorosa
+    de integral de Riemann.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Pense na convergência de integrais envolvendo \(r^{-1}\).
+      [NOTA TÉCNICA]: Em 3D, perto da origem, \(dV \approx r^2
+      \sin\phi\,dr\,d\phi\,d\theta\). O integrando se comporta como
+      \(\frac{1}{r} \cdot r^2 = r\), que é perfeitamente integrável perto de \(r
+      = 0\). A "potência" da singularidade (\(\frac{1}{r}\)) é menor que a
+      "potência" do elemento de volume (\(r^2\)). Já em 2D, \(dA \approx
+      r\,dr\,d\theta\) e o integrando fica \(\frac{1}{r} \cdot r = 1\), que
+      diverge como \(\int \frac{1}{r}\,dr\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-8 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Em coordenadas esféricas, a função se torna aproximadamente
-        \(\frac{1}{r}\). O volume infinitesimal é proporcional a \(r^2\, dr\).
-        Assim, ao integrar \(\frac{1}{r}\cdot r^2\) em \(r\), a integral se
-        comporta como \(\int r\, dr\), que converge para \(r\le3\).
+        <strong>(a)</strong> \(T\) <strong>não é limitada</strong>. Quando
+        \((x,y,z) \to (0,0,0)\), temos \(r = \sqrt{x^2+y^2+z^2} \to 0\) e \(T =
+        \frac{1}{r} \to +\infty\). O valor \(T(0,0,0)=100\) não resolve a
+        singularidade — ela persiste em toda vizinhança da origem.
       </p>
       <p>
-        No ponto \((0,0,0)\), foi atribuído o valor 100, mas isso não afeta a
-        integrabilidade, pois é um único ponto (conjunto de medida nula).
+        <strong>(b)</strong> Em coordenadas esféricas, perto da origem: \(T
+        \approx \frac{1}{r}\) e \(dV = r^2 \sin\phi\,dr\,d\phi\,d\theta\). O
+        integrando total é \(\frac{1}{r} \cdot r^2 = r\), e
+        \(\int_{0}^{\varepsilon} r\,dr = \frac{\varepsilon^2}{2} \lt \infty\). A
+        integral converge porque o fator \(r^2\) do elemento de volume
+        <strong>amortece</strong> a singularidade \(\frac{1}{r}\), deixando um
+        integrando comportado (\(r\)).
       </p>
       <p>
-        Portanto, a função é integrável no volume esférico e não há divergência
-        na vizinhança de \(r=0\).
+        <strong>(c)</strong> Em 2D, a situação é diferente. O elemento de área
+        em coordenadas polares é \(dA = r\,dr\,d\theta\). O integrando fica
+        \(\frac{1}{r} \cdot r = 1\), e a integral perto da origem é
+        \(\int_{0}^{\varepsilon} 1\,dr = \varepsilon\), que
+        <strong>converge</strong>. Mas para uma singularidade mais forte como
+        \(\frac{1}{r^2}\) em 2D, teríamos \(\frac{1}{r^2}\cdot r =
+        \frac{1}{r}\), que diverge. Em 3D, a "margem de segurança" é maior
+        porque o elemento de volume cresce mais rápido (\(r^2\) vs \(r\)).
+      </p>
+      <p>
+        <strong>(d)</strong> Isso <strong>não contradiz</strong> a teoria. A
+        definição rigorosa de integral de Riemann exige limitação, e
+        estritamente falando \(T\) não é integrável no sentido de Riemann.
+        Porém, no sentido da <strong>integral imprópria</strong>, a integral
+        converge — o limite \(\lim_{\varepsilon \to 0^+}\iiint_{V \setminus
+        B_\varepsilon} T\,dV\) existe e é finito. Na prática, este é o tipo de
+        situação que motiva a extensão da integral de Riemann para integrais
+        impróprias.
       </p>
     </div>
   </details>

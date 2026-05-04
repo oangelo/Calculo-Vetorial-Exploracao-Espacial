@@ -1,32 +1,82 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
-  <div class="context">ORIGEM: Simulação 3D - Apollo 16 [NOV/1971]</div>
+  <div class="context">
+    ORIGEM: Centro de Rendezvous Orbital - Gemini XII [NOV/1966]
+  </div>
   <p>
-    A função \[ Q(x,y,z) = \begin{cases} \frac{x}{\sqrt{x^2 + y^2}} &amp;
-    \text{se } y \neq 0,\\ 0 &amp; \text{se } y = 0, \end{cases} \] é utilizada
-    num modelo de rotação parcial para eixo \(z\). Avalie se existem regiões
-    onde \(\frac{x}{\sqrt{x^2 + y^2}}\) possa impedir a integrabilidade em um
-    bloco \([-1,1]\times[-1,1]\times[0,2]\].
+    No exercício anterior, o domínio era dado explicitamente. Agora, o
+    <em>próprio comportamento da função</em> determina onde devemos integrar.
   </p>
-  <!-- SEM DICAS NA SÉRIE OMEGA -->
+  <p>
+    Considere a função definida em todo \(\mathbb{R}^3\) por: \[M(x,y,z) =
+    \max\{0,\, 6 - 2x - y - 3z\}.\] A função é positiva em uma região do espaço
+    e zero em todo o resto.
+  </p>
+  <p>
+    <strong>(a)</strong> Determine a região do espaço onde \(M(x,y,z) \gt 0\).
+    Que desigualdade define essa região? Descreva geometricamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Esboce a região onde \(M\) é positiva, identificando os
+    interceptos nos eixos coordenados.
+  </p>
+  <p>
+    <strong>(c)</strong> Justifique a integrabilidade de \(M\) sobre a região
+    onde é positiva. A função é contínua? É limitada? O domínio é limitado?
+  </p>
+  <p>
+    <strong>(d)</strong> Calcule \(\iiint_{V} M(x,y,z)\,dV\) usando coordenadas
+    cartesianas, onde \(V\) é a região onde \(M \gt 0\).
+  </p>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-11 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        A função é indefinida apenas na linha onde \(y=0\) e \(x\neq 0\).
-        Entretanto, o valor foi definido como 0 explicitamente nessa linha,
-        evitando descontinuidade.
+        <strong>(a)</strong> \(M(x,y,z) \gt 0\) quando \(6 - 2x - y - 3z \gt
+        0\), ou seja, \(2x + y + 3z \lt 6\). Além disso, como \(x, y, z\) devem
+        ser não-negativos (caso contrário \(2x + y + 3z\) poderia ser menor que
+        6 mas a região seria ilimitada — restringimos ao primeiro octante), a
+        região é o <strong>tetraedro</strong> no primeiro octante sob o plano
+        \(2x + y + 3z = 6\).
       </p>
       <p>
-        Em \([-1,1]\times[-1,1]\times[0,2]\), \(\frac{x}{\sqrt{x^2 + y^2}}\) é
-        limitada e não introduz singularidades de grande ordem (não há divisão
-        por zero para pontos fora de \(y=0\), e no próprio \(y=0\) foi atribuída
-        continuidade).
+        <strong>(b)</strong> Os interceptos do plano \(2x + y + 3z = 6\) são: em
+        \(x\) (com \(y=z=0\)): \(x = 3\); em \(y\) (com \(x=z=0\)): \(y = 6\);
+        em \(z\) (com \(x=y=0\)): \(z = 2\). O tetraedro tem vértices
+        \((0,0,0)\), \((3,0,0)\), \((0,6,0)\) e \((0,0,2)\).
       </p>
       <p>
-        Conclusão: A integrabilidade é garantida no bloco, pois não há conjunto
-        significativo de descontinuidade.
+        <strong>(c)</strong> A função \(M = \max\{0, 6-2x-y-3z\}\) é
+        <strong>contínua</strong> em todo \(\mathbb{R}^3\): a transição de
+        \(6-2x-y-3z\) para \(0\) ocorre no plano \(2x+y+3z=6\) onde ambos os
+        valores são zero. É <strong>limitada</strong>: no tetraedro, \(0 \le M
+        \le 6\) (máximo na origem). O domínio (tetraedro) é
+        <strong>limitado</strong>. Todas as condições são satisfeitas.
       </p>
+      <p>
+        <strong>(d)</strong> No tetraedro, \(M = 6 - 2x - y - 3z\). Integrando
+        na ordem \(dz\,dy\,dx\): para \((x,y)\) fixos com \(x \ge 0\), \(y \ge
+        0\), temos \(z\) variando de \(0\) a \(\frac{6-2x-y}{3}\). A projeção no
+        plano \(xy\) é o triângulo \(0 \le x \le 3\), \(0 \le y \le 6-2x\).
+      </p>
+      <p>Integral em \(z\): \(\int_{0}^{\frac{6-2x-y}{3}}(6-2x-y-3z)\,dz\)</p>
+      <p>
+        Substituindo \(w = 6-2x-y-3z\), \(dw = -3\,dz\):
+        \(\frac{1}{3}\int_{0}^{6-2x-y}w\,dw =
+        \frac{1}{3}\cdot\frac{(6-2x-y)^2}{2} = \frac{(6-2x-y)^2}{6}\).
+      </p>
+      <p>
+        Integral em \(y\): \(\int_{0}^{6-2x}\frac{(6-2x-y)^2}{6}\,dy\).
+        Substituindo \(t = 6-2x-y\): \(\frac{1}{6}\int_{0}^{6-2x}t^2\,dt =
+        \frac{1}{6}\cdot\frac{(6-2x)^3}{3} = \frac{(6-2x)^3}{18}\).
+      </p>
+      <p>
+        Integral em \(x\): \(\int_{0}^{3}\frac{(6-2x)^3}{18}\,dx\). Substituindo
+        \(s = 6-2x\), \(ds = -2\,dx\):
+        \(\frac{1}{18}\cdot\frac{1}{2}\int_{0}^{6}s^3\,ds =
+        \frac{1}{36}\cdot\frac{6^4}{4} = \frac{1296}{144} = 9\).
+      </p>
+      <p>\[\boxed{\iiint_{V} M(x,y,z)\,dV = 9}\]</p>
     </div>
   </details>
 </li>
