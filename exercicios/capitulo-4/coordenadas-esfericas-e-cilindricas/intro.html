@@ -9,12 +9,15 @@
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
     <span class="censored">GEMINI-TRIPLO</span> <br /><br />
-    Em meio à intensificação da corrida espacial e ao avanço no desenvolvimento
-    de módulos de voo tripulado, nossa equipe de pesquisadores dedicou-se ao
-    estudo aprofundado das integrais triplas, especialmente em coordenadas
-    cilíndricas e esféricas. Essas análises são cruciais para estimar volumes e
-    distribuições de massa em cápsulas, estágios de foguetes e outros
-    componentes orbitais. <br /><br />
+    No tópico anterior, dominamos a mudança de variáveis geral em integrais
+    triplas — o Jacobiano
+    \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\) como fator de
+    conversão do elemento de volume. Agora vamos especializar essa ferramenta
+    para os dois sistemas de coordenadas mais usados em engenharia espacial:
+    <strong>cilíndricas</strong> e <strong>esféricas</strong>. Esses sistemas
+    não são fórmulas novas — são <em>casos particulares</em> da mudança de
+    variáveis, otimizados para regiões com simetria cilíndrica ou esférica.
+    <br /><br />
     O material a seguir foi compilado a partir das anotações do Dr.
     <span class="censored">███████</span>, que liderou o
     <span class="censored">setor de modelagem</span> no programa Gemini,
@@ -40,62 +43,120 @@
   ESFÉRICAS
 </div>
 <div class="concept-definition">
-  <p><strong>1. COORDENADAS CILÍNDRICAS: O QUE É E POR QUE IMPORTA</strong></p>
+  <p>
+    <strong>1. COORDENADAS CILÍNDRICAS: EXTENSÃO NATURAL DAS POLARES</strong>
+  </p>
   <p>
     As coordenadas cilíndricas \((r,\theta,z)\) estendem as coordenadas polares
-    para três dimensões. A variável \(r\) mede a distância ao eixo \(z\),
-    \(\theta\) é o ângulo azimutal no plano \(xy\), e \(z\) permanece igual. As
-    transformações são: \(x = r\cos\theta\), \(y = r\sin\theta\), \(z = z\).
+    (estudadas no Capítulo 2) para três dimensões. A variável \(r\) mede a
+    distância ao eixo \(z\), \(\theta\) é o ângulo azimutal no plano \(xy\), e
+    \(z\) permanece inalterada. As transformações são:
+  </p>
+  <p class="formula-highlight">
+    \[x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.\]
   </p>
   <p>
-    Este sistema é natural quando a região de integração tem simetria em torno
-    do eixo \(z\) (cilindros, cones, paraboloides de revolução).
+    Este sistema é natural quando a região tem
+    <strong>simetria em torno do eixo \(z\)</strong>: cilindros (\(r =
+    \text{constante}\)), cones (\(\phi = \text{constante}\)), paraboloides de
+    revolução (\(z = r^2\)). Note que \(r = \text{constante}\) descreve um
+    cilindro — daí o nome.
   </p>
 </div>
 <div class="concept-definition">
-  <p><strong>2. COORDENADAS ESFÉRICAS: O QUE É E POR QUE IMPORTA</strong></p>
+  <p>
+    <strong>2. COORDENADAS ESFÉRICAS: SIMETRIA CENTRAL</strong>
+  </p>
   <p>
     As coordenadas esféricas \((\rho,\theta,\phi)\) são ideais para regiões com
-    simetria esférica. A variável \(\rho\) é a distância à origem, \(\theta\) é
-    o ângulo azimutal (igual ao das cilíndricas), e \(\phi\) é o ângulo polar
-    medido a partir do eixo \(z\). As transformações são: \(x =
-    \rho\sin\phi\cos\theta\), \(y = \rho\sin\phi\sin\theta\), \(z =
-    \rho\cos\phi\).
+    <strong>simetria em torno de um ponto</strong>. A variável \(\rho\) é a
+    distância à origem, \(\theta\) é o ângulo azimutal (igual ao das
+    cilíndricas), e \(\phi\) é o ângulo polar medido a partir do eixo \(z\). As
+    transformações são:
+  </p>
+  <p class="formula-highlight">
+    \[x = \rho\sin\phi\cos\theta, \quad y = \rho\sin\phi\sin\theta, \quad z =
+    \rho\cos\phi.\]
   </p>
   <p>
-    Note que \(\phi = 0\) corresponde ao eixo \(z\) positivo e \(\phi = \pi/2\)
-    ao plano \(xy\).
+    Note os casos especiais: \(\phi = 0\) corresponde ao eixo \(z\) positivo,
+    \(\phi = \pi/2\) ao plano \(xy\), e \(\rho = \text{constante}\) descreve uma
+    esfera — daí o nome.
   </p>
 </div>
 <div class="concept-definition">
-  <p><strong>3. JACOBIANOS E ELEMENTOS DE VOLUME</strong></p>
+  <p><strong>3. JACOBIANO CILÍNDRICO</strong></p>
+  <p>
+    No tópico anterior, derivamos o Jacobiano 3D geral. Para cilíndricas,
+    montamos a matriz \(\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\) e
+    calculamos o determinante. O resultado é:
+  </p>
   <p class="formula-highlight">
-    \[dV_{\text{cil}} = r\,dr\,d\theta\,dz, \qquad dV_{\text{esf}} =
-    \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\]
+    \[|J_{\text{cil}}| = r, \qquad dV = r\,dr\,d\theta\,dz.\]
   </p>
   <p>
-    Ao mudar de coordenadas, o elemento de volume \(dx\,dy\,dz\) precisa ser
-    multiplicado pelo valor absoluto do Jacobiano. Para cilíndricas, \(|J| =
-    r\). Para esféricas, \(|J| = \rho^2\sin\phi\). Esses fatores vêm do
-    determinante da matriz de derivadas parciais
-    \(\frac{\partial(x,y,z)}{\partial(u,v,w)}\).
-  </p>
-  <p>
-    Com esses Jacobianos, podemos agora escrever integrais triplas diretamente
-    nas coordenadas adequadas, simplificando enormemente o cálculo quando a
-    região tem simetria.
+    O fator \(r\) tem interpretação geométrica clara: um arco de ângulo
+    \(d\theta\) tem comprimento \(r\,d\theta\), não apenas \(d\theta\). Perto do
+    eixo (\(r \approx 0\)), o elemento de volume é quase nulo — o setor estreito
+    perto do centro contém pouco volume.
   </p>
 </div>
-<div class="mission-context">
+<div class="concept-definition">
+  <p><strong>4. JACOBIANO ESFÉRICO</strong></p>
+  <p>
+    Para esféricas, a matriz
+    \(\frac{\partial(x,y,z)}{\partial(\rho,\theta,\phi)}\) resulta em:
+  </p>
+  <p class="formula-highlight">
+    \[|J_{\text{esf}}| = \rho^2\sin\phi, \qquad dV =
+    \rho^2\sin\phi\,d\rho\,d\phi\,d\theta.\]
+  </p>
+  <p>
+    O fator \(\rho^2\) aparece porque o arco cresce em duas direções à medida
+    que nos afastamos da origem. O fator \(\sin\phi\) reflete que perto dos
+    polos (\(\phi \approx 0\) ou \(\phi \approx \pi\)), o elemento de volume se
+    estreita — o mesmo efeito do \(r\) em cilíndricas, mas agora dependendo do
+    ângulo polar.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>5. QUANDO USAR CADA SISTEMA</strong></p>
+  <p>A escolha do sistema depende da <strong>simetria da região</strong>:</p>
+  <p>
+    <strong>Cilíndricas</strong> — quando a região tem simetria em torno de um
+    eixo. Exemplos: cilindros (\(r = c\)), cones (\(z = kr\)), paraboloides de
+    revolução (\(z = r^2\)). Se as superfícies que delimitam a região são
+    superfícies de revolução em torno do mesmo eixo, cilíndricas são a escolha
+    natural.
+  </p>
+  <p>
+    <strong>Esféricas</strong> — quando a região tem simetria em torno de um
+    ponto. Exemplos: esferas (\(\rho = c\)), calotas esféricas (limitadas por
+    cones \(\phi = c\) e esferas), cascas esféricas (\(a \le \rho \le b\)).
+  </p>
+  <p>
+    <strong>Cartesianas</strong> — quando a região não tem simetria especial.
+    Tetraedros, prismas oblíquos e regiões delimitadas por planos genéricos são
+    mais simples em cartesianas.
+  </p>
+  <p>
+    Com esses dois sistemas e o Jacobiano correspondente, podemos agora escrever
+    integrais triplas diretamente nas coordenadas adequadas, simplificando
+    enormemente o cálculo quando a região tem simetria.
+  </p>
+</div>
+<p>
   No contexto do programa Gemini, o estudo de integrais triplas possibilita
-  estimar volumes de reservatórios de combustível, determinar centros de massa
-  de módulos pressurizados e avaliar parâmetros críticos para manobras orbitais,
-  garantindo maior precisão e segurança nas missões tripuladas.
-</div>
+  estimar volumes de reservatórios de combustível cilíndricos e esféricos,
+  determinar massas de componentes com densidade variável e avaliar parâmetros
+  críticos para manobras orbitais, garantindo maior precisão e segurança nas
+  missões tripuladas.
+</p>
 <div class="historical-note">
   <strong>NOTA HISTÓRICA:</strong> Em <span class="censored">1965</span>,
-  durante a preparação de voos espaciais conjuntos, engenheiros norte-americanos
-  lançaram mão de integrais triplas para aperfeiçoar o design de cápsulas
-  tripuladas. O programa Gemini serviu de ponte para o futuro
-  <span class="censored">Projeto Apollo</span>.
+  durante os voos Gemini IV e V, engenheiros norte-americanos utilizaram
+  integrais triplas em coordenadas cilíndricas e esféricas para aperfeiçoar o
+  design de tanques de combustível e cápsulas de reentrada. O programa Gemini,
+  com suas 12 missões entre 1964 e 1966, serviu de laboratório para as técnicas
+  matemáticas que tornariam possíveis as futuras missões lunares.
 </div>

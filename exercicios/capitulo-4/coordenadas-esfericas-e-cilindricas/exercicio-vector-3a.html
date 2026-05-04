@@ -1,51 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
   <div class="context">
-    ORIGEM: Observatório Orbital - Relatório de Densidade de Plasma
+    ORIGEM: Laboratório de Simulação - Relatório de Análise Estrutural
   </div>
   <p>
-    Até agora integramos densidades simples. Agora vamos ver um caso mais sutil:
-    quando o Jacobiano e a densidade compartilham fatores como
-    \(\rho^2\sin\phi\), precisamos analisar a convergência com cuidado.
+    Sabemos usar cilíndricas e esféricas separadamente. Mas na prática, a
+    primeira decisão é: dada uma região, <strong>qual sistema escolher?</strong>
+    Essa escolha depende da simetria da região. Vamos treinar essa habilidade
+    sem fazer cálculos — apenas reconhecimento de padrões.
   </p>
   <p>
-    Em uma região modelada por coordenadas esféricas, o plasma apresenta
-    densidade variável \(\delta(\rho,\phi,\theta)=\alpha\, \rho^2 \sin(\phi)\).
-    Supondo \(\rho\) de \(0\) a \(3\), \(\phi\) de \(0\) a \(\pi\), e \(\theta\)
-    de \(0\) a \(2\pi\), justifique se a massa total do plasma (via integral
-    tripla) teria valor finito ou não.
+    Para cada região descrita abaixo, identifique o sistema de coordenadas mais
+    adequado (cartesiano, cilíndrico ou esférico), justifique sua escolha e
+    esboce a região.
   </p>
   <p>
-    <strong>(a)</strong> Escreva o integrando completo: \(\delta\,dV\) em
-    coordenadas esféricas.
+    <strong>(a)</strong> Região \(A\): o sólido delimitado pelo paraboloide \(z
+    = x^2 + y^2\) e pelo plano \(z = 4\).
   </p>
   <p>
-    <strong>(b)</strong> Verifique se há singularidades ou problemas de
-    convergência no domínio de integração.
+    <strong>(b)</strong> Região \(B\): o sólido delimitado pela esfera \(x^2 +
+    y^2 + z^2 = 9\).
   </p>
-  <p><strong>(c)</strong> Conclua sobre a integrabilidade.</p>
+  <p>
+    <strong>(c)</strong> Região \(C\): o tetraedro com vértices \((0,0,0)\),
+    \((4,0,0)\), \((0,3,0)\) e \((0,0,5)\).
+  </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: O integrando será \(\alpha\rho^4\sin^2\phi\). Em
-      \(\rho=0\), isso vale zero (não há singularidade). O intervalo é finito.
+      [NOTA TÉCNICA]: Pergunte-se: a região é gerada por rotação em torno de um
+      eixo? Se sim, cilíndricas. A região é gerada por rotação em torno de um
+      ponto? Se sim, esféricas. Nenhuma simetria especial? Cartesianas. Observe
+      como as equações se simplificam em cada sistema.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Em esféricas, \(dV = \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\). O
-        integrando completo é \(\alpha\rho^2\sin\phi \cdot \rho^2\sin\phi =
-        \alpha\rho^4\sin^2\phi\).
+        (a) <strong>Cilíndricas.</strong> O paraboloide \(z = x^2 + y^2 = r^2\)
+        tem simetria de revolução em torno do eixo \(z\). Em cilíndricas, os
+        limites tornam-se: \(0 \le \theta \le 2\pi\), \(0 \le r \le 2\), \(r^2
+        \le z \le 4\). Em esféricas, a superfície \(z = r^2\) não se simplifica.
+        Em cartesianas, os limites de \(x\) dependeriam de \(y\) e vice-versa. O
+        esboço mostra um paraboloide "parcialmente cheio" com tampa plana em
+        \(z=4\).
       </p>
       <p>
-        (b) O integrando \(\alpha\rho^4\sin^2\phi\) é contínuo em todo o
-        domínio. Em \(\rho=0\), vale zero. Não há singularidades.
+        (b) <strong>Esféricas.</strong> A esfera \(x^2 + y^2 + z^2 = 9\) tem
+        simetria central em torno da origem. Em esféricas, ela se reduz a \(\rho
+        = 3\), com limites triviais: \(0 \le \rho \le 3\), \(0 \le \phi \le
+        \pi\), \(0 \le \theta \le 2\pi\). Em cilíndricas, a esfera torna-se \(z
+        = \pm\sqrt{9-r^2}\) — os limites dependem de \(r\), mas ainda são
+        manejáveis. Em cartesianas, os limites seriam complicados. O esboço é
+        uma esfera de raio 3.
       </p>
       <p>
-        (c) Conclusão: a massa total é finita. O integrando é contínuo e
-        limitado em um domínio limitado, garantindo a integrabilidade.
+        (c) <strong>Cartesianas.</strong> O tetraedro não tem simetria
+        cilíndrica nem esférica. Seus limites em coordenadas cartesianas são
+        simples: \(0 \le x \le 4\), \(0 \le y \le 3(1 - x/4)\), \(0 \le z \le
+        5(1 - x/4 - y/3)\). Em cilíndricas ou esféricas, as superfícies planas
+        oblíquas gerariam equações complicadas. O esboço mostra um tetraedro
+        irregular no primeiro octante.
       </p>
     </div>
   </details>

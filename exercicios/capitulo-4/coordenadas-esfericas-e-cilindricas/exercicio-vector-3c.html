@@ -1,53 +1,79 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
   <div class="context">
-    ORIGEM: Comissão de Observação Lunar [OPERAÇÃO SIGILOSA]
+    ORIGEM: Comissão de Navegação Orbital [OPERAÇÃO SIGILOSA]
   </div>
   <p>
-    Vimos integrais com densidade e Jacobiano separados. Agora vamos integrar
-    sobre uma calota esférica — uma região delimitada por um cone e uma esfera,
-    em coordenadas esféricas.
+    Vimos regiões entre superfícies em cilíndricas. Agora vamos ao análogo em
+    esféricas: uma <strong>calota esférica</strong> — a região entre um cone
+    \(\phi = \text{constante}\) e uma esfera \(\rho = \text{constante}\). O
+    desafio é entender como a variação de \(\phi\) particiona o volume da
+    esfera.
   </p>
   <p>
-    Considere uma calota esférica com \(\phi\) de \(0\) até \(\frac{\pi}{4}\) e
-    \(\rho\) de \(0\) até \(R = 1737\) km (raio lunar).
+    Considere uma esfera de raio \(R = 4\). Uma calota esférica é definida por
+    \(0 \le \phi \le \frac{\pi}{6}\) e \(0 \le \rho \le R\).
   </p>
   <p>
-    <strong>(a)</strong> Escreva a integral tripla do volume dessa calota em
+    <strong>(a)</strong> Esboce a calota no plano \(rz\). Indique o ângulo
+    \(\phi = \pi/6\) e o raio \(R = 4\). Identifique os limites de cada
+    variável.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte e avalie a integral do volume da calota em
     coordenadas esféricas.
   </p>
-  <p><strong>(b)</strong> Calcule o volume da calota.</p>
   <p>
-    <strong>(c)</strong> Compare com o volume total da esfera: que fração da
-    esfera a calota representa?
+    <strong>(c)</strong> Compare o volume da calota com o volume total da
+    esfera. Que fração do volume a calota representa? Interprete: a calota é uma
+    região "pequena" ou "grande" da esfera?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A integral em \(\rho\) dá \(\frac{R^3}{3}\), a integral em
-      \(\phi\) de \(\sin\phi\) de \(0\) a \(\pi/4\) dá \(1 -
-      \frac{\sqrt{2}}{2}\), e \(\theta\) contribui \(2\pi\).
+      [NOTA TÉCNICA]: A integral se separa em três fatores: \(\int d\rho\),
+      \(\int \sin\phi \, d\phi\) e \(\int d\theta\). A integral em \(\phi\) é a
+      chave — ela mede "quanto da esfera" está contido na calota. Use a
+      identidade \(\cos(\pi/6) = \sqrt{3}/2\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) \[ V = \int_0^{2\pi}\int_0^{\pi/4}\int_0^{R}
-        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta. \]
+        (a) O esboço mostra um triângulo no plano \(rz\): o eixo \(z\) é o lado
+        esquerdo, a linha \(\phi = \pi/6\) parte da origem com ângulo \(\pi/6\)
+        em relação ao eixo \(z\), e a esfera \(\rho = 4\) é o arco que fecha a
+        região. Limites: \(0 \le \rho \le 4\), \(0 \le \phi \le \pi/6\), \(0 \le
+        \theta \le 2\pi\).
       </p>
       <p>
-        (b) \(\int_0^R\rho^2\,d\rho = \frac{R^3}{3}\),
-        \(\int_0^{\pi/4}\sin\phi\,d\phi = 1-\cos(\pi/4) =
-        1-\frac{\sqrt{2}}{2}\), \(\int_0^{2\pi}d\theta = 2\pi\).
+        (b) \[ V_{\text{calota}} = \int_0^{2\pi} \int_0^{\pi/6} \int_0^4
+        \rho^2\sin\phi \, d\rho \, d\phi \, d\theta.\]
       </p>
-      <p>Logo, \(V = \frac{2\pi R^3}{3}\left(1-\frac{\sqrt{2}}{2}\right)\).</p>
       <p>
-        (c) Volume total da esfera: \(\frac{4}{3}\pi R^3\). A fração é:
-        \[\frac{V_{\text{calota}}}{V_{\text{esfera}}} = \frac{\frac{2\pi
-        R^3}{3}(1-\frac{\sqrt{2}}{2})}{\frac{4\pi R^3}{3}} =
-        \frac{1}{2}\left(1-\frac{\sqrt{2}}{2}\right) \approx 0.146.\] A calota
-        representa cerca de \(14,6\%\) do volume total da esfera.
+        Separando: \[\int_0^4 \rho^2 \, d\rho = \frac{64}{3},\] \[\int_0^{\pi/6}
+        \sin\phi \, d\phi = [-\cos\phi]_0^{\pi/6} = 1 - \frac{\sqrt{3}}{2},\]
+        \[\int_0^{2\pi} d\theta = 2\pi.\]
+      </p>
+      <p>
+        Logo, \(V_{\text{calota}} = \frac{64}{3} \cdot \left(1 -
+        \frac{\sqrt{3}}{2}\right) \cdot 2\pi = \frac{128\pi}{3}\left(1 -
+        \frac{\sqrt{3}}{2}\right) = \frac{64\pi}{3}(2 - \sqrt{3})\).
+      </p>
+      <p>
+        (c) Volume total da esfera: \(V_{\text{esf}} = \frac{4}{3}\pi(4^3) =
+        \frac{256\pi}{3}\).
+      </p>
+      <p>
+        Fração: \[\frac{V_{\text{calota}}}{V_{\text{esf}}} =
+        \frac{\frac{64\pi}{3}(2-\sqrt{3})}{\frac{256\pi}{3}} =
+        \frac{2-\sqrt{3}}{4} \approx \frac{0{,}268}{4} \approx 0{,}067.\]
+      </p>
+      <p>
+        A calota com \(\phi \le \pi/6\) representa apenas cerca de
+        <strong>6,7%</strong> do volume total. Isso faz sentido: \(\pi/6\) é um
+        ângulo pequeno (30°), e a calota "aperta" perto do polo norte.
       </p>
     </div>
   </details>
