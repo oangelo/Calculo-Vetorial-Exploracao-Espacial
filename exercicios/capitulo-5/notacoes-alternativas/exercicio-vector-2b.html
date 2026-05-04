@@ -1,44 +1,77 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: Cálculo de Trabalho Mecânico - Programa Apollo [JAN/1968]
+    ORIGEM: Manobra de Acoplamento - Programa Apollo [JAN/1968]
   </div>
   <p>
-    Considere a curva fechada no plano \(xy\) descrita por \(\vec{r}(\theta) =
-    (\cos \theta, \sin \theta)\) para \(\theta \in [0,2\pi]\). Se \(\vec{F}(x,y)
-    = \begin{pmatrix} y \\ -x \end{pmatrix}\), calcular \(\int_C \vec{F}\cdot
+    No exercício anterior, a forma diferencial foi mais prática porque a curva
+    era dada como gráfico. Agora vamos ver outra situação vantajosa: trechos
+    retos paralelos aos eixos coordenados, onde um dos diferenciais se anula.
+  </p>
+  <p>
+    Durante uma manobra de acoplamento, o módulo se desloca primeiro
+    horizontalmente de \((0,0)\) até \((3,0)\) e depois verticalmente de
+    \((3,0)\) até \((3,2)\). O campo de forças é \(\vec{F}(x,y) = (x^2 + y,\; 2y
+    - x)\). Calcule o trabalho total usando a forma diferencial \(\int_C (x^2 +
+    y)\,dx + (2y - x)\,dy\).
+  </p>
+  <p>
+    <strong>(a)</strong> No trecho horizontal (\(y = 0\)), justifique por que
+    \(dy = 0\) e calcule a integral simplificada.
+  </p>
+  <p>
+    <strong>(b)</strong> No trecho vertical (\(x = 3\)), justifique por que \(dx
+    = 0\) e calcule a integral simplificada.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare a simplicidade deste cálculo com o que seria
+    necessário para parametrizar cada trecho na notação vetorial \(\vec{F}\cdot
     d\vec{r}\).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de rotação podem ser relevantes.
+      [NOTA TÉCNICA]: Em um segmento horizontal, \(y\) é constante, logo \(dy =
+      0\) e o termo \(Q\,dy\) desaparece. Em um segmento vertical, \(x\) é
+      constante, logo \(dx = 0\) e o termo \(P\,dx\) desaparece. Basta integrar
+      o coeficiente não-nulo ao longo da variável que muda.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
-      <p>PARAMETRIZAÇÃO:</p>
       <p>
-        \(x(\theta) = \cos \theta,\quad y(\theta) = \sin \theta.\)
-        <br />
-        \(\vec{r}'(\theta) = (-\sin \theta, \cos \theta).\)
+        <strong>(a) Trecho horizontal</strong> (\(C_1\)): de \((0,0)\) a
+        \((3,0)\).
       </p>
       <p>
-        \(\vec{F}(\cos \theta, \sin \theta) = \bigl(\sin \theta, -\cos
-        \theta\bigr).\)
-      </p>
-      <p>INTEGRAL:</p>
-      <p>
-        \[ \int_0^{2\pi} \bigl(\sin \theta, -\cos \theta\bigr) \cdot \bigl(-\sin
-        \theta, \cos \theta\bigr) \, d\theta = \int_0^{2\pi} \bigl(-\sin^2
-        \theta - \cos^2 \theta\bigr) \, d\theta. \]
+        Neste trecho, \(y = 0\) (constante), logo \(dy = 0\). A integral
+        reduz-se a:
       </p>
       <p>
-        \[ \int_0^{2\pi} \bigl(-1\bigr)\, d\theta =
-        -\left.\theta\right|_0^{2\pi} = -2\pi. \]
+        \[\int_{C_1} (x^2 + y)\,dx + (2y - x)\,dy = \int_0^3 (x^2 + 0)\,dx =
+        \int_0^3 x^2\,dx = \left.\frac{x^3}{3}\right|_0^3 = 9.\]
       </p>
-      <p>CONCLUSÃO: O valor da integral de linha é \(-2\pi\).</p>
+      <p>
+        <strong>(b) Trecho vertical</strong> (\(C_2\)): de \((3,0)\) a
+        \((3,2)\).
+      </p>
+      <p>
+        Neste trecho, \(x = 3\) (constante), logo \(dx = 0\). A integral
+        reduz-se a:
+      </p>
+      <p>
+        \[\int_{C_2} (x^2 + y)\,dx + (2y - x)\,dy = \int_0^2 (2y - 3)\,dy =
+        \left.y^2 - 3y\right|_0^2 = 4 - 6 = -2.\]
+      </p>
+      <p><strong>(c)</strong> Trabalho total: \(9 + (-2) = 7\).</p>
+      <p>
+        Na notação vetorial, cada trecho exigiria parametrizar explicitamente
+        (por exemplo, \(\vec{r}_1(t) = (t, 0)\) e \(\vec{r}_2(t) = (3, t)\)),
+        calcular o produto escalar e integrar. A forma diferencial é mais
+        direta: basta observar qual variável é constante e eliminar o termo
+        correspondente.
+      </p>
     </div>
   </details>
 </li>

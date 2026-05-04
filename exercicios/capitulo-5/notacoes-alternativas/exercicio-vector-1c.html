@@ -1,31 +1,64 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
   <div class="context">
-    ORIGEM: Teste de Cabos de Atracação - Programa Gemini [NOV/1966]
+    ORIGEM: Verificação Cruzada de Trajetória - Programa Apollo [ABR/1967]
   </div>
   <p>
-    Dado o campo \(\vec{F}(x,y) = \begin{pmatrix} x \\ x^2 \end{pmatrix}\),
-    calcule \(\int_C P\,dx + Q\,dy\) ao longo da curva \(y = x^2\), para \(x\)
-    de 0 até 1, utilizando a notação \(\int_C P\,dx + Q\,dy\).
+    Você já sabe traduzir nos dois sentidos. Mas será que as duas notações dão o
+    mesmo resultado numérico? Vamos verificar calculando a mesma integral das
+    duas formas.
+  </p>
+  <p>
+    Dois laboratórios analisaram o trabalho do campo \(\vec{F}(x,y) = (y,\; x)\)
+    ao longo da curva \(\vec{r}(t) = (t,\; t^2)\), com \(t \in [0,1]\). O
+    primeiro laboratório usou a notação vetorial; o segundo usou a forma
+    diferencial \(\int_C y\,dx + x\,dy\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a integral usando a notação vetorial:
+    parametrize, calcule o produto escalar e integre.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a mesma integral usando a forma diferencial:
+    expresse \(dx\) e \(dy\) em termos de \(dt\), substitua e integre.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados e conclua sobre a equivalência
+    das duas notações.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere a substituição direta de \(y\) e \(dy\) em
-      função de \(x\).
+      [NOTA TÉCNICA]: Na forma diferencial, se \(x = t\) e \(y = t^2\), então
+      \(dx = dt\) e \(dy = 2t\,dt\). Substitua na integral \(\int_C y\,dx +
+      x\,dy\) e compare com o produto escalar da notação vetorial — o integrando
+      deve ser idêntico.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
-      <p>Como \(y = x^2\), temos \(dy = 2x\,dx\). Logo:</p>
-      <p>\[ P\,dx + Q\,dy = x\,dx + x^2\cdot(2x\,dx) = x\,dx + 2x^3\,dx. \]</p>
+      <p><strong>(a) Notação vetorial:</strong></p>
       <p>
-        \[ \int_0^1 \bigl(x + 2x^3\bigr)\, dx = \left.\frac{x^2}{2}\right|_0^1 +
-        \left.\frac{2x^4}{4}\right|_0^1 = \frac{1}{2} + \frac{2}{4} =
-        \frac{1}{2} + \frac{1}{2} = 1. \]
+        \(\vec{F}(x(t),y(t)) = (t^2,\; t)\), \(\quad \vec{r}'(t) = (1,\; 2t)\).
       </p>
-      <p>CONCLUSÃO: O valor da integral de linha é 1.</p>
+      <p>
+        Produto escalar: \(\vec{F}\cdot\vec{r}'(t) = t^2 \cdot 1 + t \cdot 2t =
+        t^2 + 2t^2 = 3t^2\).
+      </p>
+      <p>\[\int_0^1 3t^2\,dt = \left.t^3\right|_0^1 = 1.\]</p>
+      <p><strong>(b) Forma diferencial:</strong></p>
+      <p>Com \(x = t\) e \(y = t^2\): \(dx = dt\), \(dy = 2t\,dt\).</p>
+      <p>
+        \[\int_C y\,dx + x\,dy = \int_0^1 \bigl[t^2 \cdot 1 + t \cdot
+        2t\bigr]\,dt = \int_0^1 (t^2 + 2t^2)\,dt = \int_0^1 3t^2\,dt = 1.\]
+      </p>
+      <p>
+        <strong>(c)</strong> Ambas as notações fornecem o mesmo resultado:
+        \(\int_C \vec{F}\cdot d\vec{r} = \int_C y\,dx + x\,dy = 1\). A
+        equivalência é completa — não se trata de coincidência, mas de
+        consequência direta da expansão do produto escalar.
+      </p>
     </div>
   </details>
 </li>

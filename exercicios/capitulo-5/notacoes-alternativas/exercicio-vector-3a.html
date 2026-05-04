@@ -1,49 +1,67 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
   <div class="context">
-    ORIGEM: Análise de Voo Lunar - Programa Apollo [AGO/1968]
+    ORIGEM: Aproximação Orbital Helicoidal - Programa Apollo [JUL/1968]
   </div>
   <p>
-    Em uma missão de
-    <span class="censored">aproximação orbital</span>, considera-se a curva no
-    espaço dada por \(\vec{r}(t) = (2\cos t, 2\sin t, t)\) para \(t \in
-    [0,4\pi]\). Calcular \(\int_C \vec{F}\cdot d\vec{r}\) se \(\vec{F}(x,y,z) =
-    \bigl(y, x, z^2\bigr)\).
+    Tudo que fizemos em \(\mathbb{R}^2\) se estende naturalmente para
+    \(\mathbb{R}^3\) — basta acrescentar o diferencial \(dz\). Vamos ver como a
+    forma \(P\,dx + Q\,dy + R\,dz\) funciona no espaço.
+  </p>
+  <p>
+    Considere o campo simétrico \(\vec{F}(x,y,z) = (yz,\; xz,\; xy)\) e a curva
+    parametrizada por \(\vec{r}(t) = (t,\; t^2,\; t^3)\), com \(t \in [0,1]\).
+    Calcule a integral \(\int_C yz\,dx + xz\,dy + xy\,dz\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique \(P\), \(Q\) e \(R\) a partir do campo
+    vetorial e confirme a correspondência com os coeficientes da forma
+    diferencial.
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse \(dx\), \(dy\) e \(dz\) em termos de \(dt\)
+    usando a parametrização da curva.
+  </p>
+  <p>
+    <strong>(c)</strong> Substitua na forma diferencial, integre e verifique o
+    resultado.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem simetrias não aparentes ao longo do intervalo.
+      [NOTA TÉCNICA]: A correspondência \(\vec{F} = (P, Q, R)\) é direta: \(P =
+      yz\), \(Q = xz\), \(R = xy\). Use a parametrização para expressar \(dx =
+      dt\), \(dy = 2t\,dt\), \(dz = 3t^2\,dt\). A simetria do campo fará os três
+      termos contribuírem igualmente para o integrando.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      <p>PARAMETRIZAÇÃO:</p>
       <p>
-        \(x(t) = 2\cos t,\; y(t) = 2\sin t,\; z(t) = t.\)
-        <br />
-        \(\vec{r}'(t) = \bigl(-2\sin t, 2\cos t, 1\bigr).\)
-      </p>
-      <p>\(\vec{F}(x(t),y(t),z(t)) = \bigl(2\sin t,\; 2\cos t,\; t^2\bigr).</p>
-      <p>
-        Produto escalar: \[ \bigl(2\sin t,\; 2\cos t,\; t^2\bigr) \cdot
-        \bigl(-2\sin t, 2\cos t, 1\bigr) = -4\sin^2 t + 4\cos^2 t + t^2. \]
-      </p>
-      <p>\[ = 4(\cos^2 t - \sin^2 t) + t^2 = 4\cos(2t) + t^2. \]</p>
-      <p>
-        Portanto, \[ \int_0^{4\pi} \bigl[4\cos(2t) + t^2\bigr]\, dt. \] A
-        integral de \(\cos(2t)\) no intervalo \([0,4\pi]\) será zero, pois temos
-        duas oscilações completas.
+        <strong>(a)</strong> \(\vec{F} = (yz,\; xz,\; xy)\), logo \(P = yz\),
+        \(Q = xz\), \(R = xy\). A forma diferencial é \(\int_C yz\,dx + xz\,dy +
+        xy\,dz\). ✓
       </p>
       <p>
-        Restante: \[ \int_0^{4\pi} t^2 \, dt =
-        \left.\frac{t^3}{3}\right|_0^{4\pi} = \frac{(4\pi)^3}{3} =
-        \frac{64\pi^3}{3}. \]
+        <strong>(b)</strong> Com \(\vec{r}(t) = (t,\; t^2,\; t^3)\): \(x = t\),
+        \(y = t^2\), \(z = t^3\). Logo \(dx = dt\), \(dy = 2t\,dt\), \(dz =
+        3t^2\,dt\).
+      </p>
+      <p><strong>(c)</strong> Substituindo:</p>
+      <p>
+        \[P = yz = t^2 \cdot t^3 = t^5, \quad Q = xz = t \cdot t^3 = t^4, \quad
+        R = xy = t \cdot t^2 = t^3.\]
       </p>
       <p>
-        CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} =
-        \frac{64\pi^3}{3}.\)
+        \[\int_0^1 \bigl(t^5 \cdot 1 + t^4 \cdot 2t + t^3 \cdot 3t^2\bigr)\,dt =
+        \int_0^1 (t^5 + 2t^5 + 3t^5)\,dt = \int_0^1 6t^5\,dt =
+        \left.t^6\right|_0^1 = 1.\]
+      </p>
+      <p>
+        A simetria do campo \(\vec{F} = (yz, xz, xy)\) faz os três termos
+        contribuírem com fatores 1, 2 e 3 respectivamente, somando \(6t^5\) — a
+        forma diferencial evidencia essa estrutura de forma transparente.
       </p>
     </div>
   </details>

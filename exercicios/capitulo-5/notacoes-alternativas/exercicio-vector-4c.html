@@ -1,53 +1,77 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Reconfiguração Órbita-Terra - Apollo 11 [AGO/1969]
+    ORIGEM: Reconfiguração Orbital em Três Etapas - Programa Apollo [JUL/1969]
   </div>
   <p>
-    Um campo vetorial em \(\mathbb{R}^3\) é dado por \(\vec{F}(x,y,z) =
-    \bigl(e^x, \sin(y), xz\bigr)\). Deseja-se analisar o trabalho realizado ao
-    longo da curva resultante da concatenação de duas trajetórias:
-    <br />
-    1) \(C_1\): \(\vec{r}_1(t) = (t, 0, 0)\) para \(t \in [0,2]\).
-    <br />
-    2) \(C_2\): \(\vec{r}_2(u) = (2, u, u)\) para \(u \in [0,2]\).
-    <br />
-    Calcular \(\int_{C} \vec{F}\cdot d\vec{r}\), onde \(C = C_1 \cup C_2\).
+    Chegamos ao último exercício da lista — e do capítulo. Aqui você precisa
+    mobilizar tudo que aprendeu sobre a forma diferencial: calcular uma integral
+    em \(\mathbb{R}^3\) ao longo de uma curva formada pela concatenação de
+    trechos paralelos aos eixos coordenados.
   </p>
-  <!-- Série OMEGA: sem dicas -->
+  <p>
+    Durante uma manobra de reconfiguração orbital, um módulo se desloca em três
+    etapas: de \((0,0,0)\) até \((2,0,0)\) (eixo \(x\)), de \((2,0,0)\) até
+    \((2,1,0)\) (eixo \(y\)), e de \((2,1,0)\) até \((2,1,3)\) (eixo \(z\)). O
+    campo é \(\vec{F}(x,y,z) = (x,\; y + z,\; xz)\). Calcule o trabalho total
+    usando a forma diferencial \(\int_C x\,dx + (y+z)\,dy + xz\,dz\).
+  </p>
+  <p>
+    <strong>(a)</strong> Decomponha a curva nos três trechos e identifique os
+    diferenciais que se anulam em cada um.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral em cada trecho usando a forma
+    diferencial simplificada.
+  </p>
+  <p>
+    <strong>(c)</strong> Some as integrais parciais, verifique o resultado do
+    primeiro trecho usando a notação vetorial e conclua.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> Decomposição:</p>
       <p>
-        Divide-se a integral em dois trechos e soma-se: \(\int_{C_1}
-        \vec{F}\cdot d\vec{r} + \int_{C_2} \vec{F}\cdot d\vec{r}\).
+        \(C_1\): \((0,0,0) \to (2,0,0)\) — eixo \(x\). Aqui \(y = 0\), \(z =
+        0\), logo \(dy = 0\) e \(dz = 0\).
       </p>
       <p>
-        <strong>Trecho \(C_1\):</strong>
-        \(\vec{r}_1(t) = (t, 0, 0)\), \(\vec{r}_1'(t) = (1,0,0)\).
-        <br />
-        \(\vec{F}(t, 0, 0) = \bigl(e^t, \sin(0), t\cdot0\bigr) = (e^t, 0, 0).\)
-        <br />
-        Produto escalar: \[ (e^t, 0, 0)\cdot(1,0,0) = e^t. \] \[ \int_0^2 e^t\,
-        dt = \left.e^t\right|_0^2 = e^2 - 1. \]
+        \(C_2\): \((2,0,0) \to (2,1,0)\) — eixo \(y\). Aqui \(x = 2\), \(z =
+        0\), logo \(dx = 0\) e \(dz = 0\).
       </p>
       <p>
-        <strong>Trecho \(C_2\):</strong>
-        \(\vec{r}_2(u) = (2, u, u)\), \(\vec{r}_2'(u) = (0,1,1)\).
-        <br />
-        \(\vec{F}(2, u, u) = \bigl(e^2, \sin(u), 2u\bigr).\)
-        <br />
-        Produto escalar: \[ (e^2, \sin(u), 2u)\cdot(0,1,1) = \sin(u) + 2u. \] \[
-        \int_0^2 [\sin(u) + 2u]\, du = \left.-\cos(u)\right|_0^2 +
-        \left.u^2\right|_0^2 = [-\cos(2)+1] + [4]. \] \[ = 5 - \cos(2). \]
+        \(C_3\): \((2,1,0) \to (2,1,3)\) — eixo \(z\). Aqui \(x = 2\), \(y =
+        1\), logo \(dx = 0\) e \(dy = 0\).
+      </p>
+      <p><strong>(b) Cálculo por trecho:</strong></p>
+      <p>
+        <em>Trecho \(C_1\)</em>: só resta \(P\,dx = x\,dx\). \[\int_0^2 x\,dx =
+        \left.\frac{x^2}{2}\right|_0^2 = 2.\]
       </p>
       <p>
-        Soma total: \[ (e^2 - 1) + \bigl[5 - \cos(2)\bigr] = e^2 + 4 - \cos(2).
-        \]
+        <em>Trecho \(C_2\)</em>: só resta \(Q\,dy = (y + z)\,dy = (y + 0)\,dy\).
+        \[\int_0^1 y\,dy = \left.\frac{y^2}{2}\right|_0^1 = \frac{1}{2}.\]
       </p>
       <p>
-        CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} = e^2 + 4 -
-        \cos(2).\)
+        <em>Trecho \(C_3\)</em>: só resta \(R\,dz = xz\,dz = 2z\,dz\).
+        \[\int_0^3 2z\,dz = \left.z^2\right|_0^3 = 9.\]
+      </p>
+      <p>
+        <strong>(c)</strong> Trabalho total: \(2 + \dfrac{1}{2} + 9 =
+        \dfrac{23}{2}\).
+      </p>
+      <p>
+        <em>Verificação pelo trecho \(C_1\)</em> (notação vetorial):
+        \(\vec{r}_1(t) = (t, 0, 0)\), \(\vec{r}_1'(t) = (1, 0, 0)\).
+        \(\vec{F}(t,0,0) = (t, 0, 0)\). Produto escalar: \(t\). \(\int_0^2 t\,dt
+        = 2\). ✓ Confirma o resultado obtido pela forma diferencial.
+      </p>
+      <p>
+        A forma diferencial decomôs a integral em três cálculos elementares: em
+        cada trecho, dois dos três diferenciais se anularam, restando apenas uma
+        integral simples de variável única. Esta é a grande vantagem da notação
+        diferencial em curvas poligonais ao longo dos eixos.
       </p>
     </div>
   </details>
