@@ -1,56 +1,95 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
   <div class="context">
-    ORIGEM: <span class="censored">SALA DE CONTROLE - GEMINI</span>
+    ORIGEM: TESTE DE LINEARIDADE -
+    <span class="censored">APOLLO 9</span>, MARÇO 1969
   </div>
   <p>
-    Analise o campo tridimensional \(\vec{F}(x,y,z) = \begin{pmatrix} y \\ z \\
-    x \end{pmatrix}\) ao longo da curva paramétrica \(\vec{r}(t) =
-    \begin{pmatrix} \cos t \\ \sin t \\ t \end{pmatrix}\), com \(t\) de 0 a
-    \(2\pi\). Calcule \(\int_C \vec{F}\cdot d\vec{r}\).
+    Já calculamos integrais de um único campo ao longo de um caminho. Mas se o
+    campo for a soma de dois campos, será que a integral também é a soma? Essa
+    propriedade — chamada linearidade — é fundamental e vamos verificá-la na
+    prática.
+  </p>
+  <p>
+    Sejam os campos \(\vec{F}_1(x,y) = \begin{pmatrix} e^x \\ 0 \end{pmatrix}\)
+    e \(\vec{F}_2(x,y) = \begin{pmatrix} 0 \\ \ln(1+y) \end{pmatrix}\). O
+    caminho é o segmento de reta de \(\begin{pmatrix} 0 \\ 0 \end{pmatrix}\) a
+    \(\begin{pmatrix} 1 \\ 1 \end{pmatrix}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a integral \(\int_C \vec{F}_1 \cdot d\vec{r}\)
+    ao longo do segmento.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral \(\int_C \vec{F}_2 \cdot d\vec{r}\)
+    ao longo do mesmo segmento.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral \(\int_C (\vec{F}_1 + \vec{F}_2)
+    \cdot d\vec{r}\) e verifique que o resultado é igual à soma dos resultados
+    obtidos em (a) e (b).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem rotações envolvidas na estrutura do vetor.
+      [NOTA TÉCNICA]: Para a integral de \(\ln(1+y)\), use integração por partes
+      com \(u = \ln(1+t)\) e \(dv = dt\). A propriedade de linearidade diz que
+      \(\int_C (\vec{F}_1 + \vec{F}_2) \cdot d\vec{r} = \int_C \vec{F}_1 \cdot
+      d\vec{r} + \int_C \vec{F}_2 \cdot d\vec{r}\). Verifique-a computando os
+      três lados separadamente.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
+      <p>Parametrização do segmento de \((0,0)\) a \((1,1)\):</p>
       <p>
-        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}\sin t \\ t \\ \cos
-        t\end{pmatrix}\).<br />
-        \(\frac{d\vec{r}}{dt} = \begin{pmatrix}-\sin t \\ \cos t \\
-        1\end{pmatrix}.\)
+        \[\vec{r}(t) = \begin{pmatrix} t \\ t \end{pmatrix}, \quad t \in [0,1],
+        \quad \vec{r}\,'(t) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\]
+      </p>
+      <p><strong>(a)</strong> Integral de \(\vec{F}_1\):</p>
+      <p>
+        \(\vec{F}_1(\vec{r}(t)) = \begin{pmatrix} e^t \\ 0 \end{pmatrix}\), logo
+        \(\vec{F}_1 \cdot \vec{r}\,' = e^t\).
+      </p>
+      <p>\[\int_C \vec{F}_1 \cdot d\vec{r} = \int_0^1 e^t \, dt = e - 1\]</p>
+      <p><strong>(b)</strong> Integral de \(\vec{F}_2\):</p>
+      <p>
+        \(\vec{F}_2(\vec{r}(t)) = \begin{pmatrix} 0 \\ \ln(1+t) \end{pmatrix}\),
+        logo \(\vec{F}_2 \cdot \vec{r}\,' = \ln(1+t)\).
       </p>
       <p>
-        Produto escalar: \(\begin{pmatrix}\sin t \\ t \\ \cos t\end{pmatrix}
-        \cdot \begin{pmatrix}-\sin t \\ \cos t \\ 1\end{pmatrix} = \sin t(-\sin
-        t) + t(\cos t) + \cos t(1).\)
-      </p>
-      <p>Isso é: \(-\sin^2 t + t \cos t + \cos t.\)</p>
-      <p>\(\int_{0}^{2\pi} \big[-\sin^2 t + t \cos t + \cos t\big] \, dt.\)</p>
-      <p>
-        Para \(-\sin^2 t\), lembramos que \(\int_{0}^{2\pi} \sin^2 t \, dt =
-        \pi.\) Portanto, \(\int_{0}^{2\pi} -\sin^2 t \, dt = -\pi.\)
-      </p>
-      <p>\(\int_{0}^{2\pi} \cos t \, dt = \sin t \big|_{0}^{2\pi} = 0.\)</p>
-      <p>
-        \(\int_{0}^{2\pi} t \cos t \, dt\) é uma integral por partes: \(u = t,
-        dv = \cos t\, dt.\) <br />
-        \(u' = 1,\ v = \sin t.\)<br />
-        \(\int t \cos t \, dt = t \sin t - \int 1 \cdot \sin t \, dt = t\sin t +
-        \cos t.\)
+        Integração por partes: \(u = \ln(1+t)\), \(dv = dt\), então \(du =
+        \frac{dt}{1+t}\), \(v = t\).
       </p>
       <p>
-        Avaliando de 0 a \(2\pi\): \(\left[t \sin t + \cos t\right]_0^{2\pi}.\)
-        Em \(t=2\pi\): \(2\pi \sin(2\pi) + \cos(2\pi) = 0 + 1 = 1.\)<br />
-        Em \(t=0\): \(0 \cdot 0 + \cos(0) = 1.\)<br />
-        Diferença: \(1 - 1 = 0.\)
+        \[\int_0^1 \ln(1+t) \, dt = \bigl[t\ln(1+t)\bigr]_0^1 - \int_0^1
+        \frac{t}{1+t} \, dt\]
       </p>
-      <p>Somando: \(-\pi + 0 + 0 = -\pi.\)</p>
-      <p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = -\pi.\)</p>
+      <p>A fração \(\frac{t}{1+t} = 1 - \frac{1}{1+t}\), logo:</p>
+      <p>
+        \[\int_0^1 \frac{t}{1+t} \, dt = \int_0^1 \left(1 - \frac{1}{1+t}\right)
+        dt = \bigl[t - \ln(1+t)\bigr]_0^1 = 1 - \ln 2\]
+      </p>
+      <p>
+        Portanto: \(\int_0^1 \ln(1+t) \, dt = 1 \cdot \ln 2 - (1 - \ln 2) = \ln
+        2 - 1 + \ln 2 = 2\ln 2 - 1\).
+      </p>
+      <p><strong>(c)</strong> Integral de \(\vec{F}_1 + \vec{F}_2\):</p>
+      <p>
+        \((\vec{F}_1 + \vec{F}_2)(\vec{r}(t)) = \begin{pmatrix} e^t \\ \ln(1+t)
+        \end{pmatrix}\), logo \((\vec{F}_1 + \vec{F}_2) \cdot \vec{r}\,' = e^t +
+        \ln(1+t)\).
+      </p>
+      <p>
+        \[\int_C (\vec{F}_1 + \vec{F}_2) \cdot d\vec{r} = \int_0^1 \bigl(e^t +
+        \ln(1+t)\bigr) \, dt = (e-1) + (2\ln 2 - 1) = e + 2\ln 2 - 2\]
+      </p>
+      <p>
+        Verificação da linearidade: \((e-1) + (2\ln 2 - 1) = e + 2\ln 2 - 2\). A
+        soma de (a) e (b) é igual ao resultado de (c). A linearidade está
+        confirmada computacionalmente.
+      </p>
     </div>
   </details>
 </li>

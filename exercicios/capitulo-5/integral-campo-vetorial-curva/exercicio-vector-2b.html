@@ -1,59 +1,100 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: <span class="censored">SEÇÃO DE DINÂMICA</span>, GEMINI
+    ORIGEM: MANOBRA DE CONTORNO -
+    <span class="censored">APOLLO 8</span>, DEZEMBRO 1968
   </div>
   <p>
-    Sejam dois campos em \(\mathbb{R}^2\): \(\vec{F}(x,y) = \begin{pmatrix} e^x
-    \\ 0 \end{pmatrix}\) e \(\vec{G}(x,y) = \begin{pmatrix} 0 \\ \ln(1+y)
-    \end{pmatrix}\). Calcule \(\int_C (\vec{F}+\vec{G}) \cdot d\vec{r}\) ao
-    longo do caminho que une \(\begin{pmatrix}0 \\ 0\end{pmatrix}\) a
-    \(\begin{pmatrix}1 \\ 1\end{pmatrix}\) em linha reta.
+    Até agora trabalhamos com caminhos abertos, onde o ponto inicial é diferente
+    do ponto final. Mas muitas aplicações envolvem trajetórias fechadas — como a
+    órbita de um satélite que retorna ao ponto de partida. Vamos calcular a
+    integral ao longo da fronteira de um retângulo, decompondo a curva em quatro
+    trechos.
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = \begin{pmatrix} xy \\ x + y
+    \end{pmatrix}\) e a fronteira do retângulo com vértices \(\begin{pmatrix} 0
+    \\ 0 \end{pmatrix}\), \(\begin{pmatrix} 3 \\ 0 \end{pmatrix}\),
+    \(\begin{pmatrix} 3 \\ 2 \end{pmatrix}\) e \(\begin{pmatrix} 0 \\ 2
+    \end{pmatrix}\), percorrida no sentido anti-horário.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize cada um dos quatro lados do retângulo. Para
+    cada lado, indique a parametrização \(\vec{r}_i(t)\) com \(t \in [0,1]\), a
+    derivada \(\vec{r}_i\,'(t)\), e o campo avaliado \(\vec{F}(\vec{r}_i(t))\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral de linha em cada trecho
+    separadamente, formando o produto escalar e integrando.
+  </p>
+  <p>
+    <strong>(c)</strong> Some os quatro resultados e interprete o valor total
+    como trabalho ao longo do contorno fechado.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de soma podem ser relevantes.
+      [NOTA TÉCNICA]: Cada lado é um segmento de reta — horizontal ou vertical.
+      Nos segmentos horizontais, \(y\) é constante e \(\vec{r}\,'(t)\) aponta na
+      direção \(x\); nos verticais, \(x\) é constante e \(\vec{r}\,'(t)\) aponta
+      na direção \(y\). Essa simplificação torna o produto escalar mais fácil.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> Quatro parametrizações:</p>
       <p>
-        Parametrização da reta: \(\vec{r}(t) = \begin{pmatrix}0 \\
-        0\end{pmatrix} + t \begin{pmatrix}1 \\ 1\end{pmatrix}\), \(t \in
-        [0,1]\).
+        <strong>Trecho 1</strong> (base, de \((0,0)\) a \((3,0)\)):
+        \(\vec{r}_1(t) = \begin{pmatrix} 3t \\ 0 \end{pmatrix}\),
+        \(\vec{r}_1\,'(t) = \begin{pmatrix} 3 \\ 0 \end{pmatrix}\),
+        \(\vec{F}(\vec{r}_1(t)) = \begin{pmatrix} 0 \\ 3t \end{pmatrix}\).
       </p>
       <p>
-        \(\frac{d\vec{r}}{dt} = \begin{pmatrix}1 \\ 1\end{pmatrix}.\) Logo, \(x
-        = t\) e \(y = t\).
+        <strong>Trecho 2</strong> (direita, de \((3,0)\) a \((3,2)\)):
+        \(\vec{r}_2(t) = \begin{pmatrix} 3 \\ 2t \end{pmatrix}\),
+        \(\vec{r}_2\,'(t) = \begin{pmatrix} 0 \\ 2 \end{pmatrix}\),
+        \(\vec{F}(\vec{r}_2(t)) = \begin{pmatrix} 6t \\ 3 + 2t \end{pmatrix}\).
       </p>
       <p>
-        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}e^t \\ 0\end{pmatrix},\quad
-        \vec{G}(\vec{r}(t)) = \begin{pmatrix}0 \\ \ln(1 + t)\end{pmatrix}.\)
+        <strong>Trecho 3</strong> (topo, de \((3,2)\) a \((0,2)\)):
+        \(\vec{r}_3(t) = \begin{pmatrix} 3 - 3t \\ 2 \end{pmatrix}\),
+        \(\vec{r}_3\,'(t) = \begin{pmatrix} -3 \\ 0 \end{pmatrix}\),
+        \(\vec{F}(\vec{r}_3(t)) = \begin{pmatrix} (3-3t)\cdot 2 \\ (3-3t) + 2
+        \end{pmatrix} = \begin{pmatrix} 6 - 6t \\ 5 - 3t \end{pmatrix}\).
       </p>
       <p>
-        \(\vec{F} + \vec{G} = \begin{pmatrix}e^t \\ \ln(1 + t)\end{pmatrix}.\)
+        <strong>Trecho 4</strong> (esquerda, de \((0,2)\) a \((0,0)\)):
+        \(\vec{r}_4(t) = \begin{pmatrix} 0 \\ 2 - 2t \end{pmatrix}\),
+        \(\vec{r}_4\,'(t) = \begin{pmatrix} 0 \\ -2 \end{pmatrix}\),
+        \(\vec{F}(\vec{r}_4(t)) = \begin{pmatrix} 0 \\ 2 - 2t \end{pmatrix}\).
+      </p>
+      <p><strong>(b)</strong> Integrais em cada trecho:</p>
+      <p>
+        Trecho 1: \(\vec{F} \cdot \vec{r}\,'_1 = 0 \cdot 3 + 3t \cdot 0 = 0\),
+        logo \(\int_0^1 0 \, dt = 0\).
       </p>
       <p>
-        Integração: \[\int_{0}^{1} \begin{pmatrix}e^t \\ \ln(1 + t)\end{pmatrix}
-        \cdot \begin{pmatrix}1 \\ 1\end{pmatrix} dt = \int_{0}^{1} \big(e^t +
-        \ln(1 + t)\big) \, dt.\]
+        Trecho 2: \(\vec{F} \cdot \vec{r}\,'_2 = 6t \cdot 0 + (3+2t) \cdot 2 = 6
+        + 4t\), logo \(\int_0^1 (6 + 4t) \, dt = \left[6t + 2t^2\right]_0^1 =
+        8\).
       </p>
       <p>
-        \(\int_{0}^{1} e^t \, dt = e - 1.\)<br />
-        \(\int_{0}^{1} \ln(1 + t)\, dt = [(1+t)\ln(1+t) - t ]_{0}^{1}\).
-        (Processo de integração por partes)
+        Trecho 3: \(\vec{F} \cdot \vec{r}\,'_3 = (6-6t)(-3) + (5-3t)(0) = -18 +
+        18t\), logo \(\int_0^1 (-18 + 18t) \, dt = \left[-18t + 9t^2\right]_0^1
+        = -9\).
       </p>
       <p>
-        Avaliando: Para \(t=1\), \((1+1)\ln(2) - 1 = 2\ln(2) - 1\). Para
-        \(t=0\), \((1+0)\ln(1) - 0 = 0\). Logo, \(\int_{0}^{1} \ln(1 + t)\, dt =
-        2\ln(2) - 1.\)
+        Trecho 4: \(\vec{F} \cdot \vec{r}\,'_4 = 0 \cdot 0 + (2-2t)(-2) = -4 +
+        4t\), logo \(\int_0^1 (-4 + 4t) \, dt = \left[-4t + 2t^2\right]_0^1 =
+        -2\).
       </p>
-      <p>Soma: \((e - 1) + (2\ln(2) - 1) = e + 2\ln(2) - 2.\)</p>
+      <p><strong>(c)</strong> Soma total:</p>
+      <p>\[\int_C \vec{F} \cdot d\vec{r} = 0 + 8 + (-9) + (-2) = -3\]</p>
       <p>
-        CONCLUSÃO: \(\int_C (\vec{F}+\vec{G}) \cdot d\vec{r} = e + 2\ln(2) -
-        2.\)
+        O trabalho total ao longo do contorno fechado é \(-3\). O sinal negativo
+        indica que, em média, o campo "resistiu" ao movimento ao longo da
+        fronteira — a componente contra o movimento foi dominante.
       </p>
     </div>
   </details>
