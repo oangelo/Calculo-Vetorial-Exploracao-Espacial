@@ -1,61 +1,148 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">07</span> DE MARÇO DE
-    <span class="censored">1966</span><br />
+    DATA: <span class="censored">15</span> DE OUTUBRO DE
+    <span class="censored">1968</span><br />
     LOCALIZAÇÃO:
-    <span class="censored">CENTRO DE PESQUISA [███]</span>
+    <span class="censored">CENTRO DE CONTROLE HOUSTON [███]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">VECTOR-X</span><br /><br />
-    Em resposta à corrida tecnológica desencadeada pelo
-    <span class="censored">lançamento do Sputnik</span>, este dossiê consolida
-    investigações sobre geometria de regiões de voo\, essenciais para assegurar
-    rotas seguras de reentrada. <br /><br />
-    Os exercícios anexos foram transcritos dos cadernos do Dr. <span
-      class="censored"
-      >██████████</span
-    >\, cuja pesquisa em
-    <span class="censored">topologia aplicada</span> sustenta a navegação de
-    cápsulas Gemini. 
+    <span class="censored">APOLLO-VECTOR</span><br /><br />
+    Após os testes bem-sucedidos com campos conservativos e funções potenciais,
+    nossa equipe de análise detectou uma anomalia crítica: um campo vetorial
+    utilizado no cálculo de trajetórias apresentou rotacional nulo, mas as
+    integrais de linha ao longo de caminhos distintos produziram resultados
+    diferentes. O teste do rotacional — até então considerado infalível —
+    falhou.
+    <br /><br />
+    Este dossiê investiga as causas topológicas dessa falha e estabelece as
+    condições completas para a garantia de conservatividade. Os exercícios foram
+    transcritos dos cadernos do Dr.
+    <span class="censored">██████████</span>, cuja pesquisa sustenta a navegação
+    das missões Apollo.
   </div>
   <div class="warning-box">
-    Este documento contém informações consideradas vitais para a segurança
-    nacional. A divulgação não autorizada poderá resultar em
+    Este documento contém informações consideradas vitais para o sucesso das
+    operações Apollo. A divulgação não autorizada poderá resultar em
     <span class="censored">sanções severas</span>.
   </div>
   <div class="metadata">
-    <span>REF: VX-<span class="censored">0042</span>-C</span>
-    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+    <span>REF: VX-<span class="censored">0066</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">6</span></span>
     <span
-      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-      <span class="censored">4</span></span
+      >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">5</span></span
     >
   </div>
 </div>
 <div class="section-title">
-  FUNDAMENTAÇÃO TEÓRICA: CONJUNTO SIMPLESMENTE CONEXO
+  FUNDAMENTAÇÃO TEÓRICA: CONJUNTO SIMPLESMENTE CONEXO E A GARANTIA DE
+  CONSERVATIVIDADE
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">\[\pi_1(\Omega)=\{e\}\]</p>
   <p>
-    Um subconjunto \(\Omega \subseteq \mathbb{R}^n\) é
-    <em>simplesmente conexo</em> se é caminho‑conexo e todo caminho fechado em
-    \(\Omega\) pode ser continuamente deformado, dentro de \(\Omega\), até um
-    ponto.<br />Intuitivamente, regiões sem "furos".
+    <strong
+      >1. PRÉ-REQUISITOS: CAMPOS CONSERVATIVOS E O TESTE DO ROTACIONAL</strong
+    >
+  </p>
+  <p>
+    Nos tópicos anteriores deste capítulo, você aprendeu que um campo vetorial
+    \(F = (P, Q)\) é <strong>conservativo</strong> quando existe uma função
+    potencial \(f\) tal que \(F = \nabla f\). Campos conservativos têm a
+    propriedade fundamental de que a integral de linha entre dois pontos não
+    depende do caminho escolhido:
+  </p>
+  <p class="formula-highlight">
+    \[\int_{C_1} F \cdot dr = \int_{C_2} F \cdot dr\]
+  </p>
+  <p>
+    para quaisquer caminhos \(C_1\) e \(C_2\) com os mesmos extremos. Além
+    disso, você aprendeu o <strong>teste do rotacional</strong>: se
+    \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\) em todo o
+    domínio, então \(\nabla \times F = 0\) e o campo seria conservativo.
+  </p>
+  <p>
+    <em>Mas será que esse teste funciona sempre?</em> É essa pergunta que motiva
+    toda esta lista.
   </p>
 </div>
-<div class="mission-context">
-  No planejamento de reentrada das cápsulas Gemini, a região de tolerância
-  térmica no espaço de estados precisava ser simplesmente conexa, garantindo que
-  <span class="censored">manobras corretivas</span> fossem possíveis sem saltar
-  fronteiras críticas.
+<div class="concept-definition">
+  <p><strong>2. O PROBLEMA: QUANDO O TESTE FALHA</strong></p>
+  <p>
+    Considere o campo vortical \(F(x,y) = \left(\frac{-y}{x^2+y^2},\,
+    \frac{x}{x^2+y^2}\right)\), definido em \(D = \mathbb{R}^2 \setminus
+    \{(0,0)\}\). É possível verificar que \(\nabla \times F = 0\) em todo ponto
+    de \(D\). No entanto, a integral de linha ao longo de uma circunferência
+    centrada na origem não é zero — é \(2\pi\). O campo
+    <strong>não é conservativo</strong>, apesar do rotacional nulo.
+  </p>
+  <p>
+    A causa da falha está no domínio: \(D\) tem um <strong>furo</strong> na
+    origem. A prova de que rotacional zero implica conservatividade requer que
+    qualquer curva fechada no domínio possa ser continuamente contraída a um
+    ponto sem sair do domínio. Quando há um furo, isso nem sempre é possível.
+  </p>
+  <p>
+    Esse insight leva à necessidade de classificar domínios quanto à presença de
+    furos — é o que veremos a seguir.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. CONJUNTO SIMPLESMENTE CONEXO: DEFINIÇÃO INTUITIVA</strong></p>
+  <p>
+    Um conjunto \(\Omega \subseteq \mathbb{R}^n\) é
+    <strong>simplesmente conexo</strong> se satisfaz duas condições:
+  </p>
+  <p>
+    <strong>(i)</strong> \(\Omega\) é conexo por caminhos (dois pontos quaisquer
+    podem ser ligados por uma curva dentro de \(\Omega\)).
+  </p>
+  <p>
+    <strong>(ii)</strong> Toda curva fechada em \(\Omega\) pode ser
+    continuamente deformada até um ponto sem sair de \(\Omega\).
+  </p>
+  <p>
+    Intuitivamente: uma região <em>sem furos</em>. Um disco é simplesmente
+    conexo; um anel (região entre dois círculos) não é — a curva que contorna o
+    furo central não pode ser contraída. O plano perfurado \(\mathbb{R}^2
+    \setminus \{(0,0)\}\) tampouco é.
+  </p>
+  <p>
+    A definição vale tanto em \(\mathbb{R}^2\) quanto em \(\mathbb{R}^3\), mas a
+    classificação muda: em \(\mathbb{R}^3\), remover um único ponto <em>não</em>
+    destrói a conexidade simples (há espaço para desviar a curva), enquanto
+    remover uma reta inteira sim (cria um "túnel").
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>4. A REGRA COMPLETA: ROTACIONAL, DOMÍNIO E CONSERVATIVIDADE</strong>
+  </p>
+  <p class="formula-highlight">
+    \[\nabla \times F = 0 \text{ em } \Omega \text{ simplesmente conexo}
+    \;\Longrightarrow\; F \text{ é conservativo}\]
+  </p>
+  <p>
+    Esta é a versão completa do teste do rotacional. A condição de conexidade
+    simples é <strong>necessária</strong>: sem ela, a implicação pode falhar,
+    como demonstra o campo vortical. Com ela, a prova funciona: qualquer curva
+    fechada pode ser deformada a um ponto, e o rotacional zero garante que a
+    integral sobre essa curva é zero — o que implica a existência de potencial.
+  </p>
+  <p>
+    Nos cálculos de trajetória das missões Apollo, garantir que o domínio de
+    operação do campo de forças é simplesmente conexo é essencial para que as
+    previsões de navegação baseadas em funções potenciais sejam confiáveis. O
+    campo vortical serviu como alerta: a topologia do domínio importa tanto
+    quanto as propriedades algébricas do campo.
+  </p>
 </div>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Durante o
-  <em>Programa Gemini</em> (1965‑1966) engenheiros dependiam da identificação de
-  domínios simplesmente conexos no plano de inclinação versus perigeu para
-  projetar janelas seguras de retorno.
+  <strong>NOTA HISTÓRICA:</strong> Durante o Programa Apollo (1967-1969), a
+  análise de campos vetoriais em domínios complexos era fundamental para o
+  planejamento de trajetórias de injeção translunar e reentrada na atmosfera. A
+  descoberta de que o rotacional nulo nem sempre garante conservatividade
+  motivou uma revisão completa dos protocolos de navegação antes da missão
+  <span class="censored">████</span> (Apollo 11, julho de 1969).
 </div>
