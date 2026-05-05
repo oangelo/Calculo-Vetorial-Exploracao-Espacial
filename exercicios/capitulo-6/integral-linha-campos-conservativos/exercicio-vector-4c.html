@@ -2,18 +2,66 @@
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
     ORIGEM: Simulação de Inserção Lunar – Projeto
-    <span class="censored">████</span> [20/SET/1965]
+    <span class="censored">████</span> [20/JUN/1969]
   </div>
   <p>
-    Uma nave desloca‑se num potencial \(\phi(x,y,z)=k(x^{2}+y^{2}+z^{2})\).
-    Determine o trabalho realizado pelo campo ao mover‑se de \((0,0,0)\) para
-    \((R,0,0)\), discutindo a dependência de \(k\) e \(R\).
+    Este exercício é síntese total: você analisa um cenário orbital completo,
+    decidindo sozinho a estratégia e interpretando o resultado. Considere um
+    modelo simplificado de campo gravitacional com a função potencial
+    \(\phi(x,y,z) = -\dfrac{k}{\sqrt{x^2 + y^2 + z^2}}\), onde \(k > 0\) é a
+    constante gravitacional do corpo central. A nave parte de uma órbita
+    circular de raio \(R_1\) e deve atingir uma órbita circular de raio \(R_2\),
+    com \(R_2 > R_1\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine o campo conservativo \(\vec{F} =
+    \nabla\phi\). Escreva as três componentes explicitamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Discuta a independência do caminho no contexto da
+    manobra orbital: a nave pode seguir uma trajetória de Hohmann (elíptica),
+    uma transferência direta (radial), ou qualquer outro caminho. O trabalho é o
+    mesmo em todos os casos? Por quê?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o trabalho necessário para a transferência de
+    \(R_1\) a \(R_2\) e interprete fisicamente: o sinal do resultado indica que
+    a manobra requer ou libera energia? O que acontece quando \(R_2 = R_1\)?
   </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      \(\vec{F}=\nabla\phi=2k\begin{pmatrix}x \\ y \\ z\end{pmatrix}\).
-      Trabalho: \(W=\phi(R,0,0)-\phi(0,0,0)=kR^{2}-0=kR^{2}\).
+      <p>(a) \(\phi = -k(x^2+y^2+z^2)^{-1/2}\).</p>
+      <p>
+        \(\partial\phi/\partial x = kx(x^2+y^2+z^2)^{-3/2} =
+        \dfrac{kx}{(x^2+y^2+z^2)^{3/2}}\). Analogamente para \(y\) e \(z\).
+      </p>
+      <p>
+        \(\vec{F} = \nabla\phi = \dfrac{k}{(x^2+y^2+z^2)^{3/2}}(x,\, y,\, z) =
+        \dfrac{k\vec{r}}{|\vec{r}|^3}\).
+      </p>
+      <p>
+        (b) Sim, o trabalho é o mesmo independentemente da trajetória. O campo
+        gravitacional é conservativo, logo a integral depende apenas dos
+        extremos. Na prática, isso significa que o \(\Delta v\) total pode
+        variar com o caminho, mas o trabalho da força gravitacional é sempre
+        \(\phi(R_2) - \phi(R_1)\). A escolha do caminho otimiza o combustível do
+        propulsor, não o trabalho da gravidade.
+      </p>
+      <p>
+        (c) Sobre a órbita de raio \(R_1\): \(|\vec{r}| = R_1\), logo \(\phi_1 =
+        -k/R_1\). Sobre a órbita de raio \(R_2\): \(\phi_2 = -k/R_2\).
+      </p>
+      <p>
+        \(W = \phi_2 - \phi_1 = -k/R_2 + k/R_1 = k\left(\dfrac{1}{R_1} -
+        \dfrac{1}{R_2}\right)\).
+      </p>
+      <p>
+        Como \(R_2 > R_1\), temos \(1/R_1 > 1/R_2\), logo \(W > 0\). Trabalho
+        positivo significa que é necessário <em>fornecer</em> energia para subir
+        a órbita. Quando \(R_2 = R_1\), o trabalho é zero — não há mudança de
+        energia potencial entre órbitas do mesmo raio.
+      </p>
     </div>
   </details>
 </li>
