@@ -1,24 +1,67 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
   <div class="context">
-    ORIGEM: Ensaio de Simples Conexão – Seção Matemática, 1966
+    ORIGEM: Modelo de Pressão Atmosférica Residual – Baixa Órbita Lunar,
+    MAR/1969
   </div>
   <p>
-    Discuta por que a independência do caminho pode falhar em regiões com
-    <em>buracos</em> (ex.: \(\mathbb{R}^2\) sem o eixo y). Ilustre com o campo
-    \(\vec{F}(x,y)=\begin{pmatrix} -y/(x^2+y^2) \\ x/(x^2+y^2) \end{pmatrix}\).
+    O exercício anterior mostrou que a topologia pode impedir a existência de
+    \(\Phi\) global. Mas quando o domínio é simplesmente conexo e o rotacional é
+    zero, a técnica sempre funciona — mesmo com funções transcendentais.
+    Considere o campo \(\vec{F}(x,y,z) = \left(2x\ln z,\; 2y\ln z,\;
+    \frac{x^2+y^2}{z}\right)\) definido para \(z > 0\), que modela a
+    distribuição de pressão atmosférica residual em altitude orbital.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que o rotacional de \(\vec{F}\) é zero no
+    domínio \(z > 0\).
+  </p>
+  <p>
+    <strong>(b)</strong> Integre a primeira componente (que envolve \(\ln z\))
+    em relação a \(x\), tratando \(\ln z\) como constante.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine as funções arbitrárias igualando as derivadas
+    parciais às componentes restantes.
+  </p>
+  <p>
+    <strong>(d)</strong> Calcule o trabalho para ir de \((1,1,1)\) a \((2,2,e)\)
+    usando o FTC.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Observe rotações em torno da origem.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao integrar \(2x\ln z\) em relação a \(x\), \(\ln z\) é
+      constante. O resultado será \(x^2 \ln z + g(y,z)\). Na segunda etapa,
+      derivar em \(y\) e igualar a \(2y\ln z\) determina \(g\). Na terceira,
+      usar a derivada de \(\ln z\) em relação a \(z\) é \(\frac{1}{z}\).
+    </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCALO [SIGMA-3 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Embora curl seja zero em \(\mathbb{R}^2\setminus\{0\}\), a região não é
-        simplesmente conexa; integral em curva unitária é \(2\pi\), logo sem
-        potencial global.
+        <strong>(a)</strong> Componentes do rotacional: \(\frac{\partial
+        F_3}{\partial y} - \frac{\partial F_2}{\partial z} = \frac{2y}{z} -
+        \frac{2y}{z} = 0\), \(\frac{\partial F_1}{\partial z} - \frac{\partial
+        F_3}{\partial x} = \frac{2x}{z} - \frac{2x}{z} = 0\), \(\frac{\partial
+        F_2}{\partial x} - \frac{\partial F_1}{\partial y} = 0 - 0 = 0\).
+        Rotacional \(= \vec{0}\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Phi = \int 2x\ln z\,dx = x^2 \ln z + g(y,z)\).
+      </p>
+      <p>
+        <strong>(c)</strong> Derivando em \(y\): \(\frac{\partial \Phi}{\partial
+        y} = g_y = 2y\ln z \Rightarrow g = y^2\ln z + h(z)\). Logo \(\Phi = (x^2
+        + y^2)\ln z + h(z)\). Derivando em \(z\): \(\frac{\partial
+        \Phi}{\partial z} = \frac{x^2+y^2}{z} + h'(z) = \frac{x^2+y^2}{z}
+        \Rightarrow h'(z) = 0 \Rightarrow h(z) = C\). Tomando \(C = 0\):
+        \(\Phi(x,y,z) = (x^2 + y^2)\ln z\).
+      </p>
+      <p>
+        <strong>(d)</strong> Trabalho \(= \Phi(2,2,e) - \Phi(1,1,1) = (4 + 4)\ln
+        e - (1 + 1)\ln 1 = 8\cdot 1 - 2\cdot 0 = 8\).
       </p>
     </div>
   </details>

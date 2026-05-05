@@ -1,26 +1,57 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
   <div class="context">
-    ORIGEM: Análise de Combustível – Centro
-    <span class="censored">████</span>, 1965
+    ORIGEM: Campo Gravitacional Lunar – Orbitagem Apollo, MAI/1968
   </div>
   <p>
-    Demonstre que se \(\vec{F}\) é conservativo em uma região aberta e simples,
-    então \(\oint_C \vec{F}\cdot d\vec{r}=0\) para qualquer curva fechada C
-    contida nessa região.
+    Nas missões Apollo, as trajetórias ocorrem no espaço tridimensional. Tudo
+    que fizemos em 2D se estende naturalmente para 3D — a ideia é a mesma,
+    apenas com uma componente a mais para integrar. Considere o campo
+    \(\vec{F}(x,y,z) = (2xz,\; 2yz,\; x^2 + y^2 - 1)\), que modela o campo
+    gravitacional ao redor da Lua durante orbitagem.
+  </p>
+  <p><strong>(a)</strong> Verifique que o rotacional de \(\vec{F}\) é zero.</p>
+  <p>
+    <strong>(b)</strong> Integre a primeira componente em relação a \(x\),
+    obtendo \(\Phi\) com uma função arbitrária \(g(y,z)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Derive o resultado em relação a \(y\), iguale à segunda
+    componente e determine a dependência em \(y\) de \(g\).
+  </p>
+  <p>
+    <strong>(d)</strong> Derive em relação a \(z\), iguale à terceira componente
+    e complete \(\Phi\). Calcule o trabalho para mover uma cápsula de
+    \((1,1,0)\) a \((2,0,3)\).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Potencial constante em percurso fechado.
+      [NOTA TÉCNICA]: Em 3D, o procedimento tem três etapas: (1) integrar
+      \(F_1\) em \(x\) → obtém \(g(y,z)\); (2) derivar em \(y\) e igualar a
+      \(F_2\) → obtém \(h(z)\); (3) derivar em \(z\) e igualar a \(F_3\) →
+      completa \(\Phi\).
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCALO [SIGMA-2 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Como \(\vec{F}=\nabla\Phi\), temos \(\int_C \vec{F}\cdot d\vec{r}=\int_C
-        d\Phi = \Phi(\text{início})-\Phi(\text{fim})=0\) pois início=fim. QED.
+        <strong>(a)</strong> Rotacional: \(\left(\frac{\partial F_3}{\partial y}
+        - \frac{\partial F_2}{\partial z}\right)\hat{i} + \cdots = (2y -
+        2y)\hat{i} + (2x - 2x)\hat{j} + (0 - 0)\hat{k} = \vec{0}\).
+        Conservativo.
+      </p>
+      <p><strong>(b)</strong> \(\Phi = \int 2xz\,dx = x^2 z + g(y,z)\).</p>
+      <p>
+        <strong>(c)</strong> \(\frac{\partial \Phi}{\partial y} = g_y = 2yz
+        \Rightarrow g = y^2 z + h(z)\). Logo \(\Phi = x^2 z + y^2 z + h(z)\).
+      </p>
+      <p>
+        <strong>(d)</strong> \(\frac{\partial \Phi}{\partial z} = x^2 + y^2 +
+        h'(z) = x^2 + y^2 - 1 \Rightarrow h'(z) = -1 \Rightarrow h(z) = -z\).
+        Potencial: \(\Phi(x,y,z) = x^2 z + y^2 z - z = z(x^2 + y^2 - 1)\).
+        Trabalho: \(\Phi(2,0,3) - \Phi(1,1,0) = 3(4 + 0 - 1) - 0 = 9\).
       </p>
     </div>
   </details>

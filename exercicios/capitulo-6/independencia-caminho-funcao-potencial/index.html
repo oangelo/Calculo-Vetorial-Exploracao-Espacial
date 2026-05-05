@@ -10,31 +10,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      async=""
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -208,7 +184,6 @@
         padding-top: 10px;
       }
 
-      /* Estilos adicionais */
       .section-title {
         margin: 20px 0 10px 0;
         font-weight: bold;
@@ -220,14 +195,6 @@
         background-color: rgba(212, 175, 55, 0.1);
         padding: 10px;
         margin: 15px 0;
-      }
-
-      .mission-context {
-        font-style: italic;
-        margin: 15px 0;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
-        border: 1px dashed #555;
       }
 
       .formula-highlight {
@@ -244,21 +211,6 @@
         background-color: rgba(139, 0, 0, 0.05);
       }
 
-      .footer-stamp {
-        position: absolute;
-        bottom: 50px;
-        right: 30px;
-        opacity: 0.3;
-        transform: rotate(-20deg);
-        font-weight: bold;
-        font-size: 1.5em;
-        color: var(--stamp-color);
-        border: 2px solid var(--stamp-color);
-        padding: 5px 15px;
-        pointer-events: none;
-      }
-
-      /* Novo estilo para dicas dentro de details */
       .hint-container {
         margin-top: 10px;
         margin-bottom: 10px;
@@ -286,65 +238,141 @@
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">15</span> DE MARÇO DE
-          <span class="censored">1965</span><br />
+          DATA: <span class="censored">21</span> DE DEZEMBRO DE
+          <span class="censored">1968</span><br />
           LOCALIZAÇÃO:
-          <span class="censored">CENTRO DE CONTROLE [REDACTED]</span>
+          <span class="censored">CENTRO DE NAVEGAÇÃO [██████]</span>
         </div>
         <div class="document-intro">
-          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-Σ</span
-          ><br /><br />
-          Após o êxito do <span class="censored">Programa Gemini</span>,
-          tornou‑se imperativo consolidar nossa compreensão sobre trajetórias de
-          rendez‑vous. Os documentos a seguir detalham princípios matemáticos
-          cruciais à <span class="censored">independência do caminho</span> em
-          integrais de linha, permitindo cálculo rápido de energia de manobra
-          com base apenas em pontos de origem e destino.<br /><br />
-          Esses exercícios foram compilados do caderno pessoal do Dr.
-          <span class="censored">████████</span>, cujo trabalho sobre
-          <span class="censored">funções potenciais</span> oferece grande
-          vantagem estratégica.
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-Φ</span><br /><br />
+          Após a missão <span class="censored">Apollo 8</span> completar o
+          primeiro voo orbital lunar, tornou‑se imperativo aprimorar nossos
+          métodos de cálculo de manobras. Os documentos a seguir detalham a
+          <span class="censored">independência do caminho</span> em integrais de
+          linha e a construção de
+          <span class="censored">funções potenciais</span> — ferramentas que
+          permitem calcular trabalho sem parametrizar curvas, economizando tempo
+          crítico em decisões de voo.<br /><br />
+          Este dossiê foi compilado a partir dos trabalhos do Dr.
+          <span class="censored">████████</span> sobre métodos de integração
+          conservativa.
         </div>
         <div class="warning-box">
-          Este documento contém fórmulas consideradas vitais. Divulgação não
-          autorizada acarretará <span class="censored">sanções severas</span>.
+          Este documento contém fórmulas consideradas vitais para o programa.
+          Divulgação não autorizada acarretará
+          <span class="censored">sanções severas</span>.
         </div>
         <div class="metadata">
-          <span>REF: Σ‑<span class="censored">1965</span>-A</span>
-          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">3</span></span>
+          <span>REF: Φ‑<span class="censored">1968</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span>
           <span
-            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
-            <span class="censored">2</span></span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
           >
         </div>
       </div>
       <div class="section-title">
-        FUNDAMENTAÇÃO TEÓRICA: Independência do Caminho e Função Potencial
+        FUNDAMENTAÇÃO TEÓRICA: INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL
       </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\oint_C \vec{F}\cdot d\vec{r} = 0\quad \Longleftrightarrow \quad
-          \vec{F} = \nabla \Phi\]
+        <p>
+          <strong
+            >1. INDEPENDÊNCIA DO CAMINHO: QUANDO A ROTA NÃO IMPORTA</strong
+          >
         </p>
         <p>
-          Um <em>campo vetorial conservativo</em> \(\vec{F}\) é aquele cujo
-          integral de linha independe do caminho, bastando conhecer os pontos
-          inicial e final. Equivalente a isso, existe uma
-          <em>função potencial</em> \(\Phi\) tal que \(\vec{F} = \nabla \Phi\).
+          Nos tópicos anteriores, você aprendeu que um campo conservativo
+          \(\vec{F} = \nabla\Phi\) satisfaz \(\oint_C \vec{F}\cdot d\vec{r} =
+          0\) para qualquer curva fechada, e que a integral de linha depende
+          apenas dos pontos inicial e final. Agora vamos entender
+          <em>por que</em> isso acontece e como usar esse fato na prática.
+        </p>
+        <p>
+          A independência do caminho significa que, para dois caminhos quaisquer
+          \(C_1\) e \(C_2\) ligando o mesmo ponto \(A\) ao mesmo ponto \(B\):
+        </p>
+        <p class="formula-highlight">
+          \[\int_{C_1} \vec{F}\cdot d\vec{r} = \int_{C_2} \vec{F}\cdot
+          d\vec{r}\]
+        </p>
+        <p>
+          Em termos físicos: o trabalho realizado por uma força conservativa
+          depende apenas da posição inicial e final, não da trajetória
+          percorrida. Para um campo gravitacional, isso significa que o custo
+          energético de uma manobra orbital depende apenas das órbitas de
+          partida e chegada — informação crucial para o planejamento de missões
+          Apollo.
         </p>
       </div>
-      <div class="mission-context">
-        Durante acoplamentos orbitais, a economia de propelente depende de somar
-        variações de energia ao longo de rotas complexas. Com campos
-        conservativos (gravidade ideal), podemos prever o gasto conhecendo
-        apenas alturas inicial e final, acelerando decisões em tempo real.
+      <div class="concept-definition">
+        <p>
+          <strong
+            >2. TEOREMA FUNDAMENTAL DO CÁLCULO PARA INTEGRAIS DE LINHA</strong
+          >
+        </p>
+        <p>
+          Se \(\vec{F} = \nabla\Phi\) e \(C\) é uma curva suave por partes de
+          \(A\) a \(B\), então:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \Phi(B) - \Phi(A)\]
+        </p>
+        <p>
+          A demonstração usa a regra da cadeia: ao parametrizar \(C\) por
+          \(\vec{r}(t)\) com \(t \in [a,b]\), temos \(\vec{F}\cdot d\vec{r} =
+          \nabla\Phi \cdot \vec{r}'(t)\,dt = \frac{d}{dt}\Phi(\vec{r}(t))\,dt\).
+          Pelo Teorema Fundamental do Cálculo de uma variável, a integral é
+          \(\Phi(\vec{r}(b)) - \Phi(\vec{r}(a)) = \Phi(B) - \Phi(A)\).
+        </p>
+        <p>
+          Este resultado é poderoso: em vez de parametrizar uma curva e calcular
+          uma integral, basta avaliar \(\Phi\) em dois pontos. Para manobras
+          orbitais, isso transforma horas de cálculo numa simples subtração.
+        </p>
       </div>
+      <div class="concept-definition">
+        <p>
+          <strong>3. FUNÇÃO POTENCIAL: COMO CONSTRUIR Φ A PARTIR DE F</strong>
+        </p>
+        <p>
+          Para usar o FTC, precisamos encontrar \(\Phi\) tal que \(\nabla\Phi =
+          \vec{F}\). Em \(\mathbb{R}^2\), se \(\vec{F} = (M, N)\) com
+          \(\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\), o
+          procedimento é:
+        </p>
+        <p class="formula-highlight">
+          \[\Phi(x,y) = \int M\,dx + g(y), \quad \text{onde } g'(y) \text{ é
+          determinada igualando } \frac{\partial\Phi}{\partial y} = N\]
+        </p>
+        <p>
+          Em \(\mathbb{R}^3\), o procedimento é análogo mas com duas funções
+          arbitrárias a determinar. Integramos a primeira componente em relação
+          a \(x\), depois usamos a segunda componente para fixar a dependência
+          em \(y\), e finalmente a terceira componente completa a dependência em
+          \(z\).
+        </p>
+        <p>
+          Em regiões simplesmente conexas, se \(\nabla \times \vec{F} =
+          \vec{0}\), então \(\Phi\) existe e pode ser encontrada por este
+          procedimento. Se a região não é simplesmente conexa (tem "buracos"), o
+          potencial pode não existir globalmente mesmo com rotacional nulo.
+        </p>
+      </div>
+      <p>
+        Durante as missões Apollo, o cálculo preciso de manobras orbitais
+        dependia da existência de funções potenciais para o campo gravitacional.
+        Conhecer \(\Phi\) permitia aos engenheiros determinar o consumo de
+        propelente de qualquer manobra avaliando \(\Phi\) em apenas dois pontos
+        — sem necessidade de parametrizar a trajetória.
+      </p>
       <div class="historical-note">
         <strong>NOTA HISTÓRICA:</strong> Em
-        <span class="censored">23/03/1965</span>, a missão Gemini 3 testou
-        mudanças de órbita programadas via métodos de integração conservativa
-        aqui descritos.
+        <span class="censored">21/12/1968</span>, a missão
+        <span class="censored">Apollo 8</span> tornou-se a primeira a orbitar a
+        Lua. Os cálculos de injeção translunar e de retorno à Terra dependiam
+        diretamente das propriedades do campo gravitacional como campo
+        conservativo, usando as técnicas aqui descritas.
       </div>
 
       <main>
@@ -352,10 +380,10 @@
       </main>
 
       <div class="page-number">
-        PÁGINA 1 DE <span class="censored">23</span> • DOCUMENTO Σ‑<span
+        PÁGINA 1 DE <span class="censored">23</span> • DOCUMENTO Φ‑<span
           class="censored"
-          >1965</span
-        >-A
+          >1968</span
+        >-D
       </div>
     </div>
 
@@ -386,8 +414,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);
