@@ -212,30 +212,35 @@ Se um exercício precisar de um conceito de capítulo posterior, ele pertence ao
 | cap-8/integral-de-superficie              | VAZIO — só index.html                           |
 | cap-9/\* (todos os 3 tópicos)             | VAZIO — só index.html                           |
 
-## Pipeline de Revisão (5 Etapas)
+## Pipeline de Revisão (6 Etapas)
 
-Cada tópico de exercício passa por 5 etapas. Há dois pontos de **revisão humana** obrigatórios: após o RTC (Etapa 1) e após o PDI (Etapa 2).
+Cada tópico de exercício passa por 6 etapas. Há **um ponto de revisão humana** obrigatório: após o Auditor de Capítulo (Etapa 2.5).
 
 ### Visão geral
 
 ```
-Etapa 1: Agente Explore (Revisor)
+Etapa 1: Agente Explore (Revisor) — RODAR TODOS OS TÓPICOS EM PARALELO
   → Lê exercícios, busca na web, gera RTC (diagnóstico) como comentário na issue
   → Ferramentas: read, firecrawl_search, firecrawl_scrape, bash (gh)
 
-         ↓ Revisão humana (professor aprova/ajusta RTC)
-
-Etapa 2: Agente General (Planejador)
+Etapa 2: Agente General (Planejador) — RODAR TODOS OS TÓPICOS EM PARALELO
   → Lê RTC + exercícios existentes, gera PDI (blueprint) como comentário na issue
   → Ferramentas: read, bash (gh)
 
-         ↓ Revisão humana (professor aprova/ajusta PDI)
+Etapa 2.5: Agente General (Auditor de Capítulo) — 1 AGENTE POR CAPÍTULO
+  → Lê TODOS os PDIs do capítulo (todas as issues)
+  → Verifica: sobreposição de conceitos, buracos na progressão, contradições
+  → Se encontrar problemas: posta PDI v2 nas issues afetadas
+  → Se limpo: posta "AUDITORIA APROVADA" em cada issue
+  → Ferramentas: read, bash (gh)
 
-Etapa 3: Agente General (Implementador)
-  → Lê RTC + PDI dos comentários da issue, implementa tudo
+         ↓ Revisão humana (professor aprova/ajusta PDIs após auditoria)
+
+Etapa 3: Agente General (Implementador) — RODAR TODOS OS TÓPICOS EM PARALELO
+  → Lê RTC + PDI (versão final, pode ser v2) dos comentários da issue, implementa tudo
   → Ferramentas: read, edit, write, bash (gh)
 
-Etapa 4: Agente Explore (Resumidor)
+Etapa 4: Agente Explore (Resumidor) — RODAR TODOS OS TÓPICOS EM PARALELO
   → Lê exercícios finais, gera resumo de pré-requisitos no intro.html
   → Ferramentas: read, edit, firecrawl_search
 ```
@@ -305,15 +310,45 @@ Etapa 4: Agente Explore (Resumidor)
 > - Conteúdo de hints (apenas indicar "com dica" ou "sem dica" para OMEGA)
 > - Texto final dos enunciados
 
-**Etapa 3 — Implementador (General):**
+**Etapa 2.5 — Auditor de Capítulo (General) — 1 agente por capítulo:**
+
+> Execute o Auditor de Capítulo para o Cap N.
+>
+> ANTES de começar:
+>
+> 1. Leia `checklist-conceitos-permitidos.md` — a progressão narrativa do capítulo
+>
+> Depois:
+>
+> - Para CADA issue do capítulo, leia o PDI nos comentários usando `gh issue view N --comments`
+> - Compare TODOS os PDIs entre si e verifique:
+>
+> **Verificações obrigatórias:**
+>
+> 1. **Sobreposição de conceitos:** Dois tópicos cobrem o mesmo conceito ou a mesma atividade (ex: "descobrir independência do caminho" aparece em dois PDIs)
+> 2. **Buracos na progressão:** Conceito esperado pela progressão do checklist que não aparece em nenhum PDI
+> 3. **Contradição:** Um PDI assume conhecimento que nenhum PDI anterior ensina
+> 4. **Ordem incorreta:** Um PDI referencia conceitos de um tópico posterior na progressão
+>
+> **Se encontrar problemas:**
+>
+> - Poste um comentário "AUDITORIA — PROBLEMAS ENCONTRADOS" na issue #3 (epic) listando todos os problemas
+> - Poste PDI v2 (corrigido) em cada issue afetada, com nota explicando a mudança
+> - Exemplo de formato: `gh issue comment N --body "## PDI v2 — Corrigido (remove sobreposição com #M)\n\n..."`
+>
+> **Se não encontrar problemas:**
+>
+> - Poste "AUDITORIA APROVADA — Sem sobreposições, buracos ou contradições detectados." em cada issue do capítulo
 
 > Execute o Agente 3 (implementador) no issue #N.
+>
+> **Atenção:** se houver um PDI v2 nos comentários (gerado pelo Auditor), use a versão v2, não a original.
 >
 > ANTES de começar:
 >
 > 1. Leia `diretrizes-listas-de-exercicios.md` — os 8 princípios
 > 2. Leia `checklist-conceitos-permitidos.md` — conceitos permitidos
-> 3. Leia o RTC e o PDI nos comentários da issue #N usando `gh issue view N --comments`
+> 3. Leia o RTC e o PDI **final** (última versão) nos comentários da issue #N usando `gh issue view N --comments`
 >
 > Depois:
 >
