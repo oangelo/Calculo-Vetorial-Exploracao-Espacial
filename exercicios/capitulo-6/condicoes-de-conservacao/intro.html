@@ -1,17 +1,135 @@
 <header class="document-header">
   <div class="document-stamp">SIGILOSO</div>
-  <div class="document-date">Base Orbital ████, 27/05/2025</div>
-  <p class="document-intro">
-    PROJETO <span class="censored">ORION‑VECTOR</span> — Manual de Operações
-    Matemáticas
-  </p>
+  <div class="document-date">
+    DATA: <span class="censored">11</span> DE OUTUBRO DE
+    <span class="censored">1968</span>
+    <br />
+    LOCALIZAÇÃO: <span class="censored">CENTRO DE CONTROLE — HOUSTON</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE ANÁLISE: PROJETO
+    <span class="censored">APOLLO-VECTOR</span><br /><br />
+    Após o sucesso do Programa Apollo em colocar astronautas em órbita lunar,
+    nossa equipe de <span class="censored">dinâmica orbital</span>
+    concentrou-se na verificação de campos de forças conservativos — essencial
+    para o cálculo preciso de manobras de
+    <span class="censored">rendezvous</span> e retorno seguro à Terra.<br /><br />
+    Este dossiê apresenta os
+    <span class="censored">critérios algébricos</span> que permitem identificar
+    rapidamente se um campo vetorial é conservativo, sem necessidade de testar
+    infinitos caminhos de integração.
+  </div>
   <div class="warning-box">
-    Atenção: A reprodução não autorizada destas instruções compromete a
-    segurança da missão e resultará em ação disciplinar imediata.
+    Este documento contém informações críticas sobre técnicas de verificação de
+    campos de forças. Qualquer divulgação não autorizada resultará em
+    <span class="censored">consequências irreversíveis</span>.
   </div>
   <div class="metadata">
-    <span>REF: VX‑2025‑CC‑17</span>
-    <span>NÍVEL DE ACESSO: Σ‑3</span>
-    <span>CÓPIAS EXISTENTES: <span class="censored">08</span></span>
+    <span>REF: VX-<span class="censored">6601</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+      <span class="censored">7</span></span
+    >
   </div>
 </header>
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE CONSERVAÇÃO</div>
+<div class="concept-definition">
+  <p><strong>1. MOTIVAÇÃO: POR QUE PRECISAMOS DE UM TESTE</strong></p>
+  <p>
+    Nos tópicos anteriores deste capítulo, você aprendeu que um campo
+    conservativo \(\vec{F}\) tem integral de linha independente do caminho e
+    que, se \(\vec{F} = \nabla\Phi\), o potencial \(\Phi\) permite calcular o
+    trabalho pela diferença \(\Phi(B) - \Phi(A)\). Mas dado um campo qualquer,
+    como saber rapidamente se ele é conservativo? Testar todos os caminhos é
+    impossível — precisamos de um atalho algébrico.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. O TESTE NASCE DE CLAIRAUT</strong></p>
+  <p>
+    Se \(\vec{F} = \nabla\Phi\) com \(\Phi\) de classe \(C^2\), as componentes
+    são \(\vec{F} = (M, N) = (\partial\Phi/\partial x, \partial\Phi/\partial
+    y)\). Pelo teorema de Clairaut, as derivadas mistas de \(\Phi\) são iguais:
+  </p>
+  <p class="formula-highlight">
+    \[\frac{\partial^2\Phi}{\partial y\,\partial x} =
+    \frac{\partial^2\Phi}{\partial x\,\partial y}\]
+  </p>
+  <p>
+    Isso significa \(\partial M/\partial y = \partial N/\partial x\). Se o campo
+    é conservativo, suas componentes obrigatoriamente satisfazem esta condição.
+    O inverso também vale quando o domínio é simplesmente conexo.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. O TESTE EM \(\mathbb{R}^2\)</strong></p>
+  <p>
+    Para um campo \(\vec{F}(x,y) = (M, N)\) com componentes de classe \(C^1\)
+    definido em um domínio <strong>simplesmente conexo</strong>
+    \(D \subset \mathbb{R}^2\):
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F} \text{ é conservativo em } D \iff \frac{\partial M}{\partial y} =
+    \frac{\partial N}{\partial x} \text{ em } D\]
+  </p>
+  <p>
+    Aqui, \(\partial M/\partial y\) e \(\partial N/\partial x\) são as
+    <strong>derivadas cruzadas</strong> das componentes do campo. Se são iguais
+    em todo ponto do domínio, e o domínio é simplesmente conexo, o campo é
+    conservativo e existe um potencial \(\Phi\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. O ROTACIONAL EM \(\mathbb{R}^3\)</strong></p>
+  <p>
+    Em três dimensões, o campo \(\vec{F} = (M, N, P)\) tem três pares de
+    derivadas cruzadas para verificar. A condição compacta usa o
+    <strong>rotacional</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[\nabla \times \vec{F} = \left(\frac{\partial P}{\partial y} -
+    \frac{\partial N}{\partial z},\;\; \frac{\partial M}{\partial z} -
+    \frac{\partial P}{\partial x},\;\; \frac{\partial N}{\partial x} -
+    \frac{\partial M}{\partial y}\right)\]
+  </p>
+  <p>
+    Se \(\nabla \times \vec{F} = \vec{0}\) em um domínio simplesmente conexo de
+    \(\mathbb{R}^3\), o campo é conservativo. O rotacional nulo é a
+    generalização natural de \(\partial M/\partial y = \partial N/\partial x\):
+    são três equações em vez de uma.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>5. A IMPORTÂNCIA DO DOMÍNIO SIMPLISMENTE CONEXO</strong></p>
+  <p>
+    A condição de derivadas cruzadas iguais é <strong>necessária</strong>
+    para conservatividade em qualquer domínio. Mas ser
+    <strong>suficiente</strong> exige que o domínio seja simplesmente conexo —
+    ou seja, sem "buracos". Um domínio com buracos pode abrigar campos com
+    derivadas cruzadas iguais que mesmo assim <em>não</em> são conservativos,
+    pois existem curvas fechadas ao redor do buraco cuja integral de linha não
+    se anula.
+  </p>
+  <p>
+    As <strong>duas condições conjuntas</strong> que garantem conservatividade
+    são: (1) rotacional nulo e (2) domínio simplesmente conexo. Juntas, são
+    necessárias e suficientes.
+  </p>
+  <p>
+    No planejamento de manobras orbitais Apollo, campos conservativos permitem
+    calcular o trabalho de qualquer trajetória conhecendo apenas as posições
+    inicial e final — sem necessidade de integrar ao longo do caminho. O campo
+    gravitacional, nosso principal interesse, satisfaz ambas as condições.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Em outubro de 1968, a missão
+  <span class="censored">Apollo 7</span> realizou o primeiro voo tripulado do
+  Programa Apollo, testando o módulo de comando em órbita terrestre por 11 dias.
+  O sucesso dessa missão abriu caminho para a
+  <span class="censored">Apollo 8</span>, que em dezembro levou três astronautas
+  à órbita lunar. O cálculo preciso de trajetórias dependia fundamentalmente da
+  verificação de que o campo gravitacional é conservativo — a garantia de que o
+  trabalho de retorno não depende do caminho escolhido.
+</div>
