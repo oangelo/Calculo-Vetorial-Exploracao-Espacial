@@ -1,21 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
   <div class="context">
-    ORIGEM: Algoritmo de Navegação Autônoma –
-    <span class="censored">LAB ███</span> [OUT/1974]
+    ORIGEM: Análise de Aditividade Regional — Apollo 13, Houston [ABR/1970]
   </div>
   <p>
-    Calcule \(\displaystyle \oint_{\partial R} (x^3 - 3xy^2)\,dx + (3x^2 y -
-    y^3)\,dy\) em \(R = [-1,1]\times[-1,1]\). (Nenhuma dica disponível.)
+    O que acontece quando colamos dois retângulos que compartilham um lado? A
+    circulação sobre a união é a soma das circulações individuais? Essa
+    propriedade — chamada <em>aditividade</em> — é a chave para estender Green
+    para regiões mais complexas.
+  </p>
+  <p>
+    Sejam \(R_1 = [a,b] \times [c,d]\) e \(R_2 = [b,e] \times [c,d]\) dois
+    retângulos que compartilham o lado \(x = b\), \(y \in [c,d]\). Denote \(R =
+    R_1 \cup R_2\). Seja \(\vec{F} = (P, Q)\) um campo \(C^1\) definido em
+    \(R\).
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva a circulação sobre cada retângulo separadamente
+    usando o Teorema de Green — como integrais duplas do rotacional.
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse a circulação sobre \(R\) como a integral dupla
+    sobre \(R_1 \cup R_2\) e mostre que ela é a soma das integrais duplas de
+    (a).
+  </p>
+  <p>
+    <strong>(c)</strong> Argumente diretamente a partir das integrais de linha:
+    mostre que as contribuições sobre o lado comum se cancelam porque esse lado
+    é percorrido em sentidos opostos nas duas circulações, completando a prova
+    de aditividade.
   </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Rotação: \(\dfrac{\partial (3x^2 y - y^3)}{\partial x} - \dfrac{\partial
-        (x^3 - 3xy^2)}{\partial y} = 6xy - (-6xy) = 12xy.\)<br />Por simetria, a
-        integral dupla de \(12xy\) sobre o quadrado centrado na origem é zero,
-        pois a função é ímpar em cada quadrante. Logo, a circulação é 0.
+        <strong>(a)</strong> Circulação sobre \(R_1\): \(\iint_{R_1}
+        \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+        y}\right) dA\). Circulação sobre \(R_2\): \(\iint_{R_2}
+        \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+        y}\right) dA\).
+      </p>
+      <p>
+        <strong>(b)</strong> Como \(R_1\) e \(R_2\) são adjacentes e se
+        interceptam apenas na fronteira comum (conjunto de conteúdo nulo), a
+        integral dupla sobre \(R\) é a soma: \(\iint_R (\cdots)\,dA =
+        \iint_{R_1} (\cdots)\,dA + \iint_{R_2} (\cdots)\,dA\). Logo a circulação
+        sobre \(R\) é a soma das circulações.
+      </p>
+      <p>
+        <strong>(c)</strong> Na fronteira de \(R_1\), o lado \(x = b\) é
+        percorrido de \((b,d)\) a \((b,c)\) (sentido anti-horário de \(R_1\)).
+        Na fronteira de \(R_2\), o mesmo lado é percorrido de \((b,c)\) a
+        \((b,d)\) (sentido anti-horário de \(R_2\)). Como as direções são
+        opostas, as duas contribuições \(\int P\,dx + Q\,dy\) sobre esse lado se
+        cancelam. O que resta é exatamente a fronteira externa de \(R_1 \cup
+        R_2\), percorrida no sentido anti-horário. Isso prova \(\oint_{\partial
+        R} = \oint_{\partial R_1} + \oint_{\partial R_2}\).
+        <strong>Q.E.D.</strong>
       </p>
     </div>
   </details>

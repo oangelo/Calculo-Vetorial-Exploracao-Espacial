@@ -1,22 +1,57 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
-  <div class="context">ORIGEM: Relatório de Voo – Gemini VIII [MAR/1966]</div>
+  <div class="context">
+    ORIGEM: Análise Paramétrica de Estabilidade — Apollo 12, Módulo de Pesquisa
+    [NOV/1969]
+  </div>
   <p>
-    Existem constantes \(k\) tais que o campo \(\vec{F}(x,y) = (k y, x)\) possui
-    circulação nula em <em>todo</em> retângulo do plano. Determine \(k\).
+    Generalizando o que vimos no exercício anterior: se o campo depende de um
+    parâmetro, podemos determinar <strong>exatamente</strong> quando a
+    circulação se anula — sem precisar testar caso a caso.
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (ky,\, x)\) onde \(k\) é uma constante
+    real, definido em um retângulo genérico \(R = [a,b] \times [c,d]\) com área
+    \(A = (b-a)(d-c) \neq 0\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional de \(\vec{F}\) em função do
+    parâmetro \(k\).
+  </p>
+  <p>
+    <strong>(b)</strong> Determine a condição sobre \(k\) que torna a circulação
+    zero sobre <em>qualquer</em> retângulo do plano.
+  </p>
+  <p>
+    <strong>(c)</strong> Para o valor de \(k\) encontrado, verifique diretamente
+    que o campo satisfaz a condição de conservatividade \(\frac{\partial
+    Q}{\partial x} = \frac{\partial P}{\partial y}\).
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Circulação nula implica rotação identicamente zero.
+      [NOTA TÉCNICA]: O rotacional será uma expressão envolvendo \(k\). Para que
+      a circulação seja zero sobre <em>todo</em> retângulo, o rotacional deve
+      ser zero em <em>todo</em> ponto — não apenas integrar a zero.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Rotação: \(\dfrac{\partial x}{\partial x} - \dfrac{\partial (k
-        y)}{\partial y} = 1 - k.\)<br />Para ser zero, é necessário \(k = 1.\)
+        <strong>(a)</strong> Rotacional: \(\frac{\partial x}{\partial x} -
+        \frac{\partial(ky)}{\partial y} = 1 - k\).
+      </p>
+      <p>
+        <strong>(b)</strong> A circulação é \(\iint_R (1-k)\,dA = (1-k) \cdot
+        A\). Para ser zero sobre qualquer retângulo (com \(A \neq 0\)),
+        precisamos de \(1 - k = 0\), ou seja, \(k = 1\).
+      </p>
+      <p>
+        <strong>(c)</strong> Com \(k = 1\): \(P = y\), \(Q = x\).
+        \(\frac{\partial Q}{\partial x} = 1\) e \(\frac{\partial P}{\partial y}
+        = 1\). A condição é satisfeita, e o campo \(\vec{F} = (y, x)\) é
+        conservativo com potencial \(f(x,y) = xy\).
       </p>
     </div>
   </details>
