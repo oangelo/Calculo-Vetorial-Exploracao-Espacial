@@ -1,22 +1,39 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
-  <div class="context">ORIGEM: Análise de Painéis — 03/AGO/1961</div>
+  <div class="context">ORIGEM: Pré-Alunissagem — 08/JUL/1969</div>
   <p>
-    A região \(A\) é o triângulo de vértices \((0,0)\), \((1,0)\) e \((0,1)\).
-    Para \(\vec{F}(x,y)=(x^2,\;y^2)\), comprove o teorema.
+    No exercício anterior, você construiu a normal exterior e viu que o campo
+    radial \((x,y)\) aponta consistentemente para fora do disco. Agora vamos
+    quantificar isso: quanto desse campo "atravessa" a fronteira no total? Vamos
+    calcular o <strong>fluxo</strong> diretamente — sem usar nenhum teorema.
   </p>
-  <details>
+  <p>
+    Para o mesmo disco unitário \(D\) com fronteira \(C\), o fluxo de um campo
+    \(\vec{F}\) através de \(C\) é definido por \(\displaystyle\Phi = \oint_C
+    \vec{F}\cdot\hat{n}\,ds\), onde \(\hat{n}\) é a normal exterior unitária e
+    \(ds\) é o elemento de arco.
+  </p>
+  <p>
+    <strong>(a)</strong> Use a parametrização \(\vec{r}(t) = (\cos t,\, \sin
+    t)\) para expressar a normal exterior unitária \(\hat{n}(t)\) e o elemento
+    de arco \(ds\) em termos do parâmetro \(t\).
+  </p>
+  <p>
+    <strong>(b)</strong> Construa a integral de fluxo: substitua
+    \(\vec{F}(\vec{r}(t))\) e \(\hat{n}(t)\) na expressão
+    \(\vec{F}\cdot\hat{n}\,ds\) e simplifique o integrando.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral. O resultado é positivo ou negativo?
+    Interprete fisicamente: o líquido representado por \(\vec{F}\) está, em
+    líquido, entrando ou saindo da região?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Divida o triângulo em faixas horizontais.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-    <div class="solution">
-      <p>\(\nabla\!\cdot\!\vec{F}=2x+2y\).</p>
-      <p>\[\iint_A(2x+2y)\,dA=\frac{2}{3}.\]</p>
-      <p>Fluxo pela fronteira dá o mesmo valor.</p>
+      [NOTA TÉCNICA]: No círculo unitário, a normal exterior é \(\hat{n} = (\cos
+      t, \sin t)\) e \(ds = dt\). O campo \(\vec{F} = (x,y)\) avaliado na
+      fronteira é \((\cos t, \sin t)\).
     </div>
   </details>
 </li>

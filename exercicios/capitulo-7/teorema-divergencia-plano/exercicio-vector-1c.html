@@ -1,23 +1,40 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
-  <div class="context">ORIGEM: Verificação de Vazamento — 12/NOV/1962</div>
+  <div class="context">ORIGEM: Pré-Alunissagem — 10/JUL/1969</div>
   <p>
-    A região é o anel \(1\le x^2+y^2\le4\). Para \(\vec{F}(x,y)=(-y,\,x)\)
-    mostre que o fluxo líquido é nulo.
+    Você acabou de sentir quanto trabalho dá calcular o fluxo diretamente —
+    parametrizar, construir a integral, avaliar. Existe um caminho mais fácil?
+    Antes de ver o teorema, precisamos entender o que a
+    <strong>divergência</strong>
+    mede. Lembre-se do Capítulo 1: o divergente de um campo vetorial \(\vec{F} =
+    (P, Q)\) é \(\nabla\cdot\vec{F} = \frac{\partial P}{\partial x} +
+    \frac{\partial Q}{\partial y}\).
   </p>
-  <details>
+  <p>Considere os três campos vetoriais:</p>
+  <p>
+    \(\vec{F}_1(x,y) = (x,\, y)\), \quad \(\vec{F}_2(x,y) = (-y,\, x)\), \quad
+    \(\vec{F}_3(x,y) = (-x,\, -y)\).
+  </p>
+  <p><strong>(a)</strong> Calcule a divergência de cada um dos três campos.</p>
+  <p>
+    <strong>(b)</strong> Classifique cada campo: se \(\nabla\cdot\vec{F} > 0\),
+    o campo é uma <strong>fonte</strong> (expansão); se \(\nabla\cdot\vec{F} <
+    0\), é um <strong>poço</strong> (compressão); se \(\nabla\cdot\vec{F} = 0\),
+    é <strong>incompressível</strong>.
+  </p>
+  <p>
+    <strong>(c)</strong> Esboce os três campos (desenhe setas em uma grade de
+    pontos) e verifique visualmente: o primeiro "explode para fora", o segundo
+    "gira sem expandir", o terceiro "implode para dentro". A classificação do
+    item (b) corresponde ao que seus olhos veem?
+  </p>
+  <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Observe a simetria rotacional do campo.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        \(\nabla\!\cdot\!\vec{F}=0\) ⇒ integral dupla é zero, logo fluxo total
-        também é zero.
-      </p>
+      [NOTA TÉCNICA]: A divergência mede a taxa de "expansão local" do campo.
+      Conecte com o que você aprendeu no Capítulo 1 sobre o significado físico
+      do divergente — um campo cujos vetores "se espalham" tem divergência
+      positiva.
     </div>
   </details>
 </li>
