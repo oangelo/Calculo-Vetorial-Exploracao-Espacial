@@ -2,21 +2,69 @@
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
     ORIGEM: Departamento Ultra-Secreto – Dossiê
-    <span class="censored">ICARUS</span> (03/JUL/1972)
+    <span class="censored">ICARUS</span> (30/JUL/1969)
   </div>
-  Seja \(\vec F=\bigl(\dfrac{y}{x^{2}+y^{2}},-\dfrac{x}{x^{2}+y^{2}}\bigr)\).
-  Calcule \(\displaystyle\oint_{C}\vec F\cdot d\vec r\) onde \(C\) é o círculo
-  \(x^{2}+y^{2}=4\), percebendo que \(\vec F\) não está definido na origem.
-  Utilize um anel \(0 \le r \le 2\) e justifique o resultado.
-  <!-- sem dica -->
+  <p>
+    O exercício final combina tudo o que construímos: uma região anular, um
+    campo com singularidade e o argumento de exclusão. Até agora, o Teorema de
+    Green sempre pôde ser aplicado diretamente. Mas o que acontece quando o
+    campo <strong>não está definido</strong> em algum ponto do interior? Green
+    aparentemente falha — mas a técnica de excluir um pequeno disco ao redor da
+    singularidade restaura o teorema. É a culminação da lista.
+  </p>
+  <p>
+    Seja \(\vec{F}(x,y) = \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)\).
+    Calcule \(\displaystyle\oint_C \vec{F} \cdot d\vec{r}\) onde \(C\) é o
+    círculo \(x^2 + y^2 = 4\) orientado positivamente.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que \(\vec{F}\) não está definido na origem.
+    Mostre que, apesar de o rotacional ser zero fora da origem, as hipóteses do
+    Teorema de Green não são satisfeitas na região delimitada por \(C\). Por
+    quê?
+  </p>
+  <p>
+    <strong>(b)</strong> Construa a região anular excluindo um disco de raio
+    \(\varepsilon\) centrado na origem. Nessa região, \(\vec{F}\) é definido e
+    tem derivadas contínuas. Aplique Green na região anular: mostre que a
+    integral dupla é zero e conclua que a integral na borda externa iguala a
+    integral na borda interna (com sinal trocado).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha na borda do disco excluído
+    (parametrizando o círculo de raio \(\varepsilon\)) e use o resultado de (b)
+    para obter a circulação na borda externa. Tome o limite \(\varepsilon \to
+    0\) se necessário.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      Exclui-se um disco de raio \(\varepsilon\). Como \(\partial Q/\partial
-      x-\partial P/\partial y=0\) fora da origem, Green implica que o valor no
-      contorno externo iguala \(-\)valor no contorno interno. No limite
-      \(\varepsilon\to0\), o interno fornece \(-2\pi\). Logo o integral pedido é
-      \(2\pi\).
+      <p>
+        (a) \(\vec{F}\) tem \(x^2 + y^2\) no denominador, que se anula na
+        origem. A região delimitada por \(C\) contém a origem, onde o campo não
+        é definido nem tem derivadas contínuas. A hipótese de continuidade das
+        derivadas parciais em vizinhança de \(D\) é violada.
+      </p>
+      <p>
+        (b) Na região anular \(D_\varepsilon: \varepsilon^2 \le x^2+y^2 \le 4\),
+        o campo é definido e o rotacional é zero: \(\frac{\partial Q}{\partial
+        x} - \frac{\partial P}{\partial y} = 0\). Logo \(\iint_{D_\varepsilon}
+        0\,dA = 0\), e pelo Teorema de Green: \(\oint_{C_{\text{ext}}}
+        \vec{F}\cdot d\vec{r} + \oint_{C_{\text{int}}} \vec{F}\cdot d\vec{r} =
+        0\), onde \(C_{\text{int}}\) é percorrida no sentido horário. Assim,
+        \(\oint_{C_{\text{ext}}} \vec{F}\cdot d\vec{r} = -\oint_{C_{\text{int}}}
+        \vec{F}\cdot d\vec{r}\).
+      </p>
+      <p>
+        (c) No círculo interno \(x = \varepsilon\cos t\), \(y = \varepsilon\sin
+        t\) (sentido horário: \(t\) de \(2\pi\) a \(0\)):
+        \(\oint_{C_{\text{int}}} \vec{F}\cdot d\vec{r} = \int_{2\pi}^0
+        \frac{-\varepsilon\sin t(-\varepsilon\sin t) + \varepsilon\cos
+        t(\varepsilon\cos t)}{\varepsilon^2}\,dt = \int_{2\pi}^0 1\,dt =
+        -2\pi\). Portanto \(\oint_{C_{\text{ext}}} = -(-2\pi) = 2\pi\).
+        Notavelmente, o resultado não depende de \(\varepsilon\) nem do raio de
+        \(C\).
+      </p>
     </div>
   </details>
 </li>

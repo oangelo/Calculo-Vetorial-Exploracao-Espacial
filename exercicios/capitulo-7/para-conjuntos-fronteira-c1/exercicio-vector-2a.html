@@ -1,25 +1,60 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
   <div class="context">
-    ORIGEM: Programa Vostok (Análise Interceptada 17/SET/1962)
+    ORIGEM: Laboratório de Dinâmica Orbital –
+    <span class="censored">██████</span> (20/JUL/1969)
   </div>
   <p>
-    Verifique o Teorema de Green para o campo \(\vec F=(-y,x)\) na região anular
-    \(1\le x^{2}+y^{2}\le4\). Use orientação padrão: borda externa anti-horária,
-    interna horária.
+    No exercício anterior, a integral dupla no Teorema de Green produziu a área
+    — um resultado positivo e concreto. Mas o que acontece quando a integral
+    dupla é <strong>zero</strong>? Esse caso conecta diretamente com os campos
+    conservativos que estudamos no capítulo anterior: se o rotacional no plano é
+    nulo e a região é simplesmente conexa, a circulação deve ser zero.
+  </p>
+  <p>
+    Calcule a circulação do campo \(\vec{F}(x,y) = (y, x)\) ao redor da elipse
+    \(C: \frac{x^2}{9} + \frac{y^2}{4} = 1\), orientada positivamente.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a diferença \(\frac{\partial Q}{\partial x} -
+    \frac{\partial P}{\partial y}\) e observe o que acontece.
+  </p>
+  <p>
+    <strong>(b)</strong> Interprete o resultado à luz dos campos conservativos
+    estudados no capítulo anterior: o que o valor zero do rotacional implica
+    sobre a integral de linha?
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique o resultado calculando a integral de linha
+    diretamente, parametrizando a elipse.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de conservação podem ser relevantes.
+      [NOTA TÉCNICA]: Lembre-se do critério de conservatividade: se
+      \(\frac{\partial Q}{\partial x} = \frac{\partial P}{\partial y}\) em uma
+      região simplesmente conexa, o campo é conservativo e a circulação sobre
+      qualquer curva fechada é zero.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
-      \[\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} =1+1=2\]
-      Área do anel \(=3\pi\) ⇒ integral dupla \(6\pi\). As integrais de contorno
-      dão \(2\pi(2)^{2}-2\pi(1)^{2}=6\pi\), confirmando o teorema.
+      <p>
+        (a) \(P = y\), \(Q = x\). Temos \(\frac{\partial Q}{\partial x} = 1\) e
+        \(\frac{\partial P}{\partial y} = 1\). Logo a diferença é \(1 - 1 = 0\).
+      </p>
+      <p>
+        (b) O rotacional é nulo em todo o plano, que é simplesmente conexo.
+        Portanto \(\vec{F}\) é conservativo (de fato, \(\vec{F} = \nabla(x^2/2 +
+        y^2/2)\)). A circulação sobre qualquer curva fechada é zero.
+      </p>
+      <p>
+        (c) Parametrizando \(x = 3\cos t\), \(y = 2\sin t\): \(\oint(y\,dx +
+        x\,dy) = \int_0^{2\pi}[(2\sin t)(-3\sin t) + (3\cos t)(2\cos t)]\,dt =
+        \int_0^{2\pi} 6(\cos^2 t - \sin^2 t)\,dt = 6\int_0^{2\pi}\cos(2t)\,dt =
+        0\).
+      </p>
     </div>
   </details>
 </li>
