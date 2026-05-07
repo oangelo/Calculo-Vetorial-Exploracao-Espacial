@@ -1,25 +1,58 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: Simulação de Antenas Helicoidais — Seção de Comunicações (1966)
+    ORIGEM: Engenharia de Tanques Cilíndricos — Apollo 14 [FEV/1971]
   </div>
   <p>
-    Configure uma helicoide parametrizada a partir de uma reta que gira em torno
-    do eixo \(z\) enquanto sobe linearmente. Defina os intervalos que descrevem
-    duas voltas completas.
+    Você acabou de identificar uma superfície lendo sua parametrização. Agora
+    vamos construir superfícies usando uma ideia poderosa: rolar uma curva em
+    torno de um eixo. Comece com o caso mais simples. Considere o círculo no
+    plano <strong>xz</strong> dado por <strong>x² + z² = R²</strong>, com
+    <strong>x ≥ 0</strong>.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o círculo meridiano no plano
+    <strong>xz</strong> usando um ângulo <strong>v</strong> como parâmetro,
+    identificando as componentes <strong>x(v)</strong> e <strong>z(v)</strong>.
+  </p>
+  <p>
+    <strong>(b)</strong> Adicione uma rotação em torno do eixo
+    <strong>z</strong>, introduzindo um segundo parâmetro
+    <strong>u</strong> (ângulo azimutal). Escreva a parametrização completa
+    \(\vec{r}(u,v)\) do cilindro circular reto de raio <strong>R</strong> e
+    altura ilimitada.
+  </p>
+  <p>
+    <strong>(c)</strong> Restrinja o domínio dos parâmetros para descrever
+    apenas o trecho do cilindro entre <strong>z = 0</strong> e
+    <strong>z = H</strong>, e esboce a superfície indicando a direção de
+    crescimento de cada parâmetro.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Conserve a razão entre subida axial e ângulo de rotação.
+      [NOTA TÉCNICA]: No item (a), use a parametrização usual do círculo:
+      \(\vec{c}(v) = (R\cos v,\, 0,\, R\sin v)\). No item (b), aplique a matriz
+      de rotação em torno do eixo <strong>z</strong>: \((x\cos u − y\sin u,\;
+      x\sin u + y\cos u,\; z)\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Uma escolha: \(\vec{r}(u,v) = (v\cos u,\, v\sin u,\, c u)\) com
-        \(u\in[0,4\pi]\), \(v\in[0,a]\); o parâmetro \(c\) controla o passo.
+        <strong>(a)</strong> \(\vec{c}(v) = (R\cos v,\, 0,\, R\sin v)\), com
+        <strong>v ∈ [−π/2, π/2]</strong> para garantir <strong>x ≥ 0</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> Rotacionando em torno de <strong>z</strong>:
+        \(\vec{r}(u,v) = (R\cos v\cos u,\; R\cos v\sin u,\; R\sin v)\).
+        Equivalentemente, usando <strong>v</strong> como altura: \(\vec{r}(u,v)
+        = (R\cos u,\; R\sin u,\; v)\).
+      </p>
+      <p>
+        <strong>(c)</strong> Para o cilindro de altura <strong>H</strong>:
+        <strong>u ∈ [0, 2π]</strong> e <strong>v ∈ [0, H]</strong>.
       </p>
     </div>
   </details>

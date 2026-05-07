@@ -1,62 +1,140 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">07</span> DE JANEIRO DE
-    <span class="censored">1969</span><br />
+    DATA: <span class="censored">05</span> DE FEVEREIRO DE
+    <span class="censored">1972</span><br />
     LOCALIZAÇÃO:
-    <span class="censored">CENTRO DE PESQUISA ORBITAL Ω</span>
+    <span class="censored">CENTRO DE ANÁLISE LUNAR APOLLO</span>
   </div>
   <div class="document-intro">
-    MEMORANDO INTERNO Nº <span class="censored">Δ‑314</span><br /><br />
-    Em virtude da aproximação do teste de acoplamento em órbita terrestre baixa
-    da missão <span class="censored">APOLLO‑Ω</span>, o Comitê de Geometria
-    Secreta requisitou um manual emergencial contendo exercícios sobre
-    parametrizações de superfícies fundamentais. Estes cenários treinam os
-    cadetes a reconstruir geometrias críticas a partir de dados mínimos de
-    telemetria.<br /><br />
-    O conteúdo adiante foi extraído dos cadernos de campo do Prof.
-    <span class="censored">███████</span>, após sua conferência a portas
-    fechadas no <span class="censored">LABORATÓRIO VECTOR</span>.
+    MEMORANDO INTERNO Nº <span class="censored">Δ‑814</span><br /><br />
+    Com o sucesso das missões Apollo 14 e 15, nossa equipe de geometria orbital
+    foi requisitada para desenvolver modelos paramétricos de superfícies
+    críticas: domos de habitat, tanques de combustível e painéis térmicos.
+    Diferente das trajetórias unidimensionais que descrevemos com
+    <span class="censored">r(t)</span> no Capítulo 1, agora precisamos descrever
+    membranas inteiras — superfícies que exigem dois parâmetros
+    independentes.<br /><br />
+    Este manual treina os cadetes a reconstruir geometrias tridimensionais a
+    partir de dados mínimos de telemetria, usando o formalismo
+    <span class="censored">r(u,v)</span> como generalização natural das funções
+    vetoriais já dominadas.
   </div>
   <div class="warning-box">
     Atenção: qualquer difusão não autorizada destes cálculos estratégicos
     implicará <span class="censored">sanções severas</span> conforme diretiva
-    <span class="censored">Γ‑42</span>.
+    <span class="censored">Γ‑72</span>.
   </div>
   <div class="metadata">
-    <span>REF: VX‑<span class="censored">0909</span></span>
+    <span>REF: VX‑<span class="censored">0801</span></span>
     <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">3</span></span>
     <span
       >CÓPIAS: <span class="censored">1</span> DE
-      <span class="censored">2</span></span
+      <span class="censored">3</span></span
     >
   </div>
 </div>
 <div class="section-title">
-  FUNDAMENTAÇÃO TEÓRICA: ÁREA E INTEGRAL DE SUPERFÍCIE
+  FUNDAMENTAÇÃO TEÓRICA: SUPERFÍCIES PARAMETRIZADAS
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+  <p><strong>1. DE r(t) PARA r(u,v): A GENERALIZAÇÃO</strong></p>
+  <p>
+    No Capítulo 1, você descreveu trajetórias de naves com uma função vetorial
+    de uma variável: <strong>r(t)</strong>, onde o parâmetro
+    <strong>t</strong> representava o tempo. Cada valor de
+    <strong>t</strong> produzia um único ponto no espaço — a posição da nave
+    naquele instante.
+  </p>
+  <p class="formula-highlight">\[\vec{r}(t) = (x(t),\, y(t),\, z(t))\]</p>
+  <p>
+    Uma <strong>superfície parametrizada</strong> generaliza essa ideia: agora
+    temos <strong>dois parâmetros</strong>, <strong>u</strong> e
+    <strong>v</strong>, e cada par ordenado <strong>(u,v)</strong> produz um
+    ponto <strong>r(u,v)</strong> no espaço. A diferença crucial é que, enquanto
+    <strong>r(t)</strong> descreve uma <em>curva</em> (1D),
+    <strong>r(u,v)</strong> descreve uma <em>superfície</em> (2D).
+  </p>
   <p class="formula-highlight">
-    \[A = \iint_{\mathcal{D}} \left| \frac{\partial \vec{r}}{\partial u} \times
-    \frac{\partial \vec{r}}{\partial v} \right|\; du\,dv\]
+    \[\vec{r}(u,v) = (x(u,v),\, y(u,v),\, z(u,v)),\quad (u,v) \in D\]
   </p>
   <p>
-    Uma superfície paramétrica é descrita por \(\vec{r}(u,v) =
-    (x(u,v),\,y(u,v),\,z(u,v))\). O elemento de área resulta do produto vetorial
-    dos vetores tangentes \(\vec{r}_u\) e \(\vec{r}_v\).
+    O conjunto <strong>D</strong> é o <strong>domínio dos parâmetros</strong> —
+    uma região plana (geralmente um retângulo ou disco) que funciona como o
+    "mapa" da superfície. Cada ponto do domínio corresponde a um ponto da
+    superfície, e curvas no domínio correspondem a curvas na superfície.
   </p>
 </div>
-<div class="mission-context">
-  No planejamento de painéis solares orientáveis e tanques externos de
-  combustível, a correta modelagem da área de superfícies complexas influencia
-  diretamente a distribuição de carga, o controle térmico e a assinatura radar
-  da nave.
+<div class="concept-definition">
+  <p><strong>2. GRÁFICOS COMO CASO ESPECIAL</strong></p>
+  <p>
+    Você já conhece uma classe enorme de superfícies parametrizadas sem saber:
+    os <strong>gráficos de funções de duas variáveis</strong>,
+    <strong>z = f(x,y)</strong>. Basta escolher <strong>u = x</strong> e
+    <strong>v = y</strong>, e a parametrização torna-se trivial:
+  </p>
+  <p class="formula-highlight">\[\vec{r}(u,v) = (u,\, v,\, f(u,v))\]</p>
+  <p>
+    Isso significa que todo paraboloide, cone (exceto o vértice), e plano que
+    você estudou como gráfico já era uma superfície parametrizada. A novidade
+    está em superfícies que <strong>não são gráficos</strong> — como a esfera,
+    que falha o teste da vertical (dois pontos para cada
+    <strong>(x,y)</strong>).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. A ESFERA: PARAMETRIZAÇÃO FUNDAMENTAL</strong></p>
+  <p>
+    A esfera de raio <strong>R</strong> centrada na origem não pode ser escrita
+    como <strong>z = f(x,y)</strong> globalmente. Mas usando as
+    <strong>coordenadas esféricas</strong> que você dominou no Capítulo 4,
+    obtemos uma parametrização elegante:
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(\phi,\theta) = (R\sin\phi\cos\theta,\; R\sin\phi\sin\theta,\;
+    R\cos\phi)\]
+  </p>
+  <p>
+    onde <strong>φ ∈ [0, π]</strong> é o ângulo polar (medido a partir do eixo
+    <strong>z</strong>) e <strong>θ ∈ [0, 2π)</strong> é o ângulo azimutal
+    (rotação em torno do eixo <strong>z</strong>). Esses intervalos cobrem a
+    esfera inteira exatamente uma vez — exceto possivelmente uma linha de
+    longitude, que pode ser incluída por continuidade.
+  </p>
+  <p>
+    A esfera é o exemplo mais importante desta lista: ela reaparecerá em todos
+    os tópicos seguintes (plano tangente, área, integral de superfície).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. CURVAS-COORDENADAS: A "GRADE" DO MAPA</strong></p>
+  <p>
+    Fixar um parâmetro e variar o outro produz uma
+    <strong>curva na superfície</strong>. Essas curvas são as
+    <strong>curvas-coordenadas</strong>:
+  </p>
+  <p>
+    <strong>u = constante</strong> → curva <strong>v</strong> (varia apenas
+    <strong>v</strong>)<br />
+    <strong>v = constante</strong> → curva <strong>u</strong> (varia apenas
+    <strong>u</strong>)
+  </p>
+  <p>
+    Na esfera, <strong>φ = constante</strong> produz paralelos (círculos
+    horizontais) e <strong>θ = constante</strong> produz meridianos
+    (semicírculos verticais). Essa "grade" de curvas é essencial para visualizar
+    a superfície e será a base para o conceito de plano tangente no próximo
+    tópico.
+  </p>
 </div>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Em fevereiro de 1965, estudos paramétricos
-  semelhantes permitiram otimizar o revestimento ablativo do módulo Gemini VIII,
-  prevenindo falha catastrófica durante reentrada experimental — fato mantido em
-  sigilo até hoje.
+  <strong>NOTA HISTÓRICA:</strong> Durante as missões Apollo 14-17 (1971-1972),
+  cálculos paramétricos de superfícies foram usados para modelar o
+  <span class="censored">revestimento térmico do módulo lunar</span> e o
+  <span class="censored">formato dos painéis solares do rover</span>. A
+  capacidade de descrever uma superfície completa a partir de dois parâmetros
+  permitiu otimizar a distribuição de massa e a resistência estrutural dos
+  equipamentos em condições de vácuo e temperatura extrema — técnicas que
+  fundamentariam o projeto <span class="censored">Skylab</span> nos anos
+  seguintes.
 </div>
-Lista de Exercícios

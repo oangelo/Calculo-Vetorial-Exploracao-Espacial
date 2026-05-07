@@ -1,18 +1,60 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
   <div class="context">
-    ORIGEM: Estudo sobre Superfícies de Onda — Seção de Física Avançada (1969)
+    ORIGEM: Centro de Materiais Topológicos — Apollo 17 [DEZ/1972]
   </div>
   <p>
-    Crie uma parametrização para a superfície \(z = \sin(u^2 + v^2)\) em \(u,v
-    \in [-\pi,\pi]\).
+    Até agora todas as superfícies tinham dois lados distintos — um "de dentro"
+    e um "de fora". E se existisse uma superfície com apenas um lado? A fita de
+    Möbius desafia essa intuição. Ela é obtida tomando uma tira retangular e
+    aplicando uma torção de meia volta antes de unir as extremidades.
   </p>
+  <p>
+    <strong>(a)</strong> Comece com uma tira retangular no plano
+    <strong>xy</strong>: \(\vec{c}(u) = (\cos u,\, \sin u,\, 0)\) com
+    <strong>u ∈ [0, 2π]</strong> (círculo central) e largura
+    <strong>2w</strong>. Descreva como a torção de meia volta modifica a
+    componente <strong>z</strong> em função de <strong>u</strong>.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a parametrização completa da fita de Möbius,
+    incluindo a torção e a largura da tira. Use
+    <strong>v ∈ [−w, w]</strong> como parâmetro de largura.
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que, ao percorrer o caminho central (<strong
+      >v = 0</strong
+    >) de <strong>u = 0</strong> até <strong>u = 2π</strong>, a orientação se
+    inverte. Explique por que isso impede a definição de "lado de dentro" e
+    "lado de fora" na fita de Möbius.
+  </p>
+  <!-- OMEGA: sem dica -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Simplesmente \(\vec{r}(u,v) = (u,\, v,\, \sin(u^2 + v^2))\) para os
-        limites indicados.
+        <strong>(a)</strong> A torção de meia volta introduz uma variação de
+        <strong>π</strong> no ângulo de inclinação ao longo do caminho central.
+        A componente <strong>z</strong> deve ser proporcional a \(\sin(u/2)\)
+        para que, ao completar uma volta (<strong>u = 2π</strong>), a tira tenha
+        sofrido uma rotação de <strong>π</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> Parametrização clássica: \(\vec{r}(u,v) = \bigl((1
+        + v\cos(u/2))\cos u,\; (1 + v\cos(u/2))\sin u,\; v\sin(u/2)\bigr)\), com
+        <strong>u ∈ [0, 2π]</strong> e <strong>v ∈ [−w, w]</strong>. Aqui
+        <strong>a = 1</strong> é o raio do círculo central.
+      </p>
+      <p>
+        <strong>(c)</strong> No caminho central (<strong>v = 0</strong>), temos
+        \(\vec{r}(u,0) = (\cos u,\, \sin u,\, 0)\). O vetor normal ao longo da
+        tira é \(\vec{n}(u) = (\cos(u/2)\cos u,\; \cos(u/2)\sin u,\;
+        \sin(u/2))\). Quando <strong>u</strong> aumenta de <strong>0</strong> a
+        <strong>2π</strong>, o vetor normal inverte de direção (<strong
+          >n(2π) = −n(0)</strong
+        >). Isso significa que não é possível definir um campo de vetores
+        normais contínuo e não-nulo em toda a superfície — logo não há "lado de
+        dentro" e "lado de fora" globalmente definidos.
       </p>
     </div>
   </details>

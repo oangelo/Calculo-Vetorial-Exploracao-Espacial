@@ -1,25 +1,70 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
   <div class="context">
-    ORIGEM: Oficina de Estruturas de Mínima Área — Documento β‑class (1968)
+    ORIGEM: Projeto de Antenas de Comunicação — Apollo 15 [JUL/1971]
   </div>
   <p>
-    Parametrize um catenoide utilizando a rotação da catenária \(z =
-    a\cosh(\frac{v}{a})\) em torno do eixo \(z\). Especifique os limites de
-    \(u\) e \(v\).
+    O toro combinava dois círculos. A helicoide combina rotação com translação:
+    uma reta que gira em torno de um eixo enquanto se desloca ao longo dele. É a
+    superfície de uma escada em espiral — ou de uma antena helicoidal usada em
+    transmissões de longo alcance.
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva o que acontece na parametrização
+    \(\vec{r}(u,v) = (v\cos u,\; v\sin u,\; c u)\) quando se fixa cada
+    parâmetro: <strong>v = v₀</strong> (constante) e
+    <strong>u = u₀</strong> (constante). Que tipo de curva é cada traço?
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a parametrização completa de uma helicoide que
+    descreve duas voltas completas (<strong>u ∈ [0, 4π]</strong>) com raio
+    máximo <strong>a</strong> e passo <strong>p</strong> (subida por volta).
+    Relacione <strong>c</strong> com <strong>p</strong>.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os traços da helicoide com os do cilindro do
+    exercício anterior. Qual é a diferença fundamental entre as duas
+    superfícies, em termos de como os parâmetros geram a geometria?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A superfície resultante minimiza área para bordas fixas.
+      [NOTA TÉCNICA]: No item (a), quando <strong>v = v₀</strong> é fixo, a
+      curva é uma hélice circular de raio <strong>v₀</strong>. Quando
+      <strong>u = u₀</strong>
+      é fixo, a curva é um segmento de reta radial no plano que faz ângulo
+      <strong>u₀</strong> com o eixo <strong>x</strong>. No item (b), o passo
+      <strong>p</strong> é a subida em uma volta completa (<strong
+        >Δu = 2π</strong
+      >), logo <strong>c = p/(2π)</strong>.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Uma parametrização: \(\vec{r}(u,v) = (a\cosh v \cos u,\, a\cosh v \sin
-        u,\, a v)\) com \(u\in[0,2\pi]\), \(v\in[-v_0,v_0]\).
+        <strong>(a)</strong> Fixando <strong>v = v₀</strong>: \(\vec{r}(u,v₀) =
+        (v₀\cos u,\; v₀\sin u,\; c u)\). É uma
+        <strong>hélice circular</strong> de raio <strong>v₀</strong> e passo
+        <strong>2πc</strong>. Fixando <strong>u = u₀</strong>: \(\vec{r}(u₀,v) =
+        (v\cos u₀,\; v\sin u₀,\; c u₀)\). É um
+        <strong>segmento de reta radial</strong> no plano inclinado de ângulo
+        <strong>u₀</strong>, à altura constante <strong>cu₀</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> Para duas voltas com raio máximo
+        <strong>a</strong> e passo <strong>p</strong>: \(\vec{r}(u,v) = (v\cos
+        u,\; v\sin u,\; (p/2\pi)u)\), com <strong>u ∈ [0, 4π]</strong> e
+        <strong>v ∈ [0, a]</strong>.
+      </p>
+      <p>
+        <strong>(c)</strong> No cilindro, fixar <strong>v</strong> produz um
+        círculo horizontal (sem subida). Na helicoide, fixar
+        <strong>v</strong> produz uma hélice que sobe à medida que gira. A
+        diferença fundamental é que a helicoide acopla rotação
+        (<strong>u</strong>) com translação axial (<strong>z</strong>
+        proporcional a <strong>u</strong>), enquanto o cilindro desacopla esses
+        movimentos (<strong>z</strong> independente de <strong>u</strong>).
       </p>
     </div>
   </details>
