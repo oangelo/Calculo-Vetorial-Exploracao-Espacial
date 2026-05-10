@@ -104,27 +104,9 @@
   text-shadow: 0 0 10px var(--glow);
 }
 
-/* =============================================
-   AMBIENTE ESPACIAL BASE
-   ============================================= */
 .reveal {
-  background: var(--space-black);
-  color: var(--text-color);
-  position: relative;
-  overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 95%;
-}
-
-/* Campo estelar */
-.reveal::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
+  background-color: var(--space-black);
+  background-image:
     radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.4), transparent)
       0 0,
     radial-gradient(1px 1px at 80px 140px, rgba(255,255,255,0.3), transparent)
@@ -164,9 +146,11 @@
     radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent)
       0 0;
   background-size: 300px 320px;
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 0;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 95%;
 }
 
 /* =============================================
@@ -245,8 +229,6 @@
   text-align: center;
   height: 100%;
   width: 100%;
-  position: relative;
-  z-index: 1;
 }
 
 .reveal .slides section {
