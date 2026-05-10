@@ -4,12 +4,30 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <section>
+    <section class="title-slide">
+      <div class="classified-banner">&#9881; INTERNAL USE ONLY &#9881;</div>
+      <div class="doc-border"></div>
+      <div class="watermark">RESTRICTED</div>
+      <p class="classification-code">DOC. REF: CV-CH0-1945</p>
+      <div class="faction-emblem"></div>
+      <div class="title-rule"></div>
       <h1>Fundamentos Matemáticos da Exploração Espacial</h1>
       <h3>Revisão de Cálculo Diferencial e Integral</h3>
-      <p>Conectando os conceitos matemáticos à conquista do espaço</p>
-      <div class="asteroid"></div>
-      <div class="asteroid"></div>
+      <div class="title-rule"></div>
+      <p class="chapter-meta">Capítulo 0 &middot; Pré-Guerra &middot; Revisão</p>
+      <div class="classified-footer">INSTITUTE OF VECTOR CALCULUS &mdash; APPLIED MATHEMATICS DIVISION</div>
     </section>
+
+    <script>
+      (function() {
+        fetch('../emblemas/emblema-neutral.svg')
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            document.querySelectorAll('.faction-emblem').forEach(function(el) {
+              el.innerHTML = svg;
+            });
+          });
+      })();
+    </script>
   </body>
 </html>

@@ -18,13 +18,18 @@
         <!-- ===================== -->
         <!-- SLIDE 1: TÍTULO       -->
         <!-- ===================== -->
-        <section>
+        <section class="title-slide">
+          <div class="classified-banner">&#9733; TOP SECRET &#9733;</div>
+          <div class="doc-border"></div>
+          <div class="watermark">CLASSIFIED</div>
+          <p class="classification-code">DOC. REF: CV-CH2-1957</p>
+          <div class="faction-emblem" id="title-emblem"></div>
+          <div class="title-rule"></div>
           <h1>Integrais Duplas</h1>
-          <h3>Template — Facção Aliados (Azul)</h3>
-          <p>Cálculo Vetorial &middot; Capítulo 2</p>
-          <p style="font-size: 0.7em; opacity: 0.5; margin-top: 2em;">
-            data-faction="allies"
-          </p>
+          <h3>Explorando o Espaço através da Matemática</h3>
+          <div class="title-rule"></div>
+          <p class="chapter-meta">Capítulo 2 &middot; Era Sputnik &middot; 1957–1961</p>
+          <div class="classified-footer">DEPARTMENT OF VECTOR CALCULUS &mdash; SPACE EXPLORATION DIVISION</div>
         </section>
 
         <!-- ===================== -->
@@ -281,6 +286,16 @@ function riemannSum(f, a, b, c, d, n) {
     </div>
 
     <script>
+      (function() {
+        fetch('emblemas/emblema-allies.svg')
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            document.querySelectorAll('.faction-emblem').forEach(function(el) {
+              el.innerHTML = svg;
+            });
+          });
+      })();
+
       Reveal.initialize({
         controls: true,
         progress: true,

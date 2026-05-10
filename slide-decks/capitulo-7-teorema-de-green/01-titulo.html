@@ -4,12 +4,30 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <section>
+    <section class="title-slide">
+      <div class="classified-banner">&#9733; TOP SECRET &#9733;</div>
+      <div class="doc-border"></div>
+      <div class="watermark">CLASSIFIED</div>
+      <p class="classification-code">DOC. REF: CV-CH7-1969</p>
+      <div class="faction-emblem"></div>
+      <div class="title-rule"></div>
       <h1>Teorema de Green</h1>
       <h3>Uma ponte entre cálculo de linha e cálculo de área</h3>
-      <p>Cálculo Vetorial na Era da Exploração Espacial</p>
+      <div class="title-rule"></div>
+      <p class="chapter-meta">Capítulo 7 &middot; Pouso Lunar &middot; 1969–1970</p>
+      <div class="classified-footer">DEPARTMENT OF VECTOR CALCULUS &mdash; SPACE EXPLORATION DIVISION</div>
     </section>
 
-    <!-- 1. INTRODUÇÃO AO TEOREMA DE GREEN -->
+    <script>
+      (function() {
+        fetch('../emblemas/emblema-allies.svg')
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            document.querySelectorAll('.faction-emblem').forEach(function(el) {
+              el.innerHTML = svg;
+            });
+          });
+      })();
+    </script>
   </body>
 </html>

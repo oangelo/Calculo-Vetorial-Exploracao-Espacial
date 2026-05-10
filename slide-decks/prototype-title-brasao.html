@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pt-BR" data-faction="allies">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Protótipo — Título com Brasão SVG</title>
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="space-theme.css" />
+    <script src="reveal.js/dist/reveal.js"></script>
+    <style>
+      .title-slide {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap: 0;
+      }
+
+      .faction-emblem {
+        width: 330px;
+        height: 330px;
+        margin-bottom: 0.8em;
+        opacity: 0;
+        animation: emblemFadeIn 1s ease forwards;
+        filter: drop-shadow(0 0 20px var(--glow));
+      }
+
+      .faction-emblem img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      @keyframes emblemFadeIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      .title-rule {
+        width: 60%;
+        max-width: 500px;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent-color),
+          var(--star-color),
+          var(--accent-color),
+          transparent
+        );
+        margin: 0.6em 0;
+        opacity: 0.6;
+      }
+
+      .title-slide h1 {
+        margin-bottom: 0.2em;
+        letter-spacing: 0.12em;
+        font-size: 1.8em;
+      }
+
+      .title-slide h3 {
+        font-weight: 300;
+        opacity: 0.85;
+        margin-bottom: 0.2em;
+        letter-spacing: 0.05em;
+      }
+
+      .chapter-meta {
+        font-size: 0.75em;
+        opacity: 0.5;
+        margin-top: 0.5em;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+      }
+
+      .faction-toggle {
+        position: fixed;
+        top: 12px;
+        right: 12px;
+        z-index: 100;
+        display: flex;
+        gap: 6px;
+      }
+
+      .faction-toggle button {
+        padding: 6px 14px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 20px;
+        background: rgba(10,10,15,0.8);
+        color: #e0e0e0;
+        cursor: pointer;
+        font-size: 0.8em;
+        transition: all 0.3s;
+      }
+
+      .faction-toggle button:hover {
+        background: rgba(255,255,255,0.15);
+      }
+
+      .faction-toggle button.active-allies {
+        border-color: #64b5f6;
+        color: #64b5f6;
+        box-shadow: 0 0 10px rgba(100,181,246,0.3);
+      }
+
+      .faction-toggle button.active-soviet {
+        border-color: #e57373;
+        color: #e57373;
+        box-shadow: 0 0 10px rgba(229,115,115,0.3);
+      }
+
+      .faction-toggle button.active-neutral {
+        border-color: #ffb300;
+        color: #ffb300;
+        box-shadow: 0 0 10px rgba(255,179,0,0.3);
+      }
+
+      .approach-label {
+        position: fixed;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.65em;
+        opacity: 0.35;
+        z-index: 100;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="faction-toggle">
+      <button onclick="setFaction('allies')" id="btn-allies" class="active-allies">ALIADOS</button>
+      <button onclick="setFaction('soviet')" id="btn-soviet">SOVIÉTICO</button>
+      <button onclick="setFaction('neutral')" id="btn-neutral">NEUTRO</button>
+    </div>
+
+    <div class="approach-label">Abordagem 1: Brasão SVG + Linhas Decorativas</div>
+
+    <div class="reveal">
+      <div class="asteroid"></div>
+      <div class="asteroid"></div>
+      <div class="slides">
+
+        <section class="title-slide">
+          <div class="faction-emblem" id="emblem-top"></div>
+          <div class="title-rule"></div>
+          <h1>Integrais Duplas</h1>
+          <h3>Explorando o Espaço através da Matemática</h3>
+          <div class="title-rule"></div>
+          <p class="chapter-meta">Capítulo 2 &middot; Era Sputnik &middot; 1957–1961</p>
+        </section>
+
+        <section class="title-slide">
+          <div class="faction-emblem" id="emblem-ch0"></div>
+          <div class="title-rule"></div>
+          <h1>Fundamentos da Exploração Espacial</h1>
+          <h3>Revisão de Cálculo Diferencial e Integral</h3>
+          <div class="title-rule"></div>
+          <p class="chapter-meta">Capítulo 0 &middot; Pré-Guerra &middot; Revisão</p>
+        </section>
+
+        <section class="title-slide">
+          <div class="faction-emblem" id="emblem-ch5"></div>
+          <div class="title-rule"></div>
+          <h1>Integrais de Linha</h1>
+          <h3>Tragetórias e Campos Vetoriais</h3>
+          <div class="title-rule"></div>
+          <p class="chapter-meta">Capítulo 5 &middot; Primeiras Apollo &middot; 1967–1969</p>
+        </section>
+
+      </div>
+    </div>
+
+    <script>
+      var currentFaction = 'allies';
+
+      var emblems = {
+        allies: 'emblemas/emblema-allies.svg',
+        soviet: 'emblemas/emblema-soviet.svg',
+        neutral: 'emblemas/emblema-neutral.svg'
+      };
+
+      function setFaction(faction) {
+        currentFaction = faction;
+        document.documentElement.setAttribute('data-faction', faction);
+
+        document.querySelectorAll('.faction-toggle button').forEach(function(b) {
+          b.className = '';
+        });
+        document.getElementById('btn-' + faction).className = 'active-' + faction;
+
+        renderEmblems();
+      }
+
+      var emblemCache = {};
+
+      function renderEmblems() {
+        var src = emblems[currentFaction];
+        if (emblemCache[src]) {
+          injectInline(emblemCache[src]);
+          return;
+        }
+        fetch(src)
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            emblemCache[src] = svg;
+            injectInline(svg);
+          });
+      }
+
+      function injectInline(svg) {
+        document.querySelectorAll('.faction-emblem').forEach(function(el) {
+          el.innerHTML = svg;
+          var svgEl = el.querySelector('svg');
+          if (svgEl) {
+            svgEl.style.width = '100%';
+            svgEl.style.height = '100%';
+          }
+        });
+      }
+
+      renderEmblems();
+
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        plugins: [],
+      });
+    </script>
+  </body>
+</html>

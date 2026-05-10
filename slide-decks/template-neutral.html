@@ -18,13 +18,18 @@
         <!-- ===================== -->
         <!-- SLIDE 1: TÍTULO       -->
         <!-- ===================== -->
-        <section>
+        <section class="title-slide">
+          <div class="classified-banner">&#9881; INTERNAL USE ONLY &#9881;</div>
+          <div class="doc-border"></div>
+          <div class="watermark">RESTRICTED</div>
+          <p class="classification-code">DOC. REF: CV-CH0-1945</p>
+          <div class="faction-emblem" id="title-emblem"></div>
+          <div class="title-rule"></div>
           <h1>Integrais Duplas</h1>
-          <h3>Template — Facção Neutra (Dourado)</h3>
-          <p>Cálculo Vetorial &middot; Capítulo 0</p>
-          <p style="font-size: 0.7em; opacity: 0.5; margin-top: 2em;">
-            data-faction="neutral"
-          </p>
+          <h3>Explorando o Espaço através da Matemática</h3>
+          <div class="title-rule"></div>
+          <p class="chapter-meta">Capítulo 0 &middot; Pré-Guerra &middot; Revisão</p>
+          <div class="classified-footer">INSTITUTE OF VECTOR CALCULUS &mdash; APPLIED MATHEMATICS DIVISION</div>
         </section>
 
         <!-- ===================== -->
@@ -281,6 +286,16 @@ function riemannSum(f, a, b, c, d, n) {
     </div>
 
     <script>
+      (function() {
+        fetch('emblemas/emblema-neutral.svg')
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            document.querySelectorAll('.faction-emblem').forEach(function(el) {
+              el.innerHTML = svg;
+            });
+          });
+      })();
+
       Reveal.initialize({
         controls: true,
         progress: true,

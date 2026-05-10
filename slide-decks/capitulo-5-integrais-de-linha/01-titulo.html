@@ -4,13 +4,30 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <section>
+    <section class="title-slide">
+      <div class="classified-banner">&#9733; TOP SECRET &#9733;</div>
+      <div class="doc-border"></div>
+      <div class="watermark">CLASSIFIED</div>
+      <p class="classification-code">DOC. REF: CV-CH5-1967</p>
+      <div class="faction-emblem"></div>
+      <div class="title-rule"></div>
       <h1>Integrais de Linha</h1>
       <h3>Navegando em Campos Vetoriais na Era Espacial</h3>
+      <div class="title-rule"></div>
+      <p class="chapter-meta">Capítulo 5 &middot; Primeiras Apollo &middot; 1967–1969</p>
+      <div class="classified-footer">DEPARTMENT OF VECTOR CALCULUS &mdash; SPACE EXPLORATION DIVISION</div>
     </section>
 
-    <!-- =========================== -->
-    <!-- SLIDE DE CONTEXTO HISTÓRICO -->
-    <!-- =========================== -->
+    <script>
+      (function() {
+        fetch('../emblemas/emblema-allies.svg')
+          .then(function(r) { return r.text(); })
+          .then(function(svg) {
+            document.querySelectorAll('.faction-emblem').forEach(function(el) {
+              el.innerHTML = svg;
+            });
+          });
+      })();
+    </script>
   </body>
 </html>
