@@ -116,7 +116,7 @@
   font-size: 95%;
 }
 
-/* Campo estelar estático */
+/* Campo estelar */
 .reveal::before {
   content: '';
   position: fixed;
@@ -125,28 +125,48 @@
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)) calc(50px * 1)
-      calc(50px * 1),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)) calc(50px * 2)
-      calc(50px * 2),
-    radial-gradient(2px 2px at 50px 160px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 3) calc(50px * 3),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)) calc(50px * 4)
-      calc(50px * 4),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 5) calc(50px * 5),
-    radial-gradient(3px 3px at 160px 120px, var(--star-color), rgba(0, 0, 0, 0))
-      calc(50px * 6) calc(50px * 6),
-    radial-gradient(2px 2px at 200px 150px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 7) calc(50px * 7),
-    radial-gradient(2px 2px at 250px 250px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 8) calc(50px * 8),
-    radial-gradient(3px 3px at 300px 350px, var(--star-color), rgba(0, 0, 0, 0))
-      calc(50px * 9) calc(50px * 9);
-  background-size: 500px 500px;
-  opacity: 0.8;
+    radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.4), transparent)
+      0 0,
+    radial-gradient(1px 1px at 80px 140px, rgba(255,255,255,0.3), transparent)
+      0 0,
+    radial-gradient(1px 1px at 210px 55px, rgba(255,255,255,0.35), transparent)
+      0 0,
+    radial-gradient(1px 1px at 160px 210px, rgba(255,255,255,0.25), transparent)
+      0 0,
+    radial-gradient(1px 1px at 260px 180px, rgba(255,255,255,0.3), transparent)
+      0 0,
+    radial-gradient(1px 1px at 45px 270px, rgba(255,255,255,0.35), transparent)
+      0 0,
+    radial-gradient(1px 1px at 130px 40px, rgba(255,255,255,0.3), transparent)
+      0 0,
+    radial-gradient(1px 1px at 240px 280px, rgba(255,255,255,0.25), transparent)
+      0 0,
+    radial-gradient(1px 1px at 180px 100px, rgba(255,255,255,0.3), transparent)
+      0 0,
+    radial-gradient(1px 1px at 60px 190px, rgba(255,255,255,0.35), transparent)
+      0 0,
+    radial-gradient(2px 2px at 100px 80px, rgba(255,255,255,0.6), transparent)
+      0 0,
+    radial-gradient(2px 2px at 220px 230px, rgba(255,255,255,0.55), transparent)
+      0 0,
+    radial-gradient(2px 2px at 40px 120px, rgba(255,255,255,0.5), transparent)
+      0 0,
+    radial-gradient(2px 2px at 270px 60px, rgba(255,255,255,0.55), transparent)
+      0 0,
+    radial-gradient(2px 2px at 150px 260px, rgba(255,255,255,0.5), transparent)
+      0 0,
+    radial-gradient(2px 2px at 195px 155px, rgba(255,255,255,0.6), transparent)
+      0 0,
+    radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent)
+      0 0,
+    radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent)
+      0 0,
+    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent)
+      0 0;
+  background-size: 300px 320px;
+  opacity: 0.7;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 /* =============================================
@@ -225,6 +245,8 @@
   text-align: center;
   height: 100%;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 .reveal .slides section {
