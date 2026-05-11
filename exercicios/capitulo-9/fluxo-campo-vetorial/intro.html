@@ -1,0 +1,164 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">14</span> DE MAIO DE
+    <span class="censored">1973</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">SKYLAB ORBITAL WORKSHOP</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO TÉCNICO Nº <span class="censored">Φ-901</span><br /><br />
+    Após o lançamento bem-sucedido da estação
+    <span class="censored">Skylab</span> em 14 de maio de 1973, nossa equipe de
+    engenharia orbital identificou a necessidade de quantificar o
+    <strong>fluxo de campos vetoriais</strong> através de superfícies críticas
+    da estação: paredes de módulos pressurizados, antenas parabólicas, painéis
+    solares e tubulações de ar.<br /><br />
+    No Capítulo 8, você aprendeu a calcular a
+    <strong>integral de superfície</strong> de um campo <em>escalar</em>. Agora
+    enfrentamos uma questão mais sofisticada: quanto de um campo
+    <em>vetorial</em>
+    atravessa uma superfície? Esta é a pergunta central do
+    <strong>fluxo</strong> — e a resposta ligará tudo o que você aprendeu sobre
+    parametrização, vetores normais e integração à física de fluidos,
+    eletricidade e termodinâmica orbital.
+  </div>
+  <div class="warning-box">
+    Este documento contém dados críticos sobre o balanço de pressão e vazão na
+    estação orbital. Divulgação não autorizada acarretará
+    <span class="censored">corte imediato de credenciais</span> conforme
+    diretiva <span class="censored">Ψ-17</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">9001</span></span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+    <span
+      >CÓPIAS: <span class="censored">1</span> DE
+      <span class="censored">4</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: FLUXO DE UM CAMPO VETORIAL
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>1. FLUXO: QUANTO DO CAMPO ATRAVESSA A SUPERFÍCIE</strong>
+  </p>
+  <p>
+    Imagine um campo de velocidade de um fluido — por exemplo, o ar circulando
+    dentro de um módulo espacial. Se colocarmos uma membrana (uma superfície)
+    nesse fluxo, parte do ar atravessa a membrana e parte não. A grandeza que
+    mede <strong>quanto do campo passa de um lado para o outro</strong> é o
+    <strong>fluxo</strong>.
+  </p>
+  <p>
+    Em um único ponto da superfície, a contribuição local ao fluxo é o
+    <strong>produto escalar</strong> do campo \(\vec{F}\) com o vetor normal
+    unitário \(\hat{n}\) à superfície naquele ponto:
+  </p>
+  <p class="formula-highlight">
+    \[\text{fluxo local} = \vec{F} \cdot \hat{n}\]
+  </p>
+  <p>
+    Aqui, \(\vec{F}(x,y,z)\) é o campo vetorial e \(\hat{n}\) é o vetor unitário
+    perpendicular à superfície no ponto \((x,y,z)\). O produto escalar projeta o
+    campo na direção da normal: se o campo é paralelo à superfície, \(\vec{F}
+    \cdot \hat{n} = 0\) e nada atravessa; se é perpendicular, toda a magnitude
+    do campo contribui.
+  </p>
+  <p>
+    Para obter o fluxo total através de toda a superfície \(S\), integramos essa
+    contribuição local sobre cada ponto da superfície:
+  </p>
+  <p class="formula-highlight">
+    \[\Phi = \iint_S \vec{F} \cdot \hat{n} \, dS\]
+  </p>
+  <p>
+    O símbolo \(\Phi\) (letra grega fi maiúscula) denota o fluxo. A integral de
+    superfície soma "quanto do campo atravessa" cada elemento de área \(dS\).
+    Compare com a integral de superfície escalar do Capítulo 8: ali integrávamos
+    uma função \(f(x,y,z)\); aqui integramos o produto escalar \(\vec{F} \cdot
+    \hat{n}\).
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>2. ORIENTAÇÃO: PARA ONDE APONTA A NORMAL?</strong>
+  </p>
+  <p>
+    O vetor normal \(\hat{n}\) pode apontar para qualquer um dos dois lados da
+    superfície. Essa escolha é a <strong>orientação</strong>. Trocar \(\hat{n}\)
+    por \(-\hat{n}\) inverte o sinal do fluxo: o que era "para fora" vira "para
+    dentro" e vice-versa.
+  </p>
+  <p>
+    Para uma superfície <strong>fechada</strong> (como a casca de uma esfera), a
+    convenção é usar a normal <strong>apontando para fora</strong> do volume
+    delimitado. Com essa convenção:
+  </p>
+  <p>
+    <strong>Fluxo positivo</strong> \(\Rightarrow\) o campo sai do volume (mais
+    campo sai do que entra).<br />
+    <strong>Fluxo negativo</strong> \(\Rightarrow\) o campo entra no volume
+    (mais campo entra do que sai).<br />
+    <strong>Fluxo zero</strong> \(\Rightarrow\) entra tanto quanto sai — balanço
+    perfeito.
+  </p>
+  <p>
+    No cálculo prático usando a parametrização \(\vec{r}(u,v)\) do Capítulo 8, o
+    produto vetorial \(\vec{r}_u \times \vec{r}_v\) fornece um vetor normal (não
+    necessariamente unitário). O fluxo torna-se:
+  </p>
+  <p class="formula-highlight">
+    \[\Phi = \iint_D \vec{F}(\vec{r}(u,v)) \cdot (\vec{r}_u \times \vec{r}_v) \,
+    du \, dv\]
+  </p>
+  <p>
+    onde \(D\) é o domínio dos parâmetros \((u,v)\). A orientação correta
+    depende de verificar se \(\vec{r}_u \times \vec{r}_v\) aponta na direção
+    desejada; caso contrário, troca-se a ordem do produto vetorial.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>3. SUPERFÍCIES COMPOSTAS E FECHADAS</strong>
+  </p>
+  <p>
+    Muitas superfícies práticas — módulos espaciais, tanques, habitats — são
+    <strong>compostas por partes</strong>. Um cilindro, por exemplo, tem a
+    lateral mais dois discos nas bases. Uma cúpula hemisférica mais um disco
+    plan formam uma esfera completa.
+  </p>
+  <p>
+    O fluxo total através de uma superfície composta é a
+    <strong>soma dos fluxos por cada parte</strong>, desde que todas usem a
+    mesma orientação (normal para fora):
+  </p>
+  <p class="formula-highlight">
+    \[\Phi_{\text{total}} = \sum_{i=1}^{k} \iint_{S_i} \vec{F} \cdot \hat{n}_i
+    \, dS_i\]
+  </p>
+  <p>
+    Cada parte \(S_i\) pode exigir sua própria parametrização e seu próprio
+    vetor normal. A clave está em garantir que todas as normais apontem
+    <strong>para fora</strong> do volume delimitado. Essa ideia de somar fluxos
+    por partes de uma superfície fechada é o ponto de partida para um dos
+    teoremas mais importantes do cálculo vetorial.
+  </p>
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> O conceito de fluxo atravessa a história da
+  física. Gauss formulou seu famoso teorema sobre fluxo e divergência em 1835.
+  No século XX, a NASA aplicou esses conceitos para modelar o escoamento de
+  gases em câmaras de combustão, a distribuição de pressão em cabins
+  pressurizadas e o campo gravitacional ao redor de estações orbitais. O
+  <span class="censored">Skylab</span>, primeira estação espacial americana
+  (1973–1979), tinha módulos cilíndricos e hemisféricos cuja análise estrutural
+  dependia diretamente de cálculos de fluxo.
+</div>
