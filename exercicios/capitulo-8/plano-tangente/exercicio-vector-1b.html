@@ -1,15 +1,35 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
-  <div class="context">ORIGEM: Centro de Navegação – Vostok [12/AGO/1962]</div>
-  <p>Paraboloide \(z=x^2+y^2\). Encontre o plano tangente em \(P=(1,1,2)\).</p>
+  <div class="context">
+    ORIGEM: Centro de Análise de Terreno – Apollo 15 [26/JUL/1971]
+  </div>
+  <p>
+    No exercício anterior, você encontrou dois vetores tangentes
+    \(\vec{r}_u\) e \(\vec{r}_v\) no ponto \(P=(1,1,2)\) do paraboloide.
+    Agora precisamos de um vetor perpendicular a ambos para determinar o
+    plano tangente. Considere a mesma superfície
+    \(\vec{r}(u,v) = (u, v, u^2 + v^2)\).
+  </p>
+  <p><strong>(a)</strong> Calcule o produto vetorial \(\vec{r}_u \times \vec{r}_v\) no ponto \((1,1)\). Verifique, via produto escalar, que o resultado é ortogonal tanto a \(\vec{r}_u\) quanto a \(\vec{r}_v\).</p>
+  <p><strong>(b)</strong> Usando o vetor normal encontrado em (a) e o ponto \(P=(1,1,2)\), escreva a equação do plano tangente ao paraboloide nesse ponto.</p>
+  <p><strong>(c)</strong> Verifique geometricamente que o plano tangente contém o ponto \(P\) e que as duas curvas coordenadas do exercício anterior estão contidas no plano tangente na vizinhança de \(P\).</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-    <div class="hint">Derivadas parciais revelam a inclinação local.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Revisão do Capítulo 0: o produto vetorial
+      \(\vec{a} \times \vec{b}\) é ortogonal a ambos \(\vec{a}\) e
+      \(\vec{b}\). Use o produto escalar para confirmar:
+      \((\vec{r}_u \times \vec{r}_v) \cdot \vec{r}_u = 0\). Para o plano
+      tangente, use a forma ponto-normal:
+      \(\vec{n} \cdot (\vec{r} - \vec{r}_0) = 0\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      \(f_x=2x,\;f_y=2y\Rightarrow f_x=f_y=2\). Plano: \(z-2=2(x-1)+2(y-1)\).
+      <p><strong>(a)</strong> \(\vec{r}_u = (1,0,2)\), \(\vec{r}_v = (0,1,2)\). \(\vec{r}_u \times \vec{r}_v = (-2,-2,1)\). Verificação: \((-2,-2,1) \cdot (1,0,2) = -2+0+2 = 0\) e \((-2,-2,1) \cdot (0,1,2) = 0-2+2 = 0\).</p>
+      <p><strong>(b)</strong> Plano tangente: \((-2,-2,1) \cdot (x-1, y-1, z-2) = 0\), ou seja, \(-2(x-1) - 2(y-1) + (z-2) = 0\), que simplifica para \(z = 2x + 2y - 2\).</p>
+      <p><strong>(c)</strong> Substituindo \(P=(1,1,2)\): \(2 = 2(1) + 2(1) - 2 = 2\), verificado. As curvas coordenadas \(\vec{r}(u,1)\) e \(\vec{r}(1,v)\) têm vetores tangentes \(\vec{r}_u\) e \(\vec{r}_v\), que por construção pertencem ao plano tangente (são ortogonais a \(\vec{n}\)).</p>
     </div>
   </details>
 </li>

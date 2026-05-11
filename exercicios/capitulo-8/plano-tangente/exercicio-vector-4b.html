@@ -1,14 +1,27 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
-  <div class="context">ORIGEM: Painel Solar Rotativo – Skylab [JAN/1974]</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Anomalias – Apollo 16 [21/ABR/1972]
+  </div>
   <p>
-    Paraboloide elíptica \(z=\dfrac{x^2+4y^2}{4}\). Plano tangente em
-    \(P=(1,1,\tfrac54)\).
+    A noção de plano tangente se estende para superfícies mais exóticas
+    que aparecem em modelos de propulsores e escudos térmicos. O aluno
+    deve decidir qual método usar e justificar sua escolha. Considere a
+    superfície definida por
   </p>
+  <p class="formula-highlight">
+    \[z = e^{x^2 - y^2}\]
+  </p>
+  <p>e o ponto \(P = (1, 0, e)\).</p>
+  <p><strong>(a)</strong> Decida qual método (paramétrico ou gradiente) é mais adequado para esta superfície e justifique sua escolha.</p>
+  <p><strong>(b)</strong> Calcule o plano tangente ao superfície no ponto \(P\) usando o método escolhido.</p>
+  <p><strong>(c)</strong> Encontre o ângulo entre o plano tangente e o plano \(xy\) (plano de referência horizontal). O que esse ângulo representa fisicamente no contexto de um pouso lunar?</p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      \(f_x=\tfrac{x}{2},\;f_y=2y\Rightarrow(0.5,2).\;z-\tfrac54=0.5(x-1)+2(y-1)\).
+      <p><strong>(a)</strong> O método do gradiente é mais direto, pois a superfície já está dada como gráfico \(z = f(x,y)\). Parametrizar como \(\vec{r}(x,y) = (x, y, e^{x^2-y^2})\) também funciona, mas exige mais cálculo.</p>
+      <p><strong>(b)</strong> \(f_x = 2xe^{x^2-y^2}\), \(f_y = -2ye^{x^2-y^2}\). Em \(P=(1,0,e)\): \(f_x = 2e\), \(f_y = 0\). Plano tangente: \(z - e = 2e(x-1)\), ou \(z = 2ex - e\).</p>
+      <p><strong>(c)</strong> O plano tangente tem normal \(\vec{n} = (-2e, 0, 1)\) (via gradiente de \(F = z - e^{x^2-y^2}\)). O plano \(xy\) tem normal \(\vec{k} = (0,0,1)\). O ângulo \(\theta\) entre os planos satisfaz \(\cos\theta = \frac{|\vec{n} \cdot \vec{k}|}{\|\vec{n}\|} = \frac{1}{\sqrt{4e^2+1}}\). Portanto \(\theta = \arccos\left(\frac{1}{\sqrt{4e^2+1}}\right)\). Fisicamente, este é o ângulo de inclinação do terreno no ponto de pouso — crucial para estabilidade do módulo lunar.</p>
     </div>
   </details>
 </li>
