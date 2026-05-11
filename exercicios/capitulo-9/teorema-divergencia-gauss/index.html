@@ -3,35 +3,410 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Teorema da divergência (Gauss) - Cálculo Vetorial</title>
-    <link href="../../css/style.css" rel="stylesheet" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <div id="intro"></div>
+      <!-- INTRO INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">28</span> DE NOVEMBRO DE
+          <span class="censored">1983</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">LABORATÓRIO ORBITAL SPACELAB-1</span>
+        </div>
+        <div class="document-intro">
+          DOSSIÊ FINAL: PROJETO <span class="censored">TEOREMA-UNIFICADOR</span
+          ><br /><br />
+          Nosso programa de cálculo vetorial atingiu a fase final. Ao longo de
+          meses, construímos ferramentas que vão desde derivadas e integrais
+          simples até integrais de linha, superfície e os Teoremas de Green e
+          Stokes. Agora, o Teorema da Divergência de Gauss encerra o ciclo: ele
+          conecta o comportamento de um campo vetorial no interior de uma região
+          com o que acontece na sua fronteira. Mais do que uma técnica de
+          cálculo, este teorema é o fundamento de leis físicas como a
+          conservação de massa e a Lei de Gauss para o campo elétrico.<br /><br />
+          Este dossiê assume que o agente já dominou o enunciado e a verificação
+          do Teorema da Divergência em geometrias elementares (caixas, esferas,
+          cilindros). O foco agora é
+          <strong>aplicação estratégica e síntese</strong>: usar o teorema como
+          ferramenta para derivar leis da física e como ponto de chegada de toda
+          a disciplina.
+        </div>
+        <div class="warning-box">
+          Este documento contém a síntese final do programa de cálculo vetorial.
+          Qualquer divulgação não autorizada comprometerá
+          <span class="censored">operações críticas da missão</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">9012</span>-G</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">9</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA — APLICAÇÕES E SÍNTESE
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. O TEOREMA COMO FERRAMENTA: REVISÃO RÁPIDA</strong></p>
+        <p>
+          O Teorema da Divergência (Gauss) afirma que, para um campo vetorial
+          \(\mathbf{F}\) de classe \(C^1\) definido sobre uma região sólida
+          \(V\) com fronteira \(\partial V\) (superfície fechada e orientada
+          para fora),
+        </p>
+        <p class="formula-highlight">
+          \[\iint_{\partial V} \mathbf{F} \cdot d\mathbf{S} = \iiint_V (\nabla
+          \cdot \mathbf{F})\, dV.\]
+        </p>
+        <p>
+          O lado esquerdo é o <strong>fluxo</strong> de \(\mathbf{F}\) através
+          da superfície fechada (quanto "atravessa" a fronteira). O lado direito
+          é a integral do <strong>divergente</strong> \(\nabla \cdot
+          \mathbf{F}\) no volume. Nos tópicos anteriores, você verificou este
+          resultado em caixas, esferas e cilindros. Agora ele é ferramenta, não
+          mais objeto de verificação.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. CONSERVAÇÃO DE MASSA E A EQUAÇÃO DA CONTINUIDADE</strong>
+        </p>
+        <p>
+          Se um fluido com densidade \(\rho(x,y,z,t)\) escoa com velocidade
+          \(\mathbf{v}(x,y,z,t)\), a massa que atravessa a fronteira de uma
+          região por unidade de tempo é \(\displaystyle\iint_{\partial V}
+          \rho\,\mathbf{v} \cdot d\mathbf{S}\). Se não há fontes nem sumidouros
+          (a massa se conserva), essa taxa deve ser igual à variação negativa da
+          massa dentro de \(V\):
+        </p>
+        <p class="formula-highlight">
+          \[\frac{d}{dt}\iiint_V \rho\, dV = -\iint_{\partial V}
+          \rho\,\mathbf{v} \cdot d\mathbf{S}.\]
+        </p>
+        <p>
+          Aplicando o Teorema da Divergência ao lado direito e argumentando que
+          o resultado vale para <em>qualquer</em> volume \(V\), obtemos a
+          <strong>equação da continuidade</strong> em forma diferencial:
+          \(\dfrac{\partial \rho}{\partial t} + \nabla \cdot (\rho\,\mathbf{v})
+          = 0\). Esta equação governa o escoamento de gases em sistemas de
+          suporte de vida — exatamente o que acontece nos módulos orbitais do
+          Skylab e do Spacelab.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. LEI DE GAUSS PARA ELETROSTÁTICA</strong></p>
+        <p>
+          O campo elétrico \(\mathbf{E}\) gerado por uma carga puntiforme \(q\)
+          na origem é \(\mathbf{E} =
+          \dfrac{q}{4\pi\varepsilon_0}\dfrac{\mathbf{r}}{|\mathbf{r}|^3}\), onde
+          \(\varepsilon_0\) é a permissividade do vácuo. O divergente deste
+          campo é zero em todo lugar exceto na origem. Aplicando o Teorema da
+          Divergência com cuidado (excluindo a singularidade), obtemos a
+          <strong>Lei de Gauss</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[\iint_{\partial V} \mathbf{E} \cdot d\mathbf{S} =
+          \frac{Q_{\text{int}}}{\varepsilon_0},\]
+        </p>
+        <p>
+          onde \(Q_{\text{int}}\) é a carga total encerrada pela superfície
+          \(\partial V\). Com simetria (esférica ou cilíndrica), a Lei de Gauss
+          permite encontrar o campo elétrico
+          <em>sem realizar nenhuma integração direta</em> — basta escolher a
+          superfície gaussiana adequada e usar argumentos de simetria.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. A FAMÍLIA DOS TEOREMAS FUNDAMENTAIS</strong></p>
+        <p>
+          O Teorema da Divergência é o último membro de uma família que o curso
+          inteiro construiu:
+        </p>
+        <p class="formula-highlight">
+          \[\text{FTC (1D)} \quad\longrightarrow\quad \text{Green (2D)}
+          \quad\longrightarrow\quad \text{Stokes (2D\(\to\)3D)}
+          \quad\longrightarrow\quad \text{Gauss (3D)}\]
+        </p>
+        <p>
+          Cada teorema relaciona uma integral sobre um "interior" com uma
+          integral sobre a "fronteira". A "derivada" que aparece evolui:
+          derivada comum \(\to\) rotacional 2D \(\to\) rotacional 3D \(\to\)
+          divergente. A dimensão sobe junto: 1 \(\to\) 2 \(\to\) superfície no
+          espaço \(\to\) volume. O padrão é sempre o mesmo:
+          <strong
+            >integral da derivada sobre o interior = integral sobre a
+            fronteira</strong
+          >.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> James Clerk Maxwell (1831–1879)
+        unificou eletricidade e magnetismo em quatro equações que levam seu
+        nome. A primeira delas é a Lei de Gauss — que você deriva neste dossiê a
+        partir do Teorema da Divergência. As equações de Maxwell estão na base
+        de toda a tecnologia de comunicações espaciais, desde o rádio do Sputnik
+        até os links de dados do Spacelab (1983), primeiro laboratório europeu
+        em órbita, transportado pelo Space Shuttle Columbia na missão STS-9.
+      </div>
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
 
-      <div id="footer"></div>
+      <div class="page-number">PÁGINA 1</div>
     </div>
 
     <script>
-      async function loadContent() {
+      async function loadExercises() {
         try {
-          // Carregar intro
-          const introResp = await fetch('intro.html');
-          if (introResp.ok) {
-            document.getElementById('intro').innerHTML = await introResp.text();
-          }
-
-          // Lista de exercícios em ordem
-          const exercises = [];
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
 
           const list = document.getElementById('exercises');
 
-          // Carregar cada exercício
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
@@ -39,22 +414,15 @@
             }
           }
 
-          // Footer
-          document.getElementById('footer').innerHTML = ``;
-
-          // Re-renderizar MathJax
-          if (window.MathJax && window.MathJax.typesetPromise) {
-            MathJax.typesetPromise();
-          } else if (window.MathJax && window.MathJax.Hub) {
-            // MathJax 2.x
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
-          console.error('Erro ao carregar conteúdo:', error);
+          console.error('Erro ao carregar exercícios:', error);
         }
       }
 
-      loadContent();
+      loadExercises();
     </script>
   </body>
 </html>

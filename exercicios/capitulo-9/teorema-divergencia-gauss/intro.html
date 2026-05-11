@@ -1,0 +1,137 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">28</span> DE NOVEMBRO DE
+    <span class="censored">1983</span>
+    <br />
+    LOCALIZAÇÃO: <span class="censored">LABORATÓRIO ORBITAL SPACELAB-1</span>
+  </div>
+  <div class="document-intro">
+    DOSSIÊ FINAL: PROJETO <span class="censored">TEOREMA-UNIFICADOR</span
+    ><br /><br />
+    Nosso programa de cálculo vetorial atingiu a fase final. Ao longo de meses,
+    construímos ferramentas que vão desde derivadas e integrais simples até
+    integrais de linha, superfície e os Teoremas de Green e Stokes. Agora, o
+    Teorema da Divergência de Gauss encerra o ciclo: ele conecta o comportamento
+    de um campo vetorial no interior de uma região com o que acontece na sua
+    fronteira. Mais do que uma técnica de cálculo, este teorema é o fundamento
+    de leis físicas como a conservação de massa e a Lei de Gauss para o campo
+    elétrico.<br /><br />
+    Este dossiê assume que o agente já dominou o enunciado e a verificação do
+    Teorema da Divergência em geometrias elementares (caixas, esferas,
+    cilindros). O foco agora é <strong>aplicação estratégica e síntese</strong>:
+    usar o teorema como ferramenta para derivar leis da física e como ponto de
+    chegada de toda a disciplina.
+  </div>
+  <div class="warning-box">
+    Este documento contém a síntese final do programa de cálculo vetorial.
+    Qualquer divulgação não autorizada comprometerá
+    <span class="censored">operações críticas da missão</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">9012</span>-G</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">9</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">3</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA — APLICAÇÕES E SÍNTESE
+</div>
+<div class="concept-definition">
+  <p><strong>1. O TEOREMA COMO FERRAMENTA: REVISÃO RÁPIDA</strong></p>
+  <p>
+    O Teorema da Divergência (Gauss) afirma que, para um campo vetorial
+    \(\mathbf{F}\) de classe \(C^1\) definido sobre uma região sólida \(V\) com
+    fronteira \(\partial V\) (superfície fechada e orientada para fora),
+  </p>
+  <p class="formula-highlight">
+    \[\iint_{\partial V} \mathbf{F} \cdot d\mathbf{S} = \iiint_V (\nabla \cdot
+    \mathbf{F})\, dV.\]
+  </p>
+  <p>
+    O lado esquerdo é o <strong>fluxo</strong> de \(\mathbf{F}\) através da
+    superfície fechada (quanto "atravessa" a fronteira). O lado direito é a
+    integral do <strong>divergente</strong> \(\nabla \cdot \mathbf{F}\) no
+    volume. Nos tópicos anteriores, você verificou este resultado em caixas,
+    esferas e cilindros. Agora ele é ferramenta, não mais objeto de verificação.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. CONSERVAÇÃO DE MASSA E A EQUAÇÃO DA CONTINUIDADE</strong></p>
+  <p>
+    Se um fluido com densidade \(\rho(x,y,z,t)\) escoa com velocidade
+    \(\mathbf{v}(x,y,z,t)\), a massa que atravessa a fronteira de uma região por
+    unidade de tempo é \(\displaystyle\iint_{\partial V} \rho\,\mathbf{v} \cdot
+    d\mathbf{S}\). Se não há fontes nem sumidouros (a massa se conserva), essa
+    taxa deve ser igual à variação negativa da massa dentro de \(V\):
+  </p>
+  <p class="formula-highlight">
+    \[\frac{d}{dt}\iiint_V \rho\, dV = -\iint_{\partial V} \rho\,\mathbf{v}
+    \cdot d\mathbf{S}.\]
+  </p>
+  <p>
+    Aplicando o Teorema da Divergência ao lado direito e argumentando que o
+    resultado vale para <em>qualquer</em> volume \(V\), obtemos a
+    <strong>equação da continuidade</strong> em forma diferencial:
+    \(\dfrac{\partial \rho}{\partial t} + \nabla \cdot (\rho\,\mathbf{v}) = 0\).
+    Esta equação governa o escoamento de gases em sistemas de suporte de vida —
+    exatamente o que acontece nos módulos orbitais do Skylab e do Spacelab.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. LEI DE GAUSS PARA ELETROSTÁTICA</strong></p>
+  <p>
+    O campo elétrico \(\mathbf{E}\) gerado por uma carga puntiforme \(q\) na
+    origem é \(\mathbf{E} =
+    \dfrac{q}{4\pi\varepsilon_0}\dfrac{\mathbf{r}}{|\mathbf{r}|^3}\), onde
+    \(\varepsilon_0\) é a permissividade do vácuo. O divergente deste campo é
+    zero em todo lugar exceto na origem. Aplicando o Teorema da Divergência com
+    cuidado (excluindo a singularidade), obtemos a
+    <strong>Lei de Gauss</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[\iint_{\partial V} \mathbf{E} \cdot d\mathbf{S} =
+    \frac{Q_{\text{int}}}{\varepsilon_0},\]
+  </p>
+  <p>
+    onde \(Q_{\text{int}}\) é a carga total encerrada pela superfície \(\partial
+    V\). Com simetria (esférica ou cilíndrica), a Lei de Gauss permite encontrar
+    o campo elétrico <em>sem realizar nenhuma integração direta</em> — basta
+    escolher a superfície gaussiana adequada e usar argumentos de simetria.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. A FAMÍLIA DOS TEOREMAS FUNDAMENTAIS</strong></p>
+  <p>
+    O Teorema da Divergência é o último membro de uma família que o curso
+    inteiro construiu:
+  </p>
+  <p class="formula-highlight">
+    \[\text{FTC (1D)} \quad\longrightarrow\quad \text{Green (2D)}
+    \quad\longrightarrow\quad \text{Stokes (2D\(\to\)3D)}
+    \quad\longrightarrow\quad \text{Gauss (3D)}\]
+  </p>
+  <p>
+    Cada teorema relaciona uma integral sobre um "interior" com uma integral
+    sobre a "fronteira". A "derivada" que aparece evolui: derivada comum \(\to\)
+    rotacional 2D \(\to\) rotacional 3D \(\to\) divergente. A dimensão sobe
+    junto: 1 \(\to\) 2 \(\to\) superfície no espaço \(\to\) volume. O padrão é
+    sempre o mesmo:
+    <strong
+      >integral da derivada sobre o interior = integral sobre a
+      fronteira</strong
+    >.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> James Clerk Maxwell (1831–1879) unificou
+  eletricidade e magnetismo em quatro equações que levam seu nome. A primeira
+  delas é a Lei de Gauss — que você deriva neste dossiê a partir do Teorema da
+  Divergência. As equações de Maxwell estão na base de toda a tecnologia de
+  comunicações espaciais, desde o rádio do Sputnik até os links de dados do
+  Spacelab (1983), primeiro laboratório europeu em órbita, transportado pelo
+  Space Shuttle Columbia na missão STS-9.
+</div>
