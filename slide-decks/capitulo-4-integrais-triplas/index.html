@@ -17,6 +17,7 @@
     <script>
       async function loadSlides() {
         const sections = [
+          '01-titulo.html',
           '01-introducao.html',
           '02-coordenadas.html',
           '03-aplicacoes-fisicas.html',
@@ -39,8 +40,10 @@
             const slidesDiv = doc.querySelector('.slides');
 
             if (slidesDiv) {
-              // Inserir todos os <section> do arquivo
               const sections = slidesDiv.querySelectorAll(':scope > section');
+              sections.forEach((section) => container.appendChild(section));
+            } else {
+              const sections = doc.querySelectorAll('body > section');
               sections.forEach((section) => container.appendChild(section));
             }
 
