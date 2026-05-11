@@ -37,9 +37,20 @@
             const html = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+
+            const inlineScripts = doc.querySelectorAll('script:not([src])');
             const sections = doc.querySelectorAll('body > section');
 
             sections.forEach((section) => container.appendChild(section));
+
+            for (const script of inlineScripts) {
+              const scriptContent = script.textContent;
+              if (scriptContent.trim()) {
+                const newScript = document.createElement('script');
+                newScript.textContent = scriptContent;
+                document.body.appendChild(newScript);
+              }
+            }
           } catch (error) {
             console.error(`Error loading ${sectionFile}:`, error);
           }
