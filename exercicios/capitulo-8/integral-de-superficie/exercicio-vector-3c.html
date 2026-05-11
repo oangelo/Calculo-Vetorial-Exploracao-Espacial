@@ -1,0 +1,86 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Balanceamento do Modulo de Acoplamento - Projeto Apollo-Soyuz
+    (15/SET/1972)
+  </div>
+  <p>
+    Calculamos massas de cascas com densidade variavel. Conhecendo a massa,
+    podemos agora encontrar o centro de massa — o ponto de equilibrio da casca.
+    Isso conecta com o que fizemos em integrais duplas e triplas (Capitulos
+    2-4), mas agora sobre uma superficie curva. O modulo de acoplamento
+    Apollo-Soyuz, em fase de planejamento para 1975, usa um colar hemisferico
+    cujo balanceamento e critico para o alinhamento durante a doca.
+  </p>
+  <p>
+    O colar de acoplamento tem a forma de um hemisferio superior de raio \(R =
+    2\) m, parametrizado por \(\vec{r}(\theta, \phi) = (2\sin\phi\cos\theta,\;
+    2\sin\phi\sin\theta,\; 2\cos\phi)\), com \(0 \le \theta \le 2\pi\) e \(0 \le
+    \phi \le \pi/2\). A densidade superficial do material e \(\delta(x,y,z) =
+    z\) kg/m\(^2\) — mais espesso na regiao do polo (protecao reforcada).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a massa total \(M\) da casca hemisferica
+    (integral de superficie da densidade).
+  </p>
+  <p>
+    <strong>(b)</strong> Monte as tres integrais de momento: \(M_x = \iint_S
+    x\,\delta\, dS\), \(M_y = \iint_S y\,\delta\, dS\) e \(M_z = \iint_S
+    z\,\delta\, dS\). Use argumentos de simetria para simplificar as que puder.
+  </p>
+  <p>
+    <strong>(c)</strong> Divida momento por massa para obter cada coordenada do
+    centro de massa \((\bar{x}, \bar{y}, \bar{z})\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: Para esfera de raio \(R=2\), \(\|\vec{r}_\theta \times
+      \vec{r}_\phi\| = 4\sin\phi\). A densidade em parametros e \(\delta =
+      2\cos\phi\). Por simetria axial da densidade em torno do eixo \(z\), os
+      momentos \(M_x\) e \(M_y\) sao nulos. So reste calcular \(M_z\)
+      diretamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Massa: \(M = \iint_S \delta\, dS =
+        \int_0^{2\pi}\int_0^{\pi/2} (2\cos\phi) \cdot (4\sin\phi)\, d\phi\,
+        d\theta\).
+      </p>
+      <p>
+        \(= 8\int_0^{2\pi} d\theta \int_0^{\pi/2} \sin\phi\cos\phi\, d\phi = 8
+        \cdot 2\pi \cdot \frac{1}{2} = 8\pi\) kg.
+      </p>
+      <p><strong>(b)</strong> Momentos:</p>
+      <p>
+        \(M_x = \iint_S x \cdot z\, dS = \int_0^{2\pi}\int_0^{\pi/2}
+        (2\sin\phi\cos\theta)(2\cos\phi)(4\sin\phi)\, d\phi\, d\theta\).
+      </p>
+      <p>
+        O integrando em \(\theta\) contem \(\cos\theta\), cuja integral de 0 a
+        \(2\pi\) e zero. Logo \(M_x = 0\). Analogamente, \(M_y = 0\) ( contem
+        \(\sin\theta\)).
+      </p>
+      <p>
+        \(M_z = \iint_S z^2\, dS = \int_0^{2\pi}\int_0^{\pi/2} (2\cos\phi)^2
+        \cdot (4\sin\phi)\, d\phi\, d\theta\)
+      </p>
+      <p>
+        \(= 16\int_0^{2\pi} d\theta \int_0^{\pi/2} \cos^2\phi\sin\phi\, d\phi =
+        16 \cdot 2\pi \cdot \frac{1}{3} = \frac{32\pi}{3}\).
+      </p>
+      <p>
+        <strong>(c)</strong> Centro de massa: \(\bar{x} = M_x/M = 0\), \(\bar{y}
+        = M_y/M = 0\), \(\bar{z} = M_z/M = \frac{32\pi/3}{8\pi} = \frac{4}{3}\).
+      </p>
+      <p>
+        Centro de massa: \(\mathbf{(0,\; 0,\; 4/3)}\) m. O ponto de equilibrio
+        esta acima do centro geometrico do hemisferio \((z=1)\), o que faz
+        sentido pois a densidade aumenta com \(z\).
+      </p>
+    </div>
+  </details>
+</li>
