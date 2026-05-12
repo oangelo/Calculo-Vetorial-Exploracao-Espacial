@@ -151,10 +151,10 @@ sala/capitulo-N-nome/
 
 **Passos:**
 
-0. Leia `slide-decks/narrative-spec.md` e `slide-decks/pedagogical-spec.md` — narrativa e abordagem pedagógica
+0. Leia `slide-decks/template-spec.md` (template canônico), `slide-decks/narrative-spec.md` e `slide-decks/pedagogical-spec.md`
 1. Leia o prompt completamente
 2. Identifique tópico e período histórico (ver cronologia no prompt)
-3. Gere HTML seguindo estrutura Reveal.js
+3. Gere HTML seguindo estrutura Reveal.js e o template-spec
 4. Salve em `/slide-decks/capitulo-N-nome-do-capitulo/NN-nome-da-secao.html`
 5. Crie ou atualize o `index.html` (loader) na pasta do capítulo
 
@@ -206,6 +206,7 @@ slide-decks/capitulo-N-nome/
 **Para criar slides:**
 
 - `/docs/prompts/slides.md` - Instruções para slides
+- `/slide-decks/template-spec.md` - Template canônico (estrutura, navegação, loader)
 - `/slide-decks/narrative-spec.md` - Spec narrativa (diretrizes históricas, cronologia, exemplos)
 - `/slide-decks/pedagogical-spec.md` - Spec pedagógica (dissonância cognitiva, formato, tom)
 
