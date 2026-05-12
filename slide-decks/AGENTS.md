@@ -12,16 +12,23 @@ gh issue list --label slides --state open --limit 5
 
 Prompt completo: `docs/prompts/slides-full.md`
 Referência rápida: `docs/prompts/slides-quick.md`
+
+## Leitura obrigatória antes de criar slides
+
+- `narrative-spec.md` — Diretrizes narrativas (7 regras, cronologia integrada, exemplos com datas)
+- `pedagogical-spec.md` — Abordagem pedagógica (dissonância cognitiva, formato flexível, tom)
+
 CSS: `slide-decks/space-theme.css` (tema espacial)
 Framework: Reveal.js (`slide-decks/reveal.js/`)
 
 ## Criar slides
 
-1. Leia `docs/prompts/slides-full.md`
-2. Identifique tópico e período histórico
-3. Gere HTML seguindo estrutura Reveal.js
-4. Salve em `slide-decks/capitulo-N-nome/NN-nome-da-secao.html`
-5. Atualize o `index.html` (loader) da pasta do capítulo
+1. Leia `narrative-spec.md` e `pedagogical-spec.md`
+2. Leia `docs/prompts/slides-full.md`
+3. Identifique tópico e período histórico
+4. Gere HTML seguindo estrutura Reveal.js
+5. Salve em `slide-decks/capitulo-N-nome/NN-nome-da-secao.html`
+6. Atualize o `index.html` (loader) da pasta do capítulo
 
 ## Estrutura de uma pasta de capítulo
 

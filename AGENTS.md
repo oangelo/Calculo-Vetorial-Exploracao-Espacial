@@ -151,6 +151,7 @@ sala/capitulo-N-nome/
 
 **Passos:**
 
+0. Leia `slide-decks/narrative-spec.md` e `slide-decks/pedagogical-spec.md` — narrativa e abordagem pedagógica
 1. Leia o prompt completamente
 2. Identifique tópico e período histórico (ver cronologia no prompt)
 3. Gere HTML seguindo estrutura Reveal.js
@@ -205,6 +206,8 @@ slide-decks/capitulo-N-nome/
 **Para criar slides:**
 
 - `/docs/prompts/slides.md` - Instruções para slides
+- `/slide-decks/narrative-spec.md` - Spec narrativa (diretrizes históricas, cronologia, exemplos)
+- `/slide-decks/pedagogical-spec.md` - Spec pedagógica (dissonância cognitiva, formato, tom)
 
 **Para entender estilos:**
 
