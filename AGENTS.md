@@ -147,34 +147,41 @@ sala/capitulo-N-nome/
 
 ### Criar Slides
 
-**Arquivos:** `/docs/prompts/slides.md` + Reveal.js
+**Guia completo:** `slide-decks/AGENTS.md` — contém o pipeline completo (RTC → PDI em 4 camadas → implementação → verificação).
 
-**Passos:**
+**Workflow resumido:**
 
-0. Leia `slide-decks/template-spec.md` (template canônico), `slide-decks/narrative-spec.md` e `slide-decks/pedagogical-spec.md`
-1. Leia o prompt completamente
-2. Identifique tópico e período histórico (ver cronologia no prompt)
-3. Gere HTML seguindo estrutura Reveal.js e o template-spec
-4. Salve em `/slide-decks/capitulo-N-nome-do-capitulo/NN-nome-da-secao.html`
-5. Crie ou atualize o `index.html` (loader) na pasta do capítulo
+1. RTC: análise dos slides atuais → comentário na issue do capítulo
+2. PDI em 4 camadas independentes (cada uma com aprovação humana):
+   - Camada 1: núcleo matemático (dos `intro.html`, um conceito por slide)
+   - Camada 2: história (arco narrativo independente da matemática)
+   - Camada 3: integração (onde conecta, onde fica separado)
+   - Camada 4: PDI final (slide a slide, pronto para implementar)
+3. Implementação seguindo o PDI final
+4. Verificação
 
 **Estrutura de uma pasta de capítulo:**
 
 ```
 slide-decks/capitulo-N-nome/
 ├── index.html              # Loader que faz fetch das seções
-├── 01-titulo.html          # Seção 1
-├── 02-conceito.html        # Seção 2
-├── 03-exemplos.html        # Seção 3
-└── ...
+├── 00-capa.html            # Título + emblema + período
+├── 01-historia.html        # Narrativa histórica do capítulo
+├── 02-topico-1.html        # ← exercicios/capitulo-N/topico-1/
+├── ...
+├── NN-resumo.html          # Fórmulas-chave e conexões
+├── N+1-reflexao.html       # Pergunta aberta + dissonância
+└── visualizacoes.js        # (opcional) Canvas 2D
 ```
 
 **Regras críticas:**
 
-- Separe matemática (`math-section`) de história (`history-section`)
+- Zero CSS inline — tudo em `space-theme.css`
+- MathJax: `\(...\)` inline, `\[...\]` bloco — nunca `\\` duplo
 - Canvas 2D preferível a Three.js
-- Limite: 250 palavras/slide, 2-3 fórmulas complexas
-- Navegação horizontal (tópicos) e vertical (aprofundamento)
+- Navegação horizontal (seções) e vertical (aprofundamento)
+- Slides atômicos: um conceito por slide
+- História é uma narrativa independente — não tempero da matemática
 
 ## Contexto dos Capítulos
 
