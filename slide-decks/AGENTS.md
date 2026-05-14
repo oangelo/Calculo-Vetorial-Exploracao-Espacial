@@ -4,21 +4,24 @@
 
 ## Issue Epic
 
-- **Epic #1:** https://github.com/oangelo/Calculo-Vetorial-Exploracao-Espacial/issues/1 (Redesenhar Contexto Histórico)
-- **Exemplos #2:** https://github.com/oangelo/Calculo-Vetorial-Exploracao-Espacial/issues/2 (Revisão de exemplos)
+- **Arco narrativo:** #80 (curso completo) → #81–#90 (por capítulo)
+- **Mockup:** #79 (Cap 1 como referência)
+- **Exemplos:** #2 (revisão de exemplos)
 - **Sub-issues:** #19–#28 (uma por capítulo)
 
-Antes de começar, verifique o status das sub-issues na epic para saber onde parou e qual capítulo deve ser trabalhado a seguir:
+Antes de começar, verifique o status das issues:
 
 ```bash
-gh issue list --label slides --state open --limit 5
+gh issue list --label slides --state open --limit 10
 ```
 
 ## Leitura obrigatória antes de criar slides
 
 1. `template-spec.md` — Template canônico (estrutura de diretório, navegação, classes CSS, loader)
-2. `narrative-spec.md` — Diretrizes narrativas (7 regras, cronologia integrada, exemplos com datas)
+2. `narrative-spec.md` — Diretrizes narrativas gerais (7 regras, princípios, sem exemplos específicos)
 3. `pedagogical-spec.md` — Abordagem pedagógica (dissonância cognitiva, formato flexível, tom)
+
+**Detalhes históricos** (datas, nomes, eventos): consultar issues #80–#90, NÃO os specs.
 
 CSS: `space-theme.css` (tema espacial, 3 facções via `data-faction`)
 Framework: Reveal.js (`reveal.js/`, cópia local — nunca CDN)
@@ -38,8 +41,7 @@ O pipeline segue 4 agentes com 2 gates humanos. Cada capítulo passa pelo pipeli
 - Slides atuais do capítulo (`slide-decks/capitulo-N-name/`)
 - `template-spec.md`, `narrative-spec.md`, `pedagogical-spec.md`
 - Tópicos de exercício revisados (`exercicios/capitulo-N/`)
-- Issue #1 (cronologia por capítulo)
-- Issue do capítulo específico (#19–#28)
+- Issue do arco narrativo do capítulo (#81–#90)
 
 **Saída:** RTC como comentário na issue do capítulo via `gh issue comment N`, contendo:
 
@@ -57,42 +59,102 @@ O pipeline segue 4 agentes com 2 gates humanos. Cada capítulo passa pelo pipeli
 
 Professor aprova/ajusta o RTC antes do próximo agente.
 
-### Agente 2: PDI (General)
+### Agente 2: PDI (General) — 4 Camadas
 
-**Função:** Cria Plano Detalhado de Implementação por seção.
+**Função:** Cria Plano Detalhado de Implementação em 4 camadas independentes, publicadas como comentários separados na issue do capítulo.
+
+**Problemas que motivam o modelo em camadas:**
+
+- A história não pode ser "tempero" da matemática — é uma narrativa que precisa valer por si mesma
+- Matemática e história devem ser planejadas de forma independente antes de se integrarem
+- A integração pode resultar em conexões naturais (analogias) ou em separação limpa (história e matemática lado a lado)
+- Nem todo slide precisa de insert histórico — forçar conexões artificiais é pior que não ter
 
 **Entradas:**
 
 - RTC aprovado (via `gh issue view N --comments`)
 - `template-spec.md`, `narrative-spec.md`, `pedagogical-spec.md`
-- Exercícios revisados do capítulo
+- Exercícios revisados do capítulo (`exercicios/capitulo-N/*/intro.html`)
+- Issue do arco narrativo do capítulo (#81–#90)
+- Issue do arco geral (#80)
 
-**Saída:** PDI como comentário na issue do capítulo, contendo:
+**Saída:** 4 comentários separados na issue do capítulo:
 
-| Seção                    | Conteúdo                                                           |
-| ------------------------ | ------------------------------------------------------------------ |
-| Progressão narrativa     | Parágrafo descrevendo a história que os slides contam              |
-| Seções                   | Para CADA seção (00-capa, 01-historia, tópicos, resumo, reflexão): |
-| — Título e layout        | Número de slides, tipo (H ou V)                                    |
-| — Conteúdo de cada slide | Texto, fórmulas, classes CSS                                       |
-| — História               | Onde entra, quanto texto, qual diretriz do narrative-spec          |
-| — Imagem                 | URL da foto pública + crédito (para 01-historia)                   |
-| — Visualização           | Qual canvas, que interação (se houver)                             |
-| — Marcação               | NOVO / REESCREVER / MANTER                                         |
-| Resumo de marcações      | Contagem NOVO/REESCREVER/MANTER                                    |
-| Notas para implementador | Regras específicas do capítulo                                     |
+#### Camada 1 — Núcleo Matemático (independente)
+
+Para cada seção de conteúdo (02–NN), mapear:
+
+- Quais conceitos dos `intro.html` viram slides verticais
+- Um conceito por slide (atomicidade)
+- Ordem de progressão
+- O que fica para os exercícios (não tudo precisa estar nos slides)
+
+Publicado como primeiro comentário. Aprovação humana antes de seguir.
+
+#### Camada 2 — História (independente)
+
+Qual história este capítulo conta? Com arco narrativo completo:
+
+- **Abertura** (01-historia): o que apresenta — sistema, pessoa, evento, pergunta
+- **Desenvolvimento**: beats narrativos ao longo dos tópicos
+- **Fechamento** (N+2-reflexao): dissonância final, pergunta sem resposta
+- **Tipo(s) de crítica**: que variedade de crítica este capítulo traz (moral, social, econômica, política, filosófica)
+
+A história é planejada **sem referência à matemática**. É uma narrativa com coerência própria. As peças históricas (01-historia, frases de abertura, inserts, reflexão) formam UMA história que começa, se desenvolve e termina no capítulo.
+
+Publicado como segundo comentário. Aprovação humana antes de seguir.
+
+#### Camada 3 — Integração
+
+Onde Camada 1 e Camada 2 se encontram naturalmente:
+
+- Onde há analogia entre conceito matemático e beat histórico (ótimo!)
+- Onde não há conexão — e tudo bem, ficam separadas
+- Decisão: quais tópicos recebem insert, quais não recebem (é válido não ter)
+- Tipos variados de insert (justaposição, ironia, pergunta aberta, fato impactante, metáfora, contraste)
+- Garantir que a história flui coerentemente APESAR da matemática
+
+Publicado como terceiro comentário. Aprovação humana antes de seguir.
+
+#### Camada 4 — PDI Final (slide a slide)
+
+Para cada slide de cada seção:
+
+- Conteúdo matemático (se houver) — texto, fórmulas, classes CSS
+- Conteúdo histórico (se houver) — textos prontos para implementação
+- Layout (dual-panel, triple-panel, canvas, etc.)
+- Marcação: NOVO / REESCREVER / MANTER
+- Imagens (URL + crédito, para 01-historia)
+
+Publicado como quarto comentário. Aprovação humana antes de implementar.
+
+### Variedade de críticas por capítulo
+
+Para evitar repetição ao longo do curso, cada capítulo deve trazer tipo(s) diferente(s) de crítica. O mapeamento é definido no issue do arco narrativo (#81–#90). Tipos possíveis:
+
+| Tipo                    | Exemplos                                                      |
+| ----------------------- | ------------------------------------------------------------- |
+| **Moral**               | Apropriação de tecnologia, custo humano, hipocrisia           |
+| **Social (raça)**       | Segregação, apagamento de pessoas negras                      |
+| **Social (gênero)**     | Performance de inclusão, invisibilização de mulheres          |
+| **Social (orientação)** | Lavender Scare, perseguição a minorias                        |
+| **Econômica**           | Trabalho invisível, complexo militar-industrial, desigualdade |
+| **Política**            | Propaganda, controle totalitário, vigilância                  |
+| **Filosófica**          | Neutralidade ilusória, tecnologia como distração, niilismo    |
+
+Nenhum tipo de crítica deve aparecer em mais de 2-3 capítulos. Variedade é essencial.
 
 ### Gate 2: Revisão humana do PDI
 
-Professor aprova o plano detalhado antes da implementação.
+Professor aprova as 4 camadas antes da implementação.
 
 ### Agente 3: Implementador (General)
 
-**Função:** Implementa seção por seção seguindo o PDI.
+**Função:** Implementa seção por seção seguindo o PDI final (Camada 4).
 
 **Entradas:**
 
-- PDI aprovado
+- PDI aprovado (Camada 4)
 - `template-spec.md`
 - `space-theme.css` (classes disponíveis)
 - `emblemas/` (SVGs de facção)
@@ -116,10 +178,11 @@ Professor aprova o plano detalhado antes da implementação.
 | Navegação        | H = seções, V = aprofundamento?                                        |
 | CSS              | Zero inline? Classes corretas?                                         |
 | MathJax          | `\(` e `\[` sem barra dupla?                                           |
-| História         | 1 slide dual-panel? 3-5 frases? Crédito na foto?                       |
+| História         | Arco narrativo coerente? Variedade de inserts?                         |
 | Coerência        | Alinha com exercícios revisados?                                       |
 | Narrative-spec   | Segue pelo menos 1 diretriz?                                           |
 | Pedagogical-spec | Dissonância sem resolução?                                             |
+| Variedade        | Tipo de crítica diferente de capítulos adjacentes?                     |
 
 ---
 
@@ -129,7 +192,7 @@ Professor aprova o plano detalhado antes da implementação.
 slide-decks/capitulo-N-nome/
 ├── index.html              # Loader (fetch, sem CSS inline)
 ├── 00-capa.html            # Título + emblema + período
-├── 01-historia.html        # dual-panel: texto + foto pública
+├── 01-historia.html        # 1 seção H: narrativa histórica do capítulo
 ├── 02-topico-1.html        # ← exercicios/capitulo-N/topico-1/
 ├── ...
 ├── NN-topico-N.html        # ← exercicios/capitulo-N/topico-N/
@@ -148,7 +211,6 @@ Ver `template-spec.md` para especificação completa de cada seção.
 - **Reveal.js:** cópia local (`../reveal.js/`) — nunca CDN
 - **Navegação:** horizontal (seções) e vertical (aprofundamento)
 - **MathJax:** `\(inline\)` e `\[bloco\]` — uma barra só, nunca `$` ou `\\`
-- **Limites:** 250 palavras/slide, 2-3 fórmulas, títulos < 60 chars
 - **Canvas 2D** preferível a Three.js
 
 ## Classes CSS (space-theme.css)
@@ -166,6 +228,8 @@ Ver `template-spec.md` para especificação completa de cada seção.
 | `controls-container`   | Controles de interação                           |
 | `compact-solution`     | Soluções de problemas                            |
 | `dual-panel`           | Dois painéis lado a lado                         |
+| `triple-panel`         | Três painéis lado a lado                         |
+| `formula-spotlight`    | Destaque para fórmula principal                  |
 | `visualization-canvas` | Canvas para visualizações                        |
 
 **NÃO criar classes CSS novas.** Se precisa, adicionar em `space-theme.css`.
@@ -198,4 +262,5 @@ Ver `template-spec.md` para especificação completa de cada seção.
 | 8   | Aliados | `allies`       | 1973-1985  |
 | 9   | URSS    | `soviet`       | 1986-1991  |
 
-Cronologia detalhada com eventos: ver issue #1.
+Cronologia detalhada com eventos: ver issue #80.
+Mapeamento de críticas por capítulo: ver issues #81–#90.
