@@ -2,7 +2,7 @@
 
 **Versão:** 1.0  
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)  
-**Destinatário:** Agente de implementação de slides  
+**Destinatário:** Agente de implementação de slides
 
 ---
 
@@ -25,12 +25,14 @@ Este curso opera na direção oposta ao modelo tradicional. O conteúdo técnico
 **Aplicação:** Introduzir contradições deliberadas antes ou durante o conteúdo técnico. Não para confundir — para ativar.
 
 **Mecanismos:**
+
 - Justaposição de fatos incompatíveis no mesmo slide (ex: Apollo 11 + taxa de pobreza negra em 1969)
 - Perguntas sem resposta imediata, deixadas abertas
 - Afirmações que contradizem o senso comum do aluno
 - Narrativa histórica que vai contra a versão oficial conhecida
 
 **O que NÃO é dissonância cognitiva:**
+
 - Curiosidades decorativas ("você sabia que...") que não geram conflito
 - Contexto histórico ilustrativo que apenas confirma o que o aluno já pensa
 - Polêmica vazia sem ancoragem em fato verificável
@@ -44,6 +46,7 @@ Este curso opera na direção oposta ao modelo tradicional. O conteúdo técnico
 Se uma inserção crítica não ajudar o aluno a entender ou reter o conteúdo técnico — remover ou simplificar.
 
 **Critério de permanência:** A inserção histórica/filosófica fica no slide se atender a pelo menos um dos seguintes:
+
 1. Ancora o conteúdo técnico numa memória emocional (facilita retenção)
 2. Contextualiza para que serve o conteúdo (facilita motivação)
 3. Gera dissonância que mantém o aluno em estado de atenção elevada
@@ -59,13 +62,13 @@ Não existe um padrão fixo de "slide histórico + slide matemático". O formato
 
 **Opções disponíveis para o agente:**
 
-| Formato | Quando usar |
-|---|---|
-| Slide introdutório do capítulo | Quando o gancho histórico define o tom do capítulo inteiro |
-| Comentário lateral (nota de rodapé ou aside) | Quando a inserção é pontual e não justifica um slide próprio |
-| Flash subliminar (imagem única, ~100ms) | Para choque visual em momento de desatenção — ver spec técnico |
-| Pergunta aberta no slide | Quando a dissonância deve permanecer sem resolução |
-| Nenhum | Quando o conteúdo técnico já carrega tensão suficiente |
+| Formato                                      | Quando usar                                                    |
+| -------------------------------------------- | -------------------------------------------------------------- |
+| Slide introdutório do capítulo               | Quando o gancho histórico define o tom do capítulo inteiro     |
+| Comentário lateral (nota de rodapé ou aside) | Quando a inserção é pontual e não justifica um slide próprio   |
+| Flash subliminar (imagem única, ~100ms)      | Para choque visual em momento de desatenção — ver spec técnico |
+| Pergunta aberta no slide                     | Quando a dissonância deve permanecer sem resolução             |
+| Nenhum                                       | Quando o conteúdo técnico já carrega tensão suficiente         |
 
 **Regra:** iterar durante o processo. O formato certo aparece na prática, não no planejamento.
 
@@ -77,13 +80,14 @@ A história oficial da ciência e da tecnologia é construída em torno de gêni
 
 **Aplicação:** Sempre que um nome famoso aparecer, mostrar o coletivo que o sustentou. Sempre que uma conquista for apresentada, mostrar quem foi excluído dela.
 
-**Efeito pedagógico desejado:** O aluno que entende que Katherine Johnson calculou a trajetória de Glenn passa a entender que *ele próprio* pode fazer ciência — não precisa ser o Armstrong, pode ser a Johnson.
+**Efeito pedagógico desejado:** O aluno que entende que Katherine Johnson calculou a trajetória de Glenn passa a entender que _ele próprio_ pode fazer ciência — não precisa ser o Armstrong, pode ser a Johnson.
 
 ---
 
 ## Princípio 5 — Tecnologia Não é Neutra
 
 Engenheiros e matemáticos são frequentemente formados com a ilusão de que o trabalho técnico é apolítico. Esta ilusão é:
+
 - **Historicamente falsa:** toda tecnologia é produzida dentro de contextos de poder que determinam quem a financia, quem a acessa e quem é excluído
 - **Pedagogicamente irresponsável:** forma profissionais que não questionam para quem seu trabalho serve
 - **Politicamente conveniente:** para quem define os problemas a serem resolvidos
@@ -92,7 +96,7 @@ Engenheiros e matemáticos são frequentemente formados com a ilusão de que o t
 
 **O que o curso faz:** mostrar que os sistemas que decidiram quem aplicava essa matemática, quem recebia crédito, quem foi contratado ou demitido — esses sistemas foram profundamente políticos. E que o engenheiro que não entende isso torna-se instrumento passivo desses sistemas.
 
-**Pergunta-chave a plantar:** *"Se somos capazes de resolver problemas técnicos desta magnitude, por que escolhemos não resolver outros?"*
+**Pergunta-chave a plantar:** _"Se somos capazes de resolver problemas técnicos desta magnitude, por que escolhemos não resolver outros?"_
 
 ---
 
@@ -107,6 +111,7 @@ Os elementos ocultos nos slides (flashes, easter eggs, slides secretos) não sã
 **Criação de comunidade:** A descoberta compartilhada cria vínculos entre alunos e uma relação diferente com o material.
 
 **Regras de implementação:**
+
 - Flash subliminar: duração 80–120ms, dispara uma única vez por sessão (não repete em navegação)
 - Temática coerente com a narrativa do curso: cogumelo atômico, alienígenas, imagens de guerra fria
 - Konami code: desbloqueia conteúdo secreto — material bônus, citação filosófica, slide oculto
@@ -122,11 +127,13 @@ A narrativa do curso é deliberadamente niilista no sentido filosófico: nenhum 
 Isso não é pessimismo — é **honestidade intelectual**. O aluno que sai do curso com mais perguntas do que respostas foi mais bem servido do que o aluno que sai com certezas reconfortantes.
 
 **O que o niilismo pedagógico NÃO significa:**
+
 - Que não vale a pena fazer ciência ou engenharia
 - Que todos os sistemas são igualmente ruins em todos os aspectos
 - Que não existe possibilidade de mudança
 
 **O que significa:**
+
 - Que o aluno deve desconfiar de narrativas simples de progresso
 - Que a pergunta "para quem isso é bom?" deve acompanhar qualquer trabalho técnico
 - Que a consciência crítica é parte da formação do engenheiro, não um extra opcional
@@ -135,19 +142,10 @@ Isso não é pessimismo — é **honestidade intelectual**. O aluno que sai do c
 
 ## Arco narrativo do curso
 
-```
-Cap 0  — O mundo antes: a ciência como promessa universal
-Cap 1  — A URSS surge: o outro sistema também promete libertação
-Cap 2  — Os Aliados respondem: liberdade com asterisco
-Cap 3  — Gagarin, Tereshkova: heróis construídos, propaganda real
-Cap 4  — A máquina americana: quem estava por trás dos foguetes
-Cap 5  — 1967: os dois lados matam seus astronautas no mesmo ano
-Cap 6  — A Lua: o maior espetáculo, as maiores omissões
-Cap 7  — Estações espaciais: a corrida continua, o povo não vê
-Cap 8  — Apollo-Soyuz: o único momento em que algo deu certo
-Cap 9  — Divergência: Challenger, Chernobyl, e o colapso simultâneo
-       — Twist final: o "vencedor" nos deu a internet. Veja onde estamos.
-```
+O arco narrativo completo (3 atos, cronologia por capítulo, eventos específicos) está em:
+
+- **Issue #80** — Arco narrativo do curso (estrutura em 3 atos)
+- **Issues #81–#90** — Arcos narrativos por capítulo (B.0–B.9)
 
 O aluno entra achando que vai aprender cálculo vetorial com tema de exploração espacial.  
 Sai tendo aprendido cálculo vetorial — e com perguntas que não existiam antes.
