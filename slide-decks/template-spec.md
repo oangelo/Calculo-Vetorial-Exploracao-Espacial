@@ -1,8 +1,12 @@
 # Spec: Template Canônico — Slides Reveal.js
 
-**Versão:** 1.0
+**Versão:** 1.3
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)
 **Destinatário:** Agente de implementação de slides
+
+> **ATENÇÃO:** Este spec foi complementado pelo `template-system.md`, que define o sistema de templates com slides âncora (fixos) e slides variáveis (alternam layout). Leia ambos antes de implementar.
+>
+> **Design visual:** Consulte `visual-design-spec.md` para os 3 princípios de design visual (hierarquia tipográfica, enquadramento via slide-header/footer, profundidade por opacidade). Todo slide que NÃO é capa deve ter `slide-header` e `slide-footer`.
 
 ---
 
@@ -57,6 +61,8 @@ Exemplo (Cap 1):
 
 ## Especificação por tipo de seção
 
+> **Sistema de templates:** `template/template-system.md` define slides **âncora** (layout fixo: capa, história, abertura de tópico, resumo, reflexão) e slides **variáveis** (alternam layout: conceito, fórmula, exemplo, visualização). Os templates HTML de cada variante estão em `template/ancoras/` e `template/variaveis/`.
+
 ### `00-capa.html`
 
 - **1 slide horizontal** (sem slides verticais)
@@ -81,14 +87,63 @@ Exemplo (Cap 1):
 
 ### `NN-topico-N.html` (tópicos de conteúdo)
 
-- **1 seção horizontal** com slides verticais aninhados
-- Estrutura vertical típica (3 a 6 slides):
-  1. **Conceito/definição** — usa `math-section`
-  2. **Desenvolvimento/formalização** — fórmulas, propriedades
-  3. **Exemplo guiado** — pode usar `problem-section` + `compact-solution`
-  4. **Visualização** (opcional) — `<canvas>` com `visualization-canvas`
-  5. **Frase histórica** (opcional) — 1 frase no último slide vertical, apenas se servir à dissonância (segue `pedagogical-spec.md` Princípio 2: só fica se ajudar o aprendizado)
+- **1 seção horizontal** com slides verticais aninhados (5 a 8 slides)
 - O conteúdo deve alinhar com os exercícios revisados do tópico correspondente
+
+#### Fluxo pedagógico obrigatório
+
+Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obrigatória:
+
+```
+━━━ ABERTURA (V1) ━━━
+  Pergunta-problema ou situação concreta que motiva o tópico
+  Conexão com tópico anterior (progressão)
+  Insert histórico (1-2 frases, parágrafo final, sem classe especial)
+  → TODA seção de conteúdo recebe insert no V1. Sem exceção.
+    Se não houver conexão natural, criar por analogia, contraste ou ironia.
+  → Layout fixo (âncora A3). Ver template `template/ancoras/a3-abertura-topico.html`.
+
+━━━ CONCEITO (V2) ━━━
+  A ideia ANTES da fórmula
+  O que é, para que serve, analogia visual
+  Exemplo intuitivo (cotidiano ou espacial)
+  → O aluno deve entender O QUE é antes de ver COMO se calcula.
+  → Layout variável (V-CONCEITO). Escolher entre variantes A, B, C.
+    Ver `template/template-system.md` § V-CONCEITO e templates em `template/variaveis/v-conceito-*.html`.
+
+━━━ FORMALIZAÇÃO (V3-V4) ━━━
+  V3: Definição matemática precisa + fórmula principal
+      → usar formula-spotlight para a fórmula principal
+  V4: Interpretação geométrica e/ou propriedades
+      → pode usar dual-panel para comparar
+  → Layout variável (V-FORMULA). Escolher entre variantes A, B, C.
+    Ver `template/template-system.md` § V-FORMULA e templates em `template/variaveis/v-formula-*.html`.
+
+━━━ APLICAÇÃO (V5-V6) ━━━
+  1 a 3 exemplos clássicos, calculáveis em aula
+  → usar problem-section + compact-solution
+  → OBRIGATÓRIO: toda seção tem pelo menos 1 exemplo guiado
+  → Exemplos devem ser problemas clássicos do tópico, não truques
+  → Exemplos podem usar dual-panel: esquerda = math, direita = fragmento histórico/emocional
+  → O fragmento NÃO precisa ter relação lógica com o exemplo — justaposição emocional é válida
+  → Nem todos os exemplos precisam de fragmento — dinâmico, 1 ou mais por seção
+  → Fragmentos seguem narrative-spec.md (Camada 3: fragmentos)
+  → Layout variável (V-EXEMPLO). Escolher entre variantes A, B, C, D.
+    Ver `template/template-system.md` § V-EXEMPLO e templates em `template/variaveis/v-exemplo-*.html`.
+  → REGRA DE ALTERNÂNCIA: nunca repetir a mesma variante em exemplos consecutivos.
+
+━━━ EXPLORAÇÃO (V7, opcional) ━━━
+  Visualização interativa (Canvas 2D)
+  → usar visualization-canvas + controls-container
+  → IIFE com window.vizNome = { init, cleanup }
+  → IDs únicos para cada canvas
+  → Layout variável (V-VISUALIZACAO). Escolher entre variantes A, B, C.
+    Ver `template/template-system.md` § V-VISUALIZACAO e templates em `template/variaveis/v-visualizacao-*.html`.
+```
+
+**Número típico de slides por seção:** 5 (mínimo) a 8 (máximo).
+
+**Exceções permitidas:** nenhuma. Todo tópico tem motivação, conceito, fórmula, exemplo e (quando aplicável) visualização.
 
 ### `N+1-resumo.html`
 
@@ -238,6 +293,10 @@ Cada arquivo de seção (exceto `index.html`) é um **fragmento HTML** sem `<htm
 | `control-slider`       | Slider com label                               |
 | `control-button`       | Botão de controle                              |
 | `dual-panel`           | Dois painéis lado a lado (flex)                |
+| `slide-header`         | Cabeçalho de navegação (topo, monospace)       |
+| `slide-footer`         | Rodapé de navegação (base, monospace)          |
+| `h-bar`                | Barra horizontal divisória                     |
+| `v-bar`                | Barra vertical divisória (usar dentro de dual) |
 
 **NÃO criar classes CSS novas** nos arquivos de seção. Se precisa de estilo novo, adicionar em `space-theme.css`.
 

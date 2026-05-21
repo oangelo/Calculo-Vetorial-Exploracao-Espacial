@@ -39,7 +39,7 @@
 /* =============================================
    FACÇÃO: SOVIÉTICA (vermelho)
    ============================================= */
-[data-faction="soviet"] {
+[data-faction='soviet'] {
   --star-color: #ef5350;
   --deep-color: #8b1a1a;
   --accent-color: #e57373;
@@ -58,7 +58,7 @@
 /* =============================================
    FACÇÃO: NEUTRA (dourado/âmbar)
    ============================================= */
-[data-faction="neutral"] {
+[data-faction='neutral'] {
   --star-color: #ffd54f;
   --deep-color: #4a3800;
   --accent-color: #ffb300;
@@ -77,8 +77,8 @@
 /* =============================================
    BADGE DE FACÇÃO
    ============================================= */
-[data-faction="allies"] .reveal::after,
-[data-faction="soviet"] .reveal::after {
+[data-faction='allies'] .reveal::after,
+[data-faction='soviet'] .reveal::after {
   content: '\2605';
   position: fixed;
   bottom: 20px;
@@ -91,7 +91,7 @@
   text-shadow: 0 0 10px var(--glow);
 }
 
-[data-faction="neutral"] .reveal::after {
+[data-faction='neutral'] .reveal::after {
   content: '\2699';
   position: fixed;
   bottom: 20px;
@@ -107,44 +107,102 @@
 .reveal {
   background-color: var(--space-black);
   background-image:
-    radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.4), transparent)
+    radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.4), transparent)
       0 0,
-    radial-gradient(1px 1px at 80px 140px, rgba(255,255,255,0.3), transparent)
+    radial-gradient(
+        1px 1px at 80px 140px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 210px 55px, rgba(255,255,255,0.35), transparent)
+    radial-gradient(
+        1px 1px at 210px 55px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 160px 210px, rgba(255,255,255,0.25), transparent)
+    radial-gradient(
+        1px 1px at 160px 210px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 260px 180px, rgba(255,255,255,0.3), transparent)
+    radial-gradient(
+        1px 1px at 260px 180px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 45px 270px, rgba(255,255,255,0.35), transparent)
+    radial-gradient(
+        1px 1px at 45px 270px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 130px 40px, rgba(255,255,255,0.3), transparent)
+    radial-gradient(
+        1px 1px at 130px 40px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 240px 280px, rgba(255,255,255,0.25), transparent)
+    radial-gradient(
+        1px 1px at 240px 280px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 180px 100px, rgba(255,255,255,0.3), transparent)
+    radial-gradient(
+        1px 1px at 180px 100px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
       0 0,
-    radial-gradient(1px 1px at 60px 190px, rgba(255,255,255,0.35), transparent)
+    radial-gradient(
+        1px 1px at 60px 190px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 100px 80px, rgba(255,255,255,0.6), transparent)
+    radial-gradient(
+        2px 2px at 100px 80px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 220px 230px, rgba(255,255,255,0.55), transparent)
+    radial-gradient(
+        2px 2px at 220px 230px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 40px 120px, rgba(255,255,255,0.5), transparent)
+    radial-gradient(
+        2px 2px at 40px 120px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 270px 60px, rgba(255,255,255,0.55), transparent)
+    radial-gradient(
+        2px 2px at 270px 60px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 150px 260px, rgba(255,255,255,0.5), transparent)
+    radial-gradient(
+        2px 2px at 150px 260px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
       0 0,
-    radial-gradient(2px 2px at 195px 155px, rgba(255,255,255,0.6), transparent)
+    radial-gradient(
+        2px 2px at 195px 155px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
       0 0,
-    radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent)
-      0 0,
-    radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent)
-      0 0,
-    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent)
-      0 0;
+    radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent) 0 0,
+    radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent) 0 0,
+    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent) 0
+      0;
   background-size: 300px 320px;
   color: var(--text-color);
   position: relative;
@@ -233,6 +291,8 @@
 
 .reveal .slides section {
   padding: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
   font-size: 22px;
   text-align: center;
   box-sizing: border-box;
@@ -243,6 +303,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Container para o conteúdo entre header e footer */
+.slide-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* =============================================
@@ -373,25 +446,102 @@
    ============================================= */
 .reveal {
   background:
-    radial-gradient(1px 1px at 15px 25px, rgba(255,255,255,0.4), transparent) 0 0,
-    radial-gradient(1px 1px at 80px 140px, rgba(255,255,255,0.3), transparent) 0 0,
-    radial-gradient(1px 1px at 210px 55px, rgba(255,255,255,0.35), transparent) 0 0,
-    radial-gradient(1px 1px at 160px 210px, rgba(255,255,255,0.25), transparent) 0 0,
-    radial-gradient(1px 1px at 260px 180px, rgba(255,255,255,0.3), transparent) 0 0,
-    radial-gradient(1px 1px at 45px 270px, rgba(255,255,255,0.35), transparent) 0 0,
-    radial-gradient(1px 1px at 130px 40px, rgba(255,255,255,0.3), transparent) 0 0,
-    radial-gradient(1px 1px at 240px 280px, rgba(255,255,255,0.25), transparent) 0 0,
-    radial-gradient(1px 1px at 180px 100px, rgba(255,255,255,0.3), transparent) 0 0,
-    radial-gradient(1px 1px at 60px 190px, rgba(255,255,255,0.35), transparent) 0 0,
-    radial-gradient(2px 2px at 100px 80px, rgba(255,255,255,0.6), transparent) 0 0,
-    radial-gradient(2px 2px at 220px 230px, rgba(255,255,255,0.55), transparent) 0 0,
-    radial-gradient(2px 2px at 40px 120px, rgba(255,255,255,0.5), transparent) 0 0,
-    radial-gradient(2px 2px at 270px 60px, rgba(255,255,255,0.55), transparent) 0 0,
-    radial-gradient(2px 2px at 150px 260px, rgba(255,255,255,0.5), transparent) 0 0,
-    radial-gradient(2px 2px at 195px 155px, rgba(255,255,255,0.6), transparent) 0 0,
+    radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.4), transparent)
+      0 0,
+    radial-gradient(
+        1px 1px at 80px 140px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 210px 55px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 160px 210px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 260px 180px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 45px 270px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 130px 40px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 240px 280px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 180px 100px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 60px 190px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 100px 80px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 220px 230px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 40px 120px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 270px 60px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 150px 260px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 195px 155px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
     radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent) 0 0,
     radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent) 0 0,
-    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent) 0 0,
+    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent) 0
+      0,
     var(--space-black);
   background-size: 300px 320px;
   color: var(--text-color);
@@ -571,6 +721,87 @@
   flex: 1;
 }
 
+/* Fórmula destaque (grande, centralizada, sem caixa) */
+.formula-spotlight {
+  font-size: 1.4em;
+  text-align: center;
+  margin: 0.6em 0;
+  color: var(--star-color);
+  text-shadow: 0 0 12px var(--glow-soft);
+  width: 100%;
+}
+
+/* Três painéis lado a lado */
+.triple-panel {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.triple-panel > div {
+  flex: 1;
+  text-align: center;
+}
+
+/* Barra vertical divisória (usar dentro de dual-panel) */
+.dual-panel > .v-bar {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+  align-self: stretch;
+  flex: 0 0 2px;
+  opacity: 0.6;
+  padding: 0;
+  margin: 0;
+}
+
+/* Barra horizontal divisória */
+.h-bar {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  margin: 0.8em auto;
+  opacity: 0.6;
+}
+
+/* Cabeçalho de navegação (presente em todos os slides exceto capa) */
+.slide-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--star-color);
+  opacity: 0.5;
+  border-bottom: 1px solid var(--accent-color);
+  background: linear-gradient(to right, var(--glow-soft), transparent 20%, transparent 80%, var(--glow-soft));
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+/* Rodapé de navegação (presente em todos os slides exceto capa) */
+.slide-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.45em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.2;
+  border-top: 1px solid var(--accent-color);
+  flex-shrink: 0;
+  flex-grow: 0;
+  margin-top: auto;
+}
+
 /* =============================================
    RESPONSIVIDADE
    ============================================= */
@@ -601,6 +832,23 @@
   .dual-panel {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .triple-panel {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dual-panel > .v-bar {
+    display: none;
+  }
+
+  .h-bar {
+    width: 90%;
+  }
+
+  .formula-spotlight {
+    font-size: 1.1em;
   }
 
   .control-slider {
@@ -643,9 +891,18 @@
 }
 
 @keyframes emblemIn {
-  0% { opacity: 0; transform: scale(0.7) translateY(10px); }
-  60% { opacity: 0.8; transform: scale(1.02) translateY(-2px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .title-rule {

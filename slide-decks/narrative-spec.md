@@ -1,6 +1,6 @@
 # Spec: Narrativa Crítica — Cálculo Vetorial: Exploração Espacial
 
-**Versão:** 2.0  
+**Versão:** 3.0  
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)  
 **Destinatário:** Agente de implementação de slides
 
@@ -96,9 +96,60 @@ A história entra nos slides em três níveis de profundidade, do mais ao menos 
 
 1. **`01-historia.html`** — slide dedicado após a capa. Pode apresentar um sistema, uma pessoa, um evento ou uma pergunta. Conteúdo varia por capítulo (ver issue B.N correspondente).
 
-2. **Frase de abertura de cada tópico** — primeiro slide das seções de conteúdo (02, 03, etc.). Uma frase-âncora que conecta o tópico ao período histórico. Máximo 1-2 frases, sem destaque visual especial.
+2. **Insert no V1 de cada tópico** — slide de abertura (motivação) das seções de conteúdo (02, 03, etc.). Parágrafo final do V1, 1-2 frases, sem classe CSS especial. **Todo tópico de conteúdo recebe insert no V1.** Se não houver conexão natural com a matemática, criar uma por analogia, contraste ou ironia. Inserts NÃO são opcionais — são parte do arco narrativo do capítulo.
 
-3. **Inserção junto a exemplos matemáticos** — contradição histórica como contexto para um exercício ou exemplo resolvido. Parágrafo final de um slide de conteúdo, sem `history-section`, discreto.
+3. **Fragmento junto a exemplos matemáticos** — nos slides de APLICAÇÃO (V5+), exemplos podem usar `dual-panel`: esquerda = problema + solução, direita = fragmento histórico/emocional. O fragmento NÃO precisa ter relação lógica com o exemplo. A justaposição em si é o mecanismo pedagógico.
+
+---
+
+## Fragmento (Camada 3) — mecanismo e regras
+
+### O que é um fragmento
+
+Um fragmento é um bloco de texto curto (2-4 frases) que aparece ao lado de um exemplo matemático, sem relação lógica obrigatória com ele. O objetivo é **ancorar a memória técnica numa experiência emocional** — o aluno lembra do cálculo porque lembra do que sentiu ao ler o fragmento.
+
+### Por que funciona
+
+O cérebro arquiva experiências com carga emocional, não informação neutra (Damasio). A justaposição de matemática fria com um fato que gera desconforto, ironia ou curiosidade cria uma memória composta — o conteúdo técnico e o impacto emocional ficam gravados juntos, mesmo que não tenham conexão racional.
+
+### O fragmento NÃO precisa
+
+- Explicar o exemplo ao lado
+- Ter relação lógica com o conteúdo matemático
+- Ser "relevante" no sentido tradicional
+- Resolver ou comentar a matemática
+
+### O fragmento PODE
+
+- Ser um fato histórico brutal e seco
+- Gerar dissonância cognitiva (dois fatos incompatíveis lado a lado)
+- Distribuir um beat narrativo que não coube nos inserts de V1
+- Criar ironia, desconforto, curiosidade ou surpresa
+- Ser uma pergunta sem resposta
+- Ser um dado que gera impacto emocional
+
+### Formato
+
+- **Layout:** `dual-panel` (esquerda: `problem-section` + `compact-solution`, direita: fragmento em `<p>` simples)
+- **Extensão:** 2-4 frases
+- **Classes CSS:** nenhuma classe especial no fragmento. Parágrafo `<p>` simples dentro do painel direito
+- **Tom:** seco, factual, sem adjetivos dramáticos. O impacto vem do conteúdo, não da retórica
+- **Frequência:** dinâmico — 1 ou mais exemplos por seção recebem fragmento. Nem todos precisam. A decisão é do PDI (Camada 3: integração), que indica quais exemplos recebem fragmento e quais ficam em math puro
+
+### Tipos de fragmento
+
+| Tipo                  | Descrição                                    | Exemplo                                                                                                                 |
+| --------------------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Fato brutal           | Dado histórico que gera desconforto          | "O R-7 consumia 250 kg de combustível por segundo."                                                                     |
+| Ironia sistêmica      | Sistema diz X, faz Y                         | "O Designer-Chefe recebia o Prêmio Stalin sem poder usar o próprio nome."                                               |
+| Justaposição temporal | Mesmo momento, duas realidades               | "Em 1949, a URSS detonou sua primeira bomba atômica. Os nomes dos calculadores permaneceram classificados por décadas." |
+| Pergunta aberta       | Questão sem resposta, plantada para o futuro | "Quem decide para que a matemática é usada?"                                                                            |
+| Contraste emocional   | Beleza técnica vs. custo humano              | "A órbita é elegante. Os engenheiros que a calcularam eram prisioneiros."                                               |
+| Beat narrativo        | Trecho do arco narrativo que não coube no V1 | Distribuição dos 5 beats do capítulo entre inserts e fragmentos                                                         |
+
+### Relação com o arco narrativo
+
+Os fragmentos são uma **segunda via** para distribuir o arco narrativo do capítulo. Os inserts de V1 ancoram o tópico; os fragmentos distribuem os beats restantes e fatos complementares. O PDI (Camada 3) mapeia quais beats vão em inserts e quais vão em fragmentos, garantindo que o arco seja coerente e sem repetição.
 
 ---
 
@@ -106,6 +157,9 @@ A história entra nos slides em três níveis de profundidade, do mais ao menos 
 
 - Cada inserção histórica não deve ultrapassar **1 slide** ou **30 segundos de narração**
 - O conteúdo matemático é prioridade; o histórico é dissonância cognitiva, não contexto decorativo
-- Formato pode variar: slide introdutório, comentário lateral, citação em rodapé, ou nenhum — o que servir melhor ao aprendizado naquele momento
+- Inserts no V1 são obrigatórios em toda seção de conteúdo (02–NN). Formato: 1-2 frases, parágrafo final, sem classe especial
+- Fragmentos junto a exemplos são dinâmicos (1 ou mais por seção). Decisão fica no PDI Camada 3
 - Fontes prioritárias: NASA.gov, Wikipedia (inglês), AIP.org, Smithsonian — nada de revisionismo sem base documental
 - Tom: seco, direto, sem sentimentalismo. O impacto vem dos fatos, não da retórica
+- Se houver dúvida sobre qual fato usar: escolher o que gera mais dissonância ou impacto emocional
+- Fragmentos não precisam ter relação lógica com o exemplo — justaposição emocional é válida

@@ -1,6 +1,6 @@
 # Spec: Abordagem Pedagógica — Cálculo Vetorial: Exploração Espacial
 
-**Versão:** 1.0  
+**Versão:** 1.1  
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)  
 **Destinatário:** Agente de implementação de slides
 
@@ -13,6 +13,8 @@ O ensino técnico tradicional parte do pressuposto de que o aluno é um recipien
 O problema é que ela é **biologicamente falsa**.
 
 A neurociência moderna — em particular o trabalho de Antonio Damasio — demonstrou que emoção e razão são inseparáveis. Pacientes com lesões no córtex pré-frontal ventromedial perdem a capacidade emocional e, consequentemente, a capacidade de tomar decisões racionais. O cérebro não arquiva informação neutra: arquiva **experiências com carga emocional**. O aluno lembrará da equação que veio depois de uma imagem perturbadora. Não lembrará da equação que veio depois de um bullet point.
+
+Isso tem consequência direta no design dos slides: a justaposição de conteúdo técnico com fragmentos emocionais — mesmo sem relação lógica aparente — é um mecanismo pedagógico válido. O aluno que resolve um exemplo de campo vetorial enquanto lê, ao lado, sobre engenheiras que calculavam o mesmo campo à mão sem poder assinar o próprio nome, arquiva ambos juntos. A memória emocional ancora a memória técnica. A conexão não precisa ser racional — precisa ser sentida.
 
 Este curso opera na direção oposta ao modelo tradicional. O conteúdo técnico é prioritário — mas o veículo é a emoção, a dissonância e a provocação.
 

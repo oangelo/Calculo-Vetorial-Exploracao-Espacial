@@ -89,6 +89,11 @@ Para cada seção de conteúdo (02–NN), mapear:
 - Ordem de progressão
 - O que fica para os exercícios (não tudo precisa estar nos slides)
 
+**Requisitos obrigatórios:**
+
+- Cada seção deve incluir **1 a 3 exemplos clássicos** (usar `problem-section` + `compact-solution`). Sem exceções. Exemplos devem ser problemas clássicos do tópico, calculáveis em aula.
+- Cada seção deve seguir o **fluxo pedagógico** (ver `template-spec.md` v1.2+): motivação → conceito → formalização → interpretação → exemplos → visualização.
+
 Publicado como primeiro comentário. Aprovação humana antes de seguir.
 
 #### Camada 2 — História (independente)
@@ -106,13 +111,27 @@ Publicado como segundo comentário. Aprovação humana antes de seguir.
 
 #### Camada 3 — Integração
 
-Onde Camada 1 e Camada 2 se encontram naturalmente:
+Onde Camada 1 e Camada 2 se encontram — dois mecanismos:
 
-- Onde há analogia entre conceito matemático e beat histórico (ótimo!)
-- Onde não há conexão — e tudo bem, ficam separadas
-- Decisão: quais tópicos recebem insert, quais não recebem (é válido não ter)
-- Tipos variados de insert (justaposição, ironia, pergunta aberta, fato impactante, metáfora, contraste)
+**Inserts no V1 (obrigatório):**
+
+- **Todo tópico de conteúdo (02–NN) recebe insert no V1** (slide de abertura/motivação). Sem exceção.
+- Se não houver conexão natural, usar analogia, contraste ou ironia para criar uma.
+- Inserts são 1-2 frases, parágrafo final do V1, sem classe CSS especial.
+
+**Fragmentos junto a exemplos (dinâmico):**
+
+- Nos slides de APLICAÇÃO, exemplos podem usar `dual-panel`: esquerda = math, direita = fragmento histórico/emocional.
+- O fragmento NÃO precisa ter relação lógica com o exemplo — justaposição emocional é válida (ver `narrative-spec.md` v3.0 e `pedagogical-spec.md` v1.1).
+- 1 ou mais exemplos por seção recebem fragmento. Nem todos precisam.
+- Fragmentos distribuem beats narrativos que não couberam nos inserts de V1.
+- Tipos: fato brutal, ironia sistêmica, justaposição temporal, pergunta aberta, contraste emocional, beat narrativo.
+
+**Regras gerais da integração:**
+
 - Garantir que a história flui coerentemente APESAR da matemática
+- Tipos variados (justaposição, ironia, pergunta aberta, fato impactante, metáfora, contraste)
+- Inserts e fragmentos não repetem os mesmos fatos — cada beat é único
 
 Publicado como terceiro comentário. Aprovação humana antes de seguir.
 
@@ -125,6 +144,7 @@ Para cada slide de cada seção:
 - Layout (dual-panel, triple-panel, canvas, etc.)
 - Marcação: NOVO / REESCREVER / MANTER
 - Imagens (URL + crédito, para 01-historia)
+- Para exemplos com fragmento: indicar tipo de fragmento (fato brutal, ironia, justaposição, etc.) e texto do fragmento
 
 Publicado como quarto comentário. Aprovação humana antes de implementar.
 
@@ -172,17 +192,23 @@ Professor aprova as 4 camadas antes da implementação.
 
 **Saída:** Relatório de verificação como comentário na issue, contendo:
 
-| Verificação      | Critério                                                               |
-| ---------------- | ---------------------------------------------------------------------- |
-| Estrutura        | Segue template-spec? (00-capa, 01-historia, tópicos, resumo, reflexão) |
-| Navegação        | H = seções, V = aprofundamento?                                        |
-| CSS              | Zero inline? Classes corretas?                                         |
-| MathJax          | `\(` e `\[` sem barra dupla?                                           |
-| História         | Arco narrativo coerente? Variedade de inserts?                         |
-| Coerência        | Alinha com exercícios revisados?                                       |
-| Narrative-spec   | Segue pelo menos 1 diretriz?                                           |
-| Pedagogical-spec | Dissonância sem resolução?                                             |
-| Variedade        | Tipo de crítica diferente de capítulos adjacentes?                     |
+| Verificação      | Critério                                                                    |
+| ---------------- | --------------------------------------------------------------------------- |
+| Estrutura        | Segue template-spec? (00-capa, 01-historia, tópicos, resumo, reflexão)      |
+| Fluxo pedagógico | Cada seção segue V1→V2→V3→... conforme template-spec v1.2+?                 |
+| Exemplos         | Cada seção tem 1-3 exemplos clássicos (problem-section + compact-solution)? |
+| Fragmentos       | Exemplos com fragmento usam dual-panel? Fragmento gera emoção?              |
+| Navegação        | H = seções, V = aprofundamento?                                             |
+| CSS              | Zero inline? Classes corretas?                                              |
+| MathJax          | `\(` e `\[` sem barra dupla?                                                |
+| Inserts          | Todo tópico (02–NN) tem insert no V1?                                       |
+| História         | Arco narrativo coerente? Variedade de inserts e fragmentos?                 |
+| Coerência        | Alinha com exercícios revisados?                                            |
+| Narrative-spec   | Segue pelo menos 1 diretriz?                                                |
+| Pedagogical-spec | Dissonância sem resolução?                                                  |
+| Variedade        | Tipo de crítica diferente de capítulos adjacentes?                          |
+
+Ver também `section-checklist.md` para checklist completo por seção.
 
 ---
 
