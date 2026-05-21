@@ -91,8 +91,8 @@ Para cada seção de conteúdo (02–NN), mapear:
 
 **Requisitos obrigatórios:**
 
-- Cada seção deve incluir **1 a 3 exemplos clássicos** (usar `problem-section` + `compact-solution`). Sem exceções. Exemplos devem ser problemas clássicos do tópico, calculáveis em aula.
-- Cada seção deve seguir o **fluxo pedagógico** (ver `template-spec.md` v1.2+): motivação → conceito → formalização → interpretação → exemplos → visualização.
+- Cada seção deve incluir **1 a 3 exemplos clássicos** (usar `problem-section`, sem solução). Sem exceções. Exemplos devem ser problemas clássicos do tópico, calculáveis em aula. O professor resolve em sala.
+- Cada seção deve seguir o **fluxo pedagógico** (ver `template-spec.md` v1.4+): motivação → conceito → formalização → interpretação → exemplos → visualização.
 
 Publicado como primeiro comentário. Aprovação humana antes de seguir.
 
@@ -192,21 +192,21 @@ Professor aprova as 4 camadas antes da implementação.
 
 **Saída:** Relatório de verificação como comentário na issue, contendo:
 
-| Verificação      | Critério                                                                    |
-| ---------------- | --------------------------------------------------------------------------- |
-| Estrutura        | Segue template-spec? (00-capa, 01-historia, tópicos, resumo, reflexão)      |
-| Fluxo pedagógico | Cada seção segue V1→V2→V3→... conforme template-spec v1.2+?                 |
-| Exemplos         | Cada seção tem 1-3 exemplos clássicos (problem-section + compact-solution)? |
-| Fragmentos       | Exemplos com fragmento usam dual-panel? Fragmento gera emoção?              |
-| Navegação        | H = seções, V = aprofundamento?                                             |
-| CSS              | Zero inline? Classes corretas?                                              |
-| MathJax          | `\(` e `\[` sem barra dupla?                                                |
-| Inserts          | Todo tópico (02–NN) tem insert no V1?                                       |
-| História         | Arco narrativo coerente? Variedade de inserts e fragmentos?                 |
-| Coerência        | Alinha com exercícios revisados?                                            |
-| Narrative-spec   | Segue pelo menos 1 diretriz?                                                |
-| Pedagogical-spec | Dissonância sem resolução?                                                  |
-| Variedade        | Tipo de crítica diferente de capítulos adjacentes?                          |
+| Verificação      | Critério                                                               |
+| ---------------- | ---------------------------------------------------------------------- |
+| Estrutura        | Segue template-spec? (00-capa, 01-historia, tópicos, resumo, reflexão) |
+| Fluxo pedagógico | Cada seção segue V1→V2→V3→... conforme template-spec v1.4+?            |
+| Exemplos         | Cada seção tem 1-3 exemplos clássicos (problem-section, sem solução)?  |
+| Fragmentos       | Exemplos com fragmento usam dual-panel? Fragmento gera emoção?         |
+| Navegação        | H = seções, V = aprofundamento?                                        |
+| CSS              | Zero inline? Classes corretas?                                         |
+| MathJax          | `\(` e `\[` sem barra dupla?                                           |
+| Inserts          | Todo tópico (02–NN) tem insert no V1?                                  |
+| História         | Arco narrativo coerente? Variedade de inserts e fragmentos?            |
+| Coerência        | Alinha com exercícios revisados?                                       |
+| Narrative-spec   | Segue pelo menos 1 diretriz?                                           |
+| Pedagogical-spec | Dissonância sem resolução?                                             |
+| Variedade        | Tipo de crítica diferente de capítulos adjacentes?                     |
 
 Ver também `section-checklist.md` para checklist completo por seção.
 
@@ -241,22 +241,22 @@ Ver `template-spec.md` para especificação completa de cada seção.
 
 ## Classes CSS (space-theme.css)
 
-| Classe                 | Uso                                              |
-| ---------------------- | ------------------------------------------------ |
-| `title-slide`          | Slide de capa                                    |
-| `faction-emblem`       | Container do emblema SVG                         |
-| `classified-banner`    | Faixa superior de classificação                  |
-| `classified-footer`    | Faixa inferior                                   |
-| `doc-border`           | Borda decorativa                                 |
-| `math-section`         | Conteúdo matemático formal                       |
-| `history-section`      | Contextualização histórica (com `history-label`) |
-| `problem-section`      | Enunciados de problemas                          |
-| `controls-container`   | Controles de interação                           |
-| `compact-solution`     | Soluções de problemas                            |
-| `dual-panel`           | Dois painéis lado a lado                         |
-| `triple-panel`         | Três painéis lado a lado                         |
-| `formula-spotlight`    | Destaque para fórmula principal                  |
-| `visualization-canvas` | Canvas para visualizações                        |
+| Classe                 | Uso                                                |
+| ---------------------- | -------------------------------------------------- |
+| `title-slide`          | Slide de capa                                      |
+| `faction-emblem`       | Container do emblema SVG                           |
+| `classified-banner`    | Faixa superior de classificação                    |
+| `classified-footer`    | Faixa inferior                                     |
+| `doc-border`           | Borda decorativa                                   |
+| `math-section`         | Conteúdo matemático formal                         |
+| `history-section`      | Contextualização histórica (com `history-label`)   |
+| `problem-section`      | Enunciados de problemas                            |
+| `controls-container`   | Controles de interação                             |
+| `compact-solution`     | Dica de resolução (V-DICA, sem valores calculados) |
+| `dual-panel`           | Dois painéis lado a lado                           |
+| `triple-panel`         | Três painéis lado a lado                           |
+| `formula-spotlight`    | Destaque para fórmula principal                    |
+| `visualization-canvas` | Canvas para visualizações                          |
 
 **NÃO criar classes CSS novas.** Se precisa, adicionar em `space-theme.css`.
 

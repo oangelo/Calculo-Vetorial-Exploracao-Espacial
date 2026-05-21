@@ -1,6 +1,6 @@
 # Spec: Template Canônico — Slides Reveal.js
 
-**Versão:** 1.3
+**Versão:** 1.4
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)
 **Destinatário:** Agente de implementação de slides
 
@@ -121,7 +121,8 @@ Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obri
 
 ━━━ APLICAÇÃO (V5-V6) ━━━
   1 a 3 exemplos clássicos, calculáveis em aula
-  → usar problem-section + compact-solution
+  → usar problem-section (NUNCA compact-solution nos exemplos)
+  → NUNCA incluir solução — o professor resolve em sala de aula
   → OBRIGATÓRIO: toda seção tem pelo menos 1 exemplo guiado
   → Exemplos devem ser problemas clássicos do tópico, não truques
   → Exemplos podem usar dual-panel: esquerda = math, direita = fragmento histórico/emocional
@@ -131,6 +132,7 @@ Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obri
   → Layout variável (V-EXEMPLO). Escolher entre variantes A, B, C, D.
     Ver `template/template-system.md` § V-EXEMPLO e templates em `template/variaveis/v-exemplo-*.html`.
   → REGRA DE ALTERNÂNCIA: nunca repetir a mesma variante em exemplos consecutivos.
+  → Se o exemplo for complexo, adicionar V-DICA após (dica de resolução, sem valores calculados).
 
 ━━━ EXPLORAÇÃO (V7, opcional) ━━━
   Visualização interativa (Canvas 2D)
@@ -167,13 +169,32 @@ Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obri
 
 Template mínimo, **sem CSS inline**. Todo CSS vem de `../space-theme.css`.
 
+**Loaders prontos por facção** (copiar para `index.html` do capítulo):
+
+| Facção  | Loader                         | Capítulos     |
+| ------- | ------------------------------ | ------------- |
+| Aliados | `template/loader-allies.html`  | 2, 4, 6, 8    |
+| URSS    | `template/loader-soviet.html`  | 1, 3, 5, 7, 9 |
+| Neutro  | `template/loader-neutral.html` | 0             |
+
+Após copiar, editar apenas: `title`, array `sections` e (se necessário) adicionar `<script src="visualizacoes.js">`.
+
+**Regras do loader:**
+
+- Fragmentos HTML usam `<section>` direto no `<body>` (NUNCA dentro de `<div class="slides">`)
+- Usa `doc.querySelectorAll('body > section')` — sem fallback `.slides`
+- Zero CSS inline, zero CDN, zero arquivos CSS complementares
+- `data-faction` no `<html>` define as cores da facção
+
+Referência implementada: `capitulo-1-funcoes-vetoriais/index.html`.
+
 ```html
 <!doctype html>
 <html lang="pt-BR" data-faction="allies|soviet|neutral">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TÍTULO - Cálculo Vetorial</title>
+    <title>[TÍTULO] - Cálculo Vetorial</title>
     <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="../space-theme.css" />
     <script src="../reveal.js/dist/reveal.js"></script>
@@ -183,10 +204,9 @@ Template mínimo, **sem CSS inline**. Todo CSS vem de `../space-theme.css`.
     <div class="reveal">
       <div class="slides" id="slides-container"></div>
     </div>
-    <script src="visualizacoes.js"></script>
     <script>
       async function loadSlides() {
-        const sections = [
+        var sections = [
           '00-capa.html',
           '01-historia.html',
           '02-topico-1.html',
@@ -195,32 +215,35 @@ Template mínimo, **sem CSS inline**. Todo CSS vem de `../space-theme.css`.
           'NN-reflexao.html',
         ];
 
-        const container = document.getElementById('slides-container');
+        var container = document.getElementById('slides-container');
 
-        for (const sectionFile of sections) {
+        for (var i = 0; i < sections.length; i++) {
+          var sectionFile = sections[i];
           try {
-            const response = await fetch(sectionFile);
-            if (!response.ok) throw new Error(`Failed to load ${sectionFile}`);
+            var response = await fetch(sectionFile);
+            if (!response.ok) throw new Error('Failed to load ' + sectionFile);
 
-            const html = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
+            var html = await response.text();
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
 
-            const inlineScripts = doc.querySelectorAll('script:not([src])');
-            const sections = doc.querySelectorAll('body > section');
+            var inlineScripts = doc.querySelectorAll('script:not([src])');
+            var parsedSections = doc.querySelectorAll('body > section');
 
-            sections.forEach((section) => container.appendChild(section));
+            parsedSections.forEach(function (section) {
+              container.appendChild(section);
+            });
 
-            for (const script of inlineScripts) {
-              const scriptContent = script.textContent;
+            for (var j = 0; j < inlineScripts.length; j++) {
+              var scriptContent = inlineScripts[j].textContent;
               if (scriptContent.trim()) {
-                const newScript = document.createElement('script');
+                var newScript = document.createElement('script');
                 newScript.textContent = scriptContent;
                 document.body.appendChild(newScript);
               }
             }
           } catch (error) {
-            console.error(`Error loading ${sectionFile}:`, error);
+            console.error('Error loading ' + sectionFile + ':', error);
           }
         }
 
@@ -250,20 +273,38 @@ Cada arquivo de seção (exceto `index.html`) é um **fragmento HTML** sem `<htm
   <h2>Título da Seção (horizontal)</h2>
 
   <section>
-    <h3>Slide Vertical 1</h3>
-    <div class="math-section">
-      <p>Conteúdo matemático...</p>
+    <div class="slide-header">SEÇÃO 02 · TÓPICO</div>
+    <div class="slide-body">
+      <h3>Slide Vertical 1</h3>
+      <div class="math-section">
+        <p>Conteúdo matemático...</p>
+      </div>
     </div>
+    <div class="slide-footer">CV-CH[N]-[ANO] · CAPÍTULO [N]</div>
   </section>
 
   <section>
-    <h3>Slide Vertical 2</h3>
-    <div class="problem-section">
-      <p>Exemplo guiado...</p>
+    <div class="slide-header">SEÇÃO 02 · TÓPICO</div>
+    <div class="slide-body">
+      <h3>Slide Vertical 2 — Exemplo</h3>
+      <div class="problem-section">
+        <p>Enunciado do problema (sem solução)...</p>
+      </div>
     </div>
-    <div class="compact-solution">
-      <p>Solução...</p>
+    <div class="slide-footer">CV-CH[N]-[ANO] · CAPÍTULO [N]</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TÓPICO</div>
+    <div class="slide-body">
+      <h3>Slide Vertical 3 — Dica de Resolução</h3>
+      <div class="compact-solution">
+        <p>
+          <strong>Estratégia:</strong> 1. Passo sem valores. 2. Passo. 3. Passo.
+        </p>
+      </div>
     </div>
+    <div class="slide-footer">CV-CH[N]-[ANO] · CAPÍTULO [N]</div>
   </section>
 </section>
 ```
@@ -272,31 +313,37 @@ Cada arquivo de seção (exceto `index.html`) é um **fragmento HTML** sem `<htm
 
 ## Classes CSS disponíveis (space-theme.css)
 
-| Classe                 | Uso                                            |
-| ---------------------- | ---------------------------------------------- |
-| `title-slide`          | Slide de capa (layout centralizado)            |
-| `faction-emblem`       | Container do emblema SVG                       |
-| `classified-banner`    | Faixa superior de classificação                |
-| `classified-footer`    | Faixa inferior                                 |
-| `doc-border`           | Borda decorativa do documento                  |
-| `title-rule`           | Linha decorativa entre título e subtítulo      |
-| `chapter-meta`         | Metadados do capítulo (monospace, baixa opac.) |
-| `classification-code`  | Código de classificação                        |
-| `watermark`            | Marca d'água rotacionada                       |
-| `math-section`         | Bloco de conteúdo matemático                   |
-| `history-section`      | Bloco de contextualização histórica            |
-| `history-label`        | Label posicionado no topo do history-section   |
-| `problem-section`      | Enunciado de problema                          |
-| `compact-solution`     | Solução compacta                               |
-| `visualization-canvas` | Canvas para visualizações interativas          |
-| `controls-container`   | Container para sliders/botões de interação     |
-| `control-slider`       | Slider com label                               |
-| `control-button`       | Botão de controle                              |
-| `dual-panel`           | Dois painéis lado a lado (flex)                |
-| `slide-header`         | Cabeçalho de navegação (topo, monospace)       |
-| `slide-footer`         | Rodapé de navegação (base, monospace)          |
-| `h-bar`                | Barra horizontal divisória                     |
-| `v-bar`                | Barra vertical divisória (usar dentro de dual) |
+| Classe                 | Uso                                                |
+| ---------------------- | -------------------------------------------------- |
+| `title-slide`          | Slide de capa (layout centralizado)                |
+| `faction-emblem`       | Container do emblema SVG                           |
+| `classified-banner`    | Faixa superior de classificação                    |
+| `classified-footer`    | Faixa inferior                                     |
+| `doc-border`           | Borda decorativa do documento                      |
+| `title-rule`           | Linha decorativa entre título e subtítulo          |
+| `chapter-meta`         | Metadados do capítulo (monospace, baixa opac.)     |
+| `classification-code`  | Código de classificação                            |
+| `watermark`            | Marca d'água rotacionada                           |
+| `math-section`         | Bloco de conteúdo matemático                       |
+| `history-section`      | Bloco de contextualização histórica                |
+| `history-label`        | Label posicionado no topo do history-section       |
+| `problem-section`      | Enunciado de problema                              |
+| `compact-solution`     | Dica de resolução (V-DICA, sem valores calculados) |
+| `visualization-canvas` | Canvas para visualizações interativas              |
+| `canvas-overlay`       | Container para overlay de fórmulas sobre canvas    |
+| `controls-container`   | Container para sliders/botões de interação         |
+| `control-slider`       | Slider com label                                   |
+| `control-button`       | Botão de controle                                  |
+| `dual-panel`           | Dois painéis lado a lado (flex)                    |
+| `triple-panel`         | Três painéis lado a lado (flex)                    |
+| `slide-body`           | Container flex entre header e footer               |
+| `slide-header`         | Cabeçalho de navegação (topo, monospace)           |
+| `slide-footer`         | Rodapé de navegação (base, monospace)              |
+| `h-bar`                | Barra horizontal divisória                         |
+| `v-bar`                | Barra vertical divisória (usar dentro de dual)     |
+| `timeline`             | Timeline vertical (Cap 0 — Revisão)                |
+| `timeline-item`        | Item da timeline                                   |
+| `timeline-date`        | Data destacada na timeline                         |
 
 **NÃO criar classes CSS novas** nos arquivos de seção. Se precisa de estilo novo, adicionar em `space-theme.css`.
 
@@ -328,9 +375,10 @@ Cada arquivo de seção (exceto `index.html`) é um **fragmento HTML** sem `<htm
 
 ### CSS
 
-- **Zero CSS inline** nos arquivos de seção
-- Todo CSS em `../space-theme.css`
+- **Zero CSS inline** nos arquivos de seção e no `index.html`
+- **Zero arquivos CSS complementares** (tudo em `../space-theme.css`)
 - Se precisa de estilo novo → adicionar em space-theme.css
+- Classes existentes cobrem todos os casos de uso (dual-panel, math-section, etc.)
 
 ### Reveal.js
 

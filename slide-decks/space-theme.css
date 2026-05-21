@@ -1,5 +1,5 @@
 /**
- * Tema Espacial para Reveal.js (Versão 4.0)
+ * Tema Espacial para Reveal.js (Versão 4.1)
  * Design inspirado na vastidão do espaço com layout mais flexível
  * Suporte a facções: allies (azul), soviet (vermelho), neutral (dourado)
  */
@@ -747,7 +747,12 @@
 /* Barra vertical divisória (usar dentro de dual-panel) */
 .dual-panel > .v-bar {
   width: 2px;
-  background: linear-gradient(to bottom, transparent, var(--accent-color), transparent);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
   align-self: stretch;
   flex: 0 0 2px;
   opacity: 0.6;
@@ -759,7 +764,12 @@
 .h-bar {
   width: 80%;
   height: 2px;
-  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
   margin: 0.8em auto;
   opacity: 0.6;
 }
@@ -778,7 +788,13 @@
   color: var(--star-color);
   opacity: 0.5;
   border-bottom: 1px solid var(--accent-color);
-  background: linear-gradient(to right, var(--glow-soft), transparent 20%, transparent 80%, var(--glow-soft));
+  background: linear-gradient(
+    to right,
+    var(--glow-soft),
+    transparent 20%,
+    transparent 80%,
+    var(--glow-soft)
+  );
   flex-shrink: 0;
   flex-grow: 0;
 }
@@ -805,7 +821,81 @@
 /* =============================================
    RESPONSIVIDADE
    ============================================= */
+
+/* Timeline vertical (usado em Cap 0 — Revisão) */
+.timeline {
+  position: relative;
+  padding: 1em 0;
+  width: 100%;
+  text-align: left;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-color);
+  opacity: 0.4;
+}
+
+.timeline-item {
+  margin: 1em 0;
+  padding: 0.5em 2.5em;
+  position: relative;
+  width: 45%;
+  text-align: left;
+}
+
+.timeline-item:nth-child(odd) {
+  margin-left: 55%;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0.8em;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+.timeline-item:nth-child(odd)::before {
+  left: -6px;
+}
+
+.timeline-date {
+  color: var(--star-color);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* =============================================
+   CANVAS OVERLAY (V-VISUALIZACAO Variante C)
+   ============================================= */
+.canvas-overlay {
+  position: relative;
+}
+
+.canvas-overlay .math-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  max-width: 40%;
+}
+
 @media screen and (max-width: 768px) {
+  .canvas-overlay .math-section {
+    position: static;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+}
   .reveal h1 {
     font-size: 2em;
   }
@@ -858,6 +948,22 @@
 
   .control-slider input {
     width: 120px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd) {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 2em;
+  }
+
+  .timeline-item::before,
+  .timeline-item:nth-child(odd)::before {
+    left: 5px;
   }
 }
 

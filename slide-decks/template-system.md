@@ -1,6 +1,6 @@
 # Sistema de Templates — Slides Reveal.js
 
-**Versão:** 1.1
+**Versão:** 1.2
 **Curso:** Cálculo Vetorial — Exploração Espacial (Guerra Fria)
 **Destinatário:** Agente de implementação de slides
 
@@ -12,10 +12,9 @@
 slide-decks/template/
 ├── template-system.md          # Este documento
 ├── mockup.html                 # Apresentação de exemplo usando todas as variantes
-├── template-legacy.html        # Template antigo (referência)
-├── template-allies.html        # Template com facção Aliados
-├── template-neutral.html       # Template com facção Neutra
-├── template-soviet.html        # Template com facção Soviética
+├── loader-allies.html          # Loader canônico para facção Aliados (copiar para index.html)
+├── loader-soviet.html          # Loader canônico para facção Soviética
+├── loader-neutral.html         # Loader canônico para facção Neutra
 ├── ancoras/                    # Slides de layout fixo
 │   ├── a1-capa.html
 │   ├── a2-historia.html
@@ -40,7 +39,7 @@ slide-decks/template/
 
 **Mockup:** `mockup.html` é uma apresentação completa de demonstração com 2 tópicos, mostrando como as variantes se alternam na prática. Abra no Firefox para visualizar.
 
-**Templates de facção:** `template-allies.html`, `template-neutral.html`, `template-soviet.html` são templates legados por facção, mantidos para referência.
+**Loaders por facção:** `loader-allies.html`, `loader-soviet.html`, `loader-neutral.html` — copiar para `index.html` do capítulo, editar título e array de seções.
 
 ---
 
@@ -57,6 +56,7 @@ Estes slides usam layout fixo em TODO capitulo. O aluno aprende a reconhece-los 
 ### A1 — Capa (`00-capa.html`)
 
 **Layout fixo:**
+
 - `classified-banner` no topo (texto varia por faccao)
 - `faction-emblem` com SVG da faccao
 - `h1` titulo do capitulo
@@ -90,6 +90,7 @@ Estes slides usam layout fixo em TODO capitulo. O aluno aprende a reconhece-los 
 ### A2 — Historia (`01-historia.html`)
 
 **Layout fixo:** sempre `dual-panel`
+
 - Esquerda: `history-section` com `history-label` — 3 a 5 frases
 - Direita: foto publica com credito
 
@@ -117,6 +118,7 @@ Estes slides usam layout fixo em TODO capitulo. O aluno aprende a reconhece-los 
 ### A3 — Abertura de Topico (V1)
 
 **Layout fixo:** pergunta-problema + insert historico
+
 - Titulo h2 com nome do topico
 - Paragrafo de motivacao (pergunta ou situacao concreta)
 - Paragrafo de conexao com topico anterior
@@ -140,6 +142,7 @@ Estes slides usam layout fixo em TODO capitulo. O aluno aprende a reconhece-los 
 ### A4 — Resumo (`N+1-resumo.html`)
 
 **Layout fixo:** 2-3 slides verticais
+
 - V1: formulas-chave em formato "cheat sheet" (lista de formulas)
 - V2: conexoes entre topicos (texto curto)
 - V3 (opcional): mini-mapa conceitual
@@ -168,6 +171,7 @@ Estes slides usam layout fixo em TODO capitulo. O aluno aprende a reconhece-los 
 ### A5 — Reflexao (`N+2-reflexao.html`)
 
 **Layout fixo:** `history-section` com pergunta aberta
+
 - 1 frase que planta dissonanca
 - 1 pergunta aberta sem resposta
 
@@ -194,6 +198,7 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
 **Funcao:** O aluno entende O QUE e antes de ver COMO calcula.
 
 **Variante A: Texto + Ilustracao**
+
 ```html
 <section>
   <h3>[Titulo do Conceito]</h3>
@@ -204,9 +209,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-conceito-a.html`
 
 **Variante B: Dual-Panel (Analogia / Definicao)**
+
 ```html
 <section>
   <h3>[Titulo do Conceito]</h3>
@@ -222,9 +229,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-conceito-b.html`
 
 **Variante C: Triple-Panel (3 interpretacoes)**
+
 ```html
 <section>
   <h3>Tres Interpretacoes</h3>
@@ -244,9 +253,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-conceito-c.html`
 
 **Quando usar cada:**
+
 - A: conceito simples, uma ideia central
 - B: conceito que beneficia de comparacao (familiar vs novo)
 - C: conceito com multiplas faces (ex: funcao vetorial = curva/campo/transformacao)
@@ -260,6 +271,7 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
 **REGRA: SEMPRE definir cada termo e indicar validade.**
 
 **Variante A: Formula Central em Spotlight + Termos**
+
 ```html
 <section>
   <h3>[Titulo]</h3>
@@ -276,9 +288,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-formula-a.html`
 
 **Variante B: Dual-panel com v-bar (Formula | Geometria)**
+
 ```html
 <section>
   <h3>[Titulo]</h3>
@@ -297,9 +311,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-formula-b.html`
 
 **Variante C: Formula Grande + Propriedades em Lista**
+
 ```html
 <section>
   <h3>[Titulo]</h3>
@@ -324,9 +340,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-formula-c.html`
 
 **Quando usar cada:**
+
 - A: formula unica, precisa de destaque
 - B: formula com interpretacao geometrica importante
 - C: formula com muitas propriedades ou casos
@@ -340,6 +358,7 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
 **REGRA CRITICA: NUNCA incluir solucao.** O professor resolve em sala de aula. Cada exemplo combina **questao matematica** + **questao historica** (exceto variante D). Separar com `v-bar` (vertical) ou `h-bar` (horizontal).
 
 **Variante A: Dual-panel com v-bar (Math | Historia)**
+
 ```html
 <section>
   <h3>Exemplo: [Titulo]</h3>
@@ -355,9 +374,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-exemplo-a.html`
 
 **Variante B: Dual-panel invertido (Historia | Math)**
+
 ```html
 <section>
   <h3>Exemplo: [Titulo]</h3>
@@ -373,9 +394,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-exemplo-b.html`
 
 **Variante C: Empilhado com h-bar**
+
 ```html
 <section>
   <h3>Exemplo: [Titulo]</h3>
@@ -389,9 +412,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-exemplo-c.html`
 
 **Variante D: Math puro (sem historia)**
+
 ```html
 <section>
   <h3>Exemplo: [Titulo]</h3>
@@ -400,9 +425,11 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-exemplo-d.html`
 
 **Quando usar cada:**
+
 - A: padrao — math a esquerda, historia a direita, barra vertical separando
 - B: contexto historico motiva o problema — historia vem primeiro
 - C: ambos melhor lidos em sequencia (mais espaco horizontal)
@@ -436,10 +463,16 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
 **Funcao:** Ilustrar conceito com interatividade.
 
 **Variante A: Canvas Grande + Controles Abaixo**
+
 ```html
 <section>
   <h3>Visualizacao: [Titulo]</h3>
-  <canvas id="[id-unico]" class="visualization-canvas" width="700" height="400"></canvas>
+  <canvas
+    id="[id-unico]"
+    class="visualization-canvas"
+    width="700"
+    height="400"
+  ></canvas>
   <div class="controls-container">
     <div class="control-slider">
       <label>[Label]:</label>
@@ -449,15 +482,22 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-visualizacao-a.html`
 
 **Variante B: Dual-Panel (Canvas / Explicacao)**
+
 ```html
 <section>
   <h3>Visualizacao: [Titulo]</h3>
   <div class="dual-panel">
     <div>
-      <canvas id="[id-unico]" class="visualization-canvas" width="350" height="350"></canvas>
+      <canvas
+        id="[id-unico]"
+        class="visualization-canvas"
+        width="350"
+        height="350"
+      ></canvas>
     </div>
     <div>
       <p>[Explicacao do que o canvas mostra]</p>
@@ -466,23 +506,35 @@ Estes slides variam de layout para evitar monotonia. O agente escolhe a variante
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-visualizacao-b.html`
 
 **Variante C: Canvas com Overlay de Formulas**
+
 ```html
 <section>
   <h3>Visualizacao: [Titulo]</h3>
   <div style="position: relative;">
-    <canvas id="[id-unico]" class="visualization-canvas" width="700" height="400"></canvas>
-    <div class="math-section" style="position: absolute; top: 10px; right: 10px;">
+    <canvas
+      id="[id-unico]"
+      class="visualization-canvas"
+      width="700"
+      height="400"
+    ></canvas>
+    <div
+      class="math-section"
+      style="position: absolute; top: 10px; right: 10px;"
+    >
       <p>\[ [Formula relacionada] \]</p>
     </div>
   </div>
 </section>
 ```
+
 **Template pronto:** `template/variaveis/v-visualizacao-c.html`
 
 **Quando usar cada:**
+
 - A: visualizacao e o foco principal, precisa de espaco
 - B: visualizacao precisa de explicacao textual ao lado
 - C: formula e visual devem ser vistas simultaneamente
@@ -507,15 +559,15 @@ O agente segue esta ordem para escolher a variante:
 
 ### Exemplo de sequencia para um topico:
 
-| Slide | Tipo | Variante | Justificativa |
-|---|---|---|---|
-| V1 | Ancora (abertura) | Fixo | Sempre igual |
-| V2 | Conceito | B (dual-panel) | Comparacao familiar vs novo |
-| V3 | Formula | A (spotlight) | Formula unica, precisa de destaque |
-| V4 | Formula | B (dual-panel) | Interpretacao geometrica importante |
-| V5 | Exemplo | A (v-bar math/historia) | Padrao com questao historica |
-| V6 | Exemplo | D (puro) | Ja houve historia no V5 |
-| V7 | Visualizacao | A (canvas grande) | Foco na interatividade |
+| Slide | Tipo              | Variante                | Justificativa                       |
+| ----- | ----------------- | ----------------------- | ----------------------------------- |
+| V1    | Ancora (abertura) | Fixo                    | Sempre igual                        |
+| V2    | Conceito          | B (dual-panel)          | Comparacao familiar vs novo         |
+| V3    | Formula           | A (spotlight)           | Formula unica, precisa de destaque  |
+| V4    | Formula           | B (dual-panel)          | Interpretacao geometrica importante |
+| V5    | Exemplo           | A (v-bar math/historia) | Padrao com questao historica        |
+| V6    | Exemplo           | D (puro)                | Ja houve historia no V5             |
+| V7    | Visualizacao      | A (canvas grande)       | Foco na interatividade              |
 
 ---
 
@@ -527,18 +579,18 @@ Todo slide que NÃO é capa (A1) deve ter `slide-header` e `slide-footer`. Isso 
 
 **Regras:**
 
-| Tipo de slide | Header | Footer | Notas |
-|---|---|---|---|
-| A1 — Capa | NÃO (usa classified-banner) | NÃO (usa classified-footer) | Moldura própria |
-| A2 — História | SIM | SIM | |
-| A3 — Abertura de tópico | SIM | SIM | |
-| A4 — Resumo | SIM (cada V) | SIM (cada V) | |
-| A5 — Reflexão | SIM | SIM | |
-| V-CONCEITO (A, B, C) | SIM | SIM | |
-| V-FORMULA (A, B, C) | SIM | SIM | |
-| V-EXEMPLO (A, B, C, D) | SIM | SIM | |
-| V-DICA | SIM | SIM | |
-| V-VISUALIZAÇÃO (A, B, C) | SIM | SIM | |
+| Tipo de slide            | Header                      | Footer                      | Notas           |
+| ------------------------ | --------------------------- | --------------------------- | --------------- |
+| A1 — Capa                | NÃO (usa classified-banner) | NÃO (usa classified-footer) | Moldura própria |
+| A2 — História            | SIM                         | SIM                         |                 |
+| A3 — Abertura de tópico  | SIM                         | SIM                         |                 |
+| A4 — Resumo              | SIM (cada V)                | SIM (cada V)                |                 |
+| A5 — Reflexão            | SIM                         | SIM                         |                 |
+| V-CONCEITO (A, B, C)     | SIM                         | SIM                         |                 |
+| V-FORMULA (A, B, C)      | SIM                         | SIM                         |                 |
+| V-EXEMPLO (A, B, C, D)   | SIM                         | SIM                         |                 |
+| V-DICA                   | SIM                         | SIM                         |                 |
+| V-VISUALIZAÇÃO (A, B, C) | SIM                         | SIM                         |                 |
 
 **Formato do header:**
 
@@ -559,38 +611,45 @@ O header e footer já estão definidos no `space-theme.css` (linhas 754-793) com
 ## Regras de Implementacao
 
 ### CSS
+
 - Zero CSS inline nos arquivos de secao
 - Todo CSS em `../space-theme.css`
 - NAO criar classes novas — usar as existentes
 
 ### MathJax
+
 - Inline: `\(f(x)\)`
 - Bloco: `\[ formula \]`
 - NUNCA usar `$...$` ou `\\(`, `\\[`, `\\frac`
 - Verificacao: `grep -c '\\\\' arquivo.html` → deve ser 0
 
 ### Fragmentos historicos
+
 - Extensao: 2-4 frases
 - Usar `history-section` com `history-label` nos exemplos
 - NAO precisa ter relacao logica com o problema matematico
 - Distribuir beats narrativos entre inserts (V1) e questoes historicas (exemplos)
 
 ### Separadores visuais
+
 - `v-bar`: barra vertical dentro de `dual-panel` — separa math de historia
 - `h-bar`: barra horizontal — separa conteudo empilhado
 - Usar para dar ritmo visual e evitar monotonia
 
 ### Exemplos (regras obrigatorias)
+
 - **NUNCA incluir solucao** — o professor resolve em sala
 - `compact-solution` so e usada em slides de **Dica de Resolucao** (V-DICA)
 - Todo exemplo deve ter questao matematica + questao historica (exceto variante D)
 - Dica de resolucao: apenas passos/estrategia, nunca valores calculados
 
 ### Formulas (regras obrigatorias)
+
 - **SEMPRE definir cada termo** da formula
 - **SEMPRE indicar validade** (quando a formula se aplica)
 
 ### Limites
+
 - Maximo 250 palavras por slide
 - Maximo 2-3 formulas complexas por slide
 - Titulos com menos de 60 caracteres

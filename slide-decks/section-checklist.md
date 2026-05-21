@@ -1,8 +1,8 @@
 # Checklist por Seção — Slides Reveal.js
 
-**Versão:** 1.1
+**Versão:** 1.2
 **Uso:** Agente 3 (implementador) e Agente 4 (verificador) verificam cada seção contra este checklist.
-**Referência:** `template-spec.md` v1.2 (fluxo pedagógico), `narrative-spec.md` v3.0 (inserts + fragmentos), `AGENTS.md` (pipeline).
+**Referência:** `template-spec.md` v1.4 (fluxo pedagógico), `narrative-spec.md` v3.0 (inserts + fragmentos), `AGENTS.md` (pipeline).
 
 ---
 
@@ -31,7 +31,9 @@
 
 ### APLICAÇÃO (V5–V6)
 
-- [ ] Pelo menos 1 exemplo guiado (problem-section + compact-solution)?
+- [ ] Pelo menos 1 exemplo guiado com `problem-section` (enunciado apenas, sem solução)?
+- [ ] NENHUM exemplo inclui solução — o professor resolve em sala?
+- [ ] Se o exemplo for complexo, há V-DICA com `compact-solution` (estratégia, sem valores)?
 - [ ] Exemplo é um problema clássico do tópico (não um truque)?
 - [ ] Exemplo é calculável em aula (número razoável de passos)?
 - [ ] Se há 2-3 exemplos, são variações progressivas ou casos diferentes?
