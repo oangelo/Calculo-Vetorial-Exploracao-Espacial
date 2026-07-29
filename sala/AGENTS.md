@@ -171,12 +171,13 @@ Atributos opcionais no `<section>`:
 - Inline: `$...$`
 - Bloco: `$$...$$`
 
-**Variáveis simples:** Use `<strong>` em vez de LaTeX:
+**Variáveis e fórmulas:** Use sempre LaTeX, inclusive para variáveis simples:
 
-- `<strong>x</strong>` em vez de `$x$`
-- `<strong>v⃗</strong>` em vez de `$\vec{v}$`
+- `$x$` (não `<strong>x</strong>`)
+- `$\vec{v}$` (não `<strong>v⃗</strong>`)
 
-Isso melhora performance e evita problemas com lacunas.
+Isso mantém variáveis e fórmulas visualmente uniformes. Reserve `<strong>`
+apenas para ênfase textual (ex: "Atenção!", "Solução 1:").
 
 ## Quantidade de Exercícios
 
@@ -222,8 +223,8 @@ Isso melhora performance e evita problemas com lacunas.
 
 1. Abrir `exercicio-N.html`
 2. Seguir a estrutura de classes CSS
-3. Usar `<strong>` para variáveis simples
-4. Usar LaTeX apenas para fórmulas complexas
+3. Usar `$...$` para todas as variáveis e fórmulas
+4. Nunca colocar `<span class="lacuna">` dentro de equações LaTeX
 5. Incluir `data-topico` e `data-dificuldade`
 
 ### Reordenar Exercícios
@@ -274,37 +275,35 @@ firefox http://localhost:8080
   </p>
 
   <p class="subitem">
-    a) O deslocamento em <strong>x</strong> é: <strong>Δx</strong> =
+    a) O deslocamento em $x$ é: $\Delta x$ =
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    b) O deslocamento em <strong>y</strong> é: <strong>Δy</strong> =
+    b) O deslocamento em $y$ é: $\Delta y$ =
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    c) O vetor diretor é: <strong>v⃗</strong> = (<span class="lacuna"></span>,
-    <span class="lacuna"></span>)
+    c) O vetor diretor é: $\vec{v} = ($<span class="lacuna"></span>,
+    <span class="lacuna"></span>$)$
   </p>
 
   <p class="questao">Encontre a equação paramétrica dessa reta.</p>
 
   <p class="dialogo">
     A equação paramétrica descreve todos os pontos da reta usando um parâmetro
-    <strong>t</strong>.
+    $t$.
   </p>
 
   <p class="subitem">
-    a) Usando A como ponto inicial: <strong>r(t)</strong> = A + t v⃗
+    a) Usando $A$ como ponto inicial: $r(t) = A + t\vec{v}$
   </p>
   <p class="subitem">
-    b) Em coordenadas: <strong>r(t)</strong> = (1, 2) + t(<span
-      class="lacuna"
-    ></span
-    >, <span class="lacuna"></span>)
+    b) Em coordenadas: $r(t) = (1, 2) + t($<span class="lacuna"></span>,
+    <span class="lacuna"></span>$)$
   </p>
   <p class="subitem">
-    c) Componentes: <strong>x(t)</strong> = <span class="lacuna"></span>,
-    <strong>y(t)</strong> = <span class="lacuna"></span>
+    c) Componentes: $x(t) =$ <span class="lacuna"></span>,
+    $y(t) =$ <span class="lacuna"></span>
   </p>
 </section>
 ```
