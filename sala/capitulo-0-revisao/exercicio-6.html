@@ -1,87 +1,134 @@
-<section class="exercicio" data-topico="planos" data-dificuldade="medio">
+<section class="exercicio" data-topico="integrais" data-dificuldade="medio">
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">6.</span>
-    Encontre a equação do plano que passa pelos pontos $A(1, 0, 0)$, $B(0, 1,
-    0)$ e $C(0, 0, 1)$.
+    Calcule as seguintes integrais.
   </p>
 
-  <p class="questao">Encontre dois vetores que estão no plano.</p>
-
-  <p class="dialogo">
-    Dois pontos definem um vetor (exercício 1). Com três pontos, podemos formar
-    dois vetores diferentes, ambos "deitados" no plano.
-  </p>
-
-  <p class="subitem">
-    a) $\vec{AB} = B - A = ($<span class="lacuna"></span>,
-    <span class="lacuna"></span>, <span class="lacuna"></span>$)$
-  </p>
-  <p class="subitem">
-    b) $\vec{AC} = C - A = ($<span class="lacuna"></span>,
-    <span class="lacuna"></span>, <span class="lacuna"></span>$)$
-  </p>
-
-  <p class="questao">Encontre o vetor normal $\vec{n}$ ao plano.</p>
+  <p class="questao">a) $\displaystyle\int x\sqrt{1 + x^2}\,dx$</p>
 
   <p class="dialogo">
-    No exercício 2, você encontrou um vetor perpendicular a outro em 2D. Aqui
-    precisamos de um vetor perpendicular a <em>dois</em> vetores ao mesmo tempo.
-    O produto vetorial $\vec{u} \times \vec{v}$ resolve isso, e uma forma
-    prática de calculá-lo é como um "determinante" simbólico: a primeira linha
-    da matriz leva os versores $\hat{\imath}$, $\hat{\jmath}$, $\hat{k}$, e as
-    outras duas linhas levam as componentes dos vetores.
+    Esta integral envolve uma composição de funções. Observe o que está dentro
+    da raiz. Se fosse derivar $\sqrt{1+x^2}$, o que apareceria?
   </p>
 
   <p class="subitem">
-    a) A segunda linha da matriz leva as componentes de qual vetor?
-    <span class="lacuna"></span> E a terceira? <span class="lacuna"></span>
+    a) Fazendo $u = 1 + x^2$, temos $du =$
+    <span class="lacuna"></span> $dx$
   </p>
   <p class="subitem">
-    b) Escreva a matriz completa: <span class="lacuna-grande"></span>
+    b) Reescrevendo a integral em termos de $u$:
+    <span class="lacuna"></span>
   </p>
+  <p class="subitem">c) Resultado em $u$: <span class="lacuna"></span></p>
+  <p class="subitem">d) Voltando para $x$: <span class="lacuna"></span></p>
+
+  <p class="questao">b) $\displaystyle\int x \ln x\,dx$</p>
+
+  <p class="dialogo">
+    Este é um produto de funções. Uma é polinomial, outra é logarítmica. Qual
+    técnica é adequada quando precisamos "trocar" derivar por integrar?
+  </p>
+
   <p class="subitem">
-    c) Expandindo pela primeira linha — componente $\hat{\imath}$:
-    $\begin{vmatrix} 1 & 0 \\ 0 & 1 \end{vmatrix} =$
+    a) Que técnica de integração permite "trocar" derivar por integrar?
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    d) Componente $\hat{\jmath}$ (atenção ao sinal!): $-\begin{vmatrix} -1 & 0
-    \\ -1 & 1 \end{vmatrix} =$
+    b) A fórmula dessa técnica é: $\int u\,dv =$
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    e) Componente $\hat{k}$: $\begin{vmatrix} -1 & 1 \\ -1 & 0 \end{vmatrix} =$
-    <span class="lacuna"></span>
+    c) Escolha: $u$ = <span class="lacuna"></span> (vamos derivar), $dv$ =
+    <span class="lacuna"></span> (vamos integrar)
   </p>
   <p class="subitem">
-    f) $\vec{n} = \vec{AB} \times \vec{AC} = ($<span class="lacuna"></span>,
-    <span class="lacuna"></span>, <span class="lacuna"></span>$)$
+    d) Então: $du$ = <span class="lacuna"></span> e $v$ =
+    <span class="lacuna"></span>
   </p>
+  <p class="subitem">e) Aplicando: <span class="lacuna-grande"></span></p>
 
   <p class="dica">
-    Confira: $\vec{n} \cdot \vec{AB} = 0$ e $\vec{n} \cdot \vec{AC} = 0$?
+    Qual escolha de $u$ faz a derivada ficar mais simples que a função original?
   </p>
 
-  <p class="questao">Escreva a equação do plano.</p>
+  <p class="questao">c) $\displaystyle\int \sin^3 x \cos x\,dx$</p>
 
   <p class="dialogo">
-    Um ponto $P(x, y, z)$ está no plano se o vetor de $A$ até $P$ é
-    perpendicular ao vetor normal: $\vec{n} \cdot (P - A) = 0$.
+    Esta é uma integral trigonométrica. Observe: temos $\sin^3 x$ e $\cos x$. Se
+    fizermos uma substituição com $\sin x$, o que acontece com o $\cos x\,dx$?
   </p>
 
   <p class="subitem">
-    a) $P - A = ($<span class="lacuna"></span>, <span class="lacuna"></span>,
-    <span class="lacuna"></span>$)$
+    a) Fazendo $u = \sin x$, temos $du$ =
+    <span class="lacuna"></span>
   </p>
-  <p class="subitem">
-    b) Produto escalar igual a zero: <span class="lacuna-grande"></span>
-  </p>
-  <p class="subitem">
-    c) Simplificando: $x + y + z =$ <span class="lacuna"></span>
-  </p>
+  <p class="subitem">b) A integral se torna: <span class="lacuna"></span></p>
+  <p class="subitem">c) Resultado: <span class="lacuna"></span></p>
 
   <p class="checkpoint">
     <span class="checkmark"></span>
-    Substitua $B$ e $C$ na equação. Os dois pontos satisfazem?
+    Verificação: derive sua resposta. Você obteve $\sin^3 x \cos x$?
+  </p>
+
+  <p class="questao">d) $\displaystyle\int \frac{1}{x^2 - 1}\,dx$</p>
+
+  <p class="dialogo">
+    O denominador pode ser fatorado! Quando temos um produto no denominador,
+    podemos separar em frações mais simples. Tente escrever $\frac{1}{x^2-1}$
+    como soma de duas frações com denominadores lineares.
+  </p>
+
+  <p class="subitem">
+    a) Escreva: $\frac{1}{x^2-1} = \frac{A}{x-1} + \frac{B}{x+1}$
+  </p>
+  <p class="subitem">
+    b) Multiplique ambos os lados por $(x-1)(x+1)$ e encontre $A$ e $B$:
+    <span class="lacuna-grande"></span>
+  </p>
+  <p class="subitem">
+    c) $A$ = <span class="lacuna"></span>, $B$ =
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) Agora integre cada fração: <span class="lacuna-grande"></span>
+  </p>
+
+  <p class="dica">A resposta envolve logaritmos naturais.</p>
+
+  <p class="questao">e) $\displaystyle\int_{-3}^{3} \sqrt{9 - x^2}\,dx$</p>
+
+  <p class="dialogo">
+    Antes de integrar, olhe a geometria: que curva é $y = \sqrt{9 - x^2}$?
+    Compare com a equação da circunferência do exercício 4.
+  </p>
+
+  <p class="subitem">
+    a) A curva é uma semicircunferência de raio <span class="lacuna"></span>.
+    Sua área vale <span class="lacuna"></span>
+  </p>
+
+  <p class="dialogo">
+    Agora confirme pela integral. A expressão $9 - x^2$ lembra $1 - \sin^2\theta
+    = \cos^2\theta$. Isso sugere uma substituição trigonométrica.
+  </p>
+
+  <p class="subitem">
+    b) Fazendo $x = 3\sin\theta$: $dx =$ <span class="lacuna"></span> $d\theta$
+  </p>
+  <p class="subitem">
+    c) Novos limites: $x = -3 \Rightarrow \theta =$
+    <span class="lacuna"></span>, $x = 3 \Rightarrow \theta =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) A integral se torna $\displaystyle\int 9\cos^2\theta\,d\theta$. Use
+    $\cos^2\theta = \frac{1 + \cos 2\theta}{2}$:
+    <span class="lacuna-grande"></span>
+  </p>
+  <p class="subitem">e) Resultado: <span class="lacuna"></span></p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    A integral confirma a área geométrica $\frac{9\pi}{2}$?
   </p>
 </section>
