@@ -1,0 +1,79 @@
+<section class="exercicio" data-topico="jacobiano" data-dificuldade="medio">
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">3.</span>
+    A mudança para polares "deforma" o plano: um retângulo $dr \times d\theta$
+    no plano $(r, \theta)$ não corresponde a uma área $dr\,d\theta$ no plano
+    $(x, y)$. O Jacobiano mede essa deformação. Vamos calculá-lo para a
+    transformação $x = r\cos\theta$ e $y = r\sin\theta$.
+  </p>
+
+  <p class="questao">Calcule as derivadas parciais da transformação.</p>
+
+  <p class="dialogo">
+    Derive cada coordenada em relação a $r$ e em relação a $\theta$, lembrando
+    que $\cos\theta$ e $\sin\theta$ são constantes quando derivamos em relação a
+    $r$.
+  </p>
+
+  <p class="subitem">
+    a) $\frac{\partial x}{\partial r} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\frac{\partial x}{\partial \theta} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $\frac{\partial y}{\partial r} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) $\frac{\partial y}{\partial \theta} =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Monte a matriz Jacobiana e calcule seu determinante.</p>
+
+  <p class="dialogo">
+    A matriz é $$\frac{\partial(x,y)}{\partial(r,\theta)} = \begin{pmatrix}
+    \frac{\partial x}{\partial r} & \frac{\partial x}{\partial \theta} \\
+    \frac{\partial y}{\partial r} & \frac{\partial y}{\partial \theta}
+    \end{pmatrix}$$ e o determinante de $\begin{pmatrix} a & b \\ c & d
+    \end{pmatrix}$ vale $ad - bc$.
+  </p>
+
+  <p class="subitem">
+    a) Preencha as entradas: $a =$ <span class="lacuna"></span>, $b =$
+    <span class="lacuna"></span>, $c =$ <span class="lacuna"></span>, $d =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\det = ad - bc =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Simplifique com $\cos^2\theta + \sin^2\theta = 1$:
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Interprete o significado do determinante.</p>
+
+  <p class="dialogo">
+    Como $r \ge 0$, temos $|J| = r$. Assim, um pequeno retângulo $dr \times
+    d\theta$ corresponde a uma região de área $r\,dr\,d\theta$ no plano $(x,
+    y)$. O fator $r$ corrige a distorção: quanto mais longe da origem, maior o
+    arco percorrido por um mesmo ângulo.
+  </p>
+
+  <p class="formula">
+    $$\iint_R f(x,y)\,dx\,dy = \iint_S f(r\cos\theta, r\sin\theta)\; r\;
+    dr\,d\theta$$
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Confira com a geometria do exercício 1: um setor de raio $3$ tem área maior
+    que um setor de raio $1$, mesmo com o mesmo $\Delta\theta$. O fator $r$ é
+    exatamente isso.
+  </p>
+</section>
