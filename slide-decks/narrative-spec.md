@@ -96,7 +96,7 @@ A história entra nos slides em três níveis de profundidade, do mais ao menos 
 
 1. **`01-historia.html`** — slide dedicado após a capa. Pode apresentar um sistema, uma pessoa, um evento ou uma pergunta. Conteúdo varia por capítulo (ver issue B.N correspondente).
 
-2. **Insert no V1 de cada tópico** — slide de abertura (motivação) das seções de conteúdo (02, 03, etc.). Parágrafo final do V1, 1-2 frases, sem classe CSS especial. **Todo tópico de conteúdo recebe insert no V1.** Se não houver conexão natural com a matemática, criar uma por analogia, contraste ou ironia. Inserts NÃO são opcionais — são parte do arco narrativo do capítulo.
+2. **Insert no V1 de cada tópico** — slide de abertura (motivação) das seções de conteúdo (02, 03, etc.). Parágrafo final do V1, 1-2 frases, com a classe `.history-insert` (itálico + barra de acento, discreta). **Todo tópico de conteúdo recebe insert no V1.** Se não houver conexão natural com a matemática, criar uma por analogia, contraste ou ironia. Inserts NÃO são opcionais — são parte do arco narrativo do capítulo.
 
 3. **Fragmento junto a exemplos matemáticos** — nos slides de APLICAÇÃO (V5+), exemplos podem usar `dual-panel`: esquerda = problema + solução, direita = fragmento histórico/emocional. O fragmento NÃO precisa ter relação lógica com o exemplo. A justaposição em si é o mecanismo pedagógico.
 
@@ -157,7 +157,7 @@ Os fragmentos são uma **segunda via** para distribuir o arco narrativo do capí
 
 - Cada inserção histórica não deve ultrapassar **1 slide** ou **30 segundos de narração**
 - O conteúdo matemático é prioridade; o histórico é dissonância cognitiva, não contexto decorativo
-- Inserts no V1 são obrigatórios em toda seção de conteúdo (02–NN). Formato: 1-2 frases, parágrafo final, sem classe especial
+- Inserts no V1 são obrigatórios em toda seção de conteúdo (02–NN). Formato: 1-2 frases, parágrafo final, com a classe `.history-insert`
 - Fragmentos junto a exemplos são dinâmicos (1 ou mais por seção). Decisão fica no PDI Camada 3
 - Fontes prioritárias: NASA.gov, Wikipedia (inglês), AIP.org, Smithsonian — nada de revisionismo sem base documental
 - Tom: seco, direto, sem sentimentalismo. O impacto vem dos fatos, não da retórica

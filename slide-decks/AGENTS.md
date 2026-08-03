@@ -141,7 +141,7 @@ Onde Camada 1 e Camada 2 se encontram — dois mecanismos:
 
 - **Todo tópico de conteúdo (02–NN) recebe insert no V1** (slide de abertura/motivação). Sem exceção.
 - Se não houver conexão natural, usar analogia, contraste ou ironia para criar uma.
-- Inserts são 1-2 frases, parágrafo final do V1, sem classe CSS especial.
+- Inserts são 1-2 frases, parágrafo final do V1, com a classe `.history-insert` (itálico + barra de acento, ver `space-theme.css`).
 
 **Fragmentos junto a exemplos (dinâmico):**
 
@@ -274,6 +274,7 @@ Ver `template-spec.md` para especificação completa de cada seção.
 | `doc-border`           | Borda decorativa                                   |
 | `math-section`         | Conteúdo matemático formal                         |
 | `history-section`      | Contextualização histórica (com `history-label`)   |
+| `history-insert`       | Insert histórico no V1 (itálico + barra de acento) |
 | `problem-section`      | Enunciados de problemas                            |
 | `controls-container`   | Controles de interação                             |
 | `compact-solution`     | Dica de resolução (V-DICA, sem valores calculados) |

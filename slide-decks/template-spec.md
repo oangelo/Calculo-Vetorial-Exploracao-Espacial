@@ -98,7 +98,7 @@ Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obri
 ━━━ ABERTURA (V1) ━━━
   Pergunta-problema ou situação concreta que motiva o tópico
   Conexão com tópico anterior (progressão)
-  Insert histórico (1-2 frases, parágrafo final, sem classe especial)
+  Insert histórico (1-2 frases, parágrafo final, com a classe `history-insert`)
   → TODA seção de conteúdo recebe insert no V1. Sem exceção.
     Se não houver conexão natural, criar por analogia, contraste ou ironia.
   → Layout fixo (âncora A3). Ver template `template/ancoras/a3-abertura-topico.html`.
@@ -327,6 +327,7 @@ Cada arquivo de seção (exceto `index.html`) é um **fragmento HTML** sem `<htm
 | `math-section`         | Bloco de conteúdo matemático                       |
 | `history-section`      | Bloco de contextualização histórica                |
 | `history-label`        | Label posicionado no topo do history-section       |
+| `history-insert`       | Insert histórico no V1 (itálico + barra de acento) |
 | `problem-section`      | Enunciado de problema                              |
 | `compact-solution`     | Dica de resolução (V-DICA, sem valores calculados) |
 | `visualization-canvas` | Canvas para visualizações interativas              |

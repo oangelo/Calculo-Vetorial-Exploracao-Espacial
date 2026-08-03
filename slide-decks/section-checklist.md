@@ -14,7 +14,7 @@
 - [ ] V1 conecta com o tópico anterior (progressão)?
 - [ ] V1 tem insert histórico (1-2 frases, parágrafo final)?
   - Se não houver conexão natural, foi criada por analogia/contraste/ironia?
-- [ ] Insert não usa `history-section` (apenas `<p>` simples)?
+- [ ] Insert usa a classe `history-insert` (itálico + barra de acento; nunca `history-section`)?
 
 ### CONCEITO (V2)
 
