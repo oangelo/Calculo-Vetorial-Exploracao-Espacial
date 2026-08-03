@@ -494,3 +494,173 @@ function hookVizToReveal(canvasId, onEnter, onLeave) {
 
   window.vizBaricentro = { init: init, cleanup: cleanup };
 })();
+
+/* ------------------------------------------------------------------ *
+ * vizAreaCartesiana — elementos de área em coordenadas cartesianas.
+ * Mesmo círculo da viz polar, mas com retângulos dA = dx dy (área
+ * constante). Clique para animar: as células respiram suavemente e os
+ * retângulos cortados pela borda revelam o contorno em "escada".
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var cx = 0;
+  var cy = 0;
+  var animId = null;
+  var frame = 0;
+  var isAnimating = false;
+  var inited = false;
+
+  var SCALE = 100; // px por unidade (círculo de raio 2 → 200px)
+  var R = 2;
+  var CELL = 0.25; // tamanho da célula em unidades
+
+  function pxX(u) {
+    return cx + u * SCALE;
+  }
+
+  function pxY(v) {
+    return cy - v * SCALE;
+  }
+
+  function inside(u, v) {
+    return u * u + v * v <= R * R;
+  }
+
+  function cellClass(u0, v0) {
+    var u1 = u0 + CELL;
+    var v1 = v0 + CELL;
+    var corners = [
+      [u0, v0],
+      [u1, v0],
+      [u0, v1],
+      [u1, v1],
+    ];
+    var hits = 0;
+    for (var i = 0; i < corners.length; i++) {
+      if (inside(corners[i][0], corners[i][1])) hits++;
+    }
+    if (hits === 4) return 'full';
+    if (hits > 0) return 'partial';
+    var cu = (u0 + u1) / 2;
+    var cv2 = (v0 + v1) / 2;
+    if (inside(cu, cv2)) return 'partial';
+    return 'outside';
+  }
+
+  function draw(f) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
+    ctx.fillRect(0, 0, W, H);
+
+    var half = 2.2;
+    for (var u = -half; u < half; u += CELL) {
+      for (var v = -half; v < half; v += CELL) {
+        var cls = cellClass(u, v);
+        if (cls === 'outside') continue;
+        var pf = isAnimating
+          ? 1 + 0.05 * Math.sin(f * 0.05 + u * 1.2 + v * 1.2)
+          : 1;
+        var size = CELL * SCALE * pf;
+        var x = pxX(u) + (CELL * SCALE - size) / 2;
+        var y = pxY(v + CELL) + (CELL * SCALE - size) / 2;
+        ctx.fillStyle =
+          cls === 'full'
+            ? 'rgba(30, 136, 229, 0.55)'
+            : 'rgba(255, 179, 0, 0.55)';
+        ctx.fillRect(x, y, size, size);
+      }
+    }
+
+    ctx.strokeStyle = '#4fc3f7';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(W, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, H);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#e0e0e0';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * SCALE, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('dA = dx dy — \u00E1rea constante', W / 2, 26);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+    ctx.font = '12px Arial';
+    ctx.fillText('ret\u00E2ngulos inteiros: azul \u00B7 cortados pela borda: amarelo', W / 2, 46);
+    ctx.fillStyle = isAnimating ? '#FFB300' : '#81C784';
+    ctx.fillText(
+      isAnimating ? 'clique para pausar' : 'clique para animar',
+      W / 2,
+      H - 18
+    );
+    ctx.textAlign = 'start';
+  }
+
+  function animate() {
+    frame++;
+    draw(frame);
+    animId = requestAnimationFrame(animate);
+  }
+
+  function toggle() {
+    if (!canvas) return;
+    if (isAnimating) {
+      isAnimating = false;
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      draw(frame);
+    } else {
+      isAnimating = true;
+      if (!animId) {
+        frame = 0;
+        animate();
+      }
+    }
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('areaCartesianaCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+      cx = W / 2;
+      cy = H / 2;
+    }
+    inited = true;
+    canvas.addEventListener('click', toggle);
+    draw(0);
+  }
+
+  function cleanup() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    isAnimating = false;
+    frame = 0;
+    if (canvas && inited) {
+      canvas.removeEventListener('click', toggle);
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('areaCartesianaCanvas', init, cleanup);
+
+  window.vizAreaCartesiana = { init: init, cleanup: cleanup };
+})();
