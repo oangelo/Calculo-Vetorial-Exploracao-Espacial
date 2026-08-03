@@ -28,6 +28,30 @@ Framework: Reveal.js (`reveal.js/`, cópia local — nunca CDN)
 
 ---
 
+## Depuração visual
+
+O backend do navegador (Playwright MCP) é remoto e **não alcança `localhost`**. Além disso, o modelo de IA que executa os agentes **não lê imagens**. Para diagnosticar o layout renderizado, usar o script local:
+
+```bash
+# Pré-requisito (uma vez):
+sudo npm install -g playwright-core@1.62.1
+# Versão pinada: casa com o chromium-1234 já em ~/.cache/ms-playwright (não baixa browser).
+
+# Uso:
+node debug-slide.js <pasta-do-capitulo> [hash-do-slide]
+
+# Exemplos:
+node debug-slide.js capitulo-3-mudanca-de-variaveis "#/1"   # slide horizontal 1 (história)
+node debug-slide.js capitulo-3-mudanca-de-variaveis "#/2/2" # slide vertical 2 do tópico 2
+node debug-slide.js capitulo-1 "#/6"                        # slide 6 (rotacional)
+```
+
+**O que ele faz:** sobe o servidor HTTP em `:8090` se preciso, navega com Chromium headless local, salva screenshot em `/tmp/slide-debug.png` (para o humano conferir) e imprime diagnóstico em **texto**: seções H/V carregadas, `flexDirection` de cada `.dual-panel`, bounding boxes dos painéis, estado das imagens (render vs. natural, 404), `window.viz*` exportados, CSS inline, e contagem de `\\` no HTML.
+
+**Uso comum:** antes de concluir um capítulo, rodar nos slides com `dual-panel`/imagem e conferir no output que `flexDirection=row` (lado a lado) e que as imagens renderizam no tamanho certo. Slide vazio, dual-panel em `column` ou imagem `CARREGANDO/404` indicam problema.
+
+---
+
 ## Pipeline de revisão de slides
 
 O pipeline segue 4 agentes com 2 gates humanos. Cada capítulo passa pelo pipeline completo.
