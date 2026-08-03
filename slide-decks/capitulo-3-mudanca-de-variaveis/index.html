@@ -8,111 +8,55 @@
     <link rel="stylesheet" href="../space-theme.css" />
     <script src="../reveal.js/dist/reveal.js"></script>
     <script src="../reveal.js/plugin/math/math.js"></script>
-    <style>
-      .side-by-side {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        gap: 20px;
-      }
-
-      .side-by-side div {
-        flex: 1;
-      }
-
-      .canvas-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-      }
-
-      .img-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-      }
-
-      .highlight {
-        color: var(--accent-color);
-        font-weight: bold;
-      }
-
-      .note {
-        font-size: 0.8em;
-        font-style: italic;
-        margin-top: 20px;
-      }
-
-      .example-box {
-        background-color: rgba(74, 158, 255, 0.1);
-        border-left: 4px solid #4a9eff;
-        padding: 15px;
-        margin: 20px 0;
-      }
-
-      .theorem-box {
-        background-color: rgba(255, 179, 0, 0.1);
-        border-left: 4px solid #ffb300;
-        padding: 15px;
-        margin: 20px 0;
-      }
-    </style>
   </head>
   <body>
     <div class="reveal">
       <div class="slides" id="slides-container"></div>
     </div>
-
     <script src="visualizacoes.js"></script>
     <script>
       async function loadSlides() {
-        const sections = [
-          '01-titulo.html',
-          '02-introducao.html',
-          '03-mudanca-variaveis.html',
-          '04-jacobiano.html',
-          '05-coordenadas-polares.html',
-          '06-aplicacoes.html',
+        var sections = [
+          '00-capa.html',
+          '01-historia.html',
+          '02-mudanca-de-variaveis.html',
+          '03-massa-centro-de-massa.html',
+          '04-resumo.html',
+          '05-reflexao.html',
         ];
 
-        const container = document.getElementById('slides-container');
+        var container = document.getElementById('slides-container');
 
-        for (const sectionFile of sections) {
+        for (var i = 0; i < sections.length; i++) {
+          var sectionFile = sections[i];
           try {
-            const response = await fetch(sectionFile);
-            if (!response.ok) {
-              throw new Error(`Failed to load ${sectionFile}`);
-            }
+            var response = await fetch(sectionFile);
+            if (!response.ok) throw new Error('Failed to load ' + sectionFile);
 
-            const html = await response.text();
+            var html = await response.text();
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
 
-            // Parse HTML e extrair <section>
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
+            var inlineScripts = doc.querySelectorAll('script:not([src])');
+            var parsedSections = doc.querySelectorAll('body > section');
 
-            const inlineScripts = doc.querySelectorAll('script:not([src])');
-
-            const sections = doc.querySelectorAll('body > section');
-
-            // Inserir cada seção no container
-            sections.forEach((section) => {
+            parsedSections.forEach(function (section) {
               container.appendChild(section);
             });
 
-            for (const script of inlineScripts) {
-              const scriptContent = script.textContent;
+            for (var j = 0; j < inlineScripts.length; j++) {
+              var scriptContent = inlineScripts[j].textContent;
               if (scriptContent.trim()) {
-                const newScript = document.createElement('script');
+                var newScript = document.createElement('script');
                 newScript.textContent = scriptContent;
                 document.body.appendChild(newScript);
               }
             }
           } catch (error) {
-            console.error(`Error loading ${sectionFile}:`, error);
+            console.error('Error loading ' + sectionFile + ':', error);
           }
         }
 
-        // Inicializar Reveal.js após carregar todas as seções
         Reveal.initialize({
           controls: true,
           progress: true,
@@ -122,7 +66,6 @@
         });
       }
 
-      // Carregar slides quando a página carregar
       window.addEventListener('load', loadSlides);
     </script>
   </body>
