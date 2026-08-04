@@ -1,74 +1,72 @@
 <section
   class="exercicio"
-  data-topico="reescala-jacobiano"
+  data-topico="integral-dupla-polar"
   data-dificuldade="medio"
 >
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">5.</span>
-    A mudança de variáveis não serve só para polares. A elipse $\frac{x^2}{4} +
-    \frac{y^2}{9} \le 1$ vira um disco unitário com a reescala $x = 2u$, $y =
-    3v$. Vamos usar isso para calcular a área da elipse.
+    Vamos calcular $\iint_R x\,dx\,dy$ onde $R$ é o primeiro quadrante do disco
+    $x^2 + y^2 \le 4$. Em cartesianas, a fronteira superior exigiria $y =
+    \sqrt{4 - x^2}$ — em polares, essa região vira um simples retângulo.
   </p>
 
-  <p class="questao">
-    Verifique que a transformação leva a elipse ao disco unitário.
-  </p>
+  <p class="questao">Descreva a região $R$ em coordenadas polares.</p>
 
   <p class="dialogo">
-    Substitua $x = 2u$ e $y = 3v$ na equação da elipse e simplifique.
+    Use as restrições do exercício 1: o disco é $0 \le r \le 2$ e o primeiro
+    quadrante limita o ângulo.
   </p>
 
   <p class="subitem">
-    a) $\frac{(2u)^2}{4} + \frac{(3v)^2}{9} =$
+    a) O raio varia entre: <span class="lacuna"></span> e
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    b) A condição $\frac{x^2}{4} + \frac{y^2}{9} \le 1$ se torna: $u^2 + v^2
-    \le$ <span class="lacuna"></span>
-  </p>
-
-  <p class="questao">Calcule o Jacobiano da transformação.</p>
-
-  <p class="dialogo">
-    A transformação é diagonal: cada coordenada depende de uma única variável.
-    Monte a matriz $\frac{\partial(x,y)}{\partial(u,v)}$ e calcule o
-    determinante.
-  </p>
-
-  <p class="subitem">
-    a) $\frac{\partial x}{\partial u} =$
-    <span class="lacuna"></span>, $\frac{\partial y}{\partial v} =$
-    <span class="lacuna"></span> e as derivadas cruzadas valem
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    b) $\det \frac{\partial(x,y)}{\partial(u,v)} =$
+    b) O ângulo varia entre: <span class="lacuna"></span> e
     <span class="lacuna"></span>
   </p>
 
   <p class="questao">
-    Calcule a área da elipse como uma integral no disco unitário.
+    Escreva a integral em coordenadas polares, incluindo o Jacobiano.
   </p>
 
   <p class="dialogo">
-    A área é $\iint_{\text{elipse}} 1\,dx\,dy$. Pela fórmula de mudança de
-    variáveis, vira $\iint_{\text{disco}} |J|\,du\,dv$ — e o Jacobiano é
-    constante, sai da integral.
+    Substitua $x = r\cos\theta$ no integrando e multiplique pelo fator $r$ que
+    veio do exercício 3.
   </p>
 
   <p class="subitem">
-    a) $\iint_{\text{elipse}} 1\,dx\,dy =$
-    <span class="lacuna"></span> $\cdot \iint_{\text{disco}} 1\,du\,dv$
-  </p>
-  <p class="subitem">
-    b) $\iint_{\text{disco}} 1\,du\,dv$ é a área do disco unitário:
+    a) Integrando em polares: $x = r\cos\theta$, logo $x\,dx\,dy =$
     <span class="lacuna"></span>
   </p>
-  <p class="subitem">c) Área da elipse = <span class="lacuna"></span></p>
+  <p class="subitem">
+    b) Integral completa: $\int_0^{\pi/2}\int_0^2$
+    <span class="lacuna"></span>
+    $dr\,d\theta$
+  </p>
+
+  <p class="questao">Resolva a integral.</p>
+
+  <p class="dialogo">
+    Integre primeiro em $r$ (o $\cos\theta$ é constante nessa etapa) e depois em
+    $\theta$, lembrando que $\int \cos\theta\,d\theta = \sin\theta$.
+  </p>
+
+  <p class="subitem">
+    a) $\int_0^2 r^2\,dr = \left[\frac{r^3}{3}\right]_0^2 =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) O resultado da etapa anterior é $\frac{8}{3}\cos\theta$. Agora integre em
+    $\theta$: $\frac{8}{3}\int_0^{\pi/2}\cos\theta\,d\theta =$
+    <span class="lacuna"></span>
+  </p>
 
   <p class="checkpoint">
     <span class="checkmark"></span>
-    Generalização: a elipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$ tem área
-    $\pi ab$. Confira com $a = 2$ e $b = 3$: o resultado bate com o item c?
+    Em cartesianas, a integral seria $\int_0^2\!\int_0^{\sqrt{4-x^2}} x\,dy\,dx$
+    — os limites com raiz exigiriam uma substituição trigonométrica. Em polares,
+    o retângulo $0\le r\le2$, $0\le\theta\le\frac{\pi}{2}$ tornou o cálculo
+    direto. Compare os dois valores: devem coincidir.
   </p>
 </section>

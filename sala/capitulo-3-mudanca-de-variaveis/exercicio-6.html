@@ -1,82 +1,74 @@
 <section
   class="exercicio"
-  data-topico="massa-centro-de-massa"
-  data-dificuldade="dificil"
+  data-topico="reescala-jacobiano"
+  data-dificuldade="medio"
 >
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">6.</span>
-    Uma lâmina semicircular (metade superior) de raio $2$ tem densidade
-    constante $\rho = 3$. Vamos calcular sua massa e seu centro de massa —
-    combinando polares, Jacobiano e o conceito de momento.
+    A mudança de variáveis não serve só para polares. A elipse $\frac{x^2}{4} +
+    \frac{y^2}{9} \le 1$ vira um disco unitário com a reescala $x = 2u$, $y =
+    3v$. Vamos usar isso para calcular a área da elipse.
+  </p>
+
+  <p class="questao">
+    Verifique que a transformação leva a elipse ao disco unitário.
   </p>
 
   <p class="dialogo">
-    Lembre: a massa é $m = \iint_D \rho\,dA$ e o momento em relação ao eixo $x$
-    é $M_x = \iint_D y\,\rho\,dA$. O centro de massa é $\bar{y} =
-    \frac{M_x}{m}$.
+    Substitua $x = 2u$ e $y = 3v$ na equação da elipse e simplifique.
   </p>
 
-  <div class="workspace"></div>
+  <p class="subitem">
+    a) $\frac{(2u)^2}{4} + \frac{(3v)^2}{9} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) A condição $\frac{x^2}{4} + \frac{y^2}{9} \le 1$ se torna: $u^2 + v^2
+    \le$ <span class="lacuna"></span>
+  </p>
 
-  <p class="questao">Calcule a massa total da lâmina.</p>
+  <p class="questao">Calcule o Jacobiano da transformação.</p>
 
   <p class="dialogo">
-    A região é o semicírculo superior: $0 \le r \le 2$ e $0 \le \theta \le \pi$.
-    Use o elemento de área polar com o Jacobiano.
+    A transformação é diagonal: cada coordenada depende de uma única variável.
+    Monte a matriz $\frac{\partial(x,y)}{\partial(u,v)}$ e calcule o
+    determinante.
   </p>
 
   <p class="subitem">
-    a) $m = \iint_D 3\,dA = 3\int_0^\pi\!\int_0^2$
-    <span class="lacuna"></span> $dr\,d\theta$
+    a) $\frac{\partial x}{\partial u} =$
+    <span class="lacuna"></span>, $\frac{\partial y}{\partial v} =$
+    <span class="lacuna"></span> e as derivadas cruzadas valem
+    <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    b) $\int_0^2 r\,dr =$ <span class="lacuna"></span> e $\int_0^\pi d\theta =$
-    <span class="lacuna"></span>, logo $m = 3 \cdot$
-    <span class="lacuna"></span> $\cdot$ <span class="lacuna"></span> $=$
+    b) $\det \frac{\partial(x,y)}{\partial(u,v)} =$
     <span class="lacuna"></span>
   </p>
 
-  <p class="questao">Calcule o momento $M_x$ em relação ao eixo $x$.</p>
+  <p class="questao">
+    Calcule a área da elipse como uma integral no disco unitário.
+  </p>
 
   <p class="dialogo">
-    Em polares, a distância ao eixo $x$ é $y = r\sin\theta$. Substitua e integre
-    primeiro em $r$.
+    A área é $\iint_{\text{elipse}} 1\,dx\,dy$. Pela fórmula de mudança de
+    variáveis, vira $\iint_{\text{disco}} |J|\,du\,dv$ — e o Jacobiano é
+    constante, sai da integral.
   </p>
 
   <p class="subitem">
-    a) $M_x = \iint_D y\,\rho\,dA = 3\int_0^\pi\!\int_0^2$
-    <span class="lacuna"></span> $dr\,d\theta$
+    a) $\iint_{\text{elipse}} 1\,dx\,dy =$
+    <span class="lacuna"></span> $\cdot \iint_{\text{disco}} 1\,du\,dv$
   </p>
-  <p class="subitem">b) $\int_0^2 r^2\,dr =$ <span class="lacuna"></span></p>
   <p class="subitem">
-    c) $\int_0^\pi \sin\theta\,d\theta =$
+    b) $\iint_{\text{disco}} 1\,du\,dv$ é a área do disco unitário:
     <span class="lacuna"></span>
   </p>
-  <p class="subitem">
-    d) $M_x = 3 \cdot \frac{8}{3} \cdot 2 =$
-    <span class="lacuna"></span>
-  </p>
-
-  <p class="questao">Determine o centro de massa.</p>
-
-  <p class="dialogo">
-    Use $\bar{y} = \frac{M_x}{m}$ e pense na simetria da figura para $\bar{x}$.
-  </p>
-
-  <p class="subitem">
-    a) $\bar{y} = \frac{M_x}{m} =$
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    b) A região e a densidade são simétricas em relação ao eixo $y$, logo
-    $\bar{x} =$ <span class="lacuna"></span>
-  </p>
+  <p class="subitem">c) Área da elipse = <span class="lacuna"></span></p>
 
   <p class="checkpoint">
     <span class="checkmark"></span>
-    $\frac{8}{3\pi} \approx 0{,}85$: o centro de massa está dentro da lâmina,
-    mais perto da base ($y=0$) do que do topo ($y=2$). Faz sentido, pois a parte
-    inferior do semicírculo concentra mais área. Marque o ponto $(0;\, 0{,}85)$
-    no desenho acima.
+    Generalização: a elipse $\frac{x^2}{a^2} + \frac{y^2}{b^2} \le 1$ tem área
+    $\pi ab$. Confira com $a = 2$ e $b = 3$: o resultado bate com o item c?
   </p>
 </section>
