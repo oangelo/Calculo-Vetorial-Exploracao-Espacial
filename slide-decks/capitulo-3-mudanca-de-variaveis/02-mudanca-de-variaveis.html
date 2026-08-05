@@ -13,8 +13,9 @@
         a dificuldade do cálculo.
       </p>
       <p class="history-insert">
-        O herói que o mundo celebrou não conhecia o nome do homem que construiu
-        o foguete. Ninguém conhecia.
+        Abril de 1961: o mundo inteiro passou a conhecer o rosto e o nome de
+        Yuri Gagarin, o primeiro homem no espaço. Quem o levou até lá, ninguém
+        dizia.
       </p>
     </div>
     <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
@@ -30,16 +31,16 @@
           <p>
             Uma estampa de borracha esticada sobre um molde: o desenho muda de
             forma, mas cada pedaço continua existindo — apenas com outro
-            tamanho. É o que faz a transformação \(T(u,v)\to(x,y)\).
+            tamanho. Um quadradinho \(du\,dv\) no plano \((u,v)\) vira um
+            paralelogramo no plano \((x,y)\).
           </p>
         </div>
         <div>
           <p><strong>Definição informal:</strong></p>
           <p>
             Mudar de variáveis é redescrever o mesmo ponto em um novo sistema de
-            coordenadas. Um quadradinho \(du\,dv\) no plano \((u,v)\) é levado a
-            um paralelogramo no plano \((x,y)\) — sua área varia de ponto a
-            ponto.
+            coordenadas. O plano se deforma: a área de cada quadradinho varia de
+            ponto a ponto — e é essa variação que vamos ver a seguir.
           </p>
         </div>
       </div>
@@ -60,10 +61,11 @@
       <div class="controls-container">
         <p>
           O mesmo círculo \(x^2+y^2\le 4\), coberto por retângulos cartesianos
-          \(dA = dx\,dy\), de área constante. Clique no canvas para iniciar ou
+          de área constante \(dA = dx\,dy\). Clique no canvas para iniciar ou
           pausar a animação. Os retângulos inteiros são azuis; os cortados pela
-          borda curva, amarelos — o contorno vira uma escada. Compare com os
-          setores polares do próximo slide.
+          borda curva, amarelos — o contorno vira uma escada. Aqui não há
+          jacobiano: o fator de escala é 1 em todo ponto. Compare com os setores
+          polares do próximo slide.
         </p>
       </div>
     </div>
@@ -83,8 +85,11 @@
       <div class="controls-container">
         <p>
           Clique no canvas para iniciar ou pausar a animação. Observe como o
-          elemento \(dr\,d\theta\) cresce com \(r\). Diferente dos retângulos
-          cartesianos, os setores se ajustam à borda curva — sem "degraus".
+          elemento \(dr\,d\theta\) vira \(r\,dr\,d\theta\): cada setor pesa mais
+          longe da origem — o jacobiano \(J = r\) aparece em cada célula.
+          Diferente dos retângulos cartesianos, os setores se ajustam à borda
+          curva, sem "degraus". É esse fator de escala que o próximo slide vai
+          formalizar.
         </p>
       </div>
     </div>
@@ -142,8 +147,8 @@
           <p><strong>Geometricamente:</strong></p>
           <p>
             O quadradinho \(du\,dv\) vira um paralelogramo gerado pelos vetores
-            tangentes \(\vec{r}_u\) e \(\vec{r}_v\). A área é
-            \(|\vec{r}_u \times \vec{r}_v|\,du\,dv\).
+            tangentes \(\vec{r}_u\) e \(\vec{r}_v\). A área é \(|\vec{r}_u
+            \times \vec{r}_v|\,du\,dv\).
           </p>
           <p><strong>Casos:</strong></p>
           <ul>
@@ -164,17 +169,19 @@
       <div class="dual-panel">
         <div class="problem-section">
           <p>
-            Calcule \(\iint_R e^{-(x^2+y^2)}\,dA\), em que \(R\) é o disco
-            \(x^2+y^2\le 4\). Dica: a fronteira curva pede coordenadas polares.
+            Calcule \(\iint_D (x^2+y^2)\,dA\), em que \(D\) é o disco
+            \(x^2+y^2\le 4\). A fronteira curva pede coordenadas polares \(x =
+            r\cos\theta,\ y = r\sin\theta\).
           </p>
         </div>
         <div class="v-bar"></div>
         <div class="history-section">
           <span class="history-label">CONTEXTO</span>
           <p>
-            O Designer-Chefe do programa espacial soviético recebia o Prêmio
-            Stalin — sem poder usar o próprio nome. O prêmio era entregue a um
-            homem que, para o mundo, não existia.
+            Sergei Korolev projetou o foguete que levou Gagarin ao espaço. Em
+            1938, no Grande Expurgo, foi preso e passou seis anos em campos e
+            prisões, inclusive em Kolyma. Quando voltou, seu nome virou segredo
+            de Estado — o mundo o conheceu pelo obituário, em 1966.
           </p>
         </div>
       </div>
@@ -186,12 +193,22 @@
     <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
     <div class="slide-body">
       <h3>Exemplo 2 — A Elipse</h3>
-      <div class="problem-section">
-        <p>
-          A reescala \(x=2u,\ y=v\) leva o disco unitário \(u^2+v^2\le 1\) à
-          elipse \(\frac{x^2}{4}+y^2\le 1\). Calcule a área da elipse. Dica:
-          área = jacobiano × área do disco unitário.
-        </p>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            A reescala \(x = 2u,\ y = v\) leva o disco unitário \(u^2+v^2\le 1\)
+            à elipse \(\frac{x^2}{4}+y^2\le 1\). Calcule a área da elipse.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Nos relatórios do programa espacial soviético, os projetistas
+            assinavam apenas como "Projetista-Chefe". A burocracia transformou o
+            homem num cargo — sem nome, sem rosto, sem assinatura própria.
+          </p>
+        </div>
       </div>
     </div>
     <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
