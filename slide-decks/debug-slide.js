@@ -57,6 +57,40 @@ if (!playwright) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 1b. Launch com fallback para Chrome do sistema                      */
+/* ------------------------------------------------------------------ */
+const SYSTEM_CHROMES = [
+  '/usr/bin/google-chrome-stable',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium',
+  '/usr/bin/chromium-browser',
+];
+
+async function launchChromium() {
+  try {
+    return await playwright.chromium.launch({ headless: true });
+  } catch (e) {
+    for (const exe of SYSTEM_CHROMES) {
+      if (!fs.existsSync(exe)) continue;
+      console.log('Fallback: usando', exe);
+      try {
+        return await playwright.chromium.launch({
+          headless: true,
+          executablePath: exe,
+        });
+      } catch (e2) {
+        console.error('Fallback falhou com', exe, ':', e2.message);
+      }
+    }
+    console.error(
+      'ERRO: não foi possível lançar o Chromium. ' +
+        'Instale o navegador (npx playwright install chromium) ou tenha um Chrome no sistema.'
+    );
+    throw e;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* 2. Helpers                                                          */
 /* ------------------------------------------------------------------ */
 function isServerUp() {
@@ -128,7 +162,7 @@ async function main() {
   const url = BASE + '/slide-decks/' + chapterDir + '/index.html' + hash;
   console.log('Abrindo:', url);
 
-  const browser = await playwright.chromium.launch({ headless: true });
+  const browser = await launchChromium();
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
 
   const consoleErrors = [];
