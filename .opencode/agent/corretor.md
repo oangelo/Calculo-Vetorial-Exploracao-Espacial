@@ -41,6 +41,7 @@ Resolva caminhos a partir da raiz do worktree (pai de `sala/`).
   - Fragmento HTML (`<section class="exercicio">` apenas).
   - Checkpoint genérico, sem revelar resposta numérica exata.
   - Não ensinar pré-requisito básico (determinante etc.).
+  - Limites de integração sempre em branco (`\rule{8mm}{0.5pt}` dentro de equações).
 - NÃO commitar. O orquestrador cuida de commits.
 
 ## Verificação final

@@ -46,7 +46,7 @@ grep -n 'style=' <arquivo>     # DEVE ser vazio (zero CSS inline)
 
 KaTeX: `\\` é quebra de linha legítima DENTRO de matrizes/arrays (ex.: `\begin{pmatrix} ... \\ ... \end{pmatrix}`). Verifique manualmente que não há `\\` fora de ambientes de matriz.
 
-## Os 11 critérios
+## Os 12 critérios
 
 1. **Estrutura** — fragmento `<section class="exercicio">` com `data-topico` e `data-dificuldade`; número do exercício; classes somente do AGENTS.md/sala-styles.css.
 2. **KaTeX** — `$...$`/`$$...$$` balanceadas; nenhum `<span class="lacuna">` dentro de equação LaTeX; `\\` apenas como quebra de linha dentro de matrizes; variáveis sempre em LaTeX (não `<strong>x</strong>`).
@@ -59,6 +59,7 @@ KaTeX: `\\` é quebra de linha legítima DENTRO de matrizes/arrays (ex.: `\begin
 9. **Progressão** — usa apenas conceitos já vistos; não antecipa capítulos posteriores; coerente com os exercícios revisados do tópico.
 10. **Português** — correto; LaTeX válido no KaTeX (ex.: `\sin`, não `\sen`).
 11. **Resolubilidade** — é possível chegar às respostas com as informações dadas; lacunas no lugar certo.
+12. **Limites de integração em branco** — nunca pré-preencher intervalos de integração; usar `\rule{8mm}{0.5pt}` dentro de equações para o espaço do limite; não declarar intervalos prontos em diálogos quando a tarefa for determiná-los. Pré-preencher limites = **ALTA**.
 
 ## Formato do veredito (exato)
 

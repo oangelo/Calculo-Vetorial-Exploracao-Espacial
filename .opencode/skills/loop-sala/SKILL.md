@@ -40,7 +40,7 @@ Para cada exercício na ordem (ou só o pedido):
 2. **Juiz** — chame `juiz` com:
    - caminho do capítulo e do arquivo;
    - instrução "verifica este exercício e emite o veredito".
-   - Ele aplica os 11 critérios (estrutura, KaTeX, CSS, **diálogo sem resposta**, **checkpoint genérico**, **não ensinar pré-requisito**, quantidades, metadados, progressão, português, resolubilidade). Os critérios vivem no prompt do agente `juiz`.
+   - Ele aplica os 12 critérios (estrutura, KaTeX, CSS, **diálogo sem resposta**, **checkpoint genérico**, **não ensinar pré-requisito**, **limites em branco**, quantidades, metadados, progressão, português, resolubilidade). Os critérios vivem no prompt do agente `juiz`.
    - Receba `VEREDITO: APROVADO` ou `VEREDITO: REPROVADO` + ISSUES.
 3. Se **APROVADO**: vá para a FASE 1.5 (commit) e siga para o próximo exercício.
 4. Se **REPROVADO** (rodada n de 1 a 3):

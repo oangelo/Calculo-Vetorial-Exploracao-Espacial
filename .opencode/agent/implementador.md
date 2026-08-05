@@ -35,6 +35,7 @@ A tarefa do orquestrador indica o capítulo e o exercício exato.
 - **Diálogo guiado (baby steps):** guia o pensamento SEM dar a resposta. Não afirme o valor final e não revele o resultado de um item em outro item.
 - **Checkpoint é verificação genérica:** faz sentido SEM revelar a resposta (padrão cap-0/1/2). NUNCA dar resposta numérica exata no checkpoint (ex.: "$\frac{8}{3\pi} \approx 0{,}85$").
 - **Não ensinar pré-requisito:** não explique técnica que o aluno já domina de álgebra linear/disciplinas anteriores (ex.: regra de determinante 2×2 `ad − bc`, expansão de determinante 3×3).
+- **Limites de integração sempre em branco:** nunca forneça intervalos prontos — deixe sempre um espaço para o aluno preencher. Dentro de equações LaTeX use `\rule{8mm}{0.5pt}` para o espaço do limite (nunca `<span class="lacuna">` dentro de equação). Não declare intervalos em diálogos quando a tarefa for determiná-los.
 - **Quantidades:** 2-4 questões/exercício, 2-4 subitens/questão, ~15-25 interações por folha (4-6 exercícios).
 - **Metadados:** `data-topico` (ex.: `retas`, `jacobiano`) e `data-dificuldade` (`facil`/`medio`/`dificil`).
 - **Progressão:** usar apenas conceitos já vistos; não antecipar capítulos posteriores.
