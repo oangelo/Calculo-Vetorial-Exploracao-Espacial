@@ -46,9 +46,17 @@
 ### EXPLORAÇÃO (V7, se aplicável)
 
 - [ ] Visualização interativa com Canvas 2D?
+- [ ] Posição flexível: pode estar entre CONCEITO e FORMALIZAÇÃO, ou na INTERPRETAÇÃO, quando apoia a definição (ex.: elemento de área/jacobiano) — não obrigatoriamente no V7 final?
 - [ ] IIFE com `window.vizNome = { init, cleanup }`?
 - [ ] IDs únicos para cada canvas?
 - [ ] Paleta de cores segue a tabela (posição, velocidade, aceleração, força, unitários)?
+
+### QUALIDADE DE CONTEÚDO (todas as seções de conteúdo)
+
+- [ ] Exemplos são clássicos E simples (2-5 passos em sala, sem truque de substituição longo)?
+- [ ] História é concreta: nomes, datas, fatos verificáveis (sem "o engenheiro que calculou...")?
+- [ ] TODO exemplo tem fragmento em dual-panel (esquerda math | direita história)?
+- [ ] Fragmentos variam beats e não repetem inserts de V1 nem entre si?
 
 ---
 

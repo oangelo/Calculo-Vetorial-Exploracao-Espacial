@@ -141,6 +141,10 @@ Cada seção de conteúdo segue este fluxo. A ordem não é sugerida — é obri
   → IDs únicos para cada canvas
   → Layout variável (V-VISUALIZACAO). Escolher entre variantes A, B, C.
     Ver `template/template-system.md` § V-VISUALIZACAO e templates em `template/variaveis/v-visualizacao-*.html`.
+  → POSICIONAMENTO FLEXÍVEL: quando a visualização apoia a compreensão da definição
+    (ex.: elemento de área e jacobiano), ela pode ser colocada ENTRE CONCEITO e FORMALIZAÇÃO,
+    ou na INTERPRETAÇÃO, ANTES dos exemplos. O V7 final é o padrão, não um dogma.
+    O critério é pedagógico: a viz deve aparecer onde ela explica o conceito.
 ```
 
 **Número típico de slides por seção:** 5 (mínimo) a 8 (máximo).
