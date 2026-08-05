@@ -41,6 +41,10 @@ A tarefa do orquestrador vai indicar o capítulo e a seção exata, e o contexto
   - V5–V6 APLICAÇÃO: **1 a 3 exemplos clássicos**, calculáveis em aula, em `problem-section`. NUNCA incluir solução. Pelo menos 1 exemplo guiado por seção.
   - V7 EXPLORAÇÃO (opcional): Canvas 2D.
 - **Exemplos com fragmento** (opcional, dinâmico): `dual-panel` com esquerda = math (`problem-section`), direita = fragmento histórico/emocional. O fragmento NÃO precisa ter relação lógica com o exemplo (justaposição válida). Fragmento: 2-4 frases, tom seco, sem classe CSS especial. Não repetir beats já usados nos inserts.
+- **TODO exemplo tem fragmento** — cada exemplo de uma seção de conteúdo recebe fragmento em `dual-panel` (esquerda = math, direita = história). Beats variados entre si e sem repetir os inserts de V1.
+- **Exemplos simples e acessíveis** — clássicos do tópico, calculáveis em 2-5 passos em sala, sem truques de substituição longos. Prefira integrandos e regiões que exercitem o método (ex.: \(x^2+y^2\) no disco, área de elipse) em vez de integrais especiais.
+- **História concreta** — use nomes, datas e fatos verificáveis (do PDI da issue e do narrative-spec). Evite generalidades vagas ("o engenheiro que calculou...", "um homem..."); nomeie a pessoa e a data quando disponíveis.
+- **Visualização antes da formalização é válida** — quando a viz apoia a definição (ex.: elemento de área e jacobiano), ela pode ficar entre CONCEITO e FORMALIZAÇÃO, ou na INTERPRETAÇÃO, antes dos exemplos. Não é obrigatório deixar no final (V7).
 - **Zero CSS inline.** Usar apenas classes de `space-theme.css`. Nunca criar classe nova.
 - **MathJax:** `\(...\)` inline, `\[...\]` bloco. NUNCA `$...$` nem barra dupla (`\\(`, `\\[`, `\\frac`). Em matrizes usar `\cr` para quebra de linha.
 - **Fragmento HTML:** apenas `<section>` (e `<script>` inline se preciso). Sem `<html>/<head>/<body>`.
