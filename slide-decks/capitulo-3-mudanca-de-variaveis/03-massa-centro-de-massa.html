@@ -4,18 +4,19 @@
     <div class="slide-body">
       <h2>Massa e Centro de Massa</h2>
       <p>
-        Onde está o ponto de equilíbrio de uma cápsula? Um módulo que rola
-        em torno de um eixo mal calculado não acopla — e o ponto onde toda a
-        massa "se equilibra" decide isso.
+        Onde está o ponto de equilíbrio de uma cápsula? Um módulo que rola em
+        torno de um eixo mal calculado não acopla — e o ponto onde toda a massa
+        "se equilibra" decide isso.
       </p>
       <p>
         Na seção 02, aprendemos a integrar sobre regiões usando coordenadas
-        polares e o jacobiano. Agora esse mesmo mecanismo mede quanto uma
-        região "pesa" e onde está o seu centro.
+        polares e o jacobiano. Agora esse mesmo mecanismo mede quanto uma região
+        "pesa" e onde está o seu centro.
       </p>
       <p class="history-insert">
-        Os engenheiros que calculavam massa e centro de massa das cápsulas
-        não assinavam relatórios. O nome deles não ia ao espaço.
+        Na reentrada da Vostok 1, o módulo de serviço não se desprendeu por
+        completo e a cápsula girou fora de controle. Um corpo fora de equilíbrio
+        cai como pode: é o centro de massa que decide a reentrada.
       </p>
     </div>
     <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
@@ -26,18 +27,18 @@
     <div class="slide-body">
       <h3>Densidade Superficial</h3>
       <p>
-        Uma chapa não é uniforme: há mais material perto de uma borda, menos
-        em outra. A densidade superficial \(\rho(x,y)\) mede a massa por
-        unidade de área — em kg/m² — em cada ponto \((x,y)\) da placa.
+        Uma chapa não é uniforme: há mais material perto de uma borda, menos em
+        outra. A densidade superficial \(\rho(x,y)\) mede a massa por unidade de
+        área — em kg/m² — em cada ponto \((x,y)\) da placa.
       </p>
       <p>
-        Analogia: um tecido tem peso por metro quadrado. Dobrado sobre a
-        região, é a densidade que decide onde a chapa pesa mais.
+        Analogia: um tecido tem peso por metro quadrado. Dobrado sobre a região,
+        é a densidade que decide onde a chapa pesa mais.
       </p>
       <div class="math-section">
         <p>
-          Massa não é \(\rho\) vezes área de um retângulo: é a densidade
-          somada ponto a ponto sobre a região inteira.
+          Massa não é \(\rho\) vezes área de um retângulo: é a densidade somada
+          ponto a ponto sobre a região inteira.
         </p>
       </div>
     </div>
@@ -83,7 +84,9 @@
         <ul>
           <li>\(M_x\) = momento em relação ao eixo \(x\)</li>
           <li>\(M_y\) = momento em relação ao eixo \(y\)</li>
-          <li>\((\bar{x},\bar{y})\) = centro de massa — o ponto de equilíbrio</li>
+          <li>
+            \((\bar{x},\bar{y})\) = centro de massa — o ponto de equilíbrio
+          </li>
         </ul>
         <p><strong>Validade:</strong> \(m \neq 0\).</p>
       </div>
@@ -110,23 +113,19 @@
     <div class="slide-body">
       <h3>Exemplo 1 — Massa do Disco</h3>
       <div class="dual-panel">
-        <div class="history-section">
-          <span class="history-label">CONTEXTO</span>
+        <div class="problem-section">
           <p>
-            Primeira mulher no espaço, 1963. A próxima soviética: 1982.
-            Dezenove anos de silêncio entre uma mulher e outra.
+            Uma placa circular de raio \(2\) m tem densidade \(\rho(r) = 800 +
+            50r^2\) kg/m², em que \(r\) é a distância ao centro. Calcule a massa
+            total da placa.
           </p>
         </div>
         <div class="v-bar"></div>
-        <div class="problem-section">
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
           <p>
-            Uma placa circular de raio \(2\) m tem densidade
-            \(\rho(r) = 800 + 50r^2\) kg/m², em que \(r\) é a distância ao
-            centro. Calcule a massa total da placa.
-          </p>
-          <p>
-            Dica: a fronteira circular pede coordenadas polares — o jacobiano
-            da seção 02 entra aqui.
+            Primeira mulher no espaço, 1963. A próxima soviética: 1982. Dezenove
+            anos de silêncio entre uma mulher e outra.
           </p>
         </div>
       </div>
@@ -138,12 +137,27 @@
     <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
     <div class="slide-body">
       <h3>Exemplo 2 — Centro de Massa</h3>
-      <div class="problem-section">
-        <p>
-          Uma placa retangular ocupa a região \(0\le x\le 1,\ 0\le y\le 2\),
-          com densidade \(\rho(x,y) = 1 + x\) kg/m².
-        </p>
-        <p>Calcule a massa \(m\), os momentos \(M_x\) e \(M_y\), e o centro de massa \((\bar{x},\bar{y})\).</p>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Uma placa retangular ocupa a região \(0\le x\le 1,\ 0\le y\le 2\),
+            com densidade \(\rho(x,y) = 1 + x\) kg/m².
+          </p>
+          <p>
+            Calcule a massa \(m\), os momentos \(M_x\) e \(M_y\), e o centro de
+            massa \((\bar{x},\bar{y})\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            O cosmódromo de Baikonur foi erguido em segredo, no meio da estepe.
+            A cidade que o servia não aparecia em mapa nenhum — e o nome
+            'Baikonur' apontava para um vilarejo a centenas de quilômetros. Até
+            os cartógrafos mentiam pelo programa espacial.
+          </p>
+        </div>
       </div>
     </div>
     <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
@@ -164,9 +178,9 @@
         </div>
         <div>
           <p>
-            O canvas mostra uma chapa irregular de densidade variável. O
-            ponto marcado é o baricentro \((\bar{x},\bar{y})\): o ponto em que
-            a chapa se equilibra.
+            O canvas mostra uma chapa irregular de densidade variável. O ponto
+            marcado é o baricentro \((\bar{x},\bar{y})\): o ponto em que a chapa
+            se equilibra.
           </p>
           <p>
             Perceba que ele não precisa estar dentro da região — uma placa em
