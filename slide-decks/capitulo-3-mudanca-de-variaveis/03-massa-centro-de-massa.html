@@ -1,0 +1,194 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h2>Massa e Centro de Massa</h2>
+      <p>
+        Onde está o ponto de equilíbrio de uma cápsula? Um módulo que rola em
+        torno de um eixo mal calculado não acopla — e o ponto onde toda a massa
+        "se equilibra" decide isso.
+      </p>
+      <p>
+        Na seção 02, aprendemos a integrar sobre regiões usando coordenadas
+        polares e o jacobiano. Agora esse mesmo mecanismo mede quanto uma região
+        "pesa" e onde está o seu centro.
+      </p>
+      <p class="history-insert">
+        Na reentrada da Vostok 1, o módulo de serviço não se desprendeu por
+        completo e a cápsula girou fora de controle. Um corpo fora de equilíbrio
+        cai como pode: é o centro de massa que decide a reentrada.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Densidade Superficial</h3>
+      <p>
+        Uma chapa não é uniforme: há mais material perto de uma borda, menos em
+        outra. A densidade superficial \(\rho(x,y)\) mede a massa por unidade de
+        área — em kg/m² — em cada ponto \((x,y)\) da placa.
+      </p>
+      <p>
+        Analogia: um tecido tem peso por metro quadrado. Dobrado sobre a região,
+        é a densidade que decide onde a chapa pesa mais.
+      </p>
+      <div class="math-section">
+        <p>
+          Massa não é \(\rho\) vezes área de um retângulo: é a densidade somada
+          ponto a ponto sobre a região inteira.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Massa Total</h3>
+      <div class="formula-spotlight">
+        <p>\[m = \iint_D \rho(x,y)\,dA\]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>\(\rho(x,y)\) = densidade superficial da placa, em kg/m²</li>
+          <li>\(D\) = região do plano ocupada pela placa</li>
+          <li>\(dA\) = elemento de área sobre \(D\)</li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(\rho\) contínua e \(D\) uma região
+          limitada do plano.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Momentos e Centro de Massa</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[M_x = \iint_D y\,\rho(x,y)\,dA,\quad M_y = \iint_D
+          x\,\rho(x,y)\,dA,\quad (\bar{x},\bar{y}) = \left(\frac{M_y}{m},
+          \frac{M_x}{m}\right)\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>\(M_x\) = momento em relação ao eixo \(x\)</li>
+          <li>\(M_y\) = momento em relação ao eixo \(y\)</li>
+          <li>
+            \((\bar{x},\bar{y})\) = centro de massa — o ponto de equilíbrio
+          </li>
+        </ul>
+        <p><strong>Validade:</strong> \(m \neq 0\).</p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            Densidade constante: o centro coincide com o centroide — o centro
+            geométrico da região.
+          </li>
+          <li>
+            Simetria: se a chapa e a densidade têm um eixo de simetria, o
+            baricentro está sobre ele.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Massa do Disco</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Uma placa circular de raio \(2\) m tem densidade \(\rho(r) = 800 +
+            50r^2\) kg/m², em que \(r\) é a distância ao centro. Calcule a massa
+            total da placa.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Primeira mulher no espaço, 1963. A próxima soviética: 1982. Dezenove
+            anos de silêncio entre uma mulher e outra.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Centro de Massa</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Uma placa retangular ocupa a região \(0\le x\le 1,\ 0\le y\le 2\),
+            com densidade \(\rho(x,y) = 1 + x\) kg/m².
+          </p>
+          <p>
+            Calcule a massa \(m\), os momentos \(M_x\) e \(M_y\), e o centro de
+            massa \((\bar{x},\bar{y})\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            O cosmódromo de Baikonur foi erguido em segredo, no meio da estepe.
+            A cidade que o servia não aparecia em mapa nenhum — e o nome
+            'Baikonur' apontava para um vilarejo a centenas de quilômetros. Até
+            os cartógrafos mentiam pelo programa espacial.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Visualização — Baricentro de Chapa Irregular</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="baricentroCanvas"
+            class="visualization-canvas"
+            width="350"
+            height="350"
+          ></canvas>
+        </div>
+        <div>
+          <p>
+            O canvas mostra uma chapa irregular de densidade variável. O ponto
+            marcado é o baricentro \((\bar{x},\bar{y})\): o ponto em que a chapa
+            se equilibra.
+          </p>
+          <p>
+            Perceba que ele não precisa estar dentro da região — uma placa em
+            formato de "C" tem equilíbrio fora do material.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+</section>

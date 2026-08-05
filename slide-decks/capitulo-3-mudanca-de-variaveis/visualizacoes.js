@@ -1,1082 +1,666 @@
+/*
+ * visualizacoes.js — Capítulo 3 (Mudança de Variáveis na Integral Dupla)
+ * Facção Soviet, 1961-1964.
+ *
+ * Duas visualizações em IIFE, expostas via window:
+ *   window.vizPolarJacobian = { init, cleanup }  → polarJacobianCanvas
+ *   window.vizBaricentro     = { init, cleanup }  → baricentroCanvas
+ *
+ * requestAnimationFrame (nunca timers de intervalo). cleanup cancela o loop
+ * quando o slide deixa de estar visível (Reveal 'slidechanged').
+ */
 
-          // Linhas horizontais e verticais
-          for (let y = 0; y <= height; y += 20) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
-            ctx.stroke();
-          }
+function hookVizToReveal(canvasId, onEnter, onLeave) {
+  function onSlide(e) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    if (e.currentSlide && e.currentSlide.contains(canvas)) {
+      onEnter(canvas);
+    } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+      onLeave(canvas);
+    }
+  }
 
-          for (let x = 0; x <= width; x += 20) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
-            ctx.stroke();
-          }
+  function attach() {
+    if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+    if (!document.getElementById('slides-container')) return false;
+    Reveal.on('slidechanged', onSlide);
+    Reveal.on('ready', onSlide);
+    var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+    if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+    return true;
+  }
 
-          // Eixos principais
-          ctx.strokeStyle = '#4fc3f7';
-          ctx.lineWidth = 1;
+  if (attach()) return;
+  var tries = 0;
+  (function poll() {
+    tries++;
+    if (attach()) return;
+    if (tries < 200) setTimeout(poll, 50);
+  })();
+}
 
-          ctx.beginPath();
-          ctx.moveTo(0, centerY);
-          ctx.lineTo(width, centerY);
-          ctx.stroke();
+/* ------------------------------------------------------------------ *
+ * vizPolarJacobian — elementos de área em coordenadas polares.
+ * Mostra como dA = r dr dθ cresce com o raio. Clique para animar.
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var cx = 0;
+  var cy = 0;
+  var animId = null;
+  var frame = 0;
+  var isAnimating = false;
+  var inited = false;
 
-          ctx.beginPath();
-          ctx.moveTo(centerX, 0);
-          ctx.lineTo(centerX, height);
-          ctx.stroke();
+  function draw(f) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
 
-          // Desenha o paralelogramo
-          ctx.fillStyle = 'rgba(79, 195, 247, 0.3)';
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.lineTo(centerX + vector1.x, centerY - vector1.y);
-          ctx.lineTo(
-            centerX + vector1.x + vector2.x,
-            centerY - vector1.y - vector2.y
-          );
-          ctx.lineTo(centerX + vector2.x, centerY - vector2.y);
-          ctx.closePath();
-          ctx.fill();
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
+    ctx.fillRect(0, 0, W, H);
 
-          // Desenha os vetores
-          ctx.strokeStyle = '#ff5722'; // Cor do vetor 1 (ex: posição)
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.lineTo(centerX + vector1.x, centerY - vector1.y);
-          ctx.stroke();
+    var gridBounds = Math.min(cx, cy) - 20;
 
-          // Desenha ponta da seta para vetor 1
-          const angle1 = Math.atan2(-vector1.y, vector1.x);
-          ctx.beginPath();
-          ctx.moveTo(centerX + vector1.x, centerY - vector1.y);
-          ctx.lineTo(
-            centerX + vector1.x - 8 * Math.cos(angle1 - Math.PI / 6),
-            centerY - vector1.y + 8 * Math.sin(angle1 - Math.PI / 6)
-          );
-          ctx.lineTo(
-            centerX + vector1.x - 8 * Math.cos(angle1 + Math.PI / 6),
-            centerY - vector1.y + 8 * Math.sin(angle1 + Math.PI / 6)
-          );
-          ctx.closePath();
-          ctx.fillStyle = '#ff5722';
-          ctx.fill();
+    ctx.strokeStyle = 'rgba(79, 195, 247, 0.1)';
+    ctx.lineWidth = 0.5;
+    for (var y = cy - gridBounds; y <= cy + gridBounds; y += 20) {
+      ctx.beginPath();
+      ctx.moveTo(cx - gridBounds, y);
+      ctx.lineTo(cx + gridBounds, y);
+      ctx.stroke();
+    }
+    for (var x = cx - gridBounds; x <= cx + gridBounds; x += 20) {
+      ctx.beginPath();
+      ctx.moveTo(x, cy - gridBounds);
+      ctx.lineTo(x, cy + gridBounds);
+      ctx.stroke();
+    }
 
-          ctx.strokeStyle = '#4caf50'; // Cor do vetor 2 (ex: velocidade)
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.lineTo(centerX + vector2.x, centerY - vector2.y);
-          ctx.stroke();
+    ctx.strokeStyle = '#4fc3f7';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(cx - gridBounds, cy);
+    ctx.lineTo(cx + gridBounds, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - gridBounds);
+    ctx.lineTo(cx, cy + gridBounds);
+    ctx.stroke();
 
-          // Desenha ponta da seta para vetor 2
-          const angle2 = Math.atan2(-vector2.y, vector2.x);
-          ctx.beginPath();
-          ctx.moveTo(centerX + vector2.x, centerY - vector2.y);
-          ctx.lineTo(
-            centerX + vector2.x - 8 * Math.cos(angle2 - Math.PI / 6),
-            centerY - vector2.y + 8 * Math.sin(angle2 - Math.PI / 6)
-          );
-          ctx.lineTo(
-            centerX + vector2.x - 8 * Math.cos(angle2 + Math.PI / 6),
-            centerY - vector2.y + 8 * Math.sin(angle2 + Math.PI / 6)
-          );
-          ctx.closePath();
-          ctx.fillStyle = '#4caf50';
-          ctx.fill();
-
-          // Desenho de produto vetorial
-          const crossProduct = vector1.x * vector2.y - vector1.y * vector2.x;
-          const crossCenterX = centerX + (vector1.x + vector2.x) / 2;
-          const crossCenterY = centerY - (vector1.y + vector2.y) / 2;
-          const crossDir = crossProduct >= 0 ? 1 : -1; // 1 for positive (out), -1 for negative (in)
-
-          // Círculo base para indicar a origem do vetor produto vetorial (opcional)
-          ctx.beginPath();
-          ctx.arc(crossCenterX, crossCenterY, 5, 0, Math.PI * 2);
-          ctx.fillStyle =
-            crossProduct >= 0
-              ? 'rgba(255, 215, 0, 0.6)'
-              : 'rgba(255, 105, 180, 0.6)'; // Amarelo para fora, Rosa para dentro
-          ctx.fill();
-          ctx.strokeStyle = crossProduct >= 0 ? '#ffd700' : '#ff69b4';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          // Representação simplificada da direção (ponto ou X)
-          if (crossProduct >= 0) {
-            // Saindo do plano (ponto no centro)
-            ctx.beginPath();
-            ctx.arc(crossCenterX, crossCenterY, 2.5, 0, Math.PI * 2);
-            ctx.fillStyle = '#000000'; // Ponto preto
-            ctx.fill();
-          } else {
-            // Entrando no plano (X)
-            ctx.strokeStyle = '#000000'; // X preto
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.moveTo(crossCenterX - 3, crossCenterY - 3);
-            ctx.lineTo(crossCenterX + 3, crossCenterY + 3);
-            ctx.moveTo(crossCenterX + 3, crossCenterY - 3);
-            ctx.lineTo(crossCenterX - 3, crossCenterY + 3);
-            ctx.stroke();
-          }
-
-          // Adiciona etiquetas de vetores
-          ctx.fillStyle = '#ff5722';
-          ctx.font = '14px Arial';
-          ctx.fillText(
-            `\u{1D4CF}\u{20D7}₁ = (${vector1.x.toFixed(0)}, ${vector1.y.toFixed(0)})`,
-            centerX + vector1.x / 2 - 10,
-            centerY - vector1.y / 2 - 15
-          );
-
-          ctx.fillStyle = '#4caf50';
-          ctx.fillText(
-            `\u{1D4CF}\u{20D7}₂ = (${vector2.x.toFixed(0)}, ${vector2.y.toFixed(0)})`,
-            centerX + vector2.x / 2 + 10,
-            centerY - vector2.y / 2 + 25
-          );
-
-          // Infos sobre o produto vetorial
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '14px Arial';
-          ctx.fillText(
-            `Produto vetorial (escalar em 2D): \u{1D4CF}\u{20D7}₁ × \u{1D4CF}\u{20D7}₂ = ${crossProduct.toFixed(0)}`,
-            20,
-            30
-          );
-          ctx.fillText(
-            `Área do paralelogramo: | \u{1D4CF}\u{20D7}₁ × \u{1D4CF}\u{20D7}₂ | = ${Math.abs(crossProduct).toFixed(0)}`,
-            20,
-            50
-          );
-
-          ctx.fillStyle =
-            crossProduct >= 0
-              ? 'rgba(255, 215, 0, 0.8)'
-              : 'rgba(255, 105, 180, 0.8)';
-          ctx.fillText(
-            `Orientação: ${crossProduct >= 0 ? 'Positiva (anti-horária)' : 'Negativa (horária)'}`,
-            20,
-            70
-          );
-
-          // Adiciona texto explicativo
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '12px Arial';
-          ctx.fillText(
-            'O produto vetorial (escalar em 2D) dá a área orientada',
-            20,
-            height - 40
-          );
-          ctx.fillText(
-            'do paralelogramo. O sinal indica a orientação.',
-            20,
-            height - 20
-          );
-
-          // Pontos para arrastar
-          const point1X = centerX + vector1.x;
-          const point1Y = centerY - vector1.y;
-          const point2X = centerX + vector2.x;
-          const point2Y = centerY - vector2.y;
-
-          // Destacar pontos arrastáveis
-          ctx.fillStyle = 'rgba(255, 87, 34, 0.3)';
-          ctx.beginPath();
-          ctx.arc(point1X, point1Y, 12, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = '#ff5722';
-          ctx.beginPath();
-          ctx.arc(point1X, point1Y, 8, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = 'rgba(76, 175, 80, 0.3)';
-          ctx.beginPath();
-          ctx.arc(point2X, point2Y, 12, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = '#4caf50';
-          ctx.beginPath();
-          ctx.arc(point2X, point2Y, 8, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        function updateDeterminantVisualization() {
-          drawDeterminantVisualization();
-        }
-
-        // Implementação de arrastar vetores
-        function getMousePos(canvas, evt) {
-          const rect = canvas.getBoundingClientRect();
-          const scaleX = canvas.width / rect.width;
-          const scaleY = canvas.height / rect.height;
-
-          return {
-            x: (evt.clientX - rect.left) * scaleX,
-            y: (evt.clientY - rect.top) * scaleY,
-          };
-        }
-
-        canvas.addEventListener('mousedown', function (e) {
-          const pos = getMousePos(canvas, e);
-          const mouseX = pos.x;
-          const mouseY = pos.y;
-
-          const point1X = centerX + vector1.x;
-          const point1Y = centerY - vector1.y;
-          const point2X = centerX + vector2.x;
-          const point2Y = centerY - vector2.y;
-
-          const dist1 = Math.sqrt(
-            Math.pow(mouseX - point1X, 2) + Math.pow(mouseY - point1Y, 2)
-          );
-          const dist2 = Math.sqrt(
-            Math.pow(mouseX - point2X, 2) + Math.pow(mouseY - point2Y, 2)
-          );
-
-          if (dist1 < 15) {
-            draggingVector = 1;
-            canvas.style.cursor = 'grabbing';
-          } else if (dist2 < 15) {
-            draggingVector = 2;
-            canvas.style.cursor = 'grabbing';
-          }
-        });
-
-        canvas.addEventListener('mousemove', function (e) {
-          const pos = getMousePos(canvas, e);
-          const mouseX = pos.x;
-          const mouseY = pos.y;
-
-          const point1X = centerX + vector1.x;
-          const point1Y = centerY - vector1.y;
-          const point2X = centerX + vector2.x;
-          const point2Y = centerY - vector2.y;
-
-          const dist1 = Math.sqrt(
-            Math.pow(mouseX - point1X, 2) + Math.pow(mouseY - point1Y, 2)
-          );
-          const dist2 = Math.sqrt(
-            Math.pow(mouseX - point2X, 2) + Math.pow(mouseY - point2Y, 2)
-          );
-
-          // Atualiza cursor apenas se não estiver arrastando
-          if (!draggingVector) {
-            if (dist1 < 15 || dist2 < 15) {
-              canvas.style.cursor = 'grab';
-            } else {
-              canvas.style.cursor = 'default'; // Ou 'none' se definido no CSS
-            }
-          }
-
-          if (draggingVector) {
-            canvas.style.cursor = 'grabbing'; // Garante cursor enquanto arrasta
-            if (draggingVector === 1) {
-              vector1.x = mouseX - centerX;
-              vector1.y = -(mouseY - centerY);
-            } else if (draggingVector === 2) {
-              vector2.x = mouseX - centerX;
-              vector2.y = -(mouseY - centerY);
-            }
-
-            updateDeterminantVisualization();
-          }
-        });
-
-        canvas.addEventListener('mouseup', function () {
-          if (draggingVector) {
-            draggingVector = null;
-            // Reavalia o cursor baseado na posição atual do mouse
-            const pos = getMousePos(canvas, event); // 'event' está disponível no handler
-            const mouseX = pos.x;
-            const mouseY = pos.y;
-            const point1X = centerX + vector1.x;
-            const point1Y = centerY - vector1.y;
-            const point2X = centerX + vector2.x;
-            const point2Y = centerY - vector2.y;
-            const dist1 = Math.sqrt(
-              Math.pow(mouseX - point1X, 2) + Math.pow(mouseY - point1Y, 2)
-            );
-            const dist2 = Math.sqrt(
-              Math.pow(mouseX - point2X, 2) + Math.pow(mouseY - point2Y, 2)
-            );
-            if (dist1 < 15 || dist2 < 15) {
-              canvas.style.cursor = 'grab';
-            } else {
-              canvas.style.cursor = 'default'; // Ou 'none'
-            }
-          }
-        });
-
-        canvas.addEventListener('mouseleave', function () {
-          if (!draggingVector) {
-            // Só reseta se não estiver arrastando para fora
-            canvas.style.cursor = 'default'; // Ou 'none'
-          }
-        });
-
-        // Inicialização
-        drawDeterminantVisualization();
+    var maxR = gridBounds;
+    ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)';
+    for (var r = 20; r <= maxR; r += 20) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, 0, Math.PI * 2);
+      ctx.stroke();
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '10px Arial';
+      ctx.fillText(String(r), cx + 5, cy - r - 5);
+    }
+    for (var th = 0; th < Math.PI * 2; th += Math.PI / 6) {
+      var ex = cx + maxR * Math.cos(th);
+      var ey = cy - maxR * Math.sin(th);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(ex, ey);
+      ctx.stroke();
+      var ang = Math.round((th * 180) / Math.PI);
+      if (ang % 60 === 0 && ang < 360) {
+        var lr = maxR + 15;
+        ctx.fillStyle = '#e0e0e0';
+        ctx.font = '10px Arial';
+        ctx.fillText(ang + '\u00B0', cx + lr * Math.cos(th) - 10, cy - lr * Math.sin(th) + 5);
       }
+    }
 
-      // Visualização da distorção em coordenadas polares (REVISADA - Elemento Polar Alinhado com Vetores)
-      function initDistortionCanvas() {
-        const canvas = document.getElementById('distortionCanvas');
-        if (!canvas) return;
+    var dr = 20;
+    var dtheta = Math.PI / 12;
+    for (var r2 = 0; r2 <= maxR - dr; r2 += dr) {
+      for (var t2 = 0; t2 < Math.PI * 2 - dtheta / 2; t2 += dtheta) {
+        var pf = isAnimating
+          ? 1 + 0.1 * Math.sin(f * 0.05 + r2 / 30 + t2 * 2)
+          : 1;
+        var cDr = dr * pf;
+        var colorIndex = (Math.floor(r2 / dr) + Math.floor(t2 / dtheta)) % 2;
+        var baseAlpha = Math.max(0.1, Math.min(0.7, ((r2 + dr / 2) / maxR) * 0.8));
+        ctx.fillStyle =
+          colorIndex === 0
+            ? 'rgba(30, 136, 229, ' + baseAlpha + ')'
+            : 'rgba(255, 179, 0, ' + baseAlpha + ')';
 
-        const ctx = canvas.getContext('2d');
-        const width = canvas.width;
-        const height = canvas.height;
-        const centerX = width / 2;
-        const centerY = height / 2;
-        let pointerX = centerX + 100;
-        let pointerY = centerY - 50;
+        var rInner = r2;
+        var rOuter = r2 + cDr;
+        var thStart = t2;
+        var thEnd = t2 + dtheta;
+        var midA = (thStart + thEnd) / 2;
 
-        // Opções de visualização
-        let showCartesianElement = true;
-        let showPolarElement = true;
-        let showTangentVectors = true;
-
-        // Adicionar controles interativos
-        let controlsContainer = canvas.parentNode.querySelector(
-          '.controls-container.distortion-controls'
+        ctx.beginPath();
+        ctx.moveTo(cx + rInner * Math.cos(thStart), cy - rInner * Math.sin(thStart));
+        ctx.lineTo(cx + rOuter * Math.cos(thStart), cy - rOuter * Math.sin(thStart));
+        ctx.quadraticCurveTo(
+          cx + rOuter * Math.cos(midA),
+          cy - rOuter * Math.sin(midA),
+          cx + rOuter * Math.cos(thEnd),
+          cy - rOuter * Math.sin(thEnd)
         );
-        if (!controlsContainer) {
-          controlsContainer = document.createElement('div');
-          controlsContainer.className =
-            'controls-container distortion-controls';
-          controlsContainer.style.marginTop = '10px';
-
-          const cartesianToggle = document.createElement('button');
-          cartesianToggle.className = 'control-button';
-          cartesianToggle.textContent = 'Elem Cartesiano: ON';
-          cartesianToggle.onclick = function () {
-            showCartesianElement = !showCartesianElement;
-            this.textContent = `Elem Cartesiano: ${showCartesianElement ? 'ON' : 'OFF'}`;
-            updateDistortionVisualization();
-          };
-
-          const polarToggle = document.createElement('button');
-          polarToggle.className = 'control-button';
-          polarToggle.textContent = 'Elem Polar: ON';
-          polarToggle.onclick = function () {
-            showPolarElement = !showPolarElement;
-            this.textContent = `Elem Polar: ${showPolarElement ? 'ON' : 'OFF'}`;
-            updateDistortionVisualization();
-          };
-
-          const vectorsToggle = document.createElement('button');
-          vectorsToggle.className = 'control-button';
-          vectorsToggle.textContent = 'Vetores Tang: ON';
-          vectorsToggle.onclick = function () {
-            showTangentVectors = !showTangentVectors;
-            this.textContent = `Vetores Tang: ${showTangentVectors ? 'ON' : 'OFF'}`;
-            updateDistortionVisualization();
-          };
-
-          controlsContainer.appendChild(cartesianToggle);
-          controlsContainer.appendChild(polarToggle);
-          controlsContainer.appendChild(vectorsToggle);
-          canvas.parentNode.insertBefore(controlsContainer, canvas.nextSibling);
-        }
-
-        function drawDistortionVisualization() {
-          ctx.clearRect(0, 0, width, height);
-
-          // --- Desenhos de fundo ---
-          ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
-          ctx.fillRect(0, 0, width, height);
-          ctx.strokeStyle = 'rgba(79, 195, 247, 0.2)';
-          ctx.lineWidth = 0.5;
-          for (let y = 0; y <= height; y += 20) {
-            ctx.beginPath();
-            ctx.moveTo(0, y);
-            ctx.lineTo(width, y);
-            ctx.stroke();
-          }
-          for (let x = 0; x <= width; x += 20) {
-            ctx.beginPath();
-            ctx.moveTo(x, 0);
-            ctx.lineTo(x, height);
-            ctx.stroke();
-          }
-          ctx.strokeStyle = '#4fc3f7';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(0, centerY);
-          ctx.lineTo(width, centerY);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(centerX, 0);
-          ctx.lineTo(centerX, height);
-          ctx.stroke();
-          ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)';
-          for (
-            let rGrid = 20;
-            rGrid <= Math.max(width, height) / 2;
-            rGrid += 20
-          ) {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, rGrid, 0, Math.PI * 2);
-            ctx.stroke();
-          }
-          for (
-            let thetaGrid = 0;
-            thetaGrid < Math.PI * 2;
-            thetaGrid += Math.PI / 12
-          ) {
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(
-              centerX + (Math.max(width, height) / 2) * Math.cos(thetaGrid),
-              centerY - (Math.max(width, height) / 2) * Math.sin(thetaGrid)
-            );
-            ctx.stroke();
-          }
-          // --- Fim Fundo ---
-
-          // --- Cálculos ---
-          const dx = pointerX - centerX;
-          const dy = -(pointerY - centerY);
-          let r = Math.sqrt(dx * dx + dy * dy);
-          let theta = Math.atan2(dy, dx);
-          if (theta < 0) theta += 2 * Math.PI;
-          const drFactor = 0.1;
-          const dthetaFactor = 0.15;
-          const dr = Math.max(5, r * drFactor);
-          const dtheta = dthetaFactor;
-          const arcLength = r * dtheta;
-          // --- Fim Cálculos ---
-
-          // --- Elemento Cartesiano ---
-          if (showCartesianElement) {
-            const dxy = 10;
-            ctx.strokeStyle = '#64b5f6';
-            ctx.lineWidth = 1.5;
-            ctx.beginPath();
-            ctx.rect(pointerX - dxy / 2, pointerY - dxy / 2, dxy, dxy);
-            ctx.stroke();
-            ctx.fillStyle = 'rgba(100, 181, 246, 0.2)';
-            ctx.fill();
-            ctx.fillStyle = '#64b5f6';
-            ctx.font = '11px Arial';
-            ctx.textAlign = 'center';
-            ctx.fillText('dx dy', pointerX, pointerY - dxy / 2 - 5);
-            ctx.textAlign = 'start';
-          }
-
-          // --- Vetores Tangentes (Origem no PONTO) ---
-          // Calculate vector endpoints first, as they are needed for the polar element shape too
-          let vec_dr_endX, vec_dr_endY, vec_rdtheta_endX, vec_rdtheta_endY;
-          let angle_tangent;
-
-          if (r > 1) {
-            // Only calculate if r is valid
-            vec_dr_endX = pointerX + dr * Math.cos(theta);
-            vec_dr_endY = pointerY - dr * Math.sin(theta);
-
-            angle_tangent = theta + Math.PI / 2; // Tangential direction
-            vec_rdtheta_endX = pointerX + arcLength * Math.cos(angle_tangent);
-            vec_rdtheta_endY = pointerY - arcLength * Math.sin(angle_tangent);
-          }
-
-          if (showTangentVectors && r > 1) {
-            // Desenhar Vetor dr
-            ctx.beginPath();
-            ctx.moveTo(pointerX, pointerY);
-            ctx.lineTo(vec_dr_endX, vec_dr_endY);
-            ctx.strokeStyle = '#e57373';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            drawArrowhead(ctx, vec_dr_endX, vec_dr_endY, theta, '#e57373');
-            ctx.fillStyle = '#e57373';
-            ctx.font = '11px Arial';
-            ctx.fillText(
-              'dr',
-              (pointerX + vec_dr_endX) / 2 + 5 * Math.cos(theta + Math.PI / 2),
-              (pointerY + vec_dr_endY) / 2 - 5 * Math.sin(theta + Math.PI / 2)
-            );
-
-            // Desenhar Vetor r*dtheta
-            ctx.beginPath();
-            ctx.moveTo(pointerX, pointerY);
-            ctx.lineTo(vec_rdtheta_endX, vec_rdtheta_endY);
-            ctx.strokeStyle = '#81c784';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            drawArrowhead(
-              ctx,
-              vec_rdtheta_endX,
-              vec_rdtheta_endY,
-              angle_tangent,
-              '#81c784'
-            );
-            ctx.fillStyle = '#81c784';
-            ctx.font = '11px Arial';
-            ctx.fillText(
-              'r dθ',
-              (pointerX + vec_rdtheta_endX) / 2 +
-                5 * Math.cos(angle_tangent + Math.PI / 2),
-              (pointerY + vec_rdtheta_endY) / 2 -
-                5 * Math.sin(angle_tangent + Math.PI / 2)
-            );
-          }
-
-          // --- Elemento Polar (ALINHADO com Vetores) ---
-          if (showPolarElement && r > 1) {
-            // Vértices do elemento polar começando no ponto (pointerX, pointerY)
-            // v1: O próprio ponto
-            const v1x = pointerX;
-            const v1y = pointerY;
-
-            // v2: Ponta do vetor dr
-            const v2x = vec_dr_endX;
-            const v2y = vec_dr_endY;
-
-            // v4: Ponto (r, theta + dtheta) - calculado a partir da origem
-            const theta_end = theta + dtheta;
-            const v4x = centerX + r * Math.cos(theta_end);
-            const v4y = centerY - r * Math.sin(theta_end); // Y invertido
-
-            // v3: Ponto (r + dr, theta + dtheta) - calculado a partir da origem
-            const r_outer = r + dr;
-            const v3x = centerX + r_outer * Math.cos(theta_end);
-            const v3y = centerY - r_outer * Math.sin(theta_end); // Y invertido
-
-            // Desenhar forma do elemento polar
-            ctx.beginPath();
-            ctx.moveTo(v1x, v1y); // Começa no ponto
-            ctx.lineTo(v2x, v2y); // Vai até a ponta do dr
-            ctx.lineTo(v3x, v3y); // Vai para (r+dr, theta+dtheta)
-            ctx.lineTo(v4x, v4y); // Vai para (r, theta+dtheta)
-            ctx.closePath(); // Fecha de volta para v1 (implicitamente)
-            ctx.strokeStyle = '#ffb74d';
-            ctx.lineWidth = 1.5;
-            ctx.stroke();
-            ctx.fillStyle = 'rgba(255, 183, 77, 0.3)';
-            ctx.fill();
-
-            // Rótulo (posicionado perto do centro do *novo* elemento)
-            ctx.fillStyle = '#ffb74d';
-            ctx.font = '11px Arial';
-            // Centro aproximado do novo elemento
-            const centerElemX = (v1x + v2x + v3x + v4x) / 4;
-            const centerElemY = (v1y + v2y + v3y + v4y) / 4;
-            ctx.fillText('r dr dθ', centerElemX + 5, centerElemY + 5);
-          }
-
-          // --- Informações e Ponteiro ---
-          const jacobian = r;
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '13px Arial';
-          ctx.fillText(
-            `Cartesianas: (x=${dx.toFixed(0)}, y=${dy.toFixed(0)})`,
-            20,
-            30
-          );
-          ctx.fillText(
-            `Polares: (r=${r.toFixed(1)}, θ=${((theta * 180) / Math.PI).toFixed(1)}°)`,
-            20,
-            50
-          );
-          ctx.fillText(`Jacobiano: |J| = r = ${jacobian.toFixed(1)}`, 20, 70);
-          const areaElementValue = r * dr * dtheta;
-          ctx.fillText(
-            `Área dA ≈ |J| dr dθ ≈ ${areaElementValue.toFixed(1)}`,
-            20,
-            90
-          );
-
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
-          ctx.setLineDash([3, 3]);
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY);
-          ctx.lineTo(pointerX, pointerY);
-          ctx.stroke();
-          ctx.setLineDash([]);
-
-          ctx.beginPath();
-          ctx.arc(pointerX, pointerY, 4, 0, Math.PI * 2);
-          ctx.fillStyle = '#FFFFFF';
-          ctx.fill();
-          ctx.strokeStyle = '#000000';
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '12px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText(
-            'Vetores tangentes: dr (vermelho, radial) e r dθ (verde, tangencial) originados no ponto.',
-            width / 2,
-            height - 35
-          );
-          ctx.fillText(
-            'Elemento de área polar (laranja) definido pelos vetores.',
-            width / 2,
-            height - 15
-          ); // Texto ajustado
-          ctx.textAlign = 'start';
-        }
-
-        // Função auxiliar para desenhar pontas de seta (sem alterações)
-        function drawArrowhead(ctx, x, y, angle, color) {
-          const headLength = 8;
-          ctx.fillStyle = color;
-          ctx.beginPath();
-          ctx.moveTo(x, y);
-          ctx.lineTo(
-            x - headLength * Math.cos(angle - Math.PI / 6),
-            y + headLength * Math.sin(angle - Math.PI / 6)
-          );
-          ctx.lineTo(
-            x - headLength * Math.cos(angle + Math.PI / 6),
-            y + headLength * Math.sin(angle + Math.PI / 6)
-          );
-          ctx.closePath();
-          ctx.fill();
-        }
-
-        function updateDistortionVisualization() {
-          drawDistortionVisualization();
-        }
-
-        function getMousePosDistortion(canvas, evt) {
-          const rect = canvas.getBoundingClientRect();
-          const scaleX = canvas.width / rect.width;
-          const scaleY = canvas.height / rect.height;
-          return {
-            x: (evt.clientX - rect.left) * scaleX,
-            y: (evt.clientY - rect.top) * scaleY,
-          };
-        }
-
-        // Eventos de mouse e toque (sem alterações)
-        canvas.addEventListener('mousemove', function (e) {
-          const pos = getMousePosDistortion(canvas, e);
-          pointerX = pos.x;
-          pointerY = pos.y;
-          const dist = Math.sqrt(
-            Math.pow(pointerX - centerX, 2) + Math.pow(pointerY - centerY, 2)
-          );
-          if (dist < 5) {
-            const angle = Math.atan2(pointerY - centerY, pointerX - centerX);
-            pointerX = centerX + 5 * Math.cos(angle);
-            pointerY = centerY + 5 * Math.sin(angle);
-          }
-          updateDistortionVisualization();
-        });
-        canvas.addEventListener(
-          'touchmove',
-          function (e) {
-            e.preventDefault();
-            if (e.touches.length > 0) {
-              const touch = e.touches[0];
-              const pos = getMousePosDistortion(canvas, touch);
-              pointerX = pos.x;
-              pointerY = pos.y;
-              const dist = Math.sqrt(
-                Math.pow(pointerX - centerX, 2) +
-                  Math.pow(pointerY - centerY, 2)
-              );
-              if (dist < 5) {
-                const angle = Math.atan2(
-                  pointerY - centerY,
-                  pointerX - centerX
-                );
-                pointerX = centerX + 5 * Math.cos(angle);
-                pointerY = centerY + 5 * Math.sin(angle);
-              }
-              updateDistortionVisualization();
-            }
-          },
-          { passive: false }
+        ctx.lineTo(cx + rInner * Math.cos(thEnd), cy - rInner * Math.sin(thEnd));
+        ctx.quadraticCurveTo(
+          cx + rInner * Math.cos(midA),
+          cy - rInner * Math.sin(midA),
+          cx + rInner * Math.cos(thStart),
+          cy - rInner * Math.sin(thStart)
         );
-
-        // Inicialização
-        updateDistortionVisualization();
+        ctx.closePath();
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
       }
+    }
 
-      // Visualização do Jacobiano em coordenadas polares (Mantida - Código Idêntico)
-      function initPolarJacobianCanvas() {
-        const canvas = document.getElementById('polarJacobianCanvas');
-        if (!canvas) return;
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('dA = |J| dr d\u03B8 = r dr d\u03B8', W / 2, 28);
+    ctx.fillText('o elemento de \u00E1rea cresce com o raio r', W / 2, 50);
+    ctx.font = '12px Arial';
+    ctx.fillStyle = isAnimating ? '#FFB300' : '#81C784';
+    ctx.fillText(
+      isAnimating ? 'clique para pausar' : 'clique para animar',
+      W / 2,
+      H - 18
+    );
+    ctx.textAlign = 'start';
+  }
 
-        const ctx = canvas.getContext('2d');
-        const width = canvas.width;
-        const height = canvas.height;
-        const centerX = width / 2;
-        const centerY = height / 2;
-        let animationFrameId = null; // Para controlar a animação
-        let animationFrameCounter = 0;
-        let isAnimating = false;
+  function animate() {
+    frame++;
+    draw(frame);
+    animId = requestAnimationFrame(animate);
+  }
 
-        function drawPolarJacobianVisualization(frame) {
-          ctx.clearRect(0, 0, width, height);
-
-          // Background
-          ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
-          ctx.fillRect(0, 0, width, height);
-
-          // Grade cartesiana (suave)
-          ctx.strokeStyle = 'rgba(79, 195, 247, 0.1)';
-          ctx.lineWidth = 0.5;
-          const gridBounds = Math.min(centerX, centerY) - 20; // Limitar grade
-          for (
-            let y = centerY - gridBounds;
-            y <= centerY + gridBounds;
-            y += 20
-          ) {
-            ctx.beginPath();
-            ctx.moveTo(centerX - gridBounds, y);
-            ctx.lineTo(centerX + gridBounds, y);
-            ctx.stroke();
-          }
-          for (
-            let x = centerX - gridBounds;
-            x <= centerX + gridBounds;
-            x += 20
-          ) {
-            ctx.beginPath();
-            ctx.moveTo(x, centerY - gridBounds);
-            ctx.lineTo(x, centerY + gridBounds);
-            ctx.stroke();
-          }
-
-          // Eixos principais
-          ctx.strokeStyle = '#4fc3f7';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(centerX - gridBounds, centerY);
-          ctx.lineTo(centerX + gridBounds, centerY);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(centerX, centerY - gridBounds);
-          ctx.lineTo(centerX, centerY + gridBounds);
-          ctx.stroke();
-
-          // Grade polar
-          ctx.strokeStyle = 'rgba(79, 195, 247, 0.3)';
-          const maxR = gridBounds;
-          for (let r = 20; r <= maxR; r += 20) {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
-            ctx.stroke();
-            // Rótulos de raio
-            ctx.fillStyle = '#e0e0e0';
-            ctx.font = '10px Arial';
-            ctx.fillText(`${r}`, centerX + 5, centerY - r - 5); // Y invertido
-          }
-
-          // Linhas radiais
-          for (let theta = 0; theta < Math.PI * 2; theta += Math.PI / 6) {
-            const endX = centerX + maxR * Math.cos(theta);
-            const endY = centerY - maxR * Math.sin(theta); // Y invertido
-
-            ctx.beginPath();
-            ctx.moveTo(centerX, centerY);
-            ctx.lineTo(endX, endY);
-            ctx.stroke();
-
-            // Rótulos de ângulo
-            const angle = Math.round((theta * 180) / Math.PI);
-            if (angle % 60 === 0 && angle < 360) {
-              // Evita sobrepor 0 e 360
-              const labelR = maxR + 15;
-              const labelX = centerX + labelR * Math.cos(theta);
-              const labelY = centerY - labelR * Math.sin(theta); // Y invertido
-              ctx.fillStyle = '#e0e0e0';
-              ctx.font = '10px Arial';
-              ctx.fillText(`${angle}°`, labelX - 10, labelY + 5);
-            }
-          }
-
-          // Elementos de área
-          const dr = 20;
-          const dtheta = Math.PI / 12; // Mais elementos angulares
-
-          for (let r = 0; r <= maxR - dr; r += dr) {
-            // Começar do r=0
-            for (
-              let theta = 0;
-              theta < Math.PI * 2 - dtheta / 2;
-              theta += dtheta
-            ) {
-              // Evitar sobreposição no final
-              // Fator de animação (pulso suave)
-              const pulseFactor = isAnimating
-                ? 1 + 0.1 * Math.sin(frame * 0.05 + r / 30 + theta * 2)
-                : 1;
-              const currentDr = dr * pulseFactor; // dr pulsa
-
-              // Cores alternadas baseadas em r e theta
-              const colorIndex =
-                (Math.floor(r / dr) + Math.floor(theta / dtheta)) % 2;
-              const baseAlpha = Math.max(
-                0.1,
-                Math.min(0.7, ((r + dr / 2) / maxR) * 0.8)
-              ); // Alpha aumenta com r
-              ctx.fillStyle =
-                colorIndex === 0
-                  ? `rgba(100, 181, 246, ${baseAlpha})` // Azul claro
-                  : `rgba(255, 183, 77, ${baseAlpha})`; // Laranja claro
-
-              // Vértices do elemento (Y invertido)
-              const r_inner = r;
-              const r_outer = r + currentDr;
-              const theta_start = theta;
-              const theta_end = theta + dtheta;
-
-              const v1x = centerX + r_inner * Math.cos(theta_start);
-              const v1y = centerY - r_inner * Math.sin(theta_start);
-              const v2x = centerX + r_outer * Math.cos(theta_start);
-              const v2y = centerY - r_outer * Math.sin(theta_start);
-              const v3x = centerX + r_outer * Math.cos(theta_end);
-              const v3y = centerY - r_outer * Math.sin(theta_end);
-              const v4x = centerX + r_inner * Math.cos(theta_end);
-              const v4y = centerY - r_inner * Math.sin(theta_end);
-
-              ctx.beginPath();
-              ctx.moveTo(v1x, v1y);
-              ctx.lineTo(v2x, v2y);
-              // Aproximação de arco para bordas curvas (melhora visual)
-              const midAngleOuter = (theta_start + theta_end) / 2;
-              const midAngleInner = midAngleOuter;
-              ctx.quadraticCurveTo(
-                centerX + r_outer * Math.cos(midAngleOuter),
-                centerY - r_outer * Math.sin(midAngleOuter),
-                v3x,
-                v3y
-              );
-              ctx.lineTo(v4x, v4y);
-              ctx.quadraticCurveTo(
-                centerX + r_inner * Math.cos(midAngleInner),
-                centerY - r_inner * Math.sin(midAngleInner),
-                v1x,
-                v1y
-              );
-              ctx.closePath();
-              ctx.fill();
-
-              // Contorno (opcional, pode poluir)
-              ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-
-          // Informações
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '14px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText(
-            'Jacobiano em Coordenadas Polares: dA = |J| dr dθ = r dr dθ',
-            width / 2,
-            30
-          );
-          ctx.fillText(
-            'Elementos de área (dA) aumentam proporcionalmente ao raio (r)',
-            width / 2,
-            55
-          );
-
-          // Instruções
-          ctx.font = '12px Arial';
-          ctx.fillStyle = isAnimating ? '#ffb74d' : '#81c784'; // Muda cor se animando
-          ctx.fillText(
-            isAnimating
-              ? 'Clique para PARAR a animação'
-              : 'Clique para INICIAR a animação',
-            width / 2,
-            height - 20
-          );
-          ctx.textAlign = 'start'; // Resetar
-        }
-
-        function animateLoop() {
-          animationFrameCounter++;
-          drawPolarJacobianVisualization(animationFrameCounter);
-          animationFrameId = requestAnimationFrame(animateLoop);
-        }
-
-        function toggleAnimation() {
-          isAnimating = !isAnimating;
-          if (isAnimating) {
-            if (!animationFrameId) {
-              // Evita iniciar múltiplos loops
-              animationFrameCounter = 0; // Reinicia contador ao iniciar
-              animateLoop();
-            }
-          } else {
-            if (animationFrameId) {
-              cancelAnimationFrame(animationFrameId);
-              animationFrameId = null;
-              // Redesenha no estado estático ao parar
-              drawPolarJacobianVisualization(animationFrameCounter);
-            }
-          }
-        }
-
-        // Evento de clique para animar/parar
-        canvas.addEventListener('click', toggleAnimation);
-
-        // Inicialização - desenha estado estático
-        drawPolarJacobianVisualization(0);
-
-        // Limpeza ao sair do slide (importante para RAF)
-        // Isso deve ser tratado pelo gerenciador de slides principal
-        // window.polarJacobianCleanup = function() {
-        //    if (animationFrameId) {
-        //        cancelAnimationFrame(animationFrameId);
-        //        animationFrameId = null;
-        //        isAnimating = false;
-        //    }
-        // }
+  function toggle() {
+    if (!canvas) return;
+    if (isAnimating) {
+      isAnimating = false;
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
       }
-
-      // REMOVIDO: initThermalShieldCanvas()
-
-      // Visualização de placa circular (Mantida - Código Idêntico)
-      function initPlateVisualization() {
-        const canvas = document.getElementById('plateVisualization');
-        if (!canvas) {
-          // console.log('Plate visualization canvas not found'); // Comentado para produção
-          return;
-        }
-
-        const ctx = canvas.getContext('2d');
-        const width = canvas.width;
-        const height = canvas.height;
-        const centerX = width / 2;
-        const centerY = height / 2;
-        let animationFrameIdPlate = null; // ID específico
-        let animationTime = 0;
-
-        function drawPlateVisualization() {
-          ctx.clearRect(0, 0, width, height);
-
-          // Background
-          ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
-          ctx.fillRect(0, 0, width, height);
-
-          // Parâmetros da placa
-          const plateRadius = Math.min(width, height) * 0.4; // Ajusta ao canvas
-
-          // Desenhar placa circular (vista de topo)
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, plateRadius, 0, Math.PI * 2);
-          ctx.strokeStyle = '#e0e0e0';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-
-          // Animação de densidade
-          animationTime += 0.02; // Ritmo mais lento
-
-          // Desenhar a densidade variável com gradiente radial
-          const densityGradient = ctx.createRadialGradient(
-            centerX,
-            centerY,
-            0,
-            centerX,
-            centerY,
-            plateRadius
-          );
-
-          // Efeito pulsante de densidade (mais sutil)
-          const pulseFactor = 0.5 + 0.5 * Math.sin(animationTime); // Varia entre 0 e 1
-          densityGradient.addColorStop(
-            0,
-            `rgba(255, 165, 0, ${0.4 + 0.4 * pulseFactor})`
-          ); // Centro mais denso/opaco
-          densityGradient.addColorStop(
-            0.6,
-            `rgba(255, 120, 0, ${0.3 + 0.3 * pulseFactor})`
-          );
-          densityGradient.addColorStop(
-            1,
-            `rgba(255, 80, 0, ${0.2 + 0.2 * pulseFactor})`
-          ); // Borda menos densa/opaca
-
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, plateRadius, 0, Math.PI * 2);
-          ctx.fillStyle = densityGradient;
-          ctx.fill();
-
-          // Círculos concêntricos para representar níveis de densidade
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)'; // Mais suave
-          ctx.lineWidth = 1;
-          for (let r = plateRadius / 4; r < plateRadius; r += plateRadius / 4) {
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, r, 0, Math.PI * 2);
-            ctx.stroke();
-
-            // Valores de densidade (exemplo simplificado)
-            const densityValue =
-              800 +
-              50 *
-                Math.pow(r / (plateRadius / 2), 2) *
-                (0.8 + 0.4 * pulseFactor); // Exemplo de cálculo
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.font = '10px Arial';
-            ctx.fillText(
-              `${Math.round(densityValue)}`,
-              centerX + 5,
-              centerY - r - 5
-            ); // Y invertido
-          }
-
-          // Centro de massa (fixo na origem pela simetria)
-          ctx.beginPath();
-          ctx.arc(centerX, centerY, 5, 0, Math.PI * 2); // Menor
-          ctx.fillStyle = '#ff5a5f'; // Vermelho destaque
-          ctx.fill();
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 1;
-          ctx.stroke();
-
-          // Cruz do centro de massa (mais fina)
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.8)';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(centerX - 6, centerY);
-          ctx.lineTo(centerX + 6, centerY);
-          ctx.moveTo(centerX, centerY - 6);
-          ctx.lineTo(centerX, centerY + 6);
-          ctx.stroke();
-
-          // Informações (Contextual)
-          ctx.fillStyle = '#e0e0e0';
-          ctx.font = '11px Arial';
-          ctx.textAlign = 'center';
-          ctx.fillText('Placa com Densidade Variável ρ(r)', centerX, 20);
-          ctx.fillText(
-            'Centro de Massa (0,0) por simetria',
-            centerX,
-            height - 15
-          );
-          ctx.textAlign = 'start';
-
-          animationFrameIdPlate = requestAnimationFrame(drawPlateVisualization);
-        }
-
-        // Iniciar animação
-        drawPlateVisualization();
-
-        // Limpeza ao sair do slide (importante para RAF)
-        // Isso deve ser tratado pelo gerenciador de slides principal
-        // window.plateVisCleanup = function() {
-        //     if (animationFrameIdPlate) {
-        //         cancelAnimationFrame(animationFrameIdPlate);
-        //         animationFrameIdPlate = null;
-        //     }
-        // }
+      draw(frame);
+    } else {
+      isAnimating = true;
+      if (!animId) {
+        frame = 0;
+        animate();
       }
-    </script>
-  </body>
-</html>
+    }
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('polarJacobianCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+      cx = W / 2;
+      cy = H / 2;
+    }
+    inited = true;
+    canvas.addEventListener('click', toggle);
+    draw(0);
+  }
+
+  function cleanup() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    isAnimating = false;
+    frame = 0;
+    if (canvas && inited) {
+      canvas.removeEventListener('click', toggle);
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('polarJacobianCanvas', init, cleanup);
+
+  window.vizPolarJacobian = { init: init, cleanup: cleanup };
+})();
+
+/* ------------------------------------------------------------------ *
+ * vizBaricentro — baricentro de chapa irregular por amostragem.
+ * Vértices arrastáveis; o baricentro é a média ponderada dos pontos
+ * amostrados dentro da região, com densidade ρ crescente em x.
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var animId = null;
+  var inited = false;
+  var dragging = null;
+
+  var verts = [
+    { x: 70, y: 130 },
+    { x: 150, y: 55 },
+    { x: 255, y: 90 },
+    { x: 295, y: 185 },
+    { x: 235, y: 285 },
+    { x: 120, y: 255 },
+    { x: 75, y: 190 },
+  ];
+
+  function insidePoly(px, py, pts) {
+    var inside = false;
+    for (var i = 0, j = pts.length - 1; i < pts.length; j = i++) {
+      var xi = pts[i].x;
+      var yi = pts[i].y;
+      var xj = pts[j].x;
+      var yj = pts[j].y;
+      var intersect =
+        (yi > py) !== (yj > py) &&
+        px < ((xj - xi) * (py - yi)) / (yj - yi) + xi;
+      if (intersect) inside = !inside;
+    }
+    return inside;
+  }
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) * canvas.width) / rect.width,
+      y: ((e.clientY - rect.top) * canvas.height) / rect.height,
+    };
+  }
+
+  function onDown(e) {
+    if (!canvas) return;
+    var p = getPos(e);
+    for (var i = 0; i < verts.length; i++) {
+      var d = Math.sqrt(
+        (p.x - verts[i].x) * (p.x - verts[i].x) +
+          (p.y - verts[i].y) * (p.y - verts[i].y)
+      );
+      if (d < 14) {
+        dragging = i;
+        return;
+      }
+    }
+  }
+
+  function onMove(e) {
+    if (!canvas || dragging === null) return;
+    var p = getPos(e);
+    verts[dragging].x = Math.max(8, Math.min(W - 8, p.x));
+    verts[dragging].y = Math.max(8, Math.min(H - 8, p.y));
+  }
+
+  function onUp() {
+    dragging = null;
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    if (e.touches.length > 0) onMove(e.touches[0]);
+  }
+
+  function attachEvents() {
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseup', onUp);
+    canvas.addEventListener('mouseleave', onUp);
+    canvas.addEventListener('touchstart', onDown, { passive: false });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    canvas.addEventListener('touchend', onUp);
+  }
+
+  function detachEvents() {
+    canvas.removeEventListener('mousedown', onDown);
+    canvas.removeEventListener('mousemove', onMove);
+    canvas.removeEventListener('mouseup', onUp);
+    canvas.removeEventListener('mouseleave', onUp);
+    canvas.removeEventListener('touchstart', onDown);
+    canvas.removeEventListener('touchmove', onTouchMove);
+    canvas.removeEventListener('touchend', onUp);
+  }
+
+  function draw(t) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.85)';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = 'rgba(79, 195, 247, 0.08)';
+    ctx.lineWidth = 1;
+    for (var g = 0; g <= H; g += 20) {
+      ctx.beginPath();
+      ctx.moveTo(0, g);
+      ctx.lineTo(W, g);
+      ctx.stroke();
+    }
+    for (var g2 = 0; g2 <= W; g2 += 20) {
+      ctx.beginPath();
+      ctx.moveTo(g2, 0);
+      ctx.lineTo(g2, H);
+      ctx.stroke();
+    }
+
+    var minX = Infinity;
+    var maxX = -Infinity;
+    var minY = Infinity;
+    var maxY = -Infinity;
+    for (var i = 0; i < verts.length; i++) {
+      var v = verts[i];
+      if (v.x < minX) minX = v.x;
+      if (v.x > maxX) maxX = v.x;
+      if (v.y < minY) minY = v.y;
+      if (v.y > maxY) maxY = v.y;
+    }
+    var spanX = Math.max(1, maxX - minX);
+
+    function density(x) {
+      return 1 + 0.6 * ((x - minX) / spanX);
+    }
+
+    var sx = 0;
+    var sy = 0;
+    var sw = 0;
+    var step = 4;
+    for (var px = minX; px <= maxX; px += step) {
+      for (var py = minY; py <= maxY; py += step) {
+        if (!insidePoly(px, py, verts)) continue;
+        var rho = density(px);
+        sx += px * rho;
+        sy += py * rho;
+        sw += rho;
+        ctx.fillStyle =
+          'rgba(30, 136, 229, ' + (0.08 + 0.18 * ((rho - 1) / 0.6)) + ')';
+        ctx.fillRect(px - 1, py - 1, 2, 2);
+      }
+    }
+
+    var c;
+    if (sw > 0) {
+      c = { x: sx / sw, y: sy / sw };
+    } else {
+      var ax = 0;
+      var ay = 0;
+      for (var k = 0; k < verts.length; k++) {
+        ax += verts[k].x;
+        ay += verts[k].y;
+      }
+      c = { x: ax / verts.length, y: ay / verts.length };
+    }
+
+    ctx.beginPath();
+    ctx.moveTo(verts[0].x, verts[0].y);
+    for (var p2 = 1; p2 < verts.length; p2++) {
+      ctx.lineTo(verts[p2].x, verts[p2].y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(30, 136, 229, 0.08)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(144, 202, 249, 0.9)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    for (var h = 0; h < verts.length; h++) {
+      ctx.beginPath();
+      ctx.arc(verts[h].x, verts[h].y, 5, 0, Math.PI * 2);
+      ctx.fillStyle = h === dragging ? '#FFFFFF' : 'rgba(255, 255, 255, 0.85)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(30, 136, 229, 0.9)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    var pulse = 0.5 + 0.5 * Math.sin(t / 300);
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, 9 + 4 * pulse, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(229, 57, 53, ' + (0.25 + 0.35 * pulse) + ')';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(c.x - 8, c.y);
+    ctx.lineTo(c.x + 8, c.y);
+    ctx.moveTo(c.x, c.y - 8);
+    ctx.lineTo(c.x, c.y + 8);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(c.x, c.y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#E53935';
+    ctx.fill();
+
+    var wx = (c.x - 20) / (W - 40);
+    var wy = 1 - (c.y - 20) / (H - 40);
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '12px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText(
+      'baricentro (x\u0304, \u0233) \u2248 (' + wx.toFixed(2) + ', ' + wy.toFixed(2) + ')',
+      W / 2,
+      H - 34
+    );
+    ctx.font = '11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.fillText('densidade \u03C1 cresce com x — arraste os v\u00E9rtices', W / 2, H - 12);
+    ctx.textAlign = 'start';
+  }
+
+  function animate() {
+    draw(performance.now ? performance.now() : Date.now());
+    animId = requestAnimationFrame(animate);
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('baricentroCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+    }
+    inited = true;
+    attachEvents();
+    animate();
+  }
+
+  function cleanup() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    dragging = null;
+    if (canvas && inited) {
+      detachEvents();
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('baricentroCanvas', init, cleanup);
+
+  window.vizBaricentro = { init: init, cleanup: cleanup };
+})();
+
+/* ------------------------------------------------------------------ *
+ * vizAreaCartesiana — elementos de área em coordenadas cartesianas.
+ * Mesmo círculo da viz polar, mas com retângulos dA = dx dy (área
+ * constante). Clique para animar: as células respiram suavemente e os
+ * retângulos cortados pela borda revelam o contorno em "escada".
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var cx = 0;
+  var cy = 0;
+  var animId = null;
+  var frame = 0;
+  var isAnimating = false;
+  var inited = false;
+
+  var SCALE = 100; // px por unidade (círculo de raio 2 → 200px)
+  var R = 2;
+  var CELL = 0.25; // tamanho da célula em unidades
+
+  function pxX(u) {
+    return cx + u * SCALE;
+  }
+
+  function pxY(v) {
+    return cy - v * SCALE;
+  }
+
+  function inside(u, v) {
+    return u * u + v * v <= R * R;
+  }
+
+  function cellClass(u0, v0) {
+    var u1 = u0 + CELL;
+    var v1 = v0 + CELL;
+    var corners = [
+      [u0, v0],
+      [u1, v0],
+      [u0, v1],
+      [u1, v1],
+    ];
+    var hits = 0;
+    for (var i = 0; i < corners.length; i++) {
+      if (inside(corners[i][0], corners[i][1])) hits++;
+    }
+    if (hits === 4) return 'full';
+    if (hits > 0) return 'partial';
+    var cu = (u0 + u1) / 2;
+    var cv2 = (v0 + v1) / 2;
+    if (inside(cu, cv2)) return 'partial';
+    return 'outside';
+  }
+
+  function draw(f) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.7)';
+    ctx.fillRect(0, 0, W, H);
+
+    var half = 2.2;
+    for (var u = -half; u < half; u += CELL) {
+      for (var v = -half; v < half; v += CELL) {
+        var cls = cellClass(u, v);
+        if (cls === 'outside') continue;
+        var pf = isAnimating
+          ? 1 + 0.05 * Math.sin(f * 0.05 + u * 1.2 + v * 1.2)
+          : 1;
+        var size = CELL * SCALE * pf;
+        var x = pxX(u) + (CELL * SCALE - size) / 2;
+        var y = pxY(v + CELL) + (CELL * SCALE - size) / 2;
+        ctx.fillStyle =
+          cls === 'full'
+            ? 'rgba(30, 136, 229, 0.55)'
+            : 'rgba(255, 179, 0, 0.55)';
+        ctx.fillRect(x, y, size, size);
+      }
+    }
+
+    ctx.strokeStyle = '#4fc3f7';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(W, cy);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, H);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#e0e0e0';
+    ctx.lineWidth = 2.5;
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * SCALE, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '14px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('dA = dx dy — \u00E1rea constante', W / 2, 26);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+    ctx.font = '12px Arial';
+    ctx.fillText('ret\u00E2ngulos inteiros: azul \u00B7 cortados pela borda: amarelo', W / 2, 46);
+    ctx.fillStyle = isAnimating ? '#FFB300' : '#81C784';
+    ctx.fillText(
+      isAnimating ? 'clique para pausar' : 'clique para animar',
+      W / 2,
+      H - 18
+    );
+    ctx.textAlign = 'start';
+  }
+
+  function animate() {
+    frame++;
+    draw(frame);
+    animId = requestAnimationFrame(animate);
+  }
+
+  function toggle() {
+    if (!canvas) return;
+    if (isAnimating) {
+      isAnimating = false;
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      draw(frame);
+    } else {
+      isAnimating = true;
+      if (!animId) {
+        frame = 0;
+        animate();
+      }
+    }
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('areaCartesianaCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+      cx = W / 2;
+      cy = H / 2;
+    }
+    inited = true;
+    canvas.addEventListener('click', toggle);
+    draw(0);
+  }
+
+  function cleanup() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    isAnimating = false;
+    frame = 0;
+    if (canvas && inited) {
+      canvas.removeEventListener('click', toggle);
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('areaCartesianaCanvas', init, cleanup);
+
+  window.vizAreaCartesiana = { init: init, cleanup: cleanup };
+})();

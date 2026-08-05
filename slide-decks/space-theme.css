@@ -1,6 +1,7 @@
 /**
- * Tema Espacial Simplificado para Reveal.js (Versão 3.0)
+ * Tema Espacial para Reveal.js (Versão 4.1)
  * Design inspirado na vastidão do espaço com layout mais flexível
+ * Suporte a facções: allies (azul), soviet (vermelho), neutral (dourado)
  */
 
 /* =============================================
@@ -8,69 +9,206 @@
    ============================================= */
 :root {
   --space-black: #0a0a0f;
-  --deep-blue: #1a237e;
-  --star-blue: #4fc3f7;
-  --nebula-blue: rgba(79, 195, 247, 0.15);
   --text-color: #e0e0e0;
-  --accent-color: #64b5f6;
   --highlight-color: #ff5a5f;
 
-  /* Cores para seções específicas */
+  /* Facção padrão: Aliados (azul) */
+  --star-color: #4fc3f7;
+  --deep-color: #1a237e;
+  --accent-color: #64b5f6;
+  --nebula-color: rgba(79, 195, 247, 0.15);
+  --glow: rgba(79, 195, 247, 0.5);
+  --glow-soft: rgba(79, 195, 247, 0.1);
+  --glow-medium: rgba(79, 195, 247, 0.2);
+
+  /* Backgrounds derivados */
   --math-bg: rgba(79, 195, 247, 0.05);
   --history-bg: rgba(26, 35, 126, 0.2);
   --problem-bg: rgba(26, 35, 126, 0.1);
+  --code-bg: rgba(26, 35, 126, 0.3);
+  --surface-bg: rgba(26, 35, 126, 0.5);
 
   /* Cores para vetores */
-  --vector-position: #1e88e5; /* Azul */
-  --vector-velocity: #43a047; /* Verde */
-  --vector-acceleration: #e53935; /* Vermelho */
-  --vector-force: #ffb300; /* Amarelo */
-  --vector-unit: #ffffff; /* Branco */
+  --vector-position: #1e88e5;
+  --vector-velocity: #43a047;
+  --vector-acceleration: #e53935;
+  --vector-force: #ffb300;
+  --vector-unit: #ffffff;
 }
 
 /* =============================================
-   AMBIENTE ESPACIAL BASE
+   FACÇÃO: SOVIÉTICA (vermelho)
    ============================================= */
+[data-faction='soviet'] {
+  --star-color: #ef5350;
+  --deep-color: #8b1a1a;
+  --accent-color: #e57373;
+  --nebula-color: rgba(239, 83, 80, 0.15);
+  --glow: rgba(239, 83, 80, 0.5);
+  --glow-soft: rgba(239, 83, 80, 0.1);
+  --glow-medium: rgba(239, 83, 80, 0.2);
+
+  --math-bg: rgba(239, 83, 80, 0.05);
+  --history-bg: rgba(139, 26, 26, 0.2);
+  --problem-bg: rgba(139, 26, 26, 0.1);
+  --code-bg: rgba(139, 26, 26, 0.3);
+  --surface-bg: rgba(139, 26, 26, 0.5);
+}
+
+/* =============================================
+   FACÇÃO: NEUTRA (dourado/âmbar)
+   ============================================= */
+[data-faction='neutral'] {
+  --star-color: #ffd54f;
+  --deep-color: #4a3800;
+  --accent-color: #ffb300;
+  --nebula-color: rgba(255, 213, 79, 0.15);
+  --glow: rgba(255, 213, 79, 0.5);
+  --glow-soft: rgba(255, 213, 79, 0.1);
+  --glow-medium: rgba(255, 213, 79, 0.2);
+
+  --math-bg: rgba(255, 213, 79, 0.05);
+  --history-bg: rgba(74, 56, 0, 0.2);
+  --problem-bg: rgba(74, 56, 0, 0.1);
+  --code-bg: rgba(74, 56, 0, 0.3);
+  --surface-bg: rgba(74, 56, 0, 0.5);
+}
+
+/* =============================================
+   BADGE DE FACÇÃO
+   ============================================= */
+[data-faction='allies'] .reveal::after,
+[data-faction='soviet'] .reveal::after {
+  content: '\2605';
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: var(--star-color);
+  font-size: 2em;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  text-shadow: 0 0 10px var(--glow);
+}
+
+[data-faction='neutral'] .reveal::after {
+  content: '\2699';
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: var(--star-color);
+  font-size: 2em;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+  text-shadow: 0 0 10px var(--glow);
+}
+
 .reveal {
-  background: var(--space-black);
+  background-color: var(--space-black);
+  background-image:
+    radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.4), transparent)
+      0 0,
+    radial-gradient(
+        1px 1px at 80px 140px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 210px 55px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 160px 210px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 260px 180px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 45px 270px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 130px 40px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 240px 280px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 180px 100px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 60px 190px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 100px 80px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 220px 230px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 40px 120px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 270px 60px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 150px 260px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 195px 155px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
+    radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent) 0 0,
+    radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent) 0 0,
+    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent) 0
+      0;
+  background-size: 300px 320px;
   color: var(--text-color);
   position: relative;
   overflow: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 95%; /* Reduzimos ligeiramente o tamanho base da fonte */
-}
-
-/* Campo estelar estático */
-.reveal::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background:
-    radial-gradient(2px 2px at 20px 30px, #fff, rgba(0, 0, 0, 0)) calc(50px * 1)
-      calc(50px * 1),
-    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0, 0, 0, 0)) calc(50px * 2)
-      calc(50px * 2),
-    radial-gradient(2px 2px at 50px 160px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 3) calc(50px * 3),
-    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0, 0, 0, 0)) calc(50px * 4)
-      calc(50px * 4),
-    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 5) calc(50px * 5),
-    radial-gradient(3px 3px at 160px 120px, var(--star-blue), rgba(0, 0, 0, 0))
-      calc(50px * 6) calc(50px * 6),
-    radial-gradient(2px 2px at 200px 150px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 7) calc(50px * 7),
-    radial-gradient(2px 2px at 250px 250px, #fff, rgba(0, 0, 0, 0))
-      calc(50px * 8) calc(50px * 8),
-    radial-gradient(3px 3px at 300px 350px, var(--star-blue), rgba(0, 0, 0, 0))
-      calc(50px * 9) calc(50px * 9);
-  background-size: 500px 500px;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: -1;
+  font-size: 95%;
 }
 
 /* =============================================
@@ -153,37 +291,53 @@
 
 .reveal .slides section {
   padding: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
   font-size: 22px;
   text-align: center;
   box-sizing: border-box;
-  width: 100%; /* Voltamos para 100% */
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
   display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Container para o conteúdo entre header e footer */
+.slide-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
 }
 
 /* =============================================
    TÍTULOS
    ============================================= */
 .reveal h1 {
-  color: var(--star-blue);
+  color: var(--star-color);
   font-size: 2.2em;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  text-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
+  text-shadow: 0 0 15px var(--glow);
   margin-bottom: 0.6em;
   width: 100%;
   text-align: center;
 }
 
 .reveal h2 {
-  color: var(--star-blue);
+  color: var(--star-color);
   font-size: 1.6em;
   margin-bottom: 0.4em;
-  text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+  text-shadow: 0 0 10px var(--glow-soft);
   width: 100%;
   text-align: center !important;
 }
@@ -213,7 +367,7 @@
   text-align: left;
   margin: 0.3em 0;
   width: 100%;
-  padding-left: 1.5em; /* Reduzir o padding para listas */
+  padding-left: 1.5em;
 }
 
 .reveal ul li,
@@ -243,8 +397,8 @@
    BLOCOS DE CÓDIGO
    ============================================= */
 .reveal pre {
-  background: rgba(26, 35, 126, 0.3);
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+  background: var(--code-bg);
+  box-shadow: 0 0 20px var(--glow-soft);
   margin: 1em auto;
   padding: 1em;
   text-align: left;
@@ -253,8 +407,8 @@
 }
 
 .reveal code {
-  background: rgba(26, 35, 126, 0.3);
-  color: var(--star-blue);
+  background: var(--code-bg);
+  color: var(--star-color);
   padding: 0.2em 0.4em;
   border-radius: 3px;
 }
@@ -263,9 +417,9 @@
    CITAÇÕES
    ============================================= */
 .reveal blockquote {
-  background: rgba(26, 35, 126, 0.3);
+  background: var(--code-bg);
   border-left: 4px solid var(--accent-color);
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+  box-shadow: 0 0 20px var(--glow-soft);
   margin: 1em 0;
   padding: 1em;
   width: 100%;
@@ -276,7 +430,7 @@
    LINKS
    ============================================= */
 .reveal a {
-  color: var(--star-blue);
+  color: var(--star-color);
   text-decoration: none;
   transition:
     color 0.2s ease,
@@ -285,18 +439,121 @@
 
 .reveal a:hover {
   color: var(--accent-color);
-  text-shadow: 0 0 8px rgba(79, 195, 247, 0.5);
+  text-shadow: 0 0 8px var(--glow);
 }
 
 /* =============================================
-   ELEMENTOS DE NAVEGAÇÃO
+   AMBIENTE ESPACIAL BASE
    ============================================= */
-.reveal .controls {
-  color: var(--accent-color);
+.reveal {
+  background:
+    radial-gradient(1px 1px at 15px 25px, rgba(255, 255, 255, 0.4), transparent)
+      0 0,
+    radial-gradient(
+        1px 1px at 80px 140px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 210px 55px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 160px 210px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 260px 180px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 45px 270px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 130px 40px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 240px 280px,
+        rgba(255, 255, 255, 0.25),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 180px 100px,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        1px 1px at 60px 190px,
+        rgba(255, 255, 255, 0.35),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 100px 80px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 220px 230px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 40px 120px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 270px 60px,
+        rgba(255, 255, 255, 0.55),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 150px 260px,
+        rgba(255, 255, 255, 0.5),
+        transparent
+      )
+      0 0,
+    radial-gradient(
+        2px 2px at 195px 155px,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      )
+      0 0,
+    radial-gradient(3px 3px at 120px 170px, var(--star-color), transparent) 0 0,
+    radial-gradient(3px 3px at 250px 40px, var(--star-color), transparent) 0 0,
+    radial-gradient(2.5px 2.5px at 30px 300px, var(--star-color), transparent) 0
+      0,
+    var(--space-black);
+  background-size: 300px 320px;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 95%;
 }
 
 .reveal .progress {
-  background: rgba(79, 195, 247, 0.2);
+  background: var(--glow-medium);
   height: 3px;
 }
 
@@ -311,7 +568,7 @@
   max-width: 100%;
   height: auto;
   margin: 1em auto;
-  box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+  box-shadow: 0 0 20px var(--glow-soft);
   display: block;
 }
 
@@ -319,7 +576,7 @@
    COMPONENTES ESPECIALIZADOS (SIMPLIFICADOS)
    ============================================= */
 
-/* Seção de conteúdo matemático (Mais simples) */
+/* Seção de conteúdo matemático */
 .math-section {
   background: var(--math-bg);
   padding: 12px;
@@ -329,10 +586,10 @@
   box-sizing: border-box;
 }
 
-/* Seção de contextualização histórica (Mais simples) */
+/* Seção de contextualização histórica */
 .history-section {
   background: var(--history-bg);
-  border-left: 3px solid var(--highlight-color);
+  border-left: 3px solid var(--accent-color);
   padding: 12px 15px;
   margin: 15px 0;
   width: 100%;
@@ -348,14 +605,14 @@
 }
 
 .history-section strong {
-  color: var(--highlight-color);
+  color: var(--accent-color);
 }
 
 .history-label {
   position: absolute;
   left: -2px;
   top: -8px;
-  background: var(--highlight-color);
+  background: var(--accent-color);
   color: white;
   padding: 2px 8px;
   font-size: 12px;
@@ -366,7 +623,21 @@
   transform: none;
 }
 
-/* Seção de problemas (Mais simples) */
+/* Insert histórico no V1 — parágrafo final discreto, distinto do texto da matéria */
+.history-insert {
+  font-style: italic;
+  font-size: 0.9em;
+  color: var(--accent-color);
+  border-left: 2px solid var(--accent-color);
+  padding-left: 14px;
+  margin-top: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+  opacity: 0.9;
+}
+
+/* Seção de problemas */
 .problem-section {
   background: var(--problem-bg);
   padding: 12px;
@@ -381,7 +652,7 @@
 }
 
 .problem-section strong {
-  color: var(--highlight-color);
+  color: var(--accent-color);
 }
 
 /* Canvas para visualizações */
@@ -396,7 +667,7 @@
 }
 
 /* =============================================
-   CONTROLES DE INTERAÇÃO (MAIS MODERNOS)
+   CONTROLES DE INTERAÇÃO
    ============================================= */
 .controls-container {
   display: flex;
@@ -411,7 +682,7 @@
 .control-slider {
   display: flex;
   align-items: center;
-  background: rgba(26, 35, 126, 0.3);
+  background: var(--code-bg);
   padding: 4px 8px;
   border-radius: 15px;
   font-size: 0.9em;
@@ -427,7 +698,7 @@
 }
 
 .control-button {
-  background: rgba(26, 35, 126, 0.5);
+  background: var(--surface-bg);
   color: var(--text-color);
   border: 1px solid var(--accent-color);
   border-radius: 15px;
@@ -440,11 +711,11 @@
 }
 
 .control-button:hover {
-  background: rgba(79, 195, 247, 0.3);
+  background: var(--nebula-color);
   transform: scale(1.05);
 }
 
-/* Nova classe para soluções compactas */
+/* Soluções compactas */
 .compact-solution {
   background: var(--math-bg);
   padding: 8px 10px;
@@ -453,21 +724,227 @@
   text-align: left;
 }
 
-/* Nova classe para dois painéis lado a lado */
+/* Dois painéis lado a lado */
 .dual-panel {
   display: flex;
   width: 100%;
   gap: 15px;
   margin: 8px 0;
+  align-self: stretch;
 }
 
 .dual-panel > div {
   flex: 1;
 }
 
+/* Fórmula destaque (grande, centralizada, sem caixa) */
+.formula-spotlight {
+  font-size: 1.4em;
+  text-align: center;
+  margin: 0.6em 0;
+  color: var(--star-color);
+  text-shadow: 0 0 12px var(--glow-soft);
+  width: 100%;
+}
+
+/* Três painéis lado a lado */
+.triple-panel {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin: 8px 0;
+  align-self: stretch;
+}
+
+.triple-panel > div {
+  flex: 1;
+  text-align: center;
+}
+
+/* Barra vertical divisória (usar dentro de dual-panel) */
+.dual-panel > .v-bar {
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+  align-self: stretch;
+  flex: 0 0 2px;
+  opacity: 0.6;
+  padding: 0;
+  margin: 0;
+}
+
+/* Barra horizontal divisória */
+.h-bar {
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-color),
+    transparent
+  );
+  margin: 0.8em auto;
+  opacity: 0.6;
+}
+
+/* Cabeçalho de navegação (presente em todos os slides exceto capa) */
+.slide-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--star-color);
+  opacity: 0.5;
+  border-bottom: 1px solid var(--accent-color);
+  background: linear-gradient(
+    to right,
+    var(--glow-soft),
+    transparent 20%,
+    transparent 80%,
+    var(--glow-soft)
+  );
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+/* Rodapé de navegação (presente em todos os slides exceto capa) */
+.slide-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.45em;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.2;
+  border-top: 1px solid var(--accent-color);
+  flex-shrink: 0;
+  flex-grow: 0;
+  margin-top: auto;
+}
+
 /* =============================================
    RESPONSIVIDADE
    ============================================= */
+
+/* Timeline vertical (usado em Cap 0 — Revisão) */
+.timeline {
+  position: relative;
+  padding: 1em 0;
+  width: 100%;
+  text-align: left;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent-color);
+  opacity: 0.4;
+}
+
+.timeline-item {
+  margin: 1em 0;
+  padding: 0.5em 2.5em;
+  position: relative;
+  width: 45%;
+  text-align: left;
+}
+
+.timeline-item:nth-child(odd) {
+  margin-left: 55%;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0.8em;
+  width: 10px;
+  height: 10px;
+  background: var(--accent-color);
+  border-radius: 50%;
+}
+
+.timeline-item:nth-child(odd)::before {
+  left: -6px;
+}
+
+.timeline-date {
+  color: var(--star-color);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+/* =============================================
+   CANVAS PLACEHOLDER (para mockup e desenvolvimento)
+   ============================================= */
+.canvas-placeholder {
+  background: #111;
+  padding: 2em;
+  margin: 0.5em 0;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-placeholder-small {
+  background: #111;
+  padding: 1em;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-placeholder-text {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+}
+
+/* =============================================
+   CANVAS OVERLAY (V-VISUALIZACAO Variante C)
+   ============================================= */
+.canvas-overlay {
+  position: relative;
+  background: #111;
+  padding: 1em;
+  min-height: 300px;
+}
+
+.canvas-overlay .math-section {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  max-width: 40%;
+}
+
+@media screen and (max-width: 768px) {
+  .canvas-overlay .math-section {
+    position: static;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .reveal h1 {
     font-size: 2em;
@@ -487,6 +964,7 @@
 
   .math-section,
   .history-section,
+  .history-insert,
   .problem-section,
   .compact-solution {
     padding: 10px;
@@ -497,6 +975,23 @@
     gap: 10px;
   }
 
+  .triple-panel {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dual-panel > .v-bar {
+    display: none;
+  }
+
+  .h-bar {
+    width: 90%;
+  }
+
+  .formula-spotlight {
+    font-size: 1.1em;
+  }
+
   .control-slider {
     width: 100%;
     justify-content: space-between;
@@ -505,4 +1000,191 @@
   .control-slider input {
     width: 120px;
   }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(odd) {
+    width: 100%;
+    margin-left: 0;
+    padding-left: 2em;
+  }
+
+  .timeline-item::before,
+  .timeline-item:nth-child(odd)::before {
+    left: 5px;
+  }
+}
+
+/* =============================================
+   SLIDE DE TÍTULO COMBINADO
+   Brasão + Documento Classificado
+   ============================================= */
+.title-slide {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 0;
+  padding: 2em 3em !important;
+  position: relative;
+}
+
+.faction-emblem {
+  width: 270px;
+  height: 270px;
+  margin-bottom: 0.5em;
+  opacity: 0;
+  animation: emblemIn 1.2s ease forwards;
+  filter: drop-shadow(0 0 15px var(--glow));
+}
+
+.faction-emblem svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes emblemIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(10px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(1.02) translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.title-rule {
+  width: 50%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-color),
+    var(--star-color),
+    var(--accent-color),
+    transparent
+  );
+  margin: 0.4em 0;
+  opacity: 0.5;
+}
+
+.title-slide h1 {
+  font-size: 1.7em;
+  letter-spacing: 0.12em;
+  margin-bottom: 0.15em;
+  text-shadow: 0 0 20px var(--glow);
+}
+
+.title-slide h3 {
+  font-weight: 300;
+  font-size: 0.95em;
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3em;
+}
+
+.chapter-meta {
+  font-family: 'Courier New', monospace;
+  font-size: 0.6em;
+  opacity: 0.35;
+  margin-top: 0.6em;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.classified-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 0;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.6em;
+  font-weight: bold;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--star-color);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--glow-medium),
+    var(--glow-medium),
+    transparent
+  );
+  border-bottom: 1px solid var(--accent-color);
+  opacity: 0.7;
+}
+
+.classified-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 6px 0;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  font-size: 0.5em;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.25;
+  border-top: 1px solid var(--accent-color);
+}
+
+.classification-code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.55em;
+  letter-spacing: 0.2em;
+  color: var(--star-color);
+  opacity: 0.4;
+  margin-bottom: 0.6em;
+}
+
+.doc-border {
+  position: absolute;
+  top: 35px;
+  bottom: 28px;
+  left: 20px;
+  right: 20px;
+  border: 1px solid var(--accent-color);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.doc-border::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  border: 1px solid var(--accent-color);
+  opacity: 0.5;
+}
+
+.watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 3.5em;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--star-color);
+  opacity: 0.025;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
 }
