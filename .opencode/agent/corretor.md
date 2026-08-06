@@ -35,6 +35,7 @@ Resolva caminhos a partir da raiz do worktree (pai de `slide-decks/`).
 ## Regras
 
 - **Corrija apenas o que foi apontado.** Não reescreva slides inteiros, não adicione conteúdo/recursos novos, não mude beats narrativos ou matemática que o juiz NÃO sinalizou.
+- **Verifique na web** — se o issue envolver um fato histórico ou uma fórmula, confira na internet (NASA, Wikipedia, OpenStax, Wolfram) antes de corrigir; use `webfetch`/`websearch`/`searxng_*`/`firecrawl_*`. Não substitua uma imprecisão por outra.
 - Se um issue pedir algo que exigiria mudança de design (ex.: classe nova no CSS), NÃO crie classe nova — sinalize no relatório em vez de desviar do spec.
 - Regras duras sempre valem:
   - Zero CSS inline; classes só de `space-theme.css`.

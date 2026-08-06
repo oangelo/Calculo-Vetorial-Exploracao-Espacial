@@ -47,6 +47,7 @@ Para cada seção que será implementada, com o PDI da issue em mãos (`gh issue
    - posição das visualizações (antes da formalização aceitável quando apoia a definição)?
    - fluxo pedagógico correto (motivação → conceito → [viz?] → formalização → interpretação → exemplos)?
    - atomicidade (um conceito por slide)?
+   - **verificação factual**: o juiz confere na web fórmulas/convenções e fatos históricos do plano (fontes: OpenStax/Stewart/Wolfram, NASA/Wikipedia/museus), citando fonte no veredito.
 3. Se o PDI **reprovar**: NÃO implemente ainda. Corrija o plano — atualize a issue (você pode pedir ao usuário ou gerar a correção e propor) — e re-julgue até aprovar.
 4. Só então siga para a FASE 1 com o PDI aprovado.
 
@@ -70,6 +71,7 @@ Para cada seção na ordem (ou só a pedida), **após FASE 0.5 aprovar o PDI**:
    - caminho do capítulo e do arquivo de seção;
    - instrução "verifica QUALIDADE desta seção e emite o veredito final" (referencie o VEREDITO TÉCNICO já dado).
    - O juiz aplica os 13 critérios de conformidade E os critérios de **qualidade de conteúdo** (exemplos simples, história concreta com nomes/datas, fragmento em TODO exemplo, viz antes da formalização aceitável) — lê estes critérios do próprio prompt do agente `juiz`.
+   - O juiz também faz a **verificação factual na web** (fórmulas/convenções e fatos históricos), citando fontes. Se ele reportar `NÃO VERIFICADO` por falta de ferramenta nesta sessão, você (orquestrador) faça a verificação com suas próprias ferramentas web e passe o resultado.
    - Receba `VEREDITO: APROVADO` ou `VEREDITO: REPROVADO` + ISSUES.
 4. Se **APROVADO**: vá para a FASE 1.5 (commit) e siga para a próxima seção.
 5. Se **REPROVADO** (técnico ou de qualidade; rodada n de 1 a 3):
