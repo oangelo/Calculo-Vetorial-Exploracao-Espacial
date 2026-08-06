@@ -71,21 +71,55 @@
   <section>
     <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
     <div class="slide-body">
-      <h3>Momentos e Centro de Massa</h3>
+      <h3>A Ideia — Média Ponderada</h3>
+      <p>
+        Duas massas sobre uma barra: \(m_1 = 1\,\text{kg}\) em \(x_1 = 0\) e
+        \(m_2 = 3\,\text{kg}\) em \(x_2 = 4\). Onde a barra se equilibra?
+      </p>
       <div class="formula-spotlight">
         <p>
-          \[M_x = \iint_D y\,\rho(x,y)\,dA,\quad M_y = \iint_D
-          x\,\rho(x,y)\,dA,\quad (\bar{x},\bar{y}) = \left(\frac{M_y}{m},
-          \frac{M_x}{m}\right)\]
+          \[\bar{x} = \frac{m_1 x_1 + m_2 x_2}{m_1 + m_2} = \frac{1\cdot 0 +
+          3\cdot 4}{4} = 3\]
         </p>
       </div>
       <div class="math-section">
-        <p><strong>Onde:</strong></p>
+        <p>
+          O centro de massa é a média das posições, ponderada pelas massas:
+          somamos <strong>massa × posição</strong> e dividimos pela massa total.
+          Cada massa puxa o equilíbrio para o seu lado, com força proporcional a
+          \(m_i x_i\). A massa maior (\(3\,\text{kg}\)) domina: o equilíbrio
+          está mais perto dela do que da origem.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · MASSA E CENTRO DE MASSA</div>
+    <div class="slide-body">
+      <h3>Centro de Massa de uma Chapa</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[m = \iint_D \rho(x,y)\,dA,\qquad \bar{x} = \frac{1}{m}\iint_D
+          x\,\rho(x,y)\,dA,\qquad \bar{y} = \frac{1}{m}\iint_D
+          y\,\rho(x,y)\,dA\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>A mesma média ponderada do slide anterior</strong> — a soma
+          virou integral:
+        </p>
         <ul>
-          <li>\(M_x\) = momento em relação ao eixo \(x\)</li>
-          <li>\(M_y\) = momento em relação ao eixo \(y\)</li>
           <li>
-            \((\bar{x},\bar{y})\) = centro de massa — o ponto de equilíbrio
+            Cada pedacinho de massa \(dm = \rho\,dA\), na posição \((x,y)\),
+            contribui com \(x\,dm\) para a média em \(x\) e \(y\,dm\) para a
+            média em \(y\).
+          </li>
+          <li>
+            \((\bar{x},\bar{y})\) = centro de massa — o ponto de equilíbrio da
+            chapa.
           </li>
         </ul>
         <p><strong>Validade:</strong> \(m \neq 0\).</p>
@@ -124,8 +158,8 @@
         <div class="history-section">
           <span class="history-label">CONTEXTO</span>
           <p>
-            Primeira mulher no espaço, 1963. A próxima soviética: 1982. Dezenove
-            anos de silêncio entre uma mulher e outra.
+            A primeira mulher no espaço, Valentina Tereshkova, 1963. A próxima
+            soviética: 1982. Dezenove anos de silêncio entre uma mulher e outra.
           </p>
         </div>
       </div>
@@ -144,8 +178,7 @@
             com densidade \(\rho(x,y) = 1 + x\) kg/m².
           </p>
           <p>
-            Calcule a massa \(m\), os momentos \(M_x\) e \(M_y\), e o centro de
-            massa \((\bar{x},\bar{y})\).
+            Calcule a massa \(m\) e o centro de massa \((\bar{x},\bar{y})\).
           </p>
         </div>
         <div class="v-bar"></div>
