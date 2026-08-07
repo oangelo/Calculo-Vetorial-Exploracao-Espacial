@@ -1,0 +1,538 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h2>Coordenadas Esféricas e Cilíndricas</h2>
+      <p>
+        Um tanque de combustível, uma cápsula de reentrada, um cone de motor:
+        os sólidos do Gemini nascem de rotações, não de planos. Fatiar um cone
+        em caixas cartesianas é lutar contra a própria geometria do objeto.
+      </p>
+      <p>
+        A seção anterior mediu com o jacobiano quanto um cubinho deforma numa
+        troca de coordenadas; no capítulo 2, as polares domaram círculos no
+        plano. Cilíndricas e esféricas especializam as duas ideias — simetria
+        em torno de um eixo, simetria em torno de um ponto — e a região passa
+        a decidir a dificuldade da conta.
+      </p>
+      <p class="history-insert">
+        Dorothy Vaughan aprendeu FORTRAN sozinha, à noite, e treinou sua equipe
+        antes da chegada dos IBM. A primeira supervisora negra da NASA.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Dois Sistemas, Duas Simetrias</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Cilíndricas — giro em torno do eixo \(z\):</strong></p>
+          <p>
+            Cilindro \(r = c\), cone \(z = kr\), paraboloide \(z = r^2\):
+            superfícies que não mudam quando giram em torno do eixo vertical.
+            Como as polares do capítulo 2, com a altura \(z\) preservada.
+          </p>
+        </div>
+        <div>
+          <p><strong>Esféricas — giro em torno de um ponto:</strong></p>
+          <p>
+            Esfera \(\rho = c\), calota, casca: sólidos que não mudam sob
+            qualquer rotação. Casos-chave: \(\phi = 0\) é o eixo \(z^+\);
+            \(\phi = \pi/2\) é o plano \(xy\).
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Regra de bolso:</strong> nomeie a fronteira do sólido — se
+          ela é \(r = c\), cilíndricas; se \(\rho = c\), esféricas. O sistema
+          certo faz a fronteira virar um intervalo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Visualização — Ponto na Esfera</h3>
+      <canvas
+        id="canvasEsfericas"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>ρ:</label>
+          <input type="range" id="sliderEsfRho" min="1" max="5" step="0.1" value="3" />
+        </div>
+        <div class="control-slider">
+          <label>θ:</label>
+          <input type="range" id="sliderEsfTheta" min="0" max="6.28" step="0.05" value="1" />
+        </div>
+        <div class="control-slider">
+          <label>φ:</label>
+          <input type="range" id="sliderEsfPhi" min="0.15" max="3" step="0.02" value="1.2" />
+        </div>
+      </div>
+      <p>
+        Arraste \(\rho\), \(\theta\) e \(\phi\): o ponto \(( \rho, \theta, \phi)\)
+        percorre a esfera. \(\rho\) fixa a distância à origem; \(\theta\) gira
+        no plano \(xy\); \(\phi\) inclina a partir do eixo \(z\). O bloco junto
+        ao ponto tem arestas \(d\rho\), \(\rho\,d\phi\) e
+        \(\rho\operatorname{sen}\phi\,d\theta\) — o elemento que produz o fator
+        \(\rho^2\operatorname{sen}\phi\) no volume.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Definição — Cilíndricas e Esféricas</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <div class="formula-spotlight">
+            <p>\[dV = r\,dr\,d\theta\,dz\]</p>
+          </div>
+          <p>
+            \(x = r\cos\theta,\quad y = r\operatorname{sen}\theta,\quad z = z\)
+          </p>
+          <p>
+            <strong>Onde:</strong> \(r\) = distância ao eixo \(z\); \(\theta\) =
+            ângulo azimutal; \(z\) = altura inalterada.
+          </p>
+          <p>
+            <strong>Validade:</strong> regiões com simetria em torno do eixo
+            \(z\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <div class="formula-spotlight">
+            <p>\[dV = \rho^2\operatorname{sen}\phi\,d\rho\,d\phi\,d\theta\]</p>
+          </div>
+          <p>
+            \(x = \rho\operatorname{sen}\phi\cos\theta,\quad y =
+            \rho\operatorname{sen}\phi\operatorname{sen}\theta,\quad z =
+            \rho\cos\phi\)
+          </p>
+          <p>
+            <strong>Onde:</strong> \(\rho\) = distância à origem; \(\theta\) =
+            azimutal; \(\phi\) = ângulo polar a partir do eixo \(z\).
+          </p>
+          <p>
+            <strong>Validade:</strong> regiões com simetria central.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Por Que os Fatores?</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>O arco cresce com a distância:</strong></p>
+          <p>
+            Um ângulo \(d\theta\) varre um arco de comprimento \(r\,d\theta\):
+            quanto mais longe do eixo, maior o pedaço de volume. Perto do eixo,
+            \(r \to 0\) e o elemento encolhe — daí o fator \(r\) em
+            cilíndricas.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Esféricas e os polos:</strong></p>
+          <p>
+            Em esféricas o arco cresce em duas direções — \(\rho\,d\phi\) e
+            \(\rho\operatorname{sen}\phi\,d\theta\) — e o produto gera
+            \(\rho^2\operatorname{sen}\phi\). Perto dos polos,
+            \(\operatorname{sen}\phi \to 0\): o elemento se estreita, como o
+            \(r\) perto do eixo.
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Decisão:</strong> a fronteira escolhe o sistema — cilindro,
+          cone ou paraboloide pedem cilíndricas; esfera, calota ou casca,
+          esféricas; sem simetria, cartesianas.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Volume do Cone</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o volume do cone circular reto de raio \(R = 2\) e altura
+            \(H = 4\), com vértice na origem e eixo no eixo \(z\).
+          </p>
+          <p>
+            Sugestão: em cilíndricas, \(r\) vai de \(0\) a \(2\), \(\theta\) de
+            \(0\) a \(2\pi\), e a fronteira do cone vira \(z = (H/R)\,r = 2r\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O cálculo de reentrada do Gemini era conferido à mão, por equipes
+            de mulheres — mesmo depois da chegada dos computadores.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Volume da Esfera</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o volume da esfera de raio \(R = 3\) em coordenadas
+            esféricas e confirme a fórmula clássica
+            \(V = \frac{4}{3}\pi R^3\).
+          </p>
+          <p>
+            Sugestão: com \(f = 1\), integre
+            \(\int_0^{2\pi}\int_0^{\pi}\int_0^3
+            \rho^2\operatorname{sen}\phi\,d\rho\,d\phi\,d\theta\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A esfera é o corpo mais simétrico; o edifício onde suas contas eram
+            feitas era o mais segregado de Langley.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · COORDENADAS ESFÉRICAS E CILÍNDRICAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 3 — Escolha do Sistema</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Para cada sólido, diga qual sistema usar e escreva os limites que
+            ele produz (não calcule):
+          </p>
+          <p>
+            (a) o sólido entre o cilindro \(r = 2\) e o cone \(z = 2r\), acima
+            do plano \(xy\);
+          </p>
+          <p>
+            (b) a calota esférica \(\rho \le 3\) cortada pelo cone
+            \(\phi = \pi/4\).
+          </p>
+          <p>Justifique cada escolha pela simetria da fronteira.</p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Vaughan chefiava a West Area Computing quando ela foi dissolvida,
+            em 1958, na transição NACA→NASA. Depois disso, procurou — e nunca
+            mais recebeu — outro cargo de gestão em Langley. Aposentou-se em
+            1971.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasEsfericas');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W / 2;
+    var cy = H / 2 + 10;
+    var S = 52;
+    var animId = null;
+    var inited = false;
+
+    var sliderRho = document.getElementById('sliderEsfRho');
+    var sliderTheta = document.getElementById('sliderEsfTheta');
+    var sliderPhi = document.getElementById('sliderEsfPhi');
+
+    function proj(x, y, z) {
+      return {
+        x: cx + (x - y) * S * 0.866,
+        y: cy + (x + y) * S * 0.5 - z * S * 0.5
+      };
+    }
+
+    function seg(a, b, color, lw) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+
+    function arcPath(pts) {
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.stroke();
+    }
+
+    function spherePoint(rho, phi, theta) {
+      return {
+        x: rho * Math.sin(phi) * Math.cos(theta),
+        y: rho * Math.sin(phi) * Math.sin(theta),
+        z: rho * Math.cos(phi)
+      };
+    }
+
+    function vk(P, a, b, c, i, j, k) {
+      return proj(
+        P.x + a.x * i + b.x * j + c.x * k,
+        P.y + a.y * i + b.y * j + c.y * k,
+        P.z + a.z * i + b.z * j + c.z * k
+      );
+    }
+
+    function polyFace(pts) {
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.closePath();
+    }
+
+    function draw(rho, theta, phi) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      // wireframe sphere of radius rho
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+      ctx.lineWidth = 0.7;
+      for (var m = 0; m < 24; m++) {
+        var th = (m / 24) * 2 * Math.PI;
+        var pts = [];
+        for (var q = 0; q <= 60; q++) {
+          var p = spherePoint(rho, (q / 60) * Math.PI, th);
+          pts.push(proj(p.x, p.y, p.z));
+        }
+        arcPath(pts);
+      }
+      for (var pm = 1; pm < 12; pm++) {
+        var ph = (pm / 12) * Math.PI;
+        var pts2 = [];
+        for (var q2 = 0; q2 <= 60; q2++) {
+          var p2 = spherePoint(rho, ph, (q2 / 60) * 2 * Math.PI);
+          pts2.push(proj(p2.x, p2.y, p2.z));
+        }
+        arcPath(pts2);
+      }
+
+      // axes
+      var ax = rho + 1.5;
+      var O = proj(0, 0, 0);
+      seg(O, proj(ax, 0, 0), 'rgba(255, 255, 255, 0.5)', 1);
+      seg(O, proj(0, ax, 0), 'rgba(255, 255, 255, 0.5)', 1);
+      seg(O, proj(0, 0, ax), 'rgba(255, 255, 255, 0.5)', 1);
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      var ex = proj(ax, 0, 0);
+      var ey = proj(0, ax, 0);
+      var ez = proj(0, 0, ax);
+      ctx.fillText('x', ex.x + 6, ex.y + 4);
+      ctx.fillText('y', ey.x + 6, ey.y + 4);
+      ctx.fillText('z', ez.x - 14, ez.y - 6);
+
+      // theta arc in the xy plane, radius rho sen phi
+      var Rxy = rho * Math.sin(phi);
+      var thPts = [];
+      for (var t1 = 0; t1 <= 60; t1++) {
+        var tht = (t1 / 60) * theta;
+        thPts.push(proj(Rxy * Math.cos(tht), Rxy * Math.sin(tht), 0));
+      }
+      ctx.strokeStyle = 'rgba(255, 179, 0, 0.8)';
+      ctx.lineWidth = 1.6;
+      arcPath(thPts);
+
+      // phi arc in the plane of theta
+      var phPts = [];
+      for (var t2 = 0; t2 <= 60; t2++) {
+        var pht = (t2 / 60) * phi;
+        phPts.push(proj(
+          rho * Math.sin(pht) * Math.cos(theta),
+          rho * Math.sin(pht) * Math.sin(theta),
+          rho * Math.cos(pht)
+        ));
+      }
+      ctx.strokeStyle = 'rgba(255, 179, 0, 0.8)';
+      ctx.lineWidth = 1.6;
+      arcPath(phPts);
+
+      // radius line and point
+      var P = spherePoint(rho, phi, theta);
+      var PP = proj(P.x, P.y, P.z);
+      seg(O, PP, 'rgba(30, 136, 229, 0.9)', 1.4);
+      ctx.beginPath();
+      ctx.arc(PP.x, PP.y, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = '#1E88E5';
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      // volume element: box with edges drho, rho dphi, rho sen phi dtheta
+      var drho = 0.3;
+      var dphi = 0.28;
+      var dtheta = 0.4;
+      var eR = {
+        x: Math.sin(phi) * Math.cos(theta),
+        y: Math.sin(phi) * Math.sin(theta),
+        z: Math.cos(phi)
+      };
+      var ePhi = {
+        x: Math.cos(phi) * Math.cos(theta),
+        y: Math.cos(phi) * Math.sin(theta),
+        z: -Math.sin(phi)
+      };
+      var eTh = { x: -Math.sin(theta), y: Math.cos(theta), z: 0 };
+      var a = { x: eR.x * drho, y: eR.y * drho, z: eR.z * drho };
+      var b = {
+        x: ePhi.x * rho * dphi,
+        y: ePhi.y * rho * dphi,
+        z: ePhi.z * rho * dphi
+      };
+      var c = {
+        x: eTh.x * rho * Math.sin(phi) * dtheta,
+        y: eTh.y * rho * Math.sin(phi) * dtheta,
+        z: 0
+      };
+
+      polyFace([vk(P, a, b, c, 0, 0, 0), vk(P, a, b, c, 0, 0, 1), vk(P, a, b, c, 0, 1, 1), vk(P, a, b, c, 0, 1, 0)]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.35)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 179, 0, 0.7)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+
+      polyFace([vk(P, a, b, c, 1, 0, 0), vk(P, a, b, c, 1, 1, 0), vk(P, a, b, c, 1, 1, 1), vk(P, a, b, c, 1, 0, 1)]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.2)';
+      ctx.fill();
+      ctx.stroke();
+
+      polyFace([vk(P, a, b, c, 0, 1, 0), vk(P, a, b, c, 0, 1, 1), vk(P, a, b, c, 1, 1, 1), vk(P, a, b, c, 1, 1, 0)]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.28)';
+      ctx.fill();
+      ctx.stroke();
+
+      var edges = [
+        [0, 0, 0, 1, 0, 0], [0, 0, 0, 0, 1, 0], [0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 1, 1, 0], [1, 0, 0, 1, 0, 1], [0, 1, 0, 1, 1, 0],
+        [0, 1, 0, 0, 1, 1], [0, 0, 1, 1, 0, 1], [0, 0, 1, 0, 1, 1],
+        [1, 1, 0, 1, 1, 1], [1, 0, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1]
+      ];
+      for (var e = 0; e < edges.length; e++) {
+        var ed = edges[e];
+        seg(
+          vk(P, a, b, c, ed[0], ed[1], ed[2]),
+          vk(P, a, b, c, ed[3], ed[4], ed[5]),
+          'rgba(255, 179, 0, 0.85)',
+          1
+        );
+      }
+
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(
+        'ρ = ' + rho.toFixed(1) + '   θ = ' + theta.toFixed(2) +
+        ' rad   φ = ' + phi.toFixed(2) + ' rad',
+        W / 2, 26
+      );
+      ctx.fillStyle = '#FFB300';
+      ctx.fillText('elemento de volume: dρ · ρ dφ · ρ sen φ dθ', W / 2, 46);
+      ctx.textAlign = 'start';
+    }
+
+    function loop() {
+      var rho = parseFloat(sliderRho.value) || 3;
+      var theta = parseFloat(sliderTheta.value) || 1;
+      var phi = parseFloat(sliderPhi.value) || 1.2;
+      draw(rho, theta, phi);
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizEsfericas = { init: init, cleanup: cleanup };
+  })();
+</script>
