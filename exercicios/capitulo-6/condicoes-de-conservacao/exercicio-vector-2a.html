@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">ORIGEM: Apollo 8 — DEZ/1968</div>
+  <p>
+    Você já sabe testar e encontrar o potencial para campos polinomiais. Agora
+    vamos trabalhar com um campo que envolve funções transcendentes — o
+    procedimento é o mesmo, mas a álgebra exige mais cuidado. A missão
+    <span class="censored">Apollo 8</span> está em órbita lunar e precisamos
+    verificar se o campo de
+    <span class="censored">correções de trajetória</span> é conservativo.
+  </p>
+  <p>
+    Determine se o campo \(\vec{F}(x,y) = (e^x \cos y,\; -e^x \sin y)\) é
+    conservativo em \(\mathbb{R}^2\). Se for, encontre a função potencial
+    \(\Phi\).
+  </p>
+  <p>
+    <strong>(a)</strong> Aplique o teste das derivadas cruzadas: calcule
+    \(\partial M/\partial y\) e \(\partial N/\partial x\).
+  </p>
+  <p>
+    <strong>(b)</strong> Se o teste passar, integre a primeira componente \(M =
+    e^x \cos y\) em relação a \(x\) para iniciar a construção de \(\Phi\).
+  </p>
+  <p>
+    <strong>(c)</strong> Complete a determinação da função potencial
+    \(\Phi(x,y)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A exponencial \(e^x\) é fator comum nas duas componentes.
+      Ao derivar com respeito a \(x\), ela se reproduz; ao derivar com respeito
+      a \(y\), apenas a parte trigonométrica muda.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(M = e^x \cos y\), \(N = -e^x \sin y\). Então
+        \(\partial M/\partial y = -e^x \sin y\) e \(\partial N/\partial x = -e^x
+        \sin y\). As derivadas cruzadas são iguais e \(\mathbb{R}^2\) é
+        simplesmente conexo, logo \(\vec{F}\) é conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\displaystyle\Phi = \int e^x \cos y\,dx = e^x
+        \cos y + C(y)\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\partial\Phi/\partial y = -e^x \sin y + C'(y)\).
+        Igualando a \(N = -e^x \sin y\): \(-e^x \sin y + C'(y) = -e^x \sin y\),
+        logo \(C'(y) = 0\). Portanto \(\Phi(x,y) = e^x \cos y + K\).
+      </p>
+    </div>
+  </details>
+</li>

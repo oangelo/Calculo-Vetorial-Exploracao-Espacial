@@ -1,17 +1,55 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
-  <div class="context">ORIGEM: Cálculo de Navegação Avançada — Abril/1974</div>
+  <div class="context">ORIGEM: Apollo 11 — Pós-missão, Agosto/1969</div>
   <p>
-    Num cenário em quatro dimensões \(\mathbb{R}^4\), remova o hiperplano \(x_1
-    = 0\). Discuta intuitivamente se o domínio resultante é simplesmente conexo.
+    Desafio final. Os contra-exemplos que estudamos envolviam domínios com
+    pontos ou linhas removidas. Mas a obstrução topológica pode assumir formas
+    mais sutis. Considere o domínio \(\Omega = \mathbb{R}^3 \setminus C\), onde
+    \(C\) é o círculo unitário no plano \(xy\): \(C = \{(\cos t,\, \sin t,\, 0)
+    \mid t \in [0, 2\pi]\}\).
   </p>
-  <!-- sem dica -->
+  <p>
+    <strong>(a)</strong> Visualize e descreva o domínio \(\Omega\). O que foi
+    removido do espaço?
+  </p>
+  <p>
+    <strong>(b)</strong> \(\Omega\) é simplesmente conexo? Considere uma curva
+    fechada que "atravessa" o círculo removido (como um fio passando pelo buraco
+    de uma argola). Essa curva pode ser contraída a um ponto em \(\Omega\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Se um campo vetorial com rotacional zero está definido
+    em \(\Omega\), ele é necessariamente conservativo? Se não, que tipo de curva
+    de integração produziria um resultado não-nulo?
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Em dimensão \(4\) remover um hiperplano não cria "túnel" suficiente para
-        obstruir contrações. O domínio continua simplesmente conexo.
+        <strong>(a)</strong> \(\Omega\) é o espaço tridimensional com um círculo
+        (um aro, uma argola) removido do plano \(xy\). O espaço restante é tudo,
+        exceto esse aro fino. Geometricamente, é como \(\mathbb{R}^3\) com um
+        anel cortado.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Omega\) <strong>não é</strong> simplesmente
+        conexo. Considere uma curva fechada \(\gamma\) que passa pelo "interior"
+        do círculo \(C\) — por exemplo, um arco que sobe no eixo \(z\) desde
+        \((0,0,-1)\) até \((0,0,1)\) e depois retorna por fora de \(C\). Essa
+        curva "enlaça" o círculo removido. Para contrair \(\gamma\) a um ponto,
+        seria necessário atravessar o círculo \(C\) — que está fora de
+        \(\Omega\). É como tentar separar dois elos de uma corrente sem cortar
+        nenhum deles.
+      </p>
+      <p>
+        <strong>(c)</strong> Não necessariamente conservativo. Como \(\Omega\)
+        não é simplesmente conexo, a regra geral não se aplica — pode existir um
+        campo com \(\nabla \times F = 0\) que não é conservativo. A curva de
+        integração que produziria resultado não-nulo seria precisamente uma
+        curva que "enlaça" o círculo \(C\) — qualquer caminho fechado que
+        atravessa o interior do círculo removido e retorna por fora. Esse tipo
+        de curva não pode ser deformado a um ponto sem cruzar \(C\), e portanto
+        pode servir como testemunha da não-conservatividade do campo.
       </p>
     </div>
   </details>

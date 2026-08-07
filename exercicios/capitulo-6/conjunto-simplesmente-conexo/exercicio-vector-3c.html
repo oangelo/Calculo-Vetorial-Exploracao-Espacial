@@ -1,22 +1,73 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
-  <div class="context">ORIGEM: Seção de Ensaios — Março/1966</div>
+  <div class="context">ORIGEM: Apollo 10 — Maio/1969</div>
   <p>
-    Considere a casca esférica \(E = \{(x,y,z) \mid 1 &lt; x^2+y^2+z^2 &lt;
-    4\}\). É simplesmente conexa? Discuta.
+    Todo o nosso estudo se passou no plano. Mas a exploração espacial acontece
+    em três dimensões. A topologia muda quando subimos para \(\mathbb{R}^3\)?
+    Analise os domínios tridimensionais abaixo.
+  </p>
+  <p>
+    <strong>(a)</strong> O espaço \(\mathbb{R}^3\) com um ponto removido,
+    \(\Omega_a = \mathbb{R}^3 \setminus \{(0,0,0)\}\). É simplesmente conexo?
+    Argumente pensando na deformação de curvas.
+  </p>
+  <p>
+    <strong>(b)</strong> O espaço \(\mathbb{R}^3\) com o eixo \(z\) removido,
+    \(\Omega_b = \mathbb{R}^3 \setminus \{(0,0,z) \mid z \in \mathbb{R}\}\). É
+    simplesmente conexo? Desenhe (mentalmente) uma curva que não pode ser
+    contraída.
+  </p>
+  <p>
+    <strong>(c)</strong> Se um campo em \(\mathbb{R}^3\) tem rotacional zero e
+    está definido em \(\Omega_a\), ele é necessariamente conservativo? E se está
+    definido em \(\Omega_b\)?
+  </p>
+  <p>
+    <strong>(d)</strong> Por que a situação é diferente do caso bidimensional
+    (remover um ponto de \(\mathbb{R}^2\) cria um furo, mas remover um ponto de
+    \(\mathbb{R}^3\) não)?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Analise a presença de cavidade central.
+      [NOTA TÉCNICA]: Em \(\mathbb{R}^3\), uma curva tem uma dimensão de
+      liberdade extra para "desviar" de obstáculos. Mas remover uma
+      <em>linha inteira</em> cria um "túnel" que bloqueia curvas que a envolvem.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        A casca possui cavidade; laços envolvendo a esfera interna não se
-        contraem. Portanto, não é simplesmente conexa.
+        <strong>(a)</strong> \(\Omega_a\) <strong>é</strong> simplesmente
+        conexo. Em \(\mathbb{R}^3\), qualquer curva fechada próxima ao ponto
+        removido pode ser desviada por cima, por baixo ou pelos lados — há
+        espaço suficiente em três dimensões para contornar um único ponto.
+        Imagine um laço de barbante perto de uma conta: em 3D, basta levantar o
+        laço por cima da conta.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Omega_b\) <strong>não é</strong> simplesmente
+        conexo. Uma circunferência no plano \(xy\) centrada na origem envolve o
+        eixo \(z\) e não pode ser contraída — qualquer tentativa de encolher a
+        curva a forçaria a cruzar o eixo removido. É como um anel ao redor de um
+        poste: não dá para tirar sem cortar.
+      </p>
+      <p>
+        <strong>(c)</strong> Em \(\Omega_a\): sim, o campo é necessariamente
+        conservativo, pois o domínio é simplesmente conexo e \(\nabla \times F =
+        0\). Em \(\Omega_b\): não necessariamente. O domínio não é simplesmente
+        conexo, então pode existir um campo com rotacional zero que não é
+        conservativo (análogo ao campo vortical do plano perfurado).
+      </p>
+      <p>
+        <strong>(d)</strong> A diferença é dimensional. Em \(\mathbb{R}^2\), uma
+        curva unidimensional (a circunferência) "cerca" um ponto
+        zero-dimensional — o ponto fica "preso" dentro da curva. Em
+        \(\mathbb{R}^3\), uma curva unidimensional tem duas dimensões extras
+        para desviar de um ponto zero-dimensional. Mas uma curva ainda pode
+        "cercar" uma linha unidimensional — a curva e a linha têm a mesma
+        dimensão "efetiva" de obstrução.
       </p>
     </div>
   </details>

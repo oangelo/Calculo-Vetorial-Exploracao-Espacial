@@ -1,26 +1,63 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
   <div class="context">
-    ORIGEM: Seção de Ensaios de Reentrada — Dados Confidenciais (1966)
+    ORIGEM: Projeto de Escudos Térmicos — Apollo 15 [JUL/1971]
   </div>
   <p>
-    Forneça uma parametrização para o
-    <em>hyperbolic paraboloid</em> \(z = u^2 - v^2\). Limite cada parâmetro ao
-    intervalo \([-2,2]\).
+    O cilindro veio de rodar um círculo. E se a curva geratriz não for um
+    círculo, mas uma reta inclinada ou uma parábola? A mesma ideia gera o cone e
+    o paraboloide. Vamos consolidar a técnica de superfícies de revolução.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o cone reto de raio da base
+    <strong>R</strong> e altura <strong>H</strong>. Comece com a reta geratriz
+    no plano <strong>xz</strong> que liga a origem ao ponto
+    <strong>(R, 0, H)</strong>, e aplique a rotação em torno do eixo
+    <strong>z</strong>.
+  </p>
+  <p>
+    <strong>(b)</strong> Parametrize o paraboloide de revolução obtido pela
+    rotação da parábola <strong>z = v²</strong> (no plano <strong>xz</strong>,
+    com <strong>v ≥ 0</strong>) em torno do eixo <strong>z</strong>, limitado à
+    altura <strong>z = H</strong>.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare as três parametrizações (cilindro, cone,
+    paraboloide) e identifique o elemento comum que caracteriza uma superfície
+    de revolução em torno do eixo <strong>z</strong>. O que muda de uma para
+    outra?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Observe as curvaturas opostas ao longo dos eixos
-      principais.
+      [NOTA TÉCNICA]: Para uma superfície de revolução em torno do eixo
+      <strong>z</strong>, a estrutura geral é \(\vec{r}(u,v) = (f(v)\cos u,\;
+      f(v)\sin u,\; g(v))\), onde <strong>(f(v), g(v))</strong> é a curva
+      geratriz no plano <strong>xz</strong>. Para o cilindro:
+      <strong>f(v) = R</strong> (constante). Para o cone:
+      <strong>f(v) = (R/H)v</strong> (linear). Para o paraboloide:
+      <strong>f(v) = v</strong> e <strong>g(v) = v²</strong>.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Simplesmente \(\vec{r}(u,v) = (u,\, v,\, u^2 - v^2)\) com \(u,v
-        \in[-2,2]\).
+        <strong>(a)</strong> A reta geratriz é \((Rv/H,\, 0,\, v)\).
+        Rotacionando: \(\vec{r}(u,v) = ((Rv/H)\cos u,\; (Rv/H)\sin u,\; v)\),
+        com <strong>u ∈ [0, 2π]</strong> e <strong>v ∈ [0, H]</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> A parábola geratriz é \((v,\, 0,\, v²)\).
+        Rotacionando: \(\vec{r}(u,v) = (v\cos u,\; v\sin u,\; v²)\), com
+        <strong>u ∈ [0, 2π]</strong> e <strong>v ∈ [0, \sqrt{H}]</strong>.
+      </p>
+      <p>
+        <strong>(c)</strong> O elemento comum é a estrutura \(\vec{r}(u,v) =
+        (f(v)\cos u,\; f(v)\sin u,\; g(v))\), onde a rotação em torno de
+        <strong>z</strong> é feita pelo parâmetro <strong>u</strong>. O que muda
+        é a função radial <strong>f(v)</strong>: constante (cilindro), linear
+        (cone), ou quadrática (paraboloide).
       </p>
     </div>
   </details>

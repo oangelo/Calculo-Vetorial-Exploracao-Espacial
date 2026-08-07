@@ -1,45 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
   <div class="context">
-    ORIGEM: Projeto Secreto de Transporte - Análise Final
+    ORIGEM: Projeto de Propulsão - Estudo de Cavidades [NÍVEL SIGMA-4]
   </div>
   <p>
-    Nos exercícios anteriores, os limites em \(z\) eram simples. Agora vamos ver
-    um caso onde \(z\) depende de \(r\) de forma não-linear, criando uma região
-    mais complexa.
+    Vimos regiões com limites simples. Agora uma região que exige atenção na
+    escolha e na montagem: imagine uma esfera de raio \(R = 4\) da qual se
+    remove um cilindro coaxial de raio \(a = 1\) — como se um furo cilíndrico
+    tivesse sido perfurado pelo centro da esfera. Essa estrutura é relevante no
+    design de componentes ocos para redução de peso.
   </p>
   <p>
-    Investigar o volume do sólido que satisfaz \(r \le 3\) e \(z \ge \sqrt{r}\),
-    em coordenadas cilíndricas, considerando \(\theta\) de \(0\) até \(2\pi\).
+    A região é: \(x^2 + y^2 + z^2 \le 16\) e \(x^2 + y^2 \ge 1\) (exterior ao
+    cilindro, interior à esfera).
   </p>
   <p>
-    <strong>(a)</strong> Esboce a região no plano \(rz\): para \(r\) de \(0\) a
-    \(3\), a curva \(z = \sqrt{r}\) delimita o sólido.
+    <strong>(a)</strong> Esboce a região no plano \(rz\). Decida qual sistema de
+    coordenadas é mais adequado e justifique sua escolha. Argumente por que o
+    sistema alternativo seria mais difícil.
   </p>
   <p>
-    <strong>(b)</strong> Determine se a região tem limite superior em \(z\). Se
-    não tiver, a integral diverge. Se tiver, defina-o.
+    <strong>(b)</strong> Determine todos os limites de integração para o sistema
+    escolhido.
   </p>
   <p>
-    <strong>(c)</strong> Assumindo um limite superior \(z = H\) (constante),
-    escreva e avalie a integral do volume.
+    <strong>(c)</strong> Monte a integral do volume (não é necessário avaliar
+    completamente).
   </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) A curva \(z = \sqrt{r}\) no plano \(rz\) é uma parábola deitada. A
-        região inclui todos os pontos acima dessa curva com \(r \le 3\).
+        (a) O esboço no plano \(rz\) mostra a esfera \(r^2 + z^2 = 16\) como um
+        semicírculo, e o cilindro \(r = 1\) como uma linha vertical. A região
+        válida está entre a linha \(r = 1\) e o semicírculo.
       </p>
       <p>
-        (b) Sem limite superior em \(z\), o volume diverge. Com \(z \le H\):
-        para cada \(r\), \(z\) varia de \(\sqrt{r}\) até \(H\).
+        <strong>Coordenadas cilíndricas são mais adequadas.</strong> O cilindro
+        \(r = 1\) e a esfera \(r^2 + z^2 = 16\) (que vira \(z = \pm\sqrt{16 -
+        r^2}\)) se expressam naturalmente em cilíndricas — os limites de \(r\) e
+        \(z\) são funções explícitas.
       </p>
       <p>
-        (c) \[ V = \int_0^{2\pi}\int_0^3\int_{\sqrt{r}}^H r\,dz\,dr\,d\theta =
-        2\pi\int_0^3 r(H-\sqrt{r})\,dr = 2\pi\left[H\frac{r^2}{2} -
-        \frac{2r^{5/2}}{5}\right]_0^3 = 2\pi\left[\frac{9H}{2} - \frac{2\cdot
-        9\sqrt{3}}{5}\right]. \]
+        Em esféricas, o cilindro \(r = 1\) torna-se \(\rho\sin\phi = 1\), ou
+        seja \(\rho = 1/\sin\phi\). Isso significa que o limite inferior de
+        \(\rho\) <em>depende de \(\phi\)</em>, complicando a integral
+        significativamente.
+      </p>
+      <p>
+        (b) Em cilíndricas: \(r\) varia de \(1\) a \(4\) (o cilindro limita
+        \(r\) por baixo, e a esfera por cima). Para cada \(r\), \(z\) varia de
+        \(-\sqrt{16 - r^2}\) a \(\sqrt{16 - r^2}\). O ângulo \(\theta\) faz
+        volta completa: \(0 \le \theta \le 2\pi\).
+      </p>
+      <p>
+        (c) \[ V = \int_0^{2\pi} \int_1^{4}
+        \int_{-\sqrt{16-r^2}}^{\sqrt{16-r^2}} r \, dz \, dr \, d\theta = 2\pi
+        \int_1^{4} 2r\sqrt{16-r^2} \, dr.\]
+      </p>
+      <p>
+        Com a substituição \(u = 16 - r^2\), \(du = -2r\,dr\): \(V = 2\pi
+        \int_{15}^{0} -\sqrt{u} \, du = 2\pi \cdot \frac{2}{3}
+        u^{3/2}\bigg|_0^{15} = \frac{4\pi}{3} \cdot 15\sqrt{15} =
+        20\pi\sqrt{15}\).
       </p>
     </div>
   </details>

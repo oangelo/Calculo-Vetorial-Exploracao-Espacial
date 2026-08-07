@@ -1,24 +1,65 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
   <div class="context">
-    ORIGEM: Estudo de Rendez‑vous Lunar – Projeto Apollo [03/SET/1965]
+    ORIGEM: Estudo de Injeção Translunar – Apollo X [18/MAI/1969]
   </div>
   <p>
-    O campo gravitacional simplificado é dado por
-    \(\vec{F}(\vec{r})=-k\dfrac{\vec{r}}{|\vec{r}|^{3}}\). Calcule o trabalho
-    necessário para deslocar uma nave do raio orbital \(r=a\) para \(r=b&gt;a\).
+    Até agora trabalhamos apenas em \(\mathbb{R}^2\). O astronauta opera em três
+    dimensões — o procedimento se estende naturalmente. Vamos aplicá-lo ao campo
+    gravitacional, que é fisicamente relevante e tem um potencial que já
+    conhecemos. O campo gravitacional simplificado é dado por \(\vec{F}(\vec{r})
+    = -k\,\dfrac{\vec{r}}{|\vec{r}|^3}\), onde \(k > 0\) é uma constante e
+    \(\vec{r} = (x, y, z)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Reconheça a função potencial: verifique que
+    \(\phi(\vec{r}) = k/|\vec{r}|\) satisfaz \(\vec{F} = \nabla\phi\) (na
+    verdade, \(\vec{F} = -\nabla(k/|\vec{r}|)\); convencionamos \(\phi =
+    -k/|\vec{r}|\) para que \(\vec{F} = \nabla\phi\)). Calcule
+    \(\nabla(-k/|\vec{r}|)\) e confirme.
+  </p>
+  <p>
+    <strong>(b)</strong> Explique por que o trabalho para mover uma nave de uma
+    órbita circular de raio \(r = a\) para outra de raio \(r = b\)
+    <strong>não depende da trajetória específica</strong> da transferência.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o trabalho \(W = \phi(B) - \phi(A)\) em função
+    de \(a\) e \(b\), onde \(A\) está a distância \(a\) do centro e \(B\) a
+    distância \(b\). Interprete o sinal: quando \(b > a\) (órbita mais alta), o
+    trabalho é positivo ou negativo? O que isso significa fisicamente?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A força é gradiente de \(-k/|\vec{r}|\).
+      [NOTA TÉCNICA]: O potencial gravitacional é \(\phi = -k/|\vec{r}|\). Para
+      um ponto a distância \(r\) do centro, \(\phi = -k/r\). A diferença de
+      potencial é \(\phi(b) - \phi(a) = -k/b + k/a = k(1/a - 1/b)\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
-      \(\phi=-k/|\vec{r}|\). Logo \(W=\phi(b)-\phi(a) =
-      -\dfrac{k}{b}+\dfrac{k}{a}\).
+      <p>
+        (a) \(\phi = -k/|\vec{r}| = -k(x^2+y^2+z^2)^{-1/2}\).
+        \(\partial\phi/\partial x = kx(x^2+y^2+z^2)^{-3/2} =
+        -(-kx/|\vec{r}|^3)\). Na verdade, \(\nabla\phi = k\vec{r}/|\vec{r}|^3\),
+        mas o campo gravitacional é \(\vec{F} = -k\vec{r}/|\vec{r}|^3\). Para
+        que \(\vec{F} = \nabla\phi\), tomamos \(\phi = -k/|\vec{r}|\).
+        Confirma-se: \(\nabla(-k/|\vec{r}|) = k\vec{r}/|\vec{r}|^3 \cdot (-1) =
+        -k\vec{r}/|\vec{r}|^3 = \vec{F}\).
+      </p>
+      <p>
+        (b) O campo gravitacional é conservativo, logo a integral depende apenas
+        dos extremos. Não importa se a nave segue uma trajetória de Hohmann, uma
+        transferência direta ou qualquer outro caminho: o trabalho é o mesmo.
+      </p>
+      <p>
+        (c) \(W = \phi(B) - \phi(A) = (-k/b) - (-k/a) = k/a - k/b =
+        k\left(\frac{1}{a} - \frac{1}{b}\right)\). Para \(b > a\): \(1/a >
+        1/b\), logo \(W > 0\). Trabalho positivo significa que é necessário
+        <em>fornecer</em> energia para subir a órbita.
+      </p>
     </div>
   </details>
 </li>

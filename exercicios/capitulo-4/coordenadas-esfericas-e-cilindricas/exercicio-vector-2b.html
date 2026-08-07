@@ -5,45 +5,64 @@
   </div>
   <p>
     No exercício anterior, calculamos o volume de um cone em coordenadas
-    cilíndricas. Agora vamos usar o mesmo sistema para um sólido cujos limites
-    dependem de \(r^2\): um paraboloide de revolução.
+    cilíndricas. Agora vamos testar as coordenadas esféricas com o caso mais
+    fundamental: o volume de uma esfera. Se o Jacobiano \(\rho^2\sin\phi\)
+    estiver correto, devemos recuperar a fórmula que todos conhecemos.
   </p>
   <p>
-    Uma câmara de combustão em formato de paraboloide de revolução é descrita
-    por \(z = r^2\), para \(0 \leq z \leq 4\).
+    Calcular o volume de uma esfera de raio \(R = 3\) utilizando coordenadas
+    esféricas.
   </p>
   <p>
-    <strong>(a)</strong> Determine o limite superior de \(r\) quando \(z=4\).
-    Esboce o sólido.
+    <strong>(a)</strong> Identifique os limites de \(\rho\), \(\phi\) e
+    \(\theta\) que descrevem uma esfera completa centrada na origem. Esboce o
+    domínio de integração indicando cada variável.
   </p>
   <p>
-    <strong>(b)</strong> Escreva a integral tripla do volume em coordenadas
-    cilíndricas.
+    <strong>(b)</strong> Monte e avalie a integral tripla do volume, incluindo o
+    Jacobiano \(\rho^2\sin\phi\).
   </p>
-  <p><strong>(c)</strong> Calcule o volume e confira o resultado.</p>
+  <p>
+    <strong>(c)</strong> Verifique o resultado com a fórmula geométrica
+    \(\frac{4}{3}\pi R^3\) e responda: por que o Jacobiano \(\rho^2\sin\phi\) é
+    essencial para obter o resultado correto? O que aconteceria se esquecêssemos
+    o fator \(\sin\phi\)?
+  </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: A equação \(z = r^2\) descreve um paraboloide que se abre
-      para cima. Quando \(z=4\), temos \(r=2\). Para cada \(r\), \(z\) varia de
-      \(0\) a \(r^2\).
+      [NOTA TÉCNICA]: Para uma esfera completa, \(\rho\) varia de \(0\) a \(R\),
+      \(\phi\) cobre de \(0\) a \(\pi\) (do polo norte ao polo sul), e
+      \(\theta\) faz uma volta completa de \(0\) a \(2\pi\). A integral se
+      separa em três integrais de variável única.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Quando \(z=4\): \(r^2=4\), logo \(r=2\). O sólido vai de \(r=0\) até
-        \(r=2\).
+        (a) Para uma esfera de raio \(R\) centrada na origem: \(0 \le \rho \le
+        R\), \(0 \le \phi \le \pi\), \(0 \le \theta \le 2\pi\).
       </p>
       <p>
-        (b) \[ V = \int_{0}^{2\pi} \int_{0}^{2} \int_{0}^{r^2} r \, dz \, dr \,
-        d\theta. \]
+        (b) \[ V = \int_0^{2\pi} \int_0^{\pi} \int_0^3 \rho^2\sin\phi \, d\rho
+        \, d\phi \, d\theta.\]
       </p>
       <p>
-        (c) Integração em \(z\): \(\int_0^{r^2} dz = r^2\). Depois: \[V =
-        \int_0^{2\pi}\int_0^2 r\cdot r^2\,dr\,d\theta = 2\pi\int_0^2 r^3\,dr =
-        2\pi\cdot\frac{r^4}{4}\Big|_0^2 = 2\pi\cdot\frac{16}{4} = 8\pi.\]
+        Separando as variáveis: \[\int_0^3 \rho^2 \, d\rho =
+        \frac{\rho^3}{3}\bigg|_0^3 = 9,\] \[\int_0^{\pi} \sin\phi \, d\phi =
+        [-\cos\phi]_0^{\pi} = -(-1) + 1 = 2,\] \[\int_0^{2\pi} d\theta = 2\pi.\]
+      </p>
+      <p>Logo, \(V = 9 \cdot 2 \cdot 2\pi = 36\pi\).</p>
+      <p>
+        (c) Verificação: \(\frac{4}{3}\pi R^3 = \frac{4}{3}\pi(27) = 36\pi\). ✓
+      </p>
+      <p>
+        O fator \(\sin\phi\) é essencial: sem ele, a integral em \(\phi\) daria
+        \(\int_0^{\pi} d\phi = \pi\) em vez de \(2\), e o volume seria \(18\pi\)
+        — metade do valor correto. Geometricamente, \(\sin\phi\) compensa o fato
+        de que o elemento de volume se estreita nos polos (\(\phi \approx 0\) e
+        \(\phi \approx \pi\)).
       </p>
     </div>
   </details>

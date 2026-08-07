@@ -1,46 +1,40 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
   <div class="context">
-    ORIGEM: Simulação de Trajetória Interna - Gemini [ARQUIVOS DE
-    <span class="censored">13/JUL/1965</span>]
+    ORIGEM: Apollo 7 - Verificação de Trajetória - OUTUBRO/1968
   </div>
   <p>
-    Considere a curva \(C\) no plano \(xy\) parametrizada por \(\vec{r}(t) =
-    \begin{pmatrix} 2t \\ t^2 \end{pmatrix}\), \(t \in [0,2]\). Calcule o
-    comprimento total da curva usando a integral de linha \(\int_C ds\).
+    No Capítulo 1, você estudou funções vetoriais \(\vec{r}(t)\) que descrevem a
+    posição de uma nave ao longo do tempo. Agora vamos investigar o que torna
+    uma trajetória "bem-comportada" do ponto de vista matemático. Considere a
+    parametrização
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(t) = (t,\; t^2), \quad t \in [0,2]\]
+  </p>
+  <p>
+    que descreve uma trajetória de correção orbital modelada como parábola no
+    plano. O primeiro passo para entender as propriedades dessa curva é examinar
+    sua derivada.
+  </p>
+  <p><strong>(a)</strong> Calcule o vetor derivada \(\vec{r}\,'(t)\).</p>
+  <p>
+    <strong>(b)</strong> Verifique que cada componente de \(\vec{r}\,'(t)\) é
+    uma função contínua em \([0,2]\). Com base nisso, conclua se a curva é de
+    classe \(C^1\).
+  </p>
+  <p>
+    <strong>(c)</strong> Esboce a curva no plano \(xy\) para \(t \in [0,2]\).
+    Indique com setas o sentido do percurso (crescimento de \(t\)). A curva
+    apresenta alguma "quina" visível no esboço?
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere como relacionar \(\|\vec{r}'(t)\|\) diretamente
-      à expressão paramétrica.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        Primeiro, obtemos a derivada: \(\vec{r}'(t) = \begin{pmatrix} 2 \\ 2t
-        \end{pmatrix}\).
-      </p>
-      <p>
-        Assim, \(\|\vec{r}'(t)\| = \sqrt{2^2 + (2t)^2} = \sqrt{4 + 4t^2} =
-        2\sqrt{1 + t^2}\).
-      </p>
-      <p>
-        Portanto, o comprimento é: \[ \int_0^2 \|\vec{r}'(t)\|\, dt = \int_0^2
-        2\sqrt{1 + t^2}\, dt. \]
-      </p>
-      <p>
-        A integral resultante (usando substituições padrão) é \[ 2 \int_0^2
-        \sqrt{1 + t^2}\, dt = 2 \left[\frac{t}{2}\sqrt{1+t^2} +
-        \frac{1}{2}\ln\bigl(t + \sqrt{1+t^2}\bigr)\right]_0^2. \]
-      </p>
-      <p>
-        Cálculo numérico: \(\sqrt{1+2^2} = \sqrt{5}\). Substituindo os limites,
-        obtemos o valor final aproximado. O resultado indica o comprimento total
-        exigido para a manobra simulada.
-      </p>
+      [NOTA TÉCNICA]: A derivada de \(\vec{r}(t) = (x(t), y(t))\) é obtida
+      componente a componente: \(\vec{r}\,'(t) = (x'(t), y'(t))\). Polinômios
+      têm derivadas contínuas em todo \(\mathbb{R}\). Para o esboço, substitua
+      alguns valores de \(t\) e marque os pontos correspondentes.
     </div>
   </details>
 </li>

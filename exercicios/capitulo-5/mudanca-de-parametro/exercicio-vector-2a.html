@@ -1,38 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
   <div class="context">
-    ORIGEM: <span class="censored">Setor Avançado</span> - Projeto Gemini
-    [JUL/1965]
+    ORIGEM: Centro de Controle de Missão - Programa Apollo [JUN/1967]
   </div>
   <p>
-    Uma trajetória em 3D é dada por \(\vec{r}(t) = \begin{pmatrix} \sqrt{t} \\ t
-    \\ 2t \end{pmatrix}\) no intervalo \([0,4]\). Encontre uma reparametrização
-    \(u(\tau)\) que torne a componente \(\sqrt{t}\) linear em \(\tau\). Calcule
-    a integral de linha \(\displaystyle \int_C |\vec{r}'(t)|\, dt\).
+    Os três exercícios anteriores estabeleceram que o comprimento de uma curva
+    não depende do parâmetro escolhido. Mas algo <em>muda</em> quando
+    reparametrizamos: a <strong>velocidade</strong> com que percorremos a curva.
+    Vamos quantificar essa diferença.
+  </p>
+  <p>
+    Considere a curva \(\vec{r}(t) = (t,\, t^2)\) com \(t \in [0,1]\) e a
+    reparametrização \(t = u(\tau) = \tau^2\), com \(\tau \in [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a velocidade (magnitude da derivada) no
+    parâmetro original: \(|\vec{r}'(t)|\) como função de \(t\). Avalie nos
+    pontos \(t = 0\), \(t = \frac{1}{2}\) e \(t = 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a velocidade no novo parâmetro:
+    \(\left|\frac{d\vec{r}}{d\tau}\right| = |\vec{r}'(u(\tau))| \cdot
+    |u'(\tau)|\) como função de \(\tau\). Avalie nos pontos correspondentes
+    \(\tau = 0\), \(\tau = \frac{1}{\sqrt{2}}\) e \(\tau = 1\).
+  </p>
+  <p>
+    <strong>(c)</strong> Compare as velocidades ponto a ponto. Em qual
+    parametrização o ponto se move mais rápido perto do início? E perto do fim?
+    Explique por que velocidades diferentes ao longo da curva ainda produzem o
+    mesmo comprimento total percorrido.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de reparametrização podem simplificar raízes.
+      [NOTA TÉCNICA]: A velocidade muda, mas o total percorrido não. Pense na
+      analogia: dirigir 100 km em 1 hora ou em 2 horas — a distância é a mesma,
+      mas a velocidade média difere. Na reparametrização \(t = \tau^2\), o
+      parâmetro \(\tau\) avança mais devagar perto de \(\tau = 0\), o que afeta
+      a velocidade de percurso.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        DEFINIÇÃO: Se \(\tau = \sqrt{t}\), então \(t = \tau^2\). Nesse caso,
-        \(\vec{r}(\tau) = \begin{pmatrix} \tau \\ \tau^2 \\ 2\tau^2
-        \end{pmatrix}\) e \(\frac{d\vec{r}}{d\tau}\) simplifica.
+        (a) \(\vec{r}'(t) = (1, 2t)\), \(|\vec{r}'(t)| = \sqrt{1+4t^2}\). Em
+        \(t=0\): \(|\vec{r}'| = 1\). Em \(t=\frac{1}{2}\): \(|\vec{r}'| =
+        \sqrt{2}\). Em \(t=1\): \(|\vec{r}'| = \sqrt{5}\).
       </p>
       <p>
-        A MAGNITUDE \(\left|\frac{d\vec{r}}{d\tau}\right|\) torna a integral
-        mais direta. O intervalo \(\tau\) vai de 0 até 2 (pois quando \(t=4\),
-        \(\tau=2\)).
+        (b) \(u'(\tau) = 2\tau\). \(|\vec{r}'(u(\tau))| = \sqrt{1+4\tau^4}\),
+        \(u'(\tau) = 2\tau\). Velocidade no novo parâmetro:
+        \(2\tau\sqrt{1+4\tau^4}\). Em \(\tau=0\): velocidade \(= 0\). Em
+        \(\tau=\frac{1}{\sqrt{2}}\): velocidade \(= 2 \cdot \frac{1}{\sqrt{2}}
+        \cdot \sqrt{1+4 \cdot \frac{1}{4}} = \sqrt{2} \cdot \sqrt{2} = 2\). Em
+        \(\tau=1\): velocidade \(= 2\sqrt{5}\).
       </p>
       <p>
-        LOGO, \[ \int_0^{2} \bigl|\frac{d\vec{r}}{d\tau}\bigr|\, d\tau \]
-        representa o mesmo comprimento que a integral original. Cálculos
-        adicionais são análogos aos passos anteriores.
+        (c) No parâmetro original, a velocidade cresce suavemente de 1 a
+        \(\sqrt{5}\). Na reparametrização, a velocidade é zero no início (pois
+        \(u'(\tau)=2\tau\) se anula em \(\tau=0\)) e cresce mais rapidamente.
+        Apesar disso, a integral do comprimento é a mesma: o ponto se move mais
+        devagar onde precisa e mais rápido onde pode, de modo que o total
+        compensa. A invariância do comprimento reflete uma propriedade
+        geométrica da curva, independente da cinemática do percurso.
       </p>
     </div>
   </details>

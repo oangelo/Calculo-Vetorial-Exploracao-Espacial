@@ -7,33 +7,37 @@
     Já sabemos escrever \((x,y,z)\) em termos de coordenadas cilíndricas e
     esféricas. Mas quando fazemos uma integral tripla \(\iiint f\,dx\,dy\,dz\),
     o elemento de volume \(dx\,dy\,dz\) precisa ser convertido para as novas
-    coordenadas. O fator de conversão é o
-    <strong>valor absoluto do Jacobiano</strong>.
+    coordenadas. No tópico anterior, vimos que o fator de conversão é o valor
+    absoluto do <strong>Jacobiano 3D</strong>
+    \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\). Agora vamos
+    derivar esse fator para os dois sistemas especiais que acabamos de conhecer.
   </p>
   <p>
-    No capítulo anterior, vimos o Jacobiano em duas variáveis. Agora precisamos
-    estendê-lo para três.
+    <strong>(a)</strong> Monte a matriz jacobiana
+    \(\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\) para coordenadas
+    cilíndricas e calcule o determinante. Mostre que \(|J| = r\). Interprete
+    geometricamente: por que esse fator \(r\) aparece? O que acontece com o
+    elemento de volume quando nos afastamos do eixo \(z\)?
   </p>
   <p>
-    <strong>(a)</strong> Para coordenadas cilíndricas, monte a matriz jacobiana
-    \(\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\) calculando as nove
-    derivadas parciais.
+    <strong>(b)</strong> Esboce um "elemento de volume" em coordenadas
+    cilíndricas: um pequeno paralelepípedo curvo com arestas \(dr\),
+    \(r\,d\theta\) e \(dz\). Identifique visualmente de onde vem o fator \(r\).
   </p>
   <p>
-    <strong>(b)</strong> Calcule o determinante dessa matriz e mostre que \(|J|
-    = r\).
-  </p>
-  <p>
-    <strong>(c)</strong> Repita o processo para coordenadas esféricas e mostre
-    que \(|J| = \rho^2\sin\phi\).
+    <strong>(c)</strong> Repita para coordenadas esféricas: monte a matriz
+    \(\frac{\partial(x,y,z)}{\partial(\rho,\theta,\phi)}\), calcule o
+    determinante e mostre que \(|J| = \rho^2\sin\phi\). Interprete cada fator:
+    por que \(\rho^2\)? Por que \(\sin\phi\)?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para cilíndricas, use \(x = r\cos\theta\), \(y =
-      r\sin\theta\), \(z = z\). As derivadas parciais em relação a \(r\) e
-      \(\theta\) são as que importam. Para esféricas, expanda o determinante
-      pela terceira linha.
+      [NOTA TÉCNICA]: Para cilíndricas, a terceira linha da matriz jacobiana é
+      \((0, 0, 1)\), o que simplifica o determinante. Para esféricas, expanda o
+      determinante pela terceira linha. Lembre-se: o fator \(r\) em cilíndricas
+      reflete que arcos maiores correspondem a distâncias maiores à medida que
+      \(r\) cresce.
     </div>
   </details>
   <details>
@@ -45,15 +49,46 @@
         \end{pmatrix}\]
       </p>
       <p>
-        (b) O determinante é \(\cos\theta(r\cos\theta) -
-        (-r\sin\theta)(\sin\theta) = r\cos^2\theta + r\sin^2\theta = r\). Assim,
-        \(|J| = r\) e o elemento de volume é \(dV = r\,dr\,d\theta\,dz\).
+        O determinante, expandindo pela terceira linha: \(1 \cdot (\cos\theta
+        \cdot r\cos\theta - (-r\sin\theta) \cdot \sin\theta) = r\cos^2\theta +
+        r\sin^2\theta = r\).
+      </p>
+      <p>
+        Interpretação geométrica: quando \(r\) cresce, um arco de ângulo
+        \(d\theta\) tem comprimento \(r\,d\theta\), não apenas \(d\theta\). O
+        fator \(r\) "corrige" essa distorção. Perto do eixo \(z\) (\(r \approx
+        0\)), o elemento de volume é quase nulo — o que faz sentido, pois um
+        setor estreito perto do centro contém pouco volume.
+      </p>
+      <p>
+        (b) O elemento de volume em cilíndricas é um "paralelepípedo curvo" com
+        arestas \(dr\) (na direção radial), \(r\,d\theta\) (na direção azimutal
+        — é aqui que \(r\) aparece como comprimento do arco) e \(dz\) (na
+        direção vertical). O volume desse elemento é \(dV =
+        r\,dr\,d\theta\,dz\).
       </p>
       <p>
         (c) Para esféricas, com \(x = \rho\sin\phi\cos\theta\), \(y =
-        \rho\sin\phi\sin\theta\), \(z = \rho\cos\phi\), o determinante jacobiano
-        resulta em \(\rho^2\sin\phi\). Portanto, \(dV =
-        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\).
+        \rho\sin\phi\sin\theta\), \(z = \rho\cos\phi\):
+      </p>
+      <p>
+        A matriz jacobiana é: \[J = \begin{pmatrix} \sin\phi\cos\theta &
+        \rho\cos\phi\cos\theta & -\rho\sin\phi\sin\theta \\ \sin\phi\sin\theta &
+        \rho\cos\phi\sin\theta & \rho\sin\phi\cos\theta \\ \cos\phi &
+        -\rho\sin\phi & 0 \end{pmatrix}\]
+      </p>
+      <p>
+        Expandindo pela terceira linha: \(|J| = \cos\phi(\rho^2\sin\phi\cos\phi)
+        + \rho\sin\phi(\rho\sin^2\phi) = \rho^2\sin\phi\cos^2\phi +
+        \rho^2\sin^3\phi = \rho^2\sin\phi(\cos^2\phi + \sin^2\phi) =
+        \rho^2\sin\phi\).
+      </p>
+      <p>
+        Interpretação: o fator \(\rho^2\) aparece porque, à medida que nos
+        afastamos da origem, o "arco" cresce em duas direções (não apenas uma
+        como nas cilíndricas). O fator \(\sin\phi\) reflete que, perto dos polos
+        (\(\phi \approx 0\) ou \(\phi \approx \pi\)), o elemento de volume se
+        estreita — análogo ao que acontece perto do eixo \(z\) nas cilíndricas.
       </p>
     </div>
   </details>

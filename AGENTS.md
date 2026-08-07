@@ -124,6 +124,24 @@ Detalhes completos em `diretrizes-listas-de-exercicios.md` (seção "Fundamenta�
 - **MathJax (REGRA CRÍTICA):** `\(inline\)` e `\[bloco\]` — UMA barra no arquivo HTML. NUNCA `\\(`, `\\[`, `\\frac`. Barra dupla quebra MathJax. **APÓS ESCREVER CADA ARQUIVO, execute `grep -c '\\\\\\\\' arquivo.html` — se > 0, corrija antes de continuar.**
 - Classes CSS do template (não invente novas)
 
+### Pipeline de Revisão de Exercícios
+
+Para revisar ou criar exercícios de um tópico, siga o pipeline completo com **6 etapas** e **1 revisão humana**:
+
+```
+Etapa 1: Explore (Revisor) → RTC (diagnóstico) na issue
+Etapa 2: General (Planejador) → PDI (blueprint detalhado) na issue
+Etapa 2.5: General (Auditor de Capítulo) → Verifica todos os PDIs do capítulo, gera v2 se houver sobreposição
+         ↓ Revisão humana (único ponto de parada)
+Etapa 3: General (Implementador) → Lê RTC + PDI (versão final) e implementa
+Etapa 4: Explore (Resumidor) → Pré-requisitos no intro.html
+```
+
+- **RTC** = Relatório Técnico de Condições (diagnóstico de problemas)
+- **PDI** = Plano Detalhado de Implementação (blueprint holístico: conexão, problema, sub-itens, marcação — sem respostas ou equações)
+
+Instruções completas e prompts para cada etapa: `/exercicios/AGENTS.md` → seção "Pipeline de Revisão (6 Etapas)".
+
 ### Criar Exercícios de Sala
 
 **Arquivos:** `/sala/AGENTS.md` + `/sala/sala-styles.css`

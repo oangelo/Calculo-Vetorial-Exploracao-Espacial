@@ -1,17 +1,66 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
   <div class="context">
-    ORIGEM: Teste de Propulsores – Plataforma Saturn IB [17/SET/1965]
+    ORIGEM: Teste de Propulsores – Plataforma Saturn V [15/JUN/1969]
   </div>
   <p>
-    Verifique que \(\vec{F}(x,y,z)=\begin{pmatrix}yz \\ xz \\ xy\end{pmatrix}\)
-    é conservativo em \(\mathbb{R}^{3}\) e calcule o trabalho ao longo de
-    qualquer curva que una \((1,1,1)\) a \((2,2,2)\).
+    Considere o campo vetorial em \(\mathbb{R}^3\) dado por \(\vec{F}(x,y,z) =
+    (z\sin y,\, xz\cos y + e^z,\, x\sin y + ye^z)\) e os pontos \(A = (0, 0,
+    0)\) e \(B = (1, \pi/2, 1)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique se o campo é conservativo testando as três
+    condições de derivadas cruzadas em \(\mathbb{R}^3\).
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre a função potencial integrando componente a
+    componente. Pode ser necessário escolher estrategicamente qual componente
+    integrar primeiro para facilitar os cálculos.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha de \(A\) a \(B\) usando o
+    potencial encontrado.
   </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      Potencial \(\phi=xyz\). Então \(W=\phi(2,2,2)-\phi(1,1,1)=8-1=7\).
+      <p>
+        (a) Sejam \(F_1 = z\sin y\), \(F_2 = xz\cos y + e^z\), \(F_3 = x\sin y +
+        ye^z\).
+      </p>
+      <p>
+        \(\partial F_1/\partial y = z\cos y\) e \(\partial F_2/\partial x =
+        z\cos y\). OK.
+      </p>
+      <p>
+        \(\partial F_1/\partial z = \sin y\) e \(\partial F_3/\partial x = \sin
+        y\). OK.
+      </p>
+      <p>
+        \(\partial F_2/\partial z = x\cos y + e^z\) e \(\partial F_3/\partial y
+        = x\cos y + e^z\). OK.
+      </p>
+      <p>Todas as condições são satisfeitas. O campo é conservativo.</p>
+      <p>
+        (b) Integrando \(F_3 = x\sin y + ye^z\) em \(z\) (componente que contém
+        \(e^z\), indicando que a dependência em \(z\) envolve exponencial):
+        \(\phi = xz\sin y + ye^z + g(x,y)\).
+      </p>
+      <p>
+        Derivando em \(x\): \(\partial\phi/\partial x = z\sin y + \partial
+        g/\partial x\). Igualando a \(F_1 = z\sin y\): \(\partial g/\partial x =
+        0\), logo \(g\) não depende de \(x\): \(g = g(y)\).
+      </p>
+      <p>
+        Derivando em \(y\): \(\partial\phi/\partial y = xz\cos y + e^z +
+        g'(y)\). Igualando a \(F_2 = xz\cos y + e^z\): \(g'(y) = 0\), logo
+        \(g(y) = C\).
+      </p>
+      <p>Tomando \(C = 0\): \(\phi(x,y,z) = xz\sin y + ye^z\).</p>
+      <p>
+        (c) \(\phi(1, \pi/2, 1) - \phi(0, 0, 0) = (1 \cdot 1 \cdot 1 + 0 \cdot
+        e^1) - (0 + 0) = 1\).
+      </p>
     </div>
   </details>
 </li>

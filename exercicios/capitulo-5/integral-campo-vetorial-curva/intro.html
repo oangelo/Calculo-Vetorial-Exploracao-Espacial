@@ -1,30 +1,31 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">15</span> DE MAIO DE
-    <span class="censored">1965</span>
+    DATA: <span class="censored">22</span> DE OUTUBRO DE
+    <span class="censored">1968</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">SETOR GEMINI</span>,
-    <span class="censored">BASE [REDACTED]</span>
+    LOCALIZAÇÃO: <span class="censored">CENTRO DE TRAJETÓRIA APOLLO</span>,
+    <span class="censored">HOUSTON [REDACTED]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
     <span class="censored">LINHA-V</span> <br /><br />
-    Em meio à intensificação da corrida espacial, nossos analistas matemáticos
-    concentraram esforços no estudo das integrais de linha de campos vetoriais,
-    vitais para o
-    <span class="censored">controle de trajetória</span> e a
-    <span class="censored">estabilização orbital</span>. <br /><br />
+    Após o sucesso dos voos de teste não tripulados e em preparação para as
+    missões tripuladas do Programa Apollo, nossos analistas concentram esforços
+    no estudo das integrais de linha de campos vetoriais — ferramenta
+    indispensável para o
+    <span class="censored">cálculo de trabalho</span> e a
+    <span class="censored">predição de consumo de combustível</span> ao longo de
+    trajetórias complexas. <br /><br />
     Este documento compila exercícios desenvolvidos sob supervisão do Dr.
-    <span class="censored">██████</span>, visando
-    <span class="censored">aprimorar cálculos</span> e auxiliar o planejamento
-    de manobras durante o <span class="censored">Programa Gemini</span>.
+    <span class="censored">██████</span>, visando treinar a equipe de
+    <span class="censored">planejamento de manobras orbitais</span> para as
+    próximas missões Apollo.
   </div>
   <div class="warning-box">
     Qualquer divulgação indevida deste material constituirá violação crítica de
     protocolos de segurança. O acesso é restrito a equipes autorizadas, sob pena
-    de
-    <span class="censored">sanções severas</span>.
+    de <span class="censored">sanções severas</span>.
   </div>
   <div class="metadata">
     <span>REF: VX-<span class="censored">0632</span>-L</span>
@@ -35,29 +36,124 @@
     >
   </div>
 </div>
-<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: INTEGRAL DE CAMPO VETORIAL SOBRE CURVA
+</div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[\int_{C} \vec{F} \cdot d\vec{r} = \int_{a}^{b} \vec{F}(\vec{r}(t)) \cdot
-    \frac{d\vec{r}}{dt} \, dt\]
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Esta lista pressupõe domínio dos seguintes conceitos: produto escalar e
+    interpretação geométrica de projeção (Cap. 0 — Geometria Analítica);
+    derivadas de funções trigonométricas, polinomiais e exponenciais, além de
+    técnicas de integração por partes e substituição (Cap. 0 — Derivadas e
+    Integrais); campos vetoriais \(\vec{F}(x,y)\) e \(\vec{F}(x,y,z)\), e a
+    derivada de funções vetoriais \(\vec{r}\,'(t)\) (Cap. 1 — Funções
+    Vetoriais).
   </p>
   <p>
-    A integral de linha de um campo vetorial \(\vec{F}\) ao longo de uma curva
-    \(C\) parametrizada por \(\vec{r}(t)\) (com \(t\) variando de \(a\) até
-    \(b\)) permite calcular grandezas como trabalho mecânico ou fluxo
-    unidimensional em contextos físicos e geométricos.
+    Dentro do próprio capítulo, assumimos familiaridade com a parametrização de
+    curvas (segmentos, circunferências, parábolas, hélices), o conceito de curva
+    \(C^1\) e a derivada \(\vec{r}\,'(t)\) como vetor tangente, trabalhados nos
+    tópicos anteriores de Comprimento de Arco, Curvas \(C^1\), Mudança de
+    Parâmetro e Notações Alternativas.
   </p>
 </div>
-<div class="mission-context">
-  No âmbito da exploração espacial, o cálculo de integrais de linha auxilia no
-  entendimento das forças atuantes sobre módulos de voo, detalhando como a
-  energia é consumida ou armazenada ao longo de trajetórias orbitais ou
-  suborbitais, permitindo maior precisão em manobras e correções de curso.
+<div class="concept-definition">
+  <p>
+    <strong>2. TRABALHO COMO ACUMULAÇÃO DE FORÇA AO LONGO DE UM CAMINHO</strong>
+  </p>
+  <p>
+    Quando uma força constante \(\vec{F}\) desloca uma partícula ao longo de um
+    vetor \(\vec{d}\), o trabalho realizado é o produto escalar \(W = \vec{F}
+    \cdot \vec{d}\). Mas no espaço real as forças variam de ponto a ponto e as
+    trajetórias se curvam. Para calcular o trabalho total, dividimos o caminho
+    em segmentos infinitesimais: cada segmento \(d\vec{r}\) contribui com
+    \(\vec{F} \cdot d\vec{r}\), e o trabalho total é a soma — isto é, a integral
+    — dessas contribuições ao longo de toda a curva.
+  </p>
+  <p>
+    Aqui retomamos o produto escalar estudado na revisão de geometria analítica:
+    ele mede o quanto dois vetores estão alinhados. Quando \(\vec{F}\) aponta na
+    mesma direção que o movimento, o trabalho é positivo (a força ajuda). Quando
+    aponta contra, o trabalho é negativo (a força resiste). Quando é
+    perpendicular, o trabalho é zero.
+  </p>
 </div>
+<div class="concept-definition">
+  <p><strong>3. INTEGRAL DE LINHA VETORIAL: DEFINIÇÃO FORMAL</strong></p>
+  <p class="formula-highlight">
+    \[\int_{C} \vec{F} \cdot d\vec{r} = \int_{a}^{b} \vec{F}(\vec{r}(t)) \cdot
+    \vec{r}\,'(t) \, dt\]
+  </p>
+  <p>
+    Seja \(\vec{F}\) um campo vetorial definido numa região que contém a curva
+    \(C\), e seja \(\vec{r}(t)\) uma parametrização de \(C\) com \(a \leq t \leq
+    b\). A integral de linha vetorial é a integral definida do produto escalar
+    entre o campo avaliado na curva, \(\vec{F}(\vec{r}(t))\), e o vetor tangente
+    \(\vec{r}\,'(t)\).
+  </p>
+  <p>
+    O integrando \(\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t)\) é um escalar que
+    mede, a cada instante \(t\), quanto da força está projetada na direção do
+    movimento. A integral acumula essas projeções ao longo de todo o percurso.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. O PROCEDIMENTO DE CÁLCULO EM CINCO PASSOS</strong></p>
+  <p>
+    Para calcular \(\int_C \vec{F} \cdot d\vec{r}\), seguimos sempre o mesmo
+    procedimento, independentemente da dimensão:
+  </p>
+  <p>
+    <strong>(i)</strong> Parametrizar a curva: obter \(\vec{r}(t)\) com \(t \in
+    [a,b]\).
+  </p>
+  <p><strong>(ii)</strong> Calcular o vetor derivada: \(\vec{r}\,'(t)\).</p>
+  <p>
+    <strong>(iii)</strong> Avaliar o campo na curva: substituir \(\vec{r}(t)\)
+    em \(\vec{F}\) para obter \(\vec{F}(\vec{r}(t))\).
+  </p>
+  <p>
+    <strong>(iv)</strong> Formar o produto escalar: \(\vec{F}(\vec{r}(t)) \cdot
+    \vec{r}\,'(t)\).
+  </p>
+  <p><strong>(v)</strong> Integrar o resultado de \(a\) a \(b\).</p>
+  <p>
+    Nos exercícios a seguir, cada etapa será praticada separadamente antes de
+    ser combinada nas integrais completas.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>5. CURVAS COMPOSTAS E LINEARIDADE</strong></p>
+  <p>
+    Quando uma curva \(C\) é formada pela concatenação de dois trechos \(C_1\) e
+    \(C_2\), a integral sobre a curva inteira é a soma das integrais sobre cada
+    trecho:
+  </p>
+  <p class="formula-highlight">
+    \[\int_{C} \vec{F} \cdot d\vec{r} = \int_{C_1} \vec{F} \cdot d\vec{r} +
+    \int_{C_2} \vec{F} \cdot d\vec{r}\]
+  </p>
+  <p>
+    Além disso, a integral de linha é linear em relação ao campo: se \(\vec{F} =
+    \vec{F}_1 + \vec{F}_2\), então \(\int_C \vec{F} \cdot d\vec{r} = \int_C
+    \vec{F}_1 \cdot d\vec{r} + \int_C \vec{F}_2 \cdot d\vec{r}\). Essas
+    propriedades serão verificadas computacionalmente nos exercícios.
+  </p>
+</div>
+<p>
+  No planejamento de trajetórias lunares do Programa Apollo, o cálculo do
+  trabalho realizado pelos campos gravitacionais terrestre e lunar ao longo da
+  rota da nave é essencial para determinar o consumo de combustível e a
+  viabilidade de cada manobra. A integral de linha vetorial traduz esse problema
+  físico em cálculo: dado o campo de forças e a trajetória, o resultado da
+  integral fornece diretamente a energia envolvida na manobra.
+</p>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966), a
-  implementação de técnicas de integrais de linha viabilizou o planejamento de
-  rendezvous e acoplamentos em órbita baixa. Tais conhecimentos foram cruciais
-  para etapas posteriores, como as missões Apollo.
+  <strong>NOTA HISTÓRICA:</strong> O acidente com a Apollo 1 em janeiro de 1967
+  atrasou o programa em dezoito meses. Quando os voos tripulados retomaram com a
+  Apollo 7 em outubro de 1968, a equipe de trajetória havia refinado
+  significativamente seus métodos de cálculo de trabalho orbital. Esses
+  aprimoramentos foram decisivos para o sucesso da Apollo 8, que em dezembro de
+  1968 realizou a primeira órbita tripulada ao redor da Lua.
 </div>

@@ -1,32 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
   <div class="context">
-    ORIGEM: Banco de Dados – Propulsor
-    <span class="censored">████</span> [MAR/1966]
+    ORIGEM: Comparação de Dados de Sensores — Apollo 12, Pouso de Precisão
+    [NOV/1969]
   </div>
   <p>
-    Para \(\vec{F}(x,y) = (y \cos x, x \sin y)\) em \(R = [0,\pi/2] \times
-    [0,\pi/2]\), compute a circulação.
+    Alguns campos têm circulação zero sobre qualquer retângulo, outros não.
+    Vamos entender <strong>por quê</strong> — e conectar isso com o que já
+    sabemos sobre campos conservativos do Capítulo 6.
+  </p>
+  <p>
+    Considere dois campos vetoriais definidos no mesmo retângulo \(R = [0,2]
+    \times [0,1]\):
+  </p>
+  <p>\(\vec{F}_1(x,y) = (2xy,\, x^2)\) e \(\vec{F}_2(x,y) = (0,\, x^2 y)\).</p>
+  <p><strong>(a)</strong> Calcule o rotacional de cada campo.</p>
+  <p>
+    <strong>(b)</strong> Determine a circulação de cada um usando o Teorema de
+    Green.
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que o campo com rotacional zero tem
+    circulação zero, conectando com a noção de campo conservativo e
+    independência de caminho estudada no Capítulo 6.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Observe as derivadas parciais de funções trigonométricas.
+      [NOTA TÉCNICA]: Para \(\vec{F}_1\), verifique se \(\frac{\partial
+      Q}{\partial x} = \frac{\partial P}{\partial y}\). Lembre do Capítulo 6: se
+      o rotacional é zero e o domínio é simplesmente conexo, o campo é
+      conservativo — e a integral de linha sobre qualquer caminho fechado é
+      zero.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Rotação: \(\dfrac{\partial (x \sin y)}{\partial x} - \dfrac{\partial (y
-        \cos x)}{\partial y} = \sin y - \cos x.\)<br />Integral dupla:
-        \[\int_{0}^{\pi/2}\int_{0}^{\pi/2} (\sin y - \cos x)\,dx\,dy
-        =\int_{0}^{\pi/2}\bigl[ x\sin y - \sin x \bigr]_{0}^{\pi/2} dy \]
+        <strong>(a)</strong> Rotacional de \(\vec{F}_1\):
+        \(\frac{\partial(x^2)}{\partial x} - \frac{\partial(2xy)}{\partial y} =
+        2x - 2x = 0\). Rotacional de \(\vec{F}_2\): \(\frac{\partial(x^2
+        y)}{\partial x} - 0 = 2xy\).
       </p>
       <p>
-        \[= \int_{0}^{\pi/2} \Bigl( \frac{\pi}{2}\sin y - 1 \Bigr) dy =
-        \frac{\pi}{2}\bigl[ -\cos y \bigr]_0^{\pi/2} - y\Big|_{0}^{\pi/2} =
-        \frac{\pi}{2} (1) - \frac{\pi}{2} = 0.\]
+        <strong>(b)</strong> \(\vec{F}_1\): \(\iint_R 0\,dA = 0\).
+        \(\vec{F}_2\): \(\int_0^1\!\int_0^2 2xy\,dx\,dy = \int_0^1 2y\,dy \cdot
+        \int_0^2 x\,dx = 1 \cdot 2 = 2\).
+      </p>
+      <p>
+        <strong>(c)</strong> O campo \(\vec{F}_1\) tem rotacional identicamente
+        zero, o que significa que \(\frac{\partial Q}{\partial x} =
+        \frac{\partial P}{\partial y}\) — justamente a condição para ser
+        conservativo, vista no Capítulo 6. Sendo conservativo, \(\vec{F}_1 =
+        \nabla f\) para alguma função potencial \(f(x,y) = x^2 y\), e a integral
+        de linha sobre qualquer caminho fechado é zero. O campo \(\vec{F}_2\)
+        não satisfaz essa condição, portanto não é conservativo e pode ter
+        circulação não- nula.
       </p>
     </div>
   </details>

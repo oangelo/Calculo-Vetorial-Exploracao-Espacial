@@ -1,41 +1,40 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
-  <div class="context">
-    ORIGEM: Cálculo de Órbita - Gemini [Relatório Parcial de
-    <span class="censored">17/SET/1965</span>]
-  </div>
+  <div class="context">ORIGEM: Apollo 8 - Órbita Lunar - DEZEMBRO/1968</div>
   <p>
-    A cápsula segue a curva \(C\) em \(\mathbb{R}^3\) descrita por \(\vec{r}(t)
-    = \begin{pmatrix} \cos^2 t \\ \sin^2 t \\ t \end{pmatrix}\), \(t \in
-    [0,\frac{\pi}{2}]\). Calcule o comprimento total e avalie eventuais
-    implicações no consumo de combustível.
+    Até agora perguntamos <em>como é</em> a curva — se tem cúspides, quinas ou é
+    suave. Mas há outra propriedade igualmente importante:
+    <em>em que direção</em> a percorremos. Considere a semicircunferência
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(t) = (\cos t,\; \sin t), \quad t \in [0,\pi]\]
+  </p>
+  <p>que modela metade de uma órbita lunar.</p>
+  <p>
+    <strong>(a)</strong> Esboce a curva no plano \(xy\), indicando com setas o
+    sentido do percurso conforme \(t\) cresce de \(0\) a \(\pi\). Marque os
+    pontos inicial e final.
+  </p>
+  <p>
+    <strong>(b)</strong> Construa uma nova parametrização \(\tilde{\vec{r}}(s)\)
+    que percorra a <strong>mesma curva geométrica</strong> no sentido oposto (do
+    ponto final para o ponto inicial). Use a substituição \(t = \pi - s\) com
+    \(s \in [0,\pi]\).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que \(\vec{r}\) e \(\tilde{\vec{r}}\)
+    descrevem o mesmo conjunto de pontos no plano: para cada \(s\), mostre que
+    \(\tilde{\vec{r}}(s)\) pertence à semicircunferência \(x^2 + y^2 = 1\) com
+    \(y \geq 0\).
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem simetrias não aparentes ao combinar \(\cos^2 t\) e
-      \(\sin^2 t\).
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        \(\vec{r}'(t) = \begin{pmatrix} -2\cos t\,\sin t \\ 2\sin t\,\cos t \\ 1
-        \end{pmatrix} = \begin{pmatrix} -\sin 2t \\ \sin 2t \\ 1
-        \end{pmatrix}.\)
-      </p>
-      <p>
-        \(\|\vec{r}'(t)\| = \sqrt{(-\sin 2t)^2 + (\sin 2t)^2 + 1} = \sqrt{\sin^2
-        2t + \sin^2 2t + 1} = \sqrt{2\sin^2 2t + 1}.\)
-      </p>
-      <p>
-        O comprimento é \[ \int_0^{\frac{\pi}{2}} \sqrt{1 + 2\sin^2(2t)}\, dt.
-        \] Este valor requer métodos numéricos ou transformações
-        trigonométricas. A análise sugere que a variação combinada em \(x\) e
-        \(y\) associada ao crescimento linear em \(z\) pode demandar maior uso
-        de propulsores para correção fina.
-      </p>
+      [NOTA TÉCNICA]: A técnica padrão para inverter a orientação é usar \(t = a
+      + b - s\) quando a curva original é definida em \([a,b]\). Para \(t \in
+      [0,\pi]\): substitua \(t = \pi - s\). Então \(\tilde{\vec{r}}(s) =
+      (\cos(\pi - s),\; \sin(\pi - s))\). Use as identidades \(\cos(\pi - s) =
+      -\cos s\) e \(\sin(\pi - s) = \sin s\).
     </div>
   </details>
 </li>

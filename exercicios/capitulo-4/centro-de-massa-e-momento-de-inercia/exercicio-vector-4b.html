@@ -1,31 +1,96 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
   <div class="context">
-    ORIGEM: Skylab - Módulo de Gravidade Artificial [1974]
+    ORIGEM: Componente Toroidal de Armazenamento - Programa Gemini [1966]
   </div>
   <p>
-    Para um sistema em forma de toro (gerado pela rotação de um círculo de raio
-    menor \(a\) em torno de um eixo a uma distância \(R\)), calcule o momento de
-    inércia em torno do eixo de simetria.
+    O exercício anterior usou decomposição em subsólidos simples. Agora você
+    enfrenta um corpo cuja geometria exige criatividade na parametrização, sem
+    decomposição em partes elementares. Um anel de armazenamento do Gemini tem
+    formato toroidal: gerado pela rotação de um disco de raio \(a = 1\) em torno
+    de um eixo a distância \(R = 2\) do centro do disco. A densidade é constante
+    \(\rho = 4 \, \text{kg/m}^3\). Em coordenadas cilíndricas, o toro é descrito
+    pela condição \((r - 2)^2 + z^2 \le 1\).
   </p>
-  <!-- SÉRIE OMEGA: sem dicas -->
+  <p>
+    <strong>(a)</strong> Parametrize a região e identifique os limites de
+    integração em coordenadas cilíndricas.
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse o momento de inércia \(I_z\) na parametrização
+    escolhida.
+  </p>
+  <p><strong>(c)</strong> Avalie a integral e interprete o resultado.</p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        A forma toroidal pode ser parametrizada por integrais triplas em
-        coordenadas adequadas (toroidais). O momento de inércia envolve \((x^2 +
-        y^2)\) ou \((z^2 + \dots)\) dependendo do eixo escolhido.
+        <strong>(a) Limites:</strong> Em cilíndricas, a condição \((r-2)^2 + z^2
+        \le 1\) dá \(z^2 \le 1-(r-2)^2\), logo \(-\sqrt{1-(r-2)^2} \le z \le
+        \sqrt{1-(r-2)^2}\), e \(r\) varia de \(2-1=1\) a \(2+1=3\). O ângulo
+        \(\theta\) vai de \(0\) a \(2\pi\).
+      </p>
+      <p><strong>(b) Integral:</strong></p>
+      <p>
+        \[ I_z = 4 \int_0^{2\pi} \int_1^3
+        \int_{-\sqrt{1-(r-2)^2}}^{\sqrt{1-(r-2)^2}} r^2 \cdot
+        r\,dz\,dr\,d\theta. \]
+      </p>
+      <p>A integral em \(z\) dá \(2\sqrt{1-(r-2)^2}\):</p>
+      <p>
+        \[ I_z = 4 \cdot 2\pi \int_1^3 r^3 \cdot 2\sqrt{1-(r-2)^2}\,dr = 16\pi
+        \int_1^3 r^3 \sqrt{1-(r-2)^2}\,dr. \]
       </p>
       <p>
-        Resultado geral (omisso em detalhes): \[ I_z = 2 \pi \rho
-        \int_{r=R-a}^{R+a} \int_{\theta=0}^{2\pi} \dots \, d\theta \, dr, \]
-        devendo considerar o círculo gerador e o raio de rotação.
+        <strong>(c) Avaliação:</strong> Substituição \(u = r-2\), \(r = u+2\),
+        \(dr = du\), limites \(u: -1 \to 1\):
+      </p>
+      <p>\[ I_z = 16\pi \int_{-1}^1 (u+2)^3 \sqrt{1-u^2}\,du. \]</p>
+      <p>
+        Expandindo \((u+2)^3 = u^3 + 6u^2 + 12u + 8\). Os termos ímpares em
+        \(u\) (\(u^3\) e \(12u\)) integram a zero no intervalo simétrico
+        \([-1,1]\):
       </p>
       <p>
-        Conclusão: O valor exato depende das dimensões \(a\) e \(R\), mas segue
-        a fórmula clássica de toro para momentos de inércia conhecidos em
-        tabelas.
+        \[ I_z = 16\pi \left[6\int_{-1}^1 u^2\sqrt{1-u^2}\,du + 8 \int_{-1}^1
+        \sqrt{1-u^2}\,du\right]. \]
+      </p>
+      <p>
+        \(\int_{-1}^1 \sqrt{1-u^2}\,du = \frac{\pi}{2}\) (área do semicírculo).
+      </p>
+      <p>
+        \(\int_{-1}^1 u^2\sqrt{1-u^2}\,du\): com \(u = \sin t\), obtém-se
+        \(\frac{\pi}{4}\).
+      </p>
+      <p>
+        \[ I_z = 16\pi\left[6 \cdot \frac{\pi}{4} + 8 \cdot \frac{\pi}{2}\right]
+        = 16\pi\left[\frac{3\pi}{2} + 4\pi\right] = 16\pi \cdot \frac{11\pi}{2}
+        = 88\pi^2. \]
+      </p>
+      <p>
+        Verificação: a massa do toro é \(M = \rho \cdot 2\pi^2 R a^2 = 4 \cdot
+        2\pi^2 \cdot 2 \cdot 1 = 16\pi^2\). Para um toro, \(I_z = M(R^2 +
+        \frac{3a^2}{4}) = 16\pi^2(4 + 3/4) = 16\pi^2 \cdot 19/4 = 76\pi^2\).
+        Hmm, há uma discrepância — refazendo: \(I_z = 16\pi[6\pi/4 + 8\pi/2] =
+        16\pi \cdot 11\pi/2 = 88\pi^2\). A fórmula padrão dá \(I_z = M(R^2 +
+        \frac{3a^2}{4}) = 16\pi^2 \cdot 19/4 = 76\pi^2\). Vamos verificar o
+        cálculo de \(\int u^2\sqrt{1-u^2}\,du\).
+      </p>
+      <p>
+        Com \(u = \sin t\): \(\int_{-\pi/2}^{\pi/2} \sin^2 t \cos^2 t\,dt\).
+        Usando \(\sin^2 t \cos^2 t = \frac{1}{4}\sin^2(2t) = \frac{1}{8}(1 -
+        \cos 4t)\): \(\int = \frac{1}{8}\cdot\pi = \frac{\pi}{8}\).
+      </p>
+      <p>
+        Corrigindo: \[ I_z = 16\pi\left[6 \cdot \frac{\pi}{8} + 8 \cdot
+        \frac{\pi}{2}\right] = 16\pi\left[\frac{3\pi}{4} + 4\pi\right] = 16\pi
+        \cdot \frac{19\pi}{4} = 76\pi^2. \]
+      </p>
+      <p>
+        Conclusão: \(I_z = 76\pi^2 \, \text{kg}\cdot\text{m}^2\), coerente com a
+        fórmula padrão para um toro. A massa toda está a uma distância
+        significativa do eixo (pelo menos \(R-a = 1\) m), o que produz um
+        momento de inércia relativamente grande.
       </p>
     </div>
   </details>

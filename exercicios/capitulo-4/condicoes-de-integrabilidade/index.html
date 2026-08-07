@@ -8,31 +8,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      async=""
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -219,14 +195,6 @@
         margin: 15px 0;
       }
 
-      .mission-context {
-        font-style: italic;
-        margin: 15px 0;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
-        border: 1px dashed #555;
-      }
-
       .formula-highlight {
         text-align: center;
         margin: 15px auto;
@@ -239,20 +207,6 @@
         padding: 8px;
         border: 1px dotted #777;
         background-color: rgba(139, 0, 0, 0.05);
-      }
-
-      .footer-stamp {
-        position: absolute;
-        bottom: 50px;
-        right: 30px;
-        opacity: 0.3;
-        transform: rotate(-20deg);
-        font-weight: bold;
-        font-size: 1.5em;
-        color: var(--stamp-color);
-        border: 2px solid var(--stamp-color);
-        padding: 5px 15px;
-        pointer-events: none;
       }
 
       .hint-container {
@@ -282,32 +236,39 @@
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">15</span> DE AGOSTO DE
-          <span class="censored">1971</span><br />
+          DATA: <span class="censored">23</span> DE MARÇO DE
+          <span class="censored">1965</span><br />
           LOCALIZAÇÃO:
-          <span class="censored">BASE [REDACTED] - SETOR [████]</span>
+          <span class="censored"
+            >COMPLEXO DE LANÇAMENTO 19 - CAPE CANAVERAL</span
+          >
         </div>
         <div class="document-intro">
           RELATÓRIO DE PROGRESSO: PROJETO
-          <span class="censored">TRIPLO-X</span><br /><br />
-          Em resposta à crescente demanda de análises em
-          <span class="censored">ambientes tridimensionais</span> no âmbito da
-          corrida espacial, nossa equipe trabalhou em estudos avançados sobre as
-          condições de integrabilidade de funções em domínios
-          <span class="censored">volumétricos</span>. <br /><br />
+          <span class="censored">GEMINI-INTEGRAL</span><br /><br />
+          Com o início das operações do Programa Gemini, nossa equipe de
+          analistas foi designada para investigar as
+          <strong>condições de integrabilidade</strong>
+          em domínios tridimensionais. O sucesso dos cálculos de
+          <span class="censored">massa de propelente</span> e
+          <span class="censored">distribuição de carga</span> nos módulos Gemini
+          depende diretamente da garantia de que as integrais triplas envolvidas
+          estejam bem definidas.<br /><br />
           Os exercícios a seguir foram compilados pelos especialistas do
-          programa <span class="censored">APOLLO</span>, visando garantir a
-          correta aplicação dos critérios de integrabilidade em
-          <span class="censored">cálculos orbitais</span>.
+          programa
+          <span class="censored">GEMINI</span>, visando garantir a correta
+          aplicação dos critérios de integrabilidade em cálculos de engenharia
+          orbital.
         </div>
         <div class="warning-box">
           Este documento contém dados e técnicas essenciais à
-          <span class="censored">dinâmica espacial</span>. A divulgação indevida
+          <span class="censored">dinâmica orbital</span>. A divulgação indevida
           pode causar <span class="censored">danos irreversíveis</span>
-          à segurança das operações.
+          à segurança das operações e comprometer missões de
+          <span class="censored">rendezvous e acoplamento orbital</span>.
         </div>
         <div class="metadata">
-          <span>REF: VX-<span class="censored">042</span>-C</span>
+          <span>REF: GI-<span class="censored">042</span>-C</span>
           <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
           <span
             >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
@@ -319,46 +280,81 @@
         FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE INTEGRABILIDADE EM INTEGRAIS TRIPLAS
       </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p><strong>1. PRÉ-REQUISITOS: DO CAPÍTULO 2 AO CAPÍTULO 4</strong></p>
+        <p>
+          No Capítulo 2, você aprendeu que uma integral dupla \(\iint_{D}
+          f(x,y)\,dA\) existe quando três condições são satisfeitas: a função é
+          <strong>limitada</strong>, o conjunto de descontinuidades tem
+          <strong>medida nula</strong> (área zero no plano), e o domínio é
+          <strong>limitado</strong>. No Capítulo 4, aprendemos a reduzir
+          integrais triplas a duplas. Agora precisamos responder: quando é que
+          uma integral tripla \(\iiint_{V} f(x,y,z)\,dV\) está bem definida?
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >2. CONDIÇÕES DE INTEGRABILIDADE: AS MESMAS TRÊS EXIGÊNCIAS</strong
+          >
+        </p>
         <p class="formula-highlight">
-          \[\iiint_{D} f(x,y,z)\, dV \quad\text{é integrável se } f \text{ é
-          limitada e contínua em } D,\text{ e } D \text{ é um domínio
-          limitado.}\]
+          \[\iiint_{V} f(x,y,z)\,dV \text{ existe se: } f \text{ é limitada, }
+          D_f \text{ tem medida nula, e } V \text{ é limitado.}\]
+        </p>
+        <p>A função \(f(x,y,z)\) é integrável no domínio \(V\) quando:</p>
+        <p>
+          <strong>(i)</strong> \(f\) é <strong>limitada</strong>: existem
+          constantes \(m\) e \(M\) tais que \(m \le f(x,y,z) \le M\) para todo
+          ponto em \(V\).
         </p>
         <p>
-          Para funções \(f(x,y,z)\) que sejam limitadas e cujos pontos de
-          descontinuidade formem um conjunto de medida nula em \(D\), a integral
-          tripla existe e corresponde ao volume (ou massa, se a densidade
-          estiver envolvida) sob a superfície dada por \(f(x,y,z)\), dentro do
-          domínio \(D\).
+          <strong>(ii)</strong> O
+          <strong>conjunto de descontinuidades</strong> \(D_f\) tem
+          <strong>medida nula</strong> em \(\mathbb{R}^3\): pode ser coberto por
+          caixas retangulares de volume total arbitrariamente pequeno. Isso
+          inclui pontos, curvas e superfícies — todos têm volume zero.
+        </p>
+        <p>
+          <strong>(iii)</strong> \(V\) é <strong>limitado</strong>: está contido
+          em alguma esfera de raio finito.
+        </p>
+        <p>
+          Note que a continuidade <strong>não é obrigatória</strong>: basta que
+          as descontinuidades sejam "poucas" (conjunto de medida nula). A função
+          pode ser descontínua em pontos, curvas ou superfícies inteiras sem
+          comprometer a integral, pois esses conjuntos têm volume zero em
+          \(\mathbb{R}^3\).
         </p>
       </div>
-      <div class="mission-context">
-        A aplicação prática desses critérios de integrabilidade impacta o
-        cálculo de trajetórias espaciais em três dimensões, auxiliando na
-        determinação de parâmetros como empuxo resultante, energia acumulada e
-        <span class="censored">cálculos orbitais críticos</span>. O entendimento
-        das condições de integrabilidade garante maior confiabilidade na etapa
-        de planejamento das missões.
+      <div class="concept-definition">
+        <p><strong>3. MEDIDA NULA: A DIMENSÃO IMPORTA</strong></p>
+        <p>
+          A noção de "medida nula" depende da dimensão do espaço. Em
+          \(\mathbb{R}^2\), pontos e curvas têm área zero (medida nula), mas
+          regiões com área positiva não. Em \(\mathbb{R}^3\), pontos, curvas e
+          <strong>superfícies</strong> têm volume zero (medida nula). Isso
+          significa que, em três dimensões, muito mais tipos de descontinuidade
+          são "aceitáveis": um plano inteiro de descontinuidade não impede a
+          integral — ele tem espessura zero e portanto volume zero.
+        </p>
       </div>
       <div class="historical-note">
-        <strong>NOTA HISTÓRICA:</strong> Durante as fases avançadas do Programa
-        Apollo, iniciado em <span class="censored">1961</span>, surgiram
-        necessidades de análises detalhadas em três dimensões, sobretudo no
-        planejamento de alunissagens. A sistematização dos critérios de
-        integrabilidade tornou possível prever comportamentos de sistemas
-        físicos em escalas <span class="censored">orbitais</span>.
+        <strong>NOTA HISTÓRICA:</strong> O Programa Gemini (1965-1966) foi a
+        ponte essencial entre o Programa Mercury e as missões Apollo. Com 12
+        voos tripulados, o Gemini desenvolveu técnicas críticas como
+        <span class="censored">rendezvous orbital</span>,
+        <span class="censored">atividade extraveicular</span> (Ed White, Gemini
+        IV) e <span class="censored">acoplamento orbital</span> (Gemini VIII).
+        Os cálculos de massa, densidade e volume dos módulos exigiam integrais
+        triplas bem definidas — motivando o estudo rigoroso das condições de
+        integrabilidade.
       </div>
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
 
-      <div class="page-number">
-        PÁGINA <span class="censored">1</span> DE
-        <span class="censored">11</span> • DOCUMENTO VX-
-        <span class="censored">042</span>-C
-      </div>
+      <div class="page-number">PÁGINA 1</div>
     </div>
 
     <script>
@@ -388,8 +384,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);

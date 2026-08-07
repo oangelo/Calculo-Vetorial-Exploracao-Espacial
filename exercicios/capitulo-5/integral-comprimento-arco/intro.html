@@ -1,68 +1,144 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">14</span> DE JUNHO DE
-    <span class="censored">1965</span>
+    DATA: <span class="censored">27</span> DE JANEIRO DE
+    <span class="censored">1967</span>
     <br />
-    LOCALIZAÇÃO: <span class="censored">BASE [REDACTED]</span>
+    LOCALIZAÇÃO: <span class="censored">CENTRO ESPACIAL KENNEDY</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">GEMINI-ARC</span>
-    <br /><br />
-    Em meio às operações estratégicas do programa
-    <span class="censored">Gemini</span>, nossas equipes de engenharia espacial
-    e especialistas em Cálculo Vetorial têm desenvolvido métodos para determinar
-    o comprimento de curvas orbitais e trajetórias de voo. Este documento
-    compila uma série de exercícios fundamentais para o aperfeiçoamento das
-    técnicas de integrais de linha, focadas no cálculo do comprimento de arco de
-    curvas parametrizadas. <br /><br />
-    Atenção especial deve ser dada à forma de parametrização e aos intervalos de
-    integração, pois falhas nesse processo podem comprometer a
-    <span class="censored">navegação autônoma</span> e colocar em risco toda a
-    missão.
+    <span class="censored">APOLLO-ARC</span><br /><br />
+    Após a <span class="censored">tragedia na plataforma</span>, o programa
+    espacial foi reestruturado. Nossas equipes de engenharia orbital e
+    especialistas em Cálculo Vetorial concentram esforços no desenvolvimento de
+    métodos precisos para medir percursos ao longo de trajetórias curvas. O
+    comprimento de arco de curvas parametrizadas é fundamental para calcular
+    consumo de combustível, tempos de manobra e distâncias percorridas em
+    órbitas que não são circulares. <br /><br />
+    Este dossiê apresenta a fundamentação necessária para o domínio dessas
+    técnicas, retomando conceitos de curvas parametrizadas estudados
+    anteriormente e construindo, passo a passo, a fórmula que nos permite medir
+    qualquer trajetória.
   </div>
   <div class="warning-box">
     A divulgação não autorizada deste documento pode resultar em
-    <span class="censored">sanções irreversíveis</span>. Mantenha sob sigilo
-    absoluto toda a informação contida nas próximas páginas.
+    <span class="censored">consequências irreversíveis</span>. Mantenha sob
+    sigilo absoluto toda a informação contida nas próximas páginas.
   </div>
   <div class="metadata">
-    <span>REF: ARC-<span class="censored">0513</span>-G</span>
-    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+    <span>REF: ARC-<span class="censored">0127</span>-A</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
     <span
-      >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+      >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
       <span class="censored">5</span></span
     >
   </div>
 </div>
 <div class="section-title">
-  FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA E COMPRIMENTO DE ARCO
+  FUNDAMENTAÇÃO TEÓRICA: COMPRIMENTO DE ARCO DE CURVAS PARAMETRIZADAS
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[ L = \int_{a}^{b} \sqrt{\left(\frac{dx}{dt}\right)^2 +
-    \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} \, dt \]
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Para acompanhar esta lista, você precisa dominar técnicas de integração do
+    Capítulo 0 — em particular a substituição em integrais definidas e integrais
+    envolvendo \(\sqrt{a^2 + u^2}\). São essenciais também identidades
+    trigonométricas (\(\sin^2 t + \cos^2 t = 1\), \(\sin t \cos t =
+    \frac{1}{2}\sin(2t)\)), propriedades de funções exponenciais e hiperbólicas
+    (\(\cosh\), \(\sinh\)), e a fórmula do comprimento da circunferência (\(C =
+    2\pi R\)).
   </p>
   <p>
-    Nesta expressão, a curva é dada por uma parametrização \(\vec{r}(t) =
-    \bigl(x(t),\, y(t),\, z(t)\bigr)\), com \(t\) variando de \(a\) até \(b\). A
-    quantidade \(L\) representa o comprimento total da curva. A integral computa
-    a soma infinitesimal dos comprimentos de cada segmento ao longo do percurso.
+    Dos tópicos anteriores deste capítulo, assumimos familiaridade com curvas de
+    classe \(C^1\), curvas suaves (regulares) e a classificação de curvas quanto
+    à suavidade e orientação — propriedades que garantem a existência das
+    integrais de comprimento que estudaremos aqui.
   </p>
 </div>
-<div class="mission-context">
-  Em órbitas baixas ou trajetórias de reentrada, o cálculo do comprimento de
-  arco permite estimar consumos de combustível, necessidade de correções de
-  atitude e pontos de ignição de estágios. Em voos experimentais do projeto
-  <span class="censored">Gemini-X</span>, essa técnica ajudou a prever o exato
-  instante de disparo dos retrofoguetes.
+<div class="concept-definition">
+  <p><strong>1. CURVAS, DERIVADAS E NORMAS</strong></p>
+  <p>
+    No estudo de funções vetoriais, aprendemos que uma curva no espaço é
+    descrita por uma função vetorial \(\vec{r}(t) = \bigl(x(t),\, y(t),\,
+    z(t)\bigr)\), onde o parâmetro \(t\) representa, frequentemente, o tempo. A
+    derivada \(\vec{r}\,'(t) = \bigl(x'(t),\, y'(t),\, z'(t)\bigr)\) é o vetor
+    velocidade — indica a direção e a rapidez com que o ponto se move ao longo
+    da curva.
+  </p>
+  <p>
+    A norma desse vetor, \(\|\vec{r}\,'(t)\|\), nos dá a
+    <strong>rapidez escalar</strong> (velocidade sem direção). Quando a norma é
+    constante, o ponto se move sempre com a mesma velocidade. Quando varia, o
+    ponto acelera ou desacelera. Essa grandeza é a chave para medir comprimentos
+    de curvas.
+  </p>
+  <p>
+    Retomando também a noção de norma e distância entre pontos: a distância
+    entre dois pontos \(\vec{P}\) e \(\vec{Q}\) é \(\|\vec{Q} - \vec{P}\|\). Se
+    a trajetória fosse um segmento reto, o comprimento seria essa distância
+    direta. Mas trajetórias reais são curvas — e é isso que precisamos medir.
+  </p>
 </div>
+<div class="concept-definition">
+  <p><strong>2. A IDEIA GEOMÉTRICA: LINEARIZAR E SOMAR</strong></p>
+  <p>
+    Se não sabemos medir o comprimento de uma curva diretamente, podemos
+    <strong>aproximá-la</strong> por segmentos retos. Escolhemos \(N\) pontos
+    igualmente espaçados no parâmetro ao longo da curva e conectamos cada par
+    consecutivo com um segmento reto. A soma dos comprimentos desses segmentos é
+    uma aproximação do comprimento total.
+  </p>
+  <p class="formula-highlight">
+    \[ L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\| \]
+  </p>
+  <p>
+    Conforme aumentamos \(N\), os segmentos ficam menores e a aproximação
+    melhora. No limite \(N \to \infty\), a soma converge para o comprimento
+    exato da curva. Cada termo \(\|\vec{r}(t_i) - \vec{r}(t_{i-1})\|\) pode ser
+    reescrito como \(\|\vec{r}\,'(t^*_i)\| \cdot \Delta t\) por uma aplicação do
+    Teorema do Valor Médio — e a soma se transforma na integral que veremos a
+    seguir.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. A FÓRMULA: COMPRIMENTO DE ARCO COMO INTEGRAL</strong></p>
+  <p>
+    Passando ao limite na soma anterior, obtemos a fórmula fundamental do
+    comprimento de arco:
+  </p>
+  <p class="formula-highlight">
+    \[ L = \int_{a}^{b} \|\vec{r}\,'(t)\| \, dt = \int_{a}^{b}
+    \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2 + \bigl(z'(t)\bigr)^2} \, dt
+    \]
+  </p>
+  <p>
+    Aqui, \(\vec{r}(t)\) é a parametrização da curva com \(t\) variando de \(a\)
+    até \(b\). A integral acumula as contribuições infinitesimais de comprimento
+    ao longo de todo o percurso. A quantidade \(L\) é o comprimento total da
+    curva — uma propriedade <strong>intrínseca da curva</strong>, que não
+    depende da parametrização escolhida.
+  </p>
+  <p>
+    Para curvas no plano (\(z = 0\)), a fórmula se reduz a dois termos sob a
+    raiz. Para curvas no espaço, três termos. A técnica de cálculo é sempre a
+    mesma: derivar cada componente, calcular a norma da derivada, montar a
+    integral e avaliar.
+  </p>
+</div>
+<p>
+  Em missões Apollo, o cálculo do comprimento de arco permite estimar consumo de
+  propelente ao longo de trajetórias de injeção translunar, determinar instantes
+  de ignição dos motores e prever distâncias percorridas em manobras orbitais.
+  Quando a trajetória não é uma circunferência perfeita, a integral fornece a
+  medida exata do percurso.
+</p>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Em meados de
-  <span class="censored">1965</span>, em plena corrida espacial, o Programa
-  Gemini serviu como base para aperfeiçoar manobras de encontro orbital e testes
-  de longa duração em microgravidade, consolidando conhecimentos vitais para o
-  <span class="censored">desenvolvimento</span> das próximas missões lunares.
+  <strong>NOTA HISTÓRICA:</strong> Em janeiro de
+  <span class="censored">1967</span>, o incêndio na Apollo 1 abalou o programa
+  espacial americano. Após meses de reestruturação, os voos tripulados foram
+  retomados com a Apollo 7 em outubro de <span class="censored">1968</span>,
+  seguida pela histórica Apollo 8 em dezembro do mesmo ano — a primeira a
+  orbitar a Lua. Cálculos precisos de trajetória foram cruciais para o sucesso
+  dessas missões.
 </div>

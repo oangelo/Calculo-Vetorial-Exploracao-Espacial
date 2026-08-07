@@ -1,41 +1,61 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
   <div class="context">
-    ORIGEM: Análise Elementar de Empuxo - Programa Gemini [AGO/1965]
+    ORIGEM: Análise de Telemetria - Programa Apollo [FEV/1967]
   </div>
   <p>
-    Considere o campo vetorial \[\vec{F}(x,y) = \begin{pmatrix} 2x \\ y
-    \end{pmatrix}\] definido no plano. Calcular a integral de linha
-    \(\displaystyle \int_C \vec{F}\cdot d\vec{r}\) ao longo da reta que conecta
-    o ponto \((0,0)\) ao ponto \((2,2)\), parametrizando a curva de modo
-    simples.
+    Nos tópicos anteriores deste capítulo, você calculou integrais de linha
+    usando a notação vetorial \(\vec{F}\cdot d\vec{r}\). Relatórios recebidos de
+    <span class="censored">laboratórios parceiros</span> registram as integrais
+    de linha numa notação diferente, chamada <strong>forma diferencial</strong>.
+    Antes de calcular, precisamos aprender a ler essa notação.
+  </p>
+  <p>
+    Considere o campo vetorial \(\vec{F}(x,y) = (2x + y,\; x^2 - 3y)\). Na forma
+    diferencial, a integral de linha de \(\vec{F}\) ao longo de uma curva \(C\)
+    é escrita como \(\int_C P\,dx + Q\,dy\), onde \(P\) e \(Q\) são funções de
+    \(x\) e \(y\) chamadas <strong>coeficientes diferenciais</strong>.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique quem são \(P\) e \(Q\) para este campo
+    vetorial.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral \(\int_C P\,dx + Q\,dy\) com os
+    coeficientes encontrados.
+  </p>
+  <p>
+    <strong>(c)</strong> Em uma frase, explique o que cada diferencial (\(dx\) e
+    \(dy\)) representa fisicamente ao longo de uma trajetória.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere relacionar a parametrização linear e a forma de
-      \(\vec{F}\).
+      [NOTA TÉCNICA]: Na forma diferencial \(\int_C P\,dx + Q\,dy\), os
+      coeficientes são exatamente as componentes do campo: \(P\) é a primeira
+      componente de \(\vec{F}\) e \(Q\) é a segunda. Pense em \(dx\) e \(dy\)
+      como os deslocamentos infinitesimais do módulo nas direções \(x\) e \(y\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
-      <p>PARAMETRIZAÇÃO DA RETA:</p>
       <p>
-        Sejam \(x(t) = t\) e \(y(t) = t\), com \(t\) variando de \(0\) a \(2\).
-        Logo, \(\vec{r}(t) = (t, t)\).
+        <strong>(a)</strong> O campo \(\vec{F}(x,y) = (2x + y,\; x^2 - 3y)\) tem
+        primeira componente \(P = 2x + y\) e segunda componente \(Q = x^2 -
+        3y\).
       </p>
       <p>
-        \(\vec{r}'(t) = (1, 1)\). Então, \[ \vec{F}(x(t),y(t)) = \begin{pmatrix}
-        2t \\ t \end{pmatrix}. \]
+        <strong>(b)</strong> A integral na forma diferencial é \[\int_C (2x +
+        y)\,dx + (x^2 - 3y)\,dy.\]
       </p>
-      <p>INTEGRANDO:</p>
       <p>
-        \[ \int_0^2 \begin{pmatrix} 2t \\ t \end{pmatrix} \cdot \begin{pmatrix}
-        1 \\ 1 \end{pmatrix} dt = \int_0^2 (2t + t)\, dt = \int_0^2 3t\, dt =
-        \left.\frac{3t^2}{2}\right|_0^2 = 3 \cdot 2 = 6. \]
+        <strong>(c)</strong> Os símbolos \(dx\) e \(dy\) representam as
+        variações infinitesimais da posição nas direções dos eixos \(x\) e
+        \(y\), respectivamente — são os deslocamentos elementares da trajetória.
+        Cada coeficiente (\(P\) e \(Q\)) mede a contribuição do campo na direção
+        correspondente.
       </p>
-      <p>CONCLUSÃO: O valor da integral de linha é 6.</p>
     </div>
   </details>
 </li>

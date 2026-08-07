@@ -1,38 +1,66 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
   <div class="context">
-    ORIGEM: Teste de Reentrada [MÓDULO EXPERIMENTAL
-    <span class="censored">PX-2</span>]
+    ORIGEM: Análise Pós-Voo Apollo 6 - Verificação de Parâmetros Orbitais [REF:
+    <span class="censored">AS-502/ABR-1968</span>]
   </div>
   <p>
-    A curva de reentrada simplificada é parametrizada em 3D por \(\vec{r}(t) =
-    \bigl(\cos t,\ \sin t,\ t/2\bigr)\), com \(t\) variando de 0 a \(\pi\).
-    Calcular o comprimento de arco, visando analisar o percurso entre os pontos
-    de inserção orbital e o ponto de <span class="censored">atmosfera</span>.
+    O aluno agora calculou o comprimento de uma curva pela primeira vez. Mas
+    será que a fórmula funciona mesmo? Vamos testá-la com uma curva cujo
+    comprimento já conhecemos por geometria — um arco de circunferência. Se os
+    resultados coincidirem, a fórmula está validada.
+  </p>
+  <p>
+    Considere o arco de circunferência dado por \(\vec{r}(t) = \bigl(4\cos t,\,
+    4\sin t\bigr)\), com \(t\) variando de 0 a \(\pi/2\).
+  </p>
+  <p>
+    <strong>(a)</strong> Pela geometria, calcule o comprimento esperado desse
+    arco. Dica: que fração da circunferência completa ele representa?
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a fórmula integral de comprimento de arco à
+    parametrização dada.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados de (a) e (b). São iguais? O que
+    isso confirma sobre a fórmula?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de trigonometria podem ser relevantes.
+      [NOTA TÉCNICA]: O arco de \(t=0\) a \(t=\pi/2\) percorre um quarto da
+      circunferência. A circunferência completa de raio 4 tem comprimento \(2\pi
+      \cdot 4 = 8\pi\). Para a integral, calcule \(\vec{r}\,'(t)\) e use a
+      identidade \(\sin^2 t + \cos^2 t = 1\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        \(\frac{dx}{dt} = -\sin t,\quad \frac{dy}{dt} = \cos t,\quad
-        \frac{dz}{dt} = \frac{1}{2}\).
+        <strong>(a)</strong> A parametrização descreve uma circunferência de
+        raio \(R = 4\). O arco de \(t = 0\) a \(t = \pi/2\) cobre exatamente um
+        quarto da volta completa. Logo o comprimento esperado é:
       </p>
       <p>
-        Assim, \[ L = \int_{0}^{\pi} \sqrt{(-\sin t)^2 + (\cos t)^2 +
-        \left(\frac{1}{2}\right)^2} \, dt = \int_{0}^{\pi} \sqrt{\sin^2 t +
-        \cos^2 t + \frac{1}{4}} \, dt. \] \[ = \int_{0}^{\pi} \sqrt{1 +
-        \frac{1}{4}} \, dt = \int_{0}^{\pi} \sqrt{\frac{5}{4}} \, dt =
-        \sqrt{\frac{5}{4}}\cdot \pi = \frac{\sqrt{5}}{2}\,\pi. \]
+        \[L_{\text{geom}} = \frac{1}{4} \cdot 2\pi R = \frac{1}{4} \cdot 8\pi =
+        2\pi\]
       </p>
       <p>
-        Conclusão: O resultado indica a extensão total do percurso até o início
-        da atmosfera.
+        <strong>(b)</strong> \(\vec{r}\,'(t) = (-4\sin t,\, 4\cos t)\),
+        portanto:
+      </p>
+      <p>
+        \[\|\vec{r}\,'(t)\| = \sqrt{16\sin^2 t + 16\cos^2 t} = \sqrt{16} = 4\]
+      </p>
+      <p>\[L = \int_0^{\pi/2} 4\, dt = 4 \cdot \frac{\pi}{2} = 2\pi\]</p>
+      <p>
+        <strong>(c)</strong> Ambos os métodos dão \(L = 2\pi\). A fórmula
+        integral produz exatamente o resultado geométrico esperado, confirmando
+        que a fórmula está correta. Essa validação com geometria conhecida é uma
+        prática essencial em engenharia: sempre que possível, confira resultados
+        novos contra casos cuja resposta você já conhece.
       </p>
     </div>
   </details>

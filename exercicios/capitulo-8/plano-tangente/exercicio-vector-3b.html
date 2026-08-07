@@ -1,18 +1,36 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: Trajetória de Rendezvous – Gemini [09/MAR/1966]
+    ORIGEM: Lab. de Trajetórias de Pouso – Apollo 17 [07/DEZ/1972]
   </div>
-  <p>\(\vec r(u,v)=(u\cos v,u\sin v,v)\). Plano tangente em \(u=1,\,v=0\).</p>
+  <p>
+    Outra pergunta geométrica importante: qual é a reta normal a uma
+    superfície num ponto? A reta normal indica a direção de maior
+    inclinação no terreno lunar e é usada para alinhar antenas de
+    comunicação perpendicularmente à superfície. Considere o elipsoide
+  </p>
+  <p class="formula-highlight">
+    \[\frac{x^2}{4} + \frac{y^2}{9} + z^2 = 1\]
+  </p>
+  <p>e o ponto \(P = (1, 0, \frac{\sqrt{3}}{2})\) sobre ele.</p>
+  <p><strong>(a)</strong> Determine o vetor normal ao elipsoide no ponto \(P\) usando o gradiente.</p>
+  <p><strong>(b)</strong> Escreva as equações paramétricas da reta normal que passa por \(P\) na direção do vetor normal.</p>
+  <p><strong>(c)</strong> Verifique que a reta normal é perpendicular ao plano tangente no ponto \(P\). Em outras palavras, mostre que a direção da reta normal coincide com a direção do vetor normal do plano tangente.</p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-    <div class="hint">Observe a hélice formada.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Revisão do Capítulo 0: a equação paramétrica de uma
+      reta que passa por \(P\) com direção \(\vec{v}\) é
+      \(\vec{r}(t) = \vec{r}_0 + t\vec{v}\). Em coordenadas:
+      \(x = x_0 + tv_x\), \(y = y_0 + tv_y\), \(z = z_0 + tv_z\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      \(\vec r_u=(1,0,0),\;\vec r_v=(0,1,1)\Rightarrow\vec
-      n=(0,-1,1).\;P=(1,0,0)\Rightarrow z=y\).
+      <p><strong>(a)</strong> \(F = \frac{x^2}{4} + \frac{y^2}{9} + z^2 - 1\). \(\nabla F = (\frac{x}{2}, \frac{2y}{9}, 2z)\). Em \(P=(1,0,\frac{\sqrt{3}}{2})\): \(\nabla F = (\frac{1}{2}, 0, \sqrt{3})\).</p>
+      <p><strong>(b)</strong> Reta normal: \(\vec{r}(t) = (1, 0, \frac{\sqrt{3}}{2}) + t(\frac{1}{2}, 0, \sqrt{3})\). Em coordenadas: \(x = 1 + \frac{t}{2}\), \(y = 0\), \(z = \frac{\sqrt{3}}{2} + t\sqrt{3}\).</p>
+      <p><strong>(c)</strong> O plano tangente tem vetor normal \(\vec{n} = (\frac{1}{2}, 0, \sqrt{3})\). A reta normal tem direção \(\vec{d} = (\frac{1}{2}, 0, \sqrt{3})\). Como \(\vec{d}\) é paralelo a \(\vec{n}\), a reta é perpendicular ao plano tangente.</p>
     </div>
   </details>
 </li>

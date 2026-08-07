@@ -1,20 +1,23 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">23</span> DE AGOSTO DE
-    <span class="censored">1965</span><br />
-    LOCALIZAÇÃO: <span class="censored">COMPLEXO GEMINI [REDACTED]</span>
+    DATA: <span class="censored">11</span> DE OUTUBRO DE
+    <span class="censored">1968</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE CONTROLE HOUSTON [REDACTED]</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">VECTOR-Σ</span><br /><br />
-    Em resposta aos êxitos soviéticos recentes no
-    <span class="censored">Programa Voskhod</span>, nosso corpo de analistas
-    desenvolveu procedimentos avançados para otimizar o
+    <span class="censored">APOLLO-VECTOR</span><br /><br />
+    Com o programa Apollo em plena operação, nosso corpo de analistas
+    identificou um método crucial para otimizar o
     <span class="censored">cálculo de consumo energético</span> durante manobras
-    orbitais. Os problemas a seguir foram compilados a partir das anotações
-    sigilosas do Dr. <span class="censored">█████████</span>, especialista em
-    dinâmica orbital da missão <span class="censored">GEMINI VII</span>.
+    orbitais. Quando o campo de forças atuante sobre a nave é conservativo, a
+    integral de linha — que mede o trabalho realizado — pode ser calculada sem
+    parametrizar a trajetória, bastando conhecer a função potencial. Os
+    problemas a seguir foram compilados a partir das anotações sigilosas do Dr.
+    <span class="censored">█████████</span>, especialista em dinâmica orbital da
+    missão <span class="censored">APOLLO VII</span>.
   </div>
   <div class="warning-box">
     Este documento contém informações matemáticas críticas à segurança da nação.
@@ -22,7 +25,7 @@
     <span class="censored">sanções imediatas</span>.
   </div>
   <div class="metadata">
-    <span>REF: GC-<span class="censored">845</span>-D</span>
+    <span>REF: AC-<span class="censored">631</span>-D</span>
     <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
     <span
       >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
@@ -31,34 +34,125 @@
   </div>
 </div>
 <div class="section-title">
-  FUNDAMENTAÇÃO TEÓRICA: Integrais de Linha em Campos Conservativos
+  FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA EM CAMPOS CONSERVATIVOS
+</div>
+
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Você deve dominar integrais de linha por parametrização (Capítulo 5) e o
+    conteúdo do tópico anterior deste capítulo: definição de campo conservativo
+    (\(\vec{F} = \nabla\phi\)), notação de formas diferenciais (\(\omega = M\,dx
+    + N\,dy\)), condição de exatidão (\(\partial M/\partial y = \partial
+    N/\partial x\)) e o procedimento de construção de função potencial por
+    integração componente a componente.
+  </p>
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+  <p><strong>1. TEOREMA FUNDAMENTAL PARA INTEGRAIS DE LINHA</strong></p>
+  <p>
+    No tópico anterior, aprendemos que um campo vetorial \(\vec{F}\) é
+    <em>conservativo</em> quando existe uma função escalar \(\phi\) tal que
+    \(\vec{F} = \nabla\phi\), e que isso pode ser verificado pelo teste das
+    derivadas cruzadas (\(\nabla \times \vec{F} = \vec{0}\)). Agora vamos usar
+    essa função potencial para calcular integrais de linha de forma muito mais
+    eficiente.
+  </p>
   <p class="formula-highlight">
     \[ \int_{C} \vec{F} \cdot d\vec{r} = \phi\big(\vec{r}(b)\big) -
     \phi\big(\vec{r}(a)\big) \]
   </p>
   <p>
-    Se um campo vetorial \(\vec{F}\) é <em>conservativo</em>, existe uma função
-    escalar \(\phi\) tal que \(\vec{F} = \nabla \phi\). Nessa situação, a
-    integral de linha depende apenas dos pontos inicial e final, tornando‑se
-    <strong>independente do caminho</strong>.
+    Aqui, \(\vec{r}(a)\) e \(\vec{r}(b)\) são os pontos inicial e final da curva
+    \(C\). Observe: a integral depende apenas dos
+    <strong>extremos</strong> da curva, não da curva em si. Isso significa que
+    <strong>o caminho não importa</strong> — seja um segmento de reta, uma
+    parábola ou qualquer curva suave ligando os mesmos pontos, o resultado será
+    o mesmo.
+  </p>
+  <p>
+    Compare com o método do Capítulo 5 (parametrização), onde era necessário
+    descrever a curva explicitamente e integrar \(\vec{F}(\vec{r}(t)) \cdot
+    \vec{r}'(t)\). O Teorema Fundamental elimina toda essa parametrização.
   </p>
 </div>
-<div class="mission-context">
-  Em trajetórias orbitais, calcular o trabalho realizado por sistemas de
-  propulsão é essencial. Quando as forças atuantes podem ser modeladas por
-  campos conservativos (por exemplo,
-  <span class="censored">gravidade</span>), o consumo de combustível pode ser
-  estimado rapidamente a partir das diferenças de potencial, sem necessidade de
-  integrar ao longo de cada segmento da órbita.
+
+<div class="concept-definition">
+  <p><strong>2. INDEPENDÊNCIA DO CAMINHO</strong></p>
+  <p>
+    Dizer que a integral não depende do caminho é uma propriedade poderosa.
+    Formalmente: se \(\vec{F}\) é conservativo e \(C_1\), \(C_2\) são duas
+    curvas quaisquer com o mesmo ponto inicial \(A\) e o mesmo ponto final
+    \(B\), então
+  </p>
+  <p class="formula-highlight">
+    \[ \int_{C_1} \vec{F} \cdot d\vec{r} = \int_{C_2} \vec{F} \cdot d\vec{r} =
+    \phi(B) - \phi(A) \]
+  </p>
+  <p>
+    Isso tem consequências práticas imediatas: para calcular o trabalho de uma
+    força conservativa, basta conhecer o potencial nos extremos. Em particular,
+    podemos escolher o caminho mais conveniente — geralmente um segmento de reta
+    — ou usar diretamente a diferença de potencial sem parametrizar nada.
+  </p>
+  <p>
+    A recíproca também é verdadeira: se a integral de \(\vec{F}\) ao longo de
+    qualquer curva depende apenas dos extremos, então \(\vec{F}\) é
+    conservativo. As propriedades são <strong>equivalentes</strong>.
+  </p>
 </div>
+
+<div class="concept-definition">
+  <p><strong>3. INTEGRAL EM CURVAS FECHADAS</strong></p>
+  <p>
+    Uma consequência imediata do Teorema Fundamental: se a curva \(C\) é
+    <strong>fechada</strong> (o ponto inicial coincide com o final), então a
+    integral é sempre zero.
+  </p>
+  <p class="formula-highlight">
+    \[ \oint_{C} \vec{F} \cdot d\vec{r} = \phi(A) - \phi(A) = 0 \]
+  </p>
+  <p>
+    Essa propriedade é útil para detectar campos <em>não</em>-conservativos: se
+    encontramos uma curva fechada ao longo da qual a integral não é zero, o
+    campo certamente não é conservativo.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>4. PROCEDIMENTO PRÁTICO: TESTAR, ENCONTRAR, CALCULAR</strong></p>
+  <p>
+    Na prática, ao receber um campo e precisar calcular uma integral de linha,
+    seguimos três passos:
+  </p>
+  <p>
+    <strong>(i)</strong> <strong>Testar</strong> se o campo é conservativo
+    (\(\nabla \times \vec{F} = \vec{0}\), ou equivalentemente, as derivadas
+    cruzadas coincidem).
+  </p>
+  <p>
+    <strong>(ii)</strong> <strong>Encontrar</strong> a função potencial
+    integrando componente a componente (método estudado no tópico anterior).
+  </p>
+  <p>
+    <strong>(iii)</strong> <strong>Calcular</strong> a integral pela diferença
+    \(\phi(B) - \phi(A)\).
+  </p>
+  <p>
+    Se o teste do passo (i) falhar, o campo não é conservativo e o atalho não se
+    aplica — será necessário parametrizar o caminho (Capítulo 5).
+  </p>
+</div>
+
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Durante a missão
-  <span class="censored">Gemini VI‑A</span>, a equipe de solo aplicou este
-  princípio para calcular, em tempo recorde, o impulso necessário para a
-  primeira <em>rendez‑vous</em> orbital
-  <span class="censored">NATO‑CLASSIFIED</span>.
+  <strong>NOTA HISTÓRICA:</strong> Durante as missões Apollo 7 e 8 (outubro e
+  dezembro de 1968), a equipe de voo utilizou a função potencial gravitacional
+  para calcular as manobras de injeção translunar. Em vez de integrar a força
+  gravitacional ao longo de cada segmento da órbita — o que seria
+  computacionalmente inviável no computador de bordo Apollo Guidance Computer
+  com seus modestos 74 KB de memória — os engenheiros da NASA usaram diretamente
+  as diferenças de energia potencial, aplicando o Teorema Fundamental. O
+  princípio foi refinado durante o treinamento da
+  <span class="censored">Apollo 11</span>, culminando nos cálculos de
+  <span class="censored">pouso lunar</span> em julho de 1969.
 </div>
-LISTA DE EXERCÍCIOS

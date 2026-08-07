@@ -1,23 +1,59 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
-  <div class="context">ORIGEM: Simulação de Manobra — Agosto/1965</div>
+  <div class="context">ORIGEM: Centro de Controle — Março/1968</div>
   <p>
-    O domínio \(B = D \setminus \{(0,0)\}\) é o disco aberto anterior com o
-    centro removido. Discuta se \(B\) é simplesmente conexo.
+    A investigação anterior revelou que um "furo" no domínio impede a contração
+    de curvas. Isso nos leva a uma definição central. Um conjunto \(\Omega
+    \subseteq \mathbb{R}^2\) é <strong>simplesmente conexo</strong> se é conexo
+    por caminhos e toda curva fechada em \(\Omega\) pode ser continuamente
+    deformada até um ponto sem sair de \(\Omega\). Intuitivamente: uma região
+    <em>sem furos</em>. Classifique as regiões abaixo quanto à conexidade
+    simples.
+  </p>
+  <p>1. Disco aberto \(D_1 = \{(x,y) \mid x^2+y^2 &lt; 1\}\).</p>
+  <p>2. Anel \(D_2 = \{(x,y) \mid 1 &lt; x^2+y^2 &lt; 4\}\).</p>
+  <p>3. Plano perfurado \(D_3 = \mathbb{R}^2 \setminus \{(0,0)\}\).</p>
+  <p>4. Semiplano superior \(D_4 = \{(x,y) \mid y &gt; 0\}\).</p>
+  <p>5. Exterior de um círculo \(D_5 = \{(x,y) \mid x^2+y^2 &gt; 1\}\).</p>
+  <p><strong>(a)</strong> Para cada região, decida se é simplesmente conexa.</p>
+  <p>
+    <strong>(b)</strong> Para cada região que <em>não</em> é simplesmente
+    conexa, desenhe uma curva fechada que não pode ser contraída.
+  </p>
+  <p>
+    <strong>(c)</strong> Que propriedade geométrica todas as regiões
+    não-simplesmente-conexas compartilham?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de conservação podem ser relevantes.
+      [NOTA TÉCNICA]: A presença de pelo menos um furo — ou seja, uma região
+      "vazia" cercada pela região — é a característica comum que impede a
+      contração de curvas.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Remover o ponto cria um furo topológico. Um laço que circunde o centro
-        não pode ser encolhido sem passar pelo ponto removido. Portanto, não é
-        simplesmente conexo.
+        <strong>(a)</strong>
+        1. \(D_1\) (disco): <strong>sim</strong>, não tem furos. Qualquer curva
+        pode ser contraída radialmente. 2. \(D_2\) (anel): <strong>não</strong>,
+        tem um furo circular central. 3. \(D_3\) (plano perfurado):
+        <strong>não</strong>, tem um furo puntual. 4. \(D_4\) (semiplano):
+        <strong>sim</strong>, não tem furos. 5. \(D_5\) (exterior):
+        <strong>não</strong>, o disco removido é um furo — uma curva ao redor
+        dele não se contrai.
+      </p>
+      <p>
+        <strong>(b)</strong> Para \(D_2\), \(D_3\) e \(D_5\): qualquer
+        circunferência centrada na origem com raio adequado é uma curva que não
+        pode ser contraída a um ponto dentro da respectiva região.
+      </p>
+      <p>
+        <strong>(c)</strong> Todas as regiões não-simplesmente-conexas possuem
+        pelo menos um furo — uma região do plano que foi removida e que está
+        "cercada" por pontos do domínio.
       </p>
     </div>
   </details>

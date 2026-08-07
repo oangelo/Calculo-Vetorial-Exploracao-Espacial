@@ -1,0 +1,63 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Análise Inversa de Dados -
+    <span class="censored">Setor de Telemetria</span> [MAR/1966]
+  </div>
+  <p>
+    Você já reduziu diversas integrais triplas — sempre do sólido para a
+    integral. Agora o caminho inverso: dada uma integral iterada, reconstrua o
+    sólido original. Essa habilidade é essencial para interpretar cálculos de
+    outros engenheiros.
+  </p>
+  <p>
+    Considere a integral iterada \(\int_0^1 \int_0^{1-x}
+    \int_0^{xy}\,dz\,dy\,dx\).
+  </p>
+  <p>
+    <strong>(a)</strong> Quais são as superfícies que limitam \(z\)? E os
+    limites de \(y\)? E de \(x\)? Decodifique cada nível.
+  </p>
+  <p>
+    <strong>(b)</strong> Descreva verbalmente o sólido \(V\): qual é a base e
+    qual é o teto?
+  </p>
+  <p><strong>(c)</strong> Calcule o valor da integral.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Os limites de \(z\) dizem que a superfície superior é
+      \(z=xy\) e a inferior é \(z=0\). Os limites de \(y\) indicam uma base
+      triangular. Decodifique cada nível da integral de dentro para fora.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(z\) varia de 0 a \(xy\) (superfície superior: \(z=xy\)). \(y\)
+        varia de 0 a \(1-x\) (reta \(y=1-x\)). \(x\) varia de 0 a 1.
+      </p>
+      <p>
+        (b) O sólido \(V\) está sob a superfície \(z=xy\) e acima do triângulo
+        com vértices \((0,0)\), \((1,0)\) e \((0,1)\) no plano \(z=0\).
+      </p>
+      <p>(c) Cálculo: \(\int_0^1\int_0^{1-x} xy\,dy\,dx\).</p>
+      <p>
+        Integral em \(y\): \(\int_0^{1-x} xy\,dy = x\cdot\frac{(1-x)^2}{2}\).
+      </p>
+      <p>
+        Integral em \(x\): \(\int_0^1 \frac{x(1-x)^2}{2}\,dx =
+        \frac{1}{2}\int_0^1 (x - 2x^2 + x^3)\,dx =
+        \frac{1}{2}\left[\frac{x^2}{2} - \frac{2x^3}{3} +
+        \frac{x^4}{4}\right]_0^1 = \frac{1}{2}\left(\frac{1}{2} - \frac{2}{3} +
+        \frac{1}{4}\right)\).
+      </p>
+      <p>
+        \(= \frac{1}{2}\cdot\frac{6-8+3}{12} = \frac{1}{2}\cdot\frac{1}{12} =
+        \frac{1}{24}\).
+      </p>
+      <p>Resultado: \(1/24\).</p>
+    </div>
+  </details>
+</li>

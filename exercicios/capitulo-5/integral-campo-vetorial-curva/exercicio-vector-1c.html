@@ -1,49 +1,80 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
   <div class="context">
-    ORIGEM: Análise Preliminar -
-    <span class="censored">MISSÃO SIGMA</span>
+    ORIGEM: ANÁLISE DE ÓRBITA CIRCULAR -
+    <span class="censored">APOLLO 6</span>, ABRIL 1968
   </div>
   <p>
-    Seja \(\vec{H}(x,y) = \begin{pmatrix} x^2 \\ y^2 \end{pmatrix}\). A curva
-    \(C\) une o ponto \(\begin{pmatrix}0 \\ 0\end{pmatrix}\) ao ponto
-    \(\begin{pmatrix}2 \\ 2\end{pmatrix}\) percorrendo a parábola \(y=x^2\) no
-    intervalo \(x \in [0,2]\). Calcule \(\int_C \vec{H} \cdot d\vec{r}\) neste
-    trajeto.
+    O campo que você calculou no exercício anterior era radial: apontava para
+    fora da origem. Agora vamos investigar o que acontece quando o campo
+    <em>gira</em> ao redor da origem. Considere o campo \(\vec{G}(x,y) =
+    \begin{pmatrix} -y \\ x \end{pmatrix}\) e a circunferência de raio 2
+    centrada na origem, percorrida no sentido anti-horário.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize a circunferência de raio 2 como
+    \(\vec{r}(t) = (2\cos t,\, 2\sin t)\) com \(t \in [0, 2\pi]\), e calcule
+    \(\vec{r}\,'(t)\). Avalie também \(\vec{G}(\vec{r}(t))\).
+  </p>
+  <p>
+    <strong>(b)</strong> Forme o produto escalar \(\vec{G}(\vec{r}(t)) \cdot
+    \vec{r}\,'(t)\) e observe a simplificação algébrica que ocorre. Use a
+    identidade trigonométrica fundamental para reduzir a expressão a uma
+    constante.
+  </p>
+  <p>
+    <strong>(c)</strong> Integre e compare o resultado com o que a intuição
+    sugere: o campo \(\vec{G}\) é tangente à circunferência em cada ponto — ele
+    sempre "empurra" a partícula na direção do movimento. O trabalho deveria ser
+    positivo.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Converta tudo em função de \(x\) para facilitar.
+      [NOTA TÉCNICA]: No produto escalar, aparece a soma \(\sin^2 t + \cos^2
+      t\). A identidade trigonométrica fundamental diz que \(\sin^2 t + \cos^2 t
+      = 1\) para todo \(t\). Use isso para simplificar o integrando antes de
+      integrar.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> Parametrização da circunferência de raio 2:</p>
       <p>
-        Parametrização via \(x\): \(\vec{r}(x) = \begin{pmatrix}x \\
-        x^2\end{pmatrix}, x \in [0,2].\)
-      </p>
-      <p>\(\frac{d\vec{r}}{dx} = \begin{pmatrix}1 \\ 2x\end{pmatrix}.\)</p>
-      <p>
-        \(\vec{H}(\vec{r}(x)) = \begin{pmatrix}x^2 \\ (x^2)^2\end{pmatrix} =
-        \begin{pmatrix}x^2 \\ x^4\end{pmatrix}.\)
+        \[\vec{r}(t) = \begin{pmatrix} 2\cos t \\ 2\sin t \end{pmatrix}, \quad t
+        \in [0, 2\pi]\]
       </p>
       <p>
-        Logo, \[\int_C \vec{H} \cdot d\vec{r} = \int_{0}^{2} \begin{pmatrix}x^2
-        \\ x^4\end{pmatrix} \cdot \begin{pmatrix}1 \\ 2x\end{pmatrix} dx.\]
+        \[\vec{r}\,'(t) = \begin{pmatrix} -2\sin t \\ 2\cos t \end{pmatrix}\]
       </p>
-      <p>Produto escalar: \(x^2 \cdot 1 + x^4 \cdot 2x = x^2 + 2x^5.\)</p>
+      <p>Avaliando o campo na curva:</p>
       <p>
-        \[\int_{0}^{2} (x^2 + 2x^5) \, dx = \left[\frac{x^3}{3} +
-        \frac{2x^6}{6}\right]_{0}^{2} = \left[\frac{x^3}{3} +
-        \frac{x^6}{3}\right]_{0}^{2}.\]
+        \[\vec{G}(\vec{r}(t)) = \begin{pmatrix} -2\sin t \\ 2\cos t
+        \end{pmatrix}\]
+      </p>
+      <p><strong>(b)</strong> Produto escalar:</p>
+      <p>
+        \[\vec{G}(\vec{r}(t)) \cdot \vec{r}\,'(t) = (-2\sin t)(-2\sin t) +
+        (2\cos t)(2\cos t) = 4\sin^2 t + 4\cos^2 t = 4(\sin^2 t + \cos^2 t) =
+        4\]
       </p>
       <p>
-        Para \(x=2\): \(\frac{2^3}{3} + \frac{2^6}{3} = \frac{8}{3} +
-        \frac{64}{3} = \frac{72}{3} = 24.\)
+        O integrando simplifica para a constante 4 — o campo e o vetor tangente
+        estão perfeitamente alinhados em todos os pontos.
       </p>
-      <p>CONCLUSÃO: \(\int_C \vec{H}\cdot d\vec{r} = 24.\)</p>
+      <p><strong>(c)</strong> Integração:</p>
+      <p>
+        \[\int_C \vec{G} \cdot d\vec{r} = \int_0^{2\pi} 4 \, dt = 4(2\pi) =
+        8\pi\]
+      </p>
+      <p>
+        O trabalho é \(W = 8\pi \approx 25{,}13\), positivo como esperado. O
+        campo \(\vec{G}(x,y) = (-y, x)\) é tangente a toda circunferência
+        centrada na origem: em cada ponto, ele aponta exatamente na direção do
+        movimento circular. A integral acumula essa contribuição constante ao
+        longo de toda a volta.
+      </p>
     </div>
   </details>
 </li>

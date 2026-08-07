@@ -212,26 +212,36 @@ Se um exercício precisar de um conceito de capítulo posterior, ele pertence ao
 | cap-8/integral-de-superficie              | VAZIO — só index.html                           |
 | cap-9/\* (todos os 3 tópicos)             | VAZIO — só index.html                           |
 
-## Pipeline de Revisão (3 Agentes)
+## Pipeline de Revisão (6 Etapas)
 
-Cada tópico de exercício passa por 4 etapas com 3 agentes distintos.
+Cada tópico de exercício passa por 6 etapas. Há **um ponto de revisão humana** obrigatório: após o Auditor de Capítulo (Etapa 2.5).
 
 ### Visão geral
 
 ```
-Etapa 1: Agente Explore (Revisor)
-  → Lê exercícios, busca na web, gera RTC como comentário na issue
+Etapa 1: Agente Explore (Revisor) — RODAR TODOS OS TÓPICOS EM PARALELO
+  → Lê exercícios, busca na web, gera RTC (diagnóstico) como comentário na issue
   → Ferramentas: read, firecrawl_search, firecrawl_scrape, bash (gh)
 
-         ↓ Revisão humana (professor aprova/ajusta RTC)
+Etapa 2: Agente General (Planejador) — RODAR TODOS OS TÓPICOS EM PARALELO
+  → Lê RTC + exercícios existentes, gera PDI (blueprint) como comentário na issue
+  → Ferramentas: read, bash (gh)
 
-Etapa 2: Agente General (Implementador)
-  → Lê RTC, implementa correções, cria exercícios, adiciona sub-itens
+Etapa 2.5: Agente General (Auditor de Capítulo) — 1 AGENTE POR CAPÍTULO
+  → Lê TODOS os PDIs do capítulo (todas as issues)
+  → Verifica: sobreposição de conceitos, buracos na progressão, contradições
+  → Se encontrar problemas: posta PDI v2 nas issues afetadas
+  → Se limpo: posta "AUDITORIA APROVADA" em cada issue
+  → Ferramentas: read, bash (gh)
+
+         ↓ Revisão humana (professor aprova/ajusta PDIs após auditoria)
+
+Etapa 3: Agente General (Implementador) — RODAR TODOS OS TÓPICOS EM PARALELO
+  → Lê RTC + PDI (versão final, pode ser v2) dos comentários da issue, implementa tudo
   → Ferramentas: read, edit, write, bash (gh)
 
-Etapa 3: Agente Explore (Resumidor)
-  → Lê exercícios finais, gera resumo de pré-requisitos
-  → Insere na seção de fundamentação teórica do intro.html
+Etapa 4: Agente Explore (Resumidor) — RODAR TODOS OS TÓPICOS EM PARALELO
+  → Lê exercícios finais, gera resumo de pré-requisitos no intro.html
   → Ferramentas: read, edit, firecrawl_search
 ```
 
@@ -242,9 +252,9 @@ Etapa 3: Agente Explore (Resumidor)
 3. Verificar: a progressão atual segue o princípio "significado antes da álgebra"?
 4. Se não, o RTC deve propor uma reestruturação narrativa (como fez a #32 Geometria Analítica)
 
-### Como invocar cada agente
+### Como invocar cada etapa
 
-**Etapa 1 — Revisor:**
+**Etapa 1 — Revisor (Explore):**
 
 > Execute o Agente 1 (revisor) no issue #N (NOME DO TÓPICO).
 >
@@ -266,22 +276,94 @@ Etapa 3: Agente Explore (Resumidor)
 > - **Scaffolding**: exercícios complexos estão quebrados em sub-itens (a, b, c)?
 > - **Conexão entre exercícios**: há texto explícito conectando cada exercício ao anterior?
 > - **Conceitos Fora do Escopo** (se houver): QUALQUER exercício que exija conceitos de capítulos posteriores DEVE ser sinalizado
-> - **Sugestões de reordenação/se reestruturação** se a progressão não seguir as diretrizes
+> - **Sugestões de reordenação/reestruturação** se a progressão não seguir as diretrizes
 
-**Etapa 2 — Implementador:**
+**Etapa 2 — Planejador (General) — Gera PDI:**
 
-> Execute o Agente 2 (implementador) no issue #N.
-> Leia `diretrizes-listas-de-exercicios.md` antes de implementar.
-> Leia o RTC nos comentários da issue #N usando `gh issue view N --comments`.
-> Implemente as correções nos exercícios de exercicios/capitulo-N/PASTA/.
-> Crie novos exercícios conforme o RTC, adicione sub-itens (a, b, c),
-> reescreva hints inúteis, reordene por dificuldade real.
-> Cada exercício deve ter: motivação clara, conexão com o anterior,
-> e texto que justifique o próximo. Seguir os 8 princípios das diretrizes.
+> Execute o Agente 2 (planejador) no issue #N (NOME DO TÓPICO).
+>
+> ANTES de começar:
+>
+> 1. Leia `diretrizes-listas-de-exercicios.md` — os 8 princípios
+> 2. Leia `checklist-conceitos-permitidos.md` — progressão narrativa do capítulo
+> 3. Leia o RTC nos comentários da issue #N usando `gh issue view N --comments`
+> 4. Leia todos os exercícios existentes em exercicios/capitulo-N/PASTA/
+>
+> Depois, gere um **PDI (Plano Detalhado de Implementação)** como comentário na issue usando `gh issue comment`. O PDI é o planejamento holístico da lista — descreve o **quê** e o **porquê** de cada exercício, mas **nunca o como**. Respostas, equações, dados numéricos concretos e hints ficam a cargo do implementador (Etapa 3).
+>
+> O PDI DEVE incluir:
+>
+> - **Progressão narrativa da lista**: um parágrafo descrevendo a "história" que a lista conta (do primeiro ao último exercício)
+> - **Para cada exercício** (12 total: 4 níveis × 3 sub-itens):
+>   - Nome/identificador (ex: VECTOR-1A)
+>   - Nível (ALFA/BETA/GAMMA/OMEGA)
+>   - Conexão com o exercício anterior (1 frase — o que motiva este exercício)
+>   - Descrição do problema (2-3 frases — o contexto e o tipo de problema, **sem dados numéricos concretos ou equações**)
+>   - Sub-itens: direção geral do que cada (a)(b)(c) explora (ex: "identificar projeção", "reduzir e integrar", "avaliar")
+>   - Marcação: **manter** / **reescrever** / **novo**
+> - **Alterações técnicas** (MathJax, CSS, index.html, intro.html) em tabela
+>
+> O PDI **NÃO DEVE** incluir:
+>
+> - Respostas ou resultados numéricos
+> - Equações ou expressões matemáticas do enunciado
+> - Conteúdo de hints (apenas indicar "com dica" ou "sem dica" para OMEGA)
+> - Texto final dos enunciados
 
-**Etapa 3 — Resumidor:**
+**Etapa 2.5 — Auditor de Capítulo (General) — 1 agente por capítulo:**
 
-> Execute o Agente 3 (resumidor) no issue #N.
+> Execute o Auditor de Capítulo para o Cap N.
+>
+> ANTES de começar:
+>
+> 1. Leia `checklist-conceitos-permitidos.md` — a progressão narrativa do capítulo
+>
+> Depois:
+>
+> - Para CADA issue do capítulo, leia o PDI nos comentários usando `gh issue view N --comments`
+> - Compare TODOS os PDIs entre si e verifique:
+>
+> **Verificações obrigatórias:**
+>
+> 1. **Sobreposição de conceitos:** Dois tópicos cobrem o mesmo conceito ou a mesma atividade (ex: "descobrir independência do caminho" aparece em dois PDIs)
+> 2. **Buracos na progressão:** Conceito esperado pela progressão do checklist que não aparece em nenhum PDI
+> 3. **Contradição:** Um PDI assume conhecimento que nenhum PDI anterior ensina
+> 4. **Ordem incorreta:** Um PDI referencia conceitos de um tópico posterior na progressão
+>
+> **Se encontrar problemas:**
+>
+> - Poste um comentário "AUDITORIA — PROBLEMAS ENCONTRADOS" na issue #3 (epic) listando todos os problemas
+> - Poste PDI v2 (corrigido) em cada issue afetada, com nota explicando a mudança
+> - Exemplo de formato: `gh issue comment N --body "## PDI v2 — Corrigido (remove sobreposição com #M)\n\n..."`
+>
+> **Se não encontrar problemas:**
+>
+> - Poste "AUDITORIA APROVADA — Sem sobreposições, buracos ou contradições detectados." em cada issue do capítulo
+
+> Execute o Agente 3 (implementador) no issue #N.
+>
+> **Atenção:** se houver um PDI v2 nos comentários (gerado pelo Auditor), use a versão v2, não a original.
+>
+> ANTES de começar:
+>
+> 1. Leia `diretrizes-listas-de-exercicios.md` — os 8 princípios
+> 2. Leia `checklist-conceitos-permitidos.md` — conceitos permitidos
+> 3. Leia o RTC e o PDI **final** (última versão) nos comentários da issue #N usando `gh issue view N --comments`
+>
+> Depois:
+>
+> - Implemente as correções nos exercícios de exercicios/capitulo-N/PASTA/
+> - Crie novos exercícios conforme o PDI
+> - Reescreva exercícios marcados como "reescrever" no PDI
+> - Adicione sub-itens (a, b, c), reescreva hints, reordene por dificuldade
+> - Corrija problemas técnicos listados no PDI (MathJax, CSS, index.html)
+> - Cada exercício deve ter: motivação clara, conexão com o anterior, texto que justifique o próximo
+> - Siga os 8 princípios das diretrizes
+> - Após escrever CADA arquivo, execute `grep -c '\\\\\\\\' arquivo.html` — se > 0, corrija
+
+**Etapa 4 — Resumidor (Explore):**
+
+> Execute o Agente 4 (resumidor) no issue #N.
 > Leia `checklist-conceitos-permitidos.md` — a progressão narrativa do capítulo.
 > Leia todos os exercícios em exercicios/capitulo-N/PASTA/
 > e gere um resumo de pré-requisitos na seção de fundamentação

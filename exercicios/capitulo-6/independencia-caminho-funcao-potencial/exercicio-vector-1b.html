@@ -1,24 +1,52 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
   <div class="context">
-    ORIGEM: Ajuste de Ângulo de Reentrada – Dados Vostok, 1963
+    ORIGEM: Sistema de Navegação – Documento Φ-<span class="censored">7</span>,
+    DEZ/1967
   </div>
   <p>
-    Dado o campo \(\vec{F}(x,y)=\begin{pmatrix} y \\ x \end{pmatrix}\), encontre
-    a função potencial \(\Phi(x,y)\) tal que \(\vec{F}=\nabla\Phi\).
+    O exercício anterior mostrou que, para \(\vec{F}(x,y) = (2y,\, 2x)\), o
+    trabalho entre \((0,0)\) e \((1,1)\) é sempre 2, não importa o caminho. Isso
+    lembra algo que você já viu em Física: se o trabalho depende só dos
+    extremos, deve existir uma <em>função potencial</em> \(\Phi\) cuja diferença
+    nos dá o trabalho. Vamos construí-la.
+  </p>
+  <p>
+    <strong>(a)</strong> Sabendo que \(\frac{\partial \Phi}{\partial x} = 2y\),
+    integre em relação a \(x\) para obter \(\Phi\) com uma função arbitrária
+    \(g(y)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Derive o resultado do item (a) em relação a \(y\) e
+    iguale a \(2x\) (a segunda componente de \(\vec{F}\)) para determinar
+    \(g(y)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Com a função \(\Phi\) completa, calcule \(\Phi(1,1) -
+    \Phi(0,0)\) e verifique que o resultado coincide com o trabalho encontrado
+    no exercício anterior.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Integre componente a componente.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao integrar \(\frac{\partial \Phi}{\partial x} = 2y\) em
+      relação a \(x\), lembre que \(y\) é tratado como constante. A "constante
+      de integração" é uma função de \(y\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> \(\Phi = \int 2y\,dx = 2xy + g(y)\).</p>
       <p>
-        Integre: \(\frac{\partial\Phi}{\partial x}=y \Rightarrow
-        \Phi=xy+g(y)\).<br />Derive: \(\frac{\partial\Phi}{\partial y}=x+g'(y)=x
-        \Rightarrow g'(y)=0\). Assim \(g(y)=C\).<br />Potencial:
-        \[\Phi(x,y)=xy+C.\]
+        <strong>(b)</strong> \(\frac{\partial \Phi}{\partial y} = 2x + g'(y)\).
+        Igualando a \(2x\): \(2x + g'(y) = 2x \Rightarrow g'(y) = 0 \Rightarrow
+        g(y) = C\).
+      </p>
+      <p>
+        <strong>(c)</strong> Tomando \(C = 0\): \(\Phi(x,y) = 2xy\). \(\Phi(1,1)
+        - \Phi(0,0) = 2 - 0 = 2\). Confere com o resultado obtido por dois
+        caminhos no exercício anterior.
       </p>
     </div>
   </details>

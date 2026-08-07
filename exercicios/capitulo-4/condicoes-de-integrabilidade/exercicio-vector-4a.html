@@ -1,31 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
-  <div class="context">ORIGEM: Análise Final - Apollo 15 [NOV/1971]</div>
+  <div class="context">
+    ORIGEM: Engenharia de Sistemas - Gemini XI [SET/1966]
+  </div>
   <p>
-    Um estudo de formação de crateras em um satélite é modelado pela integral
-    tripla de \[ M(x,y,z) = \max\{0, 5 - (x^2 + y^2 + z^2)\}. \] Justifique a
-    integrabilidade de \(M\) e calcule seu valor total para o domínio onde a
-    função é positiva.
+    Dominados os conceitos de integrabilidade, vamos aplicá-los a uma situação
+    concreta do Programa Gemini: o cálculo da massa de combustível em um tanque.
   </p>
-  <!-- SÉRIE OMEGA NÃO TEM DICAS -->
+  <p>
+    Um tanque de combustível do módulo Gemini tem formato de paralelepípedo
+    retangular com dimensões \(1 \times 2 \times 3\) (em metros), ocupando a
+    região \(V = [0,1] \times [0,2] \times [0,3]\). Devido à gravidade e ao
+    posicionamento do tanque no foguete, a densidade do combustível varia com a
+    altura \(z\) segundo a função: \[\rho(x,y,z) = 800 + 50z \quad
+    \text{(kg/m}^3\text{)}.\]
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva o domínio \(V\) geometricamente e verifique se
+    é limitado.
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique as condições de integrabilidade da função
+    densidade \(\rho\) em \(V\): é contínua? É limitada?
+  </p>
+  <p>
+    <strong>(c)</strong> Monte a integral tripla \(\iiint_{V} \rho(x,y,z)\,dV\)
+    como integral iterada.
+  </p>
+  <p><strong>(d)</strong> Calcule a massa total de combustível no tanque.</p>
   <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-10 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        \(M\) é contínua em \(\{(x,y,z)\mid x^2 + y^2 + z^2 \le \sqrt{5}\}\) e
-        zero fora desse raio, logo limitada e sem descontinuidades.
+        <strong>(a)</strong> \(V = [0,1] \times [0,2] \times [0,3]\) é um
+        paralelepípedo retangular de dimensões \(1 \times 2 \times 3\) metros,
+        com volume \(1 \cdot 2 \cdot 3 = 6\) m³. É claramente limitado.
       </p>
       <p>
-        A região de integração é uma esfera de raio \(\sqrt{5}\). Para \(r^2 \le
-        5\), \(M= 5 - r^2\). A integral em coordenadas esféricas: \[
-        \int_{0}^{2\pi}\int_{0}^{\pi}\int_{0}^{\sqrt{5}} \bigl(5 - r^2\bigr)\,
-        r^2 \sin\phi\, dr\, d\phi\, d\theta. \]
+        <strong>(b)</strong> A função \(\rho(x,y,z) = 800 + 50z\) é
+        <strong>contínua</strong> (função polinomial) e
+        <strong>limitada</strong> em \(V\): o mínimo é \(\rho(x,y,0) = 800\) e o
+        máximo é \(\rho(x,y,3) = 800 + 150 = 950\). Todas as condições de
+        integrabilidade são satisfeitas.
       </p>
       <p>
-        O resultado numérico (após a computação passo a passo) conduz ao valor
-        exato: \[ \boxed{\frac{500\pi}{3}}. \]
+        <strong>(c)</strong> A integral iterada é:
+        \[\int_{0}^{3}\int_{0}^{2}\int_{0}^{1}(800+50z)\,dx\,dy\,dz\]
       </p>
-      <p>Conclusão: o valor total de massa/volume associado é finito.</p>
+      <p><strong>(d)</strong> Calculando:</p>
+      <p>
+        Em \(x\): \(\int_{0}^{1}(800+50z)\,dx = (800+50z) \cdot 1 = 800+50z\).
+      </p>
+      <p>
+        Em \(y\): \(\int_{0}^{2}(800+50z)\,dy = (800+50z) \cdot 2 = 1600+100z\).
+      </p>
+      <p>
+        Em \(z\): \(\int_{0}^{3}(1600+100z)\,dz = \left[1600z +
+        50z^2\right]_{0}^{3} = 4800 + 450 = 5250\).
+      </p>
+      <p>\[\boxed{M = 5250 \text{ kg}}\]</p>
+      <p>
+        A massa total de combustível é 5250 kg. Note que a densidade aumenta com
+        \(z\), o que é consistente com um tanque onde as camadas inferiores
+        estão mais comprimidas pela pressão hidrostática.
+      </p>
     </div>
   </details>
 </li>

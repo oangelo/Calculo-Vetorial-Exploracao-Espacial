@@ -1,20 +1,83 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Skylab – Sala de Controle,
-    <span class="censored">██/██/1975</span>
+    ORIGEM: Planejamento de Missão Lunar Completa – Apollo 11, JUL/1969
   </div>
   <p>
-    Projete uma função potencial \(\Phi(x,y,z)\) para um campo desejado de
-    frenagem \(\vec{F}=\nabla\Phi\) que satisfaça \(\Phi(x,y,0)=x^2-y^2\) no
-    plano orbital e se anule no infinito. Apresente uma possível solução.
+    Esta lista começou com uma descoberta empírica — dois caminhos, mesmo
+    resultado — e passou por FTC, construção de potenciais, extensão 3D,
+    autodiagnose, contrastes com campos não-conservativos, limitações
+    topológicas e prova rigorosa. Agora, o desafio final integra tudo. Considere
+    o campo \(\vec{F}(x,y,z) = (yz + x,\; xz + y,\; xy + z)\) definido em todo
+    \(\mathbb{R}^3\), que modela as forças durante uma sequência de manobras
+    orbitares lunares.
+  </p>
+  <p>
+    <strong>(a)</strong> Determine se \(\vec{F}\) é conservativo no domínio dado
+    (incluindo análise do domínio).
+  </p>
+  <p>
+    <strong>(b)</strong> Se for conservativo, encontre a função potencial
+    \(\Phi\).
+  </p>
+  <p>
+    <strong>(c)</strong> Uma missão lunar realiza as seguintes manobras: de \(A
+    = (0,0,0)\) (órbita terrestre) a \(B = (1,1,0)\) (injeção translunar), e de
+    \(B\) a \(C = (1,1,1)\) (inserção orbital lunar). Calcule o trabalho de cada
+    manobra e o total usando FTC.
+  </p>
+  <p>
+    <strong>(d)</strong> Compare o custo da rota \(A \to B \to C\) com o custo
+    da rota direta \(A \to C\). Qual a economia de conhecimento proporcionada
+    pelo uso de \(\Phi\)?
+  </p>
+  <p>
+    <strong>(e)</strong> Discuta: se o domínio fosse \(\mathbb{R}^2 \setminus
+    \{(0,0)\}\) em vez de \(\mathbb{R}^3\), as conclusões poderiam mudar?
+    Refira-se ao exercício sobre o campo vórtice.
   </p>
   <details>
-    <summary>RELATÓRIO DE CÁLCALO [SIGMA-4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Uma extensão harmônica é \(\Phi(x,y,z)=\frac{x^2-y^2}{1+z^2}\), decai a
-        0 quando \(|(x,y,z)|\to\infty\) e reduz‑se a condição exigida em z=0.
+        <strong>(a)</strong> Rotacional: componente \(i\): \(\frac{\partial
+        F_3}{\partial y} - \frac{\partial F_2}{\partial z} = x - x = 0\).
+        Componente \(j\): \(\frac{\partial F_1}{\partial z} - \frac{\partial
+        F_3}{\partial x} = y - y = 0\). Componente \(k\): \(\frac{\partial
+        F_2}{\partial x} - \frac{\partial F_1}{\partial y} = z - z = 0\).
+        Rotacional \(= \vec{0}\). O domínio é \(\mathbb{R}^3\), que é
+        simplesmente conexo. Logo, \(\vec{F}\) é conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\frac{\partial \Phi}{\partial x} = yz + x
+        \Rightarrow \Phi = xyz + \frac{x^2}{2} + g(y,z)\). Derivando em \(y\):
+        \(xz + g_y = xz + y \Rightarrow g_y = y \Rightarrow g = \frac{y^2}{2} +
+        h(z)\). Derivando em \(z\): \(xy + h'(z) = xy + z \Rightarrow h'(z) = z
+        \Rightarrow h(z) = \frac{z^2}{2}\). Potencial: \(\Phi(x,y,z) = xyz +
+        \frac{x^2+y^2+z^2}{2}\).
+      </p>
+      <p>
+        <strong>(c)</strong> Manobra \(A \to B\): \(\Phi(1,1,0) - \Phi(0,0,0) =
+        (0 + 1) - 0 = 1\). Manobra \(B \to C\): \(\Phi(1,1,1) - \Phi(1,1,0) = (1
+        + \frac{3}{2}) - 1 = \frac{3}{2}\). Total: \(1 + \frac{3}{2} =
+        \frac{5}{2}\).
+      </p>
+      <p>
+        <strong>(d)</strong> Rota direta \(A \to C\): \(\Phi(1,1,1) -
+        \Phi(0,0,0) = 1 + \frac{3}{2} = \frac{5}{2}\). Os resultados são iguais
+        — previsível pela independência do caminho. O conhecimento de \(\Phi\)
+        permite calcular trabalho de <em>qualquer</em> rota com uma subtração,
+        sem parametrizar nenhuma curva.
+      </p>
+      <p>
+        <strong>(e)</strong> Em \(\mathbb{R}^2 \setminus \{(0,0)\}\), o domínio
+        <strong>não é simplesmente conexo</strong>. Um campo com rotacional zero
+        pode não ter potencial global — é o caso do campo vórtice estudado
+        anteriormente, cuja integral ao longo do círculo unitário é \(2\pi \neq
+        0\). Em \(\mathbb{R}^3\), mesmo removendo um ponto, o domínio permanece
+        simplesmente conexo (curvas podem ser deformadas "por cima" ou "por
+        baixo" na terceira dimensão). A dimensão do espaço importa para a
+        topologia.
       </p>
     </div>
   </details>

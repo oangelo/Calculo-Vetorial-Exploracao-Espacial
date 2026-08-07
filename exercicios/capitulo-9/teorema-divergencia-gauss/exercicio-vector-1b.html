@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Análise de <span class="censored">Distribuição Térmica</span> -
+    Spacelab-1 [NOV/1983]
+  </div>
+  <p>
+    O paralelepípedo era direto em cartesianas. Agora vamos praticar com uma
+    esfera — onde coordenadas esféricas tornam a integral tripla natural — e
+    também explorar um atalho poderoso que surge quando o divergente é
+    constante.
+  </p>
+  <p>
+    Considere o campo \(\mathbf{F}(x,y,z) = (2x,\, 2y,\, 2z)\) e a esfera \(V\)
+    de raio \(R = 3\) centrada na origem.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o divergente e observe que ele é constante. Use
+    a relação \(\text{fluxo} = (\nabla \cdot \mathbf{F}) \times \text{Vol}(V)\)
+    para obter o resultado diretamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Confirme calculando a integral tripla em coordenadas
+    esféricas.
+  </p>
+  <p>
+    <strong>(c)</strong> Interprete: por que o divergente constante é um
+    "atalho" tão poderoso? O que ele significa fisicamente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se \(\nabla \cdot \mathbf{F} = c\) (constante), então
+      \(\iiint_V c\,dV = c \cdot \text{Vol}(V)\). O volume de uma esfera de raio
+      \(R\) é \(\frac{4}{3}\pi R^3\). Em coordenadas esféricas, \(dV =
+      \rho^2\sin\phi\,d\rho\,d\phi\,d\theta\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\nabla \cdot \mathbf{F} = 2 + 2 + 2 = 6\) (constante). Volume da
+        esfera: \(\frac{4}{3}\pi(3)^3 = 36\pi\). Fluxo: \(6 \times 36\pi =
+        216\pi\).
+      </p>
+      <p>
+        (b) Em esféricas: \(\iiint_V 6\,dV = 6\int_0^{2\pi}\int_0^{\pi}\int_0^3
+        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta = 6 \times \frac{4}{3}\pi(27) =
+        216\pi\).
+      </p>
+      <p>
+        (c) Divergente constante significa "taxa de expansão uniforme em todo
+        ponto". O campo atua como uma fonte idêntica em todos os pontos do
+        volume. O fluxo total é proporcional ao volume — não importa a forma da
+        região, só o quanto ela contém.
+      </p>
+    </div>
+  </details>
+</li>

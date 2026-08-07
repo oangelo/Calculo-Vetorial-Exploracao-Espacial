@@ -1,43 +1,75 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
   <div class="context">
-    ORIGEM: Laboratório Avançado - Programa Apollo [NOV/1966]
+    ORIGEM: Divisão de Navegação Lunar - Apollo 7 [OUT/1968]
   </div>
   <p>
-    Uma manobra de injeção translunar usa a curva: \(\vec{r}(t) =
-    \begin{pmatrix} e^{2t} \\ \ln(1 + t^2) \\ t \end{pmatrix}\) em \([0,2]\).
-    Reparametrize para eliminar o expoente \(2t\) na primeira componente.
-    Calcule a integral de linha \(\displaystyle \int_C
-    f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\) para \(f(\vec{r}) = 2e^{-2t}\).
+    Entre todas as parametrizações possíveis de uma curva, existe uma
+    especialmente elegante: aquela em que a velocidade é sempre igual a
+    <strong>1</strong>. Nessa parametrização, o parâmetro coincide com o
+    comprimento percorrido — é a
+    <em>parametrização pelo comprimento de arco</em>. Vamos construí-la para uma
+    curva simples.
+  </p>
+  <p>
+    Considere o segmento de parábola \(\vec{r}(t) = (t,\, \frac{t^2}{2})\) com
+    \(t \in [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a função comprimento de arco a partir do ponto
+    \(t=0\): \(\displaystyle s(t) = \int_0^t |\vec{r}'(u)|\, du\). Mostre que
+    \(s(t) = \frac{1}{2}\left(t\sqrt{1+t^2} + \ln(t + \sqrt{1+t^2})\right)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Embora a inversa \(t(s)\) não tenha forma fechada
+    simples, verifique que \(s(0) = 0\) e calcule \(s(1)\). O valor \(s(1)\) é o
+    comprimento total da curva. Qual é a nova parametrização \(\vec{r}(t(s))\)
+    em termos de \(s\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Sem calcular a inversa explicitamente, use a regra da
+    cadeia para mostrar que \(\left|\frac{d\vec{r}}{ds}\right| = 1\) em todo
+    ponto. Em outras palavras, mostre que \(\frac{ds}{dt} = |\vec{r}'(t)|\)
+    implica que a velocidade na parametrização por arco é unitária.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Existem invariantes relevantes sob certas transformações
-      paramétricas.
+      [NOTA TÉCNICA]: Para (a), \(|\vec{r}'(t)| = \sqrt{1+t^2}\). A integral
+      \(\int \sqrt{1+t^2}\, dt\) é uma integral tabelada — use a substituição
+      trigonométrica \(t = \tan\theta\). Para (c), use a regra da cadeia: se \(s
+      = s(t)\), então \(\frac{d\vec{r}}{ds} = \frac{d\vec{r}}{dt} \cdot
+      \frac{dt}{ds} = \frac{\vec{r}'(t)}{s'(t)}\). A magnitude segue
+      diretamente.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        DEFINIÇÃO: Para eliminar \(e^{2t}\), uma escolha possível: \(\tau =
-        e^{2t}\). Daí \(t = \frac{1}{2}\ln(\tau)\).
+        (a) \(\vec{r}'(t) = (1, t)\), \(|\vec{r}'(t)| = \sqrt{1+t^2}\). A
+        integral \(\int_0^t \sqrt{1+u^2}\, du\) é resolvida pela substituição
+        \(u = \tan\theta\), \(du = \sec^2\theta\, d\theta\): \[\int_0^{\arctan
+        t} \sec\theta \cdot \sec^2\theta\, d\theta =
+        \frac{1}{2}\left[\sec\theta\tan\theta +
+        \ln|\sec\theta+\tan\theta|\right]_0^{\arctan t} =
+        \frac{1}{2}\left(t\sqrt{1+t^2} + \ln(t+\sqrt{1+t^2})\right).\]
       </p>
       <p>
-        CÁLCULO: \(\vec{r}(\tau) = \begin{pmatrix} \tau \\ \ln\bigl(1 +
-        \bigl(\tfrac{1}{2}\ln(\tau)\bigr)^2\bigr) \\ \tfrac{1}{2}\ln(\tau)
-        \end{pmatrix}\).
+        (b) \(s(0) = 0\). \(s(1) = \frac{1}{2}\left(\sqrt{2} +
+        \ln(1+\sqrt{2})\right) \approx \frac{1}{2}(1.4142 + 0.8814) \approx
+        1.148\). A nova parametrização é \(\vec{r}(t(s)) = (t(s),\,
+        \frac{t(s)^2}{2})\), onde \(t(s)\) é a inversa de \(s(t)\) no intervalo
+        \([0, s(1)]\).
       </p>
       <p>
-        COM \(f(\vec{r}) = 2e^{-2t} = 2e^{-2\cdot(\frac{1}{2}\ln(\tau))} =
-        2\tau^{-1}\).
-      </p>
-      <p>
-        DERIVADA e limites de integração \(\tau(0)=1\), \(\tau(2)=e^4\)
-        completam o procedimento. Integra-se \[ \int_1^{e^4}
-        2\tau^{-1}\,\Bigl|\frac{d\vec{r}}{d\tau}\Bigr|\, d\tau. \] O resultado
-        final depende do processamento específico.
+        (c) Por definição, \(s(t) = \int_0^t |\vec{r}'(u)|\, du\), logo
+        \(\frac{ds}{dt} = |\vec{r}'(t)| = \sqrt{1+t^2}\). Pela regra da cadeia,
+        \(\frac{d\vec{r}}{ds} = \vec{r}'(t) \cdot \frac{dt}{ds}\). Logo
+        \(\left|\frac{d\vec{r}}{ds}\right| = |\vec{r}'(t)| \cdot
+        \left|\frac{dt}{ds}\right| = |\vec{r}'(t)| \cdot \frac{1}{ds/dt} =
+        |\vec{r}'(t)| \cdot \frac{1}{|\vec{r}'(t)|} = 1\). A velocidade é sempre
+        unitária na parametrização por arco.
       </p>
     </div>
   </details>

@@ -1,47 +1,69 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
   <div class="context">
-    ORIGEM: Sessão de Testes -
-    <span class="censored">MÓDULO PILOTO</span>, 1965
+    ORIGEM: CENTRO DE ANÁLISE VETORIAL -
+    <span class="censored">PROGRAMA APOLLO</span>, 1967
   </div>
   <p>
-    Considere o campo vetorial \(\vec{F}(x,y) = \begin{pmatrix} x \\ y
-    \end{pmatrix}\) no plano. A trajetória \(C\) é o trecho da linha reta que
-    vai de \(\begin{pmatrix}0 \\ 0\end{pmatrix}\) até \(\begin{pmatrix}2 \\
-    4\end{pmatrix}\). Calcule a integral de linha \(\int_C \vec{F} \cdot
-    d\vec{r}\).
+    Antes de realizar qualquer cálculo numérico, é fundamental desenvolver a
+    intuição sobre o que a integral de linha vetorial realmente mede. Considere
+    o campo vetorial \(\vec{F}(x,y) = \begin{pmatrix} x \\ y \end{pmatrix}\) e o
+    segmento de reta \(C\) que vai da origem ao ponto \(\begin{pmatrix} 2 \\ 4
+    \end{pmatrix}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Num sistema de coordenadas, desenhe o campo \(\vec{F}\)
+    em alguns pontos ao longo do segmento \(C\) e trace o próprio caminho.
+    Observe a direção das setas do campo em relação à direção do segmento.
+  </p>
+  <p>
+    <strong>(b)</strong> Identifique: ao percorrer o segmento da origem até
+    \(\begin{pmatrix} 2 \\ 4 \end{pmatrix}\), o campo aponta a favor do
+    movimento, contra o movimento, ou é perpendicular? O que isso sugere sobre o
+    sinal do trabalho?
+  </p>
+  <p>
+    <strong>(c)</strong> Com base apenas na análise visual, estime se o trabalho
+    total \(\int_C \vec{F} \cdot d\vec{r}\) é positivo, negativo ou zero.
+    Justifique sua estimativa usando o conceito de produto escalar como medida
+    de alinhamento entre vetores.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere parametrizar de forma direta sem complicações
-      adicionais.
+      [NOTA TÉCNICA]: Lembre que o produto escalar \(\vec{u} \cdot \vec{v}\) é
+      máximo quando os vetores apontam na mesma direção, zero quando são
+      perpendiculares, e negativo quando apontam em sentidos opostos. O campo
+      \(\vec{F}(x,y) = (x, y)\) é radial: aponta para fora da origem em cada
+      ponto. Pergunte-se: o caminho se afasta da origem?
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Parâmetros (via reta): \(\vec{r}(t) = \begin{pmatrix} 0 \\
-        0\end{pmatrix} + t \begin{pmatrix} 2 \\ 4\end{pmatrix}\), \(t \in
-        [0,1]\).
+        <strong>(a)</strong> O campo \(\vec{F}(x,y) = (x, y)\) é radial: em cada
+        ponto \((x,y)\), o vetor campo aponta na mesma direção do vetor posição,
+        afastando-se da origem. Ao longo do segmento de \((0,0)\) a \((2,4)\), o
+        caminho também se afasta da origem. Por exemplo: no ponto \((1,2)\),
+        \(\vec{F} = (1,2)\) aponta na mesma direção do segmento; no ponto
+        \((2,4)\), \(\vec{F} = (2,4)\) também.
       </p>
       <p>
-        Então, \(\frac{d\vec{r}}{dt} = \begin{pmatrix}2 \\ 4\end{pmatrix}\) e
-        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix}2t \\ 4t\end{pmatrix}\).
+        <strong>(b)</strong> Em todos os pontos do segmento (exceto a origem), o
+        campo \(\vec{F}\) aponta exatamente na mesma direção do vetor posição, e
+        o caminho segue nessa mesma direção. O campo está sempre a favor do
+        movimento. Isso sugere que o produto escalar \(\vec{F} \cdot
+        \vec{r}\,'(t)\) é positivo em todo ponto da curva, e portanto o trabalho
+        é positivo.
       </p>
       <p>
-        Logo, \[\int_C \vec{F}\cdot d\vec{r} = \int_{0}^{1} \begin{pmatrix}2t \\
-        4t\end{pmatrix} \cdot \begin{pmatrix}2 \\ 4\end{pmatrix} \, dt.\]
+        <strong>(c)</strong> Estimativa: o trabalho é <strong>positivo</strong>,
+        porque o campo e a direção do movimento estão alinhados em todos os
+        pontos. Como \(\vec{F}\) cresce à medida que nos afastamos da origem, o
+        trabalho deve ser significativamente positivo. O valor exato será
+        calculado no exercício seguinte.
       </p>
-      <p>
-        Isto dá \[\int_{0}^{1} (2t \times 2 + 4t \times 4) \, dt = \int_{0}^{1}
-        (4t + 16t)\, dt = \int_{0}^{1} 20t \, dt.\]
-      </p>
-      <p>
-        \[\int_{0}^{1} 20t \, dt = 20 \left[\frac{t^2}{2}\right]_0^1 = 10.\]
-      </p>
-      <p>CONCLUSÃO: \(\int_C \vec{F}\cdot d\vec{r} = 10\).</p>
     </div>
   </details>
 </li>

@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Projeto de Compartimento Pressurizado -
+    <span class="censored">Skylab</span> [DADOS CLASSIFICADOS]
+  </div>
+  <p>
+    Problemas reais raramente vêm com superfícies bem comportadas e separadas.
+    Aqui, três restrições definem o sólido simultaneamente, e você precisa
+    determinar os limites de cada variável.
+  </p>
+  <p>
+    Sólido \(V\) limitado por \(z=0\), \(y=x^2\) e \(z=4-y\), com \(0\le x\le
+    2\). Monte a integral tripla reduzida a uma dupla e avalie.
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada \((x,y)\), quais são os limites de \(z\)?
+    Para cada \(x\), quais são os limites de \(y\)? Justifique com base nas
+    restrições.
+  </p>
+  <p><strong>(b)</strong> Esboce a projeção de \(V\) no plano \(xy\).</p>
+  <p><strong>(c)</strong> Monte e avalie a integral.</p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(z\) varia de 0 a \(4-y\) (limite inferior \(z=0\), superior
+        \(z=4-y\)). \(y\) varia de \(x^2\) a 4 (limite inferior \(y=x^2\),
+        superior \(y=4\) de \(z=4-y\ge 0\)). \(x\) de 0 a 2.
+      </p>
+      <p>
+        (b) Projeção: região entre a parábola \(y=x^2\) e a reta \(y=4\), para
+        \(x\in[0,2]\).
+      </p>
+      <p>
+        (c) Integral: \(\int_0^2\!\int_{x^2}^{4}\!\int_0^{4-y} dz\,dy\,dx\).
+      </p>
+      <p>Integração em \(z\): \(\int_0^{4-y} dz = 4-y\).</p>
+      <p>
+        Integração em \(y\): \(\int_{x^2}^{4}(4-y)\,dy =
+        \left[4y-\frac{y^2}{2}\right]_{x^2}^{4} =
+        (16-8)-\left(4x^2-\frac{x^4}{2}\right) = 8-4x^2+\frac{x^4}{2}\).
+      </p>
+      <p>
+        Integração em \(x\): \(\int_0^2\left(8-4x^2+\frac{x^4}{2}\right)dx =
+        \left[8x-\frac{4x^3}{3}+\frac{x^5}{10}\right]_0^2 =
+        16-\frac{32}{3}+\frac{32}{10}\).
+      </p>
+      <p>
+        \(= 16 - \frac{32}{3} + \frac{16}{5} = \frac{240-160+48}{15} =
+        \frac{128}{15}\).
+      </p>
+      <p>Resultado: \(128/15\).</p>
+    </div>
+  </details>
+</li>

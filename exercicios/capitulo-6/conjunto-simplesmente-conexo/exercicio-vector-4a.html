@@ -1,16 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
-  <div class="context">ORIGEM: Missão Skylab — Dezembro/1973</div>
+  <div class="context">ORIGEM: Apollo 11 — Preparação, Junho/1969</div>
   <p>
-    A região interior de um toro (rosquinha) em \(\mathbb{R}^3\) é candidata a
-    depósito de combustível. Avalie a simples conexidade.
+    Entendemos o que acontece com um furo. Mas e se o domínio tiver dois? O
+    campo
   </p>
-  <!-- sem dica -->
+  <p>
+    \[F(x,y) = \left(\frac{-y}{x^2+y^2},\; \frac{x}{x^2+y^2}\right) +
+    \left(\frac{-(y-3)}{x^2+(y-3)^2},\; \frac{x}{x^2+(y-3)^2}\right)\]
+  </p>
+  <p>
+    é definido em \(\Omega = \mathbb{R}^2 \setminus \{(0,0),\, (0,3)\}\) — o
+    plano com dois pontos removidos.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que o rotacional de \(F\) é zero em
+    \(\Omega\). Justifique por que basta verificar cada parcela separadamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral de linha de \(F\) ao longo de uma
+    pequena circunferência centrada em \((0,0)\) que não contenha \((0,3)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha ao longo de uma pequena
+    circunferência centrada em \((0,3)\) que não contenha \((0,0)\). Cada furo
+    cria uma obstrução independente?
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        O toro tem cavidade central e túnel; logo não é simplesmente conexo.
+        <strong>(a)</strong> \(F = F_1 + F_2\) onde cada \(F_i\) é um campo
+        vortical. Já mostramos que \(\nabla \times F_i = 0\) em seus respectivos
+        domínios. Como o rotacional é linear: \(\nabla \times F = \nabla \times
+        F_1 + \nabla \times F_2 = 0\) em \(\Omega\).
+      </p>
+      <p>
+        <strong>(b)</strong> Seja \(C_1\) uma circunferência de raio \(R\)
+        pequeno centrada em \((0,0)\), com \((0,3)\) fora de \(C_1\). Em
+        \(C_1\):
+      </p>
+      <p>
+        A integral de \(F_1\) sobre \(C_1\) é \(2\pi\) (como calculado no
+        exercício anterior sobre o campo vortical).
+      </p>
+      <p>
+        A integral de \(F_2\) sobre \(C_1\) é \(0\): o campo \(F_2\) tem
+        rotacional zero em uma vizinhança de \(C_1\) que contém o interior do
+        disco (pois \((0,3)\) está fora). Sendo o disco simplesmente conexo e
+        \(F_2\) com rotacional zero lá, \(F_2\) é conservativo na região e a
+        integral sobre a curva fechada é zero.
+      </p>
+      <p>Logo: \(\oint_{C_1} F \cdot dr = 2\pi + 0 = 2\pi\).</p>
+      <p>
+        <strong>(c)</strong> Analogamente, para uma circunferência \(C_2\)
+        centrada em \((0,3)\) e não contendo \((0,0)\): a integral de \(F_1\)
+        sobre \(C_2\) é \(0\) (pois \(F_1\) é conservativo numa vizinhança de
+        \(C_2\)) e a integral de \(F_2\) sobre \(C_2\) é \(2\pi\).
+      </p>
+      <p>Logo: \(\oint_{C_2} F \cdot dr = 0 + 2\pi = 2\pi\).</p>
+      <p>
+        <strong>Conclusão:</strong> cada furo cria uma obstrução independente. O
+        valor da integral ao redor de cada furo depende apenas do campo vortical
+        associado àquele furo, não dos outros.
       </p>
     </div>
   </details>

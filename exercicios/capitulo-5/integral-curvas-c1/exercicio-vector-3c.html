@@ -1,47 +1,137 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
   <div class="context">
-    ORIGEM: Relatório de Análise - Projeto
-    <span class="censored">Σ-GEMINI</span>
+    ORIGEM: Apollo 11 - Contorno Orbital - PREPARAÇÃO 1969
   </div>
   <p>
-    O trecho de curva \(C\) é definido pela função implícita \(F(x,y,z) = x^2 +
-    y^2 - z^2 = 0\), com \(\vec{r}(t) = \begin{pmatrix} \cosh t \\ \sinh t \\ t
-    \end{pmatrix}\), \(t \in [0,1]\). Verifique se tal parametrização de fato
-    satisfaz a equação implícita e calcule o comprimento.
+    Agora vamos combinar tudo o que aprendemos: construir uma curva fechada,
+    suave por partes, com orientação definida. O contorno orbital abaixo é um
+    retângulo com vértices \((0,0)\), \((2,0)\), \((2,1)\) e \((0,1)\).
+    Parametrize-o como uma curva suave por partes percorrida no sentido
+    anti-horário (orientação positiva):
+  </p>
+  <svg
+    viewBox="0 0 160 110"
+    width="280"
+    height="190"
+    style="display: block; margin: 10px auto"
+  >
+    <g transform="translate(20,10) scale(60,-70)">
+      <rect
+        x="0"
+        y="0"
+        width="2"
+        height="1"
+        fill="none"
+        stroke="#3366aa"
+        stroke-width="0.04"
+      />
+      <polygon
+        points="0.1,0.1 0.9,0.1 0.9,0.3 0.1,0.3"
+        fill="#3366aa"
+        opacity="0.15"
+        transform="scale(1,1)"
+      />
+      <circle cx="0" cy="0" r="0.06" fill="#aa3333" />
+      <circle cx="2" cy="0" r="0.06" fill="#aa3333" />
+      <circle cx="2" cy="1" r="0.06" fill="#aa3333" />
+      <circle cx="0" cy="1" r="0.06" fill="#aa3333" />
+      <text
+        x="-0.15"
+        y="-0.1"
+        font-size="0.18"
+        fill="#aa3333"
+        transform="scale(1,-1)"
+      >
+        (0,0)
+      </text>
+      <text
+        x="1.7"
+        y="-0.1"
+        font-size="0.18"
+        fill="#aa3333"
+        transform="scale(1,-1)"
+      >
+        (2,0)
+      </text>
+      <text
+        x="1.65"
+        y="1.15"
+        font-size="0.18"
+        fill="#aa3333"
+        transform="scale(1,-1)"
+      >
+        (2,1)
+      </text>
+      <text
+        x="-0.15"
+        y="1.15"
+        font-size="0.18"
+        fill="#aa3333"
+        transform="scale(1,-1)"
+      >
+        (0,1)
+      </text>
+      <line
+        x1="1.5"
+        y1="0"
+        x2="1.7"
+        y2="0.15"
+        stroke="#3366aa"
+        stroke-width="0.04"
+        marker-end="none"
+      />
+      <polygon points="1.7,0.15 1.6,0.12 1.63,0.22" fill="#3366aa" />
+      <line
+        x1="2"
+        y1="0.5"
+        x2="1.85"
+        y2="0.7"
+        stroke="#3366aa"
+        stroke-width="0.04"
+      />
+      <polygon points="1.85,0.7 1.82,0.6 1.78,0.67" fill="#3366aa" />
+      <line
+        x1="0.5"
+        y1="1"
+        x2="0.3"
+        y2="0.85"
+        stroke="#3366aa"
+        stroke-width="0.04"
+      />
+      <polygon points="0.3,0.85 0.4,0.88 0.37,0.78" fill="#3366aa" />
+      <line
+        x1="0"
+        y1="0.5"
+        x2="0.15"
+        y2="0.3"
+        stroke="#3366aa"
+        stroke-width="0.04"
+      />
+      <polygon points="0.15,0.3 0.18,0.4 0.22,0.33" fill="#3366aa" />
+    </g>
+  </svg>
+  <p>
+    <strong>(a)</strong> Escreva uma parametrização para cada um dos quatro
+    lados do retângulo, de modo que o ponto final de um coincida com o ponto
+    inicial do seguinte.
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique que a curva fecha — o último ponto do quarto
+    lado deve coincidir com o primeiro ponto do primeiro lado. Verifique também
+    que cada lado é suave (derivada contínua e não-nula).
+  </p>
+  <p>
+    <strong>(c)</strong> Determine e indique a orientação da curva. Em cada
+    vértice, compare as derivadas laterais e classifique cada emenda.
   </p>
   <details class="hint-container">
-    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Hiperbólicos possuem relações análogas às funções
-      trigonométricas.
-    </div>
-  </details>
-  <details>
-    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
-    <div class="solution">
-      <p>
-        Observamos que \(\cosh^2 t - \sinh^2 t = 1\). Logo, \(x^2 + y^2 - z^2 =
-        \cosh^2 t + \sinh^2 t - t^2\). Entretanto, \(\cosh^2 t + \sinh^2 t =
-        2\sinh^2 t + 1\). Não necessariamente isso iguala \(t^2\); há de se
-        verificar coerência para o intervalo \([0,1]\).
-      </p>
-      <p>
-        A derivada: \(\vec{r}'(t) = \begin{pmatrix} \sinh t \\ \cosh t \\ 1
-        \end{pmatrix}\).
-      </p>
-      <p>
-        \(\|\vec{r}'(t)\| = \sqrt{\sinh^2 t + \cosh^2 t + 1}.\) Usando
-        identidades hiperbólicas, \(\sinh^2 t + \cosh^2 t = \cosh(2t) + 1\)
-        (requer cuidado).
-      </p>
-      <p>
-        A integral de \[ \int_0^1 \sqrt{\cosh(2t) + 2}\, dt \] determina o
-        comprimento. A consistência com \(F(x,y,z)=0\) depende de ajustes no
-        modelo: a forma exata do trajeto pode sofrer variações para atender
-        \(\cosh^2 t + \sinh^2 t = t^2\). Em aplicações reais, validamos
-        numericamente a trajetória.
-      </p>
+      [NOTA TÉCNICA]: No sentido anti-horário, comece em \((0,0)\) e vá para
+      \((2,0)\) (direita), depois para \((2,1)\) (cima), depois para \((0,1)\)
+      (esquerda), e volte a \((0,0)\) (baixo). Cada lado é um segmento de reta —
+      parametrize com \(t \in [0,1]\) para cada um.
     </div>
   </details>
 </li>

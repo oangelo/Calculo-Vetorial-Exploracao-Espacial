@@ -3,35 +3,402 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Fluxo de um campo vetorial - Cálculo Vetorial</title>
-    <link href="../../css/style.css" rel="stylesheet" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.05;
+        pointer-events: none;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        margin-bottom: 0;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <div id="intro"></div>
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE MAIO DE
+          <span class="censored">1973</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">SKYLAB ORBITAL WORKSHOP</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO TÉCNICO Nº <span class="censored">Φ-901</span><br /><br />
+          Após o lançamento bem-sucedido da estação
+          <span class="censored">Skylab</span> em 14 de maio de 1973, nossa
+          equipe de engenharia orbital identificou a necessidade de quantificar
+          o <strong>fluxo de campos vetoriais</strong> através de superfícies
+          críticas da estação: paredes de módulos pressurizados, antenas
+          parabólicas, painéis solares e tubulações de ar.<br /><br />
+          No Capítulo 8, você aprendeu a calcular a
+          <strong>integral de superfície</strong> de um campo <em>escalar</em>.
+          Agora enfrentamos uma questão mais sofisticada: quanto de um campo
+          <em>vetorial</em>
+          atravessa uma superfície? Esta é a pergunta central do
+          <strong>fluxo</strong> — e a resposta ligará tudo o que você aprendeu
+          sobre parametrização, vetores normais e integração à física de
+          fluidos, eletricidade e termodinâmica orbital.
+        </div>
+        <div class="warning-box">
+          Este documento contém dados críticos sobre o balanço de pressão e
+          vazão na estação orbital. Divulgação não autorizada acarretará
+          <span class="censored">corte imediato de credenciais</span> conforme
+          diretiva <span class="censored">Ψ-17</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">9001</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+          <span
+            >CÓPIAS: <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: FLUXO DE UM CAMPO VETORIAL
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>1. FLUXO: QUANTO DO CAMPO ATRAVESSA A SUPERFÍCIE</strong>
+        </p>
+        <p>
+          Imagine um campo de velocidade de um fluido — por exemplo, o ar
+          circulando dentro de um módulo espacial. Se colocarmos uma membrana
+          (uma superfície) nesse fluxo, parte do ar atravessa a membrana e parte
+          não. A grandeza que mede
+          <strong>quanto do campo passa de um lado para o outro</strong> é o
+          <strong>fluxo</strong>.
+        </p>
+        <p>
+          Em um único ponto da superfície, a contribuição local ao fluxo é o
+          <strong>produto escalar</strong> do campo \(\vec{F}\) com o vetor
+          normal unitário \(\hat{n}\) à superfície naquele ponto:
+        </p>
+        <p class="formula-highlight">
+          \[\text{fluxo local} = \vec{F} \cdot \hat{n}\]
+        </p>
+        <p>
+          Aqui, \(\vec{F}(x,y,z)\) é o campo vetorial e \(\hat{n}\) é o vetor
+          unitário perpendicular à superfície no ponto \((x,y,z)\). O produto
+          escalar projeta o campo na direção da normal: se o campo é paralelo à
+          superfície, \(\vec{F} \cdot \hat{n} = 0\) e nada atravessa; se é
+          perpendicular, toda a magnitude do campo contribui.
+        </p>
+        <p>
+          Para obter o fluxo total através de toda a superfície \(S\),
+          integramos essa contribuição local sobre cada ponto da superfície:
+        </p>
+        <p class="formula-highlight">
+          \[\Phi = \iint_S \vec{F} \cdot \hat{n} \, dS\]
+        </p>
+        <p>
+          O símbolo \(\Phi\) (letra grega fi maiúscula) denota o fluxo. A
+          integral de superfície soma "quanto do campo atravessa" cada elemento
+          de área \(dS\). Compare com a integral de superfície escalar do
+          Capítulo 8: ali integrávamos uma função \(f(x,y,z)\); aqui integramos
+          o produto escalar \(\vec{F} \cdot \hat{n}\).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. ORIENTAÇÃO: PARA ONDE APONTA A NORMAL?</strong>
+        </p>
+        <p>
+          O vetor normal \(\hat{n}\) pode apontar para qualquer um dos dois
+          lados da superfície. Essa escolha é a <strong>orientação</strong>.
+          Trocar \(\hat{n}\) por \(-\hat{n}\) inverte o sinal do fluxo: o que
+          era "para fora" vira "para dentro" e vice-versa.
+        </p>
+        <p>
+          Para uma superfície <strong>fechada</strong> (como a casca de uma
+          esfera), a convenção é usar a normal
+          <strong>apontando para fora</strong> do volume delimitado. Com essa
+          convenção:
+        </p>
+        <p>
+          <strong>Fluxo positivo</strong> \(\Rightarrow\) o campo sai do volume
+          (mais campo sai do que entra).<br />
+          <strong>Fluxo negativo</strong> \(\Rightarrow\) o campo entra no
+          volume (mais campo entra do que sai).<br />
+          <strong>Fluxo zero</strong> \(\Rightarrow\) entra tanto quanto sai —
+          balanço perfeito.
+        </p>
+        <p>
+          No cálculo prático usando a parametrização \(\vec{r}(u,v)\) do
+          Capítulo 8, o produto vetorial \(\vec{r}_u \times \vec{r}_v\) fornece
+          um vetor normal (não necessariamente unitário). O fluxo torna-se:
+        </p>
+        <p class="formula-highlight">
+          \[\Phi = \iint_D \vec{F}(\vec{r}(u,v)) \cdot (\vec{r}_u \times
+          \vec{r}_v) \, du \, dv\]
+        </p>
+        <p>
+          onde \(D\) é o domínio dos parâmetros \((u,v)\). A orientação correta
+          depende de verificar se \(\vec{r}_u \times \vec{r}_v\) aponta na
+          direção desejada; caso contrário, troca-se a ordem do produto
+          vetorial.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>3. SUPERFÍCIES COMPOSTAS E FECHADAS</strong>
+        </p>
+        <p>
+          Muitas superfícies práticas — módulos espaciais, tanques, habitats —
+          são <strong>compostas por partes</strong>. Um cilindro, por exemplo,
+          tem a lateral mais dois discos nas bases. Uma cúpula hemisférica mais
+          um disco plan formam uma esfera completa.
+        </p>
+        <p>
+          O fluxo total através de uma superfície composta é a
+          <strong>soma dos fluxos por cada parte</strong>, desde que todas usem
+          a mesma orientação (normal para fora):
+        </p>
+        <p class="formula-highlight">
+          \[\Phi_{\text{total}} = \sum_{i=1}^{k} \iint_{S_i} \vec{F} \cdot
+          \hat{n}_i \, dS_i\]
+        </p>
+        <p>
+          Cada parte \(S_i\) pode exigir sua própria parametrização e seu
+          próprio vetor normal. A clave está em garantir que todas as normais
+          apontem <strong>para fora</strong> do volume delimitado. Essa ideia de
+          somar fluxos por partes de uma superfície fechada é o ponto de partida
+          para um dos teoremas mais importantes do cálculo vetorial.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> O conceito de fluxo atravessa a
+        história da física. Gauss formulou seu famoso teorema sobre fluxo e
+        divergência em 1835. No século XX, a NASA aplicou esses conceitos para
+        modelar o escoamento de gases em câmaras de combustão, a distribuição de
+        pressão em cabins pressurizadas e o campo gravitacional ao redor de
+        estações orbitais. O <span class="censored">Skylab</span>, primeira
+        estação espacial americana (1973–1979), tinha módulos cilíndricos e
+        hemisféricos cuja análise estrutural dependia diretamente de cálculos de
+        fluxo.
+      </div>
 
       <main>
         <ol class="exercise-list" id="exercises"></ol>
       </main>
 
-      <div id="footer"></div>
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">15</span> • DOCUMENTO VX-<span
+          class="censored"
+          >9001</span
+        >
+      </div>
     </div>
 
     <script>
-      async function loadContent() {
+      async function loadExercises() {
         try {
-          // Carregar intro
-          const introResp = await fetch('intro.html');
-          if (introResp.ok) {
-            document.getElementById('intro').innerHTML = await introResp.text();
-          }
-
-          // Lista de exercícios em ordem
-          const exercises = [];
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
 
           const list = document.getElementById('exercises');
 
-          // Carregar cada exercício
           for (const file of exercises) {
             const resp = await fetch(file);
             if (resp.ok) {
@@ -39,22 +406,15 @@
             }
           }
 
-          // Footer
-          document.getElementById('footer').innerHTML = ``;
-
-          // Re-renderizar MathJax
-          if (window.MathJax && window.MathJax.typesetPromise) {
-            MathJax.typesetPromise();
-          } else if (window.MathJax && window.MathJax.Hub) {
-            // MathJax 2.x
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
-          console.error('Erro ao carregar conteúdo:', error);
+          console.error('Erro ao carregar exercícios:', error);
         }
       }
 
-      loadContent();
+      loadExercises();
     </script>
   </body>
 </html>

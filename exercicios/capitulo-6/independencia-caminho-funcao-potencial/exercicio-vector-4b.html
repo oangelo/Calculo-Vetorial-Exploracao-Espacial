@@ -1,18 +1,70 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
-  <div class="context">ORIGEM: Skylab – Diagnóstico de Falha, 1974</div>
+  <div class="context">
+    ORIGEM: Projeto de Campo de Frenagem – Reentrada Atmosférica, JUL/1969
+  </div>
   <p>
-    Considere domínio \(D=\mathbb{R}^3\setminus\{z\text{-eixo}\}\). Mostre que o
-    campo \(\vec{G}(x,y,z)=\begin{pmatrix} -y/r^2 \\ x/r^2 \\ 0 \end{pmatrix}\)
-    (com \(r^2=x^2+y^2\)) não admite potencial em D embora
-    \(\nabla\times\vec{G}=\vec{0}\).
+    A prova do FTC mostra que \(\vec{F} = \nabla\Phi\) implica independência do
+    caminho. Mas o caminho inverso também vale? Se o trabalho independe do
+    caminho, então \(\vec{F}\) é gradiente de algum \(\Phi\). E mais: se
+    quisermos que o campo tenha uma forma específica, como projetamos \(\Phi\)?
+    Este exercício inverte o problema: em vez de encontrar \(\Phi\) a partir de
+    \(\vec{F}\), você vai <em>projetar</em> \(\Phi\) a partir de especificações
+    de comportamento desejado para o campo.
+  </p>
+  <p>
+    Especifique-se um campo de frenagem para reentrada atmosférica com as
+    seguintes propriedades: (i) a força é sempre dirigida para o ponto
+    \((0,0,3)\), que representa o corredor de reentrada; (ii) a magnitude da
+    força cresce linearmente com a distância até esse ponto; (iii) \(\vec{F} =
+    \nabla\Phi\).
+  </p>
+  <p>
+    <strong>(a)</strong> Traduza as especificações (i) e (ii) em condições
+    matemáticas sobre as derivadas parciais de \(\Phi\). Escreva a forma
+    desejada de \(\vec{F}\).
+  </p>
+  <p><strong>(b)</strong> Construa \(\Phi\) que satisfaça essas condições.</p>
+  <p>
+    <strong>(c)</strong> Verifique seu resultado calculando \(\nabla\Phi\) e
+    conferindo que as três especificações são atendidas.
+  </p>
+  <p>
+    <strong>(d)</strong> Discuta: a escolha de \(\Phi\) é única? O que pode ser
+    alterado sem mudar o campo \(\vec{F}\)?
   </p>
   <details>
-    <summary>RELATÓRIO DE CÁLCALO [SIGMA-4 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Curva circular em torno do eixo z dá integral \(2\pi\). Falha decorre de
-        topologia do domínio: D não é simplesmente conexa.
+        <strong>(a)</strong> A força deve apontar para \((0,0,3)\), logo
+        \(\vec{F}\) é proporcional a \(-(x, y, z-3)\). A magnitude cresce
+        linearmente com a distância \(d = \sqrt{x^2+y^2+(z-3)^2}\), então
+        \(|\vec{F}| = kd\) com constante \(k\). Tomando \(k = 1\): \(\vec{F} =
+        (-x, -y, -(z-3))\). As condições sobre \(\Phi\) são: \(\frac{\partial
+        \Phi}{\partial x} = -x\), \(\frac{\partial \Phi}{\partial y} = -y\),
+        \(\frac{\partial \Phi}{\partial z} = 3-z\).
+      </p>
+      <p>
+        <strong>(b)</strong> De \(\frac{\partial \Phi}{\partial x} = -x\):
+        \(\Phi = -\frac{x^2}{2} + g(y,z)\). De \(\frac{\partial \Phi}{\partial
+        y} = -y\): \(g_y = -y \Rightarrow g = -\frac{y^2}{2} + h(z)\). De
+        \(\frac{\partial \Phi}{\partial z} = 3-z\): \(h'(z) = 3-z \Rightarrow
+        h(z) = 3z - \frac{z^2}{2}\). Juntando: \(\Phi = -\frac{x^2+y^2}{2} + 3z
+        - \frac{z^2}{2} = -\frac{1}{2}(x^2 + y^2 + (z-3)^2) + \frac{9}{2}\).
+        Absorvendo a constante: \(\Phi(x,y,z) = -\frac{1}{2}(x^2 + y^2 +
+        (z-3)^2)\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\nabla\Phi = (-x, -y, -(z-3))\). ✓ Aponta para
+        \((0,0,3)\). Magnitude: \(\sqrt{x^2 + y^2 + (z-3)^2} = d\). ✓ Cresce
+        linearmente. \(\vec{F} = \nabla\Phi\). ✓
+      </p>
+      <p>
+        <strong>(d)</strong> A escolha <strong>não é única</strong>: somar
+        qualquer constante a \(\Phi\) não altera \(\nabla\Phi\). A forma
+        funcional, porém, é única a menos dessa constante — se dois potenciais
+        diferem por mais que uma constante, seus gradientes diferem.
       </p>
     </div>
   </details>

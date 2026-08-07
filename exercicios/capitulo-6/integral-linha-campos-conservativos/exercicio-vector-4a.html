@@ -1,20 +1,40 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
   <div class="context">
-    ORIGEM: Missão Ómega – Estabilidade Orbital [CONFIDENCIAL – 15/SET/1965]
+    ORIGEM: Missão Ômega – Análise Paramétrica de Estabilidade [CONFIDENCIAL –
+    01/JUN/1969]
   </div>
   <p>
-    O campo \(\vec{F}(x,y)=\begin{pmatrix}2x+a y \\ 2y-a x\end{pmatrix}\)
-    depende de uma constante \(a\). Determine \(a\) de forma que o campo seja
-    conservativo e calcule a integral de \((0,0)\) a \((1,1)\).
+    O campo \(\vec{F}(x,y) = (2x + ay,\, x + 2y)\) depende de um parâmetro \(a
+    \in \mathbb{R}\). Dependendo do valor de \(a\), o campo pode ou não ser
+    conservativo.
   </p>
-  <!-- Sem dicas para OMEGA series -->
+  <p>
+    <strong>(a)</strong> Aplique o teste de conservatividade (derivadas
+    cruzadas) e determine o valor de \(a\) para o qual o campo é conservativo.
+  </p>
+  <p>
+    <strong>(b)</strong> Para o valor de \(a\) encontrado, determine a função
+    potencial \(\phi\) integrando componente a componente.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha de \(A = (0, 0)\) a \(B =
+    (1, 2)\) usando o potencial.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
-      Para conservativo: \(\partial F_1/\partial y = a = \partial F_2/\partial x
-      = -a\) \(\Rightarrow a=0\). Então \(\vec{F}=\nabla(x^{2}+y^{2})\) e
-      \(W=1^{2}+1^{2}-0=2\).
+      <p>
+        (a) \(\partial F_1/\partial y = a\) e \(\partial F_2/\partial x = 1\).
+        Para conservatividade: \(a = 1\).
+      </p>
+      <p>
+        (b) Com \(a = 1\): \(\vec{F} = (2x + y,\, x + 2y)\). Integrando \(F_1 =
+        2x + y\) em \(x\): \(\phi = x^2 + xy + g(y)\). Derivando em \(y\):
+        \(\partial\phi/\partial y = x + g'(y) = x + 2y\). Logo \(g'(y) = 2y\),
+        \(g(y) = y^2\). \(\phi(x,y) = x^2 + xy + y^2\).
+      </p>
+      <p>(c) \(\phi(1,2) - \phi(0,0) = (1 + 2 + 4) - 0 = 7\).</p>
     </div>
   </details>
 </li>

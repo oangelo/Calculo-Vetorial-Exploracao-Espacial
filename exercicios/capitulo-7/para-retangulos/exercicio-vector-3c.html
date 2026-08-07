@@ -1,27 +1,61 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
   <div class="context">
-    ORIGEM: Plano de Cobertura de Painéis Solares – Skylab [JAN/1973]
+    ORIGEM: Cálculo de Área de Impacto — Apollo 13, Contingência [ABR/1970]
   </div>
   <p>
-    Use \(\vec{F}(x,y) = (-y, x)\) em um retângulo genérico \(R =
-    [a,b]\times[c,d]\). Demonstre que a circulação coincide com
-    <em>duas vezes a área</em> de \(R\) e discuta a relação com o cálculo de
-    áreas através de integrais de linha.
+    O teorema que acabamos de provar não serve só para calcular circulação — ele
+    também pode calcular <strong>área</strong>. Basta escolher o campo certo.
+    Veremos no próximo tópico que essa ideia se estende para regiões com
+    fronteira curva qualquer.
+  </p>
+  <p>
+    Considere o campo vetorial \(\vec{F}(x,y) = \left(-\frac{y}{2},\,
+    \frac{x}{2}\right)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional de \(\vec{F}\) e verifique que é
+    constante.
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique o Teorema de Green para expressar a circulação
+    de \(\vec{F}\) sobre a fronteira de um retângulo genérico \(R = [a,b] \times
+    [c,d]\) em termos da área de \(R\).
+  </p>
+  <p>
+    <strong>(c)</strong> Discuta: por que esse "truque" funciona? E como ele
+    poderia ser usado para calcular a área de uma região com fronteira curva?
+    (Isso será explorado no próximo tópico.)
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Lembre que a rotação desse campo é constante.
+      [NOTA TÉCNICA]: Se o rotacional for uma constante \(C\), então
+      \(\oint_{\partial R} P\,dx + Q\,dy = C \cdot \text{Área}(R)\). O truque é
+      encontrar um campo cujo rotacional seja 1.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Rotação: \(\dfrac{\partial x}{\partial x} - \dfrac{\partial
-        (-y)}{\partial y} = 1 + 1 = 2.\)<br />Assim, \[\oint_{\partial R}
-        (-y)\,dx + x\,dy = 2 \times \text{Área}(R) = 2(b-a)(d-c).\]
+        <strong>(a)</strong> Rotacional: \(\frac{\partial(x/2)}{\partial x} -
+        \frac{\partial(-y/2)}{\partial y} = \frac{1}{2} -
+        \left(-\frac{1}{2}\right) = 1\). O rotacional é a constante 1.
+      </p>
+      <p>
+        <strong>(b)</strong> Por Green: \(\oint_{\partial R} -\frac{y}{2}\,dx +
+        \frac{x}{2}\,dy = \iint_R 1\,dA = \text{Área}(R) = (b-a)(d-c)\). A
+        circulação é exatamente a área do retângulo.
+      </p>
+      <p>
+        <strong>(c)</strong> O truque funciona porque escolhemos um campo cujo
+        rotacional é 1 — assim a integral dupla devolve diretamente a área. Para
+        uma região com fronteira curva, basta calcular a integral de linha de
+        \(\left(-\frac{y}{2}, \frac{x}{2}\right)\) ao redor da fronteira: o
+        resultado é a área. Isso transforma o cálculo de área em um cálculo de
+        integral de linha — muito mais simples quando a fronteira é descrita por
+        poucas curvas.
       </p>
     </div>
   </details>

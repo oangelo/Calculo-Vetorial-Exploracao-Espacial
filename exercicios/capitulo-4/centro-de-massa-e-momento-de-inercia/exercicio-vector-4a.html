@@ -1,30 +1,74 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
   <div class="context">
-    ORIGEM: Missão Skylab [1973] - Análise de Módulos Despressurizados
+    ORIGEM: Módulo Gemini Completo - Análise de Estabilidade [Dezembro 1966]
   </div>
   <p>
-    Um módulo assume formato poliédrico irregular no espaço, subdividido em
-    células tetraédricas de densidades distintas. Suponha 5 tetraedros
-    justapostos com diferentes valores de \(\rho_i\). Determinar o centro de
-    massa global, considerando cada sub-volume e respectivo valor de densidade.
+    No exercício sobre corpo composto, você calculou o centro de massa de dois
+    blocos por soma ponderada. Agora o desafio é maior: o módulo Gemini completo
+    é formado por três seções cilíndricas coaxiais, cada uma com densidade
+    diferente. A seção de equipamentos (base) ocupa \(x^2 + y^2 \le 1\), \(0 \le
+    z \le 3\), com \(\rho_1 = 3\). O adaptador (meio) ocupa \(x^2 + y^2 \le 1\),
+    \(3 \le z \le 5\), com \(\rho_2 = 5\). A cápsula de reentrada (topo) ocupa
+    \(x^2 + y^2 \le 1\), \(5 \le z \le 6\), com \(\rho_3 = 7\).
   </p>
-  <!-- SÉRIE OMEGA: sem dicas -->
+  <p>
+    <strong>(a)</strong> Decomponha o corpo nas três seções e calcule massa e
+    centro de massa de cada uma.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine o centro de massa global por soma ponderada.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine o momento de inércia total \(I_z\) e
+    interprete: qual seção contribui mais para a resistência à rotação?
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a) Cada seção:</strong></p>
       <p>
-        Cada tetraedro <em>i</em> possui volume \(V_i\) e densidade \(\rho_i\)
-        constantes. Calcular massa \(M_i = \rho_i V_i\) e centros de massa
-        \(\vec{R}_{C_i}\) individuais. Em seguida:
+        Seção de equipamentos: \(M_1 = 3 \cdot \pi \cdot 3 = 9\pi\), \(z_{C1} =
+        3/2\).
+      </p>
+      <p>Adaptador: \(M_2 = 5 \cdot \pi \cdot 2 = 10\pi\), \(z_{C2} = 4\).</p>
+      <p>
+        Cápsula de reentrada: \(M_3 = 7 \cdot \pi \cdot 1 = 7\pi\), \(z_{C3} =
+        11/2\).
+      </p>
+      <p>Por simetria axial, \(x_C = y_C = 0\) para todas as seções.</p>
+      <p><strong>(b) Centro de massa global:</strong></p>
+      <p>Massa total: \(M = 9\pi + 10\pi + 7\pi = 26\pi\).</p>
+      <p>
+        \(\displaystyle z_C = \frac{9\pi \cdot \frac{3}{2} + 10\pi \cdot 4 +
+        7\pi \cdot \frac{11}{2}}{26\pi} = \frac{\frac{27}{2} + 40 +
+        \frac{77}{2}}{26} = \frac{27 + 80 + 77}{2 \cdot 26} = \frac{184}{52} =
+        \frac{46}{13}.\)
       </p>
       <p>
-        \[ M = \sum_i M_i,\quad \vec{R}_C = \frac{1}{M} \sum_i M_i
-        \,\vec{R}_{C_i}. \]
+        Centro de massa global: \(\vec{R}_C = (0,\, 0,\, 46/13)\). Note que
+        \(46/13 \approx 3{,}54\), acima do centro geométrico (\(z=3\)) porque as
+        seções superiores são mais densas.
+      </p>
+      <p><strong>(c) Momento de inércia total:</strong></p>
+      <p>
+        Para um cilindro de raio \(R\), altura \(h\) e densidade \(\rho\) em
+        torno do eixo de simetria: \(I_z = \frac{\rho \pi R^4 h}{2}\). Com
+        \(R=1\):
+      </p>
+      <p>Seção 1: \(I_{z1} = \frac{3\pi \cdot 3}{2} = \frac{9\pi}{2}\).</p>
+      <p>Seção 2: \(I_{z2} = \frac{5\pi \cdot 2}{2} = 5\pi\).</p>
+      <p>Seção 3: \(I_{z3} = \frac{7\pi \cdot 1}{2} = \frac{7\pi}{2}\).</p>
+      <p>
+        \(I_z = \frac{9\pi}{2} + 5\pi + \frac{7\pi}{2} = \frac{9\pi + 10\pi +
+        7\pi}{2} = 13\pi\).
       </p>
       <p>
-        Conclusão: O resultado final depende dos valores específicos de
-        \(\rho_i\), volumes e posicionamento de cada célula tetraédrica.
+        A seção 2 (adaptador) contribui com \(5\pi/13\pi \approx 38\%\) do
+        momento de inércia, proporcional à sua massa (maior que a seção 3, mas
+        mesma distância ao eixo). A seção 3, embora mais densa, é mais curta e
+        contribui menos. O momento de inércia total é a soma direta porque todas
+        as seções compartilham o mesmo eixo de simetria.
       </p>
     </div>
   </details>

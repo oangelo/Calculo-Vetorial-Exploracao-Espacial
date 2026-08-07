@@ -1,16 +1,50 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
   <div class="context">
-    ORIGEM: Projeto Órbita Lunar — Arquivo SIGMA‑4 [1969]
+    ORIGEM: Laboratório de Estruturas de Mínima Área — Apollo 16 [ABR/1972]
   </div>
-  <p>Forneça uma parametrização para a superfície de Enneper de ordem 1.</p>
+  <p>
+    Todas as superfícies que vimos são geradas por rotação ou translação. A
+    catenoide tem uma propriedade especial: é a superfície de menor área que
+    conecta dois anéis paralelos. Ela nasce da rotação de uma catenária — a
+    curva formada por uma corrente suspensa entre dois pontos.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique a curva geratriz da catenoide: a catenária
+    \(\vec{c}(v) = (a\cosh(v/a),\, 0,\, v)\) no plano <strong>xz</strong>, onde
+    <strong>a > 0</strong> é uma constante. Reconheça sua forma: o que acontece
+    quando <strong>v = 0</strong>? E quando <strong>v → ±∞</strong>?
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a parametrização da catenoide obtida pela
+    rotação da catenária em torno do eixo <strong>z</strong>, usando o ângulo
+    <strong>u</strong> como parâmetro de rotação.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine o domínio dos parâmetros para a superfície
+    entre os planos <strong>z = −h</strong> e <strong>z = h</strong>, e esboce a
+    catenoide indicando a curva geratriz e o eixo de revolução.
+  </p>
+  <!-- OMEGA: sem dica -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        É possível usar \(u,v\in[-2,2]\) e<br />\[\vec{r}(u,v) = \bigl( u -
-        \tfrac{u^3}{3} + u v^2,\; v - \tfrac{v^3}{3} + v u^2,\; u^2 - v^2
-        \bigr)\]
+        <strong>(a)</strong> A catenária \(\vec{c}(v) = (a\cosh(v/a),\, 0,\,
+        v)\) tem seu ponto mais baixo em <strong>v = 0</strong>: \(\vec{c}(0) =
+        (a,\, 0,\, 0)\). Quando <strong>v → ±∞</strong>,
+        <strong>x → ∞</strong> exponencialmente. A curva é simétrica em relação
+        ao eixo <strong>x</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> Rotacionando em torno de <strong>z</strong>:
+        \(\vec{r}(u,v) = (a\cosh(v/a)\cos u,\; a\cosh(v/a)\sin u,\; v)\).
+      </p>
+      <p>
+        <strong>(c)</strong> Domínio: <strong>u ∈ [0, 2π]</strong> e
+        <strong>v ∈ [−h, h]</strong>. A catenoide tem a forma de um "funil"
+        simétrico, mais estreito no equador (<strong>z = 0</strong>) e mais
+        largo nos extremos (<strong>z = ±h</strong>).
       </p>
     </div>
   </details>

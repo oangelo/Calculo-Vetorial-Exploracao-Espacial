@@ -4,7 +4,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 ## Apresentações e Material Didático
 
-0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/index.html)
+0. [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-0-revisao/index.html) | [📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-0-revisao/index.html)
 
 - [Geometria Analítica](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/geometria-analitica/index.html)
 - [Conicas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/conicas/index.html)
@@ -12,7 +12,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Derivada](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/derivadas/index.html)
 - [Integral](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-0/integrais/index.html)
 
-1. [Funções de várias variáveis reais a valores vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-1-funcoes-vetoriais/index.html)
+1. [Funções de várias variáveis reais a valores vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-1-funcoes-vetoriais/index.html) | [📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-1-funcoes-vetoriais/index.html)
 
 - [Função vetoriais](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/funcao-vetorial/index.html)
 - [Campo vetorial](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/campo-vetorial/index.html)
@@ -22,7 +22,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Divergente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/divergente/index.html)
 - [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-1/revisao/index.html)
 
-2. [Integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-2-integrais-duplas/index.html)
+2. [Integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-2-integrais-duplas/index.html) | [📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-2-integrais-duplas/index.html)
 
 - [Soma de Riemann](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/soma-de-riemann/index.html)
 - [Definição de integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/definicao-de-integral-dupla/index.html)
@@ -33,7 +33,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Troca de ordem de integração](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/troca-de-ordem/index.html)
 - [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/revisao/index.html)
 
-3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-3-mudanca-de-variaveis/index.html)
+3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-3-mudanca-de-variaveis/index.html) | [📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-3-mudanca-de-variaveis/index.html)
 
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis/index.html)
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa/index.html)

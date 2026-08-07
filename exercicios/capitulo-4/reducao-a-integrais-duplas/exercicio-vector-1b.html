@@ -1,62 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
   <div class="context">
-    ORIGEM: Simulação de Tanque Orbital -
-    <span class="censored">Setor de Propulsão</span>
+    ORIGEM: Análise de Volume Simplificado - Laboratório de
+    <span class="censored">Testes</span> [MAR/1974]
   </div>
   <p>
-    No exercício anterior, calculamos o volume de um paralelepípedo integrando
-    \(1\,dz\) sobre limites constantes. Agora os limites em \(z\) dependem de
-    \((x,y)\), o que é o caso mais geral.
+    No exercício anterior, os limites de \(z\) eram constantes (de 0 a 4). Agora
+    os limites de \(z\) dependem de \((x,y)\) — este é o caso geral, e aparece
+    sempre que o sólido tem "topo inclinado".
   </p>
   <p>
-    Seja \(V\) o volume limitado acima pelo cone \(z = \sqrt{x^2 + y^2}\) e
-    abaixo pelo plano \(z=0\) na região \(D\). Considere \(D\) o círculo \(x^2 +
-    y^2 \le 4\).
+    Considere o tetraedro limitado pelos planos \(x=0\), \(y=0\), \(z=0\) e
+    \(x+y+z=1\). Queremos calcular o volume desse tetraedro via integral tripla.
   </p>
   <p>
-    <strong>(a)</strong> Identifique os limites de \(z\) em função de \((x,y)\)
-    para cada ponto da base \(D\). Esboce o sólido mentalmente.
+    <strong>(a)</strong> Para cada ponto \((x,y)\) na base, identifique os
+    limites inferior e superior de \(z\). Lembre: \(z=0\) é o chão e \(x+y+z=1\)
+    é o teto.
   </p>
   <p>
-    <strong>(b)</strong> Escreva a integral tripla de \(\iiint_V x\, dV\)
-    reduzindo-a a uma integral dupla.
+    <strong>(b)</strong> Determine a projeção \(D\) do tetraedro no plano
+    \(xy\). Descreva \(D\) com desigualdades em \(x\) e \(y\).
   </p>
   <p>
-    <strong>(c)</strong> Calcule a integração em \(z\) e obtenha a expressão da
-    integral dupla resultante sobre \(D\).
+    <strong>(c)</strong> Monte a integral dupla resultante e calcule o volume.
+    Verifique: o tetraedro tem base triangular de área \(1/2\) e altura 1.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Para cada \((x,y)\) no disco de raio \(2\), \(z\) vai de
-      \(0\) até \(\sqrt{x^2+y^2}\). Note que \(x\) é independente de \(z\),
-      então na integração em \(z\), ele é constante.
+      [NOTA TÉCNICA]: Isolando \(z\) na equação do plano: \(z = 1-x-y\). No
+      plano \(z=0\), a equação fica \(x+y=1\) — esta reta é a fronteira da
+      projeção \(D\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
+      <p>Para cada \((x,y)\) na base, \(z\) varia de \(0\) a \(1-x-y\).</p>
       <p>
-        Para cada ponto \((x,y)\) em \(D\), \(z\) varia de \(0\) a \(\sqrt{x^2 +
-        y^2}\).
+        A projeção \(D\) é o triângulo com vértices \((0,0)\), \((1,0)\) e
+        \((0,1)\), descrito por \(0 \le x \le 1\) e \(0 \le y \le 1-x\).
       </p>
       <p>
-        Portanto: \[ \iiint_V x \, dV = \iint_D \left(\int_{z=0}^{z=\sqrt{x^2 +
-        y^2}} x \, dz\right) dA. \]
+        Integral dupla: \[ \iint_D (1-x-y)\,dA = \int_0^1\!\int_0^{1-x}
+        (1-x-y)\,dy\,dx. \]
       </p>
       <p>
-        Integração interna: \(\int_{0}^{\sqrt{x^2 + y^2}} x \, dz = x \cdot
-        \sqrt{x^2 + y^2}.\)
+        Integração em \(y\): \(\int_0^{1-x}(1-x-y)\,dy = \left[(1-x)y -
+        \frac{y^2}{2}\right]_0^{1-x} = (1-x)^2 - \frac{(1-x)^2}{2} =
+        \frac{(1-x)^2}{2}\).
       </p>
       <p>
-        Logo, a integral reduzida é: \[ \iint_D x \sqrt{x^2 + y^2} \, dA, \quad
-        \text{onde } D: x^2 + y^2 \le 4. \]
+        Integração em \(x\): \(\int_0^1 \frac{(1-x)^2}{2}\,dx =
+        \frac{1}{2}\left[-\frac{(1-x)^3}{3}\right]_0^1 =
+        \frac{1}{2}\cdot\frac{1}{3} = \frac{1}{6}.\)
       </p>
-      <p>
-        O problema se torna mais simples em coordenadas polares, mas a
-        solicitação era apenas expressar a redução em forma de dupla integral.
-      </p>
+      <p>Volume = \(1/6\) unidades cúbicas.</p>
     </div>
   </details>
 </li>

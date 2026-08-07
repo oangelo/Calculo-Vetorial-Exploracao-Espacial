@@ -1,33 +1,80 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
   <div class="context">
-    ORIGEM: <span class="censored">CENTRO DE CÁLCULOS</span> - 1965
+    ORIGEM: TRAJETÓRIA HELICOIDAL 3D -
+    <span class="censored">APOLLO 10</span>, MAIO 1969
   </div>
   <p>
-    Dado o campo \(\vec{F}(x,y) = \begin{pmatrix} x-y \\ xy \end{pmatrix}\) no
-    plano, deseja-se calcular \(\int_C \vec{F}\cdot d\vec{r}\) onde \(C\) é
-    formado pela semicircunferência de raio 2 (região superior) e o segmento no
-    eixo \(x\) de \(-2\) até \(2\). Percurso anti-horário.
+    Até agora ficamos no plano. Mas o procedimento que desenvolvemos —
+    parametrizar, projetar, integrar — funciona em qualquer dimensão. Vamos
+    estender para o espaço tridimensional com uma hélice circular, que modela a
+    trajetória de uma sonda espiralando ao redor de um corpo celeste.
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y,z) = \begin{pmatrix} y \\ z \\ x
+    \end{pmatrix}\) e a hélice \(\vec{r}(t) = \begin{pmatrix} \cos t \\ \sin t
+    \\ t \end{pmatrix}\) com \(t \in [0, 2\pi]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Avalie o campo na hélice e calcule a derivada da
+    parametrização.
+  </p>
+  <p>
+    <strong>(b)</strong> Forme o produto escalar tridimensional e simplifique.
+    Separe as parcelas para facilitar a integração.
+  </p>
+  <p>
+    <strong>(c)</strong> Integre cada parcela separadamente, usando integração
+    por partes quando necessário, e obtenha o resultado final.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
-    <div class="hint">[NOTA TÉCNICA]: Há simetrias não triviais.</div>
+    <div class="hint">
+      [NOTA TÉCNICA]: Separe o produto escalar em parcelas e integre cada uma
+      individualmente. Para a parcela \(t\cos t\), use integração por partes com
+      \(u = t\) e \(dv = \cos t \, dt\). Lembre que \(\int_0^{2\pi} \sin^2 t \,
+      dt = \pi\).
+    </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> Avaliação do campo e derivada:</p>
       <p>
-        Segue abordagem semelhante ao Exercício VECTOR-2C, mas com o campo
-        \(\vec{F}(x,y)\) diferente. Dividimos em dois trechos:
-        semicircunferência e eixo \(x\).
+        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix} \sin t \\ t \\ \cos t
+        \end{pmatrix}\), \quad \(\vec{r}\,'(t) = \begin{pmatrix} -\sin t \\ \cos
+        t \\ 1 \end{pmatrix}\).
+      </p>
+      <p><strong>(b)</strong> Produto escalar tridimensional:</p>
+      <p>
+        \[\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t) = (\sin t)(-\sin t) + (t)(\cos
+        t) + (\cos t)(1) = -\sin^2 t + t\cos t + \cos t\]
+      </p>
+      <p><strong>(c)</strong> Integração parcela por parcela:</p>
+      <p>
+        <strong>Parcela 1:</strong> \(\int_0^{2\pi} -\sin^2 t \, dt = -\pi\),
+        pois \(\int_0^{2\pi} \sin^2 t \, dt = \pi\).
       </p>
       <p>
-        O resultado final (após cálculos detalhados) indica \(\int_C
-        \vec{F}\cdot d\vec{r} = 8.\)
+        <strong>Parcela 2:</strong> \(\int_0^{2\pi} t\cos t \, dt\). Integração
+        por partes: \(u = t\), \(dv = \cos t \, dt\), logo \(du = dt\), \(v =
+        \sin t\).
       </p>
       <p>
-        CONCLUSÃO: O trabalho líquido do campo ao longo da fronteira descrita é
-        8.
+        \[\int_0^{2\pi} t\cos t \, dt = \bigl[t\sin t + \cos t\bigr]_0^{2\pi} =
+        (2\pi \cdot 0 + 1) - (0 + 1) = 0\]
+      </p>
+      <p>
+        <strong>Parcela 3:</strong> \(\int_0^{2\pi} \cos t \, dt = \bigl[\sin
+        t\bigr]_0^{2\pi} = 0\).
+      </p>
+      <p>Soma:</p>
+      <p>\[\int_C \vec{F} \cdot d\vec{r} = -\pi + 0 + 0 = -\pi\]</p>
+      <p>
+        O trabalho ao longo da hélice é \(-\pi\). O procedimento é idêntico ao
+        caso 2D — apenas com uma componente extra no produto escalar. A parcela
+        dominante é \(-\sin^2 t\), que contribui negativamente em todos os
+        pontos. As demais parcelas se cancelam ao longo de um período completo.
       </p>
     </div>
   </details>

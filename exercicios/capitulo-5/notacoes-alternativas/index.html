@@ -8,31 +8,7 @@
       href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
       rel="stylesheet"
     />
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      async=""
-      id="MathJax-script"
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-    <script>
-      MathJax = {
-        tex: {
-          inlineMath: [
-            ['$', '$'],
-            ['\\(', '\\)'],
-          ],
-          displayMath: [
-            ['$$', '$$'],
-            ['\\[', '\\]'],
-          ],
-          processEscapes: true,
-          processEnvironments: true,
-        },
-        options: {
-          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        },
-      };
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
       :root {
         --main-bg-color: #0a0a0a;
@@ -219,14 +195,6 @@
         margin: 15px 0;
       }
 
-      .mission-context {
-        font-style: italic;
-        margin: 15px 0;
-        padding: 10px;
-        background-color: rgba(0, 0, 0, 0.05);
-        border: 1px dashed #555;
-      }
-
       .formula-highlight {
         text-align: center;
         margin: 15px auto;
@@ -239,20 +207,6 @@
         padding: 8px;
         border: 1px dotted #777;
         background-color: rgba(139, 0, 0, 0.05);
-      }
-
-      .footer-stamp {
-        position: absolute;
-        bottom: 50px;
-        right: 30px;
-        opacity: 0.3;
-        transform: rotate(-20deg);
-        font-weight: bold;
-        font-size: 1.5em;
-        color: var(--stamp-color);
-        border: 2px solid var(--stamp-color);
-        padding: 5px 15px;
-        pointer-events: none;
       }
 
       .hint-container {
@@ -282,28 +236,32 @@
       <div class="document-header">
         <div class="document-stamp">SIGILOSO</div>
         <div class="document-date">
-          DATA: <span class="censored">14</span> DE JULHO DE
-          <span class="censored">1966</span>
+          DATA: <span class="censored">22</span> DE JANEIRO DE
+          <span class="censored">1968</span>
           <br />
           LOCALIZAÇÃO:
           <span class="censored">CENTRO DE CÁLCULO [REDACTED]</span>
         </div>
         <div class="document-intro">
           RELATÓRIO DE PROGRESSO: PROJETO
-          <span class="censored">ORION-XX</span> <br /><br />
+          <span class="censored">ORION-XX</span><br /><br />
           Em continuidade às investigações sobre
-          <span class="censored">curvatura espacial</span> e modelagem de
-          trajetórias, nossa equipe desenvolveu estudos detalhados acerca das
-          integrais de linha, que são fundamentais para o
-          <span class="censored">controle de trajetórias orbitais</span>. As
-          descobertas aqui apresentadas foram compiladas a partir dos relatórios
-          de <span class="censored">██████</span>, principal especialista em
-          análise de trajetória do programa <span class="censored">AP-13</span>.
+          <span class="censored">trajetórias orbitais</span> e modelagem de
+          integrais de linha, nossa equipe identificou a necessidade de dominar
+          uma segunda notação utilizada por
+          <span class="censored">laboratórios parceiros</span> na análise de
+          campos de força. Os relatórios recebidos do programa
+          <span class="censored">APOLLO</span> frequentemente registram as
+          integrais de linha numa forma diferencial distinta da notação vetorial
+          \(\vec{F}\cdot d\vec{r}\) que utilizamos até agora. Este dossiê
+          documenta a correspondência entre as duas notações e treina a equipe
+          para operar com fluência em ambas.
         </div>
         <div class="warning-box">
           A divulgação não autorizada destes dados constitui violação de acordos
-          de <span class="censored">segurança internacional</span>. Acesso
-          restrito ao pessoal devidamente credenciado.
+          de
+          <span class="censored">segurança internacional</span>. Acesso restrito
+          ao pessoal devidamente credenciado.
         </div>
         <div class="metadata">
           <span>REF: INTEGRAL-LINE<span class="censored">-009</span></span>
@@ -314,42 +272,128 @@
           >
         </div>
       </div>
-      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA</div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: NOTAÇÕES ALTERNATIVAS PARA INTEGRAIS DE LINHA
+      </div>
       <div class="concept-definition">
-        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-        <p class="formula-highlight">
-          \[\int_C \vec{F}(x,y,z)\cdot d\vec{r} = \int_a^b
-          \vec{F}\bigl(x(t),y(t),z(t)\bigr)\cdot \vec{r}'(t)\,dt\]
-        </p>
+        <p><strong>PRÉ-REQUISITOS</strong></p>
         <p>
-          As integrais de linha permitem calcular o trabalho de um campo
-          vetorial ao longo de um percurso \(C\), bem como outras grandezas
-          associadas a campos vetoriais ou funções escalares em uma curva
-          parametrizada. Em notação alternativa, pode-se representar uma
-          integral de linha como:
-        </p>
-        <p class="formula-highlight">\[\int_C P\,dx + Q\,dy + R\,dz,\]</p>
-        <p>
-          onde \(\vec{F}(x,y,z) = \bigl(P,Q,R\bigr)\). A escolha da notação
-          depende do contexto físico ou geométrico a ser analisado.
+          Este tópico pressupõe familiaridade com os conceitos desenvolvidos nos
+          tópicos anteriores deste capítulo:
+          <strong>curvas parametrizadas</strong> e integrais de linha de
+          <strong>campo vetorial</strong> (cálculo de \(\int_C \vec{F}\cdot
+          d\vec{r}\) via parametrização, produto escalar e integração);
+          <strong>comprimento de arco</strong> como \(\int_a^b
+          \|\vec{r}'(t)\|\,dt\); <strong>curvas suaves (\(C^1\))</strong> e suas
+          propriedades; e <strong>mudança de parâmetro</strong> — o fato de que
+          a integral de linha não depende da parametrização escolhida. Todo esse
+          ferramental será utilizado aqui sob uma nova roupagem notacional.
         </p>
       </div>
-      <div class="mission-context">
-        Integrais de linha são empregadas na determinação de esforços mecânicos
-        em cápsulas espaciais durante a reentrada e na análise de campos de
-        variação gravitacional ao longo de trajetórias orbitais. No âmbito do
-        <span class="censored">programa Apollo</span>, esses cálculos foram
-        fundamentais para estimar dissipação de energia e assegurar retorno
-        seguro à superfície terrestre.
+      <div class="concept-definition">
+        <p><strong>1. NOTAÇÃO VETORIAL — RECAPITULAÇÃO</strong></p>
+        <p>
+          Nos tópicos anteriores deste capítulo, toda integral de linha de campo
+          vetorial foi escrita na forma \(\int_C \vec{F}\cdot d\vec{r}\), onde
+          \(\vec{F}(x,y) = (P, Q)\) é o campo e \(\vec{r}(t) = (x(t), y(t))\)
+          parametriza a curva \(C\).
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \int_a^b
+          \vec{F}\bigl(x(t),y(t)\bigr)\cdot \vec{r}'(t)\,dt\]
+        </p>
+        <p>
+          Esta notação é natural quando a curva já está dada como
+          parametrização. O produto escalar \(\vec{F}\cdot\vec{r}'(t)\)
+          expande-se como \(P\,x'(t) + Q\,y'(t)\). É exatamente essa expansão
+          que nos leva à segunda notação.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. FORMA DIFERENCIAL — DEFINIÇÃO E CORRESPONDÊNCIA</strong>
+        </p>
+        <p>
+          Ao expandir o produto escalar, obtemos naturalmente a
+          <strong>forma diferencial</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \int_C P\,dx + Q\,dy\]
+        </p>
+        <p>
+          A correspondência é componente-a-componente: a primeira componente
+          \(P\) do campo acompanha \(dx\), e a segunda componente \(Q\)
+          acompanha \(dy\). Os símbolos \(dx\) e \(dy\) representam as
+          diferenciais de \(x\) e \(y\) ao longo da curva — são as variações
+          infinitesimais nas direções dos eixos. Em \(\mathbb{R}^3\), a extensão
+          é imediata:
+        </p>
+        <p class="formula-highlight">\[\int_C P\,dx + Q\,dy + R\,dz\]</p>
+        <p>
+          onde \(\vec{F}(x,y,z) = (P, Q, R)\). Cada componente do campo vira
+          coeficiente do diferencial correspondente.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. EQUIVALÊNCIA — POR QUE AMBAS FUNCIONAM</strong></p>
+        <p>
+          A igualdade \(\int_C \vec{F}\cdot d\vec{r} = \int_C P\,dx + Q\,dy\)
+          não é uma coincidência — é consequência direta da definição. Quando a
+          curva é parametrizada por \(\vec{r}(t) = (x(t), y(t))\), temos \(dx =
+          x'(t)\,dt\) e \(dy = y'(t)\,dt\). Substituindo:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C P\,dx + Q\,dy = \int_a^b \bigl[P\,x'(t) + Q\,y'(t)\bigr]\,dt
+          = \int_a^b \vec{F}\cdot\vec{r}'(t)\,dt\]
+        </p>
+        <p>
+          Ambas representam a mesma grandeza física — o
+          <strong>trabalho</strong> do campo \(\vec{F}\) ao longo da curva
+          \(C\). A diferença é puramente notacional: a forma vetorial usa o
+          produto escalar explicitamente, enquanto a forma diferencial já o traz
+          expandido.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. VANTAGENS — QUANDO USAR CADA NOTAÇÃO</strong></p>
+        <p>
+          A notação vetorial \(\vec{F}\cdot d\vec{r}\) é mais natural quando a
+          curva já está dada como parametrização \(\vec{r}(t)\). Já a forma
+          diferencial \(P\,dx + Q\,dy\) é vantajosa em três situações
+          frequentes:
+        </p>
+        <p>
+          <strong>(i)</strong> Quando a curva é dada como gráfico \(y = f(x)\),
+          podemos usar diretamente \(dy = f'(x)\,dx\) sem inventar uma
+          parametrização auxiliar.
+        </p>
+        <p>
+          <strong>(ii)</strong> Em trechos retos paralelos aos eixos, um dos
+          diferenciais se anula (\(dy = 0\) em trechos horizontais, \(dx = 0\)
+          em trechos verticais), simplificando a integral.
+        </p>
+        <p>
+          <strong>(iii)</strong> Em curvas poligonais formadas por trechos ao
+          longo dos eixos, a forma diferencial torna a decomposição em soma de
+          integrais particularmente natural.
+        </p>
+        <p>
+          Esta fluência notacional será essencial nos próximos capítulos, quando
+          a forma diferencial se tornará a linguagem padrão para resultados
+          fundamentais sobre integrais de linha e suas propriedades.
+        </p>
       </div>
       <div class="historical-note">
         <strong>NOTA HISTÓRICA:</strong> Em
         <span class="censored">dezembro</span> de
-        <span class="censored">1968</span>, a Missão
-        <span class="censored">Apollo 8</span> empregou cálculos pioneiros de
-        integrais de linha para avaliar a trajetória de injeção em órbita lunar,
-        contribuindo para o sucesso das operações subsequentes do programa
-        tripulado.
+        <span class="censored">1968</span>, a missão
+        <span class="censored">Apollo 8</span> realizou a primeira órbita
+        tripulada ao redor da Lua. Os cálculos de trajetória envolveram
+        integrais de linha em ambos os formatos — os laboratórios de
+        <span class="censored">Houston</span> utilizavam a forma diferencial,
+        enquanto os sistemas de bordo operavam com a notação vetorial. A
+        capacidade de traduzir entre as duas notações rapidamente tornou-se
+        requisito essencial para os engenheiros de voo.
       </div>
 
       <main>
@@ -389,8 +433,8 @@
             }
           }
 
-          if (window.MathJax && window.MathJax.Hub) {
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub]);
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
           }
         } catch (error) {
           console.error('Erro ao carregar exercícios:', error);

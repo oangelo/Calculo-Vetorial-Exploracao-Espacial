@@ -1,23 +1,67 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
-  <div class="context">ORIGEM: Laboratório de Trajetórias — Junho/1965</div>
+  <div class="context">ORIGEM: Laboratório de Trajetórias — Novembro/1967</div>
   <p>
-    Seja \(A = \{(x,y) \mid 1 &lt; x^2 + y^2 &lt; 4\}\) (anel entre dois
-    círculos). Julgue a simples conexidade e explique.
+    O exercício anterior concluiu que o campo \(F\) é conservativo. Vamos
+    verificar isso diretamente. Se \(F\) fosse realmente conservativo, a
+    integral de linha entre dois pontos deveria ser independente do caminho.
+    Calcule a integral de linha de \(F\) de \((1,0)\) a \((-1,0)\) ao longo de
+    dois caminhos distintos.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o semicírculo superior \(r_1(t) = (\cos
+    t,\, \sin t)\) com \(t \in [0,\pi]\) e calcule \(\int_{C_1} F \cdot dr\).
+  </p>
+  <p>
+    <strong>(b)</strong> Parametrize o semicírculo inferior \(r_2(t) = (\cos
+    t,\, -\sin t)\) com \(t \in [0,\pi]\) e calcule \(\int_{C_2} F \cdot dr\).
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados e explique por que isso contradiz
+    a conclusão do exercício anterior.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Observe a presença de uma região removida no centro.
+      [NOTA TÉCNICA]: Se um campo é conservativo, as integrais de linha entre
+      dois pontos fixos devem ser iguais, independentemente do caminho
+      escolhido.
     </div>
   </details>
   <details>
-    <summary>RELATÓRIO DE CÁLCALCULO [SIGMA-1 REQUERIDO]</summary>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        O anel contém um "furo" central. Existe curva que circunda o furo e não
-        pode ser contraída dentro de \(A\). Assim \(A\) não é simplesmente
-        conexo.
+        <strong>(a)</strong> Para \(r_1(t) = (\cos t,\, \sin t)\), temos
+        \(r_1'(t) = (-\sin t,\, \cos t)\) e \(x^2+y^2 = \cos^2 t + \sin^2 t =
+        1\). Logo:
+      </p>
+      <p>
+        \[F(r_1(t)) = \left(\frac{-\sin t}{1},\, \frac{\cos t}{1}\right) =
+        (-\sin t,\, \cos t)\]
+      </p>
+      <p>
+        \[\int_{C_1} F \cdot dr = \int_0^{\pi} \left[(-\sin t)(-\sin t) + (\cos
+        t)(\cos t)\right] dt = \int_0^{\pi} (\sin^2 t + \cos^2 t)\, dt =
+        \int_0^{\pi} 1\, dt = \pi\]
+      </p>
+      <p>
+        <strong>(b)</strong> Para \(r_2(t) = (\cos t,\, -\sin t)\), temos
+        \(r_2'(t) = (-\sin t,\, -\cos t)\) e novamente \(x^2+y^2 = 1\).
+      </p>
+      <p>
+        \[F(r_2(t)) = \left(\frac{\sin t}{1},\, \frac{\cos t}{1}\right) = (\sin
+        t,\, \cos t)\]
+      </p>
+      <p>
+        \[\int_{C_2} F \cdot dr = \int_0^{\pi} \left[(\sin t)(-\sin t) + (\cos
+        t)(-\cos t)\right] dt = \int_0^{\pi} (-1)\, dt = -\pi\]
+      </p>
+      <p>
+        <strong>(c)</strong> As integrais são \(\pi\) e \(-\pi\): resultados
+        diferentes para o mesmo par de pontos. Isso contradiz a conclusão do
+        exercício anterior. O campo <strong>não</strong> é conservativo, apesar
+        do rotacional nulo. O teste falhou!
       </p>
     </div>
   </details>

@@ -1,53 +1,72 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
   <div class="context">
-    ORIGEM: Laboratório de Simulações - Missão
-    <span class="censored">ÁRTEMIS</span> [NOTA DE MAR/1965]
+    ORIGEM: Centro de Análise de Trajetórias - Programa Apollo [JAN/1967]
   </div>
   <p>
-    Uma trajetória simples é dada por \(\vec{r}(t) = \begin{pmatrix} t \\ t^2
-    \end{pmatrix}\) para \(t\) no intervalo \([0, 2]\). Reparametrize a curva
-    usando uma função \(u(\tau) = \tau^2\) que mapeia \(\tau\) em \([0,
-    \sqrt{2}]\). Calcule a integral de linha \(\displaystyle \int_C
-    |\vec{r}'(t)|\, dt\) usando a nova parametrização.
+    Ao analisar dados de uma trajetória orbital, dois laboratórios distintos
+    descreveram o mesmo arco de curva usando parâmetros diferentes. O primeiro
+    laboratório usou o ângulo como parâmetro: \(\vec{r}_1(\theta) =
+    (\cos\theta,\, \sin\theta)\), com \(\theta \in [0,\pi]\). O segundo usou a
+    coordenada horizontal: \(\vec{r}_2(x) = (x,\, \sqrt{1-x^2})\), com \(x \in
+    [-1,1]\).
+  </p>
+  <p>
+    Ambas descrevem a mesma curva geométrica — um semicírculo superior de raio
+    1. Mas será que o comprimento calculado a partir de cada parametrização dá o
+    mesmo resultado? Vamos investigar.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce ambas as parametrizações sobre o mesmo gráfico,
+    identificando o ponto inicial e o ponto final em cada caso. A curva
+    geométrica é a mesma?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o comprimento do arco usando a primeira
+    parametrização: \(\displaystyle L_1 = \int_{0}^{\pi} |\vec{r}_1'(\theta)|\,
+    d\theta\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o comprimento do arco usando a segunda
+    parametrização: \(\displaystyle L_2 = \int_{-1}^{1} |\vec{r}_2'(x)|\, dx\).
+    Compare com o resultado de (b). Por que os resultados são iguais?
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere relacionar as expressões de
-      \(\vec{r}'(u(\tau))\) antes de integrar.
+      [NOTA TÉCNICA]: Em (b), \(|\vec{r}_1'(\theta)|\) deve simplificar
+      bastante. Em (c), calcule \(\vec{r}_2'(x)\) com cuidado — a raiz exige a
+      regra da cadeia. Geometricamente, o semicírculo de raio 1 tem comprimento
+      conhecido; use isso para conferir seus cálculos.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        PRIMEIRO, DERIVADA ORIGINAL: \(\vec{r}'(t) = \begin{pmatrix} 1 \\ 2t
-        \end{pmatrix}\).
+        (a) Ambas descrevem o semicírculo superior da circunferência \(x^2 + y^2
+        = 1\), \(y \geq 0\). A primeira percorre do ponto \((1,0)\) ao ponto
+        \((-1,0)\) no sentido anti-horário. A segunda percorre do ponto
+        \((-1,0)\) ao ponto \((1,0)\) da esquerda para a direita. A curva
+        geométrica é a mesma; apenas o "relógio" usado para percorrê-la é
+        diferente.
       </p>
       <p>
-        MAGNITUDE: \[|\vec{r}'(t)| = \sqrt{(1)^2 + (2t)^2} = \sqrt{1 + 4t^2}.\]
+        (b) \(\vec{r}_1'(\theta) = (-\sin\theta,\, \cos\theta)\), logo
+        \(|\vec{r}_1'(\theta)| = \sqrt{\sin^2\theta + \cos^2\theta} = 1\). Assim
+        \(L_1 = \int_0^{\pi} 1\, d\theta = \pi\).
       </p>
       <p>
-        NOVA PARAMETRIZAÇÃO: \(t = u(\tau) = \tau^2\). Então
-        \(\frac{d\vec{r}}{d\tau} = \vec{r}'(u(\tau)) \cdot \frac{du}{d\tau}.\)
+        (c) \(\vec{r}_2'(x) = \left(1,\, \frac{-x}{\sqrt{1-x^2}}\right)\), logo
+        \(|\vec{r}_2'(x)| = \sqrt{1 + \frac{x^2}{1-x^2}} =
+        \sqrt{\frac{1-x^2+x^2}{1-x^2}} = \frac{1}{\sqrt{1-x^2}}\). Assim \(L_2 =
+        \int_{-1}^{1} \frac{1}{\sqrt{1-x^2}}\, dx = \arcsin(x)\Big|_{-1}^{1} =
+        \frac{\pi}{2} - \left(-\frac{\pi}{2}\right) = \pi\).
       </p>
       <p>
-        COMO \(\frac{du}{d\tau} = 2\tau\), temos: \[ \frac{d\vec{r}}{d\tau} =
-        \begin{pmatrix} 1 \\ 2(\tau^2) \end{pmatrix} \cdot 2\tau =
-        \begin{pmatrix} 2\tau \\ 4\tau^3 \end{pmatrix}. \]
-      </p>
-      <p>
-        LOGO, \[\bigl|\frac{d\vec{r}}{d\tau}\bigr| = \sqrt{(2\tau)^2 +
-        (4\tau^3)^2} = \sqrt{4\tau^2 + 16\tau^6} = 2\tau \sqrt{1 + 4\tau^4}.\]
-      </p>
-      <p>
-        INTEGRAL: \[ \int_{0}^{\sqrt{2}} 2\tau \sqrt{1 + 4\tau^4}\, d\tau. \]
-        (Cálculo numérico ou simbólico pode ser aplicado conforme necessário.)
-      </p>
-      <p>
-        STATUS: Valor resultante determina o comprimento da trajetória
-        reparametrizada.
+        Ambos os resultados são \(\pi\), confirmando que o comprimento não
+        depende do parâmetro escolhido. Isso motiva a pergunta central desta
+        lista: por que o comprimento é invariante?
       </p>
     </div>
   </details>

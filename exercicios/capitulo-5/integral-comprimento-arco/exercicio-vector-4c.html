@@ -1,30 +1,89 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Missão Crítica [SETOR <span class="censored">███</span> - ANO
-    <span class="censored">1966</span>]
+    ORIGEM: Preparação Apollo 10 - Desafio de Análise de Trajetória [REF:
+    <span class="censored">AS-505/ABR-1969</span>]
   </div>
   <p>
-    A curva descrita por \(\vec{r}(t) = \bigl(\cos^2 t,\ \sin^2 t,\
-    \ln(1+t^2)\bigr)\), com \(t\) de 0 a \(\pi\), deve ter seu comprimento
-    calculado para prever precisão de estabilização em órbita baixa.
+    A lista inteira explorou como medir curvas — da distância reta à integral,
+    da validação geométrica à função comprimento de arco. O desafio final
+    combina todas as habilidades: análise de curva, esboço de projeções,
+    simplificação oculta e integração completa.
   </p>
-  <!-- Sem dicas para série OMEGA -->
+  <p>
+    Considere a curva espacial \(\vec{r}(t) = \bigl(t,\, t\sin t,\, t\cos
+    t\bigr)\), com \(t\) variando de 0 a \(2\pi\).
+  </p>
+  <p>
+    <strong>(a)</strong> Analise a curva: esboce as projeções nos planos \(xy\),
+    \(xz\) e \(yz\). Descreva o comportamento de cada componente.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral de comprimento de arco. Ao expandir
+    \(\|\vec{r}\,'(t)\|^2\), investigue se os termos cruzados se cancelam —
+    expanda cuidadosamente cada quadrado.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o comprimento \(L\), justificando cada passo.
+    Interprete o resultado no contexto da curva.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
+      <p><strong>(a)</strong> Projeções:</p>
       <p>
-        \(\frac{dx}{dt} = -2\cos t\sin t,\quad \frac{dy}{dt} = 2\sin t\cos
-        t,\quad \frac{dz}{dt} = \frac{2t}{1 + t^2}.\)
+        Plano \(xy\): a curva \((t, t\sin t)\) é uma senoide com amplitude
+        crescente. Plano \(xz\): a curva \((t, t\cos t)\) é uma cossenoide com
+        amplitude crescente. Plano \(yz\): a curva \((t\sin t, t\cos t)\) é uma
+        espiral de Arquimedes.
       </p>
       <p>
-        Portanto, \[ L = \int_{0}^{\pi} \sqrt{\bigl(-2\cos t \sin t\bigr)^2 +
-        \bigl(2\sin t \cos t\bigr)^2 + \left(\frac{2t}{1 + t^2}\right)^2} \, dt.
-        \]
+        A componente \(x = t\) cresce linearmente. As componentes \(y\) e \(z\)
+        oscilam com amplitude proporcional a \(t\) — a curva se afasta do eixo
+        \(x\) à medida que avança, criando um movimento helicoidal com raio
+        crescente.
       </p>
       <p>
-        Conclusão: A integral serve de parâmetro para planejar os ajustes de
-        atitude e assegurar o controle fino em órbita.
+        <strong>(b)</strong> \(\vec{r}\,'(t) = (1,\, \sin t + t\cos t,\, \cos t
+        - t\sin t)\).
+      </p>
+      <p>Expandindo \(\|\vec{r}\,'(t)\|^2\):</p>
+      <p>\[(\sin t + t\cos t)^2 = \sin^2 t + 2t\sin t\cos t + t^2\cos^2 t\]</p>
+      <p>\[(\cos t - t\sin t)^2 = \cos^2 t - 2t\sin t\cos t + t^2\sin^2 t\]</p>
+      <p>
+        Somando as duas: os termos cruzados \(+2t\sin t\cos t\) e \(-2t\sin
+        t\cos t\) se cancelam. Resta:
+      </p>
+      <p>\[\sin^2 t + \cos^2 t + t^2(\cos^2 t + \sin^2 t) = 1 + t^2\]</p>
+      <p>
+        Portanto: \(\|\vec{r}\,'(t)\|^2 = 1 + (1 + t^2) = 2 + t^2\), ou seja
+        \(\|\vec{r}\,'(t)\| = \sqrt{2 + t^2}\).
+      </p>
+      <p>
+        <strong>(c)</strong>
+      </p>
+      <p>\[L = \int_0^{2\pi} \sqrt{2+t^2}\, dt\]</p>
+      <p>
+        Usando a fórmula \(\int \sqrt{a^2+t^2}\, dt = \frac{t}{2}\sqrt{a^2+t^2}
+        + \frac{a^2}{2}\ln\!\bigl(t+\sqrt{a^2+t^2}\bigr) + C\) com \(a^2 = 2\):
+      </p>
+      <p>
+        \[L = \left[\frac{t}{2}\sqrt{2+t^2} +
+        \ln\!\bigl(t+\sqrt{2+t^2}\bigr)\right]_0^{2\pi}\]
+      </p>
+      <p>
+        \[= \pi\sqrt{2+4\pi^2} + \ln\!\bigl(2\pi+\sqrt{2+4\pi^2}\bigr) -
+        \ln\sqrt{2}\]
+      </p>
+      <p>
+        \[= \pi\sqrt{2+4\pi^2} +
+        \ln\!\left(\frac{2\pi+\sqrt{2+4\pi^2}}{\sqrt{2}}\right) \approx 22{,}4\]
+      </p>
+      <p>
+        O comprimento é considerável — a curva percorre uma distância muito
+        maior que a extensão linear de \(2\pi\) no eixo \(x\). Isso reflete o
+        movimento helicoidal crescente: à medida que o raio da hélice aumenta, o
+        percurso se alonga significativamente.
       </p>
     </div>
   </details>

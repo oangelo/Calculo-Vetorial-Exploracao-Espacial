@@ -1,32 +1,38 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
   <div class="context">
-    ORIGEM: Módulo de Testes - Programa Apollo 11 [ABR/1969]
+    ORIGEM: Laboratório de Propulsão - Apollo 10 [MAI/1969]
   </div>
   <p>
-    A trajetória proposta para rendezvous em órbita lunar é descrita por
-    \(\vec{r}(t) = \begin{pmatrix} \ln(1 + t) \\ \sqrt{1 + t^2} \\ t
-    \end{pmatrix}\). Estabelecer mudança de parâmetro para reduzir \(\sqrt{1 +
-    t^2}\). Calcular a integral de linha \(\displaystyle \int_C
-    f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\), onde \(f(\vec{r})\) relaciona-se à
-    energia consumida.
+    Reúna todas as habilidades que você desenvolveu até aqui e aplique-as a uma
+    curva com componentes transcendentes. A curva \(\vec{r}(t) = (\ln(1+t),\,
+    e^{t/2})\), com \(t \in [0,2]\), descreve uma trajetória de ajuste orbital.
+    Escolha uma reparametrização que simplifique o cálculo e verifique a
+    invariância do comprimento. Nenhuma orientação é dada sobre qual
+    reparametrização usar — identifique a mais adequada por conta própria.
   </p>
-  <!-- Sem dicas para a série OMEGA -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        ABORDAGEM: Reparametrizar via \(\tau = \sqrt{1 + t^2}\) ou outra
-        escolha. Definir limites e efetuar integração.
+        Parâmetro original: \(\vec{r}'(t) = \left(\frac{1}{1+t},\,
+        \frac{e^{t/2}}{2}\right)\). \(|\vec{r}'(t)| = \sqrt{\frac{1}{(1+t)^2} +
+        \frac{e^{t}}{4}}\). O comprimento é \(L = \int_0^2
+        \sqrt{\frac{1}{(1+t)^2} + \frac{e^{t}}{4}}\, dt\).
       </p>
       <p>
-        NOTA: O valor de \(f(\vec{r})\) permanece restrito aos dados de consumo
-        energético do módulo.
+        Uma reparametrização natural é \(\tau = e^{t/2}\), de modo que \(t =
+        2\ln\tau\), \(\frac{dt}{d\tau} = \frac{2}{\tau}\), intervalo \(\tau \in
+        [1, e]\). A curva reparametrizada é \(\vec{r}(t(\tau)) =
+        (\ln(1+2\ln\tau),\, \tau)\). A componente \(y\) simplifica para
+        \(\tau\).
       </p>
       <p>
-        CONCLUSÃO:
-        <span class="censored">RESULTADO DISSIMULADO</span>
-        (Uso exclusivo do setor orbital).
+        \(\frac{d\vec{r}}{d\tau} = \left(\frac{2}{\tau(1+2\ln\tau)},\,
+        1\right)\). \(|\vec{r}'| = \sqrt{\frac{4}{\tau^2(1+2\ln\tau)^2} + 1}\).
+        O comprimento é \(L = \int_1^{e} \sqrt{\frac{4}{\tau^2(1+2\ln\tau)^2} +
+        1}\, d\tau\). Substituindo \(t = 2\ln\tau\) recupera-se a integral
+        original, confirmando a invariância.
       </p>
     </div>
   </details>

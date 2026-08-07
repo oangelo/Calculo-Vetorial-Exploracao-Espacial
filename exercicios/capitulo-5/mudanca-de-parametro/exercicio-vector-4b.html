@@ -1,27 +1,62 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
   <div class="context">
-    ORIGEM: Laboratório <span class="censored">Lunar</span> - Projeto
-    <span class="censored">Stone</span> [JUN/1969]
+    ORIGEM: Centro de Controle de Missão - Apollo 11 [JUL/1969]
   </div>
   <p>
-    A curva espacial \(\vec{r}(t) = \begin{pmatrix} \sin t + t \\ \cos t \\ e^t
-    \end{pmatrix}\) é avaliada no intervalo \([0,1]\). Proponha uma mudança de
-    parâmetro que simplifique duas das três componentes. Calcule a integral
-    \(\displaystyle \int_C (t^2 + 3)\,|\vec{r}'(t)|\, dt\).
+    Chegou o momento de provar formalmente o que você observou em todos os
+    exercícios anteriores: a integral de linha escalar é invariante sob
+    reparametrização. Sejam \(\vec{r}:[a,b] \to \mathbb{R}^n\) uma curva suave,
+    \(f\) um campo escalar contínuo, e \(\varphi:[c,d] \to [a,b]\) um
+    difeomorfismo crescente (ou seja, \(\varphi\) é invertível, derivável com
+    derivada contínua, e \(\varphi'(\tau) > 0\)). Prove que:
   </p>
-  <!-- Sem dicas para a série OMEGA -->
+  <p class="formula-highlight">
+    \[\int_a^b f(\vec{r}(t))\,|\vec{r}'(t)|\, dt = \int_c^d
+    f(\vec{r}(\varphi(\tau)))\,|\vec{r}'(\varphi(\tau))|\,|\varphi'(\tau)|\,
+    d\tau.\]
+  </p>
+  <p>
+    <strong>(a)</strong> Comece pela integral do lado direito. Use a regra da
+    cadeia para expressar a derivada da curva composta:
+    \(\frac{d}{d\tau}\vec{r}(\varphi(\tau)) = \vec{r}'(\varphi(\tau)) \cdot
+    \varphi'(\tau)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a propriedade do valor absoluto do produto:
+    \(|\vec{r}'(\varphi(\tau)) \cdot \varphi'(\tau)| = |\vec{r}'(\varphi(\tau))|
+    \cdot |\varphi'(\tau)|\). Use o fato de que \(\varphi'(\tau) > 0\) para
+    simplificar \(|\varphi'(\tau)| = \varphi'(\tau)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Substitua os resultados na integral do lado direito e
+    faça a mudança de variável \(t = \varphi(\tau)\) para concluir que ela se
+    reduz à integral do lado esquerda, completando a demonstração.
+  </p>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        POSSÍVEL REPARAMETRIZAÇÃO: \(\tau = e^t\) ou \(\tau = \sin t + t\).
-        Passos de cálculo envolvem derivadas, módulo e substituição em \(\int
-        (t^2 + 3)|\vec{r}'(t)|\, dt\).
+        (a) Pela regra da cadeia, \(\frac{d}{d\tau}\vec{r}(\varphi(\tau)) =
+        \vec{r}'(\varphi(\tau)) \cdot \varphi'(\tau)\).
       </p>
       <p>
-        USO TÁTICO: Ajustes de trajetória para aproximação lunar exigem controle
-        preciso do consumo de propelente.
+        (b) Tomando a magnitude: \(|\vec{r}'(\varphi(\tau)) \cdot
+        \varphi'(\tau)| = |\vec{r}'(\varphi(\tau))| \cdot |\varphi'(\tau)|\).
+        Como \(\varphi\) é crescente, \(\varphi'(\tau) > 0\), logo
+        \(|\varphi'(\tau)| = \varphi'(\tau)\). Portanto
+        \(|\vec{r}'(\varphi(\tau)) \cdot \varphi'(\tau)| =
+        |\vec{r}'(\varphi(\tau))| \cdot \varphi'(\tau)\).
+      </p>
+      <p>
+        (c) A integral do lado direito fica: \(\int_c^d
+        f(\vec{r}(\varphi(\tau))) \cdot |\vec{r}'(\varphi(\tau))| \cdot
+        \varphi'(\tau)\, d\tau\). Com a mudança de variável \(t =
+        \varphi(\tau)\), temos \(dt = \varphi'(\tau)\, d\tau\), e os limites se
+        transformam em \(\varphi(c) = a\) e \(\varphi(d) = b\). Logo a integral
+        vira \(\int_a^b f(\vec{r}(t))\,|\vec{r}'(t)|\, dt\), que é exatamente a
+        integral do lado esquerdo. Isso completa a demonstração de invariância
+        da integral de linha escalar sob reparametrização crescente.
       </p>
     </div>
   </details>

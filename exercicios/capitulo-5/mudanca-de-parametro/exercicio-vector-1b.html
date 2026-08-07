@@ -1,43 +1,71 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
   <div class="context">
-    ORIGEM: <span class="censored">Setor de Navegação</span> - Dados
-    Interceptados [MAIO/1965]
+    ORIGEM: Divisão de Mecânica Orbital - Programa Apollo [FEV/1967]
   </div>
   <p>
-    Considere \(\vec{r}(t) = \begin{pmatrix} \cos t \\ \sin t \end{pmatrix}\)
-    para \(t\) em \([0, \pi]\). Sugira uma reparametrização \(u(\tau)\) que
-    simplifique o termo \(\sin t\) para \(\sin(u(\tau))\). Calcule a integral de
-    linha \(\int_C f(\vec{r}(t))\,|\vec{r}'(t)|\,dt\) assumindo \(f(\vec{r}) =
-    1\), isto é, apenas o comprimento da curva.
+    No exercício anterior, dois relógios diferentes produziram exatamente o
+    mesmo comprimento. Isso não é coincidência — é uma consequência da regra da
+    cadeia. Vamos entender o mecanismo por trás dessa invariância.
+  </p>
+  <p>
+    Considere a curva \(\vec{r}(t) = (2t,\, t^2)\) com \(t \in [0,1]\) e a
+    reparametrização \(t = u(\tau) = \sqrt{\tau}\), com \(\tau \in [0,1]\). A
+    curva reparametrizada é \(\vec{r}(u(\tau)) = (2\sqrt{\tau},\, \tau)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a derivada da curva reparametrizada usando a
+    regra da cadeia: \(\frac{d\vec{r}}{d\tau} = \vec{r}'(u(\tau)) \cdot
+    u'(\tau)\), onde \(u'(\tau) = \frac{d}{d\tau}\sqrt{\tau}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a magnitude do novo vetor tangente:
+    \(|\vec{r}'(u(\tau))| \cdot |u'(\tau)|\).
+  </p>
+  <p>
+    <strong>(c)</strong> Mostre que o produto \(|\vec{r}'(u(\tau))| \cdot
+    |u'(\tau)|\), quando integrado em \(\tau\), recupera o mesmo comprimento
+    obtido integrando \(|\vec{r}'(t)|\) em \(t\). Explique por que a regra da
+    cadeia garante essa compensação.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Considere como relacionar as funções trigonométricas para
-      reduzir complexidade.
+      [NOTA TÉCNICA]: O comprimento com o parâmetro original é \(L = \int_0^1
+      |\vec{r}'(t)|\, dt\). Com a reparametrização, o integrando vira
+      \(|\vec{r}'(u(\tau))| \cdot |u'(\tau)|\). Se você fizer a substituição \(t
+      = \sqrt{\tau}\) diretamente na integral original, a expressão será
+      idêntica — é isso que a regra da cadeia garante.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        PROTOCOLO: Se \(\vec{r}(t)\) descreve semicircunferência, temos
-        \(|\vec{r}'(t)| = \sqrt{(-\sin t)^2 + (\cos t)^2} = 1.\)
+        Parâmetro original: \(\vec{r}'(t) = (2, 2t)\), logo \(|\vec{r}'(t)| =
+        \sqrt{4 + 4t^2} = 2\sqrt{1+t^2}\). O comprimento é \(L = \int_0^1
+        2\sqrt{1+t^2}\, dt\).
       </p>
       <p>
-        UMA POSSÍVEL REPARAMETRIZAÇÃO: \(u(\tau) = \tau^2\), definindo \(t =
-        u(\tau)\). Podem-se escolher faixas de \(\tau\) adequadas para cobrir
-        \([0,\pi]\).
+        (a) \(u(\tau) = \sqrt{\tau}\), \(u'(\tau) = \frac{1}{2\sqrt{\tau}}\).
+        \(\vec{r}'(u(\tau)) = (2, 2\sqrt{\tau})\). Pela regra da cadeia:
+        \(\frac{d\vec{r}}{d\tau} = (2, 2\sqrt{\tau}) \cdot
+        \frac{1}{2\sqrt{\tau}} = \left(\frac{1}{\sqrt{\tau}},\, 1\right)\).
       </p>
       <p>
-        AO REPARAMETRIZAR, segue \(\frac{d\vec{r}}{d\tau} = \vec{r}'(u(\tau))
-        \cdot u'(\tau)\). Como a função \(f(\vec{r})=1\), a integral reduz-se ao
-        cálculo de comprimento via \(\int |\vec{r}'(\tau)|\, d\tau\).
+        (b) \(\left|\frac{d\vec{r}}{d\tau}\right| = \sqrt{\frac{1}{\tau} + 1} =
+        \sqrt{\frac{1+\tau}{\tau}}\). Equivalentemente, \(|\vec{r}'(u(\tau))| =
+        2\sqrt{1+\tau}\) e \(|u'(\tau)| = \frac{1}{2\sqrt{\tau}}\), produto \(=
+        2\sqrt{1+\tau} \cdot \frac{1}{2\sqrt{\tau}} =
+        \sqrt{\frac{1+\tau}{\tau}}\).
       </p>
       <p>
-        COMPRIMENTO FINAL: \(\pi\) (pois o arco semicircular de raio 1 tem
-        comprimento \(\pi\)).
+        (c) Pela mudança de variável \(t = \sqrt{\tau}\), \(dt =
+        \frac{1}{2\sqrt{\tau}}\, d\tau\). Logo \(\int_0^1 2\sqrt{1+t^2}\, dt =
+        \int_0^1 2\sqrt{1+\tau} \cdot \frac{1}{2\sqrt{\tau}}\, d\tau = \int_0^1
+        \sqrt{\frac{1+\tau}{\tau}}\, d\tau\). A regra da cadeia garante que o
+        fator \(|u'(\tau)|\) compensa exatamente a mudança de variável,
+        preservando o valor da integral.
       </p>
     </div>
   </details>

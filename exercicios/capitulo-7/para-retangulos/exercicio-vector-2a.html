@@ -1,25 +1,59 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
-  <div class="context">ORIGEM: Painel de Controle – Gemini VI [DEZ/1965]</div>
+  <div class="context">
+    ORIGEM: Otimização de Cálculo de Bordo — Apollo 11, Trajeto de Retorno
+    [AGO/1969]
+  </div>
   <p>
-    Determine \(\displaystyle \oint_{\partial R} e^x y\,dx + x^2\,dy\) para \(R
-    = [0,\ln 2] \times [0,1]\).
+    Verificamos o teorema duas vezes e ele funcionou — uma vez com resultado
+    zero, outra com resultado não-zero. A partir de agora, podemos
+    <strong>usar o teorema como atalho</strong>: em vez de parametrizar 4
+    segmentos e somar integrais de linha, basta calcular a integral dupla do
+    rotacional. Quando o campo tem funções especiais, o ganho é enorme.
+  </p>
+  <p>
+    Considere \(\vec{F}(x,y) = (x^2 y + e^x,\, x^3 - \sin y)\) no retângulo \(R
+    = [0,1] \times [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique as componentes \(P\) e \(Q\) do campo e
+    calcule o rotacional.
+  </p>
+  <p>
+    <strong>(b)</strong> Argumente brevemente por que calcular a integral de
+    linha diretamente seria mais trabalhoso do que usar Green.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a circulação usando apenas a integral dupla do
+    rotacional.
   </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: Propriedades de exponenciais simplificam a integral em
-      <em>x</em>.
+      [NOTA TÉCNICA]: Ao computar o rotacional, muitas termos se cancelam. A
+      derivada de \(x^3\) com respeito a \(x\) é \(3x^2\), e a derivada de \(x^2
+      y\) com respeito a \(y\) é \(x^2\). O resultado final é surpreendentemente
+      simples.
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Rotação: \(\dfrac{\partial (x^2)}{\partial x} - \dfrac{\partial (e^x
-        y)}{\partial y} = 2x - e^x.\)<br />Integral: \[\int_{0}^{1}\int_{0}^{\ln
-        2} \bigl(2x - e^x\bigr)\,dx\,dy = 1 \cdot \left[ x^2 - e^x
-        \right]_0^{\ln 2} = ( (\ln 2)^2 - 2 ) - (0 - 1)= (\ln 2)^2 - 1.\]
+        <strong>(a)</strong> \(P = x^2 y + e^x\), \(Q = x^3 - \sin y\).
+        Rotacional: \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+        y} = 3x^2 - x^2 = 2x^2\).
+      </p>
+      <p>
+        <strong>(b)</strong> A integral de linha exigiria parametrizar 4
+        segmentos, em cada um substituir \(P\) e \(Q\) com exponenciais,
+        potências e funções trigonométricas, e depois integrar cada um —
+        totalizando pelo menos 8 integrais simples. A integral dupla de \(2x^2\)
+        sobre \([0,1] \times [0,1]\) é uma única conta.
+      </p>
+      <p>
+        <strong>(c)</strong> \(\int_0^1\!\int_0^1 2x^2\,dx\,dy = 1 \cdot
+        \frac{2}{3} = \frac{2}{3}\).
       </p>
     </div>
   </details>

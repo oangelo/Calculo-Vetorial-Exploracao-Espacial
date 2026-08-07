@@ -1,59 +1,66 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
   <div class="context">
-    ORIGEM: Análise do Módulo Orbital - <span class="censored">MISSÃO β</span>
+    ORIGEM: Análise de Volume de Reservatório - Programa
+    <span class="censored">Gemini</span> [1965]
   </div>
   <p>
-    Já calculamos integrais triplas em coordenadas cilíndricas e esféricas, onde
-    o Jacobiano era conhecido (\(r\) ou \(\rho^2\sin\phi\)). Agora vamos
-    generalizar: quando fazemos qualquer mudança de variáveis \((x,y,z) \to
-    (u,v,w)\), o elemento de volume se transforma multiplicando pelo valor
-    absoluto do Jacobiano.
+    Você já mudou variáveis em integrais duplas (Cap 3), onde o Jacobiano 2×2
+    media a deformação de área. Estendemos agora para três dimensões — o
+    Jacobiano 3×3 medirá a deformação de volume. A mecânica é a mesma: trocar
+    coordenadas difíceis por coordenadas simples, pagando o preço do fator
+    Jacobiano.
   </p>
   <p>
-    Considere a região \(D\) definida no primeiro octante pela esfera: \[x^2 +
-    y^2 + z^2 \leq 4.\] Calcule a integral \(\iiint_D 2\,dx\,dy\,dz\) mudando
-    para coordenadas esféricas.
+    Considere a região \(D\) no primeiro octante limitada pelos planos
+    coordenados e pelo plano \(x + y + z = 6\). Essa região modela um
+    reservatório tetraédrico do módulo orbital. Calcule \(\iiint_D
+    1\,dx\,dy\,dz\) usando a transformação \(u = x\), \(v = y\), \(w = x + y +
+    z\).
   </p>
   <p>
-    <strong>(a)</strong> Escreva a transformação \((x,y,z) \to
-    (\rho,\theta,\phi)\) e identifique os limites para \(\rho\), \(\theta\) e
-    \(\phi\) no primeiro octante.
+    <strong>(a)</strong> Esboce o tetraedro \(D\) e verifique que a
+    transformação acima converte o plano inclinado \(x + y + z = 6\) no plano
+    horizontal \(w = 6\). Encontre a transformação inversa: expresse \(x\),
+    \(y\), \(z\) em função de \(u\), \(v\), \(w\).
   </p>
   <p>
-    <strong>(b)</strong> Substitua \(dx\,dy\,dz\) por
-    \(\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\) e monte a integral.
+    <strong>(b)</strong> Construa a matriz jacobiana 3×3
+    \(\frac{\partial(x,y,z)}{\partial(u,v,w)}\) e calcule seu determinante.
   </p>
-  <p><strong>(c)</strong> Avalie a integral passo a passo.</p>
+  <p>
+    <strong>(c)</strong> Determine os novos limites de integração, reescreva a
+    integral em \((u,v,w)\) e avalie.
+  </p>
   <details class="hint-container">
     <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
     <div class="hint">
-      [NOTA TÉCNICA]: No primeiro octante, \(\theta\) vai de \(0\) a
-      \(\frac{\pi}{2}\) (não \(2\pi\)), e \(\phi\) de \(0\) a \(\frac{\pi}{2}\).
+      [NOTA TÉCNICA]: No primeiro octante, \(x \ge 0\), \(y \ge 0\), \(z \ge
+      0\). Como \(z = w - u - v\), que condição isso impõe sobre \(w\), \(u\) e
+      \(v\)? Fixe \(w\) e pense no domínio de \((u,v)\).
     </div>
   </details>
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        (a) Em coordenadas esféricas: \[x = \rho\sin\phi\cos\theta, \quad y =
-        \rho\sin\phi\sin\theta, \quad z = \rho\cos\phi.\] Primeiro octante: \(0
-        \le \rho \le 2,\; 0 \le \phi \le \frac{\pi}{2},\; 0 \le \theta \le
-        \frac{\pi}{2}.\)
+        (a) O tetraedro \(D\) tem vértices em \((0,0,0)\), \((6,0,0)\),
+        \((0,6,0)\) e \((0,0,6)\). A inversa é \(x = u\), \(y = v\), \(z = w - u
+        - v\). Na fronteira \(x + y + z = 6\) temos \(w = 6\).
       </p>
       <p>
-        (b) Jacobiano: \(\rho^2 \sin\phi\). \[\iiint_D 2\,dx\,dy\,dz =
-        \int_{0}^{\frac{\pi}{2}}\int_{0}^{\frac{\pi}{2}}\int_{0}^{2} 2 \cdot
-        \rho^2 \sin\phi \; dr\,d\theta\,d\phi.\]
+        (b) A matriz jacobiana é \[ \frac{\partial(x,y,z)}{\partial(u,v,w)} =
+        \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ -1 & -1 & 1 \end{pmatrix}, \]
+        que é triangular inferior com determinante \(1 \cdot 1 \cdot 1 = 1\).
       </p>
       <p>
-        (c) \(\int_{0}^{2} \rho^2\,d\rho = \frac{8}{3}\),
-        \(\int_{0}^{\frac{\pi}{2}} \sin\phi\,d\phi = 1\),
-        \(\int_{0}^{\frac{\pi}{2}} d\theta = \frac{\pi}{2}\).
-      </p>
-      <p>
-        Resultado: \(2 \cdot \frac{8}{3} \cdot 1 \cdot \frac{\pi}{2} =
-        \frac{8\pi}{3}.\)
+        (c) As condições do primeiro octante ficam \(u \ge 0\), \(v \ge 0\), \(w
+        - u - v \ge 0\) e \(w \le 6\), ou seja: \[0 \le w \le 6, \quad 0 \le u
+        \le w, \quad 0 \le v \le w - u.\] A integral: \[ \iiint_D 1\,dx\,dy\,dz
+        = \int_{0}^{6}\!\int_{0}^{w}\!\int_{0}^{w-u} 1 \cdot |1|\,dv\,du\,dw =
+        \int_{0}^{6}\!\int_{0}^{w}(w - u)\,du\,dw. \] Integrando em \(u\):
+        \(\int_{0}^{w}(w - u)\,du = \frac{w^2}{2}\). Integrando em \(w\):
+        \(\int_{0}^{6}\frac{w^2}{2}\,dw = \frac{6^3}{6} = 36\).
       </p>
     </div>
   </details>

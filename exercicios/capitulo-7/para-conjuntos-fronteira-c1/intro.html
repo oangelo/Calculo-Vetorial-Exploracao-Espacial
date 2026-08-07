@@ -1,28 +1,30 @@
 <div class="document-header">
   <div class="document-stamp">SIGILOSO</div>
   <div class="document-date">
-    DATA: <span class="censored">14</span> DE ABRIL DE
-    <span class="censored">1965</span><br />
+    DATA: <span class="censored">20</span> DE JULHO DE
+    <span class="censored">1969</span><br />
     LOCALIZAÇÃO:
-    <span class="censored">CENTRO AEROSPACIAL [REDACTED]</span>
+    <span class="censored">CENTRO DE CONTROLE — HOUSTON, TX</span>
   </div>
   <div class="document-intro">
     RELATÓRIO DE PROGRESSO: PROJETO
-    <span class="censored">GREEN-VECTOR</span><br /><br />
-    Na corrida para aperfeiçoar manobras orbitais de encontro entre cápsulas
-    Gemini, nossos analistas identificaram que o
-    <span class="censored">controle de circulação</span> em torno de trajetórias
-    fechadas exige domínio absoluto do **Teorema de Green**. O material abaixo
-    foi extraído dos cadernos do Dr. <span class="censored">████████</span>,
-    matemático-chefe da operação <span class="censored">GATEWAY</span>.
+    <span class="censored">EAGLE</span><br /><br />
+    Enquanto o módulo lunar se aproxima da superfície da Lua, nossa equipe de
+    análise de trajetórias identificou que o Teorema de Green, até agora
+    verificado apenas para retângulos, precisa ser estendido para regiões com
+    fronteira curva. Manobras de rendezvous orbital envolvem regiões circulares
+    e elípticas; campos de gravidade não se ajustam a grelhas cartesianas. O
+    material abaixo foi extraído dos cadernos do Dr.
+    <span class="censored">████████</span>, que demonstrou como decompor regiões
+    curvas em fatias retangulares para justificar a extensão do teorema.
   </div>
   <div class="warning-box">
-    Este documento contém informações matemáticas classificadas como vitais.
-    Divulgação não autorizada resultará em
+    Este documento contém informações matemáticas classificadas como vitais para
+    o programa lunar. Divulgação não autorizada resultará em
     <span class="censored">sanções severas</span>.
   </div>
   <div class="metadata">
-    <span>REF: GV-<span class="censored">027</span></span>
+    <span>REF: EG-<span class="censored">1969</span>-C1</span>
     <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
     <span
       >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
@@ -31,33 +33,102 @@
   </div>
 </div>
 <div class="section-title">
-  FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN (FRONTEIRA \(C^1\))
+  FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN PARA CONJUNTOS COM FRONTEIRA C1
 </div>
 <div class="concept-definition">
-  <p><strong>DEFINIÇÃO FORMAL:</strong></p>
-  <p class="formula-highlight">
-    \[\iint_{D}\!\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial
-    y}\right)\,dA \;=\;\oint_{\partial D} P\,dx+Q\,dy\]
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Este tópico assume domínio completo do Teorema de Green para retângulos
+    (Tópico 1 deste capítulo), incluindo a demonstração via Teorema de Fubini e
+    a propriedade de aditividade. Você também precisa de todos os pré-requisitos
+    desse tópico: integrais de linha e circulação (Capítulo 5), rotacional
+    (Capítulo 1), integrais duplas (Capítulo 2) e campos conservativos (Capítulo
+    6). O argumento de decomposição que estende Green além dos retângulos usa
+    coordenadas polares (Capítulo 3) e a parametrização de curvas como círculos
+    e elipses (Capítulo 1).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>1. FRONTEIRA C1: O QUE SIGNIFICA</strong></p>
+  <p>
+    Dizemos que uma curva é de classe \(C^1\) quando pode ser descrita por uma
+    função diferenciável cuja derivada é contínua. Uma região \(D\) tem
+    <em>fronteira \(C^1\)</em> quando seu contorno \(\partial D\) é composto por
+    um número finito de arcos \(C^1\) que se encontram em ângulos diferentes de
+    zero. Elipses, círculos, parábolas e curvas poligonais suaves são exemplos
+    de fronteira \(C^1\). Essa condição garante que o contorno pode ser
+    parametrizado de modo que a integral de linha ao redor dele faz sentido — o
+    que não ocorreria, por exemplo, com uma fronteira fractal.
   </p>
   <p>
-    Seja \(D\subset\mathbb{R}^2\) uma região simplesmente conexa com fronteira
-    \(C^1\) positiva e orientada no sentido anti-horário. Para um campo \(\vec
-    F=(P,Q)\) cujas derivadas parciais são contínuas em uma vizinhança de \(D\),
-    a equação acima relaciona a circulação de \(\vec F\) ao fluxo de sua
-    “rotacional escalar” no interior.
+    No tópico anterior, provamos o Teorema de Green para retângulos. Agora a
+    pergunta central é: <strong>e se a fronteira não for retangular?</strong> A
+    resposta passa pela ideia de <em>decompor</em> a região em pedaços mais
+    simples.
   </p>
 </div>
-<div class="mission-context">
-  Durante o acoplamento em órbita baixa, calcular a circulação de campos de
-  velocidade ao redor da cápsula permite estimar torques indesejados sobre o
-  módulo de serviço. O Teorema de Green fornece o elo entre medidas de
-  superfície (dentro da nave) e leituras de sensores ao longo do casco.
+<div class="concept-definition">
+  <p><strong>2. REGIÕES VERTICALMENTE E HORIZONTALMENTE SIMPLES</strong></p>
+  <p>
+    Uma região \(D\) é <em>verticalmente simples</em> quando, para cada \(x\)
+    fixo, os valores de \(y\) variam entre duas funções contínuas:
+  </p>
+  <p class="formula-highlight">
+    \[D = \{(x,y) : a \le x \le b,\; \phi_1(x) \le y \le \phi_2(x)\}\]
+  </p>
+  <p>
+    Analogamente, \(D\) é <em>horizontalmente simples</em> quando os valores de
+    \(x\), para cada \(y\) fixo, ficam entre duas funções. Retângulos são ambos
+    ao mesmo tempo. Discos e elipses são verticalmente (e horizontalmente)
+    simples. A importância prática é que, para regiões com essa propriedade, o
+    argumento usado na demonstração para retângulos se adapta diretamente.
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong
+      >3. ARGUMENTO DE DECOMPOSIÇÃO: POR QUE GREEN FUNCIONA ALÉM DOS
+      RETÂNGULOS</strong
+    >
+  </p>
+  <p>
+    Quando uma região com fronteira \(C^1\) não é verticalmente simples, podemos
+    fatiá-la em sub-regiões que são. O argumento é o mesmo da aditividade que
+    você já viu para retângulos: ao aplicar Green em cada sub-região e somar os
+    resultados, as integrais de linha nos cortes internos (compartilhados entre
+    sub-regiões vizinhas) se cancelam, pois são percorridas em sentidos opostos.
+    O que sobra é exatamente a integral de linha ao redor da fronteira exterior
+    de \(D\).
+  </p>
+  <p class="formula-highlight">
+    \[\oint_{\partial D} P\,dx + Q\,dy = \iint_D \left(\frac{\partial
+    Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA\]
+  </p>
+  <p>
+    Essa fórmula vale para toda região \(D\) com fronteira \(C^1\), orientada
+    positivamente (anti-horária), desde que \(\vec{F} = (P,Q)\) tenha derivadas
+    parciais contínuas em uma vizinhança de \(D\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. REGIÕES MULTIPLAMENTE CONEXAS</strong></p>
+  <p>
+    Quando \(D\) possui buracos — como um anel —, a fronteira tem mais de uma
+    componente. O Teorema de Green continua valendo, mas agora a integral de
+    contorno percorre <strong>todas</strong> as componentes da fronteira. A
+    borda externa é orientada no sentido anti-horário; as bordas internas (ao
+    redor dos buracos) são orientadas no sentido horário, de modo que a região
+    sempre fique à esquerda do percurso. Novamente, o argumento é o mesmo: um
+    corte (slit) que conecta a borda externa a uma borda interna transforma o
+    anel em uma região simplesmente conexa, e as integrais nos cortes se
+    cancelam.
+  </p>
 </div>
 <div class="historical-note">
-  <strong>NOTA HISTÓRICA:</strong> Em 23 / 03 / 1965, a missão Gemini 3 executou
-  o primeiro “roll maneuver” dos EUA. As correções de atitude empregaram
-  algoritmos baseados em
-  <span class="censored">integrais de linha</span> validados por Green apenas
-  dois meses antes do lançamento.
+  <strong>NOTA HISTÓRICA:</strong> Em 20 de julho de 1969, o módulo lunar
+  <em>Eagle</em> pousou no Mar da Tranquilidade. Os algoritmos de navegação que
+  guiaram Armstrong e Aldrin calculavam correções de trajetória usando
+  <span class="censored">integrais de contorno</span> sobre regiões não
+  retangulares — a extensão do Teorema de Green para fronteiras \(C^1\) foi um
+  ingrediente silencioso do sucesso da missão.
 </div>
-===== LISTA DE EXERCÍCIOS =====

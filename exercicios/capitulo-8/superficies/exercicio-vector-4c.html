@@ -1,19 +1,68 @@
 <li class="exercise-item">
   <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
   <div class="context">
-    ORIGEM: Seção de Materiais Ultra‑leves — Relatório Final (1969)
+    ORIGEM: Análise de Telemetria Desconhecida — Apollo 17 [DEZ/1972]
   </div>
   <p>
-    Determine uma parametrização para o superparaboloide definido implicitamente
-    por \(|x|^{p} + |y|^{p} \leq z^{p}\) com \(p = 1.5\). Defina o domínio de
-    parâmetros que gera uma única folha completa.
+    Para encerrar, vamos testar toda a sua habilidade de leitura. Dada uma
+    parametrização misteriosa, você precisa classificar a superfície e
+    determinar como ela foi construída. Considere:
   </p>
+  <p class="formula-highlight">
+    \[\vec{r}(u,v) = (u\cos v,\; u\sin v,\; \sin u),\quad u \in [0, \pi],\; v
+    \in [0, 2\pi]\]
+  </p>
+  <p>
+    <strong>(a)</strong> Elimine os parâmetros <strong>u</strong> e
+    <strong>v</strong> para obter uma equação cartesiana que relacione
+    <strong>x</strong>, <strong>y</strong> e <strong>z</strong>. Dica: expresse
+    <strong>u</strong> em função de <strong>z</strong>.
+  </p>
+  <p>
+    <strong>(b)</strong> Classifique a superfície: é o gráfico de uma função
+    <strong>z = f(x,y)</strong>? É uma superfície de revolução em torno do eixo
+    <strong>z</strong>? Justifique sua resposta analisando a estrutura da
+    parametrização.
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva geometricamente o que cada parâmetro controla:
+    o que acontece quando <strong>u</strong> é fixo? E quando
+    <strong>v</strong> é fixo? Esboce a superfície indicando as
+    curvas-coordenadas.
+  </p>
+  <!-- OMEGA: sem dica -->
   <details>
     <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
     <div class="solution">
       <p>
-        Uma escolha polar generalizada: \(\vec{r}(u,v) = ( u^{1/p}\cos v,\,
-        u^{1/p}\sin v,\, u^{1/p} )\) com \(u\in[0,1]\), \(v\in[0,2\pi]\).
+        <strong>(a)</strong> Temos <strong>x² + y² = u²</strong> e
+        <strong>z = \sin u</strong>. Como <strong>u ∈ [0, π]</strong>, podemos
+        escrever <strong>u = \arcsin z</strong> (para
+        <strong>z ∈ [0, 1]</strong>). Logo \(\boxed{x² + y² = (\arcsin z)²}\),
+        ou equivalentemente \(\boxed{z = \sin(\sqrt{x² + y²})}\) para
+        <strong>\sqrt{x² + y²} ∈ [0, π]</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> A superfície
+        <strong>não é gráfico global</strong> de
+        <strong>z = f(x,y)</strong> porque a função <strong>\sin u</strong> não
+        é injetora em <strong>u ∈ [0, π]</strong> (cada
+        <strong>z ∈ [0,1]</strong> corresponde a dois valores de
+        <strong>u</strong>, exceto em <strong>u = π/2</strong>). Porém,
+        <strong>é uma superfície de revolução</strong> em torno do eixo
+        <strong>z</strong>: a parametrização tem a forma \((f(u)\cos v,\;
+        f(u)\sin v,\; g(u))\), que é exatamente a estrutura de revolução.
+      </p>
+      <p>
+        <strong>(c)</strong> Fixar <strong>u = u₀</strong> produz um círculo
+        horizontal de raio <strong>u₀</strong> à altura
+        <strong>\sin u₀</strong>. Fixar <strong>v = v₀</strong> produz a curva
+        geratriz \((u\cos v₀,\; u\sin v₀,\; \sin u)\) no plano vertical de
+        ângulo <strong>v₀</strong>, que é uma senoide "esticada" radialmente. A
+        superfície é uma onda radial que sobe de <strong>z = 0</strong> (em
+        <strong>u = 0</strong>) até <strong>z = 1</strong> (em
+        <strong>u = π/2</strong>) e desce de volta a <strong>z = 0</strong> (em
+        <strong>u = π</strong>), formando uma "tigela ondulada".
       </p>
     </div>
   </details>
