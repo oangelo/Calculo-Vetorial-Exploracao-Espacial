@@ -1,0 +1,462 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h2>Mudança de Variáveis</h2>
+      <p>
+        Como integrar sobre um elipsoide ou um prisma oblíquo? Com fatias
+        cartesianas, a fronteira curva impõe limites complicados em todas as
+        direções — o sólido não nasceu para ser fatiado em caixas.
+      </p>
+      <p>
+        No capítulo 3, o jacobiano 2×2 corrigia a área quando o plano se
+        deformava. A mesma estratégia sobe uma dimensão: trocar de coordenadas
+        para que a região — e não a integral — decida a dificuldade do cálculo.
+        A seção anterior garantiu que a integral existe; aqui escolhemos o
+        sistema em que ela é simples.
+      </p>
+      <p class="history-insert">
+        Mary Jackson, primeira engenheira negra da NASA, precisou de permissão
+        especial da cidade de Hampton (1958) para assistir às aulas de
+        pós-graduação — ministradas na Hampton High School ainda segregada —
+        que a levaram à promoção a engenheira.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>O Jacobiano como Fator de Volume</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Uma caixa de borracha macia: aperte, estique, corte na diagonal. O
+            material é o mesmo, mas cada cubinho interno — e o seu volume — se
+            deforma. O jacobiano 3D mede essa deformação em cada ponto do
+            espaço.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Uma transformação \(T(u,v,w) = (x,y,z)\) leva um cubinho
+            \(du\,dv\,dw\) a um paralelepípedo no espaço \((x,y,z)\). O fator
+            \(|J|\) diz quanto o cubinho esticou ou encolheu: volume novo
+            \(= |J|\,du\,dv\,dw\). Em 2D, o quadradinho virava paralelogramo;
+            agora, o cubinho vira paralelepípedo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Visualização — O Cubo Deformado</h3>
+      <canvas
+        id="canvasJacobiano3D"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>a:</label>
+          <input type="range" id="sliderJacA" min="0.3" max="2.5" step="0.1" value="1" />
+        </div>
+        <div class="control-slider">
+          <label>b:</label>
+          <input type="range" id="sliderJacB" min="0.3" max="2.5" step="0.1" value="1" />
+        </div>
+        <div class="control-slider">
+          <label>c:</label>
+          <input type="range" id="sliderJacC" min="0.3" max="2.5" step="0.1" value="1" />
+        </div>
+        <button class="control-button" id="btnJacRotacao">Modo rotação</button>
+      </div>
+      <p>
+        Arraste \(a\), \(b\) e \(c\): o cubo unitário em \((u,v,w)\) estica em
+        paralelepípedo — o volume lido é \(abc\), o valor de \(|J|\) numa escala
+        pura. No modo rotação, o cubo gira sem deformar: \(|J| = 1\), volume 1.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Teorema da Mudança de Variáveis</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[\iiint_V f(x,y,z)\,dV = \iiint_{V'} f\bigl(x(u,v,w),\,y(u,v,w),\,
+          z(u,v,w)\bigr)\,|J|\,du\,dv\,dw\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          \[\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|
+          = \begin{vmatrix}
+          \frac{\partial x}{\partial u} & \frac{\partial x}{\partial v} & \frac{\partial x}{\partial w} \cr
+          \frac{\partial y}{\partial u} & \frac{\partial y}{\partial v} & \frac{\partial y}{\partial w} \cr
+          \frac{\partial z}{\partial u} & \frac{\partial z}{\partial v} & \frac{\partial z}{\partial w}
+          \end{vmatrix}\]
+        </p>
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>\(V'\) = região no espaço \((u,v,w)\), imagem inversa de \(V\)</li>
+          <li>
+            \(|J|\) = valor absoluto do determinante 3×3 das derivadas parciais
+            da transformação — o fator de deformação de volume
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(T\) bijetora, de classe \(C^1\), com
+          jacobiano não nulo em \(V'\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Volume Preservado ou Escalado</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Sem deformação:</strong></p>
+          <p>
+            Rotações e translações não deformam o espaço: o jacobiano vale
+            \(|J| = 1\) — volume preservado. Trocar de sistema sem mudar o
+            conteúdo.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Escala independente:</strong></p>
+          <p>
+            Com \(x = au,\ y = bv,\ z = cw\), o cubo unitário vira um
+            paralelepípedo de volume \(abc\): \(|J| = abc\). Fator constante —
+            todo cubinho deforma igual.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Elipsoide</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            A reescala \(x = 2u,\ y = v,\ z = 3w\) leva a esfera unitária
+            \(u^2+v^2+w^2 \le 1\) ao elipsoide
+            \(\frac{x^2}{4}+y^2+\frac{z^2}{9} \le 1\). Calcule
+            \(\iiint_D x^2\,dV\), em que \(D\) é o elipsoide.
+          </p>
+          <p>
+            Sugestão: a reescala diagonal tem jacobiano constante \(|J| = 6\);
+            escreva \(x^2\) nas coordenadas \((u,v,w)\) e use a simetria da
+            esfera.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Em 1979, Mary Jackson deixou a engenharia e aceitou um rebaixamento
+            para assumir o programa de mulheres do Langley — viu o teto de
+            vidro como regra, não exceção.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — O Prisma Rotacionado</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Seja \(V\) o prisma com base quadrada rotacionada
+            \(0 \le x+y \le 2,\ 0 \le x-y \le 2\) e altura \(0 \le z \le 3\).
+            Mostre que \(u = \frac{x+y}{\sqrt2},\ v = \frac{x-y}{\sqrt2}\)
+            define uma rotação de \(45^\circ\) com \(|J| = 1\) e calcule o
+            volume de \(V\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Jackson tornou-se engenheira e depois gestora de diversidade — o
+            sistema a admitia, mas nunca a chamou de pioneira.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasJacobiano3D');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W / 2;
+    var cy = H / 2 + 20;
+    var S = 58;
+    var animId = null;
+    var frame = 0;
+    var inited = false;
+    var rotateMode = false;
+
+    var sliderA = document.getElementById('sliderJacA');
+    var sliderB = document.getElementById('sliderJacB');
+    var sliderC = document.getElementById('sliderJacC');
+    var btnRot = document.getElementById('btnJacRotacao');
+
+    function proj(x, y, z) {
+      return {
+        x: cx + (x - y) * S * 0.866,
+        y: cy + (x + y) * S * 0.5 - z * S * 0.5
+      };
+    }
+
+    function poly(pts) {
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.closePath();
+    }
+
+    function seg(a, b) {
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+
+    function cubeWire(x0, y0, z0, x1, y1, z1, color, lw) {
+      var p = [
+        proj(x0, y0, z0), proj(x1, y0, z0), proj(x1, y1, z0), proj(x0, y1, z0),
+        proj(x0, y0, z1), proj(x1, y0, z1), proj(x1, y1, z1), proj(x0, y1, z1)
+      ];
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      seg(p[0], p[1]); seg(p[1], p[2]); seg(p[2], p[3]); seg(p[3], p[0]);
+      seg(p[4], p[5]); seg(p[5], p[6]); seg(p[6], p[7]); seg(p[7], p[4]);
+      seg(p[0], p[4]); seg(p[1], p[5]); seg(p[2], p[6]); seg(p[3], p[7]);
+    }
+
+    function drawScaledBox(a, b, c) {
+      var bFL = proj(0, 0, 0), bFR = proj(a, 0, 0);
+      var bBR = proj(a, b, 0), bBL = proj(0, b, 0);
+      var tFL = proj(0, 0, c), tFR = proj(a, 0, c);
+      var tBR = proj(a, b, c), tBL = proj(0, b, c);
+
+      poly([tFL, tFR, tBR, tBL]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.45)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+
+      poly([bFL, bFR, tFR, tFL]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.22)';
+      ctx.fill();
+      ctx.stroke();
+
+      poly([bFR, bBR, tBR, tFR]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.12)';
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(30, 136, 229, 0.9)';
+      ctx.lineWidth = 1.2;
+      seg(bFL, bFR); seg(bFR, bBR); seg(bBR, bBL); seg(bBL, bFL);
+      seg(tFL, tFR); seg(tFR, tBR); seg(tBR, tBL); seg(tBL, tFL);
+      seg(bFL, tFL); seg(bFR, tFR); seg(bBR, tBR); seg(bBL, tBL);
+    }
+
+    function rotatePoint(u, v, w, alpha, beta) {
+      var ca = Math.cos(alpha), sa = Math.sin(alpha);
+      var cb = Math.cos(beta), sb = Math.sin(beta);
+      var x1 = ca * u - sa * v;
+      var y1 = sa * u + ca * v;
+      var x2 = x1;
+      var y2 = cb * y1 - sb * w;
+      var z2 = sb * y1 + cb * w;
+      return proj(x2, y2, z2);
+    }
+
+    function drawRotatedBox(alpha, beta) {
+      var idx = function (i, j, k) { return i * 4 + j * 2 + k; };
+      var P = [];
+      for (var i = 0; i <= 1; i++) {
+        for (var j = 0; j <= 1; j++) {
+          for (var k = 0; k <= 1; k++) {
+            P[idx(i, j, k)] = rotatePoint(i, j, k, alpha, beta);
+          }
+        }
+      }
+
+      poly([P[idx(0, 0, 1)], P[idx(1, 0, 1)], P[idx(1, 1, 1)], P[idx(0, 1, 1)]]);
+      ctx.fillStyle = 'rgba(67, 160, 71, 0.4)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+
+      poly([P[idx(0, 0, 0)], P[idx(1, 0, 0)], P[idx(1, 0, 1)], P[idx(0, 0, 1)]]);
+      ctx.fillStyle = 'rgba(67, 160, 71, 0.2)';
+      ctx.fill();
+      ctx.stroke();
+
+      poly([P[idx(1, 0, 0)], P[idx(1, 1, 0)], P[idx(1, 1, 1)], P[idx(1, 0, 1)]]);
+      ctx.fillStyle = 'rgba(67, 160, 71, 0.12)';
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(67, 160, 71, 0.9)';
+      ctx.lineWidth = 1.2;
+      for (var i2 = 0; i2 <= 1; i2++) {
+        for (var j2 = 0; j2 <= 1; j2++) {
+          seg(P[idx(i2, j2, 0)], P[idx(i2, j2, 1)]);
+        }
+      }
+      for (var i3 = 0; i3 <= 1; i3++) {
+        for (var k3 = 0; k3 <= 1; k3++) {
+          seg(P[idx(i3, 0, k3)], P[idx(i3, 1, k3)]);
+        }
+      }
+      for (var j3 = 0; j3 <= 1; j3++) {
+        for (var k4 = 0; k4 <= 1; k4++) {
+          seg(P[idx(0, j3, k4)], P[idx(1, j3, k4)]);
+        }
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      cubeWire(0, 0, 0, 1, 1, 1, 'rgba(255, 255, 255, 0.28)', 0.8);
+
+      var a = 1, b = 1, c = 1;
+      if (rotateMode) {
+        drawRotatedBox(frame * 0.012, 0.42);
+      } else {
+        a = parseFloat(sliderA.value) || 1;
+        b = parseFloat(sliderB.value) || 1;
+        c = parseFloat(sliderC.value) || 1;
+        drawScaledBox(a, b, c);
+      }
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = 1;
+      seg(proj(0, 0, 0), proj(3.2, 0, 0));
+      seg(proj(0, 0, 0), proj(0, 3.2, 0));
+      seg(proj(0, 0, 0), proj(0, 0, 3.2));
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      var ex = proj(3.2, 0, 0);
+      var ey = proj(0, 3.2, 0);
+      var ez = proj(0, 0, 3.2);
+      ctx.fillText('x', ex.x + 6, ex.y + 4);
+      ctx.fillText('y', ey.x + 6, ey.y + 4);
+      ctx.fillText('z', ez.x - 16, ez.y - 6);
+
+      ctx.font = '13px monospace';
+      if (rotateMode) {
+        ctx.fillStyle = '#e0e0e0';
+        ctx.fillText('rotação pura: o cubo gira sem deformar', W / 2, 26);
+        ctx.fillStyle = '#43A047';
+        ctx.fillText('|J| = 1  ·  volume preservado = 1', W / 2, 46);
+      } else {
+        var vol = a * b * c;
+        ctx.fillStyle = '#e0e0e0';
+        ctx.fillText('escala: a=' + a.toFixed(1) + '  b=' + b.toFixed(1) + '  c=' + c.toFixed(1), W / 2, 26);
+        ctx.fillStyle = '#FFB300';
+        ctx.fillText('|J| = abc = ' + vol.toFixed(2) + '  ·  volume = ' + vol.toFixed(2), W / 2, 46);
+      }
+      ctx.textAlign = 'start';
+    }
+
+    function loop() {
+      frame++;
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function toggleRotate() {
+      rotateMode = !rotateMode;
+      if (btnRot) btnRot.textContent = rotateMode ? 'Modo escala' : 'Modo rotação';
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (btnRot) btnRot.addEventListener('click', toggleRotate);
+      if (animId === null) {
+        frame = 0;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (btnRot && inited) btnRot.removeEventListener('click', toggleRotate);
+      if (canvas && inited) inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizJacobiano3D = { init: init, cleanup: cleanup };
+  })();
+</script>
