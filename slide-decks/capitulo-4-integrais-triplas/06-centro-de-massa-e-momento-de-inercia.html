@@ -1,0 +1,455 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h2>Centro de Massa e Momento de Inércia</h2>
+      <p>
+        Onde fica o ponto de equilíbrio de um módulo em órbita — e quão difícil
+        é girá-lo? Sem o centro de massa e o momento de inércia exatos de cada
+        módulo, o controle de atitude é cego e a reentrada, uma roleta. O
+        Gemini VIII, em março de 1966, fez o primeiro acoplamento orbital da
+        história — manobra que exige os dois números com precisão.
+      </p>
+      <p>
+        As seções anteriores montaram o ferramental: a integral tripla soma
+        sobre volumes; o jacobiano e as cilíndricas e esféricas adaptaram a
+        soma à geometria. Aqui essas peças se juntam para responder por um
+        corpo inteiro.
+      </p>
+      <p class="history-insert">
+        Margaret Hamilton liderou o software de voo do Apollo e cunhou o termo
+        "engenharia de software" — num tempo em que o termo era tratado como
+        piada e o software não era considerado engenharia de verdade.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Massa, Equilíbrio e Giro</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>Massa</strong></p>
+          <p>
+            Somar a densidade sobre o volume:
+            \(M = \iiint_V \rho\,dV\). Toda peça do módulo tem massa — a
+            pergunta é onde ela mora e como gira.
+          </p>
+        </div>
+        <div>
+          <p><strong>Centro de massa</strong></p>
+          <p>
+            A média ponderada das posições: cada pedaço de massa \(\rho\,dV\)
+            vota com o próprio peso. O resultado é o ponto em que o corpo se
+            equilibra.
+          </p>
+        </div>
+        <div>
+          <p><strong>Momento de inércia</strong></p>
+          <p>
+            A resistência à rotação: cada pedaço contribui com o quadrado da
+            distância ao eixo. Massa longe do eixo é muito mais difícil de
+            girar.
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>A ideia antes da fórmula:</strong> equilíbrio pesa a posição
+          de cada pedaço; giro pesa a distância ao quadrado.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Definição — Centro de Massa e Inércia</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[x_C = \frac{1}{M}\iiint_V x\,\rho\,dV,\quad
+          y_C = \frac{1}{M}\iiint_V y\,\rho\,dV,\quad
+          z_C = \frac{1}{M}\iiint_V z\,\rho\,dV\]
+        </p>
+        <p>
+          \[I_z = \iiint_V \rho\,(x^2 + y^2)\,dV\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(M = \iiint_V \rho\,dV\) = massa total do sólido; \(\rho\) =
+            densidade no ponto \((x,y,z)\)
+          </li>
+          <li>
+            \(V\) = sólido, região limitada em \(\mathbb{R}^3\); \((x_C,y_C,z_C)\)
+            = coordenadas do centro de massa
+          </li>
+          <li>
+            \(x^2 + y^2\) = distância ao quadrado do ponto ao eixo de rotação
+            \(z\) — o subscrito em \(I_z\) indica o eixo
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(\rho\) integrável sobre \(V\) e
+          \(M \neq 0\); para \(I_x\) e \(I_y\), troca-se o eixo e o fator
+          \(x^2+y^2\) em consequência.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Simetria Antes do Cálculo</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Simetria anula componentes:</strong></p>
+          <p>
+            Se a massa tem um eixo de simetria, o CM está nesse eixo:
+            \(\int_0^{2\pi}\cos\theta\,d\theta = 0\) e
+            \(\int_0^{2\pi}\operatorname{sen}\theta\,d\theta = 0\) zeram
+            \(x_C\) e \(y_C\) antes de qualquer conta. Prever onde o CM não
+            está é meio cálculo.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Densidade constante:</strong></p>
+          <p>
+            Com \(\rho\) constante, o fator sai da integral e o CM coincide
+            com o centro geométrico do volume. O sistema de coordenadas segue
+            a fronteira: o fator \(r^2\) pede cilíndricas; em esféricas, a
+            distância ao eixo \(z\) é \(\rho\operatorname{sen}\phi\), então
+            \(I_z\) pede esféricas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Bloco de Densidade Constante</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Seja \(V = [0,2]\times[0,1]\times[0,4]\) em metros, com densidade
+            constante \(\rho = 5\) kg/m³.
+          </p>
+          <p>
+            (a) Antes de integrar, preveja por simetria as coordenadas do
+            centro de massa — em que plano do bloco cada uma delas se encontra?
+          </p>
+          <p>
+            (b) Calcule a massa total \(M = \iiint_V \rho\,dV\) e as
+            coordenadas \(x_C, y_C, z_C\), confirmando a previsão.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A simetria entrega o centro de massa sem uma única conta. O
+            reconhecimento, não: Katherine Johnson recebeu a Medalha
+            Presidencial da Liberdade em 2015, décadas depois de ter feito os
+            números do Mercury.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Escudo Térmico (Modelo Idealizado)</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Modele o escudo térmico do Gemini como uma casca esférica espessa
+            entre os raios 1 m e 2 m, com densidade constante \(\rho = 3\)
+            kg/m³ — o escudo real era um prato raso na base de um cone
+            truncado; a esfera é a idealização que cabe em esféricas.
+          </p>
+          <p>
+            (a) Escreva os limites da casca em coordenadas esféricas. (b)
+            Expresse \(x^2 + y^2\) nesse sistema. (c) Monte e avalie \(I_z\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Katherine Johnson se aposentou da NASA em 1986, após 33 anos de
+            carreira. Começou no Mercury e estava lá quando o Apollo pousou na
+            Lua.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Exemplo 3 — Módulo Gemini (Guiado)</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Modele o módulo Gemini como três cilindros coaxiais de raio 1 m,
+            alinhados no eixo \(z\) — modelo idealizado, na linha do exercício
+            VECTOR-4A: seção de equipamentos \(0 \le z \le 3\), \(\rho_1 = 3\);
+            adaptador \(3 \le z \le 5\), \(\rho_2 = 5\); cápsula de reentrada
+            \(5 \le z \le 6\), \(\rho_3 = 7\) (densidades em kg/m³).
+          </p>
+          <p>
+            Calcule a massa total e o centro de massa global do módulo.
+            Opcional: calcule \(I_z\) e diga qual seção mais resiste à rotação.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Em novembro de 2019, o Congresso dos EUA concedeu a Medalha de
+            Ouro do Congresso a Katherine Johnson e Christine Darden, e
+            postumamente a Dorothy Vaughan e Mary Jackson. Uma quinta medalha,
+            coletiva, homenageou todas as mulheres que trabalharam na
+            NACA/NASA entre os anos 1930 e 1970 (P.L. 116-68).
+          </p>
+        </div>
+      </div>
+      <div class="compact-solution">
+        <p><strong>Estratégia de resolução (dica):</strong></p>
+        <ol>
+          <li>
+            Decomponha o módulo nas três seções cilíndricas — massa e centro
+            de massa de cada uma saem da fórmula do cilindro homogêneo.
+          </li>
+          <li>
+            Por simetria axial, \(x_C = y_C = 0\); o CM global é a média
+            ponderada dos \(z_C\) de cada seção pelas massas.
+          </li>
+          <li>
+            Para \(I_z\), some as contribuições de cada seção em torno do eixo
+            comum — a soma é direta porque o eixo de rotação é o mesmo.
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-body">
+      <h3>Visualização — Centro de Massa no Cilindro</h3>
+      <canvas
+        id="canvasCentroMassa"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>ρ:</label>
+          <input type="range" id="sliderCentroMassaRho" min="1" max="10" step="0.5" value="5" />
+        </div>
+        <p>
+          Cilindro homogêneo de raio \(1{,}2\) m e altura \(5\) m: com
+          densidade constante, o CM não se move com \(\rho\) — fica no centro
+          geométrico. O que escala com \(\rho\) é a resistência à rotação:
+          \(I_z = \frac{1}{2}\rho\pi R^4 h\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasCentroMassa');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W / 2;
+    var cy = H / 2 + 15;
+    var S = 58;
+    var R = 1.2;
+    var h = 5;
+    var animId = null;
+    var inited = false;
+
+    var sliderRho = document.getElementById('sliderCentroMassaRho');
+
+    function proj(x, y, z) {
+      return {
+        x: cx + (x - y) * S * 0.866,
+        y: cy + (x + y) * S * 0.5 - z * S * 0.5
+      };
+    }
+
+    function seg(a, b, color, lw) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+
+    function ellipse(z, color, lw) {
+      ctx.beginPath();
+      for (var t = 0; t <= 80; t++) {
+        var a = (t / 80) * 2 * Math.PI;
+        var p = proj(R * Math.cos(a), R * Math.sin(a), z);
+        if (t === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.stroke();
+    }
+
+    function dashed(a, b, color, lw) {
+      ctx.save();
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    function draw(rho) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      // eixo z
+      var aBase = proj(0, 0, 0);
+      var aTop = proj(0, 0, h);
+      dashed(aBase, aTop, 'rgba(255, 255, 255, 0.5)', 1);
+
+      // geratrizes do cilindro
+      for (var i = 0; i < 12; i++) {
+        var t = (i / 12) * 2 * Math.PI;
+        seg(
+          proj(R * Math.cos(t), R * Math.sin(t), 0),
+          proj(R * Math.cos(t), R * Math.sin(t), h),
+          'rgba(255, 255, 255, 0.14)',
+          0.7
+        );
+      }
+
+      // elipses base e topo
+      ellipse(0, 'rgba(255, 255, 255, 0.35)', 1);
+      ellipse(h, 'rgba(255, 255, 255, 0.55)', 1);
+
+      // plano do CM (z = h/2)
+      dashed(
+        proj(-R, 0, h / 2),
+        proj(R, 0, h / 2),
+        'rgba(30, 136, 229, 0.7)',
+        1
+      );
+
+      // ponto do CM
+      var pCM = proj(0, 0, h / 2);
+      ctx.beginPath();
+      ctx.arc(pCM.x, pCM.y, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = '#1E88E5';
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText('CM', pCM.x + 10, pCM.y - 6);
+
+      // leituras
+      var Iz = 0.5 * rho * Math.PI * Math.pow(R, 4) * h;
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '13px monospace';
+      ctx.fillText('densidade constante → CM no centro geométrico', W / 2, 26);
+      ctx.fillStyle = '#FFB300';
+      ctx.fillText(
+        'I_z = ½ ρ π R⁴ h = ' + Iz.toFixed(1) + '  (R = 1,2 m · h = 5 m)',
+        W / 2,
+        46
+      );
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText('ρ = ' + rho.toFixed(1) + ' kg/m³', W / 2, 66);
+      ctx.textAlign = 'start';
+    }
+
+    function loop() {
+      var rho = parseFloat(sliderRho.value) || 5;
+      draw(rho);
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizCentroMassa = { init: init, cleanup: cleanup };
+  })();
+</script>
