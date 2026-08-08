@@ -2,9 +2,11 @@
  * visualizacoes.js — Capítulo 3 (Mudança de Variáveis na Integral Dupla)
  * Facção Soviet, 1961-1964.
  *
- * Duas visualizações em IIFE, expostas via window:
+ * Visualizações em IIFE, expostas via window:
  *   window.vizPolarJacobian = { init, cleanup }  → polarJacobianCanvas
- *   window.vizBaricentro     = { init, cleanup }  → baricentroCanvas
+ *   window.vizBaricentro    = { init, cleanup }  → baricentroCanvas
+ *   window.vizAreaCartesiana= { init, cleanup }  → areaCartesianaCanvas
+ *   window.vizDuasMassas    = { init, cleanup }  → duasMassasCanvas
  *
  * requestAnimationFrame (nunca timers de intervalo). cleanup cancela o loop
  * quando o slide deixa de estar visível (Reveal 'slidechanged').
@@ -663,4 +665,384 @@ function hookVizToReveal(canvasId, onEnter, onLeave) {
   hookVizToReveal('areaCartesianaCanvas', init, cleanup);
 
   window.vizAreaCartesiana = { init: init, cleanup: cleanup };
+})();
+
+/* ------------------------------------------------------------------ *
+ * vizDuasMassas — duas massas no espaço e o centro de massa.
+ * Cubos arrastáveis no plano XY (chão); arrastar fora rotaciona a
+ * vista. As massas vêm dos sliders m1/m2: o cubo maior pesa mais e o
+ * ponto vermelho — a média ponderada das posições — puxa para o lado
+ * da massa maior.
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var cx = 0;
+  var cy = 0;
+  var animId = null;
+  var inited = false;
+
+  var SCALE = 48;
+  var GROUND = 3;
+
+  var rot = 0;
+  var dragMode = null; // 'a' | 'b' | 'rot'
+  var lastX = 0;
+
+  var cubeA = { x: -2, y: -1 };
+  var cubeB = { x: 2, y: 1 };
+
+  function mass(id) {
+    var s = document.getElementById(id);
+    if (!s) return 1;
+    var v = parseFloat(s.value);
+    return isNaN(v) ? 1 : v;
+  }
+
+  function side(m) {
+    return 0.55 + 0.5 * Math.cbrt(m);
+  }
+
+  function clamp(v, lo, hi) {
+    return Math.max(lo, Math.min(hi, v));
+  }
+
+  function rotXY(x, y) {
+    var c = Math.cos(rot);
+    var s = Math.sin(rot);
+    return { x: x * c - y * s, y: x * s + y * c };
+  }
+
+  function proj(x, y, z) {
+    var r = rotXY(x, y);
+    return {
+      x: cx + r.x * SCALE,
+      y: cy - z * SCALE * 0.8 + r.y * SCALE * 0.35,
+    };
+  }
+
+  function groundAt(mx, my) {
+    var rx = (mx - cx) / SCALE;
+    var ry = (my - cy) / (SCALE * 0.35);
+    var c = Math.cos(rot);
+    var s = Math.sin(rot);
+    return {
+      x: rx * c + ry * s,
+      y: -rx * s + ry * c,
+    };
+  }
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) * canvas.width) / rect.width,
+      y: ((e.clientY - rect.top) * canvas.height) / rect.height,
+    };
+  }
+
+  function drawCube(x, y, m, color, highlight) {
+    var s = side(m);
+    var h = s / 2;
+    var v = [];
+    for (var i = 0; i < 2; i++) {
+      for (var j = 0; j < 2; j++) {
+        for (var k = 0; k < 2; k++) {
+          v.push(proj(x + (i ? h : -h), y + (j ? h : -h), k ? s : 0));
+        }
+      }
+    }
+    var faces = [
+      [0, 1, 3, 2],
+      [4, 5, 7, 6],
+      [0, 1, 5, 4],
+      [2, 3, 7, 6],
+      [0, 2, 6, 4],
+      [1, 3, 7, 5],
+    ];
+    ctx.globalAlpha = highlight ? 0.3 : 0.16;
+    for (var f = 0; f < faces.length; f++) {
+      var q = faces[f];
+      ctx.beginPath();
+      ctx.moveTo(v[q[0]].x, v[q[0]].y);
+      for (var w = 1; w < q.length; w++) {
+        ctx.lineTo(v[q[w]].x, v[q[w]].y);
+      }
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = highlight ? '#FFFFFF' : color;
+      ctx.lineWidth = highlight ? 2 : 1.2;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    return { x: x, y: y, z: s / 2, s: s };
+  }
+
+  function cubeInfo(x, y, m) {
+    var s = side(m);
+    var h = s / 2;
+    var corners = [
+      proj(x - h, y - h, s),
+      proj(x + h, y - h, s),
+      proj(x + h, y + h, s),
+      proj(x - h, y + h, s),
+    ];
+    var cx2 = 0;
+    var cy2 = 0;
+    for (var i = 0; i < 4; i++) {
+      cx2 += corners[i].x;
+      cy2 += corners[i].y;
+    }
+    cx2 /= 4;
+    cy2 /= 4;
+    var maxd = 0;
+    for (var j = 0; j < 4; j++) {
+      var dx = corners[j].x - cx2;
+      var dy = corners[j].y - cy2;
+      var d = dx * dx + dy * dy;
+      if (d > maxd) maxd = d;
+    }
+    var r = Math.sqrt(maxd) + 8;
+    return { x: cx2, y: cy2, r2: r * r };
+  }
+
+  function hoverCube(p) {
+    var iA = cubeInfo(cubeA.x, cubeA.y, mass('massa1Slider'));
+    var iB = cubeInfo(cubeB.x, cubeB.y, mass('massa2Slider'));
+    var dA = (p.x - iA.x) * (p.x - iA.x) + (p.y - iA.y) * (p.y - iA.y);
+    var dB = (p.x - iB.x) * (p.x - iB.x) + (p.y - iB.y) * (p.y - iB.y);
+    if (dA <= iA.r2 || dB <= iB.r2) {
+      return dA <= iA.r2 && (dB > iB.r2 || dA <= dB) ? 'a' : 'b';
+    }
+    return null;
+  }
+
+  function onDown(e) {
+    if (!canvas) return;
+    var hit = hoverCube(getPos(e));
+    if (hit) {
+      dragMode = hit;
+      canvas.style.cursor = 'grabbing';
+      return;
+    }
+    dragMode = 'rot';
+    lastX = getPos(e).x;
+  }
+
+  function onMove(e) {
+    if (!canvas) return;
+    var p = getPos(e);
+    if (!dragMode) {
+      canvas.style.cursor = hoverCube(p) ? 'grab' : 'default';
+      return;
+    }
+    if (dragMode === 'rot') {
+      rot += (p.x - lastX) * 0.01;
+      lastX = p.x;
+      return;
+    }
+    var g = groundAt(p.x, p.y);
+    var tgt = dragMode === 'a' ? cubeA : cubeB;
+    tgt.x = clamp(g.x, -GROUND + 0.4, GROUND - 0.4);
+    tgt.y = clamp(g.y, -GROUND + 0.4, GROUND - 0.4);
+  }
+
+  function onUp() {
+    dragMode = null;
+    if (canvas) canvas.style.cursor = 'default';
+  }
+
+  function onTouchMove(e) {
+    e.preventDefault();
+    if (e.touches.length > 0) onMove(e.touches[0]);
+  }
+
+  function attachEvents() {
+    canvas.addEventListener('mousedown', onDown);
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseup', onUp);
+    canvas.addEventListener('mouseleave', onUp);
+    canvas.addEventListener('touchstart', onDown, { passive: false });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    canvas.addEventListener('touchend', onUp);
+  }
+
+  function detachEvents() {
+    canvas.removeEventListener('mousedown', onDown);
+    canvas.removeEventListener('mousemove', onMove);
+    canvas.removeEventListener('mouseup', onUp);
+    canvas.removeEventListener('mouseleave', onUp);
+    canvas.removeEventListener('touchstart', onDown);
+    canvas.removeEventListener('touchmove', onTouchMove);
+    canvas.removeEventListener('touchend', onUp);
+  }
+
+  function draw(t) {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.85)';
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.strokeStyle = 'rgba(79, 195, 247, 0.1)';
+    ctx.lineWidth = 1;
+    for (var g = -GROUND; g <= GROUND; g += 1) {
+      var p1 = proj(g, -GROUND, 0);
+      var p2 = proj(g, GROUND, 0);
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+      var q1 = proj(-GROUND, g, 0);
+      var q2 = proj(GROUND, g, 0);
+      ctx.beginPath();
+      ctx.moveTo(q1.x, q1.y);
+      ctx.lineTo(q2.x, q2.y);
+      ctx.stroke();
+    }
+
+    var o = proj(0, 0, 0);
+    function axis(e, color, label, dx, dy) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(o.x, o.y);
+      ctx.lineTo(e.x, e.y);
+      ctx.stroke();
+      var ang = Math.atan2(e.y - o.y, e.x - o.x);
+      var ah = 11;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(e.x + Math.cos(ang) * 3, e.y + Math.sin(ang) * 3);
+      ctx.lineTo(e.x - Math.cos(ang - 0.45) * ah, e.y - Math.sin(ang - 0.45) * ah);
+      ctx.lineTo(e.x - Math.cos(ang + 0.45) * ah, e.y - Math.sin(ang + 0.45) * ah);
+      ctx.closePath();
+      ctx.fill();
+      ctx.font = 'bold 14px Arial';
+      ctx.fillText(label, e.x + dx, e.y + dy);
+    }
+    axis(proj(3.2, 0, 0), '#1E88E5', 'x', 9, 4);
+    axis(proj(0, 3.2, 0), '#43A047', 'y', 9, 4);
+    axis(proj(0, 0, 2.8), '#E53935', 'z', 9, -6);
+
+    var m1 = mass('massa1Slider');
+    var m2 = mass('massa2Slider');
+    var infoA = drawCube(cubeA.x, cubeA.y, m1, 'rgba(30, 136, 229, 1)', dragMode === 'a');
+    var infoB = drawCube(cubeB.x, cubeB.y, m2, 'rgba(255, 179, 0, 1)', dragMode === 'b');
+
+    var labA = proj(infoA.x, infoA.y, infoA.s + 0.35);
+    ctx.fillStyle = '#90CAF9';
+    ctx.font = 'bold 13px Arial';
+    ctx.fillText('m\u2081', labA.x - 8, labA.y);
+    var labB = proj(infoB.x, infoB.y, infoB.s + 0.35);
+    ctx.fillStyle = '#FFD54F';
+    ctx.fillText('m\u2082', labB.x - 8, labB.y);
+
+    var denom = m1 + m2;
+    var com = {
+      x: (m1 * infoA.x + m2 * infoB.x) / denom,
+      y: (m1 * infoA.y + m2 * infoB.y) / denom,
+      z: (m1 * infoA.z + m2 * infoB.z) / denom,
+    };
+    var pc = proj(com.x, com.y, com.z);
+    var ca = proj(infoA.x, infoA.y, infoA.z);
+    var cb = proj(infoB.x, infoB.y, infoB.z);
+
+    ctx.setLineDash([5, 4]);
+    ctx.strokeStyle = 'rgba(224, 224, 224, 0.45)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(ca.x, ca.y);
+    ctx.lineTo(pc.x, pc.y);
+    ctx.moveTo(cb.x, cb.y);
+    ctx.lineTo(pc.x, pc.y);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    var pulse = 0.5 + 0.5 * Math.sin(t / 300);
+    ctx.beginPath();
+    ctx.arc(pc.x, pc.y, 9 + 4 * pulse, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(229, 57, 53, ' + (0.3 + 0.4 * pulse) + ')';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(pc.x - 8, pc.y);
+    ctx.lineTo(pc.x + 8, pc.y);
+    ctx.moveTo(pc.x, pc.y - 8);
+    ctx.lineTo(pc.x, pc.y + 8);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.arc(pc.x, pc.y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#E53935';
+    ctx.fill();
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '14px Arial';
+    ctx.fillText(
+      'm\u2081 = ' + m1 + ' kg \u00B7 m\u2082 = ' + m2 + ' kg',
+      W / 2,
+      24
+    );
+    ctx.font = '13px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+    ctx.fillText(
+      'centro de massa (x\u0304, \u0233, z\u0304) \u2248 (' +
+        com.x.toFixed(2) +
+        ', ' +
+        com.y.toFixed(2) +
+        ', ' +
+        com.z.toFixed(2) +
+        ')',
+      W / 2,
+      H - 30
+    );
+    ctx.font = '11px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.fillText(
+      'arraste um cubo para mov\u00EA-lo \u00B7 arraste fora para girar a vista',
+      W / 2,
+      H - 12
+    );
+    ctx.textAlign = 'start';
+  }
+
+  function animate() {
+    draw(performance.now ? performance.now() : Date.now());
+    animId = requestAnimationFrame(animate);
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('duasMassasCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+      cx = W / 2;
+      cy = H / 2;
+    }
+    inited = true;
+    attachEvents();
+    animate();
+  }
+
+  function cleanup() {
+    if (animId) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    dragMode = null;
+    if (canvas && inited) {
+      detachEvents();
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('duasMassasCanvas', init, cleanup);
+
+  window.vizDuasMassas = { init: init, cleanup: cleanup };
 })();
