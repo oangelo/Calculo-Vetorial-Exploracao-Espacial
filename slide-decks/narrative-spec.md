@@ -90,6 +90,22 @@ O engenheiro, o matemático, o cientista são frequentemente vendidos a si mesmo
 
 ---
 
+## Diretriz 8 — Regra da Voz Documental
+
+**Princípio:** Os slides são documentos da facção, mas o narrador não é a facção. Textos históricos usam voz neutra em 3ª pessoa.
+
+**Aplicação:** Nunca usar pronomes da facção em textos históricos ("perdemos", "nossos", "nós"). O documento é da URSS/EUA; o narrador é a história. Exceção apenas se a issue do capítulo especificar voz faccional explícita.
+
+---
+
+## Diretriz 9 — Regra do Spoiler Estrutural
+
+**Princípio:** Nenhum texto pode depender de informação que o aluno ainda não viu — nem de seções posteriores do mesmo capítulo, nem de fatos já narrados em capítulos anteriores.
+
+**Aplicação:** Referenciar evento de seção posterior → reescrever ancorando no já contado. Recontar fato de capítulo anterior → substituir por beat novo ou contexto causal. Repetição de nome é identificador; repetição de fato é recontagem.
+
+---
+
 ## Três camadas onde a história aparece
 
 A história entra nos slides em três níveis de profundidade, do mais ao menos explícito:

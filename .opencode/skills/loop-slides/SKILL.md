@@ -43,6 +43,7 @@ Para cada seção que será implementada, com o PDI da issue em mãos (`gh issue
 2. Critérios do PDI review (os mesmos do juiz, aplicados ao plano):
    - exemplos clássicos E simples (2-5 passos em sala, sem truque de substituição longo)?
    - história concreta (nomes/datas/fatos) e beats únicos (sem repetição entre insert/fragmentos)?
+   - **sem repetição com capítulos anteriores** — para cada fato/personagem do plano, conferir nos `slide-decks/capitulo-*/` dos caps anteriores (grep por personagens-chave): recontagem de fato já narrado reprova o PDI. (No cap 5, o gulag de Korolev já narrado nos caps 1 e 3 só foi pego na revisão humana — a checagem aqui evita o ciclo.)
    - fragmento em TODO exemplo previsto?
    - posição das visualizações (antes da formalização aceitável quando apoia a definição)?
    - fluxo pedagógico correto (motivação → conceito → [viz?] → formalização → interpretação → exemplos)?

@@ -78,9 +78,13 @@ grep -n 'style=' <arquivo>     # DEVE ser vazio (zero CSS inline)
 ## Critérios de QUALIDADE de conteúdo (adicional — também bloqueiam)
 
 14. **Exemplos simples e acessíveis** — clássicos do tópico, calculáveis em 2-5 passos em sala, sem truques de substituição longos. REPROVAR exemplo "complexo demais para o estágio".
-15. **História concreta** — usa nomes, datas e fatos verificáveis. REPROVAR generalidade vaga ("o engenheiro que calculou...", "um homem...") quando há nome/fato disponível no PDI da issue ou no contexto histórico do capítulo.
+15. **História concreta** — usa nomes, datas e fatos verificáveis. REPROVAR generalidade vaga ("o engenheiro que calculou...", "um homem...") quando há nome/fato disponível no PDI da issue ou no contexto histórico do capítulo. Exigir verbos de ação precisos (construiu/comandou/projetou — não "assinou projeto").
 16. **Fragmento em TODO exemplo** — cada exemplo de seção de conteúdo tem fragmento em `dual-panel` (esquerda = math, direita = história). Beats variados, sem repetir inserts nem entre si.
 17. **Visualização antes da formalização é válida** — quando a viz apoia a definição (ex.: elemento de área e jacobiano), a posição entre CONCEITO e FORMALIZAÇÃO (ou na INTERPRETAÇÃO) é aceitável. NÃO reprovar por estar fora do V7 final.
+18. **Sem repetição entre capítulos** — para cada personagem histórico nos textos, rode `grep` em `slide-decks/capitulo-*/` (capítulos ANTERIORES). Fato central já narrado em outro capítulo → REPROVAR (ALTA), exigindo beat novo ou contexto causal. Nome repetido como identificador é aceitável; fato repetido, não.
+19. **Clareza de referentes** — termo, sigla ou jargão sem explicação no 1º uso (ex.: Pravda sem "jornal oficial") → issue. Referência a evento de seção POSTERIOR do mesmo capítulo (spoiler estrutural) → ALTA.
+20. **Voz neutra** — texto histórico em 1ª pessoa do plural da facção ("perdemos", "nossos") → ALTA (a não ser que a issue do capítulo especifique voz faccional).
+21. **Causalidade** — fato histórico que levanta "por quê?" sem resposta no mesmo beat (ex.: prisão sem contexto do Expurgo) → MEDIA, ou ALTA se for fato central do arco.
 
 ## Formato do veredito (exato)
 
