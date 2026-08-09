@@ -1,0 +1,400 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h2>Comprimento de Arco</h2>
+      <p>
+        Quanto percorre uma nave numa trajetória que não é reta? Numa
+        transferência orbital, numa injeção translunar, o percurso é curvo — e a
+        distância entre os extremos não mede o que a nave voou.
+      </p>
+      <p>
+        A seção 02 garantiu curvas integráveis — classe C¹, suaves. Agora falta
+        acumular o percurso: medir o comprimento da curva é o passo que
+        antecede qualquer grandeza somada ao longo dela.
+      </p>
+      <p class="history-insert">
+        Em 27 de janeiro de 1967, um incêndio na cabine da Apollo 1 matou
+        Grissom, White e Chaffee, a tripulação da primeira Apollo.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Linearizar e Somar</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Um mapa com uma estrada curvada: a régua reta não acompanha a
+            curva. Dobra-se a régua trecho a trecho, seguindo a estrada, e soma-
+            se o que cada trecho mede.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Escolhemos \(N\) pontos \(\vec{r}(t_0), \dots, \vec{r}(t_N)\) ao
+            longo da curva e ligamos cada par por um segmento reto. A soma dos
+            comprimentos dos segmentos aproxima o percurso.
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>\[ L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\| \]</p>
+        <p>
+          Quanto menores os trechos, melhor a régua dobrada imita a estrada —
+          e a soma se aproxima do comprimento verdadeiro.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Visualização — A Soma Converge</h3>
+      <canvas
+        id="canvasComprimentoArco"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Segmentos N:</label>
+          <input type="range" id="sliderArcN" min="2" max="200" step="1" value="8" />
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          \(L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\|\) — o
+          canvas mostra a soma das cordas convergindo para o limite.
+        </p>
+      </div>
+      <p>
+        Arraste \(N\): com poucos segmentos a poligonal encurta o percurso;
+        com \(N\) grande, a soma se aproxima do comprimento exato da curva.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Comprimento de Arco como Integral</h3>
+      <div class="formula-spotlight">
+        <p>\[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_a^b \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}\,dt \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{r}(t) = (x(t),\, y(t),\, z(t))\) = parametrização da curva,
+            com \(t \in [a, b]\).
+          </li>
+          <li>
+            \(\|\vec{r}'(t)\|\) = norma do vetor velocidade — a rapidez
+            escalar do percurso.
+          </li>
+          <li>
+            A raiz = a mesma norma, escrita componente a componente.
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> curva de classe C¹ — a soma de Riemann
+          converge para a integral pelo Teorema do Valor Médio.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Rapidez Escalar e o Elemento ds</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>\[ ds = \|\vec{r}'(t)\|\,dt \]</p>
+          <p>
+            <strong>Onde:</strong> \(\|\vec{r}'(t)\|\) é o comprimento
+            percorrido por unidade de parâmetro; \(ds\) é o elemento de
+            comprimento.
+          </p>
+          <p>
+            <strong>Validade:</strong> curva C¹ — a integral acumula \(ds\)
+            ao longo de todo o percurso.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Geometricamente:</strong></p>
+          <p>
+            \(L\) é propriedade da curva, não da parametrização: a mesma
+            estrada, percorrida com qualquer "relógio", tem o mesmo
+            comprimento — semente da seção 05.
+          </p>
+          <p>
+            No plano, a raiz tem dois termos:
+            \(\sqrt{(x'(t))^2 + (y'(t))^2}\).
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>A Integral Escalar de Linha</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <div class="formula-spotlight">
+            <p>\[ \int_C f\,ds = \int_a^b f(\vec{r}(t))\,\|\vec{r}'(t)\|\,dt \]</p>
+          </div>
+          <p><strong>Caso particular:</strong> com \(f = 1\),</p>
+          <p>\[ L = \int_C 1\,ds \]</p>
+          <p>
+            <strong>Onde:</strong> \(f\) = função escalar definida sobre a
+            curva; \(ds\) = elemento de comprimento.
+          </p>
+          <p>
+            <strong>Validade:</strong> \(C\) suave, \(f\) contínua em \(C\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>O que \(f\) pondera:</strong></p>
+          <p>
+            \(f\) multiplica o elemento de comprimento: percorrer um trecho
+            \(ds\) "custa" \(f\) vezes esse trecho. Exemplo: temperatura
+            acumulada ao longo do percurso — quão caro é atravessar a curva.
+          </p>
+          <p>
+            É esta integral escalar que a seção 05 assume como pré-requisito.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Arco de Circunferência</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o comprimento do arco \(\vec{r}(t) = (4\cos t,\, 4\sin t)\),
+            \(0 \le t \le \pi/2\).
+          </p>
+          <p>
+            Sugestão: confira o resultado por dois caminhos — primeiro pela
+            geometria (que fração da circunferência de raio 4 é esse arco?),
+            depois pela fórmula \(\int \|\vec{r}'(t)\|\,dt\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O teste 'plugs-out' era uma simulação de contagem regressiva com a
+            nave desconectada dos cabos, na plataforma 34. Faltavam 25 dias
+            para o lançamento programado — os três morreram no solo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · COMPRIMENTO DE ARCO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — A Cicloide</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            A cicloide \(\vec{r}(t) = (t - \sin t,\, 1 - \cos t)\), \(0 \le t \le
+            2\pi\), traça o ponto de uma roda que rola. Mostre que um arco
+            completo mede \(L = 8\).
+          </p>
+          <p>
+            Sugestão: derive, use
+            \(\sqrt{2 - 2\cos t} = 2\operatorname{sen}(t/2)\) e integre de
+            \(0\) a \(2\pi\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Enquanto o programa soviético se reerguia da Soyuz 1, em dezembro de
+            1968 a Apollo 8 levou os primeiros humanos à órbita da Lua. Os
+            americanos tinham voltado ao jogo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasComprimentoArco');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var sliderN = document.getElementById('sliderArcN');
+
+    var POS = '#1E88E5';
+    var SPEED = '#43A047';
+    var HIL = '#FFB300';
+
+    function pointAt(t) {
+      return {
+        x: 350 + t * 140,
+        y: 330 - 0.25 * t * t * 240
+      };
+    }
+
+    function mathPoint(t) {
+      return { x: t, y: 0.25 * t * t };
+    }
+
+    function polySum(N) {
+      var sum = 0;
+      var prev = mathPoint(-2);
+      for (var i = 1; i <= N; i++) {
+        var t = -2 + (i / N) * 4;
+        var p = mathPoint(t);
+        var dx = p.x - prev.x;
+        var dy = p.y - prev.y;
+        sum += Math.sqrt(dx * dx + dy * dy);
+        prev = p;
+      }
+      return sum;
+    }
+
+    var exact = polySum(4000);
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      // exact curve: parabola y = 0.25 x^2, x in [-2, 2]
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      var first = true;
+      for (var i = 0; i <= 200; i++) {
+        var t = -2 + (i / 200) * 4;
+        var p = pointAt(t);
+        if (first) { ctx.moveTo(p.x, p.y); first = false; }
+        else { ctx.lineTo(p.x, p.y); }
+      }
+      ctx.stroke();
+
+      // polygonal approximation with N segments
+      var N = parseInt(sliderN.value, 10) || 8;
+      var sum = polySum(N);
+      ctx.strokeStyle = SPEED;
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      var prev = pointAt(-2);
+      ctx.moveTo(prev.x, prev.y);
+      for (var j = 1; j <= N; j++) {
+        var tt = -2 + (j / N) * 4;
+        var pp = pointAt(tt);
+        ctx.lineTo(pp.x, pp.y);
+      }
+      ctx.stroke();
+
+      // segment vertices
+      ctx.fillStyle = SPEED;
+      for (var k = 0; k <= N; k++) {
+        var tv = -2 + (k / N) * 4;
+        var pv = pointAt(tv);
+        ctx.beginPath();
+        ctx.arc(pv.x, pv.y, 2.2, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      // readout
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText('N = ' + N, W / 2, 26);
+      ctx.fillStyle = HIL;
+      ctx.fillText('L ~ ' + sum.toFixed(3) + '  (soma das cordas)', W / 2, 48);
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText('limite: L ~ ' + exact.toFixed(3), W / 2, 70);
+      ctx.textAlign = 'start';
+    }
+
+    function loop() {
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizComprimentoArco = { init: init, cleanup: cleanup };
+  })();
+</script>
