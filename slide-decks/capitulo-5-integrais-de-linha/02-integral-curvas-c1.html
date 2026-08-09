@@ -1,0 +1,429 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h2>Integral Sobre Curvas C¹</h2>
+      <p>
+        Que curvas aceitam uma integral de linha? Nem toda trajetória: algumas
+        dobram sobre si mesmas, outras mudam de direção num instante. Antes de
+        somar qualquer coisa ao longo do percurso, precisamos decidir quais
+        curvas são bem-comportadas o bastante para isso.
+      </p>
+      <p>
+        No capítulo anterior integramos sobre volumes — objetos de três
+        dimensões. Agora o objeto de integração é a curva, de uma dimensão. O
+        capítulo 1 já nos deu as parametrizações \(\vec{r}(t)\); falta decidir
+        quais delas produzem curvas que aceitam integral.
+      </p>
+      <p class="history-insert">
+        Sergei Korolev, o 'Designer-Chefe' do programa espacial soviético,
+        assinou o projeto que levou o Sputnik ao espaço. Para a imprensa, ele
+        era apenas um cargo — o mundo não sabia seu nome.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>A Direção Varia Sem Saltos</h3>
+      <p>
+        Uma curva de classe C¹ é uma trajetória em que a direção do movimento
+        varia sem saltos: o vetor velocidade \(\vec{r}'(t)\) não dá pulos, e em
+        cada instante a nave sabe para onde vai.
+      </p>
+      <p>
+        Analogia: um voo sem correções segue suave, por inércia. Uma queima de
+        manobra muda a direção de uma vez — nasce uma quina, onde a curva
+        deixa de ser suave.
+      </p>
+      <div class="math-section">
+        <p>
+          \(\vec{r}'(t)\) é a velocidade do percurso. Exigir classe C¹ é
+          exigir que essa velocidade não mude bruscamente.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Classe C¹ e Curva Suave</h3>
+      <div class="formula-spotlight">
+        <p>\[ \vec{r}'(t) = (x'(t),\, y'(t),\, z'(t)) \text{ contínua e } \vec{r}'(t) \neq \vec{0} \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(x'(t),\, y'(t),\, z'(t)\) = derivadas das componentes; todas
+            existem e são contínuas em \([a,b]\) — classe C¹.
+          </li>
+          <li>
+            \(\vec{r}'(t) \neq \vec{0}\) = a velocidade nunca se anula —
+            curva suave (ou regular).
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> derivada contínua e não nula garantem
+          reta tangente em todo ponto — base para comprimento de arco e
+          integrais bem definidos.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Suave Por Partes</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>\[ C = C_1 \cup C_2 \cup \cdots \cup C_k \]</p>
+          <p>
+            União finita de curvas suaves cujos intervalos de parâmetro se
+            conectam nas extremidades.
+          </p>
+          <p>
+            <strong>Validade:</strong> em cada trecho a curva é integrável; a
+            soma cobre o todo.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Geometricamente:</strong></p>
+          <p>
+            Nas emendas a posição é contínua — a nave não "teleporta". A
+            derivada, porém, pode saltar: após uma queima, a velocidade muda
+            abruptamente. A quina é exatamente esse ponto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Visualização — Suave, Cúspide, Quina</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasCurvasC1"
+            class="visualization-canvas"
+            width="560"
+            height="320"
+          ></canvas>
+        </div>
+        <div>
+          <p>
+            Três curvas lado a lado. Na suave \((t, t^2)\), as tangentes
+            brancas giram sem se anular. Na cúspide \((t^3, t^2)\), a
+            velocidade zera em \(t = 0\) — o ponto destacado — e a direção
+            inverte.
+          </p>
+          <p>
+            Na quina composta, a posição é contínua na emenda, mas a tangente
+            salta. \(\vec{r}' = \vec{0}\) marca a cúspide; salto de tangente
+            marca a quina.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Três Classificações</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>Orientada</strong></p>
+          <p>
+            O parâmetro define o sentido de percurso, de \(\vec{r}(a)\) a
+            \(\vec{r}(b)\). Inverter o sentido troca o sinal das integrais
+            vetoriais — prévia da seção 05.
+          </p>
+        </div>
+        <div>
+          <p><strong>Fechada</strong></p>
+          <p>
+            \(\vec{r}(a) = \vec{r}(b)\): a órbita volta ao ponto de partida.
+          </p>
+        </div>
+        <div>
+          <p><strong>Simples</strong></p>
+          <p>
+            Sem autointerseções — a curva não cruza a si mesma fora dos
+            extremos.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — A Cúspide</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Verifique a regularidade de \(\vec{r}(t) = (t^3, t^2)\) em
+            \(t = 0\) e compare com \(\vec{r}(t) = (t, t^2)\).
+          </p>
+          <p>
+            Sugestão: derive componente a componente e avalie \(\vec{r}'(0)\).
+            Velocidade zero num ponto é diferente de mudar de direção.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Sergei Korolev foi preso em 1938, condenado por sabotagem e
+            enviado às minas de Kolyma. O mesmo estado que ele serviria
+            décadas depois o tratava como inimigo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · INTEGRAL SOBRE CURVAS C¹</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — A Quina</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            A curva composta \(\vec{r}_1(t) = (t, t)\), \(t \in [0,1]\),
+            seguida de \(\vec{r}_2(t) = (1+t, 1-t)\), \(t \in [0,1]\), modela
+            uma manobra de correção de curso. Mostre que a posição é contínua
+            na junção e que a tangente salta — suave por partes, não suave.
+          </p>
+          <p>
+            Sugestão: compare \(\vec{r}_1(1)\) com \(\vec{r}_2(0)\) e as
+            derivadas nos dois lados da emenda.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A escotilha da Apollo 1 abria para dentro e levava cerca de 90
+            segundos para ser aberta. Com a cabine pressurizada em chamas, a
+            pressão interna a trancou.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasCurvasC1');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var POS = '#1E88E5';
+    var TAN = '#FFFFFF';
+    var HIL = '#FFB300';
+    var CY = 150;
+
+    function seg(x1, y1, x2, y2, color, lw) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.stroke();
+    }
+
+    function arrow(x1, y1, x2, y2, color) {
+      var dx = x2 - x1, dy = y2 - y1;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 1) return;
+      var ux = dx / len, uy = dy / len;
+      seg(x1, y1, x2, y2, color, 1.4);
+      var ah = 5;
+      var bx = x2 - ux * ah, by = y2 - uy * ah;
+      var px = -uy, py = ux;
+      ctx.beginPath();
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(bx + px * ah * 0.6, by + py * ah * 0.6);
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(bx - px * ah * 0.6, by - py * ah * 0.6);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.4;
+      ctx.stroke();
+    }
+
+    function point(x, y, color, r) {
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+
+    function label(text, x, y, color) {
+      ctx.fillStyle = color || '#e0e0e0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(text, x, y);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      // Region 1: smooth parabola (t, t^2)
+      var c1 = 93;
+      var Sx = 58, Sy = 52;
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      var first = true;
+      for (var t = -1.15; t <= 1.1501; t += 0.02) {
+        var px = c1 + t * Sx;
+        var py = CY - t * t * Sy;
+        if (first) { ctx.moveTo(px, py); first = false; }
+        else { ctx.lineTo(px, py); }
+      }
+      ctx.stroke();
+
+      var ts1 = [-0.9, -0.45, 0, 0.45, 0.9];
+      for (var i = 0; i < ts1.length; i++) {
+        var tt = ts1[i];
+        var x0 = c1 + tt * Sx, y0 = CY - tt * tt * Sy;
+        var dxs = Sx, dys = -2 * tt * Sy;
+        var n = Math.sqrt(dxs * dxs + dys * dys);
+        arrow(x0, y0, x0 + (dxs / n) * 15, y0 + (dys / n) * 15, TAN);
+      }
+      label('suave — (t, t\u00b2)', c1, 300);
+      label("r'(t) \u2260 0", c1, 314);
+
+      // Region 2: cusp (t^3, t^2)
+      var c2 = 280;
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      var first2 = true;
+      for (var t2 = -1.15; t2 <= 1.1501; t2 += 0.02) {
+        var px2 = c2 + t2 * t2 * t2 * Sx;
+        var py2 = CY - t2 * t2 * Sy;
+        if (first2) { ctx.moveTo(px2, py2); first2 = false; }
+        else { ctx.lineTo(px2, py2); }
+      }
+      ctx.stroke();
+
+      var ts2 = [-0.9, -0.45, 0.45, 0.9];
+      for (var j = 0; j < ts2.length; j++) {
+        var tt2 = ts2[j];
+        var x1 = c2 + tt2 * tt2 * tt2 * Sx, y1 = CY - tt2 * tt2 * Sy;
+        var dx2 = 3 * tt2 * tt2 * Sx, dy2 = -2 * tt2 * Sy;
+        var n2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+        if (n2 < 0.5) continue;
+        arrow(x1, y1, x1 + (dx2 / n2) * 15, y1 + (dy2 / n2) * 15, TAN);
+      }
+      point(c2, CY, HIL, 5);
+      label('c\u00faspide — (t\u00b3, t\u00b2)', c2, 300);
+      label("r'(0) = 0", c2, 314, HIL);
+
+      // Region 3: piecewise corner (0,0) -> (1,1) -> (2,0)
+      var c3 = 467;
+      var SX3 = 62, SY3 = 86;
+      var Ax = c3 - SX3, Ay = CY + SY3 * 0.5;
+      var Bx = c3, By = CY - SY3 * 0.5;
+      var Cx = c3 + SX3, Cy2 = CY + SY3 * 0.5;
+
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.2;
+      ctx.beginPath();
+      ctx.moveTo(Ax, Ay);
+      ctx.lineTo(Bx, By);
+      ctx.lineTo(Cx, Cy2);
+      ctx.stroke();
+
+      // tangent before the junction: direction (1,1)
+      var nA = Math.sqrt(SX3 * SX3 + SY3 * SY3);
+      arrow(Bx, By, Bx + (SX3 / nA) * 20, By - (SY3 / nA) * 20, TAN);
+      // tangent after the junction: direction (1,-1)
+      var nB = Math.sqrt(SX3 * SX3 + SY3 * SY3);
+      arrow(Bx, By, Bx + (SX3 / nB) * 20, By + (SY3 / nB) * 20, TAN);
+
+      point(Bx, By, HIL, 5);
+      label('quina composta', c3, 300);
+      label('tangente salta na emenda', c3, 314, HIL);
+    }
+
+    function loop() {
+      draw();
+      animId = null;
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizCurvasC1 = { init: init, cleanup: cleanup };
+  })();
+</script>
