@@ -7,6 +7,7 @@
  *   window.vizBaricentro    = { init, cleanup }  → baricentroCanvas
  *   window.vizAreaCartesiana= { init, cleanup }  → areaCartesianaCanvas
  *   window.vizDuasMassas    = { init, cleanup }  → duasMassasCanvas
+ *   window.vizPlacaDiscreta = { init, cleanup }  → placaDiscretaCanvas
  *
  * requestAnimationFrame (nunca timers de intervalo). cleanup cancela o loop
  * quando o slide deixa de estar visível (Reveal 'slidechanged').
@@ -1045,4 +1046,237 @@ function hookVizToReveal(canvasId, onEnter, onLeave) {
   hookVizToReveal('duasMassasCanvas', init, cleanup);
 
   window.vizDuasMassas = { init: init, cleanup: cleanup };
+})();
+
+/* ------------------------------------------------------------------ *
+ * vizPlacaDiscreta — placa 0≤x≤1, 0≤y≤2 com ρ(x,y) = 1 + x,
+ * discretizada em quadradinhos coloridos pela densidade no ponto.
+ * Estática; hover destaca a célula e mostra ρ ali. A soma de Riemann
+ * das células (regra do ponto médio) dá exatamente m = 3.00 kg.
+ * ------------------------------------------------------------------ */
+(function () {
+  var canvas = null;
+  var ctx = null;
+  var W = 0;
+  var H = 0;
+  var inited = false;
+
+  var NX = 16;
+  var NY = 32;
+  var PLATE_X = 280;
+  var PLATE_Y = 55;
+  var PLATE_W = 140;
+  var PLATE_H = 280;
+  var CELL_W = PLATE_W / NX;
+  var CELL_H = PLATE_H / NY;
+
+  var hoverCell = null;
+  var hoverPos = null;
+
+  function rho(x) {
+    return 1 + x;
+  }
+
+  function cellAt(mx, my) {
+    var col = Math.floor((mx - PLATE_X) / CELL_W);
+    var row = Math.floor((my - PLATE_Y) / CELL_H);
+    if (
+      col < 0 ||
+      col >= NX ||
+      row < 0 ||
+      row >= NY
+    ) {
+      return null;
+    }
+    return { col: col, row: row };
+  }
+
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: ((e.clientX - rect.left) * canvas.width) / rect.width,
+      y: ((e.clientY - rect.top) * canvas.height) / rect.height,
+    };
+  }
+
+  function onMove(e) {
+    if (!canvas) return;
+    var p = getPos(e);
+    hoverCell = cellAt(p.x, p.y);
+    hoverPos = p;
+    draw();
+  }
+
+  function onLeave() {
+    hoverCell = null;
+    hoverPos = null;
+    draw();
+  }
+
+  function attachEvents() {
+    canvas.addEventListener('mousemove', onMove);
+    canvas.addEventListener('mouseleave', onLeave);
+  }
+
+  function detachEvents() {
+    canvas.removeEventListener('mousemove', onMove);
+    canvas.removeEventListener('mouseleave', onLeave);
+  }
+
+  function draw() {
+    if (!ctx) return;
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = 'rgba(10, 10, 15, 0.85)';
+    ctx.fillRect(0, 0, W, H);
+
+    var sum = 0;
+    for (var c = 0; c < NX; c++) {
+      var xc = (c + 0.5) / NX;
+      for (var r = 0; r < NY; r++) {
+        sum += rho(xc) * (1 / NX) * (2 / NY);
+        var alpha = 0.15 + 0.6 * xc;
+        ctx.fillStyle = 'rgba(30, 136, 229, ' + alpha + ')';
+        ctx.fillRect(
+          PLATE_X + c * CELL_W,
+          PLATE_Y + r * CELL_H,
+          CELL_W + 0.5,
+          CELL_H + 0.5
+        );
+      }
+    }
+
+    ctx.strokeStyle = 'rgba(10, 10, 15, 0.6)';
+    ctx.lineWidth = 0.5;
+    for (var c2 = 1; c2 < NX; c2++) {
+      ctx.beginPath();
+      ctx.moveTo(PLATE_X + c2 * CELL_W, PLATE_Y);
+      ctx.lineTo(PLATE_X + c2 * CELL_W, PLATE_Y + PLATE_H);
+      ctx.stroke();
+    }
+    for (var r2 = 1; r2 < NY; r2++) {
+      ctx.beginPath();
+      ctx.moveTo(PLATE_X, PLATE_Y + r2 * CELL_H);
+      ctx.lineTo(PLATE_X + PLATE_W, PLATE_Y + r2 * CELL_H);
+      ctx.stroke();
+    }
+
+    ctx.strokeStyle = 'rgba(144, 202, 249, 0.9)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(PLATE_X, PLATE_Y, PLATE_W, PLATE_H);
+
+    if (hoverCell) {
+      var hx = PLATE_X + hoverCell.col * CELL_W;
+      var hy = PLATE_Y + hoverCell.row * CELL_H;
+      ctx.strokeStyle = '#FFFFFF';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(hx, hy, CELL_W, CELL_H);
+    }
+
+    ctx.strokeStyle = 'rgba(224, 224, 224, 0.6)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(PLATE_X, PLATE_Y + PLATE_H + 14);
+    ctx.lineTo(PLATE_X + PLATE_W, PLATE_Y + PLATE_H + 14);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(PLATE_X - 14, PLATE_Y);
+    ctx.lineTo(PLATE_X - 14, PLATE_Y + PLATE_H);
+    ctx.stroke();
+
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '12px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillText('0', PLATE_X, PLATE_Y + PLATE_H + 28);
+    ctx.fillText('1', PLATE_X + PLATE_W, PLATE_Y + PLATE_H + 28);
+    ctx.fillText('0', PLATE_X - 26, PLATE_Y + PLATE_H + 4);
+    ctx.fillText('1', PLATE_X - 26, PLATE_Y + PLATE_H / 2 + 4);
+    ctx.fillText('2', PLATE_X - 26, PLATE_Y + 4);
+    ctx.font = 'bold 13px Arial';
+    ctx.fillText('x', PLATE_X + PLATE_W + 14, PLATE_Y + PLATE_H + 18);
+    ctx.fillText('y', PLATE_X - 14, PLATE_Y - 2);
+
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#e0e0e0';
+    ctx.font = '14px Arial';
+    ctx.fillText(
+      'placa 0\u2264x\u22641, 0\u2264y\u22642 \u00B7 \u03C1(x,y) = 1 + x kg/m\u00B2',
+      W / 2,
+      22
+    );
+    ctx.font = '13px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+    ctx.fillText(
+      'm \u2248 \u03A3 \u03C1 \u0394A = ' +
+        sum.toFixed(2) +
+        ' kg (16\u00D732) \u00B7 intensidade \u221D densidade',
+      W / 2,
+      38
+    );
+
+    var grad = ctx.createLinearGradient(PLATE_X, 0, PLATE_X + PLATE_W, 0);
+    grad.addColorStop(0, 'rgba(30, 136, 229, 0.15)');
+    grad.addColorStop(1, 'rgba(30, 136, 229, 0.75)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(PLATE_X, PLATE_Y + PLATE_H + 42, PLATE_W, 8);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+    ctx.font = '11px Arial';
+    ctx.fillText('\u03C1 = 1', PLATE_X, PLATE_Y + PLATE_H + 58);
+    ctx.fillText('\u03C1 = 2', PLATE_X + PLATE_W, PLATE_Y + PLATE_H + 58);
+
+    if (hoverCell && hoverPos) {
+      var hxc = (hoverCell.col + 0.5) / NX;
+      var hyc = (hoverCell.row + 0.5) / NY;
+      var tip =
+        '\u03C1(' +
+        hxc.toFixed(2) +
+        ', ' +
+        hyc.toFixed(2) +
+        ') = 1 + x = ' +
+        rho(hxc).toFixed(2) +
+        ' kg/m\u00B2';
+      ctx.font = '12px Arial';
+      var tw = ctx.measureText(tip).width;
+      var bx = hoverPos.x + 14;
+      var by = hoverPos.y - 12;
+      if (bx + tw + 8 > W) bx = hoverPos.x - tw - 22;
+      if (hoverPos.y < 140) by = hoverPos.y + 22;
+      if (by - 14 < 0) by = hoverPos.y + 22;
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.92)';
+      ctx.fillRect(bx - 4, by - 14, tw + 8, 18);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 1;
+      ctx.strokeRect(bx - 4, by - 14, tw + 8, 18);
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'left';
+      ctx.fillText(tip, bx, by);
+      ctx.textAlign = 'center';
+    }
+    ctx.textAlign = 'start';
+  }
+
+  function init(c) {
+    if (!canvas) canvas = c || document.getElementById('placaDiscretaCanvas');
+    if (!canvas || inited) return;
+    if (!ctx) {
+      ctx = canvas.getContext('2d');
+      W = canvas.width;
+      H = canvas.height;
+    }
+    inited = true;
+    attachEvents();
+    draw();
+  }
+
+  function cleanup() {
+    hoverCell = null;
+    hoverPos = null;
+    if (canvas && inited) {
+      detachEvents();
+      inited = false;
+    }
+  }
+
+  hookVizToReveal('placaDiscretaCanvas', init, cleanup);
+
+  window.vizPlacaDiscreta = { init: init, cleanup: cleanup };
 })();
