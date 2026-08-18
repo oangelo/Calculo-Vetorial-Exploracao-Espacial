@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gabarito - P1 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        options: {
+          skipHtmlTags: ['details'],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #000;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .header h1 {
+        text-align: center;
+        font-size: 16pt;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .question {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+      .question:last-child {
+        border-bottom: none;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 13pt;
+        color: #000;
+        border-left: 4px solid #000;
+        padding: 8px 10px;
+        background-color: #f0f0f0;
+        margin-bottom: 12px;
+      }
+      .didactic {
+        font-style: italic;
+        color: #444;
+        margin: 10px 0;
+      }
+      .subquestion {
+        margin: 10px 0 10px 20px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      summary {
+        font-weight: bold;
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #e9e9e9;
+        font-size: 10pt;
+        border-radius: 3px;
+      }
+      .answer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+      }
+      .answer p {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Gabarito - P1 – 2026.1 - Cálculo Vetorial</h1>
+      </div>
+      <div class="content">
+        <!-- QUESTÃO 1 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 1: Plano por três pontos e volume
+          </div>
+          <p>
+            Considere os pontos \(A(1,1,3)\), \(B(3,1,1)\) e \(C(1,2,1)\), que
+            não pertencem aos eixos coordenados.
+          </p>
+          <p class="didactic">
+            Esta questão conecta a geometria analítica do plano (Capítulo 0) com
+            a integral dupla (Capítulo 2): o aluno determina a equação do plano
+            a partir de três pontos fora dos eixos, obtém os cortes nos eixos
+            coordenados e calcula o volume do tetraedro por duas rotas
+            independentes — produto misto e integral dupla — verificando a
+            coerência entre elas (\(V=18\) em ambas).
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Equação do plano.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Tomando os vetores \[ \vec{AB}=B-A=(2,0,-2),\qquad
+                  \vec{AC}=C-A=(0,1,-2), \] um vetor normal ao plano é \[ \vec
+                  n=\vec{AB}\times\vec{AC}=(2,0,-2)\times(0,1,-2)=(2,4,2)\sim(1,2,1).
+                  \] A equação do plano que passa por \(A(1,1,3)\) com normal
+                  \((1,2,1)\) é \[ (x-1)+2(y-1)+(z-3)=0
+                  \quad\Longrightarrow\quad \boxed{x+2y+z=6}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Interseções com os eixos e volume por produto misto.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>Interseções do plano \(x+2y+z=6\) com os eixos:</p>
+                <p>
+                  eixo \(x\) (\(y=z=0\)): \(x=6\) \(\Rightarrow P=(6,0,0)\);
+                  eixo \(y\): \(y=3\) \(\Rightarrow Q=(0,3,0)\); eixo \(z\):
+                  \(z=6\) \(\Rightarrow R=(0,0,6)\).
+                </p>
+                <p>
+                  Com os vetores \(\vec u=(6,0,0)\), \(\vec v=(0,3,0)\) e \(\vec
+                  w=(0,0,6)\): \[ \vec v\times\vec w=(3\cdot
+                  6,\,0,\,0)=(18,0,0), \qquad \vec u\cdot(\vec v\times\vec
+                  w)=6\cdot 18=108. \] Portanto \[ V=\frac{|108|}{6}=\boxed{18}.
+                  \]
+                </p>
+                <p>
+                  <em>Observação didática:</em> para formar o tetraedro com os
+                  planos coordenados precisamos dos pontos de corte nos eixos
+                  (obtidos da equação do plano) — e não dos três pontos dados,
+                  cujo produto misto com a origem geraria outro tetraedro, de
+                  volume distinto.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Base no plano \(xy\) e volume por integral dupla.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O traço do plano em \(z=0\) é a reta \(x+2y=6\). A base do
+                  sólido é o triângulo \[ D=\{(x,y): x\ge 0,\; y\ge 0,\; x+2y\le
+                  6\}, \] de vértices \((0,0)\), \((6,0)\) e \((0,3)\).
+                </p>
+                <p>
+                  Resolvendo o plano para \(z\), temos \(z=6-x-2y\ge 0\) sobre
+                  \(D\), e o volume é \[
+                  V=\int_0^3\int_0^{6-2y}(6-x-2y)\,dx\,dy. \] Integrando em
+                  \(x\): \[
+                  \int_0^{6-2y}(6-x-2y)\,dx=\left[(6-2y)x-\frac{x^2}{2}\right]_0^{6-2y}
+                  =\frac{(6-2y)^2}{2}. \] Integrando em \(y\): \[
+                  V=\int_0^3\frac{(6-2y)^2}{2}\,dy
+                  =\left[-\frac{(6-2y)^3}{12}\right]_0^3
+                  =\frac{216}{12}=\boxed{18}. \] O valor coincide com o do item
+                  (b), confirmando as duas técnicas.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 2 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 2: Soma de Riemann e integral dupla
+          </div>
+          <p>
+            Considere o sólido limitado pelo plano \(z=6-x\) e pelo retângulo
+            \(0\le x\le 6\), \(0\le y\le 1\).
+          </p>
+          <p class="didactic">
+            A questão exercita a passagem do contínuo ao discreto (Capítulo 2):
+            o aluno constrói uma soma de Riemann sobre uma base retangular,
+            escolhe o ponto de amostragem (ponto médio) e, ao integrar no item
+            (c), descobre que estimativa e valor exato coincidem — \(18=18\) —
+            porque a função é linear e o valor no ponto médio de cada célula é a
+            média da função sobre a célula.
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Discretização da base e alturas.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Com 3 subdivisões em \(x\) e 1 em \(y\), temos \(\Delta x=2\),
+                  \(\Delta y=1\) e os retângulos \[ [0,2]\times[0,1],\qquad
+                  [2,4]\times[0,1],\qquad [4,6]\times[0,1]. \] Os pontos médios
+                  são \((1;0,5)\), \((3;0,5)\) e \((5;0,5)\), e as alturas
+                  \(z=6-x\) valem \[ z(1;0,5)=5,\qquad z(3;0,5)=3,\qquad
+                  z(5;0,5)=1. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Soma de Riemann e estimativa.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Cada retângulo tem área \(\Delta A=\Delta x\,\Delta y=2\cdot
+                  1=2\). Com os pontos médios \(x_i^\ast\) como pontos de
+                  amostragem: \[ S=\sum_{i=1}^{3} z(x_i^\ast)\,\Delta A
+                  =\left(5+3+1\right)\cdot 2 =\boxed{18}. \] Essa é a estimativa
+                  do volume pelo critério do ponto médio.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Integral dupla, comparação e conclusão.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O volume exato é \[ V=\int_0^6\int_0^1 (6-x)\,dy\,dx =\int_0^6
+                  (6-x)\,dx =\left[6x-\frac{x^2}{2}\right]_0^6
+                  =36-18=\boxed{18}. \] A integral coincide exatamente com a
+                  estimativa do item (b).
+                </p>
+                <p>
+                  Justificativa: como \(z=6-x\) é linear, o valor no ponto médio
+                  de cada retângulo da partição é a média de \(z\) sobre a
+                  célula; logo a soma de Riemann com pontos médios é exata, não
+                  apenas aproximada.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 3 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 3: Inversão de ordem e coordenadas polares
+          </div>
+          <p>
+            Em todos os itens, o integrando é a função constante igual a \(1\).
+          </p>
+          <p class="didactic">
+            Questão central do Capítulo 3 (mudança de variáveis): o aluno
+            inverte a ordem de integração sobre uma região triangular, reconhece
+            a região circular a partir dos limites (descobrindo que se trata de
+            um semicírculo, sem que o enunciado revele a forma) e aplica
+            coordenadas polares com o Jacobiano \(\rho\) para calcular a área.
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Inversão da ordem de integração.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Na ordem dada, \(0\le y\le 1\) e \(y\le x\le 3-2y\). As retas
+                  \(x=y\) e \(x=3-2y\) se cruzam em \((1,1)\); a região é o
+                  triângulo de vértices \((0,0)\), \((3,0)\) e \((1,1)\).
+                </p>
+                <p>
+                  Na ordem \(dy\,dx\), a região precisa de duas faixas em \(x\):
+                </p>
+                <ul>
+                  <li>\(0\le x\le 1\): \(0\le y\le x\);</li>
+                  <li>\(1\le x\le 3\): \(0\le y\le \dfrac{3-x}{2}\).</li>
+                </ul>
+                <p>
+                  Assim, \[ \int_0^1\int_y^{3-2y} dx\,dy =\int_0^1\int_0^x
+                  dy\,dx+\int_1^3\int_0^{(3-x)/2} dy\,dx. \] Com integrando
+                  \(1\), o valor é a área \(\dfrac12+1=\dfrac32\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Identificação da região e inversão da ordem.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Os limites \(-\sqrt{r^2-y^2}\le x\le \sqrt{r^2-y^2}\), com
+                  \(0\le y\le r\), impõem \[ x^2\le r^2-y^2 \iff x^2+y^2\le r^2,
+                  \] restringidos a \(y\ge 0\). A região é, portanto, o
+                  semicírculo superior de raio \(r\).
+                </p>
+                <p>
+                  Na ordem \(dy\,dx\): \[ \int_{-r}^{r}\int_0^{\sqrt{r^2-x^2}}
+                  dy\,dx. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Cálculo por coordenadas polares.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Em coordenadas polares \(x=\rho\cos\theta\),
+                  \(y=\rho\sin\theta\), com elemento de área
+                  \(dA=\rho\,d\rho\,d\theta\), o semicírculo superior
+                  corresponde a \[ 0\le \rho\le r,\qquad 0\le \theta\le \pi. \]
+                  Logo \[ \int_0^r\int_{-\sqrt{r^2-y^2}}^{\sqrt{r^2-y^2}} dx\,dy
+                  =\int_0^\pi\int_0^r \rho\,d\rho\,d\theta =\int_0^\pi
+                  \frac{r^2}{2}\,d\theta =\boxed{\frac{\pi r^2}{2}}, \] que é a
+                  área do semicírculo, coerente com o item (b).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 4 -->
+        <div class="question">
+          <div class="question-header">Questão 4: Massa e centro de massa</div>
+          <p>
+            Uma lâmina plana de densidade superficial \(\rho(x,y)=ax+by\), com
+            \(a>0\) e \(b>0\), ocupa o triângulo de vértices \(A(1,1)\),
+            \(B(0,2)\) e \(C(2,3)\).
+          </p>
+          <p class="didactic">
+            A questão aplica a integral dupla sobre uma região triangular ao
+            cálculo de massa e centro de massa de uma lâmina com densidade
+            linear dependente dos parâmetros \(a\) e \(b\). O destaque é a
+            mudança afim de variáveis (Capítulo 3) que leva o triângulo ao
+            triângulo padrão, com Jacobiano constante, reduzindo bastante as
+            contas: o aluno escreve a densidade nas novas variáveis, calcula
+            massa e momentos e interpreta os casos-limite \(a=0\) e \(b=0\),
+            verificando onde a densidade se concentra e como o centro de massa
+            se desloca — coerente com a geometria do triângulo.
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Massa da lâmina.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Coordenadas ao longo dos lados.</strong> Em vez de
+                  integrar em \(x,y\), tomamos como novas coordenadas os
+                  parâmetros \(u\) e \(v\) que medem o ponto ao longo dos lados
+                  \(AB\) e \(AC\), a partir do vértice \(A\). Como \(\vec{AB}\)
+                  e \(\vec{AC}\) são linearmente independentes, todo ponto do
+                  triângulo se escreve de modo único como \[
+                  (x,y)=A+u\,\vec{AB}+v\,\vec{AC}=(1,1)+u(-1,1)+v(1,2), \] isto
+                  é, \[ x=1-u+v,\qquad y=1+u+2v. \] Essas coordenadas têm
+                  leitura geométrica direta: \(v=0\) é a reta \(AB\) (o eixo
+                  \(u\)), \(u=0\) é a reta \(AC\) (o eixo \(v\)) e \(u+v=1\) é a
+                  reta \(BC\). Equivalentemente, resolvendo o sistema, \[
+                  u=\frac{y-2x+1}{3}\ \text{(nula sobre }AC),\qquad
+                  v=\frac{x+y-2}{3}\ \text{(nula sobre }AB), \] de modo que o
+                  triângulo \(T\) é a imagem do triângulo padrão \[
+                  \Delta=\{(u,v): u\ge0,\; v\ge0,\; u+v\le1\}. \] O elemento de
+                  área vem da própria construção: o quadrado unitário em
+                  \((u,v)\) é levado no paralelogramo gerado por \(\vec{AB}\) e
+                  \(\vec{AC}\), de área \[
+                  \left|\frac{\partial(x,y)}{\partial(u,v)}\right|
+                  =\left|(-1)(2)-(1)(1)\right|=3 \qquad\Longrightarrow\qquad
+                  dA=3\,du\,dv. \] A densidade nas novas variáveis fica \[
+                  \rho=ax+by=a(1-u+v)+b(1+u+2v)=(a+b)+(-a+b)u+(a+2b)v, \] e a
+                  massa é \[
+                  M=3\int_0^1\int_0^{1-u}\left[(a+b)+(-a+b)u+(a+2b)v\right]dv\,du.
+                  \] Integrando em \(v\) e depois em \(u\), usando
+                  \(\int_0^1(1-u)\,du=\frac12\), \(\int_0^1 u(1-u)\,du=\frac16\)
+                  e \(\int_0^1\frac{(1-u)^2}{2}\,du=\frac16\): \[
+                  M=3\left[(a+b)\frac12+(-a+b)\frac16+(a+2b)\frac16\right]
+                  =\boxed{\frac32(a+2b)}. \]
+                </p>
+                <p>
+                  <em>Alternativa (sem mudança de variáveis):</em> integrando
+                  diretamente por faixas,
+                  \(M=\left(\frac{a}{2}+\frac{11b}{8}\right)+\left(a+\frac{13b}{8}\right)=\frac32(a+2b)\).
+                </p>
+                <p>
+                  <em>Verificação (finura):</em> para função linear,
+                  \(\iint_D\rho\,dA=|D|\,\rho(\text{centróide})\); o centróide
+                  do triângulo é
+                  \(\left(\frac{1+0+2}{3},\frac{1+2+3}{3}\right)=(1,2)\) e
+                  \(|D|=\frac32\), logo \(M=\frac32(a+2b)\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Centro de massa.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  As coordenadas do centro de massa são \[ \bar
+                  x=\frac{1}{M}\iint_D x(ax+by)\,dA,\qquad \bar
+                  y=\frac{1}{M}\iint_D y(ax+by)\,dA. \] Usando a mesma mudança
+                  de variáveis do item (a), com \(dA=3\,du\,dv\), calculamos as
+                  integrais dos momentos sobre o triângulo padrão. As integrais
+                  auxiliares — por exemplo, \(\int\!\int_\Delta
+                  u\,dv\,du=\int_0^1 u(1-u)\,du=\frac16\); as demais são
+                  análogas — \[ \int\!\int_\Delta 1=\frac12,\qquad
+                  \int\!\int_\Delta u=\int\!\int_\Delta v=\frac16,\qquad
+                  \int\!\int_\Delta u^2=\int\!\int_\Delta v^2=\frac1{12},\qquad
+                  \int\!\int_\Delta uv=\frac1{24} \] dão, com \(x=1-u+v\) e
+                  \(y=1+u+2v\), \[ \iint_D x^2\,dA=3\int\!\int_\Delta (1-u+v)^2
+                  =3\left[\frac12+\frac1{12}+\frac1{12}-\frac26+\frac26-\frac2{24}\right]
+                  =\frac74, \] \[ \iint_D xy\,dA=3\int\!\int_\Delta
+                  (1-u+v)(1+u+2v)
+                  =3\left[\frac12+\frac36-\frac1{12}-\frac1{24}+\frac2{12}\right]
+                  =\frac{25}{8}, \] \[ \iint_D y^2\,dA=3\int\!\int_\Delta
+                  (1+u+2v)^2
+                  =3\left[\frac12+\frac1{12}+\frac4{12}+\frac26+\frac46+\frac4{24}\right]
+                  =\frac{25}{4}. \] Portanto \[ M\bar
+                  x=a\frac74+b\frac{25}{8}=\frac{14a+25b}{8}, \qquad M\bar
+                  y=a\frac{25}{8}+b\frac{25}{4}=\frac{25(a+2b)}{8}. \] Dividindo
+                  por \(M=\frac32(a+2b)\): \[ \boxed{\bar
+                  x=\frac{14a+25b}{12(a+2b)}},\qquad \boxed{\bar
+                  y=\frac{25}{12}}. \] Note que o fator \((a+2b)\) se cancela em
+                  \(\bar y\), o que explica a independência de \(\bar y\) em
+                  relação a \(a\) e \(b\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Casos \(a=0\) e \(b=0\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>\(a=0\):</strong> \(\rho=by\) — a densidade só cresce
+                  com \(y\). Então \[ M=3b,\qquad \bar x=\frac{25}{24}\approx
+                  1,04,\qquad \bar y=\frac{25}{12}. \] A matéria se concentra na
+                  parte superior do triângulo, mas como \(\bar y=25/12\) não
+                  depende de \(a\) e \(b\), a posição vertical do centro de
+                  massa não muda — o deslocamento é apenas horizontal: \(\bar
+                  x=25/24\approx 1,04\), ligeiramente à direita do centróide
+                  (\(x=1\)), pois o ponto mais alto do triângulo, \(C(2,3)\),
+                  está à direita.
+                </p>
+                <p>
+                  <strong>\(b=0\):</strong> \(\rho=ax\) — a densidade só cresce
+                  com \(x\). Então \[ M=\frac{3a}{2},\qquad \bar
+                  x=\frac{7}{6}\approx 1,17,\qquad \bar y=\frac{25}{12}. \] A
+                  matéria se concentra do lado direito: o centro de massa
+                  desloca-se mais para a direita (\(7/6>25/24\)), mantendo
+                  \(\bar y=25/12\).
+                </p>
+                <p>
+                  <em>Coerência:</em> nos dois casos o centro de massa
+                  desloca-se na direção em que a densidade é maior. A ordenada
+                  \(\bar y=25/12\) independe de \(a\) e \(b\) porque, neste
+                  triângulo, \(\iint_D xy\,dA/\iint_D x\,dA=\iint_D
+                  y^2\,dA/\iint_D y\,dA=25/12\), e o fator \((a+2b)\) se cancela
+                  no quociente; com outro triângulo essa independência não
+                  precisaria ocorrer.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
