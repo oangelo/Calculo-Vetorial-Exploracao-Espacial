@@ -31,15 +31,15 @@
         <div>
           <p><strong>1. Limitada</strong></p>
           <p>
-            A função não pode explodir: existem \(m\) e \(M\) com
-            \(m \le f(x,y,z) \le M\) em todo o sólido.
+            A função não pode explodir: existem \(m\) e \(M\) com \(m \le
+            f(x,y,z) \le M\) em todo o sólido.
           </p>
         </div>
         <div>
           <p><strong>2. Descontinuidades Raras</strong></p>
           <p>
-            Os pontos onde \(f\) falha não ocupam espaço: o conjunto \(D_f\)
-            tem volume zero.
+            Os pontos onde \(f\) falha não ocupam espaço: o conjunto \(D_f\) tem
+            volume zero.
           </p>
         </div>
         <div>
@@ -67,29 +67,33 @@
         <p>
           <strong>Medida nula:</strong> um conjunto \(E \subset \mathbb{R}^3\)
           tem medida nula se pode ser coberto por paralelepípedos retangulares
-          cujo volume total é arbitrariamente pequeno. Pontos, curvas e
-          superfícies — todos se encaixam.
+          cujo volume total é arbitrariamente pequeno.
         </p>
       </div>
       <div class="formula-spotlight">
+        <p>\[\iiint_V f(x,y,z)\,dV\]</p>
+      </div>
+      <div class="math-section">
         <p>
-          \[\iiint_V f(x,y,z)\,dV \text{ existe se } f \text{ é limitada, }
-          D_f \text{ tem medida nula e } V \text{ é limitado.}\]
+          <strong>Existe se</strong> \(f\) é limitada, \(D_f\) tem medida nula e
+          \(V\) é limitado.
         </p>
       </div>
       <div class="math-section">
         <p><strong>Onde:</strong></p>
         <ul>
           <li>
-            \(f\) limitada = existem \(m\) e \(M\) com
-            \(m \le f(x,y,z) \le M\) em todo \(V\)
+            \(f\) limitada = existem \(m\) e \(M\) com \(m \le f(x,y,z) \le M\)
+            em todo \(V\)
           </li>
-          <li>\(D_f\) = conjunto dos pontos de \(V\) onde \(f\) é descontínua</li>
+          <li>
+            \(D_f\) = conjunto dos pontos de \(V\) onde \(f\) é descontínua
+          </li>
           <li>\(V\) limitado = contido em alguma esfera de raio finito</li>
         </ul>
         <p>
-          <strong>Validade:</strong> as três condições garantem que o limite
-          das somas de Riemann existe.
+          <strong>Validade:</strong> as três condições garantem que o limite das
+          somas de Riemann existe.
         </p>
       </div>
     </div>
@@ -133,8 +137,8 @@
       <div class="dual-panel">
         <div class="problem-section">
           <p>
-            Seja \(f(x,y,z) = 2x + yz\) sobre o paralelepípedo
-            \(V = [0,1]\times[0,2]\times[0,3]\). Verifique, uma a uma, as três
+            Seja \(f(x,y,z) = 2x + yz\) sobre o paralelepípedo \(V =
+            [0,1]\times[0,2]\times[0,3]\). Verifique, uma a uma, as três
             condições de integrabilidade e conclua que \(\iiint_V f\,dV\)
             existe.
           </p>
@@ -157,14 +161,19 @@
   <section>
     <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
     <div class="slide-body">
-      <h3>Exemplo 2 — Massa de Combustível</h3>
+      <h3>Exemplo 2 — Salto Sobre um Plano</h3>
       <div class="dual-panel">
         <div class="problem-section">
           <p>
-            Um tanque de propelente ocupa \(V = [0,1]\times[0,2]\times[0,3]\)
-            metros, e a densidade do combustível varia segundo
-            \(\rho(x,y,z) = xyz\) kg/m³. Escreva a integral
-            \(M = \iiint_V \rho\,dV\) e calcule a massa total no tanque.
+            Seja \(f(x,y,z) = 1\) se \(z \ge 0\), e \(f(x,y,z) = 0\) se \(z &lt;
+            0\), sobre \(V = [-1,1]\times[-1,1]\times[-1,1]\). Verifique as três
+            condições: \(f\) é limitada? O conjunto \(D_f\) de descontinuidades
+            ocupa volume? \(V\) é limitado? Conclua que \(\iiint_V f\,dV\)
+            existe e calcule o valor.
+          </p>
+          <p>
+            Sugestão: \(f\) salta apenas no plano \(z = 0\) — um plano tem
+            espessura zero.
           </p>
         </div>
         <div class="v-bar"></div>
@@ -187,10 +196,9 @@
         <div class="problem-section">
           <p>
             Considere \(F(x,y,z) = \dfrac{1}{(x^2+y^2+z^2)^{3/2}}\) sobre a bola
-            unitária \(x^2+y^2+z^2 \le 1\). Argumente por que \(F\) não
-            satisfaz as condições de integrabilidade: o que acontece com \(F\)
-            perto da origem? Conclua o que isso significa para
-            \(\iiint_V F\,dV\).
+            unitária \(x^2+y^2+z^2 \le 1\). Argumente por que \(F\) não satisfaz
+            as condições de integrabilidade: o que acontece com \(F\) perto da
+            origem? Conclua o que isso significa para \(\iiint_V F\,dV\).
           </p>
         </div>
         <div class="v-bar"></div>
