@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-faction="allies">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,36 +13,49 @@
     <div class="reveal">
       <div class="slides" id="slides-container"></div>
     </div>
-
     <script>
       async function loadSlides() {
-        const sections = [
-          '01-introducao.html',
-          '02-coordenadas.html',
-          '03-aplicacoes-fisicas.html',
+        var sections = [
+          '00-capa.html',
+          '01-historia.html',
+          '02-reducao-a-integrais-duplas.html',
+          '03-condicoes-de-integrabilidade.html',
+          '04-mudanca-de-variaveis.html',
+          '05-coordenadas-esfericas-e-cilindricas.html',
+          '06-centro-de-massa-e-momento-de-inercia.html',
+          '07-resumo.html',
+          '08-reflexao.html',
         ];
 
-        const container = document.getElementById('slides-container');
+        var container = document.getElementById('slides-container');
 
-        for (const sectionFile of sections) {
+        for (var i = 0; i < sections.length; i++) {
+          var sectionFile = sections[i];
           try {
-            const response = await fetch(sectionFile);
-            if (!response.ok) throw new Error(`Failed to load ${sectionFile}`);
+            var response = await fetch(sectionFile);
+            if (!response.ok) throw new Error('Failed to load ' + sectionFile);
 
-            const html = await response.text();
+            var html = await response.text();
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
 
-            // Parse HTML
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, 'text/html');
-            const slidesDiv = doc.querySelector('.slides');
+            var inlineScripts = doc.querySelectorAll('script:not([src])');
+            var parsedSections = doc.querySelectorAll('body > section');
 
-            if (slidesDiv) {
-              // Inserir todos os <section> do arquivo
-              const sections = slidesDiv.querySelectorAll(':scope > section');
-              sections.forEach((section) => container.appendChild(section));
+            parsedSections.forEach(function (section) {
+              container.appendChild(section);
+            });
+
+            for (var j = 0; j < inlineScripts.length; j++) {
+              var scriptContent = inlineScripts[j].textContent;
+              if (scriptContent.trim()) {
+                var newScript = document.createElement('script');
+                newScript.textContent = scriptContent;
+                document.body.appendChild(newScript);
+              }
             }
           } catch (error) {
-            console.error(`Error loading ${sectionFile}:`, error);
+            console.error('Error loading ' + sectionFile + ':', error);
           }
         }
 

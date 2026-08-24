@@ -33,7 +33,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Troca de ordem de integração](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/troca-de-ordem/index.html)
 - [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-2/revisao/index.html)
 
-3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-3-mudanca-de-variaveis/index.html)
+3. [Mudança de variáveis na integral dupla](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-3-mudanca-de-variaveis/index.html) | [📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-3-mudanca-de-variaveis/index.html)
 
 - [Mudança de variáveis](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/mudanca-de-variaveis/index.html)
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa/index.html)

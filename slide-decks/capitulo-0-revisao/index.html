@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-faction="neutral">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -136,12 +136,24 @@
             // Parse HTML e extrair <section>
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
+
+            const inlineScripts = doc.querySelectorAll('script:not([src])');
+
             const sections = doc.querySelectorAll('body > section');
 
             // Inserir cada seção no container
             sections.forEach((section) => {
               container.appendChild(section);
             });
+
+            for (const script of inlineScripts) {
+              const scriptContent = script.textContent;
+              if (scriptContent.trim()) {
+                const newScript = document.createElement('script');
+                newScript.textContent = scriptContent;
+                document.body.appendChild(newScript);
+              }
+            }
           } catch (error) {
             console.error(`Error loading ${sectionFile}:`, error);
           }

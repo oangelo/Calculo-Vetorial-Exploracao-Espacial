@@ -1,0 +1,473 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h2>Mudança de Parâmetro</h2>
+      <p>
+        O resultado de uma integral de linha depende do "relógio" usado para
+        percorrer a curva? As seções 03 e 04 definiram comprimento, integral
+        escalar e trabalho a partir de uma parametrização \(\vec{r}(t)\) — mas a
+        curva é um objeto geométrico, e nenhuma de suas propriedades deveria
+        depender de quem a percorre.
+      </p>
+      <p>
+        A pergunta agora é a invariância: trocar o parâmetro muda o número
+        calculado? A resposta separa o que é propriedade da curva do que é
+        artefato do relógio.
+      </p>
+      <p class="history-insert">
+        Os dois lados mataram astronautas. Não por falta de cálculo — por
+        pressão política: a decisão de lançar a Soyuz 1, com defeitos
+        conhecidos, não era técnica.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>A Mesma Curva, Vários Relógios</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            A mesma estrada, percorrida a pé ou de carro: cada veículo marca um
+            tempo diferente, mas o caminho é o mesmo. Nenhuma medida do próprio
+            caminho pode depender do veículo que o percorre.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Se \(t = \varphi(\tau)\) é uma função invertível e derivável, a
+            curva reparametrizada \(\vec{r}(\varphi(\tau))\) descreve os mesmos
+            pontos — apenas com outro parâmetro. Trocamos o relógio, não a
+            trajetória.
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          Resta saber: a integral "percebe" a troca — ou o número que ela
+          devolve é sempre o mesmo?
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Invariância do Comprimento</h3>
+      <div class="formula-spotlight">
+        <p>\[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_c^d \|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\,d\tau \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{r}:[a,b] \to \mathbb{R}^n\) = parametrização original da
+            curva.
+          </li>
+          <li>
+            \(\varphi:[c,d] \to [a,b]\) = reparametrização, com \(\varphi(c)=a\)
+            e \(\varphi(d)=b\) — o novo relógio.
+          </li>
+          <li>
+            \(|\varphi'(\tau)|\) = fator de compensação da mudança de ritmo,
+            vindo da regra da cadeia.
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(\varphi\) invertível e derivável; curva
+          de classe C¹.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Por Que a Invariância?</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>
+            Pela regra da cadeia,
+          </p>
+          <p>\[ \frac{d}{d\tau}\vec{r}(\varphi(\tau)) = \vec{r}'(\varphi(\tau))\,\varphi'(\tau) \]</p>
+          <p>
+            A magnitude distribui: \(\|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\).
+            O fator \(|\varphi'|\) compensa exatamente a velocidade do novo
+            relógio, e a substituição \(dt = \varphi'(\tau)\,d\tau\) recupera o
+            integrando original.
+          </p>
+          <p>
+            <strong>Validade:</strong> \(\varphi\) invertível e derivável.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Escalar vs vetorial:</strong></p>
+          <p>
+            A integral escalar \(\int_C f\,ds\) é invariante: o "custo" de
+            percorrer a curva não depende do relógio.
+          </p>
+          <p>
+            A integral vetorial \(\int_C \vec{F}\cdot d\vec{r}\) só é invariante
+            se \(\varphi' &gt; 0\), mantendo a orientação. Se \(\varphi' &lt;
+            0\), o percurso inverte e o sinal troca — o próximo passo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Visualização — Dois Relógios, Uma Curva</h3>
+      <canvas
+        id="canvasReparametrizacao"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Velocidade:</label>
+          <input type="range" id="sliderReparamSpeed" min="25" max="300" step="25" value="100" />
+        </div>
+        <button class="control-button" id="btnReparamMode">Modo: dois relógios</button>
+      </div>
+      <p>
+        No modo "dois relógios", um ponto avança com velocidade constante (por
+        \(\theta\)) e outro com velocidade variável (por \(x\)). Apesar disso,
+        acumulam o mesmo comprimento — \(\pi\). No modo "comprimento de arco",
+        o parâmetro \(s\) avança à taxa do próprio arco, com velocidade
+        unitária.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Orientação: Inverter o Percurso</h3>
+      <div class="formula-spotlight">
+        <p>\[ \int_{C^-}\vec{F}\cdot d\vec{r} = -\int_C \vec{F}\cdot d\vec{r} \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(C^-\) = a mesma curva com a orientação
+          invertida; \(C\) = a curva original.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec{F}\) contínuo sobre a curva;
+          reparametrização decrescente (\(\varphi' &lt; 0\)).
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            Comprimento \(L\): invariante — usa \(|\varphi'|\) e não vê a
+            direção.
+          </li>
+          <li>
+            Escalar \(\int_C f\,ds\): invariante sob qualquer reparametrização.
+          </li>
+          <li>
+            Vetorial \(\int_C \vec{F}\cdot d\vec{r}\): troca de sinal ao
+            inverter a orientação — distinção central para os próximos
+            capítulos.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Semicírculo por Dois Parâmetros</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Dois laboratórios descreveram o mesmo arco com parâmetros
+            diferentes:
+          </p>
+          <p>
+            \[ \vec{r}_1(\theta) = (\cos\theta,\, \sin\theta),\; \theta \in [0,\pi]
+            \qquad \vec{r}_2(x) = (x,\, \sqrt{1-x^2}),\; x \in [-1,1] \]
+          </p>
+          <p>
+            Calcule \(L_1 = \int_0^\pi \|\vec{r}_1'(\theta)\|\,d\theta\) e
+            \(L_2 = \int_{-1}^1 \|\vec{r}_2'(x)\|\,dx\). Os resultados
+            coincidem? Por quê?
+          </p>
+          <p>
+            Sugestão: derive \(\vec{r}_2\) com a regra da cadeia; a segunda
+            integral é imprópria em \(x = \pm 1\) — escreva o limite e use
+            \(\arcsin\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Korolev morreu em 14 de janeiro de 1966, na mesa de cirurgia, aos
+            59 anos. Dois dias depois, o Pravda — jornal oficial do regime —
+            imprimiu o nome dele pela primeira vez, no obituário.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · MUDANÇA DE PARÂMETRO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Inverter a Orientação</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec{F}(x,y) = (x,y)\) sobre o segmento de \((0,0)\) a
+            \((1,1)\) e, depois, sobre o percurso inverso, de \((1,1)\) a
+            \((0,0)\).
+          </p>
+          <p>
+            Calcule \(\int_C \vec{F}\cdot d\vec{r}\) nos dois sentidos e
+            verifique a troca de sinal.
+          </p>
+          <p>
+            Sugestão: parametrize com \(\vec{r}(t) = (t,t)\) e com
+            \(\vec{r}(t) = (1-t,\, 1-t)\), \(t \in [0,1]\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Antes do voo tripulado, os três voos de teste da Soyuz sem
+            tripulação haviam falhado — nenhum limpo. A nave voou com Komarov
+            mesmo assim.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasReparametrizacao');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var CURVE = '#1E88E5';
+    var CLK1 = '#43A047';
+    var CLK2 = '#E53935';
+    var ARC = '#FFB300';
+    var FG = '#e0e0e0';
+
+    var R = 130;
+    var cx = W / 2;
+    var cy = H / 2 + 20;
+
+    var modeBtn = document.getElementById('btnReparamMode');
+    var speedSlider = document.getElementById('sliderReparamSpeed');
+
+    var mode = 'clocks';
+    var t = 0;
+
+    function toCanvas(mx, my) {
+      return { x: cx + R * mx, y: cy - R * my };
+    }
+
+    function drawSemicircle() {
+      ctx.strokeStyle = CURVE;
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      var first = true;
+      for (var i = 0; i <= 120; i++) {
+        var th = Math.PI - (i / 120) * Math.PI;
+        var p = toCanvas(Math.cos(th), Math.sin(th));
+        if (first) { ctx.moveTo(p.x, p.y); first = false; }
+        else { ctx.lineTo(p.x, p.y); }
+      }
+      ctx.stroke();
+      var a = toCanvas(-1, 0);
+      var b = toCanvas(1, 0);
+      ctx.fillStyle = FG;
+      ctx.beginPath();
+      ctx.arc(a.x, a.y, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, 3, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('(-1, 0)', a.x, a.y + 18);
+      ctx.fillText('(1, 0)', b.x, b.y + 18);
+    }
+
+    function drawPoint(mx, my, color) {
+      var p = toCanvas(mx, my);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    function drawArrow(mx, my, dir, len, color) {
+      var p = toCanvas(mx, my);
+      var tipX = p.x + dir.x * len;
+      var tipY = p.y - dir.y * len;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(tipX, tipY);
+      ctx.stroke();
+      var ang = Math.atan2(p.y - tipY, tipX - p.x);
+      ctx.beginPath();
+      ctx.moveTo(tipX, tipY);
+      ctx.lineTo(tipX - 7 * Math.cos(ang - 0.4), tipY + 7 * Math.sin(ang - 0.4));
+      ctx.lineTo(tipX - 7 * Math.cos(ang + 0.4), tipY + 7 * Math.sin(ang + 0.4));
+      ctx.closePath();
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      drawSemicircle();
+
+      var p = t % 1;
+
+      if (mode === 'clocks') {
+        // clock 1: theta, constant speed
+        var th = Math.PI * (1 - p);
+        var x1 = Math.cos(th);
+        var y1 = Math.sin(th);
+        var L1 = Math.PI * p;
+        var tan1 = { x: Math.sin(th), y: -Math.cos(th) };
+        drawPoint(x1, y1, CLK1);
+        drawArrow(x1, y1, tan1, Math.min(Math.PI, 9) * 11, CLK1);
+
+        // clock 2: x, variable speed
+        var x2 = -1 + 2 * p;
+        var y2 = Math.sqrt(Math.max(0, 1 - x2 * x2));
+        var L2 = Math.asin(Math.max(-1, Math.min(1, x2))) + Math.PI / 2;
+        var tan2 = { x: y2, y: -x2 };
+        var spd2 = 2 / Math.sqrt(Math.max(0.0001, 1 - x2 * x2));
+        drawPoint(x2, y2, CLK2);
+        drawArrow(x2, y2, tan2, Math.min(spd2, 9) * 11, CLK2);
+
+        ctx.font = '14px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = CLK1;
+        ctx.fillText('relógio \u03b8 \u00b7 L = ' + L1.toFixed(2) + '  (velocidade constante)', W / 2, 26);
+        ctx.fillStyle = CLK2;
+        ctx.fillText('relógio x \u00b7 L = ' + L2.toFixed(2) + '  (velocidade variável)', W / 2, 46);
+        ctx.fillStyle = FG;
+        ctx.fillText('comprimento total: \u03c0 \u2248 3.1416', W / 2, 66);
+      } else {
+        var s = Math.PI * p;
+        var xs = -Math.cos(s);
+        var ys = Math.sin(s);
+        drawPoint(xs, ys, ARC);
+        drawArrow(xs, ys, { x: Math.sin(s), y: Math.cos(s) }, 22, ARC);
+        ctx.font = '14px monospace';
+        ctx.textAlign = 'center';
+        ctx.fillStyle = ARC;
+        ctx.fillText('s = ' + s.toFixed(2) + '  \u00b7  velocidade |dr/ds| = 1.00', W / 2, 26);
+        ctx.fillStyle = FG;
+        ctx.fillText('parâmetro = comprimento de arco', W / 2, 46);
+      }
+      ctx.textAlign = 'start';
+    }
+
+    function loop() {
+      var spd = (parseInt(speedSlider.value, 10) || 100) / 100;
+      t += 0.004 * spd;
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      t = 0;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (modeBtn) {
+      modeBtn.addEventListener('click', function () {
+        mode = mode === 'clocks' ? 'arc' : 'clocks';
+        modeBtn.textContent = mode === 'clocks' ? 'Modo: dois relógios' : 'Modo: comprimento de arco';
+        t = 0;
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizReparametrizacao = { init: init, cleanup: cleanup };
+  })();
+</script>
