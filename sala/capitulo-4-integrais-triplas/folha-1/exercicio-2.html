@@ -1,0 +1,104 @@
+<section
+  class="exercicio"
+  data-topico="fubini-3d"
+  data-dificuldade="medio"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">2.</span>
+    Considere o sólido $V$ definido pelas inequações $0 \le x \le 2$,
+    $0 \le y \le 1$ e $x + y \le z \le 4$. Vamos calcular o volume de $V$
+    reduzindo a integral tripla a uma integral dupla — o Teorema de Fubini
+    em três dimensões.
+  </p>
+
+  <p class="questao">
+    Identifique a projeção $D$ de $V$ no plano $xy$ e os limites de $z$.
+  </p>
+
+  <p class="dialogo">
+    Para cada ponto $(x, y)$ do plano $xy$, imagine a reta vertical que passa
+    por ele: ela entra no sólido pela superfície inferior e sai pela superior.
+    A projeção $D$ é o conjunto dos pontos $(x, y)$ para os quais essa reta
+    corta o sólido.
+  </p>
+
+  <p class="subitem">
+    a) Esboce a projeção $D$ no plano $xy$:
+  </p>
+  <div class="area-rascunho area-rascunho-pequena"></div>
+
+  <p class="subitem">
+    b) Em $D$, a coordenada $x$ varia entre: <span class="lacuna"></span> e
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Em $D$, a coordenada $y$ varia entre: <span class="lacuna"></span> e
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) Para $(x, y)$ fixo em $D$, a coordenada $z$ varia entre as superfícies
+    $z =$ <span class="lacuna"></span> e $z =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="dica">
+    A projeção não depende de $z$: olhe apenas para as inequações que
+    envolvem $x$ e $y$.
+  </p>
+
+  <p class="questao">
+    Monte a integral tripla na ordem $dz\,dy\,dx$ e reduza-a a uma integral
+    dupla sobre $D$.
+  </p>
+
+  <p class="dialogo">
+    Na ordem $dz\,dy\,dx$, a integral mais interna é em $z$, com limites que
+    dependem de $(x, y)$. Depois de integrar em $z$, o resultado é uma função
+    de $(x, y)$ — e é essa função que será integrada sobre $D$.
+  </p>
+
+  <p class="subitem">
+    a) Escreva a integral com os limites que você identificou:
+  </p>
+  <p class="formula">
+    $$\iiint_V 1\,dV = \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} 1\,dz\,dy\,dx$$
+  </p>
+  <p class="subitem">
+    b) Resolva a integral interna: $\displaystyle\int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} 1\,dz =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) A integral tripla se reduziu à integral dupla:
+    $\displaystyle\iint_D ($<span class="lacuna"></span>$)\,dA$
+  </p>
+
+  <p class="questao">
+    Avalie a integral dupla e determine o volume de $V$.
+  </p>
+
+  <p class="dialogo">
+    Os limites que você identificou para $D$ são constantes (não dependem da
+    outra variável)? Se sim, integre primeiro em $y$, tratando $x$ como
+    constante.
+  </p>
+
+  <p class="subitem">
+    a) $\displaystyle\int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} ($<span class="lacuna"></span>$)\,dy =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\displaystyle\int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} ($<span class="lacuna"></span>$)\,dx =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $V = \iiint_V 1\,dV =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: o sólido está contido na caixa $[0, 2] \times [0, 1] \times
+    [0, 4]$, de volume $8$. Seu volume é menor que $8$? A altura do sólido
+    acima de cada ponto $(x, y)$ é a diferença entre as superfícies que você
+    identificou no item 1d. Confira se volume $=$ área de $D$ $\times$ altura
+    média, onde a altura média é o valor médio dessa função altura sobre $D$.
+  </p>
+</section>
