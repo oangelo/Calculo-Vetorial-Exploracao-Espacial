@@ -12,7 +12,7 @@ Automatiza o trecho **implementação → verificação** das folhas de sala (`s
 | Papel         | Subagente (`task` subagent_type) | Modelo                          | Permissão  |
 | ------------- | -------------------------------- | ------------------------------- | ---------- |
 | Implementador | `implementador`                  | `opencode-go/deepseek-v4-flash` | edit allow |
-| Juiz          | `juiz`                           | `kimi-for-coding/k3`            | edit deny  |
+| Juiz          | `juiz`                           | `opencode-go/glm-5.2`           | edit deny  |
 | Corretor      | `corretor`                       | `opencode-go/deepseek-v4-flash` | edit allow |
 
 ## Entradas
@@ -82,6 +82,6 @@ Apresente ao usuário:
 
 ## Notas
 
-- O `juiz` usa k3 (mais caro/forte) — julgue por exercício, não folha inteira, para controlar custo.
+- O `juiz` usa glm-5.2 (mais forte) — julgue por exercício, não folha inteira, para controlar custo.
 - Critérios de QA vivem no prompt dos agentes (`juiz.md` e `implementador.md`) — se o usuário quiser afrouxar/endurecer, edite os dois arquivos (`.opencode/agent/juiz.md` e `.opencode/agent/implementador.md`) e reinicie.
 - Foco principal: **não revelar respostas** (checkpoint/diálogo) e **não ensinar pré-requisito básico**.

@@ -13,10 +13,10 @@ Automatiza o trecho **implementação → verificação** do pipeline de slides 
 | ----------------- | -------------------------------- | ------------------------------- | ------------------ |
 | Implementador     | `implementador`                  | `opencode-go/deepseek-v4-flash` | edit allow         |
 | Verificador téc.  | `verificador-tecnico`            | `opencode-go/deepseek-v4-flash` | edit deny          |
-| Juiz (qualidade)  | `juiz`                           | `kimi-for-coding/k3`            | edit deny          |
+| Juiz (qualidade)  | `juiz`                           | `opencode-go/glm-5.2`           | edit deny          |
 | Corretor          | `corretor`                       | `opencode-go/deepseek-v4-flash` | edit allow         |
 
-**Verificação em 2 camadas:** `verificador-tecnico` (rápido/barato) faz as checagens programáticas; `juiz` (k3) julga qualidade e dá o veredito final. k3 é caro — use-o uma vez por seção no final, não para rodar greps.
+**Verificação em 2 camadas:** `verificador-tecnico` (rápido/barato) faz as checagens programáticas; `juiz` (glm-5.2) julga qualidade e dá o veredito final. Use o juiz uma vez por seção no final, não para rodar greps.
 
 ## Entradas
 
@@ -114,7 +114,7 @@ Apresente ao usuário um resumo:
 
 ## Notas
 
-- O `juiz` usa k3 (mais caro/forte) — julgue por seção, não capítulo inteiro. O `verificador-tecnico` (deepseek) faz a triagem técnica barata antes.
+- O `juiz` usa glm-5.2 (mais forte) — julgue por seção, não capítulo inteiro. O `verificador-tecnico` (deepseek) faz a triagem técnica barata antes.
 - Se o capítulo for monolítico (um `index.html` gigante, ex.: cap 8/9), o FASE 0 deve detectar e o implementador quebrar em seções modulares antes do loop por seção — trate como um passo prévio de modularização.
 - Nunca antecipar conceitos de capítulos posteriores (AGENTS.md).
 - Critérios de qualidade (exemplos simples, história concreta, fragmento em todo exemplo, viz antes da formalização) vivem no prompt do `juiz` e do `implementador`; critérios técnicos no `verificador-tecnico`. Se o usuário quiser afrouxar/endurecer, edite os arquivos de agente (`.opencode/agent/*.md`) e reinicie.
