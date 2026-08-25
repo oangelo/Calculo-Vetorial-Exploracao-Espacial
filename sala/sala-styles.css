@@ -306,6 +306,78 @@
   }
 }
 
+/* === ÁREA DE RASCUNHO (quadriculado para desenho) === */
+.area-rascunho {
+  height: 35mm;
+  border: 1px solid var(--color-muted);
+  margin: 2mm 0;
+  background: repeating-linear-gradient(
+      0deg,
+      #ccc 0,
+      #ccc 0.3mm,
+      transparent 0.3mm,
+      transparent 5mm
+    ),
+    repeating-linear-gradient(
+      90deg,
+      #ccc 0,
+      #ccc 0.3mm,
+      transparent 0.3mm,
+      transparent 5mm
+    );
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.area-rascunho-grande {
+  height: 55mm;
+}
+
+.area-rascunho-pequena {
+  height: 22mm;
+}
+
+@media print {
+  .area-rascunho {
+    background: repeating-linear-gradient(
+        0deg,
+        #bbb 0,
+        #bbb 0.3mm,
+        transparent 0.3mm,
+        transparent 5mm
+      ),
+      repeating-linear-gradient(
+        90deg,
+        #bbb 0,
+        #bbb 0.3mm,
+        transparent 0.3mm,
+        transparent 5mm
+      );
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+/* === EIXOS 3D (referência tracejada para rascunho) === */
+.eixos-3d {
+  text-align: center;
+  margin: 1mm 0;
+}
+
+.eixos-3d svg {
+  display: block;
+  max-width: 42mm;
+  height: auto;
+  margin: 0 auto;
+}
+
+.eixos-3d .eixo {
+  stroke: var(--color-muted);
+  stroke-width: 0.4;
+  stroke-dasharray: 2 1.5;
+  fill: none;
+}
+
 /* === CHECKPOINT === */
 .checkpoint {
   font-size: 9pt;
