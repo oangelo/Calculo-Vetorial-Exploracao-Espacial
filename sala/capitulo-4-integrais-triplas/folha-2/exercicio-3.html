@@ -1,0 +1,118 @@
+<section
+  class="exercicio"
+  data-topico="jacobiano-3d"
+  data-dificuldade="medio"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">3.</span>
+    O elipsoide $\frac{x^2}{a^2} + \frac{y^2}{b^2} + \frac{z^2}{c^2} \le 1$ é a
+    versão tridimensional da elipse do capítulo 3. A transformação linear
+    $x = au$, $y = bv$, $z = cw$ leva o espaço $(u, v, w)$ ao espaço
+    $(x, y, z)$. Vamos verificar o que essa transformação faz com a esfera
+    unitária, calcular o Jacobiano — agora uma matriz $3\times3$ — e obter o
+    volume do elipsoide.
+  </p>
+
+  <p class="questao">
+    Verifique o que a transformação faz com a esfera unitária
+    $u^2 + v^2 + w^2 \le 1$.
+  </p>
+
+  <p class="dialogo">
+    A transformação estica cada eixo por um fator diferente: $u$ é multiplicado
+    por $a$, $v$ por $b$, $w$ por $c$. Esboce a esfera unitária no espaço
+    $(u, v, w)$ e, na área pequena, o sólido que ela vira no espaço $(x, y, z)$.
+    Depois, substitua $x = au$, $y = bv$, $z = cw$ na inequação do elipsoide: em
+    $\frac{x^2}{a^2}$, o fator $a$ do numerador é cancelado pelo $a^2$ do
+    denominador — o que sobra em cada termo?
+  </p>
+
+  <p class="subitem">
+    a) Esboce a esfera unitária no quadriculado e, na área pequena, o sólido
+    que ela vira no espaço $xyz$ quando cada eixo é esticado:
+  </p>
+  <div class="area-rascunho"></div>
+  <div class="area-rascunho area-rascunho-pequena"></div>
+
+  <p class="subitem">
+    b) $\frac{(au)^2}{a^2} + \frac{(bv)^2}{b^2} + \frac{(cw)^2}{c^2} =$
+    <span class="lacuna"></span>; a inequação do elipsoide se torna
+    $u^2 + v^2 + w^2 \le$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) A imagem da esfera unitária no espaço $xyz$ é o
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">
+    Monte a matriz Jacobiana $\frac{\partial(x,y,z)}{\partial(u,v,w)}$ e calcule
+    o determinante.
+  </p>
+
+  <p class="dialogo">
+    Cada coluna guarda as derivadas em relação a uma das variáveis: a primeira
+    em relação a $u$, a segunda a $v$, a terceira a $w$. Como $x = au$ depende
+    apenas de $u$, a primeira linha tem derivadas simples — confira cada entrada
+    com a transformação do enunciado. Antes de calcular, olhe para a matriz: que
+    entradas estão fora da diagonal? Na expansão do determinante, cada termo usa
+    uma entrada de cada linha e de cada coluna — o que acontece com um termo que
+    usa uma entrada fora da diagonal?
+  </p>
+
+  <p class="formula">
+    $$\frac{\partial(x,y,z)}{\partial(u,v,w)} = \begin{pmatrix} a & 0 & 0 \\ 0 & b & 0 \\ 0 & 0 & c \end{pmatrix}$$
+  </p>
+
+  <p class="subitem">
+    a) Expandindo pela primeira linha,
+    $\det = a \cdot \det\begin{pmatrix} b & 0 \\ 0 & c \end{pmatrix} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) Como $a$, $b$ e $c$ são positivos, o valor absoluto do Jacobiano é
+    $|J| =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">
+    Calcule o volume do elipsoide com a fórmula de mudança de variáveis.
+  </p>
+
+  <p class="dialogo">
+    Pela fórmula de mudança de variáveis,
+    $\iiint_{\text{elipsoide}} 1\,dV = \iiint_{\text{esfera unitária}} |J|\,du\,dv\,dw$.
+    O Jacobiano é constante — ele sai da integral. O que resta é o volume da
+    esfera unitária, que você já conhece desta folha: a Cúpula do exercício 1
+    era metade de uma esfera de raio 2. Qual é o volume da esfera de raio 1?
+    Depois, aplique o resultado ao caso $a = 2$, $b = 3$, $c = 4$.
+  </p>
+
+  <p class="subitem">
+    a) $\iiint_{\text{elipsoide}} 1\,dV =$
+    <span class="lacuna"></span> $\cdot \iiint_{\text{esfera unitária}} 1\,du\,dv\,dw$
+  </p>
+
+  <p class="dica">
+    A Cúpula do exercício 1 era metade de uma esfera de raio 2. O volume de uma
+    esfera escala com o cubo do raio: a esfera de raio 1 é $\frac{1}{8}$ da
+    esfera de raio 2 — por quê?
+  </p>
+
+  <p class="subitem">
+    b) O volume da esfera unitária é <span class="lacuna"></span>; logo, o
+    volume do elipsoide é $V =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Substitua $a = 2$, $b = 3$, $c = 4$ na fórmula de b): $V =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: por que aqui o Jacobiano é constante, enquanto em esféricas
+    (folha 1) ele dependia de $\rho$ e $\varphi$? O que isso tem a ver com a
+    transformação ser linear? E os casos particulares: com $a = b = c = R$, o
+    elipsoide vira a esfera de raio $R$ — o que sua fórmula geral dá? Confira
+    também com a Cúpula do exercício 1: o volume dela é metade do que sua
+    fórmula dá para $a = b = c = 2$?
+  </p>
+</section>
