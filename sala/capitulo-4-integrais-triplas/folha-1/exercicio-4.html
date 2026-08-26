@@ -1,0 +1,141 @@
+<section
+  class="exercicio"
+  data-topico="esfericas"
+  data-dificuldade="medio"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">4.</span>
+    Coordenadas esféricas $(\rho, \varphi, \theta)$ descrevem um ponto pela
+    distância $\rho$ à origem e por dois ângulos: $\varphi$, medido a partir do
+    eixo $z$ positivo, e $\theta$, o mesmo azimute das cilíndricas do exercício
+    3. Vamos desenhar o sistema, descobrir a transformação e calcular o
+    Jacobiano — o fator que corrige o elemento de volume $dV$.
+  </p>
+
+  <p class="questao">
+    Desenhe a esfera de raio $\rho$ no quadriculado e marque o ponto $P$, o
+    raio $\rho$ e os ângulos $\varphi$ e $\theta$.
+  </p>
+
+  <p class="dialogo">
+    Comece pelos eixos tracejados de referência: o eixo $z$ vertical e o plano
+    $xy$ horizontal. Marque um ponto $P$ genérico sobre a esfera e sua projeção
+    no plano $xy$ — a "sombra" de $P$ sobre o plano horizontal. No desenho,
+    qual segmento representa a distância da origem ao ponto $P$? O ângulo
+    $\varphi$ é medido a partir de qual eixo? E o ângulo $\theta$: em que plano
+    ele é medido? Ele é o mesmo azimute das cilíndricas do exercício 3 — o que
+    muda é a terceira coordenada: lá era a altura $z$, aqui é o ângulo
+    $\varphi$.
+  </p>
+
+  <div class="eixos-3d">
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Referência: três eixos tracejados, z vertical e x, y no plano horizontal"
+    >
+      <line class="eixo" x1="50" y1="78" x2="50" y2="8" />
+      <line class="eixo" x1="50" y1="78" x2="90" y2="60" />
+      <line class="eixo" x1="50" y1="78" x2="10" y2="60" />
+      <text x="53" y="12" font-size="9">z</text>
+      <text x="88" y="58" font-size="9">x</text>
+      <text x="6" y="58" font-size="9">y</text>
+    </svg>
+  </div>
+
+  <div class="area-rascunho area-rascunho-grande"></div>
+
+  <p class="subitem">
+    a) $\rho$ é a distância da origem ao <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\varphi$ é o ângulo entre o segmento $OP$ e o
+    <span class="lacuna"></span>; $\theta$ é medido no plano
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) No triângulo retângulo vertical do desenho (lados: $OP$, o eixo $z$ e a
+    projeção horizontal), o cateto sobre o eixo $z$ vale $z = \rho \cdot$
+    <span class="lacuna"></span> e o cateto horizontal vale $\rho \cdot$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">
+    Escreva a transformação: expresse $x$, $y$ e $z$ em função de $\rho$,
+    $\varphi$ e $\theta$.
+  </p>
+
+  <p class="dialogo">
+    No plano vertical que contém o eixo $z$ e o ponto $P$, o triângulo
+    retângulo do desenho fornece a altura $z$ e o raio horizontal — a distância
+    da projeção de $P$ à origem. Esse raio horizontal faz o papel do $r$ das
+    cilíndricas: no plano $xy$, as coordenadas $(x, y)$ da projeção usam as
+    mesmas fórmulas do exercício 3, com $r$ trocado por esse raio.
+  </p>
+
+  <p class="subitem">
+    a) $x =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $y =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $z =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="dica">
+    O raio horizontal que você identificou no desenho faz o papel do $r$ das
+    cilíndricas: no plano $xy$, use as mesmas fórmulas de projeção do exercício
+    3, com $r$ trocado por esse raio. A altura $z$ você já identificou no
+    desenho.
+  </p>
+
+  <p class="questao">
+    Monte a matriz Jacobiana e calcule o determinante.
+  </p>
+
+  <p class="dialogo">
+    Na matriz Jacobiana, cada coluna guarda as derivadas em relação a uma das
+    variáveis novas: a primeira em relação a $\rho$, a segunda em relação a
+    $\varphi$, a terceira em relação a $\theta$. Complete cada entrada derivando
+    a transformação que você escreveu acima. Para o determinante, escolha a
+    linha ou coluna com mais zeros — ela reduz o cálculo a dois determinantes
+    $2\times2$.
+  </p>
+
+  <p class="formula">
+    $$\frac{\partial(x,y,z)}{\partial(\rho,\varphi,\theta)} = \begin{pmatrix} \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \end{pmatrix}$$
+  </p>
+
+  <p class="subitem">
+    a) A linha ou coluna com mais zeros é a <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) Expandindo pela terceira linha, o primeiro determinante $2\times2$ é
+    $\det\begin{pmatrix} \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \end{pmatrix} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) O segundo determinante $2\times2$ é
+    $\det\begin{pmatrix} \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \end{pmatrix} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) Multiplique o primeiro determinante pela entrada correspondente da
+    terceira linha e o segundo pela entrada correspondente — lembrando do sinal
+    de cada cofator — e some as duas contribuições. Usando
+    $\cos^2\varphi + \sin^2\varphi = 1$: o Jacobiano vale
+    <span class="lacuna"></span> e, portanto, $dV =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: o que acontece com o Jacobiano quando $\rho = 0$ ou quando
+    $\varphi = 0$ (sobre o eixo $z$)? Faz sentido? Na origem e sobre o eixo
+    $z$, um mesmo $\Delta\varphi$ e um mesmo $\Delta\theta$ varrem uma área
+    cada vez menor — o elemento de volume deve encolher. O Jacobiano que você
+    encontrou captura esse encolhimento?
+  </p>
+</section>

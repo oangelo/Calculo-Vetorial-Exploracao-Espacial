@@ -179,6 +179,12 @@ Atributos opcionais no `<section>`:
 Isso mantém variáveis e fórmulas visualmente uniformes. Reserve `<strong>`
 apenas para ênfase textual (ex: "Atenção!", "Solução 1:").
 
+**Limites de integração:** nunca são fornecidos prontos — deixe sempre um
+espaço para o aluno preencher. Dentro de equações LaTeX (onde o `<span
+class="lacuna">` não pode entrar), use `\rule{8mm}{0.5pt}` para o espaço do
+limite (ex.: `\int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}}`). Não declare
+intervalos prontos em diálogos quando a tarefa for determiná-los.
+
 ## Quantidade de Exercícios
 
 - **4-6 exercícios por folha**

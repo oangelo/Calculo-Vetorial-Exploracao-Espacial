@@ -1,0 +1,127 @@
+<section
+  class="exercicio"
+  data-topico="cilindricas"
+  data-dificuldade="medio"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">3.</span>
+    Coordenadas cilíndricas $(r, \theta, z)$ são as coordenadas polares do
+    capítulo 3 com uma terceira coordenada: a altura $z$. Vamos desenhar o
+    sistema, descobrir a transformação e calcular o Jacobiano — o fator que
+    corrige o elemento de volume $dV$.
+  </p>
+
+  <p class="questao">
+    Desenhe o sistema de coordenadas cilíndricas no quadriculado e identifique
+    o que cada coordenada representa.
+  </p>
+
+  <p class="dialogo">
+    Comece pelos eixos tracejados de referência: o eixo $z$ vertical e o plano
+    $xy$ horizontal. Marque um ponto $P$ genérico fora dos eixos e sua projeção
+    no plano $xy$ — a "sombra" de $P$ sobre o plano horizontal. No desenho,
+    indique $r$, $\theta$ e $z$. Que distância representa $r$? Por que o ângulo
+    $\theta$ é medido no plano $xy$ e não no espaço todo?
+  </p>
+
+  <div class="eixos-3d">
+    <svg
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Referência: três eixos tracejados, z vertical e x, y no plano horizontal"
+    >
+      <line class="eixo" x1="50" y1="78" x2="50" y2="8" />
+      <line class="eixo" x1="50" y1="78" x2="90" y2="60" />
+      <line class="eixo" x1="50" y1="78" x2="10" y2="60" />
+      <text x="53" y="12" font-size="9">z</text>
+      <text x="88" y="58" font-size="9">x</text>
+      <text x="6" y="58" font-size="9">y</text>
+    </svg>
+  </div>
+
+  <div class="area-rascunho"></div>
+
+  <p class="subitem">
+    a) $r$ é a distância de $P$ ao <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\theta$ é o ângulo entre a projeção de $P$ no plano $xy$ e o
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $z$ é a <span class="lacuna"></span> de $P$ em relação ao plano $xy$
+  </p>
+
+  <p class="questao">
+    Escreva a transformação: expresse $x$, $y$ e $z$ em função de $r$, $\theta$
+    e $z$.
+  </p>
+
+  <p class="dialogo">
+    No plano $xy$, a projeção de $P$ se comporta exatamente como nas polares do
+    capítulo 3: as coordenadas $(x, y)$ da projeção dependem apenas de $r$ e
+    $\theta$. A novidade é a altura: $z$ não participa da projeção — ela é
+    transportada intacta.
+  </p>
+
+  <p class="subitem">
+    a) $x =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $y =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $z =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="dica">
+    A projeção de $P$ no plano $xy$ segue as mesmas fórmulas que você usou para
+    converter polares no capítulo 3 — o ângulo $\theta$ é o mesmo de lá. Só a
+    altura $z$ é nova.
+  </p>
+
+  <p class="questao">
+    Monte a matriz Jacobiana e calcule o determinante.
+  </p>
+
+  <p class="dialogo">
+    Na matriz Jacobiana, cada coluna guarda as derivadas em relação a uma das
+    variáveis novas: a primeira em relação a $r$, a segunda em relação a
+    $\theta$, a terceira em relação a $z$. Complete cada entrada derivando a
+    transformação que você escreveu acima. Para o determinante, escolha a linha
+    ou coluna com mais zeros — ela reduz o cálculo a um determinante
+    $2\times2$.
+  </p>
+
+  <p class="formula">
+    $$\frac{\partial(x,y,z)}{\partial(r,\theta,z)} = \begin{pmatrix} \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \end{pmatrix}$$
+  </p>
+
+  <p class="subitem">
+    a) A linha ou coluna com mais zeros é a <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) Eliminando essa linha e essa coluna, resta um determinante $2\times2$:
+    $\det\begin{pmatrix} \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \\ \rule{8mm}{0.5pt} & \rule{8mm}{0.5pt} \end{pmatrix}$.
+    Calcule-o: <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Multiplique pelo fator correspondente à entrada eliminada e simplifique
+    com $\cos^2\theta + \sin^2\theta = 1$:
+    $\frac{\partial(x,y,z)}{\partial(r,\theta,z)} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) Conclua o elemento de volume: $dV =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: o que acontece com o Jacobiano quando $r = 0$? Faz sentido? No
+    plano $xy$, um mesmo $\Delta\theta$ percorre um arco tanto menor quanto mais
+    perto do eixo $z$ — o elemento de volume deve encolher. E o volume de um
+    cilindro de raio $R$ e altura $H$, calculado com o elemento de volume que
+    você encontrou, reproduz a fórmula conhecida $\pi R^2 H$?
+  </p>
+</section>
