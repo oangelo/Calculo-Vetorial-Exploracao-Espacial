@@ -185,6 +185,26 @@ class="lacuna">` não pode entrar), use `\rule{8mm}{0.5pt}` para o espaço do
 limite (ex.: `\int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}}`). Não declare
 intervalos prontos em diálogos quando a tarefa for determiná-los.
 
+**Tarefa de montar ≠ fornecer pronto:** se a questão pede ao aluno
+montar/escrever/derivar algo (transformação, matriz jacobiana, expressão,
+fórmula), NENHUMA parte disso pode aparecer pronta no arquivo — nem no
+enunciado, nem no diálogo, nem em dica, nem em outro subitem. Entradas a
+preencher dentro de equações LaTeX usam `\rule{8mm}{0.5pt}` (ex.: matriz
+jacobiana com as entradas em `\rule{8mm}{0.5pt}` dentro de `\begin{pmatrix}`;
+menores $2\times2$ de uma expansão também em branco). Partes da resposta
+também não podem ser citadas (ex.: o multiplicador de um cofator, a linha por
+onde expandir o determinante com seus valores).
+
+**Dica:** lembra pré-requisito ou analogia já vista em aula/capítulo anterior;
+NÃO pode conter a expressão pedida nem um pedaço dela (ex.: se o aluno deve
+escrever $x = r\cos\theta$, a dica aponta o capítulo onde isso foi visto, sem
+escrever a fórmula).
+
+**Checkpoint:** verificação qualitativa; não pode conter valor numérico,
+fórmula OU PALAVRA que seja resposta de alguma lacuna/questão do exercício
+(ex.: uma lacuna pede "volume" → a palavra "volume" não pode aparecer no
+checkpoint nem em outro subitem). Confira com `grep` das palavras pedidas.
+
 ## Quantidade de Exercícios
 
 - **4-6 exercícios por folha**

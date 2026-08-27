@@ -67,8 +67,13 @@ Para cada exercício na ordem (ou só o pedido):
 - `index.html`: array `EXERCICIOS` completo e na ordem; zero CSS inline; KaTeX configurado.
 - KaTeX: em `sala/<capitulo>/*.html`, `\\` só como quebra de linha dentro de matrizes (ex.: `\begin{pmatrix}`); equações `$...$`/`$$...$$` balanceadas; nenhum `<span class="lacuna">` dentro de equação.
 - Classes: nenhuma classe fora do `sala-styles.css`/AGENTS.md.
+- **Tarefa de montar ≠ fornecer pronto:** se algum exercício pede para montar/derivar algo (matriz jacobiana, transformação, expressão), confira com `grep` que nenhuma parte da resposta aparece pronta (entradas de matriz, menores de expansão, multiplicadores, fórmula alvo) — o esperado é `\rule{8mm}{0.5pt}` nas entradas a preencher.
 - Se achar problemas de integração não cobertos por exercício, corrija (você mesmo ou chamando `implementador`) e re-valide com `juiz`.
 - Commit final de integração se houver mudanças.
+
+## FASE 2.5 — Melhorias de notas opcionais (MEDIA/BAIXA)
+
+- NOTAS MEDIA/BAIXA do juiz NÃO bloqueiam aprovação, mas se o usuário pedir "buscar o ideal" / implementar as notas, aplique as melhorias e **RE-RODE o juiz em cada arquivo alterado** antes de commitar (uma correção pode criar um novo vazamento de resposta — ex.: desdobrar um subitem fez a palavra "volume" vazar no checkpoint).
 
 ## FASE 3 — Report final (gate humano)
 
