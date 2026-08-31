@@ -11,19 +11,19 @@ Automatiza o trecho **implementação → verificação** do pipeline de slides 
 
 | Papel             | Subagente (`task` subagent_type) | Modelo                          | Permissão          |
 | ----------------- | -------------------------------- | ------------------------------- | ------------------ |
-| Implementador     | `implementador`                  | `opencode-go/deepseek-v4-flash` | edit allow         |
+| Implementador     | `implementador-slides`           | `opencode-go/deepseek-v4-flash` | edit allow         |
 | Verificador téc.  | `verificador-tecnico`            | `opencode-go/deepseek-v4-flash` | edit deny          |
-| Juiz (qualidade)  | `juiz`                           | `kimi-for-coding/k3`            | edit deny          |
-| Corretor          | `corretor`                       | `opencode-go/deepseek-v4-flash` | edit allow         |
+| Juiz (qualidade)  | `juiz-slides`                    | `opencode-go/glm-5.2`           | edit deny          |
+| Corretor          | `corretor-slides`                | `opencode-go/deepseek-v4-flash` | edit allow         |
 
-**Verificação em 2 camadas:** `verificador-tecnico` (rápido/barato) faz as checagens programáticas; `juiz` (k3) julga qualidade e dá o veredito final. k3 é caro — use-o uma vez por seção no final, não para rodar greps.
+**Verificação em 2 camadas:** `verificador-tecnico` (rápido/barato) faz as checagens programáticas; `juiz-slides` (glm-5.2) julga qualidade e dá o veredito final. Use o juiz-slides uma vez por seção no final, não para rodar greps.
 
 ## Entradas
 
 - Capítulo alvo (ex.: `capitulo-3-mudanca-de-variaveis`) e, opcionalmente, seção específica.
 - Issue do capítulo (números #81–#90; arco geral #80). Achar com:
   `gh issue list --label slides --state open --limit 10`
-  Se a issue tiver PDI (Camada 4 em comentários), passe os trechos relevantes ao implementador: `gh issue view N --comments`.
+   Se a issue tiver PDI (Camada 4 em comentários), passe os trechos relevantes ao implementador-slides: `gh issue view N --comments`.
 - Exercícios revisados: `exercicios/capitulo-N/<topico>/` (alinhamento).
 
 ## FASE 0 — Inventário (você, orquestrador)
@@ -39,8 +39,8 @@ Automatiza o trecho **implementação → verificação** do pipeline de slides 
 
 Para cada seção que será implementada, com o PDI da issue em mãos (`gh issue view N --comments`, Camadas 1-4):
 
-1. Chame `juiz` com a tarefa: "avalia o PLANO (PDI Camada 1-4) da seção NN contra os critérios de qualidade, SEM olhar slides".
-2. Critérios do PDI review (os mesmos do juiz, aplicados ao plano):
+1. Chame `juiz-slides` com a tarefa: "avalia o PLANO (PDI Camada 1-4) da seção NN contra os critérios de qualidade, SEM olhar slides".
+2. Critérios do PDI review (os mesmos do juiz-slides, aplicados ao plano):
    - exemplos clássicos E simples (2-5 passos em sala, sem truque de substituição longo)?
    - história concreta (nomes/datas/fatos) e beats únicos (sem repetição entre insert/fragmentos)?
    - **sem repetição com capítulos anteriores** — para cada fato/personagem do plano, conferir nos `slide-decks/capitulo-*/` dos caps anteriores (grep por personagens-chave): recontagem de fato já narrado reprova o PDI. (No cap 5, o gulag de Korolev já narrado nos caps 1 e 3 só foi pego na revisão humana — a checagem aqui evita o ciclo.)
@@ -48,7 +48,7 @@ Para cada seção que será implementada, com o PDI da issue em mãos (`gh issue
    - posição das visualizações (antes da formalização aceitável quando apoia a definição)?
    - fluxo pedagógico correto (motivação → conceito → [viz?] → formalização → interpretação → exemplos)?
    - atomicidade (um conceito por slide)?
-   - **verificação factual**: o juiz confere na web fórmulas/convenções e fatos históricos do plano (fontes: OpenStax/Stewart/Wolfram, NASA/Wikipedia/museus), citando fonte no veredito.
+   - **verificação factual**: o juiz-slides confere na web fórmulas/convenções e fatos históricos do plano (fontes: OpenStax/Stewart/Wolfram, NASA/Wikipedia/museus), citando fonte no veredito.
 3. Se o PDI **reprovar**: NÃO implemente ainda. Corrija o plano — atualize a issue (você pode pedir ao usuário ou gerar a correção e propor) — e re-julgue até aprovar.
 4. Só então siga para a FASE 1 com o PDI aprovado.
 
@@ -58,7 +58,7 @@ Para cada seção que será implementada, com o PDI da issue em mãos (`gh issue
 
 Para cada seção na ordem (ou só a pedida), **após FASE 0.5 aprovar o PDI**:
 
-1. **Implementador** — chame `implementador` com:
+1. **Implementador** — chame `implementador-slides` com:
    - caminho do capítulo e do arquivo de seção;
    - instrução "implementa/melhora esta seção seguindo as specs e o PDI aprovado";
    - contexto: facção, período, PDI da issue (se houver), tópicos de exercício correspondentes.
@@ -68,15 +68,15 @@ Para cada seção na ordem (ou só a pedida), **após FASE 0.5 aprovar o PDI**:
    - instrução "verifica tecnicamente esta seção e emite VEREDITO TÉCNICO".
    - Receba `VEREDITO TÉCNICO: OK` ou `REPROVADO` + ISSUES.
    - Se REPROVADO técnico → vá para o corretor (passo 4) antes do juiz.
-3. **Juiz (qualidade)** — chame `juiz` com:
+3. **Juiz (qualidade)** — chame `juiz-slides` com:
    - caminho do capítulo e do arquivo de seção;
    - instrução "verifica QUALIDADE desta seção e emite o veredito final" (referencie o VEREDITO TÉCNICO já dado).
-   - O juiz aplica os 13 critérios de conformidade E os critérios de **qualidade de conteúdo** (exemplos simples, história concreta com nomes/datas, fragmento em TODO exemplo, viz antes da formalização aceitável) — lê estes critérios do próprio prompt do agente `juiz`.
-   - O juiz também faz a **verificação factual na web** (fórmulas/convenções e fatos históricos), citando fontes. Se ele reportar `NÃO VERIFICADO` por falta de ferramenta nesta sessão, você (orquestrador) faça a verificação com suas próprias ferramentas web e passe o resultado.
+   - O juiz-slides aplica os 13 critérios de conformidade E os critérios de **qualidade de conteúdo** (exemplos simples, história concreta com nomes/datas, fragmento em TODO exemplo, viz antes da formalização aceitável) — lê estes critérios do próprio prompt do agente `juiz-slides`.
+   - O juiz-slides também faz a **verificação factual na web** (fórmulas/convenções e fatos históricos), citando fontes. Se ele reportar `NÃO VERIFICADO` por falta de ferramenta nesta sessão, você (orquestrador) faça a verificação com suas próprias ferramentas web e passe o resultado.
    - Receba `VEREDITO: APROVADO` ou `VEREDITO: REPROVADO` + ISSUES.
 4. Se **APROVADO**: vá para a FASE 1.5 (commit) e siga para a próxima seção.
 5. Se **REPROVADO** (técnico ou de qualidade; rodada n de 1 a 3):
-   - **Corretor** — chame `corretor` passando o veredito REPROVADO **na íntegra** (todos os ISSUES).
+   - **Corretor** — chame `corretor-slides` passando o veredito REPROVADO **na íntegra** (todos os ISSUES).
    - **Re-verificação** — repita verificador-tecnico → juiz na MESMA seção.
    - Se APROVADO → commit e próxima seção. Se ainda REPROVADO → repita o par (corretor → re-verifica).
    - **Limite:** máximo 3 rodadas de correção por seção. Esgotado sem aprovação → marque a seção como `BLOQUEADO`, registre o último veredito e SIGA para a próxima seção (não trave o capítulo).
@@ -100,7 +100,7 @@ Para cada seção na ordem (ou só a pedida), **após FASE 0.5 aprovar o PDI**:
 - `visualizacoes.js`: exports `window.viz*` batem com os `id` de canvas das seções; IIFE; `requestAnimationFrame`.
 - MathJax global: `grep -c '\\\\' slide-decks/<capitulo>/*.html` → 0 em todos.
 - Rode `node debug-slide.js <capitulo>` nos slides com `dual-panel`/canvas/imagem e confira layout (`flexDirection: row`) e imagens.
-- Se achar problemas de integração não cobertos por seção, corrija (você mesmo ou chamando `implementador`) e re-valide com `verificador-tecnico` + `juiz`.
+- Se achar problemas de integração não cobertos por seção, corrija (você mesmo ou chamando `implementador-slides`) e re-valide com `verificador-tecnico` + `juiz-slides`.
 - Commit final de integração se houver mudanças.
 
 ## FASE 3 — Report final (gate humano)
@@ -115,8 +115,8 @@ Apresente ao usuário um resumo:
 
 ## Notas
 
-- O `juiz` usa k3 (mais caro/forte) — julgue por seção, não capítulo inteiro. O `verificador-tecnico` (deepseek) faz a triagem técnica barata antes.
-- Se o capítulo for monolítico (um `index.html` gigante, ex.: cap 8/9), o FASE 0 deve detectar e o implementador quebrar em seções modulares antes do loop por seção — trate como um passo prévio de modularização.
+- O `juiz-slides` usa glm-5.2 (mais forte) — julgue por seção, não capítulo inteiro. O `verificador-tecnico` (deepseek) faz a triagem técnica barata antes.
+- Se o capítulo for monolítico (um `index.html` gigante, ex.: cap 8/9), o FASE 0 deve detectar e o implementador-slides quebrar em seções modulares antes do loop por seção — trate como um passo prévio de modularização.
 - Nunca antecipar conceitos de capítulos posteriores (AGENTS.md).
-- Critérios de qualidade (exemplos simples, história concreta, fragmento em todo exemplo, viz antes da formalização) vivem no prompt do `juiz` e do `implementador`; critérios técnicos no `verificador-tecnico`. Se o usuário quiser afrouxar/endurecer, edite os arquivos de agente (`.opencode/agent/*.md`) e reinicie.
+- Critérios de qualidade (exemplos simples, história concreta, fragmento em todo exemplo, viz antes da formalização) vivem no prompt do `juiz-slides` e do `implementador-slides`; critérios técnicos no `verificador-tecnico`. Se o usuário quiser afrouxar/endurecer, edite os arquivos de agente (`.opencode/agent/*-slides.md`) e reinicie.
 - O PDI da issue (Camada 4) é a fonte de conteúdo — por isso a FASE 0.5 julga o PDI ANTES de implementar. Se o PDI prescreve algo que o professor rejeitou (ex.: exemplo complexo, história vaga), atualize a issue ANTES, senão o implementador repete o erro.

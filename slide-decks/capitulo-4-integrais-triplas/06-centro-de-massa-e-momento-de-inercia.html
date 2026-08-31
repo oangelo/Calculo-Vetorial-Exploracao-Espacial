@@ -1,20 +1,22 @@
 <section>
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h2>Centro de Massa e Momento de Inércia</h2>
       <p>
         Onde fica o ponto de equilíbrio de um módulo em órbita — e quão difícil
         é girá-lo? Sem o centro de massa e o momento de inércia exatos de cada
-        módulo, o controle de atitude é cego e a reentrada, uma roleta. O
-        Gemini VIII, em março de 1966, fez o primeiro acoplamento orbital da
-        história — manobra que exige os dois números com precisão.
+        módulo, o controle de atitude é cego e a reentrada, uma roleta. O Gemini
+        VIII, em março de 1966, fez o primeiro acoplamento orbital da história —
+        manobra que exige os dois números com precisão.
       </p>
       <p>
         As seções anteriores montaram o ferramental: a integral tripla soma
-        sobre volumes; o jacobiano e as cilíndricas e esféricas adaptaram a
-        soma à geometria. Aqui essas peças se juntam para responder por um
-        corpo inteiro.
+        sobre volumes; o jacobiano e as cilíndricas e esféricas adaptaram a soma
+        à geometria. Aqui essas peças se juntam para responder por um corpo
+        inteiro.
       </p>
       <p class="history-insert">
         Margaret Hamilton liderou o software de voo do Apollo e cunhou o termo
@@ -26,16 +28,17 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Massa, Equilíbrio e Giro</h3>
       <div class="triple-panel">
         <div>
           <p><strong>Massa</strong></p>
           <p>
-            Somar a densidade sobre o volume:
-            \(M = \iiint_V \rho\,dV\). Toda peça do módulo tem massa — a
-            pergunta é onde ela mora e como gira.
+            Somar a densidade sobre o volume: \(M = \iiint_V \rho\,dV\). Toda
+            peça do módulo tem massa — a pergunta é onde ela mora e como gira.
           </p>
         </div>
         <div>
@@ -66,18 +69,63 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
+    <div class="slide-body">
+      <h3>De Onde Vem o Momento de Inércia</h3>
+      <p>
+        Quando um módulo gira, a massa que está longe do eixo "pesa mais" — mas
+        por quê? A resposta está na segunda lei de Newton: a força não é
+        proporcional à massa, é proporcional à massa e à aceleração.
+      </p>
+      <div class="formula-spotlight">
+        <p>
+          \[I \approx \sum_{i} m_i r_i^2 \quad\xrightarrow{\text{contínuo}}\quad
+          I = \iiint_V \rho\,r^2\,dV\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>O caminho, passo a passo:</strong></p>
+        <ul>
+          <li>
+            <strong>Uma partícula, uma rotação:</strong> para girar um ponto de
+            massa \(m\) numa distância \(r\) do eixo, a aceleração tangencial é
+            \(a = r\alpha\). Pela segunda lei, o torque é \(\tau = r\,F =
+            r\,(m\,a) = m r^2\,\alpha\). O fator \(m r^2\) é a "inércia" daquele
+            ponto — a resistência ao giro.
+          </li>
+          <li>
+            <strong>Muitas partículas:</strong> num corpo rígido, as forças
+            internas se cancelam, e o torque total é \(\tau = \left(\sum_i m_i
+            r_i^2\right)\alpha\). O parênteses é o momento de inércia \(I =
+            \sum_i m_i r_i^2\): cada massa contribui com o quadrado da sua
+            distância ao eixo.
+          </li>
+          <li>
+            <strong>Corpo contínuo:</strong> quando as partículas viram um
+            contínuo, a soma vira integral — e a distância ao eixo \(z\) é \(x^2
+            + y^2\): \(\;I_z = \iiint_V \rho\,(x^2 + y^2)\,dV\).
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Definição — Centro de Massa e Inércia</h3>
       <div class="formula-spotlight">
         <p>
-          \[x_C = \frac{1}{M}\iiint_V x\,\rho\,dV,\quad
-          y_C = \frac{1}{M}\iiint_V y\,\rho\,dV,\quad
-          z_C = \frac{1}{M}\iiint_V z\,\rho\,dV\]
+          \[x_C = \frac{1}{M}\iiint_V x\,\rho\,dV,\quad y_C =
+          \frac{1}{M}\iiint_V y\,\rho\,dV,\quad z_C = \frac{1}{M}\iiint_V
+          z\,\rho\,dV\]
         </p>
-        <p>
-          \[I_z = \iiint_V \rho\,(x^2 + y^2)\,dV\]
-        </p>
+        <p>\[I_z = \iiint_V \rho\,(x^2 + y^2)\,dV\]</p>
       </div>
       <div class="math-section">
         <p><strong>Onde:</strong></p>
@@ -87,8 +135,8 @@
             densidade no ponto \((x,y,z)\)
           </li>
           <li>
-            \(V\) = sólido, região limitada em \(\mathbb{R}^3\); \((x_C,y_C,z_C)\)
-            = coordenadas do centro de massa
+            \(V\) = sólido, região limitada em \(\mathbb{R}^3\);
+            \((x_C,y_C,z_C)\) = coordenadas do centro de massa
           </li>
           <li>
             \(x^2 + y^2\) = distância ao quadrado do ponto ao eixo de rotação
@@ -96,9 +144,9 @@
           </li>
         </ul>
         <p>
-          <strong>Validade:</strong> \(\rho\) integrável sobre \(V\) e
-          \(M \neq 0\); para \(I_x\) e \(I_y\), troca-se o eixo e o fator
-          \(x^2+y^2\) em consequência.
+          <strong>Validade:</strong> \(\rho\) integrável sobre \(V\) e \(M \neq
+          0\); para \(I_x\) e \(I_y\), troca-se o eixo e o fator \(x^2+y^2\) em
+          consequência.
         </p>
       </div>
     </div>
@@ -106,7 +154,9 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Simetria Antes do Cálculo</h3>
       <div class="dual-panel">
@@ -115,18 +165,18 @@
           <p>
             Se a massa tem um eixo de simetria, o CM está nesse eixo:
             \(\int_0^{2\pi}\cos\theta\,d\theta = 0\) e
-            \(\int_0^{2\pi}\operatorname{sen}\theta\,d\theta = 0\) zeram
-            \(x_C\) e \(y_C\) antes de qualquer conta. Prever onde o CM não
-            está é meio cálculo.
+            \(\int_0^{2\pi}\operatorname{sen}\theta\,d\theta = 0\) zeram \(x_C\)
+            e \(y_C\) antes de qualquer conta. Prever onde o CM não está é meio
+            cálculo.
           </p>
         </div>
         <div class="v-bar"></div>
         <div class="math-section">
           <p><strong>Densidade constante:</strong></p>
           <p>
-            Com \(\rho\) constante, o fator sai da integral e o CM coincide
-            com o centro geométrico do volume. O sistema de coordenadas segue
-            a fronteira: o fator \(r^2\) pede cilíndricas; em esféricas, a
+            Com \(\rho\) constante, o fator sai da integral e o CM coincide com
+            o centro geométrico do volume. O sistema de coordenadas segue a
+            fronteira: o fator \(r^2\) pede cilíndricas; em esféricas, a
             distância ao eixo \(z\) é \(\rho\operatorname{sen}\phi\), então
             \(I_z\) pede esféricas.
           </p>
@@ -137,7 +187,9 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Exemplo 1 — Bloco de Densidade Constante</h3>
       <div class="dual-panel">
@@ -147,12 +199,12 @@
             constante \(\rho = 5\) kg/m³.
           </p>
           <p>
-            (a) Antes de integrar, preveja por simetria as coordenadas do
-            centro de massa — em que plano do bloco cada uma delas se encontra?
+            (a) Antes de integrar, preveja por simetria as coordenadas do centro
+            de massa — em que plano do bloco cada uma delas se encontra?
           </p>
           <p>
-            (b) Calcule a massa total \(M = \iiint_V \rho\,dV\) e as
-            coordenadas \(x_C, y_C, z_C\), confirmando a previsão.
+            (b) Calcule a massa total \(M = \iiint_V \rho\,dV\) e as coordenadas
+            \(x_C, y_C, z_C\), confirmando a previsão.
           </p>
         </div>
         <div class="v-bar"></div>
@@ -170,16 +222,18 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Exemplo 2 — Escudo Térmico (Modelo Idealizado)</h3>
       <div class="dual-panel">
         <div class="problem-section">
           <p>
             Modele o escudo térmico do Gemini como uma casca esférica espessa
-            entre os raios 1 m e 2 m, com densidade constante \(\rho = 3\)
-            kg/m³ — o escudo real era um prato raso na base de um cone
-            truncado; a esfera é a idealização que cabe em esféricas.
+            entre os raios 1 m e 2 m, com densidade constante \(\rho = 3\) kg/m³
+            — o escudo real era um prato raso na base de um cone truncado; a
+            esfera é a idealização que cabe em esféricas.
           </p>
           <p>
             (a) Escreva os limites da casca em coordenadas esféricas. (b)
@@ -200,7 +254,9 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Exemplo 3 — Módulo Gemini (Guiado)</h3>
       <div class="dual-panel">
@@ -220,11 +276,11 @@
         <div class="v-bar"></div>
         <div>
           <p>
-            Em novembro de 2019, o Congresso dos EUA concedeu a Medalha de
-            Ouro do Congresso a Katherine Johnson e Christine Darden, e
-            postumamente a Dorothy Vaughan e Mary Jackson. Uma quinta medalha,
-            coletiva, homenageou todas as mulheres que trabalharam na
-            NACA/NASA entre os anos 1930 e 1970 (P.L. 116-68).
+            Em novembro de 2019, o Congresso dos EUA concedeu a Medalha de Ouro
+            do Congresso a Katherine Johnson e Christine Darden, e postumamente
+            a Dorothy Vaughan e Mary Jackson. Uma quinta medalha, coletiva,
+            homenageou todas as mulheres que trabalharam na NACA/NASA entre os
+            anos 1930 e 1970 (P.L. 116-68).
           </p>
         </div>
       </div>
@@ -232,8 +288,8 @@
         <p><strong>Estratégia de resolução (dica):</strong></p>
         <ol>
           <li>
-            Decomponha o módulo nas três seções cilíndricas — massa e centro
-            de massa de cada uma saem da fórmula do cilindro homogêneo.
+            Decomponha o módulo nas três seções cilíndricas — massa e centro de
+            massa de cada uma saem da fórmula do cilindro homogêneo.
           </li>
           <li>
             Por simetria axial, \(x_C = y_C = 0\); o CM global é a média
@@ -250,7 +306,9 @@
   </section>
 
   <section>
-    <div class="slide-header">SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA</div>
+    <div class="slide-header">
+      SEÇÃO 06 · CENTRO DE MASSA E MOMENTO DE INÉRCIA
+    </div>
     <div class="slide-body">
       <h3>Visualização — Centro de Massa no Cilindro</h3>
       <canvas
@@ -262,13 +320,20 @@
       <div class="controls-container">
         <div class="control-slider">
           <label>ρ:</label>
-          <input type="range" id="sliderCentroMassaRho" min="1" max="10" step="0.5" value="5" />
+          <input
+            type="range"
+            id="sliderCentroMassaRho"
+            min="1"
+            max="10"
+            step="0.5"
+            value="5"
+          />
         </div>
         <p>
-          Cilindro homogêneo de raio \(1{,}2\) m e altura \(5\) m: com
-          densidade constante, o CM não se move com \(\rho\) — fica no centro
-          geométrico. O que escala com \(\rho\) é a resistência à rotação:
-          \(I_z = \frac{1}{2}\rho\pi R^4 h\).
+          Cilindro homogêneo de raio \(1{,}2\) m e altura \(5\) m: com densidade
+          constante, o CM não se move com \(\rho\) — fica no centro geométrico.
+          O que escala com \(\rho\) é a resistência à rotação: \(I_z =
+          \frac{1}{2}\rho\pi R^4 h\).
         </p>
       </div>
     </div>
@@ -297,7 +362,7 @@
     function proj(x, y, z) {
       return {
         x: cx + (x - y) * S * 0.866,
-        y: cy + (x + y) * S * 0.5 - z * S * 0.5
+        y: cy + (x + y) * S * 0.5 - z * S * 0.5,
       };
     }
 
