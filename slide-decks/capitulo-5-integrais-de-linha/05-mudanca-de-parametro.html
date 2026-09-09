@@ -62,7 +62,10 @@
     <div class="slide-body">
       <h3>Invariância do Comprimento</h3>
       <div class="formula-spotlight">
-        <p>\[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_c^d \|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\,d\tau \]</p>
+        <p>
+          \[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_c^d
+          \|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\,d\tau \]
+        </p>
       </div>
       <div class="math-section">
         <p><strong>Onde:</strong></p>
@@ -96,19 +99,19 @@
       <div class="dual-panel">
         <div class="math-section">
           <p><strong>Definição:</strong></p>
+          <p>Pela regra da cadeia,</p>
           <p>
-            Pela regra da cadeia,
-          </p>
-          <p>\[ \frac{d}{d\tau}\vec{r}(\varphi(\tau)) = \vec{r}'(\varphi(\tau))\,\varphi'(\tau) \]</p>
-          <p>
-            A magnitude distribui: \(\|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\).
-            O fator \(|\varphi'|\) compensa exatamente a velocidade do novo
-            relógio, e a substituição \(dt = \varphi'(\tau)\,d\tau\) recupera o
-            integrando original.
+            \[ \frac{d}{d\tau}\vec{r}(\varphi(\tau)) =
+            \vec{r}'(\varphi(\tau))\,\varphi'(\tau) \]
           </p>
           <p>
-            <strong>Validade:</strong> \(\varphi\) invertível e derivável.
+            A magnitude distribui:
+            \(\|\vec{r}'(\varphi(\tau))\|\cdot|\varphi'(\tau)|\). O fator
+            \(|\varphi'|\) compensa exatamente a velocidade do novo relógio, e a
+            substituição \(dt = \varphi'(\tau)\,d\tau\) recupera o integrando
+            original.
           </p>
+          <p><strong>Validade:</strong> \(\varphi\) invertível e derivável.</p>
         </div>
         <div class="v-bar"></div>
         <div class="math-section">
@@ -141,16 +144,24 @@
       <div class="controls-container">
         <div class="control-slider">
           <label>Velocidade:</label>
-          <input type="range" id="sliderReparamSpeed" min="25" max="300" step="25" value="100" />
+          <input
+            type="range"
+            id="sliderReparamSpeed"
+            min="25"
+            max="300"
+            step="25"
+            value="100"
+          />
         </div>
-        <button class="control-button" id="btnReparamMode">Modo: dois relógios</button>
+        <button class="control-button" id="btnReparamMode">
+          Modo: dois relógios
+        </button>
       </div>
       <p>
         No modo "dois relógios", um ponto avança com velocidade constante (por
         \(\theta\)) e outro com velocidade variável (por \(x\)). Apesar disso,
-        acumulam o mesmo comprimento — \(\pi\). No modo "comprimento de arco",
-        o parâmetro \(s\) avança à taxa do próprio arco, com velocidade
-        unitária.
+        acumulam o mesmo comprimento — \(\pi\). No modo "comprimento de arco", o
+        parâmetro \(s\) avança à taxa do próprio arco, com velocidade unitária.
       </p>
     </div>
     <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
@@ -161,7 +172,9 @@
     <div class="slide-body">
       <h3>Orientação: Inverter o Percurso</h3>
       <div class="formula-spotlight">
-        <p>\[ \int_{C^-}\vec{F}\cdot d\vec{r} = -\int_C \vec{F}\cdot d\vec{r} \]</p>
+        <p>
+          \[ \int_{C^-}\vec{F}\cdot d\vec{r} = -\int_C \vec{F}\cdot d\vec{r} \]
+        </p>
       </div>
       <div class="math-section">
         <p>
@@ -206,13 +219,14 @@
             diferentes:
           </p>
           <p>
-            \[ \vec{r}_1(\theta) = (\cos\theta,\, \sin\theta),\; \theta \in [0,\pi]
-            \qquad \vec{r}_2(x) = (x,\, \sqrt{1-x^2}),\; x \in [-1,1] \]
+            \[ \vec{r}_1(\theta) = (\cos\theta,\, \sin\theta),\; \theta \in
+            [0,\pi] \]
           </p>
+          <p>\[ \vec{r}_2(x) = (x,\, \sqrt{1-x^2}),\; x \in [-1,1] \]</p>
           <p>
-            Calcule \(L_1 = \int_0^\pi \|\vec{r}_1'(\theta)\|\,d\theta\) e
-            \(L_2 = \int_{-1}^1 \|\vec{r}_2'(x)\|\,dx\). Os resultados
-            coincidem? Por quê?
+            Calcule \(L_1 = \int_0^\pi \|\vec{r}_1'(\theta)\|\,d\theta\) e \(L_2
+            = \int_{-1}^1 \|\vec{r}_2'(x)\|\,dx\). Os resultados coincidem? Por
+            quê?
           </p>
           <p>
             Sugestão: derive \(\vec{r}_2\) com a regra da cadeia; a segunda
@@ -223,8 +237,8 @@
         <div class="v-bar"></div>
         <div>
           <p>
-            Korolev morreu em 14 de janeiro de 1966, na mesa de cirurgia, aos
-            59 anos. Dois dias depois, o Pravda — jornal oficial do regime —
+            Korolev morreu em 14 de janeiro de 1966, na mesa de cirurgia, aos 59
+            anos. Dois dias depois, o Pravda — jornal oficial do regime —
             imprimiu o nome dele pela primeira vez, no obituário.
           </p>
         </div>
@@ -249,8 +263,8 @@
             verifique a troca de sinal.
           </p>
           <p>
-            Sugestão: parametrize com \(\vec{r}(t) = (t,t)\) e com
-            \(\vec{r}(t) = (1-t,\, 1-t)\), \(t \in [0,1]\).
+            Sugestão: parametrize com \(\vec{r}(t) = (t,t)\) e com \(\vec{r}(t)
+            = (1-t,\, 1-t)\), \(t \in [0,1]\).
           </p>
         </div>
         <div class="v-bar"></div>
@@ -306,8 +320,12 @@
       for (var i = 0; i <= 120; i++) {
         var th = Math.PI - (i / 120) * Math.PI;
         var p = toCanvas(Math.cos(th), Math.sin(th));
-        if (first) { ctx.moveTo(p.x, p.y); first = false; }
-        else { ctx.lineTo(p.x, p.y); }
+        if (first) {
+          ctx.moveTo(p.x, p.y);
+          first = false;
+        } else {
+          ctx.lineTo(p.x, p.y);
+        }
       }
       ctx.stroke();
       var a = toCanvas(-1, 0);
@@ -349,8 +367,14 @@
       var ang = Math.atan2(p.y - tipY, tipX - p.x);
       ctx.beginPath();
       ctx.moveTo(tipX, tipY);
-      ctx.lineTo(tipX - 7 * Math.cos(ang - 0.4), tipY + 7 * Math.sin(ang - 0.4));
-      ctx.lineTo(tipX - 7 * Math.cos(ang + 0.4), tipY + 7 * Math.sin(ang + 0.4));
+      ctx.lineTo(
+        tipX - 7 * Math.cos(ang - 0.4),
+        tipY + 7 * Math.sin(ang - 0.4)
+      );
+      ctx.lineTo(
+        tipX - 7 * Math.cos(ang + 0.4),
+        tipY + 7 * Math.sin(ang + 0.4)
+      );
       ctx.closePath();
       ctx.fillStyle = color;
       ctx.fill();
@@ -387,9 +411,19 @@
         ctx.font = '14px monospace';
         ctx.textAlign = 'center';
         ctx.fillStyle = CLK1;
-        ctx.fillText('relógio \u03b8 \u00b7 L = ' + L1.toFixed(2) + '  (velocidade constante)', W / 2, 26);
+        ctx.fillText(
+          'relógio \u03b8 \u00b7 L = ' +
+            L1.toFixed(2) +
+            '  (velocidade constante)',
+          W / 2,
+          26
+        );
         ctx.fillStyle = CLK2;
-        ctx.fillText('relógio x \u00b7 L = ' + L2.toFixed(2) + '  (velocidade variável)', W / 2, 46);
+        ctx.fillText(
+          'relógio x \u00b7 L = ' + L2.toFixed(2) + '  (velocidade variável)',
+          W / 2,
+          46
+        );
         ctx.fillStyle = FG;
         ctx.fillText('comprimento total: \u03c0 \u2248 3.1416', W / 2, 66);
       } else {
@@ -401,7 +435,11 @@
         ctx.font = '14px monospace';
         ctx.textAlign = 'center';
         ctx.fillStyle = ARC;
-        ctx.fillText('s = ' + s.toFixed(2) + '  \u00b7  velocidade |dr/ds| = 1.00', W / 2, 26);
+        ctx.fillText(
+          's = ' + s.toFixed(2) + '  \u00b7  velocidade |dr/ds| = 1.00',
+          W / 2,
+          26
+        );
         ctx.fillStyle = FG;
         ctx.fillText('parâmetro = comprimento de arco', W / 2, 46);
       }
@@ -435,7 +473,10 @@
     if (modeBtn) {
       modeBtn.addEventListener('click', function () {
         mode = mode === 'clocks' ? 'arc' : 'clocks';
-        modeBtn.textContent = mode === 'clocks' ? 'Modo: dois relógios' : 'Modo: comprimento de arco';
+        modeBtn.textContent =
+          mode === 'clocks'
+            ? 'Modo: dois relógios'
+            : 'Modo: comprimento de arco';
         t = 0;
       });
     }
