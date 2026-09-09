@@ -47,7 +47,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Coordenadas esféricas e cilíndricas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/coordenadas-esfericas-e-cilindricas/index.html)
 - [Centro de massa e momento de inércia](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/centro-de-massa-e-momento-de-inercia/index.html)
 
-5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-5-integrais-de-linha/index.html)
+5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-5-integrais-de-linha/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-5-integrais-de-linha/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-5-integrais-de-linha/folha-2/index.html)
 
 - [Integral de um campo vetorial sobre uma curva](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-campo-vetorial-curva/index.html)
 - [Notações alternativas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/notacoes-alternativas/index.html)
