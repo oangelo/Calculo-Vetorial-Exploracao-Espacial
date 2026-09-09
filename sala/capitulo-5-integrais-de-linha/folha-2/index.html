@@ -30,7 +30,7 @@
           <h1 class="title">Capítulo 5: Integrais de Linha (Folha 2)</h1>
           <p class="subtitle">
             Integral de linha de campo vetorial: $\vec{F}(\vec{r}(t)) \cdot
-            \vec{r}\,'(t)$ passo a passo
+            \vec{r}'(t)$ passo a passo
           </p>
         </div>
         <div class="header-right">
@@ -80,7 +80,7 @@
 
         for (const arquivo of EXERCICIOS) {
           try {
-            const response = await fetch(arquivo);
+            const response = await fetch(arquivo, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Falha ao carregar ${arquivo}`);
             const html = await response.text();
             container.insertAdjacentHTML('beforeend', html);
