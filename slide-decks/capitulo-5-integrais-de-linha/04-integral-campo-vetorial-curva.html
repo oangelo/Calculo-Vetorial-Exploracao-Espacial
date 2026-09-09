@@ -33,8 +33,8 @@
           <p>
             Caminhar contra o vento exige esforço; a favor, o vento empurra;
             transversal, ele não ajuda nem atrapalha. Para força constante e
-            deslocamento reto, o trabalho é o produto escalar
-            \(W = \vec{F}\cdot\vec{d}\): só a componente da força na direção do
+            deslocamento reto, o trabalho é o produto escalar \(W =
+            \vec{F}\cdot\vec{d}\): só a componente da força na direção do
             movimento conta.
           </p>
         </div>
@@ -43,8 +43,8 @@
           <p>
             Numa trajetória curva, a força muda de ponto a ponto. Fatiando o
             caminho em pedaços pequenos, cada trecho é quase reto e quase com
-            força constante: o trabalho de cada pedaço é \(\vec{F}\cdot d\vec{r}\),
-            e o total é a soma dessas contribuições.
+            força constante: o trabalho de cada pedaço é \(\vec{F}\cdot
+            d\vec{r}\), e o total é a soma dessas contribuições.
           </p>
         </div>
       </div>
@@ -64,7 +64,10 @@
     <div class="slide-body">
       <h3>A Integral de Linha de um Campo Vetorial</h3>
       <div class="formula-spotlight">
-        <p>\[ \int_C \vec{F}\cdot d\vec{r} = \int_a^b \vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\,dt \]</p>
+        <p>
+          \[ \int_C \vec{F}\cdot d\vec{r} = \int_a^b
+          \vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\,dt \]
+        </p>
       </div>
       <div class="math-section">
         <p><strong>Onde:</strong></p>
@@ -118,6 +121,7 @@
             Cada flecha é o campo \(\vec{F}\) no ponto da curva; a cor registra
             o sinal de \(\vec{F}\cdot\vec{r}'\): verde a favor (trabalho
             positivo), vermelho contra (negativo), branco perpendicular (zero).
+            As pequenas setas cinzas marcam a direção do percurso \(d\vec{r}\).
           </p>
           <p>
             \(d\vec{r} = \vec{r}'(t)\,dt\) é tangente à curva — o produto
@@ -143,12 +147,11 @@
         <p><strong>Para calcular \(\int_C \vec{F}\cdot d\vec{r}\):</strong></p>
         <ol>
           <li>
-            <strong>Parametrizar</strong> a curva: escrever \(\vec{r}(t)\),
-            com \(a \le t \le b\).
+            <strong>Parametrizar</strong> a curva: escrever \(\vec{r}(t)\), com
+            \(a \le t \le b\).
           </li>
           <li>
-            <strong>Derivar:</strong> obter o vetor tangente
-            \(\vec{r}'(t)\).
+            <strong>Derivar:</strong> obter o vetor tangente \(\vec{r}'(t)\).
           </li>
           <li>
             <strong>Avaliar o campo na curva:</strong> substituir
@@ -159,13 +162,11 @@
             \(\vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\) — agora uma função escalar
             de \(t\).
           </li>
-          <li>
-            <strong>Integrar</strong> de \(a\) a \(b\).
-          </li>
+          <li><strong>Integrar</strong> de \(a\) a \(b\).</li>
         </ol>
         <p>
-          O passo 4 reduz o problema vetorial a uma integral de uma variável —
-          a máquina da seção 03 entra pronta.
+          O passo 4 reduz o problema vetorial a uma integral de uma variável — a
+          máquina da seção 03 entra pronta.
         </p>
       </div>
     </div>
@@ -184,8 +185,8 @@
             \((2,4)\).
           </p>
           <p>
-            Sugestão: parametrize o segmento com \(\vec{r}(t) = (2t, 4t)\),
-            \(0 \le t \le 1\), derive, avalie o campo sobre a curva e monte o
+            Sugestão: parametrize o segmento com \(\vec{r}(t) = (2t, 4t)\), \(0
+            \le t \le 1\), derive, avalie o campo sobre a curva e monte o
             produto escalar antes de integrar.
           </p>
         </div>
@@ -215,9 +216,9 @@
             unitário, percorrido no sentido anti-horário.
           </p>
           <p>
-            Sugestão: parametrize com \(\vec{r}(t) = (\cos t, \sin t)\),
-            \(0 \le t \le 2\pi\), e compare \(\vec{F}(\vec{r}(t))\) com
-            \(\vec{r}'(t)\) — o que o produto escalar vale em cada ponto?
+            Sugestão: parametrize com \(\vec{r}(t) = (\cos t, \sin t)\), \(0 \le
+            t \le 2\pi\), e compare \(\vec{F}(\vec{r}(t))\) com \(\vec{r}'(t)\)
+            — o que o produto escalar vale em cada ponto?
           </p>
         </div>
         <div class="v-bar"></div>
@@ -280,13 +281,16 @@
     var GOOD = '#43A047';
     var BAD = '#E53935';
     var HIL = '#FFB300';
+    var REF = '#90A4AE'; // marcadores da direcao do percurso (cinza neutro)
 
     var btn = document.getElementById('btnModoCampo');
     var mode = 1; // 1 = radial sobre segmento; 2 = rotacional sobre circulo
 
-    var S = 80;      // px por unidade
+    var S = 80; // px por unidade
     var CX = 280;
-    var CY = 165;
+    var CY1 = 240; // modo 1: segmento (my=1) no centro vertical do canvas
+    var CY2 = 165; // modo 2: circulo de raio 1.2 centrado
+    var CY = CY1;
 
     function toPx(mx, my) {
       return { x: CX + mx * S, y: CY - my * S };
@@ -321,8 +325,14 @@
       ctx.fillStyle = color;
       ctx.beginPath();
       ctx.moveTo(tip.x, tip.y);
-      ctx.lineTo(tip.x - ux * hs - uy * hs * 0.5, tip.y - uy * hs + ux * hs * 0.5);
-      ctx.lineTo(tip.x - ux * hs + uy * hs * 0.5, tip.y - uy * hs - ux * hs * 0.5);
+      ctx.lineTo(
+        tip.x - ux * hs - uy * hs * 0.5,
+        tip.y - uy * hs + ux * hs * 0.5
+      );
+      ctx.lineTo(
+        tip.x - ux * hs + uy * hs * 0.5,
+        tip.y - uy * hs - ux * hs * 0.5
+      );
       ctx.closePath();
       ctx.fill();
     }
@@ -368,10 +378,10 @@
       ctx.lineTo(B.x, B.y);
       ctx.stroke();
 
-      // tangentes (brancas, curtas)
+      // tangentes (cinza, curtas) — direcao do percurso
       var i;
       for (i = 0; i < 13; i++) {
-        arrow(p1(i), 0.26, 0, TAN, 1.2);
+        arrow(p1(i), 0.26, 0, REF, 1.2);
       }
       // flechas do campo, coloridas pelo sinal
       for (i = 0; i < 13; i++) {
@@ -414,10 +424,16 @@
         var c = p2(i);
         arrow(c, -0.42 * c.my, 0.42 * c.mx, GOOD, 2);
       }
-      // marcadores de tangente (brancos, curtos)
+      // marcadores de tangente (cinza, curtos)
       for (i = 0; i < 16; i++) {
         var cc = p2(i);
-        arrow(cc, 0.15 * Math.cos(cc.a + Math.PI / 2), 0.15 * Math.sin(cc.a + Math.PI / 2), TAN, 1.2);
+        arrow(
+          cc,
+          0.15 * Math.cos(cc.a + Math.PI / 2),
+          0.15 * Math.sin(cc.a + Math.PI / 2),
+          REF,
+          1.2
+        );
       }
       // ponto animado sobre o circulo
       var ta = 2 * Math.PI * t;
@@ -444,6 +460,8 @@
       ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
       ctx.fillRect(0, 0, W, H);
 
+      CY = mode === 1 ? CY1 : CY2;
+
       // eixos discretos
       ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
       ctx.lineWidth = 1;
@@ -454,7 +472,7 @@
       ctx.lineTo(CX, H);
       ctx.stroke();
 
-      var t = ((Date.now() / 1500) % 1 + 1) % 1;
+      var t = (((Date.now() / 1500) % 1) + 1) % 1;
       if (mode === 1) drawMode1(t);
       else drawMode2(t);
       drawLegend();
@@ -484,9 +502,10 @@
     if (btn) {
       btn.addEventListener('click', function () {
         mode = mode === 1 ? 2 : 1;
-        btn.textContent = mode === 1
-          ? 'Alternar: rotacional sobre o círculo'
-          : 'Alternar: radial sobre o segmento';
+        btn.textContent =
+          mode === 1
+            ? 'Alternar: rotacional sobre o círculo'
+            : 'Alternar: radial sobre o segmento';
       });
     }
 
