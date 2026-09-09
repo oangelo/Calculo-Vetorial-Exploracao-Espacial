@@ -39,7 +39,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Massa e centro de massa](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/massa-e-centro-de-massa/index.html)
 - [Revisão](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-3/revisao/index.html)
 
-4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-4-integrais-triplas/index.html)
+4. [Integrais triplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-4-integrais-triplas/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-4-integrais-triplas/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-4-integrais-triplas/folha-2/index.html)
 
 - [Condições de integrabilidade](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/condicoes-de-integrabilidade/index.html)
 - [Redução a integrais duplas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/reducao-a-integrais-duplas/index.html)

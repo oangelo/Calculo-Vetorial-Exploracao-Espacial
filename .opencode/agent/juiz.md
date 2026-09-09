@@ -46,13 +46,18 @@ grep -n 'style=' <arquivo>     # DEVE ser vazio (zero CSS inline)
 
 KaTeX: `\\` é quebra de linha legítima DENTRO de matrizes/arrays (ex.: `\begin{pmatrix} ... \\ ... \end{pmatrix}`). Verifique manualmente que não há `\\` fora de ambientes de matriz.
 
+**Vazamento de respostas (aplicar SEMPRE):**
+1. Liste as lacunas/questões do exercício e anote palavras, valores ou expressões-alvo pedidas (ex.: "volume", "$r$", "$4-x-y$", "$\frac{1}{2}MR^2$", entradas da matriz jacobiana).
+2. `grep` cada alvo no arquivo e avalie as ocorrências (falsos positivos: termo usado no enunciado como dado do problema — NÃO conta como vazamento).
+3. Se o texto pede para montar/derivar algo, rode `grep` pelos componentes da resposta (ex.: `\cos`, `\sin`, `\frac{1}{2}`) para confirmar que não há partes prontas fora das lacunas/`\rule`.
+
 ## Os 12 critérios
 
 1. **Estrutura** — fragmento `<section class="exercicio">` com `data-topico` e `data-dificuldade`; número do exercício; classes somente do AGENTS.md/sala-styles.css.
 2. **KaTeX** — `$...$`/`$$...$$` balanceadas; nenhum `<span class="lacuna">` dentro de equação LaTeX; `\\` apenas como quebra de linha dentro de matrizes; variáveis sempre em LaTeX (não `<strong>x</strong>`).
 3. **CSS** — zero inline (`grep -n 'style='` vazio); nenhuma classe inventada.
-4. **Diálogo guiado** — baby steps que guiam o pensamento SEM dar a resposta; nenhum item revela o resultado de outro item.
-5. **Checkpoint genérico** — verificação qualitativa que faz sentido sem revelar a resposta; NENHUM valor numérico exato no checkpoint (ex.: "$\frac{8}{3\pi} \approx 0{,}85$", "fator $r$").
+4. **Diálogo guiado** — baby steps que guiam o pensamento SEM dar a resposta; nenhum item revela o resultado de outro item. **Tarefa de montar X (matriz, transformação, expressão, fórmula) = X nunca pronto em lugar nenhum** do arquivo (nem no enunciado, nem em diálogo, dica, checkpoint ou outro subitem) — inclusive partes: entradas de matriz, menores $2\times2$ de expansão, multiplicadores de cofator, linha de expansão com valores. Se a tarefa é montar, a matriz/expressão só pode aparecer com `\rule{8mm}{0.5pt}` nas entradas a preencher. (Ex.: "Monte a matriz Jacobiana" + matriz com entradas prontas = ALTA.)
+5. **Checkpoint genérico** — verificação qualitativa que faz sentido sem revelar a resposta; NENHUM valor numérico exato no checkpoint (ex.: "$\frac{8}{3\pi} \approx 0{,}85$", "fator $r$") e NENHUMA fórmula ou PALAVRA que seja resposta de lacuna/questão do exercício (ex.: lacuna pede a palavra "volume" → a palavra "volume" não pode aparecer no checkpoint nem em outro subitem — confira com grep).
 6. **Não ensinar pré-requisito** — não explica técnica que o aluno já domina de álgebra linear/disciplinas anteriores (ex.: regra `ad − bc` de determinante 2×2, expansão de determinante 3×3).
 7. **Quantidade** — 2-4 questões/exercício; 2-4 subitens/questão; coerente com a folha (4-6 exercícios).
 8. **Metadados** — `data-topico` e `data-dificuldade` coerentes com o conteúdo.
@@ -87,7 +92,7 @@ ISSUES:
 ## Regras do veredito
 
 - **APROVADO** somente com zero issues CRITICA e zero ALTA. MEDIA/BAIXA podem existir (listadas em NOTAS) e não bloqueiam.
-- Revelar resposta em checkpoint ou diálogo (critérios 4/5) → **ALTA**; resposta numérica exata no checkpoint → **CRITICA**.
+- Revelar resposta em checkpoint ou diálogo (critérios 4/5) → **ALTA**; resposta numérica exata no checkpoint → **CRITICA**; revelar palavra pedida em lacuna (ex.: "volume"), fórmula alvo ou partes de uma expressão que o aluno deve montar → **ALTA**.
 - Ensinar pré-requisito básico (critério 6) → **ALTA**.
 - Todo issue cita `arquivo:linha` + evidência verificável + ação concreta. Nada de "estilo" ou "poderia ser melhor" — apenas desvios das specs.
 - Se você NÃO conseguiu rodar uma verificação, declare "NÃO VERIFICADO: <motivo>" em vez de adivinhar.

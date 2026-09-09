@@ -28,6 +28,7 @@ Resolva caminhos a partir da raiz do worktree (pai de `sala/`).
 3. Para cada issue, na ordem de severidade (CRITICA → ALTA → MEDIA → BAIXA):
    - Corrija o ponto exato.
    - Re-verifique com o MESMO check que o juiz usou (grep ou leitura da região).
+   - **Ao corrigir um vazamento de resposta (valor, fórmula ou palavra pedida), rode `grep` do termo/expressão no arquivo INTEIRO e confirme que ele não reaparece em outro ponto** (ex.: tirar "volume" do checkpoint não basta se a palavra vaza em outro subitem).
    - Confirme que o issue foi resolvido.
 4. Ao final, rode as verificações globais (abaixo).
 
