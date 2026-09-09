@@ -10,8 +10,8 @@
       </p>
       <p>
         A seção 02 garantiu curvas integráveis — classe C¹, suaves. Agora falta
-        acumular o percurso: medir o comprimento da curva é o passo que
-        antecede qualquer grandeza somada ao longo dela.
+        acumular o percurso: medir o comprimento da curva é o passo que antecede
+        qualquer grandeza somada ao longo dela.
       </p>
       <p class="history-insert">
         Em 27 de janeiro de 1967, um incêndio na cabine da Apollo 1 matou
@@ -29,7 +29,7 @@
         <div>
           <p><strong>Analogia:</strong></p>
           <p>
-            Um mapa com uma estrada curvada: a régua reta não acompanha a
+            Um mapa de uma estrada com curvas: a régua reta não acompanha a
             curva. Dobra-se a régua trecho a trecho, seguindo a estrada, e soma-
             se o que cada trecho mede.
           </p>
@@ -44,10 +44,12 @@
         </div>
       </div>
       <div class="math-section">
-        <p>\[ L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\| \]</p>
         <p>
-          Quanto menores os trechos, melhor a régua dobrada imita a estrada —
-          e a soma se aproxima do comprimento verdadeiro.
+          \[ L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\| \]
+        </p>
+        <p>
+          Quanto menores os trechos, melhor a régua dobrada imita a estrada — e
+          a soma se aproxima do comprimento verdadeiro.
         </p>
       </div>
     </div>
@@ -67,7 +69,14 @@
       <div class="controls-container">
         <div class="control-slider">
           <label>Segmentos N:</label>
-          <input type="range" id="sliderArcN" min="2" max="200" step="1" value="8" />
+          <input
+            type="range"
+            id="sliderArcN"
+            min="2"
+            max="200"
+            step="1"
+            value="8"
+          />
         </div>
       </div>
       <div class="math-section">
@@ -77,8 +86,8 @@
         </p>
       </div>
       <p>
-        Arraste \(N\): com poucos segmentos a poligonal encurta o percurso;
-        com \(N\) grande, a soma se aproxima do comprimento exato da curva.
+        Arraste \(N\): com poucos segmentos a poligonal encurta o percurso; com
+        \(N\) grande, a soma se aproxima do comprimento exato da curva.
       </p>
     </div>
     <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
@@ -89,7 +98,10 @@
     <div class="slide-body">
       <h3>Comprimento de Arco como Integral</h3>
       <div class="formula-spotlight">
-        <p>\[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_a^b \sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}\,dt \]</p>
+        <p>
+          \[ L = \int_a^b \|\vec{r}'(t)\|\,dt = \int_a^b \sqrt{(x'(t))^2 +
+          (y'(t))^2 + (z'(t))^2}\,dt \]
+        </p>
       </div>
       <div class="math-section">
         <p><strong>Onde:</strong></p>
@@ -99,12 +111,10 @@
             com \(t \in [a, b]\).
           </li>
           <li>
-            \(\|\vec{r}'(t)\|\) = norma do vetor velocidade — a rapidez
-            escalar do percurso.
+            \(\|\vec{r}'(t)\|\) = norma do vetor velocidade — a rapidez escalar
+            do percurso.
           </li>
-          <li>
-            A raiz = a mesma norma, escrita componente a componente.
-          </li>
+          <li>A raiz = a mesma norma, escrita componente a componente.</li>
         </ul>
         <p>
           <strong>Validade:</strong> curva de classe C¹ — a soma de Riemann
@@ -129,8 +139,8 @@
             comprimento.
           </p>
           <p>
-            <strong>Validade:</strong> curva C¹ — a integral acumula \(ds\)
-            ao longo de todo o percurso.
+            <strong>Validade:</strong> curva C¹ — a integral acumula \(ds\) ao
+            longo de todo o percurso.
           </p>
         </div>
         <div class="v-bar"></div>
@@ -138,12 +148,11 @@
           <p><strong>Geometricamente:</strong></p>
           <p>
             \(L\) é propriedade da curva, não da parametrização: a mesma
-            estrada, percorrida com qualquer "relógio", tem o mesmo
-            comprimento — semente da seção 05.
+            estrada, percorrida com qualquer "relógio", tem o mesmo comprimento
+            — semente da seção 05.
           </p>
           <p>
-            No plano, a raiz tem dois termos:
-            \(\sqrt{(x'(t))^2 + (y'(t))^2}\).
+            No plano, a raiz tem dois termos: \(\sqrt{(x'(t))^2 + (y'(t))^2}\).
           </p>
         </div>
       </div>
@@ -158,7 +167,9 @@
       <div class="dual-panel">
         <div class="math-section">
           <div class="formula-spotlight">
-            <p>\[ \int_C f\,ds = \int_a^b f(\vec{r}(t))\,\|\vec{r}'(t)\|\,dt \]</p>
+            <p>
+              \[ \int_C f\,ds = \int_a^b f(\vec{r}(t))\,\|\vec{r}'(t)\|\,dt \]
+            </p>
           </div>
           <p><strong>Caso particular:</strong> com \(f = 1\),</p>
           <p>\[ L = \int_C 1\,ds \]</p>
@@ -208,8 +219,8 @@
           <p>
             O teste 'plugs-out' da Apollo 1 era uma simulação de contagem
             regressiva com a nave desconectada dos cabos, na plataforma 34.
-            Faltavam 25 dias para o lançamento programado — os três morreram
-            no solo.
+            Faltavam 25 dias para o lançamento programado — os três morreram no
+            solo.
           </p>
         </div>
       </div>
@@ -224,22 +235,21 @@
       <div class="dual-panel">
         <div class="problem-section">
           <p>
-            A cicloide \(\vec{r}(t) = (t - \sin t,\, 1 - \cos t)\), \(0 \le t \le
-            2\pi\), traça o ponto de uma roda que rola. Mostre que um arco
+            A cicloide \(\vec{r}(t) = (t - \sin t,\, 1 - \cos t)\), \(0 \le t
+            \le 2\pi\), traça o ponto de uma roda que rola. Mostre que um arco
             completo mede \(L = 8\).
           </p>
           <p>
-            Sugestão: derive, use
-            \(\sqrt{2 - 2\cos t} = 2\operatorname{sen}(t/2)\) e integre de
-            \(0\) a \(2\pi\).
+            Sugestão: derive, use \(\sqrt{2 - 2\cos t} =
+            2\operatorname{sen}(t/2)\) e integre de \(0\) a \(2\pi\).
           </p>
         </div>
         <div class="v-bar"></div>
         <div>
           <p>
             Em dezembro de 1968 — menos de dois anos depois do incêndio da
-            Apollo 1 — a Apollo 8 levou os primeiros humanos à órbita da Lua.
-            Os americanos tinham voltado ao jogo.
+            Apollo 1 — a Apollo 8 levou os primeiros humanos à órbita da Lua. Os
+            americanos tinham voltado ao jogo.
           </p>
         </div>
       </div>
@@ -268,7 +278,7 @@
     function pointAt(t) {
       return {
         x: 350 + t * 140,
-        y: 330 - 0.25 * t * t * 240
+        y: 330 - 0.25 * t * t * 240,
       };
     }
 
@@ -305,8 +315,12 @@
       for (var i = 0; i <= 200; i++) {
         var t = -2 + (i / 200) * 4;
         var p = pointAt(t);
-        if (first) { ctx.moveTo(p.x, p.y); first = false; }
-        else { ctx.lineTo(p.x, p.y); }
+        if (first) {
+          ctx.moveTo(p.x, p.y);
+          first = false;
+        } else {
+          ctx.lineTo(p.x, p.y);
+        }
       }
       ctx.stroke();
 
