@@ -1,0 +1,32 @@
+<!-- A1 — Capa (layout fixo, sempre igual) -->
+<!-- O que muda: titulo, faccao, periodo. A estrutura NAO muda. -->
+
+<section class="title-slide">
+  <div class="classified-banner">[BANNER FACCAO]</div>
+  <div class="doc-border"></div>
+  <div class="watermark">[MARCA]</div>
+  <p class="classification-code">DOC. REF: CV-CH[N]-[ANO]</p>
+  <div class="faction-emblem"></div>
+  <div class="title-rule"></div>
+  <h1>[TITULO CAPITULO]</h1>
+  <h3>Cálculo Vetorial</h3>
+  <div class="title-rule"></div>
+  <p class="chapter-meta">
+    Capítulo [N] &middot; [ERA] &middot; [PERIODO]
+  </p>
+  <div class="classified-footer">
+    [RODAPE FACCAO]
+  </div>
+</section>
+
+<script>
+  (function () {
+    fetch('../emblemas/emblema-[faccao].svg')
+      .then(function (r) { return r.text(); })
+      .then(function (svg) {
+        document.querySelectorAll('.faction-emblem').forEach(function (el) {
+          el.innerHTML = svg;
+        });
+      });
+  })();
+</script>

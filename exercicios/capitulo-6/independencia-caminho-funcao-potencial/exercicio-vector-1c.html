@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Análise de Perturbação Gravitacional – Voo Translunar, JAN/1968
+  </div>
+  <p>
+    Você acabou de descobrir que encontrar \(\Phi\) elimina a necessidade de
+    parametrizar curvas. Mas será que a técnica funciona para campos mais
+    elaborados, com variáveis misturadas? Considere o campo \(\vec{F}(x,y) =
+    (3x^2 + 2y,\; 2x + 2y)\), que modela uma perturbação gravitacional durante o
+    voo translunar.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que \(\vec{F}\) satisfaz a condição de
+    conservatividade, isto é, \(\frac{\partial F_1}{\partial y} = \frac{\partial
+    F_2}{\partial x}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Integre a primeira componente em relação a \(x\) para
+    obter \(\Phi\) com uma função arbitrária \(h(y)\), e determine \(h(y)\)
+    usando a segunda componente.
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a função potencial completa e calcule o
+    trabalho para ir de \((0,0)\) a \((1,1)\) usando \(\Phi(B) - \Phi(A)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Siga o mesmo procedimento do exercício anterior: integre
+      \(F_1\) em \(x\), derive o resultado em \(y\) e iguale a \(F_2\). A função
+      arbitrária \(h(y)\) agora não será constante — você precisará integrar
+      \(h'(y)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\frac{\partial F_1}{\partial y} = 2\) e
+        \(\frac{\partial F_2}{\partial x} = 2\). Iguais, logo o campo é
+        conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Phi = \int (3x^2 + 2y)\,dx = x^3 + 2xy + h(y)\).
+        Derivando: \(\frac{\partial \Phi}{\partial y} = 2x + h'(y)\). Igualando
+        a \(F_2 = 2x + 2y\): \(2x + h'(y) = 2x + 2y \Rightarrow h'(y) = 2y
+        \Rightarrow h(y) = y^2 + C\).
+      </p>
+      <p>
+        <strong>(c)</strong> Tomando \(C = 0\): \(\Phi(x,y) = x^3 + 2xy + y^2\).
+        Trabalho de \((0,0)\) a \((1,1)\): \(\Phi(1,1) - \Phi(0,0) = (1 + 2 + 1)
+        - 0 = 4\).
+      </p>
+    </div>
+  </details>
+</li>

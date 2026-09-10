@@ -1,0 +1,80 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Módulo de Testes Avançados [Missão
+    <span class="censored">SKYLAB-13</span>]
+  </div>
+  <p>
+    Os exercícios anteriores tinham regiões com fronteiras descritas por uma
+    única curva ou por uma transformação direta. Agora a região é uma
+    interseção: parte de um disco, cortada por uma banda. Isso exige dividir o
+    domínio em sub-regiões com limites diferentes — uma técnica que aparece
+    sempre que a geometria real não se encaixa numa fórmula única.
+  </p>
+  <p>
+    Região \(D\) formada pela interseção de \(\{(x,y) \mid x \ge 0,\; y \ge 0,\;
+    x^2 + y^2 \le 9\}\) e a banda \(y \ge x - 1\). A densidade \(\rho(x,y) = 5 +
+    e^{-x}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região e identifique onde a reta \(y = x - 1\)
+    intersecta o círculo de raio 3.
+  </p>
+  <p>
+    <strong>(b)</strong> Divida \(D\) em sub-regiões convenientes e escreva a
+    integral de massa como soma de duas integrais iteradas.
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva as integrais resultantes (a avaliação numérica
+    completa é opcional, mas explique cada etapa).
+  </p>
+  <!-- OMEGA sem dica -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        PROTOCOLO DE ANÁLISE:
+        <br />
+        A região está no primeiro quadrante (pois \(x \ge 0, y \ge 0\)) e dentro
+        do círculo de raio 3. Adicionalmente, há a restrição \(y \ge x - 1\).
+      </p>
+      <p>
+        A reta \(y = x - 1\) cruza o eixo \(x\) em \((1, 0)\). Para \(0 \le x
+        \le 1\), a condição \(y \ge x - 1\) é automaticamente satisfeita quando
+        \(y \ge 0\), então o limite inferior de \(y\) é 0. Para \(1 < x \le 3\),
+        o limite inferior de \(y\) passa a ser \(x - 1\).
+      </p>
+      <p>
+        Dividimos em duas sub-regiões:
+        <br />
+        1) \(0 \le x \le 1\): \(0 \le y \le \sqrt{9 - x^2}\).
+        <br />
+        2) \(1 \le x \le 3\): \(x - 1 \le y \le \sqrt{9 - x^2}\).
+      </p>
+      <p>
+        A massa total é: \[ m = \int_{0}^{1}\int_{0}^{\sqrt{9 - x^2}} (5 +
+        e^{-x})\,dy\,dx + \int_{1}^{3}\int_{x-1}^{\sqrt{9 - x^2}} (5 +
+        e^{-x})\,dy\,dx. \]
+      </p>
+      <p>
+        Integrando em \(y\) primeiro, a densidade \(5 + e^{-x}\) não depende de
+        \(y\), então cada integral interna resulta em \((5 + e^{-x})\) vezes o
+        comprimento do intervalo em \(y\):
+      </p>
+      <p>
+        \[ m = \int_{0}^{1} (5 + e^{-x})\sqrt{9 - x^2}\,dx + \int_{1}^{3} (5 +
+        e^{-x})\left(\sqrt{9 - x^2} - (x - 1)\right)\,dx. \]
+      </p>
+      <p>
+        A primeira integral envolve \(\sqrt{9 - x^2}\) (semicírculo)
+        multiplicado por um termo exponencial. A segunda subtrai a contribuição
+        da faixa abaixo da reta. O cálculo numérico completo exigiria técnicas
+        adicionais, mas a expressão integral está corretamente montada.
+      </p>
+      <p>
+        CONCLUSÃO: A massa total é dada pela soma das duas integrais acima,
+        representando a contribuição de cada sub-região do domínio.
+      </p>
+    </div>
+  </details>
+</li>

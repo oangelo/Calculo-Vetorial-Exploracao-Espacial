@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO LEVEL-4B [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Plano de Pouso Lunar - Programa Apollo, 1967
+  </div>
+  <p>
+    No exercício anterior, você usou o gradiente para saber "onde subir". Mas
+    e se o objetivo for o oposto: encontrar um lugar onde o terreno é
+    perfeitamente plano? Pontos onde o gradiente se anula — chamados
+    <em>pontos críticos</em> — são exatamente isso: topos de morros, fundos
+    de vales ou passagens de montanha. Para uma nave pousar com segurança,
+    esses são os pontos de interesse.
+  </p>
+  <p>
+    Uma região de pouso lunar tem relevo descrito por \(f(x, y) = 50 + \sin(\pi
+    x)\cos(\pi y)\) (em metros). A nave precisa pousar em terreno com inclinação
+    menor que \(10\%\).
+  </p>
+  <ul style="margin: 10px 0 10px 20px;">
+    <li><strong>(a)</strong> Calcule o gradiente \(\nabla f\) da função.</li>
+    <li><strong>(b)</strong> Encontre todos os pontos críticos de \(f\) na região de interesse (onde \(\nabla f = \vec{0}\)).</li>
+    <li><strong>(c)</strong> Determine a inclinação do terreno nas proximidades de \((0, 0)\). O ponto \((0,0)\) é seguro para pouso?</li>
+  </ul>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>
+      <strong>Solução completa:</strong><br /><br />
+      <strong>(a) Gradiente:</strong>
+      \[ \nabla f = \left(\pi\cos(\pi x)\cos(\pi y),\; -\pi\sin(\pi x)\sin(\pi
+      y)\right) \]<br />
+      <strong>(b) Pontos críticos:</strong><br />
+      Resolvemos \(\nabla f = (0, 0)\):
+      \[ \pi\cos(\pi x)\cos(\pi y) = 0 \quad \text{e} \quad -\pi\sin(\pi x)\sin(\pi y) = 0 \]
+      Da primeira equação: \(\cos(\pi x) = 0\) ou \(\cos(\pi y) = 0\),
+      ou seja, \(x = \frac{1}{2} + n\) ou \(y = \frac{1}{2} + m\) para inteiros \(n, m\).<br /><br />
+      Da segunda equação: \(\sin(\pi x) = 0\) ou \(\sin(\pi y) = 0\),
+      ou seja, \(x = k\) ou \(y = \ell\) para inteiros \(k, \ell\).<br /><br />
+      Combinando: precisamos de \(\cos(\pi x)\cos(\pi y) = 0\) E
+      \(\sin(\pi x)\sin(\pi y) = 0\) simultaneamente.<br /><br />
+      Verificando o ponto \((0, 0)\):
+      \[ \nabla f(0, 0) = \left(\pi\cos(0)\cos(0),\; -\pi\sin(0)\sin(0)\right) =
+      (\pi, 0) \neq (0, 0) \]
+      <strong>O ponto \((0, 0)\) NÃO é ponto crítico!</strong><br /><br />
+      Os pontos críticos estão em \((\frac{1}{2} + n, m)\) e \((k, \frac{1}{2} + \ell)\)
+      para inteiros \(n, m, k, \ell\). O mais próximo é \((\frac{1}{2}, 0)\), onde:
+      \[ \nabla f\!\left(\tfrac{1}{2}, 0\right) = \left(\pi\cos\!\left(\tfrac{\pi}{2}\right)\cos(0),\; -\pi\sin\!\left(\tfrac{\pi}{2}\right)\sin(0)\right) = (0, 0) \;\checkmark\]<br />
+      <strong>(c) Inclinação em \((0, 0)\):</strong><br />
+      A inclinação do terreno é dada por \(|\nabla f|\) em cada ponto. Em \((0, 0)\):
+      \[ |\nabla f(0, 0)| = \pi \approx 3{,}14 \]
+      Como \(10\% \approx 0{,}1\), a inclinação em \((0,0)\) é de aproximadamente
+      \(314\%\), muito acima do limite de \(10\%\). <strong>O ponto \((0,0)\) NÃO
+      é seguro para pouso.</strong><br /><br />
+      <strong>Recomendação:</strong> A zona segura para pouso está próxima a
+      \((\frac{1}{2}, 0)\), onde \(|\nabla f| = 0\).
+    </p>
+  </details>
+</li>

@@ -1,0 +1,40 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 15 [NÍVEL GAMMA]</div>
+  <div class="context">
+    ORIGEM: Arquivos de Frações Parciais Quadráticas [SET/1962]
+  </div>
+  <p>Esta integral combina frações parciais com completar quadrado. A estratégia é:
+  decompor o numerador, separar em duas integrais, e tratar a segunda com
+  completar quadrado e arctangente.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int \frac{2x + 3}{x^2 + x + 1}\,dx\]</p>
+  <p><strong>(a)</strong> Observe que a derivada do denominador é \(2x + 1\). Reescreva
+  o numerador como \((2x + 1) + 2\) e separe em duas integrais.</p>
+  <p><strong>(b)</strong> A primeira integral gera um logaritmo. Para a segunda,
+  complete o quadrado no denominador: \(x^2 + x + 1 = (x + \frac{1}{2})^2 + \frac{3}{4}\).</p>
+  <p><strong>(c)</strong> A segunda integral tem a forma \(\int\frac{du}{u^2 + a^2}\).
+  Resolva usando arctangente.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Observe que a derivada de \(x^2 + x + 1\) é \(2x + 1\).
+      Separe o numerador para usar essa informação.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\frac{2x+3}{x^2 + x + 1} = \frac{(2x+1) + 2}{x^2 + x + 1}
+      = \frac{2x+1}{x^2 + x + 1} + \frac{2}{x^2 + x + 1}.\)</p>
+      <p><strong>(b)</strong> A primeira parte gera \(\ln|x^2 + x + 1|\).
+      Para a segunda, complete o quadrado: \(x^2 + x + 1 = (x+\tfrac{1}{2})^2 +
+      \tfrac{3}{4}\). Seja \(u = x + \tfrac{1}{2}\), \(a^2 = \tfrac{3}{4}\).</p>
+      <p><strong>(c)</strong> \(\int\frac{2}{u^2 + a^2}\,du = \frac{2}{a}
+      \arctan\!\left(\frac{u}{a}\right) = \frac{2}{\sqrt{3}/2}
+      \arctan\!\left(\frac{x+1/2}{\sqrt{3}/2}\right) = \frac{4}{\sqrt{3}}
+      \arctan\!\left(\frac{2x+1}{\sqrt{3}}\right).\)</p>
+      <p>Resultado final:
+      \(\ln|x^2 + x + 1| + \frac{4}{\sqrt{3}}\arctan\!\left(\frac{2x+1}{\sqrt{3}}\right) + C.\)</p>
+    </div>
+  </details>
+</li>

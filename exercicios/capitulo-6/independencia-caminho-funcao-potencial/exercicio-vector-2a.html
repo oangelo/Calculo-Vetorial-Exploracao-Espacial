@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Validação de Telemetria – Missão Apollo, FEV/1968
+  </div>
+  <p>
+    Até agora demos o campo conservativo e você encontrou \(\Phi\). Mas na
+    prática, como sabemos se vale a pena tentar? Seria desperdício tentar
+    encontrar \(\Phi\) se o campo não for conservativo. O exercício a seguir
+    ensina <em>autodiagnose</em>: verificar primeiro, depois encontrar, e por
+    fim conferir seu próprio resultado. Considere o campo \(\vec{F}(x,y) = (e^y
+    + 2x,\; xe^y + 2y)\), que aparece na validação de dados telemétricos de uma
+    missão Apollo.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique se o campo é conservativo testando a condição
+    \(\frac{\partial F_1}{\partial y} = \frac{\partial F_2}{\partial x}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre a função potencial \(\Phi\) integrando a
+    primeira componente em relação a \(x\) e determinando a função arbitrária.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o gradiente de \(\Phi\) e verifique que
+    \(\nabla\Phi = \vec{F}\). Esse passo — recalcular o gradiente — é sua
+    garantia de que não cometeu erro.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A componente \(e^y\) não depende de \(x\), então ao
+      integrar \(e^y + 2x\) em relação a \(x\), o resultado é \(xe^y + x^2 +
+      g(y)\). Para determinar \(g(y)\), derive em \(y\) e iguale à segunda
+      componente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\frac{\partial F_1}{\partial y} = e^y\) e
+        \(\frac{\partial F_2}{\partial x} = e^y\). Iguais: campo conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Phi = \int (e^y + 2x)\,dx = xe^y + x^2 + g(y)\).
+        Derivando em \(y\): \(\frac{\partial \Phi}{\partial y} = xe^y + g'(y)\).
+        Igualando a \(xe^y + 2y\): \(g'(y) = 2y \Rightarrow g(y) = y^2\). Logo
+        \(\Phi(x,y) = xe^y + x^2 + y^2\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\nabla\Phi = (e^y + 2x,\; xe^y + 2y) = \vec{F}\)
+        ✓. O potencial está correto.
+      </p>
+    </div>
+  </details>
+</li>

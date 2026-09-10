@@ -1,0 +1,63 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Módulo Adaptador do Gemini - Programa Gemini [Março 1966]
+  </div>
+  <p>
+    Nos exercícios anteriores, você usou a integral tripla para calcular massa e
+    centro de massa de um corpo único com densidade variável. Mas muitos componentes
+    do Gemini são formados por partes justapostas com densidades diferentes. Neste
+    caso, há um atalho: calcular cada parte separadamente e combinar os resultados
+    por soma ponderada. O módulo adaptador é composto por dois blocos retangulares:
+    a seção de equipamentos \(V_1: 0 \le x \le 2,\; 0 \le y \le 1,\; 0 \le z \le
+    1\) com \(\rho_1 = 2 \, \text{kg/m}^3\), e a seção de tripulação \(V_2: 2 \le
+    x \le 4,\; 0 \le y \le 1,\; 0 \le z \le 1\) com \(\rho_2 = 6 \,
+    \text{kg/m}^3\).
+  </p>
+  <p><strong>(a)</strong> Calcule a massa e o centro de massa de cada parte separadamente.</p>
+  <p><strong>(b)</strong> Combine os resultados via soma ponderada: \(\displaystyle \vec{R}_C = \frac{M_1\vec{R}_{C1} + M_2\vec{R}_{C2}}{M_1 + M_2}\).</p>
+  <p><strong>(c)</strong> Verifique fisicamente: o centro de massa está mais próximo da parte mais densa? Isso faz sentido?</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Cada bloco tem densidade constante, então o centro de massa
+      de cada um é o seu centro geométrico. A combinação é uma média ponderada
+      pelas massas — a parte mais pesada "puxa" o centro de massa para perto de si.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Cada parte:</strong></p>
+      <p>
+        Seção de equipamentos \(V_1\): \(M_1 = \rho_1 \cdot 2 \cdot 1 \cdot 1 =
+        4\) kg. Centro geométrico: \(\vec{R}_{C1} = (1,\, 1/2,\, 1/2)\).
+      </p>
+      <p>
+        Seção de tripulação \(V_2\): \(M_2 = \rho_2 \cdot 2 \cdot 1 \cdot 1 = 12\)
+        kg. Centro geométrico: \(\vec{R}_{C2} = (3,\, 1/2,\, 1/2)\).
+      </p>
+      <p><strong>(b) Soma ponderada:</strong></p>
+      <p>Massa total: \(M = M_1 + M_2 = 16\) kg.</p>
+      <p>
+        \[ x_C = \frac{M_1 \cdot x_{C1} + M_2 \cdot x_{C2}}{M} = \frac{4
+        \cdot 1 + 12 \cdot 3}{16} = \frac{4 + 36}{16} = \frac{40}{16} =
+        \frac{5}{2}. \]
+      </p>
+      <p>
+        \[ y_C = \frac{4 \cdot 1/2 + 12 \cdot 1/2}{16} = \frac{8}{16} =
+        \frac{1}{2}, \quad z_C = \frac{4 \cdot 1/2 + 12 \cdot 1/2}{16} =
+        \frac{1}{2}. \]
+      </p>
+      <p>
+        \(\vec{R}_C = (5/2,\, 1/2,\, 1/2)\).
+      </p>
+      <p><strong>(c) Verificação física:</strong></strong> A parte mais densa
+      (\(V_2\), com \(M_2 = 12\)) está à direita (centro em \(x=3\)). A menos
+      densa (\(V_1\), \(M_1 = 4\)) está à esquerda (centro em \(x=1\)). O centro
+      de massa global está em \(x_C = 5/2 = 2{,}5\), que está mais próximo de
+      \(V_2\) (distância 0,5) que de \(V_1\) (distância 1,5). Isso faz sentido: a
+      massa maior "puxa" o equilíbrio para perto de si.</p>
+    </div>
+  </details>
+</li>

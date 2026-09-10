@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Preparação Apollo 4 - Cálculo de Trajetória de Teste [REF:
+    <span class="censored">AS-501/1967</span>]
+  </div>
+  <p>
+    A soma dos segmentos no exercício anterior aproximava o comprimento, mas não
+    dava o valor exato. No limite, essa soma vira a integral de comprimento de
+    arco — a fórmula que passamos da aproximação para o valor preciso. Vamos
+    aplicá-la à mesma curva da parábola e comparar com as aproximações
+    numéricas.
+  </p>
+  <p>Para a curva \(\vec{r}(t) = \bigl(t,\, t^2\bigr)\), com \(t\) de 0 a 2:</p>
+  <p>
+    <strong>(a)</strong> Calcule a derivada \(\vec{r}\,'(t)\) e a norma
+    \(\|\vec{r}\,'(t)\|\).
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral de comprimento de arco \(L = \int_0^2
+    \|\vec{r}\,'(t)\|\, dt\).
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral usando a substituição \(u = 2t\) e a
+    fórmula \(\int \sqrt{1+u^2}\, du = \frac{u}{2}\sqrt{1+u^2} +
+    \frac{1}{2}\ln\!\bigl(u+\sqrt{1+u^2}\bigr) + C\). Compare o resultado exato
+    com as aproximações do exercício anterior.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A norma de \(\vec{r}\,'(t) = (1,\, 2t)\) é
+      \(\sqrt{1+4t^2}\). Com a substituição \(u = 2t\) (e \(du = 2\,dt\)), a
+      integral \(\int_0^2 \sqrt{1+4t^2}\, dt\) se transforma em
+      \(\frac{1}{2}\int_0^4 \sqrt{1+u^2}\, du\). Aplique a fórmula fornecida e
+      avalie nos limites.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\vec{r}\,'(t) = (1,\, 2t)\), portanto
+        \(\|\vec{r}\,'(t)\| = \sqrt{1 + 4t^2}\).
+      </p>
+      <p><strong>(b)</strong> A integral de comprimento de arco é:</p>
+      <p>\[L = \int_0^2 \sqrt{1 + 4t^2}\, dt\]</p>
+      <p><strong>(c)</strong> Com a substituição \(u = 2t\), \(du = 2\,dt\):</p>
+      <p>
+        \[L = \frac{1}{2}\int_0^4 \sqrt{1+u^2}\, du =
+        \frac{1}{2}\left[\frac{u}{2}\sqrt{1+u^2} +
+        \frac{1}{2}\ln\!\bigl(u+\sqrt{1+u^2}\bigr)\right]_0^4\]
+      </p>
+      <p>
+        Avaliando: em \(u=4\), temos \(\frac{4}{2}\sqrt{17} +
+        \frac{1}{2}\ln(4+\sqrt{17}) = 2\sqrt{17} +
+        \frac{1}{2}\ln(4+\sqrt{17})\). Em \(u=0\) o resultado é 0.
+      </p>
+      <p>
+        \[L = \frac{1}{2}\left(2\sqrt{17} + \frac{1}{2}\ln(4+\sqrt{17})\right) =
+        \sqrt{17} + \frac{1}{4}\ln(4+\sqrt{17}) \approx 4{,}647\]
+      </p>
+      <p>
+        Comparação: com \(N=2\) obtivemos \(\approx 4{,}577\) e com \(N=4\)
+        obtivemos \(\approx 4{,}626\). As aproximações convergem para o valor
+        exato \(\approx 4{,}647\), confirmando que a integral é o limite das
+        somas.
+      </p>
+    </div>
+  </details>
+</li>

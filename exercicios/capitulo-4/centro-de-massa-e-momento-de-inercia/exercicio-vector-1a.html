@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Projeto do Módulo Básico - Programa Gemini [Março 1965]
+  </div>
+  <p>
+    No Capítulo 3, você aprendeu a calcular o centro de massa de placas planas
+    (regiões bidimensionais) usando integrais duplas. O conceito se estende
+    naturalmente para sólidos tridimensionais: em vez de integrar sobre uma
+    área, integramos sobre um volume. O primeiro módulo pressurizado do Gemini
+    tem forma de bloco retangular, ocupando a região \[0 \le x \le 2, \quad 0
+    \le y \le 1, \quad 0 \le z \le 4,\] com densidade constante \(\rho = 5 \,
+    \text{kg/m}^3\).
+  </p>
+  <p>
+    <strong>(a)</strong> Antes de qualquer cálculo, use argumentos de simetria
+    para prever onde o centro de massa desse bloco deve estar. Onde o corpo
+    "equilibraria" se fosse apoiado num ponto?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a massa total \(M\) do bloco via integral
+    tripla.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule as três coordenadas do centro de massa e
+    confronte o resultado com sua previsão do item (a). O que você observa?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para densidade constante, o centro de massa coincide com o
+      centro geométrico do corpo. Use esse fato para sua previsão. Na
+      verificação, cada coordenada do centro de massa é a média ponderada: \(x_C
+      = \frac{1}{M} \iiint_V x\,\rho\,dV\), e análogas para \(y_C\) e \(z_C\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a) Previsão por simetria:</strong> O bloco é um paralelepípedo
+        com arestas de comprimentos 2 (em \(x\)), 1 (em \(y\)) e 4 (em \(z\)).
+        Por simetria, com densidade constante, o centro de massa deve estar no
+        centro geométrico: \(x_C = 1\), \(y_C = 0{,}5\), \(z_C = 2\).
+      </p>
+      <p><strong>(b) Massa total:</strong></p>
+      <p>
+        \[ M = \iiint_V \rho\,dV = \int_0^4 \int_0^1 \int_0^2 5 \, dx\,dy\,dz =
+        5 \cdot 2 \cdot 1 \cdot 4 = 40 \text{ kg}. \]
+      </p>
+      <p><strong>(c) Coordenadas do centro de massa:</strong></p>
+      <p>
+        \[ x_C = \frac{1}{M}\iiint_V x \cdot \rho\,dV = \frac{1}{40} \int_0^4
+        \int_0^1 \int_0^2 5x\,dx\,dy\,dz = \frac{1}{40} \cdot 5 \cdot
+        \left[\frac{x^2}{2}\right]_0^2 \cdot 1 \cdot 4 = \frac{1}{40} \cdot 5
+        \cdot 2 \cdot 4 = 1. \]
+      </p>
+      <p>
+        \[ y_C = \frac{1}{40} \cdot 5 \cdot 2 \cdot
+        \left[\frac{y^2}{2}\right]_0^1 \cdot 4 = \frac{1}{40} \cdot 5 \cdot 2
+        \cdot \frac{1}{2} \cdot 4 = \frac{1}{2}. \]
+      </p>
+      <p>
+        \[ z_C = \frac{1}{40} \cdot 5 \cdot 2 \cdot 1 \cdot
+        \left[\frac{z^2}{2}\right]_0^4 = \frac{1}{40} \cdot 5 \cdot 2 \cdot 8 =
+        2. \]
+      </p>
+      <p>
+        Conclusão: \(\vec{R}_C = (1,\, 1/2,\, 2)\), que coincide exatamente com
+        o centro geométrico. A previsão por simetria estava correta — quando a
+        densidade é constante, a integral tripla confirma a intuição geométrica.
+      </p>
+    </div>
+  </details>
+</li>

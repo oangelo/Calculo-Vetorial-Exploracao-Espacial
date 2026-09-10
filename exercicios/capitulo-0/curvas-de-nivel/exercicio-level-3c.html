@@ -1,0 +1,48 @@
+<li class="exercise-item">
+<div class="exercise-number">EXERCÍCIO LEVEL-3C [NÍVEL GAMMA]</div>
+<div class="context">ORIGEM: Mapeamento de Densidade Populacional - Guerra Fria Civil, 1963</div>
+<p>
+  Este exercício encerra a série de esboços de mapas. Aqui, a função modela
+  um sinal que decai com a distância — pense em uma antena de rádio ou em
+  uma onda de choque. As curvas de nível são círculos (como no exercício
+  1A), mas agora com espaçamento diferente. Compare: no 1A, os círculos
+  ficavam mais distantes conforme \(c\) aumentava. Aqui é o contrário.
+</p>
+<p>
+  A função \(f(x, y) = \frac{1}{1 + x^2 + y^2}\) modela a densidade
+  de um sinal centrado na origem. Esboce as curvas de nível para
+  \(c = \frac{1}{2}\), \(c = \frac{1}{5}\) e \(c = \frac{1}{10}\).
+  O que representa o valor \(c = 1\)?
+</p>
+<details class="hint-container">
+<summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+<div class="hint">
+  [NOTA TÉCNICA]: Resolva \(\frac{1}{1+x^2+y^2} = c\) isolando
+  \(x^2 + y^2\). Obterá \(x^2 + y^2 = \frac{1}{c} - 1\).
+  Para cada \(c\), calcule o raio correspondente.
+</div>
+</details>
+<details>
+<summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+<p>
+  <strong>Solução completa:</strong><br/><br/>
+  <strong>Passo 1:</strong> Encontrar a equação geral:
+  \[ \frac{1}{1 + x^2 + y^2} = c \]
+  \[ 1 + x^2 + y^2 = \frac{1}{c} \]
+  \[ x^2 + y^2 = \frac{1}{c} - 1 \]
+  As curvas de nível são <strong>círculos</strong> centrados na
+  origem com raio \(r = \sqrt{\frac{1}{c} - 1}\).<br/><br/>
+  <strong>Passo 2:</strong> Calcular raios específicos:
+  <ul style="margin: 10px 0 10px 20px;">
+    <li>\(c = \frac{1}{2}\): \(r = \sqrt{2 - 1} = 1\)</li>
+    <li>\(c = \frac{1}{5}\): \(r = \sqrt{5 - 1} = 2\)</li>
+    <li>\(c = \frac{1}{10}\): \(r = \sqrt{10 - 1} = 3\)</li>
+  </ul>
+  <strong>Passo 3:</strong> Interpretação de \(c = 1\):
+  \[ x^2 + y^2 = \frac{1}{1} - 1 = 0 \implies x = y = 0 \]
+  A curva de nível \(c = 1\) é apenas o <strong>ponto origem</strong>
+  \((0, 0)\), que é o máximo global da função. O sinal é mais
+  intenso no centro e decai com a distância radial.
+</p>
+</details>
+</li>

@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      /* estilos iguais ao template original */
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 820px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 35px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.75);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .section-title {
+        margin: 20px 0 10px;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .sub-box {
+        background-color: rgba(0, 0, 0, 0.05);
+        border-left: 3px solid #555;
+        padding: 8px;
+        margin: 10px 0;
+        font-size: 0.9em;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+      .hint-container {
+        margin: 10px 0;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-left: 3px solid #777;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">23</span> DE ABRIL DE
+          <span class="censored">1966</span><br />LOCALIZAÇÃO:
+          <span class="censored">SEÇÃO DE CÁLCULOS AVANÇADOS GEMINI</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">PHOENIX‑Δ</span
+          ><br /><br />Esta lista de revisão integra
+          <span class="censored">técnicas de mudança de variáveis</span> às
+          aplicações de <span class="censored">massa e centro de massa</span>.
+          Cada exercício exige não apenas o cálculo, mas também reflexão sobre
+          <em>simetria</em>, <em>sentido físico</em> e a conexão com áreas ou
+          volumes familiares, preparando os cadetes para interpretar resultados
+          em missões reais.
+        </div>
+        <div class="warning-box">
+          Material protegido pelo protocolo S‑4. Divulgação não autorizada
+          resultará em <span class="censored">sanções imediatas</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: MV‑<span class="censored">441</span>‑R</span
+          ><span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span
+          ><span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE VARIÁVEIS, MASSA E CENTRO DE MASSA
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \iint_R f(x,y)\,dx\,dy = \iint_S
+          f\bigl(x(u,v),y(u,v)\bigr)\,\left|\frac{\partial(x,y)}{\partial(u,v)}\right|\,du\,dv
+          \]
+        </p>
+        <p>
+          Para densidade \(\rho(x,y)\), a massa é \(m=\iint_R \rho\,dA\). Se a
+          simetria de \(R\) permitir, o centro de massa muitas vezes cai sobre
+          eixos ou pontos especiais, simplificando cálculos de momento.
+        </p>
+        <div class="sub-box">
+          <strong>CASO POLAR  \((x=r\cos\theta,\,y=r\sin\theta)\):</strong
+          ><br />\[ dA = r\,dr\,d\theta \quad\text{e}\quad m=\int\!\int
+          \rho(r,\theta)\,r\,dr\,d\theta \]
+        </div>
+      </div>
+      <div class="mission-context">
+        Durante manobras de acoplamento, prever a posição do centro de massa — e
+        sua variação com mudanças de carga — é vital para gasto mínimo de
+        combustível em correções de atitude.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A falha parcial no
+        <span class="censored">módulo 5</span> (1965) originou‑se de um cálculo
+        equivocado do centro de massa após desprendimento de painéis. A comissão
+        determinou treinamento compulsório em <em>simetria</em> e
+        <em>interpretação de resultados</em>.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">10</span> • DOCUMENTO MV‑<span
+          class="censored"
+          >441</span
+        >‑R
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector‑review‑1.html',
+            'exercicio-vector‑review‑2.html',
+            'exercicio-vector‑review‑3.html',
+            'exercicio-vector‑review‑4.html',
+            'exercicio-vector‑review‑5.html',
+            'exercicio-vector‑review‑6.html',
+            'exercicio-vector‑review‑7.html',
+            'exercicio-vector‑review‑8.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Síntese Final - Programa
+    <span class="censored">Gemini</span> [1965-1966]
+  </div>
+  <p>
+    Este é o último exercício sobre mudança de variáveis geral. Aqui você
+    precisa combinar tudo que aprendeu: identificar a geometria da região,
+    escolher a transformação estratégica, calcular o Jacobiano e avaliar.
+  </p>
+  <p>
+    Calcule \(\iiint_D 1\,dV\) (o volume) da região \(D\) limitada por \(x \ge
+    0\), \(y \ge 0\), \(z \ge 0\), \(x + y + z \le 3\) e \(2x + y + z \le 4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Analise as duas condições lineares e proponha uma
+    transformação que torne ambas em limites simples. Justifique sua escolha.
+  </p>
+  <p><strong>(b)</strong> Determine os novos limites e calcule o Jacobiano.</p>
+  <p>
+    <strong>(c)</strong> Avalie a integral. Reflita: a região é a interseção de
+    dois tetraedros — como a mudança de variáveis captura essa interseção?
+  </p>
+  <p>
+    Nos próximos dossiês, veremos que quando a região tem simetria especial —
+    cilíndrica ou esférica — existem transformações dedicadas que simplificam
+    tudo automaticamente. O que fizemos aqui é a base: qualquer sistema de
+    coordenadas não passa de uma mudança de variáveis particular.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) A região é limitada por dois planos: \(x+y+z \le 3\) e \(2x+y+z \le
+        4\). A diferença é o coeficiente de \(x\). Proponha \(u = x+y+z\), \(v =
+        x\), \(w = y\). Então \(z = u - v - w\).
+      </p>
+      <p>
+        Os dois planos tornam-se: \(u \le 3\) e \(2v + (u-v) = u+v \le 4\), ou
+        seja, \(v \le 4-u\). Os demais limites: \(v \ge 0\), \(w \ge 0\), \(u -
+        v - w \ge 0\) (ou seja, \(w \le u - v\)).
+      </p>
+      <p>
+        (b) Jacobiano: \(x = v\), \(y = w\), \(z = u - v - w\).
+        \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1\).
+      </p>
+      <p>
+        Limites: \(0 \le u \le 3\), \(0 \le v \le \min(u, 4-u)\), \(0 \le w \le
+        u - v\).
+      </p>
+      <p>
+        (c) Para \(u \le 2\): \(v \le u\). Para \(2 < u \le 3\): \(v \le 4-u\).
+      </p>
+      <p>
+        Integral: \(\int_0^2\int_0^u\int_0^{u-v} dw\,dv\,du +
+        \int_2^3\int_0^{4-u}\int_0^{u-v} dw\,dv\,du\).
+      </p>
+      <p>
+        Primeira parte: \(\int_0^2\int_0^u (u-v)\,dv\,du = \int_0^2
+        \frac{u^2}{2}\,du = \frac{4}{3}\).
+      </p>
+      <p>
+        Segunda parte: \(\int_2^3\int_0^{4-u} (u-v)\,dv\,du = \int_2^3 \frac{u^2
+        - 8u + 16}{2}\,du = \frac{1}{2}\left[\frac{u^3}{3} - 4u^2 +
+        16u\right]_2^3 = \frac{1}{2}\left(\frac{27-8}{3} - 4(9-4) + 16\right) =
+        \frac{1}{2}\left(\frac{19}{3} - 20 + 16\right) = \frac{7}{6}\).
+      </p>
+      <p>
+        Volume = \(\frac{4}{3} + \frac{7}{6} = \frac{15}{6} = \frac{5}{2}\).
+      </p>
+    </div>
+  </details>
+</li>

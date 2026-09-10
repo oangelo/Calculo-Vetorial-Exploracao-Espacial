@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDF-GAMMA-3</div>
+  <div class="context">
+    ORIGEM: Ajustes Orbitais - Painel
+    <span class="censored">GAMMA-3</span>
+  </div>
+  <p>
+    O disco com \(e^{-(x^2+y^2)}\) nos mostrou que algumas integrais duplas são
+    intratáveis em cartesianas. Este exercício volta a um domínio retangular —
+    mas com um integrando contendo logaritmo e soma de quadrados. A pergunta não
+    é sobre calcular o valor exato, mas sobre verificar as condições que tornam
+    Fubini aplicável: a função é contínua? Há singularidades?
+  </p>
+  <p>
+    Verificar \(\iint_D \ln(1 + x^2 + y^2)\, dA\) em que \(D\) é o retângulo
+    \(-1 \le x \le 2\), \(-1 \le y \le 1\). Discutir a continuidade do
+    integrando e o efeito de termos logarítmicos.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que o argumento do logaritmo, \(1 + x^2 +
+    y^2\), é sempre positivo em \(D\). O que isso garante sobre a continuidade
+    do integrando?
+  </p>
+  <p>
+    <strong>(b)</strong> Monte as duas integrais iteradas possíveis (\(dy\,dx\)
+    e \(dx\,dy\)) e explique por que Fubini é aplicável.
+  </p>
+  <p>
+    <strong>(c)</strong> O valor exato da integral requer técnicas avançadas.
+    Argumente que, mesmo sem calcular, podemos garantir que o valor existe e é o
+    mesmo nas duas ordens.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \(1 + x^2 + y^2 \ge 1 > 0\) para todo \((x,y)\), logo
+      \(\ln(1 + x^2 + y^2)\) é contínua em todo \(D\). Funções contínuas em
+      domínios fechados e limitados são integráveis, e Fubini se aplica.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Como \(x^2 + y^2 \ge 0\), temos \(1 + x^2 + y^2 \ge
+        1 > 0\) em todo \(D\). O logaritmo natural é contínuo em \((0,
+        +\infty)\), então \(\ln(1 + x^2 + y^2)\) é contínua em \(D\). Não há
+        singularidades.
+      </p>
+      <p><strong>(b)</strong> As duas ordens iteradas são:</p>
+      <p>
+        \[ \int_{-1}^{2} \left[\int_{-1}^{1} \ln(1 + x^2 + y^2)\, dy\right] dx
+        \quad \text{e} \quad \int_{-1}^{1} \left[\int_{-1}^{2} \ln(1 + x^2 +
+        y^2)\, dx\right] dy. \]
+      </p>
+      <p>
+        Ambas são válidas porque \(D\) é retangular e o integrando é contínuo.
+      </p>
+      <p>
+        <strong>(c)</strong> O Teorema de Fubini garante que a integral dupla
+        existe e que as duas ordens iteradas são iguais. A função \(\ln(1 + x^2
+        + y^2)\) é contínua no retângulo fechado \([-1,2] \times [-1,1]\), que é
+        compacto. Logo a integral é bem definida e finita.
+      </p>
+    </div>
+  </details>
+</li>

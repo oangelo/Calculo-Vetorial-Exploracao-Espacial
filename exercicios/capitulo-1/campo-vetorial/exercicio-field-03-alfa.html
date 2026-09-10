@@ -1,0 +1,83 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-03-ALFA</div>
+  <div class="context">
+    ORIGEM: Modelo Gravitacional - Programa Explorer [DADOS DE 31/JAN/1958]
+  </div>
+  <p>
+    CONEXÃO: Você viu um campo linear e um campo circular nos exercícios
+    anteriores. Agora vamos analisar o campo mais importante da física: a
+    gravidade. Ele tem um padrão RADIAL — aponta sempre para o centro. Note a
+    diferença com o campo circular: lá os vetores eram tangentes ao círculo,
+    aqui são perpendiculares ao círculo (apontam para o centro).
+  </p>
+  <p>
+    O campo gravitacional simplificado de um corpo celeste pode ser modelado
+    como: \[\vec{F}(x,y,z) = -k \frac{\vec{r}}{|\vec{r}|^3}\] onde \(\vec{r} =
+    (x,y,z)\) é o vetor posição a partir do centro do corpo, \(|\vec{r}|\) é a
+    distância ao centro e \(k\) é uma constante positiva.
+  </p>
+  <p>
+    LEMBRE de Cap 0 — Geometria Analítica: \(|\vec{r}|\) é a norma do vetor
+    posição, e o termo \(\vec{r}/|\vec{r}|\) é o vetor UNITÁRIO na direção de
+    \(\vec{r}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Analise a expressão \(-k \frac{\vec{r}}{|\vec{r}|^3}\):
+    o que cada fator (\(\vec{r}\), \(|\vec{r}|^3\) e o sinal \(-\)) contribui
+    para o comportamento do campo?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a magnitude \(|\vec{F}|\) em função de \(r =
+    |\vec{r}|\). Se a distância \(r\) dobra, como a intensidade do campo muda?
+  </p>
+  <p>
+    <strong>(c)</strong> Esboce algumas setas do campo ao redor do corpo celeste
+    (vista 2D). Compare com os esboços dos exercícios anteriores (campo linear e
+    campo circular). Este campo se parece mais com qual deles?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O termo \(\vec{r}/|\vec{r}|\) aponta PARA FORA (do centro
+      para o ponto). O sinal negativo inverte essa direção. Para a magnitude,
+      note que \(|\vec{r}/|\vec{r}|^3| = 1/|\vec{r}|^2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) DECOMPOSIÇÃO DOS FATORES:</p>
+      <p>
+        O termo \(\vec{r}\) é o vetor posição — aponta do centro do corpo
+        celeste para o ponto no espaço, ou seja, "para fora". O denominador
+        \(|\vec{r}|^3\) controla a intensidade: quanto maior a distância ao
+        centro, menor a magnitude (a intensidade cai rapidamente com a
+        distância). O sinal negativo inverte a direção de \(\vec{r}\), fazendo
+        com que \(\vec{F}\) aponte sempre em direção ao centro — a natureza
+        atrativa da gravidade. Em resumo: \(\vec{r}\) dá a direção "para fora",
+        o sinal \(-\) inverte para "para dentro", e \(|\vec{r}|^3\) regula a
+        intensidade.
+      </p>
+      <p>(b) VARIAÇÃO DA INTENSIDADE:</p>
+      <p>A magnitude do campo é:</p>
+      <p>\[|\vec{F}| = \frac{k}{|\vec{r}|^2} = \frac{k}{r^2}\]</p>
+      <p>
+        Isto mostra que a intensidade é inversamente proporcional ao quadrado da
+        distância (Lei de Newton). Se a distância dobra (\(r \to 2r\)), a
+        intensidade cai para \(1/4\) do valor original. Esta relação explica por
+        que a gravidade diminui rapidamente à medida que nos afastamos de um
+        corpo celeste.
+      </p>
+      <p>
+        (c) ESBOÇO E COMPARAÇÃO: As setas do campo gravitacional apontam todas
+        para o centro, como raios convergentes. Isso se parece mais com o campo
+        linear dos exercícios ALFA (onde os vetores apontavam para "fora" a
+        partir da origem) do que com o campo circular (onde os vetores eram
+        tangentes, circulares). A diferença é que aqui os vetores convergem
+        (gravidade atrativa) enquanto no campo linear divergiam. Este modelo é
+        fundamental para calcular trajetórias de satélites e veículos espaciais.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <!-- Slide principal -->
+    <section>
+      <section>
+        <h2>Geometria Analítica no Espaço</h2>
+        <p>A linguagem vetorial da exploração espacial</p>
+        <p class="note">
+          Antes de calcular trajetórias e órbitas, precisamos dominar as
+          ferramentas fundamentais: coordenadas, vetores e suas operações.
+        </p>
+      </section>
+
+      <!-- Sub-slide 1: Coordenadas 3D -->
+      <section class="math-section">
+        <h3>Coordenadas no Espaço Tridimensional</h3>
+        <p>
+          Um ponto $P$ no espaço $\mathbb{R}^3$ é representado por três
+          coordenadas: $P(x, y, z)$
+        </p>
+        <p><strong>Distância entre dois pontos:</strong></p>
+        \[d(A,B) = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}\]
+        <p><strong>Equação da esfera:</strong></p>
+        \[(x-a)^2 + (y-b)^2 + (z-c)^2 = r^2\]
+        <p>Centro em $(a,b,c)$, raio $r$</p>
+      </section>
+
+      <!-- Visualização: Coordenadas 3D -->
+      <section class="math-section">
+        <h3>Visualização: Sistema de Coordenadas 3D</h3>
+        <canvas
+          id="coordenadas-3d"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="coord3d-rot">Rotação =</label>
+            <input
+              type="range"
+              id="coord3d-rot"
+              min="0"
+              max="360"
+              step="5"
+              value="30"
+            />
+            <span id="coord3d-rot-value">30°</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sub-slide 2: Vetores Fundamentos -->
+      <section class="math-section">
+        <h3>Vetores: Magnitude e Direção</h3>
+        <p>
+          Um vetor $\vec{v}$ possui magnitude (módulo) e direção. Representação
+          em componentes:
+        </p>
+        \[\vec{v} = \langle v_x, v_y, v_z \rangle = v_x\hat{i} + v_y\hat{j} +
+        v_z\hat{k}\]
+        <p>
+          <strong>Magnitude:</strong> $|\vec{v}| = \sqrt{v_x^2 + v_y^2 + v_z^2}$
+        </p>
+        <p>
+          <strong>Vetor unitário:</strong> $\hat{v} = \frac{\vec{v}}{|\vec{v}|}$
+        </p>
+      </section>
+
+      <!-- Visualização: Vetor interativo -->
+      <section class="math-section">
+        <h3>Visualização: Vetor Interativo</h3>
+        <canvas
+          id="vetor-basico"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="vetor-x">vx =</label>
+            <input
+              type="range"
+              id="vetor-x"
+              min="-3"
+              max="3"
+              step="0.5"
+              value="2"
+            />
+            <span id="vetor-x-value">2</span>
+          </div>
+          <div class="control-slider">
+            <label for="vetor-y">vy =</label>
+            <input
+              type="range"
+              id="vetor-y"
+              min="-3"
+              max="3"
+              step="0.5"
+              value="1"
+            />
+            <span id="vetor-y-value">1</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sub-slide 3: Produto Escalar -->
+      <section class="math-section">
+        <h3>Produto Escalar (Dot Product)</h3>
+        <p>
+          O produto escalar de dois vetores produz um <strong>escalar</strong>:
+        </p>
+        \[\vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z =
+        |\vec{u}||\vec{v}|\cos\theta\]
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>$\vec{u} \cdot \vec{v} = 0 \implies \vec{u} \perp \vec{v}$</li>
+          <li>$\vec{u} \cdot \vec{v} > 0 \implies$ ângulo agudo</li>
+          <li>$\vec{u} \cdot \vec{v} < 0 \implies$ ângulo obtuso</li>
+        </ul>
+        <p>
+          <strong>Projeção:</strong> $\text{proj}_{\vec{v}}\vec{u} =
+          \frac{\vec{u}\cdot\vec{v}}{|\vec{v}|^2}\vec{v}$
+        </p>
+      </section>
+
+      <!-- Sub-slide 4: Produto Vetorial -->
+      <section class="math-section">
+        <h3>Produto Vetorial (Cross Product)</h3>
+        <p>
+          O produto vetorial produz um <strong>vetor</strong> perpendicular a
+          ambos:
+        </p>
+        \[\vec{u} \times \vec{v} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k}
+        \\ u_x & u_y & u_z \\ v_x & v_y & v_z \end{vmatrix}\]
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            Anticomutativo: $\vec{u} \times \vec{v} = -\vec{v} \times \vec{u}$
+          </li>
+          <li>$|\vec{u} \times \vec{v}| = |\vec{u}||\vec{v}|\sin\theta$</li>
+          <li>Área do paralelogramo: $A = |\vec{u} \times \vec{v}|$</li>
+        </ul>
+        <p>
+          <strong>Produto Misto (Volume):</strong> $V = |\vec{a} \cdot (\vec{b}
+          \times \vec{c})|$
+        </p>
+      </section>
+
+      <!-- Visualização: Produto Vetorial animado -->
+      <section class="math-section">
+        <h3>Visualização: Produto Vetorial e Área</h3>
+        <canvas
+          id="produto-vetorial"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
+        <p class="note">
+          O paralelogramo amarelo tem área igual a $|\vec{u} \times \vec{v}|$
+        </p>
+      </section>
+
+      <!-- Sub-slide 5: Retas no Espaço -->
+      <section class="math-section">
+        <h3>Retas no Espaço</h3>
+        <p>
+          Uma reta é definida por um ponto $\vec{r_0}$ e um vetor direção
+          $\vec{d}$:
+        </p>
+        <p><strong>Forma vetorial:</strong></p>
+        \[\vec{r}(t) = \vec{r_0} + t\vec{d}\]
+        <p><strong>Forma paramétrica:</strong></p>
+        \[x = x_0 + at, \quad y = y_0 + bt, \quad z = z_0 + ct\]
+        <p>onde $\vec{d} = \langle a, b, c \rangle$</p>
+      </section>
+
+      <!-- Visualização: Reta paramétrica -->
+      <section class="math-section">
+        <h3>Visualização: Reta Paramétrica</h3>
+        <canvas
+          id="reta-espaco"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="reta-t">t =</label>
+            <input
+              type="range"
+              id="reta-t"
+              min="-2"
+              max="4"
+              step="0.2"
+              value="1"
+            />
+            <span id="reta-t-value">1</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sub-slide 6: Planos no Espaço -->
+      <section class="math-section">
+        <h3>Planos no Espaço</h3>
+        <p>
+          Um plano é definido por um ponto $P_0$ e um vetor normal $\vec{n}$:
+        </p>
+        \[\vec{n} \cdot (\vec{r} - \vec{r_0}) = 0\]
+        <p>
+          Forma geral: $ax + by + cz + d = 0$, onde $\vec{n} = \langle a, b, c
+          \rangle$
+        </p>
+        <p><strong>Distância ponto-plano:</strong></p>
+        \[d = \frac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}}\]
+      </section>
+
+      <!-- Visualização: Plano com vetor normal -->
+      <section class="math-section">
+        <h3>Visualização: Plano e Vetor Normal</h3>
+        <canvas
+          id="plano-espaco"
+          class="visualization-canvas"
+          width="500"
+          height="350"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="plano-a">a =</label>
+            <input
+              type="range"
+              id="plano-a"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
+            <span id="plano-a-value">1</span>
+          </div>
+          <div class="control-slider">
+            <label for="plano-b">b =</label>
+            <input
+              type="range"
+              id="plano-b"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
+            <span id="plano-b-value">1</span>
+          </div>
+          <div class="control-slider">
+            <label for="plano-c">c =</label>
+            <input
+              type="range"
+              id="plano-c"
+              min="-2"
+              max="2"
+              step="0.5"
+              value="1"
+            />
+            <span id="plano-c-value">1</span>
+          </div>
+        </div>
+      </section>
+    </section>
+  </body>
+</html>

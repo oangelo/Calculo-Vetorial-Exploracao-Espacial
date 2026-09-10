@@ -1,0 +1,50 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Prova Classificada – Programa Apollo, JUL/1969
+  </div>
+  <p>
+    Usamos o FTC para integrais de linha repetidas vezes, mas nunca demos um
+    argumento rigoroso para ele. Agora que você domina a técnica, é hora de
+    entender <em>por que</em> ela funciona. Demostre o
+    <strong>Teorema Fundamental do Cálculo para Integrais de Linha</strong>: se
+    \(\vec{F} = \nabla\Phi\) e \(C\) é uma curva suave por partes de \(A\) a
+    \(B\), então \(\int_C \vec{F}\cdot d\vec{r} = \Phi(B) - \Phi(A)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize \(C\) genericamente por \(\vec{r}(t)\) com
+    \(t \in [a,b]\), \(\vec{r}(a) = A\), \(\vec{r}(b) = B\). Escreva a integral
+    de linha em termos do parâmetro \(t\).
+  </p>
+  <p>
+    <strong>(b)</strong> Substitua \(\vec{F} = \nabla\Phi\) e use a regra da
+    cadeia para mostrar que \(\nabla\Phi(\vec{r}(t)) \cdot \vec{r}'(t)\) é a
+    derivada de uma composição.
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique o Teorema Fundamental do Cálculo de uma
+    variável para concluir a demonstração.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A integral de linha ao longo de \(C\) é: \(\int_C
+        \vec{F}\cdot d\vec{r} = \int_a^b
+        \vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\,dt\).
+      </p>
+      <p>
+        <strong>(b)</strong> Substituindo \(\vec{F} = \nabla\Phi\):
+        \(\nabla\Phi(\vec{r}(t)) \cdot \vec{r}'(t) = \frac{\partial
+        \Phi}{\partial x}\frac{dx}{dt} + \frac{\partial \Phi}{\partial
+        y}\frac{dy}{dt} + \frac{\partial \Phi}{\partial z}\frac{dz}{dt}\). Pela
+        regra da cadeia, esta soma é \(\frac{d}{dt}\Phi(\vec{r}(t))\).
+      </p>
+      <p>
+        <strong>(c)</strong> Pelo FTC de uma variável: \(\int_a^b
+        \frac{d}{dt}\Phi(\vec{r}(t))\,dt = \Phi(\vec{r}(b)) - \Phi(\vec{r}(a)) =
+        \Phi(B) - \Phi(A)\). QED.
+      </p>
+    </div>
+  </details>
+</li>

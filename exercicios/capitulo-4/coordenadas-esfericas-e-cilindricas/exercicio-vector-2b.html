@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Seção de Propulsão - Inquérito sobre Câmaras Combustíveis
+  </div>
+  <p>
+    No exercício anterior, calculamos o volume de um cone em coordenadas
+    cilíndricas. Agora vamos testar as coordenadas esféricas com o caso mais
+    fundamental: o volume de uma esfera. Se o Jacobiano \(\rho^2\sin\phi\)
+    estiver correto, devemos recuperar a fórmula que todos conhecemos.
+  </p>
+  <p>
+    Calcular o volume de uma esfera de raio \(R = 3\) utilizando coordenadas
+    esféricas.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os limites de \(\rho\), \(\phi\) e
+    \(\theta\) que descrevem uma esfera completa centrada na origem. Esboce o
+    domínio de integração indicando cada variável.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte e avalie a integral tripla do volume, incluindo o
+    Jacobiano \(\rho^2\sin\phi\).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique o resultado com a fórmula geométrica
+    \(\frac{4}{3}\pi R^3\) e responda: por que o Jacobiano \(\rho^2\sin\phi\) é
+    essencial para obter o resultado correto? O que aconteceria se esquecêssemos
+    o fator \(\sin\phi\)?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para uma esfera completa, \(\rho\) varia de \(0\) a \(R\),
+      \(\phi\) cobre de \(0\) a \(\pi\) (do polo norte ao polo sul), e
+      \(\theta\) faz uma volta completa de \(0\) a \(2\pi\). A integral se
+      separa em três integrais de variável única.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Para uma esfera de raio \(R\) centrada na origem: \(0 \le \rho \le
+        R\), \(0 \le \phi \le \pi\), \(0 \le \theta \le 2\pi\).
+      </p>
+      <p>
+        (b) \[ V = \int_0^{2\pi} \int_0^{\pi} \int_0^3 \rho^2\sin\phi \, d\rho
+        \, d\phi \, d\theta.\]
+      </p>
+      <p>
+        Separando as variáveis: \[\int_0^3 \rho^2 \, d\rho =
+        \frac{\rho^3}{3}\bigg|_0^3 = 9,\] \[\int_0^{\pi} \sin\phi \, d\phi =
+        [-\cos\phi]_0^{\pi} = -(-1) + 1 = 2,\] \[\int_0^{2\pi} d\theta = 2\pi.\]
+      </p>
+      <p>Logo, \(V = 9 \cdot 2 \cdot 2\pi = 36\pi\).</p>
+      <p>
+        (c) Verificação: \(\frac{4}{3}\pi R^3 = \frac{4}{3}\pi(27) = 36\pi\). ✓
+      </p>
+      <p>
+        O fator \(\sin\phi\) é essencial: sem ele, a integral em \(\phi\) daria
+        \(\int_0^{\pi} d\phi = \pi\) em vez de \(2\), e o volume seria \(18\pi\)
+        — metade do valor correto. Geometricamente, \(\sin\phi\) compensa o fato
+        de que o elemento de volume se estreita nos polos (\(\phi \approx 0\) e
+        \(\phi \approx \pi\)).
+      </p>
+    </div>
+  </details>
+</li>

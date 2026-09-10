@@ -1,0 +1,25 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 30 [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Desafio de Identificação - Seção de Análise Avançada [SIGMA-4]
+  </div>
+  <p>Este exercício não fornece dica. Você deve identificar qual técnica de
+  integração aplicar.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int \frac{dx}{x\sqrt{x^2 - 1}}\]</p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Substituição trigonométrica: seja \(x = \sec(\theta)\), então
+      \(dx = \sec(\theta)\tan(\theta)\,d\theta\) e \(\sqrt{x^2 - 1} = \tan(\theta)\).</p>
+      <p>\[\int \frac{\sec(\theta)\tan(\theta)\,d\theta}{\sec(\theta)\cdot\tan(\theta)}
+      = \int d\theta = \theta + C.\]</p>
+      <p>Como \(x = \sec(\theta)\), temos \(\theta = \arcsec(x)\). Portanto:</p>
+      <p>\[\int \frac{dx}{x\sqrt{x^2 - 1}} = \arcsec(x) + C.\]</p>
+      <p><strong>Alternativa:</strong> a substituição \(u = \sqrt{x^2 - 1}\) também
+      funciona, levando a \(\arctan(u) + C\), o que é equivalente pela identidade
+      \(\arcsec(x) = \arctan(\sqrt{x^2 - 1})\) para \(x > 1\).</p>
+    </div>
+  </details>
+</li>

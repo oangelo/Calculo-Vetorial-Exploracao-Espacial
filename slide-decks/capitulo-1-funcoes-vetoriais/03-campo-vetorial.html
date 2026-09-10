@@ -1,0 +1,229 @@
+<section>
+  <section>
+    <h2>Campo Vetorial</h2>
+    <div class="fragment">
+      <p>Um campo vetorial associa um vetor a cada ponto do espaço:</p>
+    </div>
+    <div class="fragment formula-spotlight">
+      <p>\[ \vec{F}: U \subseteq \mathbb{R}^n \to \mathbb{R}^n \]</p>
+    </div>
+    <div class="fragment">
+      <p>
+        Domínio e contradomínio na <strong>mesma dimensão</strong>. Diferente de
+        uma curva paramétrica, que mapeia \(\mathbb{R} \to \mathbb{R}^n\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Campo Gravitacional</h3>
+    <canvas
+      id="canvasGravidade"
+      class="visualization-canvas"
+      width="600"
+      height="450"
+    ></canvas>
+    <div class="controls-container">
+      <div class="control-slider">
+        <label>Massa</label>
+        <input type="range" id="sliderMassa" min="5" max="40" value="20" />
+      </div>
+      <div class="control-button" id="btnResetCampo">Resetar</div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Campo vs. Trajetória</h3>
+    <div class="dual-panel">
+      <div class="math-section">
+        <p><strong>Função vetorial</strong></p>
+        <p>\(\vec{r}: \mathbb{R} \to \mathbb{R}^n\)</p>
+        <p>Entrada: parâmetro \(t\).</p>
+        <p>Saída: posição de um objeto.</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Campo vetorial</strong></p>
+        <p>\(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\)</p>
+        <p>Entrada: ponto \((x,y,z)\).</p>
+        <p>Saída: vetor naquele ponto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo: Gravidade Pontual</h3>
+    <div class="problem-section">
+      <p>Campo gravitacional de massa \(M\) na origem:</p>
+      <p class="formula-spotlight">
+        \[ \vec{g}(x,y,z) = -\frac{GM}{r^3}(x,y,z), \quad r = \sqrt{x^2+y^2+z^2}
+        \]
+      </p>
+    </div>
+    <div class="fragment compact-solution">
+      <p>
+        Em \((1,0,0)\): \(\vec{g} = (-GM, 0, 0)\). Em \((2,0,0)\): \(\vec{g} =
+        (-\frac{GM}{4}, 0, 0)\). Intensidade cai com \(r^2\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="history-section">
+      <span class="history-label">PERGUNTA</span>
+      <p>
+        Se cada ponto do espaço tem um campo gravitacional, como os soviéticos
+        calculavam trajetórias sem computadores — com matemáticas que não podiam
+        assinar os próprios relatórios?
+      </p>
+    </div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasGravidade');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width,
+      H = canvas.height;
+    var cx = W / 2,
+      cy = H / 2;
+    var massa = 20;
+    var animId = null;
+
+    var slider = document.getElementById('sliderMassa');
+    var btnReset = document.getElementById('btnResetCampo');
+
+    if (slider) {
+      slider.addEventListener('input', function (e) {
+        massa = parseInt(e.target.value);
+        drawField();
+      });
+    }
+    if (btnReset) {
+      btnReset.addEventListener('click', function () {
+        massa = 20;
+        if (slider) slider.value = 20;
+        drawField();
+      });
+    }
+
+    function drawArrow(fx, fy, tx, ty, mag, maxMag) {
+      var alpha = Math.min(0.3 + 0.7 * (mag / maxMag), 0.9);
+      var dx = tx - fx,
+        dy = ty - fy;
+      var angle = Math.atan2(dy, dx);
+      var len = Math.sqrt(dx * dx + dy * dy);
+      var headLen = Math.min(len * 0.35, 6);
+
+      ctx.beginPath();
+      ctx.moveTo(fx, fy);
+      ctx.lineTo(tx, ty);
+      ctx.strokeStyle = 'rgba(239, 83, 80, ' + alpha + ')';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(tx, ty);
+      ctx.lineTo(
+        tx - headLen * Math.cos(angle - 0.5),
+        ty - headLen * Math.sin(angle - 0.5)
+      );
+      ctx.lineTo(
+        tx - headLen * Math.cos(angle + 0.5),
+        ty - headLen * Math.sin(angle + 0.5)
+      );
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(239, 83, 80, ' + alpha + ')';
+      ctx.fill();
+    }
+
+    function drawField() {
+      ctx.clearRect(0, 0, W, H);
+
+      var grid = 35;
+      var maxMag = 0;
+
+      var arrows = [];
+      for (var x = grid / 2; x < W; x += grid) {
+        for (var y = grid / 2; y < H; y += grid) {
+          var dx = cx - x,
+            dy = cy - y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 22) continue;
+
+          var mag = (massa / (dist * dist)) * 100;
+          var nx = dx / dist,
+            ny = dy / dist;
+          var arrowLen = Math.min(mag * 3, grid * 0.85);
+
+          arrows.push({
+            fx: x,
+            fy: y,
+            tx: x + nx * arrowLen,
+            ty: y + ny * arrowLen,
+            mag: mag,
+          });
+          if (mag > maxMag) maxMag = mag;
+        }
+      }
+
+      for (var i = 0; i < arrows.length; i++) {
+        drawArrow(
+          arrows[i].fx,
+          arrows[i].fy,
+          arrows[i].tx,
+          arrows[i].ty,
+          arrows[i].mag,
+          maxMag
+        );
+      }
+
+      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 18);
+      grad.addColorStop(0, '#ef5350');
+      grad.addColorStop(1, 'rgba(239, 83, 80, 0.3)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, 15, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.shadowColor = '#ef5350';
+      ctx.shadowBlur = 20;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 15, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = 'rgba(255,255,255,0.6)';
+      ctx.font = 'bold 11px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('M', cx, cy + 4);
+      ctx.textAlign = 'left';
+    }
+
+    function init() {
+      drawField();
+    }
+
+    function cleanup() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }
+
+    setTimeout(function () {
+      if (typeof Reveal !== 'undefined' && Reveal.on) {
+        Reveal.on('slidechanged', function (e) {
+          if (e.currentSlide && e.currentSlide.contains(canvas)) {
+            init();
+          }
+        });
+      }
+      if (canvas.offsetParent !== null) init();
+    }, 500);
+
+    window.vizGravidade = { init: init, cleanup: cleanup };
+  })();
+</script>

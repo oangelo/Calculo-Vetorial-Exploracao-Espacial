@@ -1,0 +1,35 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Lab. de Navegação Orbital – Apollo 16 [21/ABR/1972]
+  </div>
+  <p>
+    Até agora usamos apenas parametrizações, mas muitas superfícies vêm
+    dadas na forma implícita \(F(x,y,z) = K\). Será que existe um atalho
+    para encontrar o plano tangente sem parametrizar? Considere a esfera
+  </p>
+  <p class="formula-highlight">
+    \[x^2 + y^2 + z^2 = 9\]
+  </p>
+  <p>e o ponto \(P = (2, 1, 2)\) sobre ela.</p>
+  <p><strong>(a)</strong> Calcule o gradiente \(\nabla F\) no ponto \(P\), onde \(F(x,y,z) = x^2 + y^2 + z^2\).</p>
+  <p><strong>(b)</strong> Parametrize a mesma esfera usando coordenadas esféricas \(\vec{r}(\theta,\phi) = (3\sin\phi\cos\theta, 3\sin\phi\sin\theta, 3\cos\phi)\). Encontre os valores de \(\theta\) e \(\phi\) correspondentes ao ponto \(P\), calcule \(\vec{r}_\theta \times \vec{r}_\phi\) nesse ponto e compare com o gradiente de (a). Os vetores são paralelos?</p>
+  <p><strong>(c)</strong> Escreva a equação do plano tangente usando o gradiente. Verifique que o mesmo plano é obtido pelo método paramétrico.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para comparar os dois métodos, lembre-se que dois
+      vetores são paralelos se um é múltiplo escalar do outro. Não é
+      necessário que tenham o mesmo módulo ou sentido — apenas a mesma
+      direção.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\nabla F = (2x, 2y, 2z)\). Em \(P=(2,1,2)\): \(\nabla F = (4, 2, 4)\).</p>
+      <p><strong>(b)</strong> De \(3\cos\phi = 2\), obtemos \(\cos\phi = 2/3\). De \(3\sin\phi\cos\theta = 2\) e \(3\sin\phi\sin\theta = 1\), obtemos \(\tan\theta = 1/2\). Calculando \(\vec{r}_\theta \times \vec{r}_\phi\) e avaliando no ponto, obtemos um vetor proporcional a \((2,1,2)\), que é paralelo a \(\nabla F = (4,2,4) = 2(2,1,2)\).</p>
+      <p><strong>(c)</strong> Plano via gradiente: \((4,2,4) \cdot (x-2, y-1, z-2) = 0\), ou \(4x + 2y + 4z = 18\), que simplifica para \(2x + y + 2z = 9\). Pelo método paramétrico, usando \(\vec{n} = (2,1,2)\): \(2(x-2) + (y-1) + 2(z-2) = 0\), que dá o mesmo resultado.</p>
+    </div>
+  </details>
+</li>

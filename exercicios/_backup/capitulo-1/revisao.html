@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /* … (mesma folha de estilo do template-espacial-atualizado.html) … */
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">15</span> DE NOVEMBRO DE
+          <span class="censored">1962</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE ANÁLISE INTERNACIONAL</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO – FUNÇÕES VETORIAIS<br /><br />
+          Esta lista consolida os principais conceitos de
+          <em>campo vetorial</em>, <em>rotacional</em> e <em>divergente</em>,
+          preparando a equipe para os testes de desempenho previstos. A
+          exposição histórica foi minimizada para manter o foco nos cálculos.
+        </div>
+
+        <div class="warning-box">
+          Difusão não autorizada resultará em
+          <span class="censored">sanções imediatas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: RVW-<span class="censored">0420</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: REVISÃO – FUNÇÕES VETORIAIS
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\nabla \cdot \vec{F} = \frac{\partial F_x}{\partial x} +
+          \frac{\partial F_y}{\partial y} + \frac{\partial F_z}{\partial z}\quad
+          ;\quad \nabla \times \vec{F} = \begin{pmatrix} \partial_y F_z -
+          \partial_z F_y \\ \partial_z F_x - \partial_x F_z \\ \partial_x F_y -
+          \partial_y F_x \end{pmatrix}\]
+        </p>
+        <p>
+          O <em>divergente</em> mede fontes e sumidouros locais, enquanto o
+          <em>rotacional</em> avalia a tendência de rotação de um campo
+          vetorial. Ambos são cruciais para modelar fluxos em engenharia
+          espacial.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Dominar estas operações diferenciais permite prever trajetórias, ajustar
+        propulsão e avaliar estabilidade de veículos orbitais.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA:</strong> Cálculos análogos sustentaram simulações de voo
+        realizadas durante programas pioneiros de 1961‑1962.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- ===================== BETA ===================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑1</div>
+            <div class="context">
+              ORIGEM: Sessão de Validação – Fluxo Bidimensional
+            </div>
+            <p>
+              Considere os campos bidimensionais
+              \[\vec{F}_1(x,y)=\begin{pmatrix}2x\\3y\end{pmatrix}\quad\text{e}\quad\vec{F}_2(x,y)=\begin{pmatrix}-y\\x\end{pmatrix}.\]
+              (a) Calcule \(\nabla\cdot\vec F_1\) e \(\nabla\times\vec F_1\)
+              (componente \(k\)).<br />
+              (b) Repita para \(\vec F_2\).<br />
+              (c) Explique por que combinar \(\vec{F}=\vec F_1+\vec F_2\) pode
+              representar simultaneamente compressão e rotação em um sistema
+              planar. <br />(d) **Esboce** as linhas de fluxo do campo
+              resultante no plano \(xy\), destacando o efeito espiral produzido
+              pela combinação de divergente e rotacional.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                Algumas simetrias podem ser relevantes ao interpretar os sinais.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>(a) Para \(\vec F_1\):</p>
+                <p>
+                  \[\nabla\cdot\vec F_1 = 2+3 =5, \qquad \nabla\times\vec F_1 =
+                  0.\]
+                </p>
+                <p>(b) Para \(\vec F_2\):</p>
+                <p>
+                  \[\nabla\cdot\vec F_2 = 0, \qquad \nabla\times\vec F_2 = 2.\]
+                </p>
+                <p>
+                  (c) No campo combinado, a parte divergente (5) cria uma
+                  expansão radial uniforme, enquanto a componente rotacional (2)
+                  adiciona giro. Isto modela um bocal que expande e redireciona
+                  gases simultaneamente, permitindo maior manobrabilidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑2</div>
+            <div class="context">ORIGEM: Ensaio de Vórtice – Modelo 3D</div>
+            <p>
+              O campo \(\vec V(x,y,z)=\begin{pmatrix}y\\-x\\z\end{pmatrix}\)
+              descreve um fluxo em torno do eixo \(z\). (a) Verifique se
+              \(\nabla\cdot\vec V=0\).<br />
+              (b) Determine \(\nabla\times\vec V\).<br />
+              (c) Explique, em termos do movimento das partículas, o que
+              significa um campo com divergente nulo (volume preservado) mas
+              rotacional não nulo. Dê um exemplo cotidiano simples, como o
+              redemoinho de água que se forma ao escoar por um ralo.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                Lembre‑se de que um divergente nulo indica preservação de
+                volume, enquanto o rotacional evidencia giro local nas
+                trajetórias.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) \[\nabla\cdot\vec V = 0+0+1 =1.\] <em>Correção:</em> a
+                  última derivada é \(\partial_z z =1\); logo o campo não é
+                  incompressível.
+                </p>
+                <p>
+                  (b) \[\nabla\times\vec V =
+                  \begin{pmatrix}0\\0\\-2\end{pmatrix}.\]
+                </p>
+                <p>
+                  (c) O fluxo possui rotação horária combinada a dilatação
+                  axial. Em um circuito de fluido, tal comportamento provoca
+                  zonas helicoidais de pressão – úteis para misturar, mas
+                  críticas para estabilidade térmica.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑3</div>
+            <div class="context">ORIGEM: Simulação de Campo Temporizado</div>
+            <p>
+              Seja \(\vec F(x,y,t)=\begin{pmatrix}x\cos t - y\sin t\\x\sin t +
+              y\cos t\\0\end{pmatrix}.\) (a) Mostre que a magnitude de \(\vec
+              F\) permanece constante em \(t\).<br />
+              (b) Calcule \(\nabla\cdot\vec F\) e discuta a existência de
+              fontes/sumidouros.<br />
+              (c) Aponte por que este tipo de campo preserva área mas não
+              necessariamente volume em extensões 3D.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">Existem rotações não aparentes no sistema.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) \[|\vec F|^2 = x^2+y^2.\] Independente de \(t\), indicando
+                  rotação rígida.
+                </p>
+                <p>
+                  (b) \[\nabla\cdot\vec F = 0.\] Não há criação nem destruição
+                  de matéria em 2D.
+                </p>
+                <p>
+                  (c) Em 2D a transformação é uma isometria; entretanto,
+                  adicionando um eixo \(z\) que permaneça nulo, o volume 3D
+                  colapsa em um plano – útil para cintos transportadores que
+                  realinham peças sem variar densidade superficial.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ===================== GAMMA ===================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑4</div>
+            <div class="context">
+              ORIGEM: Avaliação de Mistura Radial + Rotacional
+            </div>
+            <p>
+              Analise o campo em 3D \[\vec
+              G(x,y,z)=\begin{pmatrix}x\\y\\0\end{pmatrix}+\begin{pmatrix}-y\\x\\0\end{pmatrix}.\]
+              (a) Determine \(\nabla\cdot\vec G\) e \(\nabla\times\vec G\).<br />
+              (b) Mostre que as linhas de fluxo formam espirais logarítmicas no
+              plano \(xy\).<br />
+              (c) Discuta como tal combinação modela sistemas de injeção
+              combustível onde expansão e torção coexistem.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                Observe o cancelamento parcial entre efeitos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) Divergente: \(\nabla\cdot\vec G = 2.\) Rotacional:
+                  \(\nabla\times\vec G = \begin{pmatrix}0\\0\\2\end{pmatrix}.\)
+                </p>
+                <p>
+                  (b) Em coordenadas polares \(r,\theta\) obtém‑se
+                  \(\dfrac{dr}{d\theta}=\dfrac{r}{1}\Rightarrow r=C
+                  e^{\theta}.\)
+                </p>
+                <p>
+                  (c) Motores swirl utilizam essa geometria para homogeneizar
+                  mistura ar‑combustível mantendo pressão interna.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑5</div>
+            <div class="context">ORIGEM: Modelo Gravitacional Simplificado</div>
+            <p>
+              Para \(\vec H(\vec r) = -k\dfrac{\vec r}{|\vec r|^3}\) com \(\vec
+              r\neq0\): (a) Calcule \(\nabla\cdot\vec H\).<br />
+              (b) Calcule \(\nabla\times\vec H\).<br />
+              (c) Interprete por que a ausência de rotacional não implica fluxo
+              divergente nulo fora da origem.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">A simetria esférica simplifica integrais.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) Usando identidade conhecida: \(\nabla\cdot\dfrac{\vec
+                  r}{|\vec r|^3}=0\) para \(\vec r\neq0\); logo
+                  \(\nabla\cdot\vec H=0\).
+                </p>
+                <p>
+                  (b) Rotacional de um campo radial é nulo: \(\nabla\times\vec
+                  H=\vec 0\).
+                </p>
+                <p>
+                  (c) A inexistência de vorticidade não impede a presença de
+                  fortes gradientes de pressão; fontes/sumidouros concentram‑se
+                  em singularidades (origem) não tratadas pela derivada
+                  clássica.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑6</div>
+            <div class="context">ORIGEM: Teste de Campo 3D com Acoplamento</div>
+            <p>
+              Defina \(\vec
+              W(x,y,z)=\begin{pmatrix}x+yz\\y-xz\\z\end{pmatrix}.\) (a)
+              Determine as regiões onde \(\nabla\cdot\vec W>0\), \(<0\) ou
+              \(=0\).<br />
+              (b) Mostre que \(\nabla\times\vec W\) muda de orientação ao
+              atravessar o plano \(z=0\).<br />
+              (c) Explique como identificar zonas de turbulência em ensaios de
+              túnel de vento a partir destas mudanças.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) \[\nabla\cdot\vec W = 1+1+1 =3.\] Positivo em todo espaço;
+                  o campo é fonte uniforme.
+                </p>
+                <p>
+                  (b) \[\nabla\times\vec W = \begin{pmatrix} -2z\\ 2z\\ 0
+                  \end{pmatrix}.\] O vetor inverte sentido quando \(z\) muda de
+                  sinal.
+                </p>
+                <p>
+                  (c) Tais inversões indicam cisalhamento vertical – um critério
+                  para onset de turbulência que afeta reentradas atmosféricas.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- ===================== OMEGA ===================== -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑7</div>
+            <div class="context">
+              ORIGEM: Prova de Identidade Vetorial Clássica
+            </div>
+            <p>
+              Demonstre analiticamente que \(\nabla\cdot(\nabla\times\vec A)=0\)
+              para qualquer campo suave \(\vec A\). Em seguida, verifique
+              diretamente a identidade para \(\vec
+              A(x,y,z)=\begin{pmatrix}yz\\xz\\xy\end{pmatrix}.\)
+            </p>
+            <!-- Sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Expandindo componentes mostra‑se que cada termo cancela par a
+                  par. Para o campo dado, cálculo direto de \(\nabla\times\vec
+                  A\) seguido de divergente resulta em 0, confirmando a
+                  identidade.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑REVIEW‑8</div>
+            <div class="context">
+              ORIGEM: Estudo de Zona Crítica – Compressão × Rotação
+            </div>
+            <p>
+              Seja o campo parametrizado \[\vec
+              P(x,y)=\alpha\begin{pmatrix}-y\\x\end{pmatrix}+\beta\begin{pmatrix}x\\y\end{pmatrix}\]
+              com constantes \(\alpha,\beta>0\). (a) Determine os valores de
+              \(\alpha/\beta\) que anulam o rotacional mantendo divergente
+              positivo.<br />
+              (b) Para o valor crítico encontrado, descreva fisicamente a
+              configuração de fluxo em um fluxo resultante se comporta em função
+              da razão \(lpha/eta\): quando \(eta\) predomina, o efeito
+              expansivo (divergente) é mais forte; quando \(lpha\) predomina,
+              surge um giro dominante (rotacional).
+            </p>
+            <!-- Sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  (a) \[\nabla\times\vec P = 2(\alpha) -0 =0 \Rightarrow
+                  \alpha=0.\] Mas \(\alpha>0\) por hipótese, logo não há
+                  combinação que zere o rotacional sem violar condição.
+                  Entretanto, o inverso é possível: escolher \(\beta=0\) resulta
+                  em divergente nulo com rotacional não nulo. A coexistência de
+                  ambos efeitos requer \(\alpha,\beta \neq0\); logo rotacional e
+                  divergente nunca anulam simultaneamente.
+                </p>
+                <p>
+                  (b) No regime \(\alpha\ll\beta\) o fluxo é predominantemente
+                  expansivo, minimizando vorticidade – desejável para
+                  estabilidade de discos aerodinâmicos durante frenagem orbital.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">8</span> • DOCUMENTO RVW‑<span
+          class="censored"
+          >0420</span
+        >-C
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

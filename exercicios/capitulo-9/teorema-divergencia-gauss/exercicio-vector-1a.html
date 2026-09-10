@@ -1,0 +1,65 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Laboratório de <span class="censored">Simulações Orbitais</span> -
+    Spacelab-1 [NOV/1983]
+  </div>
+  <p>
+    Nos tópicos anteriores deste capítulo, você verificou o Teorema da
+    Divergência em diversas geometrias. Agora vamos usá-lo como ferramenta de
+    cálculo, sem verificar — apenas escolher e calcular. O objetivo é
+    desenvolver fluência: dado um campo e uma superfície fechada, o teorema deve
+    ser automático.
+  </p>
+  <p>
+    Considere o campo \(\mathbf{F}(x,y,z) = (x^3,\, y^3,\, z^3)\) e o
+    paralelepípedo \(V\) definido por \(0 \le x \le 1\), \(0 \le y \le 2\), \(0
+    \le z \le 3\).
+  </p>
+  <p><strong>(a)</strong> Calcule o divergente \(\nabla \cdot \mathbf{F}\).</p>
+  <p>
+    <strong>(b)</strong> Use o Teorema da Divergência para montar a integral
+    tripla do divergente sobre \(V\) em coordenadas cartesianas. Avalie a
+    integral.
+  </p>
+  <p>
+    <strong>(c)</strong> Teria sido mais fácil calcular o fluxo diretamente
+    (seis integrais de superfície, uma para cada face)? Justifique.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O divergente de \((P,Q,R)\) é \(\frac{\partial P}{\partial
+      x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\). Para
+      o paralelepípedo, os limites de integração são constantes — a integral
+      tripla se reduz a três integrais simples iteradas.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\nabla \cdot \mathbf{F} = 3x^2 + 3y^2 + 3z^2 = 3(x^2 + y^2 +
+        z^2)\).
+      </p>
+      <p>
+        (b) \[\iiint_V 3(x^2+y^2+z^2)\,dV = 3\int_0^1\int_0^2\int_0^3
+        (x^2+y^2+z^2)\,dz\,dy\,dx.\]
+      </p>
+      <p>
+        Integração em \(z\): \(\int_0^3 (x^2+y^2+z^2)\,dz = 3(x^2+y^2) + 9\).
+      </p>
+      <p>
+        Integração em \(y\): \(\int_0^2 [3(x^2+y^2)+9]\,dy = 6x^2 + 8 + 18 =
+        6x^2 + 26\).
+      </p>
+      <p>Integração em \(x\): \(\int_0^1 (6x^2+26)\,dx = 2 + 26 = 28\).</p>
+      <p>Fluxo total: \(3 \times 28 = 84\).</p>
+      <p>
+        (c) Não. O cálculo direto exigiria seis integrais de superfície (seis
+        faces), cada uma com parametrização e normal distintas. O teorema
+        reduziu tudo a uma integral tripla com limites constantes.
+      </p>
+    </div>
+  </details>
+</li>

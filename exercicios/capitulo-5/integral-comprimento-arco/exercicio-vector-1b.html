@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Setor de Análise de Trajetórias - Simulação Computacional [REF:
+    <span class="censored">SIM-03/1967</span>]
+  </div>
+  <p>
+    No exercício anterior, você concluiu que a curva é mais longa que a reta.
+    Mas
+    <em>quanto</em> mais longa? Para responder, vamos dividir a curva em
+    pequenos segmentos retos e somar seus comprimentos — construindo uma
+    aproximação numérica do comprimento total.
+  </p>
+  <p>
+    Considere novamente a curva \(\vec{r}(t) = \bigl(t,\, t^2\bigr)\), com \(t\)
+    de 0 a 2. Vamos marcar pontos igualmente espaçados no parâmetro e calcular
+    as distâncias entre pontos consecutivos da curva.
+  </p>
+  <p>
+    <strong>(a)</strong> Divida o intervalo \([0,2]\) em \(N = 2\) segmentos
+    (pontos em \(t = 0, 1, 2\)). Calcule a posição de cada ponto na curva e some
+    as distâncias entre consecutivos.
+  </p>
+  <p>
+    <strong>(b)</strong> Repita com \(N = 4\) segmentos (pontos em \(t = 0,\,
+    0{,}5,\, 1,\, 1{,}5,\, 2\)). Some as distâncias.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare as duas somas. A soma aumentou ou diminuiu ao
+    usar mais segmentos? Você diria que os valores estão convergindo para algo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para cada par de pontos consecutivos \(\vec{r}(t_i)\) e
+      \(\vec{r}(t_{i+1})\), a distância é \(\|\vec{r}(t_{i+1}) - \vec{r}(t_i)\|
+      = \sqrt{(\Delta x)^2 + (\Delta y)^2}\). Por exemplo, para \(t_0 = 0\) e
+      \(t_1 = 1\): os pontos são \((0,0)\) e \((1,1)\), e a distância é
+      \(\sqrt{1+1} = \sqrt{2}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Com \(N = 2\): pontos \((0,0)\), \((1,1)\),
+        \((2,4)\).
+      </p>
+      <p>Segmento 1: \(\sqrt{(1-0)^2 + (1-0)^2} = \sqrt{2} \approx 1{,}414\)</p>
+      <p>
+        Segmento 2: \(\sqrt{(2-1)^2 + (4-1)^2} = \sqrt{10} \approx 3{,}162\)
+      </p>
+      <p>Soma: \(\sqrt{2} + \sqrt{10} \approx 4{,}577\)</p>
+      <p>
+        <strong>(b)</strong> Com \(N = 4\): pontos \((0,0)\), \((0{,}5,\,
+        0{,}25)\), \((1,1)\), \((1{,}5,\, 2{,}25)\), \((2,4)\).
+      </p>
+      <p>
+        \(\sqrt{0{,}3125} + \sqrt{0{,}8125} + \sqrt{1{,}8125} + \sqrt{3{,}3125}
+        \approx 0{,}559 + 0{,}901 + 1{,}346 + 1{,}820 \approx 4{,}626\)
+      </p>
+      <p>
+        <strong>(c)</strong> A soma aumentou de \(\approx 4{,}577\) para
+        \(\approx 4{,}626\). Com mais segmentos, a aproximação melhora e a soma
+        converge para o comprimento real da curva. No limite \(N \to \infty\),
+        essa soma vira a integral de comprimento de arco. Veremos no próximo
+        exercício que o valor exato é \(\sqrt{17} +
+        \frac{1}{4}\ln\bigl(4+\sqrt{17}\bigr) \approx 4{,}647\).
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Centro de Treinamento de Voo - Apollo 8 [DEZ/1968]
+  </div>
+  <p>
+    Agora vamos aplicar a reparametrização a uma curva 3D mais elaborada,
+    escolhendo o parâmetro que simplifica uma das componentes. A invariância
+    garante que o resultado não depende dessa escolha.
+  </p>
+  <p>
+    A curva espacial \(\vec{r}(t) = (e^{2t},\, t,\, \sin t)\) com \(t \in [0,
+    \ln 2]\) aparece no estudo de uma trajetória espiralada durante manobra
+    orbital. Note que a primeira componente é \(e^{2t}\). Uma reparametrização
+    conveniente seria \(\tau = e^{2t}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o que a reparametrização \(\tau = e^{2t}\)
+    faz com cada componente da curva. Expresse \(t\) em função de \(\tau\),
+    determine o intervalo de \(\tau\) e calcule \(\frac{dt}{d\tau}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a curva reparametrizada \(\vec{r}(t(\tau))\),
+    calcule a derivada \(\frac{d\vec{r}}{d\tau}\) e sua magnitude.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o comprimento da curva usando o parâmetro
+    original: \(L = \int_0^{\ln 2} |\vec{r}'(t)|\, dt\). Compare com a integral
+    em \(\tau\) e verifique a invariância.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A reparametrização \(\tau = e^{2t}\) transforma a primeira
+      componente na identidade \(\tau\) — máxima simplificação. O intervalo:
+      \(t=0 \Rightarrow \tau=1\); \(t=\ln 2 \Rightarrow \tau = e^{2\ln 2} = 4\).
+      Para o comprimento, calcule \(|\vec{r}'(t)| = \sqrt{4e^{4t}+1+\cos^2 t}\)
+      e compare com a versão reparametrizada.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\tau = e^{2t}\) transforma a primeira componente em \(\tau\). \(t
+        = \frac{1}{2}\ln\tau\), \(\frac{dt}{d\tau} = \frac{1}{2\tau}\).
+        Intervalo: \(\tau \in [1, 4]\).
+      </p>
+      <p>
+        (b) \(\vec{r}(t(\tau)) = \left(\tau,\, \frac{\ln\tau}{2},\,
+        \sin\!\left(\frac{\ln\tau}{2}\right)\right)\). \(\frac{d\vec{r}}{d\tau}
+        = \left(1,\, \frac{1}{2\tau},\,
+        \frac{\cos(\frac{\ln\tau}{2})}{2\tau}\right)\). Magnitude: \(\sqrt{1 +
+        \frac{1}{4\tau^2} + \frac{\cos^2(\frac{\ln\tau}{2})}{4\tau^2}} = \sqrt{1
+        + \frac{1+\cos^2(\frac{\ln\tau}{2})}{4\tau^2}}\).
+      </p>
+      <p>
+        (c) \(\vec{r}'(t) = (2e^{2t},\, 1,\, \cos t)\), \(|\vec{r}'(t)| =
+        \sqrt{4e^{4t}+1+\cos^2 t}\). \(L = \int_0^{\ln 2} \sqrt{4e^{4t}+1+\cos^2
+        t}\, dt\). Na reparametrização, \(L = \int_1^4 \sqrt{1 +
+        \frac{1+\cos^2(\frac{\ln\tau}{2})}{4\tau^2}}\, d\tau\). Com \(t =
+        \frac{\ln\tau}{2}\), \(dt = \frac{d\tau}{2\tau}\), e \(e^{2t} = \tau\),
+        \(e^{4t} = \tau^2\): \(\int_1^4 \sqrt{1 +
+        \frac{1+\cos^2(\frac{\ln\tau}{2})}{4\tau^2}}\, d\tau = \int_0^{\ln 2}
+        \sqrt{1 + \frac{1+\cos^2 t}{4e^{4t}}} \cdot 2e^{2t}\, dt = \int_0^{\ln
+        2} \sqrt{4e^{4t} + 1 + \cos^2 t}\, dt\). Ambas são iguais, confirmando a
+        invariância.
+      </p>
+    </div>
+  </details>
+</li>

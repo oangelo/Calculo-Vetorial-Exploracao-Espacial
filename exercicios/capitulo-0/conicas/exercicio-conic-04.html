@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO CONIC-4 [NÍVEL ALFA]</div>
+  <div class="context">
+    ORIGEM: Derivação de Equações Orbitais [PROGRAMA MERCURY, 1961]
+  </div>
+  <p>
+    Já derivamos circunferência e parábola a partir de suas definições
+    geométricas. Agora vamos fazer o mesmo com a <strong>elipse</strong>: o
+    lugar geométrico dos pontos cuja soma das distâncias a dois pontos fixos
+    (os <strong>focos</strong>) é constante. Esta definição é a base das
+    órbitas planetárias descobertas por Kepler.
+  </p>
+  <p>
+    Os focos estão em \(F_1(-3, 0)\) e \(F_2(3, 0)\), e a soma constante
+    das distâncias vale \(2a = 10\) (logo \(a = 5\)).
+  </p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Para um ponto \(P(x, y)\), escreva as distâncias \(PF_1\) e
+    \(PF_2\).<br />
+    (b) Escreva a equação \(PF_1 + PF_2 = 10\).<br />
+    (c) Isole uma das raízes e eleve ao quadrado. Simplifique.<br />
+    (d) Isole a raiz restante e eleve ao quadrado novamente. Chegue à equação
+    \(\frac{x^2}{25} + \frac{y^2}{16} = 1\).<br />
+    (e) Identifique \(b\) a partir da equação resultante e verifique que
+    \(c^2 = a^2 - b^2\) com \(c = 3\).
+  </p>
+  <p>
+    <em>Nota: A álgebra é trabalhosa, mas o resultado é poderoso — você derivou
+    a equação canônica da elipse a partir da definição puramente geométrica.
+    Nos próximos exercícios, aplicaremos a mesma abordagem à hipérbole.</em>
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Após isolar \(\sqrt{(x+3)^2 + y^2} = 10 - \sqrt{(x-3)^2 + y^2}\),
+      eleve ao quadrado. Lembre-se de que \((A - B)^2 = A^2 - 2AB + B^2\).
+      Após a primeira elevação, ainda terá uma raiz — isole-a e eleve novamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <p>
+      <strong>(a) Distâncias:</strong><br />
+      \[PF_1 = \sqrt{(x+3)^2 + y^2}, \quad PF_2 = \sqrt{(x-3)^2 + y^2}\]
+    </p>
+    <p>
+      <strong>(b) Equação:</strong><br />
+      \[\sqrt{(x+3)^2 + y^2} + \sqrt{(x-3)^2 + y^2} = 10\]
+    </p>
+    <p>
+      <strong>(c) Primeira elevação:</strong><br />
+      \[\sqrt{(x+3)^2 + y^2} = 10 - \sqrt{(x-3)^2 + y^2}\]<br />
+      \[(x+3)^2 + y^2 = 100 - 20\sqrt{(x-3)^2 + y^2} + (x-3)^2 + y^2\]<br />
+      \[x^2 + 6x + 9 = 100 - 20\sqrt{(x-3)^2 + y^2} + x^2 - 6x + 9\]<br />
+      \[12x - 100 = -20\sqrt{(x-3)^2 + y^2}\]<br />
+      \[20\sqrt{(x-3)^2 + y^2} = 100 - 12x\]<br />
+      \[5\sqrt{(x-3)^2 + y^2} = 25 - 3x\]
+    </p>
+    <p>
+      <strong>(d) Segunda elevação:</strong><br />
+      \[25[(x-3)^2 + y^2] = (25 - 3x)^2\]<br />
+      \[25(x^2 - 6x + 9 + y^2) = 625 - 150x + 9x^2\]<br />
+      \[25x^2 - 150x + 225 + 25y^2 = 625 - 150x + 9x^2\]<br />
+      \[16x^2 + 25y^2 = 400\]<br />
+      \[\frac{x^2}{25} + \frac{y^2}{16} = 1\]
+    </p>
+    <p>
+      <strong>(e) Verificação:</strong> \(a^2 = 25, b^2 = 16\). Logo
+      \(c^2 = 25 - 16 = 9\), então \(c = 3\). ✓ Os focos estão em
+      \((\pm 3, 0)\), conforme dado.
+    </p>
+  </details>
+</li>

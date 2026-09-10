@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">
+    EXERCÍCIO 9 — TRIÂNGULO E PARAMETRIZAÇÃO NÃO-LINEAR
+  </div>
+  <div class="context">
+    ORIGEM: Laboratório de <span class="censored">Transformações</span> -
+    Pesquisa Interna
+  </div>
+  <p>
+    Nem sempre a região é descrita por uma equação simples. Calcule \(\iint_{R}
+    \ln(1 + x^2 + y^2)\,dx\,dy\) sobre o triângulo com vértices em \((0,0)\),
+    \((2,0)\) e \((2,2)\). Essa região tem fronteiras mistas: uma vertical, uma
+    horizontal e uma oblíqua. A parametrização \(x=u,\; y=vu\) converte a
+    hipotenusa oblíqua em \(v=1\), retangularizando a região. Este tipo de
+    transformação aparece sempre que uma fronteira é uma reta inclinada.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que a transformação \(x=u\), \(y=vu\) leva o
+    triângulo ao retângulo \(0\le u\le 2\), \(0\le v\le 1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o Jacobiano \(\partial(x,y)/\partial(u,v)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a integral resultante e discuta se ela admite
+    fechamento em funções elementares.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A parametrização \(x=u,\;y=vu\) com \(0\le u\le2,\;0\le
+      v\le1\) converte a hipotenusa \(y=x\) em \(v=1\). Calcule o Jacobiano como
+      o produto misto de derivadas parciais.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Uma forma de parametrizar é transformar a base do triângulo em uma faixa
+        de \(u\) e a altura em \(v\). Por exemplo: \[ x = u, \quad y = v \cdot
+        u, \] onde \(0 \le u \le 2\) e \(0 \le v \le 1\). Observe que quando
+        \(v=1\), \(y=u\), coincidindo com a reta \(x=y\) no trecho entre
+        \((0,0)\) e \((2,2)\).
+      </p>
+      <p>
+        O Jacobiano: \[ \left|\frac{\partial(x,y)}{\partial(u,v)}\right| =
+        \begin{vmatrix} 1 &amp; 0 \\ v &amp; u \end{vmatrix} = (1)(u) - (0)(v) =
+        u. \]
+      </p>
+      <p>
+        Assim, \[ \iint_{R} \ln\bigl(1 + x^2 + y^2\bigr)\,dx\,dy =
+        \int_{0}^{2}\!\!\int_{0}^{1} \ln\bigl(1 + u^2 + (v
+        u)^2\bigr)\,u\,dv\,du. \]
+      </p>
+      <p>
+        Temos: \[ \int_{0}^{2}\left[\int_{0}^{1} u \ln\bigl(1 + u^2(1 +
+        v^2)\bigr) \,dv\right] du. \] A integral exata em termos de funções
+        elementares é complexa. Em geral, a solução pode envolver integrais
+        especiais ou séries de expansão, dependendo do nível de detalhamento
+        requerido.
+      </p>
+      <p>
+        Neste contexto, a parametrização cumpre o objetivo de facilitar a
+        redução dimensional e organizar o cálculo, mas o resultado final
+        provavelmente exigirá métodos numéricos ou aproximações especiais.
+      </p>
+      <p>CONCLUSÃO: O formato integral final está corretamente estabelecido.</p>
+    </div>
+  </details>
+</li>

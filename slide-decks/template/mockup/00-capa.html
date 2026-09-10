@@ -1,0 +1,30 @@
+<!-- A1 — Capa (layout fixo, sempre igual) -->
+<section class="title-slide">
+  <div class="classified-banner">&#9733; DOCUMENTO TÉCNICO &#9733;</div>
+  <div class="doc-border"></div>
+  <div class="watermark">MOCKUP</div>
+  <p class="classification-code">DOC. REF: MOCKUP-v2.0</p>
+  <div class="faction-emblem"></div>
+  <div class="title-rule"></div>
+  <h1>Aqui é o título da apresentação</h1>
+  <h3>Cálculo Vetorial</h3>
+  <div class="title-rule"></div>
+  <p class="chapter-meta">Capítulo [N] &middot; [ERA] &middot; [PERÍODO]</p>
+  <div class="classified-footer">
+    AQUI VAI O RODAPÉ DA FACÇÃO — DEPARTAMENTO DIDÁTICO
+  </div>
+</section>
+
+<script>
+  (function () {
+    fetch('../emblemas/emblema-neutral.svg')
+      .then(function (r) {
+        return r.text();
+      })
+      .then(function (svg) {
+        document.querySelectorAll('.faction-emblem').forEach(function (el) {
+          el.innerHTML = svg;
+        });
+      });
+  })();
+</script>

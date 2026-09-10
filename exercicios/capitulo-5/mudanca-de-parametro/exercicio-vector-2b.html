@@ -1,0 +1,66 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Laboratório de Propulsão - Programa Apollo [AGO/1967]
+  </div>
+  <p>
+    A invariância que você observou não vale apenas para comprimento. Ela se
+    estende para integrais de linha escalares — quando acumulamos um campo
+    escalar ao longo da curva. Se o campo representa, por exemplo, a temperatura
+    ao longo de uma trajetória, o calor total absorvido não depende do relógio
+    usado.
+  </p>
+  <p>
+    Considere o campo escalar \(f(x,y) = x + y\) e a curva \(\vec{r}(t) = (\cos
+    t,\, \sin t)\), \(t \in [0,\pi]\) — o semicírculo superior de raio 1. A
+    integral de linha escalar é \(\displaystyle \int_C f\, ds = \int_0^{\pi}
+    f(\vec{r}(t))\, |\vec{r}'(t)|\, dt\).
+  </p>
+  <p>
+    <strong>(a)</strong> Monte e avalie a integral de linha escalar usando a
+    parametrização original \(\vec{r}(t) = (\cos t,\, \sin t)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Reparametrize usando \(t = u(\tau) = \pi\tau\), com
+    \(\tau \in [0,1]\). Monte a mesma integral de linha escalar com o novo
+    parâmetro: \(\displaystyle \int_0^1 f(\vec{r}(u(\tau)))\,
+    |\vec{r}'(u(\tau))| \cdot |u'(\tau)|\, d\tau\).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que ambos os cálculos produzem o mesmo
+    resultado numérico, confirmando a invariância da integral de linha escalar
+    sob reparametrização.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em (a), \(f(\vec{r}(t)) = \cos t + \sin t\) e
+      \(|\vec{r}'(t)| = 1\). A integral fica \(\int_0^{\pi} (\cos t + \sin t)\,
+      dt\). Em (b), a reparametrização \(t = \pi\tau\) escala o intervalo, mas o
+      mecanismo de compensação é o mesmo do comprimento.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(f(\vec{r}(t)) = \cos t + \sin t\). \(|\vec{r}'(t)| = 1\).
+        Integral: \(\int_0^{\pi} (\cos t + \sin t)\, dt = \sen t - \cos
+        t\Big|_0^{\pi} = 0 - (-1) - (0 - 1) = 2\).
+      </p>
+      <p>
+        (b) \(t = \pi\tau\), \(u'(\tau) = \pi\). \(f(\vec{r}(u(\tau))) =
+        \cos(\pi\tau) + \sin(\pi\tau)\). \(|\vec{r}'(u(\tau))| = 1\),
+        \(|u'(\tau)| = \pi\). Integral: \(\int_0^1 (\cos(\pi\tau) +
+        \sin(\pi\tau)) \cdot \pi\, d\tau\).
+      </p>
+      <p>
+        (c) \(\pi \int_0^1 (\cos(\pi\tau) + \sin(\pi\tau))\, d\tau =
+        \pi\left[\frac{\sin(\pi\tau)}{\pi} -
+        \frac{\cos(\pi\tau)}{\pi}\right]_0^1 = \pi\left[\frac{0}{\pi} -
+        \frac{-1}{\pi} - \frac{0}{\pi} + \frac{1}{\pi}\right] = \pi \cdot
+        \frac{2}{\pi} = 2\). Ambos os cálculos dão 2, confirmando a invariância.
+      </p>
+    </div>
+  </details>
+</li>

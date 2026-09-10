@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Simulação de Reentrada – Laboratório Apollo, NOV/1967
+  </div>
+  <p>
+    No tópico anterior, você calculou integrais de linha em campos conservativos
+    e verificou que o resultado depende apenas dos pontos extremos quando o
+    campo é gradiente de uma função. Mas será que isso acontece com qualquer
+    campo — ou apenas com campos "especiais"? Considere o campo \(\vec{F}(x,y) =
+    (2y,\, 2x)\) e os pontos \(A = (0,0)\) e \(B = (1,1)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a integral de linha de \(\vec{F}\) ao longo do
+    caminho retilíneo \(C_1\) de \(A\) a \(B\), parametrizado por \(\vec{r}(t) =
+    (t, t)\) com \(t \in [0,1]\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral de linha ao longo do caminho
+    poligonal \(C_2\): primeiro de \((0,0)\) a \((1,0)\) (segmento horizontal),
+    depois de \((1,0)\) a \((1,1)\) (segmento vertical).
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os dois resultados e comente: o que a igualdade
+    significa fisicamente, em termos de trabalho e trajetória?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para cada caminho, calcule \(\vec{F}(\vec{r}(t)) \cdot
+      \vec{r}'(t)\) e integre em \(t\). No item (c), lembre que trabalho
+      independente do caminho é a assinatura de um campo conservativo.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Em \(C_1\): \(\vec{r}(t) = (t,t)\), \(\vec{r}'(t) =
+        (1,1)\). \(\vec{F} = (2t, 2t)\). \(\vec{F}\cdot\vec{r}' = 2t + 2t =
+        4t\). Integral: \(\int_0^1 4t\,dt = 2t^2\Big|_0^1 = 2\).
+      </p>
+      <p>
+        <strong>(b)</strong> Segmento \((0,0) \to (1,0)\): \(\vec{r}(t) =
+        (t,0)\), \(\vec{r}' = (1,0)\). \(\vec{F} = (0, 2t)\).
+        \(\vec{F}\cdot\vec{r}' = 0\). Integral \(= 0\). Segmento \((1,0) \to
+        (1,1)\): \(\vec{r}(t) = (1,t)\), \(\vec{r}' = (0,1)\). \(\vec{F} = (2t,
+        2)\). \(\vec{F}\cdot\vec{r}' = 2\). Integral \(\int_0^1 2\,dt = 2\).
+        Total: \(0 + 2 = 2\).
+      </p>
+      <p>
+        <strong>(c)</strong> Ambos os caminhos dão o mesmo resultado: trabalho
+        \(= 2\). Isso significa que o trabalho da força \(\vec{F}\) não depende
+        da trajetória escolhida — depende apenas dos pontos de partida e
+        chegada. Este é um indício de que \(\vec{F}\) é conservativo.
+      </p>
+    </div>
+  </details>
+</li>

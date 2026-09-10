@@ -1,0 +1,154 @@
+    <style>
+      /* Estilos básicos para simulação do space-theme durante desenvolvimento */
+      :root {
+        --background-color: #0a1128;
+        --text-color: #e9ecef;
+        --accent-color: #ff5a5f;
+        --link-color: #00b4d8;
+      }
+      body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+      .reveal h1,
+      .reveal h2,
+      .reveal h3 {
+        color: var(--accent-color);
+      }
+      .historical-note {
+        background-color: rgba(255, 90, 95, 0.2);
+        border-left: 4px solid var(--accent-color);
+        padding: 10px;
+        font-style: italic;
+        margin: 20px auto;
+        max-width: 85%;
+      }
+      .math-box {
+        background-color: rgba(0, 180, 216, 0.1);
+        border: 1px solid rgba(0, 180, 216, 0.3);
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 90%;
+      }
+      .spacer {
+        height: 30px;
+      }
+
+      /* Estilos para visualizações */
+      .visualization-container {
+        width: 500px;
+        height: 300px;
+        margin: 0 auto;
+        position: relative;
+        background-color: rgba(10, 17, 40, 0.6);
+        border: 1px solid rgba(79, 195, 247, 0.3);
+        box-shadow: 0 0 20px rgba(79, 195, 247, 0.2);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      canvas {
+        display: block;
+        margin: 0 auto;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        gap: 8px;
+        flex-wrap: wrap; /* Permitir quebra de linha em telas menores */
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .control-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(26, 35, 126, 0.2);
+        border-radius: 4px;
+        padding: 5px;
+        min-width: 120px;
+      }
+
+      .control-label {
+        margin-bottom: 3px;
+        font-size: 0.8em;
+        color: var(--accent-color);
+      }
+
+      .slider-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .slider {
+        flex-grow: 1;
+        margin: 0 3px;
+      }
+
+      .slider-value {
+        min-width: 25px;
+        text-align: center;
+        font-size: 0.7em;
+      }
+
+      button {
+        background-color: rgba(26, 35, 126, 0.5);
+        color: var(--text-color);
+        border: 1px solid rgba(79, 195, 247, 0.5);
+        border-radius: 4px;
+        padding: 4px 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin: 3px;
+        font-size: 0.8em;
+      }
+
+      button:hover {
+        background-color: rgba(79, 195, 247, 0.3);
+      }
+
+      .horizontal-buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+
+      .results-display {
+        background-color: rgba(26, 35, 126, 0.3);
+        border: 1px solid rgba(79, 195, 247, 0.3);
+        border-radius: 4px;
+        padding: 5px 8px;
+        margin-top: 10px;
+        width: 80%;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        font-family: monospace;
+        font-size: 0.7em;
+      }
+
+      .results-title {
+        color: var(--accent-color);
+        font-weight: bold;
+        margin-bottom: 3px;
+        font-size: 0.8em;
+      }
+
+      .results-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 2px 0;
+      }
+
+      .results-label {
+        color: var(--link-color);
+      }
+    </style>

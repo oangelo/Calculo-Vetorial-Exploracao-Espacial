@@ -1,0 +1,55 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Cálculo de Energia com Funções Transcendentais – Apollo IX
+    [03/MAR/1969]
+  </div>
+  <p>
+    O contraste com o campo não-conservativo reforçou a importância da
+    verificação antes de usar o atalho. Agora voltamos a campos conservativos,
+    mas com componentes que envolvem funções exponenciais — a busca pelo
+    potencial exige mais cuidado algébrico. Considere o campo \(\vec{F}(x,y) =
+    (e^x \cos y,\, -e^x \sin y)\) e os pontos \(A = (0, 0)\) e \(B = (\ln 2,\,
+    \pi/3)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique se o campo é conservativo: calcule \(\partial
+    F_1/\partial y\) e \(\partial F_2/\partial x\) e compare.
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre a função potencial integrando a componente que
+    parecer mais simples. Às vezes uma componente é mais fácil de integrar que a
+    outra — escolha a mais conveniente.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha usando o potencial
+    encontrado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A primeira componente \(e^x \cos y\) lembra a derivada
+      parcial de \(e^x \cos y\) em relação a \(x\). Tente integrar \(F_1\) em
+      \(x\) primeiro.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\partial F_1/\partial y = -e^x \sin y\) e \(\partial F_2/\partial
+        x = -e^x \sin y\). São iguais. O campo é conservativo.
+      </p>
+      <p>
+        (b) Integrando \(F_1 = e^x \cos y\) em \(x\): \(\phi = e^x \cos y +
+        g(y)\). Derivando em \(y\): \(\partial\phi/\partial y = -e^x \sin y +
+        g'(y)\). Igualando a \(F_2 = -e^x \sin y\): \(g'(y) = 0\), logo \(g(y) =
+        C\). Tomando \(C = 0\): \(\phi(x,y) = e^x \cos y\).
+      </p>
+      <p>
+        (c) \(\phi(\ln 2, \pi/3) - \phi(0, 0) = e^{\ln 2}\cos(\pi/3) -
+        e^0\cos(0) = 2 \cdot \frac{1}{2} - 1 = 1 - 1 = 0\).
+      </p>
+    </div>
+  </details>
+</li>

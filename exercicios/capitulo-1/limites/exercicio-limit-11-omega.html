@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
+  <div class="context">
+    ORIGEM: Seção de Modelagem Matemática [Programa Skylab, 1974]
+  </div>
+  <p>
+    Até agora, você mostrou que limites existem ou não existem. Mas e se o
+    resultado dependesse de um PARÂMETRO? Este exercício é uma investigação:
+    para quais valores de um parâmetro \(k\) o limite existe?
+  </p>
+  <p>
+    Determinar todos os valores de \(k\) para os quais o limite existe: \[
+    \lim_{(x,y)\to(0,0)} \frac{x^2 y^k}{x^4 + y^2}. \] Para cada valor de \(k\)
+    encontrado, calcular o valor do limite.
+  </p>
+  <p>
+    <strong>(a)</strong> Teste os caminhos \(y = 0\) e \(x = 0\). O limite
+    existe nestes casos? O que isso diz sobre o valor esperado do limite?
+  </p>
+  <p>
+    <strong>(b)</strong> Teste o caminho \(y = x^2\). Para quais valores de
+    \(k\) o limite vale \(0\) ao longo desta parábola?
+  </p>
+  <p>
+    <strong>(c)</strong> Para \(k > 1\), prove que o limite é \(0\) usando a
+    desigualdade AM-GM (\(x^4 + y^2 \geq 2x^2|y|\)).
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        <strong>(a) Eixos:</strong> Ao longo de \(y = 0\): \(\frac{0}{x^4} = 0\)
+        para todo \(x \neq 0\). Ao longo de \(x = 0\): \(\frac{0}{y^2} = 0\)
+        para todo \(y \neq 0\). Se o limite existe, ele deve valer \(0\).
+      </p>
+      <p>
+        <strong>(b) Parábola \(y = x^2\):</strong>
+        \[\frac{x^2 \cdot (x^2)^k}{x^4 + (x^2)^2} = \frac{x^{2+2k}}{2x^4} =
+        \frac{x^{2k-2}}{2}\] Para que o limite seja \(0\) quando \(x \to 0\):
+        precisamos \(2k - 2 > 0\), ou seja, \(k > 1\).
+      </p>
+      <p>
+        <strong>(c) Prova com AM-GM para \(k > 1\):</strong> Usando a
+        desigualdade AM-GM: \(x^4 + y^2 \geq 2x^2|y|\), temos: \[\left|\frac{x^2
+        y^k}{x^4 + y^2}\right| \leq \frac{x^2 |y|^k}{2x^2|y|} =
+        \frac{|y|^{k-1}}{2}\] Quando \((x,y) \to (0,0)\) e \(k > 1\):
+        \(|y|^{k-1} \to 0\), logo o limite é \(0\).
+      </p>
+      <p>
+        <strong>Conclusão:</strong> O limite existe e vale \(0\) se e somente se
+        \(k > 1\). Para \(k = 1\), o caminho \(y = x^2\) dá \(\frac{1}{2}\), e o
+        limite não existe. Para \(k < 1\), o caminho \(y = x^2\) diverge.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Teorema de Green: Definição Formal</h2>
+        <div class="math-box">
+          <p>
+            Seja $D$ uma região plana limitada por uma curva simples, fechada e
+            suave orientada positivamente $C$. Se $P$ e $Q$ têm derivadas
+            parciais contínuas em uma região aberta contendo $D$, então:
+          </p>
+          <p>
+            $$\oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial Q}{\partial
+            x} - \frac{\partial P}{\partial y}\right)\,dA$$
+          </p>
+        </div>
+        <p>
+          O teorema estabelece uma conexão profunda entre integrais de linha e
+          integrais duplas sobre uma região.
+        </p>
+      </section>
+
+      <section>
+        <h2>Interpretação Geométrica</h2>
+        <p>O Teorema de Green revela uma relação fascinante entre:</p>
+        <ul>
+          <li>
+            O trabalho realizado ao longo de um caminho fechado (integral de
+            linha)
+          </li>
+          <li>
+            A soma do "redemoinho" ou rotação dentro da região (integral dupla)
+          </li>
+        </ul>
+        <p>
+          Esta dualidade entre percurso e área é uma manifestação do princípio
+          mais geral de que <em>propriedades globais</em> de um sistema podem
+          estar codificadas em suas <em>fronteiras</em>.
+        </p>
+      </section>
+
+      <!-- Visualização em slide separado -->
+      <section>
+        <h2>Visualização: Teorema de Green</h2>
+        <p>Explore a relação entre a integral de linha e a integral de área</p>
+
+        <div class="visualization-container">
+          <canvas id="greenTheoremCanvas" width="500" height="300"></canvas>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <span class="control-label">Parâmetro a</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="aSlider"
+                class="slider"
+                min="0"
+                max="4"
+                step="0.1"
+                value="2"
+              />
+              <span id="aValue" class="slider-value">2.0</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Parâmetro b</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="bSlider"
+                class="slider"
+                min="0"
+                max="4"
+                step="0.1"
+                value="1"
+              />
+              <span id="bValue" class="slider-value">1.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-buttons">
+          <button id="circlePathBtn">Caminho Circular</button>
+          <button id="userPathBtn">Desenhar Caminho</button>
+          <button id="resetPathBtn">Reiniciar</button>
+        </div>
+
+        <div class="results-display">
+          <div class="results-title">Resultados da Integração</div>
+          <div class="results-row">
+            <span class="results-label">Rotacional (∂Q/∂x - ∂P/∂y):</span>
+            <span id="curlValue">3.0000</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Integral de Linha:</span>
+            <span id="lineIntegralValue">0.0000</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Integral Dupla:</span>
+            <span id="doubleIntegralValue">0.0000</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Significado Físico</h2>
+        <p>Em termos físicos, o Teorema de Green conecta:</p>
+        <ul>
+          <li>
+            <strong>Circulação</strong>: A tendência de um campo vetorial girar
+            ao longo de um caminho fechado
+          </li>
+          <li>
+            <strong>Rotacional</strong>: A medida local de rotação em cada ponto
+            do campo
+          </li>
+        </ul>
+        <p>
+          Quando um campo vetorial representa força, a integral de linha mede o
+          <em>trabalho</em> realizado ao longo do caminho, enquanto a integral
+          dupla quantifica o <em>momento angular</em> distribuído pela região.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contexto Histórico: Corrida Espacial</h2>
+        <div class="historical-note">
+          <p>
+            Durante a década de 1960, tanto engenheiros soviéticos quanto
+            americanos enfrentavam um desafio comum: calcular trajetórias
+            precisas com recursos computacionais limitados.
+          </p>
+          <p>
+            As equipes da NASA utilizavam o Teorema de Green para simplificar
+            cálculos complexos de campos gravitacionais e magnéticos que
+            afetavam as naves espaciais.
+          </p>
+        </div>
+        <p>
+          Na ausência de computadores modernos, teoremas como o de Green
+          permitiam transformar problemas difíceis de integrais de linha em
+          cálculos mais tratáveis de integrais duplas.
+        </p>
+      </section>
+    </section>
+
+    <!-- 2. TEOREMA DE GREEN EM RETÂNGULOS -->
+  </body>
+</html>

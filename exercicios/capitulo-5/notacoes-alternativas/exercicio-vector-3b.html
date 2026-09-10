@@ -1,0 +1,73 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Rotas Alternativas de Ancoragem - Programa Apollo [SET/1968]
+  </div>
+  <p>
+    Sabemos calcular com a forma diferencial tanto em \(\mathbb{R}^2\) quanto em
+    \(\mathbb{R}^3\). Agora vamos usá-la para investigar uma pergunta
+    fundamental: se dois caminhos diferentes conectam os mesmos pontos \(A\) e
+    \(B\), a integral será a mesma?
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (y^2,\; x + y)\) e dois caminhos de
+    \((0,0)\) até \((1,1)\):
+  </p>
+  <p>
+    <strong>Caminho 1:</strong> o segmento retilíneo \(y = x\), com \(x\) de
+    \(0\) a \(1\).
+  </p>
+  <p><strong>Caminho 2:</strong> a poligonal \((0,0) \to (1,0) \to (1,1)\).</p>
+  <p>
+    <strong>(a)</strong> Calcule \(\int_C y^2\,dx + (x+y)\,dy\) pelo Caminho 1,
+    usando \(dy = dx\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a mesma integral pelo Caminho 2, decompondo nos
+    trechos horizontal e vertical.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados e formule uma conclusão: a
+    integral de linha depende do caminho percorrido?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: No Caminho 1, substitua \(y = x\) e \(dy = dx\) na forma
+      diferencial. No Caminho 2, decomponha em trechos: no trecho horizontal
+      \(dy = 0\); no trecho vertical \(dx = 0\). Se os resultados forem
+      diferentes, isso mostra que a integral depende do caminho.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a) Caminho 1</strong> (\(y = x\), \(dy = dx\), \(x\) de \(0\) a
+        \(1\)):
+      </p>
+      <p>
+        \[\int_0^1 \bigl[x^2 + (x + x)\bigr]\,dx = \int_0^1 (x^2 + 2x)\,dx =
+        \left.\frac{x^3}{3} + x^2\right|_0^1 = \frac{1}{3} + 1 = \frac{4}{3}.\]
+      </p>
+      <p><strong>(b) Caminho 2</strong> (poligonal):</p>
+      <p>
+        <em>Trecho \(C_1\)</em>: \((0,0) \to (1,0)\). Aqui \(y = 0\), \(dy =
+        0\): \[\int_{C_1} y^2\,dx + (x+y)\,dy = \int_0^1 0\,dx = 0.\]
+      </p>
+      <p>
+        <em>Trecho \(C_2\)</em>: \((1,0) \to (1,1)\). Aqui \(x = 1\), \(dx =
+        0\): \[\int_{C_2} y^2\,dx + (x+y)\,dy = \int_0^1 (1+y)\,dy = \left.y +
+        \frac{y^2}{2}\right|_0^1 = 1 + \frac{1}{2} = \frac{3}{2}.\]
+      </p>
+      <p>Integral total pelo Caminho 2: \(0 + \dfrac{3}{2} = \dfrac{3}{2}\).</p>
+      <p>
+        <strong>(c)</strong> Os resultados são diferentes: \(\dfrac{4}{3} \neq
+        \dfrac{3}{2}\). Conclusão: a integral de linha
+        <strong>depende do caminho</strong>. Dois trajetos diferentes entre os
+        mesmos pontos podem produzir valores distintos de trabalho — o percurso
+        importa, não apenas a origem e o destino.
+      </p>
+    </div>
+  </details>
+</li>

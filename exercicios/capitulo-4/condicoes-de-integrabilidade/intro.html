@@ -1,0 +1,111 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">23</span> DE MARÇO DE
+    <span class="censored">1965</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">COMPLEXO DE LANÇAMENTO 19 - CAPE CANAVERAL</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">GEMINI-INTEGRAL</span><br /><br />
+    Com o início das operações do Programa Gemini, nossa equipe de analistas foi
+    designada para investigar as <strong>condições de integrabilidade</strong>
+    em domínios tridimensionais. O sucesso dos cálculos de
+    <span class="censored">massa de propelente</span> e
+    <span class="censored">distribuição de carga</span> nos módulos Gemini
+    depende diretamente da garantia de que as integrais triplas envolvidas
+    estejam bem definidas.<br /><br />
+    Os exercícios a seguir foram compilados pelos especialistas do programa
+    <span class="censored">GEMINI</span>, visando garantir a correta aplicação
+    dos critérios de integrabilidade em cálculos de engenharia orbital.
+  </div>
+  <div class="warning-box">
+    Este documento contém dados e técnicas essenciais à
+    <span class="censored">dinâmica orbital</span>. A divulgação indevida pode
+    causar <span class="censored">danos irreversíveis</span>
+    à segurança das operações e comprometer missões de
+    <span class="censored">rendezvous e acoplamento orbital</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: GI-<span class="censored">042</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">3</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: CONDIÇÕES DE INTEGRABILIDADE EM INTEGRAIS TRIPLAS
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Para esta lista, você precisa dominar as
+    <strong>condições de integrabilidade para integrais duplas</strong> do
+    Capítulo 2: a função deve ser limitada, o conjunto de descontinuidades deve
+    ter medida nula e o domínio deve ser limitado. Também deve estar confortável
+    com a
+    <strong>redução de integrais triplas a integrais iteradas</strong> (tópico
+    anterior deste capítulo), incluindo a determinação dos limites de integração
+    em paralelepípedos, esferas, tetraedros e cilindros. Revisitaremos conceitos
+    de Cálculo I como <strong>continuidade</strong> e
+    <strong>limites</strong> em \(\mathbb{R}^3\), o Teorema de Weierstrass
+    (função contínua em compacto é limitada) e a definição de integral como
+    <strong>limite de somas de Riemann</strong>.
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>2. CONDIÇÕES DE INTEGRABILIDADE: AS MESMAS TRÊS EXIGÊNCIAS</strong>
+  </p>
+  <p class="formula-highlight">
+    \[\iiint_{V} f(x,y,z)\,dV \text{ existe se: } f \text{ é limitada, } D_f
+    \text{ tem medida nula, e } V \text{ é limitado.}\]
+  </p>
+  <p>A função \(f(x,y,z)\) é integrável no domínio \(V\) quando:</p>
+  <p>
+    <strong>(i)</strong> \(f\) é <strong>limitada</strong>: existem constantes
+    \(m\) e \(M\) tais que \(m \le f(x,y,z) \le M\) para todo ponto em \(V\).
+  </p>
+  <p>
+    <strong>(ii)</strong> O
+    <strong>conjunto de descontinuidades</strong> \(D_f\) tem
+    <strong>medida nula</strong> em \(\mathbb{R}^3\): pode ser coberto por
+    caixas retangulares de volume total arbitrariamente pequeno. Isso inclui
+    pontos, curvas e superfícies — todos têm volume zero.
+  </p>
+  <p>
+    <strong>(iii)</strong> \(V\) é <strong>limitado</strong>: está contido em
+    alguma esfera de raio finito.
+  </p>
+  <p>
+    Note que a continuidade <strong>não é obrigatória</strong>: basta que as
+    descontinuidades sejam "poucas" (conjunto de medida nula). A função pode ser
+    descontínua em pontos, curvas ou superfícies inteiras sem comprometer a
+    integral, pois esses conjuntos têm volume zero em \(\mathbb{R}^3\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. MEDIDA NULA: A DIMENSÃO IMPORTA</strong></p>
+  <p>
+    A noção de "medida nula" depende da dimensão do espaço. Em \(\mathbb{R}^2\),
+    pontos e curvas têm área zero (medida nula), mas regiões com área positiva
+    não. Em \(\mathbb{R}^3\), pontos, curvas e
+    <strong>superfícies</strong> têm volume zero (medida nula). Isso significa
+    que, em três dimensões, muito mais tipos de descontinuidade são
+    "aceitáveis": um plano inteiro de descontinuidade não impede a integral —
+    ele tem espessura zero e portanto volume zero.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> O Programa Gemini (1965-1966) foi a ponte
+  essencial entre o Programa Mercury e as missões Apollo. Com 12 voos
+  tripulados, o Gemini desenvolveu técnicas críticas como
+  <span class="censored">rendezvous orbital</span>,
+  <span class="censored">atividade extraveicular</span> (Ed White, Gemini IV) e
+  <span class="censored">acoplamento orbital</span> (Gemini VIII). Os cálculos
+  de massa, densidade e volume dos módulos exigiam integrais triplas bem
+  definidas — motivando o estudo rigoroso das condições de integrabilidade.
+</div>

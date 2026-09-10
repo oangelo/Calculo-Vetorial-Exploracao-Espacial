@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Missão Apollo 9 - Comparação de Trajetórias de Acoplamento [REF:
+    <span class="censored">AS-204/MAR-1969</span>]
+  </div>
+  <p>
+    A função comprimento de arco permite comparar trajetórias de forma precisa.
+    Em operações de acoplamento, duas curvas podem conectar os mesmos pontos de
+    partida e chegada — mas qual é mais eficiente? O exercício sintetiza todas
+    as habilidades desenvolvidas ao longo da lista: derivar, simplificar,
+    integrar e interpretar.
+  </p>
+  <p>Duas curvas conectam os pontos \((0,0)\) e \((1,1)\):</p>
+  <p>Curva 1: \(\vec{r}_1(t) = \bigl(t,\, t^2\bigr)\), com \(t \in [0,1]\).</p>
+  <p>
+    Curva 2: \(\vec{r}_2(t) = \bigl(t,\, t^{3/2}\bigr)\), com \(t \in [0,1]\).
+  </p>
+  <p><strong>(a)</strong> Calcule o comprimento \(L_1\) da primeira curva.</p>
+  <p><strong>(b)</strong> Calcule o comprimento \(L_2\) da segunda curva.</p>
+  <p>
+    <strong>(c)</strong> Compare \(L_1\) e \(L_2\). Qual é mais curta? A
+    diferença é grande ou pequena em relação à distância reta entre os pontos?
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\vec{r}_1\,'(t) = (1,\, 2t)\),
+        \(\|\vec{r}_1\,'(t)\| = \sqrt{1+4t^2}\).
+      </p>
+      <p>
+        \[L_1 = \int_0^1 \sqrt{1+4t^2}\, dt = \left[\frac{t}{2}\sqrt{1+4t^2} +
+        \frac{1}{4}\ln\!\bigl(2t+\sqrt{1+4t^2}\bigr)\right]_0^1\]
+      </p>
+      <p>
+        \[= \frac{\sqrt{5}}{2} + \frac{1}{4}\ln(2+\sqrt{5}) \approx 1{,}479\]
+      </p>
+      <p>
+        <strong>(b)</strong> \(\vec{r}_2\,'(t) = (1,\, \frac{3}{2}t^{1/2})\),
+        \(\|\vec{r}_2\,'(t)\| = \sqrt{1 + \frac{9t}{4}}\).
+      </p>
+      <p>Substituição \(u = 1 + \frac{9t}{4}\), \(du = \frac{9}{4}\, dt\):</p>
+      <p>
+        \[L_2 = \int_0^1 \sqrt{1+\frac{9t}{4}}\, dt = \frac{4}{9}\int_1^{13/4}
+        \sqrt{u}\, du = \frac{4}{9} \cdot \frac{2}{3}\, u^{3/2}\bigg|_1^{13/4}\]
+      </p>
+      <p>
+        \[= \frac{8}{27}\!\left(\left(\frac{13}{4}\right)^{3/2} - 1\right) =
+        \frac{8}{27}\!\left(\frac{13\sqrt{13}}{8} - 1\right) = \frac{13\sqrt{13}
+        - 8}{27} \approx 1{,}440\]
+      </p>
+      <p>
+        <strong>(c)</strong> A distância reta entre \((0,0)\) e \((1,1)\) é
+        \(\sqrt{2} \approx 1{,}414\). Temos:
+      </p>
+      <p>
+        \(L_1 \approx 1{,}479 > L_2 \approx 1{,}440 > \sqrt{2} \approx
+        1{,}414\).
+      </p>
+      <p>
+        A curva 2 (\(y = t^{3/2}\)) é mais curta que a curva 1 (\(y = t^2\)).
+        Ambas são mais longas que a reta, como esperado. A diferença entre elas
+        é pequena (cerca de 2,7%), mas em missões espaciais cada fração de
+        propelente importa. Geometricamente, a curva \(y = x^{3/2}\) fica mais
+        próxima da reta que a parábola \(y = x^2\), o que explica seu menor
+        comprimento.
+      </p>
+    </div>
+  </details>
+</li>
