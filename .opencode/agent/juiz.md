@@ -1,7 +1,7 @@
 ---
 description: Verificador rigoroso de exercícios de sala (folhas A4) contra sala/AGENTS.md e sala-styles.css. Emite veredito APROVADO/REPROVADO com issues arquivo:linha e evidência verificável. Use após o implementador ou o corretor.
 mode: subagent
-model: opencode-go/glm-5.2
+model: deepseek/deepseek-v4-flash
 temperature: 0.1
 permission:
   edit: deny

@@ -1,7 +1,7 @@
 ---
 description: Verificador técnico de slides Reveal.js — checagens programáticas rápidas (MathJax, CSS inline, layout via debug-slide.js, estrutura, navegação, classes, canvas). Emite VEREDITO TÉCNICO OK/REPROVADO. Use antes do juiz de qualidade (k3).
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: deepseek/deepseek-v4-flash
 temperature: 0.1
 permission:
   edit: deny
