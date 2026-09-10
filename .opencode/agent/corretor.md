@@ -1,7 +1,7 @@
 ---
 description: Corrige issues apontados pelo juiz (VEREDITO REPROVADO) em exercícios de sala, um a um, sem reescrever fora de escopo. Use após o juiz reprovar um exercício.
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: deepseek/deepseek-v4-flash
 temperature: 0.2
 permission:
   edit: allow

@@ -1,7 +1,7 @@
 ---
 description: Implementa e melhora exercícios de sala (folhas A4 coluna dupla) seguindo sala/AGENTS.md e sala-styles.css. Use para criar ou reescrever exercicio-N.html de um capítulo, um exercício por vez.
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: deepseek/deepseek-v4-flash
 temperature: 0.3
 permission:
   edit: allow
