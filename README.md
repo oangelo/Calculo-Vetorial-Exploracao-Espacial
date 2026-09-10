@@ -55,7 +55,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Integral sobre curvas de classe C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-curvas-c1/index.html)
 - [Integral relativa ao comprimento de arco](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-comprimento-arco/index.html)
 
-6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-6-campos-conservativos/index.html)
+6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-6-campos-conservativos/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-6-campos-conservativos/folha-1/index.html)
 
 - Definição e forma diferencial exata
 - [Integral de linha de campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/integral-linha-campos-conservativos/index.html)
