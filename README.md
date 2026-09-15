@@ -63,7 +63,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Condições de conservação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/condicoes-de-conservacao/index.html)
 - [Conjunto simplesmente conexo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/conjunto-simplesmente-conexo/index.html)
 
-7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-7-teorema-de-green/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-7-teorema-de-green/folha-1/index.html)
+7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-7-teorema-de-green/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-7-teorema-de-green/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-7-teorema-de-green/folha-2/index.html)
 
 - [Para retângulos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-retangulos/index.html)
 - [Para conjuntos com fronteira C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-conjuntos-fronteira-c1/index.html)
