@@ -1,0 +1,51 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-0C</div>
+  <div class="context">
+    ORIGEM: Divisão de <span class="censored">Mecânica Orbital</span> - Análise de Órbita Circular
+  </div>
+  <p>
+    A órbita de um satélite de teste é modelada pela circunferência \(x^2 + y^2 = 25\) (raio 5 unidades). Precisamos encontrar a reta tangente à órbita no ponto \((3, 4)\) para calibrar o sistema de navegação. Note que a circunferência <strong>não é uma função</strong> \(y = f(x)\) — precisamos de uma técnica diferente.
+  </p>
+  <p>
+    Dada a circunferência \(x^2 + y^2 = 25\), encontre a equação da reta tangente no ponto \((3, 4)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Use <strong>derivação implícita</strong>: derive ambos os lados de \(x^2 + y^2 = 25\) em relação a \(x\), lembrando que \(y\) é função de \(x\). Isole \(\frac{dy}{dx}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Avalie \(\frac{dy}{dx}\) no ponto \((3, 4)\) para obter o coeficiente angular da reta tangente.
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a equação da reta tangente. <strong>Verificação:</strong> substitua a equação da reta na equação da circunferência e confirme que o discriminante é zero (a reta toca a curva em exatamente um ponto).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao derivar \(y^2\) implicitamente em relação a \(x\), aplique a Regra da Cadeia: \(\frac{d}{dx}(y^2) = 2y \cdot \frac{dy}{x}\). A derivada \(\frac{dy}{dx}\) representa a inclinação da reta tangente mesmo quando \(y\) não está isolado.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Derivando \(x^2 + y^2 = 25\) implicitamente em relação a \(x\):</p>
+      <p>\[ \frac{d}{dx}(x^2) + \frac{d}{dx}(y^2) = \frac{d}{dx}(25) \]</p>
+      <p>\[ 2x + 2y \cdot \frac{dy}{dx} = 0 \]</p>
+      <p>Isolando:</p>
+      <p>\[ \frac{dy}{dx} = -\frac{x}{y}. \]</p>
+
+      <p><strong>(b)</strong> Avaliando no ponto \((3, 4)\):</p>
+      <p>\[ \frac{dy}{dx}\bigg|_{(3,4)} = -\frac{3}{4}. \]</p>
+      <p>O coeficiente angular da reta tangente é \(-\frac{3}{4}\).</p>
+
+      <p><strong>(c)</strong> A reta tangente no ponto \((3, 4)\) é:</p>
+      <p>\[ y - 4 = -\frac{3}{4}(x - 3) \implies y = -\frac{3}{4}x + \frac{9}{4} + 4 \implies y = -\frac{3}{4}x + \frac{25}{4}. \]</p>
+      <p><strong>Verificação por interseção:</strong> Substituindo \(y = -\frac{3}{4}x + \frac{25}{4}\) em \(x^2 + y^2 = 25\):</p>
+      <p>\[ x^2 + \left(-\frac{3}{4}x + \frac{25}{4}\right)^2 = 25 \]</p>
+      <p>Expandindo e multiplicando por 16:</p>
+      <p>\[ 16x^2 + 9x^2 - 150x + 625 = 400 \]</p>
+      <p>\[ 25x^2 - 150x + 225 = 0 \implies x^2 - 6x + 9 = 0 \]</p>
+      <p>\[ (x - 3)^2 = 0 \implies x = 3 \text{ (raiz dupla).} \]</p>
+      <p><strong>\(\Delta = 0\)</strong>: a reta toca a circunferência em exatamente um ponto. Tangência confirmada.</p>
+    </div>
+  </details>
+</li>

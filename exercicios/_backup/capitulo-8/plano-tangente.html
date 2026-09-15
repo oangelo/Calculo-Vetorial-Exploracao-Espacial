@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso – Planos Tangentes</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      /*  ———  TODO o CSS original do template permanece inalterado  ———  */
+      /*  (para brevidade, omiti aqui; basta copiar do template-espacial-atualizado.html)  */
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ Document Header -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE JULHO DE
+          <span class="censored">1965</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CÁLCULO ORBITAL [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-X</span
+          ><br /><br />
+          Em esforço conjunto entre <span class="censored">NASA</span> e
+          <span class="censored">CONTRAINTELIGÊNCIA</span>, reunimos exercícios
+          fundamentais sobre
+          <span class="censored">planos de aproximação</span> para orientar
+          painéis solares e antenas em órbita baixa. Anotações obtidas dos
+          cadernos do Dr. <span class="censored">██████</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações geométricas cruciais. Divulgação não
+          autorizada resultará em <span class="censored">sanções severas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">3141</span>-T</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+
+      <!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ Conceitual -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: PLANOS TANGENTES EM SUPERFÍCIES
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\nabla F(x_0,y_0,z_0)\cdot(\vec{r}-\vec{r_0})=0\]
+        </p>
+        <p>
+          Para \(F(x,y,z)=0\), o plano tangente em \(\vec{r_0}\) é ortogonal a
+          \(\nabla F\). Se \(z=f(x,y)\), então<br />
+          \[z-f(x_0,y_0)=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0).\]
+        </p>
+      </div>
+
+      <div class="mission-context">
+        No Programa Gemini, a orientação de painéis solares exigia conhecer
+        rapidamente o plano tangente local da superfície orbital simulada para
+        ajustes em tempo real.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Após o sucesso do
+        <span class="censored">Gemini VI-A</span> (1965), estes cálculos
+        permitiram ensaios de <span class="censored">rendezvous orbital</span>,
+        passo decisivo rumo ao pouso lunar.
+      </div>
+
+      <!-- ­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­­ Exercise List -->
+      <main>
+        <ol class="exercise-list">
+          <!-- Série ALFA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Laboratório de Trajetórias – Mercury [31/MAI/1961]
+            </div>
+            <p>
+              Esfera \(x^2+y^2+z^2=25\). Determine o plano tangente em
+              \(P=(3,4,0)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relacione gradiente e componentes sem calcular
+                tudo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(F=x^2+y^2+z^2-25\Rightarrow\nabla F=(2x,2y,2z)\). Em \(P\):
+                \((6,8,0)\).<br />\(6(x-3)+8(y-4)=0\;\Rightarrow\;6x+8y=50\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Centro de Navegação – Vostok [12/AGO/1962]
+            </div>
+            <p>
+              Paraboloide \(z=x^2+y^2\). Encontre o plano tangente em
+              \(P=(1,1,2)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                Derivadas parciais revelam a inclinação local.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(f_x=2x,\;f_y=2y\Rightarrow f_x=f_y=2\). Plano:
+                \(z-2=2(x-1)+2(y-1)\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Relatório Estrutural – Cylinder [REDACTED]
+            </div>
+            <p>Cilindro \(x^2+y^2=9\). Plano tangente em \(P=(3,0,4)\).</p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                Para cilindros, a normal está no plano base.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\nabla F=(2x,2y,0)\Rightarrow(6,0,0).\) Plano:
+                \(6(x-3)=0\Rightarrow x=3.\)
+              </div>
+            </details>
+          </li>
+
+          <!-- Série BETA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Estudo de Reentrada – Gemini [18/JAN/1965]
+            </div>
+            <p>
+              Elipsoide \(\frac{x^2}{4}+\frac{y^2}{9}+\frac{z^2}{16}=1\). Plano
+              tangente em \(P=(2,0,0)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">Propriedades de conservação podem ajudar.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\nabla F=(x/2,\,2y/9,\,z/8)\Rightarrow(1,0,0).\;x=2\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Lab. Materiais Refratários – Gemini [04/ABR/1965]
+            </div>
+            <p>Cone \(z^2=x^2+y^2\). Plano tangente em \(P=(1,1,\sqrt{2})\).</p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">Somente simetria importa.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\nabla
+                F=(2x,2y,-2z)\Rightarrow(2,2,-2\sqrt2).\;2(x-1)+2(y-1)-2\sqrt2(z-\sqrt2)=0\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Centro de Dinâmica – Vostok [03/AGO/1963]
+            </div>
+            <p>Sela \(z=x^2-y^2\). Plano tangente em \(P=(1,1,0)\).</p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">Curvatura negativa pode ajudar.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(f_x=2x,\;f_y=-2y\Rightarrow(2,-2).\;z=2(x-1)-2(y-1)\).
+              </div>
+            </details>
+          </li>
+
+          <!-- Série GAMMA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Cálculo de Acoplamento – Apollo [22/JUN/1968]
+            </div>
+            <p>
+              Toro \(\vec r(u,v)=((3+\cos v)\cos u,(3+\cos v)\sin u,\sin v)\).
+              Plano tangente em \(u=0,\,v=\pi/2\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">Existem simetrias ocultas.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec r_u=(0,3,0),\;\vec r_v=(-1,0,0)\Rightarrow\vec
+                n=(0,0,3).\;P=(3,0,1)\Rightarrow z=1\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Trajetória de Rendezvous – Gemini [09/MAR/1966]
+            </div>
+            <p>
+              \(\vec r(u,v)=(u\cos v,u\sin v,v)\). Plano tangente em
+              \(u=1,\,v=0\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">Observe a hélice formada.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec r_u=(1,0,0),\;\vec r_v=(0,1,1)\Rightarrow\vec
+                n=(0,-1,1).\;P=(1,0,0)\Rightarrow z=y\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Análise de Reentrada – Apollo 8 [21/DEZ/1968]
+            </div>
+            <p>
+              Hiperboloide \(x^2+y^2-z^2=1\). Plano tangente em
+              \(P=(\sqrt2,0,1)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">Simetria axial domina.</div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\nabla F=(2\sqrt2,0,-2).\;2\sqrt2(x-\sqrt2)-2(z-1)=0\).
+              </div>
+            </details>
+          </li>
+
+          <!-- Série OMEGA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Skylab – Sustentação [DEZ/1973]
+            </div>
+            <p>Superfície \(xyz=8\). Plano tangente em \(P=(2,2,2)\).</p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\nabla F=(yz,xz,xy)=(4,4,4).\;x+y+z=6\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Painel Solar Rotativo – Skylab [JAN/1974]
+            </div>
+            <p>
+              Paraboloide elíptica \(z=\dfrac{x^2+4y^2}{4}\). Plano tangente em
+              \(P=(1,1,\tfrac54)\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(f_x=\tfrac{x}{2},\;f_y=2y\Rightarrow(0.5,2).\;z-\tfrac54=0.5(x-1)+2(y-1)\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">ORIGEM: Manobra Apollo-Soyuz [JUL/1975]</div>
+            <p>
+              \(\vec r(u,v)=(uv,u^2-v^2,u+v)\). Plano tangente em \(u=v=1\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULOS [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec r_u=(1,2,1),\;\vec r_v=(1,-2,1)\Rightarrow\vec
+                n=(1,0,-1).\;P=(1,0,2)\Rightarrow z=x+2\).
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">17</span> • DOCUMENTO VX-<span
+          class="censored"
+          >3141</span
+        >-T
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Compartimento Pressurizado - Programa
+    <span class="censored">Gemini</span> [1965-1966]
+  </div>
+  <p>
+    O exercício anterior lidava com um plano assimétrico, mas a região era um
+    tetraedro puro. Agora as fronteiras são mistas: parte plana, parte curva.
+    Isso exige uma composição de ideias — a substituição que simplifica o teto
+    curvo combinada com os limites lineares da base.
+  </p>
+  <p>
+    Considere a região \(D\) limitada por \(x \ge 0\), \(y \ge 0\), \(z \ge 0\),
+    \(x + y \le 2\) e \(z \le 4 - x^2 - y^2\). Calcule \(\iiint_D z\,dV\).
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha uma mudança de variáveis que torne o limite
+    superior \(z = 4 - x^2 - y^2\) em algo simples. Calcule o Jacobiano.
+  </p>
+  <p><strong>(b)</strong> Determine os novos limites e reescreva a integral.</p>
+  <p><strong>(c)</strong> Avalie a integral.</p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Use \(u = x\), \(v = y\), \(w = x^2 + y^2 + z\). Inversa: \(x = u\),
+        \(y = v\), \(z = w - u^2 - v^2\). O limite superior \(z \le 4 - x^2 -
+        y^2\) torna-se \(w \le 4\).
+      </p>
+      <p>
+        Jacobiano: a matriz \(\partial(x,y,z)/\partial(u,v,w)\) tem última linha
+        \((-2u, -2v, 1)\) e as duas primeiras são \((1,0,0)\) e \((0,1,0)\).
+        Logo \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| = 1\).
+      </p>
+      <p>
+        (b) Condições: \(u \ge 0\), \(v \ge 0\), \(u+v \le 2\), \(u^2+v^2 \le w
+        \le 4\) (pois \(z = w - u^2 - v^2 \ge 0\)).
+      </p>
+      <p>
+        Integral: \(\iint_T \int_{u^2+v^2}^{4}(w - u^2 - v^2)\,dw\,du\,dv\).
+      </p>
+      <p>
+        (c) Integração em \(w\): \(\int_{u^2+v^2}^{4}(w - u^2 - v^2)\,dw =
+        \frac{(4-u^2-v^2)^2}{2}\).
+      </p>
+      <p>
+        Sobre o triângulo \(T\): \(u,v \ge 0\), \(u+v \le 2\). Integrando
+        \(\frac{(4-u^2-v^2)^2}{2}\) sobre \(T\):
+      </p>
+      <p>
+        Expandindo: \(\frac{1}{2}(16 - 8u^2 - 8v^2 + u^4 + 2u^2v^2 + v^4)\). Por
+        simetria do triângulo em \(u\) e \(v\): \(\iint_T u^2\,du\,dv = \iint_T
+        v^2\,du\,dv = \frac{4}{3}\), \(\iint_T u^4\,du\,dv = \iint_T v^4\,du\,dv
+        = \frac{16}{10}\), e \(\iint_T u^2v^2\,du\,dv = \frac{16}{45}\).
+      </p>
+      <p>
+        Resultado: \(\frac{1}{2}(16\cdot 2 - 8\cdot\frac{8}{3} + \frac{32}{10} +
+        \frac{32}{45} + \frac{32}{10}) = \frac{1}{2}(32 - \frac{64}{3} +
+        \frac{64}{10} + \frac{32}{45}) = \frac{416}{45}\).
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Análise de Trajetória – Pré-pouso Lunar
+    <span class="censored">███</span> (16/JUL/1969)
+  </div>
+  <p>
+    No tópico anterior, provamos o Teorema de Green para retângulos. Mas as
+    regiões que aparecem em navegação orbital — discos, elipses, calotas — não
+    são retangulares. Antes de calcular qualquer integral, precisamos entender
+    <strong>por que</strong> o teorema continua valendo para essas regiões.
+  </p>
+  <p>
+    Considere a região \(D\) delimitada pela parábola \(y = x^2\) e pela reta
+    \(y = 4\). Essa região é claramente não-retangular.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região \(D\) e identifique, no seu desenho,
+    por que ela não se encaixa na forma de um retângulo. Quais são os pontos de
+    interseção das duas curvas?
+  </p>
+  <p>
+    <strong>(b)</strong> Desenhe um ou dois cortes verticais que dividam \(D\)
+    em sub-regiões que sejam verticalmente simples. Cada sub-região deve ter
+    como fronteira inferior e superior curvas ou segmentos que são funções de
+    \(x\).
+  </p>
+  <p>
+    <strong>(c)</strong> Ao aplicar Green em cada sub-região e somar, as
+    integrais de linha nos cortes internos são percorridas em sentidos opostos
+    pelas sub-regiões vizinhas. Argumente por que essas integrais se cancelam, e
+    explique o que sobra após o cancelamento.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se um trecho de fronteira é percorrido no sentido
+      anti-horário por uma sub-região e no sentido horário pela vizinha, as duas
+      contribuições têm sinais opostos.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) A parábola \(y=x^2\) e a reta \(y=4\) se intersectam em \((-2,4)\) e
+        \((2,4)\). A região é uma "calota" com base plana no topo e fundo curvo
+        — não é retangular porque a fronteira inferior é uma parábola.
+      </p>
+      <p>
+        (b) Um corte vertical único em \(x=0\) já divide \(D\) em duas
+        sub-regiões verticalmente simples: \(D_1 = \{(x,y) : -2 \le x \le 0,\;
+        x^2 \le y \le 4\}\) e \(D_2 = \{(x,y) : 0 \le x \le 2,\; x^2 \le y \le
+        4\}\). Na verdade, a região inteira já é verticalmente simples, mas
+        cortes adicionais ilustram o princípio.
+      </p>
+      <p>
+        (c) Ao somar as integrais de Green sobre \(D_1\) e \(D_2\), a integral
+        no corte \(x=0\) aparece duas vezes: uma vez como fronteira direita de
+        \(D_1\) (percorrida de baixo para cima) e outra como fronteira esquerda
+        de \(D_2\) (percorrida de cima para baixo). Essas duas integrais se
+        cancelam. O que resta é a integral sobre a fronteira exterior de \(D\):
+        a parábola mais o segmento superior.
+      </p>
+    </div>
+  </details>
+</li>

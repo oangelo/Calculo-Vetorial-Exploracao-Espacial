@@ -1,0 +1,35 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Terreno – Apollo 16 [21/ABR/1972]
+  </div>
+  <p>
+    O método de produto vetorial funciona para qualquer parametrização.
+    Vamos praticar com uma superfície cilíndrica, que aparece em modelos
+    de tanques de combustível e módulos de pressurização. Considere o
+    cilindro parametrizado por
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(u,v) = (2\cos u, 2\sin u, v)\]
+  </p>
+  <p>onde \(u \in [0,2\pi)\) e \(v \in \mathbb{R}\).</p>
+  <p><strong>(a)</strong> Calcule \(\vec{r}_u\) e \(\vec{r}_v\) no ponto \((u_0,v_0) = (0, 3)\). Descreva geometricamente as curvas coordenadas nesse ponto.</p>
+  <p><strong>(b)</strong> Determine o produto vetorial \(\vec{r}_u \times \vec{r}_v\) no ponto dado. O vetor normal aponta na direção esperada para um cilindro?</p>
+  <p><strong>(c)</strong> Escreva a equação do plano tangente ao cilindro no ponto \(P = \vec{r}(0,3)\). Verifique que o plano é vertical, como esperado para um cilindro circular.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para um cilindro circular de raio 2, o ponto
+      \((u,v) = (0,3)\) corresponde a \(x = 2\cos 0 = 2\), \(y = 2\sin 0 = 0\),
+      \(z = 3\). A normal deve apontar radialmente, no plano \(xy\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\vec{r}_u = (-2\sin u, 2\cos u, 0)\), \(\vec{r}_v = (0, 0, 1)\). Em \((0,3)\): \(\vec{r}_u(0,3) = (0, 2, 0)\), \(\vec{r}_v(0,3) = (0, 0, 1)\). A curva \(\vec{r}(u,3)\) é um círculo de raio 2 no plano \(z=3\). A curva \(\vec{r}(0,v)\) é uma reta vertical em \(x=2, y=0\).</p>
+      <p><strong>(b)</strong> \(\vec{r}_u \times \vec{r}_v = (2, 0, 0)\). Sim, aponta na direção radial \((1,0,0)\), perpendicular à superfície do cilindro.</p>
+      <p><strong>(c)</strong> Ponto \(P = (2,0,3)\). Plano tangente: \((2,0,0) \cdot (x-2, y, z-3) = 0\), ou seja, \(2(x-2) = 0\), que dá \(x = 2\). Este é um plano vertical, paralelo ao eixo \(z\), como esperado para um cilindro.</p>
+    </div>
+  </details>
+</li>

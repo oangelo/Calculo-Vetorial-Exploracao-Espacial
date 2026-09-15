@@ -1,0 +1,64 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Análise de Falha de Propulsão – Apollo VIII [24/DEZ/1968]
+  </div>
+  <p>
+    Até agora o atalho do potencial funcionou em todos os exercícios. Mas e se
+    tentarmos aplicá-lo a um campo que <strong>não é conservativo</strong>?
+    Considere o campo \(\vec{F}(x,y) = (-y,\, x)\) e os pontos \(A = (1, 0)\) e
+    \(B = (0, 1)\). Vamos calcular a integral por dois caminhos diferentes.
+  </p>
+  <p>
+    <strong>(a)</strong> Teste se o campo é conservativo: calcule \(\partial
+    F_1/\partial y\) e \(\partial F_2/\partial x\). São iguais? Conclua sobre a
+    existência de função potencial.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral ao longo do primeiro caminho: o arco
+    de circunferência unitária de \((1,0)\) a \((0,1)\), parametrizado por
+    \(\vec{r}(t) = (\cos t,\, \sin t)\) com \(t \in [0, \pi/2]\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral ao longo do segundo caminho: o
+    segmento de reta de \((1,0)\) a \((0,1)\), parametrizado por \(\vec{r}(t) =
+    (1-t,\, t)\) com \(t \in [0, 1]\). Compare os resultados: são iguais? Por
+    que isso confirma que o campo não é conservativo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se as derivadas cruzadas não coincidem, não existe função
+      potencial — e a integral depende do caminho. Dois caminhos com o mesmo
+      resultado
+      <em>não</em> garantem conservatividade, mas dois caminhos com resultados
+      <em>diferentes</em> a invalidam.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\partial F_1/\partial y = -1\) e \(\partial F_2/\partial x = 1\).
+        São diferentes. O campo <strong>não é conservativo</strong> — não existe
+        função potencial.
+      </p>
+      <p>
+        (b) \(\vec{r}(t) = (\cos t, \sin t)\), \(\vec{r}'(t) = (-\sin t, \cos
+        t)\). \(\vec{F}(\vec{r}(t)) = (-\sin t, \cos t)\). \(\vec{F} \cdot
+        \vec{r}'(t) = \sin^2 t + \cos^2 t = 1\). \(\int_0^{\pi/2} 1\, dt =
+        \pi/2\).
+      </p>
+      <p>
+        (c) \(\vec{r}(t) = (1-t, t)\), \(\vec{r}'(t) = (-1, 1)\).
+        \(\vec{F}(\vec{r}(t)) = (-t, 1-t)\). \(\vec{F} \cdot \vec{r}'(t) = t + 1
+        - t = 1\). \(\int_0^1 1\, dt = 1\).
+      </p>
+      <p>
+        Os resultados são \(\pi/2 \neq 1\). A integral depende do caminho,
+        confirmando que o campo não é conservativo. O atalho do potencial
+        <strong>não pode ser usado</strong>.
+      </p>
+    </div>
+  </details>
+</li>

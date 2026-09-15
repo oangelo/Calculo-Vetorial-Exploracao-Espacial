@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Setor de Análise Estrutural - Gemini-Titan II [FEV/1965]
+  </div>
+  <p>
+    Identificamos que as condições de integrabilidade em 3D são análogas às de
+    2D. Vamos verificar isso no caso mais simples possível: uma função
+    bem-comportada definida em um domínio limitado e regular.
+  </p>
+  <p>
+    Considere a função \(f(x,y,z) = 2x + yz\) definida no paralelepípedo
+    retangular \(V = [0,3] \times [0,2] \times [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva geometricamente o domínio \(V\). Qual é o
+    formato dessa região? Esboce um diagrama identificando os vértices.
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique se \(f\) é contínua em \(V\). Que tipo de
+    função é \(2x + yz\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique se \(f\) é limitada em \(V\). Determine os
+    valores máximo e mínimo de \(f\) no paralelepípedo.
+  </p>
+  <p>
+    <strong>(d)</strong> Conclua: a integral tripla \(\iiint_{V} f(x,y,z)\,dV\)
+    existe? Justifique invocando as condições verificadas nos itens anteriores.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Funções polinomiais são contínuas em todo
+      \(\mathbb{R}^3\). Se o domínio é fechado e limitado (compacto), o Teorema
+      de Weierstrass garante que \(f\) atinge máximo e mínimo — logo é limitada.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O domínio \(V = [0,3] \times [0,2] \times [0,1]\) é
+        um paralelepípedo retangular com lados 3 (em \(x\)), 2 (em \(y\)) e 1
+        (em \(z\)). Os 8 vértices são \((0,0,0)\), \((3,0,0)\), \((0,2,0)\),
+        \((0,0,1)\), \((3,2,0)\), \((3,0,1)\), \((0,2,1)\) e \((3,2,1)\). O
+        volume é \(3 \times 2 \times 1 = 6\).
+      </p>
+      <p>
+        <strong>(b)</strong> A função \(f(x,y,z) = 2x + yz\) é uma função
+        polinomial. Polinômios são contínuos em todo \(\mathbb{R}^3\), portanto
+        \(f\) é contínua em \(V\). O conjunto de descontinuidades é vazio
+        (medida nula).
+      </p>
+      <p>
+        <strong>(c)</strong> Como \(f\) é contínua e \(V\) é compacto (fechado e
+        limitado), pelo Teorema de Weierstrass \(f\) atinge máximo e mínimo em
+        \(V\). Calculando nos vértices:
+      </p>
+      <p>
+        \(f(0,0,0) = 0\), \(f(3,0,1) = 6\), \(f(3,2,1) = 6+2 = 8\). Verificando
+        todos os vértices: \(f_{\min} = 0\) (na origem) e \(f_{\max} = 8\) (em
+        \((3,2,1)\)). Logo \(0 \le f(x,y,z) \le 8\) em \(V\) — a função é
+        limitada.
+      </p>
+      <p>
+        <strong>(d)</strong> Sim, a integral existe. As três condições são
+        satisfeitas: (1) \(f\) é limitada (\(0 \le f \le 8\)), (2) \(f\) é
+        contínua (conjunto de descontinuidade vazio), e (3) \(V\) é limitado
+        (paralelepípedo de lados finitos). Este é o "caso confortável": função
+        contínua em domínio limitado.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">11</span> DE OUTUBRO DE
+          <span class="censored">1968</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CONTROLE HOUSTON [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-VECTOR</span><br /><br />
+          Com o programa Apollo em plena operação, nosso corpo de analistas
+          identificou um método crucial para otimizar o
+          <span class="censored">cálculo de consumo energético</span> durante
+          manobras orbitais. Quando o campo de forças atuante sobre a nave é
+          conservativo, a integral de linha — que mede o trabalho realizado —
+          pode ser calculada sem parametrizar a trajetória, bastando conhecer a
+          função potencial. Os problemas a seguir foram compilados a partir das
+          anotações sigilosas do Dr. <span class="censored">█████████</span>,
+          especialista em dinâmica orbital da missão
+          <span class="censored">APOLLO VII</span>.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações matemáticas críticas à segurança da
+          nação. Divulgação não autorizado resultará em
+          <span class="censored">sanções imediatas</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: AC-<span class="censored">631</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA EM CAMPOS CONSERVATIVOS
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. TEOREMA FUNDAMENTAL PARA INTEGRAIS DE LINHA</strong></p>
+        <p>
+          No tópico anterior, aprendemos que um campo vetorial \(\vec{F}\) é
+          <em>conservativo</em> quando existe uma função escalar \(\phi\) tal
+          que \(\vec{F} = \nabla\phi\), e que isso pode ser verificado pelo
+          teste das derivadas cruzadas (\(\nabla \times \vec{F} = \vec{0}\)).
+          Agora vamos usar essa função potencial para calcular integrais de
+          linha de forma muito mais eficiente.
+        </p>
+        <p class="formula-highlight">
+          \[ \int_{C} \vec{F} \cdot d\vec{r} = \phi\big(\vec{r}(b)\big) -
+          \phi\big(\vec{r}(a)\big) \]
+        </p>
+        <p>
+          Aqui, \(\vec{r}(a)\) e \(\vec{r}(b)\) são os pontos inicial e final da
+          curva \(C\). Observe: a integral depende apenas dos
+          <strong>extremos</strong> da curva, não da curva em si. Isso significa
+          que <strong>o caminho não importa</strong> — seja um segmento de reta,
+          uma parábola ou qualquer curva suave ligando os mesmos pontos, o
+          resultado será o mesmo.
+        </p>
+        <p>
+          Compare com o método do Capítulo 5 (parametrização), onde era
+          necessário descrever a curva explicitamente e integrar
+          \(\vec{F}(\vec{r}(t)) \cdot \vec{r}'(t)\). O Teorema Fundamental
+          elimina toda essa parametrização.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. INDEPENDÊNCIA DO CAMINHO</strong></p>
+        <p>
+          Dizer que a integral não depende do caminho é uma propriedade
+          poderosa. Formalmente: se \(\vec{F}\) é conservativo e \(C_1\),
+          \(C_2\) são duas curvas quaisquer com o mesmo ponto inicial \(A\) e o
+          mesmo ponto final \(B\), então
+        </p>
+        <p class="formula-highlight">
+          \[ \int_{C_1} \vec{F} \cdot d\vec{r} = \int_{C_2} \vec{F} \cdot
+          d\vec{r} = \phi(B) - \phi(A) \]
+        </p>
+        <p>
+          Isso tem consequências práticas imediatas: para calcular o trabalho de
+          uma força conservativa, basta conhecer o potencial nos extremos. Em
+          particular, podemos escolher o caminho mais conveniente — geralmente
+          um segmento de reta — ou usar diretamente a diferença de potencial sem
+          parametrizar nada.
+        </p>
+        <p>
+          A recíproca também é verdadeira: se a integral de \(\vec{F}\) ao longo
+          de qualquer curva depende apenas dos extremos, então \(\vec{F}\) é
+          conservativo. As propriedades são <strong>equivalentes</strong>.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. INTEGRAL EM CURVAS FECHADAS</strong></p>
+        <p>
+          Uma consequência imediata do Teorema Fundamental: se a curva \(C\) é
+          <strong>fechada</strong> (o ponto inicial coincide com o final), então
+          a integral é sempre zero.
+        </p>
+        <p class="formula-highlight">
+          \[ \oint_{C} \vec{F} \cdot d\vec{r} = \phi(A) - \phi(A) = 0 \]
+        </p>
+        <p>
+          Essa propriedade é útil para detectar campos
+          <em>não</em>-conservativos: se encontramos uma curva fechada ao longo
+          da qual a integral não é zero, o campo certamente não é conservativo.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>4. PROCEDIMENTO PRÁTICO: TESTAR, ENCONTRAR, CALCULAR</strong>
+        </p>
+        <p>
+          Na prática, ao receber um campo e precisar calcular uma integral de
+          linha, seguimos três passos:
+        </p>
+        <p>
+          <strong>(i)</strong> <strong>Testar</strong> se o campo é conservativo
+          (\(\nabla \times \vec{F} = \vec{0}\), ou equivalentemente, as
+          derivadas cruzadas coincidem).
+        </p>
+        <p>
+          <strong>(ii)</strong> <strong>Encontrar</strong> a função potencial
+          integrando componente a componente (método estudado no tópico
+          anterior).
+        </p>
+        <p>
+          <strong>(iii)</strong> <strong>Calcular</strong> a integral pela
+          diferença \(\phi(B) - \phi(A)\).
+        </p>
+        <p>
+          Se o teste do passo (i) falhar, o campo não é conservativo e o atalho
+          não se aplica — será necessário parametrizar o caminho (Capítulo 5).
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante as missões Apollo 7 e 8
+        (outubro e dezembro de 1968), a equipe de voo utilizou a função
+        potencial gravitacional para calcular as manobras de injeção translunar.
+        Em vez de integrar a força gravitacional ao longo de cada segmento da
+        órbita — o que seria computacionalmente inviável no computador de bordo
+        Apollo Guidance Computer com seus modestos 74 KB de memória — os
+        engenheiros da NASA usaram diretamente as diferenças de energia
+        potencial, aplicando o Teorema Fundamental. O princípio foi refinado
+        durante o treinamento da <span class="censored">Apollo 11</span>,
+        culminando nos cálculos de <span class="censored">pouso lunar</span> em
+        julho de 1969.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO AC‑<span
+          class="censored"
+          >631</span
+        >-D
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

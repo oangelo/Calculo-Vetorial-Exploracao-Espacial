@@ -1,0 +1,47 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDE-BETA-3</div>
+  <div class="context">ORIGEM: Trajetória Invertida - GEMINI-7</div>
+  <p>
+    Parábola testada. Agora, o logaritmo — a mesma curva que apareceu na lista
+    de Fubini, mas sob um ângulo diferente. A inversão de \(y = \ln x\) para \(x
+    = e^y\) é a transformação-chave. Note como o limite superior de \(x\) (que
+    era \(2\)) se torna o limite superior de \(y\) (agora \(\ln 2\)): ao trocar
+    a ordem, os valores numéricos mudam, mas a região geométrica é a mesma.
+  </p>
+  <p>
+    Troque a ordem de integração: \[ \int_1^2 \int_0^{\ln x} f(x, y)\,dy\,dx \]
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva a região: \(x \in [1, 2]\), \(y \in [0, \ln
+    x]\). Esboce no plano \(xy\).
+  </p>
+  <p>
+    <strong>(b)</strong> Inverta \(y = \ln x\) para \(x = e^y\) e determine os
+    novos limites.
+  </p>
+  <p><strong>(c)</strong> Escreva a integral na ordem \(dx\,dy\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Quando \(x = 1\), \(y = \ln 1 = 0\). Quando \(x = 2\), \(y
+      = \ln 2\). Logo \(y \in [0, \ln 2]\). Para cada \(y\), \(x\) vai de
+      \(e^y\) (a curva \(x = e^y\)) até \(2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A região é limitada abaixo pelo eixo \(x\) (\(y =
+        0\)), acima pela curva \(y = \ln x\), à esquerda por \(x = 1\) e à
+        direita por \(x = 2\).
+      </p>
+      <p>
+        <strong>(b)</strong> Invertendo: \(y \in [0, \ln 2]\), \(x \in [e^y,
+        2]\).
+      </p>
+      <p><strong>(c)</strong> Nova integral com limites invertidos:</p>
+      <p>\[ \int_0^{\ln 2} \int_{e^y}^2 f(x, y)\,dx\,dy \]</p>
+    </div>
+  </details>
+</li>

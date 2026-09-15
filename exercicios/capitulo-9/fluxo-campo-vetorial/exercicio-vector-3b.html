@@ -1,0 +1,53 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Skylab I — Tubo de conexão entre módulos, fevereiro de 1974
+  </div>
+  <p>
+    Até agora trabalhamos com campos artificiais e superfícies geométricas.
+    Agora vamos aplicar o conceito de fluxo a um problema de
+    <strong>engenharia real</strong>: calcular a <strong>vazão</strong> de ar
+    através de uma tubulação que conecta dois módulos do Skylab.
+  </p>
+  <p>
+    O tubo de conexão tem seção transversal circular de raio \(R = 1\) metro. O
+    ar flui pelo tubo com um perfil de velocidade parabólico (típico de
+    escoamento laminar):
+  </p>
+  <p class="formula-highlight">
+    \[\vec{v}(x,y,z) = \left(0,\; 0,\; 4(1 - x^2 - y^2)\right)\]
+  </p>
+  <p>
+    onde \(x^2 + y^2 \leq 1\). O campo é mais rápido no centro do tubo (\(x = y
+    = 0\): \(v_z = 4\) m/s) e zero nas paredes (\(x^2 + y^2 = 1\): \(v_z = 0\)).
+    A seção transversal de interesse é o disco \(x^2 + y^2 \leq 1\) no plano \(z
+    = 0\), com normal apontando na direção do fluxo.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o vetor normal unitário à seção transversal
+    (disco no plano \(z = 0\)). Mostre que a vazão é dada pela integral de fluxo
+    \(\iint_S \vec{v} \cdot \hat{n} \, dS\).
+  </p>
+  <p>
+    <strong>(b)</strong> Configure a integral usando coordenadas polares. No
+    disco, \(\vec{v} = (0,\, 0,\, 4(1-r^2))\). Expresse o integrando em função
+    de \(r\) e \(\theta\).
+  </p>
+  <p>
+    <strong>(c)</strong> Resolva a integral. O resultado está em m\(^3\)/s — é o
+    <strong>volume de ar por segundo</strong> que passa pela seção do tubo.
+    Compare com o valor que você obteria se a velocidade fosse uniformemente
+    \(4\) m/s em todo o disco (fluxo de \(4 \cdot \pi\)). Por que o fluxo real é
+    menor?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A integral em coordenadas polares é \(\int_0^{2\pi}
+      \int_0^1 4(1-r^2) \cdot r \, dr \, d\theta\). O fator \(r\) vem do
+      elemento de área em coordenadas polares. O perfil parabólico faz com que a
+      velocidade média seja menor que a velocidade máxima — as áreas próximas à
+      parede contribuem pouco.
+    </div>
+  </details>
+</li>

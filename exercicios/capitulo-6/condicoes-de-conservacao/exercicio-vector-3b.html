@@ -1,0 +1,64 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">ORIGEM: Apollo 10 — MAI/1969</div>
+  <p>
+    Assim como em \(\mathbb{R}^2\), o teste em \(\mathbb{R}^3\) também pode
+    falhar. Quando o rotacional não é zero, o campo definitivamente não é
+    conservativo. Mas o rotacional carrega informação geométrica: cada
+    componente não nula indica "rotação" em torno de um eixo.
+  </p>
+  <p>Considere o campo \(\vec{F}(x,y,z) = (z^2,\; x^2,\; y^2)\).</p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional completo \(\nabla \times
+    \vec{F}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Quais componentes do rotacional são não nulas? O que
+    isso significa sobre a conservatividade de \(\vec{F}\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Interprete: em torno de qual eixo (ou eixos) o campo
+    "gira"? Relacione com o significado físico do rotacional que você estudou no
+    Capítulo 1.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O significado físico do rotacional está ligado à rotação
+      local do campo. A componente \(i\) do rotacional mede circulação no plano
+      \(yz\), a componente \(j\) no plano \(xz\), e a componente \(k\) no plano
+      \(xy\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\nabla \times \vec{F}\):</p>
+      <p>
+        Componente \(i\): \(\partial(y^2)/\partial y - \partial(x^2)/\partial z
+        = 2y - 0 = 2y\).
+      </p>
+      <p>
+        Componente \(j\): \(\partial(z^2)/\partial z - \partial(y^2)/\partial x
+        = 2z - 0 = 2z\).
+      </p>
+      <p>
+        Componente \(k\): \(\partial(x^2)/\partial x - \partial(z^2)/\partial y
+        = 2x - 0 = 2x\).
+      </p>
+      <p>Portanto \(\nabla \times \vec{F} = (2y,\; 2z,\; 2x) \neq \vec{0}\).</p>
+      <p>
+        <strong>(b)</strong> Todas as três componentes são não nulas (exceto na
+        origem). Isso significa que \(\vec{F}\) não é conservativo em nenhum
+        domínio.
+      </p>
+      <p>
+        <strong>(c)</strong> A componente \(i = 2y\) indica rotação no plano
+        \(yz\) (em torno do eixo \(x\)); a componente \(j = 2z\) indica rotação
+        no plano \(xz\) (em torno do eixo \(y\)); e a componente \(k = 2x\)
+        indica rotação no plano \(xy\) (em torno do eixo \(z\)). O campo
+        apresenta rotação simultânea em torno dos três eixos.
+      </p>
+    </div>
+  </details>
+</li>

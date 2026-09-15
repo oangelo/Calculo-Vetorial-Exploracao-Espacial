@@ -1,0 +1,53 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">ORIGEM: Skylab I — Painel solar curvo, maio de 1974</div>
+  <p>
+    Em todos os exercícios até aqui, você parametrizou a superfície com
+    \(\vec{r}(u,v)\). Mas quando a superfície é dada como
+    <strong>gráfico de uma função</strong> \(z = g(x,y)\), existe um
+    <strong>atalho</strong> que dispensa a parametrização explícita. O
+    integrando do fluxo pode ser escrito diretamente em termos de \(x\) e \(y\).
+  </p>
+  <p>
+    Para uma superfície \(z = g(x,y)\) com normal apontando para cima, o fluxo
+    de \(\vec{F} = (P,\, Q,\, R)\) é:
+  </p>
+  <p class="formula-highlight">
+    \[\Phi = \iint_D \left(-P\,g_x - Q\,g_y + R\right) dx\,dy\]
+  </p>
+  <p>
+    onde \(D\) é a projeção da superfície no plano \(xy\) e \(g_x\), \(g_y\) são
+    as derivadas parciais de \(g\). (Compare com a fórmula de área de superfície
+    que você viu no Capítulo 8.)
+  </p>
+  <p>
+    O painel solar curvo do Skylab tem a forma \(z = 4 - x^2 - y^2\) acima do
+    plano \(xy\) (ou seja, para \(z \geq 0\)). O campo de partículas carregadas
+    que incide sobre o painel é \(\vec{F}(x,y,z) = (0,\, 0,\, z)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule as derivadas parciais \(g_x\) e \(g_y\) de
+    \(g(x,y) = 4 - x^2 - y^2\). Determine a região \(D\) de integração (projeção
+    da superfície no plano \(xy\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Substitua \(z = g(x,y) = 4 - x^2 - y^2\) no campo e
+    construa o integrando \(-P\,g_x - Q\,g_y + R\). Configure a integral dupla
+    sobre \(D\).
+  </p>
+  <p>
+    <strong>(c)</strong> Resolva a integral (coordenadas polares são naturais
+    aqui). Verifique se a orientação está correta: a normal "para cima"
+    corresponde ao integrando com a fórmula dada acima? Se o painel estivesse
+    orientado "para baixo", como o resultado mudaria?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Aqui \(P = 0\), \(Q = 0\) e \(R = z = g(x,y)\). Portanto o
+      integrando simplifica para \(R = g(x,y) = 4 - x^2 - y^2\). A projeção
+      \(D\) é o disco \(x^2 + y^2 \leq 4\) (onde \(g \geq 0\)). Em coordenadas
+      polares, o integrando fica \(4 - r^2\).
+    </div>
+  </details>
+</li>

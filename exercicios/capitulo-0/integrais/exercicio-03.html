@@ -1,0 +1,34 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 11 [NÍVEL GAMMA]</div>
+  <div class="context">ORIGEM: Seção de Testes Avançados [SET/1962]</div>
+  <p>Calcule a integral:</p>
+  <p>\[\int e^x \sin(x)\,dx\]</p>
+  <p><strong>(a)</strong> Aplique integração por partes com \(u = \sin(x)\),
+  \(dv = e^x\,dx\). Escreva o resultado.</p>
+  <p><strong>(b)</strong> A integral que sobrou é \(\int e^x \cos(x)\,dx\).
+  Aplique partes novamente nela (com \(u = \cos(x)\)).</p>
+  <p><strong>(c)</strong> Você verá que a integral original \(I\) aparece dos
+  dois lados da equação. Resolva essa equação para \(I\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Será necessário aplicar integração por partes duas vezes.
+      Observe também o par \(\int e^x\sin(x)\,dx\) e \(\int e^x\cos(x)\,dx\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Seja \(I = \int e^x \sin(x)\,dx\). Integra-se por partes:
+        <br />
+        \(I = e^x \sin(x) - \int e^x \cos(x)\,dx\).
+      </p>
+      <p>
+        Defina \(J = \int e^x \cos(x)\,dx\) e também resolva por partes. No
+        final, obtém-se:
+      </p>
+      <p>\[I = \frac{e^x}{2}(\sin(x) - \cos(x)) + C.\]</p>
+    </div>
+  </details>
+</li>

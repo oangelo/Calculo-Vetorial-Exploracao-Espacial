@@ -1,0 +1,267 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">15</span> DE NOVEMBRO DE
+    <span class="censored">1962</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE ANÁLISE INTERNACIONAL</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO SINTÉTICO: REVISÃO FINAL DO CAPÍTULO — FUNÇÕES VETORIAIS
+    <br /><br />
+    Esta lista consolida <strong>todos</strong> os principais conceitos do
+    Capítulo 1: <em>função vetorial</em> (trajetórias),
+    <em>limites</em> (singularidades), <em>campo vetorial</em>,
+    <em>derivadas parciais</em>, <em>gradiente</em>, <em>rotacional</em> e
+    <em>divergente</em>. Retoma também fundamentos de <em>Cap 0</em> (norma,
+    produto escalar, produto vetorial, coplanaridade) como base para os cálculos
+    avançados.
+  </div>
+  <div class="warning-box">
+    Difusão não autorizada resultará em
+    <span class="censored">sanções imediatas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: RVW-<span class="censored">0420</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">3</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: REVISÃO DO CAPÍTULO 1</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Ao longo deste capítulo, construímos uma caixa de ferramentas para analisar
+    campos e movimentos no espaço. Começamos com
+    <strong>funções vetoriais</strong> — que descrevem onde algo está e como se
+    move. Depois estudamos <strong>campos vetoriais</strong> — que associam um
+    vetor a cada ponto do espaço (vento, gravidade, força). E finalmente
+    aprendemos a "diferenciar" esses campos: derivadas parciais, gradiente,
+    rotacional e divergente.
+  </p>
+  <p>
+    Esta lista de revisão une tudo. Os exercícios combinam conceitos de Cap 0
+    (álgebra vetorial) com os operadores de Cap 1, mostrando que não são
+    técnicas isoladas — são partes de uma linguagem única para descrever
+    fenômenos físicos. Cada exercício retoma um conceito e o conecta ao próximo.
+  </p>
+</div>
+
+<!-- ========== 1. FUNÇÃO VETORIAL ========== -->
+<div class="concept-definition">
+  <p><strong>1. FUNÇÃO VETORIAL: TRAJETÓRIAS NO ESPAÇO</strong></p>
+  <p>
+    Uma <strong>função vetorial</strong> \(\vec{r}(t) = (x(t), y(t), z(t))\)
+    descreve a posição de um objeto em função de um parâmetro \(t\) (geralmente
+    o tempo). Cada valor de \(t\) produz um ponto no espaço — a curva formada
+    por todos esses pontos é a <strong>trajetória</strong>.
+  </p>
+  <p class="formula-highlight">\[ \vec{r}(t) = (x(t),\; y(t),\; z(t)) \]</p>
+  <p>
+    A <strong>derivada</strong> \(\vec{r}'(t)\) é o vetor velocidade — aponta na
+    direção do movimento, com magnitude igual à rapidez. A
+    <strong>segunda derivada</strong> \(\vec{r}''(t)\) é o vetor aceleração. Em
+    geral, \(\vec{r}'(t) = (x'(t), y'(t), z'(t))\): derivamos componente a
+    componente. Uma reta paramétrica \(\vec{r}(t) = \vec{r}_0 + t\vec{d}\) é o
+    caso mais simples — velocidade constante \(\vec{d}\).
+  </p>
+</div>
+
+<!-- ========== 2. LIMITES ========== -->
+<div class="concept-definition">
+  <p><strong>2. LIMITES E SINGULARIDADES</strong></p>
+  <p>
+    O <strong>limite</strong> de uma função vetorial é calculado componente a
+    componente:
+  </p>
+  <p class="formula-highlight">
+    \[ \lim_{t \to a} \vec{r}(t) = \left(\lim_{t \to a} x(t),\; \lim_{t \to a}
+    y(t),\; \lim_{t \to a} z(t)\right) \]
+  </p>
+  <p>
+    O limite existe se e somente se todos os três limites componentes existem.
+    Quando um campo não está definido em um ponto (por exemplo, \(\vec{F} =
+    \vec{r}/r^3\) na origem, onde \(r = 0\)), dizemos que há uma
+    <strong>singularidade</strong>. A análise do limite ao redor da
+    singularidade revela o comportamento do campo próximo ao ponto crítico —
+    essencial para entender campos gravitacionais e elétricos.
+  </p>
+</div>
+
+<!-- ========== 3. CAMPO VETORIAL ========== -->
+<div class="concept-definition">
+  <p><strong>3. CAMPO VETORIAL: MAPAS DE FORÇA</strong></p>
+  <p>
+    Um <strong>campo vetorial</strong> \(\vec{F}(x,y,z)\) associa um vetor a
+    cada ponto do espaço. Pense em um mapa de vento: cada ponto tem uma seta
+    indicando direção e intensidade da correnteza. Matematicamente:
+  </p>
+  <p class="formula-highlight">
+    \[ \vec{F}(x,y,z) = P(x,y,z)\,\hat{i} + Q(x,y,z)\,\hat{j} +
+    R(x,y,z)\,\hat{k} \]
+  </p>
+  <p>
+    onde \(P\), \(Q\) e \(R\) são funções escalar — as componentes do campo nas
+    direções \(x\), \(y\) e \(z\). Campos importantes: radial \((x, y, z)\)
+    (expansão), rotacional \((-y, x, 0)\) (giro), unitário radial \(\hat{r}\)
+    (direção para fora), gravitacional \(-GM\vec{r}/r^3\) (atração). Os
+    operadores que estudamos a seguir extraem informação escalar ou vetorial
+    desse mapa.
+  </p>
+</div>
+
+<!-- ========== 4. DERIVADAS PARCIAIS ========== -->
+<div class="concept-definition">
+  <p><strong>4. DERIVADAS PARCIAIS: VARIAÇÃO EM UMA DIREÇÃO</strong></p>
+  <p>
+    A <strong>derivada parcial</strong> \(\partial f / \partial x\) mede como a
+    função \(f(x,y,z)\) varia quando apenas \(x\) muda, mantendo \(y\) e \(z\)
+    fixos. É uma "derivada comum" onde tratamos as outras variáveis como
+    constantes:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h, y, z) - f(x,
+    y, z)}{h} \]
+  </p>
+  <p>
+    As regras de derivação (potência, produto, quociente, cadeia) se aplicam
+    normalmente — apenas fixamos uma variável por vez. As derivadas parciais são
+    os tijolos dos três operadores seguintes: gradiente, rotacional e
+    divergente. Uma propriedade importante: se \(f\) tem derivadas parciais
+    contínuas, então as <strong>derivadas mistas</strong> são iguais:
+    \(\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial
+    y \partial x}\) (Teorema de Clairaut). Essa simetria é a base das
+    identidades \(\nabla \times (\nabla f) = \vec{0}\) e \(\nabla \cdot (\nabla
+    \times \vec{A}) = 0\).
+  </p>
+</div>
+
+<!-- ========== 5. GRADIENTE ========== -->
+<div class="concept-definition">
+  <p><strong>5. GRADIENTE: DIREÇÃO DE MAIOR CRESCIMENTO</strong></p>
+  <p>
+    O <strong>gradiente</strong> de uma função escalar \(f(x,y,z)\) é o vetor
+    formado por suas derivadas parciais:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla f = \left(\frac{\partial f}{\partial x},\; \frac{\partial
+    f}{\partial y},\; \frac{\partial f}{\partial z}\right) \]
+  </p>
+  <p>
+    O gradiente aponta na <strong>direção de maior crescimento</strong> de
+    \(f\), e sua magnitude \(|\nabla f|\) é a taxa desse crescimento. Uma
+    propriedade geométrica fundamental: o gradiente é sempre
+    <strong>perpendicular às curvas de nível</strong> (ou superfícies de nível)
+    de \(f\). O operador nabla \(\nabla\) que aparece aqui é o mesmo usado em
+    rotacional e divergente — os três operadores são diferentes "usos" do mesmo
+    símbolo: \(\nabla f\) (aplicado a escalar → vetor), \(\nabla \times
+    \vec{F}\) (aplicado a vetor → vetor), \(\nabla \cdot \vec{F}\) (aplicado a
+    vetor → escalar).
+  </p>
+</div>
+
+<!-- ========== 6. ROTACIONAL ========== -->
+<div class="concept-definition">
+  <p><strong>6. ROTACIONAL: TENDÊNCIA DE ROTAÇÃO</strong></p>
+  <p>
+    O <strong>rotacional</strong> de um campo vetorial \(\vec{F} = (P, Q, R)\)
+    mede a tendência de rotação local do campo. É calculado pelo produto
+    vetorial \(\nabla \times \vec{F}\):
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\
+    \partial/\partial x & \partial/\partial y & \partial/\partial z \\ P & Q & R
+    \end{vmatrix} \]
+  </p>
+  <p>
+    O resultado é um <strong>vetor</strong> cuja direção indica o eixo de
+    rotação e cuja magnitude indica a intensidade. Em 2D (plano \(xy\)), apenas
+    a componente \(\hat{k}\) é relevante: \(\frac{\partial Q}{\partial x} -
+    \frac{\partial P}{\partial y}\). Um campo com rotacional nulo (\(\nabla
+    \times \vec{F} = \vec{0}\)) é chamado <strong>irrotacional</strong>. O campo
+    radial \((x, y, z)\) é irrotacional; o campo \((-y, x, 0)\) tem rotacional
+    \((0, 0, 2)\).
+  </p>
+</div>
+
+<!-- ========== 7. DIVERGENTE ========== -->
+<div class="concept-definition">
+  <p><strong>7. DIVERGENTE: TAXA DE EXPANSÃO</strong></p>
+  <p>
+    O <strong>divergente</strong> de um campo vetorial \(\vec{F} = (P, Q, R)\)
+    mede a taxa de expansão (ou compressão) local do campo. É a soma das
+    derivadas parciais de cada componente em relação à sua variável:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial
+    Q}{\partial y} + \frac{\partial R}{\partial z} \]
+  </p>
+  <p>
+    O divergente é um <strong>escalar</strong> (diferente do rotacional, que é
+    um vetor). Interpretação: \(\nabla \cdot \vec{F} > 0\) indica fonte (o campo
+    se expande), \(\nabla \cdot \vec{F} < 0\) indica sumidouro (o campo
+    comprime), \(\nabla \cdot \vec{F} = 0\) indica campo solenoidal (sem fontes
+    nem sumidouros). O campo \((x, y, z)\) tem divergência 3; o campo \((-y, x,
+    0)\) tem divergência 0; o campo gravitacional \(-GM\vec{r}/r^3\) tem
+    divergência zero fora da massa.
+  </p>
+</div>
+
+<!-- ========== 8. IDENTIDADES ========== -->
+<div class="concept-definition">
+  <p><strong>8. IDENTIDADES VETORIAIS: CONEXÕES PROFUNDAS</strong></p>
+  <p>
+    Os operadores não são independentes — existem identidades fundamentais que
+    conectam gradiente, rotacional e divergente. Duas são essenciais:
+  </p>
+  <p class="formula-highlight">\[ \nabla \times (\nabla f) = \vec{0} \]</p>
+  <p>
+    O rotacional de um gradiente é sempre nulo. Geometricamente: um campo que
+    aponta na "direção de maior crescimento" não pode ter rotação. Prova: cada
+    componente envolve derivadas mistas que se cancelam pelo Teorema de
+    Clairaut.
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \cdot (\nabla \times \vec{A}) = 0 \]
+  </p>
+  <p>
+    A divergência de um rotacional é sempre nula. Um campo rotacional nunca pode
+    ter fontes. Prova: derivadas mistas novamente se cancelam. Essas identidades
+    serão cruciais para teoremas integrais que veremos em capítulos futuros.
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os conceitos revisados
+  aqui aparecem em conjunto em toda operação orbital. As
+  <strong>funções vetoriais</strong> descrevem trajetórias de satélites e
+  mísseis. Os <strong>campos vetoriais</strong> modelam gravidade, vento solar e
+  propulsão. As <strong>derivadas parciais</strong> e o
+  <strong>gradiente</strong> calculam a inclinação de superfícies de potencial —
+  indicando a direção de maior variação de energia. O
+  <strong>rotacional</strong> detecta vórtices em fluxos de propulsão. A
+  <strong>divergência</strong> identifica fontes e sumidouros de energia em
+  campos de força, essencial para verificar a conservação de fluxo gravitacional
+  entre corpos celestes. A identidade \(\nabla \times (\nabla f) = \vec{0}\)
+  garante que campos potenciais não geram rotação — base para a teoria de
+  <span class="censored">campos conservativos em navegação orbital</span>.
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> O cálculo vetorial foi desenvolvido no século
+  XIX por Gibbs, Maxwell, Stokes e outros, unificando conceitos de física em uma
+  linguagem matemática única. As identidades \(\nabla \times \nabla f =
+  \vec{0}\) e \(\nabla \cdot (\nabla \times \vec{A}) = 0\) refletem a simetria
+  das derivadas parciais mistas, provada rigorosamente por Alexis Clairaut em
+  1739. Durante a <span class="censored">corrida espacial dos anos 1960</span>,
+  esses operadores foram implementados nos primeiros computadores de bordo das
+  missões <span class="censored">Mercury, Gemini e Apollo</span>, permitindo
+  cálculos de trajetória em tempo real.
+</div>

@@ -1,0 +1,61 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Laboratório de Mecânica Orbital –
+    <span class="censored">██████</span> (27/JUL/1969)
+  </div>
+  <p>
+    O aluno domina Green para regiões simples e anulares. Agora enfrenta uma
+    região mais complexa: a interseção de dois discos de mesmo raio, formando
+    uma "lente biconvexa". A fronteira é composta por dois arcos circulares com
+    centros diferentes — cada arco precisa ser parametrizado separadamente, com
+    sua orientação correta.
+  </p>
+  <p>
+    Considere os discos \(D_1: x^2 + y^2 \le 4\) e \(D_2: (x-2)^2 + y^2 \le 4\).
+    A região \(D = D_1 \cap D_2\) é a lente formada pela interseção. Calcule a
+    circulação do campo \(\vec{F}(x,y) = (y, -x)\) ao redor da fronteira de
+    \(D\).
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a lente e identifique os dois pontos de
+    interseção dos círculos e os dois arcos que formam a fronteira.
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique Green de forma inteligente: em vez de
+    parametrizar cada arco, calcule a integral dupla do rotacional sobre a
+    região. Qual é o rotacional de \(\vec{F} = (y, -x)\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Use a simetria da região para avaliar a integral dupla.
+    Dica: a área da lente biconvexa pode ser obtida como a soma de dois setores
+    circulares menos dois triângulos, ou diretamente via geometria. Calcule a
+    circulação e interprete o resultado.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Interseção: \(x^2 + y^2 = (x-2)^2 + y^2\) implica \(x = 1\).
+        Substituindo: \(1 + y^2 = 4\), logo \(y = \pm\sqrt{3}\). Os pontos são
+        \((1, \sqrt{3})\) e \((1, -\sqrt{3})\). A fronteira tem o arco do
+        círculo centrado na origem (lado direito) e o arco do círculo centrado
+        em \((2,0)\) (lado esquerdo).
+      </p>
+      <p>
+        (b) \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = -1
+        - 1 = -2\). A circulação é \(-2 \cdot \text{Área}(D)\).
+      </p>
+      <p>
+        (c) Cada setor circular tem ângulo \(2\pi/3\) e raio \(2\). A área de
+        cada setor é \(\frac{1}{2} \cdot 2^2 \cdot \frac{2\pi}{3} =
+        \frac{4\pi}{3}\). Cada triângulo tem base \(2\sqrt{3}\) e altura \(1\),
+        área \(\sqrt{3}\). A área da lente é \(2 \cdot \frac{4\pi}{3} -
+        2\sqrt{3} = \frac{8\pi}{3} - 2\sqrt{3}\). Logo a circulação é
+        \(-2\left(\frac{8\pi}{3} - 2\sqrt{3}\right) = -\frac{16\pi}{3} +
+        4\sqrt{3}\). Circulação negativa — o campo gira no sentido oposto ao
+        percurso anti-horário.
+      </p>
+    </div>
+  </details>
+</li>

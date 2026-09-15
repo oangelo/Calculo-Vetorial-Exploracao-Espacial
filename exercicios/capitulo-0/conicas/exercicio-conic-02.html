@@ -1,0 +1,76 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO CONIC-2 [NÍVEL ALFA]</div>
+  <div class="context">
+    ORIGEM: Seção Teórica de Conicidade [ARQUIVO [REDACTED], 01/OUT/1962]
+  </div>
+  <p>
+    No exercício anterior, derivamos a equação da circunferência a partir da
+    definição de lugar geométrico. Agora vamos fazer o mesmo com a
+    <strong>parábola</strong>: o lugar geométrico dos pontos equidistantes de um
+    ponto fixo (o <strong>foco</strong>) e de uma reta fixa (a
+    <strong>diretriz</strong>). Esta é a definição fundamental — a partir dela,
+    toda a álgebra da parábola segue naturalmente.
+  </p>
+  <p>
+    Considere o foco em \(F(0, 2)\) e a diretriz como a reta \(y = -2\).
+    Um ponto \(P(x, y)\) pertence à parábola se \(PF = PD\), onde \(D\) é
+    a projeção de \(P\) na diretriz.
+  </p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Calcule a distância de \(P(x, y)\) ao foco \(F(0, 2)\).<br />
+    (b) Calcule a distância de \(P(x, y)\) à diretriz \(y = -2\). (Dica:
+    é a distância vertical.)<br />
+    (c) Igualando \(PF = PD\), eleve ao quadrado e simplifique para obter a
+    equação da parábola.<br />
+    (d) Identifique o vértice (ponto médio entre foco e diretriz).
+  </p>
+  <p>
+    <em>Nota: Você acabou de provar que a parábola com foco em \((0, 2)\) e
+    diretriz \(y = -2\) tem equação \(y = \frac{1}{8}x^2\). No próximo exercício,
+    aplicaremos a mesma técnica com uma diretriz vertical.</em>
+  </p>
+  <svg height="400" style="border: 1px solid #999; margin: 10px 0" width="400">
+    <g transform="translate(200,300) scale(25,-25)">
+      <line stroke="gray" stroke-width="0.04" x1="-6" x2="6" y1="0" y2="0"></line>
+      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-4" y2="8"></line>
+      <line stroke="red" stroke-width="0.1" x1="-6" x2="6" y1="-2" y2="-2"></line>
+      <path d="M -6 4.5 L -5 3.125 L -4 2 L -3 1.125 L -2 0.5 L -1 0.125 L 0 0 L 1 0.125 L 2 0.5 L 3 1.125 L 4 2 L 5 3.125 L 6 4.5" fill="none" stroke="blue" stroke-width="0.15"></path>
+      <circle cx="0" cy="0" fill="red" r="0.15"></circle>
+      <circle cx="0" cy="2" fill="red" r="0.15"></circle>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-0.3">V(0, 0)</text>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="0.2" y="-2.3">F(0, 2)</text>
+      <text fill="red" font-size="0.6" transform="scale(1,-1)" x="-5.8" y="1.5">y = −2</text>
+    </g>
+  </svg>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A distância vertical de \(P(x, y)\) à reta \(y = -2\)
+      é \(|y - (-2)| = |y + 2|\). Como estamos acima da diretriz,
+      \(y + 2 \geq 0\), então a distância é simplesmente \(y + 2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <p>
+      <strong>(a) Distância ao foco:</strong><br />
+      \[PF = \sqrt{(x - 0)^2 + (y - 2)^2} = \sqrt{x^2 + (y - 2)^2}\]
+    </p>
+    <p>
+      <strong>(b) Distância à diretriz:</strong><br />
+      \[PD = |y - (-2)| = |y + 2| = y + 2 \quad (\text{pois } y \geq -2)\]
+    </p>
+    <p>
+      <strong>(c) Igualando e simplificando:</strong><br />
+      \[\sqrt{x^2 + (y - 2)^2} = y + 2\]<br />
+      \[x^2 + (y - 2)^2 = (y + 2)^2\]<br />
+      \[x^2 + y^2 - 4y + 4 = y^2 + 4y + 4\]<br />
+      \[x^2 = 8y \implies y = \frac{1}{8}x^2\]
+    </p>
+    <p>
+      <strong>(d) Vértice:</strong> ponto médio entre \(F(0, 2)\) e a diretriz
+      \(y = -2\): \(V(0, 0)\).
+    </p>
+  </details>
+</li>

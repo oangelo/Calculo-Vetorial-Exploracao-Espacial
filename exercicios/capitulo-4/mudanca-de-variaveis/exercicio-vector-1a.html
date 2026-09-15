@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Análise de Volume de Reservatório - Programa
+    <span class="censored">Gemini</span> [1965]
+  </div>
+  <p>
+    Você já mudou variáveis em integrais duplas (Cap 3), onde o Jacobiano 2×2
+    media a deformação de área. Estendemos agora para três dimensões — o
+    Jacobiano 3×3 medirá a deformação de volume. A mecânica é a mesma: trocar
+    coordenadas difíceis por coordenadas simples, pagando o preço do fator
+    Jacobiano.
+  </p>
+  <p>
+    Considere a região \(D\) no primeiro octante limitada pelos planos
+    coordenados e pelo plano \(x + y + z = 6\). Essa região modela um
+    reservatório tetraédrico do módulo orbital. Calcule \(\iiint_D
+    1\,dx\,dy\,dz\) usando a transformação \(u = x\), \(v = y\), \(w = x + y +
+    z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce o tetraedro \(D\) e verifique que a
+    transformação acima converte o plano inclinado \(x + y + z = 6\) no plano
+    horizontal \(w = 6\). Encontre a transformação inversa: expresse \(x\),
+    \(y\), \(z\) em função de \(u\), \(v\), \(w\).
+  </p>
+  <p>
+    <strong>(b)</strong> Construa a matriz jacobiana 3×3
+    \(\frac{\partial(x,y,z)}{\partial(u,v,w)}\) e calcule seu determinante.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine os novos limites de integração, reescreva a
+    integral em \((u,v,w)\) e avalie.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: No primeiro octante, \(x \ge 0\), \(y \ge 0\), \(z \ge
+      0\). Como \(z = w - u - v\), que condição isso impõe sobre \(w\), \(u\) e
+      \(v\)? Fixe \(w\) e pense no domínio de \((u,v)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) O tetraedro \(D\) tem vértices em \((0,0,0)\), \((6,0,0)\),
+        \((0,6,0)\) e \((0,0,6)\). A inversa é \(x = u\), \(y = v\), \(z = w - u
+        - v\). Na fronteira \(x + y + z = 6\) temos \(w = 6\).
+      </p>
+      <p>
+        (b) A matriz jacobiana é \[ \frac{\partial(x,y,z)}{\partial(u,v,w)} =
+        \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ -1 & -1 & 1 \end{pmatrix}, \]
+        que é triangular inferior com determinante \(1 \cdot 1 \cdot 1 = 1\).
+      </p>
+      <p>
+        (c) As condições do primeiro octante ficam \(u \ge 0\), \(v \ge 0\), \(w
+        - u - v \ge 0\) e \(w \le 6\), ou seja: \[0 \le w \le 6, \quad 0 \le u
+        \le w, \quad 0 \le v \le w - u.\] A integral: \[ \iiint_D 1\,dx\,dy\,dz
+        = \int_{0}^{6}\!\int_{0}^{w}\!\int_{0}^{w-u} 1 \cdot |1|\,dv\,du\,dw =
+        \int_{0}^{6}\!\int_{0}^{w}(w - u)\,du\,dw. \] Integrando em \(u\):
+        \(\int_{0}^{w}(w - u)\,du = \frac{w^2}{2}\). Integrando em \(w\):
+        \(\int_{0}^{6}\frac{w^2}{2}\,dw = \frac{6^3}{6} = 36\).
+      </p>
+    </div>
+  </details>
+</li>

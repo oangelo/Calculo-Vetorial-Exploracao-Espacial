@@ -1,0 +1,192 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">20</span> DE JULHO DE
+    <span class="censored">1969</span>
+    <br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE CONTROLE DA MISSÃO</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE ANÁLISE: PROJETO <span class="censored">APOLLO-11</span>
+    <br /><br />
+    Durante a alunissagem, nossa equipe de engenharia identificou padrões
+    inesperados nos campos aerodinâmicos lunares. Antes de calcular qualquer
+    coisa, precisamos entender uma pergunta fundamental: se colocarmos uma
+    pequena roda de pá nesse fluxo, ela gira? Em que direção? Com que
+    intensidade? O conceito que responde a essa pergunta é o
+    <strong>rotacional</strong>.
+  </div>
+  <div class="warning-box">
+    Este documento contém informações matemáticas consideradas vitais para a
+    segurança nacional. A divulgação não autorizada deste material pode resultar
+    em <span class="censored">graves consequências</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: AP-<span class="censored">1969</span>-R</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">3</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: ROTACIONAL</div>
+
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Um campo vetorial pode fazer mais do que empurrar — ele pode <em>girar</em>.
+    Imagine uma pequena pá de moinho colocada em um rio: se a água flui mais
+    rápido de um lado do que do outro, a pá gira. Essa tendência de rotação
+    local é exatamente o que o <strong>rotacional</strong> mede.
+  </p>
+  <p>
+    O rotacional \(\nabla \times \vec{F}\) é um <strong>vetor</strong> que
+    resume, em cada ponto do espaço, a intensidade e o eixo de rotação de um
+    campo. Se o rotacional é zero, o campo é <em>irrotacional</em> — não gira.
+    Se é não-zero, existe uma tendência local de rotação. Este conceito é
+    fundamental para entender vórtices em fluidos, campos magnéticos e a
+    conservatividade de forças.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>1. TORQUE: A ORIGEM FÍSICA DA ROTAÇÃO</strong></p>
+  <p>
+    Antes da fórmula, precisamos entender o que causa rotação. Quando uma força
+    \(\vec{F}\) é aplicada em um ponto cuja posição relativa ao pivô é
+    \(\vec{r}\), o <strong>torque</strong> (ou momento) é:
+  </p>
+  <p class="formula-highlight">\[ \vec{\tau} = \vec{r} \times \vec{F} \]</p>
+  <p>
+    Se \(\vec{\tau} \neq \vec{0}\), o objeto gira. A direção de \(\vec{\tau}\)
+    indica o eixo de rotação (regra da mão direita). Se \(\vec{\tau} =
+    \vec{0}\), a força não causa rotação — ela passa pelo pivô ou é paralela ao
+    braço. O rotacional aplica essa mesma ideia a um campo vetorial: em cada
+    ponto, a diferença de força entre lados opostos de uma pá infinitesimal cria
+    torque local.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>2. ROTAÇÃO LOCAL: A PÁ DE MOLINHO</strong></p>
+  <p>
+    Para saber se um campo gira ao redor de um ponto, podemos fazer uma análise
+    qualitativa simples. Coloque uma pequena pá de moinho nesse ponto e
+    pergunte: o campo empurra a pá no sentido de giro?
+  </p>
+  <p>
+    Considere uma pá orientada ao longo de um círculo centrado no ponto. O vetor
+    tangente ao círculo é \(\hat{t}\). Se o campo tem componente tangente
+    não-nula — ou seja, se \(\vec{F} \cdot \hat{t} \neq 0\) — então o campo
+    empurra a pá ao longo do círculo e causa rotação. Se o campo é puramente
+    radial (aponta para dentro ou para fora), \(\vec{F} \cdot \hat{t} = 0\) e a
+    pá não gira.
+  </p>
+  <p>
+    Exemplo: o campo \(\vec{F} = (-y, x, 0)\) é tangente a círculos centrados na
+    origem — \(\vec{F} \cdot \hat{t} > 0\) em todo ponto. A pá gira
+    continuamente. Já o campo \(\vec{F} = (x, y, 0)\) é radial — \(\vec{F} \cdot
+    \hat{t} = 0\) — e a pá não gira. O rotacional formaliza essa intuição em uma
+    fórmula precisa.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>3. FÓRMULA DO ROTACIONAL: O DETERMINANTE FORMAL</strong></p>
+  <p>
+    O rotacional de um campo \(\vec{F} = P\hat{i} + Q\hat{j} + R\hat{k}\) é
+    calculado pela fórmula compacta, análoga ao produto vetorial:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \times \vec{F} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\
+    \frac{\partial}{\partial x} & \frac{\partial}{\partial y} &
+    \frac{\partial}{\partial z} \\ P & Q & R \end{vmatrix} = \begin{pmatrix}
+    \frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} \\[6pt]
+    \frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} \\[6pt]
+    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \end{pmatrix}
+    \]
+  </p>
+  <p>
+    Cada componente do rotacional combina derivadas parciais <em>cruzadas</em>:
+    a componente \(k\) usa \(\frac{\partial Q}{\partial x}\) (como \(Q\) varia
+    na direção \(x\)) e \(\frac{\partial P}{\partial y}\) (como \(P\) varia na
+    direção \(y\)). É o \"cisalhamento\" entre as direções que gera rotação. A
+    estrutura do determinante é idêntica à do produto vetorial — se você domina
+    \(\vec{a} \times \vec{b}\), o rotacional é uma generalização imediata.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p>
+    <strong>4. INTERPRETAÇÃO DO RESULTADO: DIREÇÃO, SENTIDO E MAGNITUDE</strong>
+  </p>
+  <p>O rotacional é um <strong>vetor</strong> com três informações:</p>
+  <p>
+    <strong>Direção:</strong> o eixo de rotação. Se \(\nabla \times \vec{F} =
+    (0, 0, 2)\), a rotação ocorre no plano \(xy\), em torno do eixo \(z\).
+  </p>
+  <p>
+    <strong>Sentido:</strong> pela regra da mão direita — o polegar aponta na
+    direção do rotacional, os dedos indicam o sentido de giro.
+  </p>
+  <p>
+    <strong>Magnitude:</strong> a intensidade da rotação. Um rotacional de
+    magnitude 2 indica rotação \"duas vezes mais intensa\" que um de magnitude
+    1.
+  </p>
+  <p>
+    Se \(\nabla \times \vec{F} = \vec{0}\), o campo é
+    <strong>irrotacional</strong>: não há rotação local em nenhum ponto. Isso
+    não significa campo fraco — um campo pode ser intenso e ainda assim
+    irrotacional (como o campo gravitacional radial).
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>5. IDENTIDADE FUNDAMENTAL: DIVERGENTE DO ROTACIONAL</strong></p>
+  <p>
+    Uma identidade importante do cálculo vetorial afirma que o divergente do
+    rotacional de qualquer campo é sempre zero:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \cdot (\nabla \times \vec{F}) = 0 \]
+  </p>
+  <p>
+    onde \(\nabla \cdot \vec{G} = \frac{\partial G_x}{\partial x} +
+    \frac{\partial G_y}{\partial y} + \frac{\partial G_z}{\partial z}\) é o
+    operador divergente. A prova usa o Teorema de Schwarz: ao expandir os seis
+    termos do divergente do rotacional, as derivadas mistas se cancelam dois a
+    dois. A consequência física: não é possível criar uma \"fonte\" de rotação —
+    a rotação que entra em um volume deve sair.
+  </p>
+</div>
+
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> O rotacional aparece em
+  toda análise de fluxo e rotação em sistemas espaciais. O
+  <strong>campo de velocidades</strong> de uma órbita circular tem rotacional
+  proporcional à velocidade angular — o rotacional é o \"vetor de vorticidade\"
+  que quantifica o giro. O <strong>campo gravitacional</strong> é irrotacional
+  (rotacional zero), uma propriedade fundamental dos campos conservativos que
+  garante que a gravidade não \"gira\" objetos. Em aerodinâmica, o rotacional do
+  campo de velocidades do ar ao redor de uma cápsula espacial indica a presença
+  de <span class="censored">vórtices perigosos</span> durante a reentrada. A
+  identidade \(\nabla \cdot (\nabla \times \vec{F}) = 0\) é usada para verificar
+  consistência de modelos de
+  <span class="censored">campos eletromagnéticos em blindagens</span>.
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> O rotacional foi formalizado por James Clerk
+  Maxwell em 1873, no contexto do eletromagnetismo — as equações de Maxwell usam
+  extensivamente \(\nabla \times \vec{E}\) e \(\nabla \times \vec{B}\). Durante
+  a Segunda Guerra Mundial e a subsequente corrida espacial, o rotacional
+  tornou-se essencial para a aerodinâmica de mísseis e a análise de vórtices em
+  túneis de vento. O programa Apollo utilizou simulações computacionais baseadas
+  no rotacional para prever o comportamento aerodinâmico durante a
+  <span class="censored">reentrada atmosférica</span>, contribuindo para o
+  <span class="censored">sucesso da missão Apollo 11</span>.
+</div>

@@ -1,0 +1,47 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Skylab I — Antena parabólica, agosto de 1973
+  </div>
+  <p>
+    No exercício anterior, a superfície era plana e a normal era constante — o
+    que simplificou bastante a integral. Agora vamos enfrentar uma
+    <strong>superfície curva</strong>, onde o vetor normal muda de ponto a
+    ponto. A ferramenta principal já é familiar: a parametrização
+    \(\vec{r}(u,v)\) e o produto vetorial \(\vec{r}_u \times \vec{r}_v\) do
+    Capítulo 8.
+  </p>
+  <p>
+    A antena parabólica do Skylab tem a forma do paraboloide \(z = x^2 + y^2\)
+    cortado pelo plano \(z = 1\) — ou seja, a superfície satisfaz \(0 \leq z
+    \leq 1\). O campo de partículas solares que atinge a antena é constante:
+    \(\vec{F} = (0,\, 0,\, 1)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize a superfície usando coordenadas polares no
+    plano \(xy\): \(\vec{r}(r,\theta) = (r\cos\theta,\, r\sin\theta,\, r^2)\)
+    com \(0 \leq r \leq 1\) e \(0 \leq \theta \leq 2\pi\). Calcule o produto
+    vetorial \(\vec{r}_r \times \vec{r}_\theta\).
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse o campo \(\vec{F}\) na parametrização (neste
+    caso, é constante) e calcule o produto escalar \(\vec{F} \cdot (\vec{r}_r
+    \times \vec{r}_\theta)\). Observe que o resultado depende dos parâmetros — a
+    normal varia com a posição.
+  </p>
+  <p>
+    <strong>(c)</strong> Resolva a integral dupla no domínio \(0 \leq r \leq
+    1\), \(0 \leq \theta \leq 2\pi\). Compare com o resultado do exercício
+    anterior (o disco). Por que o fluxo é diferente, se o campo é o mesmo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para o paraboloide, as derivadas parciais são \(\vec{r}_r
+      = (\cos\theta,\, \sin\theta,\, 2r)\) e \(\vec{r}_\theta = (-r\sin\theta,\,
+      r\cos\theta,\, 0)\). O produto vetorial terá componente \(z\) igual a
+      \(r\), que é positiva — a normal aponta "para cima". O campo \(\vec{F} =
+      (0,0,1)\) só "vê" essa componente \(z\).
+    </div>
+  </details>
+</li>

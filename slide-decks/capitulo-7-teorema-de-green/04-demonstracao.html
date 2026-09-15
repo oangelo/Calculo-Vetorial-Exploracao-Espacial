@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Fronteiras C¹: Definição</h2>
+        <p>
+          Uma curva é classificada como <strong>C¹</strong> quando suas
+          derivadas são contínuas, garantindo suavidade sem "quinas" ou
+          descontinuidades.
+        </p>
+        <p>
+          Formalmente, uma curva parametrizada $\vec{r}(t) = (x(t), y(t))$ para
+          $a \leq t \leq b$ é de classe C¹ se:
+        </p>
+        <div class="math-box">
+          <ol>
+            <li>$x(t)$ e $y(t)$ são funções contínuas em $[a,b]$</li>
+            <li>$x'(t)$ e $y'(t)$ existem e são contínuas em $[a,b]$</li>
+            <li>
+              $x'(t)$ e $y'(t)$ não se anulam simultaneamente (garante que a
+              curva não tenha "paradas")
+            </li>
+          </ol>
+        </div>
+        <p>
+          Esta condição é fundamental para a aplicabilidade do Teorema de Green
+          em regiões gerais.
+        </p>
+      </section>
+
+      <section>
+        <h2>Teorema de Green para Regiões Gerais</h2>
+        <p>
+          O teorema se generaliza para qualquer região simplesmente conexa (sem
+          "buracos") limitada por uma curva C¹:
+        </p>
+        <div class="math-box">
+          <p>
+            $$\oint_C (P\,dx + Q\,dy) = \iint_D \left(\frac{\partial Q}{\partial
+            x} - \frac{\partial P}{\partial y}\right)\,dA$$
+          </p>
+        </div>
+        <p>
+          A demonstração envolve particionar a região em retângulos pequenos e
+          aplicar o caso retangular já comprovado, com ajustes nos limites.
+        </p>
+      </section>
+
+      <section>
+        <h2>Regiões Complexas e Aplicações</h2>
+        <p>
+          O verdadeiro poder do Teorema de Green se revela ao lidar com regiões
+          de geometria complexa:
+        </p>
+        <ul>
+          <li>Cálculo de áreas de regiões com fronteiras curvas</li>
+          <li>Determinação de centros de massa de placas não uniformes</li>
+          <li>Avaliação de fluxos em sistemas hidrodinâmicos</li>
+        </ul>
+        <p>
+          A flexibilidade para trabalhar com fronteiras curvilíneas é essencial
+          para modelar fenômenos físicos realistas.
+        </p>
+      </section>
+
+      <!-- Visualização em slide separado -->
+      <section>
+        <h2>Visualização: Fronteiras C¹</h2>
+        <p>
+          Experimente com diferentes tipos de fronteiras e observe suas
+          propriedades
+        </p>
+
+        <div class="visualization-container">
+          <canvas id="c1BoundaryCanvas" width="500" height="300"></canvas>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <span class="control-label">Parâmetro a</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="aParamSlider"
+                class="slider"
+                min="1"
+                max="6"
+                step="0.1"
+                value="4"
+              />
+              <span id="aParamValue" class="slider-value">4.0</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Parâmetro b</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="bParamSlider"
+                class="slider"
+                min="1"
+                max="6"
+                step="0.1"
+                value="3"
+              />
+              <span id="bParamValue" class="slider-value">3.0</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Rotação</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="rotationSlider"
+                class="slider"
+                min="0"
+                max="90"
+                step="5"
+                value="0"
+              />
+              <span id="rotationValue" class="slider-value">0°</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-buttons">
+          <button id="ellipseBoundaryBtn">Curva Elíptica</button>
+          <button id="customBoundaryBtn">Curva Personalizada</button>
+        </div>
+
+        <div class="results-display">
+          <div class="results-title">Análise da Fronteira</div>
+          <div class="results-row">
+            <span class="results-label">Área:</span>
+            <span id="boundaryArea">0.0000</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Fronteira Suave (C¹)?</span>
+            <span id="boundarySmooth">Sim (C∞)</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Integral de Linha:</span>
+            <span id="boundaryLineIntegral">0.0000</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contexto Histórico: Desafios Computacionais</h2>
+        <div class="historical-note">
+          <p>
+            Durante o Programa Apollo, engenheiros enfrentavam o desafio de
+            calcular trajetórias de reentrada que envolviam regiões curvilíneas
+            da atmosfera terrestre.
+          </p>
+          <p>
+            Os computadores de bordo do Apollo, com apenas 32KB de ROM, não
+            podiam armazenar tabelas extensas de integrais. O Teorema de Green
+            permitia simplificar cálculos de trajetória em algoritmos mais
+            compactos.
+          </p>
+        </div>
+        <p>
+          A diferença entre cálculos bem-sucedidos ou catastróficos durante a
+          reentrada podia ser determinada por aproximações precisas baseadas
+          nestes teoremas matemáticos.
+        </p>
+      </section>
+
+      <section>
+        <h2>Exercício: Acoplamento Soyuz-Apollo</h2>
+        <p>
+          Durante a missão Soyuz-Apollo de 1975, engenheiros soviéticos e
+          americanos precisavam calcular trajetórias de acoplamento em condições
+          variáveis. Considerando um campo de força:
+        </p>
+        <p>$$\vec{F}(x,y) = (e^y\sin x, e^y\cos x)$$</p>
+        <p>
+          Determine o trabalho realizado ao mover um objeto ao longo da
+          fronteira elíptica:
+        </p>
+        <p>$$\frac{x^2}{9} + \frac{y^2}{4} = 1$$</p>
+        <p>
+          <em
+            >Este problema ilustra a importância do Teorema de Green em
+            trajetórias curvilíneas.</em
+          >
+        </p>
+      </section>
+    </section>
+
+    <!-- 4. TEOREMA DE STOKES NO PLANO -->
+  </body>
+</html>

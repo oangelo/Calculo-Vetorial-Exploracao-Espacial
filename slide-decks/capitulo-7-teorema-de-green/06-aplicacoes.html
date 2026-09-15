@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Teorema da Divergência no Plano</h2>
+        <div class="math-box">
+          <p>
+            Para um campo vetorial $\vec{F} = (P, Q)$ com derivadas parciais
+            contínuas em uma região plana $D$ com fronteira suave $C$:
+          </p>
+          <p>
+            $$\oint_C \vec{F} \cdot \vec{n} \, ds = \iint_D \nabla \cdot \vec{F}
+            \, dA$$
+          </p>
+          <p>
+            Onde $\vec{n}$ é o vetor normal unitário exterior a $C$ e $\nabla
+            \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial
+            Q}{\partial y}$ é a divergência de $\vec{F}$.
+          </p>
+        </div>
+        <p>
+          Este teorema relaciona o fluxo através da fronteira com a "expansão"
+          do campo no interior da região.
+        </p>
+      </section>
+
+      <section>
+        <h2>Conexão com o Teorema de Green</h2>
+        <p>
+          O Teorema da Divergência no plano pode ser derivado do Teorema de
+          Green mediante uma transformação apropriada:
+        </p>
+        <div class="math-box">
+          <p>Se definirmos $P = -Q$ e $Q = P$ no Teorema de Green, obtemos:</p>
+          <p>
+            $$\oint_C (-Q\,dx + P\,dy) = \iint_D \left(\frac{\partial
+            P}{\partial x} + \frac{\partial Q}{\partial y}\right)\,dA$$
+          </p>
+          <p>
+            Reconhecendo que $(-Q\,dx + P\,dy) = \vec{F} \cdot \vec{n} \, ds$ e
+            $\left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial
+            y}\right) = \nabla \cdot \vec{F}$, recuperamos o Teorema da
+            Divergência.
+          </p>
+        </div>
+        <p>
+          Esta dualidade revela a profunda conexão entre rotação (rotacional) e
+          expansão (divergência) em campos vetoriais.
+        </p>
+      </section>
+
+      <section>
+        <h2>Fontes e Sumidouros</h2>
+        <p>
+          A divergência quantifica o comportamento de um campo vetorial como:
+        </p>
+        <ul>
+          <li>
+            <strong>Fonte</strong>: $\nabla \cdot \vec{F} > 0$ → O campo "emana"
+            do ponto
+          </li>
+          <li>
+            <strong>Sumidouro</strong>: $\nabla \cdot \vec{F} < 0$ → O campo
+            "converge" para o ponto
+          </li>
+          <li>
+            <strong>Incompressível</strong>: $\nabla \cdot \vec{F} = 0$ → Nem
+            emana nem converge
+          </li>
+        </ul>
+        <p>
+          Em física, campos gravitacionais têm fontes (massas), campos elétricos
+          têm fontes (cargas positivas) e sumidouros (cargas negativas),
+          enquanto campos magnéticos são sempre incompressíveis.
+        </p>
+      </section>
+
+      <!-- Visualização em slide separado -->
+      <section>
+        <h2>Visualização: Divergência e Fluxo</h2>
+        <p>
+          Observe o comportamento de fontes e sumidouros em um campo vetorial
+        </p>
+
+        <div class="visualization-container">
+          <canvas id="divergenceCanvas" width="500" height="300"></canvas>
+        </div>
+
+        <div class="controls">
+          <div class="control-group">
+            <span class="control-label">Fonte</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="sourceSlider"
+                class="slider"
+                min="0"
+                max="2"
+                step="0.1"
+                value="1"
+              />
+              <span id="sourceValue" class="slider-value">1.0</span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <span class="control-label">Sumidouro</span>
+            <div class="slider-container">
+              <input
+                type="range"
+                id="sinkSlider"
+                class="slider"
+                min="0"
+                max="2"
+                step="0.1"
+                value="1"
+              />
+              <span id="sinkValue" class="slider-value">1.0</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizontal-buttons">
+          <button id="toggleDivergenceBtn">Ocultar Mapa</button>
+          <button id="resetParticlesBtn2">Reiniciar Partículas</button>
+        </div>
+
+        <div class="results-display">
+          <div class="results-title">Análise da Divergência</div>
+          <div class="results-row">
+            <span class="results-label">Fonte:</span>
+            <span id="sourceStrengthValue">1.00</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Sumidouro:</span>
+            <span id="sinkStrengthValue">1.00</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Div. Fonte:</span>
+            <span id="sourceDivValue">6.2832</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Div. Sumidouro:</span>
+            <span id="sinkDivValue">-6.2832</span>
+          </div>
+          <div class="results-row">
+            <span class="results-label">Fluxo Total:</span>
+            <span id="totalFluxValue">0.0000</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contexto Histórico: Propelentes Espaciais</h2>
+        <div class="historical-note">
+          <p>
+            Durante a corrida espacial, a União Soviética e os EUA adotaram
+            abordagens distintas para sistemas de propulsão. Os soviéticos
+            preferiam propelentes hipergólicos (que se inflamam ao contato),
+            enquanto os americanos usavam hidrogênio/oxigênio líquidos.
+          </p>
+          <p>
+            Ambas as abordagens exigiam modelagem precisa de fluxo de fluidos,
+            com os engenheiros aplicando o Teorema da Divergência para analisar
+            taxas de injeção e mistura.
+          </p>
+        </div>
+        <p>
+          A eficiência dos motores dependia crucialmente da análise matemática
+          precisa de campos de fluxo.
+        </p>
+      </section>
+
+      <section>
+        <h2>Exercício Integrador</h2>
+        <p>
+          Um engenheiro está analisando um campo de fluxo térmico em um painel
+          de proteção térmica. O campo é dado por:
+        </p>
+        <p>$$\vec{F}(x,y) = (x^2 - y^2, 2xy)$$</p>
+        <p>Determine:</p>
+        <ol>
+          <li>A divergência do campo em cada ponto</li>
+          <li>
+            O fluxo total através de um círculo de raio 3 centrado na origem
+          </li>
+          <li>
+            Verifique se o resultado obtido pelo cálculo direto da integral de
+            linha corresponde ao obtido pelo Teorema da Divergência
+          </li>
+        </ol>
+      </section>
+    </section>
+
+    <!-- 6. SÍNTESE E APLICAÇÕES AVANÇADAS -->
+  </body>
+</html>

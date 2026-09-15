@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Preparação Apollo 9 - Função Comprimento de Arco [REF:
+    <span class="censored">AS-204/FEV-1969</span>]
+  </div>
+  <p>
+    Até agora calculamos o comprimento total de cada curva. Mas em uma missão
+    real, frequentemente precisamos responder:
+    <em>quanto andei até o instante \(t\)?</em>
+    A função comprimento de arco permite responder isso — e inverter a questão:
+    dado um comprimento parcial, em que ponto da curva estamos?
+  </p>
+  <p>
+    Considere a curva plana \(\vec{r}(t) = \bigl(e^t - 1,\, e^t + 1\bigr)\), com
+    \(t\) variando de 0 a \(\ln 3\).
+  </p>
+  <p><strong>(a)</strong> Calcule o comprimento total \(L\) da curva.</p>
+  <p>
+    <strong>(b)</strong> Construa a função comprimento de arco \(s(t) = \int_0^t
+    \|\vec{r}\,'(u)\|\, du\) e mostre que ela é crescente.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine o valor de \(t\) correspondente ao ponto onde
+    o objeto percorreu exatamente um quarto do percurso total (ou seja, \(s(t) =
+    L/4\)). Encontre as coordenadas desse ponto na curva.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\vec{r}\,'(t) = (e^t,\, e^t)\), portanto:</p>
+      <p>\[\|\vec{r}\,'(t)\| = \sqrt{e^{2t} + e^{2t}} = \sqrt{2}\, e^t\]</p>
+      <p>
+        \[L = \int_0^{\ln 3} \sqrt{2}\, e^t\, dt =
+        \sqrt{2}\bigl[e^t\bigr]_0^{\ln 3} = \sqrt{2}(3 - 1) = 2\sqrt{2}\]
+      </p>
+      <p><strong>(b)</strong> A função comprimento de arco é:</p>
+      <p>
+        \[s(t) = \int_0^t \sqrt{2}\, e^u\, du = \sqrt{2}\bigl(e^t - 1\bigr)\]
+      </p>
+      <p>
+        Como \(\vec{r}\,'(t) \neq \vec{0}\) em todo o intervalo, temos
+        \(\|\vec{r}\,'(t)\| > 0\) e portanto \(s(t)\) é estritamente crescente.
+        A cada instante, o objeto percorre uma distância positiva.
+      </p>
+      <p>
+        <strong>(c)</strong> Queremos \(s(t) = L/4 = 2\sqrt{2}/4 = \sqrt{2}/2\):
+      </p>
+      <p>\[\sqrt{2}(e^t - 1) = \frac{\sqrt{2}}{2}\]</p>
+      <p>
+        \[e^t - 1 = \frac{1}{2} \implies e^t = \frac{3}{2} \implies t =
+        \ln\frac{3}{2}\]
+      </p>
+      <p>As coordenadas do ponto são:</p>
+      <p>
+        \[\vec{r}\!\left(\ln\frac{3}{2}\right) = \left(\frac{3}{2}-1,\,
+        \frac{3}{2}+1\right) = \left(\frac{1}{2},\, \frac{5}{2}\right)\]
+      </p>
+      <p>
+        A um quarto do percurso total, o objeto está no ponto \((1/2,\, 5/2)\).
+        A função \(s(t)\) permite localizar qualquer ponto da curva a partir do
+        comprimento percorrido — uma ferramenta essencial para determinar
+        instantes de ignição em missões.
+      </p>
+    </div>
+  </details>
+</li>

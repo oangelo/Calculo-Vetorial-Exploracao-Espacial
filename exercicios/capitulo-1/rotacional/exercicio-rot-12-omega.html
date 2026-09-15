@@ -1,0 +1,82 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-12-OMEGA</div>
+  <div class="context">
+    ORIGEM: Mecânica Orbital — Aplicações Apollo-Soyuz, 1975
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Vamos encerrar esta lista com
+    uma aplicação concreta: o campo de velocidade de um objeto em órbita
+    circular. Esse campo gira — e o rotacional captura exatamente a velocidade
+    angular da órbita.
+  </div>
+
+  <p>
+    Uma estação espacial orbita a Terra em um círculo de raio \(R\) no plano
+    \(xy\), com velocidade angular constante \(\omega\). O campo de velocidades
+    é: \[\vec{v}(x,y,z) = (-\omega y, \omega x, 0).\] Este campo é idêntico ao
+    do EX-06, com \(\omega\) como parâmetro.
+  </p>
+
+  <p>
+    <strong>(a)</strong> Calcule o rotacional de \(\vec{v}\). Mostre que
+    \(\nabla \times \vec{v} = (0, 0, 2\omega)\).
+  </p>
+
+  <p>
+    <strong>(b)</strong> O rotacional é proporcional a \(\omega\). Explique: por
+    que o rotacional do campo de velocidades é diretamente ligado à velocidade
+    angular da órbita?
+  </p>
+
+  <p>
+    <strong>(c)</strong> Se \(\omega = 0\) (estação parada), qual é o
+    rotacional? Isso faz sentido fisicamente?
+  </p>
+
+  <p>
+    <strong>(d)</strong> O campo de velocidades de uma órbita circular é
+    incompressível (não expande nem contrai). Sabendo que o divergente mede
+    expansão/contração, o que você esperaria que \(\nabla \cdot \vec{v}\) fosse?
+    Verifique no próximo tópico (Divergente).
+  </p>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) \(P = -\omega y\), \(Q = \omega x\), \(R = 0\). Componente \(i\):
+        \(0 - 0 = 0\). Componente \(j\): \(0 - 0 = 0\). Componente \(k\):
+        \(\frac{\partial (\omega x)}{\partial x} - \frac{\partial (-\omega
+        y)}{\partial y} = \omega - (-\omega) = 2\omega\). \(\nabla \times
+        \vec{v} = (0, 0, 2\omega)\).
+      </p>
+
+      <p>
+        (b) O rotacional mede a "intensidade de rotação local" do campo. Para um
+        campo de velocidades que representa rotação rígida (todos os pontos
+        giram com a mesma velocidade angular), o rotacional é exatamente
+        \(2\omega\) na direção do eixo de rotação. O fator 2 vem da definição
+        geométrica do rotacional (derivadas parciais cruzadas). O rotacional é,
+        portanto, o "vetor de vorticidade" — mede quão rápido o fluido gira.
+      </p>
+
+      <p>
+        (c) Se \(\omega = 0\): \(\vec{v} = (0, 0, 0)\) e \(\nabla \times \vec{v}
+        = (0, 0, 0)\). Sem velocidade angular, sem rotação — faz sentido
+        perfeito.
+      </p>
+
+      <p>
+        (d) O campo de velocidades de rotação rígida é incompressível: não há
+        expansão nem contração. Portanto, esperaríamos que \(\nabla \cdot
+        \vec{v} = 0\). De fato, calculando: \(\nabla \cdot \vec{v} =
+        \frac{\partial(-\omega y)}{\partial x} + \frac{\partial(\omega
+        x)}{\partial y} + 0 = 0 + 0 = 0\). O divergente será estudado em detalhe
+        no próximo tópico.
+      </p>
+    </div>
+  </details>
+</li>
