@@ -1,7 +1,7 @@
 ---
 description: Verificador rigoroso de slides Reveal.js contra template-spec.md, narrative-spec.md, pedagogical-spec.md e section-checklist.md. Emite veredito APROVADO/REPROVADO com issues arquivo:linha e evidência verificável. Use após o implementador ou o corretor.
 mode: subagent
-model: kimi-for-coding/k3
+model: deepseek/deepseek-v4-pro
 temperature: 0.1
 permission:
   edit: deny

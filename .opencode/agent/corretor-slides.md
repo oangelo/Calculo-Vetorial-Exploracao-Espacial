@@ -1,7 +1,7 @@
 ---
 description: Corrige issues apontados pelo juiz (VEREDITO REPROVADO) em slides Reveal.js, um a um, sem reescrever fora de escopo. Use após o juiz reprovar uma seção.
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: deepseek/deepseek-v4-flash
 temperature: 0.2
 permission:
   edit: allow

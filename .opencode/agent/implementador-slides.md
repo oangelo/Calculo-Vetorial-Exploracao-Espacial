@@ -1,7 +1,7 @@
 ---
 description: Implementa e melhora seções de slides Reveal.js (fragmentos HTML) seguindo template-spec.md, narrative-spec.md, pedagogical-spec.md e section-checklist.md. Use para criar ou reescrever arquivos NN-*.html de um capítulo, uma seção por vez.
 mode: subagent
-model: opencode-go/deepseek-v4-flash
+model: deepseek/deepseek-v4-flash
 temperature: 0.3
 permission:
   edit: allow
