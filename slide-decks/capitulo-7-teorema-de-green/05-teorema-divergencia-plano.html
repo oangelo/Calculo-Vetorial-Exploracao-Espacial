@@ -1,0 +1,570 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h2>Divergência no Plano</h2>
+      <p>
+        Green conecta borda e interior para a circulação. Existe uma versão para
+        o fluxo? Na seção 04, a circulação total apareceu como o acúmulo das
+        rotações locais. A pergunta agora é a mesma, trocando a grandeza medida:
+        se o campo "vaza" para fora em cada ponto do interior, quanto desse
+        vazamento atravessa a fronteira?
+      </p>
+      <p>
+        A resposta tem a forma da identidade de Green — uma integral dupla no
+        interior, uma integral de linha na borda — mas o integrando muda. O
+        rotacional media giro; o divergente mede expansão. Em vez de perguntar
+        quanto o campo gira, perguntamos quanto ele nasce.
+      </p>
+      <p class="history-insert">
+        Em dezembro de 1971, a sonda Mars 3 pousou suavemente em Marte — a
+        primeira a fazê-lo. Transmitiu por cerca de catorze segundos e
+        silenciou.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Divergência — Fluxo por Unidade de Área</h3>
+      <p>
+        A divergência mede o quanto o campo "nasce" ou "morre" em cada ponto.
+        Num ponto onde as setas apontam para fora em todas as direções, nasce
+        fluxo: é uma fonte. Onde apontam para dentro, o fluxo se consome: é um
+        sumidouro. Onde entram e saem na mesma proporção, nada nasce nem morre.
+      </p>
+      <p>
+        Como o rotacional, o divergente é um número por ponto — mas mede outra
+        coisa. O rotacional pergunta se o campo gira ao redor; o divergente
+        pergunta se ele se espalha. Um campo pode girar sem se espalhar, e se
+        espalhar sem girar.
+      </p>
+      <p>
+        A versão global da ideia: some o que nasce em cada pedacinho da área e o
+        total tem de reaparecer atravessando a borda. Nada nasce no interior sem
+        sair por algum lugar.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Formalização — o Teorema da Divergência no Plano</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \iint_A\nabla\!\cdot\!\vec F\,dA=\oint_{\partial A}\vec F\cdot\vec
+          n\,ds,\qquad \nabla\!\cdot\!\vec F=\frac{\partial P}{\partial
+          x}+\frac{\partial Q}{\partial y} \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(A\) é uma região com fronteira \(C^1\) por
+          partes, orientada positivamente \(\partial A\) — a região fica à
+          esquerda de quem percorre cada componente; \(\vec F=(P,Q)\) é de
+          classe \(C^1\) em uma vizinhança de \(A\); \(\vec n\) é a normal
+          unitária exterior a \(\partial A\).
+        </p>
+        <p>
+          <strong>Leitura:</strong> o lado esquerdo soma a divergência sobre a
+          área; o lado direito mede o fluxo que atravessa a borda para fora. O
+          produto \(\vec F\cdot\vec n\) é a componente do campo na direção da
+          normal exterior, e \(ds\) percorre a fronteira.
+        </p>
+        <p>
+          <strong>Validade:</strong> é a mesma identidade de Green com outra
+          grandeza. Vale para as regiões das seções 02 e 03 — retângulos,
+          discos, elipses e regiões multiplamente conexas como o anel —,
+          respeitada a orientação das bordas internas.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Interpretação — a Mesma Identidade, Outro Integrando</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>De onde a fórmula vem</strong></p>
+          <p>
+            Não é preciso demonstrar do zero. Aplique Green ao campo \(\vec
+            G=(-Q,P)\). A circulação \(\oint-Q\,dx+P\,dy\) é exatamente o fluxo
+            \(\oint\vec F\cdot\vec n\,ds\), porque a normal exterior de uma
+            curva orientada positivamente é \((dy/ds,\,-dx/ds)\).
+          </p>
+          <p>
+            O rotacional de \(\vec G\) é \(\frac{\partial P}{\partial
+            x}+\frac{\partial Q}{\partial y}=\nabla\!\cdot\!\vec F\). Green liga
+            os dois lados e a identidade está pronta.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>O que ela diz</strong></p>
+          <p>
+            Fontes de divergência positiva empurram fluxo para fora; sumidouros
+            o puxam para dentro. O fluxo líquido pela borda é a soma dessas
+            contribuições, cada uma com seu sinal.
+          </p>
+          <p>
+            Se \(\nabla\!\cdot\!\vec F\equiv0\), nada nasce nem morre no
+            interior: o que entra por um trecho da borda sai por outro e o saldo
+            é nulo. São os campos incompressíveis.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Fluxo no Disco Unitário</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(x,y)\) sobre o disco unitário
+            \(A=\{x^2+y^2\le1\}\).
+          </p>
+          <p>
+            Calcule o fluxo \(\oint_{\partial A}\vec F\cdot\vec n\,ds\) pela
+            fronteira por dois caminhos: integrando a divergência sobre \(A\) e
+            integrando \(\vec F\cdot\vec n\) ao longo de \(\partial A\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Enquanto a tripulação morria na volta, a Luna 16 já havia trazido
+            amostras lunares e o Lunokhod 1 dirigia sobre a superfície da Lua.
+            Máquinas não exigem funerais nem propagam más notícias.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Fluxo no Quadrado Unitário</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(x^2,y^2)\) sobre o quadrado
+            \(R=[0,1]\times[0,1]\).
+          </p>
+          <p>
+            Calcule o fluxo pela fronteira \(\oint_{\partial R}\vec F\cdot\vec
+            n\,ds\) pelo teorema da divergência no plano.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Em dezembro de 1972, a Apollo 17 fez o último pouso lunar tripulado
+            da história. Os dois sistemas encerraram o espetáculo quase ao mesmo
+            tempo — e nenhum anunciou uma segunda temporada de pousos lunares.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exploração — Fontes, Sumidouros e o Fluxo na Borda</h3>
+      <p>
+        A partícula percorre a fronteira acumulando \(\vec F\cdot\vec n\) a cada
+        passo. Alterne os campos: no primeiro, todas as setas apontam para fora
+        e o saldo cresce — uma fonte. No segundo, apontam para dentro e o saldo
+        decresce — um sumidouro. No terceiro, o campo gira e nada atravessa a
+        borda: o fluxo líquido é nulo.
+      </p>
+      <canvas
+        id="canvasDivergencia"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <button id="btnDivergenciaModo" class="control-button">
+          Trocar: sumidouro (div = -2)
+        </button>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasDivergencia');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var lastTs = 0;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+
+    var btn = document.getElementById('btnDivergenciaModo');
+    var mode = 0;
+
+    var TAU = 2 * Math.PI;
+    var CX = W / 2;
+    var CY = H / 2 + 6;
+    var R = 118;
+
+    var t = 0;
+    var flux = 0;
+    var lastFlux = 0;
+    var speed = 0.9;
+
+    var MODES = [
+      {
+        name: 'FONTE',
+        field: 'F = (x, y)',
+        div: 'div = 2',
+        note: 'div > 0 · fluxo líquido para fora',
+        color: POS,
+        next: 'Trocar: sumidouro (div = -2)',
+      },
+      {
+        name: 'SUMIDOURO',
+        field: 'F = (-x, -y)',
+        div: 'div = -2',
+        note: 'div < 0 · fluxo líquido para dentro',
+        color: ACC,
+        next: 'Trocar: campo rotacional (div = 0)',
+      },
+      {
+        name: 'ROTAÇÃO',
+        field: 'F = (-y, x)',
+        div: 'div = 0',
+        note: 'div = 0 · F·n = 0 em toda a borda',
+        color: UNI,
+        next: 'Trocar: fonte (div = 2)',
+      },
+    ];
+
+    function toPx(mx, my) {
+      return { x: CX + mx * R, y: CY - my * R };
+    }
+
+    function fvec(mx, my) {
+      if (mode === 1) return { x: -mx, y: -my };
+      if (mode === 2) return { x: -my, y: mx };
+      return { x: mx, y: my };
+    }
+
+    function divAt() {
+      if (mode === 1) return -2;
+      if (mode === 2) return 0;
+      return 2;
+    }
+
+    function divColor(d) {
+      if (d > 0.001) return POS;
+      if (d < -0.001) return ACC;
+      return UNI;
+    }
+
+    function fnAt() {
+      if (mode === 1) return -1;
+      if (mode === 2) return 0;
+      return 1;
+    }
+
+    function arrow(x0, y0, x1, y1, color, lw, alpha) {
+      var dx = x1 - x0;
+      var dy = y1 - y0;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 1) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(9, len * 0.5);
+      ctx.globalAlpha = alpha === undefined ? 1 : alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 - ux * hs - uy * hs * 0.5, y1 - uy * hs + ux * hs * 0.5);
+      ctx.lineTo(x1 - ux * hs + uy * hs * 0.5, y1 - uy * hs - ux * hs * 0.5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    function step(dt) {
+      var prev = t;
+      t += speed * dt;
+      if (t >= TAU) {
+        var extra = t - TAU;
+        flux += fnAt() * (TAU - prev);
+        lastFlux = flux;
+        flux = fnAt() * extra;
+        t = extra;
+      } else {
+        flux += fnAt() * (t - prev);
+      }
+    }
+
+    function drawRegion() {
+      ctx.fillStyle =
+        mode === 1 ? 'rgba(229, 57, 53, 0.07)' : 'rgba(30, 136, 229, 0.07)';
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, TAU);
+      ctx.fill();
+    }
+
+    function drawField() {
+      var NX = 15;
+      var NY = 11;
+      var i;
+      var j;
+      for (i = 0; i < NX; i++) {
+        for (j = 0; j < NY; j++) {
+          var mx = -1.7 + (3.4 * i) / (NX - 1);
+          var my = -1.7 + (3.4 * j) / (NY - 1);
+          var f = fvec(mx, my);
+          var n = Math.sqrt(f.x * f.x + f.y * f.y) || 1;
+          var L = 0.1 + 0.14 * Math.min(1, n / 1.8);
+          var p0 = toPx(mx, my);
+          var p1 = toPx(mx + (L * f.x) / n, my + (L * f.y) / n);
+          arrow(p0.x, p0.y, p1.x, p1.y, divColor(divAt()), 1.1, 0.85);
+        }
+      }
+    }
+
+    function drawBoundary() {
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, TAU);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      ctx.strokeStyle = VEL;
+      ctx.lineWidth = 3;
+      ctx.globalAlpha = 0.75;
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, -Math.PI / 2, -Math.PI / 2 + t);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
+
+    function drawNormals() {
+      var v = fnAt();
+      var k;
+      for (k = 0; k < 12; k++) {
+        var th = (k * TAU) / 12 + 0.1;
+        var x = Math.cos(th);
+        var y = Math.sin(th);
+        var p0 = toPx(x, y);
+        if (Math.abs(v) < 0.01) {
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(p0.x - y * 5, p0.y - x * 5);
+          ctx.lineTo(p0.x + y * 5, p0.y + x * 5);
+          ctx.stroke();
+        } else {
+          var len = v * 0.36;
+          var p1 = toPx(x + len * x, y + len * y);
+          arrow(p0.x, p0.y, p1.x, p1.y, v > 0 ? VEL : ACC, 2, 0.9);
+        }
+      }
+    }
+
+    function drawPulses() {
+      var v = fnAt();
+      if (Math.abs(v) < 0.01) return;
+      var k;
+      for (k = 0; k < 12; k++) {
+        var th = (k * TAU) / 12 + 0.1;
+        var phase = (t * 0.45 + k / 12) % 1;
+        var rr = 0.4 + 0.85 * phase;
+        var p = toPx(rr * Math.cos(th), rr * Math.sin(th));
+        ctx.fillStyle = v > 0 ? VEL : ACC;
+        ctx.globalAlpha = 1 - phase;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, TAU);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function drawCenter() {
+      var p = toPx(0, 0);
+      if (mode === 2) {
+        ctx.strokeStyle = FOR;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 13, t, t + 4.2);
+        ctx.stroke();
+        return;
+      }
+      ctx.strokeStyle = mode === 1 ? ACC : POS;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(p.x - 9, p.y);
+      ctx.lineTo(p.x + 9, p.y);
+      if (mode === 0) {
+        ctx.moveTo(p.x, p.y - 9);
+        ctx.lineTo(p.x, p.y + 9);
+      }
+      ctx.stroke();
+    }
+
+    function drawParticle() {
+      var th = -Math.PI / 2 + t;
+      var p = toPx(Math.cos(th), Math.sin(th));
+      ctx.fillStyle = ACC;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 6, 0, TAU);
+      ctx.fill();
+      ctx.strokeStyle = FOR;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    function readout() {
+      var m = MODES[mode];
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText(m.name + ' · ' + m.field + ' · ' + m.div, W / 2, 20);
+      ctx.fillStyle = 'rgba(224, 224, 224, 0.7)';
+      ctx.fillText(
+        '∮ F·n ds ≈ ' +
+          flux.toFixed(1) +
+          '   (volta anterior ' +
+          lastFlux.toFixed(1) +
+          ')',
+        W / 2,
+        40
+      );
+      ctx.fillStyle = 'rgba(224, 224, 224, 0.65)';
+      ctx.fillText(m.note, W / 2, H - 12);
+      ctx.textAlign = 'left';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      drawRegion();
+      drawField();
+      drawBoundary();
+      drawNormals();
+      drawPulses();
+      drawCenter();
+      drawParticle();
+      readout();
+    }
+
+    function loop(ts) {
+      var dt = ts ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+      step(dt);
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        lastTs = 0;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function reset() {
+      t = 0;
+      flux = 0;
+      lastFlux = 0;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = (mode + 1) % 3;
+        reset();
+        btn.textContent = MODES[mode].next;
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizDivergencia = { init: init, cleanup: cleanup };
+  })();
+</script>
