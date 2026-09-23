@@ -1,7 +1,7 @@
 <section
   class="exercicio"
-  data-topico="aditividade-regiao-L"
-  data-dificuldade="medio"
+  data-topico="area-e-aditividade"
+  data-dificuldade="dificil"
 >
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">5.</span>
@@ -14,69 +14,78 @@
   </p>
 
   <p class="dialogo">
-    Essa região não cabe na demonstração feita para retângulos, pois sua borda
-    não é a de um único retângulo. Mesmo assim, ela se decompõe em dois blocos
-    que se tocam ao longo de uma aresta. Neste exercício você usa o campo
-    $\vec{F}(x, y) = (-y,\; x)$, cujo rotacional já conhece do exercício 1, e a
-    aditividade da integral dupla para calcular a circulação sobre $L$.
+    Essa região não é a de um único retângulo, mas se decompõe em dois blocos
+    que se tocam ao longo de uma aresta. Vamos aplicar o Teorema de Green a ela
+    duas vezes: primeiro com um campo que mede a área, depois com o campo do
+    exercício anterior.
   </p>
 
   <p class="questao">
-    Comece medindo os dois blocos retangulares que formam $L$.
+    Considere o campo $\vec{F}_1(x, y) = (0,\; x)$ e calcule seu rotacional
+    escalar.
+  </p>
+
+  <p class="dialogo">
+    Identifique qual componente é $P$ e qual é $Q$. Calcule as duas derivadas
+    parciais, como nos exercícios anteriores, antes de subtraí-las.
+  </p>
+
+  <p class="subitem">
+    a) $\dfrac{\partial Q}{\partial x} =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\dfrac{\partial P}{\partial y} =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $\operatorname{rot}\vec{F}_1 =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">
+    Com esse campo, o lado direito do teorema mede a área de $L$. Meça os dois
+    blocos para calcular.
   </p>
 
   <p class="dialogo">
     O bloco inferior é $R_1 = [0, 2] \times [0, 1]$ e o bloco superior é $R_2 =
-    [0, 1] \times [1, 2]$. A área de um retângulo é o produto entre a medida da
-    base e a medida da altura. Leia essas medidas nos extremos dos intervalos de
+    [0, 1] \times [1, 2]$. Leia base e altura nos extremos dos intervalos de
     cada bloco.
   </p>
 
   <p class="subitem">a) Área de $R_1 =$ <span class="lacuna"></span></p>
   <p class="subitem">b) Área de $R_2 =$ <span class="lacuna"></span></p>
-  <p class="subitem">c) Área total de $L =$ <span class="lacuna"></span></p>
-
-  <p class="questao">
-    Escreva a integral dupla do rotacional sobre cada bloco e calcule seu valor.
-  </p>
-
-  <p class="dialogo">
-    O rotacional do campo é o mesmo em todos os pontos de $L$, então em cada
-    bloco o integrando é constante. Uma integral dupla de uma constante sobre
-    uma região é essa constante multiplicada pela área da região. A aditividade
-    da integral dupla permite somar as contribuições dos dois blocos para obter
-    a integral sobre $L$ inteira.
-  </p>
-
   <p class="subitem">
-    a) $\displaystyle\iint_{R_1}$ <span class="lacuna"></span> $dA =$
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    b) $\displaystyle\iint_{R_2}$ <span class="lacuna"></span> $dA =$
-    <span class="lacuna"></span>
-  </p>
-  <p class="subitem">
-    c) $\displaystyle\iint_L \operatorname{rot}\vec{F}\,dA =$
+    c) $\displaystyle\iint_L \operatorname{rot}\vec{F}_1\,dA =$
     <span class="lacuna"></span>
   </p>
 
   <p class="questao">
-    Confira o resultado com um único cálculo sobre a região inteira.
+    Agora troque para o campo $\vec{F}_2(x, y) = (0,\; x^2)$, o mesmo do
+    exercício anterior, e calcule a integral sobre cada bloco.
   </p>
 
   <p class="dialogo">
-    Como o rotacional não varia de ponto para ponto, a integral sobre todo o $L$
-    é o rotacional multiplicado pela área total da região — sem precisar
-    separá-la em blocos.
+    O rotacional de $\vec{F}_2$ você já obteve no exercício anterior. Em cada
+    bloco, monte a integral iterada e integre primeiro em $y$.
   </p>
 
   <p class="subitem">
-    a) $\operatorname{rot}\vec{F} \times (\text{área total de } L) =$
+    a) $\displaystyle\iint_{R_1} \operatorname{rot}\vec{F}_2\,dA =
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}}
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} ($<span class="lacuna"></span
+    >$)\,dy\,dx =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\displaystyle\iint_{R_2} \operatorname{rot}\vec{F}_2\,dA =
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}}
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} ($<span class="lacuna"></span
+    >$)\,dy\,dx =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $\displaystyle\iint_L \operatorname{rot}\vec{F}_2\,dA =$
     <span class="lacuna"></span>
   </p>
   <p class="subitem">
-    b) Esse valor coincide com a soma obtida na questão anterior?
+    d) Por que a multiplicação usada na questão anterior não vale aqui?
     <span class="lacuna-grande"></span>
   </p>
 
@@ -95,14 +104,15 @@
   <p class="subitem">a) <span class="lacuna-grande"></span></p>
 
   <p class="dica">
-    Para as áreas, relembre que a área de um retângulo é o produto entre base e
-    altura. Para a integral dupla de uma constante, lembre que ela se reduz ao
-    produto entre essa constante e a área da região.
+    Para as áreas dos blocos, retome o cálculo de área de retângulos visto nos
+    capítulos anteriores. Para as integrais, use a mesma ordem de integração do
+    exercício anterior.
   </p>
 
   <p class="checkpoint">
     <span class="checkmark"></span>
-    Verificação: a região em $L$ não é retangular, mas foi tratada como dois
-    retângulos. O que autoriza essa divisão?
+    Verificação: o rotacional de um campo pode ter o mesmo valor em toda a
+    região ou assumir valores diferentes de ponto para ponto. O que isso muda na
+    hora de calcular a integral dupla sobre os blocos?
   </p>
 </section>
