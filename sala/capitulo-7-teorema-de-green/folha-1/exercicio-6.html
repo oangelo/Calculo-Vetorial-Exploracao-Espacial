@@ -1,15 +1,19 @@
 <section
   class="exercicio"
-  data-topico="sintese-rot-conservativo"
+  data-topico="sintese-rot-sinais"
   data-dificuldade="dificil"
 >
   <p class="exercicio-enunciado">
     <span class="exercicio-numero">6.</span>
-    Esta folha percorreu o Teorema de Green do rotacional à circulação. No
-    capítulo 6 você usou um teste de derivadas parciais cruzadas para decidir se
-    um campo admite função potencial; no capítulo 5, calculou trabalho por
-    parametrização. Vamos agora colocar dois campos lado a lado e observar as
-    três ideias ao mesmo tempo.
+    Ao longo desta folha o rotacional apareceu constante, nulo e variando de
+    ponto para ponto. Vamos fechar reunindo três campos lado a lado e observando
+    o que o sinal do rotacional faz com a circulação.
+  </p>
+
+  <p class="dialogo">
+    O Teorema de Green acumula o rotacional sobre a região, cada pedaço com o
+    seu sinal. Rotações de sinais opostos contribuem para a circulação com
+    sinais opostos.
   </p>
 
   <p class="questao">
@@ -28,8 +32,8 @@
     <thead>
       <tr>
         <th>Campo</th>
-        <th>$\frac{\partial Q}{\partial x}$</th>
-        <th>$\frac{\partial P}{\partial y}$</th>
+        <th>$\dfrac{\partial Q}{\partial x}$</th>
+        <th>$\dfrac{\partial P}{\partial y}$</th>
         <th>$\operatorname{rot}\vec{F}$</th>
       </tr>
     </thead>
@@ -46,74 +50,90 @@
         <td class="lacuna-cell"></td>
         <td class="lacuna-cell"></td>
       </tr>
+      <tr>
+        <td>$\vec{F}_3(x, y) = (0,\; x^2 - x)$</td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+        <td class="lacuna-cell"></td>
+      </tr>
     </tbody>
   </table>
 
   <p class="questao">
-    Ainda com o Teorema de Green, use o rotacional registrado na tabela para
-    responder.
+    Aplique o lado direito do Teorema de Green ao campo $\vec{F}_3$ sobre o
+    quadrado unitário $R = [0, 1] \times [0, 1]$ e obtenha a circulação.
   </p>
 
   <p class="dialogo">
-    O teorema iguala a circulação sobre a fronteira à integral dupla do
-    rotacional sobre o interior. Quando o integrando não varia de ponto para
-    ponto, essa integral dupla se reduz ao rotacional multiplicado pela área da
-    região. Para o primeiro campo, a região é a do exercício 2, cujo resultado
-    você já pode reaproveitar; para o segundo, observe o que o integrando da
-    tabela indica sobre a integral.
+    Monte a integral iterada na ordem $dy\,dx$: a integral interna percorre a
+    extensão vertical do quadrado para cada $x$ fixo; depois integre em $x$.
   </p>
 
   <p class="subitem">
-    a) A circulação de $\vec{F}_1$ ao longo da fronteira do retângulo $[0, 2]
-    \times [0, 1]$ do exercício 2 é <span class="lacuna"></span>.
+    a) $\displaystyle\iint_R \operatorname{rot}\vec{F}_3\,dA =
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}}
+    \int_{\rule{8mm}{0.5pt}}^{\rule{8mm}{0.5pt}} ($<span class="lacuna"></span
+    >$)\,dy\,dx$
   </p>
   <p class="subitem">
-    b) A circulação de $\vec{F}_2$ ao longo de qualquer curva fechada é
+    b) Como o integrando não depende de $y$, a integral interna vale
+    <span class="lacuna"></span>.
+  </p>
+  <p class="subitem">
+    c) A integral dupla vale <span class="lacuna"></span> e, pelo teorema, a
+    circulação na fronteira do quadrado vale <span class="lacuna"></span>.
+  </p>
+
+  <p class="questao">
+    Estude o sinal do rotacional de $\vec{F}_3$ no quadrado.
+  </p>
+
+  <p class="dialogo">
+    Localize os pontos em que o rotacional se anula e compare o sinal dele nos
+    dois lados.
+  </p>
+
+  <p class="subitem">
+    a) O rotacional se anula sobre a reta $x =$ <span class="lacuna"></span>.
+  </p>
+  <p class="subitem">
+    b) Para valores menores de $x$, o giro local é no sentido
+    <span class="lacuna"></span>.
+  </p>
+  <p class="subitem">
+    c) Para valores maiores de $x$, o giro local é no sentido
     <span class="lacuna"></span>.
   </p>
 
-  <p class="questao">Compare as duas linhas da tabela e responda.</p>
+  <p class="questao">
+    Compare a circulação obtida com o teste de função potencial do capítulo 6.
+  </p>
 
   <p class="dialogo">
-    No capítulo 6, o campo que admite função potencial passava no teste das
-    derivadas cruzadas: os dois valores das colunas centrais coincidiam. Olhe
-    qual das duas linhas satisfaz esse teste. Para o giro, pense no movimento
-    que cada campo imprime a uma partícula longe da origem — um a empurra para
-    fora, o outro a leva a contornar o centro.
+    Retome o teste de derivadas parciais cruzadas do capítulo 6 e aplique-o a
+    $\vec{F}_3$. Depois, pense no que o teste garante sobre a circulação em
+    curvas fechadas — e no que ele não garante.
   </p>
 
   <p class="subitem">
-    a) O campo que admite função potencial é <span class="lacuna"></span>.
+    a) Pelo teste do capítulo 6, $\vec{F}_3$ admite função potencial?
+    <span class="lacuna"></span>
   </p>
-  <p class="subitem">b) O campo que gira é <span class="lacuna"></span>.</p>
-
-  <p class="questao">
-    Uma última conexão. O teste do capítulo 6, que compara $\partial P/\partial
-    y$ com $\partial Q/\partial x$, e o rotacional do capítulo 7 nasceram em
-    contextos diferentes: um decide se existe função potencial, o outro mede a
-    rotação local. Olhando para as duas expressões, é possível enxergar a mesma
-    condição vista de dois ângulos? Explique.
+  <p class="subitem">
+    b) Explique por que a circulação que você obteve não entra em contradição
+    com o teste: <span class="lacuna-grande"></span>
   </p>
-
-  <p class="dialogo">
-    Escreva o teste lado a lado com a definição do rotacional e compare as duas
-    diferenças. Repare no que acontece com o rotacional quando o teste é
-    satisfeito — e no que o capítulo 6 concluía sobre o trabalho ao longo de
-    curvas fechadas nesse caso.
-  </p>
-
-  <p class="subitem"><span class="lacuna-grande"></span></p>
 
   <p class="dica">
     Para as derivadas cruzadas, use a mesma regra de derivação parcial dos
-    exercícios anteriores desta folha. Para as circulações, reaproveite os
-    resultados já obtidos: um deles está na tabela que você acabou de preencher
-    e o outro veio do exercício 2.
+    exercícios anteriores desta folha. Para o teste da última questão, retome o
+    capítulo 6.
   </p>
 
   <p class="checkpoint">
     <span class="checkmark"></span>
-    Verificação: você calculou a circulação de dois campos sobre a mesma região.
-    O que, no integrando do lado direito do teorema, decidiu os dois resultados?
+    Verificação: a circulação na fronteira é a soma das rotações locais, com
+    sinal, sobre a região. O que aconteceria com o valor acumulado se todas as
+    rotações apontassem para o mesmo sentido?
   </p>
 </section>
