@@ -1,0 +1,58 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-06-BETA</div>
+  <div class="context">
+    ORIGEM: Análise de Trajetórias Orbitais [Dados do Programa Gemini, 1965]
+  </div>
+  <p>
+    Nos exercícios anteriores, você verificou continuidade analisando
+    componentes separadamente — se cada componente é contínua, a função toda é
+    contínua. Mas e quando a função não está definida em um ponto? Precisamos de
+    uma ferramenta mais fundamental: o LIMITE.
+  </p>
+  <p>
+    Diferente do limite em uma variável, onde basta olhar pela esquerda e pela
+    direita, aqui temos um plano inteiro de possíveis aproximações. O truque
+    mais direto: se DOIS caminhos diferentes dão valores diferentes, o limite
+    NÃO existe. Vamos começar com este método.
+  </p>
+  <p>
+    Verificar se o limite existe: \[ \lim_{(x,y)\to(0,0)} \frac{xy}{x^2 + y^2}.
+    \]
+  </p>
+  <p>
+    <em
+      >Dica: esboce o gráfico de \(f(x,y)=\frac{xy}{x^2+y^2}\) (para
+      \((x,y)\neq(0,0)\)) usando um software gráfico se disponível. O que você
+      observa perto da origem?</em
+    >
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-6]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para mostrar que o limite NÃO existe, basta encontrar DOIS
+      caminhos que dão resultados diferentes. Tente o eixo \(x\) (\(y=0\)) e a
+      bissetriz (\(y=x\)). Cada caminho é como uma variável \(t\) — basta
+      substituir \(y\) pela equação do caminho e usar limite de Cálculo 1.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        (a) Caminho ao longo de \(y = mx\): \[\frac{x(mx)}{x^2 + (mx)^2} =
+        \frac{mx^2}{x^2(1+m^2)} = \frac{m}{1+m^2}\] O valor depende de \(m\),
+        logo o limite não existe.
+      </p>
+      <p>
+        Para \(m = 0\) (eixo \(x\)): o limite vale \(0\).
+        <br />
+        Para \(m = 1\) (\(y = x\)): o limite vale \(\frac{1}{2}\).
+      </p>
+      <p>
+        Como dois caminhos diferentes produzem resultados diferentes (\(0 \neq
+        \frac{1}{2}\)), o limite não existe.
+      </p>
+    </div>
+  </details>
+</li>

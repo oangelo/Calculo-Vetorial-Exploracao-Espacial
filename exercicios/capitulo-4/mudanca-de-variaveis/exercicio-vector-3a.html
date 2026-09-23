@@ -1,0 +1,78 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Laboratório de Propulsão -
+    <span class="censored">GEMINI XI</span> [SET/1966]
+  </div>
+  <p>
+    Até agora só usamos transformações lineares — escala, soma, translação —
+    cujo Jacobiano era constante. Mas podemos usar substituições não-lineares: o
+    Jacobiano varia ponto a ponto, mas a simplificação das fronteiras pode
+    compensar.
+  </p>
+  <p>
+    Um componente do módulo de propulsão ocupa a região definida por \(0 \le x
+    \le 2\), \(0 \le y \le 3\), \(x^2 \le z \le 4\). A densidade do material é
+    proporcional a \(x\). Calcule a massa total usando a substituição \(u =
+    x^2\), \(v = y\), \(w = z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique que a substituição \(u = x^2\) transforma as
+    fronteiras \(x^2 \le z \le 4\) em limites constantes para \(w\). Determine o
+    novo domínio completo em \((u,v,w)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o Jacobiano
+    \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\) e observe como o
+    integrando \(x\) se combina com ele.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral transformada. Confirme o resultado
+    calculando diretamente nas coordenadas originais.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Com \(u = x^2\), temos \(x = \sqrt{u}\). O integrando \(x
+      = \sqrt{u}\) e o Jacobiano \(1/(2\sqrt{u})\) compartilham \(\sqrt{u}\).
+      Verifique o que acontece com o produto.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Com \(u = x^2\), \(v = y\), \(w = z\): a condição \(x^2 \le z\)
+        torna-se \(u \le w\), e \(z \le 4\) dá \(w \le 4\). Como \(0 \le x \le
+        2\), temos \(0 \le u \le 4\). Os limites de \(y\) são inalterados: \(0
+        \le v \le 3\). O novo domínio é o paralelepípedo \(0 \le u \le 4\), \(0
+        \le v \le 3\), \(u \le w \le 4\).
+      </p>
+      <p>
+        (b) Invertendo: \(x = \sqrt{u}\), \(y = v\), \(z = w\). O Jacobiano é
+        \[\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right| =
+        \frac{1}{2\sqrt{u}}.\] O integrando torna-se \(x = \sqrt{u}\), logo
+        \(\sqrt{u} \cdot \frac{1}{2\sqrt{u}} = \frac{1}{2}\). A função peso e o
+        Jacobiano se cancelam — o integrando efetivo é constante.
+      </p>
+      <p>
+        (c) Integral transformada: \[\int_0^4 \int_0^3 \int_u^4
+        \frac{1}{2}\;dw\,dv\,du.\]
+      </p>
+      <p>Integrando em \(w\): \(\int_u^4 \frac{1}{2}\,dw = \frac{4-u}{2}\).</p>
+      <p>
+        Integrando em \(v\): \(\int_0^3 \frac{4-u}{2}\,dv = \frac{3(4-u)}{2}\).
+      </p>
+      <p>
+        Integrando em \(u\): \[\int_0^4 \frac{3(4-u)}{2}\,du =
+        \frac{3}{2}\left[4u - \frac{u^2}{2}\right]_0^4 = \frac{3}{2}(16 - 8) =
+        12.\]
+      </p>
+      <p>
+        Verificação direta: \[\int_0^2 \int_0^3 \int_{x^2}^4 x\;dz\,dy\,dx =
+        \int_0^2 3x(4-x^2)\,dx = 3\left[2x^2 - \frac{x^4}{4}\right]_0^2 = 3(8-4)
+        = 12.\]
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,97 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
+  <div class="context">
+    ORIGEM: Centro Avançado de Pesquisa - Programa Apollo [DADOS DE 28/JAN/1966]
+  </div>
+  <p>
+    CONEXÃO: Nos GAMMA, analisamos campos complexos qualitativamente. Agora
+    vamos ser SISTEMÁTICOS: como encontrar e classificar os pontos mais
+    importantes de um campo? Os "pontos críticos" são onde \(\vec{F} =
+    \vec{0}\), e o comportamento do campo perto deles determina a dinâmica
+    global.
+  </p>
+  <p>
+    Considere o campo vetorial não-linear: \[\vec{F}(x,y) = \begin{pmatrix} y^2
+    - x^2, -2xy \end{pmatrix}\]
+  </p>
+  <p>
+    <strong>(a)</strong> Encontre todos os pontos críticos (onde \(\vec{F} =
+    \vec{0}\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Para pontos próximos à origem, calcule o campo em
+    \((0.1, 0)\), \((0, 0.1)\), \((0.1, 0.1)\) e \((-0.1, 0.1)\). Em que direção
+    os vetores apontam?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o produto escalar \(\vec{F}(x,y) \cdot (x,y)\).
+    O sinal é sempre o mesmo? O que isso diz sobre se o campo aponta "para" ou
+    "para longe" da origem?
+  </p>
+  <p>
+    <strong>(d)</strong> Com base em (b) e (c), classifique o comportamento da
+    origem: atrator (puxa para perto), repulsor (empurra para longe), ou algo
+    mais complexo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em vez de fórmulas avançadas, use EXPERIMENTOS numéricos.
+      Para (c), calcule \((y^2-x^2) \cdot x + (-2xy) \cdot y\) e simplifique.
+      Para (d), lembre: se o produto escalar com o vetor posição é negativo, o
+      campo aponta "para dentro".
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) PONTOS CRÍTICOS:</p>
+      <p>
+        Resolvendo \(y^2 - x^2 = 0\) e \(-2xy = 0\): da segunda equação, \(xy =
+        0\), logo \(x = 0\) ou \(y = 0\). Se \(x = 0\): \(y^2 = 0 \Rightarrow y
+        = 0\). Se \(y = 0\): \(-x^2 = 0 \Rightarrow x = 0\). O único ponto
+        crítico é a origem \(O(0,0)\).
+      </p>
+      <p>(b) EXPERIMENTOS NUMÉRICOS:</p>
+      <p>
+        \[\vec{F}(0.1, 0) = \begin{pmatrix} -0.01, 0 \end{pmatrix}\] aponta para
+        a esquerda.
+      </p>
+      <p>
+        \[\vec{F}(0, 0.1) = \begin{pmatrix} 0.01, 0 \end{pmatrix}\] aponta para
+        a direita.
+      </p>
+      <p>
+        \[\vec{F}(0.1, 0.1) = \begin{pmatrix} 0, -0.02 \end{pmatrix}\] aponta
+        para baixo.
+      </p>
+      <p>
+        \[\vec{F}(-0.1, 0.1) = \begin{pmatrix} 0, 0.02 \end{pmatrix}\] aponta
+        para cima.
+      </p>
+      <p>
+        O campo "circula" ao redor da origem em sentido horário, com magnitude
+        crescente com a distância.
+      </p>
+      <p>(c) PRODUTO ESCALAR:</p>
+      <p>
+        \(\vec{F} \cdot (x,y) = (y^2 - x^2)x + (-2xy)y = y^2 x - x^3 - 2xy^2 =
+        -x^3 - xy^2\).
+      </p>
+      <p>
+        Este produto escalar pode ser positivo ou negativo dependendo da
+        posição, mas para pontos no eixo \(x\) (\(y=0\)): \(-x^3\), que é
+        negativo para \(x > 0\). O campo tende a apontar na direção oposta ao
+        vetor posição em muitas regiões.
+      </p>
+      <p>(d) CLASSIFICAÇÃO:</p>
+      <p>
+        O comportamento é complexo — nem atrator puro nem repulsor. O campo gira
+        ao redor da origem (como o campo rotacional), mas com magnitude que
+        cresce com \(r^2\). É um comportamento de tipo "centro com rotação",
+        onde as trajetórias giram ao redor da origem.
+      </p>
+    </div>
+  </details>
+</li>

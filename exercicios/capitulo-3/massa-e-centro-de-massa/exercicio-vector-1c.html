@@ -1,0 +1,76 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Simulação de Placa Triangular [LAB.
+    <span class="censored">E14</span>]
+  </div>
+  <p>
+    Já sabemos calcular a massa de uma lâmina — mas onde ela equilibra? O centro
+    de massa \((\bar{x}, \bar{y})\) é o ponto onde toda a massa poderia ser
+    concentrada sem alterar os efeitos gravitacionais. O cálculo envolve
+    momentos: integrais de \(x \cdot \rho\) e \(y \cdot \rho\), divididos pela
+    massa total. Vamos aplicar isso à mesma lâmina triangular do exercício
+    anterior, onde já calculamos \(m = \frac{128}{3}\).
+  </p>
+  <p>
+    Mesma região e mesma densidade \(\rho(x,y) = 2x\) do exercício anterior.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o momento em relação ao eixo \(y\), isto é,
+    \(\iint_D x \cdot \rho(x,y)\, dA\), e deduza \(\bar{x}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o momento em relação ao eixo \(x\), isto é,
+    \(\iint_D y \cdot \rho(x,y)\, dA\), e deduza \(\bar{y}\).
+  </p>
+  <p>
+    <strong>(c)</strong> O resultado \(\bar{x} = 3\) e \(\bar{y} = 1.5\) é
+    consistente com a geometria do triângulo? O centro de massa está mais perto
+    da base ou do vértice? Por quê?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Lembre que \(\bar{x} = \frac{1}{m}\iint x \rho\, dA\) e
+      \(\bar{y} = \frac{1}{m}\iint y \rho\, dA\). A massa \(m = 128/3\) já foi
+      calculada — substitua diretamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>JÁ SABEMOS: \(m = \frac{128}{3}\).</p>
+      <p>
+        CÁLCULO DE \(\bar{x}\): \[ \bar{x} = \frac{1}{m} \iint_{D} x \cdot
+        (2x)\, dA = \frac{1}{\frac{128}{3}} \int_{0}^{4}\int_{0}^{x} 2x^2 \,
+        dy\, dx. \]
+      </p>
+      <p>
+        \[ \int_{0}^{x} 2x^2 \, dy = 2x^2 \cdot (y)\Big|_{0}^{x} = 2x^3. \]
+        Logo, \[ \int_{0}^{4} 2x^3 \, dx = 2 \int_{0}^{4} x^3 \, dx = 2 \left[
+        \frac{x^4}{4} \right]_{0}^{4} = 2 \left( \frac{256}{4} \right) = 2
+        \times 64 = 128. \]
+      </p>
+      <p>
+        Assim, \[ \bar{x} = \frac{128}{\frac{128}{3}} = \frac{128}{1} \times
+        \frac{3}{128} = 3. \]
+      </p>
+      <p>
+        CÁLCULO DE \(\bar{y}\): \[ \bar{y} = \frac{1}{m} \iint_{D} y \cdot
+        (2x)\, dA = \frac{1}{\frac{128}{3}} \int_{0}^{4}\int_{0}^{x} 2xy \, dy\,
+        dx. \]
+      </p>
+      <p>
+        \[ \int_{0}^{x} 2xy \, dy = 2x \int_{0}^{x} y \, dy = 2x
+        \left[\frac{y^2}{2}\right]_{0}^{x} = 2x \left(\frac{x^2}{2}\right) =
+        x^3. \] Logo, \[ \int_{0}^{4} x^3 \, dx =
+        \left[\frac{x^4}{4}\right]_{0}^{4} = \frac{256}{4} = 64. \]
+      </p>
+      <p>
+        Assim, \[ \bar{y} = \frac{64}{\frac{128}{3}} = 64 \times \frac{3}{128} =
+        \frac{192}{128} = \frac{3}{2}. \]
+      </p>
+      <p>CONCLUSÃO: \(\bar{x} = 3\) e \(\bar{y} = 1.5\).</p>
+    </div>
+  </details>
+</li>

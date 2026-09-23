@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Engenharia de Materiais - Componente de Reentrada [SIGMA-4]
+  </div>
+  <p>
+    Para fechar esta lista, vamos combinar tudo: escolha de sistema, Jacobiano,
+    densidade dependente de posição e uma região com limites não triviais. Este
+    exercício é a síntese de tudo que construímos até aqui.
+  </p>
+  <p>
+    Um componente protetor tem formato de paraboloide de revolução, delimitado
+    por \(z = r^2\) (base) e \(z = 4\) (tampa). O material tem densidade que
+    cresce tanto radialmente quanto com a altura: \(\delta(r,z) = r + z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine os limites completos de integração. Quando
+    \(z = 0\), qual é o raio máximo? Esboce a região.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral tripla da massa em coordenadas
+    cilíndricas, incluindo a densidade e o Jacobiano.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral passo a passo e apresente o resultado
+    final.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Quando \(z = 0\): \(0 = r^2\), logo \(r = 0\). Quando \(z = 4\):
+        \(r^2 = 4\), logo \(r = 2\). O sólido é um paraboloide truncado: \(0 \le
+        \theta \le 2\pi\), \(0 \le r \le 2\), \(r^2 \le z \le 4\). O esboço
+        mostra a parábola \(z = r^2\) com a tampa plana em \(z = 4\).
+      </p>
+      <p>
+        (b) A massa é: \[ M = \int_0^{2\pi} \int_0^{2} \int_{r^2}^{4} (r + z)
+        \cdot r \, dz \, dr \, d\theta.\]
+      </p>
+      <p>
+        (c) <strong>Integração em \(z\):</strong> \[\int_{r^2}^{4} (r + z) \, dz
+        = \left[rz + \frac{z^2}{2}\right]_{r^2}^{4} = 4r + 8 - r^3 -
+        \frac{r^4}{2}.\]
+      </p>
+      <p>
+        <strong>Integração em \(r\):</strong> \[\int_0^2 r\left(4r + 8 - r^3 -
+        \frac{r^4}{2}\right) dr = \int_0^2 \left(4r^2 + 8r - r^4 -
+        \frac{r^5}{2}\right) dr\]
+      </p>
+      <p>
+        \[= \left[\frac{4r^3}{3} + 4r^2 - \frac{r^5}{5} -
+        \frac{r^6}{12}\right]_0^2 = \frac{32}{3} + 16 - \frac{32}{5} -
+        \frac{64}{12}\]
+      </p>
+      <p>
+        \[= \frac{32}{3} + 16 - \frac{32}{5} - \frac{16}{3} = \frac{16}{3} + 16
+        - \frac{32}{5} = \frac{16}{3} + \frac{80}{5} - \frac{32}{5} =
+        \frac{16}{3} + \frac{48}{5}\]
+      </p>
+      <p>\[= \frac{80 + 144}{15} = \frac{224}{15}.\]</p>
+      <p>
+        <strong>Integração em \(\theta\):</strong> \(\int_0^{2\pi} d\theta =
+        2\pi\).
+      </p>
+      <p>
+        <strong>Resultado final:</strong> \(M = 2\pi \cdot \frac{224}{15} =
+        \frac{448\pi}{15}\).
+      </p>
+    </div>
+  </details>
+</li>

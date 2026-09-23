@@ -1,0 +1,209 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h2>Notações Alternativas</h2>
+      <p>
+        Por que a mesma integral aparece escrita de outro jeito nos relatórios
+        dos laboratórios parceiros? Num documento, o trabalho é
+        \(\int_C \vec{F}\cdot d\vec{r}\); em outro, \(\int_C P\,dx + Q\,dy\). A
+        grandeza é a mesma — a grafia não.
+      </p>
+      <p>
+        As seções 02 a 05 montaram a máquina: parametrização, comprimento,
+        campo vetorial, invariância sob mudança de parâmetro. Resta a roupagem
+        notacional — saber reconhecer a mesma integral sob duas escritas e
+        traduzir entre elas sem recalcular.
+      </p>
+      <p class="history-insert">
+        Quem decidia o lançamento não calculava a trajetória; quem calculava a
+        trajetória não decidia o lançamento. Entre os dois, circulava apenas o
+        relatório.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>O Produto Escalar Expandido</h3>
+      <p>
+        A notação vetorial \(\int_C \vec{F}\cdot d\vec{r}\) esconde uma soma.
+        Com \(\vec{F} = (P, Q)\) e deslocamento infinitesimal
+        \(d\vec{r} = (dx, dy)\), o produto escalar se expande em
+        \(P\,dx + Q\,dy\) — dois termos, um por componente.
+      </p>
+      <p>
+        Como um endereço escrito por extenso: a informação é a mesma, mas cada
+        componente do campo vira coeficiente do seu diferencial — \(P\)
+        acompanha \(dx\), \(Q\) acompanha \(dy\).
+      </p>
+      <div class="math-section">
+        <p>
+          Os símbolos \(dx\) e \(dy\) não são enfeite: são as variações
+          infinitesimais de \(x\) e de \(y\) ao longo da curva. O integrando
+          inteiro é a forma diferencial \(\int_C P\,dx + Q\,dy\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>Equivalência das Notações</h3>
+      <div class="formula-spotlight">
+        <p>\[ \int_C \vec{F}\cdot d\vec{r} = \int_C P\,dx + Q\,dy = \int_a^b [P\,x'(t) + Q\,y'(t)]\,dt \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{F}(x,y) = (P, Q)\) = campo vetorial, contínuo numa região que
+            contém a curva \(C\).
+          </li>
+          <li>
+            \(dx = x'(t)\,dt\) e \(dy = y'(t)\,dt\) = diferenciais ao longo da
+            parametrização \(\vec{r}(t) = (x(t), y(t))\).
+          </li>
+          <li>
+            \(P\,x'(t) + Q\,y'(t)\) = o produto escalar
+            \(\vec{F}\cdot\vec{r}'(t)\) já expandido.
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(C\) suave por partes e \(\vec{F}\)
+          contínuo. As três grafias denotam a mesma grandeza física — o
+          trabalho —; a diferença é puramente notacional.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>Quando Usar Cada Grafia</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>Curva como gráfico</strong></p>
+          <p>
+            Se \(C\) é dada por \(y = f(x)\), substitua diretamente
+            \(dy = f'(x)\,dx\) e integre em \(x\) — sem parametrização auxiliar.
+          </p>
+        </div>
+        <div>
+          <p><strong>Trechos paralelos aos eixos</strong></p>
+          <p>
+            Em segmentos horizontais, \(dy = 0\); em verticais, \(dx = 0\). Um
+            dos termos da soma desaparece e a integral encolhe.
+          </p>
+        </div>
+        <div>
+          <p><strong>Curvas poligonais</strong></p>
+          <p>
+            Trajetórias em L ou em escada se decompõem naturalmente: cada
+            trecho vira uma integral simples, e o total é a soma das parcelas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — A Rota \(y = x^2\)</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F}(x, y) = (x, y^2)\) age sobre a rota \(y = x^2\),
+            percorrida de \((0,0)\) a \((1,1)\).
+          </p>
+          <p>
+            Escreva a forma diferencial \(\int_C P\,dx + Q\,dy\) usando
+            \(dy = f'(x)\,dx\) e calcule o trabalho ao longo da rota.
+          </p>
+          <p>
+            Sugestão: substitua \(y = x^2\) em \(Q\) antes de integrar em
+            \(x\), de \(0\) a \(1\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A mesma integral em duas grafias — uma com vetores, outra com
+            diferenciais. A notação não muda o número: muda quem consegue ler a
+            conta. Qual das duas você assinaria como sua?
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Poligonal em L</h3>
+      <div class="problem-section">
+        <p>
+          O campo \(\vec{F}(x, y) = (x^2, y)\) sobre a poligonal que vai de
+          \((0,0)\) a \((1,0)\) e depois a \((1,1)\).
+        </p>
+        <p>
+          Calcule \(\int_C x^2\,dx + y\,dy\) trecho a trecho: no segmento
+          horizontal, \(dy = 0\); no vertical, \(dx = 0\). Some as duas
+          parcelas para obter o total.
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div>
+        <p>
+          Em 1971, a Apollo 15 deixou na Lua o memorial Fallen Astronaut — uma
+          placa com 14 nomes de astronautas e cosmonautas mortos. Entre eles,
+          Komarov, Gagarin e os três da Apollo 1. Os dois lados, no mesmo
+          metal, sobre o mesmo solo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · NOTAÇÕES ALTERNATIVAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 3 — Mesma Conta, Duas Grafias</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F}(x, y) = (x^2, y)\) sobre o segmento de \((0,0)\) a
+            \((1,1)\).
+          </p>
+          <p>
+            Calcule o trabalho nos dois formatos: parametrizando com
+            \(\vec{r}(t) = (t, t)\) e usando \(\int_C \vec{F}\cdot d\vec{r}\);
+            depois na forma diferencial \(\int_C x^2\,dx + y\,dy\), com
+            \(dx = dy = dt\).
+          </p>
+          <p>
+            Os números coincidem? O que isso diz sobre as duas grafias?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A integral é a mesma nas duas notações — a matemática não tem dono.
+            O relatório, sim: tinha assinatura, classificação e nome. Quantas
+            páginas de cálculo não assinadas sustentaram as duas corridas?
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+</section>

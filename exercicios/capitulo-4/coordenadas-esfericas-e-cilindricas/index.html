@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">1</span> DE JUNHO DE
+          <span class="censored">1966</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE AVANÇADA [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">GEMINI-TRIPLO</span> <br /><br />
+          No tópico anterior, dominamos a mudança de variáveis geral em
+          integrais triplas — o Jacobiano
+          \(\left|\frac{\partial(x,y,z)}{\partial(u,v,w)}\right|\) como fator de
+          conversão do elemento de volume. Agora vamos especializar essa
+          ferramenta para os dois sistemas de coordenadas mais usados em
+          engenharia espacial: <strong>cilíndricas</strong> e
+          <strong>esféricas</strong>. Esses sistemas não são fórmulas novas —
+          são <em>casos particulares</em> da mudança de variáveis, otimizados
+          para regiões com simetria cilíndrica ou esférica. <br /><br />
+          O material a seguir foi compilado a partir das anotações do Dr.
+          <span class="censored">███████</span>, que liderou o
+          <span class="censored">setor de modelagem</span> no programa Gemini,
+          fornecendo bases sólidas para a próxima fase de
+          <span class="censored">operações orbitais</span>.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações matemáticas consideradas vitais para
+          a segurança nacional. A divulgação não autorizada deste material pode
+          resultar em <span class="censored">graves consequências</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">2207</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS TRIPLAS EM COORDENADAS CILÍNDRICAS E
+        ESFÉRICAS
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >1. COORDENADAS CILÍNDRICAS: EXTENSÃO NATURAL DAS POLARES</strong
+          >
+        </p>
+        <p>
+          As coordenadas cilíndricas \((r,\theta,z)\) estendem as coordenadas
+          polares (estudadas no Capítulo 2) para três dimensões. A variável
+          \(r\) mede a distância ao eixo \(z\), \(\theta\) é o ângulo azimutal
+          no plano \(xy\), e \(z\) permanece inalterada. As transformações são:
+        </p>
+        <p class="formula-highlight">
+          \[x = r\cos\theta, \quad y = r\sin\theta, \quad z = z.\]
+        </p>
+        <p>
+          Este sistema é natural quando a região tem
+          <strong>simetria em torno do eixo \(z\)</strong>: cilindros (\(r =
+          \text{constante}\)), cones (\(\phi = \text{constante}\)), paraboloides
+          de revolução (\(z = r^2\)). Note que \(r = \text{constante}\) descreve
+          um cilindro — daí o nome.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. COORDENADAS ESFÉRICAS: SIMETRIA CENTRAL</strong>
+        </p>
+        <p>
+          As coordenadas esféricas \((\rho,\theta,\phi)\) são ideais para
+          regiões com
+          <strong>simetria em torno de um ponto</strong>. A variável \(\rho\) é
+          a distância à origem, \(\theta\) é o ângulo azimutal (igual ao das
+          cilíndricas), e \(\phi\) é o ângulo polar medido a partir do eixo
+          \(z\). As transformações são:
+        </p>
+        <p class="formula-highlight">
+          \[x = \rho\sin\phi\cos\theta, \quad y = \rho\sin\phi\sin\theta, \quad
+          z = \rho\cos\phi.\]
+        </p>
+        <p>
+          Note os casos especiais: \(\phi = 0\) corresponde ao eixo \(z\)
+          positivo, \(\phi = \pi/2\) ao plano \(xy\), e \(\rho =
+          \text{constante}\) descreve uma esfera — daí o nome.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. JACOBIANO CILÍNDRICO</strong></p>
+        <p>
+          No tópico anterior, derivamos o Jacobiano 3D geral. Para cilíndricas,
+          montamos a matriz \(\frac{\partial(x,y,z)}{\partial(r,\theta,z)}\) e
+          calculamos o determinante. O resultado é:
+        </p>
+        <p class="formula-highlight">
+          \[|J_{\text{cil}}| = r, \qquad dV = r\,dr\,d\theta\,dz.\]
+        </p>
+        <p>
+          O fator \(r\) tem interpretação geométrica clara: um arco de ângulo
+          \(d\theta\) tem comprimento \(r\,d\theta\), não apenas \(d\theta\).
+          Perto do eixo (\(r \approx 0\)), o elemento de volume é quase nulo — o
+          setor estreito perto do centro contém pouco volume.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. JACOBIANO ESFÉRICO</strong></p>
+        <p>
+          Para esféricas, a matriz
+          \(\frac{\partial(x,y,z)}{\partial(\rho,\theta,\phi)}\) resulta em:
+        </p>
+        <p class="formula-highlight">
+          \[|J_{\text{esf}}| = \rho^2\sin\phi, \qquad dV =
+          \rho^2\sin\phi\,d\rho\,d\phi\,d\theta.\]
+        </p>
+        <p>
+          O fator \(\rho^2\) aparece porque o arco cresce em duas direções à
+          medida que nos afastamos da origem. O fator \(\sin\phi\) reflete que
+          perto dos polos (\(\phi \approx 0\) ou \(\phi \approx \pi\)), o
+          elemento de volume se estreita — o mesmo efeito do \(r\) em
+          cilíndricas, mas agora dependendo do ângulo polar.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>5. QUANDO USAR CADA SISTEMA</strong></p>
+        <p>
+          A escolha do sistema depende da <strong>simetria da região</strong>:
+        </p>
+        <p>
+          <strong>Cilíndricas</strong> — quando a região tem simetria em torno
+          de um eixo. Exemplos: cilindros (\(r = c\)), cones (\(z = kr\)),
+          paraboloides de revolução (\(z = r^2\)). Se as superfícies que
+          delimitam a região são superfícies de revolução em torno do mesmo
+          eixo, cilíndricas são a escolha natural.
+        </p>
+        <p>
+          <strong>Esféricas</strong> — quando a região tem simetria em torno de
+          um ponto. Exemplos: esferas (\(\rho = c\)), calotas esféricas
+          (limitadas por cones \(\phi = c\) e esferas), cascas esféricas (\(a
+          \le \rho \le b\)).
+        </p>
+        <p>
+          <strong>Cartesianas</strong> — quando a região não tem simetria
+          especial. Tetraedros, prismas oblíquos e regiões delimitadas por
+          planos genéricos são mais simples em cartesianas.
+        </p>
+        <p>
+          Com esses dois sistemas e o Jacobiano correspondente, podemos agora
+          escrever integrais triplas diretamente nas coordenadas adequadas,
+          simplificando enormemente o cálculo quando a região tem simetria.
+        </p>
+      </div>
+      <p>
+        No contexto do programa Gemini, o estudo de integrais triplas
+        possibilita estimar volumes de reservatórios de combustível cilíndricos
+        e esféricos, determinar massas de componentes com densidade variável e
+        avaliar parâmetros críticos para manobras orbitais, garantindo maior
+        precisão e segurança nas missões tripuladas.
+      </p>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em <span class="censored">1965</span>,
+        durante os voos Gemini IV e V, engenheiros norte-americanos utilizaram
+        integrais triplas em coordenadas cilíndricas e esféricas para
+        aperfeiçoar o design de tanques de combustível e cápsulas de reentrada.
+        O programa Gemini, com suas 12 missões entre 1964 e 1966, serviu de
+        laboratório para as técnicas matemáticas que tornariam possíveis as
+        futuras missões lunares.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">PÁGINA 1</div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

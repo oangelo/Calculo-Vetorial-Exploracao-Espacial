@@ -1,0 +1,87 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: <span class="censored">Síntese Final</span> - Arquivo Central do
+    Programa [DADOS CLASSIFICADOS]
+  </div>
+  <p>
+    Você percorreu todo o curso de Cálculo Vetorial. É hora de olhar para trás e
+    ver o padrão: não são teoremas separados, são faces da mesma joia. Quatro
+    teoremas, uma única ideia.
+  </p>
+  <p>Considere os quatro Teoremas Fundamentais do Cálculo Vetorial:</p>
+  <p>
+    <strong>I.</strong> Teorema Fundamental do Cálculo (FTC):
+    \(\displaystyle\int_a^b f'(x)\,dx = f(b) - f(a)\).
+  </p>
+  <p>
+    <strong>II.</strong> Teorema de Green (forma fluxo): \(\displaystyle\oint_C
+    \mathbf{F}\cdot\mathbf{n}\,ds = \iint_D (\nabla\cdot\mathbf{F})\,dA\).
+  </p>
+  <p>
+    <strong>III.</strong> Teorema de Stokes: \(\displaystyle\oint_C
+    \mathbf{F}\cdot d\mathbf{r} = \iint_S (\nabla\times\mathbf{F})\cdot
+    d\mathbf{S}\).
+  </p>
+  <p>
+    <strong>IV.</strong> Teorema da Divergência (Gauss):
+    \(\displaystyle\iint_{\partial V}\mathbf{F}\cdot d\mathbf{S} = \iiint_V
+    (\nabla\cdot\mathbf{F})\,dV\).
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada teorema, identifique: qual é a "derivada" que
+    aparece (derivada comum, divergente, rotacional)? Qual é a "fronteira" (dois
+    pontos, curva fechada no plano, curva fechada no espaço, superfície
+    fechada)? Qual é o "interior" (intervalo, região plana, superfície, volume)?
+  </p>
+  <p>
+    <strong>(b)</strong> Organize os quatro teoremas em ordem crescente de
+    dimensão do "interior". Qual é o padrão? O que muda de um para o próximo?
+  </p>
+  <p>
+    <strong>(c)</strong> Argumente: por que o Teorema da Divergência é o
+    "fechamento natural" do curso? Se tentarmos estender o padrão para a
+    dimensão seguinte (4D), o que apareceria?
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>(a) Tabela comparativa:</p>
+      <p>
+        <strong>FTC:</strong> Derivada = \(f'(x)\) (derivada comum). Fronteira =
+        dois pontos \(\{a, b\}\). Interior = intervalo \([a,b]\) (dimensão 1).
+      </p>
+      <p>
+        <strong>Green (fluxo):</strong> Derivada = \(\nabla \cdot \mathbf{F}\)
+        (divergente 2D). Fronteira = curva fechada no plano. Interior = região
+        plana \(D\) (dimensão 2).
+      </p>
+      <p>
+        <strong>Stokes:</strong> Derivada = \(\nabla \times \mathbf{F}\)
+        (rotacional 3D). Fronteira = curva fechada no espaço. Interior =
+        superfície no espaço (dimensão 2 com curvatura).
+      </p>
+      <p>
+        <strong>Gauss:</strong> Derivada = \(\nabla \cdot \mathbf{F}\)
+        (divergente 3D). Fronteira = superfície fechada. Interior = volume
+        (dimensão 3).
+      </p>
+      <p>
+        (b) FTC (dim 1) → Green/Stokes (dim 2) → Gauss (dim 3). O padrão: a
+        dimensão da fronteira é sempre uma a menos que a dimensão do interior. A
+        cada passo, tanto o interior quanto a fronteira ganham uma dimensão. A
+        "derivada" muda: derivada → divergente/rotacional (operações com
+        derivadas parciais).
+      </p>
+      <p>
+        (c) Gauss é o fecho natural porque opera na dimensão mais alta que o
+        espaço \(\mathbb{R}^3\) permite com regiões "sólidas". Se fôssemos para
+        4D, teríamos um "hipervolume" como interior, uma "superfície
+        tridimensional" como fronteira, e alguma derivada generalizada no
+        integrando — o Teorema de Stokes Generalizado, que unifica todos os
+        quatro numa única fórmula usando formas diferenciais.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,28 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Anomalias – Apollo 15 [26/JUL/1971]
+  </div>
+  <p>
+    Superfícies podem falhar em ter plano tangente em certos pontos — o
+    produto vetorial \(\vec{r}_u \times \vec{r}_v\) pode ser o vetor nulo.
+    Identificar esses pontos é crucial para missões espaciais, pois
+    representam locais onde modelos de terreno podem falhar. Considere o
+    cone parametrizado por
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(u,v) = (u\cos v, u\sin v, u)\]
+  </p>
+  <p>onde \(u \geq 0\) e \(v \in [0, 2\pi)\).</p>
+  <p><strong>(a)</strong> Calcule \(\vec{r}_u\), \(\vec{r}_v\) e o produto vetorial \(\vec{r}_u \times \vec{r}_v\) no ponto \((u,v) = (0, 0)\) (o vértice do cone).</p>
+  <p><strong>(b)</strong> Interprete o resultado zero do produto vetorial. O que significa geometricamente que \(\vec{r}_u \times \vec{r}_v = \vec{0}\)?</p>
+  <p><strong>(c)</strong> Argumente por que o plano tangente não existe no vértice do cone. Dica: considere diferentes curvas passando pelo vértice e mostre que elas têm vetores tangentes diferentes que não definem um único plano.</p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\vec{r}_u = (\cos v, \sin v, 1)\), \(\vec{r}_v = (-u\sin v, u\cos v, 0)\). Em \((0,0)\): \(\vec{r}_u = (1, 0, 1)\), \(\vec{r}_v = (0, 0, 0)\). \(\vec{r}_u \times \vec{r}_v = (0, 0, 0)\).</p>
+      <p><strong>(b)</strong> O produto vetorial nulo indica que \(\vec{r}_u\) e \(\vec{r}_v\) são linearmente dependentes (ou um deles é nulo). Geometricamente, as curvas coordenadas não definem um plano tangente único no vértice.</p>
+      <p><strong>(c)</strong> Considere a curva \(\vec{r}(u, 0) = (u, 0, u)\) que passa pelo vértice. Seu vetor tangente é \((1,0,1)\). Considere a curva \(\vec{r}(u, \pi/2) = (0, u, u)\). Seu vetor tangente é \((0,1,1)\). Esses dois vetores tangentes não são colineares, mas ambos passam pelo vértice. Não existe um único plano que contenha todas as retas tangentes ao cone no vértice — portanto o plano tangente não existe.</p>
+    </div>
+  </details>
+</li>

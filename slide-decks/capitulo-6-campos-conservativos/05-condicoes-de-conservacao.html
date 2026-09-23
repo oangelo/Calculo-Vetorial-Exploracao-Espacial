@@ -1,0 +1,231 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h2>Como Saber sem Testar Infinitos Caminhos?</h2>
+      <p>
+        Nas seções 03 e 04, o atalho \(\phi(B) - \phi(A)\) só vale para campos
+        conservativos — mas como saber, sem testar infinitos caminhos, se um
+        campo é conservativo? Testar uma curva por vez é inviável; é preciso
+        uma propriedade local do campo que denuncie a existência do potencial.
+      </p>
+      <p>
+        A pista vem da seção 04: se \(\vec{F} = \nabla\phi\), as componentes
+        do campo não são independentes — elas herdam a estrutura da função
+        \(\phi\). Este tópico extrai dessa herança um teste rápido e
+        mecânico.
+      </p>
+      <p class="history-insert">
+        O programa Apollo custou cerca de 25 bilhões de dólares da época — no
+        auge, mais de 4% do orçamento federal americano. Financiado pelos
+        impostos de trabalhadores, para demonstrar a superioridade de um
+        sistema.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>A Assinatura do Campo</h3>
+      <p>
+        Todo campo conservativo carrega uma assinatura invisível: ele vem de
+        uma função \(\phi\), e a ordem em que se deriva \(\phi\) não muda o
+        resultado. O teorema de Clairaut garante que as derivadas mistas
+        coincidem — uma identidade estrutural que vale para toda função bem
+        comportada.
+      </p>
+      <p>
+        Analogia: a assinatura é como o carimbo de autenticação de um
+        documento. Um campo forjado — que não deriva de nenhum \(\phi\) — não
+        tem o carimbo; as derivadas cruzadas se desencontram e a fraude fica
+        visível sem percorrer um único caminho.
+      </p>
+      <p>
+        Como \(\vec{F} = \nabla\phi\), as componentes \(M\) e \(N\) são
+        exatamente as derivadas parciais de \(\phi\). Clairaut então vira uma
+        condição sobre as componentes — e é essa condição que este tópico
+        transforma em teste.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>Clairaut Detecta a Assinatura</h3>
+      <div class="math-section">
+        <p>
+          Se \(\vec{F} = (M, N) = \nabla\phi\), então \(M =
+          \frac{\partial\phi}{\partial x}\) e \(N =
+          \frac{\partial\phi}{\partial y}\). Pelo teorema de Clairaut, as
+          derivadas mistas de \(\phi\) são iguais:
+        </p>
+        <p>\[ \frac{\partial^2\phi}{\partial y\,\partial x} = \frac{\partial^2\phi}{\partial x\,\partial y} \]</p>
+      </div>
+      <div class="formula-spotlight">
+        <p>\[ \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Condição necessária:</strong> todo campo conservativo
+          satisfaz essa igualdade — é a assinatura visível nas componentes,
+          sem depender de \(\phi\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>O Teste em Duas Dimensões</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \vec{F}\ \text{conservativo em}\ D \Leftrightarrow \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\ \text{em}\ D \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Validade:</strong> \(M\) e \(N\) com derivadas contínuas e
+          \(D\) um domínio simplesmente conexo — sem buracos. A hipótese do
+          domínio será explicada no tópico 06; por ora, ela é aceita como
+          condição do teste.
+        </p>
+        <p>
+          <strong>Uso:</strong> em vez de integrar ao longo de caminhos,
+          compara-se duas derivadas parciais. A falha é definitiva: o campo
+          não é conservativo. A passagem é condicional: o campo é
+          conservativo, desde que o domínio permita.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>Em Três Dimensões: o Rotacional</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \nabla\times\vec{F} = \left(\frac{\partial P}{\partial y} - \frac{\partial N}{\partial z},\; \frac{\partial M}{\partial z} - \frac{\partial P}{\partial x},\; \frac{\partial N}{\partial x} - \frac{\partial M}{\partial y}\right) \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(\vec{F} = (M, N, P)\); cada componente do
+          rotacional compara uma dupla de derivadas cruzadas — são três
+          versões do teste de Clairaut, uma por par de eixos.
+        </p>
+        <p>
+          <strong>Compactação:</strong> as três igualdades se resumem a uma:
+          \(\nabla\times\vec{F} = 0\) em \(D\) — o rotacional nulo é a
+          assinatura do campo conservativo em três dimensões.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>Necessário vs. Suficiente</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Teste falha:</strong></p>
+          <p>
+            \(\partial M/\partial y \neq \partial N/\partial x\) — ou
+            \(\nabla\times\vec{F} \neq 0\). A condição é necessária, então a
+            falha é definitiva: não existe potencial, o campo não é
+            conservativo. Nenhum caminho precisa ser testado.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Teste passa:</strong></p>
+          <p>
+            A igualdade vale em \(D\). A passagem só garante o potencial se o
+            domínio for simplesmente conexo — sem buracos. A exceção, quando
+            o teste passa mas o campo ainda falha, é o enigma que o tópico 06
+            enfrenta.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Teste em Ação</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="problem-section">
+            <p>
+              O campo \(\vec{F} = (2xy + 3,\; x^2 + y^2)\) atua sobre a nave em
+              todo o plano. (a) Aplique o teste: compare
+              \(\partial M/\partial y\) com \(\partial N/\partial x\). (b)
+              Verifique a hipótese do domínio: \(\mathbb{R}^2\) tem buracos?
+              (c) Se o teste aprovar, construa o potencial \(\Phi\) integrando
+              \(M\) em \(x\) e ajustando a função de \(y\) com a componente
+              \(N\).
+            </p>
+          </div>
+          <div class="compact-solution">
+            <p>
+              <strong>Estratégia:</strong> derive \(M\) em relação a \(y\) e
+              \(N\) em relação a \(x\) e compare; o domínio é o plano inteiro,
+              simplesmente conexo. Para o potencial, integre \(M\) em \(x\)
+              tratando \(y\) como constante, derive em relação a \(y\), iguale
+              a \(N\) e determine a função restante. Confira derivando \(\Phi\)
+              no final.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Cada lançamento do Saturno V custava cerca de 185 milhões de
+            dólares em 1969 — mais de um bilhão em valores de hoje. O teste
+            das derivadas cruzadas, que abria o voo, custava duas linhas de
+            cálculo.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · CONDIÇÕES DE CONSERVAÇÃO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Quando o Rotacional Acusa</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F} = (z^2,\; x^2,\; y^2)\) age no espaço inteiro.
+            (a) Calcule o rotacional \(\nabla\times\vec{F}\) componente a
+            componente. (b) Compare o resultado com o vetor nulo: alguma
+            componente é não nula? (c) Conclua — o teste permite declarar o
+            campo conservativo? Justifique.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O rotacional mede rotação. Em julho de 1969, o que girava em
+            torno da Lua não era só a nave — era a máquina de propaganda dos
+            dois lados.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+</section>

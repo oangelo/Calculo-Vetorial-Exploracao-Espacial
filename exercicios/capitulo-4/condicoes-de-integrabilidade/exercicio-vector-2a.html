@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Estação de Rastreamento - Gemini IV [JUN/1965]
+  </div>
+  <p>
+    Todos os exemplos até agora envolviam funções contínuas em domínios
+    limitados. Mas e se houver um ponto onde a função simplesmente
+    <em>não é contínua</em>? A integral deixa de existir?
+  </p>
+  <p>
+    Considere a função definida por partes: \[g(x,y,z) = \begin{cases} x^2 + y^2
+    + z^2 &amp; \text{se } (x,y,z) \neq (0,0,0), \\ 5 &amp; \text{se } (x,y,z) =
+    (0,0,0). \end{cases}\] definida na esfera \(V = \{(x,y,z) \mid x^2 + y^2 +
+    z^2 \le 4\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o ponto de descontinuidade de \(g\). Mostre
+    que o limite de \(g\) quando \((x,y,z) \to (0,0,0)\) por pontos diferentes
+    da origem não é igual a \(g(0,0,0) = 5\).
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique se \(g\) é limitada em \(V\). Determine cotas
+    superior e inferior.
+  </p>
+  <p>
+    <strong>(c)</strong> Discuta: um único ponto isolado de descontinuidade
+    afeta a integral tripla? Que conceito garante que a integral ainda existe?
+  </p>
+  <p><strong>(d)</strong> Conclua sobre a integrabilidade de \(g\) em \(V\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em 2D, você aprendeu que um ponto tem área zero (medida
+      nula no plano). Em 3D, um ponto tem volume zero — também medida nula. A
+      condição de integrabilidade exige que o conjunto de descontinuidade tenha
+      medida nula, não que seja vazio.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A função é descontínua na origem. Com efeito,
+        quando \((x,y,z) \to (0,0,0)\) por pontos distintos da origem,
+        \(g(x,y,z) = x^2+y^2+z^2 \to 0\), mas \(g(0,0,0) = 5 \neq 0\). Logo a
+        função <strong>não é contínua</strong> em \((0,0,0)\).
+      </p>
+      <p>
+        <strong>(b)</strong> Para \((x,y,z) \neq (0,0,0)\) na esfera de raio 2,
+        temos \(0 \lt x^2+y^2+z^2 \le 4\), logo \(0 \lt g \le 4\). Na origem,
+        \(g = 5\). Portanto \(0 \lt g(x,y,z) \le 5\) para todo ponto em \(V\). A
+        função é limitada.
+      </p>
+      <p>
+        <strong>(c)</strong> A descontinuidade ocorre em um único ponto:
+        \(\{(0,0,0)\}\). Um ponto tem <strong>medida nula</strong> em
+        \(\mathbb{R}^3\) (volume zero). A condição de integrabilidade exige que
+        o conjunto de descontinuidade tenha medida nula,
+        <em>não que seja vazio</em>. Portanto, a descontinuidade isolada não
+        impede a existência da integral.
+      </p>
+      <p>
+        <strong>(d)</strong> A integral tripla de \(g\) em \(V\)
+        <strong>existe</strong>. A função é limitada (\(0 \lt g \le 5\)), o
+        conjunto de descontinuidade tem medida nula (um ponto), e \(V\) é
+        limitado. Este resultado mostra que a continuidade não é estritamente
+        necessária — basta que as descontinuidades sejam "poucas" (medida nula).
+      </p>
+    </div>
+  </details>
+</li>

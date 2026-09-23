@@ -1,0 +1,77 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Apollo 13 — Otimização de Trajetória de Retorno [ABR/1970]
+  </div>
+  <p>
+    Para fechar esta lista, você enfrenta um problema aberto que combina tudo:
+    interpretação do rotacional, escolha de abordagem e verificação por método
+    independente.
+  </p>
+  <p>
+    Considere o triângulo \(T\) com vértices \((0,0)\), \((3,0)\) e \((1,2)\), e
+    o campo \(\vec{F}(x,y) = (xy,\, x^2+y^2)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Analise o rotacional do campo e o contorno da região.
+    Qual abordagem é mais eficiente para calcular a circulação — Stokes
+    (integral dupla) ou integral de linha direta? Justifique sua escolha.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a circulação pelo método que você considerou
+    mais eficiente.
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique o resultado pelo <em>outro</em> método e
+    interprete o sinal do resultado fisicamente: o que ele diz sobre a rotação
+    local do campo?
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial(x^2+y^2)}{\partial x} - \frac{\partial(xy)}{\partial y} =
+        2x - x = x\).
+      </p>
+      <p>
+        O rotacional é \(x\) — uma função simples. O contorno tem três
+        segmentos, cada um exigindo parametrização e cálculo separados. Stokes
+        (integral dupla de \(x\) sobre o triângulo) é claramente mais eficiente.
+        Basta calcular \(\iint_{T} x\, dA = \bar{x} \cdot \text{Area}(T)\), onde
+        \(\bar{x} = \frac{0+3+1}{3} = \frac{4}{3}\) é a coordenada \(x\) do
+        centróide.
+      </p>
+      <p>
+        <strong>(b)</strong> Área do triângulo: \(\frac{1}{2}|0(0-2) + 3(2-0) +
+        1(0-0)| = 3\). Circulação por Stokes: \(\iint_{T} x\, dA = \frac{4}{3}
+        \times 3 = 4\).
+      </p>
+      <p>
+        <strong>(c)</strong> Verificação por integral de linha (três segmentos,
+        anti-horário):
+      </p>
+      <p>
+        \(S_1\): \((0,0)\to(3,0)\). \(x=3t, y=0\). \(\vec{F}=(0,9t^2)\),
+        \(d\vec{r}=(3,0)dt\). Integral: \(0\).
+      </p>
+      <p>
+        \(S_2\): \((3,0)\to(1,2)\). \(x=3-2t, y=2t\). \(\vec{F}=((3-2t)(2t),
+        (3-2t)^2+4t^2)\). \(d\vec{r}=(-2,2)dt\). \(\vec{F}\cdot d\vec{r} =
+        24t^2-36t+18\). Integral: \([8t^3-18t^2+18t]_{0}^{1} = 8\).
+      </p>
+      <p>
+        \(S_3\): \((1,2)\to(0,0)\). \(x=1-t, y=2-2t\). \(\vec{F}=((1-t)(2-2t),
+        (1-t)^2+(2-2t)^2)\). \(d\vec{r}=(-1,-2)dt\). \(\vec{F}\cdot d\vec{r} =
+        -12t^2+24t-12\). Integral: \([-4t^3+12t^2-12t]_{0}^{1} = -4\).
+      </p>
+      <p>Total: \(0 + 8 + (-4) = 4\). Confere com Stokes! \(\checkmark\)</p>
+      <p>
+        Interpretação: a circulação é \(4 > 0\), significando que a rotação
+        local acumulada é positiva (anti-horária). Isso é consistente com
+        \(\operatorname{rot}\vec{F} = x > 0\) na maior parte do triângulo (todo
+        o triângulo está em \(x \ge 0\)).
+      </p>
+    </div>
+  </details>
+</li>

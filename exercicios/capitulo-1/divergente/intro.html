@@ -1,0 +1,187 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">11</span> DE OUTUBRO DE
+    <span class="censored">1962</span>
+    <br />
+    LOCALIZAÇÃO:
+    <span class="censored">BASE DE LANÇAMENTOS [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">DIVER-X</span>
+    <br /><br />
+    Em meio à tensão crescente após o
+    <span class="censored">bloqueio naval</span> e à troca de ameaças entre
+    <span class="censored">[REDACTED]</span> e
+    <span class="censored">[REDACTED]</span>, nossas equipes de engenharia
+    espacial e análise vetorial têm avançado na aplicação do conceito de
+    divergente em cálculos críticos de propulsão. <br /><br />
+    O desenvolvimento destes exercícios faz parte dos estudos secretos sobre a
+    trajetória de novos veículos orbitais, com ênfase no
+    <span class="censored">Programa Mercury</span>. Seu objetivo principal:
+    detectar regiões onde o campo "cria" ou "destroi" energia — informação vital
+    para o controle de trajetória orbital.
+  </div>
+  <div class="warning-box">
+    Este documento contém análises de campos vetoriais classificadas como VITAIS
+    para a segurança nacional. A reprodução não autorizada acarretará
+    <span class="censored">sanções extremas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: DIV-<span class="censored">1408</span>-A</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">5</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: DIVERGENTE</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Imagine a água saindo de uma torneira. O jato se espalha — o campo de
+    velocidades se expande à medida que a água cai. Agora imagine um ralo: a
+    água converge para um ponto — o campo se contrai. A pergunta central deste
+    módulo é:
+    <em>em cada ponto do espaço, o campo se expande ou se contrai?</em>
+  </p>
+  <p>
+    A <strong>divergência</strong> responde exatamente essa pergunta. Ela nos
+    diz, em cada ponto do espaço, se o campo "cria" valor (\(\nabla \cdot
+    \vec{F} > 0\)), "destroi" valor (\(\nabla \cdot \vec{F} < 0\)) ou
+    simplesmente passa (\(\nabla \cdot \vec{F} = 0\)). Neste módulo, construímos
+    esse conceito a partir de uma ideia simples — quantas setas de um campo
+    atravessam uma janela — e depois aplicamos a campos importantes da física
+    orbital.
+  </p>
+</div>
+
+<!-- ========== 1. FLUXO SIMPLES ========== -->
+<div class="concept-definition">
+  <p><strong>1. FLUXO SIMPLES: O CAMPO PASSANDO POR UMA JANELA</strong></p>
+  <p>
+    Imagine o vento soprando com velocidade constante. Colocamos uma janela
+    plana perpendicular ao vento. A quantidade de vento que atravessa a janela
+    por unidade de tempo é o <strong>fluxo</strong>. É um número simples — nada
+    de integrais.
+  </p>
+  <p>
+    Para um campo constante \(\vec{F}\) e uma janela plana de área \(A\) com
+    vetor normal unitário \(\hat{n}\):
+  </p>
+  <p class="formula-highlight">\[ \\Phi = \vec{F} \cdot \hat{n} \times A \]</p>
+  <p>
+    O produto escalar \(\vec{F} \cdot \hat{n}\) projeta o campo na direção
+    perpendicular à janela. Se o campo é perpendicular à janela, o fluxo é
+    simplesmente \(|\vec{F}| \times A\). Se o campo é paralelo à janela
+    (\(\vec{F} \\perp \hat{n}\)), nada atravessa — fluxo zero. O fluxo é
+    positivo quando o campo atravessa no sentido da normal; é negativo quando
+    atravessa no sentido contrário.
+  </p>
+</div>
+
+<!-- ========== 2. DIVERGÊNCIA ========== -->
+<div class="concept-definition">
+  <p><strong>2. DIVERGÊNCIA: QUÃO O CAMPO CRIA OU DESTROI VALOR</strong></p>
+  <p>
+    A <strong>divergência</strong> de um campo mede, em cada ponto do espaço, a
+    taxa na qual o campo "expande" ou "comprime". Para um campo \(\vec{F} = (P,
+    Q, R)\):
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial
+    Q}{\partial y} + \frac{\partial R}{\partial z} \]
+  </p>
+  <p>
+    Cada componente do campo é derivada em relação à sua variável
+    correspondente: \(P\) em relação a \(x\), \(Q\) a \(y\), \(R\) a \(z\). A
+    soma é um <strong>escalar</strong> — um único número por ponto. O operador
+    \(\nabla \cdot\) combina o símbolo nabla \(\nabla = (\partial/\partial x,
+    \partial/\partial y, \partial/\partial z)\) com o produto escalar — daí o
+    nome "divergência".
+  </p>
+</div>
+
+<!-- ========== 3. INTERPRETAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>3. INTERPRETAÇÃO: FONTES, SUMIDOUROS E SOLENODAIS</strong></p>
+  <p>
+    O valor da divergência em um ponto revela o comportamento local do campo:
+  </p>
+  <p>
+    <strong>\(\nabla \cdot \vec{F} > 0\)</strong> — fonte: o campo "brota"
+    daquele ponto. Imagine uma bomba central que empurra fluido para fora. O
+    campo radial \(\vec{F} = (x, y, z)\) tem divergência constante 3: expansão
+    uniforme em todas as direções.
+  </p>
+  <p>
+    <strong>\(\nabla \cdot \vec{F} < 0\)</strong> — sumidouro: o campo
+    "desaparece" naquele ponto. O fluido é sugado para dentro. Um campo como
+    \(\vec{F} = (-x, -y, -z)\) tem divergência \(-3\): compressão uniforme.
+  </p>
+  <p>
+    <strong>\(\nabla \cdot \vec{F} = 0\)</strong> — solenoidal: o campo apenas
+    passa, sem criar nem destruir. O campo rotacional \(\vec{G} = (-y, x, 0)\)
+    tem divergência zero — gira sem se expandir. O campo gravitacional \(\vec{g}
+    = -GM\vec{r}/r^3\) também é solenoidal fora da massa central.
+  </p>
+</div>
+
+<!-- ========== 4. PROPRIEDADES ========== -->
+<div class="concept-definition">
+  <p><strong>4. LINEARIDADE E PROPRIEDADES</strong></p>
+  <p>
+    O operador divergente é <strong>linear</strong>: para constantes \(c_1\),
+    \(c_2\) e campos \(\vec{F}\), \(\vec{G}\):
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla \cdot (c_1 \vec{F} + c_2 \vec{G}) = c_1 \\, \nabla \cdot \vec{F} +
+    c_2 \\, \nabla \cdot \vec{G} \]
+  </p>
+  <p>
+    Em particular, \(\nabla \cdot (c\vec{F}) = c \\, \nabla \cdot \vec{F}\).
+    Isso permite reutilizar resultados: o campo gravitacional \(\vec{g} = -GM
+    \cdot \vec{F}\) (onde \(\vec{F} = \vec{r}/r^3\)) herda a divergência zero de
+    \(\vec{F}\). Note que a divergência de uma soma não é o produto das
+    divergências — é a soma.
+  </p>
+  <p>
+    Uma conexão importante com o rotacional: para qualquer campo suave
+    \(\vec{A}\), vale \(\nabla \cdot (\nabla \times \vec{A}) = 0\). Ou seja, a
+    divergência de um rotacional é sempre nula — uma consequência da igualdade
+    das derivadas parciais mistas (Teorema de Clairaut).
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> A divergência aparece em
+  praticamente toda análise de campos em engenharia espacial. O
+  <strong>campo gravitacional</strong> tem divergência zero fora das massas —
+  não há "vazamentos" de força gravitacional no espaço vazio, garantindo órbitas
+  estáveis. Em <strong>propulsão</strong>, a divergência do campo de velocidades
+  de gases de escape indica a taxa de expansão do jato — informação crucial para
+  dimensionar bocais. Na <strong>eletrostática</strong>, a divergência do campo
+  elétrico revela a densidade de carga (Lei de Gauss), usada para blindagem de
+  satélites contra
+  <span class="censored">interferências eletromagnéticas</span>. O conceito de
+  campo solenoidal (divergência nula) é a base para
+  <span class="censored">propulsão magneto-hidrodinâmica</span>, onde o fluido
+  condutor é guiado sem criação nem destruição de campo.
+</div>
+
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> O conceito de divergência foi formalizado por
+  Carl Friedrich Gauss no início do século XIX, como parte de sua teoria do
+  fluxo elétrico e magnético. A fórmula \(\nabla \cdot \vec{F} = \partial
+  P/\partial x + \partial Q/\partial y + \partial R/ \partial z\) tornou-se uma
+  das quatro equações de Maxwell que governam todo o eletromagnetismo. Durante a
+  <span class="censored">corrida espacial dos anos 1960</span>, o cálculo
+  preciso de divergências de campos gravitacionais e de propulsão foi essencial
+  para o sucesso das missões
+  <span class="censored">Mercury, Gemini e Apollo</span>.
+</div>

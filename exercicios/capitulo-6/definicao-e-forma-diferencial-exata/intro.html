@@ -1,0 +1,193 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">11</span> DE OUTUBRO DE
+    <span class="censored">1968</span>
+    <br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE TRAJETÓRIA APOLLO</span>,
+    <span class="censored">HOUSTON [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">CAMPO-CONSERVA</span><br /><br />
+    Com a Apollo 7 em órbita e a Apollo 8 sendo preparada para o primeiro voo
+    lunar tripulado, nossos analistas identificaram uma propriedade crucial de
+    certos campos de força: para estes campos, o
+    <span class="censored"
+      >trabalho depende apenas da posição inicial e final</span
+    >, independentemente da trajetória escolhida. Esta descoberta tem
+    implicações diretas no
+    <span class="censored">cálculo de consumo de propelente</span> para manobras
+    de translado lunar.<br /><br />
+    Este dossiê apresenta a definição formal de campo conservativo, a linguagem
+    de formas diferenciais e a condição de exatidão — ferramentes essenciais
+    para a equipe de
+    <span class="censored">planejamento de manobras</span>.
+  </div>
+  <div class="warning-box">
+    Qualquer divulgação indevida deste material constituirá violação crítica de
+    protocolos de segurança. O acesso é restrito a equipes autorizadas, sob pena
+    de
+    <span class="censored">sanções severas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">6001</span>-C</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">5</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: DEFINIÇÃO DE CAMPO CONSERVATIVO E FORMA DIFERENCIAL
+  EXATA
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Antes de iniciar esta lista, você deve dominar campos vetoriais \(\vec{F} =
+    (M, N)\) e o cálculo do gradiente \(\nabla f\) (Capítulo 1), bem como
+    derivadas parciais e o rotacional \(\nabla \times \vec{F}\). É essencial
+    saber calcular integrais de linha \(\int_C \vec{F} \cdot d\vec{r}\) por
+    parametrização de curvas suaves por partes (Capítulo 5), incluindo curvas
+    poligonais formadas por segmentos horizontais e verticais.
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>1. CAMPO CONSERVATIVO: QUANDO O CAMINHO NÃO IMPORTA</strong>
+  </p>
+  <p>
+    Um campo vetorial \(\vec{F}\) é chamado <strong>conservativo</strong> quando
+    existe uma função escalar \(f\) tal que \(\vec{F} = \nabla f\). Nesse caso,
+    a função \(f\) é chamada <strong>função potencial</strong>
+    de \(\vec{F}\). A consequência mais importante é que a integral de linha
+    \(\int_C \vec{F} \cdot d\vec{r}\) depende apenas dos pontos inicial e final
+    da curva \(C\), e não do caminho percorrido entre eles.
+  </p>
+  <p>
+    Em termos físicos: quando uma força é conservativa, o trabalho realizado
+    para mover uma partícula entre dois pontos não depende da trajetória
+    escolhida. Isso vale para campos gravitacionais e eletrostáticos, entre
+    outros.
+  </p>
+  <p class="formula-highlight">
+    \[\vec{F} \text{ é conservativo} \iff \exists\, f : \vec{F} = \nabla f\]
+  </p>
+  <p>
+    Aqui \(f\) é a função potencial, e \(\nabla f = \left(\frac{\partial
+    f}{\partial x},\, \frac{\partial f}{\partial y}\right)\) é o gradiente de
+    \(f\). Quando \(\vec{F} = (M, N)\), isso significa \(M = \frac{\partial
+    f}{\partial x}\) e \(N = \frac{\partial f}{\partial y}\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong
+      >2. FORMA DIFERENCIAL: UMA NOVA LINGUAGEM PARA INTEGRAIS DE LINHA</strong
+    >
+  </p>
+  <p>
+    A integral de linha de um campo \(\vec{F} = (M, N)\) ao longo de uma curva
+    \(C\) pode ser reescrita usando a notação de
+    <strong>forma diferencial</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[\int_C \vec{F} \cdot d\vec{r} = \int_C M\,dx + N\,dy\]
+  </p>
+  <p>
+    A expressão \(\omega = M\,dx + N\,dy\) é chamada forma diferencial de ordem
+    1 (ou 1-forma). Aqui \(M\) e \(N\) são funções de \((x,y)\), e \(dx\),
+    \(dy\) são as diferenciais das coordenadas. Esta notação é amplamente usada
+    em física e engenharia — especialmente em termodinâmica — e revela estrutura
+    que a notação vetorial esconde.
+  </p>
+  <p>
+    Quando a forma diferencial \(\omega\) pode ser escrita como \(df\) para
+    alguma função \(f\), dizemos que \(\omega\) é uma
+    <strong>forma diferencial exata</strong>. Nesse caso, \(M = \frac{\partial
+    f}{\partial x}\) e \(N = \frac{\partial f}{\partial y}\), e portanto
+    \(\vec{F} = \nabla f\) — ou seja, a forma é exata exatamente quando o campo
+    correspondente é conservativo.
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>3. CONDIÇÃO DE EXATIDÃO: O TESTE DAS DERIVADAS CRUZADAS</strong>
+  </p>
+  <p>
+    Se \(\omega = M\,dx + N\,dy\) é uma forma diferencial exata, então existe
+    \(f\) com \(M = f_x\) e \(N = f_y\). Pela regra de Schwarz (igualdade das
+    derivadas mistas), temos \(f_{xy} = f_{yx}\), o que implica:
+  </p>
+  <p class="formula-highlight">
+    \[\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\]
+  </p>
+  <p>
+    Esta é a <strong>condição necessária</strong> para que a forma diferencial
+    seja exata. Se \(\frac{\partial M}{\partial y} \neq \frac{\partial
+    N}{\partial x}\), a forma <strong>não</strong> é exata, e o campo
+    correspondente não é conservativo.
+  </p>
+  <p>
+    A conexão com o rotacional é direta: para \(\vec{F} = (M, N, 0)\), a
+    componente \(z\) do rotacional é \(\frac{\partial N}{\partial x} -
+    \frac{\partial M}{\partial y}\). Portanto, a condição de exatidão é
+    equivalente a \(\nabla \times \vec{F} = \vec{0}\) — o rotacional é nulo. Em
+    três variáveis, a forma \(\omega = M\,dx + N\,dy + P\,dz\) é exata quando
+    todas as três condições de derivadas cruzadas são satisfeitas:
+  </p>
+  <p class="formula-highlight">
+    \[\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}, \quad
+    \frac{\partial M}{\partial z} = \frac{\partial P}{\partial x}, \quad
+    \frac{\partial N}{\partial z} = \frac{\partial P}{\partial y}\]
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>4. QUATRO CARACTERIZAÇÕES EQUIVALENTES</strong>
+  </p>
+  <p>
+    Para campos definidos em domínios adequados (sem "furos"), as seguintes
+    afirmações são equivalentes:
+  </p>
+  <p>
+    <strong>(i)</strong> \(\vec{F} = \nabla f\) para alguma função potencial
+    \(f\) (campo conservativo).
+  </p>
+  <p>
+    <strong>(ii)</strong> \(\int_C \vec{F} \cdot d\vec{r}\) é independente do
+    caminho (depende apenas dos extremos).
+  </p>
+  <p>
+    <strong>(iii)</strong> A forma diferencial \(M\,dx + N\,dy\) correspondente
+    é exata.
+  </p>
+  <p>
+    <strong>(iv)</strong> \(\nabla \times \vec{F} = \vec{0}\) (rotacional nulo).
+  </p>
+  <p>
+    A hipótese sobre o domínio é essencial: quando o domínio tem "furos", a
+    equivalência pode falhar — um campo pode ter rotacional nulo sem ser
+    conservativo. Esta sutileza será explorada nos exercícios finais.
+  </p>
+</div>
+<p>
+  No planejamento de manobras de translado lunar do Programa Apollo, a
+  identificação de campos conservativos permite que o consumo de propelente seja
+  calculado diretamente pela diferença de altitude orbital, sem necessidade de
+  parametrizar a trajetória completa. Quando o campo gravitacional é
+  conservativo, apenas os pontos de partida e chegada importam — uma
+  simplificação dramática que a equipe de Houston explorava rotineiramente.
+</p>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Em outubro de 1968, a Apollo 7 realizou o
+  primeiro voo tripulado do programa, testando o módulo de comando em órbita
+  terrestre por 11 dias. A missão foi um sucesso total, abrindo caminho para a
+  Apollo 8, que em dezembro de 1968 levaria três astronautas à órbita lunar pela
+  primeira vez. O conceito de campo conservativo era central nos cálculos de
+  trajetória: a energia mecânica total (cinética mais potencial) se conserva ao
+  longo do voo, permitindo previsões precisas de consumo de combustível.
+</div>

@@ -1,0 +1,46 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO SR2-OMEGA-2</div>
+  <div class="context">
+    ORIGEM: Centro de Navegação Interplanetária - Operação Phoenix
+  </div>
+  <p>
+    Nos exercícios anteriores você sempre calculou o valor numérico final da
+    soma de Riemann. Mas na prática, quando a função é complicada, nem sempre é
+    possível (ou desejável) fechar o número — às vezes basta escrever a
+    expressão simbólica e identificar os pontos-chave. Este exercício treina
+    exatamente essa habilidade: construir a soma sem calcular o resultado final.
+  </p>
+  <p>
+    <strong>(a)</strong> Para a função \(f(x,y) = e^{-x^2 - y^2}\) no domínio
+    \(D=[0,2]\times[0,2]\) com \(m=2\), \(n=2\) e pontos médios, determine as
+    coordenadas \((x_{ij}^*, y_{ij}^*)\) de cada ponto de amostragem.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a expressão geral da soma de Riemann
+    correspondente, substituindo os pontos encontrados em (a).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Com \(m=n=2\) em \(D=[0,2]\times[0,2]\), cada
+      sub-retângulo tem dimensão \(1\times 1\). Os pontos médios ficam no centro
+      geométrico de cada sub-retângulo — desloque \(0.5\) em cada direção a
+      partir do canto inferior esquerdo.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Subdivisão: \(\Delta x=1\), \(\Delta y=1\). Pontos médios em cada
+        sub-retângulo: \((0.5, 0.5)\), \((1.5, 0.5)\), \((0.5, 1.5)\), \((1.5,
+        1.5)\).
+      </p>
+      <p>
+        Expressão geral: \[ \sum f(x_{ij}^*, y_{ij}^*)\,\Delta x\,\Delta y =
+        \bigl[e^{-(0.5)^2-(0.5)^2} + e^{-(1.5)^2-(0.5)^2} + e^{-(0.5)^2-(1.5)^2}
+        + e^{-(1.5)^2-(1.5)^2}\bigr]\times 1\times 1. \]
+      </p>
+    </div>
+  </details>
+</li>

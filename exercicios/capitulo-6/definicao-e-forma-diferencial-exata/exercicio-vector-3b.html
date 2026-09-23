@@ -1,0 +1,49 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: LABORATÓRIO DE CAMPOS -
+    <span class="censored">APOLLO 9</span>, MARÇO 1969
+  </div>
+  <p>
+    Tudo que fizemos em duas dimensões se estende naturalmente para três — o que
+    é essencial para aplicações espaciais. Uma forma diferencial em três
+    variáveis tem a forma:
+  </p>
+  <p class="formula-highlight">\[\omega = M\,dx + N\,dy + P\,dz\]</p>
+  <p>
+    onde \(M\), \(N\) e \(P\) são funções de \((x, y, z)\). Para que \(\omega =
+    df\), precisamos agora de <strong>três</strong> condições de exatidão — uma
+    para cada par de derivadas cruzadas.
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva as três condições de exatidão que \(M\), \(N\)
+    e \(P\) devem satisfazer para que a forma 3D seja exata. Derive cada
+    condição a partir da igualdade das derivadas mistas de \(f\).
+  </p>
+  <p>
+    <strong>(b)</strong> Considere o campo \(\vec{F}(x,y,z) = \begin{pmatrix} 2x
+    + z \\ 2y \\ x + 3z^2 \end{pmatrix}\). Escreva a forma diferencial
+    correspondente e aplique as três condições de exatidão. O campo é
+    conservativo?
+  </p>
+  <p>
+    <strong>(c)</strong> Se o teste for positivo, encontre a função potencial
+    \(f(x,y,z)\) integrando componente a componente: integre \(M\) em relação a
+    \(x\), depois use \(N\) para determinar a dependência em \(y\), e finalmente
+    use \(P\) para determinar a dependência em \(z\). Verifique que \(\nabla f =
+    \vec{F}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-8]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A lógica é a mesma do caso 2D, mas agora com três pares.
+      As condições são: \(\frac{\partial M}{\partial y} = \frac{\partial
+      N}{\partial x}\), \(\frac{\partial M}{\partial z} = \frac{\partial
+      P}{\partial x}\), e \(\frac{\partial N}{\partial z} = \frac{\partial
+      P}{\partial y}\). Para encontrar o potencial: integre \(M\) em \(x\) para
+      obter \(f = \int M\,dx + g(y,z)\), depois derive em \(y\) e compare com
+      \(N\) para achar \(\frac{\partial g}{\partial y}\), e finalmente derive em
+      \(z\) e compare com \(P\).
+    </div>
+  </details>
+</li>

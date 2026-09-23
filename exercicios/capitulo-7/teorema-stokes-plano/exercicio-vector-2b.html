@@ -1,0 +1,76 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Apollo 12 — Planejamento de Descida [NOV/1969]
+  </div>
+  <p>
+    Stokes não apenas detecta circulação zero — ele pode simplificar
+    drasticamente cálculos que seriam trabalhosos por integral de linha direta.
+    Vamos comparar as duas abordagens no mesmo problema para sentir a diferença.
+  </p>
+  <p>
+    A região \(R\) é limitada pela parábola \(y = x^2\) e pela reta \(y = 2x\),
+    que se intersectam em \((0,0)\) e \((2,4)\). Considere o campo
+    \(\vec{F}(x,y) = (y,\, x^2)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional e configure a integral dupla sobre
+    \(R\). Determine os limites de integração e avalie.
+  </p>
+  <p>
+    <strong>(b)</strong> Parametrize cada trecho do contorno de \(R\) (a
+    parábola e a reta) e configure as integrais de linha correspondentes.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie ambas as abordagens e compare a dificuldade.
+    Ambas devem dar o mesmo resultado — verifique.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Stokes envolve uma integral dupla com limites \(0 \le x
+      \le 2\) e \(x^2 \le y \le 2x\). A integral de linha exige parametrizar
+      dois trechos: a parábola \(y = x^2\) de \((0,0)\) a \((2,4)\), e a reta
+      \(y = 2x\) de \((2,4)\) a \((0,0)\). A orientação positiva (anti-horária)
+      percorre a parábola no sentido crescente de \(x\) e a reta no sentido
+      decrescente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial(x^2)}{\partial x} - \frac{\partial y}{\partial y} = 2x -
+        1\).
+      </p>
+      <p>
+        \(\iint_{R} (2x-1)\, dA = \int_{0}^{2}\int_{x^2}^{2x} (2x-1)\, dy\, dx\)
+        \(= \int_{0}^{2} (2x-1)(2x-x^2)\, dx = \int_{0}^{2} (5x^2 - 2x^3 - 2x)\,
+        dx = \left[\frac{5x^3}{3} - \frac{x^4}{2} - x^2\right]_{0}^{2} =
+        \frac{40}{3} - 8 - 4 = \frac{4}{3}\).
+      </p>
+      <p><strong>(b)</strong> Contorno positivo (anti-horário):</p>
+      <p>
+        Parábola (\(y = x^2\), \(x: 0 \to 2\)): \(d\vec{r} = (1, 2x)\, dx\).
+        \(\vec{F}\cdot d\vec{r} = x^2 + 2x^3\). Integral: \(\left[\frac{x^3}{3}
+        + \frac{x^4}{2}\right]_{0}^{2} = \frac{8}{3} + 8 = \frac{32}{3}\).
+      </p>
+      <p>
+        Reta (\(y = 2x\), \(x: 2 \to 0\)): \(d\vec{r} = (1, 2)\, dx\).
+        \(\vec{F}\cdot d\vec{r} = 2x + 2x^2\). Integral: \(\int_{2}^{0}
+        (2x+2x^2)\, dx = -\left[x^2 + \frac{2x^3}{3}\right]_{0}^{2} = -(4 +
+        \frac{16}{3}) = -\frac{28}{3}\).
+      </p>
+      <p>
+        <strong>(c)</strong> Integral de linha: \(\frac{32}{3} - \frac{28}{3} =
+        \frac{4}{3}\). Stokes: \(\frac{4}{3}\). Coincidem! \(\checkmark\)
+      </p>
+      <p>
+        Stokes exigiu uma integral dupla; a integral de linha exigiu
+        parametrizar dois trechos e avaliar duas integrais. Stokes foi mais
+        eficiente neste caso.
+      </p>
+    </div>
+  </details>
+</li>

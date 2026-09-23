@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: SIMULAÇÃO DE TRAJETÓRIA -
+    <span class="censored">APOLLO 4</span>, NOVEMBRO 1967
+  </div>
+  <p>
+    No exercício anterior você estimou, por inspeção visual, que o trabalho do
+    campo \(\vec{F}(x,y) = \begin{pmatrix} x \\ y \end{pmatrix}\) ao longo do
+    segmento de \(\begin{pmatrix} 0 \\ 0 \end{pmatrix}\) a \(\begin{pmatrix} 2
+    \\ 4 \end{pmatrix}\) seria positivo. Agora vamos calcular o valor exato,
+    seguindo o procedimento de cinco passos apresentado na fundamentação
+    teórica.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o segmento de reta como \(\vec{r}(t) =
+    \vec{r}_0 + t(\vec{r}_1 - \vec{r}_0)\) com \(t \in [0,1]\), e calcule o
+    vetor derivada \(\vec{r}\,'(t)\).
+  </p>
+  <p>
+    <strong>(b)</strong> Avalie o campo \(\vec{F}\) ao longo da parametrização,
+    obtenha \(\vec{F}(\vec{r}(t))\), e forme o produto escalar
+    \(\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Integre o resultado e interprete o valor obtido como
+    trabalho realizado pelo campo ao longo do segmento. O valor é coerente com a
+    estimativa visual do exercício anterior?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A parametrização de um segmento de \(\vec{A}\) a
+      \(\vec{B}\) é \(\vec{r}(t) = \vec{A} + t(\vec{B} - \vec{A})\) com \(t \in
+      [0,1]\). A derivada é simplesmente \(\vec{r}\,'(t) = \vec{B} - \vec{A}\),
+      constante.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Segmento de \((0,0)\) a \((2,4)\):</p>
+      <p>
+        \[\vec{r}(t) = \begin{pmatrix} 0 \\ 0 \end{pmatrix} + t \begin{pmatrix}
+        2 \\ 4 \end{pmatrix} = \begin{pmatrix} 2t \\ 4t \end{pmatrix}, \quad t
+        \in [0,1]\]
+      </p>
+      <p>\[\vec{r}\,'(t) = \begin{pmatrix} 2 \\ 4 \end{pmatrix}\]</p>
+      <p><strong>(b)</strong> Substituindo \(\vec{r}(t)\) no campo:</p>
+      <p>\[\vec{F}(\vec{r}(t)) = \begin{pmatrix} 2t \\ 4t \end{pmatrix}\]</p>
+      <p>Produto escalar:</p>
+      <p>
+        \[\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t) = (2t)(2) + (4t)(4) = 4t + 16t
+        = 20t\]
+      </p>
+      <p><strong>(c)</strong> Integração:</p>
+      <p>
+        \[\int_C \vec{F} \cdot d\vec{r} = \int_0^1 20t \, dt = 20
+        \left[\frac{t^2}{2}\right]_0^1 = 10\]
+      </p>
+      <p>
+        O trabalho é \(W = 10\), positivo como esperado pela inspeção visual. O
+        campo e o caminho estavam perfeitamente alinhados: a cada instante, a
+        força apontava na mesma direção do deslocamento, acumulando trabalho
+        positivo.
+      </p>
+    </div>
+  </details>
+</li>

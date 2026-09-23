@@ -1,0 +1,81 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">ORIGEM: Apollo 11 — JUL/1969</div>
+  <p>
+    Ao longo desta lista, você viu campos conservativos e não conservativos,
+    domínios conexos e não conexos, testes que passam e falham. Vamos
+    sintetizar: quais são as condições necessárias e suficientes para garantir
+    que um campo é conservativo?
+  </p>
+  <p>Considere dois campos, ambos com rotacional zero:</p>
+  <p>
+    <strong>Campo 1:</strong> \(\vec{F}_1(x,y,z) = (2xz,\; 2yz,\; x^2+y^2)\),
+    definido em \(\mathbb{R}^3\).
+  </p>
+  <p>
+    <strong>Campo 2:</strong> \(\displaystyle\vec{F}_2(x,y,z) =
+    \left(\frac{-y}{x^2+y^2},\;\; \frac{x}{x^2+y^2},\;\; 0\right)\), definido em
+    \(D = \mathbb{R}^3 \setminus\{\text{eixo } z\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Mostre que ambos os campos têm rotacional zero em seus
+    respectivos domínios.
+  </p>
+  <p>
+    <strong>(b)</strong> Para o Campo 1 em \(\mathbb{R}^3\): encontre a função
+    potencial \(\Phi\).
+  </p>
+  <p>
+    <strong>(c)</strong> Para o Campo 2 em \(D\): mostre por que não existe
+    potencial global. Use uma integral de linha se necessário.
+  </p>
+  <p>
+    <strong>(d)</strong> Enuncie, em suas palavras, as
+    <strong>duas condições conjuntas</strong> necessárias para garantir que um
+    campo vetorial é conservativo.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Campo 1: componente \(i\):
+        \(\partial(x^2+y^2)/\partial y - \partial(2yz)/\partial z = 2y - 2y =
+        0\); componente \(j\): \(\partial(2xz)/\partial z -
+        \partial(x^2+y^2)/\partial x = 2x - 2x = 0\); componente \(k\):
+        \(\partial(2yz)/\partial x - \partial(2xz)/\partial y = 0 - 0 = 0\).
+        \(\nabla \times \vec{F}_1 = \vec{0}\).
+      </p>
+      <p>
+        Campo 2: a verificação é idêntica à feita anteriormente — as duas
+        primeiras componentes são zero (não dependem de \(z\) nem cruzam \(x\)
+        com \(z\)), e a terceira se anula pela igualdade das derivadas cruzadas
+        de \(-y/(x^2+y^2)\) e \(x/(x^2+y^2)\). \(\nabla \times \vec{F}_2 =
+        \vec{0}\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Phi = \int 2xz\,dx = x^2 z + C(y,z)\).
+        \(\partial\Phi/\partial y = \partial C/\partial y = 2yz \Rightarrow C =
+        y^2 z + D(z)\). \(\partial\Phi/\partial z = x^2 + y^2 + D'(z) = x^2 +
+        y^2 \Rightarrow D' = 0\). \(\Phi(x,y,z) = x^2 z + y^2 z + K = z(x^2+y^2)
+        + K\).
+      </p>
+      <p>
+        <strong>(c)</strong> O domínio \(D = \mathbb{R}^3 \setminus\{\text{eixo
+        } z\}\) não é simplesmente conexo. A integral de \(\vec{F}_2\) ao longo
+        do círculo \(\gamma(t) = (\cos t, \sin t, 0)\), \(0 \leq t \leq 2\pi\),
+        vale \(2\pi \neq 0\) (cálculo idêntico ao do exercício sobre o
+        contra-exemplo 3D). Logo \(\vec{F}_2\) não admite potencial global em
+        \(D\).
+      </p>
+      <p>
+        <strong>(d)</strong> Para que um campo \(\vec{F}\) seja conservativo,
+        são necessárias e suficientes <strong>duas condições conjuntas</strong>:
+        (1) o rotacional é identicamente zero no domínio (\(\nabla \times
+        \vec{F} = \vec{0}\)), e (2) o domínio é simplesmente conexo. Apenas a
+        condição (1) é necessária mas não suficiente — o Campo 2 prova isso.
+        Juntas, as duas condições garantem a existência de potencial e,
+        consequentemente, a independência do caminho.
+      </p>
+    </div>
+  </details>
+</li>

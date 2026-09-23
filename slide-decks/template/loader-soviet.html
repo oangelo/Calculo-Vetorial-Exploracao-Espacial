@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-BR" data-faction="soviet">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>[TÍTULO] - Cálculo Vetorial</title>
+    <link rel="stylesheet" href="../reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="../space-theme.css" />
+    <script src="../reveal.js/dist/reveal.js"></script>
+    <script src="../reveal.js/plugin/math/math.js"></script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="slides-container"></div>
+    </div>
+    <script>
+      async function loadSlides() {
+        var sections = [
+          '00-capa.html',
+          '01-historia.html',
+          '02-topico-1.html',
+          /* ... adicionar mais tópicos ... */
+          'NN-resumo.html',
+          'NN-reflexao.html',
+        ];
+
+        var container = document.getElementById('slides-container');
+
+        for (var i = 0; i < sections.length; i++) {
+          var sectionFile = sections[i];
+          try {
+            var response = await fetch(sectionFile);
+            if (!response.ok) throw new Error('Failed to load ' + sectionFile);
+
+            var html = await response.text();
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+
+            var inlineScripts = doc.querySelectorAll('script:not([src])');
+            var parsedSections = doc.querySelectorAll('body > section');
+
+            parsedSections.forEach(function (section) {
+              container.appendChild(section);
+            });
+
+            for (var j = 0; j < inlineScripts.length; j++) {
+              var scriptContent = inlineScripts[j].textContent;
+              if (scriptContent.trim()) {
+                var newScript = document.createElement('script');
+                newScript.textContent = scriptContent;
+                document.body.appendChild(newScript);
+              }
+            }
+          } catch (error) {
+            console.error('Error loading ' + sectionFile + ':', error);
+          }
+        }
+
+        Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+          plugins: [RevealMath.MathJax3],
+        });
+      }
+
+      window.addEventListener('load', loadSlides);
+    </script>
+  </body>
+</html>

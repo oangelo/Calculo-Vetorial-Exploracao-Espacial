@@ -1,0 +1,91 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Análise Completa de Estabilidade - Programa Gemini [Julho 1966]
+  </div>
+  <p>
+    Os dois exercícios anteriores trataram do momento de inércia isoladamente.
+    Este exercício é a síntese: você vai calcular
+    <strong>tanto o centro de massa quanto o momento de inércia</strong> para o
+    mesmo corpo, vendo como os dois conceitos se complementam na análise de
+    estabilidade. Considere um cilindro de raio 1 e altura 4, definido por \(x^2
+    + y^2 \le 1\), \(0 \le z \le 4\), com densidade variável \(\rho(z) = 2 + z
+    \, \text{kg/m}^3\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a massa total e o centro de massa (todas as
+    coordenadas).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o momento de inércia em torno do eixo de
+    simetria (\(z\)).
+  </p>
+  <p>
+    <strong>(c)</strong> Resuma: onde o corpo se equilibra e com que dificuldade
+    gira — o que esses dois resultados dizem juntos sobre o desenho deste
+    componente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A densidade \(\rho = 2+z\) depende apenas de \(z\). Em
+      cilíndricas, as integrais em \(r\) e \(\theta\) são iguais às que você já
+      fez nos exercícios anteriores. Para \(x_C\) e \(y_C\), a simetria axial
+      garante que são zero. Para \(z_C\), compare com \(z=2\) (centro de um
+      cilindro de densidade constante).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Massa e centro de massa:</strong></p>
+      <p>
+        Massa: \(\displaystyle M = \int_0^4 \int_0^{2\pi} \int_0^1 (2+z)\,r\,
+        dr\,d\theta\,dz.\)
+      </p>
+      <p>
+        Integral em \(r\): \(\int_0^1 r\,dr = 1/2\). Integral em \(\theta\):
+        \(2\pi\).
+      </p>
+      <p>
+        \(\displaystyle M = 2\pi \cdot \frac{1}{2} \int_0^4 (2+z)\,dz = \pi
+        \left[2z + \frac{z^2}{2}\right]_0^4 = \pi(8+8) = 16\pi.\)
+      </p>
+      <p>Por simetria axial: \(x_C = 0\), \(y_C = 0\).</p>
+      <p>
+        Momento linear em \(z\): \(\displaystyle \int_0^4 \int_0^{2\pi} \int_0^1
+        z(2+z)\,r\,dr\,d\theta\,dz = 2\pi \cdot \frac{1}{2} \int_0^4
+        (2z+z^2)\,dz = \pi \left[z^2 + \frac{z^3}{3}\right]_0^4 = \pi\left(16 +
+        \frac{64}{3}\right) = \pi \cdot \frac{112}{3}.\)
+      </p>
+      <p>
+        \(\displaystyle z_C = \frac{112\pi/3}{16\pi} = \frac{112}{48} =
+        \frac{7}{3}.\)
+      </p>
+      <p>Centro de massa: \(\vec{R}_C = (0,\, 0,\, 7/3)\).</p>
+      <p><strong>(b) Momento de inércia:</strong></p>
+      <p>
+        \(\displaystyle I_z = \int_0^4 \int_0^{2\pi} \int_0^1 (2+z)\,r^2 \cdot
+        r\,dr\,d\theta\,dz.\)
+      </p>
+      <p>
+        Integral em \(r\): \(\int_0^1 r^3\,dr = 1/4\). Integral em \(\theta\):
+        \(2\pi\).
+      </p>
+      <p>
+        \(\displaystyle I_z = 2\pi \cdot \frac{1}{4} \int_0^4 (2+z)\,dz =
+        \frac{\pi}{2} \cdot 16 = 8\pi.\)
+      </p>
+      <p>
+        <strong>(c) Síntese:</strong> O centro de massa está em \(z = 7/3
+        \approx 2{,}33\), acima do ponto médio (\(z=2\)) porque a densidade
+        aumenta com \(z\). O momento de inércia é \(I_z = 8\pi\). Juntos, esses
+        resultados dizem que o componente tem seu equilíbrio levemente deslocado
+        para cima e oferece resistência moderada à rotação em torno do eixo.
+        Para o desenho do Gemini, isso significa que o centro de gravidade não
+        está no centro geométrico, e manobras de rotação precisam considerar
+        essa assimetria.
+      </p>
+    </div>
+  </details>
+</li>

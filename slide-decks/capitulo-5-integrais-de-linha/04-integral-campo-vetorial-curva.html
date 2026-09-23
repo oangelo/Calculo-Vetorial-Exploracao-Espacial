@@ -1,0 +1,542 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h2>Integral de Campo Vetorial sobre Curva</h2>
+      <p>
+        Quanto trabalho o campo de forças faz sobre a nave ao longo da
+        trajetória? Numa transferência orbital, empuxo e gravidade variam ponto
+        a ponto — o trabalho não é mais um produto escalar com um deslocamento
+        retilíneo.
+      </p>
+      <p>
+        A seção 03 acumulou \(\|\vec{r}'(t)\|\,dt\) e a integral escalar —
+        grandezas sem direção. Agora o integrando é um vetor: em cada pedaço da
+        curva, conta apenas a projeção da força sobre o movimento.
+      </p>
+      <p class="history-insert">
+        Em 23 de abril de 1967, a Soyuz 1 levou Vladimir Komarov a órbita — o
+        primeiro voo tripulado do programa Soyuz. No dia seguinte, a nave não o
+        trouxe de volta.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Trabalho como Acumulação</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Caminhar contra o vento exige esforço; a favor, o vento empurra;
+            transversal, ele não ajuda nem atrapalha. Para força constante e
+            deslocamento reto, o trabalho é o produto escalar \(W =
+            \vec{F}\cdot\vec{d}\): só a componente da força na direção do
+            movimento conta.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Numa trajetória curva, a força muda de ponto a ponto. Fatiando o
+            caminho em pedaços pequenos, cada trecho é quase reto e quase com
+            força constante: o trabalho de cada pedaço é \(\vec{F}\cdot
+            d\vec{r}\), e o total é a soma dessas contribuições.
+          </p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          Com \(d\vec{r}\) no sentido do movimento: \(W > 0\) quando a força
+          ajuda (a favor), \(W < 0\) quando resiste (contra), \(W = 0\) quando é
+          perpendicular ao deslocamento.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>A Integral de Linha de um Campo Vetorial</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \int_C \vec{F}\cdot d\vec{r} = \int_a^b
+          \vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\,dt \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{F}\) = campo de forças, contínuo numa região que contém a
+            curva \(C\).
+          </li>
+          <li>
+            \(\vec{r}(t)\) = parametrização da curva, com \(t \in [a, b]\).
+          </li>
+          <li>
+            \(d\vec{r} = \vec{r}'(t)\,dt\) = deslocamento infinitesimal,
+            tangente à curva no sentido do percurso.
+          </li>
+          <li>
+            \(\cdot\) = produto escalar — projeta o campo sobre a direção do
+            movimento.
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(C\) suave por partes e \(\vec{F}\)
+          contínuo na região — a integral existe e independe da parametrização
+          escolhida.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Visualização — O Sinal do Trabalho</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasCampoVetorial"
+            class="visualization-canvas"
+            width="560"
+            height="320"
+          ></canvas>
+          <div class="controls-container">
+            <button id="btnModoCampo" class="control-button">
+              Alternar: rotacional sobre o círculo
+            </button>
+          </div>
+        </div>
+        <div>
+          <p>
+            Cada flecha é o campo \(\vec{F}\) no ponto da curva; a cor registra
+            o sinal de \(\vec{F}\cdot\vec{r}'\): verde a favor (trabalho
+            positivo), vermelho contra (negativo), branco perpendicular (zero).
+            As pequenas setas cinzas marcam a direção do percurso \(d\vec{r}\).
+          </p>
+          <p>
+            \(d\vec{r} = \vec{r}'(t)\,dt\) é tangente à curva — o produto
+            escalar mede quanto do campo acompanha o movimento. Só essa projeção
+            gera trabalho.
+          </p>
+          <p>
+            No modo radial, o segmento cruza a linha em que o campo é
+            perpendicular ao percurso. No modo rotacional, o campo é tangente ao
+            círculo em todo ponto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Procedimento em Cinco Passos</h3>
+      <div class="math-section">
+        <p><strong>Para calcular \(\int_C \vec{F}\cdot d\vec{r}\):</strong></p>
+        <ol>
+          <li>
+            <strong>Parametrizar</strong> a curva: escrever \(\vec{r}(t)\), com
+            \(a \le t \le b\).
+          </li>
+          <li>
+            <strong>Derivar:</strong> obter o vetor tangente \(\vec{r}'(t)\).
+          </li>
+          <li>
+            <strong>Avaliar o campo na curva:</strong> substituir
+            \(\vec{F}(\vec{r}(t))\).
+          </li>
+          <li>
+            <strong>Produto escalar:</strong> calcular
+            \(\vec{F}(\vec{r}(t))\cdot\vec{r}'(t)\) — agora uma função escalar
+            de \(t\).
+          </li>
+          <li><strong>Integrar</strong> de \(a\) a \(b\).</li>
+        </ol>
+        <p>
+          O passo 4 reduz o problema vetorial a uma integral de uma variável — a
+          máquina da seção 03 entra pronta.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Campo Radial sobre um Segmento</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o trabalho \(W = \int_C \vec{F}\cdot d\vec{r}\) do campo
+            \(\vec{F}(x, y) = (x, y)\) sobre o segmento que vai de \((0,0)\) a
+            \((2,4)\).
+          </p>
+          <p>
+            Sugestão: parametrize o segmento com \(\vec{r}(t) = (2t, 4t)\), \(0
+            \le t \le 1\), derive, avalie o campo sobre a curva e monte o
+            produto escalar antes de integrar.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Yuri Gagarin, o primeiro humano no espaço, era o reserva da Soyuz 1.
+            Segundo o ex-agente da KGB Venyamin Russayev — relato que
+            historiadores contestam — a liderança não arriscaria o herói
+            nacional. A missão foi de Komarov.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Campo Rotacional sobre o Círculo</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F}(x, y) = (-y, x)\) gira em torno da origem. Calcule
+            o trabalho \(W = \int_C \vec{F}\cdot d\vec{r}\) sobre o círculo
+            unitário, percorrido no sentido anti-horário.
+          </p>
+          <p>
+            Sugestão: parametrize com \(\vec{r}(t) = (\cos t, \sin t)\), \(0 \le
+            t \le 2\pi\), e compare \(\vec{F}(\vec{r}(t))\) com \(\vec{r}'(t)\)
+            — o que o produto escalar vale em cada ponto?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Komarov, 40 anos, veterano da Voskhod 1, tornou-se o primeiro humano
+            a morrer num voo espacial. Duas vezes Herói da União Soviética — a
+            segunda estrela veio depois de morto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INTEGRAL DE CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 3 — O Caminho Importa?</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F}(x, y) = (2y, x)\) liga as duas curvas que vão de
+            \((0,0)\) a \((1,1)\): a parábola \(\vec{r}_1(t) = (t, t^2)\) e a
+            reta \(\vec{r}_2(t) = (t, t)\), ambas com \(0 \le t \le 1\). Calcule
+            o trabalho ao longo das duas e compare os resultados.
+          </p>
+          <p>
+            A resposta — iguais ou diferentes? — decide se o caminho importa
+            para o trabalho.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Na reentrada, o paraquedas principal da Soyuz 1 não abriu; o reserva
+            também falhou. A cápsula colidiu com o solo em alta velocidade —
+            Komarov morreu no impacto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH5-1967 · CAPÍTULO 5</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasCampoVetorial');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var POS = '#1E88E5';
+    var TAN = '#FFFFFF';
+    var GOOD = '#43A047';
+    var BAD = '#E53935';
+    var HIL = '#FFB300';
+    var REF = '#90A4AE'; // marcadores da direcao do percurso (cinza neutro)
+
+    var btn = document.getElementById('btnModoCampo');
+    var mode = 1; // 1 = radial sobre segmento; 2 = rotacional sobre circulo
+
+    var S = 80; // px por unidade
+    var CX = 280;
+    var CY1 = 240; // modo 1: segmento (my=1) no centro vertical do canvas
+    var CY2 = 165; // modo 2: circulo de raio 1.2 centrado
+    var CY = CY1;
+
+    function toPx(mx, my) {
+      return { x: CX + mx * S, y: CY - my * S };
+    }
+
+    function p1(i) {
+      return { mx: -2 + (4 * i) / 12, my: 1 };
+    }
+
+    var R2 = 1.2;
+    function p2(i) {
+      var a = (2 * Math.PI * i) / 16;
+      return { mx: R2 * Math.cos(a), my: R2 * Math.sin(a), a: a };
+    }
+
+    function arrow(p0, vx, vy, color, lw) {
+      var p = toPx(p0.mx, p0.my);
+      var tip = toPx(p0.mx + vx, p0.my + vy);
+      var dx = tip.x - p.x;
+      var dy = tip.y - p.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 2) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(8, len * 0.38);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(tip.x, tip.y);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(tip.x, tip.y);
+      ctx.lineTo(
+        tip.x - ux * hs - uy * hs * 0.5,
+        tip.y - uy * hs + ux * hs * 0.5
+      );
+      ctx.lineTo(
+        tip.x - ux * hs + uy * hs * 0.5,
+        tip.y - uy * hs - ux * hs * 0.5
+      );
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function dotSign(d) {
+      if (d > 0.25) return 1;
+      if (d < -0.25) return -1;
+      return 0;
+    }
+
+    function colorOf(s) {
+      return s === 1 ? GOOD : s === -1 ? BAD : TAN;
+    }
+
+    function labelOf(s) {
+      return s === 1 ? '+' : s === -1 ? '-' : '0';
+    }
+
+    function drawLegend() {
+      var y = H - 18;
+      var x = 16;
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'left';
+      function swatch(cx, color, text) {
+        ctx.fillStyle = color;
+        ctx.fillRect(cx, y - 8, 14, 14);
+        ctx.fillStyle = '#e0e0e0';
+        ctx.fillText(text, cx + 20, y + 3);
+      }
+      swatch(x, GOOD, 'a favor  W > 0');
+      swatch(x + 150, BAD, 'contra  W < 0');
+      swatch(x + 300, TAN, 'perpendicular  W = 0');
+    }
+
+    function drawMode1(t) {
+      // curva: segmento (-2,1) -> (2,1)
+      var A = toPx(-2, 1);
+      var B = toPx(2, 1);
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(A.x, A.y);
+      ctx.lineTo(B.x, B.y);
+      ctx.stroke();
+
+      // tangentes (cinza, curtas) — direcao do percurso
+      var i;
+      for (i = 0; i < 13; i++) {
+        arrow(p1(i), 0.26, 0, REF, 1.2);
+      }
+      // flechas do campo, coloridas pelo sinal
+      for (i = 0; i < 13; i++) {
+        var q = p1(i);
+        var Fx = q.mx;
+        var Fy = q.my;
+        var d = Fx; // produto com tangente (1,0)
+        var s = dotSign(d);
+        var n = Math.sqrt(Fx * Fx + Fy * Fy);
+        arrow(q, (0.42 * Fx) / n, (0.42 * Fy) / n, colorOf(s), 2);
+      }
+      // ponto animado ao longo do segmento
+      var tx = -2 + 4 * t;
+      var md = toPx(tx, 1);
+      var sd = dotSign(tx);
+      ctx.fillStyle = HIL;
+      ctx.beginPath();
+      ctx.arc(md.x, md.y, 4, 0, 2 * Math.PI);
+      ctx.fill();
+      readout('MODO 1 - radial F=(x,y) sobre o segmento', sd);
+    }
+
+    function drawMode2(t) {
+      // circulo de raio R2
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      var k;
+      for (k = 0; k <= 60; k++) {
+        var ang = (2 * Math.PI * k) / 60;
+        var pp = toPx(R2 * Math.cos(ang), R2 * Math.sin(ang));
+        if (k === 0) ctx.moveTo(pp.x, pp.y);
+        else ctx.lineTo(pp.x, pp.y);
+      }
+      ctx.stroke();
+
+      var i;
+      // flechas do campo: tangentes ao circulo, todas a favor
+      for (i = 0; i < 16; i++) {
+        var c = p2(i);
+        arrow(c, -0.42 * c.my, 0.42 * c.mx, GOOD, 2);
+      }
+      // marcadores de tangente (cinza, curtos)
+      for (i = 0; i < 16; i++) {
+        var cc = p2(i);
+        arrow(
+          cc,
+          0.15 * Math.cos(cc.a + Math.PI / 2),
+          0.15 * Math.sin(cc.a + Math.PI / 2),
+          REF,
+          1.2
+        );
+      }
+      // ponto animado sobre o circulo
+      var ta = 2 * Math.PI * t;
+      var m2 = toPx(R2 * Math.cos(ta), R2 * Math.sin(ta));
+      ctx.fillStyle = HIL;
+      ctx.beginPath();
+      ctx.arc(m2.x, m2.y, 4, 0, 2 * Math.PI);
+      ctx.fill();
+      readout('MODO 2 - rotacional F=(-y,x) sobre o circulo', 1);
+    }
+
+    function readout(text, s) {
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText(text, W / 2, 22);
+      ctx.fillStyle = colorOf(s);
+      ctx.fillText('sinal local: ' + labelOf(s), W / 2, 44);
+      ctx.textAlign = 'left';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      CY = mode === 1 ? CY1 : CY2;
+
+      // eixos discretos
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      var t = (((Date.now() / 1500) % 1) + 1) % 1;
+      if (mode === 1) drawMode1(t);
+      else drawMode2(t);
+      drawLegend();
+    }
+
+    function loop() {
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 1 ? 2 : 1;
+        btn.textContent =
+          mode === 1
+            ? 'Alternar: rotacional sobre o círculo'
+            : 'Alternar: radial sobre o segmento';
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizCampoVetorial = { init: init, cleanup: cleanup };
+  })();
+</script>
