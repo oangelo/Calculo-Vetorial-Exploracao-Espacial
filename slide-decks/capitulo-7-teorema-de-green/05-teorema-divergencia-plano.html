@@ -18,8 +18,7 @@
       </p>
       <p class="history-insert">
         Em dezembro de 1971, a sonda Mars 3 pousou suavemente em Marte — a
-        primeira a fazê-lo. Transmitiu por cerca de catorze segundos e
-        silenciou.
+        primeira a fazê-lo. Transmitiu por cerca de vinte segundos e silenciou.
       </p>
     </div>
     <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
@@ -72,8 +71,10 @@
         <p>
           <strong>Leitura:</strong> o lado esquerdo soma a divergência sobre a
           área; o lado direito mede o fluxo que atravessa a borda para fora. O
-          produto \(\vec F\cdot\vec n\) é a componente do campo na direção da
-          normal exterior, e \(ds\) percorre a fronteira.
+          integrando é \((\vec F\cdot\vec n)\,ds\): \(\vec F\cdot\vec n\) é a
+          componente do campo na direção da normal exterior (um escalar) e
+          \(ds\) é o elemento de comprimento de arco. O slide seguinte detalha a
+          notação.
         </p>
         <p>
           <strong>Validade:</strong> é a mesma identidade de Green com outra
@@ -81,6 +82,56 @@
           discos, elipses e regiões multiplamente conexas como o anel —,
           respeitada a orientação das bordas internas.
         </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 05 · DIVERGÊNCIA NO PLANO</div>
+    <div class="slide-body">
+      <h3>A Notação do Fluxo — \(\vec n\), \(ds\) e \(d\vec S\)</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Os dois fatores</strong></p>
+          <p>
+            \(\vec n\) é o vetor <strong>unitário</strong> normal exterior
+            (\(|\vec n|=1\)): perpendicular à curva e apontando para fora da
+            região. Para uma curva orientada positivamente, ele é a tangente
+            unitária girada de \(-90^\circ\):
+          </p>
+          <p>
+            \[ \vec T=\left(\frac{dx}{ds},\frac{dy}{ds}\right),\qquad \vec
+            n=\left(\frac{dy}{ds},-\frac{dx}{ds}\right) \]
+          </p>
+          <p>
+            \(ds\) é o elemento de comprimento de arco — o mesmo do Cap 5: \[
+            ds=\|\vec r'(t)\|\,dt \] positivo, mede o comprimento de um trecho
+            infinitesimal da curva.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>O elemento vetorial</strong></p>
+          <p>
+            \(d\vec S=\vec n\,ds\) é o elemento vetorial normal: magnitude
+            \(ds\) (comprimento), direção \(\vec n\) (normal). É o análogo
+            normal do elemento tangente do Cap 5, \(d\vec r=\vec T\,ds\).
+          </p>
+          <p>
+            A fórmula canônica usa \(\vec F\cdot\vec n\,ds\), com a leitura
+            \((\vec F\cdot\vec n)\,ds\) — primeiro o produto escalar, depois o
+            comprimento:
+          </p>
+          <p>
+            \[ \vec F\cdot\vec n\,ds=(\vec F\cdot\vec n)\,ds=\vec F\cdot d\vec S
+            \]
+          </p>
+          <p>
+            O primeiro fator é escalar (a componente normal do campo); \(ds\) é
+            o comprimento; \(d\vec S\) reúne os dois num só elemento.
+          </p>
+        </div>
       </div>
     </div>
     <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
