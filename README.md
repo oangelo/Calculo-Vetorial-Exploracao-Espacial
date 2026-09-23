@@ -47,7 +47,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Coordenadas esféricas e cilíndricas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/coordenadas-esfericas-e-cilindricas/index.html)
 - [Centro de massa e momento de inércia](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-4/centro-de-massa-e-momento-de-inercia/index.html)
 
-5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-5-integrais-de-linha/index.html)
+5. [Integrais de linha](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-5-integrais-de-linha/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-5-integrais-de-linha/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-5-integrais-de-linha/folha-2/index.html)
 
 - [Integral de um campo vetorial sobre uma curva](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-campo-vetorial-curva/index.html)
 - [Notações alternativas](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/notacoes-alternativas/index.html)
@@ -55,7 +55,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Integral sobre curvas de classe C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-curvas-c1/index.html)
 - [Integral relativa ao comprimento de arco](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-5/integral-comprimento-arco/index.html)
 
-6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-6-campos-conservativos/index.html)
+6. [Campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-6-campos-conservativos/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-6-campos-conservativos/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-6-campos-conservativos/folha-2/index.html)
 
 - Definição e forma diferencial exata
 - [Integral de linha de campos conservativos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/integral-linha-campos-conservativos/index.html)
@@ -63,7 +63,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Condições de conservação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/condicoes-de-conservacao/index.html)
 - [Conjunto simplesmente conexo](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-6/conjunto-simplesmente-conexo/index.html)
 
-7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-7-teorema-de-green/index.html)
+7. [Teorema de Green](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-7-teorema-de-green/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-7-teorema-de-green/folha-1/index.html) | [Folha 2 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-7-teorema-de-green/folha-2/index.html)
 
 - [Para retângulos](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-retangulos/index.html)
 - [Para conjuntos com fronteira C¹](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/para-conjuntos-fronteira-c1/index.html)

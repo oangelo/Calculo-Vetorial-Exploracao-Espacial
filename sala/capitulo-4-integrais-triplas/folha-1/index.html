@@ -78,7 +78,7 @@
 
         for (const arquivo of EXERCICIOS) {
           try {
-            const response = await fetch(arquivo);
+            const response = await fetch(arquivo, { cache: 'no-store' });
             if (!response.ok) throw new Error(`Falha ao carregar ${arquivo}`);
             const html = await response.text();
             container.insertAdjacentHTML('beforeend', html);
