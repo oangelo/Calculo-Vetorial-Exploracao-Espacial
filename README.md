@@ -70,7 +70,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 - [Teorema de Stokes no plano](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/teorema-stokes-plano/index.html)
 - [Teorema da divergência no plano](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-7/teorema-divergencia-plano/index.html)
 
-8. [Área e integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-8-integral-de-superficie/index.html)
+8. [Área e integral de superfície](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/slide-decks/capitulo-8-integral-de-superficie/index.html) | [Folha 1 📄](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/sala/capitulo-8-integral-de-superficie/folha-1/index.html)
 
 - [Superfícies](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/superficies/index.html)
 - [Plano tangente](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/exercicios/capitulo-8/plano-tangente/index.html)
