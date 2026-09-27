@@ -1,0 +1,505 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h2>Superfícies Parametrizadas</h2>
+      <p>
+        No capítulo 1, a função vetorial \(\vec r(t)\) descrevia uma trajetória:
+        um único parâmetro percorria uma curva no espaço. Uma membrana — um
+        domo, um tanque, um painel — não é percorrida por um parâmetro só. Ela é
+        uma superfície bidimensional, e descrevê-la ponto a ponto exige dois
+        parâmetros independentes.
+      </p>
+      <p>
+        A ideia já apareceu no capítulo 4: as coordenadas esféricas e
+        cilíndricas produzem a esfera e o cilindro a partir de dois ângulos.
+        Este tópico dá à ideia um nome e uma notação próprios —
+        \(\vec r(u,v)\) — e mostra que ela funciona para qualquer superfície,
+        não apenas para as já conhecidas.
+      </p>
+      <p class="history-insert">
+        Antes do aperto de mão, houve um tratado: Nixon e Kosygin assinaram em
+        Moscou, em maio de 1972, o acordo que criou a missão. As duas naves eram
+        incompatíveis — atmosferas e sistemas de acoplagem diferentes — e
+        precisaram de um módulo intermediário que traduzisse um sistema no
+        outro.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>De Um Parâmetro para Dois</h3>
+      <p>
+        Imagine um mapa plano de borracha esticado sobre um objeto curvo. Cada
+        ponto \((u,v)\) da região plana — o domínio dos parâmetros —
+        corresponde a exatamente um ponto \(\vec r(u,v)\) da superfície.
+        Esticar, torcer ou enrolar o mapa não rompe a correspondência: apenas
+        deforma a região plana até ela cobrir a membrana.
+      </p>
+      <p>
+        A analogia espacial é a malha de uma antena parabólica. Dois ângulos
+        bastam para chegar a qualquer ponto da malha: um gira em torno do eixo,
+        outro desce do centro para a borda. Com dois números — e uma regra que
+        os converta em posições — descreve-se a malha inteira, mesmo sem vê-la.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>Definição</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \vec r(u,v)=(x(u,v),\,y(u,v),\,z(u,v)),\quad (u,v)\in D \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(D\) é o domínio dos parâmetros — a região
+          plana que funciona como o mapa da superfície; \(x(u,v)\), \(y(u,v)\),
+          \(z(u,v)\) são as funções coordenadas; \(\vec r\) leva cada par
+          \((u,v)\) a um ponto do espaço.
+        </p>
+        <p>
+          <strong>Definição:</strong> a superfície parametrizada é a imagem de
+          \(D\) por \(\vec r\) — o conjunto de todos os pontos \(\vec r(u,v)\)
+          com \((u,v)\in D\).
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec r\) contínua em \(D\); pontos
+          distintos do domínio podem corresponder ao mesmo ponto da superfície,
+          como ocorre nos polos da esfera.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>A Grade da Superfície</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Curvas-coordenadas</strong></p>
+          <p>
+            Fixar \(u=u_0\) e variar \(v\) traça a curva-\(v\); fixar \(v=v_0\)
+            e variar \(u\) traça a curva-\(u\). Juntas, elas formam a grade da
+            superfície — o mapa costurado sobre o espaço.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>Gráficos — um caso especial</strong></p>
+          <p>
+            Toda função \(z=f(x,y)\) é uma superfície parametrizada:
+            \(\vec r(x,y)=(x,y,f(x,y))\). A esfera, porém, não é gráfico global
+            — cada reta vertical a corta em dois pontos — e exige a
+            parametrização por ângulos.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>A Esfera</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \vec r(\phi,\theta)=(R\sin\phi\cos\theta,\;R\sin\phi\sin\theta,\;R\cos\phi) \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(R\) é o raio; \(\phi\in[0,\pi]\) é o ângulo
+          polar, medido a partir do eixo \(z\); \(\theta\in[0,2\pi]\) é o ângulo
+          azimutal, medido no plano \(xy\).
+        </p>
+        <p>
+          <strong>A grade:</strong> com \(\phi\) constante nascem os paralelos —
+          círculos horizontais; com \(\theta\) constante nascem os meridianos —
+          semicírculos que ligam os polos.
+        </p>
+        <p>
+          <strong>Papel no capítulo:</strong> os dois intervalos cobrem a
+          esfera inteira, e essa parametrização reaparece no plano tangente, na
+          área e na integral de superfície.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Cilindro</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Parametrize a superfície lateral do cilindro de raio \(R\) e altura
+            \(h\) e identifique as curvas-coordenadas.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A Apollo que voou em 1975 não foi construída para aquela missão:
+            foguete e cápsula eram peças que sobraram do programa lunar. O
+            último módulo Apollo não foi à Lua — foi encontrar uma Soyuz.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Identificando a Superfície</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec r(u,v)=(u\cos v,\,u\sin v,\,u^2)\), com
+            \(0\le u\le 2\) e \(0\le v\le 2\pi\). Identifique a superfície e
+            esboce as curvas \(u=1\) e \(v=\pi/2\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Em órbita, as tripulações trocaram sementes de árvores. Plantadas
+            nos dois países, cresceram dos dois lados da Cortina de Ferro — a
+            única colheita daqueles nove dias.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · SUPERFÍCIES PARAMETRIZADAS</div>
+    <div class="slide-body">
+      <h3>Exploração — Superfície Parametrizada</h3>
+      <p>
+        A esfera da parametrização fundamental em wireframe: a grade de
+        paralelos e meridianos, o ponto correspondente ao par \((u,v)\)
+        escolhido e as duas curvas-coordenadas que passam por ele.
+      </p>
+      <canvas
+        id="canvasSuperficie"
+        class="visualization-canvas"
+        width="700"
+        height="380"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Parâmetro \(u\):</label>
+          <input
+            type="range"
+            id="sliderSuperficieU"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+        </div>
+        <div class="control-slider">
+          <label>Parâmetro \(v\):</label>
+          <input
+            type="range"
+            id="sliderSuperficieV"
+            min="0"
+            max="1"
+            step="0.01"
+            value="0.5"
+          />
+        </div>
+      </div>
+      <p class="visualization-tip">
+        Arraste para rotacionar a esfera. Os sliders escolhem o par \((u,v)\):
+        o ponto destacado e as duas curvas-coordenadas que passam por ele
+        acompanham a escolha.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasSuperficie');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var dirty = true;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+    var GRID = 'rgba(255, 255, 255, 0.18)';
+
+    var sliderU = document.getElementById('sliderSuperficieU');
+    var sliderV = document.getElementById('sliderSuperficieV');
+
+    var uParam = 0.5;
+    var vParam = 0.5;
+    var rotationX = Math.PI / 6;
+    var rotationY = Math.PI / 4;
+    var isDragging = false;
+    var lastX = 0;
+    var lastY = 0;
+
+    var RADIUS = 1;
+    var PHI_STEPS = 18;
+    var THETA_STEPS = 24;
+    var SCALE = Math.min(W, H) * 0.36;
+
+    function spherePoint(phi, theta) {
+      return [
+        RADIUS * Math.sin(phi) * Math.cos(theta),
+        RADIUS * Math.sin(phi) * Math.sin(theta),
+        RADIUS * Math.cos(phi),
+      ];
+    }
+
+    function pointAt(uVal, vVal) {
+      return spherePoint(uVal * Math.PI, vVal * 2 * Math.PI);
+    }
+
+    function rotationMatrix() {
+      var cx = Math.cos(rotationX);
+      var sx = Math.sin(rotationX);
+      var cy = Math.cos(rotationY);
+      var sy = Math.sin(rotationY);
+      var rx = [1, 0, 0, 0, cx, -sx, 0, sx, cx];
+      var ry = [cy, 0, sy, 0, 1, 0, -sy, 0, cy];
+      var r = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var i;
+      var j;
+      var k;
+      for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+          for (k = 0; k < 3; k++) {
+            r[i * 3 + j] += rx[i * 3 + k] * ry[k * 3 + j];
+          }
+        }
+      }
+      return r;
+    }
+
+    function rotate(p, rot) {
+      return [
+        rot[0] * p[0] + rot[1] * p[1] + rot[2] * p[2],
+        rot[3] * p[0] + rot[4] * p[1] + rot[5] * p[2],
+        rot[6] * p[0] + rot[7] * p[1] + rot[8] * p[2],
+      ];
+    }
+
+    function project(p) {
+      return { x: W / 2 + p[0] * SCALE, y: H / 2 - p[1] * SCALE };
+    }
+
+    function strokeCurve(rot, samples, fn, color, width) {
+      var i;
+      var q;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      for (i = 0; i <= samples; i++) {
+        q = project(rotate(fn(i / samples), rot));
+        if (i === 0) ctx.moveTo(q.x, q.y);
+        else ctx.lineTo(q.x, q.y);
+      }
+      ctx.stroke();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      var rot = rotationMatrix();
+      var i;
+      var j;
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      for (j = 0; j < THETA_STEPS; j++) {
+        var theta = (j / THETA_STEPS) * 2 * Math.PI;
+        ctx.beginPath();
+        for (i = 0; i <= PHI_STEPS; i++) {
+          var phi = (i / PHI_STEPS) * Math.PI;
+          var qm = project(rotate(spherePoint(phi, theta), rot));
+          if (i === 0) ctx.moveTo(qm.x, qm.y);
+          else ctx.lineTo(qm.x, qm.y);
+        }
+        ctx.stroke();
+      }
+      for (i = 1; i < PHI_STEPS; i++) {
+        var phiP = (i / PHI_STEPS) * Math.PI;
+        ctx.beginPath();
+        for (j = 0; j <= 2 * THETA_STEPS; j++) {
+          var thetaP = (j / (2 * THETA_STEPS)) * 2 * Math.PI;
+          var qp = project(rotate(spherePoint(phiP, thetaP), rot));
+          if (j === 0) ctx.moveTo(qp.x, qp.y);
+          else ctx.lineTo(qp.x, qp.y);
+        }
+        ctx.stroke();
+      }
+
+      strokeCurve(
+        rot,
+        PHI_STEPS,
+        function (s) {
+          return pointAt(s, vParam);
+        },
+        VEL,
+        2.5
+      );
+      strokeCurve(
+        rot,
+        2 * THETA_STEPS,
+        function (s) {
+          return pointAt(uParam, s);
+        },
+        ACC,
+        2.5
+      );
+
+      var p = project(rotate(pointAt(uParam, vParam), rot));
+      ctx.fillStyle = POS;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 6, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.strokeStyle = FOR;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = UNI;
+      ctx.fillText(
+        'u = ' +
+          uParam.toFixed(2) +
+          ' (\u03c6 = ' +
+          Math.round(uParam * 180) +
+          '\u00b0)   v = ' +
+          vParam.toFixed(2) +
+          ' (\u03b8 = ' +
+          Math.round(vParam * 360) +
+          '\u00b0)',
+        W / 2,
+        20
+      );
+      ctx.textAlign = 'left';
+    }
+
+    function loop() {
+      if (dirty) {
+        dirty = false;
+        draw();
+      }
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        dirty = true;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (sliderU) {
+      sliderU.addEventListener('input', function () {
+        uParam = parseFloat(sliderU.value);
+        dirty = true;
+      });
+    }
+    if (sliderV) {
+      sliderV.addEventListener('input', function () {
+        vParam = parseFloat(sliderV.value);
+        dirty = true;
+      });
+    }
+
+    canvas.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    canvas.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      rotationY += (e.clientX - lastX) * 0.01;
+      rotationX += (e.clientY - lastY) * 0.01;
+      if (rotationX > Math.PI / 2) rotationX = Math.PI / 2;
+      if (rotationX < -Math.PI / 2) rotationX = -Math.PI / 2;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      dirty = true;
+    });
+    canvas.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+    canvas.addEventListener('mouseleave', function () {
+      isDragging = false;
+    });
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizSuperficie = { init: init, cleanup: cleanup };
+  })();
+</script>
