@@ -101,18 +101,21 @@
       </div>
       <div class="math-section">
         <p>
-          <strong>Onde:</strong> a superfície é a de nível \(F(x,y,z)=K\) — o
-          conjunto dos pontos em que \(F\) vale a constante \(K\);
+          <strong>Onde:</strong> a superfície é a de nível \(F(x,y,z)=K\);
           \((x_0,y_0,z_0)\) é o ponto de tangência, e o gradiente é calculado
           nele.
         </p>
         <p>
-          <strong>Por que \(\nabla F\) é normal:</strong> o gradiente aponta na
-          direção de maior crescimento de \(F\). Sobre a superfície, \(F\) não
-          cresce nem diminui: o valor fica travado em \(K\). Caminhar em
-          qualquer direção tangente não altera \(F\), então nenhuma direção
-          tangente tem componente na direção do gradiente — \(\nabla F\) é
-          perpendicular à superfície.
+          <strong>Demonstração — por que \(\nabla F\) é normal:</strong> tome
+          uma curva na superfície, \(\vec r(t)=(x(t),y(t),z(t))\), com
+          \(F(\vec r(t))=K\) para todo \(t\). Derivando os dois lados,
+          \(\frac{d}{dt}F(\vec r(t))=0\); pela regra da cadeia,
+          \(F_x\,x'+F_y\,y'+F_z\,z'=0\), isto é, \(\nabla F\cdot\vec r'(t)=0\).
+          Como \(\vec r'(t)\) é tangente e \(\nabla F\) é ortogonal a toda
+          tangente, \(\nabla F\) é normal à superfície — em 2D, o mesmo
+          argumento dá \(\nabla f\) normal à curva de nível \(f(x,y)=k\).
+          <strong>Intuição:</strong> ao longo do nível, \(F\) não varia; toda
+          a variação está na direção perpendicular — a do maior crescimento.
         </p>
         <p>
           <strong>O plano:</strong> a mesma equação do slide anterior, com a
