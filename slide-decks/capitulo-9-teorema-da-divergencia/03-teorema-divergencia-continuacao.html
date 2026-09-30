@@ -1,0 +1,539 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h2>Teorema da Divergência</h2>
+      <p>
+        No tópico anterior, o fluxo foi calculado superfície por superfície:
+        parametrizar, orientar, integrar. Existe uma rota que dispensa a
+        parametrização — integrar algo no interior do volume e obter o mesmo
+        fluxo pela fronteira. Por que o fluxo total coincide com essa integral
+        interna?
+      </p>
+      <p>
+        O Teorema de Green, no capítulo 7, relacionou a fronteira de uma região
+        plana ao seu interior: a circulação pela curva fechada virava integral
+        dupla do rotacional. Agora o mesmo padrão aparece no espaço, com uma
+        superfície fechada no lugar da curva.
+      </p>
+      <p class="history-insert">
+        Nos dois acidentes havia avisos internos. Engenheiros recomendaram adiar
+        o lançamento do Challenger por causa do frio; em Chernobyl, o teste
+        seguiu com o sistema de resfriamento de emergência desligado.
+      </p>
+      <p>
+        O Teorema da Divergência descreve o fluxo que sai de dentro — a
+        dispersão que começa por dentro.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>A Ideia — Fontes Internas e a Fronteira</h3>
+      <p>
+        Cada ponto do interior de um volume pode emitir ou absorver campo. Some
+        o que é emitido, subtraia o que é absorvido, e o resultado aparece na
+        fronteira: o fluxo total pela superfície fechada mede o balanço interno
+        — não o comportamento local da superfície.
+      </p>
+      <p>
+        Num volume sem fontes nem sumidouros — divergente nulo em todo ponto —,
+        entra tanto quanto sai: o fluxo líquido é zero, qualquer que seja o
+        formato da fronteira.
+      </p>
+      <div class="math-section">
+        <p>
+          <strong>Exemplo intuitivo:</strong> o ar de uma sala com janelas. O
+          que entra por uma janela e sai pela outra em partes iguais não altera
+          o ar interno; o saldo é o que precisa ser atribuído a fontes ou
+          sumidouros internos.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Enunciado Formal</h3>
+      <p>
+        <strong>Hipóteses:</strong> \(V\) é um sólido delimitado por uma
+        superfície fechada \(S = \partial V\), sem buracos; \(\hat n\) aponta
+        para fora; \(\vec F\) tem componentes e derivadas parciais contínuas em
+        \(V \cup S\) (classe \(C^1\)).
+      </p>
+      <div class="formula-spotlight">
+        <p>
+          \[ \iint_{\partial V} \vec F \cdot \hat n \, dS = \iiint_V (\nabla
+          \cdot \vec F) \, dV \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> o lado esquerdo é o fluxo pela fronteira; o
+          lado direito, a integral do divergente sobre o volume; \(\nabla \cdot
+          \vec F = \partial P/\partial x + \partial Q/\partial y + \partial
+          R/\partial z\) para \(\vec F = \langle P, Q, R\rangle\).
+        </p>
+        <p>
+          <strong>Validade:</strong> se o campo não existe em algum ponto do
+          interior (singularidade), o teorema não se aplica diretamente. O
+          enunciado é a extensão tridimensional do Teorema de Green: a fronteira
+          e o interior, de novo ligados.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Consequências Imediatas</h3>
+      <div class="formula-spotlight">
+        <p>\[ \nabla \cdot \vec F = 0 \;\Rightarrow\; \Phi = 0 \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(\Phi = \iint_{\partial V} \vec F \cdot \hat n
+          \, dS\) é o fluxo pela fronteira; \(c\) é o valor constante do
+          divergente.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec F\) de classe \(C^1\) em \(V\);
+          \(\partial V\) orientada para fora.
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            \(\nabla \cdot \vec F = 0\) em todo \(V\) → fluxo nulo por qualquer
+            superfície fechada: campo incompressível, tudo que entra, sai.
+          </li>
+          <li>
+            \(\nabla \cdot \vec F = c\) constante → \(\Phi = c \times
+            \text{volume}(V)\), sem integrar o campo.
+          </li>
+          <li>
+            \(\nabla \cdot \vec F > 0\) → fonte (o campo se expande); \(\nabla
+            \cdot \vec F \lt 0\) → sumidouro (o campo se contrai); o fluxo mede
+            o balanço entre eles.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Uso Estratégico — Três Rotas</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>Escolher o lado mais fácil</strong></p>
+          <p>
+            Integre o divergente quando a superfície é composta ou curva e o
+            divergente é simples (constante ou polinomial); integre pela
+            superfície quando o divergente é complicado, mas \(\hat n\) é
+            simples.
+          </p>
+        </div>
+        <div>
+          <p><strong>Fechar e subtrair</strong></p>
+          <p>
+            Para o fluxo por uma superfície aberta \(S_1\), feche com uma tampa
+            \(S_2\), aplique o teorema à superfície fechada e subtraia o fluxo
+            pela tampa, calculado diretamente.
+          </p>
+        </div>
+        <div>
+          <p><strong>Excluir a singularidade</strong></p>
+          <p>
+            Se \(\vec F\) não é \(C^1\) em um ponto interior, isole o ponto com
+            uma pequena superfície \(S_\varepsilon\), aplique o teorema à região
+            \(V\) menos a bola e tome o limite.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Verificação na Esfera</h3>
+      <div class="problem-section">
+        <p>
+          Verifique o Teorema da Divergência para o campo \(\vec F = \langle 2x,
+          3y, 4z\rangle\) na bola sólida \(x^2 + y^2 + z^2 \le 1\). Calcule o
+          fluxo pela superfície e a integral do divergente no volume e compare
+          os resultados.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Fechar e Subtrair</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o fluxo de \(\vec F = \langle 0, 0, z\rangle\) através do
+            hemisfério \(z = \sqrt{1 - x^2 - y^2}\), com a normal apontando para
+            fora da esfera unitária. Feche a superfície com o disco \(z = 0\) e
+            aplique o Teorema da Divergência, subtraindo o fluxo pela tampa.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Em 1º de maio de 1986, Moscou decidiu não adiar o desfile em Kiev.
+            Cientistas declararam que a radiação na cidade estava normal, e a
+            celebração foi encurtada de cerca de quatro horas para menos de
+            duas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA DA DIVERGÊNCIA</div>
+    <div class="slide-body">
+      <h3>Exploração — Fonte, Sumidouro, Incompressível</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasDivergencia"
+            class="visualization-canvas"
+            width="350"
+            height="350"
+          ></canvas>
+        </div>
+        <div>
+          <p>
+            O campo aparece como uma grade de vetores; o volume de controle está
+            destacado no centro. Nos três estados, observe as setas que cruzam a
+            fronteira: o balanço líquido é a leitura visual do lado direito do
+            teorema.
+          </p>
+          <p>
+            Com \(\nabla \cdot \vec F = 0\), entra tanto quanto sai — fluxo
+            líquido nulo; com divergente positivo, sai mais; com negativo, entra
+            mais.
+          </p>
+        </div>
+      </div>
+      <div class="controls-container">
+        <button class="control-button" id="btnDivFonte">Fonte</button>
+        <button class="control-button" id="btnDivSumidouro">Sumidouro</button>
+        <button class="control-button" id="btnDivIncompressivel">
+          Incompressível
+        </button>
+        <div class="control-slider">
+          <label>Intensidade \(c = \nabla \cdot \vec F\):</label>
+          <input
+            type="range"
+            id="sliderDivIntensidade"
+            min="-1"
+            max="1"
+            step="0.05"
+            value="0.5"
+          />
+        </div>
+        <div class="control-slider">
+          <label>Tamanho do volume de controle:</label>
+          <input
+            type="range"
+            id="sliderDivVolume"
+            min="0.4"
+            max="1"
+            step="0.02"
+            value="0.7"
+          />
+        </div>
+      </div>
+      <p class="visualization-tip">
+        Use os botões para alternar os regimes e o slider para percorrer \(c\)
+        passando por zero. O saldo exibido no canvas acompanha o tamanho do
+        volume.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasDivergencia');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var dirty = true;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+    var GRID = 'rgba(255, 255, 255, 0.18)';
+
+    var btnFonte = document.getElementById('btnDivFonte');
+    var btnSumidouro = document.getElementById('btnDivSumidouro');
+    var btnIncompressivel = document.getElementById('btnDivIncompressivel');
+    var sliderIntensidade = document.getElementById('sliderDivIntensidade');
+    var sliderVolume = document.getElementById('sliderDivVolume');
+
+    var CX = W / 2;
+    var CY = H / 2;
+    var R_NORM = 140;
+    var MAX_SIZE = 140;
+
+    var mode = 'fonte';
+    var intensity = 0.5;
+    var volume = 0.7;
+
+    var MODE_LABEL = {
+      fonte: 'FONTE',
+      sumidouro: 'SUMIDOURO',
+      incompressivel: 'INCOMPRESSÍVEL',
+    };
+
+    function fieldAt(x, y) {
+      var dx = x - CX;
+      var dy = y - CY;
+      var c = intensity;
+      if (mode === 'incompressivel') {
+        return { fx: c, fy: 0 };
+      }
+      var sign = mode === 'sumidouro' ? -1 : 1;
+      return { fx: (sign * c * dx) / R_NORM, fy: (sign * c * dy) / R_NORM };
+    }
+
+    function drawArrow(x, y, dx, dy, len, color, width) {
+      var ex = x + dx * len;
+      var ey = y + dy * len;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(ex, ey);
+      ctx.stroke();
+      var ang = Math.atan2(dy, dx);
+      var h = 5;
+      ctx.beginPath();
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - h * Math.cos(ang - 0.4), ey - h * Math.sin(ang - 0.4));
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - h * Math.cos(ang + 0.4), ey - h * Math.sin(ang + 0.4));
+      ctx.stroke();
+    }
+
+    function roundedRect(x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.arcTo(x + w, y, x + w, y + h, r);
+      ctx.arcTo(x + w, y + h, x, y + h, r);
+      ctx.arcTo(x, y + h, x, y, r);
+      ctx.arcTo(x, y, x + w, y, r);
+      ctx.closePath();
+    }
+
+    function boundarySamples(size) {
+      var half = size / 2;
+      var left = CX - half;
+      var right = CX + half;
+      var top = CY - half;
+      var bottom = CY + half;
+      var ts = [0.25, 0.5, 0.75];
+      var pts = [];
+      var i;
+      for (i = 0; i < ts.length; i++) {
+        var t = ts[i];
+        pts.push({ x: left + t * size, y: top, nx: 0, ny: -1 });
+        pts.push({ x: left + t * size, y: bottom, nx: 0, ny: 1 });
+        pts.push({ x: left, y: top + t * size, nx: -1, ny: 0 });
+        pts.push({ x: right, y: top + t * size, nx: 1, ny: 0 });
+      }
+      return pts;
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      var g;
+      for (g = 0; g <= W; g += 25) {
+        ctx.beginPath();
+        ctx.moveTo(g, 0);
+        ctx.lineTo(g, H);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(0, g);
+        ctx.lineTo(W, g);
+        ctx.stroke();
+      }
+
+      var gx;
+      var gy;
+      for (gx = 25; gx <= W - 25; gx += 25) {
+        for (gy = 25; gy <= H - 25; gy += 25) {
+          var f = fieldAt(gx, gy);
+          var mag = Math.sqrt(f.fx * f.fx + f.fy * f.fy);
+          if (mag < 0.001) continue;
+          var ux = f.fx / mag;
+          var uy = f.fy / mag;
+          var len = Math.min(mag * 70, 32);
+          drawArrow(gx, gy, ux, uy, len, VEL, 1.4);
+        }
+      }
+
+      var size = volume * MAX_SIZE;
+      var half = size / 2;
+      var x0 = CX - half;
+      var y0 = CY - half;
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 3;
+      roundedRect(x0, y0, size, size, 10);
+      ctx.stroke();
+
+      var pts = boundarySamples(size);
+      var i;
+      var sum = 0;
+      for (i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        var fp = fieldAt(p.x, p.y);
+        sum += fp.fx * p.nx + fp.fy * p.ny;
+        drawArrow(p.x, p.y, p.nx, p.ny, 12, UNI, 1.5);
+      }
+      var mean = sum / pts.length;
+      var saldo = mean * (size / MAX_SIZE) * 4;
+
+      ctx.fillStyle = UNI;
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText(MODE_LABEL[mode], CX, 22);
+      ctx.fillText(
+        'saldo ≈ ' + (saldo >= 0 ? '+' : '') + saldo.toFixed(2),
+        CX,
+        H - 14
+      );
+      ctx.textAlign = 'left';
+    }
+
+    function loop() {
+      if (dirty) {
+        dirty = false;
+        draw();
+      }
+      animId = requestAnimationFrame(loop);
+    }
+
+    function onFonte() {
+      mode = 'fonte';
+      dirty = true;
+    }
+    function onSumidouro() {
+      mode = 'sumidouro';
+      dirty = true;
+    }
+    function onIncompressivel() {
+      mode = 'incompressivel';
+      dirty = true;
+    }
+    function onIntensidade() {
+      intensity = parseFloat(sliderIntensidade.value);
+      dirty = true;
+    }
+    function onVolume() {
+      volume = parseFloat(sliderVolume.value);
+      dirty = true;
+    }
+
+    function addListeners() {
+      if (btnFonte) btnFonte.addEventListener('click', onFonte);
+      if (btnSumidouro) btnSumidouro.addEventListener('click', onSumidouro);
+      if (btnIncompressivel)
+        btnIncompressivel.addEventListener('click', onIncompressivel);
+      if (sliderIntensidade)
+        sliderIntensidade.addEventListener('input', onIntensidade);
+      if (sliderVolume) sliderVolume.addEventListener('input', onVolume);
+    }
+
+    function removeListeners() {
+      if (btnFonte) btnFonte.removeEventListener('click', onFonte);
+      if (btnSumidouro) btnSumidouro.removeEventListener('click', onSumidouro);
+      if (btnIncompressivel)
+        btnIncompressivel.removeEventListener('click', onIncompressivel);
+      if (sliderIntensidade)
+        sliderIntensidade.removeEventListener('input', onIntensidade);
+      if (sliderVolume) sliderVolume.removeEventListener('input', onVolume);
+    }
+
+    function init() {
+      if (inited) return;
+      inited = true;
+      addListeners();
+      if (animId === null) {
+        dirty = true;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      removeListeners();
+      inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) init();
+        else if (e.previousSlide && e.previousSlide.contains(canvas)) cleanup();
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizDivergencia = { init: init, cleanup: cleanup };
+  })();
+</script>
