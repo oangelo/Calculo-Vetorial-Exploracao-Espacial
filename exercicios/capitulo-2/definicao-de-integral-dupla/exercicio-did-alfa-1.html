@@ -1,0 +1,45 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DID-ALFA-1</div>
+  <div class="context">
+    ORIGEM: Caderno de Notas - Laboratório de Testes do Programa Mercury
+  </div>
+  <p>
+    Antes de calcular integrais duplas, precisamos entender o que elas
+    representam geometricamente. Assim como a integral simples é o limite de
+    somas de áreas de retângulos sob uma curva, a integral dupla é o limite de
+    somas de volumes de prismas sob uma superfície. Este exercício estabelece o
+    ponto de partida: como construir uma soma de Riemann em duas dimensões,
+    passo a passo, sem atalhos.
+  </p>
+  <p>
+    Considere uma região retangular \(D\) limitada por \[0 \le x \le 2\] e \[0
+    \le y \le 3\], subdividida em partições retangulares de mesma dimensão.
+    Defina \(\Delta A_i\) como a área de cada sub-região e explique como
+    proceder para construir a soma de Riemann bidimensional de uma função
+    \(f(x,y)\) ainda sem utilizar o Teorema de Fubini.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Comece dividindo \(D\) em \(m \times n\) retângulos
+      iguais. Cada sub-retângulo tem área \(\Delta A = \frac{2}{m} \cdot
+      \frac{3}{n}\). Escolha um ponto \((x_i^*, y_i^*)\) em cada sub-retângulo e
+      some \(f(x_i^*, y_i^*) \cdot \Delta A\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Para cada sub-região retangular, escolhe-se um ponto \((x_i^*,\,y_i^*)\)
+        no interior e calcula-se \(f(x_i^*,\,y_i^*)\,\Delta A_i\). A soma de
+        todos esses termos, no limite em que o tamanho das partições tende a
+        zero, define a integral dupla.
+      </p>
+      <p>
+        Assim, \(\iint_{D} f(x,y)\, dA\) surge como limite das somas de Riemann
+        bidimensionais, respeitando a definição fundamental de integrabilidade.
+      </p>
+    </div>
+  </details>
+</li>

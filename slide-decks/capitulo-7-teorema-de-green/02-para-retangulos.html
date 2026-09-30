@@ -1,0 +1,508 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h2>Teorema de Green em Retângulos</h2>
+      <p>
+        A circulação ao redor de uma fronteira pode ser calculada sem percorrer
+        a fronteira? No capítulo 5, cada circulação \(\oint_{\partial
+        R}P\,dx+Q\,dy\) exigia parametrizar a curva e integrar. No capítulo 6,
+        campos com rotacional nulo mostraram circulação nula em qualquer laço
+        fechado. A pergunta agora é a inversa: se o campo gira no interior,
+        quanto desse giro transborda para a borda?
+      </p>
+      <p>
+        A resposta liga uma integral de linha — uma conta sobre a fronteira — a
+        uma integral dupla — uma conta sobre a área. É o Teorema de Green, e
+        este tópico o demonstra no caso mais simples: o retângulo.
+      </p>
+      <p class="history-insert">
+        Em 19 de abril de 1971, a URSS lançou a Salyut 1, a primeira estação
+        espacial do mundo. O espetáculo da Lua tinha acabado — e a corrida
+        continuou para uma plateia que já havia ido embora.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Circulação — o Saldo da Volta Completa</h3>
+      <p>
+        Dar a volta completa em uma curva fechada soma todos os empurrões do
+        campo ao longo do caminho: onde o campo ajuda, o trabalho é positivo;
+        onde atrapalha, negativo. A circulação é o saldo líquido desse ciclo — o
+        quanto o campo "empurra no mesmo sentido" da volta.
+      </p>
+      <p>
+        Analogia: caminhar ao redor de um quarteirão com vento. Numa calçada o
+        vento sopra a favor; na outra, contra. O ganho de uma calçada pode ser
+        anulado na seguinte — a circulação é o que sobra depois de fechar o
+        quarteirão.
+      </p>
+      <p>
+        A notação é a do capítulo 5: \(\oint_{\partial R}P\,dx+Q\,dy\), a
+        integral de linha sobre a fronteira fechada \(\partial R\). Nenhuma
+        fórmula nova — só a pergunta: dá para calcular esse saldo sem andar a
+        volta inteira?
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Rotacional Local — o Giro em Cada Ponto</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>A pá de moinho</strong></p>
+          <p>
+            Coloque uma pequena pá de moinho em um ponto do campo. O campo a faz
+            girar com mais ou menos velocidade, num sentido ou no outro. O
+            rotacional mede essa tendência de giro — ponto a ponto, sem depender
+            da fronteira.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>O número do giro</strong></p>
+          <p>
+            Em duas dimensões, o rotacional é um número: \(\frac{\partial
+            Q}{\partial x}-\frac{\partial P}{\partial y}\). Positivo: giro
+            anti-horário. Negativo: horário. Zero: o campo não gira ali — o caso
+            dos campos conservativos do capítulo 6.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Enunciado — Green para Retângulos</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \oint_{\partial
+          R}\bigl(P\,dx+Q\,dy\bigr)=\iint_R\left(\frac{\partial Q}{\partial
+          x}-\frac{\partial P}{\partial y}\right)dA \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <p>
+          \(R=[a,b]\times[c,d]\) é o retângulo; \(\partial R\) é sua fronteira
+          orientada no sentido anti-horário; \(\vec F=(P,Q)\) é o campo, de
+          classe \(C^1\) em uma vizinhança de \(R\).
+        </p>
+        <p>
+          <strong>Validade:</strong> a fronteira do retângulo é \(C^1\) por
+          partes — quatro segmentos de reta — e o teorema vale para essa classe.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Demonstração — Fubini e o TFC</h3>
+      <p>
+        A conta separa as duas componentes do campo. Em \(\oint P\,dx\), os
+        lados verticais não contribuem (ali \(dx=0\)); nos lados horizontais, a
+        integral de linha vira uma integral iterada — e o Teorema Fundamental do
+        Cálculo resolve a integral interna. O mesmo raciocínio, com os eixos
+        trocados, resolve \(\oint Q\,dy\).
+      </p>
+      <div class="math-section">
+        <p>
+          \[ \oint_{\partial R}P\,dx=-\iint_R\frac{\partial P}{\partial y}\,dA
+          \]
+        </p>
+        <p>
+          \[ \oint_{\partial R}Q\,dy=\iint_R\frac{\partial Q}{\partial x}\,dA \]
+        </p>
+      </div>
+      <p>
+        <strong>Aditividade:</strong> divida \(R\) em dois retângulos por um
+        corte interno. As integrais sobre o corte aparecem duas vezes, em
+        sentidos opostos, e se cancelam — a igualdade sobre cada parte implica a
+        igualdade sobre o todo. É a semente do próximo tópico.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Campo Que Gira</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(-y,x)\) sobre o retângulo
+            \(R=[0,1]\times[0,1]\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial R}P\,dx+Q\,dy\) pela fórmula
+            de Green e confirme o resultado parametrizando a fronteira.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A cabine da Soyuz 11 era pequena demais para trajes pressurizados —
+            não havia espaço para eles.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Rotacional Variável</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(x^2,xy)\) sobre o retângulo
+            \(R=[0,1]\times[0,2]\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial R}P\,dx+Q\,dy\) usando o
+            Teorema de Green.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A Salyut 1 recebeu uma única tripulação. Em 11 de outubro de 1971,
+            foi desorbitada e queimou sobre o Pacífico. A primeira casa no
+            espaço nunca teve um segundo inquilino.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · TEOREMA DE GREEN EM RETÂNGULOS</div>
+    <div class="slide-body">
+      <h3>Exploração — Rotação Interna, Circulação na Borda</h3>
+      <p>
+        A partícula percorre a fronteira no sentido anti-horário; o valor
+        acumulado de \(\vec F\cdot d\vec r\) é a circulação. Alterne os campos:
+        com \(\operatorname{rot}>0\) a circulação cresce; com
+        \(\operatorname{rot}=0\) ela se anula — a soma das rotações internas
+        reaparece na borda.
+      </p>
+      <canvas
+        id="canvasGreenRetangulo"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <button id="btnGreenRetanguloModo" class="control-button">
+          Trocar: F = (x, y) · rot = 0
+        </button>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasGreenRetangulo');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+
+    var btn = document.getElementById('btnGreenRetanguloModo');
+    var mode = 1;
+
+    var X0 = -2,
+      X1 = 2,
+      Y0 = -1.5,
+      Y1 = 1.5;
+    var S = 90;
+    var CX = W / 2;
+    var CY = H / 2;
+
+    var t = 0;
+    var loopVal = 0;
+    var lastLoop = 0;
+    var speed = 0.32;
+    var lastTs = 0;
+
+    function toPx(mx, my) {
+      return { x: CX + mx * S, y: CY - my * S };
+    }
+
+    function field(mx, my) {
+      if (mode === 1) return { fx: -my, fy: mx };
+      return { fx: mx, fy: my };
+    }
+
+    function perim(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1) return { x: X0 + u * (X1 - X0), y: Y0 };
+      if (u < 2) return { x: X1, y: Y0 + (u - 1) * (Y1 - Y0) };
+      if (u < 3) return { x: X1 - (u - 2) * (X1 - X0), y: Y1 };
+      return { x: X0, y: Y1 - (u - 3) * (Y1 - Y0) };
+    }
+
+    function perimTan(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1) return { x: 1, y: 0 };
+      if (u < 2) return { x: 0, y: 1 };
+      if (u < 3) return { x: -1, y: 0 };
+      return { x: 0, y: -1 };
+    }
+
+    function edgeLen(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1 || u >= 3) return X1 - X0;
+      return Y1 - Y0;
+    }
+
+    function integrate(a, b) {
+      var steps = 90;
+      var sum = 0;
+      var i;
+      for (i = 0; i < steps; i++) {
+        var t1 = a + ((b - a) * i) / steps;
+        var t2 = a + ((b - a) * (i + 1)) / steps;
+        var tm = (t1 + t2) / 2;
+        var p = perim(tm);
+        var f = field(p.x, p.y);
+        var tan = perimTan(tm);
+        var ds = edgeLen(tm) * (t2 - t1);
+        sum += (f.fx * tan.x + f.fy * tan.y) * ds;
+      }
+      return sum;
+    }
+
+    function step(dt) {
+      var prev = t;
+      t += speed * dt;
+      if (t >= 4) {
+        var extra = t - 4;
+        loopVal += integrate(prev, 4);
+        lastLoop = loopVal;
+        loopVal = integrate(0, extra);
+        t = extra;
+      } else {
+        loopVal += integrate(prev, t);
+      }
+    }
+
+    function arrow(p0, vx, vy, color, lw) {
+      var p = toPx(p0.mx, p0.my);
+      var tip = toPx(p0.mx + vx, p0.my + vy);
+      var dx = tip.x - p.x;
+      var dy = tip.y - p.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 2) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(8, len * 0.38);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(tip.x, tip.y);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(tip.x, tip.y);
+      ctx.lineTo(
+        tip.x - ux * hs - uy * hs * 0.5,
+        tip.y - uy * hs + ux * hs * 0.5
+      );
+      ctx.lineTo(
+        tip.x - ux * hs + uy * hs * 0.5,
+        tip.y - uy * hs - ux * hs * 0.5
+      );
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawField() {
+      var i, j;
+      var NX = 13,
+        NY = 9;
+      for (i = 0; i < NX; i++) {
+        for (j = 0; j < NY; j++) {
+          var mx = X0 + ((X1 - X0) * i) / (NX - 1);
+          var my = Y0 + ((Y1 - Y0) * j) / (NY - 1);
+          var f = field(mx, my);
+          var n = Math.sqrt(f.fx * f.fx + f.fy * f.fy) || 1;
+          var L = Math.max(0.12, Math.min(0.3, 0.1 * n));
+          arrow({ mx: mx, my: my }, (L * f.fx) / n, (L * f.fy) / n, POS, 1.1);
+        }
+      }
+    }
+
+    function drawBoundary() {
+      var corners = [
+        { mx: X0, my: Y0 },
+        { mx: X1, my: Y0 },
+        { mx: X1, my: Y1 },
+        { mx: X0, my: Y1 },
+      ];
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      var i;
+      for (i = 0; i < 4; i++) {
+        var p = toPx(corners[i].mx, corners[i].my);
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      var k;
+      for (k = 0; k < 8; k++) {
+        var tm = k * 0.5;
+        var p2 = perim(tm);
+        var tan = perimTan(tm);
+        arrow({ mx: p2.x, my: p2.y }, 0.22 * tan.x, 0.22 * tan.y, VEL, 1.6);
+      }
+    }
+
+    function drawParticle() {
+      var p = perim(t);
+      var pp = toPx(p.x, p.y);
+      ctx.fillStyle = ACC;
+      ctx.beginPath();
+      ctx.arc(pp.x, pp.y, 6, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.strokeStyle = FOR;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    function readout() {
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      var label =
+        mode === 1
+          ? 'MODO 1 · F = (-y, x) · rot = 2'
+          : 'MODO 2 · F = (x, y) · rot = 0';
+      ctx.fillText(label + '   ∮ F·dr ≈ ' + lastLoop.toFixed(1), W / 2, 20);
+      ctx.textAlign = 'left';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      drawBoundary();
+      drawField();
+      drawParticle();
+      readout();
+    }
+
+    function loop(ts) {
+      var dt = ts ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+      step(dt);
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        lastTs = 0;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function reset() {
+      t = 0;
+      loopVal = 0;
+      lastLoop = 0;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 1 ? 2 : 1;
+        reset();
+        btn.textContent =
+          mode === 1
+            ? 'Trocar: F = (x, y) · rot = 0'
+            : 'Trocar: F = (-y, x) · rot = 2';
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizGreenRetangulo = { init: init, cleanup: cleanup };
+  })();
+</script>

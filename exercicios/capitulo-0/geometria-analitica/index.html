@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        /* Imagem de fundo sutil */
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      /* Cabeçalho do documento */
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 3px;
+        margin: 0 2px;
+        user-select: none;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      /* Seções internas */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      /* Lista de exercícios */
+      .exercise-list {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      /* Dicas e soluções */
+      details {
+        margin-top: 15px;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        list-style: none;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      /* Caixa de dica no padrão do template */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: #f0f0e0;
+      }
+
+      /* Rodapé */
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 45px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.3em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    
+      /* Difficulty badges */
+      .difficulty-badge {
+        font-size: 0.75em;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-weight: bold;
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+      .difficulty-alfa {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      .difficulty-beta {
+        background-color: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeeba;
+      }
+      .difficulty-gamma {
+        background-color: #fde2d4;
+        color: #8b4513;
+        border: 1px solid #f5c6cb;
+      }
+      .difficulty-omega {
+        background-color: #d1c4e9;
+        color: #4a148c;
+        border: 1px solid #b39ddb;
+      }
+
+      /* Narrative connector text */
+      .narrative {
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        background-color: rgba(212, 175, 55, 0.08);
+        font-size: 0.9em;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">17</span> DE OUTUBRO DE
+          <span class="censored">1962</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE PESQUISA [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE REVISÃO: PROJETO
+          <span class="censored">G-ANALYTICS</span> <br /><br />
+          Em alinhamento com as diretrizes de aprimoramento científico
+          estabelecidas após o <span class="censored">incidente orbital</span>,
+          esta compilação de exercícios visa consolidar os principais conceitos
+          de <span class="censored">geometria analítica</span> aplicados à
+          exploração espacial. <br /><br />
+          Entre os tópicos abordados, enfatizam-se fórmulas de distância,
+          produto escalar, produto vetorial, equações de retas e planos, bem
+          como o cálculo de volumes e áreas em três dimensões. Tais técnicas são
+          essenciais para
+          <span class="censored">interceptação de órbitas</span>,
+          <span class="censored">acoplamento de módulos</span> e outras manobras
+          críticas que garantem a segurança nacional.
+        </div>
+        <div class="warning-box">
+          Conteúdo restrito ao nível de acesso designado. Qualquer divulgação
+          indevida resultará em <span class="censored">sanções severas</span>
+          conforme legislação vigente.
+        </div>
+        <div class="metadata">
+          <span>REF: GA-<span class="censored">889</span>-R</span>
+          <span>NÍVEL DE ACESSO: <span class="censored">SIGMA-4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">6</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: GEOMETRIA ANALÍTICA
+      </div>
+
+      <!-- MOTIVAÇÃO -->
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Toda operação de exploração espacial começa com uma pergunta simples:
+          <em>onde estamos e para onde vamos?</em> Para responder, precisamos de uma
+          linguagem que descreva posições, deslocamentos e orientações no espaço. Essa
+          linguagem é a geometria analítica — a ponte entre a geometria intuitiva (que
+          vemos) e a álgebra (que calculamos).
+        </p>
+        <p>
+          Neste módulo, construímos essa linguagem do zero. Começamos com
+          <strong>pontos</strong> (onde algo está), avançamos para
+          <strong>vetores</strong> (como se desloca), e depois combinamos vetores para
+          medir <strong>ângulos</strong>, <strong>áreas</strong> e
+          <strong>volumes</strong>. Com essas ferramentas, descrevemos
+          <strong>retas</strong> (trajetórias) e <strong>planos</strong> (superfícies
+          de aterrissagem), e calculamos <strong>distâncias</strong> entre eles. Cada
+          conceito depende do anterior — e todos aparecem nos exercícios que seguem.
+        </p>
+      </div>
+
+      <!-- PONTOS -->
+      <div class="concept-definition">
+        <p><strong>1. PONTOS NO ESPAÇO</strong></p>
+        <p>
+          Um ponto no espaço tridimensional é identificado por três coordenadas:
+          \(P = (x, y, z)\). Cada coordenada mede a distância do ponto a um plano
+          de referência: \(x\) ao plano \(yz\), \(y\) ao plano \(xz\), e
+          \(z\) ao plano \(xy\). A ferramenta mais fundamental é a
+          <strong>distância entre dois pontos</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[ d(A,B) = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2} \]
+        </p>
+        <p>
+          onde \(A = (x_1, y_1, z_1)\) e \(B = (x_2, y_2, z_2)\). Esta fórmula
+          é uma generalização do teorema de Pitágoras para três dimensões.
+        </p>
+      </div>
+
+      <!-- VETORES -->
+      <div class="concept-definition">
+        <p><strong>2. VETORES: DESLOCAMENTOS NO ESPAÇO</strong></p>
+        <p>
+          Se sabemos onde algo está (ponto \(A\)) e para onde vai (ponto \(B\)),
+          o <strong>vetor deslocamento</strong> \(\vec{AB}\) descreve o "passo" de
+          \(A\) até \(B\):
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{AB} = (x_2 - x_1,\; y_2 - y_1,\; z_2 - z_1) \]
+        </p>
+        <p>
+          Um vetor tem <strong>magnitude</strong> (tamanho) e <strong>direção</strong>
+          (para onde aponta), mas não tem posição fixa — pode ser deslizado pelo
+          espaço sem mudar. A magnitude é a norma:
+        </p>
+        <p class="formula-highlight">
+          \[ \|\vec{v}\| = \sqrt{v_x^2 + v_y^2 + v_z^2} \]
+        </p>
+        <p>
+          onde \(v_x\), \(v_y\), \(v_z\) são as componentes do vetor. A norma
+          de \(\vec{AB}\) é exatamente a distância \(d(A,B)\). Um
+          <strong>vetor unitário</strong> \(\hat{v} = \vec{v}/\|\vec{v}\|\) tem
+          magnitude 1 e aponta na mesma direção.
+        </p>
+      </div>
+
+      <!-- PRODUTO ESCALAR -->
+      <div class="concept-definition">
+        <p><strong>3. PRODUTO ESCALAR: ÂNGULOS E PROJEÇÕES</strong></p>
+        <p>
+          O produto escalar mede o <strong>quanto dois vetores apontam na mesma
+          direção</strong>. Se ambos apontam exatamente juntos, o produto é máximo;
+          se são perpendiculares, é zero. A definição algébrica é:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \cdot \vec{v} = u_x v_x + u_y v_y + u_z v_z \]
+        </p>
+        <p>
+          e a definição geométrica, equivalente:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \cdot \vec{v} = \|\vec{u}\| \, \|\vec{v}\| \cos\theta \]
+        </p>
+        <p>
+          onde \(\theta\) é o ângulo entre \(\vec{u}\) e \(\vec{v}\).
+          Igualando as duas expressões, obtemos o ângulo:
+          \(\cos\theta = \frac{\vec{u}\cdot\vec{v}}{\|\vec{u}\|\|\vec{v}\|}\).
+          Um caso importante: \(\vec{u}\cdot\vec{v} = 0\) significa que os
+          vetores são <strong>perpendiculares</strong> (\(\theta = 90°\)).
+        </p>
+        <p>
+          A <strong>projeção</strong> de \(\vec{u}\) sobre \(\vec{v}\) é o
+          "sombra" de \(\vec{u}\) na direção de \(\vec{v}\):
+          \(\text{proj}_{\vec{v}}\vec{u} = \frac{\vec{u}\cdot\vec{v}}{\|\vec{v}\|^2}\,\vec{v}\).
+        </p>
+      </div>
+
+      <!-- PRODUTO VETORIAL -->
+      <div class="concept-definition">
+        <p><strong>4. PRODUTO VETORIAL: ÁREAS E ORIENTAÇÃO</strong></p>
+        <p>
+          O produto vetorial cria um <strong>novo vetor</strong>, perpendicular a
+          ambos os originais, cuja magnitude é a <strong>área do
+          paralelogramo</strong> que eles formam:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{u} \times \vec{v} = \begin{vmatrix} \mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \\ u_x &amp; u_y &amp; u_z \\ v_x &amp; v_y &amp; v_z \end{vmatrix} = (u_y v_z - u_z v_y,\; u_z v_x - u_x v_z,\; u_x v_y - u_y v_x) \]
+        </p>
+        <p>
+          A norma do resultado é \(\|\vec{u}\times\vec{v}\| = \|\vec{u}\|\|\vec{v}\|\sin\theta\),
+          que é a área do paralelogramo. A área do triângulo é a metade:
+          \(A_{\triangle} = \frac{1}{2}\|\vec{u}\times\vec{v}\|\).
+          A direção do vetor resultado segue a regra da mão direita.
+        </p>
+      </div>
+
+      <!-- PRODUTO MISTO -->
+      <div class="concept-definition">
+        <p><strong>5. PRODUTO MISTO: VOLUMES</strong></p>
+        <p>
+          O produto misto combina os dois produtos anteriores para medir o
+          <strong>volume do paralelepípedo</strong> definido por três vetores:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{a} \cdot (\vec{b} \times \vec{c}) = \begin{vmatrix} a_x &amp; a_y &amp; a_z \\ b_x &amp; b_y &amp; b_z \\ c_x &amp; c_y &amp; c_z \end{vmatrix} \]
+        </p>
+        <p>
+          O valor absoluto do resultado é o volume. Se o produto misto é zero, os
+          três vetores são <strong>coplanares</strong> (estão no mesmo plano, volume
+          zero).
+        </p>
+      </div>
+
+      <!-- RETAS -->
+      <div class="concept-definition">
+        <p><strong>6. EQUAÇÃO DE RETA: TRAJETÓRIAS</strong></p>
+        <p>
+          Uma reta no espaço é determinada por um <strong>ponto</strong> \(P_0\)
+          por onde passa e um <strong>vetor diretor</strong> \(\vec{d}\) que indica
+          sua direção. A forma paramétrica, onde \(t\) é o parâmetro:
+        </p>
+        <p class="formula-highlight">
+          \[ \vec{r}(t) = \vec{r}_0 + t\,\vec{d} \quad \Longleftrightarrow \quad \begin{cases} x = x_0 + t\,d_x \\ y = y_0 + t\,d_y \\ z = z_0 + t\,d_z \end{cases} \]
+        </p>
+        <p>
+          onde \(\vec{r}_0 = (x_0, y_0, z_0)\) é o ponto e \(\vec{d} = (d_x, d_y, d_z)\)
+          é o vetor diretor. Cada valor de \(t\) dá um ponto diferente na reta.
+          Eliminando \(t\) das três equações, obtemos a <strong>forma
+          simétrica</strong>:
+          \(\frac{x - x_0}{d_x} = \frac{y - y_0}{d_y} = \frac{z - z_0}{d_z}\).
+        </p>
+      </div>
+
+      <!-- PLANOS -->
+      <div class="concept-definition">
+        <p><strong>7. EQUAÇÃO DE PLANO: SUPERFÍCIES DE REFERÊNCIA</strong></p>
+        <p>
+          Um plano é determinado por um <strong>ponto</strong> \(P_0\) e um vetor
+          <strong>normal</strong> \(\vec{n} = (n_x, n_y, n_z)\) perpendicular ao
+          plano. Um ponto \(P = (x,y,z)\) está no plano se e somente se o vetor
+          \(\vec{P_0P}\) é perpendicular a \(\vec{n}\), ou seja,
+          \(\vec{n} \cdot \vec{P_0P} = 0\):
+        </p>
+        <p class="formula-highlight">
+          \[ n_x(x - x_0) + n_y(y - y_0) + n_z(z - z_0) = 0 \]
+        </p>
+        <p>
+          Expandindo, obtemos a forma geral:
+          \(n_x x + n_y y + n_z z = d\), onde
+          \(d = n_x x_0 + n_y y_0 + n_z z_0\). Para encontrar a normal a partir
+          de três pontos \(A\), \(B\), \(C\) no plano, basta calcular
+          \(\vec{n} = \vec{AB} \times \vec{AC}\).
+        </p>
+      </div>
+
+      <!-- DISTÂNCIAS -->
+      <div class="concept-definition">
+        <p><strong>8. DISTÂNCIAS: PROXIMIDADE NO ESPAÇO</strong></p>
+        <p>
+          As distâncias entre objetos geométricos são construídas combinando as
+          ferramentas anteriores. A <strong>distância ponto-plano</strong> usa a
+          projeção do vetor \(\vec{P_0P}\) na direção da normal:
+        </p>
+        <p class="formula-highlight">
+          \[ d(P, \pi) = \frac{|n_x(x_P - x_0) + n_y(y_P - y_0) + n_z(z_P - z_0)|}{\sqrt{n_x^2 + n_y^2 + n_z^2}} \]
+        </p>
+        <p>
+          A <strong>distância ponto-reta</strong> usa o produto vetorial:
+          \(d(P, r) = \frac{\|\vec{P_0P} \times \vec{d}\|}{\|\vec{d}\|}\),
+          onde \(\vec{d}\) é o vetor diretor da reta. Para <strong>retas
+          reversas</strong> (que não se encontram nem são paralelas), a distância usa
+          o produto misto:
+          \(d(r_1, r_2) = \frac{|\vec{P_1P_2} \cdot (\vec{d}_1 \times \vec{d}_2)|}{\|\vec{d}_1 \times \vec{d}_2\|}\).
+        </p>
+      </div>
+
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Os conceitos deste módulo
+        aparecem em praticamente toda operação orbital. O <strong>produto
+        escalar</strong> calcula o ângulo de lançamento e verifica perpendicularidade
+        de painéis solares ao raio solar. O <strong>produto vetorial</strong> determina
+        a área de superfícies de aterrissagem e a normal de planos de acoplamento.
+        As <strong>equações de reta</strong> descrevem trajetórias de mísseis e
+        satélites. As <strong>equações de plano</strong> definem janelas de lançamento
+        e planos orbitais. As <strong>distâncias</strong> entre retas e planos são
+        essenciais para calcular a distância mínima de aproximação entre objetos em
+        órbitas diferentes — um cálculo que evitou mais de um
+        <span class="censored">incidente de colisão</span> durante o programa
+        <span class="censored">Mercury</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A disputa tecnológica na década de 1960
+        evidenciou que a precisão de cálculos de rotas e órbitas era decisiva para o
+        sucesso de programas como Mercury, Gemini e Apollo, culminando em avanços
+        expressivos em métodos de <span class="censored">cálculo vetorial</span>.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">4</span> • DOCUMENTO GA-<span
+          class="censored"
+          >889</span
+        >-R
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-01.html',
+            'exercicio-vector-02.html',
+            'exercicio-vector-03.html',
+            'exercicio-vector-04.html',
+            'exercicio-vector-05.html',
+            'exercicio-vector-06.html',
+            'exercicio-vector-07.html',
+            'exercicio-vector-08.html',
+            'exercicio-vector-09.html',
+            'exercicio-vector-10.html',
+            'exercicio-vector-11.html',
+            'exercicio-vector-12.html',
+            'exercicio-vector-13.html',
+            'exercicio-vector-14.html',
+            'exercicio-vector-15.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

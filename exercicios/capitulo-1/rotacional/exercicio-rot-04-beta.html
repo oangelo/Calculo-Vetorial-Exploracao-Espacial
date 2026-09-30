@@ -1,0 +1,105 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
+  <div class="context">
+    ORIGEM: Formalismo Matemático — Divisão de Análise de Missão
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Nos exercícios anteriores,
+    você entendeu que torque causa rotação, que campos vetoriais podem causar
+    torque em pás de moinho, e analisou qualitativamente a rotação ao redor de
+    um quadrado. Agora vamos ver como o rotacional captura tudo isso em uma
+    fórmula compacta.
+  </div>
+
+  <p>
+    No exercício anterior, vimos que o campo \(\vec{F} = (0, x, 0)\) contribui
+    positivamente para rotação ao redor de um quadrado de lado \(a\), com os
+    lados verticais empurrando no sentido do percurso. Agora vamos confirmar
+    essa intuição com a fórmula do rotacional.
+  </p>
+
+  <p>O rotacional de \(\vec{F} = (P, Q, R)\) é definido como:</p>
+
+  <div class="formula-highlight">
+    \[ \nabla \times \vec{F} = \begin{pmatrix} \frac{\partial R}{\partial y} -
+    \frac{\partial Q}{\partial z} \\[6pt] \frac{\partial P}{\partial z} -
+    \frac{\partial R}{\partial x} \\[6pt] \frac{\partial Q}{\partial x} -
+    \frac{\partial P}{\partial y} \end{pmatrix} \]
+  </div>
+
+  <p>
+    <strong>(a)</strong> Para \(\vec{F} = (0, x, 0)\), identifique \(P\), \(Q\)
+    e \(R\). Calcule cada derivada parcial envolvida na componente \(i\) do
+    rotacional: \(\frac{\partial R}{\partial y}\) e \(\frac{\partial Q}{\partial
+    z}\).
+  </p>
+
+  <p>
+    <strong>(b)</strong> Calcule a componente \(j\): \(\frac{\partial
+    P}{\partial z} - \frac{\partial R}{\partial x}\).
+  </p>
+
+  <p>
+    <strong>(c)</strong> Calcule a componente \(k\): \(\frac{\partial
+    Q}{\partial x} - \frac{\partial P}{\partial y}\). Este valor confirma a
+    análise qualitativa do exercício anterior?
+  </p>
+
+  <p>
+    <strong>(d)</strong> O rotacional é \((0, 0, 1)\). Interprete: o que
+    significam a direção \(+z\), o sentido pela regra da mão direita, e a
+    magnitude 1?
+  </p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: As derivadas parciais que você já domina são os blocos de
+      construção do rotacional. Para \(P = 0\), todas as derivadas de \(P\) são
+      zero. Para \(Q = x\), apenas \(\frac{\partial Q}{\partial x} = 1\) é
+      não-zero.
+    </div>
+  </details>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) \(P = 0\), \(Q = x\), \(R = 0\). \(\frac{\partial R}{\partial y} =
+        0\), \(\frac{\partial Q}{\partial z} = 0\). Componente \(i\): \(0 - 0 =
+        0\).
+      </p>
+
+      <p>
+        (b) \(\frac{\partial P}{\partial z} = 0\), \(\frac{\partial R}{\partial
+        x} = 0\). Componente \(j\): \(0 - 0 = 0\).
+      </p>
+
+      <p>
+        (c) \(\frac{\partial Q}{\partial x} = 1\), \(\frac{\partial P}{\partial
+        y} = 0\). Componente \(k\): \(1 - 0 = 1\). Sim — este valor positivo
+        confirma que o campo favorece rotação anti-horária, exatamente o que
+        vimos na análise qualitativa do exercício anterior!
+      </p>
+
+      <p>
+        (d) \(\nabla \times \vec{F} = (0, 0, 1)\). O rotacional aponta na
+        direção \(+z\) com magnitude 1. Isso significa:
+      </p>
+      <p>
+        <strong>•</strong> A direção \(+z\) indica rotação no plano \(xy\) (eixo
+        perpendicular ao plano de rotação). <strong>•</strong> O sentido \(+z\),
+        pela regra da mão direita, corresponde a rotação anti-horária no plano
+        \(xy\). <strong>•</strong> A magnitude 1 quantifica a intensidade da
+        tendência de rotação local.
+      </p>
+      <p>
+        O rotacional resume em um único vetor tudo que a análise qualitativa da
+        pá de moinho nos revelou.
+      </p>
+    </div>
+  </details>
+</li>

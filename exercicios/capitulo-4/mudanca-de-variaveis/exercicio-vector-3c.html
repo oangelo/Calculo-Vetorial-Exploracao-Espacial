@@ -1,0 +1,76 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Centro de Análise Orbital -
+    <span class="censored">GEMINI X</span> [JUL/1966]
+  </div>
+  <p>
+    Já usamos escala, soma, substituição quadrática e rotação. A questão agora é
+    estratégica: dada uma região e um integrando, qual transformação escolher?
+    Às vezes a melhor opção não é óbvia — e a interação entre Jacobiano e
+    limites pode surpreender.
+  </p>
+  <p>
+    Considere a integral \(\iiint_D dx\,dy\,dz\) (isto é, o volume) sobre a
+    região \(D = \{(x,y,z) : 0 \le x \le 2,\; 0 \le y \le 2x,\; x^2 \le z \le
+    4\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Analise as fronteiras: \(z = x^2\) é quadrática e \(y =
+    2x\) é linear. Qual das transformações estudadas lidaria com a fronteira \(z
+    = x^2\)? A fronteira \(y = 2x\) se tornaria mais simples?
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a substituição escolhida. Escreva o novo
+    domínio, o Jacobiano e a integral completa. Observe o que acontece ao
+    integrar em \(v\).
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral e verifique calculando diretamente
+    nas coordenadas originais.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A substituição \(u = x^2\) transforma \(y \le 2x\) em \(v
+      \le 2\sqrt{u}\). Compare este limite com o Jacobiano \(1/(2\sqrt{u})\) —
+      eles compartilham o mesmo fator \(\sqrt{u}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) A fronteira \(z = x^2\) sugere a substituição quadrática \(u =
+        x^2\), que a tornaria constante: \(u \le w \le 4\). A aparente
+        desvantagem é que o limite \(y \le 2x\) se torna \(v \le 2\sqrt{u}\),
+        que não é constante. Mas o Jacobiano \(1/(2\sqrt{u})\) contém o mesmo
+        \(\sqrt{u}\) — a integração em \(v\) deve cancelar esse fator.
+      </p>
+      <p>
+        (b) Com \(u = x^2\), \(v = y\), \(w = z\): \(x = \sqrt{u}\), logo \(0
+        \le u \le 4\), \(0 \le v \le 2\sqrt{u}\), \(u \le w \le 4\). O Jacobiano
+        é \(\frac{1}{2\sqrt{u}}\). A integral: \[\int_0^4 \int_0^{2\sqrt{u}}
+        \int_u^4 \frac{1}{2\sqrt{u}}\;dw\,dv\,du.\]
+      </p>
+      <p>
+        Integrando em \(w\): \(\int_u^4 \frac{1}{2\sqrt{u}}\,dw =
+        \frac{4-u}{2\sqrt{u}}\).
+      </p>
+      <p>
+        Integrando em \(v\): \(\int_0^{2\sqrt{u}} \frac{4-u}{2\sqrt{u}}\,dv =
+        \frac{(4-u) \cdot 2\sqrt{u}}{2\sqrt{u}} = 4-u\). O \(\sqrt{u}\)
+        cancelou-se, exatamente como previsto na análise.
+      </p>
+      <p>
+        Integrando em \(u\): \(\int_0^4 (4-u)\,du = \left[4u -
+        \frac{u^2}{2}\right]_0^4 = 16 - 8 = 8\).
+      </p>
+      <p>
+        (c) Verificação direta: \[\int_0^2 \int_0^{2x} \int_{x^2}^4 dz\,dy\,dx =
+        \int_0^2 2x(4-x^2)\,dx = \left[4x^2 - \frac{x^4}{2}\right]_0^2 = 16 - 8
+        = 8.\]
+      </p>
+    </div>
+  </details>
+</li>

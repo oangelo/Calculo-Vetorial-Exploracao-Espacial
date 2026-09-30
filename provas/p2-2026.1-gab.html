@@ -1,0 +1,1645 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gabarito - P2 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        options: {
+          skipHtmlTags: ['details'],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #000;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .header h1 {
+        text-align: center;
+        font-size: 16pt;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .question {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+      .question:last-child {
+        border-bottom: none;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 13pt;
+        color: #000;
+        border-left: 4px solid #000;
+        padding: 8px 10px;
+        background-color: #f0f0f0;
+        margin-bottom: 12px;
+      }
+      .didactic {
+        font-style: italic;
+        color: #444;
+        margin: 10px 0;
+      }
+      .subquestion {
+        margin: 10px 0 10px 20px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      summary {
+        font-weight: bold;
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #e9e9e9;
+        font-size: 10pt;
+        border-radius: 3px;
+      }
+      .answer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+      }
+      .answer p {
+        margin-top: 0;
+      }
+      .figura {
+        margin: 14px auto;
+        text-align: center;
+      }
+      .figura svg {
+        max-width: 100%;
+        height: auto;
+      }
+      .figura figcaption {
+        font-size: 9pt;
+        color: #555;
+        margin-top: 4px;
+      }
+      .tabela {
+        border-collapse: collapse;
+        margin: 12px auto;
+        font-size: 10pt;
+      }
+      .tabela th,
+      .tabela td {
+        border: 1px solid #999;
+        padding: 3px 12px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Gabarito - P2 – 2026.1 - Cálculo Vetorial</h1>
+      </div>
+      <div class="content">
+        <!-- QUESTÃO 1 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 1: Coordenadas esféricas e Jacobiano
+          </div>
+          <p>
+            Considere as coordenadas esféricas \((\rho,\theta,\phi)\), nas quais
+            \(\phi\) é o ângulo polar medido a partir do eixo \(z\).
+          </p>
+          <p class="didactic">
+            A questão pede a construção das coordenadas esféricas do zero: o
+            esboço dos eixos com a localização de \(\rho,\theta,\phi\), as
+            relações com as coordenadas cartesianas, a montagem e o cálculo do
+            Jacobiano \(3\times 3\) (Capítulo 4) e, como verificação, o volume
+            da esfera — resultado conhecido que valida o fator
+            \(\rho^2\sin\phi\).
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Esboço dos eixos, coordenadas em função de \(\rho,\theta,\phi\) e
+            intervalos.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  No esboço devem aparecer os eixos \(x,y,z\), o ponto
+                  \(P=(x,y,z)\), sua projeção \(P'\) sobre o plano \(xy\), o
+                  segmento \(OP\) de comprimento \(\rho\), o ângulo \(\theta\)
+                  entre o eixo \(x\) positivo e \(OP'\), e o ângulo \(\phi\)
+                  entre o eixo \(z\) positivo e \(OP\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="520"
+                    height="380"
+                    viewBox="0 0 520 380"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Coordenadas esféricas do ponto P: eixos x, y vindo para frente e z, projeção P linha no plano xy, comprimento rho e ângulos teta e fi"
+                  >
+                    <title>Coordenadas esféricas de um ponto P</title>
+                    <defs>
+                      <marker
+                        id="seta-eixos-q1"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="205"
+                      y1="250"
+                      x2="485"
+                      y2="250"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q1)"
+                    ></line>
+                    <line
+                      x1="205"
+                      y1="250"
+                      x2="70.6"
+                      y2="346"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q1)"
+                    ></line>
+                    <line
+                      x1="205"
+                      y1="250"
+                      x2="205"
+                      y2="70"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q1)"
+                    ></line>
+                    <text
+                      x="492"
+                      y="256"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      x
+                    </text>
+                    <text
+                      x="58"
+                      y="360"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      y
+                    </text>
+                    <text
+                      x="205"
+                      y="58"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      z
+                    </text>
+                    <text
+                      x="190"
+                      y="266"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      O
+                    </text>
+                    <line
+                      x1="205"
+                      y1="250"
+                      x2="337"
+                      y2="289"
+                      stroke="#6b7280"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <line
+                      x1="337"
+                      y1="289"
+                      x2="337"
+                      y2="121"
+                      stroke="#6b7280"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <line
+                      x1="205"
+                      y1="250"
+                      x2="337"
+                      y2="121"
+                      stroke="#2563eb"
+                      stroke-width="2.5"
+                    ></line>
+                    <circle cx="337" cy="121" r="4" fill="#1f2937"></circle>
+                    <circle cx="337" cy="289" r="3.5" fill="#1f2937"></circle>
+                    <text
+                      x="347"
+                      y="114"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      P = (x, y, z)
+                    </text>
+                    <text
+                      x="347"
+                      y="300"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      P′
+                    </text>
+                    <text
+                      x="256"
+                      y="178"
+                      font-family="Times New Roman, serif"
+                      font-size="16"
+                      font-style="italic"
+                      fill="#2563eb"
+                    >
+                      ρ
+                    </text>
+                    <path
+                      d="M 285 250 A 80 80 0 0 1 281.7 272.6"
+                      fill="none"
+                      stroke="#dc2626"
+                      stroke-width="1.6"
+                    ></path>
+                    <text
+                      x="295"
+                      y="274"
+                      font-family="Times New Roman, serif"
+                      font-size="16"
+                      font-style="italic"
+                      fill="#dc2626"
+                    >
+                      θ
+                    </text>
+                    <path
+                      d="M 205 170 A 80 80 0 0 1 262.3 194.2"
+                      fill="none"
+                      stroke="#dc2626"
+                      stroke-width="1.6"
+                    ></path>
+                    <text
+                      x="242"
+                      y="160"
+                      font-family="Times New Roman, serif"
+                      font-size="16"
+                      font-style="italic"
+                      fill="#dc2626"
+                    >
+                      φ
+                    </text>
+                    <rect
+                      x="300"
+                      y="18"
+                      width="205"
+                      height="64"
+                      rx="4"
+                      fill="#f9fafb"
+                      stroke="#d1d5db"
+                    ></rect>
+                    <text
+                      x="312"
+                      y="40"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#374151"
+                    >
+                      x = ρ sin φ cos θ
+                    </text>
+                    <text
+                      x="312"
+                      y="57"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#374151"
+                    >
+                      y = ρ sin φ sin θ
+                    </text>
+                    <text
+                      x="312"
+                      y="74"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#374151"
+                    >
+                      z = ρ cos φ
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Esboço do item (a): o ponto P, sua projeção P′ no plano xy e
+                    as coordenadas ρ, θ e φ.
+                  </figcaption>
+                </figure>
+                <p>As relações com as coordenadas cartesianas são:</p>
+                <p>
+                  \[ x=\rho\sin\phi\cos\theta,\qquad
+                  y=\rho\sin\phi\sin\theta,\qquad z=\rho\cos\phi. \]
+                </p>
+                <p>
+                  Os intervalos de variação são \(\rho\ge 0\), \(0\le\theta\le
+                  2\pi\) e \(0\le\phi\le\pi\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Matriz Jacobiana e determinante.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>Derivando as relações do item (a), obtemos:</p>
+                <p>
+                  \[ \frac{\partial(x,y,z)}{\partial(\rho,\theta,\phi)} =
+                  \begin{pmatrix} \sin\phi\cos\theta & -\rho\sin\phi\sin\theta &
+                  \rho\cos\phi\cos\theta \\ \sin\phi\sin\theta &
+                  \rho\sin\phi\cos\theta & \rho\cos\phi\sin\theta \\ \cos\phi &
+                  0 & -\rho\sin\phi \end{pmatrix}. \]
+                </p>
+                <p>
+                  Expandindo o determinante pela terceira linha, os dois menores
+                  relevantes são
+                </p>
+                <p>
+                  \[ \begin{vmatrix} -\rho\sin\phi\sin\theta &
+                  \rho\cos\phi\cos\theta \\ \rho\sin\phi\cos\theta &
+                  \rho\cos\phi\sin\theta \end{vmatrix} =
+                  -\rho^2\sin\phi\cos\phi, \]
+                </p>
+                <p>
+                  \[ \begin{vmatrix} \sin\phi\cos\theta &
+                  -\rho\sin\phi\sin\theta \\ \sin\phi\sin\theta &
+                  \rho\sin\phi\cos\theta \end{vmatrix} = \rho\sin^2\phi. \]
+                </p>
+                <p>Portanto,</p>
+                <p>
+                  \[ \det = \cos\phi\,(-\rho^2\sin\phi\cos\phi) +
+                  (-\rho\sin\phi) (\rho\sin^2\phi) =
+                  -\rho^2\sin\phi(\cos^2\phi+\sin^2\phi) = -\rho^2\sin\phi. \]
+                </p>
+                <p>
+                  Como \(0\le\phi\le\pi\), vale \(\sin\phi\ge 0\) e o valor
+                  absoluto é
+                </p>
+                <p>
+                  \[ |J| = \rho^2\sin\phi, \qquad
+                  dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta. \]
+                </p>
+                <p>
+                  O fator \(\sin\phi\) mede o estreitamento dos elementos de
+                  volume perto dos polos: para \(\phi\) próximo de \(0\) ou de
+                  \(\pi\), o círculo de raio \(\rho\sin\phi\) encolhe e o
+                  elemento de volume é pequeno.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Volume da esfera de raio \(R\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A esfera \(x^2+y^2+z^2\le R^2\) é descrita por \(0\le\rho\le
+                  R\), \(0\le\phi\le\pi\) e \(0\le\theta\le 2\pi\). Com o
+                  Jacobiano do item (b),
+                </p>
+                <p>
+                  \[ V=\int_0^{2\pi}\int_0^{\pi}\int_0^R \rho^2\sin\phi\,d\rho\,
+                  d\phi\,d\theta = \left(\int_0^{2\pi}d\theta\right)
+                  \left(\int_0^{\pi}\sin\phi\,d\phi\right)
+                  \left(\int_0^R\rho^2\,d\rho\right). \]
+                </p>
+                <p>
+                  Calculando cada fator: \(\int_0^{2\pi}d\theta=2\pi\),
+                  \(\int_0^{\pi}\sin\phi\,d\phi=2\) e
+                  \(\int_0^R\rho^2\,d\rho=\frac{R^3}{3}\). Logo
+                </p>
+                <p>
+                  \[ V = 2\pi\cdot 2\cdot\frac{R^3}{3}=\frac{4}{3}\pi R^3. \]
+                </p>
+                <p>
+                  O resultado coincide com a fórmula conhecida do volume da
+                  esfera, o que verifica o Jacobiano obtido no item (b).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 2 -->
+        <div class="question">
+          <div class="question-header">Questão 2: Cilindro e paraboloide</div>
+          <p>
+            Considere o sólido \(S\) limitado lateralmente pelo cilindro
+            \(x^2+y^2=a^2\), inferiormente pelo paraboloide \(z=x^2+y^2\) e
+            superiormente pelo plano \(z=h\), com \(h>a^2>0\), e o cilindro reto
+            \(C\) de raio \(a\) e altura \(h\).
+          </p>
+          <p class="didactic">
+            A questão exercita a montagem em coordenadas cilíndricas (Capítulo
+            4) com fundo parabólico \(z=r^2\): a integração em \(z\) é imediata
+            e sobra um polinômio em \(r\). O item (b) compara com o cilindro
+            reto \(C\) — o paraboloide remove \(\pi a^4/2\) do cilindro — e os
+            itens (c) e (d) estendem o problema para massa e centro de massa,
+            com a simetria de revolução forçando \(\bar x=\bar y=0\).
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Projeção, descrição em cilíndricas e integral do volume.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A projeção de \(S\) no plano \(xy\) é o disco \(D:x^2+y^2\le
+                  a^2\), de raio \(a\). Usando \(x=r\cos\theta\),
+                  \(y=r\sin\theta\) e \(z=z\), temos \(x^2+y^2=r^2\). Assim,
+                  \(S\) é descrito por
+                </p>
+                <p>
+                  \[ 0\le\theta\le 2\pi,\qquad 0\le r\le a,\qquad r^2\le z\le h.
+                  \]
+                </p>
+                <p>
+                  A condição \(h>a^2\) garante que a tampa fica acima do
+                  paraboloide em todo o disco, pois o maior valor de \(x^2+y^2\)
+                  em \(D\) é \(a^2\).
+                </p>
+                <p>O volume é dado pela integral tripla</p>
+                <p>
+                  \[ V=\int_0^{2\pi}\int_0^a\int_{r^2}^{h} r\,dz\,dr\,d\theta
+                  =\int_0^{2\pi}\int_0^a\bigl(h-r^2\bigr)r\,dr\,d\theta. \]
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="300"
+                    viewBox="0 0 460 300"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Corte do sólido S no plano y igual a zero: parábola z igual a r ao quadrado de zero até a, reta z igual a h acima, região removida sob a parábola destacada em vermelho"
+                  >
+                    <title>Corte do sólido S no plano y = 0</title>
+                    <defs>
+                      <marker
+                        id="seta-eixos-q2p"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <path
+                      d="M 70.0 250.0 L 76.5 249.9 L 83.0 249.7 L 89.5 249.3 L 96.0 248.8 L 102.5 248.0 L 109.0 247.2 L 115.5 246.2 L 122.0 245.0 L 128.5 243.7 L 135.0 242.2 L 141.5 240.5 L 148.0 238.8 L 154.5 236.8 L 161.0 234.7 L 167.5 232.4 L 174.0 230.0 L 180.5 227.4 L 187.0 224.7 L 193.5 221.8 L 200.0 218.8 L 206.5 215.5 L 213.0 212.2 L 219.5 208.7 L 226.0 205.0 L 232.5 201.2 L 239.0 197.2 L 245.5 193.0 L 252.0 188.7 L 258.5 184.3 L 265.0 179.7 L 271.5 174.9 L 278.0 170.0 L 284.5 164.9 L 291.0 159.7 L 297.5 154.3 L 304.0 148.7 L 310.5 143.0 L 317.0 137.2 L 323.5 131.2 L 330.0 125.0 L 330 62.5 L 70 62.5 Z"
+                      fill="#2563eb"
+                      fill-opacity="0.08"
+                    ></path>
+                    <path
+                      d="M 70.0 250.0 L 76.5 249.9 L 83.0 249.7 L 89.5 249.3 L 96.0 248.8 L 102.5 248.0 L 109.0 247.2 L 115.5 246.2 L 122.0 245.0 L 128.5 243.7 L 135.0 242.2 L 141.5 240.5 L 148.0 238.8 L 154.5 236.8 L 161.0 234.7 L 167.5 232.4 L 174.0 230.0 L 180.5 227.4 L 187.0 224.7 L 193.5 221.8 L 200.0 218.8 L 206.5 215.5 L 213.0 212.2 L 219.5 208.7 L 226.0 205.0 L 232.5 201.2 L 239.0 197.2 L 245.5 193.0 L 252.0 188.7 L 258.5 184.3 L 265.0 179.7 L 271.5 174.9 L 278.0 170.0 L 284.5 164.9 L 291.0 159.7 L 297.5 154.3 L 304.0 148.7 L 310.5 143.0 L 317.0 137.2 L 323.5 131.2 L 330.0 125.0 L 330 250 Z"
+                      fill="#dc2626"
+                      fill-opacity="0.1"
+                    ></path>
+                    <path
+                      d="M 70.0 250.0 L 76.5 249.9 L 83.0 249.7 L 89.5 249.3 L 96.0 248.8 L 102.5 248.0 L 109.0 247.2 L 115.5 246.2 L 122.0 245.0 L 128.5 243.7 L 135.0 242.2 L 141.5 240.5 L 148.0 238.8 L 154.5 236.8 L 161.0 234.7 L 167.5 232.4 L 174.0 230.0 L 180.5 227.4 L 187.0 224.7 L 193.5 221.8 L 200.0 218.8 L 206.5 215.5 L 213.0 212.2 L 219.5 208.7 L 226.0 205.0 L 232.5 201.2 L 239.0 197.2 L 245.5 193.0 L 252.0 188.7 L 258.5 184.3 L 265.0 179.7 L 271.5 174.9 L 278.0 170.0 L 284.5 164.9 L 291.0 159.7 L 297.5 154.3 L 304.0 148.7 L 310.5 143.0 L 317.0 137.2 L 323.5 131.2 L 330.0 125.0"
+                      fill="none"
+                      stroke="#2563eb"
+                      stroke-width="2"
+                    ></path>
+                    <line
+                      x1="50"
+                      y1="250"
+                      x2="430"
+                      y2="250"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q2p)"
+                    ></line>
+                    <line
+                      x1="70"
+                      y1="250"
+                      x2="70"
+                      y2="40"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q2p)"
+                    ></line>
+                    <line
+                      x1="70"
+                      y1="62.5"
+                      x2="425"
+                      y2="62.5"
+                      stroke="#dc2626"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="330"
+                      y1="125"
+                      x2="330"
+                      y2="62.5"
+                      stroke="#1f2937"
+                      stroke-width="1.6"
+                    ></line>
+                    <line
+                      x1="330"
+                      y1="250"
+                      x2="330"
+                      y2="125"
+                      stroke="#9ca3af"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <line
+                      x1="330"
+                      y1="250"
+                      x2="330"
+                      y2="243"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <line
+                      x1="64"
+                      y1="125"
+                      x2="70"
+                      y2="125"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <line
+                      x1="64"
+                      y1="62.5"
+                      x2="70"
+                      y2="62.5"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <text
+                      x="438"
+                      y="256"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      r
+                    </text>
+                    <text
+                      x="70"
+                      y="32"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      z
+                    </text>
+                    <text
+                      x="330"
+                      y="266"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      r = a
+                    </text>
+                    <text
+                      x="58"
+                      y="129"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      a²
+                    </text>
+                    <text
+                      x="58"
+                      y="66.5"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      h
+                    </text>
+                    <text
+                      x="420"
+                      y="54"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#dc2626"
+                    >
+                      z = h
+                    </text>
+                    <text
+                      x="115"
+                      y="105"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-weight="bold"
+                      fill="#1f2937"
+                    >
+                      S
+                    </text>
+                    <text
+                      x="150"
+                      y="165"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#2563eb"
+                    >
+                      z = x² + y² = r²
+                    </text>
+                    <text
+                      x="250"
+                      y="222"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#dc2626"
+                    >
+                      πa⁴/2
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Corte de S no plano y = 0: o paraboloide remove do cilindro
+                    a região em vermelho, de volume πa⁴/2.
+                  </figcaption>
+                </figure>
+                <figure class="figura">
+                  <svg
+                    width="440"
+                    height="440"
+                    viewBox="0 0 440 440"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Projeção do sólido no plano xy: disco D de raio a com as curvas de nível do paraboloide, círculos concêntricos de raios a sobre 3, 2a sobre 3 e a, com níveis z iguais a a ao quadrado sobre 9, 4a ao quadrado sobre 9 e a ao quadrado"
+                  >
+                    <title>Projeção D e curvas de nível de z = x² + y²</title>
+                    <defs>
+                      <marker
+                        id="seta-eixos-q2n"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="35"
+                      y1="220"
+                      x2="410"
+                      y2="220"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q2n)"
+                    ></line>
+                    <line
+                      x1="220"
+                      y1="410"
+                      x2="220"
+                      y2="25"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q2n)"
+                    ></line>
+                    <circle
+                      cx="220"
+                      cy="220"
+                      r="150"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="2"
+                    ></circle>
+                    <circle
+                      cx="220"
+                      cy="220"
+                      r="100"
+                      fill="none"
+                      stroke="#2563eb"
+                      stroke-width="1.6"
+                      stroke-dasharray="7 5"
+                    ></circle>
+                    <circle
+                      cx="220"
+                      cy="220"
+                      r="50"
+                      fill="none"
+                      stroke="#2563eb"
+                      stroke-width="1.6"
+                      stroke-dasharray="7 5"
+                    ></circle>
+                    <circle cx="220" cy="220" r="3" fill="#1f2937"></circle>
+                    <text
+                      x="416"
+                      y="226"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      x
+                    </text>
+                    <text
+                      x="214"
+                      y="18"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      y
+                    </text>
+                    <text
+                      x="370"
+                      y="238"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      a
+                    </text>
+                    <line
+                      x1="370"
+                      y1="214"
+                      x2="370"
+                      y2="226"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <text
+                      x="228"
+                      y="240"
+                      font-family="Times New Roman, serif"
+                      font-size="12"
+                      font-style="italic"
+                      fill="#6b7280"
+                    >
+                      z = 0
+                    </text>
+                    <text
+                      x="262"
+                      y="180"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      fill="#2563eb"
+                    >
+                      z = a²/9
+                    </text>
+                    <text
+                      x="297"
+                      y="145"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      fill="#2563eb"
+                    >
+                      z = 4a²/9
+                    </text>
+                    <text
+                      x="333"
+                      y="110"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      fill="#2563eb"
+                    >
+                      z = a²
+                    </text>
+                    <text
+                      x="40"
+                      y="412"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      D: x² + y² ≤ a²
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Projeção D e curvas de nível de z = x² + y²: cada nível é o
+                    círculo r = √z, com z crescendo de 0 até a² na borda.
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Volume e comparação com o cilindro reto.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>Calculando a integral do item (a):</p>
+                <p>
+                  \[ V=\int_0^{2\pi}\int_0^a\bigl(hr-r^3\bigr)\,dr\,d\theta
+                  =2\pi\left[h\frac{a^2}{2}-\frac{a^4}{4}\right] =\pi
+                  a^2h-\frac{\pi a^4}{2} =\pi a^2\left(h-\frac{a^2}{2}\right).
+                  \]
+                </p>
+                <p>
+                  O cilindro reto \(C\) tem volume \(V(C)=\pi a^2h\). Portanto
+                </p>
+                <p>\[ V(S)=V(C)-\frac{\pi a^4}{2}, \]</p>
+                <p>
+                  isto é, o paraboloide remove do cilindro exatamente o volume
+                  sob ele sobre o disco,
+                  \(\iint_D(x^2+y^2)\,dA=2\pi\cdot\frac{a^4}{4}=\frac{\pi
+                  a^4}{2}\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Massa com densidade \(\delta=kr\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A massa é \(M=\iiint_S\delta\,dV\). Em cilíndricas, \(\delta=k
+                  r\), logo
+                </p>
+                <p>
+                  \[ M=\int_0^{2\pi}\int_0^a\int_{r^2}^{h} k r\cdot
+                  r\,dz\,dr\,d\theta =k\int_0^{2\pi}\int_0^a
+                  r^2\bigl(h-r^2\bigr)\,dr\,d\theta. \]
+                </p>
+                <p>Portanto</p>
+                <p>
+                  \[ M=2\pi k\left[h\frac{a^3}{3}-\frac{a^5}{5}\right] =2\pi k
+                  a^3\left(\frac{h}{3}-\frac{a^2}{5}\right). \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d)</strong>
+            Integrais do centro de massa e simetria.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>As coordenadas do centro de massa são</p>
+                <p>
+                  \[ \bar x=\frac{1}{M}\iiint_S x\,\delta\,dV,\qquad \bar
+                  y=\frac{1}{M}\iiint_S y\,\delta\,dV,\qquad \bar
+                  z=\frac{1}{M}\iiint_S z\,\delta\,dV. \]
+                </p>
+                <p>
+                  Em coordenadas cilíndricas, com \(\delta=kr\) e
+                  \(dV=r\,dz\,dr\,d\theta\), essas integrais ficam
+                </p>
+                <p>
+                  \[ \bar x=\frac{1}{M}\int_0^{2\pi}\int_0^a \int_{r^2}^{h} k
+                  r^3\cos\theta\,dz\,dr\,d\theta, \]
+                </p>
+                <p>
+                  \[ \bar y=\frac{1}{M}\int_0^{2\pi}\int_0^a \int_{r^2}^{h} k
+                  r^3\sin\theta\,dz\,dr\,d\theta, \]
+                </p>
+                <p>
+                  \[ \bar z=\frac{1}{M}\int_0^{2\pi}\int_0^a \int_{r^2}^{h} k
+                  r^2 z\,dz\,dr\,d\theta. \]
+                </p>
+                <p>
+                  O sólido \(S\) e a densidade \(\delta=kr\) são invariantes por
+                  rotações em torno do eixo \(z\) (simetria de revolução). Nas
+                  integrais de \(\bar x\) e \(\bar y\), as funções
+                  \(\cos\theta\) e \(\sin\theta\) têm média nula em
+                  \([0,2\pi]\); logo \(\bar x=0\) e \(\bar y=0\), e o centro de
+                  massa está sobre o eixo \(z\).
+                </p>
+                <p>
+                  A coordenada \(\bar z\) não é forçada a zero pela simetria (o
+                  sólido não é simétrico em relação ao plano \(z=0\), pois
+                  termina na tampa \(z=h\)) e deve ser obtida da terceira
+                  integral.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 3 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 3: Cicloide e integrais de linha
+          </div>
+          <p>
+            Um cabo flexível segue a curva \(C\) dada por \(\mathbf r(t)=(t-\sin
+            t,\;1-\cos t)\), com \(0\le t\le 2\pi\), e tem densidade linear
+            \(\lambda(x,y)=ky\), com \(k>0\).
+          </p>
+          <p class="didactic">
+            A cicloide tem velocidade variável, o que obriga o aluno a calcular
+            \(\|\mathbf r'(t)\|\) de verdade: surge \(\sqrt{2-2\cos
+            t}=2\sin(t/2)\). A massa usa a identidade \(1-\cos t=2\sin^2(t/2)\),
+            e o item (c) verifica a invariância da integral de linha por mudança
+            de parâmetro — competência central do Capítulo 5.
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Esboço, \(ds\) e comprimento.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A curva é uma arcada da cicloide: parte de \((0,0)\) em
+                  \(t=0\), atinge a altura máxima \(2\) em \(t=\pi\) e retorna
+                  ao eixo \(x\) em \((2\pi,0)\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="600"
+                    height="260"
+                    viewBox="0 0 600 260"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Arco da cicloide de t igual a zero a dois pi, com cúspides nas extremidades, círculo gerador de raio 1 e cinco pontos notáveis marcados"
+                  >
+                    <title>
+                      Arco da cicloide com o círculo gerador e pontos notáveis
+                    </title>
+                    <defs>
+                      <marker
+                        id="seta-eixos-q3"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="35"
+                      y1="210"
+                      x2="585"
+                      y2="210"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q3)"
+                    ></line>
+                    <line
+                      x1="70"
+                      y1="210"
+                      x2="70"
+                      y2="216"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <line
+                      x1="310"
+                      y1="210"
+                      x2="310"
+                      y2="216"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <line
+                      x1="550"
+                      y1="210"
+                      x2="550"
+                      y2="216"
+                      stroke="#1f2937"
+                      stroke-width="1.4"
+                    ></line>
+                    <text
+                      x="70"
+                      y="230"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      0
+                    </text>
+                    <text
+                      x="310"
+                      y="230"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      π
+                    </text>
+                    <text
+                      x="550"
+                      y="230"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      2π
+                    </text>
+                    <text
+                      x="590"
+                      y="226"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      t
+                    </text>
+                    <line
+                      x1="310"
+                      y1="210"
+                      x2="310"
+                      y2="57.2"
+                      stroke="#9ca3af"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <circle
+                      cx="310"
+                      cy="133.6"
+                      r="76.4"
+                      fill="none"
+                      stroke="#9ca3af"
+                      stroke-width="1.4"
+                      stroke-dasharray="6 4"
+                    ></circle>
+                    <circle cx="310" cy="133.6" r="2.5" fill="#9ca3af"></circle>
+                    <path
+                      d="M 70.0 210.0 L 70.0 209.6 L 70.1 208.5 L 70.3 206.6 L 70.8 204.0 L 71.6 200.6 L 72.7 196.7 L 74.3 192.0 L 76.3 186.8 L 78.9 181.1 L 82.1 174.9 L 86.0 168.3 L 90.5 161.3 L 95.7 154.0 L 101.7 146.6 L 108.4 139.0 L 115.9 131.4 L 124.1 123.8 L 133.1 116.2 L 142.9 108.9 L 153.3 101.8 L 164.5 95.0 L 176.3 88.6 L 188.7 82.7 L 201.7 77.3 L 215.3 72.4 L 229.2 68.1 L 243.6 64.5 L 258.3 61.6 L 273.3 59.4 L 288.4 58.0 L 303.6 57.3 L 318.9 57.3 L 334.2 58.2 L 349.3 59.7 L 364.2 62.1 L 378.8 65.1 L 393.1 68.8 L 407.0 73.2 L 420.5 78.1 L 433.4 83.7 L 445.7 89.7 L 457.4 96.2 L 468.5 103.0 L 478.8 110.1 L 488.5 117.5 L 497.3 125.0 L 505.4 132.7 L 512.8 140.3 L 519.4 147.9 L 525.2 155.3 L 530.3 162.5 L 534.7 169.4 L 538.5 176.0 L 541.6 182.1 L 544.1 187.7 L 546.0 192.9 L 547.5 197.4 L 548.6 201.3 L 549.3 204.5 L 549.7 207.0 L 549.9 208.7 L 550.0 209.7 L 550.0 210.0"
+                      fill="none"
+                      stroke="#2563eb"
+                      stroke-width="2.5"
+                    ></path>
+                    <circle cx="70" cy="210" r="3.5" fill="#1f2937"></circle>
+                    <circle
+                      cx="113.6"
+                      cy="133.6"
+                      r="3.5"
+                      fill="#1f2937"
+                    ></circle>
+                    <circle cx="310" cy="57.2" r="3.5" fill="#1f2937"></circle>
+                    <circle
+                      cx="506.4"
+                      cy="133.6"
+                      r="3.5"
+                      fill="#1f2937"
+                    ></circle>
+                    <circle cx="550" cy="210" r="3.5" fill="#1f2937"></circle>
+                    <text
+                      x="62"
+                      y="196"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#1f2937"
+                    >
+                      (0, 0)
+                    </text>
+                    <text
+                      x="112"
+                      y="162"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#1f2937"
+                    >
+                      (π/2 − 1, 1)
+                    </text>
+                    <text
+                      x="318"
+                      y="50"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#1f2937"
+                    >
+                      (π, 2)
+                    </text>
+                    <text
+                      x="498"
+                      y="162"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#1f2937"
+                    >
+                      (3π/2 + 1, 1)
+                    </text>
+                    <text
+                      x="556"
+                      y="204"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#1f2937"
+                    >
+                      (2π, 0)
+                    </text>
+                    <text
+                      x="392"
+                      y="185"
+                      font-family="Times New Roman, serif"
+                      font-size="11.5"
+                      fill="#6b7280"
+                    >
+                      círculo gerador
+                    </text>
+                    <text
+                      x="152"
+                      y="130"
+                      font-family="Times New Roman, serif"
+                      font-size="17"
+                      font-style="italic"
+                      fill="#2563eb"
+                    >
+                      C
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Arco da cicloide com o círculo gerador de raio 1: cúspides
+                    em t = 0 e t = 2π e comprimento L = 8.
+                  </figcaption>
+                </figure>
+                <p>Pontos notáveis usados na marcação da figura:</p>
+                <table class="tabela">
+                  <thead>
+                    <tr>
+                      <th>\(t\)</th>
+                      <th>\(x=t-\sin t\)</th>
+                      <th>\(y=1-\cos t\)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>\(0\)</td>
+                      <td>\(0\)</td>
+                      <td>\(0\)</td>
+                    </tr>
+                    <tr>
+                      <td>\(\pi/2\)</td>
+                      <td>\(\pi/2-1\approx 0{,}57\)</td>
+                      <td>\(1\)</td>
+                    </tr>
+                    <tr>
+                      <td>\(\pi\)</td>
+                      <td>\(\pi\approx 3{,}14\)</td>
+                      <td>\(2\)</td>
+                    </tr>
+                    <tr>
+                      <td>\(3\pi/2\)</td>
+                      <td>\(3\pi/2+1\approx 5{,}71\)</td>
+                      <td>\(1\)</td>
+                    </tr>
+                    <tr>
+                      <td>\(2\pi\)</td>
+                      <td>\(2\pi\approx 6{,}28\)</td>
+                      <td>\(0\)</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>\[ \mathbf r'(t)=(1-\cos t,\;\sin t), \]</p>
+                <p>
+                  \[ \|\mathbf r'(t)\|=\sqrt{(1-\cos t)^2+\sin^2t}
+                  =\sqrt{2-2\cos t}=2\left|\sin\frac{t}{2}\right|
+                  =2\sin\frac{t}{2}, \]
+                </p>
+                <p>pois \(\sin(t/2)\ge0\) para \(0\le t\le2\pi\). Logo</p>
+                <p>
+                  \[ ds=2\sin\frac{t}{2}\,dt,\qquad
+                  L=\int_0^{2\pi}2\sin\frac{t}{2}\,dt
+                  =\left[-4\cos\frac{t}{2}\right]_0^{2\pi}=8. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Massa do cabo.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A massa é \(M=\int_C\lambda\,ds\). Com \(\lambda=ky=k(1-\cos
+                  t)\) e \(ds=2\sin(t/2)\,dt\),
+                </p>
+                <p>\[ M=\int_0^{2\pi}k(1-\cos t)\,2\sin\frac{t}{2}\,dt. \]</p>
+                <p>
+                  Usando \(1-\cos t=2\sin^2(t/2)\),
+                  \(M=4k\int_0^{2\pi}\sin^3\frac{t}{2}\,dt\). Com a substituição
+                  \(u=t/2\), \(dt=2du\),
+                </p>
+                <p>
+                  \[ M=8k\int_0^{\pi}\sin^3u\,du=8k\cdot\frac{4}{3}
+                  =\frac{32k}{3}. \]
+                </p>
+                <p>
+                  (Na última passagem usamos
+                  \(\int_0^\pi\sin^3u\,du=\frac{4}{3}\).)
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Verificação por mudança de parâmetro.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Com \(t=2\pi u\), \(u\in[0,1]\), a curva fica \(\mathbf
+                  r(u)=(2\pi u-\sin2\pi u,\;1-\cos2\pi u)\) e
+                </p>
+                <p>
+                  \[ \mathbf r'(u)=2\pi\bigl(1-\cos2\pi u,\;\sin2\pi u\bigr),
+                  \qquad \|\mathbf r'(u)\|=2\pi\cdot2\sin(\pi u)=4\pi\sin(\pi
+                  u), \]
+                </p>
+                <p>
+                  logo \(ds=4\pi\sin(\pi u)\,du\). A densidade se escreve
+                  \(\lambda=k(1-\cos2\pi u)=2k\sin^2(\pi u)\). Assim,
+                </p>
+                <p>
+                  \[ M=\int_0^1 2k\sin^2(\pi u)\cdot4\pi\sin(\pi u)\,du =8\pi
+                  k\int_0^1\sin^3(\pi u)\,du. \]
+                </p>
+                <p>
+                  Com \(v=\pi u\), \(\int_0^1\sin^3(\pi u)\,du=\frac{1}{\pi}
+                  \int_0^\pi\sin^3v\,dv=\frac{1}{\pi}\cdot\frac{4}{3}\), donde
+                </p>
+                <p>\[ M=8\pi k\cdot\frac{4}{3\pi}=\frac{32k}{3}, \]</p>
+                <p>
+                  o mesmo valor obtido no item (b): a integral de linha escalar
+                  não depende da parametrização escolhida.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 4 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 4: Campos conservativos e circuito fechado
+          </div>
+          <p>
+            Considere os campos vetoriais \(\mathbf F_1(x,y,z)=(y+z,\;x+z,\;
+            x+y)\) e \(\mathbf F_2(x,y,z)=(-y,\;x,\;0)\), e o circuito fechado
+            \(C\) dado pela circunferência unitária no plano \(xy\), \(\mathbf
+            r(t)=(\cos t,\;\sin t,\;0)\), com \(0\le t\le 2\pi\), percorrida uma
+            vez no sentido anti-horário.
+          </p>
+          <p class="didactic">
+            A questão confronta dois campos que só se distinguem pelo teste do
+            rotacional (Capítulo 6): \(\mathbf F_1\) é um gradiente e \(\mathbf
+            F_2\) tem circulação. O circuito fechado evidencia a diferença —
+            \(\oint=0\) para o conservativo e \(\oint=2\pi\) para o outro —
+            ancorando a interpretação de trabalho, independência de caminho e
+            existência de potencial.
+          </p>
+          <div class="subquestion">
+            <strong>a)</strong>
+            Teste do rotacional.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Para \(\mathbf F=(P,Q,R)\), \(\nabla\times\mathbf
+                  F=(\partial_yR-\partial_zQ,\;
+                  \partial_zP-\partial_xR,\;\partial_xQ-\partial_yP)\).
+                </p>
+                <p>Para \(\mathbf F_1=(y+z,\;x+z,\;x+y)\):</p>
+                <p>\[ \nabla\times\mathbf F_1=(1-1,\;1-1,\;1-1)=(0,0,0), \]</p>
+                <p>logo \(\mathbf F_1\) é conservativo.</p>
+                <p>Para \(\mathbf F_2=(-y,\;x,\;0)\):</p>
+                <p>
+                  \[ \nabla\times\mathbf
+                  F_2=(0-0,\;0-0,\;1-(-1))=(0,0,2)\neq\mathbf 0, \]
+                </p>
+                <p>logo \(\mathbf F_2\) não é conservativo.</p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b)</strong>
+            Potencial escalar de \(\mathbf F_1\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Procuramos \(f\) com \(f_x=y+z\), \(f_y=x+z\) e \(f_z=x+y\).
+                  Integrando \(f_x\) em relação a \(x\):
+                </p>
+                <p>\[ f(x,y,z)=xy+xz+g(y,z). \]</p>
+                <p>
+                  Derivando em relação a \(y\): \(f_y=x+g_y=x+z\), donde
+                  \(g_y=z\) e \(g(y,z)=yz+h(z)\). Então
+                </p>
+                <p>\[ f=xy+xz+yz+h(z). \]</p>
+                <p>
+                  Derivando em relação a \(z\): \(f_z=x+y+h'(z)=x+y\), donde
+                  \(h'(z)=0\), isto é, \(h\) é constante. Tomando a constante
+                  igual a zero,
+                </p>
+                <p>\[ f(x,y,z)=xy+xz+yz. \]</p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c)</strong>
+            Integrais no circuito fechado.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Para \(\mathbf F_1\): como o campo é conservativo com
+                  potencial \(f\), o Teorema Fundamental para integrais de linha
+                  dá
+                </p>
+                <p>
+                  \[ \oint_C\mathbf F_1\cdot d\mathbf
+                  r=f(\text{fim})-f(\text{ini})=0, \]
+                </p>
+                <p>
+                  pois o ponto inicial e o final coincidem. Diretamente: sobre
+                  \(C\), \(f(\cos t,\sin t,0)=\cos t\sin t\), função periódica,
+                  e a integral de sua derivada em um período é nula.
+                </p>
+                <p>
+                  Para \(\mathbf F_2\): com \(\mathbf r'(t)=(-\sin t,\;\cos
+                  t,\;0)\) e \(\mathbf F_2(\mathbf r(t))=(-\sin t,\;\cos
+                  t,\;0)\),
+                </p>
+                <p>
+                  \[ \mathbf F_2\cdot\mathbf r'=\sin^2t+\cos^2t=1, \qquad
+                  \oint_C\mathbf F_2\cdot d\mathbf r=\int_0^{2\pi}1\,dt=2\pi. \]
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="340"
+                    height="340"
+                    viewBox="0 0 340 340"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Circunferência unitária no plano xy percorrida no sentido anti-horário, com vetores do campo F2 tangentes à curva"
+                  >
+                    <title>Circuito unitário e o campo F₂ tangente</title>
+                    <defs>
+                      <marker
+                        id="seta-eixos-q4"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                      <marker
+                        id="seta-f2-q4"
+                        markerWidth="7"
+                        markerHeight="6"
+                        refX="6"
+                        refY="3"
+                        orient="auto"
+                        fill="#2563eb"
+                      >
+                        <polygon points="0 0, 7 3, 0 6"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="30"
+                      y1="170"
+                      x2="320"
+                      y2="170"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q4)"
+                    ></line>
+                    <line
+                      x1="170"
+                      y1="320"
+                      x2="170"
+                      y2="20"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#seta-eixos-q4)"
+                    ></line>
+                    <circle
+                      cx="170"
+                      cy="170"
+                      r="100"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="2"
+                    ></circle>
+                    <line
+                      x1="270"
+                      y1="170"
+                      x2="270"
+                      y2="142"
+                      stroke="#2563eb"
+                      stroke-width="1.8"
+                      marker-end="url(#seta-f2-q4)"
+                    ></line>
+                    <line
+                      x1="170"
+                      y1="70"
+                      x2="142"
+                      y2="70"
+                      stroke="#2563eb"
+                      stroke-width="1.8"
+                      marker-end="url(#seta-f2-q4)"
+                    ></line>
+                    <line
+                      x1="70"
+                      y1="170"
+                      x2="70"
+                      y2="198"
+                      stroke="#2563eb"
+                      stroke-width="1.8"
+                      marker-end="url(#seta-f2-q4)"
+                    ></line>
+                    <line
+                      x1="170"
+                      y1="270"
+                      x2="198"
+                      y2="270"
+                      stroke="#2563eb"
+                      stroke-width="1.8"
+                      marker-end="url(#seta-f2-q4)"
+                    ></line>
+                    <circle cx="270" cy="170" r="3.5" fill="#1f2937"></circle>
+                    <text
+                      x="326"
+                      y="176"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      x
+                    </text>
+                    <text
+                      x="164"
+                      y="14"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      y
+                    </text>
+                    <text
+                      x="158"
+                      y="184"
+                      text-anchor="end"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      O
+                    </text>
+                    <text
+                      x="248"
+                      y="90"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      C
+                    </text>
+                    <text
+                      x="280"
+                      y="188"
+                      font-family="Times New Roman, serif"
+                      font-size="12.5"
+                      fill="#6b7280"
+                    >
+                      (1, 0)
+                    </text>
+                    <text
+                      x="170"
+                      y="332"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      fill="#2563eb"
+                    >
+                      F₂ = (−y, x, 0) tangente a C
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Circuito unitário percorrido no sentido anti-horário: o
+                    campo F₂ é tangente à curva e a circulação vale 2π.
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d)</strong>
+            Interpretação em relação aos itens (a) e (b).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Para \(\mathbf F_1\), \(\oint_C\mathbf F_1\cdot d\mathbf
+                  r=0\). Isso é coerente com o item (a): o rotacional de
+                  \(\mathbf F_1\) é nulo, logo o campo é conservativo. É
+                  coerente também com o item (b): como \(\mathbf F_1=\nabla f\),
+                  a integral ao longo de um circuito fechado é nula, e a
+                  integral de linha depende apenas dos pontos inicial e final
+                  (independência de caminho).
+                </p>
+                <p>
+                  Para \(\mathbf F_2\), \(\oint_C\mathbf F_2\cdot d\mathbf
+                  r=2\pi\neq0\). Isso é coerente com o item (a): o rotacional
+                  \((0,0,2)\) não é nulo. Não havendo função potencial, a
+                  integral de linha depende do caminho, e o valor \(2\pi\) mede
+                  a circulação líquida do campo ao longo de \(C\).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

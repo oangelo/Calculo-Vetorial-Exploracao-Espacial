@@ -1,0 +1,38 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Missão <span class="censored">Apollo</span> - Operações Avançadas
+  </div>
+  <p>
+    No exercício anterior, você derivou uma composição tripla aplicando a Cadeia de fora para dentro. Mas o que acontece quando a variável aparece <strong>simultaneamente na base e no expoente</strong>, como em \(x^{\sin x}\)? Nenhuma das regras que conhecemos se aplica diretamente — precisamos de uma técnica que transforme o problema em algo familiar. Essa técnica é a <strong>diferenciação logarítmica</strong>.
+  </p>
+  <p>
+    Em certos modelos de decaimento radioativo e crescimento populacional, a variável aparece tanto na base quanto no expoente. Nenhuma regra padrão resolve isso diretamente — precisamos da <strong>diferenciação logarítmica</strong>.
+  </p>
+  <p>
+    Diferencie: \(w(x) = (x+2)^{\sin x}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Aplique \(\ln\) em ambos os lados: \(\ln w(x) = \sin x \cdot \ln(x+2)\). Explique por que isso transforma o problema em algo tratável.
+  </p>
+  <p>
+    <strong>(b)</strong> Derive implicitamente ambos os lados em relação a \(x\), usando a Regra do Produto no lado direito.
+  </p>
+  <p>
+    <strong>(c)</strong> Isole \(w'(x)\) e escreva a expressão final completa.
+  </p>
+  <!-- Série OMEGA: sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Tomando o logaritmo natural:</p>
+      <p>\[ \ln w(x) = \sin x \cdot \ln(x+2). \]</p>
+      <p>Isso transforma a potência variável em um <strong>produto</strong>, que sabemos derivar.</p>
+      <p><strong>(b)</strong> Derivando implicitamente (Regra do Produto no lado direito, Regra da Cadeia no esquerdo):</p>
+      <p>\[ \frac{w'(x)}{w(x)} = \cos x \cdot \ln(x+2) + \sin x \cdot \frac{1}{x+2}. \]</p>
+      <p><strong>(c)</strong> Isolando \(w'(x) = w(x) \cdot [\ldots]\):</p>
+      <p>\[ w'(x) = (x+2)^{\sin x}\left[\cos x \cdot \ln(x+2) + \frac{\sin x}{x+2}\right]. \]</p>
+      <p>Esta é a expressão final. Nota: para \(x = 0\), temos \(w(0) = 2^0 = 1\) e \(w'(0) = 1 \cdot [\cos 0 \cdot \ln 2 + 0] = \ln 2\).</p>
+    </div>
+  </details>
+</li>

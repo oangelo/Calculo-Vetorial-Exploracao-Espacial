@@ -1,0 +1,41 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DID-ALFA-2</div>
+  <div class="context">
+    ORIGEM: Apontamentos de Análise Estrutural [REGISTROS INTERNOS]
+  </div>
+  <p>
+    No exercício anterior, você construiu uma soma de Riemann cobrindo toda a
+    região retangular. Agora surge uma questão natural: e se parte do domínio
+    for apenas uma linha ou uma curva? Essas regiões "finais" contribuem para o
+    valor da soma? Compreender isso é o primeiro passo para saber quais
+    descontinuidades podemos ignorar ao integrar.
+  </p>
+  <p>
+    Sabe-se que linhas e curvas regulares no plano têm conteúdo nulo (medida de
+    área zero). Explique, no contexto de uma soma de Riemann bidimensional, por
+    que um conjunto formado apenas por linhas não afeta o valor da integral
+    dupla em uma região limitada.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pense em quantos sub-retângulos de uma partição fina
+      realmente intersectam uma linha. Mesmo que muitos a toquem, a contribuição
+      de cada um é \(\sup|f| \cdot \Delta A_i\), e \(\Delta A_i \to 0\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Em uma partição bidimensional, cada sub-região possui área finita (por
+        menor que seja). Uma linha isolada não "preenche" essas sub-regiões,
+        pois seu conteúdo (área) permanece zero, mesmo ao refinar a partição.
+      </p>
+      <p>
+        Portanto, conjuntos de medida zero não alteram o valor final das somas
+        de Riemann, preservando a mesma integral.
+      </p>
+    </div>
+  </details>
+</li>

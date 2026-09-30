@@ -1,0 +1,248 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h2>O Trabalho Depende do Caminho?</h2>
+      <p>
+        No capítulo 5 o trabalho de um campo ao longo de uma curva era sempre
+        calculado por parametrização: cada trajeto, uma integral nova. Mas a
+        pergunta que abre este capítulo é outra: e se, para certos campos, o
+        percurso fosse irrelevante — e só os extremos importassem?
+      </p>
+      <p>
+        A resposta depende de uma propriedade do próprio campo, não da curva.
+        Para reconhecê-la, precisamos olhar para o campo de uma forma nova:
+        não como uma coleção de vetores soltos, mas como algo que pode
+        "nascer" de uma única função.
+      </p>
+      <p class="history-insert">
+        O herói na Lua. O software que salvou a missão: escrito por uma
+        mulher. Os cálculos: verificados por uma mulher negra. Nenhum dos dois
+        nomes estava na transmissão.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>O Campo Que Vem de Uma Função</h3>
+      <p>
+        Um campo conservativo é um campo vetorial que "vem de" uma função:
+        em vez de vetores arbitrários em cada ponto, existe uma função
+        \(f(x,y)\) cujas derivadas parciais produzem exatamente aqueles
+        vetores. O campo é o gradiente de \(f\).
+      </p>
+      <p>
+        Analogia: a gravidade e um mapa de altitude. O mapa guarda uma única
+        informação por ponto — a altitude. O desnível entre dois pontos não
+        depende do trajeto que se escolhe entre eles: a diferença de altitude
+        é a mesma por qualquer caminho. Campo conservativo é isso: existe um
+        "mapa de altitude" escondido por trás dos vetores.
+      </p>
+      <p>
+        O trabalho ao longo de qualquer curva entre dois pontos seria então
+        apenas a diferença de "altitude" entre os extremos — se o campo for
+        conservativo.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>Definição — Campo Conservativo</h3>
+      <div class="formula-spotlight">
+        <p>\[ \vec{F} \text{ é conservativo } \iff \exists f : \vec{F} = \nabla f \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <p>
+          Para \(\vec{F} = (M, N)\) em duas dimensões, ser \(\vec{F} = \nabla f\)
+          significa que
+          \[ M = \frac{\partial f}{\partial x} \quad \text{e} \quad N = \frac{\partial f}{\partial y} \]
+        </p>
+        <p>
+          <strong>Termos:</strong> \(f\) é a função potencial do campo — o
+          "mapa de altitude" escondido.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(f\) de classe C¹; o gradiente de \(f\)
+          reproduz \(\vec{F}\) em todo o domínio.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>A Forma Diferencial M dx + N dy</h3>
+      <p>
+        Existe uma segunda grafia para a integral de linha — e ela revela a
+        estrutura do integrando. Escrever \(\vec{F} \cdot d\vec{r}\) é o mesmo
+        que somar \(M\,dx + N\,dy\): aqui \(dx\) e \(dy\) não são símbolos
+        soltos, mas as variações da posição ao longo da curva.
+      </p>
+      <div class="math-section">
+        <p>
+          \[ \int_C \vec{F} \cdot d\vec{r} = \int_C M\,dx + N\,dy \]
+        </p>
+        <p>
+          A expressão \(\omega = M\,dx + N\,dy\) é a <strong>forma
+          diferencial</strong> associada ao campo. Quando o campo é
+          conservativo, \(\omega = df\), a diferencial da função potencial.
+        </p>
+      </div>
+      <p>
+        A notação não é acadêmica: foi na termodinâmica — nos estudos de calor
+        e trabalho — que essa escrita revelou sua força, distinguindo
+        grandezas que dependem do processo das que dependem só dos extremos.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>A Condição de Exatidão</h3>
+      <p>
+        Se \(\omega = M\,dx + N\,dy\) for a diferencial de uma função — isto
+        é, se for exata —, as componentes carregam uma assinatura algébrica:
+        as derivadas mistas de \(f\) coincidem, e essa coincidência recai
+        sobre \(M\) e \(N\).
+      </p>
+      <div class="formula-spotlight">
+        <p>\[ \omega = M\,dx + N\,dy \text{ exata } \Rightarrow \frac{\partial M}{\partial y} = \frac{\partial N}{\partial x} \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Termos:</strong> a igualdade das derivadas mistas é o
+          teorema de Schwarz — para funções C², a ordem das derivadas não
+          altera o resultado.
+        </p>
+        <p>
+          <strong>Equivalência vetorial:</strong> para \(\vec{F} = (M, N, 0)\),
+          a condição acima é o mesmo que \((\nabla \times \vec{F})_z = 0\): o
+          rotacional tem componente \(z\) nula.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>Quatro Olhares para o Mesmo Campo</h3>
+      <p>Em domínio adequado, as quatro afirmações dizem a mesma coisa:</p>
+      <div class="triple-panel">
+        <div>
+          <p><strong>(i) Gradiente</strong></p>
+          <p>\(\vec{F} = \nabla f\) — existe função potencial.</p>
+        </div>
+        <div>
+          <p><strong>(ii) Caminho</strong></p>
+          <p>A integral de linha independe do caminho.</p>
+        </div>
+        <div>
+          <p><strong>(iii) Forma</strong></p>
+          <p>\(\omega = M\,dx + N\,dy\) é exata.</p>
+        </div>
+        <div>
+          <p><strong>(iv) Rotacional</strong></p>
+          <p>\(\nabla \times \vec{F} = \vec{0}\).</p>
+        </div>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Aviso:</strong> a equivalência entre (i)–(iv) supõe um
+          domínio sem "furos". Onde houver furos, a cadeia se rompe — essa
+          sutileza topológica é o tópico 06; por ora, domínios simples.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Reconhecimento por Inspeção</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="problem-section">
+            <p>
+              Verifique, por inspeção, quais das formas abaixo são exatas:
+            </p>
+            <p>
+              \[ \omega_1 = 2x\,dx + 2y\,dy \quad \text{e} \quad \omega_2 = -y\,dx + x\,dy \]
+            </p>
+            <p>
+              Para cada uma, decida se existe \(f\) com \(\omega = df\) e, se
+              existir, encontre-a.
+            </p>
+          </div>
+          <div class="compact-solution">
+            <p>
+              <strong>Estratégia:</strong> leia \(M\) e \(N\) de cada forma e
+              compare as derivadas parciais cruzadas \(\partial M/\partial y\)
+              e \(\partial N/\partial x\). Quando a igualdade valer, procure
+              \(f\) por antiderivação direta de cada componente.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O Apollo Guidance Computer — o computador que levou a nave à Lua —
+            tinha cerca de 76 kilobytes de memória. Menos do que uma única
+            foto tirada por um celular de hoje.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · DEFINIÇÃO E FORMA DIFERENCIAL EXATA</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Tradução, Teste e Cálculo</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere o campo \(\vec{F} = (3x^2 + y,\, x - 2y)\).
+          </p>
+          <p>
+            (a) Escreva a forma diferencial \(\omega\) associada.
+          </p>
+          <p>
+            (b) Aplique o teste de exatidão: compare \(\partial M/\partial y\)
+            com \(\partial N/\partial x\).
+          </p>
+          <p>
+            (c) Encontre \(f\) com \(\vec{F} = \nabla f\).
+          </p>
+          <p>
+            (d) Use \(f\) para calcular \(\int_C \vec{F} \cdot d\vec{r}\)
+            sobre \(\vec{r}(t) = (t, t)\), \(t \in [0, 1]\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Quem pisaria primeiro na Lua não foi decidido pela física, e sim
+            pelo protocolo: o comandante vai primeiro. Aldrin pediu para ser o
+            primeiro; ouviu não. O rosto do espetáculo já estava escolhido.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+</section>

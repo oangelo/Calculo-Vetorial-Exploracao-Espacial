@@ -1,0 +1,559 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h2>Stokes no Plano</h2>
+      <p>
+        A circulação total é a soma das rotações locais. Por quê? As seções
+        anteriores provaram a identidade de Green: a integral de linha na
+        fronteira iguala a integral dupla do rotacional no interior.
+        Reescrevê-la com a notação de rotacional não acrescenta matemática nova
+        — apenas dá nome ao integrando e revela o que ele sempre significou.
+      </p>
+      <p>
+        Nas seções 02 e 03, o lado direito aparecia como \(\frac{\partial
+        Q}{\partial x}-\frac{\partial P}{\partial y}\). Esse é exatamente o
+        rotacional escalar \(\operatorname{rot}\vec F\) estudado no capítulo 1.
+        Reescrever a identidade com ele conecta três capítulos: o giro local
+        (Cap 1), os campos conservativos (Cap 6) e o Teorema de Green (Cap 7).
+      </p>
+      <p class="history-insert">
+        A cada ano o programa custava o mesmo e era visto por menos gente.
+        Continuar era mais barato, politicamente, do que admitir a derrota.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Rotacional como Densidade de Circulação</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Cada ponto gira</strong></p>
+          <p>
+            O rotacional escalar \(\operatorname{rot}\vec F\) mede a rotação
+            local do campo: um pequeno cata-vento colocado em \((x,y)\) giraria
+            com velocidade proporcional a esse número. Ponto a ponto, o interior
+            da região pode girar mais depressa ou mais devagar, num sentido ou
+            no outro.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>A borda acumula esse giro</strong></p>
+          <p>
+            Percorrer a fronteira soma o que o campo empurra ao longo do
+            caminho. Stokes no plano diz que esse saldo é o acúmulo de todas as
+            rotações locais. Se os giros apontam para o mesmo lado, a circulação
+            cresce; se se opõem, se cancelam.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Formalização — a Mesma Identidade, Nova Notação</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \oint_{\partial R}\vec F\cdot d\vec
+          r=\iint_R(\operatorname{rot}\vec F)\,dA,\qquad \operatorname{rot}\vec
+          F=\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y} \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(R\) é a região, com fronteira \(\partial R\)
+          orientada no sentido anti-horário; \(\vec F=(P,Q)\) é o campo, de
+          classe \(C^1\) em uma vizinhança de \(R\). A circulação \(\oint\vec
+          F\cdot d\vec r\) é a integral de linha da forma \(P\,dx+Q\,dy\).
+        </p>
+        <p>
+          <strong>Validade:</strong> é a mesma identidade de Green, apenas
+          reescrita. Vale para retângulos (seção 02) e para regiões com
+          fronteira \(C^1\), simples ou obtidas por decomposição (seção 03),
+          respeitada a orientação.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Interpretação — Sentido do Giro e Rotacional Nulo</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>O sentido do giro</strong></p>
+          <p>
+            O sinal do rotacional dá o sentido da rotação local. Onde
+            \(\operatorname{rot}\vec F>0\), o campo gira no sentido
+            anti-horário; onde \(\operatorname{rot}\vec F<0\), no sentido
+            horário. Regiões de sinais opostos contribuem para a circulação com
+            sinais opostos.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>Rotacional nulo</strong></p>
+          <p>
+            Se \(\operatorname{rot}\vec F\equiv0\) em toda a região, o
+            integrando se anula e a circulação é zero em qualquer laço fechado.
+            É o critério dos campos conservativos do capítulo 6: independência
+            de caminho e \(\oint\vec F\cdot d\vec r=0\). A recíproca vale nas
+            regiões estudadas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Rotacional Que Varia</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(0,x^2)\) sobre o retângulo
+            \(R=[0,1]\times[0,1]\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial R}\vec F\cdot d\vec r\) por
+            Stokes no plano.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O computador que levou humanos à Lua devia parte de sua lógica a
+            Alan Turing. Em 1952, o "mundo livre" o condenou por
+            homossexualidade e o submeteu à castração química; ele morreu em
+            1954. O Estado que caçava comunistas destruiu o homem que
+            fundamentara suas máquinas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Circulação na Elipse</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(-y,x)\) sobre a elipse \(E=\{x^2/4+y^2\le
+            1\}\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial E}\vec F\cdot d\vec r\) por
+            Stokes no plano, sem parametrizar a elipse.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Depois da Soyuz 11, a nave foi redesenhada: os trajes pressurizados
+            tornaram-se obrigatórios e a tripulação caiu de três para dois. A
+            correção veio depois — como sempre.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · STOKES NO PLANO</div>
+    <div class="slide-body">
+      <h3>Exploração — Rotação Local, Circulação Acumulada</h3>
+      <p>
+        A partícula percorre a fronteira no sentido anti-horário e o valor
+        acumulado de \(\vec F\cdot d\vec r\) é a circulação. Alterne os campos:
+        o primeiro tem rotacional variável, com giros de sinais opostos que se
+        cancelam; o segundo gira no mesmo sentido em toda parte. A soma das
+        rotações internas reaparece na borda.
+      </p>
+      <div class="canvas-overlay">
+        <canvas
+          id="canvasRotacional"
+          class="visualization-canvas"
+          width="700"
+          height="400"
+        ></canvas>
+        <div class="math-section">
+          <p>
+            \[ \oint_{\partial R}\vec F\cdot d\vec
+            r=\iint_R(\operatorname{rot}\vec F)\,dA \]
+          </p>
+        </div>
+      </div>
+      <div class="controls-container">
+        <button id="btnRotacionalModo" class="control-button">
+          Trocar: F = (-y, x) · rot = 2
+        </button>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasRotacional');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var lastTs = 0;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+
+    var btn = document.getElementById('btnRotacionalModo');
+    var mode = 1;
+
+    var X0 = -2,
+      X1 = 2,
+      Y0 = -1.5,
+      Y1 = 1.5;
+    var S = 75;
+    var CX = W / 2;
+    var CY = H / 2;
+
+    var t = 0;
+    var loopVal = 0;
+    var lastLoop = 0;
+    var speed = 0.32;
+
+    function toPx(mx, my) {
+      return { x: CX + mx * S, y: CY - my * S };
+    }
+
+    function field(mx, my) {
+      if (mode === 1) return { fx: 0, fy: mx * mx };
+      return { fx: -my, fy: mx };
+    }
+
+    function curlAt(mx) {
+      if (mode === 1) return 2 * mx;
+      return 2;
+    }
+
+    function curlColor(c) {
+      if (c > 0.001) return POS;
+      if (c < -0.001) return ACC;
+      return UNI;
+    }
+
+    function perim(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1) return { x: X0 + u * (X1 - X0), y: Y0 };
+      if (u < 2) return { x: X1, y: Y0 + (u - 1) * (Y1 - Y0) };
+      if (u < 3) return { x: X1 - (u - 2) * (X1 - X0), y: Y1 };
+      return { x: X0, y: Y1 - (u - 3) * (Y1 - Y0) };
+    }
+
+    function perimTan(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1) return { x: 1, y: 0 };
+      if (u < 2) return { x: 0, y: 1 };
+      if (u < 3) return { x: -1, y: 0 };
+      return { x: 0, y: -1 };
+    }
+
+    function edgeLen(tt) {
+      var u = ((tt % 4) + 4) % 4;
+      if (u < 1 || u >= 3) return X1 - X0;
+      return Y1 - Y0;
+    }
+
+    function integrate(a, b) {
+      var steps = 90;
+      var sum = 0;
+      var i;
+      for (i = 0; i < steps; i++) {
+        var t1 = a + ((b - a) * i) / steps;
+        var t2 = a + ((b - a) * (i + 1)) / steps;
+        var tm = (t1 + t2) / 2;
+        var p = perim(tm);
+        var f = field(p.x, p.y);
+        var tan = perimTan(tm);
+        var ds = edgeLen(tm) * (t2 - t1);
+        sum += (f.fx * tan.x + f.fy * tan.y) * ds;
+      }
+      return sum;
+    }
+
+    function step(dt) {
+      var prev = t;
+      t += speed * dt;
+      if (t >= 4) {
+        var extra = t - 4;
+        loopVal += integrate(prev, 4);
+        lastLoop = loopVal;
+        loopVal = integrate(0, extra);
+        t = extra;
+      } else {
+        loopVal += integrate(prev, t);
+      }
+    }
+
+    function arrow(p0, vx, vy, color, lw) {
+      var p = toPx(p0.mx, p0.my);
+      var tip = toPx(p0.mx + vx, p0.my + vy);
+      var dx = tip.x - p.x;
+      var dy = tip.y - p.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 2) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(8, len * 0.38);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(tip.x, tip.y);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(tip.x, tip.y);
+      ctx.lineTo(
+        tip.x - ux * hs - uy * hs * 0.5,
+        tip.y - uy * hs + ux * hs * 0.5
+      );
+      ctx.lineTo(
+        tip.x - ux * hs + uy * hs * 0.5,
+        tip.y - uy * hs - ux * hs * 0.5
+      );
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawRegion() {
+      var p0 = toPx(X0, Y1);
+      var p1 = toPx(X1, Y0);
+      if (mode === 1) {
+        var mid = toPx(0, Y0);
+        ctx.fillStyle = 'rgba(229, 57, 53, 0.08)';
+        ctx.fillRect(p0.x, p0.y, mid.x - p0.x, p1.y - p0.y);
+        ctx.fillStyle = 'rgba(30, 136, 229, 0.08)';
+        ctx.fillRect(mid.x, p0.y, p1.x - mid.x, p1.y - p0.y);
+      } else {
+        ctx.fillStyle = 'rgba(30, 136, 229, 0.08)';
+        ctx.fillRect(p0.x, p0.y, p1.x - p0.x, p1.y - p0.y);
+      }
+    }
+
+    function drawField() {
+      var NX = 13,
+        NY = 9;
+      var i, j;
+      for (i = 0; i < NX; i++) {
+        for (j = 0; j < NY; j++) {
+          var mx = X0 + ((X1 - X0) * i) / (NX - 1);
+          var my = Y0 + ((Y1 - Y0) * j) / (NY - 1);
+          var f = field(mx, my);
+          var n = Math.sqrt(f.fx * f.fx + f.fy * f.fy) || 1;
+          var L = Math.max(0.12, Math.min(0.3, 0.12 * n));
+          arrow(
+            { mx: mx, my: my },
+            (L * f.fx) / n,
+            (L * f.fy) / n,
+            curlColor(curlAt(mx)),
+            1.1
+          );
+        }
+      }
+    }
+
+    function drawPaddles() {
+      var xs = [-1.5, 0, 1.5];
+      var k;
+      for (k = 0; k < xs.length; k++) {
+        var c = curlAt(xs[k]);
+        var p = toPx(xs[k], 0);
+        var col = curlColor(c);
+        ctx.strokeStyle = col;
+        ctx.lineWidth = 1.4;
+        ctx.globalAlpha = 0.85;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 11, 0, 2 * Math.PI);
+        ctx.stroke();
+        var ang = c * t * 0.45;
+        var ex = p.x + 11 * Math.cos(ang);
+        var ey = p.y + 11 * Math.sin(ang);
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(ex, ey);
+        ctx.stroke();
+        ctx.fillStyle = col;
+        ctx.beginPath();
+        ctx.arc(ex, ey, 2.6, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    function drawBoundary() {
+      var corners = [
+        { mx: X0, my: Y0 },
+        { mx: X1, my: Y0 },
+        { mx: X1, my: Y1 },
+        { mx: X0, my: Y1 },
+      ];
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      var i;
+      for (i = 0; i < 4; i++) {
+        var p = toPx(corners[i].mx, corners[i].my);
+        if (i === 0) ctx.moveTo(p.x, p.y);
+        else ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.stroke();
+      var k;
+      for (k = 0; k < 8; k++) {
+        var tm = k * 0.5;
+        var p2 = perim(tm);
+        var tan = perimTan(tm);
+        arrow({ mx: p2.x, my: p2.y }, 0.22 * tan.x, 0.22 * tan.y, VEL, 1.6);
+      }
+    }
+
+    function drawParticle() {
+      var p = perim(t);
+      var pp = toPx(p.x, p.y);
+      ctx.fillStyle = ACC;
+      ctx.beginPath();
+      ctx.arc(pp.x, pp.y, 6, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.strokeStyle = FOR;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    function readout() {
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      var label =
+        mode === 1
+          ? 'MODO 1 · F = (0, x²) · rot = 2x'
+          : 'MODO 2 · F = (-y, x) · rot = 2';
+      ctx.fillText(label + '   ∮ F·dr ≈ ' + lastLoop.toFixed(1), W / 2, 20);
+      ctx.textAlign = 'left';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      drawRegion();
+      drawBoundary();
+      drawField();
+      drawPaddles();
+      drawParticle();
+      readout();
+    }
+
+    function loop(ts) {
+      var dt = ts ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+      step(dt);
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        lastTs = 0;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    function reset() {
+      t = 0;
+      loopVal = 0;
+      lastLoop = 0;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 1 ? 2 : 1;
+        reset();
+        btn.textContent =
+          mode === 1
+            ? 'Trocar: F = (-y, x) · rot = 2'
+            : 'Trocar: F = (0, x²) · rot = 2x';
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizRotacional = { init: init, cleanup: cleanup };
+  })();
+</script>

@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Laboratório <span class="censored">PHI-7</span> - Dossiê Interno
+  </div>
+  <p>
+    Até agora, todas as densidades eram funções polinomiais ou exponenciais.
+    Este exercício introduz uma densidade trigonométrica — \(\sin(xy)\) — que
+    não permite simplificações por simetria e exige atenção especial no ponto
+    \(x = 0\). É um teste final: o aluno deve combinar todas as técnicas
+    anteriores (limites de integração, substituição, avaliação de limites) sem
+    dicas.
+  </p>
+  <p>
+    Região \(D\) sob a parábola \(y = 4 - x^2\) (com \(y \ge 0\)), no intervalo
+    \(-2 \le x \le 2\). Densidade \(\rho(x,y) = 1 + \sin(xy)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Separe a integral de massa em duas: a parte constante e
+    a parte com \(\sin(xy)\).
+  </p>
+  <p>
+    <strong>(b)</strong> A primeira integral é direta. Para a segunda, use a
+    substituição \(u = xy\) e avalie o limite quando \(x \to 0\).
+  </p>
+  <p><strong>(c)</strong> Determine a massa total.</p>
+  <!-- OMEGA sem dica -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A região vai de \(x=-2\) até \(x=2\), com \(y\) variando de 0 até \(4 -
+        x^2\).
+      </p>
+      <p>
+        \[ m = \int_{-2}^{2}\int_{0}^{4 - x^2} \left(1 + \sin(xy)\right) dy\,
+        dx. \]
+      </p>
+      <p>
+        PARTE CONSTANTE: \(\int_{-2}^{2}(4 - x^2)\,dx = \left[4x -
+        \frac{x^3}{3}\right]_{-2}^{2} = \frac{32}{3}\).
+      </p>
+      <p>
+        O termo \(\int_{0}^{4-x^2} \sin(xy)\,dy\) pode ser tratado via
+        substituição \(u = xy\). Para \(x \ne 0\): \[
+        \int_{0}^{4-x^2}\sin(xy)\,dy = \frac{1 - \cos(x(4-x^2))}{x} = \frac{1 -
+        \cos(4x - x^3)}{x}. \] Quando \(x \to 0\), o limite é \(4 - x^2 \to 4\),
+        e \(\frac{1 - \cos(4x - x^3)}{x} \to 0\). Portanto, a contribuição de
+        \(\sin(xy)\) em \(x = 0\) é nula.
+      </p>
+      <p>
+        CONCLUSÃO: A massa total combina a contribuição constante
+        \(\frac{32}{3}\) com a integral de \(\frac{1 - \cos(4x - x^3)}{x}\) de
+        \(-2\) a \(2\). Por simetria (a função é par em \(x\)), basta calcular
+        de 0 a 2 e dobrar.
+      </p>
+    </div>
+  </details>
+</li>

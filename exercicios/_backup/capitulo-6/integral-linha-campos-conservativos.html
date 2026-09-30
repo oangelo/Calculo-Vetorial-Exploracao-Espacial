@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- CABEÇALHO HISTÓRICO -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">23</span> DE AGOSTO DE
+          <span class="censored">1965</span><br />
+          LOCALIZAÇÃO: <span class="censored">COMPLEXO GEMINI [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">VECTOR-Σ</span><br /><br />
+          Em resposta aos êxitos soviéticos recentes no
+          <span class="censored">Programa Voskhod</span>, nosso corpo de
+          analistas desenvolveu procedimentos avançados para otimizar o
+          <span class="censored">cálculo de consumo energético</span> durante
+          manobras orbitais. Os problemas a seguir foram compilados a partir das
+          anotações sigilosas do Dr. <span class="censored">█████████</span>,
+          especialista em dinâmica orbital da missão
+          <span class="censored">GEMINI VII</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações matemáticas críticas à segurança da
+          nação. Divulgação não autorizada resultará em
+          <span class="censored">sanções imediatas</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: GC-<span class="censored">845</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO TEÓRICA -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: Integrais de Linha em Campos Conservativos
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ \int_{C} \vec{F} \cdot d\vec{r} = \phi\big(\vec{r}(b)\big) -
+          \phi\big(\vec{r}(a)\big) \]
+        </p>
+        <p>
+          Se um campo vetorial \(\vec{F}\) é <em>conservativo</em>, existe uma
+          função escalar \(\phi\) tal que \(\vec{F} = \nabla \phi\). Nessa
+          situação, a integral de linha depende apenas dos pontos inicial e
+          final, tornando‑se <strong>independente do caminho</strong>.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Em trajetórias orbitais, calcular o trabalho realizado por sistemas de
+        propulsão é essencial. Quando as forças atuantes podem ser modeladas por
+        campos conservativos (por exemplo,
+        <span class="censored">gravidade</span>), o consumo de combustível pode
+        ser estimado rapidamente a partir das diferenças de potencial, sem
+        necessidade de integrar ao longo de cada segmento da órbita.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante a missão
+        <span class="censored">Gemini VI‑A</span>, a equipe de solo aplicou este
+        princípio para calcular, em tempo recorde, o impulso necessário para a
+        primeira <em>rendez‑vous</em> orbital
+        <span class="censored">NATO‑CLASSIFIED</span>.
+      </div>
+
+      <!-- LISTA DE EXERCÍCIOS -->
+      <main>
+        <ol class="exercise-list">
+          <!-- ALFA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Simulação de Órbita Baixa – Laboratório Gemini
+              [02/MAI/1965]
+            </div>
+            <p>
+              Considere o campo \(\vec{F}(x,y) = \begin{pmatrix}2x \\
+              2y\end{pmatrix}\). Calcule \[ \int_{C} \vec{F} \cdot d\vec{r} \]
+              onde \(C\) é o segmento de reta que une \((1,0)\) a \((0,1)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar a integral a uma função
+                potencial simples.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec{F} = \nabla (x^{2}+y^{2})\Rightarrow \phi=x^{2}+y^{2}.\)
+                Assim, o valor é \(\phi(0,1)-\phi(1,0)=1-1=0.\)
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Análise de Manobra de Inclinação – Gemini V [16/JUN/1965]
+            </div>
+            <p>
+              Seja \(\vec{F}(x,y)=\begin{pmatrix}y \\ x\end{pmatrix}\).
+              Verifique se \(\vec{F}\) é conservativo e, em caso afirmativo,
+              calcule a integral ao longo do quarto de circunferência de raio 1
+              entre os mesmos pontos do exercício anterior.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique \(\partial F_1/\partial y = \partial
+                F_2/\partial x\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                Como \(\partial F_1/\partial y = 1 = \partial F_2/\partial x\),
+                o campo é conservativo. Uma função potencial é \(\phi(x,y)=xy\).
+                Logo, \(\phi(0,1)-\phi(1,0)=0-0=0\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Treinamento de Telemetria – Centro de Houston
+              [22/JUL/1965]
+            </div>
+            <p>
+              O potencial escalar \(\phi(x,y)=xy\) gera um campo
+              \(\vec{F}=\nabla\phi\). Compute \(\int_C \vec{F}\cdot d\vec{r}\)
+              de \((0,0)\) a \((2,3)\) por qualquer caminho.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A independência do caminho elimina a necessidade
+                de parametrizar.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                \(\phi(2,3)=6\) e \(\phi(0,0)=0\). Portanto a integral vale 6.
+              </div>
+            </details>
+          </li>
+
+          <!-- BETA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Relatório de Atracação Orbital – Gemini VIII [10/AGO/1965]
+            </div>
+            <p>
+              Considere \(\vec{F}(x,y,z)=\begin{pmatrix}e^{x}\cos y \\
+              -e^{x}\sin y \\ 0\end{pmatrix}\). Demonstre que \(\vec{F}\) é
+              conservativo e determine \[\int_C \vec{F}\cdot d\vec{r}\] do ponto
+              \((0,0,0)\) até \((\ln 2,\frac{\pi}{2},0)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe a estrutura de derivadas parciais
+                exponenciais.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                Um potencial é \(\phi(x,y,z)=e^{x}\cos y\). Logo
+                \(\phi(b)-\phi(a)= e^{\ln 2}\cos(\pi/2)-1\cdot 1=0-1=-1\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Computação de Energia – Simulador AGC [14/AGO/1965]
+            </div>
+            <p>
+              Para \(\vec{F}(x,y)=\begin{pmatrix}y^{3}+2x \\
+              3xy^{2}+4y\end{pmatrix}\), encontre uma função potencial e calcule
+              o trabalho para ir de \((1,1)\) a \((2,0)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Integre componente a componente e ajuste a
+                constante.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                \(\phi(x,y)=xy^{3}+2x^{2}+4y\). Assim o trabalho é
+                \(\phi(2,0)-\phi(1,1)=0+8+0 - (1+2+4)=8-7=1\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Diagnóstico de Propulsores – Cápsula Gemini [18/AGO/1965]
+            </div>
+            <p>
+              Mostre que para \(\vec{F}=\nabla(x^{2}y)\) qualquer integral de
+              linha sobre um caminho fechado simples no plano é nula.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedade de independência do caminho em
+                campos conservativos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                Sendo conservativo, escolha qualquer ponto inicial = final, logo
+                \(\phi(P)-\phi(P)=0\).
+              </div>
+            </details>
+          </li>
+
+          <!-- GAMMA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Estudo de Rendez‑vous Lunar – Projeto Apollo [03/SET/1965]
+            </div>
+            <p>
+              O campo gravitacional simplificado é dado por
+              \(\vec{F}(\vec{r})=-k\dfrac{\vec{r}}{|\vec{r}|^{3}}\). Calcule o
+              trabalho necessário para deslocar uma nave do raio orbital \(r=a\)
+              para \(r=b>a\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A força é gradiente de \(-k/|\vec{r}|\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                \(\phi=-k/|\vec{r}|\). Logo \(W=\phi(b)-\phi(a) =
+                -\dfrac{k}{b}+\dfrac{k}{a}\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Computador de Bordo – Apollo Guidance [07/SET/1965]
+            </div>
+            <p>
+              Para \(\vec{F}(x,y,z)=\begin{pmatrix}2xy \\ x^{2}+2z \\
+              y^{2}\end{pmatrix}\), determine se o campo é conservativo. Caso
+              positivo, ache um potencial e calcule o trabalho de \((1,0,0)\)
+              até \((1,1,1)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique as três igualdades de cruzamento das
+                derivadas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                Campo conservativo. \(\phi=x^{2}y+yz^{2}+y^{2}z/2\). Logo
+                \(\phi(1,1,1)-\phi(1,0,0)=1+1+0 - 0 = 2\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Operação de Correção de Órbita – Apollo IX [11/SET/1965]
+            </div>
+            <p>
+              Demonstre que a integral de linha de qualquer campo conservativo
+              ao longo de caminhos homotópicos com mesmos extremos é idêntica.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Desenvolva a prova usando o potencial escalar.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                Se \(\vec{F}=\nabla\phi\), então \(\int_{C}\vec{F}\cdot
+                d\vec{r}=\phi(B)-\phi(A)\), independendo do caminho. Caminhos
+                homotópicos têm mesmos extremos, logo integral coincide.
+              </div>
+            </details>
+          </li>
+
+          <!-- OMEGA SERIES -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Ómega – Estabilidade Orbital [CONFIDENCIAL –
+              15/SET/1965]
+            </div>
+            <p>
+              O campo \(\vec{F}(x,y)=\begin{pmatrix}2x+a y \\ 2y-a
+              x\end{pmatrix}\) depende de uma constante \(a\). Determine \(a\)
+              de forma que o campo seja conservativo e calcule a integral de
+              \((0,0)\) a \((1,1)\).
+            </p>
+            <!-- Sem dicas para OMEGA series -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                Para conservativo: \(\partial F_1/\partial y = a = \partial
+                F_2/\partial x = -a\) \(\Rightarrow a=0\). Então
+                \(\vec{F}=\nabla(x^{2}+y^{2})\) e \(W=1^{2}+1^{2}-0=2\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Teste de Propulsores – Plataforma Saturn IB [17/SET/1965]
+            </div>
+            <p>
+              Verifique que \(\vec{F}(x,y,z)=\begin{pmatrix}yz \\ xz \\
+              xy\end{pmatrix}\) é conservativo em \(\mathbb{R}^{3}\) e calcule o
+              trabalho ao longo de qualquer curva que una \((1,1,1)\) a
+              \((2,2,2)\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                Potencial \(\phi=xyz\). Então
+                \(W=\phi(2,2,2)-\phi(1,1,1)=8-1=7\).
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Simulação de Inserção Lunar – Projeto
+              <span class="censored">████</span> [20/SET/1965]
+            </div>
+            <p>
+              Uma nave desloca‑se num potencial
+              \(\phi(x,y,z)=k(x^{2}+y^{2}+z^{2})\). Determine o trabalho
+              realizado pelo campo ao mover‑se de \((0,0,0)\) para \((R,0,0)\),
+              discutindo a dependência de \(k\) e \(R\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                \(\vec{F}=\nabla\phi=2k\begin{pmatrix}x \\ y \\
+                z\end{pmatrix}\). Trabalho:
+                \(W=\phi(R,0,0)-\phi(0,0,0)=kR^{2}-0=kR^{2}\).
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO GC‑<span
+          class="censored"
+          >845</span
+        >-D
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

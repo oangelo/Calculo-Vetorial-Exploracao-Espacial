@@ -1,0 +1,76 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Análise de Tanque Esférico - Programa Gemini [Agosto 1965]
+  </div>
+  <p>
+    No exercício anterior, o bloco retangular permitia intuição geométrica
+    direta. Agora vamos analisar um tanque esférico de combustível do Gemini — a
+    simetria é ainda mais forte, mas o cálculo requer coordenadas esféricas. O
+    tanque ocupa a região esférica \(\{(x,y,z) : x^2 + y^2 + z^2 \le 9\}\) (raio
+    3) com densidade constante \(\rho = 2 \, \text{kg/m}^3\).
+  </p>
+  <p>
+    <strong>(a)</strong> Argumente por que, antes de qualquer cálculo, você pode
+    afirmar que o centro de massa está na origem.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral da massa em coordenadas esféricas,
+    incluindo o Jacobiano \(r^2 \sin\phi\), e calcule \(M\).
+  </p>
+  <p>
+    <strong>(c)</strong> Confirme que as integrais para \(x_C\), \(y_C\) e
+    \(z_C\) dão zero, verificando sua previsão do item (a).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em coordenadas esféricas \((r, \theta, \phi)\), o
+      Jacobiano é \(r^2 \sin\phi\). Para a componente \(z_C\), substitua \(z =
+      r\cos\phi\) e observe que \(\int_0^\pi \cos\phi \sin\phi\,d\phi = 0\).
+      Argumentos análogos valem para \(x_C\) e \(y_C\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a) Argumento de simetria:</strong> A esfera é simétrica em
+        relação a todos os planos coordenados (\(xy\), \(xz\), \(yz\)). Com
+        densidade constante, não há direção privilegiada — o centro de massa
+        coincide com o centro da esfera, que é a origem.
+      </p>
+      <p><strong>(b) Massa em coordenadas esféricas:</strong></p>
+      <p>
+        \[ M = \iiint_V \rho\,dV = 2 \int_0^3 \int_0^\pi \int_0^{2\pi} r^2
+        \sin\phi\,d\theta\,d\phi\,dr. \]
+      </p>
+      <p>
+        Integral em \(\theta\): \(2\pi\). Integral em \(\phi\): \(\int_0^\pi
+        \sin\phi\,d\phi = 2\). Integral em \(r\): \(\int_0^3 r^2\,dr = 9\).
+      </p>
+      <p>\[ M = 2 \cdot 2\pi \cdot 2 \cdot 9 = 72\pi \text{ kg}. \]</p>
+      <p><strong>(c) Verificação das coordenadas:</strong></p>
+      <p>
+        Para \(z_C\): \(\displaystyle z_C = \frac{1}{72\pi} \cdot 2 \int_0^3
+        \int_0^\pi \int_0^{2\pi} (r\cos\phi) \cdot r^2 \sin\phi\,
+        d\theta\,d\phi\,dr.\)
+      </p>
+      <p>
+        A integral em \(\phi\) é \(\int_0^\pi \cos\phi\sin\phi\,d\phi =
+        \left[\frac{\sin^2\phi}{2}\right]_0^\pi = 0.\) Portanto \(z_C = 0\).
+      </p>
+      <p>
+        Para \(x_C\): substituindo \(x = r\sin\phi\cos\theta\), a integral em
+        \(\theta\) é \(\int_0^{2\pi}\cos\theta\,d\theta = 0\). Logo \(x_C = 0\).
+      </p>
+      <p>
+        Analogamente, \(y_C = 0\) pois \(\int_0^{2\pi}\sin\theta\,d\theta = 0\).
+      </p>
+      <p>
+        Conclusão: \(\vec{R}_C = (0,\, 0,\, 0)\), confirmando que a simetria
+        esférica com densidade constante coloca o centro de massa na origem.
+      </p>
+    </div>
+  </details>
+</li>

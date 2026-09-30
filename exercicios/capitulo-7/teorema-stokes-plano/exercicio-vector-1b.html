@@ -1,0 +1,70 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Apollo 11 — Mapeamento de Vórtices em Órbita Lunar [JUL/1969]
+  </div>
+  <p>
+    No exercício anterior, você reescreveu Green usando o rotacional. Agora
+    vamos interpretar o que o rotacional escalar significa fisicamente — antes
+    de mais cálculos, é essencial entender o que estamos medindo.
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (-y,\, x)\) no quadrado unitário \([0,1]
+    \times [0,1]\). Este é o campo de
+    <strong>rotação anti-horária</strong> clássico.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional escalar
+    \(\operatorname{rot}\vec{F}\). O valor é constante e positivo — o que isso
+    diz sobre o sentido de rotação do campo em cada ponto?
+  </p>
+  <p>
+    <strong>(b)</strong> Pelo sinal do rotacional, determine se a circulação ao
+    redor do quadrado será positiva ou negativa, <em>antes</em> de calcular.
+  </p>
+  <p>
+    <strong>(c)</strong> Esboce o campo \(\vec{F}\) nos quatro vértices do
+    quadrado: \((0,0)\), \((1,0)\), \((0,1)\) e \((1,1)\). Confirme visualmente
+    que os vetores "giram" no sentido indicado pelo rotacional. Calcule a
+    circulação por Stokes e verifique que o sinal coincide com sua previsão.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Avalie \(\vec{F}\) em cada vértice. Em \((1,0)\) o campo
+      aponta para \((-0,1)\), ou seja, para cima; em \((0,1)\) aponta para
+      \((-1,0)\), ou seja, para a esquerda. O padrão é anti-horário. A
+      circulação será positiva e igual ao rotacional vezes a área.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} = \frac{\partial
+        x}{\partial x} - \frac{\partial(-y)}{\partial y} = 1 - (-1) = 2\).
+      </p>
+      <p>
+        O rotacional é constante e positivo (\(=2\)): o campo gira no sentido
+        anti-horário em cada ponto.
+      </p>
+      <p>
+        <strong>(b)</strong> Rotacional positivo \(\Rightarrow\) circulação
+        positiva. A previsão é \(\oint_{\partial R} \vec{F}\cdot d\vec{r} > 0\).
+      </p>
+      <p><strong>(c)</strong> Esboço dos vetores:</p>
+      <p>\((0,0)\): \(\vec{F}=(0,0)\) (nulo).</p>
+      <p>\((1,0)\): \(\vec{F}=(0,1)\) — aponta para cima.</p>
+      <p>\((0,1)\): \(\vec{F}=(-1,0)\) — aponta para a esquerda.</p>
+      <p>\((1,1)\): \(\vec{F}=(-1,1)\) — aponta para cima-esquerda.</p>
+      <p>
+        Os vetores giram no sentido anti-horário, confirmando
+        \(\operatorname{rot}\vec{F} > 0\).
+      </p>
+      <p>
+        Circulação por Stokes: \(\iint_{R} 2\, dA = 2 \times 1 = 2 > 0\).
+        Confirma a previsão. \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

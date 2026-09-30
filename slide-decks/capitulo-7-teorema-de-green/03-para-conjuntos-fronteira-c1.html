@@ -1,0 +1,523 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h2>Fronteira C¹</h2>
+      <p>
+        Green valia para retângulos. E para um disco, uma elipse, um anel com
+        furo? Nenhuma dessas regiões cabe em \([a,b]\times[c,d]\) — e todas
+        aparecem em órbitas e manobras de rendezvous: a área de um setor
+        circular, o anel de um tanque, a sombra de um painel elíptico.
+      </p>
+      <p>
+        A seção anterior deixou o caminho aberto. A aditividade mostrou que
+        dividir um retângulo por um corte interno preserva a igualdade: as
+        integrais sobre o corte aparecem duas vezes, em sentidos opostos, e se
+        cancelam. O mesmo mecanismo estende o teorema a fronteiras curvas —
+        basta fatiar a região em pedaços que já sabemos tratar.
+      </p>
+      <p class="history-insert">
+        Quatro dias depois da Salyut 1, a Soyuz 10 acoplou mal e voltou sem que
+        a tripulação entrasse na estação. A vaga seria reocupada em junho.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Fronteira C¹ — o Contorno Bem Comportado</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>O contorno admissível</strong></p>
+          <p>
+            Uma região tem fronteira \(C^1\) quando seu contorno é formado por
+            um número finito de arcos \(C^1\) — curvas com derivada contínua —
+            que se encontram em ângulos diferentes de zero. Círculos, elipses e
+            polígonos suaves se encaixam: cada pedaço tem tangente que varia sem
+            saltos, e os encontros são cantos limpos, nunca bicos.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>O que fica de fora</strong></p>
+          <p>
+            Uma fronteira fractal não serve: o contorno não tem comprimento
+            finito e não há como parametrizá-lo para percorrer a borda. Bicos e
+            auto-interseções também quebram a hipótese. A condição \(C^1\) é
+            exatamente o que garante que a integral de linha \(\oint_{\partial
+            D}P\,dx+Q\,dy\) faça sentido.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Regiões Simples — Fatias que Não Se Cruzam</h3>
+      <div class="formula-spotlight">
+        <p>\[ D=\{(x,y):a\le x\le b,\ \phi_1(x)\le y\le \phi_2(x)\} \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Verticalmente simples:</strong> cada reta vertical \(x=c\)
+          corta \(D\) em um único intervalo, de \(\phi_1(c)\) até \(\phi_2(c)\).
+          Os limites inferior e superior são funções contínuas de \(x\).
+        </p>
+        <p>
+          <strong>Horizontalmente simples:</strong> a definição análoga, com os
+          papéis de \(x\) e \(y\) trocados.
+        </p>
+        <p>
+          O retângulo é as duas coisas ao mesmo tempo. O disco \(x^2+y^2\le1\) e
+          a elipse também: em cada faixa vertical, \(y\) varia entre
+          \(-\sqrt{1-x^2}\) e \(+\sqrt{1-x^2}\). Para essas regiões, a
+          demonstração feita para retângulos se adapta diretamente — Fubini e o
+          Teorema Fundamental do Cálculo continuam valendo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Green para Fronteira C¹ — Decomposição</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="formula-spotlight">
+            <p>
+              \[ \oint_{\partial D}P\,dx+Q\,dy=\iint_D\left(\frac{\partial
+              Q}{\partial x}-\frac{\partial P}{\partial y}\right)dA \]
+            </p>
+          </div>
+          <div class="math-section">
+            <p>
+              <strong>Onde:</strong> \(D\) tem fronteira \(C^1\), orientada no
+              sentido anti-horário; \(\vec F=(P,Q)\) é de classe \(C^1\) em uma
+              vizinhança de \(D\).
+            </p>
+            <p>
+              <strong>Validade:</strong> a identidade vale para toda região
+              \(D\) com fronteira \(C^1\) — simples ou obtida por decomposição.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>Geometricamente</strong></p>
+          <p>
+            Fatie \(D\) em sub-regiões verticalmente simples e aplique Green em
+            cada uma. Em cada corte interno, a integral de linha aparece duas
+            vezes: uma sub-região percorre o corte para cima, a vizinha para
+            baixo. Os dois termos têm o mesmo valor e sinais opostos — somem.
+          </p>
+          <p>
+            O que sobra é a integral sobre a fronteira exterior. Nenhum pedaço
+            de borda é contado duas vezes, e nenhum é esquecido.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Regiões Multiplamente Conexas — o Anel</h3>
+      <p>
+        Um anel como \(D=\{1\le x^2+y^2\le4\}\) não é simplesmente conexo: tem
+        um furo. Sua fronteira tem duas componentes, e o teorema vale para as
+        duas — desde que a orientação respeite uma única regra: a região fica
+        sempre à esquerda de quem percorre.
+      </p>
+      <div class="math-section">
+        <p>
+          <strong>Borda externa:</strong> anti-horária. Ao caminhar por ela, o
+          anel fica à esquerda.
+        </p>
+        <p>
+          <strong>Bordas internas:</strong> horárias. Ao contornar o furo no
+          sentido horário, o anel — e não o buraco — fica à esquerda.
+        </p>
+      </div>
+      <p>
+        Para reduzir o anel a uma região simples, trace um corte (<em>slit</em>)
+        ligando a borda externa à interna. A região vira simplesmente conexa e a
+        fórmula se aplica; ao fechar o corte, suas duas margens são percorridas
+        em sentidos opostos e as integrais se cancelam. Resta a soma das
+        componentes da fronteira original.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Green no Disco</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(-y,x)\) sobre o disco unitário
+            \(D=\{x^2+y^2\le1\}\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial D}P\,dx+Q\,dy\) pelo Teorema
+            de Green.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Dobrovolsky, Volkov e Patsayev receberam o título de Herói da União
+            Soviética depois de mortos. As estrelas de ouro foram entregues às
+            famílias em Moscou, longe das câmeras que haviam coberto a Apollo
+            11.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Green no Anel</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(\vec F(x,y)=(-y,x)\) sobre o anel \(D=\{1\le
+            x^2+y^2\le4\}\).
+          </p>
+          <p>
+            Calcule a circulação \(\oint_{\partial D}P\,dx+Q\,dy\) somando as
+            contribuições das duas componentes da fronteira.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A tripulação original da Soyuz 11 foi afastada às vésperas do
+            lançamento: um médico detectou uma mancha no pulmão de Valery
+            Kubasov. O voo passou para a equipe reserva. A reserva não voltou.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · FRONTEIRA C¹</div>
+    <div class="slide-body">
+      <h3>Exploração — Faixas, Cortes e Orientação</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasDecomposicao"
+            class="visualization-canvas"
+            width="350"
+            height="350"
+          ></canvas>
+          <div class="controls-container">
+            <button id="btnDecomposicaoModo" class="control-button">
+              Trocar: anel com furo
+            </button>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            No disco, as faixas verticais aplicam Green a cada pedaço; nos
+            cortes internos as setas apontam em sentidos opostos e se cancelam —
+            sobra só a fronteira exterior, percorrida no sentido anti-horário.
+          </p>
+          <p>
+            No anel, a borda externa gira no sentido anti-horário e a interna no
+            sentido horário, mantendo a região à esquerda. O corte
+            (<em>slit</em>) liga as duas e desaparece na soma.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH7-1971 · CAPÍTULO 7</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasDecomposicao');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var lastTs = 0;
+    var t = 0;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+
+    var CX = W / 2;
+    var CY = H / 2 + 6;
+    var R = 128;
+    var RIN = 60;
+
+    var btn = document.getElementById('btnDecomposicaoModo');
+    var mode = 0;
+
+    function arrow(x0, y0, x1, y1, color, lw, alpha) {
+      var dx = x1 - x0;
+      var dy = y1 - y0;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 1) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(9, len * 0.5);
+      ctx.globalAlpha = alpha === undefined ? 1 : alpha;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x1, y1);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(x1, y1);
+      ctx.lineTo(x1 - ux * hs - uy * hs * 0.5, y1 - uy * hs + ux * hs * 0.5);
+      ctx.lineTo(x1 - ux * hs + uy * hs * 0.5, y1 - uy * hs - ux * hs * 0.5);
+      ctx.closePath();
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    function ringPoint(radius, ang) {
+      return { x: CX + radius * Math.cos(ang), y: CY + radius * Math.sin(ang) };
+    }
+
+    function orientArrow(radius, ang, dir, color, lw, alpha) {
+      var a = ringPoint(radius, ang);
+      var b = ringPoint(radius, ang + dir * 0.26);
+      arrow(a.x, a.y, b.x, b.y, color, lw, alpha);
+    }
+
+    function drawDisk() {
+      var cutAlpha = cutOpacity();
+      var glow = boundaryGlow();
+
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.07)';
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, 2 * Math.PI);
+      ctx.fill();
+
+      var k;
+      var cuts = [-R * 0.6, -R * 0.2, R * 0.2, R * 0.6];
+      for (k = 0; k < cuts.length; k++) {
+        var xk = cuts[k];
+        var h = Math.sqrt(Math.max(0, R * R - xk * xk));
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.22)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(CX + xk, CY - h);
+        ctx.lineTo(CX + xk, CY + h);
+        ctx.stroke();
+        if (cutAlpha > 0.02) {
+          var mid = h * 0.42;
+          arrow(CX + xk - 5, CY - mid, CX + xk - 5, CY + mid, ACC, 2, cutAlpha);
+          arrow(CX + xk + 5, CY + mid, CX + xk + 5, CY - mid, VEL, 2, cutAlpha);
+        }
+      }
+
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      var m;
+      for (m = 0; m < 10; m++) {
+        orientArrow(R, (m * 2 * Math.PI) / 10, -1, VEL, 2, 0.45 + 0.55 * glow);
+      }
+
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText('DISCO FATIADO', CX, 16);
+      ctx.fillStyle = 'rgba(224, 224, 224, 0.65)';
+      ctx.fillText('cortes internos se cancelam', CX, H - 10);
+      ctx.textAlign = 'left';
+    }
+
+    function drawRing() {
+      var cutAlpha = cutOpacity();
+      var glow = boundaryGlow();
+
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.07)';
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, 2 * Math.PI);
+      ctx.arc(CX, CY, RIN, 0, 2 * Math.PI, true);
+      ctx.fill('evenodd');
+
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.85;
+      ctx.beginPath();
+      ctx.arc(CX, CY, R, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(CX, CY, RIN, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      var m;
+      for (m = 0; m < 10; m++) {
+        orientArrow(R, (m * 2 * Math.PI) / 10, -1, VEL, 2, 0.45 + 0.55 * glow);
+      }
+      for (m = 0; m < 6; m++) {
+        orientArrow(
+          RIN,
+          (m * 2 * Math.PI) / 6 + 0.3,
+          1,
+          FOR,
+          2,
+          0.45 + 0.55 * glow
+        );
+      }
+
+      var ang = -Math.PI / 2;
+      var a0 = ringPoint(RIN, ang);
+      var a1 = ringPoint(R, ang);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(a0.x, a0.y);
+      ctx.lineTo(a1.x, a1.y);
+      ctx.stroke();
+      if (cutAlpha > 0.02) {
+        var midR = (RIN + R) / 2;
+        var pa = ringPoint(midR - 22, ang);
+        var pb = ringPoint(midR + 22, ang);
+        arrow(pa.x - 5, pa.y, pb.x - 5, pb.y, ACC, 2, cutAlpha);
+        arrow(pb.x + 5, pb.y, pa.x + 5, pa.y, VEL, 2, cutAlpha);
+      }
+
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText('ANEL COM FURO', CX, 16);
+      ctx.fillStyle = 'rgba(224, 224, 224, 0.65)';
+      ctx.fillText('externa ⟲ · interna ⟳', CX, H - 10);
+      ctx.textAlign = 'left';
+    }
+
+    function cutOpacity() {
+      var p = t % 6;
+      if (p < 2.6) return 1;
+      if (p < 3.4) return 1 - (p - 2.6) / 0.8;
+      return 0;
+    }
+
+    function boundaryGlow() {
+      var p = t % 6;
+      if (p < 3.4) return 0;
+      return 0.5 + 0.5 * Math.sin(((p - 3.4) / 2.6) * Math.PI * 2);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.12)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      if (mode === 0) drawDisk();
+      else drawRing();
+    }
+
+    function loop(ts) {
+      var dt = ts ? Math.min(0.05, (ts - lastTs) / 1000) : 0.016;
+      lastTs = ts;
+      t += dt;
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        lastTs = 0;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 0 ? 1 : 0;
+        t = 0;
+        btn.textContent =
+          mode === 0 ? 'Trocar: anel com furo' : 'Trocar: disco fatiado';
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizDecomposicao = { init: init, cleanup: cleanup };
+  })();
+</script>

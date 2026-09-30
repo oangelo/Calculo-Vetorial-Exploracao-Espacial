@@ -1,0 +1,82 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">ORIGEM: Apollo 11 — JUL/1969</div>
+  <p>
+    Toda essa teoria tem uma aplicação direta no voo espacial: o campo
+    gravitacional. Se ele é conservativo, podemos calcular o trabalho de
+    qualquer manobra orbital conhecendo apenas as posições inicial e final — sem
+    integrar ao longo do caminho.
+  </p>
+  <p>
+    Considere o campo gravitacional \(\displaystyle\vec{G}(x,y,z) =
+    \frac{-GM}{(x^2+y^2+z^2)^{3/2}}(x,\,y,\,z)\), definido em \(D = \mathbb{R}^3
+    \setminus\{(0,0,0)\}\), onde \(G\) é a constante gravitacional e \(M\) é a
+    massa do corpo central.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional de \(\vec{G}\). Ele é zero em
+    \(D\)?
+  </p>
+  <p>
+    <strong>(b)</strong> O domínio \(D = \mathbb{R}^3 \setminus\{(0,0,0)\}\) é
+    simplesmente conexo? Atenção: em \(\mathbb{R}^2\), remover um ponto destrói
+    a conexidade simples; em \(\mathbb{R}^3\), a situação é diferente — por quê?
+  </p>
+  <p>
+    <strong>(c)</strong> Encontre a função potencial \(\Phi\) por inspeção ou
+    integração.
+  </p>
+  <p>
+    <strong>(d)</strong> Calcule o trabalho para mover uma nave de \(|\vec{r}_1|
+    = R\) até \(|\vec{r}_2| = 2R\).
+  </p>
+  <p>
+    <strong>(e)</strong> Um colega argumenta que, como o domínio tem um "buraco"
+    na origem, o campo não pode ser conservativo. Refute esse argumento,
+    explicando a diferença entre \(\mathbb{R}^2 \setminus\{(0,0)\}\) e
+    \(\mathbb{R}^3 \setminus\{(0,0,0)\}\).
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O campo \(\vec{G}\) é irrotacional: \(\nabla \times
+        \vec{G} = \vec{0}\) em todo ponto de \(D\). Isso pode ser verificado
+        calculando cada componente do rotacional diretamente (é um cálculo
+        trabalhoso mas direto, usando a regra do quociente e simplificando).
+      </p>
+      <p>
+        <strong>(b)</strong> Sim, \(D = \mathbb{R}^3 \setminus\{(0,0,0)\}\)
+        <strong>é</strong> simplesmente conexo. Em \(\mathbb{R}^2\), uma curva
+        fechada ao redor da origem não pode ser contraída sem tocar a origem. Em
+        \(\mathbb{R}^3\), qualquer curva fechada pode "subir" ou "descer" na
+        terceira dimensão para contornar a origem, sendo continuamente contraída
+        a um ponto sem tocar \((0,0,0)\). A dimensão extra dá liberdade
+        suficiente.
+      </p>
+      <p>
+        <strong>(c)</strong> Observando que \(\partial/\partial
+        x\left(\frac{GM}{\sqrt{x^2+y^2+z^2}}\right) = \frac{-GM \cdot
+        x}{(x^2+y^2+z^2)^{3/2}} = G_x\), identificamos
+        \(\displaystyle\Phi(x,y,z) = \frac{GM}{\sqrt{x^2+y^2+z^2}} + K =
+        \frac{GM}{r} + K\), onde \(r = |\vec{r}|\).
+      </p>
+      <p>
+        <strong>(d)</strong> O trabalho é \(W = \Phi(\vec{r}_2) -
+        \Phi(\vec{r}_1) = \frac{GM}{2R} - \frac{GM}{R} = -\frac{GM}{2R}\). O
+        sinal negativo indica que a força gravitacional resiste ao afastamento —
+        é necessário fornecer energia para mover a nave para uma órbita mais
+        alta.
+      </p>
+      <p>
+        <strong>(e)</strong> O argumento do colega confunde \(\mathbb{R}^2\) com
+        \(\mathbb{R}^3\). Em \(\mathbb{R}^2 \setminus\{(0,0)\}\), o domínio
+        <em>não</em> é simplesmente conexo — um laço ao redor da origem está
+        "preso" no plano. Em \(\mathbb{R}^3 \setminus\{(0,0,0)\}\), um laço
+        sempre pode escapar pela terceira dimensão, tornando o domínio
+        simplesmente conexo. A remoção de um ponto destrói a conexidade simples
+        apenas em \(\mathbb{R}^2\).
+      </p>
+    </div>
+  </details>
+</li>

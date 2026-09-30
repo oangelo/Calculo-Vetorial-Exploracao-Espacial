@@ -1,0 +1,75 @@
+<section
+  class="exercicio"
+  data-topico="reescala-jacobiano"
+  data-dificuldade="medio"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">6.</span>
+    A mudança de variáveis não serve só para polares. A elipse $\frac{x^2}{4} +
+    \frac{y^2}{9} \le 1$ vira um disco unitário com a reescala $x = 2u$, $y =
+    3v$. Vamos usar isso para calcular a área da elipse.
+  </p>
+
+  <p class="questao">
+    Verifique que a transformação leva a elipse ao disco unitário.
+  </p>
+
+  <p class="dialogo">
+    Substitua $x = 2u$ e $y = 3v$ na equação da elipse e simplifique.
+  </p>
+
+  <p class="subitem">
+    a) $\frac{(2u)^2}{4} + \frac{(3v)^2}{9} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) A condição $\frac{x^2}{4} + \frac{y^2}{9} \le 1$ se torna: $u^2 + v^2
+    \le$ <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Calcule o Jacobiano da transformação.</p>
+
+  <p class="dialogo">
+    A transformação é diagonal: cada coordenada depende de uma única variável.
+    Monte a matriz $\frac{\partial(x,y)}{\partial(u,v)}$ e calcule o
+    determinante.
+  </p>
+
+  <p class="subitem">
+    a) $\frac{\partial x}{\partial u} =$
+    <span class="lacuna"></span>, $\frac{\partial y}{\partial v} =$
+    <span class="lacuna"></span> e as derivadas cruzadas valem
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\det \frac{\partial(x,y)}{\partial(u,v)} =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">
+    Calcule a área da elipse como uma integral no disco unitário.
+  </p>
+
+  <p class="dialogo">
+    A área é $\iint_{\text{elipse}} 1\,dx\,dy$. Pela fórmula de mudança de
+    variáveis, vira $\iint_{\text{disco}} |J|\,du\,dv$ — e o Jacobiano é
+    constante, sai da integral.
+  </p>
+
+  <p class="subitem">
+    a) $\iint_{\text{elipse}} 1\,dx\,dy =$
+    <span class="lacuna"></span> $\cdot \iint_{\text{disco}} 1\,du\,dv$
+  </p>
+  <p class="subitem">
+    b) $\iint_{\text{disco}} 1\,du\,dv$ é a área do disco unitário:
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">c) Área da elipse = <span class="lacuna"></span></p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: a elipse é o disco unitário esticado pelos fatores $2$ e $3$.
+    Então a área dela deve ser maior que a do disco unitário pelo fator de
+    escala que você calculou no Jacobiano — confira se o item c reflete isso.
+  </p>
+</section>

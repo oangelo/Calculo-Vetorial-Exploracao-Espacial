@@ -1,0 +1,51 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Simulação de Tanque Orbital -
+    <span class="censored">Setor de Propulsão</span>
+  </div>
+  <p>
+    Até agora o integrando era 1 (calculávamos volume puro). Agora a função
+    \(f(x,y,z)\) varia dentro do sólido — isso muda o cálculo, pois o integrando
+    depende da variável que estamos integrando.
+  </p>
+  <p>
+    Calcule \(\iiint_V z\,dV\) sobre o prisma retangular \(V\) definido por \(0
+    \le x \le 1\), \(0 \le y \le 2\), \(0 \le z \le 3\).
+  </p>
+  <p>
+    <strong>(a)</strong> Reduza a integral tripla a uma dupla, integrando \(z\)
+    primeiro. Escreva a expressão completa.
+  </p>
+  <p><strong>(b)</strong> Calcule a integração interna \(\int_0^3 z\,dz\).</p>
+  <p>
+    <strong>(c)</strong> Avalie a integral dupla restante e apresente o
+    resultado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Agora \(z\) está tanto no integrando quanto nos limites de
+      integração. Use \(\int z\,dz = z^2/2\). O resultado da integral em \(z\) é
+      uma constante, que será integrada sobre a base retangular.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Redução: \[ \iiint_V z\,dV = \iint_D \left(\int_0^3 z\,dz\right)dA. \]
+      </p>
+      <p>
+        Integração em \(z\): \(\int_0^3 z\,dz = \frac{z^2}{2}\Big|_0^3 =
+        \frac{9}{2}\).
+      </p>
+      <p>
+        Integral dupla: \(\iint_D \frac{9}{2}\,dA =
+        \frac{9}{2}\cdot\text{Área}(D) = \frac{9}{2}\cdot(1\times 2) =
+        \frac{9}{2}\cdot 2 = 9.\)
+      </p>
+      <p>Resultado: \(\iiint_V z\,dV = 9\).</p>
+    </div>
+  </details>
+</li>

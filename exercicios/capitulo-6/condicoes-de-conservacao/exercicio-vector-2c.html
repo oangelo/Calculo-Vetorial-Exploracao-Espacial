@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">ORIGEM: Apollo 10 — MAI/1969</div>
+  <p>
+    O teste é confiável quando falha — diz que não é conservativo, ponto. Mas e
+    quando passa? Será que passar no teste garante conservatividade? Lembre-se
+    do que você estudou sobre domínios simplesmente conexos.
+  </p>
+  <p>
+    Considere o campo \(\displaystyle\vec{F}(x,y) =
+    \left(\frac{-y}{x^2+y^2},\;\; \frac{x}{x^2+y^2}\right)\) definido em \(D =
+    \mathbb{R}^2 \setminus\{(0,0)\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule as derivadas cruzadas \(\partial M/\partial y\)
+    e \(\partial N/\partial x\). Elas são iguais?
+  </p>
+  <p>
+    <strong>(b)</strong> O domínio \(D = \mathbb{R}^2 \setminus\{(0,0)\}\) é
+    simplesmente conexo? Referencie o que foi estudado sobre conjuntos
+    simplesmente conexos nos tópicos anteriores.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha de \(\vec{F}\) ao longo da
+    circunferência unitária \(\gamma(t) = (\cos t, \sin t)\), \(0 \leq t \leq
+    2\pi\).
+  </p>
+  <p>
+    <strong>(d)</strong> O resultado de (c) contradiz a hipótese de
+    conservatividade? Por que o teste das derivadas cruzadas não foi suficiente
+    neste caso?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O domínio tem um "buraco" na origem. Na circunferência
+      unitária, \(x^2 + y^2 = 1\), o que simplifica as componentes do campo.
+      Lembre-se: conservatividade exige integral zero sobre <em>toda</em> curva
+      fechada.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Usando a regra do quociente: \(\partial M/\partial
+        y = \frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2} = \frac{y^2 -
+        x^2}{(x^2+y^2)^2}\). \(\partial N/\partial x =
+        \frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2} = \frac{y^2 - x^2}{(x^2+y^2)^2}\).
+        Sim, são iguais.
+      </p>
+      <p>
+        <strong>(b)</strong> Não. \(D = \mathbb{R}^2 \setminus\{(0,0)\}\) não é
+        simplesmente conexo: uma curva fechada que envolve a origem não pode ser
+        continuamente contraída a um ponto sem atravessar a origem, que está
+        fora do domínio.
+      </p>
+      <p>
+        <strong>(c)</strong> Na circunferência unitária, \(x^2 + y^2 = 1\),
+        então \(\vec{F}(\cos t, \sin t) = (-\sin t, \cos t)\) e \(\gamma'(t) =
+        (-\sin t, \cos t)\). Logo \(\vec{F} \cdot \gamma' = \sin^2 t + \cos^2 t
+        = 1\) e \(\displaystyle\int_0^{2\pi} 1\,dt = 2\pi\).
+      </p>
+      <p>
+        <strong>(d)</strong> Sim, contradiz. Se \(\vec{F}\) fosse conservativo,
+        a integral sobre qualquer curva fechada deveria ser zero. O valor \(2\pi
+        \neq 0\) prova que \(\vec{F}\) não é conservativo. O teste das derivadas
+        cruzadas não foi suficiente porque o domínio não é simplesmente conexo —
+        a igualdade das derivadas cruzadas é condição necessária, mas só é
+        suficiente em domínios simplesmente conexos.
+      </p>
+    </div>
+  </details>
+</li>

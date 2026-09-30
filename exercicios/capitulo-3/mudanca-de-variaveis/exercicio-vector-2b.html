@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 8 — ELIPSE PARA DISCO: SIMETRIA</div>
+  <div class="context">
+    ORIGEM: Conversão Paramétrica - Registro da
+    <span class="censored">Estação</span> X
+  </div>
+  <p>
+    A elipse \(\frac{x^2}{4}+\frac{y^2}{9}\le 1\) não é um disco, mas a reescala
+    \(x=2u,\; y=3v\) a transforma no círculo unitário. Calcule \(\iint_{R}
+    (4xy)\,dx\,dy\) sobre essa elipse. A vantagem: a simetria radial do disco
+    pode anular integrais que seriam difíceis de calcular na elipse original.
+    Este exercício mostra quando a mudança de variáveis não apenas simplifica os
+    limites, mas elimina o cálculo por completo.
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação que leva a elipse ao disco
+    unitário e calcule o Jacobiano.
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral no disco unitário e observe a
+    paridade da função resultante.
+  </p>
+  <p>
+    <strong>(c)</strong> Conclua o valor da integral sem calculá-la
+    explicitamente.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Após a transformação \(x=2u,\;y=3v\), o integrando se
+      torna uma função ímpar em \(u\) (ou \(v\)) sobre um domínio simétrico. Use
+      paridade para concluir.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Para transformar a elipse em círculo unitário, definimos \[ x = 2u,\quad
+        y = 3v. \] Então, a condição \(\frac{x^2}{4} + \frac{y^2}{9} \le 1\)
+        torna-se \(u^2 + v^2 \le 1\).
+      </p>
+      <p>
+        O Jacobiano é \[ \left|\frac{\partial(x,y)}{\partial(u,v)}\right| =
+        \begin{vmatrix} 2 &amp; 0\\ 0 &amp; 3 \end{vmatrix} = 6. \]
+      </p>
+      <p>
+        Logo, \[ \iint_{R} (4xy)\,dx\,dy = \iint_{u^2+v^2 \le 1} \bigl(4 \cdot
+        (2u) \cdot (3v)\bigr)\, 6\, du\, dv. \]
+      </p>
+      <p>
+        Simplificando o integrando: \[ 4 \times 2u \times 3v = 24\,uv, \quad
+        24\,uv \times 6 = 144\,uv. \]
+      </p>
+      <p>
+        Assim, \[ \int_{u^2+v^2 \le 1} 144\,uv \;du\,dv. \] A região é o disco
+        unitário. Observando a função \(uv\), é uma função ímpar em relação a
+        \(u\) e \(v\) sobre um domínio simétrico (o círculo de raio 1).
+      </p>
+      <p>
+        Portanto, a integral de \(uv\) sobre a área simétrica é zero, e,
+        consequentemente, \(\iint_{R} (4xy)\,dx\,dy = 0\).
+      </p>
+      <p>CONCLUSÃO: O valor da integral é 0.</p>
+    </div>
+  </details>
+</li>

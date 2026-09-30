@@ -1,0 +1,63 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Síntese Teórica — Apollo 13, Houston Mission Control [ABR/1970]
+  </div>
+  <p>
+    O Teorema de Green nos dá uma nova perspectiva sobre os campos conservativos
+    que estudamos no Capítulo 6. A condição de rotacional zero ganha um
+    significado mais profundo quando vista através de Green.
+  </p>
+  <p>
+    <strong>(a)</strong> Mostre que um campo gradiente \(\vec{F} = \nabla f\)
+    tem rotacional zero e, portanto, circulação zero sobre qualquer retângulo —
+    por Green.
+  </p>
+  <p>
+    <strong>(b)</strong> Argumente que, se o rotacional é zero num retângulo
+    \(R\), a integral de linha entre dois pontos quaisquer de \(R\) não depende
+    do caminho escolhido. Conecte com o conceito de independência de caminho do
+    Capítulo 6.
+  </p>
+  <p>
+    <strong>(c)</strong> Discuta: será que o argumento de (b) funciona se o
+    campo tiver um "buraco" no domínio — isto é, se o campo não estiver definido
+    em algum ponto interno ao retângulo? O que muda?
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Se \(\vec{F} = \nabla f = (f_x, f_y)\), então \(P =
+        f_x\) e \(Q = f_y\). O rotacional é \(\frac{\partial Q}{\partial x} -
+        \frac{\partial P}{\partial y} = \frac{\partial^2 f}{\partial x \partial
+        y} - \frac{\partial^2 f}{\partial y \partial x} = 0\) (pela igualdade
+        das derivadas mistas, já que \(f \in C^2\)). Por Green, a circulação
+        sobre qualquer retângulo é \(\iint_R 0\,dA = 0\).
+      </p>
+      <p>
+        <strong>(b)</strong> Sejam \(A\) e \(B\) dois pontos em \(R\) e
+        \(\gamma_1\), \(\gamma_2\) dois caminhos de \(A\) a \(B\) dentro de
+        \(R\). O caminho fechado \(\gamma_1 - \gamma_2\) (percorrer \(\gamma_1\)
+        de \(A\) a \(B\) e \(\gamma_2\) de volta) forma a fronteira de uma
+        região contida em \(R\). Pode-se decompor essa região em retângulos (por
+        aditividade), e em cada retângulo a circulação é zero pois o rotacional
+        é zero. Logo \(\int_{\gamma_1} \vec{F} \cdot d\vec{r} = \int_{\gamma_2}
+        \vec{F} \cdot d\vec{r}\): independência de caminho. Isso é exatamente o
+        que vimos no Capítulo 6 — campos com rotacional zero são conservativos.
+      </p>
+      <p>
+        <strong>(c)</strong> Se houver um buraco no domínio, dois caminhos de
+        \(A\) a \(B\) podem não poder ser conectados por uma região inteiramente
+        dentro do domínio — um caminho pode "ir de um lado do buraco" e o outro
+        "do outro lado". Nesse caso, a região entre os dois caminhos contém o
+        buraco, e não podemos aplicar Green (pois o campo não está definido lá
+        dentro). O argumento quebra. De fato, campos como \(\vec{F} =
+        \left(\frac{-y}{x^2+y^2}, \frac{x}{x^2+y^2}\right)\) têm rotacional zero
+        em todo ponto onde estão definidos, mas têm circulação não-zero ao redor
+        da origem — o "buraco". A condição de domínio simplesmente conexo é
+        essencial.
+      </p>
+    </div>
+  </details>
+</li>

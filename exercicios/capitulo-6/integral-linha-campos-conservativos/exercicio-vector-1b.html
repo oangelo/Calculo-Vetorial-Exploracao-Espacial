@@ -1,0 +1,49 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Validação de Procedimento – Centro Houston [15/OUT/1968]
+  </div>
+  <p>
+    O atalho do potencial funcionou no exercício anterior, mas será que dá o
+    mesmo resultado que o método de parametrização do Capítulo 5? Vamos
+    verificar. Considere novamente \(\vec{F}(x,y) = (2x,\, 2y)\) com potencial
+    \(\phi(x,y) = x^2 + y^2\), e calcule a integral de \(A = (0, 0)\) a \(B =
+    (1, 1)\) de dois modos.
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o segmento de reta de \(A\) a \(B\) e
+    calcule a integral de linha pelo método do Capítulo 5: \(\int_a^b
+    \vec{F}(\vec{r}(t)) \cdot \vec{r}'(t)\, dt\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a mesma integral usando o atalho \(\phi(B) -
+    \phi(A)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados. Qual método foi mais rápido?
+    Comente por que o atalho funciona: ele substitui toda a parametrização por
+    uma simples avaliação.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A reta de \((0,0)\) a \((1,1)\) pode ser parametrizada por
+      \(\vec{r}(t) = (t, t)\) com \(t \in [0, 1]\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\vec{r}(t) = (t, t)\), \(\vec{r}'(t) = (1, 1)\).
+        \(\vec{F}(\vec{r}(t)) = (2t, 2t)\). \(\vec{F} \cdot \vec{r}'(t) = 2t +
+        2t = 4t\). \(\int_0^1 4t\, dt = 2t^2\big|_0^1 = 2\).
+      </p>
+      <p>(b) \(\phi(1,1) - \phi(0,0) = (1+1) - 0 = 2\).</p>
+      <p>
+        (c) Ambos dão 2. O atalho é muito mais rápido: uma substituição e uma
+        subtração, contra uma parametrização e uma integral definida.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DERIV-04-BETA</div>
+  <div class="context">
+    ORIGEM: Departamento de Dinâmica Orbital [COLABORAÇÃO COM PROJETO
+    [REDACTED]]
+  </div>
+  <p>
+    Nos exercícios anteriores, cada termo da função dependia de uma variável por
+    vez. Mas e quando a variável aparece <em>dentro</em> de outra função — como
+    \(e^{xy}\)? Aí precisamos da
+    <strong>regra da cadeia para derivadas parciais</strong>: a mesma regra que
+    você já conhece, mas aplicada a funções de várias variáveis.
+  </p>
+  <p>Considere: \[ f(x,y,z) = e^{xyz}. \]</p>
+  <p>
+    <strong>(a)</strong> Identifique a função externa (exponencial) e a função
+    interna \(u = xyz\).
+  </p>
+  <p>
+    <strong>(b)</strong> Use a regra da cadeia \(\frac{\partial f}{\partial x} =
+    \frac{df}{du} \cdot \frac{\partial u}{\partial x}\) para calcular
+    \(\frac{\partial f}{\partial x}\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule \(\frac{\partial f}{\partial y}\) e
+    \(\frac{\partial f}{\partial z}\) pelo mesmo método.
+  </p>
+  <p>
+    <strong>(d)</strong> Avalie \(\frac{\partial f}{\partial x}\) no ponto
+    \((1,1,1)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-4]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \(\frac{d}{du}(e^u) = e^u\). Para \(\frac{\partial
+      u}{\partial x}\), onde \(u = xyz\), tratamos \(y\) e \(z\) como
+      constantes, obtendo \(yz\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>(a) Função externa: \(g(u) = e^u\). Função interna: \(u = xyz\).</p>
+      <p>
+        (b) \[ \frac{\partial f}{\partial x} = e^{xyz} \cdot
+        \frac{\partial}{\partial x}(xyz) = yz\, e^{xyz}. \]
+      </p>
+      <p>
+        (c) \[ \frac{\partial f}{\partial y} = xz\, e^{xyz}, \qquad
+        \frac{\partial f}{\partial z} = xy\, e^{xyz}. \]
+      </p>
+      <p>
+        (d) \[ \frac{\partial f}{\partial x}(1,1,1) = 1 \cdot 1 \cdot e^{1} = e.
+        \]
+      </p>
+    </div>
+  </details>
+</li>

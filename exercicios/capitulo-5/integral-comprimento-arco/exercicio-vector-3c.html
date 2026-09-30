@@ -1,0 +1,80 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Análise Pós-Apollo 8 - Relatório de Desempenho Orbital [REF:
+    <span class="censored">RPT-503/JAN-1969</span>]
+  </div>
+  <p>
+    Componentes exponenciais simplificam com identidades hiperbólicas.
+    Componentes trigonométricas também podem reservar surpresas. Vamos
+    investigar uma curva cujo integrando não simplifica diretamente — o aluno
+    deve fatorar termos comuns e usar identidades para revelar uma expressão
+    integrável.
+  </p>
+  <p>
+    Considere a curva plana \(\vec{r}(t) = \bigl(\cos^3 t,\, \sin^3 t\bigr)\),
+    com \(t\) variando de 0 a \(\pi/2\).
+  </p>
+  <p><strong>(a)</strong> Calcule \(\vec{r}\,'(t)\).</p>
+  <p>
+    <strong>(b)</strong> Calcule \(\|\vec{r}\,'(t)\|^2\) e mostre que ela se
+    reduz a \(\frac{9}{4}\sin^2(2t)\). Que identidade trigonométrica permite
+    essa redução?
+  </p>
+  <p>
+    <strong>(c)</strong> Integre usando a substituição \(u = 2t\) e obtenha o
+    comprimento \(L\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao calcular \(\|\vec{r}\,'(t)\|^2\), fatore os termos
+      comuns em \(\sin^2 t\) e \(\cos^2 t\). A expressão fatorada conterá
+      \(\sin^2 t + \cos^2 t\) como fator — use a identidade fundamental. Depois,
+      empregue \(\sin t \cos t = \frac{1}{2}\sin(2t)\) para reduzir a uma
+      integral direta.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\vec{r}\,'(t) = (-3\cos^2 t \sin t,\, 3\sin^2 t
+        \cos t)\).
+      </p>
+      <p>
+        <strong>(b)</strong>
+      </p>
+      <p>
+        \[\|\vec{r}\,'(t)\|^2 = 9\cos^4 t \sin^2 t + 9\sin^4 t \cos^2 t =
+        9\sin^2 t \cos^2 t (\cos^2 t + \sin^2 t)\]
+      </p>
+      <p>Pela identidade \(\cos^2 t + \sin^2 t = 1\):</p>
+      <p>\[\|\vec{r}\,'(t)\|^2 = 9\sin^2 t \cos^2 t\]</p>
+      <p>Usando \(\sin t \cos t = \frac{1}{2}\sin(2t)\):</p>
+      <p>
+        \[\|\vec{r}\,'(t)\|^2 = 9 \cdot \frac{1}{4}\sin^2(2t) =
+        \frac{9}{4}\sin^2(2t)\]
+      </p>
+      <p>
+        Portanto \(\|\vec{r}\,'(t)\| = \frac{3}{2}\sin(2t)\) (pois \(\sin(2t)
+        \geq 0\) para \(t \in [0, \pi/2]\)).
+      </p>
+      <p><strong>(c)</strong> Substituição \(u = 2t\), \(du = 2\, dt\):</p>
+      <p>
+        \[L = \int_0^{\pi/2} \frac{3}{2}\sin(2t)\, dt = \frac{3}{2} \cdot
+        \frac{1}{2}\int_0^{\pi} \sin u\, du = \frac{3}{4}\bigl[-\cos
+        u\bigr]_0^{\pi}\]
+      </p>
+      <p>
+        \[= \frac{3}{4}\bigl(-\cos\pi + \cos 0\bigr) = \frac{3}{4}(1+1) =
+        \frac{3}{2}\]
+      </p>
+      <p>
+        O comprimento é \(L = 3/2\). A curva \((\cos^3 t, \sin^3 t)\) é um arco
+        de astroide — uma curva com propriedades notáveis. A fatoração foi o
+        passo crucial: sem ela, o integrando pareceria intratável.
+      </p>
+    </div>
+  </details>
+</li>

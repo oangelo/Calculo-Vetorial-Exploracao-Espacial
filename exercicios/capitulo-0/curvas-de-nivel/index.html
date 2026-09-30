@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Curvas de Nível</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">07</span> DE MARÇO DE
+          <span class="censored">1962</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">BASE DE OPERAÇÕES TERRA-ALFA</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">TOPOGRAFIA-ORBITAL</span> <br /><br />
+          A Divisão de Análise Terrestre preparou este módulo de exercícios
+          sobre
+          <strong>Curvas de Nível</strong>, técnica cartográfica essencial para
+          o reconhecimento de terreno em operações de
+          <span class="censored">reconhecimento aéreo</span> e seleção de zonas
+          de pouso para futuras missões do programa
+          <span class="censored">████████</span>. <br /><br />
+          O domínio desta ferramenta matemática é indispensável para agentes
+          envolvidos em <span class="censored">mapeamento tático</span> e na
+          preparação de rotas de fuga em cenários hostis.
+        </div>
+        <div class="warning-box">
+          ⚠ ATENÇÃO: Este material habilita o operador a interpretar mapas
+          topográficos de qualquer zona de conflito. Seu conteúdo é classificado
+          sob o código <span class="censored">CONTOUR-7</span>. Violação de
+          segurança acarretará em
+          <span class="censored">consequências irreversíveis</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: CN-<span class="censored">047</span>-X</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: CURVAS DE NÍVEL
+      </div>
+      <div class="concept-definition">
+        <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+        <p>
+          Imagine que você sobrevoa uma região montanhosa e olha para baixo:
+          vales, cumes, planaltos — tudo se mistura. Como descrever esse terreno
+          de forma precisa, usando apenas papel e lápis? A resposta está nas
+          <strong>curvas de nível</strong>: linhas que conectam pontos de mesma
+          altitude, transformando uma superfície tridimensional
+          \(z = f(x, y)\) em um mapa bidimensional que qualquer operador pode ler.
+        </p>
+        <p>
+          Neste módulo, construímos essa ferramenta do zero. Começamos com a
+          <strong>definição</strong> de curva de nível (o que é, como se escreve),
+          depois identificamos as <strong>formas clássicas</strong> que aparecem
+          (círculos, elipses, parábolas, hipérboles), e em seguida estudamos o
+          <strong>gradiente</strong> — o vetor que indica a direção de maior
+          inclinação. Com essas ferramentas, aprendemos a
+          <strong>esboçar mapas</strong> completos e a identificar
+          <strong>pontos críticos</strong> (picos, vales e pontos de sela). Cada
+          conceito depende do anterior — e todos aparecem nos exercícios que seguem.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. O QUE É CURVA DE NÍVEL?</strong></p>
+        <p>
+          Uma <strong>curva de nível</strong> (ou linha de contorno) de uma
+          função de duas variáveis \(f(x, y)\) é o conjunto de todos os pontos
+          \((x, y)\) no domínio de \(f\) para os quais a função assume um valor
+          constante \(c\). Matematicamente:
+        </p>
+        <p class="formula-highlight">\[ f(x, y) = c \]</p>
+        <p>
+          Cada valor de \(c\) define uma curva diferente. Em um mapa topográfico,
+          cada linha conecta pontos de mesma altitude — se você caminha ao longo
+          de uma curva de nível, nem sobe nem desce. O conjunto de várias curvas
+          de nível para valores igualmente espaçados de \(c\) forma um
+          <strong>mapa de curvas de nível</strong>, que é a representação
+          bidimensional de uma superfície tridimensional \(z = f(x, y)\).
+        </p>
+        <p>
+          Uma propriedade fundamental: <strong>curvas de nível diferentes nunca
+          se cruzam</strong> — se se cruzassem, o mesmo ponto teria dois valores
+          diferentes de \(f\), o que é impossível para uma função. Além disso, a
+          distância entre curvas adjacentes indica a inclinação do terreno: curvas
+          próximas significam terreno íngreme; curvas distantes, terreno suave.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. CURVAS DE NÍVEL DE FUNÇÕES CONHECIDAS</strong></p>
+        <p>
+          Muitas funções geram curvas de nível que são cônicas clássicas.
+          Reconhecer a forma da curva a partir da equação \(f(x, y) = c\) é a
+          primeira habilidade deste módulo.
+        </p>
+        <p>
+          <strong>Círculos:</strong> a função \(f(x, y) = x^2 + y^2\) produz
+          curvas de nível \(x^2 + y^2 = c\). Para \(c > 0\), são círculos
+          centrados na origem com raio \(\sqrt{c}\).
+        </p>
+        <p>
+          <strong>Elipses:</strong> a função
+          \(f(x, y) = \frac{x^2}{a^2} + \frac{y^2}{b^2}\) produz curvas de
+          nível \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = c\), elipses centradas
+          na origem.
+        </p>
+        <p>
+          <strong>Parábolas:</strong> a função \(f(x, y) = y - x^2\) produz
+          curvas de nível \(y = x^2 + c\), parábolas transladadas verticalmente.
+        </p>
+        <p>
+          <strong>Hipérboles:</strong> a função \(f(x, y) = x^2 - y^2\) produz
+          curvas de nível \(x^2 - y^2 = c\). Para \(c \neq 0\), são
+          hipérboles; para \(c = 0\), duas retas \(y = \pm x\).
+        </p>
+        <p>
+          <strong>Retas:</strong> a função \(f(x, y) = ax + by\) produz curvas
+          de nível \(ax + by = c\), retas paralelas com inclinação constante.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. GRADIENTE COMO DIREÇÃO DE MAIOR CRESCIMENTO</strong></p>
+        <p>
+          Se você está em um ponto \((x_0, y_0)\) de um terreno descrito por
+          \(f(x, y)\), em que direção deve caminhar para subir mais rápido? A
+          resposta é o <strong>vetor gradiente</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla f = \left( \frac{\partial f}{\partial x},\;
+          \frac{\partial f}{\partial y} \right) \]
+        </p>
+        <p>
+          O gradiente aponta na direção de <strong>maior crescimento</strong> de
+          \(f\). Sua magnitude \(\|\nabla f\|\) mede a taxa de crescimento.
+          A direção oposta \(-\nabla f\) é a de maior decrescimento. O gradiente
+          é sempre <strong>perpendicular à curva de nível</strong> no ponto
+          considerado — a direção mais íngreme é sempre perpendicular às linhas
+          de mesma altitude.
+        </p>
+        <p>
+          A <strong>derivada direcional</strong>
+          \(D_{\hat{u}} f = \nabla f \cdot \hat{u}\) dá a taxa de
+          crescimento em qualquer direção \(\hat{u}\). Quando \(\hat{u}\) é
+          tangente à curva de nível, a derivada direcional é zero — \(f\) não
+          muda ao longo da curva.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. ESBOÇO DE MAPAS DE CURVAS DE NÍVEL</strong></p>
+        <p>
+          Para esboçar um mapa de curvas de nível de \(f(x, y)\), escolhe-se
+          vários valores de \(c\) igualmente espaçados, resolve-se
+          \(f(x, y) = c\) para cada um, e desenham-se as curvas resultantes no
+          plano \(xy\). O mapa revela a "assinatura" da função.
+        </p>
+        <p>
+          Se as curvas se aproximam conforme \(c\) cresce, o terreno está se
+          tornando mais íngreme. Se se afastam, o terreno está se aplanando.
+          Curvas fechadas e concêntricas ao redor de um ponto sugerem um
+          <strong>máximo</strong> ou <strong>mínimo</strong> local. Curvas em
+          formato de sela indicam um <strong>ponto de sela</strong>.
+        </p>
+        <p>
+          O mapa de \(f(x, y) = x^2 + y^2\) mostra círculos concêntricos
+          (mínimo na origem); o de \(f(x, y) = x^2 - y^2\) mostra hipérboles
+          (ponto de sela na origem).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>5. PONTOS CRÍTICOS (ONDE \(\nabla f = \vec{0}\))</strong></p>
+        <p>
+          Um <strong>ponto crítico</strong> de \(f(x, y)\) é um ponto onde o
+          gradiente se anula:
+        </p>
+        <p class="formula-highlight">
+          \[ \nabla f = \vec{0} \quad \Longleftrightarrow \quad
+          \frac{\partial f}{\partial x} = 0 \;\text{ e }\;
+          \frac{\partial f}{\partial y} = 0 \]
+        </p>
+        <p>
+          A superfície \(z = f(x, y)\) tem tangente horizontal nesse ponto —
+          não há inclinação em nenhuma direção. Os pontos críticos são candidatos
+          a <strong>máximos</strong>, <strong>mínimos</strong> ou <strong>pontos
+          de sela</strong>. Para encontrá-los, resolve-se o sistema
+          \(\partial f / \partial x = 0\) e \(\partial f / \partial y = 0\)
+          simultaneamente.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>6. CLASSIFICAÇÃO DE PONTOS CRÍTICOS</strong></p>
+        <p>
+          Para classificar um ponto crítico \((x_0, y_0)\), calcula-se o
+          <strong>discriminante de segunda ordem</strong> (Hessiano):
+        </p>
+        <p class="formula-highlight">
+          \[ D = f_{xx}(x_0, y_0) \cdot f_{yy}(x_0, y_0) -
+          \big[f_{xy}(x_0, y_0)\big]^2 \]
+        </p>
+        <p>
+          onde \(f_{xx} = \frac{\partial^2 f}{\partial x^2}\),
+          \(f_{yy} = \frac{\partial^2 f}{\partial y^2}\) e
+          \(f_{xy} = \frac{\partial^2 f}{\partial x \partial y}\) são as
+          derivadas segundas no ponto crítico. A classificação:
+        </p>
+        <p>
+          \(D > 0\) e \(f_{xx} < 0\): <strong>máximo local</strong> — a
+          superfície forma um "cume".
+        </p>
+        <p>
+          \(D > 0\) e \(f_{xx} > 0\): <strong>mínimo local</strong> — a
+          superfície forma um "vale".
+        </p>
+        <p>
+          \(D < 0\): <strong>ponto de sela</strong> — a superfície tem forma de
+          sela, subindo numa direção e descendo em outra.
+        </p>
+        <p>
+          \(D = 0\): o teste é inconclusivo. No mapa de curvas de nível,
+          máximos e mínimos aparecem como curvas fechadas concêntricas; pontos de
+          sela aparecem como hipérboles se aproximando da origem.
+        </p>
+      </div>
+      <div class="mission-context">
+        <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Nas operações de
+        reconhecimento aéreo, a leitura correta de mapas de curvas de nível
+        permite identificar vales, cumes e passagens naturais sem sobrevoar
+        diretamente a região. O <strong>gradiente</strong> indica a direção de
+        maior variação de altitude — essencial para calcular rotas de ascensão
+        rápida. Os <strong>pontos críticos</strong> identificam picos ideais para
+        antenas e vales com cobertura natural. A classificação de pontos críticos
+        distingue locais seguros (mínimos protegidos) de locais expostos (pontos
+        de sela).
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong>
+        Durante a Crise dos Mísseis de 1962, a análise de curvas de nível de
+        mapas topográficos de Cuba foi fundamental para identificar locais de
+        instalação de lançadores soviéticos. A técnica, combinada com
+        fotografias aéreas de <span class="censored">altitude crítica</span>,
+        permitiu a localização precisa de
+        <span class="censored">sítios de lançamento</span> antes mesmo da
+        confirmação por
+        <span class="censored">satélites de reconhecimento</span>.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO CN-<span
+          class="censored"
+          >047</span
+        >-X
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-level-1a.html',
+            'exercicio-level-1b.html',
+            'exercicio-level-1c.html',
+            'exercicio-level-2a.html',
+            'exercicio-level-2b.html',
+            'exercicio-level-2c.html',
+            'exercicio-level-3a.html',
+            'exercicio-level-3b.html',
+            'exercicio-level-3c.html',
+            'exercicio-level-4a.html',
+            'exercicio-level-4b.html',
+            'exercicio-level-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

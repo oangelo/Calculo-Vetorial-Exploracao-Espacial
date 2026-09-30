@@ -1,0 +1,415 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h2>Redução a Integrais Duplas</h2>
+      <p>
+        Como medir o que ocupa espaço — o volume de um tanque, a massa de um
+        módulo orbital — quando o objeto é um sólido, e não uma chapa plana?
+        Somar ao longo de duas dimensões já não basta.
+      </p>
+      <p>
+        No capítulo 3, trocamos de coordenadas para domar fronteiras curvas em
+        duas dimensões. Agora o desafio sobe uma dimensão: integrar não sobre
+        áreas, mas sobre volumes.
+      </p>
+      <p class="history-insert">
+        Em 1962, John Glenn exigiu, no checklist pré-voo, que Katherine Johnson
+        conferisse os números calculados pelo computador — "se a moça disser
+        que estão certos, estou pronto." Johnson trabalhou na NACA/NASA; os
+        primeiros cinco anos, sob segregação formal em Langley.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Somando sobre um Volume</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Uma montanha de areia: para saber sua massa, somamos o peso de cada
+            camada. A integral tripla faz o mesmo — fatia o sólido em pedaços
+            pequenos e soma, camada por camada, pedaço por pedaço.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            A integral tripla estende a dupla em uma dimensão: em vez de somar
+            \(f(x,y)\) sobre uma área, somamos \(f(x,y,z)\) sobre um volume,
+            com elemento \(dV = dx\,dy\,dz\). Com \(f = 1\), o resultado é o
+            volume; com \(f = \rho\) (densidade), é a massa do objeto.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Definição por Somas de Riemann</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[\iiint_V f(x,y,z)\,dV = \lim_{n\to\infty} \sum_{i=1}^{n}
+          f(x_i^*, y_i^*, z_i^*)\,\Delta V_i\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>\(V\) = o sólido, uma região limitada em \(\mathbb{R}^3\)</li>
+          <li>\(\Delta V_i\) = volume do \(i\)-ésimo paralelepípedo da partição de \(V\)</li>
+          <li>\((x_i^*, y_i^*, z_i^*)\) = ponto amostral dentro desse paralelepípedo</li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> quando o limite existe e independe da
+          partição e dos pontos amostrais.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Fubini em Três Dimensões</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>
+            \[\iiint_V f\,dV = \iint_D \left[\int_{z_1(x,y)}^{z_2(x,y)}
+            f(x,y,z)\,dz\right] dA\]
+          </p>
+          <p>
+            <strong>Onde:</strong> \(D\) é a projeção de \(V\) no plano \(xy\);
+            \(z_1(x,y)\) e \(z_2(x,y)\) são as fronteiras inferior e superior
+            do sólido na vertical.
+          </p>
+          <p>
+            <strong>Validade:</strong> \(V\) do tipo \(z\)-simples — uma única
+            coluna vertical por ponto de \(D\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Geometricamente:</strong></p>
+          <p>
+            Para cada \((x,y)\) fixo, a integral interna soma \(f\) ao longo da
+            coluna vertical, de \(z_1(x,y)\) até \(z_2(x,y)\). O resultado é
+            uma função de \((x,y)\) — que a integral dupla sobre \(D\) agrega.
+          </p>
+          <p><strong>Ordem:</strong> integra-se \(z\) primeiro, a variável vertical; depois, a área.</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Volume do Tetraedro</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule o volume do tetraedro limitado pelos planos coordenados e
+            pelo plano \(x + y + z = 1\), no primeiro octante.
+          </p>
+          <p>
+            Sugestão: em \(z\), os limites vão de \(0\) até \(1 - x - y\); a
+            base \(D\) é o triângulo \(x \ge 0,\ y \ge 0,\ x + y \le 1\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Banheiros segregados da West Area — a calculadora mais requisitada
+            de Langley andava de prédio em prédio para achar um banheiro
+            "colorido". Quando o mais próximo ficava a quase um quilômetro, a
+            caminhada saía do expediente de quem fazia os cálculos.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Entre Paraboloides</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule \(\iiint_V (x^2 + y^2)\,dV\), em que \(V\) é o sólido entre
+            o paraboloide \(z = x^2 + y^2\) e o plano \(z = 9\).
+          </p>
+          <p>
+            Sugestão: integre \(z\) primeiro — de \(x^2 + y^2\) até \(9\); a
+            projeção \(D\) é o disco \(x^2 + y^2 \le 9\). No final, use
+            coordenadas polares.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A "computadora" ganhava menos que o engenheiro que conferia seu
+            trabalho; o crédito ia para quem assinava. A divisão do trabalho em
+            Langley era também uma divisão de cargos e salários — as mulheres
+            somavam, os homens assinavam.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · REDUÇÃO A INTEGRAIS DUPLAS</div>
+    <div class="slide-body">
+      <h3>Visualização — Soma de Paralelepípedos</h3>
+      <canvas
+        id="canvasSomatorio3D"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <p>
+          Clique no canvas para animar ou pausar. Cada paralelepípedo tem base
+          \(\Delta x\,\Delta y\) e altura \(f\) no ponto amostral; a soma dos
+          volumes aproxima o volume sob a superfície. Conforme a malha refina,
+          \(\sum f\,\Delta V\) converge para \(\iiint_V f\,dV\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasSomatorio3D');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var cx = W / 2;
+    var cy = H / 2 + 25;
+    var S = 62;
+    var animId = null;
+    var frame = 0;
+    var running = false;
+    var inited = false;
+    var L = 2.1;
+
+    function proj(x, y, z) {
+      return {
+        x: cx + (x - y) * S * 0.866,
+        y: cy + (x + y) * S * 0.5 - z * S * 0.5
+      };
+    }
+
+    function f(x, y) {
+      return Math.max(0, 4 - (x * x + y * y) / 2);
+    }
+
+    function poly(pts) {
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.closePath();
+    }
+
+    function strokeSeg(a, b) {
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+    }
+
+    function drawBox(x0, y0, x1, y1, z) {
+      var bFL = proj(x0, y0, 0);
+      var bFR = proj(x1, y0, 0);
+      var bBR = proj(x1, y1, 0);
+      var bBL = proj(x0, y1, 0);
+      var tFL = proj(x0, y0, z);
+      var tFR = proj(x1, y0, z);
+      var tBR = proj(x1, y1, z);
+      var tBL = proj(x0, y1, z);
+
+      poly([tFL, tFR, tBR, tBL]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.45)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+
+      poly([bFL, bFR, tFR, tFL]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.22)';
+      ctx.fill();
+      ctx.stroke();
+
+      poly([bFR, bBR, tBR, tFR]);
+      ctx.fillStyle = 'rgba(30, 136, 229, 0.12)';
+      ctx.fill();
+      ctx.stroke();
+    }
+
+    function draw(n) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.lineWidth = 0.5;
+      for (var g = 0; g <= 8; g++) {
+        var t = -L + (2 * L * g) / 8;
+        strokeSeg(proj(t, -L, 0), proj(t, L, 0));
+        strokeSeg(proj(-L, t, 0), proj(L, t, 0));
+      }
+
+      var dx = (2 * L) / n;
+      var sum = 0;
+      for (var j = 0; j < n; j++) {
+        for (var k = 0; k < n; k++) {
+          var x0 = -L + k * dx;
+          var y0 = -L + j * dx;
+          var z = f(x0 + dx / 2, y0 + dx / 2);
+          sum += z * dx * dx;
+          drawBox(x0, y0, x0 + dx, y0 + dx, z);
+        }
+      }
+
+      ctx.strokeStyle = 'rgba(255, 179, 0, 0.5)';
+      ctx.lineWidth = 1;
+      var m = 14;
+      for (var u = 0; u <= m; u++) {
+        for (var v = 0; v <= m; v++) {
+          var p = proj(-L + (2 * L * u) / m, -L + (2 * L * v) / m,
+            f(-L + (2 * L * u) / m, -L + (2 * L * v) / m));
+          if (v === 0) ctx.beginPath();
+          else ctx.lineTo(p.x, p.y);
+          if (v === m) ctx.stroke();
+        }
+      }
+      for (var vv = 0; vv <= m; vv++) {
+        for (var uu = 0; uu <= m; uu++) {
+          var q = proj(-L + (2 * L * uu) / m, -L + (2 * L * vv) / m,
+            f(-L + (2 * L * uu) / m, -L + (2 * L * vv) / m));
+          if (uu === 0) ctx.beginPath();
+          else ctx.lineTo(q.x, q.y);
+          if (uu === m) ctx.stroke();
+        }
+      }
+
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.5)';
+      ctx.lineWidth = 1;
+      strokeSeg(proj(0, 0, 0), proj(2.5, 0, 0));
+      strokeSeg(proj(0, 0, 0), proj(0, 2.5, 0));
+      strokeSeg(proj(0, 0, 0), proj(0, 0, 4.4));
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      var ex = proj(2.5, 0, 0);
+      var ey = proj(0, 2.5, 0);
+      var ez = proj(0, 0, 4.4);
+      ctx.fillText('x', ex.x + 6, ex.y + 4);
+      ctx.fillText('y', ey.x + 6, ey.y + 4);
+      ctx.fillText('z', ez.x - 16, ez.y - 6);
+
+      ctx.fillStyle = '#e0e0e0';
+      ctx.font = '13px monospace';
+      ctx.fillText('soma de paralelepípedos: ' + n + ' × ' + n, W / 2, 26);
+      ctx.fillStyle = '#FFB300';
+      ctx.fillText('V ≈ ' + sum.toFixed(2) + '  (limite ≈ 44.63)', W / 2, 46);
+      ctx.fillStyle = running ? '#81C784' : '#FFB300';
+      ctx.font = '12px monospace';
+      ctx.fillText(running ? 'clique para pausar' : 'clique para animar', W / 2, H - 14);
+      ctx.textAlign = 'start';
+    }
+
+    function animate() {
+      frame++;
+      var n = 2 + Math.floor(((frame % 160) / 160) * 10);
+      draw(n);
+      animId = requestAnimationFrame(animate);
+    }
+
+    function toggle() {
+      if (!canvas) return;
+      if (running) {
+        running = false;
+        if (animId) {
+          cancelAnimationFrame(animId);
+          animId = null;
+        }
+        draw(2);
+      } else {
+        running = true;
+        if (!animId) {
+          frame = 0;
+          animate();
+        }
+      }
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      canvas.addEventListener('click', toggle);
+      draw(2);
+    }
+
+    function cleanup() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      running = false;
+      frame = 0;
+      if (canvas && inited) {
+        canvas.removeEventListener('click', toggle);
+        inited = false;
+      }
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizSomatorio3D = { init: init, cleanup: cleanup };
+  })();
+</script>

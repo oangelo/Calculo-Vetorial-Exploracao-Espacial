@@ -1,0 +1,88 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Departamento de <span class="censored">Eletrostática</span> -
+    Painéis Solares Skylab [JUN/1973]
+  </div>
+  <p>
+    A equação da continuidade mostrou o teorema na mecânica dos fluidos. A mesma
+    estrutura aparece na eletrostática — e aqui nasce uma das quatro equações de
+    Maxwell. Vamos derivar a <strong>Lei de Gauss</strong> para o campo
+    elétrico.
+  </p>
+  <p>
+    O campo elétrico gerado por uma carga puntiforme \(q\) na origem é
+    \(\mathbf{E}(x,y,z) =
+    \dfrac{q}{4\pi\varepsilon_0}\dfrac{(x,y,z)}{(x^2+y^2+z^2)^{3/2}}\), onde
+    \(\varepsilon_0\) é a permissividade do vácuo. Em notação vetorial:
+    \(\mathbf{E} =
+    \dfrac{q}{4\pi\varepsilon_0}\dfrac{\mathbf{r}}{|\mathbf{r}|^3}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla \cdot \mathbf{E}\) para \(\mathbf{r}
+    \neq \mathbf{0}\) (fora da origem). Mostre que o divergente é identicamente
+    zero em todo lugar exceto na origem.
+  </p>
+  <p>
+    <strong>(b)</strong> Como \(\mathbf{E}\) não é definido na origem, não
+    podemos aplicar o Teorema da Divergência diretamente. Considere uma região
+    \(V\) que contém a origem. Exclua uma pequena esfera \(S_\varepsilon\) de
+    raio \(\varepsilon\) centrada na origem. Aplique o Teorema da Divergência na
+    região \(V \setminus S_\varepsilon\) (entre a superfície externa \(\partial
+    V\) e a superfície interna \(S_\varepsilon\)).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o fluxo de \(\mathbf{E}\) através de
+    \(S_\varepsilon\) (com normal apontando para dentro da esfera, i.e., para
+    fora de \(V \setminus S_\varepsilon\)) e mostre que ele é independente de
+    \(\varepsilon\). Conclua que \(\displaystyle\iint_{\partial V} \mathbf{E}
+    \cdot d\mathbf{S} = \frac{q}{\varepsilon_0}\) para
+    <em>qualquer</em> superfície fechada que envolva a carga — esta é a
+    <strong>Lei de Gauss</strong>.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para (a), note que \(\frac{\mathbf{r}}{|\mathbf{r}|^3} =
+      \frac{\hat{\mathbf{r}}}{r^2}\). Em coordenadas esféricas, o divergente de
+      um campo radial \(\frac{f(r)}{r^2}\hat{\mathbf{r}}\) é
+      \(\frac{1}{r^2}\frac{d}{dr}(r^2 f(r))\). Para (b), na região \(V \setminus
+      S_\varepsilon\), o divergente é zero, então o fluxo pela fronteira externa
+      cancela o da fronteira interna.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\mathbf{E} =
+        \frac{q}{4\pi\varepsilon_0}\frac{\hat{\mathbf{r}}}{r^2}\). O divergente
+        de \(\frac{\hat{\mathbf{r}}}{r^2}\) é
+        \(\frac{1}{r^2}\frac{d}{dr}\left(r^2 \cdot \frac{1}{r^2}\right) =
+        \frac{1}{r^2}\frac{d}{dr}(1) = 0\) para \(r \neq 0\). Logo, \(\nabla
+        \cdot \mathbf{E} = 0\) fora da origem.
+      </p>
+      <p>
+        (b) Na região \(V \setminus S_\varepsilon\), o divergente é zero. Pelo
+        Teorema da Divergência: \(0 = \iiint_{V \setminus S_\varepsilon} 0\,dV =
+        \iint_{\partial V} \mathbf{E}\cdot d\mathbf{S} + \iint_{S_\varepsilon}
+        \mathbf{E}\cdot d\mathbf{S}\), onde a normal de \(S_\varepsilon\) aponta
+        <strong>para dentro</strong> da esfera (para fora de \(V \setminus
+        S_\varepsilon\)).
+      </p>
+      <p>
+        (c) Na esfera \(S_\varepsilon\), \(\mathbf{E} =
+        \frac{q}{4\pi\varepsilon_0}\frac{\hat{\mathbf{r}}}{\varepsilon^2}\) e
+        \(d\mathbf{S} =
+        -\hat{\mathbf{r}}\,\varepsilon^2\sin\phi\,d\phi\,d\theta\) (normal para
+        dentro). O fluxo por \(S_\varepsilon\): \(\iint_{S_\varepsilon}
+        \mathbf{E}\cdot d\mathbf{S} =
+        -\frac{q}{4\pi\varepsilon_0}\cdot\frac{1}{\varepsilon^2}\cdot
+        4\pi\varepsilon^2 = -\frac{q}{\varepsilon_0}\). Logo, \(\iint_{\partial
+        V} \mathbf{E}\cdot d\mathbf{S} = \frac{q}{\varepsilon_0}\). Este
+        resultado não depende de \(\varepsilon\) nem da forma de \(\partial V\)
+        — é a <strong>Lei de Gauss</strong>.
+      </p>
+    </div>
+  </details>
+</li>
