@@ -10,3 +10,4 @@
 # 2026 - 1
 
 - [P1](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/provas/p1-2026.1-gab.html)
+- [P2](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/provas/p2-2026.1-gab.html)

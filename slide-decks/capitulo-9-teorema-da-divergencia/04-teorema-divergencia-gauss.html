@@ -1,0 +1,259 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h2>Aplicações e Síntese</h2>
+      <p>
+        O teorema já foi enunciado e verificado. E se fosse usado ao contrário —
+        não para calcular um fluxo, mas para derivar leis? Escreva um balanço
+        integral para um volume arbitrário, aplique o teorema e, como o volume é
+        qualquer, iguale os integrandos: o balanço global vira uma lei local.
+      </p>
+      <p>
+        No tópico anterior, o teorema trocou uma integral de superfície por uma
+        integral de volume. Agora ele troca balanços globais por equações
+        diferenciais — e fecha a família de teoremas construída ao longo do
+        curso.
+      </p>
+      <p class="history-insert">
+        O sistema que 'ganhou' a corrida espacial deu ao mundo a internet. Veja
+        onde estamos.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>O Teorema como Ferramenta</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Medir o que passa pela porta de um depósito a cada instante, ou
+            auditar tudo o que foi produzido e consumido lá dentro: dois
+            caminhos para o mesmo saldo. O teorema garante que os números
+            coincidem.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            O teorema deixa de ser objeto de verificação e passa a ser
+            instrumento de derivação: escreva a lei de conservação em forma
+            integral para um volume arbitrário; aplique o teorema; como vale
+            para todo volume, os integrandos são iguais — e a lei diferencial
+            aparece.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>Conservação de Massa — Equação da Continuidade</h3>
+      <div class="math-section">
+        <p>
+          <strong>Lei integral (balanço):</strong> a massa que atravessa a
+          fronteira, por unidade de tempo, é a variação negativa da massa
+          interna:
+        </p>
+        <p>
+          \[ \frac{d}{dt} \iiint_V \rho \, dV = -\iint_{\partial V} \rho \, \vec
+          v \cdot \hat n \, dS \]
+        </p>
+      </div>
+      <div class="formula-spotlight">
+        <p>
+          \[ \frac{\partial \rho}{\partial t} + \nabla \cdot (\rho \vec v) = 0
+          \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(\rho(x,y,z,t)\) = densidade; \(\vec
+          v(x,y,z,t)\) = velocidade; \(V\) = volume arbitrário.
+        </p>
+        <p>
+          <strong>Como se obtém:</strong> aplicando o teorema ao lado direito da
+          lei integral; como \(V\) é arbitrário, os integrandos se igualam.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\rho\) e \(\vec v\) de classe \(C^1\);
+          ausência de fontes ou sumidouros internos.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>Carga Puntual e a Singularidade</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p>
+            <strong>Definição:</strong> campo elétrico de uma carga puntual
+            \(q\) na origem:
+          </p>
+          <p>
+            \[ \vec E = \frac{q}{4\pi\varepsilon_0} \frac{\vec r}{\lVert \vec r
+            \rVert^3} \]
+          </p>
+          <p>
+            <strong>Onde:</strong> \(\varepsilon_0\) = permissividade do vácuo;
+            a magnitude é \(q/(4\pi\varepsilon_0 r^2)\).
+            <strong>Validade:</strong> \(\vec r \neq \vec 0\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p>
+            <strong>Geometricamente:</strong> fora da origem, \(\nabla \cdot
+            \vec E = 0\) — o campo não tem fontes no espaço vazio. Na origem ele
+            explode: \(\vec E\) não é \(C^1\) ali, e o teorema não pode ser
+            aplicado diretamente a volumes que contêm o ponto. É preciso excluir
+            a singularidade.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>Lei de Gauss</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \iint_{\partial V} \vec E \cdot \hat n \, dS =
+          \frac{Q_{\text{int}}}{\varepsilon_0} \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(Q_{\text{int}}\) = carga total encerrada por
+          \(\partial V\); \(\varepsilon_0\) = permissividade do vácuo.
+        </p>
+        <p>
+          <strong>Como se obtém:</strong> isole a origem com uma esfera
+          \(S_\varepsilon\); aplique o teorema à região \(V\) menos a bola, onde
+          \(\nabla \cdot \vec E = 0\); o fluxo por \(S_\varepsilon\) tende a
+          \(q/\varepsilon_0\) — e o resultado não depende da forma de \(\partial
+          V\).
+        </p>
+        <p>
+          <strong>Uso com simetria:</strong> com simetria esférica, \(\vec E =
+          E(r)\hat r\) e \(E\) é constante sobre a gaussiana \(S_r\); então \(E
+          \cdot 4\pi r^2 = Q_{\text{int}}/\varepsilon_0\) — o campo é obtido sem
+          integrar o campo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>A Família dos Teoremas Fundamentais</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \text{TFC (1D)} \longrightarrow \text{Green (2D)} \longrightarrow
+          \text{Stokes (2D} \to \text{3D)} \longrightarrow \text{Gauss (3D)} \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> TFC = Teorema Fundamental do Cálculo; cada
+          teorema é a versão do mesmo padrão na dimensão correspondente.
+        </p>
+        <p>
+          <strong>Validade:</strong> campos e fronteiras suaves o bastante para
+          as derivadas existirem — as hipóteses de cada teorema.
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            Padrão comum: a integral da derivada sobre o interior é igual à
+            integral sobre a fronteira.
+          </li>
+          <li>
+            A derivada evolui: derivada comum → rotacional (2D) → rotacional
+            (3D) → divergente.
+          </li>
+          <li>
+            A dimensão sobe: 1 → 2 → superfície no espaço → volume; a fronteira
+            acompanha: pontos → curva → curva no espaço → superfície fechada.
+          </li>
+          <li>
+            O Teorema da Divergência fecha a família construída ao longo do
+            curso.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Lei de Gauss com Simetria Esférica</h3>
+      <div class="dual-panel">
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            O paper de 1936 criou a computação. A computação criou a internet. A
+            internet criou a ferramenta de vigilância mais eficiente já
+            construída. Stálin sonhava com isso.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="problem-section">
+          <p>
+            Uma esfera isolante de raio \(R\) possui carga total \(Q\)
+            distribuída uniformemente em seu volume. Use a Lei de Gauss e
+            argumentos de simetria para determinar o campo elétrico \(\vec E\)
+            em um ponto a distância \(r \ge R\) e em um ponto a distância \(r
+            \lt R\) do centro.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · APLICAÇÕES E SÍNTESE</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Verificando a Continuidade</h3>
+      <div class="problem-section">
+        <p>
+          Um fluido escoa com velocidade \(\vec v = \langle x, y, z\rangle\) e
+          densidade \(\rho(t) = \rho_0 e^{-3t}\), com \(\rho_0\) constante.
+          Mostre que este escoamento satisfaz a equação da continuidade.
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="history-section">
+        <span class="history-label">CONTEXTO</span>
+        <p>
+          O reator RBMK não tinha contenção física completa. Construir uma
+          estrutura de contenção por reator teria mais que dobrado o custo e o
+          tempo de construção de cada usina.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+</section>

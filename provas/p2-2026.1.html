@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>P2 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 9pt;
+        line-height: 1.3;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        height: 27.7cm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+      .main-header {
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+      }
+      .main-header h1 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: bold;
+      }
+      .main-header h2 {
+        margin: 0;
+        font-size: 10pt;
+        font-weight: normal;
+      }
+      .content {
+        display: flex;
+        gap: 1.5cm;
+        flex-grow: 1;
+      }
+      .column {
+        flex: 1;
+        min-width: 0;
+      }
+      .student-details {
+        margin-bottom: 20px;
+      }
+      .student-details div {
+        margin-bottom: 4px;
+      }
+      .student-details span {
+        border-bottom: 1px solid #000;
+        min-width: 350px;
+        display: inline-block;
+        margin-left: 5px;
+      }
+      .grade-table {
+        margin-bottom: 10px;
+      }
+      .grade-table table {
+        border-collapse: collapse;
+        font-size: 8pt;
+        text-align: center;
+        width: 100%;
+      }
+      .grade-table th,
+      .grade-table td {
+        border: 1px solid #000;
+        padding: 4px;
+        height: 0.8cm;
+      }
+      .instructions {
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 8.5pt;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 10pt;
+        color: #000;
+        border-left: 3px solid #000;
+        padding: 5px 8px;
+        background-color: #f5f5f5;
+        margin-bottom: 8px;
+      }
+      .subquestion {
+        margin: 8px 0 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-header">
+        <h1>Universidade do Estado do Rio de Janeiro - UERJ</h1>
+        <h2>P2 – 2026.1 - Cálculo Vetorial</h2>
+      </div>
+      <div class="content">
+        <div class="column">
+          <div class="student-details">
+            <div><strong>Curso:</strong> <span></span></div>
+            <div><strong>Nome:</strong> <span></span></div>
+            <div><strong>Matrícula:</strong> <span></span></div>
+          </div>
+          <!-- QUESTÃO 1 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 1 (2,5 pts): Coordenadas esféricas e Jacobiano
+            </div>
+            <p>
+              Considere as coordenadas esféricas \((\rho,\theta,\phi)\), nas
+              quais \(\phi\) é o ângulo polar medido a partir do eixo \(z\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,7)</strong>
+              Faça um esboço dos eixos coordenados e localize um ponto genérico
+              \(P=(x,y,z)\), indicando as coordenadas \(\rho\), \(\theta\) e
+              \(\phi\). Em seguida, escreva \(x\), \(y\) e \(z\) em função de
+              \(\rho\), \(\theta\) e \(\phi\) e indique os intervalos de
+              variação de cada coordenada.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,9)</strong>
+              Escreva a matriz Jacobiana
+              \(\frac{\partial(x,y,z)}{\partial(\rho,\theta,\phi)}\) e calcule
+              seu determinante. Interprete geometricamente o resultado.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,9)</strong>
+              Use a mudança de variáveis para calcular o volume da esfera de
+              raio \(R\) por integral tripla em coordenadas esféricas e
+              verifique o resultado comparando com a fórmula conhecida
+              \(V=\frac{4}{3}\pi R^3\).
+            </div>
+          </div>
+          <!-- QUESTÃO 2 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 2 (2,5 pts): Cilindro e paraboloide
+            </div>
+            <p>
+              Considere o sólido \(S\) limitado lateralmente pelo cilindro
+              \(x^2+y^2=a^2\), inferiormente pelo paraboloide \(z=x^2+y^2\) e
+              superiormente pelo plano \(z=h\), com \(h>a^2>0\), e o cilindro
+              reto \(C\) de raio \(a\) e altura \(h\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,6)</strong>
+              Esboce a projeção de \(S\) no plano \(xy\), descreva \(S\) em
+              coordenadas cilíndricas e monte a integral que fornece seu volume.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Calcule o volume da região entre o cilindro e o paraboloide, até o
+              plano \(z=h\), e compare com o volume do cilindro reto \(C\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,6)</strong>
+              Suponha que o sólido tenha densidade
+              \(\delta(x,y,z)=k\sqrt{x^2+y^2}\), com \(k>0\). Monte e calcule a
+              massa de \(S\).
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,5)</strong>
+              Escreva as integrais que definem \(\bar x\), \(\bar y\) e \(\bar
+              z\) do centro de massa de \(S\) com a densidade do item (c) e
+              mostre, por argumentos de simetria do domínio e da densidade, que
+              \(\bar x=\bar y=0\).
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="grade-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Q1</th>
+                  <th>Q2</th>
+                  <th>Q3</th>
+                  <th>Q4</th>
+                  <th>TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="instructions">
+            Instruções: Resolva todas as questões apresentando os cálculos
+            detalhadamente. Cada questão vale 2,5 pontos.
+          </div>
+          <!-- QUESTÃO 3 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 3 (2,5 pts): Cicloide e integrais de linha
+            </div>
+            <p>
+              Um cabo flexível segue a curva \(C\) dada por \(\mathbf
+              r(t)=(t-\sin t,\;1-\cos t)\), com \(0\le t\le 2\pi\), e tem
+              densidade linear \(\lambda(x,y)=ky\), com \(k>0\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,8)</strong>
+              Esboce a curva \(C\), determine \(\mathbf r'(t)\), \(\|\mathbf
+              r'(t)\|\) e \(ds\). Calcule o comprimento do cabo.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,9)</strong>
+              Monte e calcule a integral que fornece a massa do cabo.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,8)</strong>
+              Reparametrize a curva por \(t=2\pi u\), com \(u\in[0,1]\), e
+              mostre que a integral da massa fornece o mesmo valor, explicitando
+              como \(ds\) se transforma.
+            </div>
+          </div>
+          <!-- QUESTÃO 4 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 4 (2,5 pts): Campos conservativos e circuito fechado
+            </div>
+            <p>
+              Considere os campos vetoriais \(\mathbf F_1(x,y,z)=(y+z,\;x+z,\;
+              x+y)\) e \(\mathbf F_2(x,y,z)=(-y,\;x,\;0)\), e o circuito fechado
+              \(C\) dado pela circunferência unitária no plano \(xy\), \(\mathbf
+              r(t)=(\cos t,\;\sin t,\;0)\), com \(0\le t\le 2\pi\), percorrida
+              uma vez no sentido anti-horário.
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,6)</strong>
+              Determine qual dos dois campos é conservativo, verificando o
+              rotacional de cada um.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,6)</strong>
+              Para o campo conservativo, determine um potencial escalar \(f\)
+              tal que \(\nabla f=\mathbf F\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,8)</strong>
+              Calcule \(\oint_C\mathbf F\cdot d\mathbf r\) para os dois campos.
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,5)</strong>
+              Interprete os resultados de (c) em relação aos itens (a) e (b).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
