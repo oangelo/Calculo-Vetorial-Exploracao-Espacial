@@ -1,0 +1,217 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h2>Condições de Integrabilidade</h2>
+      <p>
+        Nem toda "densidade" é integrável. Uma função pode explodir perto de um
+        ponto, ou oscilar tanto que a soma de Riemann nunca estabiliza. Quando
+        podemos ter certeza de que \(\iiint_V f\,dV\) existe?
+      </p>
+      <p>
+        Na seção anterior, reduzimos integrais triplas a integrais duplas com
+        Fubini — assumindo, em silêncio, que a integral existia. Antes de
+        calcular volume, massa ou carga, é preciso garantir que o cálculo tem
+        sentido.
+      </p>
+      <p class="history-insert">
+        O grupo que fazia o trabalho mais crítico da NASA — as West Area
+        Computers — tinha apelido de aparelho: "computadoras humanas". Mulheres,
+        muitas negras, em instalações segregadas, sem título de engenheira.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Três Exigências — Nenhuma é Continuidade</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>1. Limitada</strong></p>
+          <p>
+            A função não pode explodir: existem \(m\) e \(M\) com \(m \le
+            f(x,y,z) \le M\) em todo o sólido.
+          </p>
+        </div>
+        <div>
+          <p><strong>2. Descontinuidades Raras</strong></p>
+          <p>
+            Os pontos onde \(f\) falha não ocupam espaço: o conjunto \(D_f\) tem
+            volume zero.
+          </p>
+        </div>
+        <div>
+          <p><strong>3. Domínio Finito</strong></p>
+          <p>
+            \(V\) cabe dentro de uma esfera de raio finito — somar sobre o
+            infinito não é somar.
+          </p>
+        </div>
+      </div>
+      <p>
+        A ideia antes da fórmula: para somar, a função precisa falhar em poucos
+        lugares — e nenhum desses lugares pode preencher volume. Continuidade em
+        todo ponto seria luxo; as três condições são o suficiente.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Teorema das Condições</h3>
+      <div class="math-section">
+        <p>
+          <strong>Medida nula:</strong> um conjunto \(E \subset \mathbb{R}^3\)
+          tem medida nula se pode ser coberto por paralelepípedos retangulares
+          cujo volume total é arbitrariamente pequeno.
+        </p>
+      </div>
+      <div class="formula-spotlight">
+        <p>\[\iiint_V f(x,y,z)\,dV\]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Existe se</strong> \(f\) é limitada, \(D_f\) tem medida nula e
+          \(V\) é limitado.
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(f\) limitada = existem \(m\) e \(M\) com \(m \le f(x,y,z) \le M\)
+            em todo \(V\)
+          </li>
+          <li>
+            \(D_f\) = conjunto dos pontos de \(V\) onde \(f\) é descontínua
+          </li>
+          <li>\(V\) limitado = contido em alguma esfera de raio finito</li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> as três condições garantem que o limite das
+          somas de Riemann existe.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Medida Nula: a Dimensão Muda o Jogo</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Em \(\mathbb{R}^2\):</strong></p>
+          <p>
+            Pontos e curvas têm área zero. Uma função descontínua ao longo de
+            uma curva ainda é integrável no plano.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Em \(\mathbb{R}^3\):</strong></p>
+          <p>
+            Pontos, curvas e superfícies têm volume zero. Um plano inteiro de
+            descontinuidade tem espessura zero — não impede a integral tripla.
+          </p>
+        </div>
+      </div>
+      <p>
+        Quanto maior a dimensão, mais "perdoável" a falha: em três dimensões,
+        muito mais tipos de descontinuidade são aceitáveis — todos os que não
+        ocupam volume.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Verificando as Condições</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Seja \(f(x,y,z) = 2x + yz\) sobre o paralelepípedo \(V =
+            [0,1]\times[0,2]\times[0,3]\). Verifique, uma a uma, as três
+            condições de integrabilidade e conclua que \(\iiint_V f\,dV\)
+            existe.
+          </p>
+          <p>
+            Sugestão: \(f\) é polinomial — onde estão as descontinuidades dela?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Pessoas com a formação para fazer essas contas existiam. Quantas
+            foram mantidas fora das salas onde elas eram feitas?
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Salto Sobre um Plano</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Seja \(f(x,y,z) = 1\) se \(z \ge 0\), e \(f(x,y,z) = 0\) se \(z &lt;
+            0\), sobre \(V = [-1,1]\times[-1,1]\times[-1,1]\). Verifique as três
+            condições: \(f\) é limitada? O conjunto \(D_f\) de descontinuidades
+            ocupa volume? \(V\) é limitado? Conclua que \(\iiint_V f\,dV\)
+            existe e calcule o valor.
+          </p>
+          <p>
+            Sugestão: \(f\) salta apenas no plano \(z = 0\) — um plano tem
+            espessura zero.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Máquinas de calcular mecânicas, filas de trabalho. O nome no
+            relatório raramente era o de quem calculou.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · CONDIÇÕES DE INTEGRABILIDADE</div>
+    <div class="slide-body">
+      <h3>Exemplo 3 — Quando a Integral Falha</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Considere \(F(x,y,z) = \dfrac{1}{(x^2+y^2+z^2)^{3/2}}\) sobre a bola
+            unitária \(x^2+y^2+z^2 \le 1\). Argumente por que \(F\) não satisfaz
+            as condições de integrabilidade: o que acontece com \(F\) perto da
+            origem? Conclua o que isso significa para \(\iiint_V F\,dV\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Em junho de 1965, o Gemini 4 orbitou 62 vezes e levou a primeira
+            caminhada espacial americana. Bastou um ponto singular para
+            invalidar a integral — e uma regra de papel para manter a melhor
+            calculadora de Langley fora da engenharia.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH4-1965 · CAPÍTULO 4</div>
+  </section>
+</section>

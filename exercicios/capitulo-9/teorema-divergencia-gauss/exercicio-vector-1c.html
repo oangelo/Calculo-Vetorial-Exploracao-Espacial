@@ -1,0 +1,66 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Setor de <span class="censored">Escolha de Estratégia</span> -
+    Spacelab-1 [NOV/1983]
+  </div>
+  <p>
+    Você já calculou o fluxo por caixas e esferas usando o teorema. Mas nem
+    sempre o teorema é a melhor opção — às vezes o cálculo direto do fluxo é
+    mais simples. O agente precisa saber <strong>escolher</strong> antes de
+    calcular.
+  </p>
+  <p>
+    Três cenários de cálculo de fluxo por uma superfície fechada. Para cada um,
+    decida se usa o Teorema da Divergência (via divergente) ou o cálculo direto
+    (via parametrização). Justifique em uma frase e calcule.
+  </p>
+  <p>
+    <strong>(a)</strong> Campo \(\mathbf{F}(x,y,z) = (x^2+y^2,\, y^2+z^2,\,
+    z^2+x^2)\) através da esfera \(x^2+y^2+z^2 = 4\). Qual estratégia escolher?
+  </p>
+  <p>
+    <strong>(b)</strong> Campo \(\mathbf{F}(x,y,z) = (0,\, 0,\, z^2)\) através
+    do cubo \([-1,1]^3\). Qual estratégia?
+  </p>
+  <p>
+    <strong>(c)</strong> Campo \(\mathbf{F}(x,y,z) = (yz,\, xz,\, xy)\) através
+    do cubo \([0,1]^3\). Qual estratégia? Neste caso, calcule
+    <strong>diretamente pelo teorema</strong> e observe o resultado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Compare a dificuldade de calcular o divergente com a
+      dificuldade de parametrizar a superfície e calcular \(\mathbf{F} \cdot
+      \mathbf{n}\). Se o divergente for simples (ou zero), o teorema vence. Se a
+      superfície for plana e o campo tiver componente na normal trivial, o
+      cálculo direto pode ser mais rápido.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Divergente: \(\nabla \cdot \mathbf{F} = 2x + 2y + 2z\). Pelo
+        teorema: \(\iiint_V 2(x+y+z)\,dV\). Por simetria da esfera centrada na
+        origem, as integrais de \(x\), \(y\) e \(z\) são zero. Resultado: fluxo
+        = 0. Estratégia: teorema (divergente simples, simetria elimina tudo).
+      </p>
+      <p>
+        (b) Divergente: \(\nabla \cdot \mathbf{F} = 0 + 0 + 2z = 2z\). Pelo
+        teorema: \(\iiint_{[-1,1]^3} 2z\,dV\). Por simetria do cubo centrado na
+        origem, \(\int_{-1}^1 z\,dz = 0\). Resultado: fluxo = 0. Também dá para
+        ver pelo cálculo direto: o campo \((0,0,z^2)\) só tem componente \(z\),
+        e nas faces \(z=1\) e \(z=-1\) as contribuições são \(1 \cdot 4 = 4\) e
+        \(-1 \cdot 4 = -4\), cancelando. Ambas funcionam.
+      </p>
+      <p>
+        (c) Divergente: \(\nabla \cdot \mathbf{F} = 0 + 0 + 0 = 0\). Pelo
+        teorema, o fluxo é <strong>zero</strong>. O divergente nulo garante que
+        o fluxo por qualquer superfície fechada é zero — sem cálculo de
+        integral. Este é o caso mais forte a favor do teorema.
+      </p>
+    </div>
+  </details>
+</li>

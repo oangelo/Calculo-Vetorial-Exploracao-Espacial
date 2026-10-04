@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Análise Avançada — Projeto Mercury [DOCUMENTO
+    ULTRASECRETO, 1958]
+  </div>
+  <p>
+    Nos exercícios anteriores, a divergência era constante ou simplesmente
+    positiva/negativa. Agora vamos investigar um campo onde a divergência
+    <em>muda de sinal</em> dependendo da posição — regiões que são fontes e
+    regiões que são sumidouros, lado a lado.
+  </p>
+  <p>
+    Considere \(\vec{F}(x,y,z) = (xz,\; yz,\; \frac{1}{2}z^2 - x^2 - y^2)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla \cdot \vec{F}\). Em quais variáveis o
+    resultado depende?
+  </p>
+  <p>
+    <strong>(b)</strong> Analise o sinal da divergência: para quais valores de
+    \(z\) a divergência é positiva? Negativa? Zero? (Dica: a equação \(\nabla
+    \cdot \vec{F} = 0\) define uma superfície no espaço.)
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva qualitativamente o comportamento do campo. Se
+    este fosse um campo de velocidades de um fluido, onde o fluido estaria se
+    expandindo e onde estaria se comprimindo? Onde as fontes são mais intensas?
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Cálculo da divergência:</strong></p>
+      <p>
+        \[\frac{\partial}{\partial x}(xz) = z\] \[\frac{\partial}{\partial
+        y}(yz) = z\] \[\frac{\partial}{\partial z}\left(\frac{1}{2}z^2 - x^2 -
+        y^2\right) = z\]
+      </p>
+      <p>\[\nabla \cdot \vec{F} = z + z + z = 3z\]</p>
+      <p>A divergência depende apenas de \(z\).</p>
+
+      <p><strong>(b) Análise de sinal:</strong></p>
+      <p>\(\nabla \cdot \vec{F} = 3z\):</p>
+      <p>
+        \(z > 0\): divergência positiva — <strong>fontes</strong> na metade
+        superior do espaço.<br />
+        \(z < 0\): divergência negativa — <strong>sumidouros</strong> na metade
+        inferior.<br />
+        \(z = 0\): divergência zero — o plano \(xy\) é a "fronteira" entre
+        fontes e sumidouros.
+      </p>
+
+      <p><strong>(c) Comportamento qualitativo:</strong></p>
+      <p>
+        O campo se comporta como um "ciclone": fluido é sugado para baixo
+        (sumidouro em \(z < 0\)) e expulso para cima (fonte em \(z > 0\)). O
+        plano \(xy\) é uma superfície de transição onde não há criação nem
+        destruição de fluxo.
+      </p>
+      <p>
+        As fontes são mais intensas onde \(|z|\) é grande — longe do plano
+        \(xy\), a taxa de expansão/compressão é máxima. No plano \(xy\) (\(z =
+        0\)), o campo não se expande nem comprime.
+      </p>
+      <p>
+        <em>Aplicação:</em> Esse tipo de campo aparece em convecção — ar quente
+        sobe (fonte em \(z > 0\)), ar frio desce (sumidouro em \(z < 0\)). A
+        divergência variável mostra onde o movimento é mais intenso.
+      </p>
+    </div>
+  </details>
+</li>

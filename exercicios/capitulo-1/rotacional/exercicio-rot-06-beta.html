@@ -1,0 +1,88 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-06-BETA</div>
+  <div class="context">
+    ORIGEM: Vórtice Atmosférico — Previsão de Trajetória Apollo
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No EX-04, o campo \((0,x,0)\)
+    tinha rotacional \((0,0,1)\). No EX-05, o campo radial \((x,y,z)\) tinha
+    rotacional zero. Agora vamos ver o caso mais "puro" de rotação: um campo que
+    circula ao redor da origem com intensidade constante.
+  </div>
+
+  <p>
+    Nos dois exercícios anteriores, vimos um campo que gira (rotacional
+    não-zero) e um que não gira (rotacional zero). Agora vamos analisar o campo
+    \(\vec{F}(x,y,z) = (-y, x, 0)\): em cada ponto do plano \(xy\), o vetor é
+    perpendicular ao vetor posição — é um campo puramente circular.
+  </p>
+
+  <p>
+    <strong>(a)</strong> Identifique \(P\), \(Q\) e \(R\). Calcule as derivadas
+    parciais \(\frac{\partial R}{\partial y}\) e \(\frac{\partial Q}{\partial
+    z}\). Qual é a componente \(i\)?
+  </p>
+
+  <p>
+    <strong>(b)</strong> Calcule a componente \(j\): \(\frac{\partial
+    P}{\partial z} - \frac{\partial R}{\partial x}\).
+  </p>
+
+  <p>
+    <strong>(c)</strong> Calcule a componente \(k\): \(\frac{\partial
+    Q}{\partial x} - \frac{\partial P}{\partial y}\). Compare com o rotacional
+    de \((0, x, 0)\) do EX-04.
+  </p>
+
+  <p>
+    <strong>(d)</strong> Desenhe o campo nos pontos \((1,0)\), \((0,1)\),
+    \((-1,0)\), \((0,-1)\). Todas as setas têm o mesmo comprimento? Como isso
+    difere do campo \((0, x, 0)\) do EX-02?
+  </p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para a componente \(k\), note que \(\frac{\partial
+      Q}{\partial x} = \frac{\partial (x)}{\partial x} = 1\) e \(\frac{\partial
+      P}{\partial y} = \frac{\partial (-y)}{\partial y} = -1\). A componente
+      \(k\) será \(1 - (-1) = 2\).
+    </div>
+  </details>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) \(P = -y\), \(Q = x\), \(R = 0\). \(\frac{\partial R}{\partial y} =
+        0\), \(\frac{\partial Q}{\partial z} = 0\). Componente \(i\): \(0 - 0 =
+        0\).
+      </p>
+
+      <p>
+        (b) \(\frac{\partial P}{\partial z} = 0\), \(\frac{\partial R}{\partial
+        x} = 0\). Componente \(j\): \(0 - 0 = 0\).
+      </p>
+
+      <p>
+        (c) \(\frac{\partial Q}{\partial x} = 1\), \(\frac{\partial P}{\partial
+        y} = -1\). Componente \(k\): \(1 - (-1) = 2\). \(\nabla \times \vec{F} =
+        (0, 0, 2)\). Comparando com o EX-04: o campo \((0, x, 0)\) tinha
+        rotacional \((0,0,1)\). Este campo tem rotacional \((0,0,2)\) — gira o
+        dobro de rápido! Isso faz sentido: o campo \((-y, x, 0)\) circula "por
+        inteiro", enquanto \((0, x, 0)\) tinha apenas componente \(y\).
+      </p>
+
+      <p>
+        (d) Em \((1,0)\): \(\vec{F} = (0, 1)\). Em \((0,1)\): \(\vec{F} = (-1,
+        0)\). Em \((-1,0)\): \(\vec{F} = (0, -1)\). Em \((0,-1)\): \(\vec{F} =
+        (1, 0)\). Todas as setas têm comprimento 1 — o campo é uniforme em
+        magnitude e puramente circular. Diferente de \((0, x, 0)\), onde a
+        intensidade dependia de \(x\).
+      </p>
+    </div>
+  </details>
+</li>

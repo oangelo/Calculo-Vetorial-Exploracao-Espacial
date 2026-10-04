@@ -1,0 +1,482 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h2>Por Que o Atalho Funciona?</h2>
+      <p>
+        A seção 03 aplicou \(\phi(B) - \phi(A)\) e o trabalho saiu de graça —
+        sem parametrizar nada. Mas por que avaliar uma função nos extremos
+        esgota a curva inteira?
+      </p>
+      <p>
+        A resposta está na regra da cadeia: ao longo da curva, o campo
+        \(\vec{F} = \nabla\phi\) se enrosca na tangente e vira a derivada de
+        uma função composta. Este tópico desembrulha essa derivada — e mostra
+        como construir \(\phi\) do zero quando ninguém a entrega pronta.
+      </p>
+      <p class="history-insert">
+        Katherine Johnson trabalhou 33 anos de carreira na NASA. O
+        reconhecimento público veio só em 2015.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Uma Derivada Embrulhada</h3>
+      <p>
+        Ao longo de uma curva, o integrando \(\vec{F}\cdot d\vec{r}\) não é
+        um vetor solto: é a derivada de uma função composta disfarçada. Se
+        \(\vec{F} = \nabla\phi\), o produto escalar com o vetor tangente é
+        exatamente a regra da cadeia de \(\phi(\vec{r}(t))\).
+      </p>
+      <p>
+        Analogia: a regra da cadeia é a ponte entre o campo e a função — ela
+        conecta cada flecha do campo à variação da "altitude" \(\phi\) ao
+        longo do movimento. O que parece uma soma de vetores é, na verdade,
+        uma soma de derivadas de uma única função escalar.
+      </p>
+      <div class="math-section">
+        <p>
+          Ao longo da curva, a conta colapsa:
+          \[ \vec{F}\cdot d\vec{r} = \nabla\phi\cdot\vec{r}'(t)\,dt = \frac{d}{dt}\phi(\vec{r}(t))\,dt \]
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Demonstração do Teorema Fundamental</h3>
+      <div class="formula-spotlight">
+        <p>\[ \int_C \vec{F}\cdot d\vec{r} = \int_a^b \frac{d}{dt}\phi(\vec{r}(t))\,dt = \phi(B) - \phi(A) \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{r}(t)\), \(a \le t \le b\) = parametrização de \(C\), com
+            \(A = \vec{r}(a)\) e \(B = \vec{r}(b)\).
+          </li>
+          <li>
+            \(\vec{F} = \nabla\phi\) = campo conservativo; a regra da cadeia
+            converte \(\vec{F}\cdot d\vec{r}\) em
+            \(\phi'(\vec{r}(t))\,dt\).
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(C\) suave por partes e \(\phi\) de
+          classe \(C^1\) — o Teorema Fundamental do Cálculo 1D encerra a
+          conta: a integral da derivada é a diferença nos extremos.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Visualização — Campo e Curvas de Nível</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasPotencial"
+            class="visualization-canvas"
+            width="560"
+            height="360"
+          ></canvas>
+          <div class="controls-container">
+            <button id="btnPotencialModo" class="control-button">
+              Trocar campo: φ = 2xy (hipérboles)
+            </button>
+          </div>
+        </div>
+        <div>
+          <p>
+            Cada flecha azul é \(\vec{F} = \nabla\phi\); as curvas brancas são
+            as curvas de nível de \(\phi\). O gradiente é perpendicular à
+            curva de nível e aponta para o crescimento máximo — o trabalho é
+            a diferença de "altitude" \(\phi(B) - \phi(A)\), e o trajeto some
+            da conta.
+          </p>
+          <p>
+            Troque o campo: nas hipérboles de \(\phi = 2xy\), as flechas
+            continuam perpendiculares às curvas de nível — a regra não muda
+            de formato.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Construção em Duas Dimensões</h3>
+      <div class="formula-spotlight">
+        <p>\[ \phi(x, y) = \int M\,dx + g(y) \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\int M\,dx\) = integra a componente \(x\) do campo; a
+            "constante" dessa integração depende de \(y\): é a função
+            \(g(y)\).
+          </li>
+          <li>
+            \(g\) = fixada pela segunda componente:
+            \(\frac{\partial\phi}{\partial y} = N\) determina \(g'(y)\).
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> a exatidão
+          \(\partial M/\partial y = \partial N/\partial x\) garante que \(g'\)
+          dependa só de \(y\) — sem isso, a construção trava.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Construção em Três Dimensões</h3>
+      <div class="formula-spotlight">
+        <p>\[ \phi(x, y, z) = \int P\,dx + g(y, z) \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> agora a "constante" da integração em \(x\) é
+          uma função de duas variáveis.
+        </p>
+        <ul>
+          <li>
+            <strong>Completar \(y\):</strong>
+            \(\frac{\partial\phi}{\partial y} = Q\) determina \(g(y,z)\) até
+            uma função \(h(z)\).
+          </li>
+          <li>
+            <strong>Completar \(z\):</strong>
+            \(\frac{\partial\phi}{\partial z} = R\) fixa \(h'(z)\) — a última
+            etapa.
+          </li>
+        </ul>
+        <p>
+          <strong>Analogia com 2D:</strong> o mesmo roteiro, uma etapa a mais
+          — cada integração parcial troca uma variável por uma função das
+          variáveis restantes, até sobrar só a constante.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Construir o Potencial do Zero</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="problem-section">
+            <p>
+              O campo \(\vec{F} = (3x^2 + 2y,\; 2x + 2y)\) atua sobre a nave,
+              de \(A = (0,0)\) a \(B = (1,1)\). (a) Teste a exatidão:
+              compare \(\partial M/\partial y\) com \(\partial N/\partial x\).
+              (b) Construa \(\Phi\) integrando \(M\) em \(x\) e ajustando a
+              função \(g(y)\) com a componente \(N\). (c) Calcule o trabalho
+              \(W = \Phi(B) - \Phi(A)\).
+            </p>
+          </div>
+          <div class="compact-solution">
+            <p>
+              <strong>Estratégia:</strong> integre \(M\) em relação a \(x\)
+              tratando \(y\) como constante; derive o resultado em relação a
+              \(y\) e iguale a \(N\) para achar \(g'\); integre \(g'\) e
+              complete \(\Phi\); avalie nos extremos e subtraia.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            O primeiro estágio do Saturno V consumia cerca de 2 milhões de
+            litros de propelente em 2 minutos e 41 segundos — o maquinário
+            mais violento já construído pela engenharia.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Quando o Procedimento Quebra</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F} = (x + 2y,\; x - y)\) parece inocente. Tente
+            construir \(\Phi\): integre \(M = x + 2y\) em \(x\) e escreva o
+            resultado com a função \(g(y)\). Ao impor
+            \(\partial\Phi/\partial y = N\), a equação para \(g'\) envolve
+            \(x\) — uma contradição. O que esse travamento revela sobre o
+            campo?
+          </p>
+          <p>
+            Sugestão: compare as derivadas cruzadas antes de integrar — o
+            teste \(\partial M/\partial y = \partial N/\partial x\) falha?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A guerra do Vietnã custou cerca de 168 bilhões de dólares da
+            época. O programa Apollo, cerca de 25. A maior conquista técnica
+            da humanidade custou seis vezes menos que a guerra.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasPotencial');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var CAMPO = '#1E88E5';
+    var NIVEL = '#FFFFFF';
+    var HIL = '#FFB300';
+
+    var btn = document.getElementById('btnPotencialModo');
+    var mode = 1; // 1 = F=(2x,2y), circulos; 2 = F=(2y,2x), hiperboles
+
+    var S = 75;   // px por unidade
+    var CX = 280; // centro em x
+    var CY = 180; // centro em y
+
+    var NX = 20;
+    var NY = 15;
+    var GX0 = -2.85, GX1 = 2.85;
+    var GY0 = -2.1, GY1 = 2.1;
+
+    function toPx(mx, my) {
+      return { x: CX + mx * S, y: CY - my * S };
+    }
+
+    function field(mx, my) {
+      if (mode === 1) return { fx: 2 * mx, fy: 2 * my };
+      return { fx: 2 * my, fy: 2 * mx };
+    }
+
+    function arrow(p0, vx, vy, color, lw) {
+      var p = toPx(p0.mx, p0.my);
+      var tip = toPx(p0.mx + vx, p0.my + vy);
+      var dx = tip.x - p.x;
+      var dy = tip.y - p.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 2) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(8, len * 0.38);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lw;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(tip.x, tip.y);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(tip.x, tip.y);
+      ctx.lineTo(tip.x - ux * hs - uy * hs * 0.5, tip.y - uy * hs + ux * hs * 0.5);
+      ctx.lineTo(tip.x - ux * hs + uy * hs * 0.5, tip.y - uy * hs - ux * hs * 0.5);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawField() {
+      var i, j;
+      for (i = 0; i < NX; i++) {
+        for (j = 0; j < NY; j++) {
+          var mx = GX0 + ((GX1 - GX0) * i) / (NX - 1);
+          var my = GY0 + ((GY1 - GY0) * j) / (NY - 1);
+          var f = field(mx, my);
+          var n = Math.sqrt(f.fx * f.fx + f.fy * f.fy) || 1;
+          var L = Math.max(0.14, Math.min(0.32, 0.09 * n));
+          arrow({ mx: mx, my: my }, (L * f.fx) / n, (L * f.fy) / n, CAMPO, 1.1);
+        }
+      }
+    }
+
+    function drawLevels1() {
+      var radii = [0.5, 1, 1.5, 2];
+      ctx.strokeStyle = NIVEL;
+      ctx.lineWidth = 1.4;
+      var k;
+      for (k = 0; k < radii.length; k++) {
+        ctx.beginPath();
+        ctx.arc(CX, CY, radii[k] * S, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+    }
+
+    function drawHyperbola(cc, sx) {
+      ctx.beginPath();
+      var started = false;
+      var x = 0.06;
+      while (x <= 3.8) {
+        var mx = sx * x;
+        var my = cc / (2 * mx);
+        if (Math.abs(my) <= 2.5) {
+          var p = toPx(mx, my);
+          if (!started) {
+            ctx.moveTo(p.x, p.y);
+            started = true;
+          } else {
+            ctx.lineTo(p.x, p.y);
+          }
+        }
+        x = x < 0.5 ? x + 0.02 : x + 0.1;
+      }
+      if (started) ctx.stroke();
+    }
+
+    function drawLevels2() {
+      var cs = [1, 2, 4, 6];
+      ctx.strokeStyle = NIVEL;
+      ctx.lineWidth = 1.4;
+      var k, c, s;
+      for (k = 0; k < cs.length; k++) {
+        c = cs[k];
+        for (s = -1; s <= 1; s += 2) {
+          drawHyperbola(s * c, 1);
+          drawHyperbola(s * c, -1);
+        }
+      }
+    }
+
+    function drawHighlight(t) {
+      var f = field(1, 1);
+      var n = Math.sqrt(f.fx * f.fx + f.fy * f.fy) || 1;
+      var L = 0.72;
+      var lw = 3 + Math.sin(t * 2.2);
+      arrow({ mx: 1, my: 1 }, (L * f.fx) / n, (L * f.fy) / n, HIL, lw);
+      var tip = toPx(1 + (L * f.fx) / n + 0.22, 1 + (L * f.fy) / n + 0.12);
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillStyle = HIL;
+      ctx.fillText('∇φ', tip.x, tip.y);
+    }
+
+    function readout(text) {
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = '#e0e0e0';
+      ctx.fillText(text, W / 2, 22);
+      ctx.textAlign = 'left';
+    }
+
+    function draw(t) {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, CY);
+      ctx.lineTo(W, CY);
+      ctx.moveTo(CX, 0);
+      ctx.lineTo(CX, H);
+      ctx.stroke();
+
+      if (mode === 1) {
+        drawLevels1();
+        drawField();
+        readout('MODO 1 · F = (2x, 2y) · φ = x² + y² — círculos');
+      } else {
+        drawLevels2();
+        drawField();
+        readout('MODO 2 · F = (2y, 2x) · φ = 2xy — hipérboles');
+      }
+      drawHighlight(t);
+    }
+
+    function loop() {
+      draw(Date.now() / 1000);
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 1 ? 2 : 1;
+        btn.textContent = mode === 1
+          ? 'Trocar campo: φ = 2xy (hipérboles)'
+          : 'Trocar campo: φ = x² + y² (círculos)';
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizPotencial = { init: init, cleanup: cleanup };
+  })();
+</script>

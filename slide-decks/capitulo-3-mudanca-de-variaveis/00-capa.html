@@ -1,0 +1,31 @@
+<section class="title-slide">
+  <div class="classified-banner">&#9733; СОВЕРШЕННО СЕКРЕТНО &#9733;</div>
+  <div class="doc-border"></div>
+  <div class="watermark">СЕКРЕТНО</div>
+  <p class="classification-code">DOC. REF: CV-CH3-1961</p>
+  <div class="faction-emblem"></div>
+  <div class="title-rule"></div>
+  <h1>Mudança de Variáveis na Integral Dupla</h1>
+  <h3>Cálculo Vetorial</h3>
+  <div class="title-rule"></div>
+  <p class="chapter-meta">
+    Capítulo 3 &middot; Primeiros Astronautas &middot; 1961&ndash;1964
+  </p>
+  <div class="classified-footer">
+    НАУЧНО-ИССЛЕДОВАТЕЛЬСКИЙ ИНСТИТУТ &mdash; ОТДЕЛ КОСМОСА
+  </div>
+</section>
+
+<script>
+  (function () {
+    fetch('../emblemas/emblema-soviet.svg')
+      .then(function (r) {
+        return r.text();
+      })
+      .then(function (svg) {
+        document.querySelectorAll('.faction-emblem').forEach(function (el) {
+          el.innerHTML = svg;
+        });
+      });
+  })();
+</script>

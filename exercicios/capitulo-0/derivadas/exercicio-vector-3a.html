@@ -1,0 +1,42 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Programa <span class="censored">Gemini</span> - Relatório Avançado
+  </div>
+  <p>
+    Até aqui você combinou duas regras de cada vez: produto com cadeia, e quociente com cadeia. Mas problemas realistas frequentemente exigem três (ou mais) regras atuando simultaneamente. Este exercício eleva a complexidade: cada fator do produto precisa da Regra da Cadeia, e o resultado envolve exponenciais.
+  </p>
+  <p>
+    A taxa de consumo de combustível de um motor experimental envolve o produto de uma função exponencial (crescimento da pressão) por uma potência (volume do compartimento). Precisamos derivar o produto de <strong>três regras simultaneamente</strong>: produto, cadeia e exponencial.
+  </p>
+  <p>
+    Determinar \(\frac{d}{dx}\) de \(s(x) = e^{3x} \cdot (x^2 + 2)^5\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique as regras necessárias. Temos um produto \(u \cdot v\) onde cada fator requer a Regra da Cadeia.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(u'(x)\) para \(u(x) = e^{3x}\) e \(v'(x)\) para \(v(x) = (x^2+2)^5\).
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique a Regra do Produto e fatore o resultado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Derive \(e^{3x}\) e \((x^2+2)^5\) separadamente usando a Regra da Cadeia. Depois aplique \((uv)' = u'v + uv'\). O resultado pode ser fatorado com \(e^{3x}(x^2+2)^4\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Temos o produto \(u(x) = e^{3x}\) e \(v(x) = (x^2+2)^5\). Cada um precisa da Regra da Cadeia.</p>
+      <p><strong>(b)</strong></p>
+      <p>\[ u'(x) = 3e^{3x}, \quad v'(x) = 5(x^2+2)^4 \cdot 2x = 10x(x^2+2)^4. \]</p>
+      <p><strong>(c)</strong> Pela Regra do Produto:</p>
+      <p>\[ s'(x) = u'(x)v(x) + u(x)v'(x) = 3e^{3x}(x^2+2)^5 + e^{3x} \cdot 10x(x^2+2)^4. \]</p>
+      <p>Fatorando \(e^{3x}(x^2+2)^4\):</p>
+      <p>\[ s'(x) = e^{3x}(x^2+2)^4 \bigl[3(x^2+2) + 10x\bigr] = e^{3x}(x^2+2)^4(3x^2 + 10x + 6). \]</p>
+    </div>
+  </details>
+</li>

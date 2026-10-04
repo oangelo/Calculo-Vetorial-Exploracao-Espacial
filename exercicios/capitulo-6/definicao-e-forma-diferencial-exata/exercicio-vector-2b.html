@@ -1,0 +1,46 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: SETOR DE NOTAÇÃO AVANÇADA -
+    <span class="censored">APOLLO 8</span>, DEZEMBRO 1968
+  </div>
+  <p>
+    Na notação de formas diferenciais, certas expressões \(M\,dx + N\,dy\) podem
+    ser escritas como \(df\) para alguma função \(f\) — são as chamadas
+    <strong>diferenciais exatas</strong>, e correspondem exatamente aos campos
+    conservativos. Vamos desenvolver intuição para reconhecê-las por inspeção,
+    sem usar nenhum teste formal ainda.
+  </p>
+  <p>Considere as três formas diferenciais:</p>
+  <p><strong>\(\omega_1\)</strong> = \(2x\,dx + 2y\,dy\)</p>
+  <p><strong>\(\omega_2\)</strong> = \(-y\,dx + x\,dy\)</p>
+  <p><strong>\(\omega_3\)</strong> = \((y\cos x)\,dx + (\sin x + 2y)\,dy\)</p>
+  <p>
+    <strong>(a)</strong> Para \(\omega_1\): tente "adivinhar" uma função
+    \(f(x,y)\) cujo diferencial \(df = \frac{\partial f}{\partial x}\,dx +
+    \frac{\partial f}{\partial y}\,dy\) reproduz a forma dada. Se encontrar
+    \(f\), a forma é exata. Caso contrário, justifique por que não consegue.
+  </p>
+  <p>
+    <strong>(b)</strong> Para \(\omega_2\): tente o mesmo procedimento. Pense em
+    derivadas inversas — que função \(f\) teria \(\frac{\partial f}{\partial x}
+    = -y\) e \(\frac{\partial f}{\partial y} = x\) simultaneamente? Há alguma
+    inconsistência?
+  </p>
+  <p>
+    <strong>(c)</strong> Para \(\omega_3\): identifique se a forma é exata ou
+    não, justificando seu raciocínio. Neste caso, a análise é mais sutil — olhe
+    com atenção para a dependência de cada componente em relação às variáveis.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para verificar se uma forma é exata por inspeção,
+      pergunte-se: "que função \(f\) tem essa derivada parcial em relação a
+      \(x\)? E em relação a \(y\)? As duas respostas são compatíveis?" Para
+      \(\omega_1\), pense em potências de \(x\) e \(y\). Para \(\omega_2\),
+      integre \(M = -y\) em relação a \(x\): isso dá \(f = -xy + g(y)\). Agora
+      derive em relação a \(y\) e compare com \(N = x\).
+    </div>
+  </details>
+</li>

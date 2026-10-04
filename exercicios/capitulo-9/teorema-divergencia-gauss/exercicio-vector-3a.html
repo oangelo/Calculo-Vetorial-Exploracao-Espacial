@@ -1,0 +1,68 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Análise Eletrostática -
+    <span class="censored">Cabos do Space Shuttle</span> [ABR/1981]
+  </div>
+  <p>
+    A simetria esférica funciona bem. Mas o Space Shuttle tem estruturas
+    alongadas — cabos, tubulações, antenas. Para essas geometrias, precisamos de
+    simetria cilíndrica.
+  </p>
+  <p>
+    Um fio longo e retilíneo, estendido ao longo do eixo \(z\), carrega uma
+    carga linear uniforme \(\lambda\) (coulombs por metro). Queremos encontrar o
+    campo elétrico gerado por esse fio.
+  </p>
+  <p>
+    <strong>(a)</strong> Escolha uma superfície gaussiana cilíndrica de raio
+    \(r\) e comprimento \(L\) coaxial com o fio. Justifique: por que um cilindro
+    é a superfície natural aqui?
+  </p>
+  <p>
+    <strong>(b)</strong> Argumente pela simetria translacional (ao longo de
+    \(z\)) e rotacional (ao redor do eixo \(z\)) que o campo é radial no plano
+    \(xy\): \(\mathbf{E} = E(r)\hat{\mathbf{r}}_{\text{cil}}\), onde
+    \(\hat{\mathbf{r}}_{\text{cil}}\) é o versor radial no plano \(xy\). Qual é
+    o fluxo pela superfície lateral do cilindro? E pelas tampas?
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique a Lei de Gauss e calcule \(E(r)\). Qual é a
+    dependência com a distância ao fio? Compare com a dependência \(1/r^2\) do
+    caso esférico.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O fio é infinito (ou suficientemente longo). Por simetria
+      translacional, o campo não depende de \(z\). Por simetria rotacional, o
+      campo é radial no plano \(xy\) e depende só de \(r\). A carga encerrada
+      pelo cilindro é \(\lambda L\). O fluxo pelas tampas é zero (campo paralelo
+      à superfície). O fluxo pela lateral é \(E(r) \cdot 2\pi r L\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) A superfície gaussiana deve refletir a simetria do problema. Como a
+        fonte é cilíndrica (fio reto), um cilindro coaxial garante que o campo
+        tem módulo constante sobre a superfície lateral.
+      </p>
+      <p>
+        (b) Simetria translacional: o campo é o mesmo em qualquer plano
+        perpendicular ao fio. Simetria rotacional: o campo aponta radialmente
+        para fora (ou para dentro) e depende só de \(r\). Fluxo pelas tampas:
+        zero (campo paralelo às tampas). Fluxo pela lateral: \(E(r) \cdot 2\pi r
+        L\).
+      </p>
+      <p>
+        (c) Carga encerrada: \(Q_{\text{int}} = \lambda L\). Lei de Gauss:
+        \(E(r) \cdot 2\pi r L = \lambda L/\varepsilon_0\). Logo, \(E(r) =
+        \dfrac{\lambda}{2\pi\varepsilon_0 r}\). O campo cai como \(1/r\) — mais
+        lento que o \(1/r^2\) da carga puntiforme. Em duas dimensões (problema
+        plano), a "diluição" do campo é menor que em três.
+      </p>
+    </div>
+  </details>
+</li>

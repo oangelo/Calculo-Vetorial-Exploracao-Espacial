@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DERIV-03-ALFA</div>
+  <div class="context">
+    ORIGEM: Pesquisa Avançada em Termodinâmica Orbital [FRUTO DA PARCERIA COM
+    [REDACTED]]
+  </div>
+  <p>
+    No exercício anterior, você derivou uma função com termos mistos (polinomial
+    e exponencial). Agora vamos aplicar o mesmo raciocínio a um cenário físico
+    real: a energia de um satélite. Note como cada variável aparece em termos
+    diferentes — e como isso simplifica o cálculo.
+  </p>
+  <p>
+    A função de energia total de um satélite em órbita (simplificada) é dada
+    por: \[ E(v, r) = \frac{1}{2} m v^2 - \frac{GM m}{r}. \]
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique: em qual termo a variável \(v\) aparece? Em
+    qual termo \(r\) aparece?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial E}{\partial v}\). O que
+    acontece com o termo \(-\frac{GMm}{r}\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule \(\frac{\partial E}{\partial r}\). O que
+    acontece com o termo \(\frac{1}{2}mv^2\)?
+  </p>
+  <p>
+    <strong>(d)</strong> Interprete fisicamente: \(\frac{\partial E}{\partial
+    v}\) tem relação com qual grandeza mecânica?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Quando derivamos em relação a \(v\), o termo
+      \(-\frac{GMm}{r}\) não contém \(v\), então sua derivada é zero. Isso é o
+      poder da derivada parcial: cada variável "enxerga" apenas os termos que a
+      contêm.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) \(v\) aparece apenas em \(\frac{1}{2}mv^2\). \(r\) aparece apenas em
+        \(-\frac{GMm}{r}\).
+      </p>
+      <p>
+        (b) \[ \frac{\partial E}{\partial v} = \frac{\partial}{\partial
+        v}\left(\frac{1}{2} m v^2\right) - \underbrace{\frac{\partial}{\partial
+        v}\left(\frac{GM m}{r}\right)}_{=\,0} = mv. \]
+      </p>
+      <p>
+        (c) \[ \frac{\partial E}{\partial r} =
+        \underbrace{\frac{\partial}{\partial r}\left(\frac{1}{2} m
+        v^2\right)}_{=\,0} - \frac{\partial}{\partial r}\left(\frac{GM
+        m}{r}\right) = \frac{GMm}{r^2}. \]
+      </p>
+      <p>
+        (d) \(\frac{\partial E}{\partial v} = mv\) é o
+        <em>momento linear</em> do satélite. \(\frac{\partial E}{\partial r} =
+        \frac{GMm}{r^2}\) é o módulo da <em>força gravitacional</em> (Lei de
+        Newton).
+      </p>
+    </div>
+  </details>
+</li>

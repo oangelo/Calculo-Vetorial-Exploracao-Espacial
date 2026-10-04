@@ -1,0 +1,189 @@
+<section>
+  <section>
+    <h2>Rotacional</h2>
+    <p>
+      O rotacional mede a tendência de rotação. Para \(\vec{F} = (P, Q, R)\) em
+      \(\mathbb{R}^3\):
+    </p>
+    <div class="fragment formula-spotlight">
+      <p>
+        \[ \nabla \times \vec{F} = \left(\frac{\partial R}{\partial y} -
+        \frac{\partial Q}{\partial z},\; \frac{\partial P}{\partial z} -
+        \frac{\partial R}{\partial x},\; \frac{\partial Q}{\partial x} -
+        \frac{\partial P}{\partial y}\right) \]
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Quando o Campo Gira</h3>
+    <div class="dual-panel">
+      <div class="math-section">
+        <p>
+          \(\nabla \times \vec{F} = \vec{0}\): campo
+          <strong>irrotacional</strong>.
+        </p>
+        <p>\(\nabla \times \vec{F} \neq \vec{0}\): há vórtice.</p>
+        <p>Direção = eixo de rotação. Magnitude = intensidade.</p>
+      </div>
+      <div>
+        <canvas
+          id="canvasRotacional"
+          class="visualization-canvas"
+          width="280"
+          height="280"
+        ></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo</h3>
+    <div class="problem-section">
+      <p>
+        Calcule \(\nabla \times \vec{F}\) para \(\vec{F}(x,y,z) = (-y,\, x,\,
+        0)\).
+      </p>
+    </div>
+    <div class="compact-solution">
+      <div class="fragment">
+        <p>
+          \(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z} = 0\)
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x} = 0\)
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} = 1 -
+          (-1) = 2\)
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          \(\nabla \times \vec{F} = (0, 0, 2)\) — rotação em torno do eixo
+          \(z\).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="history-section">
+      <span class="history-label">ARQUIVO</span>
+      <p>
+        A mesma matemática que descreve vórtices na atmosfera de Júpiter
+        descrevia o giro dos motores do R-7. Korolev sabia que o rotacional de
+        um campo de velocidades determina se um foguete estabiliza ou sai
+        girando. O Designer-Chefe não podia assinar o artigo — mas a matemática
+        não precisa de assinatura.
+      </p>
+    </div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasRotacional');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width,
+      H = canvas.height;
+    var cx = W / 2,
+      cy = H / 2;
+    var time = 0;
+    var animId = null;
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      var grid = 40;
+      for (var x = grid / 2; x < W; x += grid) {
+        for (var y = grid / 2; y < H; y += grid) {
+          var dx = x - cx,
+            dy = y - cy;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 15) continue;
+
+          var vx = -dy / dist;
+          var vy = dx / dist;
+          var mag = 80 / (dist + 20);
+          var len = mag * 15;
+
+          var angle = Math.atan2(vy, vx);
+          var headLen = 4;
+
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + vx * len, y + vy * len);
+          ctx.strokeStyle =
+            'rgba(239, 83, 80, ' + Math.min(mag * 1.5, 0.8) + ')';
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(x + vx * len, y + vy * len);
+          ctx.lineTo(
+            x + vx * len - headLen * Math.cos(angle - 0.5),
+            y + vy * len - headLen * Math.sin(angle - 0.5)
+          );
+          ctx.lineTo(
+            x + vx * len - headLen * Math.cos(angle + 0.5),
+            y + vy * len - headLen * Math.sin(angle + 0.5)
+          );
+          ctx.closePath();
+          ctx.fillStyle = 'rgba(239, 83, 80, ' + Math.min(mag * 1.5, 0.8) + ')';
+          ctx.fill();
+        }
+      }
+
+      var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 12);
+      grad.addColorStop(0, '#ef5350');
+      grad.addColorStop(1, 'rgba(239, 83, 80, 0.2)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, 10, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.font = '10px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('rot F != 0', cx, H - 8);
+      ctx.textAlign = 'left';
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function init() {
+      if (animId) return;
+      draw();
+    }
+
+    function cleanup() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }
+
+    setTimeout(function () {
+      if (typeof Reveal !== 'undefined' && Reveal.on) {
+        Reveal.on('slidechanged', function (e) {
+          if (e.currentSlide && e.currentSlide.contains(canvas)) {
+            cleanup();
+            init();
+          } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+            cleanup();
+          }
+        });
+      }
+      if (canvas.offsetParent !== null) init();
+    }, 500);
+
+    window.vizRotacional = { init: init, cleanup: cleanup };
+  })();
+</script>

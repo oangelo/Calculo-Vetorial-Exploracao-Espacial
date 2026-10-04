@@ -1,0 +1,38 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Dados <span class="censored">Sigilosos</span> - Centro de Lançamento
+  </div>
+  <p>
+    O rendimento de um sistema propulsivo é modelado como a razão entre a potência gerada (\(x e^x\)) e o quadrado do consumo (\((x^2+4)^2\)). Precisamos de <strong>produto + exponencial + quociente + cadeia</strong> — todas as regras combinadas.
+  </p>
+  <p>
+    Calcular \(\frac{d}{dx}\) para \(y(x) = \dfrac{x e^x}{(x^2 + 4)^2}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(u'(x)\) para o numerador \(u(x) = xe^x\) (Regra do Produto).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(v'(x)\) para o denominador \(v(x) = (x^2+4)^2\) (Regra da Cadeia).
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique a Regra do Quociente. Fatore \(e^x(x^2+4)\) no numerador e simplifique até obter a expressão final.
+  </p>
+  <!-- Série OMEGA: sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Numerador: \(u(x) = xe^x\). Pela Regra do Produto:</p>
+      <p>\[ u'(x) = e^x + xe^x = e^x(1+x). \]</p>
+      <p><strong>(b)</strong> Denominador: \(v(x) = (x^2+4)^2\). Pela Regra da Cadeia:</p>
+      <p>\[ v'(x) = 2(x^2+4) \cdot 2x = 4x(x^2+4). \]</p>
+      <p><strong>(c)</strong> Pela Regra do Quociente:</p>
+      <p>\[ y'(x) = \frac{u'v - uv'}{v^2} = \frac{e^x(1+x)(x^2+4)^2 - xe^x \cdot 4x(x^2+4)}{(x^2+4)^4}. \]</p>
+      <p>Fatorando \(e^x(x^2+4)\) no numerador:</p>
+      <p>\[ y'(x) = \frac{e^x(x^2+4)\bigl[(1+x)(x^2+4) - 4x^2\bigr]}{(x^2+4)^4} = \frac{e^x\bigl[x^3 + x^2 + 4x + 4 - 4x^2\bigr]}{(x^2+4)^3}. \]</p>
+      <p>Expressão final:</p>
+      <p>\[ y'(x) = \frac{e^x(x^3 - 3x^2 + 4x + 4)}{(x^2+4)^3}. \]</p>
+      <p>Verificação em \(x = 0\): \(y(0) = 0\) e \(y'(0) = \frac{1 \cdot 4}{64} = \frac{1}{16}\).</p>
+    </div>
+  </details>
+</li>

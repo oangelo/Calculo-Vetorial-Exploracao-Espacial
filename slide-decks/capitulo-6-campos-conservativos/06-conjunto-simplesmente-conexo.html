@@ -1,0 +1,417 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h2>E Quando o Teste Passa Ainda Assim?</h2>
+      <p>
+        O teste de Clairaut passou: \(\partial M/\partial y = \partial
+        N/\partial x\) em todo o domínio. Mesmo assim, a integral de linha
+        depende do caminho — a suficiência que a seção 05 condicionou ao
+        domínio acabou de falhar na prática.
+      </p>
+      <p>
+        A anomalia não está no campo: está no chão onde ele vive. Este
+        tópico dá nome ao que falta — a topologia do domínio.
+      </p>
+      <p class="history-insert">
+        O campo tinha um furo no domínio; o espetáculo tinha um furo na
+        transmissão: o que as câmeras não mostravam continuou intocado, lá
+        embaixo.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>A Anomalia: o Vórtice Perfurado</h3>
+      <p>
+        O campo vortical
+        \(\vec{F} = \left(\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2}\right)\) vive
+        em \(D = \mathbb{R}^2\setminus\{(0,0)\}\). Nele, as derivadas
+        cruzadas coincidem em todos os pontos:
+        \(\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\) em
+        todo \(D\).
+      </p>
+      <div class="math-section">
+        <p>
+          No círculo unitário — uma curva fechada inteiramente contida em
+          \(D\):
+        </p>
+        <p>\[ \oint_C \vec{F}\cdot d\vec{r} = 2\pi \neq 0 \]</p>
+      </div>
+      <p>
+        O teste aprovou e o campo não é conservativo. A causa não é local: é
+        o furo na origem, que impede qualquer função potencial contínua de
+        existir em \(D\).
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>Visualização — A Contração da Curva</h3>
+      <div class="dual-panel">
+        <div>
+          <canvas
+            id="canvasContracao"
+            class="visualization-canvas"
+            width="700"
+            height="400"
+          ></canvas>
+          <div class="controls-container">
+            <button id="btnContracaoReset" class="control-button">
+              Reiniciar
+            </button>
+          </div>
+        </div>
+        <div>
+          <p>
+            Uma curva fechada é contraível quando encolhe continuamente até
+            virar um ponto, sem sair do domínio. No disco, o círculo contrai
+            sem obstáculos.
+          </p>
+          <p>
+            No anel, a mesma contração encosta no furo e trava: encolher
+            além exigiria atravessar a região proibida. A trava é exatamente
+            o que a definição de simplesmente conexo exclui.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>Definição: Domínio Simplesmente Conexo</h3>
+      <p>
+        Um conjunto \(\Omega\) é simplesmente conexo quando (i) é conexo por
+        caminhos — dois pontos quaisquer se ligam por uma curva contínua
+        dentro de \(\Omega\) — e (ii) toda curva fechada pode ser contraída
+        continuamente a um ponto sem sair de \(\Omega\).
+      </p>
+      <div class="formula-spotlight">
+        <p>
+          \[ \text{(ii) toda curva fechada em }\Omega\ \text{se contrai a um ponto sem sair de }\Omega \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          Exemplos canônicos: o disco é simplesmente conexo; o anel não é; o
+          plano perfurado \(\mathbb{R}^2\setminus\{(0,0)\}\) não é. O
+          obstáculo é sempre o furo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>O Critério é o Furo</h3>
+      <div class="triple-panel">
+        <div>
+          <p><strong>Simplesmente conexo</strong></p>
+          <p>
+            Disco; semiplano — nenhuma curva fechada encontra obstáculo
+            para encolher até o ponto.
+          </p>
+        </div>
+        <div>
+          <p><strong>Não é</strong></p>
+          <p>
+            Anel; plano perfurado; exterior de círculo — a curva cerca o
+            furo com um laço e a contração trava.
+          </p>
+        </div>
+        <div>
+          <p><strong>O critério</strong></p>
+          <p>
+            Não é a forma do domínio: é a existência de um furo que a curva
+            possa cercar. Sem furo, contrai; com furo, trava.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>A Regra Completa</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \nabla\times\vec{F} = \vec{0}\ \text{em }\Omega\ \text{simplesmente conexo} \Rightarrow \vec{F}\ \text{é conservativo} \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          Duas condições agem juntas: o rotacional nulo — local, testável —
+          e a conexidade simples — global, topológica. Nenhuma das duas
+          basta sozinha.
+        </p>
+        <p>
+          Em \(\mathbb{R}^3\), a conta muda: remover um ponto não quebra a
+          conexidade simples — a curva desvia do ponto. Remover uma reta
+          cria um túnel: \(\mathbb{R}^3\) menos o eixo \(z\) não é
+          simplesmente conexo.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Dois Arcos, Dois Valores</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="problem-section">
+            <p>
+              O campo vortical
+              \(\vec{F} = \left(\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2}\right)\)
+              atua em \(D = \mathbb{R}^2\setminus\{(0,0)\}\), onde o teste de
+              Clairaut aprova. Calcule \(\int_C \vec{F}\cdot d\vec{r}\) de
+              \(A = (1,0)\) até \(B = (-1,0)\) por dois caminhos: o
+              semicírculo superior \(\vec{r}_1(t) = (\cos t,\sin t)\) e o
+              inferior \(\vec{r}_2(t) = (\cos t,-\sin t)\), com \(t\in[0,\pi]\)
+              em ambos. Compare os valores e explique a contradição com o
+              teste.
+            </p>
+          </div>
+          <div class="compact-solution">
+            <p>
+              <strong>Estratégia:</strong> substitua cada \(\vec{r}(t)\) no
+              campo e faça o produto escalar com \(\vec{r}'(t)\,dt\); cada
+              arco reduz a conta a uma integral simples em \(t\). Os arcos
+              ligam os mesmos extremos — valores diferentes denunciam a
+              dependência do caminho.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            A placa deixada na Lua proclama paz em nome de toda a
+            humanidade. Na mesma década, os Estados Unidos lançaram sobre o
+            Vietnã, o Laos e o Camboja mais toneladas de bombas do que em
+            toda a Segunda Guerra Mundial.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 06 · CONJUNTO SIMPLESMENTE CONEXO</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — O Corte que Restaura</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O corte \(D' = \mathbb{R}^2\setminus\{(x,0): x \le 0\}\) remove
+            o semieixo negativo, e \(\theta = \arctan(y/x)\) vira um
+            potencial univalorado para o campo vortical. (a) Integre de
+            \(A = (1,0)\) até \(B = (0,1)\) pelo quarto de círculo no
+            primeiro quadrante. (b) Repita pelo caminho em \(L\): vertical
+            em \(x = 1\), depois horizontal em \(y = 1\). (c) Os resultados
+            coincidem? O que o corte mudou no domínio?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Para existir, o potencial precisou de um corte no plano. A
+            transmissão também cortou: virasse a câmera 180 graus em julho
+            de 1969, o que ela mostraria?
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasContracao');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var CURVA = '#FFFFFF';
+    var FURO = '#FFB300';
+    var DOMINIO = 'rgba(150, 160, 190, 0.45)';
+    var FUNDO_DOM = 'rgba(30, 136, 229, 0.07)';
+    var TEXTO = '#e0e0e0';
+
+    var btn = document.getElementById('btnContracaoReset');
+
+    var R_OUT = 145;
+    var R_HOLE = 40;
+    var R0 = 115;
+    var CX_L = 185;
+    var CX_R = 515;
+    var CY = 205;
+
+    var CONTRACT = 3.5; // segundos: p vai de 1 ate 0
+    var HOLD = 1.4;     // segundos: pausa com a curva travada
+    var phase = 0;
+    var p = 1;
+
+    function drawPanel(cx, label, radius, hole, locked) {
+      ctx.fillStyle = FUNDO_DOM;
+      ctx.beginPath();
+      ctx.arc(cx, CY, R_OUT, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.strokeStyle = DOMINIO;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      if (hole > 0) {
+        ctx.fillStyle = 'rgba(10, 10, 15, 0.85)';
+        ctx.beginPath();
+        ctx.arc(cx, CY, hole, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = FURO;
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+      }
+
+      ctx.strokeStyle = CURVA;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.arc(cx, CY, radius, 0, 2 * Math.PI);
+      ctx.stroke();
+
+      if (hole === 0) {
+        ctx.fillStyle = CURVA;
+        ctx.beginPath();
+        ctx.arc(cx, CY, 3.5, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = locked ? FURO : TEXTO;
+      ctx.fillText(label, cx, 20);
+      ctx.textAlign = 'left';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.strokeStyle = 'rgba(200, 200, 220, 0.18)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(W / 2, 0);
+      ctx.lineTo(W / 2, H);
+      ctx.stroke();
+
+      drawPanel(
+        CX_L,
+        'DISCO · contrai a um ponto',
+        Math.max(p * R0, 1),
+        0,
+        false
+      );
+
+      var locked = p * R0 <= R_HOLE + 5;
+      drawPanel(
+        CX_R,
+        locked ? 'ANEL · trava no furo' : 'ANEL · contrai até o furo',
+        Math.max(p * R0, R_HOLE + 5),
+        R_HOLE,
+        locked
+      );
+
+      ctx.font = '12px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = TEXTO;
+      ctx.fillText('Curva fechada contraindo em dois domínios', W / 2, H - 10);
+      ctx.textAlign = 'left';
+    }
+
+    function loop(ts) {
+      if (lastTs === null) lastTs = ts;
+      var dt = Math.min((ts - lastTs) / 1000, 0.05);
+      lastTs = ts;
+      phase += dt;
+      if (phase > CONTRACT + HOLD) phase = 0;
+      p = Math.max(0, 1 - phase / CONTRACT);
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    var lastTs = null;
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      lastTs = null;
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        phase = 0;
+        p = 1;
+      });
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizContracao = { init: init, cleanup: cleanup };
+  })();
+</script>

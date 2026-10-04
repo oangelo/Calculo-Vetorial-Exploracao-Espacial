@@ -1,0 +1,79 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Apollo 12 — Mapeamento da Superfície Lunar [DEZ/1969]
+  </div>
+  <p>
+    A fórmula de área via Stokes funciona para qualquer curva — inclusive
+    contornos formados por segmentos de reta. Aqui você vai aplicá-la a um
+    polígono irregular e verificar o resultado por geometria elementar.
+  </p>
+  <p>
+    O quadrilátero com vértices \((0,0)\), \((3,0)\), \((4,2)\) e \((1,3)\)
+    delimita uma região \(R\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize cada um dos quatro segmentos do contorno
+    poligonal (de vértice a vértice, no sentido anti-horário).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a fórmula \(A = \frac{1}{2}\oint_{\partial R}
+    (x\, dy - y\, dx)\) em cada segmento, efetue as substituições e some os
+    resultados.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a área do quadrilátero por triangulação (divida
+    em dois triângulos e some as áreas). Verifique que o resultado coincide com
+    o obtido pela fórmula de Stokes.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Quatro segmentos (anti-horário):</p>
+      <p>\(S_1\): \((0,0) \to (3,0)\): \(x = 3t,\, y = 0\), \(t \in [0,1]\).</p>
+      <p>
+        \(S_2\): \((3,0) \to (4,2)\): \(x = 3+t,\, y = 2t\), \(t \in [0,1]\).
+      </p>
+      <p>
+        \(S_3\): \((4,2) \to (1,3)\): \(x = 4-3t,\, y = 2+t\), \(t \in [0,1]\).
+      </p>
+      <p>
+        \(S_4\): \((1,3) \to (0,0)\): \(x = 1-t,\, y = 3-3t\), \(t \in [0,1]\).
+      </p>
+      <p>
+        <strong>(b)</strong> Para cada segmento, \(\frac{1}{2}(x\, dy - y\,
+        dx)\):
+      </p>
+      <p>
+        \(S_1\): \(x\, dy - y\, dx = 3t \cdot 0 - 0 \cdot 3\, dt = 0\).
+        Integral: \(0\).
+      </p>
+      <p>
+        \(S_2\): \(x\, dy - y\, dx = (3+t)(2\, dt) - (2t)(dt) = (6+2t-2t)\, dt =
+        6\, dt\). Integral: \(6\).
+      </p>
+      <p>
+        \(S_3\): \(x\, dy - y\, dx = (4-3t)(dt) - (2+t)(-3\, dt) = (4-3t+6+3t)\,
+        dt = 10\, dt\). Integral: \(10\).
+      </p>
+      <p>
+        \(S_4\): \(x\, dy - y\, dx = (1-t)(-3\, dt) - (3-3t)(-dt) =
+        (-3+3t+3-3t)\, dt = 0\). Integral: \(0\).
+      </p>
+      <p>\(A = \frac{1}{2}(0 + 6 + 10 + 0) = 8\).</p>
+      <p>
+        <strong>(c)</strong> Triangulação: divida o quadrilátero pela diagonal
+        de \((0,0)\) a \((4,2)\).
+      </p>
+      <p>
+        Triângulo \(T_1\): \((0,0)\), \((3,0)\), \((4,2)\). Área =
+        \(\frac{1}{2}|0(0-2)+3(2-0)+4(0-0)| = \frac{1}{2}(6) = 3\).
+      </p>
+      <p>
+        Triângulo \(T_2\): \((0,0)\), \((4,2)\), \((1,3)\). Área =
+        \(\frac{1}{2}|0(2-3)+4(3-0)+1(0-2)| = \frac{1}{2}(12-2) = 5\).
+      </p>
+      <p>Área total: \(3 + 5 = 8\). Coincide! \(\checkmark\)</p>
+    </div>
+  </details>
+</li>

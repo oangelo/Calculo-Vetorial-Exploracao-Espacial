@@ -1,0 +1,73 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Departamento de <span class="censored">Estruturas</span> - Tanque
+    Anular do Shuttle [JUL/1981]
+  </div>
+  <p>
+    Até agora, todas as regiões eram sólidos simples. Mas no Capítulo 7 (Teorema
+    de Green), você aprendeu a lidar com regiões com buracos — regiões cuja
+    fronteira tem componentes internas e externas. O mesmo funciona aqui.
+  </p>
+  <p>
+    Considere a região \(V\) entre duas esferas concêntricas: a esfera externa
+    de raio \(R_2 = 4\) e a esfera interna (cavidade) de raio \(R_1 = 2\), ambas
+    centradas na origem. A região \(V\) é a "casca esférica". O campo vetorial é
+    \(\mathbf{F}(x,y,z) = (x^3,\, y^3,\, z^3)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva a fronteira de \(V\): quais superfícies a
+    compõem? Qual deve ser a orientação da normal em cada uma (lembre: a normal
+    aponta sempre para fora de \(V\))? Especificamente, qual é a direção da
+    normal na superfície da cavidade?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\nabla \cdot \mathbf{F}\) e use o Teorema da
+    Divergência aplicado à casca esférica \(V\). Calcule a integral tripla.
+  </p>
+  <p>
+    <strong>(c)</strong> Agora suponha um campo \(\mathbf{G}\) com \(\nabla
+    \cdot \mathbf{G} = 0\) em toda a casca. O que o Teorema da Divergência
+    afirma sobre a relação entre o fluxo pela superfície externa e o fluxo pela
+    superfície da cavidade?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A fronteira de \(V\) tem duas componentes: a esfera
+      externa \(S_2\) (normal para fora, \(\hat{\mathbf{r}}\)) e a esfera
+      interna \(S_1\) (normal para fora de \(V\), que é para
+      <strong>dentro</strong> da cavidade, ou seja, \(-\hat{\mathbf{r}}\)). Em
+      coordenadas esféricas, a integral tripla usa limites \(R_1 \le \rho \le
+      R_2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Fronteira: esfera externa \(S_2\) (raio 4, normal
+        \(\hat{\mathbf{r}}\)) e esfera interna \(S_1\) (raio 2, normal aponta
+        para fora de \(V\), i.e., \(-\hat{\mathbf{r}}\)). Na cavidade, a normal
+        aponta para o centro — o oposto da normal usual de uma esfera.
+      </p>
+      <p>
+        (b) \(\nabla \cdot \mathbf{F} = 3x^2 + 3y^2 + 3z^2 = 3\rho^2\). Integral
+        tripla em esféricas: \[\iiint_V 3\rho^2\,dV =
+        3\int_0^{2\pi}\int_0^{\pi}\int_2^4 \rho^2 \cdot
+        \rho^2\sin\phi\,d\rho\,d\phi\,d\theta = 3\cdot 4\pi \cdot
+        \frac{\rho^5}{5}\Big|_2^4 = 12\pi\cdot\frac{4^5-2^5}{5} =
+        12\pi\cdot\frac{1024-32}{5} = \frac{12\pi\cdot 992}{5} =
+        \frac{11904\pi}{5}.\]
+      </p>
+      <p>
+        (c) Se \(\nabla \cdot \mathbf{G} = 0\) na casca, o Teorema da
+        Divergência dá: \(\iint_{S_2} \mathbf{G}\cdot d\mathbf{S} + \iint_{S_1}
+        \mathbf{G}\cdot d\mathbf{S} = 0\). Ou seja, o fluxo pela superfície
+        externa é igual ao <strong>oposto</strong> do fluxo pela cavidade (com
+        suas normais orientadas como acima). Tudo que entra por um lado sai pelo
+        outro.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,55 @@
+<li class="exercise-item">
+  <div class="exercise-number">
+    EXERCÍCIO 14 — TRIÂNGULO E TRANSFORMAÇÃO LINEAR
+  </div>
+  <div class="context">
+    ORIGEM: Centro de <span class="censored">Convergência</span> - Dados
+    Confidenciais
+  </div>
+  <p>
+    Nos exercícios anteriores, vimos que coordenadas polares simplificam regiões
+    com simetria circular. Mas e quando a região é triangular com uma diagonal
+    como fronteira? Calcule \(\iint_{R} \sin(x + y)\,dx\,dy\) onde \(R\) é a
+    região delimitada pelos vértices \((0,0)\), \((3,0)\) e \((3,3)\), acima da
+    reta \(y=x\). A transformação \(u=x,\;v=y-x\) converte a hipotenusa oblíqua
+    \(y=x\) no eixo \(v=0\), retangularizando o domínio. Este exercício mostra
+    que a mudança de variáveis não é exclusiva de coordenadas polares.
+  </p>
+  <p>
+    <strong>(a)</strong> Proponha a transformação que diagonaliza a fronteira
+    \(y=x\) e calcule o Jacobiano.
+  </p>
+  <p>
+    <strong>(b)</strong> Reescreva o integrando \(\sin(x+y)\) em termos das
+    novas variáveis e determine os novos limites de integração.
+  </p>
+  <p>
+    <strong>(c)</strong> Resolva a integral dupla resultante e apresente o valor
+    final.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A transformação \(u = x, \quad v = y - x\) converte a região triangular
+        acima de \(y=x\) (com \(0\le x\le 3\), \(x\le y\le 3\)) no conjunto
+        \(0\le u\le 3\), \(0\le v\le 3-u\).
+      </p>
+      <p>
+        O Jacobiano vale 1. Além disso, \(\sin(x+y) = \sin(u + v + u) = \sin(2u
+        + v)\).
+      </p>
+      <p>
+        A integral torna-se \[\int_{0}^{3}\int_{0}^{3-u} \sin(2u+v)\,dv\,du.\]
+        Integrando primeiro em \(v\): \(\int_{0}^{3-u}\sin(2u+v)\,dv =
+        [-\cos(2u+v)]_{0}^{3-u} = \cos(2u) - \cos(u+3)\). Integrando em \(u\) de
+        0 a 3 resulta na expressão final avaliável.
+      </p>
+      <p>
+        CONCLUSÃO: A mudança de variáveis retangulariza o domínio, embora a
+        função trigonométrica ainda exija cuidado na integração.
+      </p>
+    </div>
+  </details>
+</li>

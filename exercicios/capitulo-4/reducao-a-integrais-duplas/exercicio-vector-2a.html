@@ -1,0 +1,70 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Departamento de Geometria -
+    <span class="censored">Centro de Controle</span>
+  </div>
+  <p>
+    Nos exercícios anteriores, os limites de \(z\) eram simples (constantes ou
+    uma raiz quadrada). Agora os limites dependem de \(x^2+y^2\), o que exige
+    atenção na hora de montar a integral dupla resultante.
+  </p>
+  <p>
+    Calcular \(\iiint_V (x^2 + y^2)\, dV\) onde \(V\) é o sólido limitado pelo
+    paraboloide \(z = x^2 + y^2\) e pelo plano \(z = 9\).
+  </p>
+  <p>
+    <strong>(a)</strong> Encontre a projeção de \(V\) sobre o plano \(xy\):
+    determine a região \(D\) onde o paraboloide intercepta o plano \(z=9\).
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral tripla como integral dupla,
+    integrando primeiro em \(z\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral em \(z\) e obtenha a integral dupla
+    simplificada sobre \(D\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para encontrar \(D\), iguale \(z = x^2+y^2\) com \(z=9\).
+      O resultado é um círculo. Note que \(x^2+y^2\) é constante na integração
+      em \(z\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Interseção: \(z = 9 = x^2 + y^2\) implica \(x^2 + y^2 = 9\).</p>
+      <p>
+        Portanto, \(V\) é limitado no \(xy\)-plano pelo círculo \(D: x^2 + y^2
+        \le 9\). Para cada \((x,y)\) em \(D\), \(z\) varia de \(x^2+y^2\) até
+        \(9\).
+      </p>
+      <p>
+        A integral tripla: \[ \iiint_V (x^2 + y^2)\, dV = \iint_D \left(
+        \int_{z=x^2+y^2}^{9} (x^2 + y^2)\, dz \right) dA. \]
+      </p>
+      <p>
+        Integração em \(z\): \(\int_{x^2+y^2}^{9} (x^2 + y^2) \, dz = (x^2+y^2)
+        \cdot \bigl[9 - (x^2+y^2)\bigr].\)
+      </p>
+      <p>
+        Assim, \[ \iint_D (x^2+y^2)\bigl[9-(x^2+y^2)\bigr] \, dA, \quad D:
+        x^2+y^2 \le 9. \]
+      </p>
+      <p>
+        Em coordenadas polares (\(x^2+y^2 = r^2\), \(dA = r\,dr\,d\theta\)): \[
+        \int_0^{2\pi}\int_0^3 r^2(9-r^2)\,r\,dr\,d\theta = 2\pi\int_0^3 (9r^3 -
+        r^5)\,dr = 2\pi\left[\frac{9r^4}{4} - \frac{r^6}{6}\right]_0^3. \]
+      </p>
+      <p>
+        Avaliando: \(2\pi\left[\frac{9\cdot 81}{4} - \frac{729}{6}\right] =
+        2\pi\left[\frac{729}{4} - \frac{729}{6}\right] = 2\pi \cdot
+        729\left(\frac{1}{4}-\frac{1}{6}\right) = 2\pi \cdot 729 \cdot
+        \frac{1}{12} = \frac{2\pi \cdot 729}{12} = \frac{243\pi}{2}.\)
+      </p>
+    </div>
+  </details>
+</li>

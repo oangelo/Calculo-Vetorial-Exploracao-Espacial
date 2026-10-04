@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: Descida do Módulo Lunar - Programa Apollo [MAI/1969]
+  </div>
+  <p>
+    A reflexão do exercício anterior nos mostra que a forma diferencial brilha
+    quando podemos trabalhar diretamente com \(dx\), \(dy\) e \(dz\) sem
+    inventar um parâmetro. Vamos explorar isso a fundo em \(\mathbb{R}^3\).
+  </p>
+  <p>
+    A trajetória de descida do módulo lunar é descrita por \(y = x^2\) e \(z =
+    x^3\), com \(x\) variando de \(0\) a \(1\). O campo de forças ao longo do
+    trajeto é \(\vec{F}(x,y,z) = (z,\; y^2,\; x)\). Calcule o trabalho usando a
+    forma diferencial \(\int_C z\,dx + y^2\,dy + x\,dz\), trabalhando
+    diretamente com \(x\) como variável de integração — sem criar uma
+    parametrização auxiliar.
+  </p>
+  <p>
+    <strong>(a)</strong> Use as equações da curva para expressar \(dy\) e \(dz\)
+    em termos de \(dx\).
+  </p>
+  <p>
+    <strong>(b)</strong> Substitua \(y\), \(z\), \(dy\) e \(dz\) na forma
+    diferencial, obtendo tudo em termos de \(x\) e \(dx\).
+  </p>
+  <p><strong>(c)</strong> Integre e interprete o resultado.</p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Como \(y = x^2\): \(dy = 2x\,dx\). Como \(z =
+        x^3\): \(dz = 3x^2\,dx\).
+      </p>
+      <p>
+        <strong>(b)</strong> Substituindo \(y = x^2\), \(z = x^3\), \(dy =
+        2x\,dx\), \(dz = 3x^2\,dx\) na forma diferencial:
+      </p>
+      <p>
+        \[\int_0^1 \bigl[x^3 \cdot 1 + (x^2)^2 \cdot 2x + x \cdot 3x^2\bigr]\,dx
+        = \int_0^1 (x^3 + 2x^5 + 3x^3)\,dx = \int_0^1 (4x^3 + 2x^5)\,dx.\]
+      </p>
+      <p><strong>(c)</strong> Integrando:</p>
+      <p>
+        \[\int_0^1 (4x^3 + 2x^5)\,dx = \left.x^4 + \frac{x^6}{3}\right|_0^1 = 1
+        + \frac{1}{3} = \frac{4}{3}.\]
+      </p>
+      <p>
+        O trabalho realizado durante a descida é \(\dfrac{4}{3}\) unidades.
+        Observe que a forma diferencial resolveu o problema inteiramente em
+        termos de \(x\) — não foi necessário introduzir um parâmetro \(t\)
+        artificial. A própria variável \(x\) serviu como parâmetro natural.
+      </p>
+    </div>
+  </details>
+</li>

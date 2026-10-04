@@ -1,0 +1,212 @@
+<section>
+  <section>
+    <h2>Funções Vetoriais</h2>
+    <div class="fragment">
+      <p>Uma função vetorial associa a cada ponto do domínio um vetor:</p>
+    </div>
+    <div class="fragment formula-spotlight">
+      <p>\[ \vec{F}: A \subseteq \mathbb{R}^n \to \mathbb{R}^m \]</p>
+    </div>
+    <div class="fragment">
+      <p>Cada componente é uma função escalar independente:</p>
+      <p>
+        \[ \vec{F}(x_1, \ldots, x_n) = \bigl(f_1(x_1, \ldots, x_n),\; \ldots,\;
+        f_m(x_1, \ldots, x_n)\bigr) \]
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Do Escalar ao Vetorial</h3>
+    <div class="dual-panel">
+      <div>
+        <p><strong>Familiar:</strong></p>
+        <p>\(f(x) = 2x\)</p>
+        <p>Um número entra, um número sai.</p>
+      </div>
+      <div>
+        <p><strong>Vetorial:</strong></p>
+        <p>\(\vec{r}(t) = (\cos t,\; \sin t,\; t)\)</p>
+        <p>Um número entra, um vetor sai.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <p>
+        A trajetória de um foguete é uma função vetorial: a cada instante \(t\),
+        a posição completa \((x(t), y(t), z(t))\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Três Interpretações</h3>
+    <div class="triple-panel">
+      <div class="fragment">
+        <p><strong>Curva</strong></p>
+        <p>\(\vec{r}: \mathbb{R} \to \mathbb{R}^n\)</p>
+        <p>trajetória</p>
+      </div>
+      <div class="fragment">
+        <p><strong>Campo</strong></p>
+        <p>\(\vec{F}: \mathbb{R}^n \to \mathbb{R}^n\)</p>
+        <p>vetor por ponto</p>
+      </div>
+      <div class="fragment">
+        <p><strong>Transformação</strong></p>
+        <p>\(\vec{T}: \mathbb{R}^m \to \mathbb{R}^n\)</p>
+        <p>caso geral</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Trajetória Circular</h3>
+    <div class="dual-panel">
+      <div>
+        <div class="problem-section">
+          <p>A órbita de um satélite de raio \(R\):</p>
+          <p class="formula-spotlight">
+            \[ \vec{r}(t) = (R\cos t,\; R\sin t) \]
+          </p>
+        </div>
+        <div class="fragment compact-solution">
+          <p>
+            \(t=0\): \((R, 0)\). \(t=\frac{\pi}{2}\): \((0, R)\). Percurso
+            completo: \(t \in [0, 2\pi]\).
+          </p>
+        </div>
+      </div>
+      <div>
+        <canvas
+          id="canvasTrajetoria"
+          class="visualization-canvas"
+          width="350"
+          height="350"
+        ></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="history-section">
+      <span class="history-label">ARQUIVO</span>
+      <p>
+        Korolev descrevia trajetórias de foguetes com funções vetoriais. Seu
+        nome era segredo de Estado — os jornais soviéticos chamavam apenas de "O
+        Designer-Chefe". O homem que calculava órbitas para o mundo não podia
+        usar o próprio nome.
+      </p>
+    </div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasTrajetoria');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width,
+      H = canvas.height;
+    var cx = W / 2,
+      cy = H / 2;
+    var R = 130;
+    var angle = 0;
+    var trail = [];
+    var maxTrail = 120;
+    var animId = null;
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, R, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(239, 83, 80, 0.2)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(cx - 5, cy);
+      ctx.lineTo(cx + 5, cy);
+      ctx.moveTo(cx, cy - 5);
+      ctx.lineTo(cx, cy + 5);
+      ctx.strokeStyle = 'rgba(239, 83, 80, 0.3)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + R * Math.cos(angle), cy - R * Math.sin(angle));
+      ctx.strokeStyle = 'rgba(239, 83, 80, 0.4)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      for (var i = 1; i < trail.length; i++) {
+        var alpha = i / trail.length;
+        ctx.beginPath();
+        ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
+        ctx.lineTo(trail[i].x, trail[i].y);
+        ctx.strokeStyle = 'rgba(67, 160, 71, ' + alpha * 0.8 + ')';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      }
+
+      var px = cx + R * Math.cos(angle);
+      var py = cy - R * Math.sin(angle);
+      ctx.beginPath();
+      ctx.arc(px, py, 5, 0, Math.PI * 2);
+      ctx.fillStyle = '#43A047';
+      ctx.fill();
+      ctx.shadowColor = '#43A047';
+      ctx.shadowBlur = 10;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = 'rgba(255,255,255,0.5)';
+      ctx.font = '12px monospace';
+      ctx.fillText('t = ' + angle.toFixed(1), 10, H - 10);
+      ctx.fillText('x = ' + (R * Math.cos(angle)).toFixed(0), 10, H - 25);
+      ctx.fillText('y = ' + (R * Math.sin(angle)).toFixed(0), 10, H - 40);
+
+      angle += 0.025;
+      if (angle > Math.PI * 2) angle -= Math.PI * 2;
+
+      trail.push({ x: px, y: py });
+      if (trail.length > maxTrail) trail.shift();
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    function init() {
+      if (animId) return;
+      draw();
+    }
+
+    function cleanup() {
+      if (animId) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+    }
+
+    setTimeout(function () {
+      if (typeof Reveal !== 'undefined' && Reveal.on) {
+        Reveal.on('slidechanged', function (e) {
+          if (e.currentSlide && e.currentSlide.contains(canvas)) {
+            cleanup();
+            trail = [];
+            angle = 0;
+            init();
+          } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+            cleanup();
+          }
+        });
+      }
+      if (canvas.offsetParent !== null) init();
+    }, 500);
+
+    window.vizTrajetoria = { init: init, cleanup: cleanup };
+  })();
+</script>

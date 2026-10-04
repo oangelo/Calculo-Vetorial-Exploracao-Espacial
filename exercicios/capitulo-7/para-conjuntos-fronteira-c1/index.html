@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">20</span> DE JULHO DE
+          <span class="censored">1969</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CONTROLE — HOUSTON, TX</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">EAGLE</span><br /><br />
+          Enquanto o módulo lunar se aproxima da superfície da Lua, nossa equipe
+          de análise de trajetórias identificou que o Teorema de Green, até
+          agora verificado apenas para retângulos, precisa ser estendido para
+          regiões com fronteira curva. Manobras de rendezvous orbital envolvem
+          regiões circulares e elípticas; campos de gravidade não se ajustam a
+          grelhas cartesianas. O material abaixo foi extraído dos cadernos do
+          Dr.
+          <span class="censored">████████</span>, que demonstrou como decompor
+          regiões curvas em fatias retangulares para justificar a extensão do
+          teorema.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações matemáticas classificadas como
+          vitais para o programa lunar. Divulgação não autorizada resultará em
+          <span class="censored">sanções severas</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: EG-<span class="censored">1969</span>-C1</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN PARA CONJUNTOS COM FRONTEIRA
+        \(C^1\)
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. FRONTEIRA C1: O QUE SIGNIFICA</strong></p>
+        <p>
+          Dizemos que uma curva é de classe \(C^1\) quando pode ser descrita por
+          uma função diferenciável cuja derivada é contínua. Uma região \(D\)
+          tem
+          <em>fronteira \(C^1\)</em> quando seu contorno \(\partial D\) é
+          composto por um número finito de arcos \(C^1\) que se encontram em
+          ângulos diferentes de zero. Elipses, círculos, parábolas e curvas
+          poligonais suaves são exemplos de fronteira \(C^1\). Essa condição
+          garante que o contorno pode ser parametrizado de modo que a integral
+          de linha ao redor dele faz sentido — o que não ocorreria, por exemplo,
+          com uma fronteira fractal.
+        </p>
+        <p>
+          No tópico anterior, provamos o Teorema de Green para retângulos. Agora
+          a pergunta central é:
+          <strong>e se a fronteira não for retangular?</strong> A resposta passa
+          pela ideia de <em>decompor</em> a região em pedaços mais simples.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. REGIÕES VERTICALMENTE E HORIZONTALMENTE SIMPLES</strong>
+        </p>
+        <p>
+          Uma região \(D\) é <em>verticalmente simples</em> quando, para cada
+          \(x\) fixo, os valores de \(y\) variam entre duas funções contínuas:
+        </p>
+        <p class="formula-highlight">
+          \[D = \{(x,y) : a \le x \le b,\; \phi_1(x) \le y \le \phi_2(x)\}\]
+        </p>
+        <p>
+          Analogamente, \(D\) é <em>horizontalmente simples</em> quando os
+          valores de \(x\), para cada \(y\) fixo, ficam entre duas funções.
+          Retângulos são ambos ao mesmo tempo. Discos e elipses são
+          verticalmente (e horizontalmente) simples. A importância prática é
+          que, para regiões com essa propriedade, o argumento usado na
+          demonstração para retângulos se adapta diretamente.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >3. ARGUMENTO DE DECOMPOSIÇÃO: POR QUE GREEN FUNCIONA ALÉM DOS
+            RETÂNGULOS</strong
+          >
+        </p>
+        <p>
+          Quando uma região com fronteira \(C^1\) não é verticalmente simples,
+          podemos fatiá-la em sub-regiões que são. O argumento é o mesmo da
+          aditividade que você já viu para retângulos: ao aplicar Green em cada
+          sub-região e somar os resultados, as integrais de linha nos cortes
+          internos (compartilhados entre sub-regiões vizinhas) se cancelam, pois
+          são percorridas em sentidos opostos. O que sobra é exatamente a
+          integral de linha ao redor da fronteira exterior de \(D\).
+        </p>
+        <p class="formula-highlight">
+          \[\oint_{\partial D} P\,dx + Q\,dy = \iint_D \left(\frac{\partial
+          Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA\]
+        </p>
+        <p>
+          Essa fórmula vale para toda região \(D\) com fronteira \(C^1\),
+          orientada positivamente (anti-horária), desde que \(\vec{F} = (P,Q)\)
+          tenha derivadas parciais contínuas em uma vizinhança de \(D\).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. REGIÕES MULTIPLAMENTE CONEXAS</strong></p>
+        <p>
+          Quando \(D\) possui buracos — como um anel —, a fronteira tem mais de
+          uma componente. O Teorema de Green continua valendo, mas agora a
+          integral de contorno percorre <strong>todas</strong> as componentes da
+          fronteira. A borda externa é orientada no sentido anti-horário; as
+          bordas internas (ao redor dos buracos) são orientadas no sentido
+          horário, de modo que a região sempre fique à esquerda do percurso.
+          Novamente, o argumento é o mesmo: um corte (slit) que conecta a borda
+          externa a uma borda interna transforma o anel em uma região
+          simplesmente conexa, e as integrais nos cortes se cancelam.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em 20 de julho de 1969, o módulo lunar
+        <em>Eagle</em> pousou no Mar da Tranquilidade. Os algoritmos de
+        navegação que guiaram Armstrong e Aldrin calculavam correções de
+        trajetória usando
+        <span class="censored">integrais de contorno</span> sobre regiões não
+        retangulares — a extensão do Teorema de Green para fronteiras \(C^1\)
+        foi um ingrediente silencioso do sucesso da missão.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">5</span> • DOCUMENTO EG-<span
+          class="censored"
+          >1969</span
+        >-C1
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

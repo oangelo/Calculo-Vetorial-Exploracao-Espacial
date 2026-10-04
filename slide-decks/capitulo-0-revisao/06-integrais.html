@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Integrais: Somando o Infinitamente Pequeno</h2>
+        <p>
+          A ferramenta matemática que nos permite acumular quantidades
+          continuamente variáveis
+        </p>
+        <p>
+          $\int_a^b f(x) \, dx = \lim_{n \to \infty} \sum_{i=1}^n f(x_i) \,
+          \Delta x$
+        </p>
+        <p class="note">
+          Esta expressão permitiu aos cientistas calcular trabalho total,
+          impulso e consumo de combustível - parâmetros críticos para o
+          planejamento de missões espaciais.
+        </p>
+      </section>
+
+      <section>
+        <h3>Interpretação Geométrica: Área Sob a Curva</h3>
+        <div
+          id="integral-geometrica"
+          style="
+            width: 100%;
+            height: 300px;
+            background: rgba(26, 35, 126, 0.3);
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            box-shadow: 0 0 20px rgba(79, 195, 247, 0.1);
+          "
+        ></div>
+        <p>-</p>
+      </section>
+
+      <section>
+        <h3>Teorema Fundamental do Cálculo</h3>
+        <p>A ponte crucial entre derivadas e integrais:</p>
+        <p>$\int_a^b f(x) \, dx = F(b) - F(a)$</p>
+        <p>Onde \(F\) é uma antiderivada de \(f\), ou seja: \(F'(x) = f(x)\)</p>
+        <p class="note">
+          Esta conexão elegante permite calcular integrais definidas encontrando
+          antiderivadas, simplificando enormemente os cálculos de engenharia
+          espacial.
+        </p>
+      </section>
+
+      <!-- Slide modificado: equações em linhas separadas -->
+      <section>
+        <h3>Técnicas de Integração</h3>
+        <div class="math-container">
+          <div class="formula">
+            <p>Substituição</p>
+            <p>$\int f(g(x))g'(x) \, dx = \int f(u) \, du$</p>
+            <p>onde \(u = g(x)\)</p>
+          </div>
+        </div>
+
+        <div class="equation-container">
+          <p>Por Partes</p>
+          <p class="equation-line">$\int u(x)v'(x) \, dx =$</p>
+          <p class="equation-line">$= u(x)v(x) - \int v(x)u'(x) \, dx$</p>
+        </div>
+
+        <p class="note">
+          Estas técnicas são essenciais para resolver as equações diferenciais
+          que descrevem órbitas e manobras espaciais.
+        </p>
+      </section>
+
+      <section>
+        <h3>Integrais na Física da Exploração Espacial</h3>
+        <div class="math-container">
+          <div class="formula">
+            <p>Trabalho realizado por uma força variável</p>
+            <p>$W = \int_a^b \vec{F} \cdot d\vec{r}$</p>
+          </div>
+          <div class="formula">
+            <p>Impulso Total</p>
+            <p>$I = \int_{t_1}^{t_2} F(t) \, dt$</p>
+          </div>
+        </div>
+        <p>A integral permitiu aos engenheiros calcular:</p>
+        <ul>
+          <li>Impulso total de motores de foguete</li>
+          <li>Energia necessária para manobras orbitais</li>
+          <li>Efeitos cumulativos da resistência atmosférica</li>
+        </ul>
+      </section>
+
+      <!-- Slide modificado: removida imagem extra -->
+      <section>
+        <h3>Marco Histórico: Cálculos de Hohmann</h3>
+        <div class="image-container">
+          <div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Hohmann_transfer_orbit2.jpg"
+              alt="Diagrama da Transferência de Hohmann"
+              width="200"
+            />
+            <p class="image-caption">Transferência de Hohmann (1925)</p>
+          </div>
+        </div>
+        <p>
+          Walter Hohmann aplicou cálculo integral para mostrar que a trajetória
+          elíptica tangente a duas órbitas circulares é a manobra que minimiza o
+          combustível necessário para transferência orbital.
+        </p>
+        <p class="note">
+          Este trabalho matemático, publicado em 1925, tornou-se fundamental
+          para praticamente todas as missões espaciais realizadas durante a
+          Guerra Fria e além.
+        </p>
+      </section>
+
+      <!-- Slide modificado: texto reduzido -->
+      <section>
+        <h3>O Problema do Impulso na Propulsão Espacial</h3>
+
+        <div class="problem-box small-text">
+          <p>
+            O <span class="highlight">impulso específico</span> é uma medida
+            fundamental de eficiência em sistemas de propulsão espacial,
+            representando quanto empuxo é gerado por unidade de propelente
+            consumido por unidade de tempo.
+          </p>
+
+          <p>
+            Para um motor com empuxo variável ao longo do tempo, o impulso total
+            é calculado por:
+          </p>
+
+          <p>$I_{total} = \int_{t_0}^{t_f} F(t) \, dt$</p>
+
+          <p>
+            Onde \(F(t)\) é a força de empuxo em função do tempo, do momento de
+            ignição \(t_0\) até o desligamento \(t_f\).
+          </p>
+        </div>
+
+        <p class="small-text">
+          Durante o desenvolvimento do motor F-1 usado no Saturn V, os
+          engenheiros da NASA modelaram o empuxo durante a fase de partida como:
+        </p>
+
+        <p>$F(t) = F_{max}\left(1 - e^{-kt}\right) \text{ Newtons}$</p>
+
+        <p class="small-text">
+          Onde \(F_{max} = 6.77 \times 10^6\) N é o empuxo máximo e \(k = 0.5\)
+          s<sup>-1</sup> é a constante de tempo característica do motor.
+        </p>
+      </section>
+
+      <!-- Slide dividido em dois: Problema do impulso -->
+      <section>
+        <h3>Cálculo do Impulso: Problema</h3>
+
+        <div class="problem-box">
+          <p style="font-weight: bold; color: var(--star-blue)">Problema:</p>
+          <p>
+            Calcular o impulso total nos primeiros 5 segundos de funcionamento
+            do motor F-1 do Saturn V.
+          </p>
+
+          <p>$F(t) = 6.77 \times 10^6 \left(1 - e^{-0.5t}\right) \text{ N}$</p>
+
+          <p style="font-weight: bold; color: var(--star-blue)">
+            Solução usando integração:
+          </p>
+          <p>
+            $I_{total} = \int_{0}^{5} 6.77 \times 10^6 \left(1 -
+            e^{-0.5t}\right) \, dt$
+          </p>
+        </div>
+
+        <p class="note">
+          O cálculo preciso do impulso durante este período crítico foi
+          essencial para garantir que o foguete pudesse decolar com segurança da
+          plataforma de lançamento.
+        </p>
+      </section>
+
+      <!-- Continuação: Solução do problema do impulso -->
+      <section>
+        <h3>Cálculo do Impulso: Solução</h3>
+
+        <div class="solution-box">
+          <p>Resolvendo:</p>
+          <p>
+            \begin{align*} I_{total} &= 6.77 \times 10^6 \int_{0}^{5} \left(1 -
+            e^{-0.5t}\right) \, dt \\ &= 6.77 \times 10^6 \left[t +
+            \frac{e^{-0.5t}}{0.5}\right]_{0}^{5} \\ &= 6.77 \times 10^6 \left[(5
+            - \frac{e^{-2.5}}{0.5}) - (0 - \frac{1}{0.5})\right] \\ &= 6.77
+            \times 10^6 [5 - 0.16 + 2] \\ &= 6.77 \times 10^6 \times 6.84 \\
+            &\approx 46.3 \times 10^6 \text{ N·s} \end{align*}
+          </p>
+        </div>
+
+        <p class="note">
+          Este impulso de 46.3 milhões de newton-segundos representa a
+          "quantidade de movimento" transferida ao foguete durante a fase
+          inicial de lançamento, demonstrando por que o cálculo integral é
+          indispensável para a engenharia aeroespacial.
+        </p>
+      </section>
+
+      <!-- Slide modificado: removida imagem -->
+      <section>
+        <h3>Integrais e Transferências Orbitais</h3>
+
+        <p>
+          A transferência de Hohmann usa duas queimas de motor para mover uma
+          nave da órbita 1 para a órbita 2:
+        </p>
+
+        <p>$\Delta v_{total} = \Delta v_1 + \Delta v_2$</p>
+
+        <p>Para calcular o consumo de combustível, precisamos aplicar:</p>
+
+        <p>
+          $m_{propellant} = m_{initial} \left(1 - e^{-\Delta
+          v_{total}/v_e}\right)$
+        </p>
+
+        <p>Onde \(v_e\) é a velocidade de exaustão do motor.</p>
+
+        <p>O trabalho realizado pelos motores é dado por:</p>
+
+        <p>
+          $W = \int F \cdot dr = \int_{r_1}^{r_2} \frac{GMm}{r^2} \, dr =
+          GMm\left(\frac{1}{r_1} - \frac{1}{r_2}\right)$
+        </p>
+
+        <p class="note">
+          Os engenheiros soviéticos e americanos redescobriram independentemente
+          os princípios de Hohmann durante a década de 1950, aplicando-os para
+          as primeiras missões lunares e interplanetárias.
+        </p>
+      </section>
+
+      <!-- Slide dividido em dois: Contexto do exercício -->
+      <section>
+        <h3>Exercício: Consumo de Combustível em Reorientação</h3>
+
+        <div class="problem-box">
+          <p style="font-weight: bold">
+            Contexto: Programa Vanguard (1957-1959)
+          </p>
+          <p>
+            Durante as primeiras missões de satélites artificiais, os
+            engenheiros precisavam calcular com precisão o consumo de
+            combustível para manobras de orientação. Um propulsor específico
+            produzia força segundo a função:
+          </p>
+
+          <p>$F(t) = 20 - 0.5t^2 \text{ Newtons}$</p>
+
+          <p>para \(0 \leq t \leq 6\) segundos.</p>
+        </div>
+      </section>
+
+      <!-- Continuação: Perguntas do exercício -->
+      <section>
+        <h3>Exercício: Consumo de Combustível em Reorientação</h3>
+
+        <div class="problem-box">
+          <p style="font-weight: bold; margin-top: 15px">Perguntas:</p>
+          <ol>
+            <li>
+              Qual o impulso total fornecido pelo propulsor durante seu
+              funcionamento completo?
+            </li>
+            <li>
+              Se a massa do satélite é 10 kg, qual a variação de velocidade
+              resultante desta queima?
+            </li>
+            <li>
+              Quanto combustível é consumido se o impulso específico do
+              propulsor é 220 segundos?
+            </li>
+          </ol>
+        </div>
+
+        <div style="text-align: right">
+          <p>
+            <em
+              >Dica: Use a equação \(\Delta v = \frac{I_{total}}{m}\) para a
+              segunda pergunta.</em
+            >
+          </p>
+          <p>
+            <em
+              >Para a terceira, use \(m_{propellant} = \frac{I_{total}}{I_{sp}
+              \cdot g_0}\) onde \(g_0 = 9.8\text{ m/s}^2\).</em
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- Dividir solução em múltiplos slides -->
+      <section>
+        <h3>Solução: Consumo de Combustível (Parte 1)</h3>
+
+        <div class="solution-box">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            1. Cálculo do impulso total:
+          </p>
+          <p>
+            \begin{align*} I_{total} &= \int_{0}^{6} (20 - 0.5t^2) \, dt \\ &=
+            \left[20t - \frac{0.5t^3}{3}\right]_{0}^{6} \\ &= 20 \cdot 6 -
+            \frac{0.5 \cdot 6^3}{3} - 0 \\ &= 120 - \frac{0.5 \cdot 216}{3} \\
+            &= 120 - 36 \\ &= 84 \text{ N·s} \end{align*}
+          </p>
+        </div>
+      </section>
+
+      <!-- Continuação: Solução parte 2 -->
+      <section>
+        <h3>Solução: Consumo de Combustível (Parte 2)</h3>
+
+        <div class="solution-box">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            2. Variação de velocidade:
+          </p>
+          <p>
+            \begin{align*} \Delta v &= \frac{I_{total}}{m} \\ &= \frac{84 \text{
+            N·s}}{10 \text{ kg}} \\ &= 8.4 \text{ m/s} \end{align*}
+          </p>
+        </div>
+      </section>
+
+      <!-- Continuação: Solução parte 3 -->
+      <section>
+        <h3>Solução: Consumo de Combustível (Parte 3)</h3>
+
+        <div class="solution-box">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            3. Consumo de combustível:
+          </p>
+          <p>
+            \begin{align*} m_{propellant} &= \frac{I_{total}}{I_{sp} \cdot g_0}
+            \\ &= \frac{84 \text{ N·s}}{220 \text{ s} \cdot 9.8 \text{ m/s}^2}
+            \\ &= \frac{84}{2156} \\ &\approx 0.039 \text{ kg} = 39 \text{ g}
+            \end{align*}
+          </p>
+        </div>
+
+        <p class="note">
+          A precisão nestes cálculos era essencial, pois os primeiros satélites
+          tinham reservas de combustível extremamente limitadas. Um erro de
+          cálculo poderia significar o fim prematuro da missão.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>

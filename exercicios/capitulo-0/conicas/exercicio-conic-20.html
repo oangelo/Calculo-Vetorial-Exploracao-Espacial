@@ -1,0 +1,55 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO CONIC-20 [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Análise de Estrutura Assintótica - Setor de Trajetórias [SIGMA-4]
+  </div>
+  <p>
+    As assíntotas de uma hipérbole são fundamentais para prever o
+    comportamento assintótico de uma trajetória de escape. No exercício
+    anterior, você usou a fórmula das assíntotas. Agora vamos derivá-la
+    diretamente da equação — sem depender de fórmulas decoradas.
+  </p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Dada a hipérbole \(\dfrac{x^2}{9} - \dfrac{y^2}{16} = 1\), isole
+    \(y\) e analise o limite quando \(x \to \infty\). Mostre que
+    \(y \to \pm\frac{b}{a}x\).<br />
+    (b) Verifique que as assíntotas passam pelo centro da hipérbole.<br />
+    (c) Escreva as assíntotas na forma \(y = mx + b\).<br />
+    (d) Explique por que a hipérbole se aproxima das assíntotas mas nunca as
+    cruza.
+  </p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a) Derivando as assíntotas:</strong><br />
+        Da equação: \(y^2 = 16\left(\frac{x^2}{9} - 1\right)\), então
+        \(y = \pm\frac{4}{3}\sqrt{x^2 - 9}\).<br />
+        Quando \(x \to \infty\):
+        \[\sqrt{x^2 - 9} = x\sqrt{1 - \frac{9}{x^2}} \approx x\left(1 - \frac{9}{2x^2}\right) = x - \frac{9}{2x}\]
+        Portanto \(y \to \pm\frac{4}{3}x\) quando \(x \to \infty\).
+      </p>
+      <p>
+        <strong>(b) Centro:</strong> As assíntotas são retas
+        \(y = \pm\frac{4}{3}x\) que passam pela origem (centro da hipérbole).
+      </p>
+      <p>
+        <strong>(c) Forma \(y = mx + b\):</strong><br />
+        Assíntota 1: \(y = \frac{4}{3}x + 0\).<br />
+        Assíntota 2: \(y = -\frac{4}{3}x + 0\).<br />
+        (O coeficiente linear é zero pois o centro é a origem.)
+      </p>
+      <p>
+        <strong>(d) Por que nunca cruza:</strong><br />
+        A hipérbole satisfaz \(\frac{x^2}{9} - \frac{y^2}{16} = 1\). Se
+        substituirmos \(y = \frac{4}{3}x\) (assíntota), obtemos:
+        \[\frac{x^2}{9} - \frac{16x^2}{9 \cdot 16} = \frac{x^2}{9} - \frac{x^2}{9} = 0 \neq 1\]
+        A assíntota nunca satisfaz a equação da hipérbole — a diferença é
+        sempre 1, por menor que seja para \(|x|\) grande. A curva se
+        aproxima assintoticamente mas nunca toca a reta.
+      </p>
+    </div>
+  </details>
+</li>

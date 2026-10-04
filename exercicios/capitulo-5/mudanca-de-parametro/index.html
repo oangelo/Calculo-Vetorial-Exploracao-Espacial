@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">27</span> DE JANEIRO DE
+          <span class="censored">1967</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">CENTRO DE CONTROLE [██████]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-PATHFINDER</span><br /><br />
+          Em preparação para as operações lunares tripuladas do Programa Apollo,
+          nossos especialistas em Cálculo Vetorial conduziram estudos sobre a
+          <span class="censored">invariância</span> de integrais de linha sob
+          mudança de parâmetro. Este material aborda métodos de
+          <span class="censored">reparametrização</span> críticos para o sucesso
+          das manobras de navegação e acoplamento orbital.<br /><br />
+          Documentos correlatos do Dr.
+          <span class="censored">██████</span> confirmam que a compreensão dessa
+          invariância é essencial para o cálculo preciso de trajetórias de
+          <span class="censored">aproximação lunar</span>.
+        </div>
+        <div class="warning-box">
+          A difusão não autorizada deste conteúdo poderá resultar em
+          <span class="censored">sanções imediatas</span>. O nível de acesso
+          SIGMA-<span class="censored">4</span> é obrigatório para toda e
+          qualquer consulta.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">5001</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MUDANÇA DE PARÂMETRO EM INTEGRAIS DE LINHA
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>1. REPARAMETRIZAÇÃO: A MESMA CURVA, VÁRIOS RELÓGIOS</strong>
+        </p>
+        <p>
+          Uma curva parametrizada \(\vec{r}:[a,b] \to \mathbb{R}^n\) pode ser
+          descrita por parâmetros diferentes. Se \(t = \varphi(\tau)\) é uma
+          função invertível e derivável, a curva reparametrizada é
+          \(\vec{r}(\varphi(\tau))\). A imagem geométrica — o conjunto de pontos
+          no espaço — é a mesma, mas o "relógio" usado para percorrê-la mudou.
+        </p>
+        <p>
+          A pergunta central é: será que o comprimento da curva, ou qualquer
+          integral de linha, depende do relógio escolhido? A resposta é
+          <strong>não</strong>
+          para integrais escalares, e essa invariância é uma consequência direta
+          da regra da cadeia.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >2. INVARIÂNCIA DO COMPRIMENTO: A REGRA DA CADEIA EM AÇÃO</strong
+          >
+        </p>
+        <p class="formula-highlight">
+          \[L = \int_a^b |\vec{r}'(t)|\, dt = \int_c^d |\vec{r}'(\varphi(\tau))|
+          \cdot |\varphi'(\tau)|\, d\tau\]
+        </p>
+        <p>
+          Aqui, \(t = \varphi(\tau)\) é a reparametrização, com \(\tau \in
+          [c,d]\) e \(\varphi(c) = a\), \(\varphi(d) = b\). O fator
+          \(|\varphi'(\tau)|\) aparece pela regra da cadeia: a derivada da curva
+          composta é \(\vec{r}'(\varphi(\tau)) \cdot \varphi'(\tau)\), e a
+          magnitude distribui: \(|\vec{r}'(\varphi(\tau))| \cdot
+          |\varphi'(\tau)|\).
+        </p>
+        <p>
+          A mudança de variável \(dt = \varphi'(\tau)\, d\tau\) garante que o
+          integrando original é recuperado exatamente — é por isso que o
+          comprimento é invariante.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >3. PARAMETRIZAÇÃO PELO COMPRIMENTO DE ARCO: VELOCIDADE
+            UNITÁRIA</strong
+          >
+        </p>
+        <p>
+          Dada uma curva \(\vec{r}(t)\), a função comprimento de arco a partir
+          de um ponto fixo é \(s(t) = \int_{t_0}^{t} |\vec{r}'(u)|\, du\). Se
+          invertermos essa relação para obter \(t = t(s)\), a parametrização
+          \(\vec{r}(t(s))\) tem a propriedade especial de que
+        </p>
+        <p class="formula-highlight">
+          \[\left|\frac{d\vec{r}}{ds}\right| = 1\]
+        </p>
+        <p>
+          onde \(s\) é o comprimento percorrido. Na prática, isso significa que
+          o parâmetro avança à mesma taxa que o arco — o ponto se move com
+          velocidade constante igual a 1.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>4. ORIENTAÇÃO: O QUE MUDA QUANDO INVERTEMOS A DIREÇÃO</strong>
+        </p>
+        <p>
+          Se a reparametrização for <em>decrescente</em> (\(\varphi'(\tau) <
+          0\)), a orientação da curva é invertida. O comprimento permanece
+          invariante (pois usamos \(|\varphi'|\)), mas a
+          <strong>integral de linha vetorial</strong>
+          muda de sinal:
+        </p>
+        <p class="formula-highlight">
+          \[\int_{C^{-}} \vec{F} \cdot d\vec{r} = -\int_{C} \vec{F} \cdot
+          d\vec{r}\]
+        </p>
+        <p>
+          Isso distingue as integrais escalares (invariantes sob qualquer
+          reparametrização) das vetoriais (dependem da orientação). Essa
+          distinção será fundamental nos capítulos seguintes.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Apollo (1967-1969),
+        a necessidade de calcular trajetórias de acoplamento orbital com
+        precisão motivou o desenvolvimento de técnicas avançadas de
+        reparametrização. As manobras de
+        <span class="censored">rendezvous</span> entre o módulo de comando e o
+        módulo lunar exigiam que engenheiros da NASA e consultores do
+        <span class="censored">MIT Instrumentation Laboratory</span> calculassem
+        integrais de linha sobre trajetórias descritas por diferentes sistemas
+        de coordenadas. A invariância sob reparametrização garantia que os
+        resultados eram independentes do referencial escolhido.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VX-<span
+          class="censored"
+          >5001</span
+        >-C
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

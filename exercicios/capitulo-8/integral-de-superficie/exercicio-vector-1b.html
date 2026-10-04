@@ -1,0 +1,61 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Documentacao Tecnica Apollo 15 - Analise de Superficies
+    (15/AGO/1971)
+  </div>
+  <p>
+    Agora que reconhecemos a integral de superficie como extensao da area,
+    precisamos dominar a notacao — o que exatamente significa dS e como ele se
+    expressa em termos dos parametros da superficie? Neste exercicio,
+    trabalhamos a mecanica que sera usada em todos os exercicios seguintes.
+  </p>
+  <p>
+    Considere o cilindro lateral de raio \(R = 2\) m e altura \(h = 5\) m,
+    parametrizado por \(\vec{r}(\theta, z) = (2\cos\theta,\; 2\sin\theta,\;
+    z)\), com \(0 \le \theta \le 2\pi\) e \(0 \le z \le 5\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o dominio dos parametros \((\theta, z)\) e
+    esboce a superficie, indicando a direcao dos eixos.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule as derivadas parciais \(\vec{r}_\theta\) e
+    \(\vec{r}_z\), em seguida o produto vetorial \(\vec{r}_\theta \times
+    \vec{r}_z\) e sua norma \(\|\vec{r}_\theta \times \vec{r}_z\|\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva explicitamente o elemento de area \(dS =
+    \|\vec{r}_\theta \times \vec{r}_z\|\, d\theta\, dz\) e reconheca a estrutura
+    da formula geral da integral de superficie para este caso.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: Para o cilindro, r_theta = (-2 sin theta, 2 cos theta, 0)
+      e r_z = (0, 0, 1). O produto vetorial tera apenas componentes radiais.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Dominio: D = {(theta,z) : 0 <= theta <= 2pi, 0 <= z
+        <= 5}. Esboco: cilindro circular reto de raio 2 e altura 5, eixo no z.
+      </p>
+      <p>
+        <strong>(b)</strong> Derivadas: \[\vec{r}_\theta = (-2\sin\theta,\;
+        2\cos\theta,\; 0), \quad \vec{r}_z = (0,\; 0,\; 1)\] Produto vetorial:
+        \[\vec{r}_\theta \times \vec{r}_z = (2\cos\theta,\; 2\sin\theta,\; 0)\]
+        Norma: \[\|\vec{r}_\theta \times \vec{r}_z\| = \sqrt{4\cos^2\theta +
+        4\sin^2\theta} = 2\]
+      </p>
+      <p>
+        <strong>(c)</strong> Elemento de area: \[dS = 2\, d\theta\, dz\] A
+        integral de superficie de f sobre o cilindro e: \[\iint_S f(x,y,z)\, dS
+        = \int_0^{2\pi}\int_0^5 f(2\cos\theta, 2\sin\theta, z) \cdot 2\, dz\,
+        d\theta\]
+      </p>
+    </div>
+  </details>
+</li>

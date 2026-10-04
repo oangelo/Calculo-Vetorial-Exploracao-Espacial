@@ -1,0 +1,257 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h2>Quanto Trabalho a Nave Gastou?</h2>
+      <p>
+        Quanto trabalho a nave gastou para ir de um ponto a outro — sem
+        parametrizar nada? A pergunta soa impossível: no capítulo 5, cada
+        trajetória exigia uma integral nova, construída peça por peça a partir
+        da parametrização da curva.
+      </p>
+      <p>
+        A seção 02 deu a pista: para campos conservativos, o campo "vem de"
+        uma função \(\phi\). Se existe esse mapa escondido, talvez os vetores
+        ao longo da curva não precisem ser somados um a um — talvez só os
+        extremos importem.
+      </p>
+      <p class="history-insert">
+        As rotinas de tratamento de exceção que Margaret Hamilton insistiu em
+        criar foram as que salvaram a Apollo 11.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Os Extremos Bastam</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Num mapa de altitude, o desnível entre dois pontos não depende do
+            trajeto escolhido: subir direto ou dar a volta inteira muda a
+            distância percorrida, não a diferença de altura. O caminho é
+            irrelevante — o mapa já contém tudo.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Se \(\vec{F} = \nabla \phi\), o trabalho entre \(A\) e \(B\) é a
+            diferença de "altitude" \(\phi(B) - \phi(A)\). A curva inteira —
+            sua forma, seu comprimento, seu zigue-zague — desaparece do
+            cálculo; sobram apenas os extremos.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Teorema Fundamental das Integrais de Linha</h3>
+      <div class="formula-spotlight">
+        <p>\[ \int_C \vec{F}\cdot d\vec{r} = \phi(\vec{r}(b)) - \phi(\vec{r}(a)) \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>
+            \(\vec{r}(t)\), \(a \le t \le b\) = parametrização da curva \(C\);
+            os extremos são \(\vec{r}(a) = A\) e \(\vec{r}(b) = B\).
+          </li>
+          <li>
+            \(\phi\) = função potencial do campo: \(\vec{F} = \nabla \phi\).
+          </li>
+          <li>
+            \(\cdot\) = produto escalar — a mesma integral de linha do
+            capítulo 5.
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(C\) suave por partes e
+          \(\vec{F} = \nabla \phi\) contínuo na região.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Independência do Caminho</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>\[ \int_{C_1} \vec{F}\cdot d\vec{r} = \int_{C_2} \vec{F}\cdot d\vec{r} = \phi(B) - \phi(A) \]</p>
+          <p>
+            <strong>Onde:</strong> \(C_1\) e \(C_2\) são quaisquer curvas de
+            \(A\) a \(B\) — o resultado é o mesmo para todas.
+          </p>
+          <p>
+            <strong>Validade:</strong> campo conservativo \(\vec{F} = \nabla
+            \phi\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Consequência prática:</strong></p>
+          <p>
+            Pode-se escolher o caminho mais conveniente — um segmento de reta,
+            por exemplo — ou nem parametrizar: avaliar \(\phi\) nos extremos
+            basta.
+          </p>
+          <p>
+            <strong>Recíproca:</strong> se a integral depende só dos extremos,
+            o campo é conservativo — o detalhe fica para o tópico 04.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Curvas Fechadas</h3>
+      <div class="formula-spotlight">
+        <p>\[ \oint_C \vec{F}\cdot d\vec{r} = \phi(A) - \phi(A) = 0 \]</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong> numa curva fechada, o ponto de partida é o
+          de chegada — \(A = B\), e a diferença se anula.</p>
+        <p><strong>Validade:</strong> campo conservativo, qualquer curva
+          fechada \(C\).</p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p><strong>Propriedades:</strong></p>
+        <ul>
+          <li>
+            <strong>Trabalho nulo:</strong> dar a volta e voltar ao ponto de
+            partida não gasta nem acumula energia num campo conservativo.
+          </li>
+          <li>
+            <strong>Uso inverso:</strong> se uma curva fechada tem integral
+            não nula, o campo não é conservativo — a anomalia que o tópico 06
+            vai enfrentar.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Procedimento em Três Passos</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Um checklist de voo: primeiro o instrumento confirma que o campo
+            é conservativo; depois se lê o mapa de altitude \(\phi\); por fim
+            se subtrai a leitura nos dois pontos. Se o instrumento reprova, o
+            voo volta ao procedimento antigo.
+          </p>
+        </div>
+        <div>
+          <p><strong>Procedimento:</strong></p>
+          <ol>
+            <li>
+              <strong>Testar:</strong> derivadas cruzadas,
+              \(\partial M/\partial y = \partial N/\partial x\).
+            </li>
+            <li>
+              <strong>Encontrar:</strong> \(\phi\) por integração das
+              componentes do campo.
+            </li>
+            <li>
+              <strong>Calcular:</strong> \(\phi(B) - \phi(A)\).
+            </li>
+          </ol>
+          <p>
+            Se o teste falha, o campo não é conservativo: volta-se ao
+            capítulo 5 e parametriza-se a curva.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Atalho do Potencial</h3>
+      <div class="dual-panel">
+        <div>
+          <div class="problem-section">
+            <p>
+              O campo \(\vec{F} = (2x, 2y)\) tem potencial
+              \(\phi = x^2 + y^2\). Calcule o trabalho de \(A = (0,0)\) a
+              \(B = (1,1)\) de duas formas: (a) avaliando \(\phi\) nos
+              extremos; (b) parametrizando o segmento
+              \(\vec{r}(t) = (t, t)\), \(t \in [0,1]\), e integrando
+              \(\vec{F}\cdot d\vec{r}\). Compare os resultados.
+            </p>
+          </div>
+          <div class="compact-solution">
+            <p>
+              <strong>Estratégia:</strong> em (a), avalie \(\phi\) em \(B\) e
+              em \(A\) e subtraia. Em (b), derive \(\vec{r}\), avalie o campo
+              sobre a curva, monte o produto escalar e integre de \(0\) a
+              \(1\). Os dois métodos devem concordar.
+            </p>
+          </div>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Em 20 de julho de 1969, cerca de 600 milhões de pessoas assistiram
+            ao pouso ao vivo — um quinto da humanidade da época. Foi a
+            transmissão mais assistida da história até então.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · TEOREMA FUNDAMENTAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Quando o Caminho Importa</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            O campo \(\vec{F} = (-y, x)\) falha no teste de exatidão:
+            \(\partial M/\partial y = -1 \neq 1 = \partial N/\partial x\).
+            Mesmo assim, calcule a integral de \(A = (1,0)\) a \(B = (0,1)\)
+            sobre dois caminhos: o arco do círculo unitário
+            \(\vec{r}(t) = (\cos t, \sin t)\), \(t \in [0, \pi/2]\), e o
+            segmento \(\vec{r}(t) = (1 - t, t)\), \(t \in [0,1]\). Os
+            resultados são iguais?
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Michael Collins, o terceiro homem, nunca pisou na Lua. Enquanto os
+            outros dois desciam, ele orbitava sozinho — a cada volta, cerca de
+            48 minutos sem nenhum contato com a Terra.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH6-1969 · CAPÍTULO 6</div>
+  </section>
+</section>

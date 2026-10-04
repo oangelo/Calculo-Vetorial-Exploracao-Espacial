@@ -1,0 +1,413 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">10</span> DE SETEMBRO DE
+    <span class="censored">1962</span>
+    <br />
+    LOCALIZAÇÃO: <span class="censored">BASE DE TESTES [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">INTEGRAL-X</span> <br /><br />
+    Este dossiê segue o princípio de <strong>significado antes da álgebra</strong>.
+    Antes de dominar técnicas de integração, o operador deve compreender
+    <em>o que a integral mede</em>: a acumulação de variação, visualizada como
+    área sob uma curva. A fundamentação abaixo estabelece esse panorama antes
+    dos exercícios práticos.
+  </div>
+  <div class="warning-box">
+    Divulgar as informações contidas neste documento sem autorização adequada
+    configura <span class="censored">violação grave</span> da segurança nacional.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">2023</span>-B</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span>CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">5</span></span>
+  </div>
+</div>
+
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS
+</div>
+
+<!-- ========== PRÉ-REQUISITOS ========== -->
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS: O QUE VOCÊ PRECISA SABER ANTES DE INTEGRAR</strong></p>
+  <p>
+    A integral é a operação inversa da derivada — por isso, dominar
+    derivação é o pré-requisito mais importante deste módulo. Além disso,
+    a integração depende fortemente de <strong>álgebra</strong>,
+    <strong>trigonometria</strong> e <strong>geometria analítica</strong>.
+    Esta seção resume tudo o que você deve rever antes de começar.
+  </p>
+  <p><strong>PR1. DERIVADAS DE FUNÇÕES ELEMENTARES:</strong>
+    A integral indefinida \(\int f(x)\,dx = F(x) + C\) pede que você
+    encontre \(F\) tal que \(F'(x) = f(x)\). Sem conhecer as regras de
+    derivação ao contrário, você não consegue integrar. As derivadas
+    essenciais são:
+  </p>
+  <p>
+    \(\frac{d}{dx}[x^n] = nx^{n-1}\),
+    \(\frac{d}{dx}[e^x] = e^x\),
+    \(\frac{d}{dx}[\ln x] = \frac{1}{x}\),
+    \(\frac{d}{dx}[\sin x] = \cos x\),
+    \(\frac{d}{dx}[\cos x] = -\sin x\),
+    \(\frac{d}{dx}[\tan x] = \sec^2 x\),
+    \(\frac{d}{dx}[\arcsin x] = \frac{1}{\sqrt{1-x^2}}\),
+    \(\frac{d}{dx}[\arctan x] = \frac{1}{1+x^2}\).
+  </p>
+  <p>
+    Reconhecer essas derivadas "de trás para frente" é o que permite
+    identificar antiderivadas. Se você soube que \(F'(x) = 2x\), agora
+    precisa concluir que \(\int 2x\,dx = x^2 + C\).
+  </p>
+
+  <p><strong>PR2. REGRA DA CADEIA E REGRA DO PRODUTO:</strong>
+    Duas técnicas de integração são diretamente as inversas dessas regras.
+    A <strong>substituição</strong> é a regra da cadeia ao contrário: se
+    \(\frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x)\), então
+    \(\int f'(g(x))\,g'(x)\,dx = f(g(x)) + C\). A
+    <strong>integração por partes</strong> é a regra do produto ao contrário:
+    se \((uv)' = u'v + uv'\), então \(\int u\,dv = uv - \int v\,du\).
+    Sem essas regras de derivação, as técnicas correspondentes não fazem
+    sentido.
+  </p>
+
+  <p><strong>PR3. ÁLGEBRA: FATORAÇÃO E COMPLETAR QUADRADOS:</strong>
+    A técnica de <strong>frações parciais</strong> exige fatorar polinômios
+    — decompor \(x^2 + x = x(x+1)\), por exemplo. Muitas integrais
+    trigonométricas e racionais exigem <strong>completar o quadrado</strong>:
+    \(x^2 + x + 1 = \left(x + \frac{1}{2}\right)^2 + \frac{3}{4}\).
+    Reconhecer padrões algébricos (diferença de quadrados,
+    trinômios perfeitos) é essencial para escolher a técnica correta.
+  </p>
+
+  <p><strong>PR4. FUNÇÕES TRIGONOMÉTRICAS E IDENTIDADES:</strong>
+    Integrais trigonométricas e substituições trigonométricas dependem
+    diretamente das identidades pitagóricas e de potência:
+  </p>
+  <p>
+    \(\sin^2\theta + \cos^2\theta = 1\),
+    \(\quad \tan^2\theta + 1 = \sec^2\theta\),
+    \(\quad \sin^2\theta = \frac{1 - \cos 2\theta}{2}\),
+    \(\quad \cos^2\theta = \frac{1 + \cos 2\theta}{2}\).
+  </p>
+  <p>
+    Além disso, conhecer as derivadas e integrais básicas de
+    \(\sin\), \(\cos\), \(\tan\) e \(\sec\) é indispensável. A
+    substituição trigonométrica transforma radicais como
+    \(\sqrt{a^2 - x^2}\) em \(\cos^2\theta\) usando exatamente essas
+    identidades.
+  </p>
+
+  <p><strong>PR5. GEOMETRIA ANALÍTICA: FIGURAS E GRÁFICOS:</strong>
+    A integral definida calcula <strong>área com sinal</strong>. Para
+    conferir resultados e construir intuição, você precisa lembrar as
+    fórmulas de área de triângulos, trapézios e círculos. Saber esboçar
+    gráficos de funções (lineares, quadráticas, trigonométricas) permite
+    visualizar a região sob a curva — o que a integral realmente mede.
+    A equação do círculo \(x^2 + y^2 = r^2\) aparece no exercício do
+    semicírculo, que motiva a substituição trigonométrica.
+  </p>
+
+  <p><strong>PR6. CONCEITO DE DERIVADA COMO TAXA DE VARIAÇÃO:</strong>
+    O Teorema Fundamental do Cálculo conecta a integral à derivada:
+    \(\int_a^b f(x)\,dx = F(b) - F(a)\), onde \(F' = f\). Se você
+    entende a derivada como a taxa instantânea de variação, a integral
+    é o <strong>acumulado</strong> dessa taxa. Essa ponte conceitual —
+    derivada como "velocidade", integral como "distância percorrida" —
+    é o fio condutor de todo o cálculo.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PROGRESSÃO ALFA → BETA → GAMMA → OMEGA</strong></p>
+  <p>
+    Os exercícios deste módulo estão organizados em quatro níveis de
+    complexidade, cada um com um propósito pedagógico específico:
+  </p>
+  <p>
+    <strong>ALFA</strong> — Fundamentos. Integrais que podem ser resolvidas
+    por reconhecimento direto ou aplicação imediata do Teorema Fundamental
+    do Cálculo. A verificação geométrica é possível (triângulos, trapézios,
+    semicírculos). Aqui o aluno constrói a intuição: a integral
+    <em>mede</em> área. As técnicas de substituição simples são
+    introduzidas com exemplos guiados e dicas.
+  </p>
+  <p>
+    <strong>BETA</strong> — Aplicações. Integrais que exigem uma etapa
+    intermediária — fatorar, escolher \(u\) e \(dv\), ou reconhecer um
+    padrão — mas ainda com orientação. O aluno aplica as técnicas
+    aprendidas no nível ALFA para resolver problemas um pouco mais
+    elaborados (frações parciais simples, integração por partes básica).
+  </p>
+  <p>
+    <strong>GAMMA</strong> — Combinações. Integrais que exigem
+    <strong>combinar duas ou mais técnicas</strong>: primeiro uma
+    identidade trigonométrica, depois integração por partes; ou primeiro
+    completar o quadrado, depois arctangente. O aluno deve analisar o
+    integrando, identificar os padrões e montar a estratégia.
+  </p>
+  <p>
+    <strong>OMEGA</strong> — Síntese total. Integrais sem dicas, onde o
+    aluno deve <strong>escolher sozinho</strong> qual técnica aplicar — ou
+    combinação de técnicas. É aqui que a autonomia sobre a decoreba se
+    prova: com as definições básicas, o aluno deriva o caminho sozinho.
+    Estes exercícios simulam situações reais onde não há enunciado
+    indicando o método.
+  </p>
+</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Uma das perguntas mais antigas da matemática aplicada é: <em>quanto se
+    acumulou?</em> Se conhecemos a velocidade de um foguete em cada instante,
+    quanto ele percorreu? Se sabemos a taxa de consumo de combustível ao longo
+    do tempo, quanto foi gasto no total? A integral responde exatamente isso:
+    ela <strong>acumula</strong> uma variação conhecida (a derivada, a taxa)
+    para reconstruir a quantidade total.
+  </p>
+  <p>
+    Neste módulo, construímos essa ferramenta do zero. Começamos com o
+    <strong>significado geométrico</strong> (área sob uma curva), depois
+    estabelecemos o <strong>Teorema Fundamental do Cálculo</strong> — a ponte
+    entre derivadas e integrais. Em seguida, dominamos quatro técnicas
+    essenciais: <strong>substituição</strong>, <strong>integração por
+    partes</strong>, <strong>frações parciais</strong> e <strong>substituição
+    trigonométrica</strong>. Cada técnica resolve uma família de problemas que
+    as anteriores não alcançam.
+  </p>
+</div>
+
+<!-- ========== 1. INTEGRAL COMO ÁREA ========== -->
+<div class="concept-definition">
+  <p><strong>1. INTEGRAL COMO ÁREA: SIGNIFICADO GEOMÉTRICO</strong></p>
+  <p>
+    A integral definida de uma função \\(f(x)\\) no intervalo \\([a, b]\\)
+    mede a <strong>área com sinal</strong> entre o gráfico de \\(f\\) e o eixo
+    \\(x\\). Se \\(f(x) \geq 0\\), a integral é simplesmente a área da região
+    delimitada pelo gráfico, o eixo \\(x\\), e as retas \\(x = a\\) e
+    \\(x = b\\). Quando \\(f\\) assume valores negativos, a área abaixo do
+    eixo conta com sinal negativo.
+  </p>
+  <p>
+    Mas como calcular essa área quando a curva não é uma figura geométrica
+    simples? A resposta vem da <strong>soma de Riemann</strong>: dividimos
+    \\([a, b]\\) em \\(n\\) subintervalos de largura
+    \\(\Delta x = \frac{b - a}{n}\\), aproximamos cada faixa por um retângulo
+    de altura \\(f(x_i^*)\\), e somamos:
+  </p>
+  <p class="formula-highlight">
+    \[ \int_a^b f(x)\,dx = \lim_{n \to \infty} \sum_{i=1}^{n} f(x_i^*)\,\Delta x \]
+  </p>
+  <p>
+    onde \\(x_i^*\\) é um ponto de amostragem no \\(i\\)-ésimo subintervalo.
+    À medida que \\(n\\) cresce, os retângulos se ajustam cada vez melhor à
+    curva, e o limite converge para o valor exato. Para figuras geométricas
+    simples (retas, parábolas), podemos <strong>conferir o resultado</strong>
+    usando fórmulas de área conhecidas — triângulo, trapézio, círculo.
+  </p>
+</div>
+
+<!-- ========== 2. TEOREMA FUNDAMENTAL DO CÁLCULO ========== -->
+<div class="concept-definition">
+  <p><strong>2. TEOREMA FUNDAMENTAL DO CÁLCULO: A PONTE</strong></p>
+  <p>
+    Calcular limites de somas de Riemann é trabalhoso. O Teorema Fundamental
+    do Cálculo nos dá um <strong>atalho espetacular</strong>: ele conecta a
+    integral (acumulação) à derivada (taxa de variação), mostrando que
+    integrar e derivar são operações inversas.
+  </p>
+  <p class="formula-highlight">
+    \[ \int_a^b f(x)\,dx = F(b) - F(a) \]
+  </p>
+  <p>
+    onde \\(F\\) é qualquer função cuja derivada é \\(f\\), ou seja,
+    \\(F'(x) = f(x)\\). Essa \\(F\\) chama-se <strong>antiderivada</strong> ou
+    <strong>primitiva</strong> de \\(f\\). Em vez de somar infinitos
+    retângulos, basta encontrar uma antiderivada e avaliá-la nos limites
+    \\(a\\) e \\(b\\). A notação compacta \\(F(x)\Big|_a^b\\) ou
+    \\(\left[F(x)\right]_a^b\\) significa exatamente \\(F(b) - F(a)\\).
+  </p>
+  <p>
+    A segunda parte do teorema garante que, se definirmos
+    \\(G(x) = \int_a^x f(t)\,dt\\), então \\(G'(x) = f(x)\\). Ou seja:
+    derivar a integral (com limite variável) recupera a função original. Este
+    é o elo que torna o cálculo uma teoria unificada.
+  </p>
+</div>
+
+<!-- ========== 3. INTEGRAL INDEFINIDA ========== -->
+<div class="concept-definition">
+  <p><strong>3. INTEGRAL INDEFINIDA: PRIMITIVAS</strong></p>
+  <p>
+    A integral indefinida é a operação de encontrar todas as antiderivadas de
+    uma função. Diferente da integral definida (que resulta em um número), a
+    integral indefinida resulta em uma <strong>família de funções</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[ \int f(x)\,dx = F(x) + C \quad \Longleftrightarrow \quad F'(x) = f(x) \]
+  </p>
+  <p>
+    A constante \\(C\\) aparece porque a derivada de qualquer constante é zero —
+    não há como recuperar essa informação ao "desfazer" a derivação. Toda
+    técnica de integração é, em última análise, um método para descobrir
+    qual \\(F(x)\\) satisfaz \\(F'(x) = f(x)\\). As potências básicas incluem:
+    \\(\int x^n\,dx = \frac{x^{n+1}}{n+1} + C\\) para \\(n \neq -1\\), e
+    \\(\int x^{-1}\,dx = \ln|x| + C\\).
+  </p>
+</div>
+
+<!-- ========== 4. TÉCNICA: SUBSTITUIÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>4. TÉCNICA: SUBSTITUIÇÃO (REGRA DA CADEIA REVERSA)</strong></p>
+  <p>
+    Muitas integrais não são reconhecíveis diretamente, mas se tornam triviais
+    após uma mudança de variável. A substituição é a <strong>regra da cadeia
+    lida de trás para frente</strong>: se o integrando tem a forma
+    \\(f(g(x)) \cdot g'(x)\\), substituímos \\(u = g(x)\\) e \\(du = g'(x)\,dx\\):
+  </p>
+  <p class="formula-highlight">
+    \[ \int f(g(x))\,g'(x)\,dx = \int f(u)\,du \]
+  </p>
+  <p>
+    O truque está em <strong>identificar o \"miolo\"</strong> \\(g(x)\\) cuja
+    derivada \\(g'(x)\\) aparece (ou quase aparece) no integrando. Após
+    integrar em \\(u\\), substituímos de volta \\(u = g(x)\\). Para integrais
+    definidas, também mudamos os limites: se \\(u = g(x)\\), então os novos
+    limites são \\(g(a)\\) e \\(g(b)\\), dispensando o retorno à variável
+    original.
+  </p>
+</div>
+
+<!-- ========== 5. TÉCNICA: INTEGRAÇÃO POR PARTES ========== -->
+<div class="concept-definition">
+  <p><strong>5. TÉCNICA: INTEGRAÇÃO POR PARTES</strong></p>
+  <p>
+    Quando o integrando é um <strong>produto de duas funções</strong>,
+    a substituição nem sempre funciona. A integração por partes nasce da
+    regra do produto de derivadas, lida ao contrário:
+    \\((uv)' = u'v + uv'\\), o que implica \\(uv' = (uv)' - u'v\\).
+    Integrando ambos os lados:
+  </p>
+  <p class="formula-highlight">
+    \[ \int u\,dv = uv - \int v\,du \]
+  </p>
+  <p>
+    A estratégia é escolher \\(u\\) e \\(dv\\) de modo que a nova integral
+    \\(\int v\,du\\) seja <strong>mais simples</strong> que a original. Uma
+    heurística útil é o mnemônico <strong>LIATE</strong>: priorize como
+    \\(u\\) funções Logarítmicas, Inversas trigonométricas, Algébricas,
+    Trigonométricas e Exponenciais, nesta ordem. Para integrais definidas,
+    aplica-se a mesma fórmula, avaliando \\(uv\\) nos limites e integrando
+    \\(\int v\,du\\) com os mesmos limites.
+  </p>
+</div>
+
+<!-- ========== 6. TÉCNICA: FRAÇÕES PARCIAIS ========== -->
+<div class="concept-definition">
+  <p><strong>6. TÉCNICA: FRAÇÕES PARCIAIS</strong></p>
+  <p>
+    Integrais de <strong>funções racionais</strong> — quocientes de polinômios
+    \\(\frac{P(x)}{Q(x)}\\) — são resolvidas decomposto a fração em partes
+    mais simples. Se o grau de \\(P\\) é maior ou igual ao de \\(Q\\), primeiro
+    fazemos a divisão polinomial. Depois, fatoramos \\(Q(x)\\) e escrevemos:
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{P(x)}{Q(x)} = \frac{A_1}{(x - r_1)} + \frac{A_2}{(x - r_2)} + \cdots + \frac{Bx + C}{(x^2 + px + q)} + \cdots \]
+  </p>
+  <p>
+    onde \\(r_i\\) são raízes reais (fatores lineares) e \\(x^2 + px + q\\)
+    são fatores quadráticos irreduzíveis. Cada termo resultante é integrável
+    diretamente — logaritmos para fatores lineares, arco-tangente para
+    quadráticos. Os coeficientes \\(A_i\\), \\(B\\), \\(C\\) são determinados
+    por multiplicar tudo por \\(Q(x)\\) e igualar coeficientes, ou usar o
+    método de Heaviside (substituir \\(x = r_i\\)).
+  </p>
+</div>
+
+<!-- ========== 7. TÉCNICA: SUBSTITUIÇÃO TRIGONOMÉTRICA ========== -->
+<div class="concept-definition">
+  <p><strong>7. TÉCNICA: SUBSTITUIÇÃO TRIGONOMÉTRICA</strong></p>
+  <p>
+    Quando o integrando contém expressões como \\(\sqrt{a^2 - x^2}\\),
+    \\(\sqrt{a^2 + x^2}\\) ou \\(\sqrt{x^2 - a^2}\\), a substituição
+    trigonométrica converte o radical em uma função trigonométrica simples,
+    aproveitando identidades pitagóricas:
+  </p>
+  <p class="formula-highlight">
+    \[
+    \begin{aligned}
+    \sqrt{a^2 - x^2} &\;\Longrightarrow\; x = a\sin\theta, \quad dx = a\cos\theta\,d\theta \\
+    \sqrt{a^2 + x^2} &\;\Longrightarrow\; x = a\tan\theta, \quad dx = a\sec^2\theta\,d\theta \\
+    \sqrt{x^2 - a^2} &\;\Longrightarrow\; x = a\sec\theta, \quad dx = a\sec\theta\tan\theta\,d\theta
+    \end{aligned}
+    \]
+  </p>
+  <p>
+    O motivo funciona porque, por exemplo, \\(a^2 - a^2\sin^2\theta =
+    a^2\cos^2\theta\\), eliminando o radical. Após integrar em \\(\theta\\),
+    convertemos de volta para \\(x\\) usando um triângulo retângulo de
+    referência. Esta técnica é essencial para integrais que aparecem em
+    equações de círculos, elipses e hipérboles — conectando integração à
+    geometria analítica.
+  </p>
+</div>
+
+<!-- ========== 8. INTEGRAIS DEFINIDAS E ÁREA ========== -->
+<div class="concept-definition">
+  <p><strong>8. INTEGRAIS DEFINIDAS E ÁREA SOB A CURVA</strong></p>
+  <p>
+    A integral definida \\(\int_a^b f(x)\,dx\\) é o objeto central do cálculo
+    integral. Ela possui três interpretações complementares: como
+    <strong>área com sinal</strong> (Seção 1), como
+    <strong>acumulação</strong> (se \\(f\\) é uma taxa, a integral acumula o
+    total), e como <strong>limite de somas</strong> (Seção 1, soma de Riemann).
+    O Teorema Fundamental (Seção 2) fornece o método de cálculo:
+  </p>
+  <p class="formula-highlight">
+    \[ \int_a^b f(x)\,dx = F(b) - F(a) \]
+  </p>
+  <p>
+    Para calcular a área entre duas curvas \\(f(x)\\) e \\(g(x)\\), integramos
+    a diferença: \\(\int_a^b |f(x) - g(x)|\,dx\\). Se \\(f(x) \geq g(x)\\)
+    em todo \\([a, b]\\), a área é \\(\int_a^b [f(x) - g(x)]\,dx\\). Quando
+    as curvas se cruzam, dividimos o intervalo nos pontos de interseção e
+    somamos as integrais parciais, garantindo que cada parcela tenha sinal
+    positivo. Essa técnica é a base para cálculos de áreas de regiões
+    delimitadas, volumes por fatias (capítulos futuros) e integrais de linha.
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> A integração é o
+  coração dos cálculos orbitais. A <strong>integral da velocidade</strong>
+  fornece a posição — e sem ela, não é possível prever onde um satélite
+  estará daqui a uma hora. A <strong>substituição</strong> simplifica
+  integrais de força gravitacional variável durante manobras de
+  <span class="censored">assistência gravitacional</span>. A
+  <strong>integração por partes</strong> aparece em cálculos de empuxo
+  variável durante queima de propelente. As <strong>frações parciais</strong>
+  são usadas em modelos de transferência de calor no escudo térmico de
+  reentrada. A <strong>substituição trigonométrica</strong> resolve integrais
+  ligadas a trajetórias elípticas e hiperbólicas. Todas essas técnicas, em
+  conjunto, permitiram a precisão necessária para o programa
+  <span class="censored">Apollo</span> e evitaram mais de um
+  <span class="censored">incidente crítico</span> de cálculo de reentrada.
+</div>
+
+<!-- ========== NOTA HISTÓRICA ========== -->
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> No início da década de
+  <span class="censored">1960</span>, cálculos de reentrada atmosférica e
+  determinação de pontos de pouso dependiam extensivamente das técnicas
+  apresentadas aqui. Equipes de
+  <span class="censored">computação humana</span> processavam tabelas de
+  integrais para prever trajetórias com precisão suficiente para missões
+  tripuladas — um feito que combinava matemática pura, engenharia e
+  <span class="censored">coragem</span>.
+</div>

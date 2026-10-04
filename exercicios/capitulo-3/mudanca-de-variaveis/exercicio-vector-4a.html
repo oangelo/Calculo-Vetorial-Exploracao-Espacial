@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 13 — DISCO COM RESTRIÇÃO ANGULAR</div>
+  <div class="context">
+    ORIGEM: Programa <span class="censored">Apollo</span> - Análise de Injeção
+    Orbital (Dados de <span class="censored">MAI/1966</span>)
+  </div>
+  <p>
+    Nos exercícios anteriores, usamos coordenadas polares para simplificar
+    discos e coroas circulares. Agora combinamos essa técnica com uma restrição
+    angular: calcule \(\iint_{R} \exp(-x^2 + y)\,dx\,dy\) na região obtida pela
+    interseção entre \(x^2 + y^2 \le 4\) e \(y \ge x\). Em coordenadas polares,
+    a reta \(y=x\) define limites angulares precisos, e o disco se torna
+    simplesmente \(0\le r\le 2\). O desafio aqui é que o integrando
+    \(\exp(-x^2+y)\) não se separa após a mudança — a variável angular aparece
+    tanto em \(r^2\) quanto em \(r\).
+  </p>
+  <p>
+    <strong>(a)</strong> Converta a região para coordenadas polares,
+    identificando os limites de \(r\) e \(\theta\).
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a integral com o integrando \(\exp(-x^2+y)\) em
+    termos de \(r\) e \(\theta\), incluindo o Jacobiano.
+  </p>
+  <p>
+    <strong>(c)</strong> Discuta por que a integral resultante não admite
+    solução elementar e escreva a expressão final.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A região \(x^2+y^2\le 4\) com \(y\ge x\) é descrita em coordenadas
+        polares como \(0\le r\le 2\) e \(\theta\in[\pi/4,\, 5\pi/4]\). A reta
+        \(y=x\) corresponde a \(\theta=\pi/4\) (e sua extensão diametralmente
+        oposta em \(\theta=5\pi/4\)).
+      </p>
+      <p>
+        Usando \(x=r\cos\theta\), \(y=r\sin\theta\), o Jacobiano vale \(r\). O
+        integrando torna-se \(\exp\bigl(-(r\cos\theta)^2 + r\sin\theta\bigr) =
+        \exp(-r^2\cos^2\theta + r\sin\theta)\).
+      </p>
+      <p>
+        A integral resultante é \[\int_{\pi/4}^{5\pi/4}\int_{0}^{2}
+        \exp(-r^2\cos^2\theta + r\sin\theta)\cdot r\,dr\,d\theta.\]
+      </p>
+      <p>
+        O termo \(r^2\cos^2\theta\) e o termo \(r\sin\theta\) compartilham
+        dependências em \(r\) e \(\theta\) de formas distintas, impedindo a
+        separação em duas integrais independentes. Não existe antiderivada
+        elementar para \(\int r\,e^{-r^2\cos^2\theta + r\sin\theta}\,dr\) em
+        geral. A expressão acima é a forma final aceitável.
+      </p>
+      <p>
+        CONCLUSÃO: A mudança para coordenadas polares delimita corretamente a
+        região, mas o integrando exponencial misto exige métodos numéricos para
+        avaliação.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-06-BETA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Magnetismo - Programa de Proteção Espacial [DADOS DE
+    18/FEV/1961]
+  </div>
+  <p>
+    CONEXÃO: Nos exercícios anteriores, a intensidade do campo gravitacional
+    caía com \(1/r^2\). Este campo magnético também enfraquece com a distância —
+    mas o padrão de direção é circular, como no campo rotacional. É a combinação
+    dos dois conceitos: direção tangente + intensidade decrescente.
+  </p>
+  <p>
+    Considere um campo magnético simplificado ao redor de um fio condutor:
+    \[\vec{B}(x,y) = \frac{k}{x^2 + y^2} \begin{pmatrix} -y, x \end{pmatrix}\]
+    onde \(k\) é uma constante positiva.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os dois "efeitos" combinados neste campo:
+    qual parte controla a direção e qual controla a intensidade?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a magnitude \(|\vec{B}|\) em função de \(r =
+    \sqrt{x^2 + y^2}\). Como a intensidade varia com a distância?
+  </p>
+  <p>
+    <strong>(c)</strong> Existe algum ponto onde o campo não está definido? O
+    que isso significa fisicamente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Separe o campo em duas partes: o vetor \((-y, x)\) (que
+      você viu no campo rotacional) dá a DIREÇÃO, e o fator \(k/(x^2+y^2)\) dá a
+      INTENSIDADE. Para a magnitude, lembre que \(\sqrt{(-y)^2 + x^2} =
+      \sqrt{x^2 + y^2} = r\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) DECOMPOSIÇÃO DO CAMPO:</p>
+      <p>
+        O vetor \((-y, x)\) (direção) cria o padrão circular do campo rotacional
+        — tangente aos círculos centrados na origem, sentido anti-horário. O
+        fator \(k/(x^2 + y^2) = k/r^2\) (intensidade) faz o campo enfraquecer
+        com a distância ao quadrado, como o campo gravitacional dos exercícios
+        anteriores.
+      </p>
+      <p>(b) MAGNITUDE:</p>
+      <p>
+        \[|\vec{B}| = \frac{k}{r^2} \cdot \sqrt{(-y)^2 + x^2} = \frac{k}{r^2}
+        \cdot r = \frac{k}{r}\]
+      </p>
+      <p>
+        A intensidade é inversamente proporcional à distância \(r\) (não ao
+        quadrado como na gravidade). Quando a distância dobra, a intensidade cai
+        pela metade.
+      </p>
+      <p>(c) PONTO DE SINGULARIDADE:</p>
+      <p>
+        Na origem \((0,0)\), o denominador \(x^2 + y^2 = 0\), então o campo é
+        indefinido (tende ao infinito). Fisicamente, isto corresponde ao local
+        exato do fio condutor — o campo magnético é teoricamente infinito sobre
+        o próprio fio. Na prática, o fio tem espessura finita, mas o modelo
+        simplificado prevê essa singularidade.
+      </p>
+    </div>
+  </details>
+</li>

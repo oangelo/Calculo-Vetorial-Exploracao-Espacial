@@ -1,0 +1,506 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h2>Fluxo de um Campo Vetorial</h2>
+      <p>
+        Uma membrana — a parede de um módulo, o painel de uma antena, o casco de
+        um tanque — está imersa num campo vetorial: velocidades, forças, fluxo
+        de calor. Quanto do campo atravessa essa superfície de um lado para o
+        outro? A pergunta não é quanto vale uma função em cada ponto da
+        membrana, mas quanto atravessa: a taxa com que o campo cruza a barreira.
+      </p>
+      <p>
+        No capítulo anterior, a integral de superfície acumulava uma função
+        escalar \(f\) sobre \(S\): uma massa, uma carga, uma densidade espalhada
+        pela membrana. Aqui o integrando muda: será a componente do campo na
+        direção da normal, \(\vec F \cdot \hat n\). Medir o que está sobre a
+        superfície dá lugar a medir o que passa através dela.
+      </p>
+      <p class="history-insert">
+        O reator de Chernobyl explodiu na Ucrânia soviética em 26 de abril. Dois
+        dias depois, alarmes dispararam numa usina nuclear da Suécia: a radiação
+        já cruzara fronteiras antes de Moscou admitir o acidente.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Fluxo: Quanto do Campo Atravessa</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Uma rede esticada num rio: o que passa pela malha não é a velocidade
+            da água em si, mas a componente da velocidade perpendicular à rede.
+            Quanto mais de frente a corrente atinge a malha, mais água
+            atravessa; de perfil, nada atravessa.
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            A contribuição de cada ponto da superfície ao fluxo é o produto
+            escalar \(\vec F \cdot \hat n\): a componente do campo na direção da
+            normal \(\hat n\). A normal define a área efetiva que o campo vê —
+            campo paralelo não atravessa nada; campo perpendicular contribui com
+            toda a magnitude.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exploração — Fluxo Local e o Ângulo de Incidência</h3>
+      <p>
+        A superfície vista de frente recebe o campo inteiro; de perfil, nada
+        atravessa. Ajuste o ângulo e a magnitude: a contagem de atravessamentos
+        acompanha a projeção \(\vec F \cdot \hat n\).
+      </p>
+      <canvas
+        id="canvasFluxo"
+        class="visualization-canvas"
+        width="700"
+        height="380"
+      ></canvas>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Ângulo \(\theta\) entre \(\vec F\) e \(\hat n\):</label>
+          <input
+            type="range"
+            id="sliderFluxoAngulo"
+            min="0"
+            max="180"
+            step="1"
+            value="60"
+          />
+        </div>
+        <div class="control-slider">
+          <label>Magnitude \(\lVert \vec F \rVert\):</label>
+          <input
+            type="range"
+            id="sliderFluxoMagnitude"
+            min="0.2"
+            max="2"
+            step="0.05"
+            value="1"
+          />
+        </div>
+        <button class="control-button" id="btnFluxoInverter">
+          Inverter normal
+        </button>
+        <button class="control-button" id="btnFluxoReiniciar">
+          Reiniciar contagem
+        </button>
+      </div>
+      <p class="visualization-tip">
+        Com \(\theta = 90°\), nenhuma partícula cruza a superfície; com \(\theta
+        = 0°\), o fluxo é máximo; acima de \(90°\), o fluxo fica negativo — a
+        contagem passa para o lado oposto.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Definição — Fluxo por uma Superfície</h3>
+      <div class="formula-spotlight">
+        <p>\[ \Phi = \iint_S \vec F \cdot \hat n \, dS \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(\Phi\) = fluxo pela superfície (escalar, com
+          sinal); \(S\) = superfície orientada; \(\hat n\) = normal unitária
+          definida ponto a ponto; \(dS\) = elemento de área; \(\vec F\) = campo
+          vetorial definido sobre \(S\).
+        </p>
+        <p>
+          <strong>Leitura:</strong> a integral soma a contribuição local \(\vec
+          F \cdot \hat n\) sobre todos os elementos de área — quanto do campo
+          atravessa \(S\), acumulado.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(S\) orientável e \(\hat n\) definida em
+          todos os pontos regulares. No capítulo 8, \(\iint_S f\,dS\) acumulava
+          um escalar sobre a superfície; agora o integrando é ponto a ponto o
+          produto escalar \(\vec F \cdot \hat n\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Orientação — Para Onde Aponta a Normal</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p>
+            <strong>Definição:</strong> a escolha de \(\hat n\) é a orientação
+            da superfície. Trocar \(\hat n\) por \(-\hat n\) inverte o sinal de
+            \(\Phi\), sem mudar nada na geometria.
+          </p>
+          <p>
+            <strong>Validade:</strong> para uma superfície fechada \(S =
+            \partial V\), a convenção é \(\hat n\) apontando para fora do
+            volume.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p>
+            <strong>Geometricamente:</strong> com \(\hat n\) exterior, o sinal
+            do fluxo indica o balanço do que atravessa:
+          </p>
+          <p>\(\Phi > 0\) — sai mais campo do que entra;</p>
+          <p>\(\Phi \lt 0\) — entra mais campo do que sai;</p>
+          <p>\(\Phi = 0\) — entra tanto quanto sai (balanço perfeito).</p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Cálculo — Parametrização e Superfícies Compostas</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \Phi = \iint_D \vec F(\vec r(u,v)) \cdot (\vec r_u \times \vec r_v)
+          \, du \, dv \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(D\) = domínio dos parâmetros; \(\vec r_u
+          \times \vec r_v\) = vetor normal (não unitário).
+        </p>
+        <p>
+          <strong>Orientação:</strong> verifique a direção do produto vetorial;
+          se apontar para o lado errado, troque a ordem.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec r\) de classe \(C^1\); orientação
+          consistente em toda a superfície.
+        </p>
+      </div>
+      <div class="h-bar"></div>
+      <div class="math-section">
+        <p>
+          <strong>Propriedades:</strong> se \(S = S_1 \cup S_2 \cup \cdots \cup
+          S_k\) (partes disjuntas exceto por bordos),
+        </p>
+        <p>
+          \[ \Phi_{\text{total}} = \sum_{i=1}^{k} \iint_{S_i} \vec F \cdot \hat
+          n_i \, dS_i \]
+        </p>
+        <p>
+          com todas as \(\hat n_i\) apontando para fora do volume delimitado. A
+          soma por partes de uma superfície fechada é o ponto de partida do
+          tópico seguinte.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Fluxo por um Hemisfério</h3>
+      <div class="dual-panel">
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            A evacuação de Pripyat começou no dia seguinte à explosão. Os
+            moradores ouviram que voltariam em três dias e deixaram tudo para
+            trás. A cidade continua vazia.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="problem-section">
+          <p>
+            Seja \(S\) o hemisfério superior da esfera de raio \(R\), isto é, a
+            superfície \(z = \sqrt{R^2 - x^2 - y^2}\), orientada com a normal
+            apontando para fora da esfera. Calcule o fluxo do campo constante
+            \(\vec F = \langle 0, 0, c\rangle\) através de \(S\).
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · FLUXO DE UM CAMPO VETORIAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Fluxo por uma Superfície Composta</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Seja \(S\) a fronteira do cilindro sólido \(x^2 + y^2 \le 1\), \(0
+            \le z \le 1\), orientada com a normal apontando para fora. Calcule o
+            fluxo de \(\vec F = \langle x, y, z^2\rangle\) através de \(S\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Mais de 500 mil pessoas foram mobilizadas para conter o reator. O
+            sarcófago de concreto e aço que o cobriu ficou pronto em novembro de
+            1986.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH9-1986 · CAPÍTULO 9</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasFluxo');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var UNI = '#FFFFFF';
+    var GRID = 'rgba(255, 255, 255, 0.18)';
+
+    var sliderAngulo = document.getElementById('sliderFluxoAngulo');
+    var sliderMagnitude = document.getElementById('sliderFluxoMagnitude');
+    var btnInverter = document.getElementById('btnFluxoInverter');
+    var btnReiniciar = document.getElementById('btnFluxoReiniciar');
+
+    var CENTER_X = W / 2;
+    var CENTER_Y = H / 2;
+    var HALF_W = 170;
+    var PARTICLES = 40;
+
+    var theta = 60;
+    var magnitude = 1;
+    var inverted = false;
+    var netCount = 0;
+    var particles = [];
+    var flashes = [];
+
+    function resetParticles() {
+      particles = [];
+      var i;
+      for (i = 0; i < PARTICLES; i++) {
+        particles.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+        });
+      }
+    }
+
+    function drawArrow(x, y, dx, dy, len, color, width) {
+      var ex = x + dx * len;
+      var ey = y + dy * len;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(ex, ey);
+      ctx.stroke();
+      var ang = Math.atan2(dy, dx);
+      var h = 6;
+      ctx.beginPath();
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - h * Math.cos(ang - 0.4), ey - h * Math.sin(ang - 0.4));
+      ctx.moveTo(ex, ey);
+      ctx.lineTo(ex - h * Math.cos(ang + 0.4), ey - h * Math.sin(ang + 0.4));
+      ctx.stroke();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      var normalX = 0;
+      var normalY = inverted ? 1 : -1;
+      var tr = (theta * Math.PI) / 180;
+      var fieldX = normalX * Math.cos(tr) - normalY * Math.sin(tr);
+      var fieldY = normalX * Math.sin(tr) + normalY * Math.cos(tr);
+      var arrowLen = 8 + magnitude * 14;
+      var speed = 0.5 + magnitude * 1.3;
+
+      var gx;
+      var gy;
+      for (gx = 30; gx < W; gx += 50) {
+        for (gy = 30; gy < H; gy += 50) {
+          drawArrow(gx, gy, fieldX, fieldY, arrowLen, VEL, 1.4);
+        }
+      }
+
+      ctx.strokeStyle = POS;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(CENTER_X - HALF_W, CENTER_Y);
+      ctx.lineTo(CENTER_X + HALF_W, CENTER_Y);
+      ctx.stroke();
+
+      drawArrow(CENTER_X, CENTER_Y, normalX, normalY, 70, UNI, 2.5);
+      ctx.fillStyle = UNI;
+      ctx.font = '15px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('n̂', CENTER_X + normalX * 86 + 12, CENTER_Y + normalY * 86);
+
+      var i;
+      for (i = 0; i < particles.length; i++) {
+        var p = particles[i];
+        var py = p.y;
+        p.x += fieldX * speed;
+        p.y += fieldY * speed;
+
+        var crossed = (py - CENTER_Y) * (p.y - CENTER_Y) < 0;
+        if (crossed && Math.abs(p.x - CENTER_X) < HALF_W) {
+          var s = fieldX * normalX + fieldY * normalY;
+          if (s >= 0) {
+            netCount += 1;
+          } else {
+            netCount -= 1;
+            flashes.push({ x: p.x, y: CENTER_Y, life: 1 });
+          }
+        }
+
+        if (p.x < -12) p.x = W + 12;
+        else if (p.x > W + 12) p.x = -12;
+        if (p.y < -12) p.y = H + 12;
+        else if (p.y > H + 12) p.y = -12;
+
+        ctx.fillStyle = VEL;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 3, 0, 2 * Math.PI);
+        ctx.fill();
+      }
+
+      for (i = flashes.length - 1; i >= 0; i--) {
+        var f = flashes[i];
+        f.life -= 0.03;
+        if (f.life <= 0) {
+          flashes.splice(i, 1);
+          continue;
+        }
+        ctx.fillStyle = ACC;
+        ctx.globalAlpha = f.life;
+        ctx.beginPath();
+        ctx.arc(f.x, f.y, 5 * f.life + 2, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+
+      var dot = magnitude * Math.cos(tr);
+      ctx.fillStyle = UNI;
+      ctx.font = '14px monospace';
+      ctx.textAlign = 'left';
+      ctx.fillText('F·n = |F| cos θ ≈ ' + dot.toFixed(2), 16, 26);
+      ctx.textAlign = 'right';
+      ctx.fillText('cruzamentos: ' + netCount, W - 16, 26);
+      ctx.textAlign = 'left';
+    }
+
+    function loop() {
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function onAngulo() {
+      theta = parseFloat(sliderAngulo.value);
+    }
+    function onMagnitude() {
+      magnitude = parseFloat(sliderMagnitude.value);
+    }
+    function onInverter() {
+      inverted = !inverted;
+    }
+    function onReiniciar() {
+      netCount = 0;
+      flashes = [];
+      resetParticles();
+    }
+
+    function addListeners() {
+      if (sliderAngulo) sliderAngulo.addEventListener('input', onAngulo);
+      if (sliderMagnitude)
+        sliderMagnitude.addEventListener('input', onMagnitude);
+      if (btnInverter) btnInverter.addEventListener('click', onInverter);
+      if (btnReiniciar) btnReiniciar.addEventListener('click', onReiniciar);
+    }
+
+    function removeListeners() {
+      if (sliderAngulo) sliderAngulo.removeEventListener('input', onAngulo);
+      if (sliderMagnitude)
+        sliderMagnitude.removeEventListener('input', onMagnitude);
+      if (btnInverter) btnInverter.removeEventListener('click', onInverter);
+      if (btnReiniciar) btnReiniciar.removeEventListener('click', onReiniciar);
+    }
+
+    function init() {
+      if (inited) return;
+      inited = true;
+      addListeners();
+      if (animId === null) {
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      removeListeners();
+      inited = false;
+    }
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) init();
+        else if (e.previousSlide && e.previousSlide.contains(canvas)) cleanup();
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    resetParticles();
+    hook();
+    window.vizFluxo = { init: init, cleanup: cleanup };
+  })();
+</script>
