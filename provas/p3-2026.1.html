@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>P3 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 9pt;
+        line-height: 1.3;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        height: 27.7cm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+      .main-header {
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+      }
+      .main-header h1 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: bold;
+      }
+      .main-header h2 {
+        margin: 0;
+        font-size: 10pt;
+        font-weight: normal;
+      }
+      .content {
+        display: flex;
+        gap: 1.5cm;
+        flex-grow: 1;
+      }
+      .column {
+        flex: 1;
+        min-width: 0;
+      }
+      .student-details {
+        margin-bottom: 20px;
+      }
+      .student-details div {
+        margin-bottom: 4px;
+      }
+      .student-details span {
+        border-bottom: 1px solid #000;
+        min-width: 350px;
+        display: inline-block;
+        margin-left: 5px;
+      }
+      .grade-table {
+        margin-bottom: 10px;
+      }
+      .grade-table table {
+        border-collapse: collapse;
+        font-size: 8pt;
+        text-align: center;
+        width: 100%;
+      }
+      .grade-table th,
+      .grade-table td {
+        border: 1px solid #000;
+        padding: 4px;
+        height: 0.8cm;
+      }
+      .instructions {
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 8.5pt;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 10pt;
+        color: #000;
+        border-left: 3px solid #000;
+        padding: 5px 8px;
+        background-color: #f5f5f5;
+        margin-bottom: 8px;
+      }
+      .subquestion {
+        margin: 8px 0 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-header">
+        <h1>Universidade do Estado do Rio de Janeiro - UERJ</h1>
+        <h2>P3 – 2026.1 - Cálculo Vetorial</h2>
+      </div>
+      <div class="content">
+        <div class="column">
+          <div class="student-details">
+            <div><strong>Curso:</strong> <span></span></div>
+            <div><strong>Nome:</strong> <span></span></div>
+            <div><strong>Matrícula:</strong> <span></span></div>
+          </div>
+          <!-- QUESTÃO 1 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 1 (2,5 pts): Cilindro fechado — fluxo e superfície
+            </div>
+            <p>
+              Considere a superfície fechada \(S\) formada pela superfície
+              lateral do cilindro \(x^2+y^2=4\) com \(0\le z\le 3\), pela tampa
+              do topo \(z=3\) e pela base \(z=0\), todas orientadas com vetor
+              normal externo. Considere o campo vetorial \(\mathbf
+              F(x,y,z)=(x,\;y,\;z)\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong>
+              Esboce o cilindro separando a superfície lateral, a tampa do topo
+              e a base, e indique o vetor normal externo de cada parte.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Calcule o fluxo \(\iint_S\mathbf F\cdot d\mathbf S\) por integral
+              de superfície, calculando separadamente o fluxo pela lateral, pela
+              tampa do topo e pela base.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,7)</strong>
+              Recalcule o fluxo pelo Teorema da Divergência, como \(\iiint_E
+              \operatorname{div}\mathbf F\;dV\) sobre o sólido \(E\) delimitado
+              por \(S\), e compare com o item (b).
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,5)</strong>
+              Calcule a área total de \(S\) (lateral + tampas) por integral de
+              superfície e verifique o resultado por geometria básica.
+            </div>
+          </div>
+          <!-- QUESTÃO 2 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 2 (2,5 pts): Triângulo e Teorema de Stokes
+            </div>
+            <p>
+              O triângulo \(T\) tem vértices \(A=(0,0,2)\), \(B=(2,0,0)\) e
+              \(C=(0,4,0)\). Considere o campo \(\mathbf F(x,y,z)=(z,\;x,\;y)\)
+              e a fronteira de \(T\) percorrida de \(A\) a \(B\), de \(B\) a
+              \(C\) e de \(C\) a \(A\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,6)</strong>
+              Esboce \(T\), determine a equação do plano que o contém e um vetor
+              normal unitário \(\hat{\mathbf n}\). Indique a orientação da
+              fronteira compatível com \(\hat{\mathbf n}\) (regra da mão
+              direita) e verifique que é o percurso dado.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Calcule \(\oint_{\partial T}\mathbf F\cdot d\mathbf r\) ao longo
+              da fronteira, parametrizando cada aresta.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong>
+              Calcule \(\operatorname{rot}\mathbf F\) e o fluxo
+              \(\iint_T(\operatorname{rot}\mathbf F)\cdot\hat{\mathbf n}\;dS\),
+              com a normal do item (a). Compare com o item (b): qual teorema
+              relaciona os dois resultados?
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,6)</strong>
+              Calcule a área de \(T\) por integral dupla e por produto vetorial,
+              e compare os resultados.
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="grade-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Q1</th>
+                  <th>Q2</th>
+                  <th>Q3</th>
+                  <th>Q4</th>
+                  <th>TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="instructions">
+            Instruções: Resolva todas as questões apresentando os cálculos
+            detalhadamente. Cada questão vale 2,5 pontos.
+          </div>
+          <!-- QUESTÃO 3 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 3 (2,5 pts): Paraboloide — área e volume
+            </div>
+            <p>
+              Considere o paraboloide \(z=2-x^2-y^2\), de concavidade voltada
+              para baixo, e a porção \(S\) dele com \(z\ge 0\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,4)</strong>
+              Esboce \(S\) e a projeção \(D\) de \(S\) no plano \(xy\).
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Proponha uma parametrização para \(S\) e, a partir dos vetores
+              tangentes que ela gera, explique e deduza o elemento infinitesimal
+              de área \(dS\). Em seguida, monte e calcule a integral que fornece
+              a área de \(S\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong>
+              Para a região \(R\) compreendida entre o paraboloide e o plano
+              \(z=0\), explique e deduza o elemento infinitesimal de volume
+              \(dV\) e escreva-o em coordenadas polares.
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,8)</strong>
+              Monte e calcule a integral que fornece o volume de \(R\).
+            </div>
+          </div>
+          <!-- QUESTÃO 4 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 4 (2,5 pts): Trajetória elíptica — tangente, perpendicular
+              e trabalho
+            </div>
+            <p>
+              Um móvel descreve a trajetória elíptica \(\frac{x^2}{4}+y^2=1\) no
+              sentido anti-horário, partindo de \(A=(2,0)\), passando por
+              \(B=(0,1)\) e completando a volta. Considere os campos vetoriais
+              \(\mathbf F_1(x,y)=(2xy,\;x^2+1)\) e \(\mathbf F_2(x,y)=(0,\;x)\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong>
+              Esboce a elipse e proponha uma parametrização \(\mathbf r(t)\),
+              \(0\le t\le 2\pi\), compatível com esse percurso. Determine um
+              vetor tangente à trajetória em um ponto genérico \(\mathbf r(t)\).
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,5)</strong>
+              Determine um vetor perpendicular à trajetória em \(\mathbf r(t)\)
+              e verifique a ortogonalidade com o vetor tangente.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,7)</strong>
+              Calcule o trabalho realizado por cada campo quando o móvel se
+              desloca de \(A\) a \(B\) ao longo do arco da elipse, integrando
+              diretamente \(\int_{\text{arco}}\mathbf F_i\cdot d\mathbf r\).
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,8)</strong>
+              Calcule \(\oint\mathbf F_i\cdot d\mathbf r\) na elipse completa,
+              percorrida uma vez no sentido anti-horário, para os dois campos.
+              Qual a diferença entre os resultados e o que se pode concluir
+              sobre os campos a partir da integral de linha fechada?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
