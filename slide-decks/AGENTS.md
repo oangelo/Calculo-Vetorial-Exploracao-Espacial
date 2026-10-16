@@ -33,9 +33,11 @@ Framework: Reveal.js (`reveal.js/`, cópia local — nunca CDN)
 O backend do navegador (Playwright MCP) é remoto e **não alcança `localhost`**. Além disso, o modelo de IA que executa os agentes **não lê imagens**. Para diagnosticar o layout renderizado, usar o script local:
 
 ```bash
-# Pré-requisito (uma vez):
-sudo npm install -g playwright-core@1.62.1
-# Versão pinada: casa com o chromium-1234 já em ~/.cache/ms-playwright (não baixa browser).
+# Pré-requisito (uma vez): playwright-core global em versão COMPATÍVEL com o
+# chromium presente em ~/.cache/ms-playwright (verificar a pasta existente).
+# O script resolve playwright-core de /usr/lib/node_modules, $NODE_PATH ou do
+# cache do npx; se o launch falhar, há fallback para Chrome do sistema
+# (/usr/bin/google-chrome*, /usr/bin/chromium*). Sem instalação, não baixa browser.
 
 # Uso:
 node debug-slide.js <pasta-do-capitulo> [hash-do-slide]

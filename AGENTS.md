@@ -203,18 +203,22 @@ slide-decks/capitulo-N-nome/
 
 ## Contexto dos Capítulos
 
-| Cap | Tópico                 | Período    | Contexto                        |
-| --- | ---------------------- | ---------- | ------------------------------- |
-| 0   | Revisão                | Pré-Guerra | Geometria, derivadas, integrais |
-| 1   | Funções vetoriais      | 1945-1956  | Era dos Mísseis (V-2, Redstone) |
-| 2   | Integrais duplas       | 1957-1961  | Era Sputnik                     |
-| 3   | Mudança de variáveis   | 1961-1964  | Primeiros Astronautas           |
-| 4   | Integrais triplas      | 1965-1966  | Programa Gemini                 |
-| 5   | Integrais de linha     | 1967-1969  | Primeiras Apollo                |
-| 6   | Campos conservativos   | 1967-1969  | Missões Apollo                  |
-| 7   | Teorema de Green       | 1969-1970  | Pouso Lunar (Apollo 11)         |
-| 8   | Integral de superfície | 1971-1972  | Apollo avançadas                |
-| 9   | Teorema da divergência | 1973-1985  | Estações Espaciais (Skylab)     |
+| Cap | Tópico                 | Facção  | Período    | Contexto                        |
+| --- | ---------------------- | ------- | ---------- | ------------------------------- |
+| 0   | Revisão                | Neutro  | Pré-Guerra | Geometria, derivadas, integrais |
+| 1   | Funções vetoriais      | URSS    | 1945-1956  | Era dos Mísseis (V-2, Redstone) |
+| 2   | Integrais duplas       | Aliados | 1957-1961  | Era Sputnik                     |
+| 3   | Mudança de variáveis   | URSS    | 1961-1964  | Primeiros Astronautas           |
+| 4   | Integrais triplas      | Aliados | 1965-1966  | Programa Gemini                 |
+| 5   | Integrais de linha     | URSS    | 1967-1969  | Primeiras Apollo                |
+| 6   | Campos conservativos   | Aliados | 1969-1970  | Apollo 11                       |
+| 7   | Teorema de Green       | URSS    | 1971-1972  | Salyut 1 e Soyuz 11             |
+| 8   | Integral de superfície | Aliados | 1973-1985  | Apollo-Soyuz e Skylab           |
+| 9   | Teorema da divergência | URSS    | 1986-1991  | Challenger, Chernobyl, fim da URSS |
+
+> Facção e período seguem o arco narrativo aprovado (issue #80) e a tabela de
+> facções de `slide-decks/AGENTS.md`. As issues de arco por capítulo (#81–#90)
+> detalham os eventos históricos de cada período.
 
 ## Arquivos Importantes
 

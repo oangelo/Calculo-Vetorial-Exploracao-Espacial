@@ -1,0 +1,93 @@
+<section
+  class="exercicio"
+  data-topico="construir-potencial"
+  data-dificuldade="facil"
+>
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">2.</span>
+    No exercício 1 o caminho foi do potencial para o campo: dada a função $f$,
+    derivamos e montamos $\vec{F} = \nabla f$. Aqui percorremos o caminho
+    inverso: dado o campo $\vec{F}(x, y) = (2x,\ 2y)$, queremos recuperar a
+    função $f$ cujas derivadas parciais reproduzem o campo — ou seja, a função
+    com derivada parcial em relação a $x$ igual à primeira componente e derivada
+    parcial em relação a $y$ igual à segunda componente.
+  </p>
+
+  <p class="questao">
+    Use a primeira componente para recuperar a parte de $f$ que depende de $x$.
+  </p>
+
+  <p class="dialogo">
+    A primeira condição é $\frac{\partial f}{\partial x} = 2x$. Para descobrir
+    como $f$ depende de $x$, integramos em relação a $x$, tratando $y$ como
+    constante — o mesmo papel que $y$ tinha nas derivadas parciais do exercício
+    1. Surge aqui a ideia nova desta folha: numa integração com duas variáveis,
+    a "constante" de integração pode ser uma função qualquer da variável que
+    ficou de fora. No caso, chamamos essa função de $\varphi(y)$.
+  </p>
+
+  <p class="subitem">
+    a) Integrando a primeira componente em relação a $x$, escreva a forma mais
+    geral de $f$: $f(x, y) =$ <span class="lacuna"></span> $+ \varphi(y)$
+  </p>
+  <p class="subitem">
+    b) A primeira condição deixou $\varphi(y)$ indeterminada. Confira
+    derivando-a em relação a $x$: o resultado é
+    <span class="lacuna"></span>
+    — por isso essa função não aparece na condição sobre $\partial f/\partial
+    x$.
+  </p>
+
+  <p class="questao">Determine $\varphi(y)$ usando a segunda componente.</p>
+
+  <p class="dialogo">
+    A condição que falta exige que a derivada de $f$ em relação a $y$ coincida
+    com a segunda componente do campo. Na expressão do item (a) da questão
+    anterior, a parte que veio da integração em $x$ não contém $y$: ao derivar
+    em relação a $y$, ela se comporta como os termos sem $y$ do exercício 1. O
+    que sobra é o termo com $\varphi(y)$ — e é isso que deve reproduzir a
+    segunda componente.
+  </p>
+
+  <p class="subitem">
+    a) Derivando em relação a $y$ a expressão que você montou: $\frac{\partial
+    f}{\partial y} =$ <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) Imponha a condição sobre essa derivada: $\varphi'(y) =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Integre em relação a $y$ para recuperar $\varphi(y) =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Junte as partes e escreva a função potencial.</p>
+
+  <p class="dialogo">
+    Substitua o $\varphi(y)$ do item (c) na forma geral do item (a) da questão
+    1. A constante que apareceu na última integração é arbitrária: chame-a de
+    $C$ e deixe-a indicada, pois somar uma constante não altera derivadas —
+    qualquer valor real de $C$ produz o mesmo campo. Repare no percurso
+    completo: no exercício 1 derivamos $f$ para obter o campo; aqui integramos
+    as componentes para reconstruir $f$.
+  </p>
+
+  <p class="subitem">
+    a) Função potencial (com a constante $C$ indicada): $f(x, y) =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) Justifique por que o valor de $C$ é irrelevante: como $C$ é constante,
+    $\frac{\partial C}{\partial x} =$ <span class="lacuna"></span> e
+    $\frac{\partial C}{\partial y} =$ <span class="lacuna"></span>
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Verificação: derive a função $f$ que você montou em relação a $x$ e em
+    relação a $y$. Se você recuperar exatamente cada componente do campo, então
+    $f$ é mesmo o potencial procurado — essa é a definição de campo
+    conservativo.
+  </p>
+</section>
