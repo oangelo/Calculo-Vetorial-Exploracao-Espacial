@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Derivadas: A Matemática da Mudança</h2>
+        <p>
+          A ferramenta que nos permite entender como as grandezas físicas variam
+          instantaneamente
+        </p>
+        <p>
+          $\frac{df}{dx} = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) -
+          f(x)}{\Delta x}$
+        </p>
+        <p class="note">
+          Esta expressão, aparentemente abstrata, permitiu aos engenheiros
+          calcular com precisão velocidades, acelerações e taxas de consumo de
+          combustível em sistemas de propulsão.
+        </p>
+      </section>
+
+      <section>
+        <h3>Significado Geométrico da Derivada</h3>
+        <p>
+          A derivada representa a inclinação da reta tangente à curva em um
+          ponto.
+        </p>
+        <center>
+          <div
+            id="derivada-geometrica"
+            style="width: 800px; height: 300px"
+          ></div>
+        </center>
+        <p class="note">
+          Este conceito geométrico simples revolucionou nossa capacidade de
+          modelar fenômenos físicos.
+        </p>
+      </section>
+
+      <section>
+        <h3>Propriedades e Regras de Derivação</h3>
+        <div class="math-container">
+          <div class="formula">
+            <p>Regra da Soma</p>
+            <p>$\frac{d}{dx}[f(x) + g(x)] = \frac{df}{dx} + \frac{dg}{dx}$</p>
+          </div>
+          <div class="formula">
+            <p>Regra do Produto</p>
+            <p>
+              $\frac{d}{dx}[f(x) \cdot g(x)] = f(x) \cdot \frac{dg}{dx} + g(x)
+              \cdot \frac{df}{dx}$
+            </p>
+          </div>
+        </div>
+        <div class="math-container">
+          <div class="formula">
+            <p>Regra do Quociente</p>
+            <p>
+              $\frac{d}{dx}\left[\frac{f(x)}{g(x)}\right] = \frac{g(x) \cdot
+              \frac{df}{dx} - f(x) \cdot \frac{dg}{dx}}{[g(x)]^2}$
+            </p>
+          </div>
+          <div class="formula">
+            <p>Regra da Cadeia</p>
+            <p>$\frac{d}{dx}[f(g(x))] = \frac{df}{dg} \cdot \frac{dg}{dx}$</p>
+          </div>
+        </div>
+        <p class="note">
+          Estas regras permitiram que engenheiros decomponham problemas
+          complexos em componentes gerenciáveis.
+        </p>
+      </section>
+
+      <section>
+        <h3>Derivadas na Física da Exploração Espacial</h3>
+        <div class="math-container">
+          <div class="formula">
+            <p>Velocidade como derivada da posição</p>
+            <p>$\vec{v} = \frac{d\vec{r}}{dt}$</p>
+          </div>
+          <div class="formula">
+            <p>Aceleração como derivada da velocidade</p>
+            <p>$\vec{a} = \frac{d\vec{v}}{dt} = \frac{d^2\vec{r}}{dt^2}$</p>
+          </div>
+        </div>
+        <p>Equação do Foguete de Tsiolkovsky (1903):</p>
+        <p>$\Delta v = v_e \ln\left(\frac{m_0}{m_f}\right)$</p>
+        <p>
+          O cálculo diferencial permitiu derivar esta equação fundamental que
+          relaciona mudança de velocidade (Δv), velocidade de exaustão
+          (v<sub>e</sub>) e razão de massas.
+        </p>
+      </section>
+
+      <!-- Slide modificado: Removidas as imagens -->
+      <section>
+        <h3>Marco Histórico: Cálculos Balísticos Pioneiros</h3>
+
+        <p>
+          Os engenheiros alemães liderados por von Braun aplicaram cálculo
+          diferencial para resolver problemas de:
+        </p>
+        <ul>
+          <li>Trajetórias balísticas otimizadas</li>
+          <li>Estabilidade aerodinâmica</li>
+          <li>Consumo de combustível</li>
+          <li>Sistemas de orientação e controle</li>
+          <li>Resistência de materiais sob estresse termodinâmico</li>
+        </ul>
+
+        <p>
+          As equações desenvolvidas para o V2 no início dos anos 1940
+          estabeleceram as bases matemáticas para os programas espaciais
+          subsequentes tanto nos EUA quanto na URSS.
+        </p>
+
+        <p class="note">
+          Estes cálculos estabeleceram as bases matemáticas que mais tarde
+          permitiriam as viagens espaciais e foram diretamente aplicados nos
+          primeiros programas espaciais.
+        </p>
+      </section>
+
+      <!-- Slide dividido em dois: Problema -->
+      <section>
+        <h3>A Derivada na Prática: Do Papel para o Espaço</h3>
+        <p>
+          Durante o Programa Mercury (1958-1963), os engenheiros enfrentaram um
+          desafio crítico: determinar as
+          <span class="highlight">janelas de lançamento</span> para encontrar a
+          órbita correta.
+        </p>
+
+        <div class="problem-box">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            Problema físico:
+          </p>
+          <p>Se a velocidade de um foguete é dada por:</p>
+          <p>$v(t) = v_0 + at - bt^2$</p>
+          <p>
+            Onde \(a\) representa o empuxo e \(b\) a resistência atmosférica:
+          </p>
+          <p>1. Quando o foguete atinge velocidade máxima?</p>
+          <p>2. Qual é essa velocidade máxima?</p>
+        </div>
+
+        <p class="note">
+          Este tipo de problema precisava ser resolvido com precisão para
+          otimizar o uso de combustível, um recurso extremamente limitado nas
+          primeiras missões espaciais.
+        </p>
+      </section>
+
+      <!-- Continuação: Solução -->
+      <section>
+        <h3>A Derivada na Prática: Solução</h3>
+
+        <div class="solution-box">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            Solução usando derivadas:
+          </p>
+          <p>$\frac{dv}{dt} = a - 2bt$</p>
+          <p>No ponto de velocidade máxima, \(\frac{dv}{dt} = 0\):</p>
+          <p>$a - 2bt = 0 \implies t_{max} = \frac{a}{2b}$</p>
+          <p>Substituindo de volta:</p>
+          <p>
+            $v_{max} = v_0 + a\left(\frac{a}{2b}\right) -
+            b\left(\frac{a}{2b}\right)^2 = v_0 + \frac{a^2}{4b}$
+          </p>
+        </div>
+
+        <p class="note">
+          Este tipo de cálculo permitiu aos engenheiros da NASA programar com
+          precisão os estágios de separação dos foguetes, otimizando o
+          combustível disponível e garantindo a inserção orbital precisa.
+        </p>
+      </section>
+
+      <!-- Slide modificado: texto reduzido, fontes menores -->
+      <section>
+        <h3>Derivadas de Ordem Superior e Controle de Missão</h3>
+        <p class="small-text">
+          Além da velocidade e aceleração, o controle preciso de missões
+          espaciais exige análise de derivadas de ordem superior:
+        </p>
+
+        <div class="math-container">
+          <div class="formula">
+            <p>Jerk (solavanco) - 3ª derivada</p>
+            <p>$\vec{j} = \frac{d\vec{a}}{dt} = \frac{d^3\vec{r}}{dt^3}$</p>
+            <p style="font-size: 0.8em">Taxa de variação da aceleração</p>
+          </div>
+          <div class="formula">
+            <p>Snap (estalo) - 4ª derivada</p>
+            <p>$\vec{s} = \frac{d\vec{j}}{dt} = \frac{d^4\vec{r}}{dt^4}$</p>
+            <p style="font-size: 0.8em">Taxa de variação do jerk</p>
+          </div>
+        </div>
+
+        <p class="small-text">
+          Durante as missões, o controle de manobras precisava limitar o
+          <em>jerk</em> para:
+        </p>
+        <ul class="small-text">
+          <li>Evitar desconforto na tripulação (< 1g/s para humanos)</li>
+          <li>Prevenir tensões estruturais nas naves</li>
+          <li>Garantir correto funcionamento de instrumentos sensíveis</li>
+        </ul>
+
+        <p class="note small-text">
+          Derivadas de ordem superior são cruciais para projetar sistemas de
+          controle de atitude e trajetória em tempo real durante missões
+          espaciais.
+        </p>
+      </section>
+
+      <!-- Slide dividido em dois: Contexto do exercício -->
+      <section>
+        <h3>Exercício: O Problema da Reentrada</h3>
+
+        <div class="problem-box">
+          <p style="font-weight: bold">Contexto: Missão Vostok (1961)</p>
+          <p>
+            Durante a primeira missão tripulada, Yuri Gagarin enfrentou uma
+            reentrada balística não controlada. A velocidade da cápsula seguia
+            aproximadamente a função:
+          </p>
+          <p>$v(t) = 7900 - 32t + 0.5t^3 \text{ m/s}$</p>
+          <p>onde \(t\) é o tempo em segundos após início da reentrada.</p>
+        </div>
+      </section>
+
+      <!-- Continuação: Perguntas do exercício -->
+      <section>
+        <h3>Exercício: O Problema da Reentrada</h3>
+
+        <div class="problem-box">
+          <p style="font-weight: bold">Perguntas:</p>
+          <ol>
+            <li>Em que momento a desaceleração atinge seu valor máximo?</li>
+            <li>Qual a desaceleração máxima experimentada (em unidades g)?</li>
+            <li>
+              Por que este valor é crucial para o design de cápsulas espaciais?
+            </li>
+          </ol>
+        </div>
+
+        <div style="text-align: right">
+          <p>
+            <em
+              >Dica: A aceleração é a derivada da velocidade. Para encontrar seu
+              valor máximo/mínimo, derive novamente e iguale a zero.</em
+            >
+          </p>
+          <p><em>1g ≈ 9.8 m/s²</em></p>
+        </div>
+      </section>
+
+      <!-- Slide dividido em dois: Solução passos 1-3 -->
+      <section>
+        <h3>Solução: O Problema da Reentrada (Parte 1)</h3>
+
+        <div class="split-container">
+          <div>
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Passo 1: Encontrar a aceleração
+            </p>
+            <p>$a(t) = \frac{dv}{dt} = -32 + 1.5t^2 \text{ m/s²}$</p>
+          </div>
+          <div>
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Passo 2: Encontrar quando a aceleração é máxima/mínima
+            </p>
+            <p>$\frac{da}{dt} = 3t = 0$</p>
+            <p>Solução: \(t = 0\)</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            Passo 3: Verificar se é máximo ou mínimo
+          </p>
+          <p>$\frac{d^2a}{dt^2} = 3 > 0$</p>
+          <p>Logo, temos um mínimo em \(t = 0\)</p>
+        </div>
+      </section>
+
+      <!-- Continuação: Solução passos 4-5 -->
+      <section>
+        <h3>Solução: O Problema da Reentrada (Parte 2)</h3>
+
+        <div class="split-container">
+          <div>
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Passo 4: Calcular o valor da aceleração em t = 0
+            </p>
+            <p>$a(0) = -32 \text{ m/s²}$</p>
+          </div>
+          <div>
+            <p style="font-weight: bold; color: var(--star-blue)">
+              Passo 5: Converter para unidades g
+            </p>
+            <p>$-32 \text{ m/s²} \div 9.8 \text{ m/s²} \approx -3.27g$</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 20px">
+          <p style="font-weight: bold; color: var(--star-blue)">
+            Resposta final:
+          </p>
+          <p>
+            A desaceleração máxima de -3.27g ocorre no início da reentrada (t =
+            0).
+          </p>
+          <p>
+            Este valor é crucial pois determina as especificações estruturais da
+            cápsula e os limites fisiológicos para os cosmonautas/astronautas.
+          </p>
+        </div>
+
+        <p class="note">
+          O valor máximo de desaceleração durante reentradas é tipicamente
+          mantido abaixo de 8-10g para missões tripuladas, exigindo ângulos de
+          reentrada precisamente calculados.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>

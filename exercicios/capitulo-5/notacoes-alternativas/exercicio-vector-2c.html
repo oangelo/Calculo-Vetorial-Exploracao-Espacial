@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Percurso de Rover Lunar - Programa Apollo [MAR/1968]
+  </div>
+  <p>
+    Cada trecho ao longo de um eixo simplificou a conta. Agora vamos combinar
+    trechos em uma curva poligonal — a forma diferencial torna a soma de
+    integrais particularmente natural.
+  </p>
+  <p>
+    Um rover lunar percorre a seguinte rota em L: de \((0,0)\) até \((4,0)\)
+    (horizontal) e de \((4,0)\) até \((4,3)\) (vertical). O campo ao longo do
+    percurso é \(\vec{F}(x,y) = (3x,\; y^2)\). Calcule o trabalho total usando a
+    forma diferencial \(\int_C 3x\,dx + y^2\,dy\).
+  </p>
+  <p>
+    <strong>(a)</strong> Decomponha a curva nos trechos \(C_1\) e \(C_2\), e
+    identifique em cada um qual diferencial se anula.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral em cada trecho usando a forma
+    diferencial simplificada.
+  </p>
+  <p>
+    <strong>(c)</strong> Some as integrais parciais e interprete o trabalho
+    total ao longo do percurso.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Decomponha a curva poligonal em trechos paralelos aos
+      eixos. Em \(C_1\) (horizontal), \(dy = 0\) e só resta \(\int P\,dx\). Em
+      \(C_2\) (vertical), \(dx = 0\) e só resta \(\int Q\,dy\). Some os
+      resultados.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Curva decomposta:</p>
+      <p>
+        \(C_1\): de \((0,0)\) a \((4,0)\) — trecho horizontal, \(y = 0\), \(dy =
+        0\).
+      </p>
+      <p>
+        \(C_2\): de \((4,0)\) a \((4,3)\) — trecho vertical, \(x = 4\), \(dx =
+        0\).
+      </p>
+      <p><strong>(b) Cálculo por trecho:</strong></p>
+      <p>
+        <em>Trecho \(C_1\)</em>: \(dy = 0\), logo \[\int_{C_1} 3x\,dx + y^2\,dy
+        = \int_0^4 3x\,dx = \left.\frac{3x^2}{2}\right|_0^4 = 24.\]
+      </p>
+      <p>
+        <em>Trecho \(C_2\)</em>: \(dx = 0\), logo \[\int_{C_2} 3x\,dx + y^2\,dy
+        = \int_0^3 y^2\,dy = \left.\frac{y^3}{3}\right|_0^3 = 9.\]
+      </p>
+      <p><strong>(c)</strong> Trabalho total: \(24 + 9 = 33\) unidades.</p>
+      <p>
+        A forma diferencial evidencia a decomposição natural: cada trecho
+        elimina um dos termos, e a integral total é a soma das contribuições
+        parciais.
+      </p>
+    </div>
+  </details>
+</li>

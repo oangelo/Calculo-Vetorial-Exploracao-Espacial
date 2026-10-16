@@ -1,0 +1,32 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 27 [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Modelagem de Resistência - Projeto de Reentrada [SIGMA-4]
+  </div>
+  <p>Calcule a integral:</p>
+  <p>\[\int \frac{x^2 + 1}{x^2 - x - 2}\,dx\]</p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Como o grau do numerador é igual ao do denominador, primeiro faça a
+        divisão polinomial (ou some e subtraia):
+      </p>
+      <p>\(\dfrac{x^2+1}{x^2-x-2} = 1 + \dfrac{x+3}{x^2-x-2}\).</p>
+      <p>Fatorando: \(x^2-x-2 = (x-2)(x+1)\).</p>
+      <p>
+        Frações parciais: \(\dfrac{x+3}{(x-2)(x+1)} = \dfrac{A}{x-2} +
+        \dfrac{B}{x+1}\).
+      </p>
+      <p>
+        \(x+3 = A(x+1) + B(x-2)\). Para \(x=2\): \(5=3A \Rightarrow
+        A=\frac{5}{3}\). Para \(x=-1\): \(2=-3B \Rightarrow B=-\frac{2}{3}\).
+      </p>
+      <p>
+        \[ \int \left(1 + \frac{5/3}{x-2} - \frac{2/3}{x+1}\right)dx = x +
+        \frac{5}{3}\ln|x-2| - \frac{2}{3}\ln|x+1| + C. \]
+      </p>
+    </div>
+  </details>
+</li>

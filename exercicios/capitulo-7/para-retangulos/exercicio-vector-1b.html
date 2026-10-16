@@ -1,0 +1,63 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Diagnóstico de Navegação — Módulo Lunar Eagle [JUL/1969]
+  </div>
+  <p>
+    No exercício anterior, o rotacional não era identicamente nulo, o que
+    sugeria circulação diferente de zero. Mas o que acontece quando o rotacional
+    é zero em todo lugar? O Teorema de Green prevê circulação zero. Vamos
+    <strong>verificar</strong> isso calculando ambos os lados — a integral de
+    linha e a integral dupla — e conferindo que dão o mesmo resultado.
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = (x,\, y)\) no retângulo \(R = [0,2]
+    \times [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize cada um dos 4 lados do retângulo com
+    orientação anti-horária.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a integral de linha \(\oint_{\partial R} P\,dx
+    + Q\,dy\) em cada segmento e some os resultados.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o rotacional e a integral dupla \(\iint_R
+    \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right)
+    dA\). Verifique que o resultado coincide com o item anterior.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Os 4 lados são: base \((y=0,\, x: 0 \to 2)\), direita
+      \((x=2,\, y: 0 \to 1)\), topo \((y=1,\, x: 2 \to 0)\) e esquerda \((x=0,\,
+      y: 1 \to 0)\). Para cada segmento, determine \(dx\) e \(dy\) e substitua
+      \(P\) e \(Q\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Base: \(\vec{r}_1(t) = (t, 0)\), \(t \in [0,2]\).
+        Direita: \(\vec{r}_2(t) = (2, t)\), \(t \in [0,1]\). Topo:
+        \(\vec{r}_3(t) = (2-t, 1)\), \(t \in [0,2]\). Esquerda: \(\vec{r}_4(t) =
+        (0, 1-t)\), \(t \in [0,1]\).
+      </p>
+      <p>
+        <strong>(b)</strong> Base: \(P = x = t\), \(dx = dt\), \(Q = 0\), \(dy =
+        0\). \(\int_0^2 t\,dt = 2\). Direita: \(P = 2\), \(dx = 0\), \(Q = t\),
+        \(dy = dt\). \(\int_0^1 t\,dt = \frac{1}{2}\). Topo: \(P = 2-t\), \(dx =
+        -dt\), \(Q = 1\), \(dy = 0\). \(\int_0^2 (2-t)(-dt) = -2\). Esquerda:
+        \(P = 0\), \(dx = 0\), \(Q = 1-t\), \(dy = -dt\). \(\int_0^1 (1-t)(-dt)
+        = -\frac{1}{2}\). Total: \(2 + \frac{1}{2} - 2 - \frac{1}{2} = 0\).
+      </p>
+      <p>
+        <strong>(c)</strong> Rotacional: \(\frac{\partial y}{\partial x} -
+        \frac{\partial x}{\partial y} = 0 - 0 = 0\). Logo \(\iint_R 0\,dA = 0\).
+        Ambos os lados coincidem, confirmando o teorema.
+      </p>
+    </div>
+  </details>
+</li>

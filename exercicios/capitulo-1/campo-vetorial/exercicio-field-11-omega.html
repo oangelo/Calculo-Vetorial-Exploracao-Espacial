@@ -1,0 +1,103 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
+  <div class="context">
+    ORIGEM: Divisão de Astrofísica Avançada - [REDACTED] [DADOS DE 11/JUN/1964]
+  </div>
+  <p>
+    CONEXÃO: No exercício anterior, encontramos onde o campo é nulo e analisamos
+    o comportamento perto desses pontos. Agora vamos mais longe: mesmo que o
+    campo seja zero em um ponto, o que acontece se perturbarmos ligeiramente? O
+    objeto volta para o equilíbrio (estável) ou se afasta (instável)?
+  </p>
+  <p>
+    Três corpos celestes estão alinhados ao longo de uma linha, nas posições
+    \(x_1 < x_2 < x_3\) com massas \(m_1\), \(m_2\) e \(m_3\). O campo
+    gravitacional resultante ao longo desta linha é: \[\vec{G}(x) =
+    \frac{m_1}{(x-x_1)^2}\hat{u}_1 + \frac{m_2}{(x-x_2)^2}\hat{u}_2 +
+    \frac{m_3}{(x-x_3)^2}\hat{u}_3\] onde cada \(\hat{u}_i\) aponta em direção
+    ao corpo \(i\) (ou seja, o campo de cada corpo aponta PARA ele, como
+    gravidade atrativa).
+  </p>
+  <p>
+    De forma mais precisa: na região entre \(x_1\) e \(x_2\), o campo de \(m_1\)
+    puxa para a esquerda e o de \(m_2\) puxa para a direita. Na região entre
+    \(x_2\) e \(x_3\), \(m_2\) puxa para a esquerda e \(m_3\) puxa para a
+    direita.
+  </p>
+  <p>
+    <strong>(a)</strong> Em qual região entre os corpos pode haver um ponto de
+    equilíbrio (campo nulo)? Justifique usando o sinal dos campos.
+  </p>
+  <p>
+    <strong>(b)</strong> Para um ponto de equilíbrio entre \(x_1\) e \(x_2\): se
+    um objeto se desloca ligeiramente para a DIREITA, qual campo é mais forte? O
+    objeto é puxado de volta ou se afasta mais?
+  </p>
+  <p>
+    <strong>(c)</strong> Baseado em (b), o equilíbrio é estável ou instável?
+    Como isso poderia ser útil em uma missão espacial?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Analise o sinal do campo em cada região. Entre \(x_1\) e
+      \(x_2\): o campo de \(m_1\) aponta para a esquerda, o de \(m_2\) aponta
+      para a direita. Se ambos se cancelam em um ponto, há equilíbrio. Mas se
+      nos deslocamos um pouco, um dos campos fica mais forte (está mais perto do
+      corpo).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) REGIÕES DE EQUILÍBIO POSSÍVEL:</p>
+      <p>
+        Na região \(x < x_1\): todos os campos apontam para a direita (todos os
+        corpos estão à direita) — não há equilíbrio.
+      </p>
+      <p>
+        Na região \(x_1 < x < x_2\): \(m_1\) puxa para a esquerda, \(m_2\) e
+        \(m_3\) puxam para a direita. Pode haver equilíbrio se a atração de
+        \(m_1\) compensar as de \(m_2\) e \(m_3\).
+      </p>
+      <p>
+        Na região \(x_2 < x < x_3\): \(m_1\) e \(m_2\) puxam para a esquerda,
+        \(m_3\) puxa para a direita. Pode haver equilíbrio.
+      </p>
+      <p>
+        Na região \(x > x_3\): todos os campos apontam para a esquerda — não há
+        equilíbrio.
+      </p>
+      <p>
+        Portanto, podem existir até DOIS pontos de equilíbrio: um entre \(x_1\)
+        e \(x_2\), e outro entre \(x_2\) e \(x_3\).
+      </p>
+      <p>(b) ANÁLISE DE PERTURBAÇÃO:</p>
+      <p>
+        Considere um equilíbrio \(x_A\) entre \(x_1\) e \(x_2\). Se nos
+        deslocamos ligeiramente para a DIREITA:
+      </p>
+      <p>
+        - Ficamos mais perto de \(m_2\), então a atração de \(m_2\) (para a
+        direita) AUMENTA. - Ficamos mais longe de \(m_1\), então a atração de
+        \(m_1\) (para a esquerda) DIMINUI. - O campo resultante aponta para a
+        DIREITA — o objeto é puxado ainda mais para longe do equilíbrio!
+      </p>
+      <p>
+        Analogamente, se nos deslocamos para a esquerda, o campo aponta para a
+        esquerda. O equilíbrio é INSTÁVEL.
+      </p>
+      <p>(c) CLASSIFICAÇÃO E APLICAÇÃO:</p>
+      <p>
+        O equilíbrio é instável (tipo "sela"): qualquer perturbação faz o objeto
+        se afastar. Fisicamente, isso significa que uma pequena correção
+        periódica é necessária para manter uma nave perto desses pontos. Mas
+        justamente por ser instável, um pequeno impulso pode enviar a nave em
+        direções específicas com mínimo gasto de combustível — útil para
+        transferências orbitais. Estes pontos são análogos aos pontos de
+        Lagrange L1 e L2 do sistema Terra-Lua.
+      </p>
+    </div>
+  </details>
+</li>

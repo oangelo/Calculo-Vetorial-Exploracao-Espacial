@@ -1,0 +1,68 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Estagio de Descida do Modulo Lunar - Apollo 17 (11/DEZ/1972)
+  </div>
+  <p>
+    Ate agora, cada superficie era uma peca unica. Mas estruturas espaciais
+    reais tem varias superficies conectadas — como o estagio de descida do
+    modulo lunar, que tem a forma de um cone truncado com uma base circular.
+    Precisamos somar integrais sobre cada componente.
+  </p>
+  <p>
+    O estagio de descida do modulo lunar Apollo 17 pode ser modelado como um
+    cone reto de altura \(h = 3\) m, com raio da base \(R = 3\) m (ou seja, \(z
+    = \sqrt{x^2+y^2}\) para \(0 \le z \le 3\)), fechado pelo disco da base em
+    \(z = 3\). A superficie inteira recebe um revestimento protetor de densidade
+    superficial constante \(\delta = 2\) kg/m\(^2\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique as duas componentes da superficie (lateral
+    do cone e disco da base) e escreva uma parametrizacao para cada uma.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte e avalie a integral de superficie sobre cada
+    componente separadamente, integrando \(\delta = 2\) com o elemento de area
+    adequado.
+  </p>
+  <p>
+    <strong>(c)</strong> Some os dois resultados para obter a massa total de
+    revestimento sobre o modulo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: Para a lateral do cone, use a parametrizacao do exercicio
+      anterior: \(\vec{r}(\theta,z) = (z\cos\theta, z\sin\theta, z)\) com \(0
+      \le z \le 3\), e o fator de area e \(z\sqrt{2}\). Para o disco da base,
+      ele e plano em \(z = 3\), logo \(dS = dA\) — e so a area do disco.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Componente 1 — lateral do cone: \(\vec{r}(\theta,z)
+        = (z\cos\theta, z\sin\theta, z)\), \(0 \le \theta \le 2\pi\), \(0 \le z
+        \le 3\). Componente 2 — disco da base: \(\vec{r}(r,\theta) =
+        (r\cos\theta, r\sin\theta, 3)\), \(0 \le r \le 3\), \(0 \le \theta \le
+        2\pi\).
+      </p>
+      <p>
+        <strong>(b)</strong> Lateral: \(\|\vec{r}_\theta \times \vec{r}_z\| =
+        z\sqrt{2}\). Integral: \[\iint_{\text{lat}} 2\, dS =
+        \int_0^{2\pi}\int_0^3 2 \cdot z\sqrt{2}\, dz\, d\theta = 2\sqrt{2}\cdot
+        2\pi \cdot \frac{9}{2} = 18\pi\sqrt{2}\]
+      </p>
+      <p>
+        Disco da base: superficie plana, \(dS = r\, dr\, d\theta\). Integral:
+        \[\iint_{\text{base}} 2\, dS = \int_0^{2\pi}\int_0^3 2 \cdot r\, dr\,
+        d\theta = 2 \cdot 2\pi \cdot \frac{9}{2} = 18\pi\]
+      </p>
+      <p>
+        <strong>(c)</strong> Massa total: \(M = 18\pi\sqrt{2} + 18\pi =
+        18\pi(\sqrt{2} + 1)\) kg.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,66 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-10-OMEGA</div>
+  <div class="context">
+    ORIGEM: Divisão de Análise Avançada [Missão Apollo-Soyuz, 1975]
+  </div>
+  <p>
+    Nos exercícios anteriores, coordenadas polares funcionaram bem — se o
+    resultado dependia apenas de \(r\) (e não de \(\theta\)), o limite existia.
+    MAS CUIDADO: coordenadas polares só verificam caminhos retos. Um caminho
+    CURVO pode escapar. Este exercício é o contraexemplo clássico.
+  </p>
+  <p>
+    Verificar se o limite existe, calculando-o em coordenadas polares: \[
+    \lim_{(x,y)\to(0,0)} \frac{x^3 y}{x^6 + y^2}. \]
+  </p>
+  <p>
+    <strong>(a)</strong> Converta para coordenadas polares. Simplifique a
+    expressão.
+  </p>
+  <p>
+    <strong>(b)</strong> Para \(\theta\) fixo (\(\theta \neq 0\)), calcule o
+    limite quando \(r \to 0\). O resultado depende de \(\theta\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Agora teste o caminho curvo \(y = x^3\). O valor é o
+    mesmo de (b)?
+  </p>
+  <p>
+    <strong>(d)</strong> Por que as coordenadas polares não detectaram a
+    não-existência do limite?
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>SOLUÇÃO:</p>
+      <p>
+        <strong>(a) Coordenadas polares:</strong>
+        \(x = r\cos\theta\), \(y = r\sin\theta\):
+      </p>
+      <p>
+        \[\frac{r^4\cos^3\theta\sin\theta}{r^6\cos^6\theta + r^2\sin^2\theta} =
+        \frac{r^2\cos^3\theta\sin\theta}{r^4\cos^6\theta + \sin^2\theta}\]
+      </p>
+      <p>
+        <strong>(b)</strong> Para \(\theta \neq 0\): quando \(r \to 0\), o
+        numerador \(\to 0\) e o denominador \(\to \sin^2\theta \neq 0\), logo o
+        limite é \(0\). Para \(\theta = 0\) (eixo \(x\)): a expressão vale
+        \(\frac{0}{0 + 0} = 0\). Portanto, por TODOS os caminhos retos, o limite
+        é \(0\).
+      </p>
+      <p>
+        <strong>(c) Caminho curvo \(y = x^3\):</strong>
+        \[\frac{x^3 \cdot x^3}{x^6 + (x^3)^2} = \frac{x^6}{x^6 + x^6} =
+        \frac{1}{2}\]
+      </p>
+      <p>
+        <strong>(d) Conclusão:</strong> Coordenadas polares verificam caminhos
+        retos (\(\theta\) fixo, \(r \to 0\)), mas o caminho curvo \(y = x^3\)
+        NÃO é um caminho reto — ele corresponde a \(\theta\) variando com \(r\).
+        Como o caminho curvo dá \(\frac{1}{2} \neq 0\), o limite NÃO existe. A
+        lição: coordenadas polares são poderosas mas não completas — caminhos
+        curvos podem escapar.
+      </p>
+    </div>
+  </details>
+</li>

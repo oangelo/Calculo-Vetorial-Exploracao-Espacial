@@ -1,0 +1,205 @@
+<section>
+  <section>
+    <h2>Divergente</h2>
+    <p>O divergente mede dispersão. Para \(\vec{F} = (P, Q, R)\):</p>
+    <div class="fragment formula-spotlight">
+      <p>
+        \[ \nabla \cdot \vec{F} = \frac{\partial P}{\partial x} + \frac{\partial
+        Q}{\partial y} + \frac{\partial R}{\partial z} \]
+      </p>
+    </div>
+    <div class="fragment">
+      <p>
+        Resultado: um <strong>escalar</strong>. Onde rotacional é vetor,
+        divergente é número.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Três Comportamentos</h3>
+    <div class="triple-panel">
+      <div>
+        <canvas
+          id="canvasDivPos"
+          class="visualization-canvas"
+          width="180"
+          height="180"
+        ></canvas>
+        <p>\(\nabla \cdot \vec{F} > 0\)</p>
+        <p><strong>Fonte</strong></p>
+      </div>
+      <div>
+        <canvas
+          id="canvasDivZero"
+          class="visualization-canvas"
+          width="180"
+          height="180"
+        ></canvas>
+        <p>\(\nabla \cdot \vec{F} = 0\)</p>
+        <p><strong>Incompressível</strong></p>
+      </div>
+      <div>
+        <canvas
+          id="canvasDivNeg"
+          class="visualization-canvas"
+          width="180"
+          height="180"
+        ></canvas>
+        <p>\(\nabla \cdot \vec{F} < 0\)</p>
+        <p><strong>Sumidouro</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo</h3>
+    <div class="problem-section">
+      <p>Calcule o divergente de \(\vec{F}(x,y,z) = (x^2,\, y^2,\, z^2)\).</p>
+    </div>
+    <div class="compact-solution">
+      <div class="fragment">
+        <p>
+          \(\frac{\partial P}{\partial x} = 2x\), \(\frac{\partial Q}{\partial
+          y} = 2y\), \(\frac{\partial R}{\partial z} = 2z\).
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          \(\nabla \cdot \vec{F} = 2(x + y + z)\). Em \((1,1,1)\):
+          \(\text{div}\,\vec{F} = 6\) — expansão.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h3>Rotacional vs. Divergente</h3>
+    <div class="dual-panel">
+      <div class="math-section">
+        <p><strong>Rotacional</strong></p>
+        <p>\(\nabla \times \vec{F}\)</p>
+        <p>Mede <strong>giro</strong>.</p>
+        <p>Resultado: vetor.</p>
+      </div>
+      <div class="math-section">
+        <p><strong>Divergente</strong></p>
+        <p>\(\nabla \cdot \vec{F}\)</p>
+        <p>Mede <strong>dispersão</strong>.</p>
+        <p>Resultado: escalar.</p>
+      </div>
+    </div>
+    <div class="fragment">
+      <p>
+        Propriedade: \(\text{div}(\text{rot}\,\vec{F}) = 0\). O rotacional nunca
+        tem fontes.
+      </p>
+    </div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    function drawField(canvasId, type) {
+      var canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var W = canvas.width,
+        H = canvas.height;
+      var cx = W / 2,
+        cy = H / 2;
+
+      ctx.clearRect(0, 0, W, H);
+
+      var grid = 30;
+      for (var x = grid / 2; x < W; x += grid) {
+        for (var y = grid / 2; y < H; y += grid) {
+          var dx = x - cx,
+            dy = y - cy;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 10) continue;
+
+          var nx, ny, mag, color;
+
+          if (type === 'pos') {
+            nx = dx / dist;
+            ny = dy / dist;
+            mag = Math.min(40 / dist, 1);
+            color = 'rgba(67, 160, 71, ';
+          } else if (type === 'neg') {
+            nx = -dx / dist;
+            ny = -dy / dist;
+            mag = Math.min(40 / dist, 1);
+            color = 'rgba(229, 57, 53, ';
+          } else {
+            var angle = Math.atan2(dy, dx);
+            nx = -Math.sin(angle);
+            ny = Math.cos(angle);
+            mag = 0.6;
+            color = 'rgba(255, 213, 79, ';
+          }
+
+          var len = mag * 12;
+          var angle = Math.atan2(ny, nx);
+          var headLen = 3;
+
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + nx * len, y + ny * len);
+          ctx.strokeStyle = color + mag + ')';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.moveTo(x + nx * len, y + ny * len);
+          ctx.lineTo(
+            x + nx * len - headLen * Math.cos(angle - 0.5),
+            y + ny * len - headLen * Math.sin(angle - 0.5)
+          );
+          ctx.lineTo(
+            x + nx * len - headLen * Math.cos(angle + 0.5),
+            y + ny * len - headLen * Math.sin(angle + 0.5)
+          );
+          ctx.closePath();
+          ctx.fillStyle = color + mag + ')';
+          ctx.fill();
+        }
+      }
+
+      var dotColor =
+        type === 'pos' ? '#43A047' : type === 'neg' ? '#E53935' : '#FFD54F';
+      ctx.beginPath();
+      ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+      ctx.fillStyle = dotColor;
+      ctx.fill();
+    }
+
+    function init() {
+      drawField('canvasDivPos', 'pos');
+      drawField('canvasDivZero', 'zero');
+      drawField('canvasDivNeg', 'neg');
+    }
+
+    setTimeout(function () {
+      if (typeof Reveal !== 'undefined' && Reveal.on) {
+        Reveal.on('slidechanged', function (e) {
+          if (
+            e.currentSlide &&
+            (e.currentSlide.querySelector('#canvasDivPos') ||
+              e.currentSlide.querySelector('#canvasDivZero') ||
+              e.currentSlide.querySelector('#canvasDivNeg'))
+          ) {
+            init();
+          }
+        });
+      }
+      if (
+        document.getElementById('canvasDivPos') &&
+        document.getElementById('canvasDivPos').offsetParent !== null
+      )
+        init();
+    }, 500);
+
+    window.vizDivergente = { init: init };
+  })();
+</script>

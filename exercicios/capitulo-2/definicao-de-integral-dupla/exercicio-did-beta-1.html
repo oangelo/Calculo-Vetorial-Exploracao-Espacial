@@ -1,0 +1,45 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DID-BETA-1</div>
+  <div class="context">
+    ORIGEM: Documentos Classificados - Projeto Mercury [ANÁLISE COMBINADA]
+  </div>
+  <p>
+    Nos exercícios anteriores, construímos somas de Riemann e observamos que
+    descontinuidades pontuais não atrapalham. Agora vamos formalizar: para
+    provar rigorosamente que uma função é integrável, precisamos controlar a
+    diferença entre a "melhor aproximação por baixo" e a "melhor aproximação por
+    cima". Esse controle depende de sabermos que \(f\) é limitada.
+  </p>
+  <p>
+    Sejam \(m\) e \(M\) funções constantes que limitam \(f(x,y)\) de modo que
+    \(m \leq f(x,y) \leq M\) para todo ponto \((x,y)\) em \(D\). Explique como a
+    existência desses limites influencia a construção das somas inferior e
+    superior, usadas na definição da integral dupla.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se \(m \leq f(x,y) \leq M\), então a soma inferior
+      \(\underline{S}(P,f)\) é limitada por baixo por \(m \cdot \text{área}(D)\)
+      e a soma superior \(\overline{S}(P,f)\) é limitada por cima por \(M \cdot
+      \text{área}(D)\). A diferença \(\overline{S} - \underline{S}\) é
+      controlada por \((M - m) \cdot \text{área}(D)\) na partição mais grosseira
+      e diminui ao refinar.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Se \(m \leq f(x,y) \leq M\), então as somas de Riemann inferiores e
+        superiores são limitadas por \(m \times \text{área}(D)\) e \(M \times
+        \text{área}(D)\), respectivamente.
+      </p>
+      <p>
+        Assim, ao refinar as partições, a diferença entre a soma superior e a
+        soma inferior tende a zero se a função for integrável, garantindo que
+        \(\iint_D f\) exista nos limites impostos.
+      </p>
+    </div>
+  </details>
+</li>

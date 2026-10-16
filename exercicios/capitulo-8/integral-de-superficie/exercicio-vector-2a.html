@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Analise de Depositos - Tanque S-IVB Apollo 15 (14/AGO/1971)
+  </div>
+  <p>
+    O plano inclinado do exercicio anterior era facil porque z = f(x,y). Mas o
+    cilindro lateral nao e grafico de funcao — ele precisa de parametrizacao,
+    que ja dominamos no primeiro topico. Vamos usar essa habilidade para
+    calcular o acumulo de material sobre a parede do tanque.
+  </p>
+  <p>
+    A superficie lateral de um cilindro de raio \(R = 3\) m e altura \(h = 4\) m
+    apresenta depositos de residuo cuja densidade superficial e \(\delta(x,y,z)
+    = z\) (em kg/m²). O cilindro esta parametrizado por \(\vec{r}(\theta, z) =
+    (3\cos\theta,\; 3\sin\theta,\; z)\), com \(0 \le \theta \le 2\pi\) e \(0 \le
+    z \le 4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Reaplique a parametrizacao cilindrica e calcule
+    \(\|\vec{r}_\theta \times \vec{r}_z\|\).
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse a funcao densidade \(\delta(x,y,z) = z\) em
+    termos dos parametros \((\theta, z)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Monte e avalie a integral dupla no dominio dos
+    parametros para obter a massa total de residuo sobre a lateral do cilindro.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: O produto vetorial para o cilindro de raio R tem norma R
+      (constante). A densidade em parametros e simplesmente delta = z.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Parametrizacao: r(theta,z) = (3 cos theta, 3 sin
+        theta, z). Derivadas: r_theta = (-3 sin theta, 3 cos theta, 0), r_z =
+        (0,0,1). Produto vetorial: r_theta x r_z = (3 cos theta, 3 sin theta,
+        0). Norma: ||r_theta x r_z|| = 3.
+      </p>
+      <p>
+        <strong>(b)</strong> Como z = z no parametro, a densidade e
+        delta(theta,z) = z.
+      </p>
+      <p>
+        <strong>(c)</strong> Massa total: \[M = \iint_S \delta\, dS =
+        \int_0^{2\pi}\int_0^4 z \cdot 3\, dz\, d\theta\] \[=
+        3\int_0^{2\pi}\left[\frac{z^2}{2}\right]_0^4 d\theta = 3\int_0^{2\pi}
+        8\, d\theta = 24 \cdot 2\pi = 48\pi\] A massa total de residuo e
+        \(\mathbf{48\pi}\) kg.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,84 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-09-GAMMA</div>
+  <div class="context">ORIGEM: Dinâmica de Fluidos — Programa Skylab, 1975</div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Até agora, quando o
+    rotacional era não-zero, ele apontava em uma única direção (geralmente
+    \(z\)). Agora vamos ver um campo onde a rotação acontece simultaneamente em
+    múltiplas direções — o rotacional tem três componentes não-zero.
+  </div>
+
+  <p>
+    Nos exercícios anteriores, os rotacionais não-zero tinham apenas uma
+    componente (sempre na direção \(z\)). Agora considere o campo
+    \(\vec{F}(x,y,z) = (y^2, z^2, x^2)\): aqui cada componente depende de uma
+    variável <em>diferente</em> da "sua", criando um padrão de rotação mais
+    complexo.
+  </p>
+
+  <p>
+    <strong>(a)</strong> Identifique \(P = y^2\), \(Q = z^2\), \(R = x^2\). Note
+    o padrão: \(P\) depende de \(y\), \(Q\) de \(z\), \(R\) de \(x\). Calcule a
+    componente \(i\): \(\frac{\partial (x^2)}{\partial y} - \frac{\partial
+    (z^2)}{\partial z}\).
+  </p>
+
+  <p>
+    <strong>(b)</strong> Calcule a componente \(j\): \(\frac{\partial
+    (y^2)}{\partial z} - \frac{\partial (x^2)}{\partial x}\).
+  </p>
+
+  <p>
+    <strong>(c)</strong> Calcule a componente \(k\): \(\frac{\partial
+    (z^2)}{\partial x} - \frac{\partial (y^2)}{\partial y}\).
+  </p>
+
+  <p>
+    <strong>(d)</strong> Escreva o vetor rotacional completo. No ponto \((1, 1,
+    1)\), em que direção aponta? Descreva como seria o movimento de uma pequena
+    pá de moinho colocada neste ponto.
+  </p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Note o padrão: \(P\) depende de \(y\), \(Q\) de \(z\),
+      \(R\) de \(x\). Cada componente "cicla" para a próxima variável. A
+      componente \(i\) envolve derivadas de \(R\) em \(y\) e \(Q\) em \(z\):
+      \(\frac{\partial (x^2)}{\partial y} = 0\) e \(\frac{\partial
+      (z^2)}{\partial z} = 2z\).
+    </div>
+  </details>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) \(\frac{\partial (x^2)}{\partial y} = 0\), \(\frac{\partial
+        (z^2)}{\partial z} = 2z\). Componente \(i\): \(0 - 2z = -2z\).
+      </p>
+
+      <p>
+        (b) \(\frac{\partial (y^2)}{\partial z} = 0\), \(\frac{\partial
+        (x^2)}{\partial x} = 2x\). Componente \(j\): \(0 - 2x = -2x\).
+      </p>
+
+      <p>
+        (c) \(\frac{\partial (z^2)}{\partial x} = 0\), \(\frac{\partial
+        (y^2)}{\partial y} = 2y\). Componente \(k\): \(0 - 2y = -2y\).
+      </p>
+
+      <p>
+        (d) \(\nabla \times \vec{F} = (-2z, -2x, -2y)\). No ponto \((1,1,1)\):
+        \((-2, -2, -2)\), apontando na direção \((-1,-1,-1)\). A rotação
+        acontece simultaneamente nas três direções — o eixo de rotação é a
+        diagonal oposta ao primeiro octante. Uma pequena pá de moinho neste
+        campo giraria em torno desse eixo inclinado, não em torno de um eixo
+        coordenado.
+      </p>
+    </div>
+  </details>
+</li>

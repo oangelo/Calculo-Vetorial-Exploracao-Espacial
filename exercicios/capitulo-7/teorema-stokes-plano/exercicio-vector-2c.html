@@ -1,0 +1,68 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Apollo 12 — Levantamento Topográfico Lunar [NOV/1969]
+  </div>
+  <p>
+    O exercício anterior mostrou que Stokes pode ser mais eficiente que a
+    integral de linha direta. Agora vamos ver que Stokes também funciona em
+    coordenadas polares — uma vantagem quando a região tem simetria circular.
+  </p>
+  <p>
+    Considere o setor circular \(S\) definido por \(0 \le r \le 2\) e \(0 \le
+    \theta \le \frac{\pi}{3}\), e o campo \(\vec{F}(x,y) = (xy,\, 0)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional escalar em coordenadas
+    cartesianas.
+  </p>
+  <p>
+    <strong>(b)</strong> Converta o rotacional e os limites de integração para
+    coordenadas polares. Lembre do fator \(r\) em \(dA = r\, dr\, d\theta\) e
+    das substituições \(x = r\cos\theta\), \(y = r\sin\theta\).
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral e interprete o sinal do resultado. O
+    campo "gira" no sentido horário ou anti-horário neste setor?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em polares, substitua \(x = r\cos\theta\) no rotacional e
+      inclua o fator \(r\) de \(dA\). A integral em \(r\) e \(\theta\) se separa
+      naturalmente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial(0)}{\partial x} - \frac{\partial(xy)}{\partial y} = 0 - x
+        = -x\).
+      </p>
+      <p>
+        <strong>(b)</strong> Em polares: \(\operatorname{rot}\vec{F} =
+        -r\cos\theta\). Com \(dA = r\, dr\, d\theta\):
+      </p>
+      <p>
+        \(\iint_{S} (-r\cos\theta)\, r\, dr\, d\theta = -\int_{0}^{\pi/3}
+        \cos\theta \int_{0}^{2} r^2\, dr\, d\theta\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\int_{0}^{2} r^2\, dr = \frac{8}{3}\).
+        \(\int_{0}^{\pi/3} \cos\theta\, d\theta = \sin\frac{\pi}{3} =
+        \frac{\sqrt{3}}{2}\).
+      </p>
+      <p>
+        Circulação: \(-\frac{8}{3} \cdot \frac{\sqrt{3}}{2} =
+        -\frac{4\sqrt{3}}{3}\).
+      </p>
+      <p>
+        O resultado é negativo: o campo "gira" no sentido horário no setor,
+        consistente com \(\operatorname{rot}\vec{F} = -x < 0\) no primeiro
+        quadrante. \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

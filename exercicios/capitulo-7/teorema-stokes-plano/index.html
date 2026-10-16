@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Stokes no Plano</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">21</span> DE JULHO DE
+          <span class="censored">1969</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored"
+            >HOUSTON MISSION CONTROL — SALA DE NAVEGAÇÃO</span
+          >
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">EAGLE-NAV</span
+          ><br /><br />
+          No momento em que o módulo <span class="censored">Eagle</span> inicia
+          sua trajetória de descida lunar, a equipe de navegação necessita de
+          ferramentas rápidas para verificar a consistência dos dados de
+          circulação atmosférica simulados nos computadores
+          <span class="censored">IBM-360</span>. O presente dossiê consolida
+          exercícios sobre o
+          <span class="censored">Teorema de Stokes</span> aplicado ao plano —
+          uma releitura do Teorema de Green através do rotacional escalar,
+          conceito já dominado no Cap 1.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações estratégicas sobre protocolos de
+          navegação. Divulgação não autorizada resultará em
+          <span class="censored">corte imediato de credenciais</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">7110</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: STOKES NO PLANO — GREEN REINTERPRETADO
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>1. STOKES NO PLANO: GREEN COM NOTAÇÃO DE ROTACIONAL</strong>
+        </p>
+        <p>
+          Nos tópicos anteriores deste capítulo, você aplicou o Teorema de Green
+          na forma \(\displaystyle\oint_{\partial R} \vec{F}\cdot d\vec{r} =
+          \iint_{R} \left(\frac{\partial Q}{\partial x} - \frac{\partial
+          P}{\partial y}\right) dA\). Observe que o integrando do lado direito é
+          exatamente a componente \(z\) do rotacional do campo \(\vec{F} = (P,
+          Q)\), conceito introduzido no Cap 1 como \(\operatorname{rot}\vec{F} =
+          \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\).
+        </p>
+        <p class="formula-highlight">
+          \[\oint_{\partial R} \vec{F}\cdot d\vec{r} = \iint_{R}
+          (\operatorname{rot}\vec{F})\, dA\]
+        </p>
+        <p>
+          Esta reformulação não muda a matemática — é o mesmo Teorema de Green.
+          Mas a notação de rotacional revela um
+          <strong>significado físico</strong> poderoso: a circulação total ao
+          redor do contorno é a soma de todas as rotações locais (rotacional)
+          dentro da região. Cada pontinho do campo que "gira" contribui para a
+          circulação global.
+        </p>
+        <p>
+          Em simulações de reentrada atmosférica, os computadores calculam o
+          rotacional do campo de vento em cada ponto da malha. Ao integrar esses
+          valores sobre toda a região de voo, obtém-se diretamente a circulação
+          total — sem necessidade de parametrizar o contorno.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. INTERPRETAÇÃO FÍSICA DO ROTACIONAL ESCALAR</strong></p>
+        <p>
+          O rotacional escalar \(\operatorname{rot}\vec{F}\) mede a
+          <strong>rotação local</strong> do campo em cada ponto. Se
+          \(\operatorname{rot}\vec{F} > 0\) em uma região, o campo "gira" no
+          sentido anti-horário; se \(\operatorname{rot}\vec{F} < 0\), o giro é
+          horário. Se o rotacional é identicamente zero, o campo
+          <strong>não gira</strong> — ele é conservativo (conexão direta com o
+          Cap 6).
+        </p>
+        <p>
+          Stokes no plano diz que a circulação ao redor de um contorno fechado é
+          a
+          <strong>soma acumulada</strong> de todas essas rotações locais. Se
+          cada pontinho gira no mesmo sentido, a circulação é grande; se os
+          giros se cancelam, a circulação é zero.
+        </p>
+        <p>
+          Esta perspectiva conecta três capítulos: o rotacional (Cap 1), os
+          campos conservativos (Cap 6) e o Teorema de Green (Cap 7). A lista de
+          exercícios que segue explora essa conexão em profundidade.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em julho de 1969, a missão
+        <span class="censored">Apollo 11</span> realizou o primeiro pouso lunar
+        tripulado. Os protocolos de verificação de trajetória desenvolvidos para
+        esta missão dependiam de cálculos de circulação por métodos de área —
+        muito mais rápidos que as integrais de contorno diretas nos computadores
+        da época.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">PÁGINA 1</div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Departamento de <span class="censored">Física Fundamental</span> -
+    Spacelab-1 [NOV/1983]
+  </div>
+  <p>
+    No exercício sobre a Lei de Gauss, você usou o argumento de exclusão da
+    singularidade para contornar o problema da carga puntiforme na origem. Agora
+    vamos mais fundo: o que a singularidade nos diz sobre a natureza da carga
+    puntiforme?
+  </p>
+  <p>
+    O campo elétrico de uma carga puntiforme \(q\) na origem é \(\mathbf{E} =
+    \dfrac{q}{4\pi\varepsilon_0}\dfrac{\hat{\mathbf{r}}}{r^2}\). Nosso objetivo
+    é compreender rigorosamente o que acontece na origem.
+  </p>
+  <p>
+    <strong>(a)</strong> Mostre que \(\nabla \cdot \mathbf{E} = 0\) para todo
+    \(r > 0\). Mostre também que, para qualquer região \(V\) que
+    <strong>não</strong> contém a origem, \(\iint_{\partial V}\mathbf{E}\cdot
+    d\mathbf{S} = 0\).
+  </p>
+  <p>
+    <strong>(b)</strong> Para uma região \(V\) que contém a origem, construa a
+    região \(V \setminus B_\varepsilon\), onde \(B_\varepsilon\) é a bola de
+    raio \(\varepsilon\) centrada na origem. Aplique o Teorema da Divergência
+    nesta região (onde não há singularidade) e mostre que \(\iint_{\partial
+    V}\mathbf{E}\cdot d\mathbf{S} = \lim_{\varepsilon\to 0}\iint_{\partial
+    B_\varepsilon}\mathbf{E}\cdot d\mathbf{S}\) (com normal de \(B_\varepsilon\)
+    apontando para fora).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o limite e argumente: embora \(\nabla \cdot
+    \mathbf{E} = 0\) em todo lugar exceto na origem, o divergente "concentra"
+    toda a sua contribuição num único ponto — como uma distribuição delta de
+    Dirac. A carga puntiforme é uma
+    <strong>fonte pontual de divergente</strong>: infinita num ponto, mas com
+    integral total finita e igual a \(q/\varepsilon_0\).
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Já mostrado: \(\nabla \cdot \mathbf{E} = 0\) para \(r > 0\). Se a
+        origem não está em \(V\), o divergente é zero em toda a região, e pelo
+        Teorema da Divergência, o fluxo é zero.
+      </p>
+      <p>
+        (b) Na região \(V \setminus B_\varepsilon\), o divergente é zero. Pelo
+        teorema: \(0 = \iint_{\partial V}\mathbf{E}\cdot d\mathbf{S} +
+        \iint_{\partial B_\varepsilon^{-}}\mathbf{E}\cdot d\mathbf{S}\), onde
+        \(\partial B_\varepsilon^{-}\) indica normal apontando para dentro (para
+        fora de \(V \setminus B_\varepsilon\)). Invertendo o sinal da normal:
+        \(\iint_{\partial V}\mathbf{E}\cdot d\mathbf{S} = \iint_{\partial
+        B_\varepsilon^{+}}\mathbf{E}\cdot d\mathbf{S}\), onde agora a normal
+        aponta para fora de \(B_\varepsilon\).
+      </p>
+      <p>
+        (c) Na esfera de raio \(\varepsilon\): \(\mathbf{E} =
+        \frac{q}{4\pi\varepsilon_0\varepsilon^2}\hat{\mathbf{r}}\),
+        \(d\mathbf{S} =
+        \hat{\mathbf{r}}\,\varepsilon^2\sin\phi\,d\phi\,d\theta\). Fluxo:
+        \(\frac{q}{4\pi\varepsilon_0\varepsilon^2}\cdot 4\pi\varepsilon^2 =
+        \frac{q}{\varepsilon_0}\). O limite é \(\frac{q}{\varepsilon_0}\) —
+        independente de \(\varepsilon\). A carga puntiforme atua como uma fonte
+        pontual: o divergente é zero em todo lugar exceto num ponto, mas a
+        "integral" do divergente sobre qualquer região que contém aquele ponto é
+        finita e igual a \(q/\varepsilon_0\). Em linguagem de distribuições:
+        \(\nabla \cdot \mathbf{E} = \frac{q}{\varepsilon_0}\delta(\mathbf{r})\).
+      </p>
+    </div>
+  </details>
+</li>

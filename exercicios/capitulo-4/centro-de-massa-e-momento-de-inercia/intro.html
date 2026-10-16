@@ -1,0 +1,102 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">23</span> DE MARÇO DE
+    <span class="censored">1966</span>
+    <br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE CONTROLE - GEMINI VIII</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">VOLUMETRIA-3D</span> <br /><br />
+    No curso das operações do Programa Gemini, tornou-se imperativo dominar as
+    técnicas de cálculo de centro de massa e momento de inércia por integrais
+    triplas. Os resultados aqui apresentados são fruto das anotações do Dr.
+    <span class="censored">██████</span> sobre aplicações de integrais triplas
+    na determinação do ponto de equilíbrio e resistência à rotação de
+    componentes do módulo <span class="censored">GEMINI</span>.
+  </div>
+  <div class="warning-box">
+    Este documento contém informações relacionadas a projetos de distribuição de
+    massa e estabilidade estrutural de naves espaciais. Qualquer divulgação não
+    autorizada poderá resultar em
+    <span class="censored">ações punitivas</span> e comprometimento de nossa
+    <span class="censored">operacionalidade</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: CM-<span class="censored">752</span>-Z</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+      <span class="censored">4</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS TRIPLAS PARA CÁLCULO DE CENTRO DE MASSA E
+  MOMENTO DE INÉRCIA
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Antes de iniciar esta lista, você deve dominar: o cálculo de centro de massa
+    bidimensional via integrais duplas (Capítulo 3); a redução de integrais
+    triplas a integrais iteradas; as condições de integrabilidade que garantem a
+    independência da ordem de integração; a mudança de variáveis em integrais
+    triplas com o respectivo Jacobiano. Em particular, são essenciais as
+    coordenadas cilíndricas \((r,\theta,z)\), com \(dV = r\,dr\,d\theta\,dz\), e
+    as coordenadas esféricas \((r,\theta,\phi)\), com \(dV =
+    r^2\sin\phi\,dr\,d\theta\,d\phi\). Você também precisará reconhecer quando a
+    simetria da região anula componentes da integral (por exemplo,
+    \(\int_0^{2\pi} \cos\theta\,d\theta = 0\)) e usar argumentos de simetria
+    axial ou esférica para simplificar cálculos.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>1. CENTRO DE MASSA 3D: O PONTO DE EQUILÍBRIO</strong></p>
+  <p>
+    No Capítulo 3, você aprendeu a calcular o centro de massa de placas planas
+    (regiões bidimensionais) usando integrais duplas. O conceito se estende
+    naturalmente para sólidos tridimensionais: em vez de integrar sobre uma
+    área, integramos sobre um volume. A massa total de um corpo com densidade
+    \(\rho\) é \(\displaystyle M = \iiint_V \rho(\vec{r})\,dV\), e o centro de
+    massa é dado pelas coordenadas:
+  </p>
+  <p class="formula-highlight">
+    \[ x_C = \frac{1}{M}\iiint_V x\,\rho\,dV, \quad y_C = \frac{1}{M}\iiint_V
+    y\,\rho\,dV, \quad z_C = \frac{1}{M}\iiint_V z\,\rho\,dV. \]
+  </p>
+  <p>
+    Aqui, \(\rho(\vec{r})\) é a densidade no ponto \(\vec{r} = (x,y,z)\), e
+    \(dV\) é o elemento de volume. Para densidade constante, o centro de massa
+    coincide com o centro geométrico do corpo.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. MOMENTO DE INÉRCIA: RESISTÊNCIA À ROTAÇÃO</strong></p>
+  <p>
+    Saber onde o corpo se equilibra é fundamental, mas no espaço outra pergunta
+    é igualmente importante: quão difícil é girar esse corpo em torno de um
+    eixo? O momento de inércia mede essa resistência. Cada elementinho de massa
+    contribui proporcionalmente ao <em>quadrado de sua distância</em> ao eixo de
+    rotação:
+  </p>
+  <p class="formula-highlight">
+    \[ I_z = \iiint_V \rho(\vec{r})\,(x^2 + y^2)\,dV. \]
+  </p>
+  <p>
+    O subscrito \(z\) indica o eixo de rotação. A distância ao quadrado de um
+    ponto \((x,y,z)\) ao eixo \(z\) é \(x^2 + y^2\). Em coordenadas cilíndricas,
+    esta distância é \(r^2\); em esféricas, é \(\rho^2\sin^2\phi\). A escolha do
+    sistema de coordenadas é determinada pela geometria do corpo.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966), a NASA
+  realizou os primeiros rendezvous e acoplamentos orbitais da história. O
+  sucesso dessas manobras dependia criticamente do conhecimento preciso do
+  centro de massa e do momento de inércia de cada módulo. O Gemini VIII (março
+  de 1966) realizou o primeiro acoplamento orbital, exigindo controle preciso de
+  atitude — o que seria impossível sem dados exatos de momento de inércia.
+</div>

@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">ORIGEM: Simulação Apollo 8 — Outubro/1968</div>
+  <p>
+    Sabemos agora que o domínio perfurado é o responsável pela falha do teste do
+    rotacional. Mas e se restringirmos o domínio? Considere o subdomínio \(D' =
+    \mathbb{R}^2 \setminus \{(x,0) \mid x \leq 0\}\), obtido removendo o eixo
+    \(x\) negativo (incluindo a origem) do plano. Este subdomínio é simplesmente
+    conexo — qualquer curva fechada pode ser contraída sem cruzar a semi-reta
+    removida. Verifique que o campo \(F\) do exercício inicial se comporta como
+    conservativo neste subdomínio.
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a integral de linha de \(F\) de \((1,0)\) a
+    \((0,1)\) ao longo do quarto de círculo \(r_1(t) = (\cos t,\, \sin t)\), \(t
+    \in [0, \pi/2]\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a mesma integral ao longo do caminho em L: de
+    \((1,0)\) a \((1,1)\) pelo segmento vertical, e de \((1,1)\) a \((0,1)\)
+    pelo segmento horizontal.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados e explique por que a restrição do
+    domínio resolveu o problema.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao remover uma semi-reta do plano, a região restante é
+      simplesmente conexa. Nela, o campo passa a ter uma função potencial bem
+      definida: \(\theta = \arctan(y/x)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Para \(r_1(t) = (\cos t,\, \sin t)\), \(r_1'(t) =
+        (-\sin t,\, \cos t)\) e \(x^2+y^2 = 1\).
+      </p>
+      <p>
+        \[\int_{C_1} F \cdot dr = \int_0^{\pi/2} \left[\sin^2 t + \cos^2
+        t\right] dt = \int_0^{\pi/2} 1\, dt = \frac{\pi}{2}\]
+      </p>
+      <p>
+        <strong>(b)</strong> Segmento vertical \((1,0) \to (1,1)\): \(r(t) =
+        (1,\, t)\), \(t \in [0,1]\), \(r'(t) = (0,1)\).
+      </p>
+      <p>
+        \[F \cdot r' = \frac{1}{1+t^2}, \quad \text{logo} \quad \int_0^1
+        \frac{1}{1+t^2}\, dt = \arctan(1) - \arctan(0) = \frac{\pi}{4}\]
+      </p>
+      <p>
+        Segmento horizontal \((1,1) \to (0,1)\): \(r(t) = (1-t,\, 1)\), \(t \in
+        [0,1]\), \(r'(t) = (-1, 0)\).
+      </p>
+      <p>
+        \[F \cdot r' = \frac{1}{(1-t)^2+1}, \quad \text{logo} \quad \int_0^1
+        \frac{1}{(1-t)^2+1}\, dt = \arctan(1) - \arctan(0) = \frac{\pi}{4}\]
+      </p>
+      <p>Total: \(\pi/4 + \pi/4 = \pi/2\).</p>
+      <p>
+        <strong>(c)</strong> Ambos os caminhos dão \(\pi/2\). Ao restringir o
+        domínio a \(D'\) (simplesmente conexo), a função potencial \(\theta =
+        \arctan(y/x)\) torna-se univalorada — cada ponto tem um único ângulo bem
+        definido. O campo é conservativo em \(D'\).
+      </p>
+    </div>
+  </details>
+</li>

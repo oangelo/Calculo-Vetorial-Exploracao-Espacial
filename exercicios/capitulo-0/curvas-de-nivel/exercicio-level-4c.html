@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO LEVEL-4C [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Análise de Campo Térmico - Reentrada Atmosférica, 1965
+  </div>
+  <p>
+    Nos dois exercícios anteriores, você usou o gradiente para encontrar
+    direções de subida e pontos de terreno plano. Agora o desafio final:
+    dado um campo de temperatura, encontre onde ele é mais quente (ponto
+    crítico) e classifique-o — é um máximo (pico), mínimo (vale) ou
+    ponto de sela (passagem)? Para fazer isso sem conceitos de cálculo
+    avançado, usaremos a técnica de completar quadrados, que você já
+    conhece da álgebra.
+  </p>
+  <p>
+    Durante a reentrada, a temperatura do escudo térmico varia conforme \(T(x,
+    y) = 1500 - 10x^2 - 5y^2 + 4xy\) (em °C).
+  </p>
+  <ul style="margin: 10px 0 10px 20px;">
+    <li><strong>(a)</strong> Determine as curvas de nível para \(T = 1500\) e \(T = 1400\). Que formato elas têm?</li>
+    <li><strong>(b)</strong> Encontre os pontos críticos de \(T\) (onde \(\nabla T = \vec{0}\)).</li>
+    <li><strong>(c)</strong> Classifique o ponto crítico como máximo, mínimo ou ponto de sela. (<em>Dica: reescreva \(10x^2 - 4xy + 5y^2\) completando quadrados para verificar o sinal.</em>)</li>
+  </ul>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>
+      <strong>Solução completa:</strong><br /><br />
+      <strong>(a) Curvas de nível:</strong><br /><br />
+      <em>\(T = 1500\):</em>
+      \[ -10x^2 - 5y^2 + 4xy = 0 \] Esta é uma forma quadrática degenerada.
+      Fatorando: \[ x(-10x + 4y) = 5y^2 \implies \text{duas retas passando pela
+      origem} \]<br />
+      De fato, \(-10x^2 + 4xy - 5y^2 = 0\) tem discriminante \(16 - 200 = -184 <
+      0\), portanto a única solução real é \(x = y = 0\). A curva \(T = 1500\) é
+      apenas o <strong>ponto \((0,0)\)</strong>.<br /><br />
+      <em>\(T = 1400\):</em>
+      \[ -10x^2 - 5y^2 + 4xy = -100 \] \[ 10x^2 - 4xy + 5y^2 = 100 \] Como
+      \(10x^2 - 4xy + 5y^2\) é positiva definida, esta é uma
+      <strong>elipse</strong> centrada na origem.<br /><br />
+      <strong>(b) Pontos críticos:</strong>
+      \[ \nabla T = (-20x + 4y,\; -10y + 4x) = (0, 0) \] Do primeiro: \(y =
+      5x\). Substituindo no segundo: \[ -10(5x) + 4x = 0 \implies -50x + 4x = 0
+      \implies -46x = 0 \] Portanto \(x = 0\) e \(y = 0\).
+      <strong>Único ponto crítico: \((0, 0)\)</strong>.<br /><br />
+      <strong>(c) Classificação via completar quadrados:</strong>
+      Temos \(T(x,y) = 1500 - (10x^2 - 4xy + 5y^2)\). Complete os quadrados: \[
+      10x^2 - 4xy + 5y^2 = 10\left(x - \frac{y}{5}\right)^2 + \frac{24}{5}y^2 \]
+      Como ambos os termos são sempre \(\geq 0\) e só se anulam simultaneamente
+      quando \(x = y = 0\), a forma quadrática é estritamente positiva para
+      \((x,y) \neq (0,0)\). Logo \(T(x,y) < 1500\) sempre que \((x,y) \neq
+      (0,0)\), e o ponto \((0, 0)\) é um <strong>máximo global</strong> com
+      \(T(0,0) = 1500°C\).<br /><br />
+      <strong>Interpretação:</strong> O centro do escudo térmico atinge a
+      temperatura máxima de 1500°C. A temperatura decresce em todas as direções
+      a partir do centro, seguindo curvas de nível elípticas devido à
+      distribuição assimétrica do fluxo de calor.
+    </p>
+  </details>
+</li>

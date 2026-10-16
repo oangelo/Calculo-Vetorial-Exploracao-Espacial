@@ -1,0 +1,863 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      main {
+        margin-top: 20px;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: #f0f0e0;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE JUNHO DE
+          <span class="censored">1965</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">GEMINI-ARC</span>
+          <br /><br />
+          Em meio às operações estratégicas do programa
+          <span class="censored">Gemini</span>, nossas equipes de engenharia
+          espacial e especialistas em Cálculo Vetorial têm desenvolvido métodos
+          para determinar o comprimento de curvas orbitais e trajetórias de voo.
+          Este documento compila uma série de exercícios fundamentais para o
+          aperfeiçoamento das técnicas de integrais de linha, focadas no cálculo
+          do comprimento de arco de curvas parametrizadas. <br /><br />
+          Atenção especial deve ser dada à forma de parametrização e aos
+          intervalos de integração, pois falhas nesse processo podem comprometer
+          a
+          <span class="censored">navegação autônoma</span> e colocar em risco
+          toda a missão.
+        </div>
+
+        <div class="warning-box">
+          A divulgação não autorizada deste documento pode resultar em
+          <span class="censored">sanções irreversíveis</span>. Mantenha sob
+          sigilo absoluto toda a informação contida nas próximas páginas.
+        </div>
+
+        <div class="metadata">
+          <span>REF: ARC-<span class="censored">0513</span>-G</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">4</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA E COMPRIMENTO DE ARCO
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ L = \int_{a}^{b} \sqrt{\left(\frac{dx}{dt}\right)^2 +
+          \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} \, dt \]
+        </p>
+        <p>
+          Nesta expressão, a curva é dada por uma parametrização \(\vec{r}(t) =
+          \bigl(x(t),\, y(t),\, z(t)\bigr)\), com \(t\) variando de \(a\) até
+          \(b\). A quantidade \(L\) representa o comprimento total da curva. A
+          integral computa a soma infinitesimal dos comprimentos de cada
+          segmento ao longo do percurso.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Em órbitas baixas ou trajetórias de reentrada, o cálculo do comprimento
+        de arco permite estimar consumos de combustível, necessidade de
+        correções de atitude e pontos de ignição de estágios. Em voos
+        experimentais do projeto <span class="censored">Gemini-X</span>, essa
+        técnica ajudou a prever o exato instante de disparo dos retrofoguetes.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em meados de
+        <span class="censored">1965</span>, em plena corrida espacial, o
+        Programa Gemini serviu como base para aperfeiçoar manobras de encontro
+        orbital e testes de longa duração em microgravidade, consolidando
+        conhecimentos vitais para o
+        <span class="censored">desenvolvimento</span> das próximas missões
+        lunares.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA: Exercícios 1 a 3 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Observatório de Trajetórias - Simulação [BASE [REDACTED]]
+            </div>
+            <p>
+              Considere a curva no plano dada pela parametrização \(\vec{r}(t) =
+              \bigl(t,\, t^2\bigr)\), com \(t\) variando de 0 a 2. Calcular o
+              comprimento de arco dessa trajetória, que representa um pequeno
+              percurso simulado no eixo
+              <span class="censored">X-Y</span>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar \(dx/dt\) e \(dy/dt\)
+                usando a expressão principal.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\frac{dx}{dt} = 1\) e \(\frac{dy}{dt} = 2t\).</p>
+                <p>
+                  Então, o comprimento de arco é: \[ L = \int_{0}^{2}
+                  \sqrt{(1)^2 + (2t)^2}\, dt = \int_{0}^{2} \sqrt{1 + 4t^2}\,
+                  dt. \]
+                </p>
+                <p>
+                  Realizando a integração, obtém-se o valor \(\int \sqrt{1 +
+                  4t^2}\, dt\) que resulta em \(\frac{1}{2}\bigl[t\sqrt{1+4t^2}
+                  + \frac{\sinh^{-1}(2t)}{2}\bigr]\) (ou outra forma
+                  equivalente), avaliando de 0 a 2. O valor numérico final pode
+                  ser aproximado conforme necessidade (mantido para consulta
+                  interna).
+                </p>
+                <p>
+                  Conclusão: Comprimento calculado com sucesso para intervalos
+                  de interesse no plano.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Centro de Ajuste Orbital - Trajeto Curvo [REGISTROS DE
+              <span class="censored">15/JUN/1965</span>]
+            </div>
+            <p>
+              A trajetória de teste em 2D é descrita por \(\vec{r}(t) =
+              \bigl(4\cos t,\, 4\sin t\bigr)\), com \(t\) de 0 a \(\pi/2\).
+              Determinar o comprimento parcial do círculo, usado para manobra de
+              inclinação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como propriedades geométricas podem
+                simplificar a integral.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = -4\sin t\) e \(\frac{dy}{dt} = 4\cos t\).
+                </p>
+                <p>
+                  Logo, \[ L = \int_{0}^{\frac{\pi}{2}} \sqrt{(-4\sin t)^2 +
+                  (4\cos t)^2} \, dt = \int_{0}^{\frac{\pi}{2}} \sqrt{16(\sin^2
+                  t + \cos^2 t)} \, dt. \]
+                </p>
+                <p>
+                  Simplificando, \[ L = \int_{0}^{\frac{\pi}{2}} 4 \, dt = 4
+                  \times \frac{\pi}{2} = 2\pi. \] (equivalente a um quarto da
+                  circunferência de raio 4).
+                </p>
+                <p>
+                  Conclusão: O arco medido confirma o segmento de trajetória
+                  circular compatível com a manobra planejada.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Dinâmica Orbital - Setor de Testes
+              <span class="censored">██</span>
+            </div>
+            <p>
+              Uma pequena rampa de lançamento é descrita pela curva \(\vec{r}(t)
+              = \bigl(2t,\, \sqrt{t}\bigr)\) para \(t\) de 1 a 4. Calcular o
+              comprimento de arco para determinar o comprimento total da seção.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a forma de \(\sqrt{t}\) ao derivar
+                para \(y\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = 2\) e \(\frac{dy}{dt} =
+                  \frac{1}{2\sqrt{t}}\).
+                </p>
+                <p>
+                  O comprimento de arco é: \[ L = \int_{1}^{4} \sqrt{4 +
+                  \left(\frac{1}{2\sqrt{t}}\right)^2}\, dt = \int_{1}^{4}
+                  \sqrt{4 + \frac{1}{4t}}\, dt. \]
+                </p>
+                <p>
+                  A integração pode ser resolvida via métodos diretos ou
+                  consultas a tabelas de integrais, gerando valor numérico
+                  condizente com a geometria do problema.
+                </p>
+                <p>Conclusão: Dimensão da rampa determinada com sucesso.</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA: Exercícios 4 a 6 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Teste de Reentrada [MÓDULO EXPERIMENTAL
+              <span class="censored">PX-2</span>]
+            </div>
+            <p>
+              A curva de reentrada simplificada é parametrizada em 3D por
+              \(\vec{r}(t) = \bigl(\cos t,\ \sin t,\ t/2\bigr)\), com \(t\)
+              variando de 0 a \(\pi\). Calcular o comprimento de arco, visando
+              analisar o percurso entre os pontos de inserção orbital e o ponto
+              de <span class="censored">atmosfera</span>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de trigonometria podem ser
+                relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = -\sin t,\quad \frac{dy}{dt} = \cos t,\quad
+                  \frac{dz}{dt} = \frac{1}{2}\).
+                </p>
+                <p>
+                  Assim, \[ L = \int_{0}^{\pi} \sqrt{(-\sin t)^2 + (\cos t)^2 +
+                  \left(\frac{1}{2}\right)^2} \, dt = \int_{0}^{\pi}
+                  \sqrt{\sin^2 t + \cos^2 t + \frac{1}{4}} \, dt. \] \[ =
+                  \int_{0}^{\pi} \sqrt{1 + \frac{1}{4}} \, dt = \int_{0}^{\pi}
+                  \sqrt{\frac{5}{4}} \, dt = \sqrt{\frac{5}{4}}\cdot \pi =
+                  \frac{\sqrt{5}}{2}\,\pi. \]
+                </p>
+                <p>
+                  Conclusão: O resultado indica a extensão total do percurso até
+                  o início da atmosfera.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Simulação de Acoplamento Orbital [Programa
+              <span class="censored">Gemini</span>]
+            </div>
+            <p>
+              A trajetória de aproximação entre dois módulos é descrita em 3D:
+              \(\vec{r}(t) = \bigl(2t,\ 3\sin(0.5t),\ 3\cos(0.5t)\bigr)\), com
+              \(t\) de 0 a 4. Determinar o comprimento da curva, que modela o
+              movimento relativo entre as naves.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de funções seno e cosseno podem
+                ajudar na soma de quadrados.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = 2,\quad \frac{dy}{dt} = 3\cdot
+                  0.5\cos(0.5t),\quad \frac{dz}{dt} = -3\cdot 0.5\sin(0.5t)\).
+                </p>
+                <p>
+                  Logo, \[ \frac{dy}{dt} = 1.5\cos\left(0.5t\right), \quad
+                  \frac{dz}{dt} = -1.5\sin\left(0.5t\right). \]
+                </p>
+                <p>
+                  Então, \[ L = \int_{0}^{4} \sqrt{(2)^2 +
+                  \bigl(1.5\cos(0.5t)\bigr)^2 + \bigl(-1.5\sin(0.5t)\bigr)^2}\,
+                  dt. \] \[ = \int_{0}^{4} \sqrt{4 + 2.25\cos^2(0.5t) +
+                  2.25\sin^2(0.5t)}\, dt = \int_{0}^{4} \sqrt{4 + 2.25}\, dt =
+                  \int_{0}^{4} \sqrt{6.25}\, dt = \int_{0}^{4} 2.5 \, dt. \] \[
+                  = 2.5 \times 4 = 10. \]
+                </p>
+                <p>
+                  Conclusão: O comprimento total é 10, confirmando a distância a
+                  ser percorrida para o acoplamento.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Estudo de Trajetória Suborbital [Memorando Interno
+              <span class="censored">██</span>/<span class="censored">65</span>]
+            </div>
+            <p>
+              Um protótipo de trajetória suborbital em 2D é definido por
+              \(\vec{r}(t) = \bigl(t^2,\ 3\sqrt{t}\bigr)\), com \(t\) de 1 a 9.
+              Calcular o comprimento de arco para verificar estabilidade em
+              regime de voo.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Examine a raiz quadrada em \(y\) e potência em
+                \(x\) cuidadosamente.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = 2t\), \(\frac{dy}{dt} =
+                  \frac{3}{2\sqrt{t}}\).
+                </p>
+                <p>
+                  Então, \[ L = \int_{1}^{9} \sqrt{(2t)^2 +
+                  \left(\frac{3}{2\sqrt{t}}\right)^2}\, dt = \int_{1}^{9}
+                  \sqrt{4t^2 + \frac{9}{4t}}\, dt. \]
+                </p>
+                <p>
+                  A forma exata da solução envolve manipulações adicionais. O
+                  resultado numérico pode ser computado para aplicação na
+                  trajetória suborbital.
+                </p>
+                <p>
+                  Conclusão: O estudo confirma que o comprimento de arco se
+                  mantém dentro dos limites operacionais propostos.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA: Exercícios 7 a 9 -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Análise de Curva de Fuga [Instruções do Dr.
+              <span class="censored">██████</span>]
+            </div>
+            <p>
+              Uma curva espacial é definida pela parametrização \(\vec{r}(t) =
+              \bigl(e^t,\ e^{-t},\ t\bigr)\), para \(t\) de \(-1\) a 1.
+              Determinar o comprimento de arco como parte de um estudo de
+              velocidade de escape.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias sob operações de exponenciais.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = e^t,\quad \frac{dy}{dt} = -e^{-t},\quad
+                  \frac{dz}{dt} = 1.\)
+                </p>
+                <p>
+                  Logo, \[ L = \int_{-1}^{1} \sqrt{\bigl(e^t\bigr)^2 +
+                  \bigl(-e^{-t}\bigr)^2 + 1^2}\, dt = \int_{-1}^{1} \sqrt{e^{2t}
+                  + e^{-2t} + 1}\, dt. \]
+                </p>
+                <p>
+                  Observando que \(e^{2t} + e^{-2t} = 2 + \ldots\) (forma que
+                  permite simplificações), a integral pode ser avaliada por
+                  métodos apropriados, auxiliando na predição de fuga.
+                </p>
+                <p>Conclusão: Curva analisada confirma parâmetros de escape.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Cálculo de Pouso Controlado [Relatório
+              <span class="censored">████</span>]
+            </div>
+            <p>
+              A trajetória de pouso controlado é dada pela curva 3D \(\vec{r}(t)
+              = \bigl(\ln(1+t),\ \sqrt{1+t},\ \ln(1+2t)\bigr)\), com \(t\) de 0
+              a 2. Determinar o comprimento de arco para prever consumo de
+              <span class="censored">combustível</span>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Busque invariantes em transformações
+                logarítmicas e de raiz.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = \frac{1}{1+t},\quad \frac{dy}{dt} =
+                  \frac{1}{2\sqrt{1+t}},\quad \frac{dz}{dt} = \frac{2}{1+2t}.\)
+                </p>
+                <p>
+                  Então, \[ L = \int_{0}^{2} \sqrt{\left(\frac{1}{1+t}\right)^2
+                  + \left(\frac{1}{2\sqrt{1+t}}\right)^2 +
+                  \left(\frac{2}{1+2t}\right)^2} \, dt. \]
+                </p>
+                <p>
+                  A complexidade do integrando exige métodos de integração
+                  avançados ou numéricos. No entanto, o valor resultante orienta
+                  cálculos de pouso seguro.
+                </p>
+                <p>
+                  Conclusão: Mediante avaliação do integral, estimam-se os
+                  ajustes finais para manobras de descida.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Laboratório de Órbitas Experimentais [Documento
+              <span class="censored">Nº 39</span>]
+            </div>
+            <p>
+              Seja a curva 2D \(\vec{r}(t) = \bigl(\sin^3 t,\ \sin^2 t\bigr)\),
+              para \(t\) de 0 a \(\pi\). Determinar o comprimento de arco e
+              discutir implicações para mudanças de inclinação em órbitas
+              <span class="censored">elípticas</span>.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relações trigonométricas podem oferecer
+                simplificações inesperadas.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = 3\sin^2 t \cos t,\quad \frac{dy}{dt} = 2\sin
+                  t \cos t.\)
+                </p>
+                <p>
+                  Assim, \[ L = \int_{0}^{\pi} \sqrt{\bigl(3\sin^2 t \cos
+                  t\bigr)^2 + \bigl(2\sin t \cos t\bigr)^2}\, dt. \]
+                </p>
+                <p>
+                  A expressão pode ser fatorada em termos de \(\sin t \cos t\),
+                  permitindo análise com identidades trigonométricas. O valor
+                  final requer integração cuidadosa.
+                </p>
+                <p>
+                  Conclusão: Ajustes de inclinação são avaliados com base no
+                  comprimento resultante.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA: Exercícios 10 a 12 (Sem dicas) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão <span class="censored">Gemini VII</span> - Análise
+              de Estabilidade Orbital
+            </div>
+            <p>
+              A trajetória 3D é dada por \(\vec{r}(t) = \bigl(4\sin t,\ 4\cos
+              t,\ \sqrt{t}\bigr)\), com \(t\) de 1 a 9. Determinar o comprimento
+              de arco para averiguação de tensões estruturais durante mudanças
+              de altitude.
+            </p>
+            <!-- Sem dicas para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = 4\cos t,\quad \frac{dy}{dt} = -4\sin t,\quad
+                  \frac{dz}{dt} = \frac{1}{2\sqrt{t}}.\)
+                </p>
+                <p>
+                  O comprimento de arco a ser calculado é: \[ L = \int_{1}^{9}
+                  \sqrt{16\cos^2 t + 16\sin^2 t +
+                  \left(\frac{1}{2\sqrt{t}}\right)^2}\, dt = \int_{1}^{9}
+                  \sqrt{16 + \frac{1}{4t}}\, dt. \]
+                </p>
+                <p>
+                  Conclusão: A integração do termo \(\sqrt{16 + 1/(4t)}\)
+                  fornece o valor exato do percurso, suportando o estudo de
+                  tensões durante a órbita.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Projeto <span class="censored">Cápsula-Z</span> - Análise
+              de Transferência Orbital
+            </div>
+            <p>
+              Estudar a curva parametrizada por \(\vec{r}(t) = \bigl(\ln(2+t),\
+              2t,\ e^{0.2t}\bigr)\), para \(t\) de 0 a 10, com foco no cálculo
+              do comprimento de arco para prever consumo de propelente.
+            </p>
+            <!-- Sem dicas para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = \frac{1}{2+t},\quad \frac{dy}{dt} = 2,\quad
+                  \frac{dz}{dt} = 0.2 e^{0.2t}.\)
+                </p>
+                <p>
+                  O comprimento de arco: \[ L = \int_{0}^{10}
+                  \sqrt{\left(\frac{1}{2+t}\right)^2 + 2^2 + \bigl(0.2
+                  e^{0.2t}\bigr)^2}\, dt. \]
+                </p>
+                <p>
+                  Conclusão: O resultado orienta estimativas de propelente para
+                  a transferência orbital segura.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Missão Crítica [SETOR <span class="censored">███</span> -
+              ANO <span class="censored">1966</span>]
+            </div>
+            <p>
+              A curva descrita por \(\vec{r}(t) = \bigl(\cos^2 t,\ \sin^2 t,\
+              \ln(1+t^2)\bigr)\), com \(t\) de 0 a \(\pi\), deve ter seu
+              comprimento calculado para prever precisão de estabilização em
+              órbita baixa.
+            </p>
+            <!-- Sem dicas para série OMEGA -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\frac{dx}{dt} = -2\cos t\sin t,\quad \frac{dy}{dt} = 2\sin
+                  t\cos t,\quad \frac{dz}{dt} = \frac{2t}{1 + t^2}.\)
+                </p>
+                <p>
+                  Portanto, \[ L = \int_{0}^{\pi} \sqrt{\bigl(-2\cos t \sin
+                  t\bigr)^2 + \bigl(2\sin t \cos t\bigr)^2 + \left(\frac{2t}{1 +
+                  t^2}\right)^2} \, dt. \]
+                </p>
+                <p>
+                  Conclusão: A integral serve de parâmetro para planejar os
+                  ajustes de atitude e assegurar o controle fino em órbita.
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">23</span> • DOCUMENTO ARC-<span
+          class="censored"
+          >0513</span
+        >-G
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

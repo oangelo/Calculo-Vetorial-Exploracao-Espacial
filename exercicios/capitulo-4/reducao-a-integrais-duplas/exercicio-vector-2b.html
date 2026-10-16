@@ -1,0 +1,57 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Modelamento de Combustível -
+    <span class="censored">Módulo de Propulsão</span> [SET/1965]
+  </div>
+  <p>
+    O paraboloide tinha limites polinomiais — fáceis de manipular. Agora vamos
+    lidar com uma esfera, que produz limites com raiz quadrada. A técnica é a
+    mesma: projetar o sólido no plano \(xy\) e integrar \(z\) primeiro.
+  </p>
+  <p>
+    Calcule \(\iiint_V 1\,dV\) da semiesfera superior limitada por \(x^2+y^2+z^2
+    \le 4\) com \(z \ge 0\).
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada ponto \((x,y)\) na projeção \(D\), determine
+    os limites de \(z\). Atenção: temos \(z \ge 0\).
+  </p>
+  <p>
+    <strong>(b)</strong> Qual é a região \(D\) — a projeção da semiesfera no
+    plano \(xy\)? Descreva-a.
+  </p>
+  <p>
+    <strong>(c)</strong> Reduza a integral tripla a uma dupla e escreva a
+    expressão final. Neste exercício, não é necessário avaliar — o foco está na
+    técnica de redução.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Da esfera \(x^2+y^2+z^2=4\), isolamos \(z\):
+      \(z=\sqrt{4-x^2-y^2}\) (raiz positiva, pois \(z\ge 0\)). No plano \(z=0\),
+      a equação fica \(x^2+y^2=4\) — um disco.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Para cada \((x,y)\) em \(D\), \(z\) varia de \(0\) a
+        \(\sqrt{4-x^2-y^2}\).
+      </p>
+      <p>A projeção \(D\) é o disco \(x^2+y^2 \le 4\) (raio 2).</p>
+      <p>
+        Integral dupla reduzida: \[ \iint_D \sqrt{4-x^2-y^2}\,dA, \quad D:
+        x^2+y^2 \le 4. \]
+      </p>
+      <p>
+        Em coordenadas polares: \(\int_0^{2\pi}\!\int_0^2 \sqrt{4-r^2}\cdot
+        r\,dr\,d\theta\). A substituição \(u=4-r^2\) resolve a integral radial.
+        O valor é \(\frac{16\pi}{3}\), que é metade do volume da esfera de raio
+        2 (\(\frac{4}{3}\pi\cdot 8 = \frac{32\pi}{3}\)).
+      </p>
+    </div>
+  </details>
+</li>

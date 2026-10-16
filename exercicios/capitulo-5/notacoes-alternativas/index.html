@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">22</span> DE JANEIRO DE
+          <span class="censored">1968</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CÁLCULO [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ORION-XX</span><br /><br />
+          Em continuidade às investigações sobre
+          <span class="censored">trajetórias orbitais</span> e modelagem de
+          integrais de linha, nossa equipe identificou a necessidade de dominar
+          uma segunda notação utilizada por
+          <span class="censored">laboratórios parceiros</span> na análise de
+          campos de força. Os relatórios recebidos do programa
+          <span class="censored">APOLLO</span> frequentemente registram as
+          integrais de linha numa forma diferencial distinta da notação vetorial
+          \(\vec{F}\cdot d\vec{r}\) que utilizamos até agora. Este dossiê
+          documenta a correspondência entre as duas notações e treina a equipe
+          para operar com fluência em ambas.
+        </div>
+        <div class="warning-box">
+          A divulgação não autorizada destes dados constitui violação de acordos
+          de
+          <span class="censored">segurança internacional</span>. Acesso restrito
+          ao pessoal devidamente credenciado.
+        </div>
+        <div class="metadata">
+          <span>REF: INTEGRAL-LINE<span class="censored">-009</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: NOTAÇÕES ALTERNATIVAS PARA INTEGRAIS DE LINHA
+      </div>
+      <div class="concept-definition">
+        <p><strong>PRÉ-REQUISITOS</strong></p>
+        <p>
+          Este tópico pressupõe familiaridade com os conceitos desenvolvidos nos
+          tópicos anteriores deste capítulo:
+          <strong>curvas parametrizadas</strong> e integrais de linha de
+          <strong>campo vetorial</strong> (cálculo de \(\int_C \vec{F}\cdot
+          d\vec{r}\) via parametrização, produto escalar e integração);
+          <strong>comprimento de arco</strong> como \(\int_a^b
+          \|\vec{r}'(t)\|\,dt\); <strong>curvas suaves (\(C^1\))</strong> e suas
+          propriedades; e <strong>mudança de parâmetro</strong> — o fato de que
+          a integral de linha não depende da parametrização escolhida. Todo esse
+          ferramental será utilizado aqui sob uma nova roupagem notacional.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. NOTAÇÃO VETORIAL — RECAPITULAÇÃO</strong></p>
+        <p>
+          Nos tópicos anteriores deste capítulo, toda integral de linha de campo
+          vetorial foi escrita na forma \(\int_C \vec{F}\cdot d\vec{r}\), onde
+          \(\vec{F}(x,y) = (P, Q)\) é o campo e \(\vec{r}(t) = (x(t), y(t))\)
+          parametriza a curva \(C\).
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \int_a^b
+          \vec{F}\bigl(x(t),y(t)\bigr)\cdot \vec{r}'(t)\,dt\]
+        </p>
+        <p>
+          Esta notação é natural quando a curva já está dada como
+          parametrização. O produto escalar \(\vec{F}\cdot\vec{r}'(t)\)
+          expande-se como \(P\,x'(t) + Q\,y'(t)\). É exatamente essa expansão
+          que nos leva à segunda notação.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>2. FORMA DIFERENCIAL — DEFINIÇÃO E CORRESPONDÊNCIA</strong>
+        </p>
+        <p>
+          Ao expandir o produto escalar, obtemos naturalmente a
+          <strong>forma diferencial</strong>:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \int_C P\,dx + Q\,dy\]
+        </p>
+        <p>
+          A correspondência é componente-a-componente: a primeira componente
+          \(P\) do campo acompanha \(dx\), e a segunda componente \(Q\)
+          acompanha \(dy\). Os símbolos \(dx\) e \(dy\) representam as
+          diferenciais de \(x\) e \(y\) ao longo da curva — são as variações
+          infinitesimais nas direções dos eixos. Em \(\mathbb{R}^3\), a extensão
+          é imediata:
+        </p>
+        <p class="formula-highlight">\[\int_C P\,dx + Q\,dy + R\,dz\]</p>
+        <p>
+          onde \(\vec{F}(x,y,z) = (P, Q, R)\). Cada componente do campo vira
+          coeficiente do diferencial correspondente.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. EQUIVALÊNCIA — POR QUE AMBAS FUNCIONAM</strong></p>
+        <p>
+          A igualdade \(\int_C \vec{F}\cdot d\vec{r} = \int_C P\,dx + Q\,dy\)
+          não é uma coincidência — é consequência direta da definição. Quando a
+          curva é parametrizada por \(\vec{r}(t) = (x(t), y(t))\), temos \(dx =
+          x'(t)\,dt\) e \(dy = y'(t)\,dt\). Substituindo:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C P\,dx + Q\,dy = \int_a^b \bigl[P\,x'(t) + Q\,y'(t)\bigr]\,dt
+          = \int_a^b \vec{F}\cdot\vec{r}'(t)\,dt\]
+        </p>
+        <p>
+          Ambas representam a mesma grandeza física — o
+          <strong>trabalho</strong> do campo \(\vec{F}\) ao longo da curva
+          \(C\). A diferença é puramente notacional: a forma vetorial usa o
+          produto escalar explicitamente, enquanto a forma diferencial já o traz
+          expandido.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. VANTAGENS — QUANDO USAR CADA NOTAÇÃO</strong></p>
+        <p>
+          A notação vetorial \(\vec{F}\cdot d\vec{r}\) é mais natural quando a
+          curva já está dada como parametrização \(\vec{r}(t)\). Já a forma
+          diferencial \(P\,dx + Q\,dy\) é vantajosa em três situações
+          frequentes:
+        </p>
+        <p>
+          <strong>(i)</strong> Quando a curva é dada como gráfico \(y = f(x)\),
+          podemos usar diretamente \(dy = f'(x)\,dx\) sem inventar uma
+          parametrização auxiliar.
+        </p>
+        <p>
+          <strong>(ii)</strong> Em trechos retos paralelos aos eixos, um dos
+          diferenciais se anula (\(dy = 0\) em trechos horizontais, \(dx = 0\)
+          em trechos verticais), simplificando a integral.
+        </p>
+        <p>
+          <strong>(iii)</strong> Em curvas poligonais formadas por trechos ao
+          longo dos eixos, a forma diferencial torna a decomposição em soma de
+          integrais particularmente natural.
+        </p>
+        <p>
+          Esta fluência notacional será essencial nos próximos capítulos, quando
+          a forma diferencial se tornará a linguagem padrão para resultados
+          fundamentais sobre integrais de linha e suas propriedades.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em
+        <span class="censored">dezembro</span> de
+        <span class="censored">1968</span>, a missão
+        <span class="censored">Apollo 8</span> realizou a primeira órbita
+        tripulada ao redor da Lua. Os cálculos de trajetória envolveram
+        integrais de linha em ambos os formatos — os laboratórios de
+        <span class="censored">Houston</span> utilizavam a forma diferencial,
+        enquanto os sistemas de bordo operavam com a notação vetorial. A
+        capacidade de traduzir entre as duas notações rapidamente tornou-se
+        requisito essencial para os engenheiros de voo.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">9</span> • DOCUMENTO
+        INTEGRAL-LINE<span class="censored">-009</span>
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

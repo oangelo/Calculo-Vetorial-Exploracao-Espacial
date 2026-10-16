@@ -1,0 +1,36 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 4 [NÍVEL ALFA]</div>
+  <div class="context">
+    ORIGEM: Laboratório de Geometria Analítica - Seção de Motivação [MAI/1962]
+  </div>
+  <p>Agora vamos ver uma integral cujo significado geométrico é conhecido — mas cuja
+  antiderivada <strong>não</strong> é óbvia. Este é o exercício que motiva o estudo
+  de técnicas de integração.</p>
+  <p>A função \(f(x) = \sqrt{1 - x^2}\) descreve o <strong>semicírculo</strong> superior
+  de raio 1 centrado na origem (pois \(x^2 + y^2 = 1\) com \(y \geq 0\)).</p>
+  <p>\[\int_{-1}^{1} \sqrt{1 - x^2}\,dx\]</p>
+  <p><strong>(a)</strong> Esboce a região de integração. Que figura geométrica ela representa?
+  Qual é a área dessa figura?</p>
+  <p><strong>(b)</strong> Usando a área geométrica, determine o valor de
+  \(\int_{-1}^{1} \sqrt{1 - x^2}\,dx\) sem calcular nenhuma antiderivada.</p>
+  <p><strong>(c)</strong> Tente encontrar a antiderivada de \(\sqrt{1 - x^2}\) usando
+  substituição simples (\(u = \ldots\)). Funciona? Por quê isso nos motiva a
+  estudar técnicas mais avançadas?</p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> A região é o <strong>semicírculo superior</strong> de
+      raio 1. O gráfico de \(y = \sqrt{1 - x^2}\) é metade da circunferência
+      \(x^2 + y^2 = 1\) (com \(y \geq 0\)).</p>
+      <p><strong>(b)</strong> Área do círculo completo: \(\pi r^2 = \pi\). Área do
+      semicírculo: \(\frac{\pi}{2}\). Portanto
+      \(\int_{-1}^{1} \sqrt{1 - x^2}\,dx = \frac{\pi}{2}.\)</p>
+      <p><strong>(c)</strong> Uma substituição simples como \(u = 1 - x^2\) não funciona
+      diretamente, pois \(du = -2x\,dx\) e não temos o fator \(x\) no integrando. Outras
+      substituições elementares também falham. A antiderivada envolve \(\arcsin(x)\) e
+      um termo com \(\sqrt{1 - x^2}\), que só descobrimos via <strong>substituição
+      trigonométrica</strong> — uma técnica que veremos adiante. Este exercício mostra
+      por que precisamos de técnicas além da substituição simples.</p>
+    </div>
+  </details>
+</li>

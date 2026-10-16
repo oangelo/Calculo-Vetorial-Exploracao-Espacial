@@ -1,0 +1,58 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Apollo 11 — Análise Pós-Missão da Área de Pouso [SET/1969]
+  </div>
+  <p>
+    Nos tópicos anteriores, você estabeleceu que a área de qualquer região com
+    fronteira \(C^1\) pode ser calculada por uma integral de contorno — basta
+    escolher um campo cujo rotacional seja identicamente 1. Agora, como desafio,
+    aplique essa fórmula a uma curva que não é círculo nem elipse: a
+    <strong>cardioide</strong> \(r = 1 + \cos\theta\).
+  </p>
+  <p>
+    <strong>(a)</strong> Recorde a fórmula de área via integral de contorno: \(A
+    = \frac{1}{2}\oint_{\partial R} (x\, dy - y\, dx)\). Qual campo \(\vec{F} =
+    (P, Q)\) possui \(\operatorname{rot}\vec{F} = 1\) e gera essa fórmula quando
+    aplicamos Stokes?
+  </p>
+  <p>
+    <strong>(b)</strong> Parametrize a cardioide por \(x =
+    (1+\cos\theta)\cos\theta\), \(y = (1+\cos\theta)\sin\theta\), com \(0 \le
+    \theta \le 2\pi\). Monte a integral de linha \(\frac{1}{2}\oint (x\, dy -
+    y\, dx)\) substituindo a parametrização.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral. Compare com a área conhecida da
+    cardioide, \(A = \frac{3\pi}{2}\).
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O campo \(\vec{F} = (-\frac{y}{2}, \frac{x}{2})\)
+        tem \(\operatorname{rot}\vec{F} = \frac{1}{2} + \frac{1}{2} = 1\). Por
+        Stokes: \(\oint \vec{F}\cdot d\vec{r} = \iint 1\, dA = A\). E
+        \(\vec{F}\cdot d\vec{r} = \frac{1}{2}(x\, dy - y\, dx)\), logo \(A =
+        \frac{1}{2}\oint (x\, dy - y\, dx)\).
+      </p>
+      <p>
+        <strong>(b)</strong> Parametrização: \(x = (1+\cos\theta)\cos\theta\),
+        \(y = (1+\cos\theta)\sin\theta\).
+      </p>
+      <p>
+        Calculando: \(\frac{dx}{d\theta} = -\sin\theta(1+2\cos\theta)\) e
+        \(\frac{dy}{d\theta} = \cos 2\theta + \cos\theta\).
+      </p>
+      <p>
+        Após simplificação: \(x\, dy - y\, dx = (1+\cos\theta)^2\, d\theta\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(A = \frac{1}{2}\int_{0}^{2\pi} (1+\cos\theta)^2\,
+        d\theta = \frac{1}{2}\int_{0}^{2\pi}(1 + 2\cos\theta + \cos^2\theta)\,
+        d\theta\) \(= \frac{1}{2}\left(2\pi + 0 + \pi\right) = \frac{3\pi}{2}\).
+      </p>
+      <p>Confere com a área conhecida da cardioide. \(\checkmark\)</p>
+    </div>
+  </details>
+</li>

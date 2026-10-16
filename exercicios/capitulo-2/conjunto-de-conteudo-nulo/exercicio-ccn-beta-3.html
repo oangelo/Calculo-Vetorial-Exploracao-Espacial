@@ -1,0 +1,52 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO CCN-BETA-3</div>
+  <div class="context">
+    ORIGEM: Mapeamento de Fenômenos Espaciais [TRANSMISSÃO
+    <span class="censored">PROTÓTIPO-04</span>]
+  </div>
+  <p>
+    Já mostramos que a interseção preserva conteúdo nulo, e que a união de dois
+    conjuntos de conteúdo nulo também é de conteúdo nulo. Agora vamos formalizar
+    esse último resultado para o caso de <em>qualquer número finito</em>
+    de conjuntos. Se cada pedaço é "insignificante", será que a soma de todos os
+    pedaços continua insignificante?
+  </p>
+  <p>
+    Sejam \(\{A_i\}_{i=1}^n\) uma coleção finita de conjuntos com conteúdo nulo
+    em \(\mathbb{R}^2\). Mostre que a união \(A_1 \cup A_2 \cup \dots \cup A_n\)
+    também tem conteúdo nulo.
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada conjunto \(A_i\), existe uma cobertura por
+    retângulos de área total menor que \(\epsilon/n\). O que acontece com a soma
+    das áreas se combinarmos todas as coberturas?
+  </p>
+  <p>
+    <strong>(b)</strong> Formalize: dado \(\epsilon > 0\), como escolher as
+    coberturas individuais para garantir que a união total tenha área \(<
+    \epsilon\)?
+  </p>
+  <p>
+    <strong>(c)</strong> O argumento funcionaria para uma quantidade
+    <em>infinita</em> de conjuntos? Onde ele falha?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A ideia-chave é "distribuir" o orçamento \(\epsilon\)
+      entre os \(n\) conjuntos, dando \(\epsilon/n\) para cada um. A soma dos
+      \(n\) pedaços volta a ser \(\epsilon\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Cada conjunto \(A_i\) pode ser coberto por retângulos de área total
+        menor que \(\epsilon_i\). Ajustando cada \(\epsilon_i\) para que a soma
+        seja menor que um \(\epsilon\) desejado, cobrimos todos os conjuntos
+        simultaneamente, provando que a união finita ainda possui conteúdo nulo.
+      </p>
+    </div>
+  </details>
+</li>

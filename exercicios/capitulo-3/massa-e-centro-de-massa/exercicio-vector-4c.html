@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Seção de Estudos Orbitais [Programa
+    <span class="censored">APOLO</span> - JUN/1967]
+  </div>
+  <p>
+    Último desafio da lista: uma região composta — disco com buraco quadrado.
+    Diferente dos anéis circulares, a fronteira interna não é radial, então
+    polares puros não resolvem tudo. A estratégia é calcular a massa do disco
+    completo em polares e subtrair a massa do quadrado em cartesianas. Este
+    exercício testa a capacidade de escolher o sistema de coordenadas certo para
+    cada sub-região.
+  </p>
+  <p>
+    Região \(D\) é o interior do círculo \(x^2 + y^2 \le 4\), mas com exclusão
+    do quadrado \(-1 \le x \le 1\), \(-1 \le y \le 1\). A densidade \(\rho(x,y)
+    = \sqrt{16 - (x^2 + y^2)}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule a massa do disco completo de raio 2 em
+    coordenadas polares.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a massa do quadrado central em coordenadas
+    cartesianas.
+  </p>
+  <p>
+    <strong>(c)</strong> Subtraia para obter a massa total da região composta.
+  </p>
+  <!-- OMEGA sem dica -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A estratégia é subtrair: \(m = m_{\text{disco}} - m_{\text{quadrado}}\).
+      </p>
+      <p>
+        DISCO (polares): \(\rho = \sqrt{16 - r^2}\). \[ m_{\text{disco}} =
+        \int_{0}^{2\pi}\int_{0}^{2} \sqrt{16 - r^2}\, r \, dr\, d\theta. \] Com
+        a substituição \(w = 16 - r^2\), \(dw = -2r\,dr\): \[ \int_{0}^{2}
+        \sqrt{16 - r^2}\, r\, dr = \frac{1}{2}\int_{4}^{16} \sqrt{w}\,(-dw) =
+        \frac{1}{2}\int_{4}^{16} w^{1/2}\,dw =
+        \frac{1}{2}\left[\frac{2}{3}w^{3/2}\right]_{4}^{16} = \frac{1}{3}(64 -
+        8) = \frac{56}{3}. \] Logo, \(m_{\text{disco}} = 2\pi \cdot \frac{56}{3}
+        = \frac{112\pi}{3}\).
+      </p>
+      <p>
+        QUADRADO (cartesiano): O quadrado \(-1 \le x \le 1\), \(-1 \le y \le 1\)
+        está inteiramente contido no disco (pois o vértice \((1,1)\) satisfaz
+        \(1 + 1 = 2 < 4\)). A densidade é \(\sqrt{16 - x^2 - y^2}\). \[
+        m_{\text{quadrado}} = \int_{-1}^{1}\int_{-1}^{1} \sqrt{16 - x^2 -
+        y^2}\,dy\,dx. \] Esta integral não tem forma fechada simples e exigiria
+        métodos numéricos para avaliação exata.
+      </p>
+      <p>
+        CONCLUSÃO: A massa total da região composta é \[ m = \frac{112\pi}{3} -
+        \int_{-1}^{1}\int_{-1}^{1} \sqrt{16 - x^2 - y^2}\,dy\,dx. \]
+      </p>
+    </div>
+  </details>
+</li>

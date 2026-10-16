@@ -1,0 +1,216 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h2>Mudança de Variáveis</h2>
+      <p>
+        Como integrar sobre um disco sem lutar com a fronteira curva? Em
+        coordenadas cartesianas, a borda circular impõe limites complicados.
+      </p>
+      <p>
+        No capítulo 2, calculamos integrais duplas sobre regiões retangulares.
+        Agora trocamos de sistema para que a região — e não a integral — decida
+        a dificuldade do cálculo.
+      </p>
+      <p class="history-insert">
+        Abril de 1961: o mundo inteiro passou a conhecer o rosto e o nome de
+        Yuri Gagarin, o primeiro homem no espaço. Quem o levou até lá, ninguém
+        dizia.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Uma Transformação Deforma o Plano</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Analogia:</strong></p>
+          <p>
+            Uma estampa de borracha esticada sobre um molde: o desenho muda de
+            forma, mas cada pedaço continua existindo — apenas com outro
+            tamanho. Um quadradinho \(du\,dv\) no plano \((u,v)\) vira um
+            paralelogramo no plano \((x,y)\).
+          </p>
+        </div>
+        <div>
+          <p><strong>Definição informal:</strong></p>
+          <p>
+            Mudar de variáveis é redescrever o mesmo ponto em um novo sistema de
+            coordenadas. O plano se deforma: a área de cada quadradinho varia de
+            ponto a ponto — e é essa variação que vamos ver a seguir.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Visualização — Elemento de Área em Cartesianas</h3>
+      <canvas
+        id="areaCartesianaCanvas"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <p>
+          O mesmo círculo \(x^2+y^2\le 4\), coberto por retângulos cartesianos
+          de área constante \(dA = dx\,dy\). Clique no canvas para iniciar ou
+          pausar a animação. Os retângulos inteiros são azuis; os cortados pela
+          borda curva, amarelos — o contorno vira uma escada. Aqui não há
+          jacobiano: o fator de escala é 1 em todo ponto. Compare com os setores
+          polares do próximo slide.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Visualização — Elemento de Área em Polares</h3>
+      <canvas
+        id="polarJacobianCanvas"
+        class="visualization-canvas"
+        width="700"
+        height="400"
+      ></canvas>
+      <div class="controls-container">
+        <p>
+          Clique no canvas para iniciar ou pausar a animação. Observe como o
+          elemento \(dr\,d\theta\) vira \(r\,dr\,d\theta\): cada setor pesa mais
+          longe da origem — o jacobiano \(J = r\) aparece em cada célula.
+          Diferente dos retângulos cartesianos, os setores se ajustam à borda
+          curva, sem "degraus". É esse fator de escala que o próximo slide vai
+          formalizar.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Teorema da Mudança de Variáveis</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[\iint_R f(x,y)\,dx\,dy = \iint_S f(x(u,v), y(u,v))
+          \left|\frac{\partial(x,y)}{\partial(u,v)}\right| du\,dv\]
+        </p>
+      </div>
+      <div class="math-section">
+        <p><strong>Onde:</strong></p>
+        <ul>
+          <li>\(f\) = função integrada, reescrita nas novas coordenadas</li>
+          <li>\(R\) = região no plano \((x,y)\), imagem de \(S\)</li>
+          <li>\(S\) = região original no plano \((u,v)\)</li>
+          <li>\(T(u,v) = (x(u,v), y(u,v))\) = transformação de coordenadas</li>
+          <li>
+            \(J = \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\) = o
+            jacobiano, fator de escala de área
+          </li>
+        </ul>
+        <p>
+          <strong>Validade:</strong> \(T\) bijetora, \(C^1\) e jacobiano não
+          nulo em \(S\).
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>O Jacobiano como Fator de Escala</h3>
+      <div class="dual-panel">
+        <div class="math-section">
+          <p><strong>Definição:</strong></p>
+          <p>\[J = \left|\frac{\partial(x,y)}{\partial(u,v)}\right|\]</p>
+          <p>
+            <strong>Onde:</strong> o jacobiano é o determinante das derivadas de
+            \(T\). Mede quanto uma área \(du\,dv\) expande ou contrai em cada
+            ponto.
+          </p>
+          <p><strong>Validade:</strong> fator local — varia ponto a ponto.</p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="math-section">
+          <p><strong>Geometricamente:</strong></p>
+          <p>
+            O quadradinho \(du\,dv\) vira um paralelogramo gerado pelos vetores
+            tangentes \(\vec{r}_u\) e \(\vec{r}_v\). A área é \(|\vec{r}_u
+            \times \vec{r}_v|\,du\,dv\).
+          </p>
+          <p><strong>Casos:</strong></p>
+          <ul>
+            <li>Translação: \(J = 1\) — áreas não mudam.</li>
+            <li>Reescala \(x = au,\ y = bv\): \(J = ab\).</li>
+            <li>Polares \(x = r\cos\theta,\ y = r\sin\theta\): \(J = r\).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — O Disco</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule \(\iint_D (x^2+y^2)\,dA\), em que \(D\) é o disco
+            \(x^2+y^2\le 4\). A fronteira curva pede coordenadas polares \(x =
+            r\cos\theta,\ y = r\sin\theta\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Sergei Korolev projetou o foguete que levou Gagarin ao espaço. Em
+            1938, no Grande Expurgo, foi preso e passou seis anos em campos e
+            prisões, inclusive em Kolyma. Quando voltou, seu nome virou segredo
+            de Estado — o mundo o conheceu pelo obituário, em 1966.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 02 · MUDANÇA DE VARIÁVEIS</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — A Elipse</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            A reescala \(x = 2u,\ y = v\) leva o disco unitário \(u^2+v^2\le 1\)
+            à elipse \(\frac{x^2}{4}+y^2\le 1\). Calcule a área da elipse.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Nos relatórios do programa espacial soviético, os projetistas
+            assinavam apenas como "Projetista-Chefe". A burocracia transformou o
+            homem num cargo — sem nome, sem rosto, sem assinatura própria.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH3-1961 · CAPÍTULO 3</div>
+  </section>
+</section>

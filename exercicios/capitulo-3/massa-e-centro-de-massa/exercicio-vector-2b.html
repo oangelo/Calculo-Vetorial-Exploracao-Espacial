@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Setor de Dinâmica Orbital [Programa
+    <span class="censored">GEM</span>]
+  </div>
+  <p>
+    No exercício anterior, a densidade era constante e a integral se separava
+    naturalmente. Agora a densidade depende de \(y\), mas a região é um círculo
+    completo — o que abre a porta para um truque poderoso: a simetria. Quando
+    uma região é simétrica em relação a um eixo e a densidade contém um termo
+    ímpar nessa variável, esse termo contribui zero para a massa.
+  </p>
+  <p>
+    Região \(D\) definida pelo círculo \(x^2 + y^2 \le 9\). A densidade
+    \(\rho(x,y) = 2 + y\).
+  </p>
+  <p>
+    <strong>(a)</strong> Separe a integral de massa em duas: \(\iint_D 2\,dA +
+    \iint_D y\,dA\). A qual região geométrica corresponde a primeira?
+  </p>
+  <p>
+    <strong>(b)</strong> Argumente pela simetria por que a segunda integral é
+    nula, sem calculá-la explicitamente.
+  </p>
+  <p><strong>(c)</strong> Calcule a massa total verificando o resultado.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A função \(y\) é ímpar em relação ao eixo \(x\), e o disco
+      é simétrico em relação a esse eixo. Em polares, basta observar que
+      \(\int_0^{2\pi} \sin\theta\,d\theta = 0\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>EM COORDENADAS POLARES: \(r\) de 0 a 3, \(\theta\) de 0 a \(2\pi\).</p>
+      <p>
+        Observe \(\rho(x,y) = 2 + y\). Em polares, \(y = r\sin\theta\). Então \[
+        m = \iint_{D} (2 + y)\, dA = \iint_{D} 2\, dA + \iint_{D} y\, dA. \]
+      </p>
+      <p>
+        PRIMEIRA PARTE: \[ \iint_{D} 2 \, dA = 2 \int_{0}^{2\pi}\int_{0}^{3} r
+        \, dr\, d\theta = 2 \left(\int_{0}^{3} r\,dr\right)\left(\int_{0}^{2\pi}
+        d\theta\right) = 2 \left(\frac{3^2}{2}\right) (2\pi) = 2 \cdot
+        \frac{9}{2} \cdot 2\pi = 18\pi. \]
+      </p>
+      <p>
+        SEGUNDA PARTE: \[ \iint_{D} y \, dA = \int_{0}^{2\pi}\int_{0}^{3}
+        (r\sin\theta) \, r\, dr\, d\theta = \int_{0}^{2\pi}\int_{0}^{3} r^2
+        \sin\theta \, dr\, d\theta. \] Porém, \(\sin\theta\) integrado de 0 a
+        \(2\pi\) é zero. Logo, essa parte anula: \[ \int_{0}^{2\pi} \sin\theta\,
+        d\theta = 0. \]
+      </p>
+      <p>CONCLUSÃO: \[ m = 18\pi + 0 = 18\pi. \]</p>
+    </div>
+  </details>
+</li>
