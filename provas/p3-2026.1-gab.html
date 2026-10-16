@@ -706,17 +706,155 @@
                   y}\right) =(1,\;1,\;1). \]
                 </p>
                 <p>
-                  <strong>Via parametrização.</strong> Com \(\mathbf
-                  r(u,v)=A+u\overrightarrow{AB}+v\overrightarrow{AC}
-                  =(2u,\;4v,\;2-2u-2v)\), o domínio é o triângulo \(u\ge 0\),
-                  \(v\ge 0\), \(u+v\le 1\) (área \(\frac12\)) e \[ \mathbf
-                  r_u\times\mathbf r_v=(8,\;4,\;8),\qquad
-                  (\operatorname{rot}\mathbf F)\cdot(\mathbf r_u\times\mathbf
-                  r_v)=20. \]
+                  <strong>Via parametrização.</strong> Isolando \(z\) na
+                  equação do plano, \(z=2-x-\frac{y}{2}\). Escrevendo \(x=v\) e
+                  \(y=u\), o triângulo é o gráfico \[ \mathbf
+                  r(v,u)=\left(v,\;u,\;2-v-\frac{u}{2}\right). \] Temos
+                  \(\mathbf r_v=(1,\;0,\;-1)\) e \(\mathbf
+                  r_u=\left(0,\;1,\;-\frac12\right)\), de modo que \[ \mathbf
+                  r_v\times\mathbf r_u=\left(1,\;\frac12,\;1\right). \] Como
+                  \(\left(1,\frac12,1\right)\cdot(2,1,2)=\frac92>0\), esse
+                  vetor aponta no mesmo sentido de \(\hat{\mathbf
+                  n}=\frac{(2,1,2)}{3}\): a parametrização herda a orientação
+                  correta. Além disso, \[
+                  (\operatorname{rot}\mathbf F)\cdot(\mathbf r_v\times\mathbf
+                  r_u)=(1,1,1)\cdot\left(1,\;\frac12,\;1\right)=\frac52, \]
+                  constante em \(T\).
                 </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="330"
+                    viewBox="0 0 460 330"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Domínio de integração no plano vu: triângulo com vértices A na origem, B em (2,0) e C em (0,4), hipotenusa u igual a 4 menos 2v e faixa vertical tracejada indicando o intervalo interno de u"
+                  >
+                    <title>Domínio D no plano vu</title>
+                    <defs>
+                      <marker
+                        id="ar-q2d"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="120"
+                      y1="285"
+                      x2="400"
+                      y2="285"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2d)"
+                    ></line>
+                    <line
+                      x1="120"
+                      y1="285"
+                      x2="120"
+                      y2="40"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2d)"
+                    ></line>
+                    <text
+                      x="408"
+                      y="291"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      v
+                    </text>
+                    <text
+                      x="120"
+                      y="28"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      u
+                    </text>
+                    <polygon
+                      points="120,285 300,285 120,65"
+                      fill="rgba(31,41,55,0.08)"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></polygon>
+                    <line
+                      x1="210"
+                      y1="285"
+                      x2="210"
+                      y2="175"
+                      stroke="#6b7280"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <text
+                      x="232"
+                      y="160"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      u = 4 − 2v
+                    </text>
+                    <circle cx="120" cy="285" r="3" fill="#1f2937"></circle>
+                    <circle cx="300" cy="285" r="3" fill="#1f2937"></circle>
+                    <circle cx="120" cy="65" r="3" fill="#1f2937"></circle>
+                    <text
+                      x="70"
+                      y="304"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      A (0, 0)
+                    </text>
+                    <text
+                      x="308"
+                      y="302"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      B (2, 0)
+                    </text>
+                    <text
+                      x="130"
+                      y="60"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      C (0, 4)
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Domínio \(D\) no plano \(vu\): projeção de \(T\), com a
+                    faixa vertical em \(v\) fixo mostrando o intervalo interno
+                    \(0\le u\le 4-2v\).
+                  </figcaption>
+                </figure>
                 <p>
-                  \[ \iint_T(\operatorname{rot}\mathbf F)\cdot d\mathbf S
-                  =\int_0^1\!\!\int_0^{1-u}20\;dv\,du=20\cdot\frac12=10. \]
+                  O domínio de integração é a projeção de \(T\) no plano
+                  \(vu\): o triângulo de vértices \((0,0)\) (projeção de
+                  \(A\)), \((2,0)\) (projeção de \(B\)) e \((0,4)\) (projeção
+                  de \(C\)), limitado por \(v=0\), \(u=0\) e pela hipotenusa
+                  \(u=4-2v\), de área \(\frac{2\cdot 4}{2}=4\). Fixando \(v\),
+                  \(u\) percorre \(0\le u\le 4-2v\): \[
+                  \iint_T(\operatorname{rot}\mathbf F)\cdot d\mathbf S
+                  =\int_0^2\!\!\int_0^{4-2v}\frac52\;du\,dv
+                  =\frac52\int_0^2(4-2v)\;dv =\frac52\cdot 4=10. \]
                 </p>
                 <p>
                   <strong>Via \(\hat{\mathbf n}\):</strong> como
