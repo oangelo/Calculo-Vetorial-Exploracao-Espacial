@@ -1,0 +1,139 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">28</span> DE JULHO DE
+    <span class="censored">1975</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">SKYLAB MISSION CONTROL — HOUSTON</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO TÉCNICO Nº <span class="censored">Δ-903</span><br /><br />
+    No dossiê anterior, a equipe calculou o fluxo de vários campos por
+    superfícies fechadas e observou uma coincidência sistemática: o fluxo total
+    sempre igualava a integral do <strong>divergente</strong> no volume
+    interior. Não era acidente. Este documento nomeia essa coincidência — é o
+    <strong>Teorema da Divergência</strong> (ou Teorema de Gauss) — e o verifica
+    em geometrias progressivamente mais complexas. Cada verificação reforça a
+    confiança na ferramenta e revela novas consequências: divergente nulo
+    implica fluxo nulo, fontes geram fluxo positivo, sumidouros geram negativo.
+    Ao final, o teorema será uma arma estratégica — capaz de transformar
+    cálculos impossíveis em contas rotineiras.
+  </div>
+  <div class="warning-box">
+    Este documento formaliza o resultado central da análise volumétrica de
+    campos. Divulgação não autorizada acarretará
+    <span class="censored">revogação de credenciais SIGMA</span> conforme
+    diretiva <span class="censored">Ω-44</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">9003</span></span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+    <span
+      >CÓPIAS: <span class="censored">2</span> DE
+      <span class="censored">4</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA — VERIFICAÇÃO E USO ESTRATÉGICO
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Esta lista assume domínio completo do tópico anterior sobre
+    <strong>fluxo de um campo vetorial</strong>: o significado físico de
+    \(\iint_S \vec{F} \cdot \hat{n}\,dS\), o cálculo via parametrização
+    \(\vec{r}(u,v)\) com o produto \(\vec{F} \cdot (\vec{r}_u \times
+    \vec{r}_v)\), a importância da <strong>orientação</strong> da normal e o
+    tratamento de <strong>superfícies compostas</strong> (soma de fluxos por
+    partes). Também são necessários o cálculo do divergente \(\nabla \cdot
+    \vec{F}\) (Capítulo 1), integrais triplas em coordenadas esféricas e
+    cilíndricas (Capítulo 4), e familiaridade com o Teorema de Green (Capítulo
+    7), que é o análogo bidimensional do resultado que será formalizado aqui.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>1. O TEOREMA DA DIVERGÊNCIA: ENUNCIADO FORMAL</strong></p>
+  <p>
+    Seja \(V\) um sólido delimitado por uma superfície fechada \(S\) com normal
+    \(\hat{n}\) apontando para fora. Seja \(\vec{F}\) um campo vetorial com
+    componentes e derivadas parciais contínuas em \(V \cup S\). Então:
+  </p>
+  <p class="formula-highlight">
+    \[\iint_S \vec{F} \cdot \hat{n} \, dS = \iiint_V (\nabla \cdot \vec{F}) \,
+    dV\]
+  </p>
+  <p>
+    O lado esquerdo é o <strong>fluxo</strong> de \(\vec{F}\) através de \(S\).
+    O lado direito é a integral do <strong>divergente</strong>
+    \(\nabla \cdot \vec{F}\) sobre o volume \(V\). O teorema afirma que
+    <strong
+      >tudo que o campo "emite" no interior do volume se manifesta como fluxo
+      pela fronteira</strong
+    >. É a extensão tridimensional do Teorema de Green para o divergente no
+    plano (Capítulo 7).
+  </p>
+  <p>
+    As hipóteses são essenciais: \(S\) deve ser uma superfície fechada (sem
+    buracos), \(\vec{F}\) deve estar definido e ter derivadas parciais contínuas
+    em <strong>todo</strong> o interior de \(V\). Se o campo não existe em algum
+    ponto, o teorema não se aplica diretamente.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. PRIMEIRAS CONSEQUÊNCIAS</strong></p>
+  <p>O teorema tem consequências imediatas que podem poupar trabalho enorme:</p>
+  <p>
+    <strong>Divergente nulo:</strong> Se \(\nabla \cdot \vec{F} = 0\) em todo o
+    interior de \(V\), então o fluxo por \(S\) é automaticamente zero — não
+    importa o formato da superfície. Em linguagem de fluidos, um campo com
+    divergente nulo é <strong>incompressível</strong>: tudo que entra, sai.
+  </p>
+  <p>
+    <strong>Divergente constante:</strong> Se \(\nabla \cdot \vec{F} = c\)
+    (constante), o fluxo por qualquer superfície fechada é simplesmente \(c
+    \times \text{volume}\). Nenhuma integral necessária — basta conhecer o
+    volume.
+  </p>
+  <p>
+    <strong>Fontes e sumidouros:</strong> Onde \(\nabla \cdot \vec{F} > 0\), há
+    uma <strong>fonte</strong> (o campo se expande). Onde \(\nabla \cdot \vec{F}
+    < 0\), há um <strong>sumidouro</strong> (o campo se contrai). O fluxo total
+    mede o <strong>balanço</strong>
+    entre fontes e sumidouros no interior.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. USO ESTRATÉGICO DO TEOREMA</strong></p>
+  <p>
+    O teorema permite calcular o fluxo de duas formas: diretamente pela
+    superfície, ou pela integral do divergente no volume. A escolha estratégica
+    do lado mais fácil é a habilidade central desta lista.
+  </p>
+  <p>
+    <strong>Quando usar a integral do divergente:</strong> Quando a superfície é
+    composta (várias partes) ou curva, mas o divergente é simples (constante ou
+    polinomial).
+  </p>
+  <p>
+    <strong>Quando calcular o fluxo diretamente:</strong> Quando o divergente é
+    complicado mas a superfície é simples e a normal é fácil de determinar.
+  </p>
+  <p>
+    O teorema também resolve problemas de <strong>superfícies abertas</strong>:
+    se queremos o fluxo por uma superfície aberta \(S_1\), podemos "fechá-la"
+    com uma tampa \(S_2\), calcular o fluxo pela superfície fechada via teorema,
+    e subtrair o fluxo pela tampa (calculado diretamente).
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Carl Friedrich Gauss demonstrou este teorema
+  em 1835, mas sua influência estende-se até a engenharia orbital do século XX.
+  Durante a missão <span class="censored">Apollo- Soyuz</span> (julho de 1975),
+  engenheiros americanos e soviéticos trocaram dados sobre análise de pressão em
+  módulos pressurizados — cálculos que dependiam diretamente do Teorema da
+  Divergência. O <span class="censored">Skylab</span> (1973–1979) e as estações
+  <span class="censored">Salyut</span> aplicaram essas ferramentas para garantir
+  o equilíbrio de gases em ambientes herméticos.
+</div>

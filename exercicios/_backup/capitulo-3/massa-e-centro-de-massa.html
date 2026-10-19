@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      /* Estilos adicionais */
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      /* Novo estilo para dicas dentro de details */
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- DOCUMENT HEADER -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">15</span> DE MARÇO DE
+          <span class="censored">1966</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">BASE AVANÇADA GEMINI</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">COSMOS-7</span> <br /><br />
+          Em virtude do intenso intercâmbio de
+          <span class="censored">documentos confidenciais</span> durante o
+          <span class="censored">último lançamento orbital</span>, este material
+          foi compilado para auxiliar na compreensão de
+          <span class="censored">estratégias de posicionamento</span>
+          utilizando cálculos avançados de massa e centro de massa via integrais
+          duplas. <br /><br />
+          Os resultados obtidos pelo Dr.
+          <span class="censored">███████</span> foram cruciais para os ajustes
+          nos módulos orbitais do programa espacial
+          <span class="censored">████</span>, garantindo maior precisão em
+          manobras e <span class="censored">acoplamentos</span>.
+        </div>
+
+        <div class="warning-box">
+          Divulgar conteúdos desta análise sem autorização resulta em
+          <span class="censored">sanções imediatas</span>. As equações e métodos
+          aquí presentes estão sob vigilância do
+          <span class="censored">Comitê Interno de Segurança</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1011</span>-A</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <!-- FIM DOCUMENT HEADER -->
+
+      <!-- SEÇÃO DE INTRODUÇÃO CONCEITUAL -->
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: MASSA E CENTRO DE MASSA COM INTEGRAL DUPLA
+      </div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[ m = \iint_{D} \rho(x,y)\, dA \quad \text{e} \quad \left(\bar{x},
+          \bar{y}\right) = \left(\frac{1}{m}\iint_{D} x\,\rho(x,y)\, dA,\;
+          \frac{1}{m}\iint_{D} y\,\rho(x,y)\, dA\right) \]
+        </p>
+        <p>
+          Para uma lamina plana ocupando uma região \(D\) no plano, com
+          densidade \(\rho(x,y)\), a massa total é dada pela integral dupla de
+          \(\rho\) sobre \(D\). O centro de massa \((\bar{x}, \bar{y})\) pode
+          ser determinado dividindo-se os momentos parciais pela massa total.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        A determinação exata de massa e centro de massa é essencial para
+        configurações de acoplamento, suprimento de combustível e
+        <span class="censored">cálculos orbitais</span>. Em órbitas baixas da
+        Terra, erros mínimos podem resultar em desvios significativos ao longo
+        de trajetórias sensíveis, impactando manobras de
+        <span class="censored">rendezvous espacial</span>.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante o Programa Gemini (1965-1966),
+        engenheiros americanos aperfeiçoaram o uso de integrais duplas para
+        prever o comportamento dinâmico de módulos em microgravidade, permitindo
+        maior autonomia em <span class="censored">manobras automatizadas</span>.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- ALFA: Exercícios 1-3 (VECTOR-1A, 1B, 1C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Teste de Placa Retangular - Sistema de Simulação
+              [JAN/1965]
+            </div>
+            <p>
+              Considere a região \(D\) definida pelo retângulo \(0 \le x \le
+              3\), \(0 \le y \le 2\). Suponha densidade constante \(\rho(x,y) =
+              5\) (unidades de massa por unidade de área). <br />
+              DETERMINAR: A massa total da placa.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere estabelecer limites de integração
+                diretos usando coordenadas cartesianas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  CÁLCULO: A massa é \[ m = \iint_{D} \rho(x,y)\, dA =
+                  \int_{0}^{3}\int_{0}^{2} 5 \,dy\,dx. \]
+                </p>
+                <p>
+                  INTEGRANDO: \[ m = \int_{0}^{3} \left( 5 \int_{0}^{2} dy
+                  \right) dx = \int_{0}^{3} 5 \times (2) \, dx = 10 \int_{0}^{3}
+                  dx = 10 \times 3 = 30. \]
+                </p>
+                <p>CONCLUSÃO: Massa total = 30 (unidades de massa).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Documento Interino - Laboratório
+              <span class="censored">N-13</span>
+            </div>
+            <p>
+              Seja \(D\) o triângulo no primeiro quadrante delimitado pelos
+              pontos \((0,0)\), \((4,0)\) e \((4,4)\). A densidade varia como
+              \(\rho(x,y) = 2x\). <br />
+              DETERMINAR: A massa total usando integrais duplas.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a equação da reta que forma a
+                fronteira superior para definir os limites de integração.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  O triângulo pode ser descrito por \(0 \le x \le 4\) e \(0 \le
+                  y \le x\). Assim:
+                </p>
+                <p>
+                  \[ m = \iint_{D} 2x \, dA = \int_{0}^{4}\int_{0}^{x} 2x
+                  \,dy\,dx. \]
+                </p>
+                <p>
+                  INTEGRANDO: \[ m = \int_{0}^{4} \left( 2x \int_{0}^{x} dy
+                  \right) dx = \int_{0}^{4} 2x \cdot (x) \, dx = \int_{0}^{4}
+                  2x^2 \, dx. \]
+                </p>
+                <p>
+                  \[ m = 2 \int_{0}^{4} x^2 \, dx = 2 \left[ \frac{x^3}{3}
+                  \right]_{0}^{4} = 2 \left( \frac{64}{3} \right) =
+                  \frac{128}{3}. \]
+                </p>
+                <p>
+                  CONCLUSÃO: Massa total = \(\frac{128}{3}\) (unidades de
+                  massa).
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Simulação de Placa Triangular [LAB.
+              <span class="censored">E14</span>]
+            </div>
+            <p>
+              Mesma região do exercício anterior, porém agora DETERMINAR: As
+              coordenadas do centro de massa \((\bar{x}, \bar{y})\), mantendo
+              \(\rho(x,y) = 2x\).
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Relembre a definição de \(\bar{x} =
+                \frac{1}{m}\iint x \rho(x,y)\, dA\) e similar para \(\bar{y}\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>JÁ SABEMOS: \(m = \frac{128}{3}\).</p>
+                <p>
+                  CÁLCULO DE \(\bar{x}\): \[ \bar{x} = \frac{1}{m} \iint_{D} x
+                  \cdot (2x)\, dA = \frac{1}{\frac{128}{3}}
+                  \int_{0}^{4}\int_{0}^{x} 2x^2 \, dy\, dx. \]
+                </p>
+                <p>
+                  \[ \int_{0}^{x} 2x^2 \, dy = 2x^2 \cdot (y)\Big|_{0}^{x} =
+                  2x^3. \] Logo, \[ \int_{0}^{4} 2x^3 \, dx = 2 \int_{0}^{4} x^3
+                  \, dx = 2 \left[ \frac{x^4}{4} \right]_{0}^{4} = 2 \left(
+                  \frac{256}{4} \right) = 2 \times 64 = 128. \]
+                </p>
+                <p>
+                  Assim, \[ \bar{x} = \frac{128}{\frac{128}{3}} = \frac{128}{1}
+                  \times \frac{3}{128} = 3. \]
+                </p>
+                <p>
+                  CÁLCULO DE \(\bar{y}\): \[ \bar{y} = \frac{1}{m} \iint_{D} y
+                  \cdot (2x)\, dA = \frac{1}{\frac{128}{3}}
+                  \int_{0}^{4}\int_{0}^{x} 2xy \, dy\, dx. \]
+                </p>
+                <p>
+                  \[ \int_{0}^{x} 2xy \, dy = 2x \int_{0}^{x} y \, dy = 2x
+                  \left[\frac{y^2}{2}\right]_{0}^{x} = 2x
+                  \left(\frac{x^2}{2}\right) = x^3. \] Logo, \[ \int_{0}^{4} x^3
+                  \, dx = \left[\frac{x^4}{4}\right]_{0}^{4} = \frac{256}{4} =
+                  64. \]
+                </p>
+                <p>
+                  Assim, \[ \bar{y} = \frac{64}{\frac{128}{3}} = 64 \times
+                  \frac{3}{128} = \frac{192}{128} = \frac{3}{2}. \]
+                </p>
+                <p>CONCLUSÃO: \(\bar{x} = 3\) e \(\bar{y} = 1.5\).</p>
+              </div>
+            </details>
+          </li>
+          <!-- FIM ALFA -->
+
+          <!-- BETA: Exercícios 4-6 (VECTOR-2A, 2B, 2C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Análise de Seção Circular - Relatório
+              <span class="censored">Δ4</span>
+            </div>
+            <p>
+              A região \(D\) é um semicírculo de raio \(R=2\) no semiplano
+              superior (\(y \ge 0\)). A densidade é constante \(\rho(x,y) = 3\).
+              <br />
+              DETERMINAR: A massa da lamina usando coordenadas adequadas.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria podem simplificar a
+                escolha de variáveis.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Usando coordenadas polares, o semicírculo superior corresponde
+                  a \(r\) de 0 a 2 e \(\theta\) de 0 a \(\pi\). A densidade é 3,
+                  constante.
+                </p>
+                <p>
+                  \[ m = \iint_{D} 3 \, dA = 3 \int_{0}^{\pi}\int_{0}^{2} r
+                  \,dr\,d\theta. \]
+                </p>
+                <p>
+                  \[ \int_{0}^{2} r \, dr = \left[\frac{r^2}{2}\right]_{0}^{2} =
+                  \frac{4}{2} = 2. \] Logo, \[ m = 3 \int_{0}^{\pi} 2 \, d\theta
+                  = 6 \int_{0}^{\pi} d\theta = 6 \times \pi = 6\pi. \]
+                </p>
+                <p>CONCLUSÃO: Massa total = \(6\pi\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Setor de Dinâmica Orbital [Programa
+              <span class="censored">GEM</span>]
+            </div>
+            <p>
+              Região \(D\) definida pelo círculo \(x^2 + y^2 \le 9\). A
+              densidade \(\rho(x,y) = 2 + y\). <br />
+              DETERMINAR: A massa total, aproveitando possíveis simplificações
+              por simetria.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de simetria podem ser relevantes ao
+                separar termos.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  EM COORDENADAS POLARES: \(r\) de 0 a 3, \(\theta\) de 0 a
+                  \(2\pi\).
+                </p>
+                <p>
+                  Observe \(\rho(x,y) = 2 + y\). Em polares, \(y =
+                  r\sin\theta\). Então \[ m = \iint_{D} (2 + y)\, dA = \iint_{D}
+                  2\, dA + \iint_{D} y\, dA. \]
+                </p>
+                <p>
+                  PRIMEIRA PARTE: \[ \iint_{D} 2 \, dA = 2
+                  \int_{0}^{2\pi}\int_{0}^{3} r \, dr\, d\theta = 2
+                  \left(\int_{0}^{3} r\,dr\right)\left(\int_{0}^{2\pi}
+                  d\theta\right) = 2 \left(\frac{3^2}{2}\right) (2\pi) = 2 \cdot
+                  \frac{9}{2} \cdot 2\pi = 18\pi. \]
+                </p>
+                <p>
+                  SEGUNDA PARTE: \[ \iint_{D} y \, dA =
+                  \int_{0}^{2\pi}\int_{0}^{3} (r\sin\theta) \, r\, dr\, d\theta
+                  = \int_{0}^{2\pi}\int_{0}^{3} r^2 \sin\theta \, dr\, d\theta.
+                  \] Porém, \(\sin\theta\) integrado de 0 a \(2\pi\) é zero.
+                  Logo, essa parte anula: \[ \int_{0}^{2\pi} \sin\theta\,
+                  d\theta = 0. \]
+                </p>
+                <p>CONCLUSÃO: \[ m = 18\pi + 0 = 18\pi. \]</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Resumo Técnico [SETOR <span class="censored">Δ-OPS</span>]
+            </div>
+            <p>
+              Suponha agora a mesma região do exercício anterior, \(x^2 + y^2
+              \le 9\), mas com densidade \(\rho(x,y) = 2 + x^2\).
+              <br />
+              DETERMINAR: A massa total usando coordenadas polares.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de integrais radiais podem
+                simplificar o termo \(x^2\).
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em polares, \(x = r\cos\theta\). Então \(\rho(r,\theta) = 2 +
+                  r^2 \cos^2\theta\).
+                </p>
+                <p>
+                  \[ m = \int_{0}^{2\pi}\int_{0}^{3} \left(2 + r^2
+                  \cos^2\theta\right) r \, dr\, d\theta. \]
+                </p>
+                <p>
+                  SEPAREMOS: \[ m = \int_{0}^{2\pi}\int_{0}^{3} 2r \, dr\,
+                  d\theta + \int_{0}^{2\pi}\int_{0}^{3} r^3 \cos^2\theta \, dr\,
+                  d\theta. \]
+                </p>
+                <p>
+                  PRIMEIRO TERMO: \[ \int_{0}^{3} 2r \, dr = \left[ r^2
+                  \right]_{0}^{3} = 9. \] \[ \int_{0}^{2\pi} 9 \, d\theta = 9
+                  \cdot 2\pi = 18\pi. \]
+                </p>
+                <p>
+                  SEGUNDO TERMO: \[ \int_{0}^{3} r^3 \, dr =
+                  \left[\frac{r^4}{4}\right]_{0}^{3} = \frac{81}{4}. \] \[
+                  \int_{0}^{2\pi} \cos^2\theta \, d\theta = \pi, \] pois a
+                  integral de \(\cos^2\theta\) em um período completo é \(\pi\).
+                </p>
+                <p>Assim, o segundo termo = \(\frac{81}{4} \times \pi\).</p>
+                <p>
+                  CONCLUSÃO: \[ m = 18\pi + \frac{81\pi}{4} = \frac{72\pi +
+                  81\pi}{4} = \frac{153\pi}{4}. \]
+                </p>
+              </div>
+            </details>
+          </li>
+          <!-- FIM BETA -->
+
+          <!-- GAMMA: Exercícios 7-9 (VECTOR-3A, 3B, 3C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Missão <span class="censored">ÓRION</span> [Encontro
+              Orbital - JUL/1965]
+            </div>
+            <p>
+              Região \(D\) dada pela elipse \(\frac{x^2}{4} + \frac{y^2}{1} \le
+              1\). A densidade \(\rho(x,y) = 1 + x^2 + 4y^2\). <br />
+              DETERMINAR: A massa total, sugerindo uma mudança apropriada de
+              variáveis para simplificar a elipse.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes na descrição de
+                coordenadas.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A elipse \(\frac{x^2}{2^2} + \frac{y^2}{1^2} \le 1\) pode ser
+                  transformada via \(u = \frac{x}{2}\) e \(v = y\), de modo que
+                  \(u^2 + v^2 \le 1\). O jacobiano da transformação é
+                  \(\left|\frac{\partial(x,y)}{\partial(u,v)}\right| = 2\).
+                </p>
+                <p>
+                  Então \(x = 2u\), \(y = v\). Logo, \(\rho(x,y) = 1 + (2u)^2 +
+                  4v^2 = 1 + 4u^2 + 4v^2\).
+                </p>
+                <p>
+                  Em termos de \(u,v\), a região é o círculo unitário. Assim, \[
+                  m = \iint_{u^2+v^2 \le 1} \left(1 + 4u^2 + 4v^2\right) \cdot 2
+                  \, du\, dv. \]
+                </p>
+                <p>
+                  Podemos usar coordenadas polares (agora para \(u,v\)): \(u =
+                  r\cos\theta, v = r\sin\theta\), com \(r\in[0,1]\),
+                  \(\theta\in[0,2\pi]\). O fator 2 permanece.
+                </p>
+                <p>
+                  \[ m = \int_{0}^{2\pi}\int_{0}^{1} \left(1 + 4r^2\cos^2\theta
+                  + 4r^2\sin^2\theta\right) \cdot 2 \cdot r \, dr\, d\theta. \]
+                </p>
+                <p>
+                  Note que \(4r^2(\cos^2\theta + \sin^2\theta) = 4r^2\). Então a
+                  densidade simplifica para \(1 + 4r^2\). Fator total dentro da
+                  integral: \(2r \bigl(1 + 4r^2\bigr)\).
+                </p>
+                <p>
+                  \[ m = \int_{0}^{2\pi}\int_{0}^{1} 2r \left(1 + 4r^2\right) \,
+                  dr\, d\theta. \] \[ = \int_{0}^{2\pi} d\theta \int_{0}^{1} 2r
+                  + 8r^3 \, dr. \]
+                </p>
+                <p>
+                  \[ \int_{0}^{1} (2r + 8r^3)\,dr = \left[r^2 +
+                  2r^4\right]_{0}^{1} = 1 + 2 = 3. \]
+                </p>
+                <p>
+                  \[ m = \int_{0}^{2\pi} 3 \, d\theta = 3 \times 2\pi = 6\pi. \]
+                </p>
+                <p>CONCLUSÃO: Massa total = \(6\pi\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Setor de Análise <span class="censored">Ômega-Sul</span> -
+              AGO/1966
+            </div>
+            <p>
+              Região \(D\) no primeiro quadrante limitada por \(y = x^2\) e \(y
+              = \sqrt{x}\). A densidade \(\rho(x,y) = x + 3y\). <br />
+              DETERMINAR: A massa total. (Sugere-se analisar a intersecção
+              dessas curvas para definir os limites.)
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existirão pontos de encontro que dividem o
+                domínio, atente para esses traços.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  As curvas \(y = x^2\) e \(y = \sqrt{x}\) se intersectam quando
+                  \(x^2 = \sqrt{x}\). Para \(x \ge 0\), isto implica \(x^4 = x
+                  \implies x^3 = 1 \implies x = 1\). Logo, \(y=1\).
+                </p>
+                <p>
+                  Portanto, \(0 \le x \le 1\), com \(x^2 \le y \le \sqrt{x}\).
+                </p>
+                <p>
+                  \[ m = \int_{0}^{1}\int_{x^2}^{\sqrt{x}} (x + 3y) \, dy\, dx.
+                  \]
+                </p>
+                <p>
+                  \[ \int_{x^2}^{\sqrt{x}} (x + 3y)\,dy = \int_{x^2}^{\sqrt{x}}
+                  x\,dy + 3 \int_{x^2}^{\sqrt{x}} y\,dy. \]
+                </p>
+                <p>
+                  PRIMEIRO TERMO: \[ x(y)\Big|_{y=x^2}^{y=\sqrt{x}} = x(\sqrt{x}
+                  - x^2). \]
+                </p>
+                <p>
+                  SEGUNDO TERMO: \[ 3
+                  \left[\frac{y^2}{2}\right]_{x^2}^{\sqrt{x}} =
+                  \frac{3}{2}\left((\sqrt{x})^2 - (x^2)^2\right) = \frac{3}{2}(x
+                  - x^4). \]
+                </p>
+                <p>
+                  SOMANDO: \[ x(\sqrt{x} - x^2) + \frac{3}{2}(x - x^4). \] Vamos
+                  integrar em \(x\) de 0 a 1:
+                </p>
+                <p>
+                  \[ \int_{0}^{1} \left[x\sqrt{x} - x^3 + \frac{3}{2}x -
+                  \frac{3}{2}x^4\right] dx. \]
+                </p>
+                <p>
+                  DETALHES: \[ \int_{0}^{1} x\sqrt{x}\, dx = \int_{0}^{1}
+                  x^{3/2}\, dx =
+                  \left[\frac{x^{5/2}}{\frac{5}{2}}\right]_{0}^{1} =
+                  \frac{2}{5}. \] \[ \int_{0}^{1} x^3\, dx = \frac{1}{4}, \quad
+                  \int_{0}^{1} x\, dx = \frac{1}{2}, \quad \int_{0}^{1} x^4\, dx
+                  = \frac{1}{5}. \]
+                </p>
+                <p>
+                  ENTÃO: \[ \int_{0}^{1} x\sqrt{x} \,dx = \frac{2}{5}, \quad
+                  -\int_{0}^{1} x^3\,dx = -\frac{1}{4}, \quad
+                  \frac{3}{2}\int_{0}^{1} x\,dx =
+                  \frac{3}{2}\left(\frac{1}{2}\right) = \frac{3}{4}, \] \[
+                  -\frac{3}{2}\int_{0}^{1} x^4\,dx =
+                  -\frac{3}{2}\left(\frac{1}{5}\right) = -\frac{3}{10}. \]
+                </p>
+                <p>
+                  SOMANDO TUDO: \[ \frac{2}{5} - \frac{1}{4} + \frac{3}{4} -
+                  \frac{3}{10} = \frac{2}{5} + \left(-\frac{1}{4} +
+                  \frac{3}{4}\right) - \frac{3}{10}. \] \[ = \frac{2}{5} +
+                  \frac{2}{4} - \frac{3}{10} = \frac{2}{5} + \frac{1}{2} -
+                  \frac{3}{10}. \] Convertendo para décimos: \(\frac{2}{5} =
+                  \frac{4}{10}, \quad \frac{1}{2} = \frac{5}{10}\). Logo, \[
+                  \frac{4}{10} + \frac{5}{10} - \frac{3}{10} = \frac{6}{10} =
+                  0.6. \]
+                </p>
+                <p>CONCLUSÃO: Massa total = \(0.6\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Análise Combinada - Projeto
+              <span class="censored">LEST-2</span>
+            </div>
+            <p>
+              Região \(D\) definida pela coroa circular: \(1 \le x^2 + y^2 \le
+              4\). A densidade \(\rho(x,y) = x^2 + y^2\). <br />
+              DETERMINAR: A massa total, aplicando coordenadas polares com
+              cuidados apropriados.
+            </p>
+
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Repare em possíveis simplificações radiais no
+                integrando.
+              </div>
+            </details>
+
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Em polares, \(r^2 = x^2 + y^2\). A coroa corresponde a \(1 \le
+                  r^2 \le 4\), ou \(1 \le r \le 2\). A densidade \(\rho\) vira
+                  \(r^2\).
+                </p>
+                <p>
+                  \[ m = \int_{\theta=0}^{2\pi} \int_{r=1}^{2} \left(r^2\right)
+                  r \, dr\, d\theta = \int_{0}^{2\pi}\int_{1}^{2} r^3 \, dr\,
+                  d\theta.
+                </p>
+                <p>
+                  \[ \int_{1}^{2} r^3 \, dr = \left[\frac{r^4}{4}\right]_{1}^{2}
+                  = \frac{2^4}{4} - \frac{1}{4} = \frac{16}{4} - \frac{1}{4} =
+                  \frac{15}{4}. \]
+                </p>
+                <p>
+                  Portanto, \[ m = \int_{0}^{2\pi} \frac{15}{4} \, d\theta =
+                  \frac{15}{4} \times 2\pi = \frac{30\pi}{4} = \frac{15\pi}{2}.
+                  \]
+                </p>
+                <p>CONCLUSÃO: Massa total = \(\frac{15\pi}{2}\).</p>
+              </div>
+            </details>
+          </li>
+          <!-- FIM GAMMA -->
+
+          <!-- OMEGA: Exercícios 10-12 (VECTOR-4A, 4B, 4C) -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Módulo de Testes Avançados [Missão
+              <span class="censored">SKYLAB-13</span>]
+            </div>
+            <p>
+              Região \(D\) formada pela interseção de \(\{(x,y) \mid x \ge 0,\;
+              y \ge 0,\; x^2 + y^2 \le 9\}\) e a banda \(y \ge x - 1\). A
+              densidade \(\rho(x,y) = 5 + e^{-x}\). <br />
+              DETERMINAR: A massa total.
+            </p>
+
+            <!-- OMEGA sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  PROTOCOLO DE ANÁLISE:
+                  <br />
+                  A região está no primeiro quadrante (pois \(x \ge 0, y \ge
+                  0\)) e dentro do círculo de raio 3. Adicionalmente, há a
+                  restrição \(y \ge x - 1\).
+                </p>
+                <p>
+                  Mapeando os limites:
+                  <br />
+                  - O raio máximo é 3.
+                  <br />
+                  - Para \(x\) entre 0 e 1, a reta \(y = x-1\) fica negativa,
+                  então o limite inferior de \(y\) é 0. Para \(x\) acima de 1,
+                  \(y \ge x-1\).
+                </p>
+                <p>
+                  Uma abordagem possível é separar a integral em duas regiões:
+                  <br />
+                  1) \(0 \le x \le 1\): \(0 \le y \le \sqrt{9 - x^2}\). <br />
+                  2) \(1 \le x \le 3\): \(x-1 \le y \le \sqrt{9 - x^2}\).
+                </p>
+                <p>
+                  A densidade é \(\rho(x,y) = 5 + e^{-x}\). Integra-se em \(y\),
+                  depois em \(x\). As integrais resultantes envolvem termos
+                  polinomiais e exponenciais simples.
+                </p>
+                <p>
+                  CONCLUSÃO: A expressão final (não expandida aqui) garante a
+                  massa total a partir dessa soma de integrais parciais.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Laboratório <span class="censored">PHI-7</span> - Dossiê
+              Interno
+            </div>
+            <p>
+              Região \(D\) sob a parábola \(y = 4 - x^2\) (com \(y \ge 0\)), no
+              intervalo \(-2 \le x \le 2\). Densidade \(\rho(x,y) = 1 +
+              \sin(xy)\). <br />
+              DETERMINAR: A massa total, usando integrais duplas em coordenadas
+              cartesianas.
+            </p>
+
+            <!-- OMEGA sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A região vai de \(x=-2\) até \(x=2\), com \(y\) variando de 0
+                  até \(4 - x^2\).
+                </p>
+                <p>
+                  \[ m = \int_{-2}^{2}\int_{0}^{4 - x^2} \left(1 +
+                  \sin(xy)\right) dy\, dx. \]
+                </p>
+                <p>
+                  O termo \(\int_{0}^{4-x^2} \sin(xy)\,dy\) pode ser tratado via
+                  substituição \(u = xy\). A soma final envolve a avaliação da
+                  função \(\frac{1 - \cos(xy)}{x}\) em pontos-limite, embora
+                  para \(x=0\) deva-se usar limite apropriado.
+                </p>
+                <p>
+                  CONCLUSÃO: A parte constante (1) resulta em \(\int_{-2}^{2} (4
+                  - x^2)\, dx\). A parte com \(\sin(xy)\) exige cuidado com a
+                  dependência de \(x\) e com a singularidade em \(x=0\). A
+                  integral final determina a massa total.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Seção de Estudos Orbitais [Programa
+              <span class="censored">APOLO</span> - JUN/1967]
+            </div>
+            <p>
+              Região \(D\) é o interior do círculo \(x^2 + y^2 \le 4\), mas com
+              exclusão do quadrado \(-1 \le x \le 1\), \(-1 \le y \le 1\). A
+              densidade \(\rho(x,y) = \sqrt{16 - (x^2 + y^2)}\). <br />
+              DETERMINAR: A massa total, reinterpretando a área como diferença
+              de duas regiões.
+            </p>
+
+            <!-- OMEGA sem dica -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A região maior é o disco de raio 2. A parte excluída é o
+                  quadrado central, que não faz parte do domínio. Podemos
+                  calcular a massa do círculo inteiro e subtrair a massa do
+                  quadrado (onde a densidade seria a mesma, caso contasse).
+                </p>
+                <p>
+                  Em coordenadas polares, \(\rho = \sqrt{16 - r^2}\). Então, a
+                  massa do disco completo de raio 2 seria: \[ M_{\text{disco}} =
+                  \int_{0}^{2\pi}\int_{0}^{2} \sqrt{16 - r^2}\, r \, dr\,
+                  d\theta. \] Já a região quadrada pode exigir conversão de
+                  polares para cartesianas, dada a forma retangular. A densidade
+                  \(\sqrt{16 - (x^2 + y^2)}\) se mantém para pontos dentro do
+                  círculo, mas nós excluímos apenas a parte \(-1\le x\le 1\),
+                  \(-1\le y\le 1\), que esteja contida dentro do círculo.
+                </p>
+                <p>
+                  Portanto, a integral final recai numa subtração das duas
+                  quantias, correspondendo aos limites desse quadrado interno.
+                </p>
+                <p>
+                  CONCLUSÃO: O resultado numérico envolve integrar \(\sqrt{16 -
+                  r^2}\) em polares para o disco, e uma porção cartesianamente
+                  delimitada para o quadrado (parcialmente inscrito). Assim se
+                  obtém a massa total exata da região anular com recorte
+                  quadrado.
+                </p>
+              </div>
+            </details>
+          </li>
+          <!-- FIM OMEGA -->
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">12</span> • DOCUMENTO VX-<span
+          class="censored"
+          >1011</span
+        >-A
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

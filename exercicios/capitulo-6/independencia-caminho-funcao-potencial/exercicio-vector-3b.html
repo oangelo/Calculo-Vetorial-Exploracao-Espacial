@@ -1,0 +1,81 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Modelo de Campo Magnético – Cabo Energizado na Espaçonave, AGO/1968
+  </div>
+  <p>
+    Até agora, toda vez que o rotacional era zero, encontramos \(\Phi\) sem
+    problemas. Mas no tópico sobre conjuntos simplesmente conexos, você aprendeu
+    que a topologia do domínio importa. Vamos ver o que acontece quando o
+    domínio tem um "buraco". Considere o campo \(\vec{F}(x,y) =
+    \left(\frac{-y}{x^2 + y^2},\; \frac{x}{x^2 + y^2}\right)\) definido em
+    \(\mathbb{R}^2 \setminus \{(0,0)\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule as derivadas cruzadas e verifique que
+    \(\frac{\partial F_1}{\partial y} = \frac{\partial F_2}{\partial x}\) em
+    todo ponto exceto na origem.
+  </p>
+  <p>
+    <strong>(b)</strong> Tente encontrar \(\Phi\) por integração. Você obterá
+    uma expressão que envolve \(\arctan\). Essa expressão é contínua em todo o
+    domínio \(\mathbb{R}^2 \setminus \{(0,0)\}\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que a falha na existência de \(\Phi\)
+    global está ligada à topologia do domínio: \(\mathbb{R}^2\) sem a origem não
+    é simplesmente conexo.
+  </p>
+  <p>
+    <strong>(d)</strong> Faça um esboço do campo \(\vec{F}\) em alguns pontos ao
+    redor da origem e observe o padrão. O que a geometria do campo sugere sobre
+    a impossibilidade de uma \(\Phi\) contínua?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao integrar \(F_1 = \frac{-y}{x^2+y^2}\) em relação a
+      \(x\), use que \(\int \frac{dx}{x^2 + a^2} =
+      \frac{1}{a}\arctan\frac{x}{a}\). A "função potencial" que aparece é o
+      ângulo polar \(\theta\) — multivalorado em \(\mathbb{R}^2 \setminus
+      \{(0,0)\}\). Para o esboço, calcule \(\vec{F}\) em \((1,0)\), \((0,1)\),
+      \((-1,0)\), \((0,-1)\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\frac{\partial F_1}{\partial y} =
+        \frac{-(x^2+y^2)+2y^2}{(x^2+y^2)^2} = \frac{-x^2+y^2}{(x^2+y^2)^2}\).
+        \(\frac{\partial F_2}{\partial x} = \frac{(x^2+y^2)-2x^2}{(x^2+y^2)^2} =
+        \frac{-x^2+y^2}{(x^2+y^2)^2}\). Iguais em todo \(\mathbb{R}^2 \setminus
+        \{(0,0)\}\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\Phi = \int \frac{-y}{x^2+y^2}\,dx =
+        -\arctan\frac{x}{y} + g(y)\). Derivando em \(y\) e igualando a \(F_2\):
+        \(g'(y) = 0\). Logo \(\Phi = -\arctan(x/y) = \arctan(y/x) + C\). Esta
+        função é o ângulo polar \(\theta\) — <strong>não é contínua</strong> em
+        \(\mathbb{R}^2 \setminus \{(0,0)\}\): ao circular a origem, \(\theta\)
+        salta de \(\pi\) a \(-\pi\) (ou equivalente).
+      </p>
+      <p>
+        <strong>(c)</strong> O domínio \(\mathbb{R}^2 \setminus \{(0,0)\}\) não
+        é simplesmente conexo: existem curvas fechadas (como o círculo unitário)
+        que não podem ser continuamente contraídas a um ponto sem atravessar a
+        origem. O rotacional é zero, mas a condição topológica falha, impedindo
+        a existência de potencial global.
+      </p>
+      <p>
+        <strong>(d)</strong> Em \((1,0)\): \(\vec{F} = (0,1)\) (aponta para
+        cima). Em \((0,1)\): \(\vec{F} = (-1,0)\) (aponta para esquerda). Em
+        \((-1,0)\): \(\vec{F} = (0,-1)\) (aponta para baixo). Em \((0,-1)\):
+        \(\vec{F} = (1,0)\) (aponta para direita). O campo gira ao redor da
+        origem — é um <em>vórtice</em>. A rotação implica que qualquer
+        "potencial" deve aumentar continuamente ao circular a origem, o que é
+        impossível numa função contínua univaluada.
+      </p>
+    </div>
+  </details>
+</li>

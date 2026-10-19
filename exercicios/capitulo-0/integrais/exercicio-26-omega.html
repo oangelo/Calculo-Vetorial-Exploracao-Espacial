@@ -1,0 +1,28 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO 31 [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Desafio de Identificação - Departamento de Cálculos Avançados [SIGMA-4]
+  </div>
+  <p>Este exercício não fornece dica. Você deve identificar qual técnica de
+  integração aplicar.</p>
+  <p>Calcule a integral:</p>
+  <p>\[\int \ln^2(x)\,dx\]</p>
+  <!-- Série OMEGA => sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>Esta integral exige integração por partes <strong>duas vezes</strong>.
+      Escolha \(u = \ln^2(x)\) e \(dv = dx\). Então \(du = 2\ln(x)\cdot\frac{1}{x}\,dx\)
+      e \(v = x\).</p>
+      <p>Aplicando \(\int u\,dv = uv - \int v\,du\):</p>
+      <p>\[\int \ln^2(x)\,dx = x\ln^2(x) - \int x\cdot\frac{2\ln(x)}{x}\,dx
+      = x\ln^2(x) - 2\int \ln(x)\,dx.\]</p>
+      <p>A integral restante \(\int \ln(x)\,dx\) resolve-se por partes novamente
+      (ou é conhecida):</p>
+      <p>\[\int \ln(x)\,dx = x\ln(x) - x + C.\]</p>
+      <p>Substituindo:</p>
+      <p>\[\int \ln^2(x)\,dx = x\ln^2(x) - 2x\ln(x) + 2x + C
+      = x\bigl(\ln^2(x) - 2\ln(x) + 2\bigr) + C.\]</p>
+    </div>
+  </details>
+</li>

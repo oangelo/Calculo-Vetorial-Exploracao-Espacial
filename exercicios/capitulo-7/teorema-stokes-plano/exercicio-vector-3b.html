@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Apollo 13 — Trajetória de Emergência Livre [ABR/1970]
+  </div>
+  <p>
+    A decomposição de contorno do exercício anterior — fronteira externa e
+    interna com orientações opostas — não se limita a anéis circulares. Vamos
+    aplicar a mesma ideia a uma região com duas curvas fronteira onde o cálculo
+    direto por integral de linha seria ainda mais trabalhoso.
+  </p>
+  <p>
+    Considere a coroa circular \(A\) com raio externo \(3\) e raio interno
+    \(1\), definida por \(1 \le x^2+y^2 \le 9\). Tome o campo \(\vec{F}(x,y) =
+    (y,\, 0)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional escalar e avalie a integral dupla
+    \(\iint_{A} (\operatorname{rot}\vec{F})\, dA\) sobre a coroa.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine as orientações corretas das duas componentes
+    da fronteira. Qual é percorrida no sentido anti-horário e qual no sentido
+    horário?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a circulação em cada componente da fronteira
+    separadamente e verifique que a soma é igual à integral dupla do item (a).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Pela regra da mão direita (ou convenção de orientação
+      positiva), a fronteira externa é anti-horária e a interna é horária — de
+      modo que a região fica sempre à esquerda de quem caminha. Parametrize cada
+      círculo e calcule \(\vec{F}\cdot d\vec{r}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial(0)}{\partial x} - \frac{\partial y}{\partial y} = -1\).
+      </p>
+      <p>
+        \(\iint_{A} (-1)\, dA = -1 \cdot \text{Area}(A) = -1 \cdot \pi(9-1) =
+        -8\pi\).
+      </p>
+      <p>
+        <strong>(b)</strong> Fronteira externa (\(r=3\)): anti-horária.
+        Fronteira interna (\(r=1\)): horária.
+      </p>
+      <p>
+        <strong>(c)</strong> Círculo externo (\(r=3\), anti-horário):
+        \(x=3\cos\theta\), \(y=3\sin\theta\). \(\vec{F}=(3\sin\theta, 0)\),
+        \(d\vec{r}=(-3\sin\theta, 3\cos\theta)\, d\theta\). \(\vec{F}\cdot
+        d\vec{r} = -9\sin^2\theta\, d\theta\). \(\oint = -9 \int_{0}^{2\pi}
+        \sin^2\theta\, d\theta = -9\pi\).
+      </p>
+      <p>
+        Círculo interno (\(r=1\), horário): \(x=\cos\theta\), \(y=\sin\theta\),
+        \(\theta: 2\pi \to 0\). \(\vec{F}=(\sin\theta, 0)\),
+        \(d\vec{r}=(-\sin\theta, \cos\theta)\, d\theta\). \(\vec{F}\cdot
+        d\vec{r} = -\sin^2\theta\, d\theta\). \(\oint = \int_{2\pi}^{0}
+        (-\sin^2\theta)\, d\theta = \int_{0}^{2\pi} \sin^2\theta\, d\theta =
+        \pi\).
+      </p>
+      <p>
+        Soma: \(-9\pi + \pi = -8\pi\). Igual à integral dupla! \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

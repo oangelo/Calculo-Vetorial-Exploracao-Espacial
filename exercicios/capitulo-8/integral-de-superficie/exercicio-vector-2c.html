@@ -1,0 +1,82 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Revestimento Termico Apollo 16 - Comparacao de Metodos (12/ABR/1972)
+  </div>
+  <p>
+    Voce ja integrou sobre graficos (plano inclinado) e sobre parametrizacoes
+    (cilindro lateral, hemisferio). Mas como decidir qual abordagem usar? Quando
+    uma superficie pode ser tratada tanto como grafico \(z = g(x,y)\) quanto
+    como superficie parametrizada, as duas abordagens devem dar o mesmo
+    resultado. Vamos verificar.
+  </p>
+  <p>
+    Considere o cone \(z = \sqrt{x^2 + y^2}\) sobre o disco \(x^2 + y^2 \le 1\).
+    A funcao a integrar e \(f(x,y,z) = z\) (distribuicao de temperatura sobre o
+    revestimento termico do modulo lunar, proporcional a altura).
+  </p>
+  <p>
+    <strong>(a)</strong> Monte a integral usando a abordagem grafico \(z =
+    g(x,y)\): calcule o fator de area \(\sqrt{1 + g_x^2 + g_y^2}\), expresse
+    \(f\) em termos de \(x\) e \(y\), e passe para coordenadas polares para
+    avaliar.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral usando a parametrizacao
+    \(\vec{r}(\theta, z) = (z\cos\theta,\; z\sin\theta,\; z)\) com \(0 \le
+    \theta \le 2\pi\) e \(0 \le z \le 1\). Calcule \(\|\vec{r}_\theta \times
+    \vec{r}_z\|\) e avalie a integral dupla.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os dois resultados e explique por que sao
+    iguais: o que isso revela sobre a relacao entre as duas abordagens?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: Para o grafico \(z = \sqrt{x^2+y^2}\), as derivadas
+      parciais sao \(g_x = x/\sqrt{x^2+y^2}\) e \(g_y = y/\sqrt{x^2+y^2}\).
+      Simplifique a soma \(g_x^2 + g_y^2\) antes de tirar a raiz. Na
+      parametrizacao, o fator de area e \(z\sqrt{2}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Grafico \(z = g(x,y) = \sqrt{x^2+y^2}\): \(g_x =
+        \frac{x}{\sqrt{x^2+y^2}}\), \(g_y = \frac{y}{\sqrt{x^2+y^2}}\).
+      </p>
+      <p>
+        \(g_x^2 + g_y^2 = \frac{x^2+y^2}{x^2+y^2} = 1\), logo o fator de area e
+        \(\sqrt{1+1} = \sqrt{2}\).
+      </p>
+      <p>
+        \(f = z = \sqrt{x^2+y^2}\). Em polares: \(\sqrt{x^2+y^2} = r\).
+        Integral: \[\sqrt{2}\int_0^{2\pi}\int_0^1 r \cdot r\, dr\, d\theta =
+        \sqrt{2} \cdot 2\pi \cdot \frac{1}{3} = \frac{2\pi\sqrt{2}}{3}\]
+      </p>
+      <p>
+        <strong>(b)</strong> Parametrizacao: \(\vec{r}(\theta,z) = (z\cos\theta,
+        z\sin\theta, z)\). \(\vec{r}_\theta = (-z\sin\theta, z\cos\theta, 0)\),
+        \(\vec{r}_z = (\cos\theta, \sin\theta, 1)\).
+      </p>
+      <p>
+        \(\vec{r}_\theta \times \vec{r}_z = (z\cos\theta, z\sin\theta, -z)\),
+        \(\|\vec{r}_\theta \times \vec{r}_z\| = z\sqrt{2}\).
+      </p>
+      <p>
+        \(f = z\). Integral: \[\int_0^{2\pi}\int_0^1 z \cdot z\sqrt{2}\, dz\,
+        d\theta = \sqrt{2} \cdot 2\pi \cdot \frac{1}{3} =
+        \frac{2\pi\sqrt{2}}{3}\]
+      </p>
+      <p>
+        <strong>(c)</strong> Ambas as abordagens dao \(\frac{2\pi\sqrt{2}}{3}\).
+        Isso confirma que a escolha da parametrizacao nao altera o valor da
+        integral de superficie — o que muda e a facilidade do calculo. Para este
+        cone, a parametrizacao cilindrica e mais direta porque o fator de area e
+        constante ao longo de cada geratriz.
+      </p>
+    </div>
+  </details>
+</li>

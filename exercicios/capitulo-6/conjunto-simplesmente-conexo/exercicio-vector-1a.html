@@ -1,0 +1,59 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">ORIGEM: Briefing Apollo 7 — Outubro/1967</div>
+  <p>
+    Nas últimas listas você verificou que o rotacional nulo é um teste confiável
+    para campos conservativos: se \(\nabla \times F = 0\), o campo é
+    conservativo. A equipe de análise de trajetórias pediu que você aplique esse
+    teste a um campo vetorial específico que apareceu nos cálculos de navegação.
+    Considere o campo \(F(x,y) = \left(\frac{-y}{x^2+y^2},\;
+    \frac{x}{x^2+y^2}\right)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique as componentes \(P(x,y)\) e \(Q(x,y)\) do
+    campo e descreva o domínio \(D\) onde \(F\) está definido.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\frac{\partial P}{\partial y}\) e
+    \(\frac{\partial Q}{\partial x}\) e compare os resultados.
+  </p>
+  <p>
+    <strong>(c)</strong> Com base na comparação, conclua se \(F\) é
+    conservativo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O teste do rotacional para campos bidimensionais verifica
+      se \(\partial P/\partial y = \partial Q/\partial x\) em todo o domínio.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> As componentes são \(P(x,y) = \frac{-y}{x^2+y^2}\)
+        e \(Q(x,y) = \frac{x}{x^2+y^2}\). O campo não está definido quando
+        \(x^2+y^2 = 0\), ou seja, no ponto \((0,0)\). O domínio é \(D =
+        \mathbb{R}^2 \setminus \{(0,0)\}\).
+      </p>
+      <p><strong>(b)</strong> Pela regra do quociente:</p>
+      <p>
+        \[\frac{\partial P}{\partial y} = \frac{(-1)(x^2+y^2) -
+        (-y)(2y)}{(x^2+y^2)^2} = \frac{-x^2+y^2}{(x^2+y^2)^2}\]
+      </p>
+      <p>
+        \[\frac{\partial Q}{\partial x} = \frac{(1)(x^2+y^2) -
+        (x)(2x)}{(x^2+y^2)^2} = \frac{-x^2+y^2}{(x^2+y^2)^2}\]
+      </p>
+      <p>
+        Portanto \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial
+        x}\) em todo ponto de \(D\).
+      </p>
+      <p>
+        <strong>(c)</strong> O rotacional é zero em todo o domínio. Conclusão:
+        \(F\) parece ser conservativo.
+      </p>
+    </div>
+  </details>
+</li>

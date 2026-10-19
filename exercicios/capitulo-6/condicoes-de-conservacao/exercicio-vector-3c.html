@@ -1,0 +1,73 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">ORIGEM: Apollo 11 — JUL/1969</div>
+  <p>
+    A armadilha do domínio não simplesmente conexo que você encontrou em
+    \(\mathbb{R}^2\) também existe em \(\mathbb{R}^3\). Vamos investigar uma
+    versão tridimensional daquele contra-exemplo clássico — um campo com
+    rotacional zero que, mesmo assim, não é conservativo.
+  </p>
+  <p>
+    Seja o domínio \(D = \mathbb{R}^3 \setminus\{\text{eixo } z\}\) e o campo
+    \(\displaystyle\vec{F}(x,y,z) = \left(\frac{-y}{x^2+y^2},\;\;
+    \frac{x}{x^2+y^2},\;\; 0\right)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Mostre que \(\nabla \times \vec{F} = \vec{0}\) em todo
+    ponto de \(D\).
+  </p>
+  <p>
+    <strong>(b)</strong> Argumente que \(D\) não é simplesmente conexo.
+    Referencie o conceito estudado no tópico sobre independência do caminho.
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha de \(\vec{F}\) ao longo do
+    círculo \(\gamma(t) = (\cos t, \sin t, 0)\), \(0 \leq t \leq 2\pi\), que
+    envolve o eixo \(z\).
+  </p>
+  <p>
+    <strong>(d)</strong> Conclua: \(\vec{F}\) é conservativo em \(D\)? Por que o
+    teste do rotacional não foi suficiente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O eixo \(z\) cria um "túnel" através do domínio. Uma curva
+      fechada que circunda esse túnel não pode ser contraída a um ponto sem
+      tocar o eixo \(z\). Na circunferência unitária no plano \(z=0\), temos
+      \(x^2 + y^2 = 1\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\partial P/\partial y = 0\), \(\partial
+        N/\partial z = 0\) → componente \(i\): \(0 - 0 = 0\). \(\partial
+        M/\partial z = 0\), \(\partial P/\partial x = 0\) → componente \(j\):
+        \(0 - 0 = 0\). \(\partial N/\partial x = \frac{y^2-x^2}{(x^2+y^2)^2}\),
+        \(\partial M/\partial y = \frac{y^2-x^2}{(x^2+y^2)^2}\) → componente
+        \(k\): \(\frac{y^2-x^2}{(x^2+y^2)^2} - \frac{y^2-x^2}{(x^2+y^2)^2} =
+        0\). Logo \(\nabla \times \vec{F} = \vec{0}\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(D = \mathbb{R}^3 \setminus\{\text{eixo } z\}\)
+        não é simplesmente conexo: um círculo no plano \(xy\) que envolve o eixo
+        \(z\) não pode ser continuamente contraído a um ponto sem atravessar o
+        eixo, que está fora do domínio.
+      </p>
+      <p>
+        <strong>(c)</strong> Na circunferência, \(x^2+y^2=1\), então \(\vec{F} =
+        (-\sin t, \cos t, 0)\) e \(\gamma'(t) = (-\sin t, \cos t, 0)\).
+        \(\vec{F} \cdot \gamma' = \sin^2 t + \cos^2 t = 1\).
+        \(\displaystyle\int_0^{2\pi} 1\,dt = 2\pi \neq 0\).
+      </p>
+      <p>
+        <strong>(d)</strong> Não é conservativo. A integral não nula sobre a
+        curva fechada prova que a integral de linha depende do caminho. O teste
+        do rotacional (\(\nabla \times \vec{F} = \vec{0}\)) é condição
+        necessária, mas só é suficiente quando o domínio é simplesmente conexo.
+      </p>
+    </div>
+  </details>
+</li>

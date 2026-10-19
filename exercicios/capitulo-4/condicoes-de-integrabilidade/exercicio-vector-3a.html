@@ -1,0 +1,67 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Setor de Contingência - Gemini VIII [MAR/1966]
+  </div>
+  <p>
+    Todos os casos até agora eram integráveis. Mas será que toda função em
+    domínio limitado é integrável? Vamos ver um caso que <strong>falha</strong>.
+  </p>
+  <p>
+    Considere a função: \[F(x,y,z) = \frac{1}{(x^2 + y^2 + z^2)^{3/2}}\]
+    definida na bola \(V = \{(x,y,z) \mid x^2 + y^2 + z^2 \le 1\}\), com o valor
+    na origem indefinido.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique se \(F\) é limitada em \(V\). O que acontece
+    com \(F\) quando \((x,y,z) \to (0,0,0)\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Explique por que a falta de limitação impede a
+    existência da integral tripla. Argumente usando a definição de integral como
+    limite de somas de Riemann.
+  </p>
+  <p>
+    <strong>(c)</strong> Contraste este caso com os exercícios anteriores: lá a
+    limitação estava garantida. O que este contraexemplo ensina sobre a
+    importância da condição de limitação?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Quando \((x,y,z) \to (0,0,0)\), temos \(x^2+y^2+z^2 \to
+      0\), logo o denominador \((x^2+y^2+z^2)^{3/2} \to 0\) e \(F \to +\infty\).
+      Uma função que "explode" em algum ponto do domínio não pode ser limitada —
+      e a condição de limitação é necessária para a existência da integral.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-7 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(F\) <strong>não é limitada</strong>. Quando
+        \((x,y,z) \to (0,0,0)\), temos \(r^2 = x^2+y^2+z^2 \to 0\), logo \(F =
+        \frac{1}{(r^2)^{3/2}} = \frac{1}{r^3} \to +\infty\). Para qualquer
+        constante \(M \gt 0\), existem pontos em \(V\) onde \(F \gt M\). A
+        função não tem cota superior.
+      </p>
+      <p>
+        <strong>(b)</strong> A integral tripla é definida como o limite de somas
+        de Riemann \(\sum_{i} f(P_i)\Delta V_i\). Se \(f\) não é limitada,
+        podemos sempre escolher pontos \(P_i\) próximos da singularidade onde
+        \(f(P_i)\) é arbitrariamente grande, fazendo as somas divergirem. Não
+        existe limite finito para essas somas — logo a integral não existe.
+      </p>
+      <p>
+        <strong>(c)</strong> Nos exercícios anteriores (VECTOR-1B, 2A, 2B, 2C),
+        a limitação estava sempre garantida: funções polinomiais são limitadas
+        em compactos, funções com descontinuidades isoladas ou em planos ainda
+        eram limitadas. Este contraexemplo mostra que
+        <strong>a condição de limitação é indispensável</strong>: ela não é
+        apenas um detalhe técnico, mas uma barreira real. Uma função que
+        "explode" no interior do domínio produz uma integral que diverge, mesmo
+        em um volume finito.
+      </p>
+    </div>
+  </details>
+</li>

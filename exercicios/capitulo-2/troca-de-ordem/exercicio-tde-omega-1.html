@@ -1,0 +1,46 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDE-OMEGA-1</div>
+  <div class="context">
+    ORIGEM: Missão Skylab - Análise de Estabilidade [COMPARTIMENTADO]
+  </div>
+  <p>
+    Regiões entre curvas simples: dominadas. Agora, o caso mais intrincado desta
+    lista — a região entre \(y = x^3\) e \(y = \sqrt{x}\). As duas curvas se
+    intersectam em \((0,0)\) e \((1,1)\), mas suas inversões (\(x = y^{1/3}\) e
+    \(x = y^2\)) envolvem expoentes fracionários. A troca de ordem aqui exige
+    atenção: qual curva fica à esquerda e qual à direita depende de \(y\).
+  </p>
+  <p>
+    Troque a ordem da seguinte integral: \[ \int_0^1 \int_{x^3}^{\sqrt{x}} f(x,
+    y)\,dy\,dx \]
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região entre \(y = x^3\) e \(y = \sqrt{x}\),
+    identificando as interseções.
+  </p>
+  <p>
+    <strong>(b)</strong> Inverta ambas as curvas: \(y = x^3\) dá \(x =
+    y^{1/3}\); \(y = \sqrt{x}\) dá \(x = y^2\). Para \(y \in [0,1]\), qual é a
+    fronteira esquerda e qual é a direita?
+  </p>
+  <p><strong>(c)</strong> Escreva a integral na ordem \(dx\,dy\).</p>
+  <!-- Série OMEGA: sem dicas -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> As curvas \(y = x^3\) e \(y = \sqrt{x}\) se
+        intersectam quando \(x^3 = \sqrt{x}\), ou \(x^6 = x\), isto é, \(x = 0\)
+        ou \(x = 1\). Interseções: \((0,0)\) e \((1,1)\).
+      </p>
+      <p>
+        <strong>(b)</strong> Para \(y \in [0,1]\): \(x = y^2\) (de \(y =
+        \sqrt{x}\)) e \(x = y^{1/3}\) (de \(y = x^3\)). Como \(y^2 \le y^{1/3}\)
+        para \(y \in [0,1]\), a fronteira esquerda é \(x = y^2\) e a direita é
+        \(x = y^{1/3}\).
+      </p>
+      <p><strong>(c)</strong> Nova integral:</p>
+      <p>\[ \int_0^1 \int_{y^2}^{y^{1/3}} f(x, y)\,dx\,dy \]</p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,93 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-07-GAMMA</div>
+  <div class="context">
+    ORIGEM: Centro de Modelagem Atmosférica - Projeto Mercúrio [DADOS DE
+    30/NOV/1960]
+  </div>
+  <p>
+    CONEXÃO: Nos BETA, as componentes \(x\) e \(y\) do campo eram independentes.
+    Agora vamos ver ACOPLAMENTO: termos como \(yz\) e \(xz\) fazem as direções
+    se misturarem. É como se o vento mudasse de direção conforme você muda de
+    altitude.
+  </p>
+  <p>
+    Um campo de vento atmosférico é modelado por: \[\vec{W}(x,y,z) =
+    \begin{pmatrix} x + yz, y - xz, z \end{pmatrix}\]
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o campo no plano \(z = 0\). Que padrão você
+    reconhece? (Compare com exercícios anteriores.)
+  </p>
+  <p>
+    <strong>(b)</strong> Agora calcule o campo no plano \(z = 1\) nos pontos
+    \((1,0,1)\) e \((0,1,1)\). Como os termos \(yz\) e \(xz\) alteram o padrão
+    de \(z=0\)?
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule o campo no plano \(z = -1\) nos pontos
+    \((1,0,-1)\) e \((0,1,-1)\). A rotação que os termos cruzados introduzem tem
+    o mesmo sentido para \(z>0\) e \(z<0\)?
+  </p>
+  <p>
+    <strong>(d)</strong> Onde a intensidade do campo é maior — perto da origem
+    ou longe dela? Justifique.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Comece SEMPRE pelo caso mais simples: \(z=0\). O campo
+      fica \((x, y, 0)\) — radial como no primeiro exercício ALFA, mas em 3D.
+      Depois, para \(z \neq 0\), os termos \(yz\) e \(xz\) "torcem" esse padrão
+      radial. Teste com valores concretos.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PROTOCOLO DE ANÁLISE VETORIAL:</p>
+      <p>(a) COMPORTAMENTO NO PLANO \(z = 0\):</p>
+      <p>\[\vec{W}(x,y,0) = \begin{pmatrix} x, y, 0 \end{pmatrix}\]</p>
+      <p>
+        Campo radial — os vetores apontam para fora a partir da origem, como nos
+        exercícios ALFA, mas agora em 3D (a componente \(z\) é zero neste
+        plano).
+      </p>
+      <p>(b) COMPORTAMENTO NO PLANO \(z = 1\):</p>
+      <p>
+        \[\vec{W}(1,0,1) = \begin{pmatrix} 1+0, 0-1, 1 \end{pmatrix} =
+        \begin{pmatrix} 1, -1, 1 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{W}(0,1,1) = \begin{pmatrix} 0+1, 1-0, 1 \end{pmatrix} =
+        \begin{pmatrix} 1, 1, 1 \end{pmatrix}\]
+      </p>
+      <p>
+        Comparando com \(z=0\): em \((1,0)\), a componente \(y\) era 0, mas
+        agora é \(-1\) (o termo \(xz = 1\) a subtrai). Em \((0,1)\), a
+        componente \(x\) era 0, mas agora é \(+1\) (o termo \(yz = 1\) a
+        adiciona). Os termos cruzados introduzem uma rotação anti-horária
+        sobreposta ao fluxo radial.
+      </p>
+      <p>(c) COMPORTAMENTO NO PLANO \(z = -1\):</p>
+      <p>
+        \[\vec{W}(1,0,-1) = \begin{pmatrix} 1+0, 0-(-1), -1 \end{pmatrix} =
+        \begin{pmatrix} 1, 1, -1 \end{pmatrix}\]
+      </p>
+      <p>
+        \[\vec{W}(0,1,-1) = \begin{pmatrix} 0+(-1), 1-0, -1 \end{pmatrix} =
+        \begin{pmatrix} -1, 1, -1 \end{pmatrix}\]
+      </p>
+      <p>
+        Para \(z<0\), o sentido da rotação se INVERTE (fica horário em vez de
+        anti-horário). A altitude determina o sentido de rotação do vento.
+      </p>
+      <p>(d) INTENSIDADE:</p>
+      <p>
+        A magnitude é \(|\vec{W}| = \sqrt{(x+yz)^2 + (y-xz)^2 + z^2}\). Quanto
+        maior \(|x|\), \(|y|\) ou \(|z|\), maior a intensidade. Portanto, a
+        intensidade é maior em regiões afastadas da origem e em altitudes
+        extremas.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">ORIGEM: Análise Topológica — Maio/1968</div>
+  <p>
+    Agora que sabemos classificar regiões simples, vamos investigar casos mais
+    complexos. Considere as seguintes regiões:
+  </p>
+  <p>
+    1. O plano com dois furos puntuais removidos: \(\Omega_1 = \mathbb{R}^2
+    \setminus \{(1,0),\, (-1,0)\}\).
+  </p>
+  <p>
+    2. A interseção de dois discos sobrepostos \(\Omega_2 = \{(x,y) \mid x^2+y^2
+    &lt; 4\} \cap \{(x,y) \mid (x-1)^2+y^2 &lt; 4\}\).
+  </p>
+  <p>
+    3. O complemento de um segmento de reta fechado: \(\Omega_3 = \mathbb{R}^2
+    \setminus \{(x,0) \mid -1 \leq x \leq 1\}\).
+  </p>
+  <p>
+    4. A faixa horizontal infinita: \(\Omega_4 = \{(x,y) \mid 0 &lt; y &lt;
+    1\}\).
+  </p>
+  <p><strong>(a)</strong> Classifique cada região e faça um esboço.</p>
+  <p>
+    <strong>(b)</strong> Uma região com dois furos é "menos simplesmente conexa"
+    que uma com um furo? O conceito admite gradação?
+  </p>
+  <p>
+    <strong>(c)</strong> A interseção de duas regiões simplesmente conexas é
+    sempre simplesmente conexa? Justifique com um exemplo ou argumento.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O conceito de conexidade simples é binário — uma região ou
+      é ou não é simplesmente conexa. Não existem "graus" de conexidade simples.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong>
+        1. \(\Omega_1\) (dois furos): <strong>não</strong> é simplesmente
+        conexa. Há dois pontos removidos, cada um criando uma obstrução. 2.
+        \(\Omega_2\) (interseção de discos): <strong>sim</strong>, é
+        simplesmente conexa. A interseção de dois discos convexos é convexa,
+        logo sem furos. 3. \(\Omega_3\) (segmento removido):
+        <strong>não</strong> é simplesmente conexa. O segmento atua como uma
+        barreira: uma curva que envolve o segmento não pode ser contraída sem
+        atravessá-lo. 4. \(\Omega_4\) (faixa): <strong>sim</strong>, é
+        simplesmente conexa. É convexa e sem furos.
+      </p>
+      <p>
+        <strong>(b)</strong> Não admite gradação. Uma região é simplesmente
+        conexa ou não é. Ter mais furos cria mais obstruções independentes, mas
+        não torna a região "menos" simplesmente conexa — ela simplesmente
+        <em>não é</em>.
+      </p>
+      <p>
+        <strong>(c)</strong> Não necessariamente. A interseção pode até ser
+        desconexa: por exemplo, se \(A = \mathbb{R}^2 \setminus \{(x,0) \mid x
+        &lt; 0\}\) (simplesmente conexo) e \(B = \mathbb{R}^2 \setminus \{(x,0)
+        \mid x &gt; 0\}\) (simplesmente conexo), a interseção \(A \cap B\) é o
+        plano sem o eixo \(x\), que é desconexo. Mesmo quando a interseção é
+        conexa, pode não ser simplesmente conexa.
+      </p>
+    </div>
+  </details>
+</li>

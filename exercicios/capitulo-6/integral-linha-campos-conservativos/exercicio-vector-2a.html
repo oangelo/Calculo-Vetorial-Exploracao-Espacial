@@ -1,0 +1,54 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Procedimento Completo de Manobra – Apollo VIII [21/DEZ/1968]
+  </div>
+  <p>
+    Nos exercícios ALFA, a função potencial era dada de antemão. Na prática,
+    precisamos encontrá-la sozinhos. O procedimento completo tem três passos:
+    testar conservatividade, encontrar o potencial, calcular a integral. Vamos
+    aplicá-lo ao campo \(\vec{F}(x,y) = (y^3 + 2x,\, 3xy^2 + 4y)\), entre os
+    pontos \(A = (1, 1)\) e \(B = (2, 0)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique se o campo é conservativo: calcule \(\partial
+    F_1/\partial y\) e \(\partial F_2/\partial x\) e compare. Se forem iguais, o
+    campo é conservativo.
+  </p>
+  <p>
+    <strong>(b)</strong> Encontre a função potencial \(\phi\) integrando a
+    primeira componente em \(x\) e comparando com a segunda. O método é o mesmo
+    do tópico anterior: integre \(F_1\) em \(x\), depois determine a "constante"
+    (que pode depender de \(y\)) comparando com \(F_2\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a integral de linha usando \(\phi(B) -
+    \phi(A)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao integrar \(F_1 = y^3 + 2x\) em relação a \(x\), a
+      constante de integração pode ser uma função de \(y\). Derive o resultado
+      em \(y\) e iguale a \(F_2\) para determiná-la.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\partial F_1/\partial y = 3y^2\) e \(\partial F_2/\partial x =
+        3y^2\). São iguais, logo o campo é conservativo.
+      </p>
+      <p>
+        (b) Integrando \(F_1 = y^3 + 2x\) em \(x\): \(\phi = xy^3 + x^2 +
+        g(y)\). Derivando em \(y\): \(\partial\phi/\partial y = 3xy^2 + g'(y)\).
+        Igualando a \(F_2 = 3xy^2 + 4y\): \(g'(y) = 4y\), logo \(g(y) = 2y^2\).
+        Portanto \(\phi(x,y) = xy^3 + x^2 + 2y^2\).
+      </p>
+      <p>
+        (c) \(\phi(2,0) - \phi(1,1) = (0 + 4 + 0) - (1 + 1 + 2) = 4 - 4 = 0\).
+      </p>
+    </div>
+  </details>
+</li>

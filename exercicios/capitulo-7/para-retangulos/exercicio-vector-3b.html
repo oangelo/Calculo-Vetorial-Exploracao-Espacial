@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Demonstração Teórica (continuação) — Apollo 11, Módulo Eagle
+    [JUL/1969]
+  </div>
+  <p>
+    Com metade da prova concluída — a parte que envolve \(P\,dx\) —, vamos
+    completar a demonstração usando a mesma estratégia para a outra componente
+    do campo. Desta vez, integramos na outra ordem.
+  </p>
+  <p>
+    Seja \(R = [a,b] \times [c,d]\) e \(Q(x,y)\) uma função \(C^1\). Queremos
+    mostrar que \[\iint_R \frac{\partial Q}{\partial x}\,dA = \oint_{\partial R}
+    Q\,dy.\]
+  </p>
+  <p>
+    <strong>(a)</strong> Aplique o Teorema de Fubini com a ordem trocada:
+    integre primeiro em \(x\) (de \(a\) a \(b\)) e depois em \(y\) (de \(c\) a
+    \(d\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique o TFC na integral interna em \(x\): os limites
+    de integração em \(x\) correspondem aos lados verticais do retângulo.
+  </p>
+  <p>
+    <strong>(c)</strong> Junte com o resultado do exercício anterior (a parte
+    \(P\,dx\)) para obter o Teorema de Green completo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Os lados verticais são percorridos em sentidos opostos: o
+      lado direito vai de \(c\) a \(d\) (\(dy > 0\)) e o lado esquerdo vai de
+      \(d\) a \(c\) (\(dy < 0\)). Os lados horizontais têm \(dy = 0\), logo não
+      contribuem para \(\oint Q\,dy\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Por Fubini com ordem trocada: \(\iint_R
+        \frac{\partial Q}{\partial x}\,dA = \int_c^d \left[\int_a^b
+        \frac{\partial Q}{\partial x}\,dx\right]dy\).
+      </p>
+      <p>
+        <strong>(b)</strong> Pelo TFC: \(\int_a^b \frac{\partial Q}{\partial
+        x}\,dx = Q(b,y) - Q(a,y)\). Substituindo: \(\int_c^d \bigl[Q(b,y) -
+        Q(a,y)\bigr]\,dy = \int_c^d Q(b,y)\,dy - \int_c^d Q(a,y)\,dy\). O
+        primeiro termo é a integral de \(Q\) no lado direito (percorrido de
+        \(c\) a \(d\), \(dy > 0\)). O segundo é a integral no lado esquerdo, mas
+        com sinal negativo — e como a fronteira percorre o lado esquerdo de
+        \(d\) a \(c\), temos \(-\int_c^d Q(a,y)\,dy = \int_d^c Q\,dy\), que é
+        exatamente a contribuição do lado esquerdo. Logo: \(\iint_R
+        \frac{\partial Q}{\partial x}\,dA = \oint_{\partial R} Q\,dy\).
+      </p>
+      <p>
+        <strong>(c)</strong> Do exercício anterior: \(\iint_R \frac{\partial
+        P}{\partial y}\,dA = -\oint_{\partial R} P\,dx\). Subtraindo esta da
+        igualdade que acabamos de provar: \[\iint_R \left(\frac{\partial
+        Q}{\partial x} - \frac{\partial P}{\partial y}\right) dA =
+        \oint_{\partial R} Q\,dy + \oint_{\partial R} P\,dx = \oint_{\partial R}
+        (P\,dx + Q\,dy).\]
+        <strong>Teorema de Green demonstrado para retângulos.</strong>
+      </p>
+    </div>
+  </details>
+</li>

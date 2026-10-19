@@ -1,0 +1,45 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO DID-BETA-2</div>
+  <div class="context">
+    ORIGEM: Sessão de Treinamento - Equipe de Análise [BASE
+    <span class="censored">REDACTED</span>]
+  </div>
+  <p>
+    Sabemos que \(f\) é limitada e que isso nos dá controle sobre as somas
+    inferiores e superiores. Agora vamos formalizar essas somas e entender como
+    o refinamento da partição as aproxima da integral. Este é o coração da
+    definição rigorosa: provar que, para funções integráveis, as duas somas
+    convergem para o mesmo valor.
+  </p>
+  <p>
+    Seja \(f(x,y)\) uma função limitada em \(D\). Defina as
+    <em>somas inferiores</em> \(\underline{S}(P,f)\) e as
+    <em>somas superiores</em> \(\overline{S}(P,f)\) para cada partição \(P\).
+    Descreva, conceitualmente, como o refinamento de \(P\) influencia a
+    aproximação desses valores rumo à integral dupla.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em cada sub-região \(R_k\) da partição, defina \(m_k =
+      \inf_{(x,y) \in R_k} f(x,y)\) e \(M_k = \sup_{(x,y) \in R_k} f(x,y)\).
+      Então \(\underline{S} = \sum m_k \Delta A_k\) e \(\overline{S} = \sum M_k
+      \Delta A_k\). Ao refinar, \(M_k - m_k\) diminui em cada sub-região.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        À medida que a partição se torna mais fina, o máximo e o mínimo de \(f\)
+        em cada sub-região ficam mais próximos entre si. Consequentemente,
+        \(\underline{S}(P,f)\) e \(\overline{S}(P,f)\) convergem para o mesmo
+        valor-limite, caso \(f\) seja integrável.
+      </p>
+      <p>
+        Esse valor comum é definido como \(\iint_{D} f(x,y)\,dA\), validando o
+        processo fundamental de aproximação via somas de Riemann.
+      </p>
+    </div>
+  </details>
+</li>

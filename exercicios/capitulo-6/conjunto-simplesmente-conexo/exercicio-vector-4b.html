@@ -1,0 +1,85 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">ORIGEM: Apollo 11 — Missão, Julho/1969</div>
+  <p>
+    Chegamos ao momento de síntese. Todos os exercícios anteriores — do campo
+    que parecia conservativo ao contra-exemplo vortical, das regiões com e sem
+    furos à restrição de domínio — convergiram para uma única pergunta:
+    <em>em que condições o teste do rotacional garante a conservatividade?</em>
+    Analise as situações abaixo e formule a regra geral.
+  </p>
+  <p>
+    Situação 1: Campo bidimensional com \(\nabla \times F = 0\), definido num
+    disco.
+  </p>
+  <p>
+    Situação 2: Campo bidimensional com \(\nabla \times F = 0\), definido num
+    anel.
+  </p>
+  <p>
+    Situação 3: Campo tridimensional com \(\nabla \times F = 0\), definido em
+    \(\mathbb{R}^3\) com um ponto removido.
+  </p>
+  <p>
+    Situação 4: Campo tridimensional com \(\nabla \times F = 0\), definido em
+    \(\mathbb{R}^3\) com o eixo \(z\) removido.
+  </p>
+  <p>
+    <strong>(a)</strong> Para cada situação, classifique o domínio como
+    simplesmente conexo ou não e determine se o campo é necessariamente
+    conservativo.
+  </p>
+  <p>
+    <strong>(b)</strong> Formule a regra geral: sob que condições \(\nabla
+    \times F = 0\) implica que \(F\) é conservativo?
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que a condição de conexidade simples é
+    <strong>necessária</strong>, usando o contra-exemplo explorado nesta lista.
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong>
+      </p>
+      <p>
+        Situação 1: Disco é simplesmente conexo. O campo <strong>é</strong>
+        conservativo.
+      </p>
+      <p>
+        Situação 2: Anel não é simplesmente conexo. O campo
+        <strong>não é necessariamente</strong> conservativo (o campo vortical é
+        um contra-exemplo).
+      </p>
+      <p>
+        Situação 3: \(\mathbb{R}^3\) sem um ponto é simplesmente conexo. O campo
+        <strong>é</strong> conservativo.
+      </p>
+      <p>
+        Situação 4: \(\mathbb{R}^3\) sem o eixo \(z\) não é simplesmente conexo.
+        O campo <strong>não é necessariamente</strong> conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> Regra geral:
+        <strong
+          >Se \(F\) é um campo vetorial definido num domínio simplesmente conexo
+          \(\Omega\) e \(\nabla \times F = 0\) em todo ponto de \(\Omega\),
+          então \(F\) é conservativo.</strong
+        >
+        Equivalentemente, existe \(f\) tal que \(F = \nabla f\).
+      </p>
+      <p>
+        <strong>(c)</strong> A conexidade simples é necessária porque a prova de
+        que \(\nabla \times F = 0\) implica conservatividade depende da
+        possibilidade de deformar qualquer curva fechada a um ponto dentro do
+        domínio. O campo vortical demonstra isso: \(\nabla \times F = 0\) em \(D
+        = \mathbb{R}^2 \setminus \{(0,0)\}\), mas a integral ao redor da origem
+        é \(2\pi \neq 0\). O furo na origem impede a contração da curva, e o
+        argumento da prova falha. Sem a conexidade simples, a igualdade das
+        derivadas parciais cruzadas não é suficiente para garantir a existência
+        de um potencial global.
+      </p>
+    </div>
+  </details>
+</li>

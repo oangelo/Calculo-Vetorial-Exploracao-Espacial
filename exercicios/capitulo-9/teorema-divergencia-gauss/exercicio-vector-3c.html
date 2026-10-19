@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Detecção de <span class="censored">Anomalias</span> - Módulo
+    Habitacional Skylab [SET/1973]
+  </div>
+  <p>
+    O aluno sabe calcular o fluxo a partir do divergente. Mas pode fazer o
+    caminho inverso — deduzir o que está acontecendo no interior a partir de
+    medições na superfície. Este tipo de raciocínio é essencial em diagnóstico
+    de sistemas espaciais, onde nem sempre é possível acessar o interior de um
+    módulo.
+  </p>
+  <p>
+    Um módulo cilíndrico do Skylab, com raio \(R = 2\) e altura \(H = 5\),
+    centrado no eixo \(z\) (de \(z = 0\) a \(z = 5\)), está equipado com
+    sensores de fluxo de ar na superfície. O sistema de ventilação gera um campo
+    de velocidade \(\mathbf{v}(x,y,z) = (kx,\, ky,\, kz)\), onde \(k\) é uma
+    constante relacionada à potência dos ventiladores.
+  </p>
+  <p>
+    Os sensores medem um fluxo total de ar para fora do módulo de \(60\pi\) (em
+    unidades adequadas).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla \cdot \mathbf{v}\) em função de \(k\).
+    Use o Teorema da Divergência para relacionar o fluxo medido com \(k\).
+  </p>
+  <p>
+    <strong>(b)</strong> Determine o valor de \(k\) a partir da medição. O ar
+    está sendo expelido ou sugado para dentro?
+  </p>
+  <p>
+    <strong>(c)</strong> Se um vazamento aparecesse numa das tampas, criando uma
+    "fonte" extra de perda de ar com taxa \(L\), como o fluxo medido mudaria?
+    Expresse o novo fluxo em função de \(k\) e \(L\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \(\nabla \cdot \mathbf{v} = 3k\). O volume do cilindro é
+      \(\pi R^2 H\). Pelo teorema, fluxo = \(3k \cdot \pi R^2 H\). Isole \(k\).
+      O sinal de \(k\) indica se o campo "expande" (fonte) ou "contrai"
+      (sumidouro).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\nabla \cdot \mathbf{v} = k + k + k = 3k\). Volume do cilindro:
+        \(\pi(2)^2(5) = 20\pi\). Pelo Teorema da Divergência: fluxo = \(3k \cdot
+        20\pi = 60k\pi\).
+      </p>
+      <p>
+        (b) Fluxo medido = \(60\pi = 60k\pi\), logo \(k = 1\). Como \(k > 0\), o
+        divergente é positivo: o ar está sendo expelido (o campo "expande" — os
+        ventiladores empurram ar para fora).
+      </p>
+      <p>
+        (c) Com um vazamento extra de taxa \(L\), o fluxo total pela superfície
+        passa a ser \(60k\pi + L\). Se medirmos o fluxo e ele for maior que o
+        esperado (\(60k\pi\)), a diferença é a taxa de vazamento. É assim que se
+        detecta vazamentos sem acessar o interior — comparando o fluxo esperado
+        com o medido.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.05;
+        pointer-events: none;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">28</span> DE JULHO DE
+          <span class="censored">1975</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">SKYLAB MISSION CONTROL — HOUSTON</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO TÉCNICO Nº <span class="censored">Δ-903</span><br /><br />
+          No dossiê anterior, a equipe calculou o fluxo de vários campos por
+          superfícies fechadas e observou uma coincidência sistemática: o fluxo
+          total sempre igualava a integral do <strong>divergente</strong> no
+          volume interior. Não era acidente. Este documento nomeia essa
+          coincidência — é o <strong>Teorema da Divergência</strong> (ou Teorema
+          de Gauss) — e o verifica em geometrias progressivamente mais
+          complexas. Cada verificação reforça a confiança na ferramenta e revela
+          novas consequências: divergente nulo implica fluxo nulo, fontes geram
+          fluxo positivo, sumidouros geram negativo. Ao final, o teorema será
+          uma arma estratégica — capaz de transformar cálculos impossíveis em
+          contas rotineiras.
+        </div>
+        <div class="warning-box">
+          Este documento formaliza o resultado central da análise volumétrica de
+          campos. Divulgação não autorizada acarretará
+          <span class="censored">revogação de credenciais SIGMA</span> conforme
+          diretiva <span class="censored">Ω-44</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">9003</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+          <span
+            >CÓPIAS: <span class="censored">2</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DA DIVERGÊNCIA — VERIFICAÇÃO E USO
+        ESTRATÉGICO
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. O TEOREMA DA DIVERGÊNCIA: ENUNCIADO FORMAL</strong></p>
+        <p>
+          Seja \(V\) um sólido delimitado por uma superfície fechada \(S\) com
+          normal \(\hat{n}\) apontando para fora. Seja \(\vec{F}\) um campo
+          vetorial com componentes e derivadas parciais contínuas em \(V \cup
+          S\). Então:
+        </p>
+        <p class="formula-highlight">
+          \[\iint_S \vec{F} \cdot \hat{n} \, dS = \iiint_V \left( \frac{\partial
+          F_1}{\partial x} + \frac{\partial F_2}{\partial y} + \frac{\partial
+          F_3}{\partial z} \right) dV = \iiint_V (\nabla \cdot \vec{F}) \, dV\]
+        </p>
+        <p>
+          O lado esquerdo é o <strong>fluxo</strong> de \(\vec{F}\) através de
+          \(S\). O lado direito é a integral do <strong>divergente</strong>
+          \(\nabla \cdot \vec{F}\) sobre o volume \(V\). O teorema afirma que
+          <strong
+            >tudo que o campo "emite" no interior do volume se manifesta como
+            fluxo pela fronteira</strong
+          >. É a extensão tridimensional do Teorema de Green para o divergente
+          no plano (Capítulo 7).
+        </p>
+        <p>
+          As hipóteses são essenciais: \(S\) deve ser uma superfície fechada
+          (sem buracos), \(\vec{F}\) deve estar definido e ter derivadas
+          parciais contínuas em <strong>todo</strong> o interior de \(V\). Se o
+          campo não existe em algum ponto, o teorema não se aplica diretamente.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. PRIMEIRAS CONSEQUÊNCIAS</strong></p>
+        <p>
+          O teorema tem consequências imediatas que podem poupar trabalho
+          enorme:
+        </p>
+        <p>
+          <strong>Divergente nulo:</strong> Se \(\nabla \cdot \vec{F} = 0\) em
+          todo o interior de \(V\), então o fluxo por \(S\) é automaticamente
+          zero — não importa o formato da superfície. Em linguagem de fluidos,
+          um campo com divergente nulo é <strong>incompressível</strong>: tudo
+          que entra, sai.
+        </p>
+        <p>
+          <strong>Divergente constante:</strong> Se \(\nabla \cdot \vec{F} = c\)
+          (constante), o fluxo por qualquer superfície fechada é simplesmente
+          \(c \times \text{volume}\). Nenhuma integral necessária — basta
+          conhecer o volume.
+        </p>
+        <p>
+          <strong>Fontes e sumidouros:</strong> Onde \(\nabla \cdot \vec{F} >
+          0\), há uma <strong>fonte</strong> (o campo se expande). Onde \(\nabla
+          \cdot \vec{F} < 0\), há um <strong>sumidouro</strong> (o campo se
+          contrai). O fluxo total mede o <strong>balanço</strong>
+          entre fontes e sumidouros no interior.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. USO ESTRATÉGICO DO TEOREMA</strong></p>
+        <p>
+          O teorema permite calcular o fluxo de duas formas: diretamente pela
+          superfície, ou pela integral do divergente no volume. A escolha
+          estratégica do lado mais fácil é a habilidade central desta lista.
+        </p>
+        <p>
+          <strong>Quando usar a integral do divergente:</strong> Quando a
+          superfície é composta (várias partes) ou curva, mas o divergente é
+          simples (constante ou polinomial).
+        </p>
+        <p>
+          <strong>Quando calcular o fluxo diretamente:</strong> Quando o
+          divergente é complicado mas a superfície é simples e a normal é fácil
+          de determinar.
+        </p>
+        <p>
+          O teorema também resolve problemas de
+          <strong>superfícies abertas</strong>: se queremos o fluxo por uma
+          superfície aberta \(S_1\), podemos "fechá-la" com uma tampa \(S_2\),
+          calcular o fluxo pela superfície fechada via teorema, e subtrair o
+          fluxo pela tampa (calculado diretamente).
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Carl Friedrich Gauss demonstrou este
+        teorema em 1835, mas sua influência estende-se até a engenharia orbital
+        do século XX. Durante a missão
+        <span class="censored">Apollo- Soyuz</span> (julho de 1975), engenheiros
+        americanos e soviéticos trocaram dados sobre análise de pressão em
+        módulos pressurizados — cálculos que dependiam diretamente do Teorema da
+        Divergência. O <span class="censored">Skylab</span> (1973–1979) e as
+        estações <span class="censored">Salyut</span> aplicaram essas
+        ferramentas para garantir o equilíbrio de gases em ambientes herméticos.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">18</span> • DOCUMENTO VX-<span
+          class="censored"
+          >9003</span
+        >
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

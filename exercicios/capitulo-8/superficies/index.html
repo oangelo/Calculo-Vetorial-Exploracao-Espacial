@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.05;
+        pointer-events: none;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">05</span> DE FEVEREIRO DE
+          <span class="censored">1972</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE ANÁLISE LUNAR APOLLO</span>
+        </div>
+        <div class="document-intro">
+          MEMORANDO INTERNO Nº <span class="censored">Δ‑814</span><br /><br />
+          Com o sucesso das missões Apollo 14 e 15, nossa equipe de geometria
+          orbital foi requisitada para desenvolver modelos paramétricos de
+          superfícies críticas: domos de habitat, tanques de combustível e
+          painéis térmicos. Diferente das trajetórias unidimensionais que
+          descrevemos com
+          <span class="censored">r(t)</span> no Capítulo 1, agora precisamos
+          descrever membranas inteiras — superfícies que exigem dois parâmetros
+          independentes.<br /><br />
+          Este manual treina os cadetes a reconstruir geometrias tridimensionais
+          a partir de dados mínimos de telemetria, usando o formalismo
+          <span class="censored">r(u,v)</span> como generalização natural das
+          funções vetoriais já dominadas.
+        </div>
+        <div class="warning-box">
+          Atenção: qualquer difusão não autorizada destes cálculos estratégicos
+          implicará <span class="censored">sanções severas</span> conforme
+          diretiva <span class="censored">Γ‑72</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX‑<span class="censored">0801</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">3</span></span>
+          <span
+            >CÓPIAS: <span class="censored">1</span> DE
+            <span class="censored">3</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: SUPERFÍCIES PARAMETRIZADAS
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. DE r(t) PARA r(u,v): A GENERALIZAÇÃO</strong></p>
+        <p>
+          No Capítulo 1, você descreveu trajetórias de naves com uma função
+          vetorial de uma variável: <strong>r(t)</strong>, onde o parâmetro
+          <strong>t</strong> representava o tempo. Cada valor de
+          <strong>t</strong> produzia um único ponto no espaço — a posição da
+          nave naquele instante.
+        </p>
+        <p class="formula-highlight">\[\vec{r}(t) = (x(t),\, y(t),\, z(t))\]</p>
+        <p>
+          Uma <strong>superfície parametrizada</strong> generaliza essa ideia:
+          agora temos <strong>dois parâmetros</strong>, <strong>u</strong> e
+          <strong>v</strong>, e cada par ordenado <strong>(u,v)</strong> produz
+          um ponto <strong>r(u,v)</strong> no espaço. A diferença crucial é que,
+          enquanto <strong>r(t)</strong> descreve uma <em>curva</em> (1D),
+          <strong>r(u,v)</strong> descreve uma <em>superfície</em> (2D).
+        </p>
+        <p class="formula-highlight">
+          \[\vec{r}(u,v) = (x(u,v),\, y(u,v),\, z(u,v)),\quad (u,v) \in D\]
+        </p>
+        <p>
+          O conjunto <strong>D</strong> é o
+          <strong>domínio dos parâmetros</strong> — uma região plana (geralmente
+          um retângulo ou disco) que funciona como o "mapa" da superfície. Cada
+          ponto do domínio corresponde a um ponto da superfície, e curvas no
+          domínio correspondem a curvas na superfície.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. GRÁFICOS COMO CASO ESPECIAL</strong></p>
+        <p>
+          Você já conhece uma classe enorme de superfícies parametrizadas sem
+          saber: os <strong>gráficos de funções de duas variáveis</strong>,
+          <strong>z = f(x,y)</strong>. Basta escolher <strong>u = x</strong> e
+          <strong>v = y</strong>, e a parametrização torna-se trivial:
+        </p>
+        <p class="formula-highlight">\[\vec{r}(u,v) = (u,\, v,\, f(u,v))\]</p>
+        <p>
+          Isso significa que todo paraboloide, cone (exceto o vértice), e plano
+          que você estudou como gráfico já era uma superfície parametrizada. A
+          novidade está em superfícies que <strong>não são gráficos</strong> —
+          como a esfera, que falha o teste da vertical (dois pontos para cada
+          <strong>(x,y)</strong>).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. A ESFERA: PARAMETRIZAÇÃO FUNDAMENTAL</strong></p>
+        <p>
+          A esfera de raio <strong>R</strong> centrada na origem não pode ser
+          escrita como <strong>z = f(x,y)</strong> globalmente. Mas usando as
+          <strong>coordenadas esféricas</strong> que você dominou no Capítulo 4,
+          obtemos uma parametrização elegante:
+        </p>
+        <p class="formula-highlight">
+          \[\vec{r}(\phi,\theta) = (R\sin\phi\cos\theta,\;
+          R\sin\phi\sin\theta,\; R\cos\phi)\]
+        </p>
+        <p>
+          onde <strong>φ ∈ [0, π]</strong> é o ângulo polar (medido a partir do
+          eixo <strong>z</strong>) e <strong>θ ∈ [0, 2π)</strong> é o ângulo
+          azimutal (rotação em torno do eixo <strong>z</strong>). Esses
+          intervalos cobrem a esfera inteira exatamente uma vez — exceto
+          possivelmente uma linha de longitude, que pode ser incluída por
+          continuidade.
+        </p>
+        <p>
+          A esfera é o exemplo mais importante desta lista: ela reaparecerá em
+          todos os tópicos seguintes (plano tangente, área, integral de
+          superfície).
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>4. CURVAS-COORDENADAS: A "GRADE" DO MAPA</strong></p>
+        <p>
+          Fixar um parâmetro e variar o outro produz uma
+          <strong>curva na superfície</strong>. Essas curvas são as
+          <strong>curvas-coordenadas</strong>:
+        </p>
+        <p>
+          <strong>u = constante</strong> → curva <strong>v</strong> (varia
+          apenas <strong>v</strong>)<br />
+          <strong>v = constante</strong> → curva <strong>u</strong> (varia
+          apenas <strong>u</strong>)
+        </p>
+        <p>
+          Na esfera, <strong>φ = constante</strong> produz paralelos (círculos
+          horizontais) e <strong>θ = constante</strong> produz meridianos
+          (semicírculos verticais). Essa "grade" de curvas é essencial para
+          visualizar a superfície e será a base para o conceito de plano
+          tangente no próximo tópico.
+        </p>
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Durante as missões Apollo 14-17
+        (1971-1972), cálculos paramétricos de superfícies foram usados para
+        modelar o
+        <span class="censored">revestimento térmico do módulo lunar</span> e o
+        <span class="censored">formato dos painéis solares do rover</span>. A
+        capacidade de descrever uma superfície completa a partir de dois
+        parâmetros permitiu otimizar a distribuição de massa e a resistência
+        estrutural dos equipamentos em condições de vácuo e temperatura extrema
+        — técnicas que fundamentariam o projeto
+        <span class="censored">Skylab</span> nos anos seguintes.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">11</span> • DOCUMENTO VX‑<span
+          class="censored"
+          >0801</span
+        >
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

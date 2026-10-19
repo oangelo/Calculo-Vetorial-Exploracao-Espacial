@@ -1,0 +1,66 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-REVIEW-8</div>
+  <div class="context">
+    ORIGEM: Sessão de Validação – Fluxo Bidimensional — No exercício anterior,
+    você combinou um campo radial com um rotacional e viu como derivadas
+    parciais aparecem nas fórmulas. Agora vamos aplicar essas mesmas ferramentas
+    a dois campos mais simples, isolando o que cada um faz: o primeiro expande
+    (divergente positivo), o segundo gira (rotacional não nulo). Combiná-los
+    produz o efeito espiral que modela bocais de propulsão.
+  </div>
+  <p>
+    Considere os campos bidimensionais
+    \[\vec{F}_1(x,y)=\begin{pmatrix}2x\\3y\end{pmatrix}\quad\text{e}\quad\vec{F}_2(x,y)=\begin{pmatrix}-y\\x\end{pmatrix}.\]
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla\cdot\vec F_1\) e \(\nabla\times\vec
+    F_1\) (componente \(\hat{k}\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule \(\nabla\cdot\vec F_2\) e \(\nabla\times\vec
+    F_2\) (componente \(\hat{k}\)).
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que combinar \(\vec{F}=\vec F_1+\vec F_2\)
+    pode representar simultaneamente compressão e rotação em um sistema planar.
+  </p>
+  <p>
+    <strong>(d)</strong> Esboce as linhas de fluxo do campo resultante no plano
+    \(xy\), destacando o efeito espiral produzido pela combinação de divergente
+    e rotacional.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      Lembre-se: o divergente \(\nabla\cdot\vec{F} = \partial P/\partial x +
+      \partial Q/\partial y\) mede expansão. O rotacional (componente \(k\)) \(=
+      \partial Q/\partial x - \partial P/\partial y\) mede giro. Se o divergente
+      é positivo, as linhas de fluxo se afastam; se o rotacional é não nulo,
+      elas curvam.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Para \(\vec F_1\): \[\nabla\cdot\vec F_1 = 2+3 = 5, \qquad
+        \nabla\times\vec F_1 = 0 - 0 = 0.\]
+      </p>
+      <p>
+        (b) Para \(\vec F_2\): \[\nabla\cdot\vec F_2 = 0+0 = 0, \qquad
+        \nabla\times\vec F_2 = 1 - (-1) = 2.\]
+      </p>
+      <p>
+        (c) No campo combinado \(\vec{F} = (2x - y, 3y + x)\), a parte
+        divergente (5) cria uma expansão radial uniforme, enquanto a componente
+        rotacional (2) adiciona giro. Isto modela um bocal que expande e
+        redireciona gases simultaneamente, permitindo maior manobrabilidade.
+      </p>
+      <p>
+        (d) As linhas de fluxo partem da origem (divergente positivo) e curvam
+        (rotacional positivo = sentido anti-horário), formando espirais que se
+        afastam do centro.
+      </p>
+    </div>
+  </details>
+</li>

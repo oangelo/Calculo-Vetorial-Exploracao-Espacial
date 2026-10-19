@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <section>
+      <section>
+        <h2>Visualizando o 3D: Curvas de Nível</h2>
+        <p>Como mapas topográficos revelam a forma de superfícies</p>
+        <p class="note">
+          As curvas de nível são uma ferramenta fundamental para entender
+          superfícies tridimensionais através de representações bidimensionais.
+        </p>
+      </section>
+
+      <section class="math-section">
+        <h3>O que são Curvas de Nível?</h3>
+        <p>
+          Para uma função \(f(x,y)\), cada valor constante \(c\) define uma
+          curva no plano \(xy\):
+        </p>
+        <p>\[f(x,y) = c\]</p>
+        <p>
+          <strong>Analogia prática:</strong> Mapas topográficos mostram elevação
+          através de curvas que conectam pontos na mesma altura.
+        </p>
+        <p class="note">
+          Cada curva representa todos os pontos \((x,y)\) onde a função assume o
+          mesmo valor \(c\). Ao observar o padrão das curvas, podemos
+          reconstruir mentalmente a superfície 3D.
+        </p>
+      </section>
+
+      <section class="math-section">
+        <h3>Esfera: \(x^2 + y^2 + z^2 = r^2\)</h3>
+        <p>Seções horizontais \(z = c\) produzem círculos no plano \(xy\).</p>
+        <canvas
+          id="esfera-niveis"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="esfera-z">z =</label>
+            <input
+              type="range"
+              id="esfera-z"
+              min="-2"
+              max="2"
+              step="0.1"
+              value="0"
+            />
+            <span id="esfera-z-value">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="math-section">
+        <h3>Esfera: Raio do Círculo</h3>
+        <p>
+          Para uma esfera de raio \(r\), o corte em \(z = c\) produz um círculo
+          de raio:
+        </p>
+        <p>\[r' = \sqrt{r^2 - z^2}\]</p>
+        <div class="dual-panel">
+          <div>
+            <p><strong>Quando \(z = 0\):</strong></p>
+            <p>\[r' = \sqrt{r^2 - 0} = r\]</p>
+            <p>Círculo de raio máximo.</p>
+          </div>
+          <div>
+            <p><strong>Quando \(z = \pm r\):</strong></p>
+            <p>\[r' = \sqrt{r^2 - r^2} = 0\]</p>
+            <p>Ponto único nos polos.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="math-section">
+        <h3>Paraboloide Elíptico: \(z = x^2 + y^2\)</h3>
+        <p>Seções \(z = c\) (com \(c \geq 0\)) produzem círculos crescentes.</p>
+        <canvas
+          id="paraboloide-niveis"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="paraboloide-z">z =</label>
+            <input
+              type="range"
+              id="paraboloide-z"
+              min="0"
+              max="4"
+              step="0.1"
+              value="1"
+            />
+            <span id="paraboloide-z-value">1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="math-section">
+        <h3>Paraboloide Elíptico: Curvas Circulares</h3>
+        <p>As curvas de nível são dadas por:</p>
+        <p>\[x^2 + y^2 = c\]</p>
+        <p>
+          Para cada valor de \(c \geq 0\), obtemos um círculo de raio
+          \(\sqrt{c}\) centrado na origem.
+        </p>
+        <p class="note">
+          <strong>Aplicação:</strong> Antenas parabólicas usam esta forma
+          geométrica. A superfície reflete ondas eletromagnéticas para um único
+          ponto focal, essencial para comunicações espaciais.
+        </p>
+      </section>
+
+      <section class="math-section">
+        <h3>Paraboloide Hiperbólico: \(z = x^2 - y^2\)</h3>
+        <p>Seções \(z = c\) produzem hipérboles.</p>
+        <canvas
+          id="sela-niveis"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="sela-z">z =</label>
+            <input
+              type="range"
+              id="sela-z"
+              min="-3"
+              max="3"
+              step="0.1"
+              value="0"
+            />
+            <span id="sela-z-value">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="math-section">
+        <h3>Paraboloide Hiperbólico: Caso Especial</h3>
+        <p>Quando \(z = 0\):</p>
+        <p>\[x^2 - y^2 = 0 \implies (x-y)(x+y) = 0\]</p>
+        <p>Obtemos duas retas: \(x = y\) e \(x = -y\)</p>
+        <p class="note">
+          <strong>Analogia:</strong> A forma lembra uma "sela de cavalo". Na
+          direção \(x\), a superfície sobe; na direção \(y\), ela desce. Este
+          ponto é chamado de <span class="highlight">ponto de sela</span> ou
+          <em>saddle point</em>.
+        </p>
+      </section>
+
+      <section class="math-section">
+        <h3>
+          Hiperboloide de Uma Folha: \(\frac{x^2}{a^2} + \frac{y^2}{b^2} -
+          \frac{z^2}{c^2} = 1\)
+        </h3>
+        <p>Seções horizontais \(z = c\) produzem elipses.</p>
+        <canvas
+          id="hiperboloide-niveis"
+          class="visualization-canvas"
+          width="600"
+          height="400"
+        ></canvas>
+        <div class="controls-container">
+          <div class="control-slider">
+            <label for="hiperboloide-z">z =</label>
+            <input
+              type="range"
+              id="hiperboloide-z"
+              min="-3"
+              max="3"
+              step="0.1"
+              value="0"
+            />
+            <span id="hiperboloide-z-value">0</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="math-section">
+        <h3>Hiperboloide: Seções Verticais</h3>
+        <p>Seções verticais (por exemplo, \(y = 0\)) produzem hipérboles:</p>
+        <p>\[\frac{x^2}{a^2} - \frac{z^2}{c^2} = 1\]</p>
+        <p class="note">
+          Esta combinação de elipses horizontais e hipérboles verticais dá ao
+          hiperboloide sua forma característica de "torre de resfriamento".
+        </p>
+      </section>
+
+      <section class="history-section">
+        <div class="history-label">CONTEXTO</div>
+        <p>
+          <strong>Anos 1960: Design de Antenas e Estruturas Espaciais</strong>
+        </p>
+        <p>
+          A compreensão de curvas de nível foi essencial para o design de
+          componentes críticos do programa espacial.
+        </p>
+        <ul>
+          <li>
+            <strong>Antenas parabólicas:</strong> Paraboloides de revolução para
+            comunicação com satélites e naves espaciais
+          </li>
+          <li>
+            <strong>Tanques de combustível:</strong> Hiperboloides oferecem alta
+            resistência estrutural com mínimo material
+          </li>
+          <li>
+            <strong>Radomes:</strong> Esferas e domos geodésicos para proteção
+            de equipamentos de radar e antenas
+          </li>
+        </ul>
+        <p class="note">
+          O uso de formas geométricas otimizadas permitiu reduzir peso e
+          aumentar a confiabilidade dos sistemas espaciais, fatores críticos em
+          missões onde cada quilograma conta.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>

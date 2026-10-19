@@ -1,0 +1,44 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Seção de <span class="censored">Astrodinâmica</span> - 1962
+  </div>
+  <p>
+    Nos exercícios anteriores, cada fator do produto precisava de sua própria Regra da Cadeia. Agora vamos ao extremo: uma única função composta por três camadas, onde a Cadeia precisa ser aplicada <strong>duas vezes consecutivas</strong>. É como descascar uma cebola — você deriva de fora para dentro, uma camada de cada vez.
+  </p>
+  <p>
+    Este é uma <strong>composição tripla</strong>: três funções encaixadas uma dentro da outra. Derivar de fora para dentro exige aplicar a Regra da Cadeia <strong>duas vezes</strong> consecutivas.
+  </p>
+  <p>
+    Calcular \(\frac{d}{dx}\bigl[z(x)\bigr]\) para \(z(x) = \ln\bigl(\sin(x^3)\bigr)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique a "cadeia" de composições: \(z = \ln(u)\) onde \(u = \sin(v)\) e \(v = x^3\).
+  </p>
+  <p>
+    <strong>(b)</strong> Derive de fora para dentro: primeiro \(\ln\), depois \(\sin\), depois \(x^3\).
+  </p>
+  <p>
+    <strong>(c)</strong> Simplifique o resultado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Esta é uma composição tripla: \(\ln \circ \sin \circ (x^3)\). Derive de fora para dentro: a derivada de \(\ln(w)\) é \(1/w\), depois multiplique pela derivada de \(w = \sin(x^3)\), que por sua vez precisa da cadeia novamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Temos \(z(x) = \ln(u(x))\) com \(u(x) = \sin(x^3)\).</p>
+      <p><strong>(b)</strong> Derivando de fora para dentro:</p>
+      <p>\[ z'(x) = \frac{1}{u(x)} \cdot u'(x). \]</p>
+      <p>Agora calcule \(u'(x)\): \(u(x) = \sin(x^3)\), então</p>
+      <p>\[ u'(x) = \cos(x^3) \cdot 3x^2 \quad \text{(Regra da Cadeia)}. \]</p>
+      <p>Substituindo:</p>
+      <p>\[ z'(x) = \frac{1}{\sin(x^3)} \cdot 3x^2\cos(x^3). \]</p>
+      <p><strong>(c)</strong> Simplificando:</p>
+      <p>\[ z'(x) = \frac{3x^2\cos(x^3)}{\sin(x^3)} = 3x^2 \cot(x^3). \]</p>
+    </div>
+  </details>
+</li>

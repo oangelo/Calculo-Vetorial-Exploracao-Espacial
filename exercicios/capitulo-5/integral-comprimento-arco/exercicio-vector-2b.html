@@ -1,0 +1,78 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Setor de Manobras Orbitais - Preparação Apollo 7 [REF:
+    <span class="censored">AS-205/SET-1968</span>]
+  </div>
+  <p>
+    A fórmula foi validada. Mas o resultado depende de como escolhemos o
+    parâmetro? Se dois engenheiros parametrizarem a mesma curva de formas
+    diferentes, obterão o mesmo comprimento? Essa questão é crucial: se o
+    comprimento dependesse da parametrização, ele não seria uma propriedade
+    confiável da trajetória.
+  </p>
+  <p>
+    Considere o segmento de parábola de \((0,0)\) a \((1,1)\) descrito por duas
+    parametrizações distintas:
+  </p>
+  <p>
+    \(\vec{r}_1(t) = \bigl(t,\, t^2\bigr)\), com \(t \in [0,1]\), e
+    \(\vec{r}_2(s) = \bigl(s^3,\, s^6\bigr)\), com \(s \in [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o comprimento usando a primeira parametrização
+    \(\vec{r}_1\).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o comprimento usando a segunda parametrização
+    \(\vec{r}_2\). Use a substituição \(u = s^3\) para simplificar a integral.
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os resultados e interprete: por que os
+    comprimentos são iguais? O que isso diz sobre o comprimento de arco como
+    propriedade da curva?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Verifique que ambas descrevem a mesma curva geométrica: se
+      \(x = s^3\) e \(y = s^6\), então \(y = (s^3)^2 = x^2\). Para a segunda
+      integral, calcule \(\vec{r}_2\,'(s)\) e use a substituição \(u = s^3\),
+      \(du = 3s^2\, ds\) para mostrar que ela se reduz à mesma integral da
+      primeira parametrização.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\vec{r}_1\,'(t) = (1,\, 2t)\),
+        \(\|\vec{r}_1\,'(t)\| = \sqrt{1+4t^2}\).
+      </p>
+      <p>
+        \[L_1 = \int_0^1 \sqrt{1+4t^2}\, dt = \left[\frac{t}{2}\sqrt{1+4t^2} +
+        \frac{1}{4}\ln\!\bigl(2t+\sqrt{1+4t^2}\bigr)\right]_0^1 =
+        \frac{\sqrt{5}}{2} + \frac{1}{4}\ln(2+\sqrt{5})\]
+      </p>
+      <p>
+        <strong>(b)</strong> \(\vec{r}_2\,'(s) = (3s^2,\, 6s^5)\),
+        \(\|\vec{r}_2\,'(s)\| = \sqrt{9s^4 + 36s^{10}} = 3s^2\sqrt{1+4s^6}\).
+      </p>
+      <p>Substituição \(u = s^3\), \(du = 3s^2\, ds\):</p>
+      <p>
+        \[L_2 = \int_0^1 3s^2\sqrt{1+4s^6}\, ds = \int_0^1 \sqrt{1+4u^2}\, du\]
+      </p>
+      <p>Esta é exatamente a mesma integral de \(L_1\). Portanto:</p>
+      <p>\[L_2 = \frac{\sqrt{5}}{2} + \frac{1}{4}\ln(2+\sqrt{5}) = L_1\]</p>
+      <p>
+        <strong>(c)</strong> Os comprimentos são idênticos. Isso confirma que o
+        comprimento de arco é uma
+        <strong>propriedade intrínseca da curva</strong>, independente da
+        parametrização utilizada. A curva geométrica é a mesma (\(y = x^2\) de
+        \((0,0)\) a \((1,1)\)) — apenas a "velocidade" com que a percorremos
+        muda. Essa invariância é fundamental: o percurso físico não depende de
+        como o descrevemos matematicamente.
+      </p>
+    </div>
+  </details>
+</li>

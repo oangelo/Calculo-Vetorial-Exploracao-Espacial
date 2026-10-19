@@ -1,0 +1,164 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">15</span> DE AGOSTO DE
+    <span class="censored">1971</span><br />
+    LOCALIZACAO:
+    <span class="censored">CENTRO DE CALCULO APOLLO [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATORIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-I</span
+    ><br /><br />
+    Com o sucesso das missoes Apollo 14 e 15, a NASA avanca para as missoes
+    finais do programa (Apollo 16 e 17), que trarao instrumentacao cientifica
+    sem precedentes. A analise de
+    <strong>acumulo de grandezas sobre superficies curvas</strong>
+    torna-se critica: radiacao solar sobre paineis fotovoltaicos, deposicao de
+    micrometeoritos sobre escudos termicos, e distribuicao de calor sobre
+    antenas parabolicas.<br /><br />
+    Este dossie apresenta o estudo de
+    <span class="censored">integrais de superficie</span> — a tecnica matematica
+    que permite acumular uma funcao escalar sobre uma superficie parametrizada.
+    Partimos do que ja dominamos: a area de superficie (Topico 3) e o caso
+    particular onde a funcao integrada e constante e igual a 1. Agora
+    generalizamos: em vez de somar 1 em cada pedacinho, somamos um valor que
+    varia com a posicao.
+  </div>
+  <div class="warning-box">
+    Este documento contem equacoes sensiveis a seguranca nacional. Divulgacao
+    sem autorizacao acarretara
+    <span class="censored">sancoes irreversiveis</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VI-<span class="censored">2718</span>-A</span>
+    <span>NIVEL DE ACESSO: SIGMA-<span class="censored">4</span></span>
+    <span
+      >COPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">5</span></span
+    >
+  </div>
+</div>
+<div class="section-title">FUNDAMENTACAO TEORICA: INTEGRAL DE SUPERFICIE</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Este tópico generaliza a área de superfície (Tópico 7), que corresponde ao
+    caso particular \(f = 1\). Você precisa dominar superfícies parametrizadas
+    \(\vec{r}(u,v)\) (Tópico 5), planos tangentes e vetores normais via produto
+    vetorial (Tópico 6) e o cálculo do fator de escala \(\|\vec{r}_u \times
+    \vec{r}_v\|\) (Tópico 7). A estrutura da integral de superfície é análoga à
+    integral de linha escalar \(\int_C f\, ds\) do Capítulo 5, e os cálculos
+    concretos usam integrais duplas (Capítulo 2), mudança de variáveis e
+    coordenadas polares (Capítulo 3).
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>1. INTEGRAL DE SUPERFICIE: O QUE E E POR QUE IMPORTA</strong>
+  </p>
+  <p>
+    Uma integral de superficie generaliza a nocao de area de superficie.
+    Enquanto a area soma "1" em cada pedacinho da superficie, a integral de
+    superficie soma o valor de uma funcao \(f(x,y,z)\) em cada pedacinho. Se
+    \(f\) representa densidade superficial, a integral da a massa total da
+    casca. Se \(f\) representa intensidade de radiacao, a integral da a radiacao
+    total incidente.
+  </p>
+  <p class="formula-highlight">\[\iint_S f(x,y,z)\, dS\]</p>
+  <p>
+    O elemento de area \(dS\) e o fator de escala que transforma o "pedacinho"
+    no espaco dos parametros \((u,v)\) em area real na superficie. Para uma
+    parametrizacao \(\vec{r}(u,v)\), temos:
+  </p>
+  <p class="formula-highlight">
+    \[dS = \|\vec{r}_u \times \vec{r}_v\|\, du\, dv\]
+  </p>
+  <p>
+    Quando \(f(x,y,z) = 1\), recuperamos a formula da area de superficie:
+    \(\iint_S 1\, dS = A(S)\). Isso mostra que a integral de superficie e uma
+    generalizacao natural do conceito de area.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. CALCULO SOBRE GRAFICO \(z = g(x,y)\)</strong></p>
+  <p>
+    Quando a superficie e o grafico de uma funcao \(z = g(x,y)\) sobre um
+    dominio \(D\), a integral de superficie reduz-se a uma integral dupla sobre
+    \(D\):
+  </p>
+  <p class="formula-highlight">
+    \[\iint_S f(x,y,z)\, dS = \iint_D f\bigl(x,y,g(x,y)\bigr) \sqrt{1 +
+    \left(\frac{\partial g}{\partial x}\right)^2 + \left(\frac{\partial
+    g}{\partial y}\right)^2}\, dA\]
+  </p>
+  <p>
+    O fator \(\sqrt{1 + g_x^2 + g_y^2}\) e a norma do produto vetorial para a
+    parametrizacao natural \(\vec{r}(x,y) = (x, y, g(x,y))\). Note que, quando
+    \(f = 1\), recuperamos exatamente a formula da area de superficie para
+    graficos.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. CALCULO SOBRE PARAMETRIZACAO GERAL</strong></p>
+  <p>
+    Para uma superficie parametrizada \(\vec{r}(u,v)\) com \((u,v)\) em \(D\), a
+    integral de superficie e:
+  </p>
+  <p class="formula-highlight">
+    \[\iint_S f(x,y,z)\, dS = \iint_D f\bigl(\vec{r}(u,v)\bigr) \|\vec{r}_u
+    \times \vec{r}_v\|\, du\, dv\]
+  </p>
+  <p>
+    A funcao \(f\) deve ser expressa em termos dos parametros substituindo \(x =
+    x(u,v)\), \(y = y(u,v)\), \(z = z(u,v)\). O produto vetorial \(\vec{r}_u
+    \times \vec{r}_v\) fornece o vetor normal a superficie, e sua norma e o
+    fator de escala de area.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. ANALOGIA COM INTEGRAL DE LINHA</strong></p>
+  <p>
+    No Capitulo 5, a integral de linha escalar acumulava uma funcao ao longo de
+    uma curva 1D:
+  </p>
+  <p class="formula-highlight">
+    \[\int_C f(x,y,z)\, ds = \int_a^b f\bigl(\vec{r}(t)\bigr) \|\vec{r}'(t)\|\,
+    dt\]
+  </p>
+  <p>
+    A integral de superficie e a extensao para 2D: em vez de um parametro \(t\),
+    temos dois parametros \((u,v)\); em vez do fator de escala de comprimento
+    \(\|\vec{r}'(t)\|\), temos o fator de escala de area \(\|\vec{r}_u \times
+    \vec{r}_v\|\). A estrutura e identica — so a dimensao mudou.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>5. APLICACOES: MASSA E CENTRO DE MASSA DE CASCAS</strong></p>
+  <p>
+    Se \(\delta(x,y,z)\) e a densidade superficial de uma casca fina com forma
+    de superficie \(S\), a massa total e:
+  </p>
+  <p class="formula-highlight">\[M = \iint_S \delta(x,y,z)\, dS\]</p>
+  <p>As coordenadas do centro de massa sao obtidas pelos momentos:</p>
+  <p class="formula-highlight">
+    \[\bar{x} = \frac{1}{M}\iint_S x\,\delta(x,y,z)\, dS, \quad \bar{y} =
+    \frac{1}{M}\iint_S y\,\delta(x,y,z)\, dS, \quad \bar{z} = \frac{1}{M}\iint_S
+    z\,\delta(x,y,z)\, dS\]
+  </p>
+  <p>
+    Estas formulas estendem naturalmente as de integrais duplas e triplas
+    (Capitulos 2-4) para objetos bidimensionais curvos no espaco.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTORICA:</strong> Durante as missoes Apollo avancadas
+  (1971-1972), a analise de deposicao de micrometeoritos sobre escudos termicos
+  e a distribuicao de calor em antenas parabolicas exigiu o desenvolvimento de
+  tecnicas de integracao sobre superficies curvas. O Modulo de Servico Apollo
+  carregava tanques de combustivel com formas complexas (cilindricos, esfericos
+  e toroidais), e o calculo preciso de massa de revestimento era essencial para
+  o planejamento de trajetorias. As formulas aqui consolidadas foram empregadas
+  no planejamento do projeto <span class="censored">Skylab</span> (1973-1979),
+  onde modulos habitacionais com geometria de revolucao demandavam analise de
+  acumulo termico sobre superficies extensas.
+</div>

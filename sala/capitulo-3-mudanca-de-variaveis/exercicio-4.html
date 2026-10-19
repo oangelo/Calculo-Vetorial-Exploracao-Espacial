@@ -1,0 +1,83 @@
+<section class="exercicio" data-topico="jacobiano" data-dificuldade="medio">
+  <p class="exercicio-enunciado">
+    <span class="exercicio-numero">4.</span>
+    A mudança para polares "deforma" o plano: um retângulo $dr \times d\theta$
+    no plano $(r, \theta)$ não corresponde a uma área $dr\,d\theta$ no plano
+    $(x, y)$. O Jacobiano mede essa deformação. Vamos calculá-lo para a
+    transformação $x = r\cos\theta$ e $y = r\sin\theta$.
+  </p>
+
+  <p class="questao">Calcule as derivadas parciais da transformação.</p>
+
+  <p class="dialogo">
+    Derive cada coordenada em relação a $r$ e em relação a $\theta$, lembrando
+    que $\cos\theta$ e $\sin\theta$ são constantes quando derivamos em relação a
+    $r$.
+  </p>
+
+  <p class="subitem">
+    a) $\frac{\partial x}{\partial r} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\frac{\partial x}{\partial \theta} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) $\frac{\partial y}{\partial r} =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    d) $\frac{\partial y}{\partial \theta} =$
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Monte a matriz Jacobiana e calcule seu determinante.</p>
+
+  <p class="dialogo">
+    A matriz é $$\frac{\partial(x,y)}{\partial(r,\theta)} = \begin{pmatrix} a &
+    b \\ c & d \end{pmatrix} = \begin{pmatrix} \frac{\partial x}{\partial r} &
+    \frac{\partial x}{\partial \theta} \\ \frac{\partial y}{\partial r} &
+    \frac{\partial y}{\partial \theta} \end{pmatrix}$$ Calcule o determinante
+    como você aprendeu em álgebra linear.
+  </p>
+
+  <p class="subitem">
+    a) Preencha as entradas: $a =$ <span class="lacuna"></span>, $b =$
+    <span class="lacuna"></span>, $c =$ <span class="lacuna"></span>, $d =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    b) $\det =$
+    <span class="lacuna"></span>
+  </p>
+  <p class="subitem">
+    c) Simplifique com $\cos^2\theta + \sin^2\theta = 1$:
+    <span class="lacuna"></span>
+  </p>
+
+  <p class="questao">Interprete o significado do determinante.</p>
+
+  <p class="dialogo">
+    Na área usamos o valor absoluto do determinante. O resultado que você obteve
+    no item c é o fator de correção: um pequeno retângulo $dr \times d\theta$
+    corresponde a uma região de área que cresce com a distância à origem, pois
+    um mesmo $\Delta\theta$ percorre um arco maior quanto mais longe do centro —
+    é o mesmo crescimento que você viu no exercício 3, nas fatias de anel perto
+    da borda.
+  </p>
+
+  <p class="formula">
+    $$\begin{aligned} & \iint_R f(x,y)\,dx\,dy \\ & = \iint_S f(r\cos\theta,
+    r\sin\theta)\; r\; dr\,d\theta \end{aligned}$$
+  </p>
+
+  <p class="checkpoint">
+    <span class="checkmark"></span>
+    Confira com as malhas do exercício 3: a área dos elementos polares crescia
+    com a distância à origem. Seu determinante captura esse crescimento? Teste
+    mental: um setor mais distante do centro deve ter área maior, mesmo com o
+    mesmo $\Delta\theta$. O fator de correção que você obteve cresce com a
+    distância?
+  </p>
+</section>

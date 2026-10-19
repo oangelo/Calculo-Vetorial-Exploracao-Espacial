@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDF-BETA-3</div>
+  <div class="context">
+    ORIGEM: Cálculos Orbitais - Programa
+    <span class="censored">BETA-06</span>
+  </div>
+  <p>
+    Parábola e logaritmo: curvas testadas. Agora o desafio muda de natureza. Em
+    vez de uma curva simples entre dois valores fixos, temos uma reta oblíqua
+    \(x + y = 2\) que corta um retângulo, criando uma região onde a fronteira
+    inferior de \(y\) depende de \(x\). Este tipo de domínio aparece
+    frequentemente em problemas físicos — por exemplo, quando uma variável deve
+    exceder um valor mínimo que depende da outra.
+  </p>
+  <p>
+    Analisar \(\iint_D (x^2 - y)\, dA\), onde \(D\) é definido por \( x + y \ge
+    2\), \(0 \le x \le 3\), \(0 \le y \le 4\). Montar os limites apropriados e
+    resolver a integral.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce o retângulo \([0,3] \times [0,4]\) e a reta \(x
+    + y = 2\). Identifique a região \(D\) (acima da reta).
+  </p>
+  <p>
+    <strong>(b)</strong> Descreva \(D\) como Tipo I e calcule a integral
+    iterada.
+  </p>
+  <p>
+    <strong>(c)</strong> Descreva \(D\) como Tipo II e verifique o resultado.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Reescreva \(y \ge 2 - x\). Para Tipo I, \(x\) vai de \(0\)
+      a \(3\), mas \(y\) começa em \(\max(0, 2-x)\). Quando \(x < 2\), \(y\)
+      começa em \(2-x\); quando \(x \ge 2\), \(y\) começa em \(0\). Considere
+      subdividir.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A reta \(x + y = 2\) intercepta os eixos em
+        \((2,0)\) e \((0,2)\). A região \(D\) é a parte do retângulo acima dessa
+        reta.
+      </p>
+      <p>
+        <strong>(b)</strong> Como Tipo I, subdividimos: para \(x \in [0,2]\),
+        \(y \in [2-x, 4]\); para \(x \in [2,3]\), \(y \in [0,4]\).
+      </p>
+      <p>Primeira parte:</p>
+      <p>
+        \[ \int_0^2 \int_{2-x}^4 (x^2 - y)\, dy\, dx = \int_0^2 \left[x^2 y -
+        \frac{y^2}{2}\right]_{2-x}^4 dx = \int_0^2 \left(4x^2 - 8 -
+        \left(x^2(2-x) - \frac{(2-x)^2}{2}\right)\right) dx. \]
+      </p>
+      <p>Segunda parte:</p>
+      <p>
+        \[ \int_2^3 \int_0^4 (x^2 - y)\, dy\, dx = \int_2^3 \left[4x^2 -
+        8\right] dx = \left[\frac{4x^3}{3} - 8x\right]_2^3 = (36 - 24) -
+        \left(\frac{32}{3} - 16\right) = 12 - \frac{32}{3} + 16 = \frac{52}{3}.
+        \]
+      </p>
+      <p>
+        <strong>(c)</strong> Como Tipo II, para \(y \in [0,2]\), \(x \in [2-y,
+        3]\); para \(y \in [2,4]\), \(x \in [0,3]\). A soma das integrais
+        resulta no mesmo valor.
+      </p>
+    </div>
+  </details>
+</li>

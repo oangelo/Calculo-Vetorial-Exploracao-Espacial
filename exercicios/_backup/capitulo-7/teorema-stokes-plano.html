@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Teorema de Stokes no Plano</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        position: relative;
+        overflow: hidden;
+      }
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: #fff;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+      .exercise-list {
+        list-style-type: none;
+      }
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">07</span> DE MAIO DE
+          <span class="censored">1967</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CONTROLE [REDACTED]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-XI</span
+          ><br /><br />
+          Em virtude da recente
+          <span class="censored">anomalia orbital</span> detectada durante o
+          Programa Gemini, solicitou‑se à divisão matemática a elaboração de
+          protocolos de verificação rápida de curvas de navegação. O presente
+          dossiê consolida exercícios sobre o
+          <span class="censored">Teorema de Stokes</span> aplicado ao plano,
+          fundamentais para checagem de simulações na
+          <span class="censored">sala de cálculo 3‑B</span>.
+        </div>
+        <div class="warning-box">
+          Este documento contém informações estratégicas. Divulgação não
+          autorizada resultará em <span class="censored">sanções severas</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: VX‑<span class="censored">3141</span>‑C</span>
+          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">3</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE STOKES NO PLANO
+      </div>
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\oint_{\partial R} \vec{F}\cdot d\vec{r} = \iint_{R} \left(
+          \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right)
+          dA\]
+        </p>
+        <p>
+          Em um domínio \(R\) simples no plano, limitado por uma curva fechada
+          orientada positivamente \(\partial R\), o teorema relaciona a
+          circulação de um campo \(\vec{F}(x,y)=(P,Q)\) ao fluxo do rotacional
+          escalar \(\operatorname{rot}\vec{F}=\frac{\partial Q}{\partial
+          x}-\frac{\partial P}{\partial y}\) através da área de \(R\).
+        </p>
+      </div>
+      <div class="mission-context">
+        Cálculos de circulação servem para estimar
+        <span class="censored">vórtices de plasma</span> ao redor das cápsulas
+        na reentrada, onde medições diretas são inviáveis. O método reduz
+        operações de linha (longas) a integrais de área computadas nos
+        computadores <span class="censored">IBM‑7090</span>.
+      </div>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> A consolidação deste resultado foi
+        decisiva para o sucesso dos acoplamentos do Programa Gemini (1965‑1966),
+        permitindo correções de atitude com economia de combustível.
+      </div>
+      <main>
+        <ol class="exercise-list">
+          <!-- Série ALFA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1A</div>
+            <div class="context">
+              ORIGEM: Projeto Mercury – Simulação de Voo [FEV/1961]
+            </div>
+            <p>
+              Considere o triângulo com vértices \((0,0)\), \((2,0)\) e
+              \((2,2)\). Para o campo \[\vec{F}(x,y)=\begin{pmatrix} y \\ -x
+              \end{pmatrix}\] calcule \(\displaystyle \oint_{\partial R}
+              \vec{F}\cdot d\vec{r}\) usando o Teorema de Stokes no plano.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Verifique o sinal de
+                \(\operatorname{rot}\vec{F}\) antes de multiplicar pela área.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\operatorname{rot}\vec{F}=\frac{\partial(-x)}{\partial
+                  x}-\frac{\partial y}{\partial y}=-1-1=-2\).
+                </p>
+                <p>Área do triângulo: \(A=2\).</p>
+                <p>
+                  \[\oint_{\partial R}\vec{F}\cdot
+                  d\vec{r}=\iint_{R}(-2)\,dA=-2\times2=-4.\]
+                </p>
+                <p>Circulação obtida: \(-4\).</p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1B</div>
+            <div class="context">
+              ORIGEM: Projeto Mercury – Teste de Antena Omnidirecional
+              [MAR/1961]
+            </div>
+            <p>
+              Para o disco \(x^2+y^2\le1\) e o campo
+              \[\vec{F}(x,y)=\begin{pmatrix}-y\\x\end{pmatrix}\] determine a
+              circulação ao longo da borda usando Stokes.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Em coordenadas polares a integral de área
+                torna‑se imediata.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\operatorname{rot}\vec{F}=1-(-1)=2\).</p>
+                <p>Área do disco \(A=\pi\).</p>
+                <p>Circulação: \(2\times\pi=2\pi\).</p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑1C</div>
+            <div class="context">
+              ORIGEM: Programa Gemini – Banco de Ensaios de Reentrada [JAN/1965]
+            </div>
+            <p>
+              A região \(R\) é limitada por \(y=\sqrt{x}\) (acima) e pelo eixo
+              \(y=0\) para \(0\le x\le4\). Calcule a circulação de
+              \[\vec{F}(x,y)=\begin{pmatrix}x^2y\\-y\end{pmatrix}\] usando
+              Stokes.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Transforme a integral dupla em \(x\) utilizando
+                o limite superior \(y=\sqrt{x}\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\operatorname{rot}\vec{F}=\frac{\partial(-y)}{\partial
+                  x}-\frac{\partial(x^2y)}{\partial y}=0-x^2=-x^2\).
+                </p>
+                <p>
+                  \[\iint_{R}-x^2\,dA=-\int_{0}^{4}x^2
+                  \int_{0}^{\sqrt{x}}dy\,dx=-\int_{0}^{4}x^2\sqrt{x}\,dx=-\int_{0}^{4}x^{2.5}\,dx=-\left.\frac{x^{3.5}}{3.5}\right|_{0}^{4}=-\frac{4^{3.5}}{3.5}\approx-\frac{128}{3.5}\].
+                </p>
+                <p>Valor numérico \(\approx -36.57\).</p>
+              </div>
+            </details>
+          </li>
+          <!-- Série BETA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2A</div>
+            <div class="context">
+              ORIGEM: Programa Gemini – Ajuste de Órbita Elíptica [MAI/1965]
+            </div>
+            <p>
+              A elipse \(\frac{x^2}{9}+\frac{y^2}{4}=1\) delimita o domínio.
+              Calcule \(\oint_{\partial R}\vec{F}\cdot d\vec{r}\) para
+              \(\vec{F}(x,y)=(2xy, x^2)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Lembre que a integral dupla de \(x^2\) sobre uma
+                elipse escala pela área e pelas potências dos semi‑eixos.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  \(\operatorname{rot}\vec{F}=\frac{\partial x^2}{\partial
+                  x}-\frac{\partial(2xy)}{\partial y}=2x-2x=0\).
+                </p>
+                <p>Circulação: \(0\). Campo é potencial dentro da elipse.</p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2B</div>
+            <div class="context">
+              ORIGEM: Programa Gemini – Manobra de Inclinação [JUL/1965]
+            </div>
+            <p>
+              Região entre \(y=x^2\) e \(y=2x\). Determine a circulação de
+              \(\vec{F}(x,y)=(x^3,3xy^2)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Observe que o rotacional é positivo e depende
+                apenas de \(x\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\operatorname{rot}\vec{F}=3x^2-3y^2\).</p>
+                <p>
+                  Substituindo \(y\) entre curvas e integrando resulta em valor
+                  \(5.4\).
+                </p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑2C</div>
+            <div class="context">
+              ORIGEM: Programa Gemini – Radar de Aproximação [SET/1965]
+            </div>
+            <p>
+              Setor circular de raio 2 entre \(\theta=0\) e
+              \(\theta=\frac{\pi}{3}\). Para \(\vec{F}(r,\theta)=(r^2\cos\theta,
+              r^2\sin\theta)\) (escrito em coordenadas cartesianas), calcule a
+              circulação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Utilize \(dA=r\,dr\,d\theta\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>\(\operatorname{rot}\vec{F}=2r\).</p>
+                <p>
+                  \[\int_{0}^{\pi/3}\int_{0}^{2}2r\cdot
+                  r\,dr\,d\theta=2\int_{0}^{\pi/3}\int_{0}^{2}r^2\,dr\,d\theta=2\left(\frac{8}{3}\right)\left(\frac{\pi}{3}\right)=\frac{16\pi}{9}.\]
+                </p>
+              </div>
+            </details>
+          </li>
+          <!-- Série GAMMA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3A</div>
+            <div class="context">
+              ORIGEM: Programa Apollo – Estudo de Correntes de Combustível
+              [JUN/1968]
+            </div>
+            <p>
+              Domínio anular \(1\le x^2+y^2\le3^2\). Para
+              \(\vec{F}(x,y)=\left(-\dfrac{y}{x^2+y^2},
+              \dfrac{x}{x^2+y^2}\right)\) calcule a circulação externa (contorno
+              no sentido anti‑horário).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: O rotacional é nulo exceto na origem.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Como o rotacional é zero no anel, circulação depende apenas do
+                  contorno interior: resultado \(2\pi\).
+                </p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3B</div>
+            <div class="context">
+              ORIGEM: Programa Apollo – Navegação em Órbita Lunar [AGO/1969]
+            </div>
+            <p>
+              Região limitada pela cardioide \(r=1+\cos\theta\). Campo
+              \(\vec{F}(x,y)=(y^3, -x^3)\). Calcule a circulação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Busque simetria para argumentar sobre o
+                resultado.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Rotacional: \(-3x^2-3y^2=-3r^2\).</p>
+                <p>
+                  Circulação
+                  \(-3\int_{0}^{2\pi}\int_{0}^{1+\cos\theta}r^3\,dr\,d\theta=-3\int_{0}^{2\pi}\left.\dfrac{r^4}{4}\right|_{0}^{1+\cos\theta}d\theta\).
+                </p>
+                <p>
+                  Resultado final \(-\dfrac{3}{4}\int_{0}^{2\pi}(1+\cos\theta)^4
+                  d\theta=-\dfrac{15\pi}{8}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑3C</div>
+            <div class="context">
+              ORIGEM: Programa Apollo – Módulo de Comando [NOV/1969]
+            </div>
+            <p>
+              A região em "L" formada pela união dos quadrados
+              \([0,1]\times[0,2]\) e \([1,2]\times[0,1]\). Para
+              \(\vec{F}(x,y)=(y^2,-x^2)\), encontre a circulação.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Divida o domínio em dois subdomínios sem
+                sobreposição.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Rotacional: \(-2x-2y\).</p>
+                <p>
+                  Soma das integrais sobre cada quadrado resulta em
+                  \(-\dfrac{7}{3}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+          <!-- Série OMEGA -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4A</div>
+            <div class="context">
+              ORIGEM: Skylab – Turbilhonamento de Fluido Refrigerante [DEZ/1973]
+            </div>
+            <p>
+              A estrela regular de 5 pontas inscrita no círculo unitário define
+              o domínio. Para \(\vec{F}(x,y)=\left(\dfrac{y}{1+x^2+y^2},
+              -\dfrac{x}{1+x^2+y^2}\right)\) calcule a circulação.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Rotacional: \(0\) exceto na origem. A circulação equivale a
+                  \(2\pi\).
+                </p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4B</div>
+            <div class="context">
+              ORIGEM: Skylab – Painel Solar Giratório [JAN/1974]
+            </div>
+            <p>
+              Região limitada pela interseção das curvas \(x^{2/3}+y^{2/3}=1\)
+              (superelipse). Campo \(\vec{F}(x,y)=(xy, x^2-y^2)\). Determine a
+              circulação.
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Rotacional: \(2x- y\).</p>
+                <p>Devido à simetria ímpar, resultado final \(0\).</p>
+              </div>
+            </details>
+          </li>
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR‑4C</div>
+            <div class="context">
+              ORIGEM: Skylab – Algoritmo de Estimativa de Área [FEV/1974]
+            </div>
+            <p>
+              Mostre que a escolha \(\vec{F}(x,y)=\left(-\dfrac{y}{2},
+              \dfrac{x}{2}\right)\) leva à fórmula de área
+              \(A=\dfrac{1}{2}\oint_{\partial R}x\,dy-y\,dx\) para qualquer
+              curva simples e fechada \(\partial R\). Em seguida, use‑a para
+              obter a área interna de uma espiral de Arquimedes \(r=a\theta\),
+              \(0\le\theta\le2\pi\).
+            </p>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Para o campo dado, \(\operatorname{rot}\vec{F}=1\). Logo
+                  \(\oint_{\partial R} \vec{F}\cdot d\vec{r}=\iint_{R}1\,dA=A\).
+                </p>
+                <p>
+                  Mas \(\vec{F}\cdot d\vec{r}=-\frac{y}{2}dx+\frac{x}{2}dy =
+                  \frac{1}{2}(x\,dy-y\,dx)\).
+                </p>
+                <p>Portanto \(A=\frac{1}{2}\oint_{\partial R}x\,dy-y\,dx\).</p>
+                <p>
+                  Para a espiral, parametrização
+                  \(x=a\theta\cos\theta,\,y=a\theta\sin\theta\). Cálculo resulta
+                  em \(A=\pi a^2\).
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">9</span> • DOCUMENTO VX‑<span
+          class="censored"
+          >3141</span
+        >‑C
+      </div>
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

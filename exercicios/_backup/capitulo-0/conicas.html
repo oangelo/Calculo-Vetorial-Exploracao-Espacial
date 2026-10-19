@@ -1,0 +1,1178 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- 
+        ATENÇÃO: Este é um modelo de documento histórico da Guerra Fria.
+        O document-header deve conter uma narrativa histórica relacionada à corrida espacial.
+        -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">09</span> DE NOVEMBRO DE
+          <span class="censored">1963</span><br />
+          LOCALIZAÇÃO: <span class="censored">LABORATÓRIO [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">CONIC-X</span
+          ><br /><br />
+          Em resposta à necessidade de compreender trajetórias de reentrada e
+          saída orbital, nossa equipe de especialistas reuniu estudos sobre
+          seções cônicas, essenciais para projetar lançamentos e interceptações.
+          Estes exercícios foram adaptados dos relatórios do Dr.
+          <span class="censored">█████</span>, que investigou aplicações
+          avançadas de cônicas para manobras espaciais durante a
+          <span class="censored">corrida tecnológica</span>.<br /><br />
+          Os exercícios a seguir foram classificados como essenciais para o
+          domínio das "cônicas". A falta de entendimento de seus parâmetros pode
+          comprometer
+          <span class="censored">operações estratégicas de órbita</span>.
+        </div>
+
+        <div class="warning-box">
+          Este documento contém informações científicas altamente confidenciais.
+          Divulgação não autorizada resultará em
+          <span class="censored">medidas disciplinares</span>.
+        </div>
+
+        <div class="metadata">
+          <span>REF: VX-<span class="censored">1730</span>-C</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">2</span></span
+          >
+        </div>
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- 1 a 4: Múltipla escolha, mas com instruções iniciais + SOLUÇÕES em <details> -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-1</div>
+            <div class="context">
+              ORIGEM: Seção Teórica de Conicidade [ARQUIVO [REDACTED],
+              01/OUT/1962]
+            </div>
+            <p>
+              (Atividade orientada) Relembre a ideia de "distância constante" em
+              uma figura geométrica. A circunferência pode ser definida como o
+              conjunto de pontos que estão a uma distância fixa de um ponto
+              central. Marque a opção que melhor descreve essa definição:
+            </p>
+            <p>
+              a) Conjunto de pontos que têm a mesma soma de distâncias a dois
+              pontos fixos.<br />
+              b) Conjunto de pontos equidistantes de um ponto fixo (centro).<br />
+              c) Conjunto de pontos cuja razão de distâncias a um ponto fixo e a
+              uma reta fixa é constante.<br />
+              d) Conjunto de pontos que têm a mesma diferença de distâncias a
+              dois pontos fixos.
+            </p>
+            <p>
+              <em>Instrução:</em> Caso tenha dúvidas, desenhe mentalmente ou em
+              seu caderno uma circunferência e relembre como se mede o raio.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                <strong>Resposta correta:</strong> (b). Uma circunferência é o
+                conjunto de pontos equidistantes de um ponto fixo, chamado
+                centro.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-2</div>
+            <div class="context">
+              ORIGEM: Departamento de Geometria Analítica [TRANSMISSÃO
+              ENCRIPTADA]
+            </div>
+            <p>
+              (Atividade orientada) Uma elipse tem um conceito-chave relacionado
+              à "soma" das distâncias a dois pontos fixos (focos). Complete
+              mentalmente: "A elipse é o conjunto de pontos cujo(a) ___________
+              das distâncias a dois focos é ___________." Agora, selecione a
+              frase correta:
+            </p>
+            <p>
+              a) Conjunto de pontos cuja soma das distâncias a dois pontos fixos
+              (focos) é constante.<br />
+              b) Conjunto de pontos equidistantes de um ponto fixo (centro).<br />
+              c) Conjunto de pontos cuja diferença de distâncias a dois pontos
+              fixos é constante.<br />
+              d) Conjunto de pontos que possuem um único foco.
+            </p>
+            <p>
+              <em>Instrução:</em> Se necessário, relembre exemplos de órbitas
+              planetárias, que são elipses com um foco no centro do planeta.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                <strong>Resposta correta:</strong> (a). A soma das distâncias de
+                cada ponto a dois focos é a mesma, definindo a elipse.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-3</div>
+            <div class="context">
+              ORIGEM: Agência [REDACTED] - Seção Orbitas
+            </div>
+            <p>
+              (Atividade orientada) A hipérbole está relacionada à diferença das
+              distâncias a dois focos. Pense em como essa figura se forma ao
+              afastar as ramas. Marque a opção que define a hipérbole:
+            </p>
+            <p>
+              a) Conjunto de pontos cujo quadrado da distância a um ponto fixo é
+              menor que 1.<br />
+              b) Conjunto de pontos cuja soma das distâncias a dois pontos fixos
+              é constante.<br />
+              c) Conjunto de pontos cuja diferença das distâncias a dois pontos
+              fixos é constante.<br />
+              d) Conjunto de pontos que não pode ter focos.
+            </p>
+            <p>
+              <em>Instrução:</em> Lembre que, na hipérbole, a soma é variável,
+              mas a diferença é que permanece fixa.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                <strong>Resposta correta:</strong> (c). A hipérbole é
+                caracterizada pela diferença constante das distâncias a dois
+                focos.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-4</div>
+            <div class="context">
+              ORIGEM: Arquivos Secretos [DADOS AINDA CRIPTOGRAFADOS]
+            </div>
+            <p>
+              (Atividade orientada) Uma parábola se relaciona a um foco e a uma
+              diretriz (reta). Complete mentalmente: "A parábola é o conjunto de
+              pontos que têm a ___________ ao foco igual à ___________ à
+              diretriz." Agora, escolha:
+            </p>
+            <p>
+              a) Conjunto de pontos cuja distância a um ponto fixo (foco) é
+              igual à distância a uma reta fixa (diretriz).<br />
+              b) Conjunto de pontos cuja soma das distâncias a dois pontos fixos
+              é constante.<br />
+              c) Conjunto de pontos cuja diferença das distâncias a dois pontos
+              fixos é constante.<br />
+              d) Conjunto de pontos cujo raio de curvatura é infinito.
+            </p>
+            <p>
+              <em>Instrução:</em> Rabisque no caderno uma parábola e meça a
+              distância de qualquer ponto para o foco e para a diretriz,
+              comparando-as.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                <strong>Resposta correta:</strong> (a). Para qualquer ponto de
+                uma parábola, a distância ao foco é igual à distância à
+                diretriz.
+              </p>
+            </details>
+          </li>
+
+          <!-- 5: Circunferência + SOLUÇÃO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-5</div>
+            <div class="context">
+              ORIGEM: Análise de Diagrama [PROJETO [REDACTED]]
+            </div>
+            <p>
+              (Atividade orientada) Considere a circunferência descrita pela
+              equação: \[x^2 + y^2 = 25.\] Identifique o centro, o raio, e um
+              diâmetro qualquer. Explique por que todos os pontos que satisfazem
+              a equação estão à mesma distância do centro.
+            </p>
+            <p>
+              A figura abaixo mostra uma representação exata desta
+              circunferência no plano cartesiano:
+              <svg
+                width="300"
+                height="300"
+                style="border: 1px solid #999; margin: 10px 0"
+              >
+                <!-- Usando transform para "simular" eixos de -6..6, com 25 px por unidade -->
+                <g transform="translate(150,150) scale(25,-25)">
+                  <!-- Eixo X -->
+                  <line
+                    x1="-6"
+                    y1="0"
+                    x2="6"
+                    y2="0"
+                    stroke="gray"
+                    stroke-width="0.04"
+                  />
+                  <!-- Eixo Y -->
+                  <line
+                    x1="0"
+                    y1="-6"
+                    x2="0"
+                    y2="6"
+                    stroke="gray"
+                    stroke-width="0.04"
+                  />
+
+                  <!-- Circunferência x^2 + y^2 = 25 => raio=5 -->
+                  <circle
+                    cx="0"
+                    cy="0"
+                    r="5"
+                    fill="none"
+                    stroke="blue"
+                    stroke-width="0.1"
+                  />
+
+                  <!-- Diâmetro de exemplo: A(-5,0) e B(5,0) -->
+                  <line
+                    x1="-5"
+                    y1="0"
+                    x2="5"
+                    y2="0"
+                    stroke="green"
+                    stroke-width="0.1"
+                  />
+                  <!-- Pontos -->
+                  <circle cx="0" cy="0" r="0.15" fill="red" />
+                  <!-- Centro -->
+                  <circle cx="-5" cy="0" r="0.15" fill="black" />
+                  <!-- A -->
+                  <circle cx="5" cy="0" r="0.15" fill="black" />
+                  <!-- B -->
+                  <text
+                    x="0.2"
+                    y="-0.2"
+                    font-size="0.7"
+                    transform="scale(1,-1)"
+                    fill="red"
+                  >
+                    O
+                  </text>
+                  <text
+                    x="-5.4"
+                    y="0.3"
+                    font-size="0.7"
+                    transform="scale(1,-1)"
+                    fill="white"
+                  >
+                    A
+                  </text>
+                  <text
+                    x="5.2"
+                    y="0.3"
+                    font-size="0.7"
+                    transform="scale(1,-1)"
+                    fill="white"
+                  >
+                    B
+                  </text>
+                </g>
+              </svg>
+            </p>
+            <p>
+              <em>Instrução:</em> Observe que a equação \(x^2 + y^2 = 25\)
+              descreve todos os pontos (\(x, y\)) a uma distância 5 da origem.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                <strong>Centro:</strong> (0,0). <strong>Raio:</strong> 5.
+                <strong>Exemplo de diâmetro:</strong> segmento ligando A(-5,0) e
+                B(5,0).<br />
+                Todo ponto (x,y) que satisfaz x^2 + y^2 = 25 está a distância
+                \(\sqrt{x^2 + y^2} = 5\) do centro (0,0), definindo assim uma
+                circunferência de raio 5.
+              </p>
+            </details>
+          </li>
+
+          <!-- 6: Elipse + SOLUÇÃO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-6</div>
+            <div class="context">
+              ORIGEM: Seção de Geometria - Programa [REDACTED]
+            </div>
+            <p>
+              (Atividade orientada) Considere a elipse dada pela equação:
+              \[\frac{x^2}{25} + \frac{y^2}{16} = 1.\] Identifique o eixo maior,
+              o eixo menor, e localize os focos. Explique como a soma das
+              distâncias de qualquer ponto da elipse até os focos permanece
+              constante.
+            </p>
+            <p>
+              Na figura abaixo, plotamos essa elipse e evidenciamos seus eixos.
+              Note que \(a = 5\) e \(b = 4\), com focos localizados em \((\pm 3,
+              0)\).
+            </p>
+            <svg
+              width="300"
+              height="300"
+              style="border: 1px solid #999; margin: 10px 0"
+            >
+              <!-- Escala e deslocamento: x,y em [-6..6], 25 px/un. -->
+              <g transform="translate(150,150) scale(25,-25)">
+                <!-- Eixo X -->
+                <line
+                  x1="-6"
+                  y1="0"
+                  x2="6"
+                  y2="0"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+                <!-- Eixo Y -->
+                <line
+                  x1="0"
+                  y1="-6"
+                  x2="0"
+                  y2="6"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+
+                <!-- Elipse: x^2/25 + y^2/16 = 1 => a=5, b=4 -->
+                <ellipse
+                  cx="0"
+                  cy="0"
+                  rx="5"
+                  ry="4"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.1"
+                />
+
+                <!-- Eixo maior: A(-5,0) a B(5,0) -->
+                <line
+                  x1="-5"
+                  y1="0"
+                  x2="5"
+                  y2="0"
+                  stroke="green"
+                  stroke-width="0.1"
+                />
+                <!-- Eixo menor: C(0,-4) a D(0,4) -->
+                <line
+                  x1="0"
+                  y1="-4"
+                  x2="0"
+                  y2="4"
+                  stroke="purple"
+                  stroke-width="0.1"
+                />
+
+                <!-- Focos: F1(-3,0), F2(3,0) -->
+                <circle cx="-3" cy="0" r="0.15" fill="red" />
+                <circle cx="3" cy="0" r="0.15" fill="red" />
+
+                <!-- Pontos e texto -->
+                <text
+                  x="-5.3"
+                  y="0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
+                  A
+                </text>
+                <text
+                  x="5.2"
+                  y="0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
+                  B
+                </text>
+                <text
+                  x="0.3"
+                  y="-3.9"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
+                  C
+                </text>
+                <text
+                  x="0.3"
+                  y="4.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="white"
+                >
+                  D
+                </text>
+                <text
+                  x="-3.5"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  F₁
+                </text>
+                <text
+                  x="3.2"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  F₂
+                </text>
+              </g>
+            </svg>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                A elipse tem eixo maior no segmento AB (comprimento 2a = 10) e
+                eixo menor no segmento CD (comprimento 2b = 8).<br />
+                Os focos estão em (±3, 0), pois <em>c</em>² = a² – b² = 25 – 16
+                = 9, logo c = 3.<br />
+                A soma das distâncias de qualquer ponto da elipse até F1 e F2 é
+                2a (ou seja, 10).<br />
+                Assim, se P(x,y) estiver sobre a elipse, então PF1 + PF2 = 10.
+              </p>
+            </details>
+          </li>
+
+          <!-- 7: Parábola + SOLUÇÃO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-7</div>
+            <div class="context">ORIGEM: Dossiê Geométrico [CLASSIFICADO]</div>
+            <p>
+              (Atividade orientada) Considere a parábola dada pela equação: \[y
+              = \frac{1}{8}x^2.\] Identifique o vértice e determine a posição do
+              foco e da diretriz a partir da forma canônica.
+            </p>
+            <p>
+              Abaixo, apresentamos a representação dessa parábola para \(-10 \le
+              x \le 10\):
+            </p>
+            <svg
+              width="400"
+              height="400"
+              style="border: 1px solid #999; margin: 10px 0"
+            >
+              <!-- Zoom com foco na região de interesse -->
+              <g transform="translate(200,300) scale(25,-25)">
+                <!-- Eixos -->
+                <line
+                  x1="-6"
+                  y1="0"
+                  x2="6"
+                  y2="0"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+                <line
+                  x1="0"
+                  y1="-3"
+                  x2="0"
+                  y2="8"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+
+                <!-- Grade de referência (opcional) -->
+                <line
+                  x1="-6"
+                  y1="2"
+                  x2="6"
+                  y2="2"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="-6"
+                  y1="-2"
+                  x2="6"
+                  y2="-2"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="4"
+                  y1="-3"
+                  x2="4"
+                  y2="8"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="-4"
+                  y1="-3"
+                  x2="-4"
+                  y2="8"
+                  stroke="lightgray"
+                  stroke-width="0.02"
+                  stroke-dasharray="0.1,0.1"
+                />
+
+                <!-- Parábola y = (1/8)x^2 usando pontos discretos mas precisos -->
+                <path
+                  d="M -6 4.5
+                 L -5 3.125
+                 L -4 2
+                 L -3 1.125
+                 L -2 0.5
+                 L -1 0.125
+                 L 0 0
+                 L 1 0.125
+                 L 2 0.5
+                 L 3 1.125
+                 L 4 2
+                 L 5 3.125
+                 L 6 4.5"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.15"
+                />
+
+                <!-- Diretriz em y = -2 -->
+                <line
+                  x1="-6"
+                  y1="-2"
+                  x2="6"
+                  y2="-2"
+                  stroke="red"
+                  stroke-width="0.1"
+                />
+
+                <!-- Destaque do segmento p = 2 entre foco e vértice -->
+                <line
+                  x1="0"
+                  y1="0"
+                  x2="0"
+                  y2="2"
+                  stroke="purple"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
+                />
+
+                <!-- Vértice (0,0) -->
+                <circle cx="0" cy="0" r="0.15" fill="red" />
+
+                <!-- Foco em (0, 2) -->
+                <circle cx="0" cy="2" r="0.15" fill="green" />
+
+                <!-- Legenda para pontos importantes -->
+                <text
+                  x="0.3"
+                  y="-0.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  V
+                </text>
+                <text
+                  x="0.3"
+                  y="-2"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F
+                </text>
+                <text
+                  x="-5.8"
+                  y="1.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  Diretriz
+                </text>
+
+                <!-- Ponto P na parábola para ilustrar equidistância -->
+                <circle cx="4" cy="2" r="0.15" fill="orange" />
+                <text
+                  x="4.2"
+                  y="-2.3"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="orange"
+                >
+                  P
+                </text>
+
+                <!-- Linhas mostrando equidistância (PF = PD) -->
+                <line
+                  x1="4"
+                  y1="2"
+                  x2="0"
+                  y2="2"
+                  stroke="orange"
+                  stroke-width="0.05"
+                  stroke-dasharray="0.1,0.1"
+                />
+                <line
+                  x1="4"
+                  y1="2"
+                  x2="4"
+                  y2="-2"
+                  stroke="orange"
+                  stroke-width="0.05"
+                  stroke-dasharray="0.1,0.1"
+                />
+              </g>
+            </svg>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                A forma padrão é y = ax², com a = 1/8.<br />
+                Vértice em (0,0).<br />
+                Foco em (0, 1/(4a)) = (0, 1/(4*(1/8))) = (0, 2).<br />
+                Diretriz: y = -2.
+              </p>
+            </details>
+          </li>
+
+          <!-- 8: Hipérbole + SOLUÇÃO -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-8</div>
+            <div class="context">
+              ORIGEM: Seção de Configurações Orbitais [MATERIAL DE PESQUISA]
+            </div>
+            <p>
+              (Atividade orientada) Considere a hipérbole descrita pela equação:
+              \[\frac{x^2}{16} - \frac{y^2}{9} = 1.\] Identifique seus vértices,
+              focos e assíntotas. Explique como a diferença das distâncias a
+              cada foco permanece constante.
+            </p>
+            <p>
+              Na figura seguinte, desenhamos a curva no intervalo \(-6 \le x \le
+              6\):
+            </p>
+            <svg
+              width="400"
+              height="400"
+              style="border: 1px solid #999; margin: 10px 0"
+            >
+              <g transform="translate(200,200) scale(25,-25)">
+                <!-- Eixos -->
+                <line
+                  x1="-7"
+                  y1="0"
+                  x2="7"
+                  y2="0"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+                <line
+                  x1="0"
+                  y1="-7"
+                  x2="0"
+                  y2="7"
+                  stroke="gray"
+                  stroke-width="0.04"
+                />
+
+                <!-- Hipérbole: x^2/16 - y^2/9 = 1 usando parametrização mais precisa -->
+                <!-- Ramo direito (x>0) - hipérbole horizontal -->
+                <path
+                  d="M 4 0
+                 L 4.04 0.3
+                 L 4.16 0.6
+                 L 4.36 0.9
+                 L 4.64 1.2
+                 L 4.96 1.5
+                 L 5.33 1.8
+                 L 5.73 2.1
+                 L 6.16 2.4
+                 L 6.61 2.7
+                 L 7.07 3.0"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.15"
+                />
+
+                <path
+                  d="M 4 0
+                 L 4.04 -0.3
+                 L 4.16 -0.6
+                 L 4.36 -0.9
+                 L 4.64 -1.2
+                 L 4.96 -1.5
+                 L 5.33 -1.8
+                 L 5.73 -2.1
+                 L 6.16 -2.4
+                 L 6.61 -2.7
+                 L 7.07 -3.0"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.15"
+                />
+
+                <!-- Ramo esquerdo (x<0) -->
+                <path
+                  d="M -4 0
+                 L -4.04 0.3
+                 L -4.16 0.6
+                 L -4.36 0.9
+                 L -4.64 1.2
+                 L -4.96 1.5
+                 L -5.33 1.8
+                 L -5.73 2.1
+                 L -6.16 2.4
+                 L -6.61 2.7
+                 L -7.07 3.0"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.15"
+                />
+
+                <path
+                  d="M -4 0
+                 L -4.04 -0.3
+                 L -4.16 -0.6
+                 L -4.36 -0.9
+                 L -4.64 -1.2
+                 L -4.96 -1.5
+                 L -5.33 -1.8
+                 L -5.73 -2.1
+                 L -6.16 -2.4
+                 L -6.61 -2.7
+                 L -7.07 -3.0"
+                  fill="none"
+                  stroke="blue"
+                  stroke-width="0.15"
+                />
+
+                <!-- Vértices em (±4, 0) -->
+                <circle cx="4" cy="0" r="0.15" fill="red" />
+                <circle cx="-4" cy="0" r="0.15" fill="red" />
+                <text
+                  x="4.1"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  V₁
+                </text>
+                <text
+                  x="-4.9"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="red"
+                >
+                  V₂
+                </text>
+
+                <!-- Focos: c^2 = a^2 + b^2 => c^2=16+9=25 => c=5 => focos em (±5,0) -->
+                <circle cx="5" cy="0" r="0.15" fill="green" />
+                <circle cx="-5" cy="0" r="0.15" fill="green" />
+                <text
+                  x="5.1"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F₁
+                </text>
+                <text
+                  x="-5.8"
+                  y="0.5"
+                  font-size="0.7"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  F₂
+                </text>
+
+                <!-- Assíntotas: y= ±(b/a)x = ±(3/4)x -->
+                <line
+                  x1="-7"
+                  y1="-5.25"
+                  x2="7"
+                  y2="5.25"
+                  stroke="green"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
+                />
+                <line
+                  x1="-7"
+                  y1="5.25"
+                  x2="7"
+                  y2="-5.25"
+                  stroke="green"
+                  stroke-width="0.08"
+                  stroke-dasharray="0.15,0.15"
+                />
+
+                <!-- Texto para as assíntotas -->
+                <text
+                  x="3"
+                  y="-2.8"
+                  font-size="0.6"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  y = (3/4)x
+                </text>
+                <text
+                  x="3"
+                  y="3.2"
+                  font-size="0.6"
+                  transform="scale(1,-1)"
+                  fill="green"
+                >
+                  y = -(3/4)x
+                </text>
+              </g>
+            </svg>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Para \(\frac{x^2}{16} - \frac{y^2}{9} = 1\), temos a = 4, b =
+                3.<br />
+                Portanto, focos em (±5,0), vértices em (±4,0) e assíntotas
+                definidas por y = ±(b/a)x = ±(3/4)x.<br />
+                Para qualquer ponto P na hipérbole, a diferença |PF1 – PF2| é
+                constante (= 2a).
+              </p>
+            </details>
+          </li>
+
+          <!-- Exercícios sem figuras ou com abordagem textual + possiveis SOLUÇÕES breves -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-9</div>
+            <div class="context">
+              ORIGEM: Manual de Cálculos Orbitais [INTERNO - PROGRAMA
+              [REDACTED]]
+            </div>
+            <p>
+              (Atividade prática) Seja uma parábola cujo foco está em \((0, 3)\)
+              e a diretriz é a reta \(y = -3\). Instrução: represente no plano
+              cartesiano, marque o foco e a diretriz, e deduza a equação a
+              partir da igualdade de distâncias.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                O vértice fica no ponto médio entre foco e diretriz, ou seja, no
+                y=0. Assim, a equação padrão (aberta para cima) é \(y =
+                \frac{1}{12}x^2\). Verificação: distância ponto-foco = distância
+                ponto-diretriz leva ao resultado <br />
+                <em>Forma completa:</em> Se P(x,y) então PF = \(\sqrt{x^2 + (y -
+                3)^2}\) e PD = |y + 3|.<br />
+                Igualando: \(\sqrt{x^2 + (y - 3)^2} = y + 3\) (pois y+3≥0 acima
+                de y=-3).<br />
+                Resolva ao quadrado e simplifique para chegar em y = x²/12.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-10</div>
+            <div class="context">
+              ORIGEM: Departamento de Engenharia Aeronáutica [CÓDIGO DE
+              PRIORIDADE: ALTO]
+            </div>
+            <p>
+              (Atividade prática) Determine a equação de uma parábola cujo foco
+              é \((2,0)\) e cuja diretriz é a reta \(x = -2\). Use o mesmo
+              raciocínio e explique cada passo para reforçar a compreensão.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Vértice no ponto médio entre x=2 e x=-2, isto é x=0. Logo, a
+                distância do vértice ao foco é 2 unidades. Parábola abre para a
+                direita. Fórmula padrão: \((y - k)^2 = 4p(x - h)\).<br />
+                Aqui, (h,k)=(0,0) e p=2. Então \(y^2 = 8x\).<br />
+                Verificando: Se P(x,y), PF = \(\sqrt{(x - 2)^2 + y^2}\) e
+                distância a diretriz = |x + 2|. Igualando e simplificando,
+                obtemos y²=8x.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-11</div>
+            <div class="context">ORIGEM: Setor de Trajetória Balística</div>
+            <p>
+              (Atividade prática) Uma parábola possui foco \((4,4)\) e diretriz
+              \(y=-2\). Encontre sua equação na forma \(y = a x^2 + b x + c\).
+              Oriente-se pelo método clássico de distância ponto-foco e
+              ponto-diretriz.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                A distância vertical do foco à diretriz é 6 unidades, então o
+                vértice está a 3 unidades acima da diretriz (ou abaixo do foco).
+                Assim, vértice em (4,1).<br />
+                Transladando p=3 para cima a partir de y=-2, a forma se obtém
+                resolvendo distâncias: PF=PD. Ou, use a forma canônica centrada
+                no vértice e depois converta para a forma geral. O resultado
+                final será algo como:<br />
+                \(y - 1 = \frac{1}{12}(x - 4)^2\). Expandindo: \(y =
+                \frac{1}{12}(x^2 - 8x + 16) + 1\) => \(y = \frac{1}{12}x^2 -
+                \frac{2}{3}x + \frac{4}{3} + 1\) => \(y = \frac{1}{12}x^2 -
+                \frac{2}{3}x + \frac{7}{3}\).
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-12</div>
+            <div class="context">
+              ORIGEM: Arquivos Ultra Secretos [ANÁLISE DE INTERCEPTAÇÃO]
+            </div>
+            <p>
+              (Atividade prática) Uma parábola possui foco \((-3,2)\) e diretriz
+              \(x = 1\). Determine a equação e identifique o vértice
+              graficamente. Justifique cada etapa.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                O vértice é o ponto médio entre foco e diretriz, no eixo x. Foco
+                em x=-3, diretriz em x=1 => vértice em x=(-3+1)/2=-1. y=2 (mesmo
+                y do foco).<br />
+                Assim, (h,k)=(-1,2). A distância p=2 até a diretriz. Parábola
+                abre para a esquerda (foco < diretriz). Equação canônica: \((y -
+                2)^2 = -4p (x + 1)\).<br />
+                Como p=2, \((y - 2)^2 = -8(x + 1)\). Expanda se desejar a forma
+                polinomial completa.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-13</div>
+            <div class="context">
+              ORIGEM: Programa Vostok [ARQUIVO CRIPTOGRAFADO]
+            </div>
+            <p>
+              (Atividade prática) Uma elipse tem focos em \((-3,0)\) e \((3,0)\)
+              e a soma das distâncias a esses focos para qualquer ponto da
+              elipse é 10. Determine a equação canônica \(\frac{x^2}{a^2} +
+              \frac{y^2}{b^2} = 1\). Use a relação \(2a=10\).
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                De 2a=10 => a=5. Focos a ±3 => c=3. Então b²=a²-c²=25-9=16 =>
+                b=4. A equação: \(x^2/25 + y^2/16=1\).
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-14</div>
+            <div class="context">
+              ORIGEM: Arquivos [REDACTED] - PROJETO ORION
+            </div>
+            <p>
+              (Atividade prática) Uma elipse possui focos em \((\pm 2, 0)\) e
+              soma das distâncias igual a 12. Calcule a equação na forma
+              \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\) e determine \(a\) e
+              \(b\). Analise como o valor de \(c\) (distância do centro até cada
+              foco) influencia.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Distância foco ao centro: c=2. Soma de distâncias=12 => 2a=12 =>
+                a=6. b²=a²-c²=36-4=32 => b=\(\sqrt{32}\)=4\(\sqrt{2}\).<br />
+                Equação: \(x^2/36 + y^2/32=1\). Se e=c/a=2/6=1/3, descreve a
+                excentricidade.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-15</div>
+            <div class="context">ORIGEM: Setor de Mecânica Celeste</div>
+            <p>
+              (Atividade prática) Uma hipérbole apresenta focos em \((0, -5)\) e
+              \((0, 5)\). A diferença das distâncias a esses focos é igual a 6.
+              Obtenha a equação da hipérbole e discuta brevemente por que o
+              centro da hipérbole está em \((0,0)\).
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Focos em (0,±5) => c=5, centro em (0,0). Diferença = 2a=6 =>
+                a=3. Então b²=c²-a²=25-9=16 => b=4. <br />
+                Hipérbole vertical: \(\frac{y^2}{a^2} - \frac{x^2}{b^2}=1\) =>
+                \(\frac{y^2}{9}-\frac{x^2}{16}=1\).<br />
+                O centro é o ponto médio entre os focos, logo (0,0).
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-16</div>
+            <div class="context">
+              ORIGEM: Análise de Trajetórias Externas [NÍVEL: SIGILOSO]
+            </div>
+            <p>
+              (Atividade prática) Dada uma hipérbole com focos em \((\pm 4, 0)\)
+              e diferença de distâncias igual a 2, determine a equação e
+              identifique seus vértices. Esboce o gráfico para conferir.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Focos (±4,0) => c=4. Diferença=2 => 2a=2 => a=1.
+                b²=c²-a²=16-1=15 => b=\(\sqrt{15}\).<br />
+                Equação: \(\frac{x^2}{1^2} - \frac{y^2}{15}=1\) => x^2 -
+                y^2/15=1. Vértices em (±1,0).
+              </p>
+            </details>
+          </li>
+
+          <!-- 17 a 20: Problemas adicionais e avançados + Solutions -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-17</div>
+            <div class="context">
+              ORIGEM: Equipe de Simulações Orbitais [RELAÇÃO COM PROJETO
+              [REDACTED]]
+            </div>
+            <p>
+              (Problema avançado) Mostre que a seção cônica resultante do corte
+              de um cone reto por um plano paralelo a uma geratriz é uma
+              parábola. <strong>Dica:</strong> use a definição de foco e
+              diretriz a partir da geometria do cone.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Basta provar que todo ponto do corte equidista de uma reta
+                (diretriz formada pela interseção projetada) e de um ponto (foco
+                gerado pela interseção do prolongamento do cone). A demonstração
+                envolve semelhança de triângulos e a inclinação do plano igual à
+                geratriz do cone.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-18</div>
+            <div class="context">
+              ORIGEM: Centro de Pesquisa em Astrodinâmica
+            </div>
+            <p>
+              (Problema avançado) Explique como elipses e hipérboles podem
+              modelar órbitas planetárias e trajetórias de fuga,
+              respectivamente, relacionando ao valor de \(e\) (excentricidade).
+              Ilustre com exemplos básicos (\(0 < e < 1\) para elipse; \(e > 1\)
+              para hipérbole).
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Quando 0 < e < 1, obtemos uma elipse, correspondendo a órbitas
+                fechadas (planetas, satélites). Se e>1, temos hipérbole,
+                modelando trajetórias de escape (não fechadas). e=1 seria caso
+                parabólico, limite entre órbita fechada e fuga.
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-19</div>
+            <div class="context">
+              ORIGEM: Laboratório [REDACTED] [INFORMAÇÕES PARCIAIS]
+            </div>
+            <p>
+              (Problema avançado) Dado um conjunto de dados reais de satélites
+              em órbita, descreva como identificar se a trajetória é elíptica,
+              parabólica ou hiperbólica por meio do cálculo da excentricidade.
+              <strong>Não</strong> é necessário computar todos os dados, apenas
+              descreva o método passo a passo.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                Calcule a excentricidade e = c/a (ou use fórmula de energias
+                orbitais). Se e<1 => elipse, e=1 => parábola, e>1 => hipérbole.
+                Procedimento envolve medir distâncias focais ou usar parâmetros
+                orbitais (semi-eixo maior, etc.).
+              </p>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO CONIC-20</div>
+            <div class="context">
+              ORIGEM: Seção de Projetos Experimentais [CLASSIFICADO]
+            </div>
+            <p>
+              (Problema avançado) Investigue a relação entre o foco de uma
+              elipse e o sistema de coordenadas polares (focal) para descrever a
+              forma da órbita de um objeto lançado do
+              <span class="censored">Centro Espacial [REDACTED]</span>. Explique
+              como essa relação facilita o cálculo de apogeu e perigeu em
+              missões orbitais.
+            </p>
+            <details>
+              <summary>Solução</summary>
+              <p>
+                No sistema de coordenadas polares focal, a distância r é
+                descrita por r(\theta) = \(\frac{a(1 - e^2)}{1 + e cos\theta}\)
+                para elipses. O foco num dos focos facilita encontrar
+                rapidamente distâncias mínimas (perigeu) e máximas (apogeu).
+                Esse enquadramento simplifica equações de manobra orbital.
+              </p>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">22</span> • DOCUMENTO VX-<span
+          class="censored"
+          >1730</span
+        >-C
+      </div>
+    </div>
+
+    <script>
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['\\(', '\\)']],
+          displayMath: [['\\[', '\\]']],
+          processEscapes: true,
+        },
+        'HTML-CSS': {
+          color: '#d4af37',
+        },
+      });
+    </script>
+  </body>
+</html>

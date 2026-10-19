@@ -1,0 +1,112 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">20</span> DE JULHO DE
+    <span class="censored">1969</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">HOUSTON MISSION CONTROL — SALA DE NAVEGAÇÃO</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">GREEN-EAGLE</span
+    ><br /><br />
+    No momento em que o <span class="censored">Eagle</span> toca o solo do
+    <span class="censored">Sea of Tranquility</span>, nossa equipe de navegação
+    consolida os resultados de meses de pesquisa sobre a circulação de campos
+    vetoriais sobre regiões retangulares. Os dados de telemetria que orientaram
+    a trajetória do Módulo Lunar dependem de integrais de linha ao redor de
+    curvas fechadas — conceito explorado no Capítulo 5 — e agora descobrimos uma
+    conexão profunda entre essas integrais e a rotação acumulada no interior da
+    região, que conhecemos desde o Capítulo 1 como rotacional do campo. Este
+    dossiê documenta o <em>Teorema de Green</em> no caso mais simples:
+    retângulos.
+  </div>
+  <div class="warning-box">
+    Este documento contém material considerado vital para a segurança nacional.
+    Qualquer divulgação não autorizada poderá resultar em
+    <span class="censored">consequências severas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: GE-<span class="censored">1969</span>-R</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">4</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: TEOREMA DE GREEN EM RETÂNGULOS
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Este tópico pressupõe familiaridade com integrais de linha de campos
+    vetoriais ao longo de curvas fechadas — o conceito de
+    <em>circulação</em> estudado no Capítulo 5 — e com o <em>rotacional</em> de
+    um campo bidimensional \(\frac{\partial Q}{\partial x} - \frac{\partial
+    P}{\partial y}\), introduzido no Capítulo 1. Você também precisa dominar
+    integrais duplas e o Teorema de Fubini (Capítulo 2), além de saber
+    parametrizar os lados de um retângulo e calcular integrais de linha por
+    substituição. O Capítulo 6 (campos conservativos e independência de caminho)
+    fornece o contexto para compreender por que rotacional zero implica
+    circulação zero.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>1. CIRCULAÇÃO: O QUE MEDIMOS AO DAR A VOLTA</strong></p>
+  <p>
+    No Capítulo 5, você aprendeu que a integral de linha de um campo vetorial
+    \(\vec{F} = (P, Q)\) ao longo de uma curva \(\gamma\) parametrizada por
+    \(\vec{r}(t) = (x(t), y(t))\) é dada por \(\int_\gamma \vec{F} \cdot
+    d\vec{r} = \int_a^b \bigl[P\,x'(t) + Q\,y'(t)\bigr]\,dt\). Quando a curva é
+    <em>fechada</em> — ou seja, volta ao ponto de partida —, essa integral
+    recebe o nome especial de <em>circulação</em> e é denotada por
+    \(\oint_{\partial R} P\,dx + Q\,dy\).
+  </p>
+  <p>
+    Fisicamente, a circulação mede o <strong>trabalho líquido</strong>
+    realizado pelo campo ao longo de um ciclo completo. Se o campo representa
+    uma força, a circulação diz quanto essa força "empurra no mesmo sentido" ao
+    percorrer a fronteira.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. ROTACIONAL: A ROTAÇÃO LOCAL DO CAMPO</strong></p>
+  <p>
+    No Capítulo 1, você conheceu o rotacional de um campo bidimensional: a
+    quantidade \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial
+    y}\). Em cada ponto \((x,y)\), essa expressão mede o quanto o campo "gira"
+    localmente — a tendência de um elemento de fluido colocado naquele ponto a
+    rodar. O rotacional é uma função escalar em duas dimensões: a cada ponto
+    corresponde um número.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>3. TEOREMA DE GREEN: A CONEXÃO ENTRE BORDA E INTERIOR</strong></p>
+  <p class="formula-highlight">
+    \[\oint_{\partial R} \bigl(P\,dx + Q\,dy\bigr) = \iint_R \left(
+    \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y} \right) dA\]
+  </p>
+  <p>
+    Para um campo \(\vec{F}(x,y) = (P(x,y), Q(x,y))\) de classe \(C^1\) definido
+    em um retângulo \(R = [a,b] \times [c,d]\) com fronteira \(\partial R\)
+    orientada no sentido anti-horário, o
+    <em>Teorema de Green</em> afirma que a circulação ao redor da fronteira é
+    igual à integral dupla do rotacional sobre a área de \(R\). Em palavras: a
+    rotação acumulada no interior da região se manifesta como circulação na
+    borda.
+  </p>
+  <p>
+    A demonstração para retângulos usa duas ferramentas que você já domina: o
+    Teorema de Fubini (Capítulo 2), para converter a integral dupla em iterada,
+    e o Teorema Fundamental do Cálculo, para avaliar a integral interna.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Em julho de 1969, enquanto Armstrong e Aldrin
+  caminhavam sobre a Lua, os computadores do Mission Control em Houston
+  executavam algoritmos de navegação que dependiam de cálculos de circulação em
+  grades retangulares de dados de telemetria. O método permitia verificar a
+  consistência das correções de trajetória do Módulo Lunar
+  <span class="censored">Eagle</span> durante a fase crítica de descida.
+</div>

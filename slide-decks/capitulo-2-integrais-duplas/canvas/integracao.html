@@ -1,0 +1,452 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ordens de Integração - Visualização - Visualização Interativa</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0a0a0f;
+        color: #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        color: #4fc3f7;
+        text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+        margin-bottom: 10px;
+      }
+      canvas {
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #111;
+      }
+      .controls {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      button {
+        background: #1a237e;
+        color: #4fc3f7;
+        border: 1px solid #4fc3f7;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #283593;
+      }
+      button.active {
+        background: #4fc3f7;
+        color: #0a0a0f;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      input[type='range'] {
+        width: 150px;
+      }
+      .value-display {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #ffb300;
+      }
+      .formula {
+        margin-top: 10px;
+        font-family: monospace;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ordens de Integração - Visualização</h1>
+    <canvas id="integrationCanvas" width="700" height="400"></canvas>
+
+    <div class="controls">
+      <button id="btnVertical" class="active">Ordem dy dx (Vertical)</button>
+      <button id="btnHorizontal">Ordem dx dy (Horizontal)</button>
+      <button id="btnPause">Pausar</button>
+      <button id="btnReset">Reiniciar</button>
+      <div class="slider-container">
+        <label>Velocidade:</label>
+        <input type="range" id="speedSlider" min="1" max="10" value="3" />
+      </div>
+    </div>
+
+    <script>
+      function initIntegrationVisualization() {
+        // Verificar se o canvas existe
+        const canvas = document.getElementById('integrationCanvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+
+        // Estado da visualização
+        let isVerticalOrder = true;
+        let isPaused = false;
+        let progress = 0;
+        let animationSpeed = 3;
+        let animationFrameId;
+
+        // Referências para os controles
+        const btnVertical = document.getElementById('btnVertical');
+        const btnHorizontal = document.getElementById('btnHorizontal');
+        const btnPause = document.getElementById('btnPause');
+        const btnReset = document.getElementById('btnReset');
+        const speedSlider = document.getElementById('speedSlider');
+
+        // Configurar handlers de eventos para os botões (se existirem)
+        if (btnVertical) {
+          btnVertical.addEventListener('click', function () {
+            isVerticalOrder = true;
+            btnVertical.classList.add('active');
+            btnHorizontal.classList.remove('active');
+          });
+        }
+
+        if (btnHorizontal) {
+          btnHorizontal.addEventListener('click', function () {
+            isVerticalOrder = false;
+            btnVertical.classList.remove('active');
+            btnHorizontal.classList.add('active');
+          });
+        }
+
+        if (btnPause) {
+          btnPause.addEventListener('click', function () {
+            isPaused = !isPaused;
+            btnPause.textContent = isPaused ? 'Continuar' : 'Pausar';
+          });
+        }
+
+        if (btnReset) {
+          btnReset.addEventListener('click', function () {
+            progress = 0;
+            isPaused = false;
+            if (btnPause) btnPause.textContent = 'Pausar';
+          });
+        }
+
+        if (speedSlider) {
+          speedSlider.addEventListener('input', function () {
+            animationSpeed = parseInt(this.value);
+          });
+        }
+
+        // Configuração do espaço de coordenadas
+        const margin = 50;
+        const width = canvas.width - 2 * margin;
+        const height = canvas.height - 2 * margin;
+        const xScale = width / 1.2;
+        const yScale = height / 2.4;
+
+        // Transformação de coordenadas
+        function transformX(x) {
+          return margin + x * xScale;
+        }
+
+        function transformY(y) {
+          return canvas.height - margin - y * yScale;
+        }
+
+        // Desenhar background e triângulo
+        function drawBackground() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // Desenhar eixos
+          ctx.beginPath();
+          ctx.strokeStyle = '#808080';
+          ctx.lineWidth = 1;
+
+          // Eixo X
+          ctx.moveTo(margin, canvas.height - margin);
+          ctx.lineTo(margin + width, canvas.height - margin);
+
+          // Eixo Y
+          ctx.moveTo(margin, canvas.height - margin);
+          ctx.lineTo(margin, canvas.height - margin - height);
+
+          ctx.stroke();
+
+          // Rótulos dos eixos
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '14px Arial';
+          ctx.textAlign = 'center';
+
+          // Rótulos do eixo X
+          ctx.fillText('0', transformX(0), transformY(-0.15));
+          ctx.fillText('1', transformX(1), transformY(-0.15));
+          ctx.fillText('x', transformX(1.1), transformY(-0.15));
+
+          // Rótulos do eixo Y
+          ctx.textAlign = 'right';
+          ctx.fillText('1', transformX(-0.05), transformY(1));
+          ctx.fillText('2', transformX(-0.05), transformY(2));
+          ctx.fillText('y', transformX(-0.05), transformY(2.2));
+
+          // Desenhar o contorno do triângulo
+          ctx.beginPath();
+          ctx.moveTo(transformX(0), transformY(0)); // (0,0)
+          ctx.lineTo(transformX(1), transformY(0)); // (1,0)
+          ctx.lineTo(transformX(0), transformY(2)); // (0,2)
+          ctx.closePath();
+          ctx.strokeStyle = '#FFFFFF';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Rotular os vértices
+          ctx.fillStyle = '#FFFFFF';
+          ctx.font = '12px Arial';
+          ctx.textAlign = 'center';
+          ctx.fillText('(0,0)', transformX(0) - 15, transformY(0) + 15);
+          ctx.fillText('(1,0)', transformX(1) + 15, transformY(0) + 15);
+          ctx.fillText('(0,2)', transformX(0) - 15, transformY(2) - 10);
+
+          // Equações das retas
+          ctx.textAlign = 'left';
+          ctx.fillStyle = '#CCCCCC';
+          ctx.fillText('y = 0', transformX(0.5), transformY(0) + 20);
+          ctx.fillText('x = 0', transformX(0) - 35, transformY(1));
+
+          // Equação da reta diagonal y = 2(1-x)
+          ctx.textAlign = 'center';
+          const diagonalMidX = transformX(0.5);
+          const diagonalMidY = transformY(1) - 25;
+          ctx.fillText('y = 2(1-x)', diagonalMidX, diagonalMidY);
+        }
+
+        // Desenhar integração vertical (dy dx)
+        function drawVerticalIntegration() {
+          const currentX = progress;
+
+          if (currentX <= 1) {
+            // Calcular yMax para o valor atual de x
+            const yMax = 2 * (1 - currentX);
+
+            // Retângulo semi-transparente para a área restante
+            ctx.fillStyle = 'rgba(255, 90, 95, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(transformX(currentX), transformY(0));
+            ctx.lineTo(transformX(1), transformY(0));
+            ctx.lineTo(transformX(0), transformY(2));
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.closePath();
+            ctx.fill();
+
+            // Desenhar fatia atual
+            ctx.beginPath();
+            ctx.moveTo(transformX(currentX), transformY(0));
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'rgba(255, 90, 95, 0.8)';
+            ctx.stroke();
+
+            // Desenhar indicador de posição x
+            ctx.fillStyle = '#FF5A5F';
+            ctx.beginPath();
+            ctx.arc(transformX(currentX), transformY(0), 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Valor de x atual
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(
+              `x = ${currentX.toFixed(2)}`,
+              transformX(currentX),
+              transformY(-0.25)
+            );
+
+            // Indicar y_max
+            ctx.fillStyle = '#FF5A5F';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'left';
+            ctx.fillText(
+              `y_max = 2(1-x) = ${yMax.toFixed(2)}`,
+              transformX(1.02),
+              transformY(yMax)
+            );
+
+            // Desenhar seta
+            const arrowX = transformX(1.02);
+            const arrowY = transformY(yMax);
+            ctx.beginPath();
+            ctx.moveTo(arrowX - 5, arrowY);
+            ctx.lineTo(arrowX - 15, arrowY);
+            ctx.lineTo(transformX(currentX), transformY(yMax));
+            ctx.strokeStyle = '#FF5A5F';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Mostrar a integral
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`∫₀¹ ∫₀²⁽¹⁻ˣ⁾ f(x,y) dy dx`, canvas.width / 2, 30);
+
+            // Indicar progresso da integração
+            ctx.fillStyle = '#FF5A5F';
+            ctx.fillText(
+              `Integrando de y=0 até y=${yMax.toFixed(2)} para x=${currentX.toFixed(2)}`,
+              canvas.width / 2,
+              60
+            );
+          }
+        }
+
+        // Desenhar integração horizontal (dx dy)
+        function drawHorizontalIntegration() {
+          const currentY = progress * 2; // Escalar para cobrir de 0 a 2
+
+          if (currentY <= 2) {
+            // Calcular xMax para o valor atual de y
+            const xMax = 1 - currentY / 2;
+
+            // Retângulo semi-transparente para a área restante
+            ctx.fillStyle = 'rgba(67, 160, 71, 0.1)';
+            ctx.beginPath();
+            ctx.moveTo(transformX(0), transformY(currentY));
+            ctx.lineTo(transformX(0), transformY(2));
+            ctx.lineTo(transformX(0), transformY(0));
+            ctx.lineTo(transformX(1), transformY(0));
+            if (xMax > 0) {
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+            }
+            ctx.closePath();
+            ctx.fill();
+
+            // Desenhar fatia atual
+            if (xMax > 0) {
+              ctx.beginPath();
+              ctx.moveTo(transformX(0), transformY(currentY));
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+              ctx.lineWidth = 3;
+              ctx.strokeStyle = 'rgba(67, 160, 71, 0.8)';
+              ctx.stroke();
+
+              // Indicar x_max
+              ctx.fillStyle = '#43A047';
+              ctx.font = '14px Arial';
+              ctx.textAlign = 'left';
+              ctx.fillText(
+                `x_max = 1-y/2 = ${xMax.toFixed(2)}`,
+                transformX(xMax),
+                transformY(currentY) - 10
+              );
+
+              // Desenhar seta
+              const arrowX = transformX(xMax);
+              const arrowY = transformY(currentY) - 15;
+              ctx.beginPath();
+              ctx.moveTo(arrowX, arrowY);
+              ctx.lineTo(arrowX, arrowY + 10);
+              ctx.lineTo(transformX(xMax), transformY(currentY));
+              ctx.strokeStyle = '#43A047';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+
+            // Desenhar indicador de posição y
+            ctx.fillStyle = '#43A047';
+            ctx.beginPath();
+            ctx.arc(transformX(0), transformY(currentY), 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Valor de y atual
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'right';
+            ctx.fillText(
+              `y = ${currentY.toFixed(2)}`,
+              transformX(-0.1),
+              transformY(currentY) + 5
+            );
+
+            // Mostrar a integral
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(`∫₀² ∫₀¹⁻ʸ/² f(x,y) dx dy`, canvas.width / 2, 30);
+
+            // Indicar progresso da integração
+            ctx.fillStyle = '#43A047';
+            if (xMax >= 0) {
+              ctx.fillText(
+                `Integrando de x=0 até x=${xMax.toFixed(2)} para y=${currentY.toFixed(2)}`,
+                canvas.width / 2,
+                60
+              );
+            } else {
+              ctx.fillText(
+                `y=${currentY.toFixed(2)} está fora da região`,
+                canvas.width / 2,
+                60
+              );
+            }
+          }
+        }
+
+        // Função de animação principal
+        function animate() {
+          drawBackground();
+
+          if (isVerticalOrder) {
+            drawVerticalIntegration();
+          } else {
+            drawHorizontalIntegration();
+          }
+
+          // Avançar progresso se não pausado
+          if (!isPaused) {
+            progress += 0.0005 * animationSpeed;
+
+            // Reiniciar quando completar
+            if (progress > 1.1) {
+              progress = 0;
+            }
+          }
+
+          animationFrameId = requestAnimationFrame(animate);
+        }
+
+        // Iniciar a animação
+        animate();
+
+        // Detectar quando o slide é visível ou não
+        Reveal.addEventListener('slidechanged', function (event) {
+          // Verificar se o canvas está no slide atual
+          const currentSlide = event.currentSlide;
+          const canvasInCurrentSlide = currentSlide.contains(canvas);
+
+          if (canvasInCurrentSlide) {
+            // Reiniciar a animação se o slide se tornou visível
+            if (!animationFrameId) {
+              animate();
+            }
+          } else {
+            // Parar a animação se o slide não está mais visível
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+              animationFrameId = null;
+            }
+          }
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        initIntegrationVisualization();
+      });
+    </script>
+  </body>
+</html>

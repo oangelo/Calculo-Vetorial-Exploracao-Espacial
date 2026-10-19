@@ -1,0 +1,53 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">ORIGEM: Apollo 8 — DEZ/1968</div>
+  <p>
+    O campo do exercício anterior passou no teste: suas derivadas cruzadas são
+    iguais e o domínio é simplesmente conexo. Se o campo é conservativo, deve
+    existir uma função potencial \(\Phi\). Vamos encontrá-la pelo método de
+    integração componente a componente — nosso primeiro contato com esse
+    procedimento.
+  </p>
+  <p>Retomando: \(\vec{F}(x,y) = (2xy + 3,\; x^2 + y^2)\).</p>
+  <p>
+    <strong>(a)</strong> Integre a primeira componente \(M = 2xy + 3\) em
+    relação a \(x\). A "constante de integração" será uma função \(C(y)\) que
+    depende de \(y\).
+  </p>
+  <p>
+    <strong>(b)</strong> Derive o resultado obtido em (a) com respeito a \(y\) e
+    iguale à segunda componente \(N = x^2 + y^2\). Determine \(C(y)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Escreva a função potencial completa \(\Phi(x,y)\).
+    Verifique que \(\nabla\Phi = \vec{F}\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao integrar \(M\) em \(x\), lembre-se de que tudo o que
+      não envolve \(x\) é tratado como constante — incluindo funções de \(y\).
+      Por isso a "constante" de integração é \(C(y)\), não um número.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\displaystyle\Phi = \int (2xy + 3)\,dx = x^2 y +
+        3x + C(y)\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\partial\Phi/\partial y = x^2 + C'(y)\).
+        Igualando a \(N = x^2 + y^2\): \(x^2 + C'(y) = x^2 + y^2\), logo \(C'(y)
+        = y^2\) e \(C(y) = y^3/3\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\Phi(x,y) = x^2 y + 3x + \frac{y^3}{3} + K\),
+        onde \(K\) é uma constante real. Verificação: \(\partial\Phi/\partial x
+        = 2xy + 3 = M\) e \(\partial\Phi/\partial y = x^2 + y^2 = N\).
+        \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

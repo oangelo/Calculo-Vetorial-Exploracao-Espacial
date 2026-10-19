@@ -1,0 +1,54 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">ORIGEM: Apollo 9 — MAR/1969</div>
+  <p>
+    Até agora, todos os campos que testamos passaram no teste. Mas o que
+    acontece quando o teste falha? Isso também é informativo: se as derivadas
+    cruzadas são diferentes, o campo <strong>definitivamente</strong>
+    não é conservativo, independente do domínio.
+  </p>
+  <p>Considere \(\vec{F}(x,y) = (x^2 - y^2,\; 2xy)\).</p>
+  <p>
+    <strong>(a)</strong> Aplique o teste das derivadas cruzadas: calcule
+    \(\partial M/\partial y\) e \(\partial N/\partial x\).
+  </p>
+  <p>
+    <strong>(b)</strong> As derivadas são iguais? O que isso implica sobre a
+    existência de uma função potencial para este campo?
+  </p>
+  <p>
+    <strong>(c)</strong> Sem calcular nenhuma integral, argumente por que a
+    integral de linha deste campo dependerá do caminho escolhido entre dois
+    pontos.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se \(\partial M/\partial y \neq \partial N/\partial x\),
+      nenhuma função \(\Phi\) pode satisfazer \(\nabla\Phi = \vec{F}\). Sem
+      potencial, o teorema fundamental para integrais de linha não se aplica.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(M = x^2 - y^2\), \(N = 2xy\). \(\partial
+        M/\partial y = -2y\) e \(\partial N/\partial x = 2y\).
+      </p>
+      <p>
+        <strong>(b)</strong> As derivadas cruzadas são diferentes (\(-2y \neq
+        2y\) para \(y \neq 0\)). Isso implica que
+        <strong>não existe</strong> função potencial \(\Phi\) para este campo,
+        em nenhum domínio.
+      </p>
+      <p>
+        <strong>(c)</strong> Se o campo fosse conservativo, a integral de linha
+        seria independente do caminho e, em particular, a integral sobre
+        qualquer curva fechada seria zero (pois os extremos coincidem). A
+        inexistência de potencial significa que o teorema fundamental não se
+        aplica: o trabalho depende do caminho percorrido.
+      </p>
+    </div>
+  </details>
+</li>

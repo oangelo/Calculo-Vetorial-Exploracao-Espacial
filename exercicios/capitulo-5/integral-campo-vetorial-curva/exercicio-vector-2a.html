@@ -1,0 +1,84 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: COMPARAÇÃO DE ROTAS -
+    <span class="censored">APOLLO 7</span>, OUTUBRO 1968
+  </div>
+  <p>
+    Nos dois exercícios anteriores, o campo e o caminho eram "combinações
+    perfeitas": campo radial com reta, campo rotacional com círculo. Mas e se o
+    caminho não for tão simples? E o que acontece se escolhermos outro caminho
+    entre os mesmos pontos — será que o trabalho muda?
+  </p>
+  <p>
+    Considere o campo \(\vec{F}(x,y) = \begin{pmatrix} 2y \\ x \end{pmatrix}\).
+    Vamos integrar esse campo entre a origem e o ponto \(\begin{pmatrix} 1 \\ 1
+    \end{pmatrix}\) por dois caminhos diferentes.
+  </p>
+  <p>
+    <strong>(a)</strong> Primeiro, calcule a integral ao longo da parábola \(y =
+    x^2\). Use a parametrização \(\vec{r}(t) = \begin{pmatrix} t \\ t^2
+    \end{pmatrix}\) com \(t \in [0,1]\).
+  </p>
+  <p>
+    <strong>(b)</strong> Agora calcule a integral ao longo do segmento de reta
+    \(\vec{r}(t) = \begin{pmatrix} t \\ t \end{pmatrix}\) com \(t \in [0,1]\).
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os dois resultados. O caminho escolhido alterou
+    o valor do trabalho? O que isso sugere sobre a influência da trajetória no
+    cálculo de trabalho?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para a parábola, usar \(x\) como parâmetro já está feito:
+      \(y = x^2 = t^2\). Calcule \(\vec{r}\,'(t) = (1, 2t)\), substitua no
+      campo, e forme o produto escalar. Para a reta, o procedimento é idêntico
+      ao exercício anterior sobre segmentos.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Integral pela parábola \(y = x^2\):</p>
+      <p>
+        \[\vec{r}(t) = \begin{pmatrix} t \\ t^2 \end{pmatrix}, \quad
+        \vec{r}\,'(t) = \begin{pmatrix} 1 \\ 2t \end{pmatrix}\]
+      </p>
+      <p>\[\vec{F}(\vec{r}(t)) = \begin{pmatrix} 2t^2 \\ t \end{pmatrix}\]</p>
+      <p>Produto escalar:</p>
+      <p>
+        \[\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t) = 2t^2 \cdot 1 + t \cdot 2t =
+        2t^2 + 2t^2 = 4t^2\]
+      </p>
+      <p>Integração:</p>
+      <p>
+        \[\int_{C_{\text{parábola}}} \vec{F} \cdot d\vec{r} = \int_0^1 4t^2 \,
+        dt = 4 \left[\frac{t^3}{3}\right]_0^1 = \frac{4}{3}\]
+      </p>
+      <p><strong>(b)</strong> Integral pelo segmento de reta:</p>
+      <p>
+        \[\vec{r}(t) = \begin{pmatrix} t \\ t \end{pmatrix}, \quad \vec{r}\,'(t)
+        = \begin{pmatrix} 1 \\ 1 \end{pmatrix}\]
+      </p>
+      <p>\[\vec{F}(\vec{r}(t)) = \begin{pmatrix} 2t \\ t \end{pmatrix}\]</p>
+      <p>Produto escalar:</p>
+      <p>\[\vec{F}(\vec{r}(t)) \cdot \vec{r}\,'(t) = 2t + t = 3t\]</p>
+      <p>Integração:</p>
+      <p>
+        \[\int_{C_{\text{reta}}} \vec{F} \cdot d\vec{r} = \int_0^1 3t \, dt = 3
+        \left[\frac{t^2}{2}\right]_0^1 = \frac{3}{2}\]
+      </p>
+      <p>
+        <strong>(c)</strong> Comparação: pela parábola obtemos \(\frac{4}{3}
+        \approx 1{,}33\), e pela reta obtemos \(\frac{3}{2} = 1{,}50\). Os
+        resultados são <em>diferentes</em>. Isso significa que, para este campo,
+        o trabalho depende do caminho percorrido — não apenas dos pontos inicial
+        e final. Essa observação é fundamental e será retomada mais adiante no
+        curso, quando investigarmos as condições sob as quais o caminho
+        <em>não</em> importa.
+      </p>
+    </div>
+  </details>
+</li>

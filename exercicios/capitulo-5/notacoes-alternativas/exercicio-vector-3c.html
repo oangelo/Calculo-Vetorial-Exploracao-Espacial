@@ -1,0 +1,60 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Órbita Circular Completa - Programa Apollo [DEZ/1968]
+  </div>
+  <p>
+    Vimos que o caminho importa — o trabalho depende da rota escolhida. Mas o
+    que acontece quando o caminho volta ao ponto de partida? Vamos calcular uma
+    integral ao redor de uma curva fechada na forma diferencial.
+  </p>
+  <p>
+    Um módulo orbital completa uma volta ao redor da Terra seguindo o círculo
+    unitário \(\vec{r}(\theta) = (\cos\theta,\; \sin\theta)\), \(\theta \in
+    [0,2\pi]\). O campo gravitacional simplificado é \(\vec{F}(x,y) = (y,\;
+    -x)\). Calcule o trabalho líquido ao longo da órbita usando a forma
+    diferencial \(\int_C y\,dx - x\,dy\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize a curva e expresse \(dx\) e \(dy\) em
+    termos de \(d\theta\).
+  </p>
+  <p><strong>(b)</strong> Calcule a integral completa ao redor do círculo.</p>
+  <p>
+    <strong>(c)</strong> Interprete o resultado: por que o trabalho ao redor de
+    uma órbita fechada pode ser diferente de zero?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Com \(x = \cos\theta\) e \(y = \sin\theta\), temos \(dx =
+      -\sin\theta\,d\theta\) e \(dy = \cos\theta\,d\theta\). Substitua na forma
+      diferencial e use a identidade \(\sin^2\theta + \cos^2\theta = 1\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Com \(x = \cos\theta\) e \(y = \sin\theta\): \(dx =
+        -\sin\theta\,d\theta\) e \(dy = \cos\theta\,d\theta\).
+      </p>
+      <p><strong>(b)</strong> Substituindo na forma diferencial:</p>
+      <p>
+        \[\int_0^{2\pi} \bigl[\sin\theta \cdot (-\sin\theta) - \cos\theta \cdot
+        \cos\theta\bigr]\,d\theta = \int_0^{2\pi} (-\sin^2\theta -
+        \cos^2\theta)\,d\theta\]
+      </p>
+      <p>\[= \int_0^{2\pi} (-1)\,d\theta = -2\pi.\]</p>
+      <p>
+        <strong>(c)</strong> O trabalho líquido ao redor da órbita é \(-2\pi\),
+        não zero. Isso ocorre porque o campo \(\vec{F} = (y, -x)\) não é
+        puramente radial — ele tem componente tangencial que realiza trabalho
+        continuamente ao longo do círculo. Em cada ponto, o campo empurra o
+        módulo na direção de rotação, acumulando trabalho negativo ao longo do
+        ciclo completo. O fato de a curva ser fechada
+        <strong>não garante</strong> que a integral seja zero.
+      </p>
+    </div>
+  </details>
+</li>
