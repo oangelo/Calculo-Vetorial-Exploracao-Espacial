@@ -6,8 +6,9 @@
 
 ## Histórico
 
+- [2026-1](notas/2026-1.md) - Notas do semestre 2026-1
 - [2025-1](notas/2025-1.md) - Notas do semestre 2025-1
 
 ---
 
-**Última atualização:** Março de 2026
+**Última atualização:** Outubro de 2026
