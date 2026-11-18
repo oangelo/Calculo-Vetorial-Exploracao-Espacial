@@ -33,6 +33,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 │   │   └── exercicio-*.html
 │   ├── capitulo-1-funcoes-vetoriais/
 │   └── ...
+├── atividades-proativas/ # Atividades que geram documento escrito (especificação + consultoria)
 ├── slide-decks/          # Apresentações Reveal.js organizadas por capítulo
 │   ├── capitulo-0-revisao/
 │   ├── capitulo-1-funcoes-vetoriais/
@@ -59,7 +60,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 └── worktrees/            # Git worktrees (ignorado pelo git)
 ```
 
-## ⚠️ Importante: Dois Tipos de Exercícios
+## ⚠️ Importante: Dois Tipos de Exercícios e uma Atividade
 
 Este projeto possui **dois tipos de exercícios** com finalidades diferentes:
 
@@ -77,6 +78,14 @@ Este projeto possui **dois tipos de exercícios** com finalidades diferentes:
 - Guia específico em `sala/AGENTS.md`
 
 **NÃO confunda os dois!** Cada um tem seu próprio guia e estrutura.
+
+### 3. Atividade proativa (`atividades-proativas/`)
+
+- O aluno **escreve um documento**, não preenche lacunas: especificação do objeto
+  matemático, laudo de consultoria do colega e revisão B com changelog
+- Uma pasta por atividade: `atividades-proativas/<topico>/regras.md`
+- **Não é folha de sala:** não segue A4 em coluna dupla nem as classes de
+  `sala-styles.css`. O formato de impressão é decisão à parte.
 
 ## ⚠️ Importante: Worktrees
 
