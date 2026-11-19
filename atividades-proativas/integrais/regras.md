@@ -1,64 +1,34 @@
-# Especificação: técnicas de integração
+# Resumo: técnicas de integração
 
 **Cálculo Vetorial — IPRJ/UERJ**
-Capítulo 0 — Revisão · Atividade em aula · três tempos, em duas aulas · método: especificação e consultoria
+Capítulo 0 — Revisão · duas etapas: estudo com as especificações, resumo em sala
 
-O que se entrega nesta atividade é um documento escrito por você — não lacunas preenchidas.
-A data da escrita sem consulta é anunciada no primeiro dia: você sabe desde o começo quando vai ser.
+O que se entrega é um resumo escrito de memória, em sala, junto com os laudos da semana de estudo.
 
 ---
 
 ## O que esta atividade é
 
-Uma **especificação**: a descrição de um objeto matemático escrita para ser usada por outra pessoa
-— o colega que vai consultá-la nesta aula e você mesmo, na prova, sem consulta.
+As **especificações das quatro técnicas** ficam no repositório do curso, e você tem acesso a elas
+desde o começo. Você estuda, rascunha, revisa com dois colegas e reescreve quantas vezes precisar.
+Num dia marcado com antecedência, em sala e sem consulta, você escreve o **resumo** dessas
+especificações e entrega. **É ele que vale nota.**
+
+Resumo, aqui, não é texto menor: é o documento que **serve para resolver**. Quem lê escolhe a
+técnica e executa. O que não permite isso não é resumo, é anotação.
 
 - **Escopo:** os quatro títulos da seção 1. Nem mais, nem menos.
-- **Critério de aceite:** os seis itens da seção 2, em cada título. É por eles que o documento é
-  julgado — e é por eles que o consultor aponta o que não atende.
+- **Critério de aceite:** os seis itens da seção 2, em cada título.
+- **O que vale nota:** o resumo do dia marcado. **O laudo não vale nota** — ele é a prova de que a
+  revisão com os colegas aconteceu, e é por ele que se vê o que foi apontado.
 
-Especificação não é resumo de leitura: é o que fica de pé quando o livro fecha.
-
----
-
-## Os três tempos, nesta ordem
-
-**Antes da aula 1** você recebe esta folha: o escopo, o critério de aceite e o laudo em branco. O
-conteúdo não vem pronto — a especificação é sua, e é ela que você escreve.
-
-**Aula 1**
-
-1. **Revisão A — rascunho, com consulta.** Livro, caderno e IA liberados. 40 min.
-2. **Consultoria — revisão por dois colegas.** Você lê e comenta a especificação de dois colegas;
-   a sua é lida por dois. 30 min. O laudo fica com você; o rascunho é recolhido no fim da aula.
-
-**Aula 2 — o dia é anunciado no primeiro dia**
-
-3. **Revisão B — final, sem consulta.** A especificação inteira, de novo, sem nada em cima da
-   mesa. 35 min.
-
-A ordem é essa por um motivo: primeiro você monta o documento com tudo na mão; depois alguém mostra
-o que faltou; e depois de alguns dias, sem nada, você descobre o que sobrou.
-
-**Quem consulta quem:** sem sorteio — troca com o **colega da direita** (15 min) e depois com o
-**da esquerda** (15 min). Cada um revisa dois, e cada especificação é lida por dois colegas. Se a
-fileira estiver com falta, o último troca com o primeiro da fileira seguinte.
-
-> **Regra que decide a atividade:** a revisão B é sem consulta, e o rascunho é recolhido antes dela.
-> Sem essa regra, a B é uma cópia da A e não mede nada.
->
-> **A especificação vale nota:** 1 a 3 em conteúdo, 1 a 3 em forma — a seção 2 diz o que cada nível
-> exige. **O laudo não vale nota:** é o que deixa o consultor apontar o que não entendeu sem medo de
-> prejudicar o colega.
->
-> **O que se olha:** se o documento resolve o problema. **Não** o tamanho do texto, **não** a
-> caligrafia.
+**As especificações estão em:** ______________________ (link do repositório do curso)
 
 ---
 
 ## 1. Escopo — os quatro títulos
 
-Escreva um bloco para cada um, nesta ordem:
+Um bloco para cada um, nesta ordem:
 
 1. **Substituição (mudança de variável)**
 2. **Integração por partes**
@@ -69,7 +39,7 @@ São as quatro técnicas da revisão de integrais, na ordem em que aparecem nela
 
 ---
 
-## 2. Critério de aceite — o que cada título precisa atender
+## 2. Critério de aceite — o que cada título precisa ter
 
 Cada um dos quatro títulos só é aceito se cumprir os seis itens abaixo:
 
@@ -79,8 +49,8 @@ Cada um dos quatro títulos só é aceito se cumprir os seis itens abaixo:
 - **O procedimento** — os passos, na ordem em que se executam, do começo ao resultado.
 - **O que é cada símbolo** — `u`, `du`, `dv`, `v`, `A`, `B`, `θ`: o que cada um representa no
   cálculo, e o que ele percorre quando é variável.
-- **Um exemplo resolvido** — com passo a passo escrito por você. Exemplo do livro ou da IA serve,
-  desde que o passo a passo seja seu.
+- **Um exemplo resolvido** — o exemplo que você usou para estudar, com o passo a passo escrito por
+  você. Não precisa inventar outro no dia.
 - **Por que funciona** — em palavras.
 
 **A demonstração é sugerida, não exigida.** Se sobrar tempo, faça **uma**, à sua escolha:
@@ -100,12 +70,30 @@ Cada um dos quatro títulos só é aceito se cumprir os seis itens abaixo:
 | **2** | Passam com uma ou duas falhas de procedimento | Uma das três falha |
 | **1** | Não passam — falta o "quando usar", ou o procedimento não fecha | Duas ou três falham |
 
-**O conteúdo é o que conta; a forma desempata.** Documento bonito que não resolve integral nenhuma
-não passa por conteúdo.
+**O conteúdo é o que conta; a forma desempata.** Resumo bonito que não resolve integral nenhuma não
+passa por conteúdo.
 
 ---
 
-## 3. Laudo de consultoria
+## 3. A semana antes, até o dia marcado
+
+Você tem o material e sabe a data. O que se espera nesse intervalo:
+
+- **Rascunhe várias vezes.** A primeira versão serve para descobrir o que você não sabe; a terceira
+  é a que fica na cabeça.
+- **Revise com dois colegas** — o da direita e depois o da esquerda, no dia que vocês combinarem. O
+  laudo da seção 4 é o roteiro da revisão: ele diz o que olhar, e a NC com evidência é o que o
+  colega consegue apontar de verdade.
+- **Não decore o texto do material; decore o que ele decide.** No dia não vai ter o texto, e a nota
+  é sobre o que você consegue usar.
+
+**Os dois laudos vão junto com o resumo, no dia.** É por eles que se vê com quem você revisou e o
+que foi apontado. **O laudo não vale nota:** se valesse, o colega escreveria para o professor e
+diria menos do que viu.
+
+---
+
+## 4. Laudo de consultoria
 
 Você consulta **dois** colegas — o da direita e depois o da esquerda — e é consultado pelos dois.
 Para cada colega, marque e assine.
@@ -144,7 +132,7 @@ Para cada uma, quatro campos:
 
 ---
 
-- Consultor: ______________________  ·  Especificação consultada de: ______________________
+- Consultor: ______________________  ·  Resumo consultado de: ______________________
 
 > Você não julga se está **certo** — isso é trabalho do professor. Você diz o que **falta** e o que
 > **não entendeu**. É o que você consegue fazer, e é o que mais ajuda.
@@ -153,29 +141,11 @@ Para cada uma, quatro campos:
 
 ---
 
-## 4. Revisão B — o changelog
+## 5. O dia do resumo
 
-A revisão B é a especificação **inteira de novo**, escrita sem consulta e no dia anunciado — não é
-só a lista de correções. O laudo que os colegas preencheram fica com você: é dele que saem as NCs
-do changelog. Junto dela vem uma linha por NC recebida, e são obrigatórias:
-
-| NC | O que mudei | Onde |
-|---|---|---|
-| 1 | | |
-| 2 | | |
-| 3 | | |
-
-O que você corrigiu sem NC correspondente também entra, marcado como **correção própria** — não
-perde ponto por isso, e mostra o que você viu sozinho.
-
----
-
-## 5. Aceite/recusa
-
-Duas linhas, obrigatórias:
-
-- **O que eu aceitei** da consultoria:
-- **O que eu recusei**, e por quê:
-
-Sem esse campo, o que faltou passa a ser culpa do colega em vez de sua — e a atividade perde a
-função.
+- **50 minutos, sem consulta.** Nada em cima da mesa além de papel e caneta.
+- Quatro blocos, um por técnica, na ordem do escopo. Os seis itens de cada um, sem exceção — é por
+  eles que a nota é dada.
+- **Entrega:** o resumo e os dois laudos.
+- Se o colega apontou algo que você decidiu não mudar, uma linha no fim: **recusei, e por quê.** Sem
+  essa linha, o que faltou passa a ser culpa do colega em vez de sua — e a revisão perde a função.

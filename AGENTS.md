@@ -33,7 +33,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 │   │   └── exercicio-*.html
 │   ├── capitulo-1-funcoes-vetoriais/
 │   └── ...
-├── atividades-proativas/ # Atividades que geram documento escrito (especificação + consultoria)
+├── atividades-proativas/ # Atividades com estudo prévio e resumo escrito em sala (vale nota)
 ├── slide-decks/          # Apresentações Reveal.js organizadas por capítulo
 │   ├── capitulo-0-revisao/
 │   ├── capitulo-1-funcoes-vetoriais/
@@ -81,8 +81,9 @@ Este projeto possui **dois tipos de exercícios** com finalidades diferentes:
 
 ### 3. Atividade proativa (`atividades-proativas/`)
 
-- O aluno **escreve um documento**, não preenche lacunas: especificação do objeto
-  matemático, laudo de consultoria do colega e revisão B com changelog
+- O aluno **escreve um documento**, não preenche lacunas: estuda as especificações do professor
+  (publicadas no repositório, com antecedência), revisa com dois colegas por laudo e escreve o
+  resumo de memória em sala, no dia marcado — é o resumo que vale nota, o laudo não
 - Uma pasta por atividade: `atividades-proativas/<topico>/regras.md`
 - **Não é folha de sala:** não segue A4 em coluna dupla nem as classes de
   `sala-styles.css`. O formato de impressão é decisão à parte.
