@@ -1,9 +1,10 @@
 # Especificação: técnicas de integração
 
 **Cálculo Vetorial — IPRJ/UERJ**
-Capítulo 0 — Revisão · Atividade em aula · 3 tempos · método: especificação e consultoria
+Capítulo 0 — Revisão · Atividade em aula · três tempos, em duas aulas · método: especificação e consultoria
 
 O que se entrega nesta atividade é um documento escrito por você — não lacunas preenchidas.
+A data da escrita sem consulta é anunciada no primeiro dia: você sabe desde o começo quando vai ser.
 
 ---
 
@@ -22,14 +23,22 @@ Especificação não é resumo de leitura: é o que fica de pé quando o livro f
 
 ## Os três tempos, nesta ordem
 
+**Antes da aula 1** você recebe esta folha: o escopo, o critério de aceite e o laudo em branco. O
+conteúdo não vem pronto — a especificação é sua, e é ela que você escreve.
+
+**Aula 1**
+
 1. **Revisão A — rascunho, com consulta.** Livro, caderno e IA liberados. 40 min.
 2. **Consultoria — revisão por dois colegas.** Você lê e comenta a especificação de dois colegas;
-   a sua é lida por dois. 30 min.
-3. **Revisão B — final, sem consulta.** O rascunho e os laudos são recolhidos antes de você
-   começar. 35 min.
+   a sua é lida por dois. 30 min. O laudo fica com você; o rascunho é recolhido no fim da aula.
+
+**Aula 2 — o dia é anunciado no primeiro dia**
+
+3. **Revisão B — final, sem consulta.** A especificação inteira, de novo, sem nada em cima da
+   mesa. 35 min.
 
 A ordem é essa por um motivo: primeiro você monta o documento com tudo na mão; depois alguém mostra
-o que faltou; e o que sobra na cabeça é o que você consegue escrever sem nada.
+o que faltou; e depois de alguns dias, sem nada, você descobre o que sobrou.
 
 **Quem consulta quem:** sem sorteio — troca com o **colega da direita** (15 min) e depois com o
 **da esquerda** (15 min). Cada um revisa dois, e cada especificação é lida por dois colegas. Se a
@@ -38,11 +47,12 @@ fileira estiver com falta, o último troca com o primeiro da fileira seguinte.
 > **Regra que decide a atividade:** a revisão B é sem consulta, e o rascunho é recolhido antes dela.
 > Sem essa regra, a B é uma cópia da A e não mede nada.
 >
-> **Esta atividade não vale nota.** Ela é o registro de como você pensa o assunto — e é dele que o
-> professor tira o que a turma não pegou.
+> **A especificação vale nota:** 1 a 3 em conteúdo, 1 a 3 em forma — a seção 2 diz o que cada nível
+> exige. **O laudo não vale nota:** é o que deixa o consultor apontar o que não entendeu sem medo de
+> prejudicar o colega.
 >
-> **O que se olha:** a organização das ideias e o que você reescreveu de memória. **Não** o tamanho
-> do texto, **não** a caligrafia.
+> **O que se olha:** se o documento resolve o problema. **Não** o tamanho do texto, **não** a
+> caligrafia.
 
 ---
 
@@ -81,6 +91,17 @@ Cada um dos quatro títulos só é aceito se cumprir os seis itens abaixo:
   por que os coeficientes se acham igualando numeradores;
 - **(d)** por que a substituição trigonométrica funciona — qual identidade ela usa e por que a
   escolha do seno, da tangente ou da secante depende do radical.
+
+**Como o critério vira nota.** Dois números, cada um de 1 a 3:
+
+| Nível | Conteúdo | Forma |
+|---|---|---|
+| **3** | As quatro técnicas passam o teste: quem lê escolhe a técnica e executa | Acha os quatro títulos, entende na primeira leitura, letra legível |
+| **2** | Passam com uma ou duas falhas de procedimento | Uma das três falha |
+| **1** | Não passam — falta o "quando usar", ou o procedimento não fecha | Duas ou três falham |
+
+**O conteúdo é o que conta; a forma desempata.** Documento bonito que não resolve integral nenhuma
+não passa por conteúdo.
 
 ---
 
@@ -134,8 +155,9 @@ Para cada uma, quatro campos:
 
 ## 4. Revisão B — o changelog
 
-A revisão B é a especificação **inteira de novo**, escrita sem consulta — não é só a lista de
-correções. Junto dela vem uma linha por NC recebida, e são obrigatórias:
+A revisão B é a especificação **inteira de novo**, escrita sem consulta e no dia anunciado — não é
+só a lista de correções. O laudo que os colegas preencheram fica com você: é dele que saem as NCs
+do changelog. Junto dela vem uma linha por NC recebida, e são obrigatórias:
 
 | NC | O que mudei | Onde |
 |---|---|---|
