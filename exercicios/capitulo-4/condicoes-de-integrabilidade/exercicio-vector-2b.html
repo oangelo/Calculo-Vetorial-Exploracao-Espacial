@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">ORIGEM: Centro de Controle - Gemini V [AGO/1965]</div>
+  <p>
+    Vimos que um ponto isolado não afeta a integral — ele tem medida nula em 3D.
+    Mas e se a descontinuidade não for um ponto, e sim um
+    <strong>plano inteiro</strong>?
+  </p>
+  <p>
+    Considere a função: \[h(x,y,z) = \begin{cases} \frac{x}{\sqrt{x^2 + y^2}}
+    &amp; \text{se } y \neq 0, \\ 0 &amp; \text{se } y = 0. \end{cases}\]
+    definida no bloco \(V = [-1,1] \times [-1,1] \times [0,2]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique o conjunto de descontinuidade de \(h\).
+    Mostre que quando \(y \to 0^+\) com \(x \gt 0\), \(h \to 1\), enquanto
+    \(h(x,0,z) = 0\). A função é contínua no plano \(y = 0\)?
+  </p>
+  <p>
+    <strong>(b)</strong> Verifique se \(h\) é limitada em \(V\). Que valores
+    \(h\) pode assumir?
+  </p>
+  <p>
+    <strong>(c)</strong> Discuta: o plano \(y = 0\) tem medida nula em
+    \(\mathbb{R}^3\)? Compare com a situação em 2D: uma reta tem medida nula no
+    plano?
+  </p>
+  <p>
+    <strong>(d)</strong> Conclua sobre a integrabilidade de \(h\) em \(V\),
+    relacionando com a noção de medida nula.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-5]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: \(\left|\frac{x}{\sqrt{x^2+y^2}}\right| \le 1\) sempre. A
+      questão não é a limitação, mas sim se o "conjunto problemático" (o plano
+      \(y=0\)) é "grande o bastante" para ter volume em 3D. Um plano tem
+      espessura zero, logo volume zero — assim como uma folha de papel tem
+      espessura desprezível.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-5 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A função é descontínua em todo o plano \(y = 0\)
+        (exceto na reta \(x = 0\), onde o limite lateral também é 0). Com
+        efeito, para \(x \gt 0\) fixo, quando \(y \to 0^+\): \(h(x,y,z) =
+        \frac{x}{\sqrt{x^2+y^2}} \to \frac{x}{|x|} = 1\), mas \(h(x,0,z) = 0\).
+        Logo a função <strong>não é contínua</strong> no plano \(y = 0\).
+      </p>
+      <p>
+        <strong>(b)</strong> Como \(\sqrt{x^2+y^2} \ge |x|\), temos
+        \(\left|\frac{x}{\sqrt{x^2+y^2}}\right| \le \frac{|x|}{|x|} = 1\) para
+        \(x \neq 0\). Portanto \(|h(x,y,z)| \le 1\) em todo \(V\). A função é
+        limitada.
+      </p>
+      <p>
+        <strong>(c)</strong> O plano \(y = 0\) tem
+        <strong>medida nula</strong> em \(\mathbb{R}^3\). Um plano é uma
+        superfície bidimensional imersa em espaço tridimensional — ele tem área
+        infinita mas <strong>volume zero</strong>. Isso é análogo ao que
+        acontece em 2D: uma reta (1D) tem comprimento infinito mas área zero no
+        plano. A "espessura" é zero.
+      </p>
+      <p>
+        <strong>(d)</strong> A integral existe. A função é limitada (\(|h| \le
+        1\)), o conjunto de descontinuidade (o plano \(y=0\)) tem medida nula em
+        \(\mathbb{R}^3\), e \(V\) é limitado. Isso ilustra um ponto fundamental:
+        em 3D, superfícies inteiras podem ser descontinuas sem comprometer a
+        integral, porque têm volume zero.
+      </p>
+    </div>
+  </details>
+</li>

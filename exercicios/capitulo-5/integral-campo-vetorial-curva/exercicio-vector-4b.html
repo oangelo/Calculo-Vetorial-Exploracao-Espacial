@@ -1,0 +1,87 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+  <div class="context">
+    ORIGEM: TRAJETÓRIA LUNAR 3D -
+    <span class="censored">APOLLO 11</span>, JULHO 1969
+  </div>
+  <p>
+    O exercício anterior era 2D. Agora vamos para um desafio 3D onde a própria
+    curva não é dada explicitamente — ela é a interseção de duas superfícies
+    geométricas, e você precisa descobrir a parametrização antes de calcular a
+    integral.
+  </p>
+  <p>
+    A curva \(C\) é a interseção do cilindro \(x^2 + y^2 = 4\) com o plano \(z =
+    x\). Considere o campo \(\vec{F}(x,y,z) = \begin{pmatrix} x + y \\ y - z \\
+    x^2 \end{pmatrix}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Deduza a parametrização da curva interseção. No
+    cilindro, use \(x = 2\cos t\) e \(y = 2\sin t\). A partir do plano \(z =
+    x\), obtenha a componente \(z\). Determine o intervalo de \(t\) para uma
+    volta completa.
+  </p>
+  <p>
+    <strong>(b)</strong> Substitua a parametrização no campo, calcule o produto
+    escalar com a derivada e simplifique ao máximo.
+  </p>
+  <p><strong>(c)</strong> Integre e obtenha o resultado final.</p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Parametrização:</p>
+      <p>
+        Do cilindro \(x^2 + y^2 = 4\): \(x = 2\cos t\), \(y = 2\sin t\). Do
+        plano \(z = x\): \(z = 2\cos t\).
+      </p>
+      <p>
+        \[\vec{r}(t) = \begin{pmatrix} 2\cos t \\ 2\sin t \\ 2\cos t
+        \end{pmatrix}, \quad t \in [0, 2\pi]\]
+      </p>
+      <p>
+        Derivada: \(\vec{r}\,'(t) = \begin{pmatrix} -2\sin t \\ 2\cos t \\
+        -2\sin t \end{pmatrix}\).
+      </p>
+      <p><strong>(b)</strong> Campo avaliado na curva:</p>
+      <p>
+        \(\vec{F}(\vec{r}(t)) = \begin{pmatrix} 2\cos t + 2\sin t \\ 2\sin t -
+        2\cos t \\ 4\cos^2 t \end{pmatrix}\).
+      </p>
+      <p>Produto escalar:</p>
+      <p>
+        \(\vec{F} \cdot \vec{r}\,' = (2\cos t + 2\sin t)(-2\sin t) + (2\sin t -
+        2\cos t)(2\cos t) + 4\cos^2 t \cdot (-2\sin t)\).
+      </p>
+      <p>
+        \(= -4\cos t\sin t - 4\sin^2 t + 4\sin t\cos t - 4\cos^2 t - 8\cos^2 t
+        \sin t\).
+      </p>
+      <p>
+        Os termos \(-4\cos t\sin t\) e \(+4\sin t\cos t\) se cancelam. Reunindo:
+      </p>
+      <p>
+        \(\vec{F} \cdot \vec{r}\,' = -4(\sin^2 t + \cos^2 t) - 8\cos^2 t\sin t =
+        -4 - 8\cos^2 t\sin t\).
+      </p>
+      <p><strong>(c)</strong> Integração:</p>
+      <p>
+        \[\int_0^{2\pi} (-4 - 8\cos^2 t\sin t) \, dt = -4(2\pi) - 8\int_0^{2\pi}
+        \cos^2 t\sin t \, dt\]
+      </p>
+      <p>
+        Para \(\int_0^{2\pi} \cos^2 t\sin t \, dt\): substituição \(u = \cos
+        t\), \(du = -\sin t \, dt\). Em \(t = 0\): \(u = 1\); em \(t = 2\pi\):
+        \(u = 1\). Logo:
+      </p>
+      <p>\(\int_1^1 (-u^2) \, du = 0\).</p>
+      <p>\[\int_C \vec{F} \cdot d\vec{r} = -8\pi - 0 = -8\pi\]</p>
+      <p>
+        O trabalho é \(-8\pi\). A parcela constante \(-4\) integra para
+        \(-8\pi\) sobre um período completo, enquanto a parcela \(-8\cos^2 t\sin
+        t\) integra para zero (função periódica que se cancela). A curva — um
+        círculo inclinado no espaço — foi obtida diretamente da interseção do
+        cilindro com o plano.
+      </p>
+    </div>
+  </details>
+</li>

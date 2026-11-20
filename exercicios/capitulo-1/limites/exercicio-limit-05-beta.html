@@ -1,0 +1,44 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-05-BETA</div>
+  <div class="context">
+    ORIGEM: Laboratório de Sistemas Propulsivos [Registros de Simulações
+    Avançadas]
+  </div>
+  <p>
+    Você viu continuidade quando tudo funciona e quando algo não está definido.
+    Agora vamos ver o comportamento nos LIMITES do domínio — o que acontece
+    quando a variável se aproxima de um valor onde a função não está definida,
+    ou cresce indefinidamente?
+  </p>
+  <p>
+    Seja a função de tempo de voo para uma sonda experimental: \[ \vec{r}(t) =
+    \begin{pmatrix} \dfrac{1}{t} \\ \ln(t + 1) \end{pmatrix}, \quad t > 0. \]
+    Investigue a continuidade de \(\vec{r}(t)\) para \(t > 0\) e discuta o
+    limite quando \(t \to 0^+\).
+  </p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>PARTE 1: Continuidade para \(t > 0\).</p>
+      <p>
+        Ambas as componentes, \(\frac{1}{t}\) e \(\ln(t + 1)\), são funções
+        contínuas para \(t > 0\).
+      </p>
+      <p>PARTE 2: Limite quando \(t \to 0^+\).</p>
+      \(\lim_{t \to 0^+} \frac{1}{t} = +\infty\). \(\lim_{t \to 0^+} \ln(t + 1)
+      = \ln(1) = 0\).
+      <p>
+        A primeira componente tende ao infinito, logo \(\vec{r}(t)\) não
+        converge para um valor finito quando \(t \to 0^+\).
+      </p>
+      <p>
+        CONCLUSÃO: \(\vec{r}(t)\) é contínua para todo \(t > 0\), mas apresenta
+        comportamento não-limitado quando \(t\) se aproxima de \(0\) pela
+        direita. Note que este é um limite em UMA variável (tudo o que você sabe
+        de Cálculo 1 se aplica). Nos próximos exercícios, vamos enfrentar o
+        verdadeiro desafio: limites de funções de DUAS variáveis, onde existem
+        infinitos caminhos de aproximação.
+      </p>
+    </div>
+  </details>
+</li>

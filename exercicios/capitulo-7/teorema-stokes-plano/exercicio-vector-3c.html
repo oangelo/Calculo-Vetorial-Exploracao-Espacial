@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">
+    ORIGEM: Apollo 13 — Planejamento de Retorno à Terra [ABR/1970]
+  </div>
+  <p>
+    A região não precisa ser circular para usar decomposição de domínio. A mesma
+    técnica que você usou no tópico sobre Green para regiões gerais se aplica
+    com Stokes: dividimos o domínio em subregiões mais simples e as fronteiras
+    internas compartilhadas se cancelam.
+  </p>
+  <p>
+    Considere a região em forma de <strong>T</strong> formada pela união do
+    retângulo horizontal \([0,3] \times [2,3]\) e do retângulo vertical \([1,2]
+    \times [0,2]\). Tome o campo \(\vec{F}(x,y) = (x^2,\, y)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Decomponha a região em dois subdomínios \(D_1 = [0,3]
+    \times [2,3]\) (barra horizontal) e \(D_2 = [1,2] \times [0,2]\) (barra
+    vertical). Qual é a fronteira compartilhada entre eles?
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule o rotacional escalar e configure as integrais
+    duplas em cada subdomínio. Avalie separadamente e some.
+  </p>
+  <p>
+    <strong>(c)</strong> Justifique por que, ao calcular a circulação total
+    pelas fronteiras, o contorno interno compartilhado entre \(D_1\) e \(D_2\)
+    se cancela. É a mesma técnica usada na prova de Green para regiões gerais.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A fronteira compartilhada é o segmento \([1,2] \times
+      \{2\}\). Em \(D_1\) esse segmento é percorrido em um sentido; em \(D_2\),
+      no sentido oposto — logo as contribuições se cancelam na soma total.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(D_1 = [0,3] \times [2,3]\) (retângulo \(3\times
+        1\)) e \(D_2 = [1,2] \times [0,2]\) (retângulo \(1\times 2\)). A
+        fronteira compartilhada é o segmento horizontal \([1,2] \times \{2\}\)
+        (de \((1,2)\) a \((2,2)\)).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\operatorname{rot}\vec{F} = \frac{\partial
+        y}{\partial x} - \frac{\partial(x^2)}{\partial y} = 0 - 2x = -2x\).
+      </p>
+      <p>
+        \(\iint_{D_1} (-2x)\, dA = \int_{0}^{3}\int_{2}^{3} (-2x)\, dy\, dx =
+        \int_{0}^{3} (-2x)\, dx = [-x^2]_{0}^{3} = -9\).
+      </p>
+      <p>
+        \(\iint_{D_2} (-2x)\, dA = \int_{1}^{2}\int_{0}^{2} (-2x)\, dy\, dx =
+        2\int_{1}^{2} (-2x)\, dx = 2[-x^2]_{1}^{2} = 2(-4+1) = -6\).
+      </p>
+      <p>Circulação total: \(-9 + (-6) = -15\).</p>
+      <p>
+        <strong>(c)</strong> O segmento \([1,2] \times \{2\}\) é parte da
+        fronteira inferior de \(D_1\) (percorrido da direita para a esquerda,
+        pois a fronteira de \(D_1\) é anti-horária) e da fronteira superior de
+        \(D_2\) (percorrido da esquerda para a direita, na fronteira
+        anti-horária de \(D_2\)). Sentidos opostos \(\Rightarrow\) contribuições
+        iguais em módulo mas com sinais trocados \(\Rightarrow\) cancelamento. O
+        que resta é apenas a fronteira externa da região em T. \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

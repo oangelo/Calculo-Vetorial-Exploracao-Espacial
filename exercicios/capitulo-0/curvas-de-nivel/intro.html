@@ -1,0 +1,275 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">07</span> DE MARÇO DE
+    <span class="censored">1962</span><br/>
+    LOCALIZAÇÃO:
+    <span class="censored">BASE DE OPERAÇÕES TERRA-ALFA</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">TOPOGRAFIA-ORBITAL</span> <br/><br/>
+    A Divisão de Análise Terrestre preparou este módulo de exercícios sobre
+    <strong>Curvas de Nível</strong>, técnica cartográfica essencial para o
+    reconhecimento de terreno em operações de
+    <span class="censored">reconhecimento aéreo</span> e seleção de zonas
+    de pouso para futuras missões do programa
+    <span class="censored">████████</span>. <br/><br/>
+    O domínio desta ferramenta matemática é indispensável para agentes
+    envolvidos em <span class="censored">mapeamento tático</span> e na
+    preparação de rotas de fuga em cenários hostis.
+  </div>
+  <div class="warning-box">
+    ⚠ ATENÇÃO: Este material habilita o operador a interpretar mapas
+    topográficos de qualquer zona de conflito. Seu conteúdo é classificado
+    sob o código <span class="censored">CONTOUR-7</span>. Violação de
+    segurança acarretará em
+    <span class="censored">consequências irreversíveis</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: CN-<span class="censored">047</span>-X</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+    <span>CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+      <span class="censored">5</span></span>
+  </div>
+</div>
+
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: CURVAS DE NÍVEL
+</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Imagine que você sobrevoa uma região montanhosa e olha para baixo: vales,
+    cumes, planaltos — tudo se mistura. Como descrever esse terreno de forma
+    precisa, usando apenas papel e lápis? A resposta está nas
+    <strong>curvas de nível</strong>: linhas que conectam pontos de mesma
+    altitude, transformando uma superfície tridimensional
+    \(z = f(x, y)\) em um mapa bidimensional que qualquer operador pode ler.
+  </p>
+  <p>
+    Neste módulo, construímos essa ferramenta do zero. Começamos com a
+    <strong>definição</strong> de curva de nível (o que é, como se escreve),
+    depois identificamos as <strong>formas clássicas</strong> que aparecem
+    (círculos, elipses, parábolas, hipérboles), e em seguida estudamos o
+    <strong>gradiente</strong> — o vetor que indica a direção de maior
+    inclinação. Com essas ferramentas, aprendemos a <strong>esboçar mapas</strong>
+    completos e a identificar <strong>pontos críticos</strong> (picos, vales e
+    pontos de sela). Cada conceito depende do anterior — e todos aparecem nos
+    exercícios que seguem.
+  </p>
+</div>
+
+<!-- ========== 1. O QUE É CURVA DE NÍVEL? ========== -->
+<div class="concept-definition">
+  <p><strong>1. O QUE É CURVA DE NÍVEL?</strong></p>
+  <p>
+    Uma <strong>curva de nível</strong> (ou linha de contorno) de uma função
+    de duas variáveis \(f(x, y)\) é o conjunto de todos os pontos \((x, y)\)
+    no domínio de \(f\) para os quais a função assume um valor constante \(c\).
+    Matematicamente:
+  </p>
+  <p class="formula-highlight">
+    \[ f(x, y) = c \]
+  </p>
+  <p>
+    Cada valor de \(c\) define uma curva diferente. Em um mapa topográfico,
+    cada linha conecta pontos de mesma altitude — se você caminha ao longo
+    de uma curva de nível, nem sobe nem desce. O conjunto de várias curvas
+    de nível para valores igualmente espaçados de \(c\) forma um
+    <strong>mapa de curvas de nível</strong>, que é a representação
+    bidimensional de uma superfície tridimensional \(z = f(x, y)\).
+  </p>
+  <p>
+    Uma propriedade fundamental: <strong>curvas de nível diferentes nunca se
+    cruzam</strong> — se se cruzassem, o mesmo ponto teria dois valores
+    diferentes de \(f\), o que é impossível para uma função. Além disso,
+    a distância entre curvas adjacentes indica a inclinação do terreno:
+    curvas próximas significam terreno íngreme; curvas distantes, terreno suave.
+  </p>
+</div>
+
+<!-- ========== 2. CURVAS DE NÍVEL DE FUNÇÕES CONHECIDAS ========== -->
+<div class="concept-definition">
+  <p><strong>2. CURVAS DE NÍVEL DE FUNÇÕES CONHECIDAS</strong></p>
+  <p>
+    Muitas funções geram curvas de nível que são cônicas clássicas.
+    Reconhecer a forma da curva a partir da equação \(f(x, y) = c\) é a
+    primeira habilidade deste módulo. Os casos mais comuns:
+  </p>
+  <p>
+    <strong>Círculos:</strong> a função \(f(x, y) = x^2 + y^2\) produz
+    curvas de nível \(x^2 + y^2 = c\). Para \(c > 0\), são círculos
+    centrados na origem com raio \(\sqrt{c}\). Quanto maior \(c\), maior
+    o raio — o terreno sobe como uma tigela.
+  </p>
+  <p>
+    <strong>Elipses:</strong> a função \(f(x, y) = \frac{x^2}{a^2} + \frac{y^2}{b^2}\)
+    produz curvas de nível \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = c\).
+    Para \(c > 0\), são elipses centradas na origem. O terreno sobe como
+    uma tigela alongada.
+  </p>
+  <p>
+    <strong>Parábolas:</strong> a função \(f(x, y) = y - x^2\) produz
+    curvas de nível \(y = x^2 + c\), que são parábolas transladadas
+    verticalmente. Cada valor de \(c\) desloca a parábola para cima ou para baixo.
+  </p>
+  <p>
+    <strong>Hipérboles:</strong> a função \(f(x, y) = x^2 - y^2\) produz
+    curvas de nível \(x^2 - y^2 = c\). Para \(c \neq 0\), são hipérboles.
+    Para \(c = 0\), são duas retas \(y = \pm x\) — o caso degenerado.
+    Este terreno tem a forma de uma sela.
+  </p>
+  <p>
+    <strong>Retas:</strong> a função \(f(x, y) = ax + by\) produz curvas
+    de nível \(ax + by = c\), que são retas paralelas. O terreno é um
+    plano inclinado — a inclinação é constante.
+  </p>
+</div>
+
+<!-- ========== 3. GRADIENTE ========== -->
+<div class="concept-definition">
+  <p><strong>3. GRADIENTE COMO DIREÇÃO DE MAIOR CRESCIMENTO</strong></p>
+  <p>
+    Se você está em um ponto \((x_0, y_0)\) de um terreno descrito por
+    \(f(x, y)\), em que direção deve caminhar para subir mais rápido?
+    A resposta é o <strong>vetor gradiente</strong>:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla f = \left( \frac{\partial f}{\partial x},\; \frac{\partial f}{\partial y} \right) \]
+  </p>
+  <p>
+    O gradiente aponta na direção de <strong>maior crescimento</strong> de
+    \(f\). Sua magnitude \(\|\nabla f\|\) mede a taxa de crescimento nessa
+    direção. A direção oposta \(-\nabla f\) é a de maior decrescimento (descer
+    mais rápido). Uma propriedade essencial: o gradiente é sempre
+    <strong>perpendicular à curva de nível</strong> no ponto considerado.
+    Isso faz sentido geograficamente: a direção mais íngreme é sempre
+    perpendicular às linhas de mesma altitude.
+  </p>
+  <p>
+    Para obter a taxa de crescimento em uma direção específica
+    \(\hat{u}\), usamos a <strong>derivada direcional</strong>:
+    \(D_{\hat{u}} f = \nabla f \cdot \hat{u}\). Quando \(\hat{u}\) é
+    tangente à curva de nível, a derivada direcional é zero — afinal,
+    ao longo da curva de nível, \(f\) não muda.
+  </p>
+</div>
+
+<!-- ========== 4. ESBOÇO DE MAPAS ========== -->
+<div class="concept-definition">
+  <p><strong>4. ESBOÇO DE MAPAS DE CURVAS DE NÍVEL</strong></p>
+  <p>
+    Para esboçar um mapa de curvas de nível de \(f(x, y)\), o procedimento é:
+    escolher vários valores de \(c\) igualmente espaçados, resolver
+    \(f(x, y) = c\) para cada um, e desenhar as curvas resultantes no
+    plano \(xy\). O mapa revela a "assinatura" da função.
+  </p>
+  <p>
+    A interpretação visual é direta: se as curvas se aproximam conforme
+    \(c\) cresce, o terreno está se tornando mais íngreme. Se se afastam,
+    o terreno está se aplanando. Curvas fechadas e concêntricas ao redor
+    de um ponto sugerem um <strong>máximo</strong> ou <strong>mínimo</strong>
+    local (como o cume de uma montanha ou o fundo de um vale). Curvas em
+    formato de sela indicam um <strong>ponto de sela</strong> — um ponto
+    que é máximo numa direção e mínimo em outra.
+  </p>
+  <p>
+    Comparar mapas de funções diferentes ajuda a distinguir comportamentos:
+    o mapa de \(f(x, y) = x^2 + y^2\) mostra círculos concêntricos (mínimo
+    na origem), enquanto o de \(f(x, y) = x^2 - y^2\) mostra hipérboles
+    (ponto de sela na origem).
+  </p>
+</div>
+
+<!-- ========== 5. PONTOS CRÍTICOS ========== -->
+<div class="concept-definition">
+  <p><strong>5. PONTOS CRÍTICOS (ONDE \(\nabla f = \vec{0}\))</strong></p>
+  <p>
+    Um <strong>ponto crítico</strong> de \(f(x, y)\) é um ponto onde o
+    gradiente se anula:
+  </p>
+  <p class="formula-highlight">
+    \[ \nabla f = \vec{0} \quad \Longleftrightarrow \quad \frac{\partial f}{\partial x} = 0 \;\text{ e }\; \frac{\partial f}{\partial y} = 0 \]
+  </p>
+  <p>
+    Geometricamente, isso significa que a superfície \(z = f(x, y)\) tem
+    tangente horizontal nesse ponto — não há inclinação em nenhuma direção.
+    Os pontos críticos são candidatos a <strong>máximos</strong>,
+    <strong>mínimos</strong> ou <strong>pontos de sela</strong>.
+  </p>
+  <p>
+    Para encontrar pontos críticos, resolve-se o sistema de duas equações
+    \(\partial f / \partial x = 0\) e \(\partial f / \partial y = 0\)
+    simultaneamente. Nem todo ponto crítico é extremo — alguns são pontos
+    de sela, onde a função cresce numa direção e decresce em outra.
+  </p>
+</div>
+
+<!-- ========== 6. CLASSIFICAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>6. CLASSIFICAÇÃO DE PONTOS CRÍTICOS</strong></p>
+  <p>
+    Para classificar um ponto crítico \((x_0, y_0)\), calcula-se o
+    <strong>discriminante de segunda ordem</strong> (ou Hessiano):
+  </p>
+  <p class="formula-highlight">
+    \[ D = f_{xx}(x_0, y_0) \cdot f_{yy}(x_0, y_0) - \big[f_{xy}(x_0, y_0)\big]^2 \]
+  </p>
+  <p>
+    onde \(f_{xx} = \frac{\partial^2 f}{\partial x^2}\), \(f_{yy} = \frac{\partial^2 f}{\partial y^2}\)
+    e \(f_{xy} = \frac{\partial^2 f}{\partial x \partial y}\) são as
+    derivadas segundas avaliadas no ponto crítico. A classificação segue três casos:
+  </p>
+  <p>
+    Se \(D > 0\) e \(f_{xx} < 0\): o ponto é um <strong>máximo local</strong>
+    — a superfície forma um "cume" nesse ponto.
+  </p>
+  <p>
+    Se \(D > 0\) e \(f_{xx} > 0\): o ponto é um <strong>mínimo local</strong>
+    — a superfície forma um "vale" nesse ponto.
+  </p>
+  <p>
+    Se \(D < 0\): o ponto é um <strong>ponto de sela</strong> — a superfície
+    tem a forma de uma sela de cavalo, subindo numa direção e descendo em outra.
+  </p>
+  <p>
+    Se \(D = 0\): o teste é inconclusivo — são necessários métodos adicionais
+    para classificar o ponto. No mapa de curvas de nível, máximos e mínimos
+    aparecem como curvas fechadas concêntricas; pontos de sela aparecem como
+    curvas que se cruzam (no sentido de hipérboles se aproximando da origem).
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> Nas operações de
+  reconhecimento aéreo, a leitura correta de mapas de curvas de nível
+  permite identificar vales, cumes e passagens naturais sem necessidade
+  de sobrevoar diretamente a região. A altitude representada por
+  \(f(x,y) = c\) é crucial para calcular a
+  <span class="censored">altitude de segurança</span> de aeronaves e
+  para determinar pontos de pouso compatíveis com as restrições de
+  <span class="censored">aeronaves de reconhecimento</span>. O
+  <strong>gradiente</strong> indica a direção de maior variação de
+  altitude — essencial para calcular rotas de ascensão rápida. Os
+  <strong>pontos críticos</strong> identificam picos ideais para
+  instalação de antenas e vales que oferecem cobertura natural.
+  A classificação de pontos críticos distingue locais seguros
+  (mínimos protegidos) de locais expostos (pontos de sela).
+</div>
+
+<!-- ========== NOTA HISTÓRICA ========== -->
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong>
+  Durante a Crise dos Mísseis de 1962, a análise de curvas de nível de
+  mapas topográficos de Cuba foi fundamental para identificar locais de
+  instalação de lançadores soviéticos. A técnica, combinada com
+  fotografias aéreas de <span class="censored">altitude crítica</span>,
+  permitiu a localização precisa de
+  <span class="censored">sítios de lançamento</span> antes mesmo da
+  confirmação por
+  <span class="censored">satélites de reconhecimento</span>.
+</div>

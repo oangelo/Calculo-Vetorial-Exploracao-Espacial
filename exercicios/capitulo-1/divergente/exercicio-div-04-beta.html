@@ -1,0 +1,79 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-04-BETA</div>
+  <div class="context">
+    ORIGEM: Seção de Análises Orbitais — Programa Apollo [DOCUMENTO PARCIALMENTE
+    CENSURADO]
+  </div>
+  <p>
+    Nos exercícios anteriores, analisamos como o campo passa por janelas e
+    verificamos que a soma de entradas e saídas se relaciona com as derivadas
+    parciais. Agora vamos usar diretamente a fórmula da divergência — sem
+    calcular passagens por faces.
+  </p>
+  <p>
+    A <strong>divergência</strong> de um campo \(\vec{F} = (P, Q, R)\) no ponto
+    \((x_0, y_0, z_0)\) é dada por: \]\nabla \cdot \vec{F}(x_0, y_0, z_0) =
+    \frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} +
+    \frac{\partial R}{\partial z}\\] Cada componente é derivada em relação à sua
+    variável: \(P\) em relação a \(x\), \(Q\) a \(y\), \(R\) a \(z\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\nabla \cdot \vec{F}\) para \(\vec{F}(x,y,z)
+    = (x^2 y,\] 2yz,\] 3z)\). Identifique cada componente e derive
+    separadamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Some os três termos. A divergência resultante depende
+    de quais variáveis?
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a divergência na origem \((0,0,0)\). O resultado
+    é positivo, negativo ou zero? Interprete fisicamente: se a taxa de expansão
+    do campo é positiva na origem, o que acontece com o campo ali?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para \(\frac{\partial}{\partial x}(x^2 y)\), tratamos
+      \(y\) como constante. A derivada de \(x^2\) é \(2x\), então o resultado é
+      \(2xy\). Para \(\frac{\partial}{\partial y}(2yz)\), \(z\) é constante, e a
+      derivada de \(2y\) é \(2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a) Cálculos parciais:</strong></p>
+      <p>
+        \]\frac{\partial P}{\partial x} = \frac{\partial}{\partial x}(x^2 y) =
+        2xy\\] \]\frac{\partial Q}{\partial y} = \frac{\partial}{\partial
+        y}(2yz) = 2z\\] \]\frac{\partial R}{\partial z} =
+        \frac{\partial}{\partial z}(3z) = 3\\]
+      </p>
+
+      <p><strong>(b) Divergência total:</strong></p>
+      <p>\]\nabla \cdot \vec{F} = 2xy + 2z + 3\\]</p>
+      <p>
+        A divergência depende de \(x\), \(y\) e \(z\) — não é constante. Em cada
+        ponto do espaço, o campo tem uma taxa de expansão diferente.
+      </p>
+
+      <p><strong>(c) Avaliação na origem:</strong></p>
+      <p>\]\nabla \cdot \vec{F}(0,0,0) = 2(0)(0) + 2(0) + 3 = 3\\]</p>
+      <p>
+        Divergência <strong>positiva</strong> na origem. Fisicamente: o campo se
+        "expande" na origem — há mais valor saindo do que entrando. É como uma
+        <em>fonte</em>: o campo "brota" daquela região.
+      </p>
+
+      <p>
+        <em>Conexão com o Ex 03:</em> No exercício anterior, vimos que
+        analisando a passagem pelas 6 faces de um cubo obtínhamos 32, e a taxa
+        por unidade de volume era \(32/8 = 4\). Aqui confirmamos: a fórmula
+        \(\nabla \cdot \vec{F} = \partial P/\partial x + \partial Q/\partial y +
+        \partial R/\partial z\) mede diretamente essa taxa de expansão, sem
+        precisar calcular cada face.
+      </p>
+    </div>
+  </details>
+</li>

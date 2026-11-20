@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gabarito - PS – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        options: {
+          skipHtmlTags: ['details'],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #000;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .header h1 {
+        text-align: center;
+        font-size: 16pt;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .question {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+      .question:last-child {
+        border-bottom: none;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 13pt;
+        color: #000;
+        border-left: 4px solid #000;
+        padding: 8px 10px;
+        background-color: #f0f0f0;
+        margin-bottom: 12px;
+      }
+      .didactic {
+        font-style: italic;
+        color: #444;
+        margin: 10px 0;
+      }
+      .subquestion {
+        margin: 10px 0 10px 20px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      summary {
+        font-weight: bold;
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #e9e9e9;
+        font-size: 10pt;
+        border-radius: 3px;
+      }
+      .answer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+      }
+      .answer p {
+        margin-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Gabarito - PS – 2026.1 - Cálculo Vetorial</h1>
+      </div>
+      <div class="content">
+        <!-- QUESTÃO 1 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 1: Stokes no espaço — semiesfera
+          </div>
+          <p>
+            Seja \(S\) a superfície da semiesfera \(z=\sqrt{9-x^2-y^2}\),
+            orientada com vetor normal apontando para cima. Seja \(C\) a curva
+            de fronteira de \(S\), dada por \(x^2+y^2=9\) no plano \(z=0\),
+            percorrida no sentido anti-horário quando vista de cima. Considere o
+            campo vetorial \(\mathbf F(x,y,z)=(y,z,x)\).
+          </p>
+          <p class="didactic">
+            Esta questão reúne, em uma única superfície, as competências finais
+            do curso: parametrizar e orientar a semiesfera, calcular a
+            circulação na fronteira e o fluxo do rotacional, e verificar o
+            Teorema de Stokes. Como o rotacional é constante, o fluxo também
+            pode ser lido como o produto do rotacional pela área vetorial da
+            superfície, o que conecta a integral de superfície à geometria.
+          </p>
+
+          <div class="subquestion">
+            <strong>a)</strong>
+            Parametrização e orientações.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Usamos coordenadas esféricas com raio \(R=3\): \[ \mathbf
+                  r(\theta,\phi)=(3\sin\phi\cos\theta,\;3\sin\phi\sin\theta,\;3\cos\phi),
+                  \] com \(0\le\theta\le2\pi\) e \(0\le\phi\le\frac{\pi}{2}\).
+                </p>
+                <p>
+                  A curva \(C\) é a circunferência de raio \(3\) no plano
+                  \(z=0\): \[ \mathbf r(t)=(3\cos t,\;3\sin t,\;0),\qquad 0\le
+                  t\le2\pi. \]
+                </p>
+                <p>
+                  O vetor normal unitário exterior à semiesfera é \(\mathbf
+                  n=(x,y,z)/3\), que aponta para cima. A curva \(C\) é
+                  percorrida no sentido anti-horário quando vista de cima. Essas
+                  orientações são compatíveis pela regra da mão direita.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>b)</strong>
+            Integral de linha direta.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Derivando a parametrização de \(C\): \[ \mathbf r'(t)=(-3\sin
+                  t,\;3\cos t,\;0). \] No ponto \(\mathbf r(t)\), \[ \mathbf
+                  F(\mathbf r(t))=(3\sin t,\;0,\;3\cos t). \] Portanto, \[
+                  \mathbf F(\mathbf r(t))\cdot\mathbf r'(t) =-9\sin^2
+                  t+0+0=-9\sin^2 t. \] Assim, \[ \oint_C \mathbf F\cdot d\mathbf
+                  r =\int_0^{2\pi}-9\sin^2 t\,dt =-9\pi, \] pois
+                  \(\int_0^{2\pi}\sin^2 t\,dt=\pi\).
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>c)</strong>
+            Rotacional, fluxo e verificação de Stokes.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Com \(P=y\), \(Q=z\) e \(R=x\), \[ \operatorname{rot}\mathbf F
+                  =\left(\frac{\partial R}{\partial y}-\frac{\partial
+                  Q}{\partial z}, \;\frac{\partial P}{\partial z}-\frac{\partial
+                  R}{\partial x}, \;\frac{\partial Q}{\partial x}-\frac{\partial
+                  P}{\partial y}\right) =(-1,-1,-1). \]
+                </p>
+                <p>
+                  Como o rotacional é constante, \[ \iint_S
+                  \operatorname{rot}\mathbf F\cdot d\mathbf S
+                  =(-1,-1,-1)\cdot\iint_S \mathbf n\,dS. \] A área vetorial da
+                  semiesfera de raio \(3\) é \((0,0,9\pi)\), pois sua projeção
+                  no plano \(xy\) é o disco de raio \(3\) e o vetor área aponta
+                  na direção \(z\). Logo, \[ \iint_S \operatorname{rot}\mathbf
+                  F\cdot d\mathbf S =(-1,-1,-1)\cdot(0,0,9\pi)=-9\pi. \]
+                </p>
+                <p>
+                  <em>Verificação por integral:</em> com \(\mathbf n=(x,y,z)/3\)
+                  e \(dS=9\sin\phi\,d\phi\,d\theta\), \[ \iint_S z\,dS
+                  =\int_0^{2\pi}\int_0^{\pi/2}3\cos\phi\cdot9\sin\phi\,d\phi\,d\theta
+                  =27\cdot2\pi\cdot\frac12=27\pi. \] As integrais de \(x\) e
+                  \(y\) se anulam por simetria. Assim, \[
+                  -\frac13\iint_S(x+y+z)\,dS =-\frac13\cdot27\pi=-9\pi. \]
+                </p>
+                <p>
+                  Os resultados de (b) e (c) coincidem. Isso é exatamente o
+                  Teorema de Stokes: \[ \iint_S \operatorname{rot}\mathbf F\cdot
+                  d\mathbf S =\oint_C \mathbf F\cdot d\mathbf r. \]
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- QUESTÃO 2 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 2: Teorema da Divergência — cone
+          </div>
+          <p>
+            Seja \(E\) o sólido limitado pelo cone \(z=\sqrt{x^2+y^2}\) e pelo
+            plano \(z=2\). Seja \(S\) a superfície fechada formada pela
+            superfície lateral do cone e pelo disco \(z=2\), orientada com vetor
+            normal externo. Considere \(\mathbf F(x,y,z)=(x,y,z^2)\).
+          </p>
+          <p class="didactic">
+            O aluno descreve o cone em coordenadas cilíndricas, calcula o
+            divergente e aplica o Teorema da Divergência. A verificação direta
+            separa a lateral e o topo: a lateral tem fluxo negativo porque a
+            normal externa aponta para baixo e para fora, enquanto o topo
+            contribui positivamente. A soma confere com a integral tripla.
+          </p>
+
+          <div class="subquestion">
+            <strong>a)</strong>
+            Descrição em cilíndricas, esboço e divergente.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Em coordenadas cilíndricas, \(x=r\cos\theta\),
+                  \(y=r\sin\theta\) e \(z=z\). O cone é \(z=r\), e o sólido é \[
+                  E=\{(r,\theta,z):0\le\theta\le2\pi,\;0\le r\le2,\;r\le
+                  z\le2\}. \] A superfície \(S\) é formada pela lateral do cone
+                  \(z=r\), \(0\le r\le2\), e pelo disco \(z=2\), \(0\le r\le2\).
+                </p>
+                <p>
+                  O divergente é \[ \operatorname{div}\mathbf F =\frac{\partial
+                  x}{\partial x} +\frac{\partial y}{\partial y} +\frac{\partial
+                  (z^2)}{\partial z} =1+1+2z=2+2z. \]
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>b)</strong>
+            Fluxo pelo Teorema da Divergência.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Pelo Teorema da Divergência, \[ \iint_S \mathbf F\cdot
+                  d\mathbf S =\iiint_E(2+2z)\,dV. \] O volume do cone é \[
+                  V=\int_0^{2\pi}\int_0^2\int_r^2 r\,dz\,dr\,d\theta
+                  =2\pi\int_0^2 r(2-r)\,dr =2\pi\left(4-\frac83\right)
+                  =\frac{8\pi}{3}. \] O momento em \(z\) é \[ \iiint_E z\,dV
+                  =\int_0^{2\pi}\int_0^2\int_r^2 zr\,dz\,dr\,d\theta
+                  =2\pi\int_0^2 r\left[\frac{z^2}{2}\right]_r^2dr =\pi\int_0^2
+                  r(4-r^2)\,dr =\pi\left[2r^2-\frac{r^4}{4}\right]_0^2 =4\pi. \]
+                  Portanto, \[ \iint_S \mathbf F\cdot d\mathbf S
+                  =2\cdot\frac{8\pi}{3}+2\cdot4\pi =\frac{16\pi}{3}+8\pi
+                  =\frac{40\pi}{3}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>c)</strong>
+            Fluxo direto pela lateral e pelo topo.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Lateral do cone.</strong> Parametrizamos \[ \mathbf
+                  r(z,\theta)=(z\cos\theta,\;z\sin\theta,\;z), \qquad 0\le
+                  z\le2,\quad 0\le\theta\le2\pi. \] O vetor normal externo é \[
+                  \mathbf r_\theta\times\mathbf r_z
+                  =(z\cos\theta,\;z\sin\theta,\;-z). \] No cone, \(\mathbf
+                  F=(z\cos\theta,z\sin\theta,z^2)\), logo \[ \mathbf
+                  F\cdot(\mathbf r_\theta\times\mathbf r_z)
+                  =z^2\cos^2\theta+z^2\sin^2\theta-z^3 =z^2-z^3. \] Assim, \[
+                  \iint_{\text{lateral}}\mathbf F\cdot d\mathbf S
+                  =\int_0^{2\pi}\int_0^2(z^2-z^3)\,dz\,d\theta
+                  =2\pi\left(\frac83-4\right) =-\frac{8\pi}{3}. \]
+                </p>
+                <p>
+                  <strong>Topo.</strong> No disco \(z=2\), a normal externa é
+                  \((0,0,1)\), \(dS=r\,dr\,d\theta\) e \(\mathbf
+                  F=(r\cos\theta,r\sin\theta,4)\). Então \[
+                  \iint_{\text{topo}}\mathbf F\cdot d\mathbf S
+                  =\int_0^{2\pi}\int_0^2 4r\,dr\,d\theta =16\pi. \]
+                </p>
+                <p>
+                  Somando, \[ -\frac{8\pi}{3}+16\pi=\frac{40\pi}{3}, \] que
+                  coincide com o resultado de (b).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- QUESTÃO 3 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 3: Plano, tetraedro e triângulo
+          </div>
+          <p>
+            Considere os pontos \(A(3,0,0)\), \(B(0,2,0)\), \(C(0,0,5)\) e
+            \(O=(0,0,0)\).
+          </p>
+          <p class="didactic">
+            Questão autocontida de geometria analítica: o aluno determina o
+            plano por três pontos, calcula o volume do tetraedro e a área do
+            triângulo sem método prescrito. O item (d) fecha a questão
+            conectando o volume e a área pela relação \(V=\frac13 A h\) e
+            reinterpreta o produto escalar, o produto vetorial e o produto misto
+            como as operações que reaparecem no Jacobiano, no elemento de área
+            de superfície e nas integrais de linha e de fluxo.
+          </p>
+
+          <div class="subquestion">
+            <strong>a)</strong>
+            Equação do plano e cortes nos eixos.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Os vetores \[ \vec{AB}=B-A=(-3,2,0),\qquad
+                  \vec{AC}=C-A=(-3,0,5). \] Um vetor normal ao plano é \[
+                  \mathbf n=\vec{AB}\times\vec{AC}=(10,15,6). \] A equação do
+                  plano que passa por \(A(3,0,0)\) é \[ 10(x-3)+15y+6z=0
+                  \quad\Longrightarrow\quad 10x+15y+6z=30. \] Os cortes nos
+                  eixos são \(x=3\), \(y=2\) e \(z=5\), ou seja, os pontos
+                  \(A(3,0,0)\), \(B(0,2,0)\) e \(C(0,0,5)\).
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>b)</strong>
+            Volume do tetraedro \(OABC\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Os vetores das arestas que partem da origem são \[
+                  \vec{OA}=(3,0,0),\qquad \vec{OB}=(0,2,0),\qquad
+                  \vec{OC}=(0,0,5). \] O produto misto é \[
+                  \vec{OA}\cdot(\vec{OB}\times\vec{OC})
+                  =(3,0,0)\cdot(10,0,0)=30. \] Portanto, \[
+                  V=\frac{1}{6}\left|\vec{OA}\cdot(\vec{OB}\times\vec{OC})\right|
+                  =\frac{30}{6}=5. \]
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>c)</strong>
+            Área do triângulo \(ABC\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Com \(\vec{AB}=(-3,2,0)\) e \(\vec{AC}=(-3,0,5)\), \[
+                  \vec{AB}\times\vec{AC}=(10,15,6). \] A área do triângulo é
+                  metade do módulo desse vetor: \[ A_{ABC} =\frac12\|(10,15,6)\|
+                  =\frac12\sqrt{100+225+36} =\frac12\sqrt{361} =\frac{19}{2}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>d)</strong>
+            Relação entre volume e área e conexão com o Cálculo Vetorial.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O volume do tetraedro também pode ser escrito como \[
+                  V=\frac13 A_{ABC}\,h, \] em que \(h\) é a altura em relação à
+                  face \(ABC\), ou seja, a distância de \(O\) ao plano \(ABC\).
+                  Como \(V=5\) e \(A_{ABC}=19/2\), \[ h=\frac{3V}{A_{ABC}}
+                  =\frac{3\cdot5}{19/2} =\frac{30}{19}. \] Isso confere com a
+                  fórmula da distância de \(O\) ao plano \(10x+15y+6z=30\): \[
+                  h=\frac{|10\cdot0+15\cdot0+6\cdot0-30|} {\sqrt{10^2+15^2+6^2}}
+                  =\frac{30}{19}. \] Assim,
+                  \(V=\frac13\cdot\frac{19}{2}\cdot\frac{30}{19}=5\),
+                  relacionando diretamente os itens (b) e (c).
+                </p>
+                <p>
+                  <strong>Produto misto e Jacobiano.</strong> O produto misto
+                  \(|\vec u\cdot(\vec v\times\vec w)|\) mede o volume do
+                  paralelepípedo gerado por \(\vec u,\vec v,\vec w\), e o
+                  determinante da matriz desses vetores é o fator de escala
+                  local de volume. No Cálculo Vetorial, o valor absoluto do
+                  determinante Jacobiano \(|\det J|\) é exatamente o fator que
+                  transforma \(du\,dv\,dw\) em \(dV\) na mudança de variáveis:
+                  \[ dV=|\det J|\,du\,dv\,dw. \]
+                </p>
+                <p>
+                  <strong>Produto vetorial e elemento de área.</strong> O módulo
+                  \(\|\vec v\times\vec w\|\) é a área do paralelogramo e o vetor
+                  \(\vec v\times\vec w\) é normal ao plano. Numa superfície
+                  parametrizada \(\mathbf r(u,v)\), o elemento de área é \[
+                  dS=\|\mathbf r_u\times\mathbf r_v\|\,du\,dv, \] e \(\mathbf
+                  r_u\times\mathbf r_v\) fornece a orientação usada no fluxo
+                  \(\iint_S\mathbf F\cdot d\mathbf S\).
+                </p>
+                <p>
+                  <strong>Produto escalar e integrais.</strong> O produto
+                  escalar mede projeção e aparece em \(\int_C\mathbf F\cdot
+                  d\mathbf r\) (integral de linha) e em \(\iint_S\mathbf
+                  F\cdot\mathbf n\,dS\) (fluxo). Além disso, o vetor normal
+                  \((10,15,6)\) é o gradiente de \(f(x,y,z)=10x+15y+6z\), e a
+                  distância ao plano usa \(\|\nabla f\|\).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- QUESTÃO 4 -->
+        <div class="question">
+          <div class="question-header">Questão 4: Campos conservativos</div>
+          <p>
+            Seja \(C\) o arco da parábola \(y=x^2\) de \((0,0)\) a \((1,1)\).
+            Considere os campos vetoriais \(\mathbf F_1(x,y)=(2xy,x^2)\) e
+            \(\mathbf F_2(x,y)=(y^2,x)\).
+          </p>
+          <p class="didactic">
+            A questão confronta dois campos sobre a mesma curva: um gradiente e
+            um campo com rotacional não nulo. O potencial permite calcular a
+            integral por diferença de valores; o outro campo exige integração
+            direta e não admite potencial, explicitando a relação entre
+            rotacional, potencial e independência de caminho.
+          </p>
+
+          <div class="subquestion">
+            <strong>a)</strong>
+            Rotacionais e identificação do campo conservativo.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Em duas dimensões, para \(\mathbf F=(P,Q)\), \[
+                  \operatorname{rot}\mathbf F =\left(\frac{\partial Q}{\partial
+                  x} -\frac{\partial P}{\partial y}\right)\mathbf k. \] Para
+                  \(\mathbf F_1=(2xy,x^2)\), \[ \operatorname{rot}\mathbf F_1
+                  =\left(\frac{\partial (x^2)}{\partial x} -\frac{\partial
+                  (2xy)}{\partial y}\right)\mathbf k =(2x-2x)\mathbf k=\mathbf
+                  0. \] Para \(\mathbf F_2=(y^2,x)\), \[
+                  \operatorname{rot}\mathbf F_2 =\left(\frac{\partial
+                  x}{\partial x} -\frac{\partial (y^2)}{\partial
+                  y}\right)\mathbf k =(1-2y)\mathbf k\neq\mathbf 0. \] Portanto,
+                  \(\mathbf F_1\) é conservativo e \(\mathbf F_2\) não é.
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>b)</strong>
+            Integrais de linha explícitas.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Parametrizamos \(C\) por \[ \mathbf r(t)=(t,t^2),\qquad 0\le
+                  t\le1, \qquad \mathbf r'(t)=(1,2t). \]
+                </p>
+                <p>
+                  <strong>Para \(\mathbf F_1\):</strong>
+                  \[ \mathbf F_1(\mathbf r(t))=(2t^3,t^2), \] logo \[ \mathbf
+                  F_1\cdot\mathbf r' =2t^3\cdot1+t^2\cdot2t=4t^3. \] Assim, \[
+                  \int_C\mathbf F_1\cdot d\mathbf r =\int_0^1 4t^3\,dt
+                  =\left[t^4\right]_0^1=1. \]
+                </p>
+                <p>
+                  <strong>Para \(\mathbf F_2\):</strong>
+                  \[ \mathbf F_2(\mathbf r(t))=(t^4,t), \] logo \[ \mathbf
+                  F_2\cdot\mathbf r' =t^4\cdot1+t\cdot2t=t^4+2t^2. \] Assim, \[
+                  \int_C\mathbf F_2\cdot d\mathbf r =\int_0^1(t^4+2t^2)\,dt
+                  =\frac15+\frac23 =\frac{13}{15}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div class="subquestion">
+            <strong>c)</strong>
+            Potencial, confirmação e ausência de potencial para \(\mathbf F_2\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Para \(\mathbf F_1=(2xy,x^2)\), procuramos \(f\) tal que
+                  \(f_x=2xy\) e \(f_y=x^2\). Uma função é \[ f(x,y)=x^2y, \]
+                  pois \(f_x=2xy\) e \(f_y=x^2\). A integral de linha é a
+                  diferença de potencial entre os extremos: \[ \int_C\mathbf
+                  F_1\cdot d\mathbf r =f(1,1)-f(0,0)=1-0=1, \] confirmando o
+                  item (b).
+                </p>
+                <p>
+                  Para \(\mathbf F_2=(y^2,x)\), se existisse um potencial \(f\),
+                  teríamos \(f_x=y^2\) e \(f_y=x\). Derivando, \(f_{xy}=2y\) e
+                  \(f_{yx}=1\). Pelo teorema de Clairaut, deveríamos ter
+                  \(f_{xy}=f_{yx}\), ou seja, \(2y=1\) para todo \(y\), o que é
+                  impossível. Isso é consistente com \(\operatorname{rot}\mathbf
+                  F_2=(1-2y)\mathbf k \neq\mathbf 0\): o campo não é
+                  conservativo e não admite potencial escalar.
+                </p>
+                <p>
+                  <em>Observação:</em> ao longo do segmento de \((0,0)\) a
+                  \((1,1)\), a integral de \(\mathbf F_2\) vale \[
+                  \int_0^1(t^2+t)\,dt=\frac13+\frac12=\frac56, \] diferente de
+                  \(13/15\). Isso exibe diretamente a dependência do caminho.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

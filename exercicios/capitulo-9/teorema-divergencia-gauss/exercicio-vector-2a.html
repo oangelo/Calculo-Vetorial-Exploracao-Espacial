@@ -1,0 +1,73 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Sistema de Suporte de Vida -
+    <span class="censored">Módulo Orbital</span> Skylab [MAI/1973]
+  </div>
+  <p>
+    Até aqui, o teorema foi uma ferramenta de cálculo. Mas ele também é o
+    fundamento de leis físicas. A primeira consequência profunda: se a massa de
+    um fluido se conserva, o Teorema da Divergência nos fornece uma equação que
+    deve valer em cada ponto do espaço.
+  </p>
+  <p>
+    No módulo orbital do Skylab, o ar é recirculado por um sistema de
+    ventilação. A densidade do ar num ponto é \(\rho(x,y,z,t)\) e o campo de
+    velocidade é \(\mathbf{v}(x,y,z,t)\). A massa contida num volume fixo \(V\)
+    é \(\displaystyle m(t) = \iiint_V \rho\,dV\).
+  </p>
+  <p>
+    <strong>(a)</strong> A taxa com que massa atravessa a fronteira \(\partial
+    V\) (para fora) é \(\displaystyle\iint_{\partial V} \rho\,\mathbf{v} \cdot
+    d\mathbf{S}\). Se não há fontes nem sumidouros, escreva a equação de
+    conservação: a taxa de variação de \(m(t)\) é igual ao negativo do fluxo de
+    massa para fora.
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique o Teorema da Divergência para converter a
+    integral de superfície em integral de volume. Use o fato de que
+    \(\frac{d}{dt}\iiint_V \rho\,dV = \iiint_V \frac{\partial \rho}{\partial
+    t}\,dV\) (o limite de integração é fixo).
+  </p>
+  <p>
+    <strong>(c)</strong> Como a igualdade vale para <em>qualquer</em> volume
+    \(V\), conclua a <strong>equação da continuidade</strong> em forma
+    diferencial: \(\frac{\partial \rho}{\partial t} + \nabla \cdot
+    (\rho\,\mathbf{v}) = 0\). Por que o argumento "para qualquer volume" permite
+    passar da integral para a equação diferencial?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Se duas funções contínuas satisfazem \(\iiint_V f\,dV =
+      \iiint_V g\,dV\) para todo volume \(V\), então \(f = g\) em todos os
+      pontos. Pense: se \(f(x_0) > g(x_0)\) em algum ponto, escolha \(V\)
+      pequeno ao redor de \(x_0\) e contradiga a igualdade.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Conservação de massa: \(\frac{d}{dt}\iiint_V \rho\,dV =
+        -\iint_{\partial V} \rho\,\mathbf{v} \cdot d\mathbf{S}\).
+      </p>
+      <p>
+        (b) Derivando sob o sinal de integral (domínio fixo): \(\iiint_V
+        \frac{\partial \rho}{\partial t}\,dV = -\iint_{\partial V}
+        \rho\,\mathbf{v} \cdot d\mathbf{S}\). Aplicando o Teorema da
+        Divergência: \(\iiint_V \frac{\partial \rho}{\partial t}\,dV = -\iiint_V
+        \nabla \cdot (\rho\,\mathbf{v})\,dV\). Passando tudo para um lado:
+        \(\iiint_V \left[\frac{\partial \rho}{\partial t} + \nabla \cdot
+        (\rho\,\mathbf{v})\right]\,dV = 0\).
+      </p>
+      <p>
+        (c) Como \(V\) é arbitrário e a função entre colchetes é contínua, ela
+        deve ser identicamente nula: \(\frac{\partial \rho}{\partial t} + \nabla
+        \cdot (\rho\,\mathbf{v}) = 0\). Se fosse positiva em algum ponto,
+        haveria um pequeno volume ao redor onde a integral seria positiva —
+        contradição. Esta é a <strong>equação da continuidade</strong>.
+      </p>
+    </div>
+  </details>
+</li>

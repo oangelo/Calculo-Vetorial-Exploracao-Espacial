@@ -1,0 +1,37 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Terreno – Apollo 15 [26/JUL/1971]
+  </div>
+  <p>
+    No tópico anterior, você estudou superfícies parametrizadas
+    \(\vec{r}(u,v)\). Agora vamos entender o que acontece geometricamente
+    quando variamos um parâmetro de cada vez. Considere a superfície
+    parametrizada
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}(u,v) = (u, v, u^2 + v^2)\]
+  </p>
+  <p>que descreve um paraboloide circular.</p>
+  <p><strong>(a)</strong> Calcule as derivadas parciais \(\vec{r}_u\) e \(\vec{r}_v\) no ponto \((u_0,v_0) = (1,1)\).</p>
+  <p><strong>(b)</strong> Descreva geometricamente as duas curvas coordenadas que passam por esse ponto: \(\vec{r}(u,1)\) (fixando \(v=1\)) e \(\vec{r}(1,v)\) (fixando \(u=1\)). O que cada uma representa sobre o paraboloide?</p>
+  <p><strong>(c)</strong> Interprete \(\vec{r}_u(1,1)\) e \(\vec{r}_v(1,1)\) como vetores tangentes a essas curvas coordenadas. Verifique que ambos são de fato tangentes à superfície no ponto \(P = \vec{r}(1,1)\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Lembre-se do Capítulo 1: se \(\vec{r}(t)\) é uma curva,
+      então \(\vec{r}'(t)\) é o vetor velocidade tangente à trajetória. Aqui,
+      \(\vec{r}_u\) é a derivada de \(\vec{r}(u,v_0)\) em relação a \(u\),
+      tratando \(v_0\) como constante — portanto é tangente à curva
+      coordenada.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(\vec{r}_u = (1, 0, 2u)\), \(\vec{r}_v = (0, 1, 2v)\). Em \((1,1)\): \(\vec{r}_u(1,1) = (1,0,2)\), \(\vec{r}_v(1,1) = (0,1,2)\).</p>
+      <p><strong>(b)</strong> \(\vec{r}(u,1) = (u, 1, u^2+1)\) é uma parábola no plano \(y=1\). \(\vec{r}(1,v) = (1, v, 1+v^2)\) é uma parábola no plano \(x=1\). Ambas estão sobre o paraboloide e se cruzam em \(P=(1,1,2)\).</p>
+      <p><strong>(c)</strong> \(\vec{r}_u(1,1) = (1,0,2)\) é tangente à parábola \(\vec{r}(u,1)\) em \(u=1\). \(\vec{r}_v(1,1) = (0,1,2)\) é tangente à parábola \(\vec{r}(1,v)\) em \(v=1\). Como ambas as curvas estão na superfície, seus vetores tangentes são tangentes à superfície.</p>
+    </div>
+  </details>
+</li>

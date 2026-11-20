@@ -1,0 +1,65 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+  <div class="context">
+    ORIGEM: Seção de Navegação – Centro
+    <span class="censored">███</span> (18/JUL/1969)
+  </div>
+  <p>
+    No tópico anterior, você descobriu que escolhendo o campo certo, a
+    circulação sobre um retângulo é proporcional à sua área. Agora que
+    entendemos a decomposição (exercício anterior), podemos provar que essa
+    relação vale para <strong>qualquer</strong> região com fronteira \(C^1\) —
+    não apenas retângulos.
+  </p>
+  <p>
+    Prove, usando o Teorema de Green, que a área assinada de qualquer região
+    \(D\) delimitada por uma curva fechada suave pode ser obtida por uma
+    integral de contorno.
+  </p>
+  <p>
+    <strong>(a)</strong> Recordar o campo especial cujo rotacional no plano
+    (isto é, \(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\))
+    é constante e igual a \(1\). Quais são as componentes \(P\) e \(Q\) mais
+    simples que satisfazem essa condição?
+  </p>
+  <p>
+    <strong>(b)</strong> Aplicar Green com esse campo e concluir que
+    \(\displaystyle\oint_{\partial D} P\,dx + Q\,dy = \iint_D 1\,dA =
+    \text{Área}(D)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Existem várias escolhas de \((P,Q)\) que funcionam.
+    Mostre que as duas formas mais comuns de calcular a área via integral de
+    contorno são \(\oint x\,dy\) e \(\frac{1}{2}\oint(x\,dy - y\,dx)\), e
+    verifique que ambas produzem o rotacional igual a \(1\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Queremos que a diferença das derivadas parciais seja
+      constante e igual a \(1\). Tente \(P = 0\), \(Q = x\). Depois tente \(P =
+      -y/2\), \(Q = x/2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Com \(P = 0\) e \(Q = x\): \(\frac{\partial Q}{\partial x} -
+        \frac{\partial P}{\partial y} = 1 - 0 = 1\). Alternativamente, com \(P =
+        -y/2\) e \(Q = x/2\): a diferença é \(1/2 + 1/2 = 1\).
+      </p>
+      <p>
+        (b) Pelo Teorema de Green (agora justificado para fronteiras \(C^1\) via
+        decomposição): \(\oint_{\partial D} x\,dy = \iint_D 1\,dA =
+        \text{Área}(D)\).
+      </p>
+      <p>
+        (c) Primeira forma: \(\oint x\,dy\) corresponde a \(P=0\), \(Q=x\), com
+        rotacional \(1\). Segunda forma: \(\frac{1}{2}\oint(x\,dy - y\,dx)\)
+        corresponde a \(P = -y/2\), \(Q = x/2\), com rotacional \(\frac{1}{2} +
+        \frac{1}{2} = 1\). Ambas dão \(\text{Área}(D)\).
+      </p>
+    </div>
+  </details>
+</li>

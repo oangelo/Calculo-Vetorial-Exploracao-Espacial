@@ -1,0 +1,54 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO SR2-BETA-1</div>
+  <div class="context">
+    ORIGEM: Análise de Painéis Solares - Projeto de Estação Orbital
+  </div>
+  <p>
+    Agora que você já praticou com funções polinomiais e exponenciais, vamos
+    aumentar a complexidade: uma função logarítmica. A técnica é a mesma — o que
+    muda é o tipo de conta.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os quatro cantos superiores esquerdos dos
+    sub-retângulos de \(D = [1,2]\times [2,4]\) com \(m=2\), \(n=2\).
+  </p>
+  <p>
+    <strong>(b)</b> Use a propriedade \(\ln(ab) = \ln(a) + \ln(b)\) para
+    calcular a soma de Riemann de \(\iint_D \ln(xy)\, dA\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Aplique \(\ln(ab) = \ln(a) + \ln(b)\) para simplificar
+      cada avaliação antes de somar numericamente.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(\Delta x = \frac{2-1}{2} = 0.5\), \(\Delta y = \frac{4-2}{2} = 1.\)
+      </p>
+      <p>
+        Canto superior esquerdo de cada retângulo:
+        <br />
+        1º retângulo: \((x,y)\approx(1,3)\); 2º retângulo: \((1.5,3)\); 3º
+        retângulo: \((1,4)\); 4º retângulo: \((1.5,4)\).
+      </p>
+      <p>
+        Avaliando \(f\): \(\ln(1\times 3) = \ln(3)\), \(\ln(1.5\times
+        3)=\ln(4.5)\), \(\ln(1\times 4)=\ln(4)\), \(\ln(1.5\times 4)=\ln(6)\).
+      </p>
+      <p>
+        Soma: \[ (\ln 3 + \ln 4.5 + \ln 4 + \ln 6)\times 0.5 \times 1. \]
+        <br />
+        \(\ln(4.5)\approx 1.5041\); \(\ln(3)\approx 1.0986\); \(\ln(4)\approx
+        1.3863\); \(\ln(6)\approx 1.7918\).
+      </p>
+      <p>
+        Somando: \(1.0986 + 1.5041 + 1.3863 + 1.7918 \approx 5.7808.\)
+        Multiplicando por \(0.5\), obtemos aproximadamente \(2.8904\).
+      </p>
+    </div>
+  </details>
+</li>

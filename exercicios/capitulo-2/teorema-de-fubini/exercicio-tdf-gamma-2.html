@@ -1,0 +1,75 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDF-GAMMA-2</div>
+  <div class="context">
+    ORIGEM: Conjunto Limitado por Curvas - Relatório
+    <span class="censored">GAMMA-2</span>
+  </div>
+  <p>
+    O disco anterior mostrou a dificuldade de domínios circulares em
+    cartesianas. Agora voltamos a curvas mais tratáveis: uma parábola \(y =
+    x^2\) e uma reta horizontal \(y = 4\). A região entre elas é compacta e
+    bem-comportada, mas a escolha da ordem de integração pode simplificar ou
+    complicar o cálculo. Note como a descrição como Tipo II (com \(y\) primeiro)
+    evita raízes quadradas nos limites.
+  </p>
+  <p>
+    A região \(D\) é limitada por \(y = x^2\) e \(y = 4\). Avaliar \(\iint_D
+    (xy)\, dA\), discutindo a possibilidade de dividir a região ou usar
+    diretamente um único conjunto de limites.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região \(D\) e encontre os pontos de
+    interseção de \(y = x^2\) com \(y = 4\).
+  </p>
+  <p>
+    <strong>(b)</strong> Resolva a integral usando a ordem \(dy\,dx\) (Tipo I).
+  </p>
+  <p>
+    <strong>(c)</strong> Resolva usando a ordem \(dx\,dy\) (Tipo II) e compare
+    as dificuldades.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: As interseções são \(x = \pm 2\). Como Tipo I: \(x \in
+      [-2, 2]\), \(y \in [x^2, 4]\). Como Tipo II: \(y \in [0, 4]\), \(x \in
+      [-\sqrt{y}, \sqrt{y}]\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(x^2 = 4\) dá \(x = \pm 2\). A região é a faixa
+        entre a parábola e a reta horizontal.
+      </p>
+      <p>
+        <strong>(b)</strong> Tipo I: \(-2 \le x \le 2\), \(x^2 \le y \le 4\).
+      </p>
+      <p>\[ \int_{x=-2}^{2} \left(\int_{y=x^2}^{4} xy\, dy\right) dx. \]</p>
+      <p>
+        Integral interna: \[ \int_{x^2}^{4} xy\, dy =
+        x\left[\frac{y^2}{2}\right]_{x^2}^{4} = x\left(8 - \frac{x^4}{2}\right)
+        = 8x - \frac{x^5}{2}. \]
+      </p>
+      <p>
+        Integral externa: \[ \int_{-2}^{2} \left(8x - \frac{x^5}{2}\right) dx =
+        0 \] pois o integrando é uma função ímpar em um intervalo simétrico.
+      </p>
+      <p>
+        <strong>(c)</strong> Tipo II: \(0 \le y \le 4\), \(-\sqrt{y} \le x \le
+        \sqrt{y}\).
+      </p>
+      <p>
+        \[ \int_0^4 \int_{-\sqrt{y}}^{\sqrt{y}} xy\, dx\, dy = \int_0^4 y
+        \left[\frac{x^2}{2}\right]_{-\sqrt{y}}^{\sqrt{y}} dy = \int_0^4 y \cdot
+        0\, dy = 0. \]
+      </p>
+      <p>
+        Conclusão: \(\iint_D xy\, dA = 0\) pela simetria ímpar de \(xy\) em
+        \(x\) no domínio simétrico. A ordem \(dx\,dy\) torna a simetria mais
+        visível.
+      </p>
+    </div>
+  </details>
+</li>

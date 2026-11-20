@@ -1,0 +1,51 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO PDI-GAMMA-3</div>
+  <div class="context">
+    ORIGEM: Seção de Modelagem Numérica - Dados Experenciais (JUN/1966)
+  </div>
+  <p>
+    Agora vamos conectar dois conceitos importantes: o conteúdo nulo (que
+    estudamos antes) e a integral. Se duas funções diferem apenas num conjunto
+    "insignificante" — de conteúdo nulo — suas integrais serão iguais? Esse
+    resultado é crucial, pois na prática nunca conhecemos uma função com
+    precisão absoluta em todos os pontos.
+  </p>
+  <p>
+    Se duas funções \(f\) e \(g\) diferem apenas em um conjunto de pontos de
+    conteúdo nulo (isto é, em um conjunto "muito pequeno" dentro de
+    <span class="censored">D</span>), discuta a validade de
+  </p>
+  <p>\[\iint_D f(x,y)\, dA = \iint_D g(x,y)\, dA.\]</p>
+  <p>
+    <strong>(a)</strong> Defina \(h(x,y) = f(x,y) - g(x,y)\). Em que conjunto
+    \(h\) é não-nula? O que podemos dizer sobre esse conjunto?
+  </p>
+  <p>
+    <strong>(b)</strong> Divida \(D\) em duas partes: o conjunto de conteúdo
+    nulo onde \(h \neq 0\), e o resto onde \(h = 0\). Use aditividade
+    (PDI-BETA-2) para separar \(\iint_D h\,dA\) em duas integrais.
+  </p>
+  <p>
+    <strong>(c)</strong> Mostre que ambas as integrais parciais valem zero e
+    conclua que \(\iint_D f\,dA = \iint_D g\,dA\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: No conjunto de conteúdo nulo, a função pode ser limitada e
+      a área é "quase zero", então a integral sobre essa parte é pequena. No
+      resto, \(h = 0\), então a integral é zero.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        A definição de integral dupla admite que diferenças em conjuntos de
+        conteúdo nulo não alteram o valor final. As somas de Riemann em tais
+        pontos são desprezíveis, garantindo que a integral de \(f\) seja
+        <strong>igual</strong> à de \(g\) sob essa condição.
+      </p>
+    </div>
+  </details>
+</li>

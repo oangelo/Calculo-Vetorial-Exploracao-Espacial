@@ -1,0 +1,36 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Lab. Materiais Refratários – Apollo 17 [07/DEZ/1972]
+  </div>
+  <p>
+    O método do gradiente também funciona quando a superfície é dada como
+    gráfico \(z = f(x,y)\), bastando reescrevê-la na forma implícita.
+    Considere o paraboloide elíptico
+  </p>
+  <p class="formula-highlight">
+    \[z = \frac{x^2}{4} + \frac{y^2}{9}\]
+  </p>
+  <p>e o ponto \(P = (2, 3, 2)\) sobre ele.</p>
+  <p><strong>(a)</strong> Reescreva a superfície na forma \(F(x,y,z) = 0\) e calcule o gradiente \(\nabla F\) no ponto \(P\).</p>
+  <p><strong>(b)</strong> Parametrize a superfície como \(\vec{r}(x,y) = (x, y, \frac{x^2}{4} + \frac{y^2}{9})\). Calcule \(\vec{r}_x \times \vec{r}_y\) no ponto \(P\) e verifique que é paralelo ao gradiente de (a).</p>
+  <p><strong>(c)</strong> Escreva a equação do plano tangente pelos dois métodos e confirme que ambos dão o mesmo resultado.</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para reescrever \(z = f(x,y)\) na forma implícita,
+      defina \(F(x,y,z) = z - f(x,y)\). O gradiente será
+      \(\nabla F = (-f_x, -f_y, 1)\). Compare com o produto vetorial
+      \(\vec{r}_x \times \vec{r}_y = (-f_x, -f_y, 1)\) quando
+      \(\vec{r}(x,y) = (x, y, f(x,y))\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> \(F(x,y,z) = z - \frac{x^2}{4} - \frac{y^2}{9} = 0\). \(\nabla F = (-\frac{x}{2}, -\frac{2y}{9}, 1)\). Em \(P=(2,3,2)\): \(\nabla F = (-1, -\frac{2}{3}, 1)\).</p>
+      <p><strong>(b)</strong> \(\vec{r}_x = (1, 0, \frac{x}{2})\), \(\vec{r}_y = (0, 1, \frac{2y}{9})\). Em \(P\): \(\vec{r}_x = (1,0,1)\), \(\vec{r}_y = (0,1,\frac{2}{3})\). \(\vec{r}_x \times \vec{r}_y = (-1, -\frac{2}{3}, 1)\), que é exatamente igual ao gradiente.</p>
+      <p><strong>(c)</strong> Plano: \((-1, -\frac{2}{3}, 1) \cdot (x-2, y-3, z-2) = 0\), ou \(-(x-2) - \frac{2}{3}(y-3) + (z-2) = 0\), que simplifica para \(z = x + \frac{2}{3}y - 2\).</p>
+    </div>
+  </details>
+</li>

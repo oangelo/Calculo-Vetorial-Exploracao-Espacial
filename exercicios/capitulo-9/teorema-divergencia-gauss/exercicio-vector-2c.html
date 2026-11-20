@@ -1,0 +1,72 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+  <div class="context">
+    ORIGEM: Análise de <span class="censored">Campo Elétrico</span> - Satélite
+    Esférico [JUL/1973]
+  </div>
+  <p>
+    A Lei de Gauss vale para qualquer superfície fechada. Com simetria, ela
+    permite encontrar o campo elétrico <strong>sem integrar</strong> — o que é
+    quase mágico. Vamos usar essa ideia para uma distribuição de carga com
+    simetria esférica.
+  </p>
+  <p>
+    Uma esfera de raio \(R\) carrega uma carga total \(Q\) uniformemente
+    distribuída em seu volume. A densidade volumétrica de carga é \(\rho_v =
+    \dfrac{Q}{\frac{4}{3}\pi R^3}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Para um ponto fora da esfera (\(r > R\)), argumente
+    pela simetria que o campo elétrico é radial e tem módulo constante sobre
+    cada esfera centrada na origem. Escolha uma superfície gaussiana esférica de
+    raio \(r\) e aplique a Lei de Gauss para encontrar \(|\mathbf{E}|\).
+  </p>
+  <p>
+    <strong>(b)</strong> Para um ponto dentro da esfera (\(r < R\)), repita o
+    procedimento. Qual é a carga encerrada pela superfície gaussiana?
+  </p>
+  <p>
+    <strong>(c)</strong> Compare os dois resultados. O que acontece na fronteira
+    \(r = R\)? Por que a Lei de Gauss foi mais eficiente que integrar a carga
+    diretamente?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O argumento de simetria é crucial. Se a distribuição de
+      carga é esfericamente simétrica, o campo só pode depender de \(r\) e
+      apontar na direção radial — qualquer outra direção quebraria a simetria.
+      Com isso, \(\mathbf{E} = E(r)\hat{\mathbf{r}}\) e o fluxo pela esfera de
+      raio \(r\) é \(E(r) \cdot 4\pi r^2\). Para pontos dentro, a carga
+      encerrada é proporcional ao volume da esfera gaussiana.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Por simetria, \(\mathbf{E} = E(r)\hat{\mathbf{r}}\). Fluxo pela
+        esfera de raio \(r\): \(\iint \mathbf{E}\cdot d\mathbf{S} = E(r) \cdot
+        4\pi r^2\). Carga encerrada: \(Q\). Lei de Gauss: \(E(r) \cdot 4\pi r^2
+        = Q/\varepsilon_0\). Logo, \(E(r) = \dfrac{Q}{4\pi\varepsilon_0 r^2}\)
+        para \(r > R\). Idêntico ao campo de uma carga puntiforme — como se toda
+        a carga estivesse concentrada no centro.
+      </p>
+      <p>
+        (b) Para \(r < R\), a carga encerrada é \(Q_{\text{int}} = \rho_v \cdot
+        \frac{4}{3}\pi r^3 = Q\frac{r^3}{R^3}\). Lei de Gauss: \(E(r) \cdot 4\pi
+        r^2 = \frac{Q\,r^3}{\varepsilon_0 R^3}\). Logo, \(E(r) =
+        \dfrac{Qr}{4\pi\varepsilon_0 R^3}\) para \(r < R\). O campo cresce
+        linearmente com \(r\) dentro da esfera.
+      </p>
+      <p>
+        (c) Na fronteira \(r = R\): a expressão externa dá \(E =
+        Q/(4\pi\varepsilon_0 R^2)\) e a interna dá \(E = QR/(4\pi\varepsilon_0
+        R^3) = Q/(4\pi\varepsilon_0 R^2)\). São iguais — o campo é contínuo. A
+        Lei de Gauss substituiu uma integral de volume tripla (somar
+        contribuições de cada elemento de carga) por uma simples equação
+        algébrica.
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,58 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO REV-ALFA-1</div>
+  <div class="context">
+    ORIGEM: Oficina de Placas Térmicas – Documento Técnico
+    <span class="censored">B‑17</span>
+  </div>
+  <p>
+    A lista de revisão começa pelo conceito mais fundamental da integral dupla:
+    a aditividade. Se você pode dividir um domínio em pedaços e somar as
+    integrais, tem uma ferramenta poderosa para regiões de formato irregular.
+    Este exercício retoma a definição de integral dupla e aplica a propriedade
+    de aditividade em um domínio composto por dois retângulos adjacentes — o
+    caso mais simples de domínio não-retangular.
+  </p>
+  <p>
+    A região \(D\) é união de dois retângulos adjacentes:
+    \(R_1=[0,1]\times[0,2]\) e \(R_2=[1,2]\times[0,1]\). Sabendo que
+    \(f(x,y)=3x+2\) em todo \(D\), determine \[\iint_D f(x,y)\,dA\] apenas pela
+    definição e pelas propriedades de aditividade.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce a região \(D\) e identifique os dois retângulos
+    \(R_1\) e \(R_2\).
+  </p>
+  <p><strong>(b)</strong> Calcule \(\iint_{R_1} f\, dA\) separadamente.</p>
+  <p>
+    <strong>(c)</strong> Calcule \(\iint_{R_2} f\, dA\) e some os resultados.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA‑2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Use a aditividade: \(\iint_D f\, dA = \iint_{R_1} f\, dA +
+      \iint_{R_2} f\, dA\). Em cada retângulo, Fubini permite integrar em
+      qualquer ordem.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(D = R_1 \cup R_2\) onde \(R_1 = [0,1] \times
+        [0,2]\) e \(R_2 = [1,2] \times [0,1]\). Os retângulos compartilham a
+        aresta \(x = 1,\, y \in [0,1]\).
+      </p>
+      <p>
+        <strong>(b)</strong> Para \(R_1\): área \(=2\). Como \(f\) é constante
+        em \(y\), \[\iint_{R_1} f = \int_0^1\int_0^2 (3x+2)\,dy\,dx = \int_0^1
+        (3x+2)\cdot2\,dx = 2\int_0^1(3x+2)dx = 2(\tfrac{3}{2}+2)=\boxed{7}.\]
+      </p>
+      <p>
+        <strong>(c)</strong> Para \(R_2\): área \(=1\). Integral:
+        \[\int_1^2\int_0^1(3x+2)\,dy\,dx = \int_1^2(3x+2)\cdot1\,dx =
+        \tfrac{3}{2}(2^2-1^2)+2(2-1)=\tfrac{9}{2}+2=\boxed{6.5}.\]
+      </p>
+      <p>Soma total: \(7+6.5=\boxed{13.5}.\)</p>
+    </div>
+  </details>
+</li>

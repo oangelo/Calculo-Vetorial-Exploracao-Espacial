@@ -1,0 +1,45 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO LEVEL-4A [NÍVEL OMEGA]</div>
+  <div class="context">
+    ORIGEM: Inteligência Territorial - Linha de Fronteira, 1962
+  </div>
+  <p>
+    Você já sabe identificar curvas de nível, encontrá-las a partir de um
+    ponto e esboçar mapas completos. Agora vamos aplicar tudo isso em um
+    cenário real: um mapa topográfico de uma região de operação. Imagine que
+    você precisa planejar uma rota entre dois pontos — e a resposta depende
+    de ler corretamente as altitudes e saber qual direção "sobe mais".
+  </p>
+  <p>
+    Um mapa topográfico mostra curvas de nível para \(f(x, y) = 100 - x^2 -
+    2y^2\). Um agente está no ponto \(A = (1, 2)\) e precisa chegar ao ponto \(B
+    = (-1, -1)\) sempre subindo (em direção ao pico).
+  </p>
+  <ul style="margin: 10px 0 10px 20px;">
+    <li><strong>(a)</strong> Determine as altitudes nos pontos \(A\) e \(B\).</li>
+    <li><strong>(b)</strong> Qual ponto está mais alto? Calcule a diferença de altitude.</li>
+    <li><strong>(c)</strong> Determine a direção de maior subida a partir de \(A\). (<em>Dica: lembre-se de que o gradiente \(\nabla f\) aponta na direção de maior crescimento.</em>)</li>
+  </ul>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>
+      <strong>Solução completa:</strong><br /><br />
+      <strong>(a) Altitudes:</strong>
+      \[ f(1, 2) = 100 - 1^2 - 2(2^2) = 100 - 1 - 8 = 91 \] \[ f(-1, -1) = 100 -
+      (-1)^2 - 2(-1)^2 = 100 - 1 - 2 = 97 \]<br />
+      <strong>(b) Comparação:</strong><br />
+      O ponto \(B = (-1, -1)\) está mais alto (\(f = 97\)) que o ponto \(A = (1,
+      2)\) (\(f = 91\)). A diferença de altitude é de 6 unidades.<br /><br />
+      <strong>(c) Direção de maior subida a partir de \(A\):</strong><br />
+      O gradiente é: \[ \nabla f = \left(\frac{\partial f}{\partial x},
+      \frac{\partial f}{\partial y}\right) = (-2x, -4y) \] No ponto \(A = (1,
+      2)\): \[ \nabla f(1, 2) = (-2, -8) \] A direção de maior subida é na
+      direção de \(\nabla f = (-2, -8)\), ou normalizada:
+      \(\frac{1}{\sqrt{68}}(-2, -8) = \frac{1}{2\sqrt{17}}(-2, -8)\). Isso
+      equivale à direção \((-1, -4)\), ou seja, sul-sudoeste (movendo-se
+      negativamente em \(x\) e fortemente negativo em \(y\)). A taxa máxima de
+      subida é \(|\nabla f| = \sqrt{4 + 64} = \sqrt{68} \approx 8{,}25\)
+      unidades de altitude por unidade de distância.
+    </p>
+  </details>
+</li>

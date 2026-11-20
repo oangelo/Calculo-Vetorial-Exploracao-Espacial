@@ -1,0 +1,68 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-02-ALFA</div>
+  <div class="context">
+    ARQUIVO: Notas de Campo — Equações Paramétricas [Programa Mercury, 1962]
+  </div>
+  <p>
+    No capítulo anterior (Geometria Analítica), você aprendeu que uma reta no
+    espaço pode ser escrita na forma paramétrica: \[ \vec{r}(t) = P_0 + t \cdot
+    \vec{v}, \] onde \(P_0\) é um ponto da reta e \(\vec{v}\) é o vetor diretor.
+    Agora vamos reinterpretar essa equação como uma
+    <strong>função vetorial</strong>
+    do tempo \(t\), que descreve a posição de um objeto em movimento retilíneo
+    uniforme.
+  </p>
+  <p>
+    Considere a trajetória de um projétil em linha reta (antes da ignição do
+    segundo estágio): \[ \vec{r}(t) = (1,\, 0,\, 2) + t \cdot (3,\, 1,\, -1), \]
+    onde \(t\) é o tempo em segundos e as coordenadas estão em km.
+  </p>
+  <p>
+    <strong>(a)</strong> Escreva as componentes \(x(t)\), \(y(t)\) e \(z(t)\)
+    explicitamente.
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a posição em \(t = 0\) e em \(t = 2\). O que o
+    vetor \(\vec{r}(2) - \vec{r}(0)\) representa?
+  </p>
+  <p>
+    <strong>(c)</strong> Explique por que toda reta pode ser vista como a
+    trajetória de um objeto em movimento uniforme descrito por uma função
+    vetorial \(\vec{r}(t)\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [DICA OPERACIONAL]: Lembre-se da equação vetorial de reta vista em
+      Geometria Analítica: um ponto inicial mais um múltiplo escalar do vetor
+      diretor. Aqui, o escalar é o tempo \(t\). Para o item (b), note que
+      \(\vec{r}(2) - \vec{r}(0)\) é um vetor deslocamento — compare com
+      \(2\vec{v}\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+      <p>
+        (a) Expandindo \(\vec{r}(t) = (1 + 3t,\; 0 + t,\; 2 - t)\), temos:
+        \(x(t) = 1 + 3t\), \(y(t) = t\), \(z(t) = 2 - t\).
+      </p>
+      <p>
+        (b) Em \(t = 0\): \(\vec{r}(0) = (1, 0, 2)\) (o ponto inicial \(P_0\)).
+        Em \(t = 2\): \(\vec{r}(2) = (7, 2, 0)\). O vetor \(\vec{r}(2) -
+        \vec{r}(0) = (6, 2, -2) = 2\vec{v}\) representa o deslocamento total nos
+        primeiros 2 segundos — duas vezes o vetor diretor, pois percorremos 2
+        unidades de tempo.
+      </p>
+      <p>
+        (c) Toda reta tem a forma \(\vec{r}(t) = P_0 + t\vec{v}\). Se
+        interpretarmos \(t\) como tempo e \(P_0\) como posição inicial, então
+        \(\vec{v}\) é a velocidade constante: o objeto se desloca igualmente a
+        cada segundo na direção de \(\vec{v}\). Assim, equações paramétricas de
+        reta (Cap 0) são um caso especial de funções vetoriais — o mais simples
+        possível, com velocidade constante e trajetória reta.
+      </p>
+    </div>
+  </details>
+</li>

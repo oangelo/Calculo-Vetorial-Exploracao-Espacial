@@ -1,0 +1,52 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDE-BETA-2</div>
+  <div class="context">
+    ORIGEM: Diagnóstico de Reentrada Atmosférica - GEMINI-6
+  </div>
+  <p>
+    No exercício anterior, invertemos \(x = y^2\) para \(y = \sqrt{x}\). Agora a
+    situação é invertida: a integral original vem na ordem \(dy\,dx\) com limite
+    superior \(y = \sqrt{x}\), e cabe a você reescrever na ordem \(dx\,dy\). O
+    raciocínio é o mesmo — mas a direção da inversão muda. Se você dominou o
+    exercício anterior, este é o espelho.
+  </p>
+  <p>
+    Reescreva a integral abaixo invertendo a ordem: \[ \int_0^4
+    \int_{\sqrt{x}}^2 f(x, y)\,dy\,dx \]
+  </p>
+  <p>
+    <strong>(a)</strong> Descreva a região de integração: \(x\) vai de \(0\) a
+    \(4\), e para cada \(x\), \(y\) vai de \(\sqrt{x}\) a \(2\). Esboce a
+    região.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine o intervalo de \(y\) e, para cada \(y\), o
+    intervalo de \(x\).
+  </p>
+  <p><strong>(c)</strong> Escreva a integral na nova ordem \(dx\,dy\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A curva \(y = \sqrt{x}\) equivale a \(x = y^2\). Quando
+      \(x = 0\), \(y = 0\); quando \(x = 4\), \(y = 2\). Logo \(y \in [0, 2]\)
+      e, para cada \(y\), \(x\) vai de \(0\) a \(y^2\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> A região é delimitada abaixo por \(y = \sqrt{x}\),
+        acima por \(y = 2\), à esquerda por \(x = 0\) e à direita por \(x = 4\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(y\) vai de \(0\) a \(2\). Para cada \(y\), \(x\)
+        vai de \(0\) (eixo \(y\)) até \(y^2\) (parábola invertida).
+      </p>
+      <p><strong>(c)</strong> Reescrevendo os limites, temos:</p>
+      <p>\[ y \in [0, 2],\; x \in [0, y^2] \]</p>
+      <p>Nova integral:</p>
+      <p>\[ \int_0^2 \int_0^{y^2} f(x, y)\,dx\,dy \]</p>
+    </div>
+  </details>
+</li>

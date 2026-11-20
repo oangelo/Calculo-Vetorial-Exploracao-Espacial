@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>P1 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 9pt;
+        line-height: 1.3;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        height: 27.7cm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+      .main-header {
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+      }
+      .main-header h1 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: bold;
+      }
+      .main-header h2 {
+        margin: 0;
+        font-size: 10pt;
+        font-weight: normal;
+      }
+      .content {
+        display: flex;
+        gap: 1.5cm;
+        flex-grow: 1;
+      }
+      .column {
+        flex: 1;
+        min-width: 0;
+      }
+      .student-details {
+        margin-bottom: 20px;
+      }
+      .student-details div {
+        margin-bottom: 4px;
+      }
+      .student-details span {
+        border-bottom: 1px solid #000;
+        min-width: 350px;
+        display: inline-block;
+        margin-left: 5px;
+      }
+      .grade-table {
+        margin-bottom: 10px;
+      }
+      .grade-table table {
+        border-collapse: collapse;
+        font-size: 8pt;
+        text-align: center;
+        width: 100%;
+      }
+      .grade-table th,
+      .grade-table td {
+        border: 1px solid #000;
+        padding: 4px;
+        height: 0.8cm;
+      }
+      .instructions {
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 8.5pt;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 10pt;
+        color: #000;
+        border-left: 3px solid #000;
+        padding: 5px 8px;
+        background-color: #f5f5f5;
+        margin-bottom: 8px;
+      }
+      .subquestion {
+        margin: 8px 0 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-header">
+        <h1>Universidade do Estado do Rio de Janeiro - UERJ</h1>
+        <h2>P1 – 2026.1 - Cálculo Vetorial</h2>
+      </div>
+      <div class="content">
+        <div class="column">
+          <div class="student-details">
+            <div><strong>Curso:</strong> <span></span></div>
+            <div><strong>Nome:</strong> <span></span></div>
+            <div><strong>Matrícula:</strong> <span></span></div>
+          </div>
+          <!-- QUESTÃO 1 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 1 (2,5 pts): Plano por três pontos e volume
+            </div>
+            <p>
+              Considere os pontos \(A(1,1,3)\), \(B(3,1,1)\) e \(C(1,2,1)\), que
+              não pertencem aos eixos coordenados.
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,8)</strong>
+              Determine a equação cartesiana do plano \(\pi\) que contém os
+              pontos \(A\), \(B\) e \(C\).
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Determine as interseções do plano \(\pi\) com os eixos coordenados
+              e calcule o volume do tetraedro formado pelo plano \(\pi\) e pelos
+              planos coordenados, usando a fórmula do volume por produto misto
+              \[ V=\frac{1}{6}\bigl|\vec u\cdot(\vec v\times\vec w)\bigr|, \]
+              com os vetores \(\vec u\), \(\vec v\) e \(\vec w\) tomados da
+              origem até os pontos de interseção encontrados.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,9)</strong>
+              Esboce no plano \(xy\) a base desse tetraedro (o traço do plano em
+              \(z=0\)) e calcule o mesmo volume por uma integral dupla sobre
+              essa base.
+            </div>
+          </div>
+          <!-- QUESTÃO 2 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 2 (2,5 pts): Soma de Riemann e integral dupla
+            </div>
+            <p>
+              Considere o sólido limitado pelo plano \(z=6-x\) e pelo retângulo
+              \(0\le x\le 6\), \(0\le y\le 1\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,8)</strong>
+              Discretize a base desse sólido dividindo-a em 3 subdivisões em
+              \(x\) e 1 subdivisão em \(y\). Determine os pontos médios de cada
+              retângulo da partição e o valor de \(z\) em cada um deles.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,9)</strong>
+              Escreva a soma de Riemann que estima o volume do sólido —
+              definindo o somatório com as áreas dos retângulos da partição e
+              com as alturas escolhidas — e calcule o valor dessa estimativa.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,8)</strong>
+              Monte e calcule a integral dupla que fornece o volume exato do
+              sólido. Compare o resultado com a estimativa do item (b) e conclua
+              se os valores coincidem, justificando sua conclusão.
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="grade-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Q1</th>
+                  <th>Q2</th>
+                  <th>Q3</th>
+                  <th>Q4</th>
+                  <th>TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="instructions">
+            Instruções: Resolva todas as questões apresentando os cálculos
+            detalhadamente. Cada questão vale 2,5 pontos.
+          </div>
+          <!-- QUESTÃO 3 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 3 (2,5 pts): Inversão de ordem e coordenadas polares
+            </div>
+            <p>
+              Em todos os itens, o integrando é a função constante igual a
+              \(1\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,8)</strong>
+              Inverta a ordem de integração da integral \[
+              \int_0^1\int_{y}^{3-2y} dx\,dy \] para a ordem \(dy\,dx\),
+              descrevendo a região de integração.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,8)</strong>
+              Identifique a região de integração da integral \[
+              \int_0^r\int_{-\sqrt{r^2-y^2}}^{\sqrt{r^2-y^2}} dx\,dy \] e
+              reescreva-a na ordem \(dy\,dx\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,9)</strong>
+              Reescreva e calcule a integral do item (b) em coordenadas polares
+              \((\rho,\theta)\), justificando os novos limites de integração e o
+              elemento de área.
+            </div>
+          </div>
+          <!-- QUESTÃO 4 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 4 (2,5 pts): Massa e centro de massa
+            </div>
+            <p>
+              Uma lâmina plana de densidade superficial \(\rho(x,y)=ax+by\), com
+              \(a>0\) e \(b>0\), ocupa o triângulo de vértices \(A(1,1)\),
+              \(B(0,2)\) e \(C(2,3)\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (1,0)</strong>
+              Escreva e calcule a integral dupla que fornece a massa \(M\) da
+              lâmina.
+            </div>
+            <div class="subquestion">
+              <strong>b) (1,0)</strong>
+              Escreva e calcule as integrais que fornecem as coordenadas \((\bar
+              x,\bar y)\) do centro de massa da lâmina.
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong>
+              Discuta o que ocorre com \(M\), \(\bar x\) e \(\bar y\) quando
+              \(a=0\) e quando \(b=0\), interpretando geometricamente o
+              deslocamento do centro de massa em cada caso.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

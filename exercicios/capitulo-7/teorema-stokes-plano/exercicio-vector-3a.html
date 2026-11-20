@@ -1,0 +1,82 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">
+    ORIGEM: Apollo 13 — Análise de Anomalia em Trajetória [ABR/1970]
+  </div>
+  <p>
+    No tópico anterior, você verificou Green em uma região anular e entendeu
+    como os cortes tornam o anel simplesmente conexo. Agora vamos aplicar Stokes
+    em um anel com um campo especial — o <strong>campo vórtice</strong>
+    \(\vec{F}(x,y) = \left(-\dfrac{y}{x^2+y^2},\, \dfrac{x}{x^2+y^2}\right)\),
+    cujo rotacional é zero em todo ponto exceto na origem.
+  </p>
+  <p>
+    Considere a coroa circular \(A\) definida por \(1 \le x^2+y^2 \le 4\) (entre
+    os raios \(1\) e \(2\)).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional escalar de \(\vec{F}\) e verifique
+    que ele é zero em todo ponto do anel (a origem está excluída).
+  </p>
+  <p>
+    <strong>(b)</strong> Calcule a circulação de \(\vec{F}\) ao longo do círculo
+    exterior (\(r=2\), sentido anti-horário). O resultado é diferente de zero —
+    como isso é possível se o rotacional é zero no anel? Conecte com o Cap 6: o
+    que o domínio não simplesmente conexo tem a ver com isso?
+  </p>
+  <p>
+    <strong>(c)</strong> Aplique Stokes corretamente: a fronteira de \(A\) tem
+    duas componentes (exterior anti-horária e interior horária). Mostre que
+    \(\oint_{\text{ext CCW}} \vec{F}\cdot d\vec{r} + \oint_{\text{int CW}}
+    \vec{F}\cdot d\vec{r} = 0\), consistente com \(\iint_{A} 0\, dA = 0\).
+    Calcule cada circulação individualmente.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Parametrize os círculos como \(x = r\cos\theta\), \(y =
+      r\sin\theta\). Em cada círculo, \(\vec{F}\cdot d\vec{r} = d\theta\). O
+      círculo exterior (\(r=2\)) é percorrido anti-horário; o interior
+      (\(r=1\)), horário. A singularidade na origem impede a aplicação direta do
+      argumento de conservatividade — o domínio não é simplesmente conexo.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial}{\partial x} \!\left(\frac{x}{x^2+y^2}\right) -
+        \frac{\partial}{\partial y} \!\left(\frac{-y}{x^2+y^2}\right) =
+        \frac{y^2-x^2}{(x^2+y^2)^2} - \frac{x^2-y^2}{(x^2+y^2)^2} = 0\) em todo
+        ponto exceto a origem (onde \(\vec{F}\) não está definido).
+      </p>
+      <p>
+        <strong>(b)</strong> Círculo exterior (\(r=2\)): \(x=2\cos\theta\),
+        \(y=2\sin\theta\). \(\vec{F} = (-\frac{\sin\theta}{2},
+        \frac{\cos\theta}{2})\), \(d\vec{r} = (-2\sin\theta, 2\cos\theta)\,
+        d\theta\). \(\vec{F}\cdot d\vec{r} = \sin^2\theta + \cos^2\theta = 1\).
+        Circulação: \(\int_{0}^{2\pi} d\theta = 2\pi \neq 0\).
+      </p>
+      <p>
+        Isso é possível porque o campo tem uma singularidade na origem, que está
+        <em>dentro</em> do círculo mas <em>fora</em> do anel. O anel não é
+        simplesmente conexo — o argumento "rotacional zero \(\Rightarrow\)
+        conservativo" do Cap 6 não se aplica aqui.
+      </p>
+      <p>
+        <strong>(c)</strong> Círculo interior (\(r=1\), horário): de forma
+        análoga, \(\vec{F}\cdot d\vec{r} = d\theta\), mas percorrido no sentido
+        horário: \(\int_{2\pi}^{0} d\theta = -2\pi\).
+      </p>
+      <p>
+        Verificação de Stokes: \(\oint_{\text{ext CCW}} + \oint_{\text{int CW}}
+        = 2\pi + (-2\pi) = 0 = \iint_{A} 0\, dA\). Consistente! \(\checkmark\)
+      </p>
+      <p>
+        Ambas as circulações individuais são \(2\pi\) (em módulo), mas com
+        sinais opostos — o que Stokes prevê corretamente.
+      </p>
+    </div>
+  </details>
+</li>

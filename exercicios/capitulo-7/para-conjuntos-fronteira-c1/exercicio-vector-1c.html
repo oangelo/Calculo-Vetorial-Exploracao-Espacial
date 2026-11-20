@@ -1,0 +1,55 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Simulação de Rendezvous –
+    <span class="censored">██████</span> (19/JUL/1969)
+  </div>
+  <p>
+    Agora que provamos a fórmula de área via Green para qualquer fronteira
+    \(C^1\), vamos usá-la em uma região concreta. Em missões de rendezvous
+    orbital, a área de varredura de um sensor circular é parâmetro de navegação
+    — e a fórmula de contorno permite calcular essa área sem nenhuma integral
+    dupla.
+  </p>
+  <p>
+    Use a fórmula \(\text{Área}(D) = \oint_{\partial D} x\,dy\) para calcular a
+    área do disco \(D\) de raio \(R = 2\) centrado na origem, cuja fronteira é
+    \(C: x^2 + y^2 = 4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize a fronteira do disco usando a representação
+    trigonométrica usual: \(x(t)\) e \(y(t)\) para \(t \in [0, 2\pi]\).
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral de linha \(\oint x\,dy\) usando a
+    parametrização e calcule o resultado.
+  </p>
+  <p>
+    <strong>(c)</strong> Confirme que o resultado coincide com a fórmula
+    geométrica esperada \(\pi R^2\).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A parametrização de uma circunferência de raio \(R\) é \(x
+      = R\cos t\), \(y = R\sin t\). Não esqueça de calcular \(dy\) em função de
+      \(dt\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(x(t) = 2\cos t\), \(y(t) = 2\sin t\), com \(t \in [0, 2\pi]\).
+      </p>
+      <p>
+        (b) \(dy = 2\cos t\,dt\), logo \(\oint x\,dy = \int_0^{2\pi} (2\cos
+        t)(2\cos t)\,dt = 4\int_0^{2\pi} \cos^2 t\,dt = 4 \cdot \pi = 4\pi\).
+      </p>
+      <p>
+        (c) A fórmula geométrica dá \(\pi \cdot 2^2 = 4\pi\). Os resultados
+        coincidem.
+      </p>
+    </div>
+  </details>
+</li>

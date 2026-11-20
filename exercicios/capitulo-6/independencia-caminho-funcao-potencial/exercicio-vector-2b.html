@@ -1,0 +1,61 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Diagnóstico de Falha em Sensor – Módulo Apollo, MAR/1968
+  </div>
+  <p>
+    O exercício anterior ensinou que, se as derivadas cruzadas coincidem, o
+    procedimento funciona. Mas o que acontece quando elas
+    <em>não</em> coincidem? Vamos tentar encontrar \(\Phi\) num campo que
+    <strong>não</strong>
+    é conservativo e ver onde a técnica quebra. Considere o campo \(\vec{F}(x,y)
+    = (x + 2y,\; x - y)\), que surgiu como leitura suspeita de um sensor de
+    campo durante uma missão.
+  </p>
+  <p>
+    <strong>(a)</strong> Verifique a condição de conservatividade e constate que
+    ela não se aplica.
+  </p>
+  <p>
+    <strong>(b)</strong> Ainda assim, tente encontrar \(\Phi\) integrando a
+    primeira componente em relação a \(x\) e procedendo como nos exercícios
+    anteriores.
+  </p>
+  <p>
+    <strong>(c)</strong> Identifique em que etapa o procedimento falha e
+    explique por que a inconsistência que aparece é uma consequência direta de o
+    campo não ser conservativo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Ao determinar a função arbitrária \(g(y)\), observe se o
+      resultado contém a variável \(x\). Uma função de \(y\) não pode depender
+      de \(x\) — essa é a contradição que revela a não-conservatividade.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\frac{\partial F_1}{\partial y} = 2\) e
+        \(\frac{\partial F_2}{\partial x} = 1\). Como \(2 \neq 1\), o campo
+        <strong>não</strong> é conservativo.
+      </p>
+      <p>
+        <strong>(b)</strong> Tentativa: \(\Phi = \int (x + 2y)\,dx =
+        \frac{x^2}{2} + 2xy + g(y)\). Derivando em \(y\): \(\frac{\partial
+        \Phi}{\partial y} = 2x + g'(y)\). Igualando a \(F_2 = x - y\): \(2x +
+        g'(y) = x - y \Rightarrow g'(y) = -x - y\).
+      </p>
+      <p>
+        <strong>(c)</strong> A expressão \(g'(y) = -x - y\) contém \(x\), mas
+        \(g\) deveria ser função exclusiva de \(y\). Essa contradição é
+        inevitável: quando \(\frac{\partial F_1}{\partial y} \neq \frac{\partial
+        F_2}{\partial x}\), não existe \(\Phi\) tal que \(\nabla\Phi =
+        \vec{F}\). A verificação prévia do item (a) não é burocrática — ela
+        evita trabalho inútil.
+      </p>
+    </div>
+  </details>
+</li>

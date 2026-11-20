@@ -1,0 +1,69 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO CONIC-1 [NÍVEL ALFA]</div>
+  <div class="context">
+    ORIGEM: Mapeamento de Zonas de Aterrissagem [PROGRAMA MERCURY, 1961]
+  </div>
+  <p>
+    Antes de analisar equações prontas, precisamos entender o que define uma
+    curva. Uma circunferência é o <strong>lugar geométrico</strong> dos pontos
+    que estão a uma distância fixa (o raio) de um ponto central. Esta é a
+    ideia mais simples de "lugar geométrico" — e será a base para entender
+    parábolas, elipses e hipérboles nos exercícios seguintes.
+  </p>
+  <p>
+    O centro de uma zona de pouso está em \(C(3, -2)\) e o raio de segurança
+    é de 5 unidades. Um ponto \(P(x, y)\) pertence à zona de pouso se sua
+    distância ao centro é exatamente 5.
+  </p>
+  <p>
+    <strong>Tarefa:</strong><br />
+    (a) Escreva a distância de \(P(x, y)\) ao centro \(C(3, -2)\) usando a
+    fórmula de distância entre dois pontos.<br />
+    (b) Igualando essa distância ao raio 5, eleve ambos os lados ao quadrado
+    para eliminar a raiz.<br />
+    (c) Escreva a equação final da circunferência na forma
+    \((x - h)^2 + (y - k)^2 = r^2\).
+  </p>
+  <p>
+    <em>Nota: Você acabou de derivar a equação da circunferência a partir da
+    definição geométrica. Nos próximos exercícios, faremos o mesmo com parábolas
+    e elipses.</em>
+  </p>
+  <svg height="300" style="border: 1px solid #999; margin: 10px 0" width="300">
+    <g transform="translate(150,150) scale(25,-25)">
+      <line stroke="gray" stroke-width="0.04" x1="-7" x2="7" y1="0" y2="0"></line>
+      <line stroke="gray" stroke-width="0.04" x1="0" x2="0" y1="-7" y2="7"></line>
+      <circle cx="3" cy="-2" fill="none" r="5" stroke="blue" stroke-width="0.1"></circle>
+      <line stroke="green" stroke-width="0.08" stroke-dasharray="0.15,0.15" x1="3" x2="3" y1="-2" y2="3"></line>
+      <circle cx="3" cy="-2" fill="red" r="0.15"></circle>
+      <circle cx="3" cy="3" fill="black" r="0.15"></circle>
+      <text fill="red" font-size="0.7" transform="scale(1,-1)" x="3.2" y="2.3">C(3, -2)</text>
+      <text fill="black" font-size="0.7" transform="scale(1,-1)" x="3.2" y="-3.3">P(3, 3)</text>
+    </g>
+  </svg>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A distância entre dois pontos \((x_1, y_1)\) e
+      \((x_2, y_2)\) é \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\).
+      Substitua \(C(3, -2)\) e \(P(x, y)\) nesta fórmula.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+    <p>
+      <strong>(a) Distância de P a C:</strong><br />
+      \[d = \sqrt{(x - 3)^2 + (y - (-2))^2} = \sqrt{(x - 3)^2 + (y + 2)^2}\]
+    </p>
+    <p>
+      <strong>(b) Igualando ao raio e elevando ao quadrado:</strong><br />
+      \[\sqrt{(x - 3)^2 + (y + 2)^2} = 5\]<br />
+      \[(x - 3)^2 + (y + 2)^2 = 25\]
+    </p>
+    <p>
+      <strong>(c) Equação da circunferência:</strong><br />
+      \[(x - 3)^2 + (y + 2)^2 = 25\]<br />
+      Centro \((h, k) = (3, -2)\), raio \(r = 5\).
+    </p>
+  </details>
+</li>

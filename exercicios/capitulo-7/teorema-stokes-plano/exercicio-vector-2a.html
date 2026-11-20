@@ -1,0 +1,65 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+  <div class="context">
+    ORIGEM: Apollo 12 — Análise de Órbita de Espera [NOV/1969]
+  </div>
+  <p>
+    No primeiro tópico deste capítulo, você comparou dois campos e percebeu que
+    rotacional zero implica circulação zero — conectando com campos
+    conservativos do Cap 6. Agora vamos aprofundar essa conexão usando a notação
+    de Stokes: se \(\operatorname{rot}\vec{F} = 0\) em toda uma região, Stokes
+    garante que a circulação é zero <em>sem necessidade de integrar</em>.
+  </p>
+  <p>
+    Considere a elipse \(\frac{x^2}{9} + \frac{y^2}{4} = 1\) e o campo
+    \(\vec{F}(x,y) = (3x^2 + y,\, x)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o rotacional escalar e mostre que ele é
+    identicamente zero.
+  </p>
+  <p>
+    <strong>(b)</strong> Conclua sobre a circulação ao redor da elipse. Conecte
+    com o Cap 6: que tipo de campo tem rotacional zero em todo ponto? Que
+    propriedade da integral de linha isso garante?
+  </p>
+  <p>
+    <strong>(c)</strong> Encontre uma função potencial \(f(x,y)\) tal que
+    \(\vec{F} = \nabla f\) e use o teorema fundamental das integrais de linha
+    para confirmar que a circulação é zero em qualquer curva fechada.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Um campo com rotacional zero em domínio simplesmente
+      conexo é conservativo. Se \(\vec{F} = \nabla f\), então \(\oint_C
+      \vec{F}\cdot d\vec{r} = f(\text{fim}) - f(\text{início}) = 0\) para
+      qualquer curva fechada \(C\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} = \frac{\partial
+        x}{\partial x} - \frac{\partial(3x^2+y)}{\partial y} = 1 - 1 = 0\) em
+        todo ponto.
+      </p>
+      <p>
+        <strong>(b)</strong> Como \(\operatorname{rot}\vec{F} = 0\) em todo o
+        plano (domínio simplesmente conexo), Stokes dá \(\oint = \iint 0\, dA =
+        0\). Conexão com o Cap 6: o campo é <strong>conservativo</strong>. Isso
+        garante independência do caminho — a integral de linha entre dois pontos
+        não depende da curva escolhida.
+      </p>
+      <p>
+        <strong>(c)</strong> Procuramos \(f\) com \(\frac{\partial f}{\partial
+        x} = 3x^2 + y\) e \(\frac{\partial f}{\partial y} = x\). Da primeira
+        equação: \(f = x^3 + xy + g(y)\). Da segunda: \(x + g'(y) = x\), logo
+        \(g'(y) = 0\) e \(g(y) = C\). Assim \(f(x,y) = x^3 + xy\). Pelo teorema
+        fundamental: \(\oint_C \vec{F}\cdot d\vec{r} = f(P) - f(P) = 0\) para
+        qualquer curva fechada. \(\checkmark\)
+      </p>
+    </div>
+  </details>
+</li>

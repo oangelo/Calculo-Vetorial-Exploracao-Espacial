@@ -1,0 +1,56 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+  <div class="context">
+    ORIGEM: Análise Térmica - Programa
+    <span class="censored">Gemini</span> [DADOS CLASSIFICADOS]
+  </div>
+  <p>
+    Combinamos tudo que aprendemos: superfícies curvas, integrando não trivial,
+    e coordenadas polares para simplificar a integral dupla resultante.
+  </p>
+  <p>
+    Calcule \(\iiint_V e^z\,dV\) onde \(V\) é limitado pelo paraboloide
+    \(z=x^2+y^2\) e pelo plano \(z=4\).
+  </p>
+  <p>
+    <strong>(a)</strong> Determine a projeção \(D\) no plano \(xy\) e os limites
+    de \(z\).
+  </p>
+  <p>
+    <strong>(b)</strong> Reduza a uma integral dupla, realizando a integração em
+    \(z\).
+  </p>
+  <p>
+    <strong>(c)</strong> A integral dupla resultante pode ser avaliada em
+    coordenadas polares? Se sim, faça o cálculo completo.
+  </p>
+  <!-- SEM DICAS PARA SÉRIE OMEGA -->
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        Interseção: \(x^2+y^2 = 4\). Projeção \(D\): disco \(x^2+y^2\le 4\).
+      </p>
+      <p>Para cada \((x,y)\) em \(D\), \(z\) varia de \(x^2+y^2\) a 4.</p>
+      <p>
+        Integração em \(z\): \(\int_{x^2+y^2}^{4} e^z\,dz = e^4 - e^{x^2+y^2}\).
+      </p>
+      <p>Integral dupla: \(\iint_D (e^4 - e^{x^2+y^2})\,dA\).</p>
+      <p>
+        Em polares (\(x^2+y^2 = r^2\), \(dA = r\,dr\,d\theta\)): \[
+        \int_0^{2\pi}\!\int_0^2 (e^4 - e^{r^2})\cdot r\,dr\,d\theta. \]
+      </p>
+      <p>
+        Integral radial: \(\int_0^2 (e^4\cdot r - r\,e^{r^2})\,dr =
+        e^4\left[\frac{r^2}{2}\right]_0^2 - \frac{1}{2}\left[e^{r^2}\right]_0^2
+        = 2e^4 - \frac{e^4-1}{2}\).
+      </p>
+      <p>
+        Simplificando: \(2e^4 - \frac{e^4}{2} + \frac{1}{2} =
+        \frac{3e^4+1}{2}\).
+      </p>
+      <p>Integral angular: \(2\pi \cdot \frac{3e^4+1}{2} = \pi(3e^4+1)\).</p>
+      <p>Resultado: \(\pi(3e^4+1)\).</p>
+    </div>
+  </details>
+</li>

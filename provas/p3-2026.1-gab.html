@@ -1,0 +1,1414 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gabarito - P3 – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #000;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .header h1 {
+        text-align: center;
+        font-size: 16pt;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .question {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+      .question:last-child {
+        border-bottom: none;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 13pt;
+        color: #000;
+        border-left: 4px solid #000;
+        padding: 8px 10px;
+        background-color: #f0f0f0;
+        margin-bottom: 12px;
+      }
+      .didactic {
+        font-style: italic;
+        color: #444;
+        margin: 10px 0;
+      }
+      .subquestion {
+        margin: 10px 0 10px 20px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      summary {
+        font-weight: bold;
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #e9e9e9;
+        font-size: 10pt;
+        border-radius: 3px;
+      }
+      .answer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+      }
+      .answer p {
+        margin-top: 0;
+      }
+      .figura {
+        text-align: center;
+        margin: 12px 0;
+      }
+      .figura figcaption {
+        font-size: 9pt;
+        color: #555;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Gabarito - P3 – 2026.1 - Cálculo Vetorial</h1>
+      </div>
+      <div class="content">
+        <!-- QUESTÃO 1 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 1: Cilindro fechado — fluxo e superfície
+          </div>
+          <p>
+            Considere a superfície fechada \(S\) formada pela superfície lateral
+            do cilindro \(x^2+y^2=4\) com \(0\le z\le 3\), pela tampa do topo
+            \(z=3\) e pela base \(z=0\), todas orientadas com vetor normal
+            externo. Considere o campo vetorial \(\mathbf
+            F(x,y,z)=(x,\;y,\;z)\).
+          </p>
+          <p class="didactic">
+            A questão reúne, sobre uma única superfície fechada, as competências
+            centrais do fim do curso: montar o fluxo por integral de superfície
+            pedaço a pedaço (com atenção à mudança de orientação e à avaliação
+            do campo na tampa do topo e na base), aplicar o Teorema da
+            Divergência como via alternativa de cálculo e validar tudo com
+            geometria elementar. As tampas criam a situação em que o mesmo campo
+            produz fluxos diferentes em faces distintas — na base, o fluxo é
+            nulo porque o campo, avaliado em \(z=0\), é horizontal e o normal é
+            vertical.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,5)</strong>
+            Esboce o cilindro separando a superfície lateral, a tampa do topo e
+            a base, e indique o vetor normal externo de cada parte.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  No esboço devem aparecer: a superfície lateral \(x^2+y^2=4\),
+                  \(0\le z\le 3\), com normais radiais apontando para fora
+                  (\(\hat{\mathbf n}=\frac{1}{2}(x,y,0)\)); a tampa do topo
+                  \(z=3\) com normal \((0,0,1)\); e a base \(z=0\) com normal
+                  \((0,0,-1)\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="330"
+                    viewBox="0 0 460 330"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Cilindro de raio 2 e altura 3 com normais externas: radial na lateral, vertical para cima na tampa do topo e vertical para baixo na base"
+                  >
+                    <title>Cilindro fechado com normais externas</title>
+                    <defs>
+                      <marker
+                        id="ar-q1"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="115"
+                      y1="90"
+                      x2="115"
+                      y2="260"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></line>
+                    <line
+                      x1="345"
+                      y1="90"
+                      x2="345"
+                      y2="260"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></line>
+                    <ellipse
+                      cx="230"
+                      cy="90"
+                      rx="115"
+                      ry="32"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></ellipse>
+                    <ellipse
+                      cx="230"
+                      cy="260"
+                      rx="115"
+                      ry="32"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></ellipse>
+                    <line
+                      x1="230"
+                      y1="90"
+                      x2="230"
+                      y2="40"
+                      stroke="#b91c1c"
+                      stroke-width="2"
+                      marker-end="url(#ar-q1)"
+                    ></line>
+                    <line
+                      x1="230"
+                      y1="260"
+                      x2="230"
+                      y2="310"
+                      stroke="#b91c1c"
+                      stroke-width="2"
+                      marker-end="url(#ar-q1)"
+                    ></line>
+                    <line
+                      x1="345"
+                      y1="175"
+                      x2="400"
+                      y2="175"
+                      stroke="#b91c1c"
+                      stroke-width="2"
+                      marker-end="url(#ar-q1)"
+                    ></line>
+                    <text
+                      x="240"
+                      y="48"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#b91c1c"
+                    >
+                      n = (0, 0, 1)
+                    </text>
+                    <text
+                      x="238"
+                      y="308"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#b91c1c"
+                    >
+                      n = (0, 0, −1)
+                    </text>
+                    <text
+                      x="352"
+                      y="168"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#b91c1c"
+                    >
+                      n = (x, y, 0)/2
+                    </text>
+                    <text
+                      x="120"
+                      y="60"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      tampa do topo: z = 3
+                    </text>
+                    <text
+                      x="25"
+                      y="180"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      lateral: x² + y² = 4
+                    </text>
+                    <text
+                      x="120"
+                      y="290"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      base: z = 0
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Superfície fechada \(S\) com as normais externas das três
+                    partes.
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,8)</strong>
+            Calcule o fluxo \(\iint_S\mathbf F\cdot d\mathbf S\) por integral de
+            superfície, calculando separadamente o fluxo pela lateral, pela
+            tampa do topo e pela base.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Lateral.</strong> Parametrização \(\mathbf
+                  r(\theta,z)=(2\cos\theta,\;2\sin\theta,\;z)\), com
+                  \(0\le\theta\le 2\pi\) e \(0\le z\le 3\):
+                </p>
+                <p>
+                  \[ \mathbf r_\theta=(-2\sin\theta,\;2\cos\theta,\;0),\qquad
+                  \mathbf r_z=(0,\;0,\;1), \]
+                </p>
+                <p>
+                  \[ \mathbf r_\theta\times\mathbf
+                  r_z=(2\cos\theta,\;2\sin\theta,\;0), \]
+                </p>
+                <p>que aponta para fora (sentido radial externo). Então</p>
+                <p>
+                  \[ \mathbf F\cdot(\mathbf r_\theta\times\mathbf r_z)
+                  =(2\cos\theta)(2\cos\theta)+(2\sin\theta)(2\sin\theta)+z\cdot
+                  0 =4, \]
+                </p>
+                <p>
+                  \[ \text{Fluxo}_{\text{lateral}} =\int_0^{2\pi}\!\!\int_0^3
+                  4\;dz\,d\theta =4\cdot 2\pi\cdot 3=24\pi. \]
+                </p>
+                <p>
+                  <strong>Tampa do topo</strong> (\(z=3\), normal \(\hat{\mathbf
+                  n}=(0,0,1)\)): \(\mathbf F\cdot\hat{\mathbf n}=z=3\) é
+                  constante, e \[
+                  \text{Fluxo}_{\text{topo}}=3\cdot\underbrace{\pi\cdot
+                  2^2}_{\text{área da tampa}} =12\pi. \]
+                </p>
+                <p>
+                  <strong>Base</strong> (\(z=0\), normal \(\hat{\mathbf
+                  n}=(0,0,-1)\)): \(\mathbf F\cdot\hat{\mathbf n}=-z=0\) em todo
+                  ponto — na base o campo \(\mathbf F=(x,y,0)\) é horizontal e o
+                  normal é vertical. Logo o fluxo pela base é \(0\).
+                </p>
+                <p>
+                  <strong>Total:</strong>
+                  \[ \iint_S\mathbf F\cdot d\mathbf S=24\pi+12\pi+0=36\pi. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,7)</strong>
+            Recalcule o fluxo pelo Teorema da Divergência, como \(\iiint_E
+            \operatorname{div}\mathbf F\;dV\) sobre o sólido \(E\) delimitado
+            por \(S\), e compare com o item (b).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O divergente: \[ \operatorname{div}\mathbf F =\frac{\partial
+                  x}{\partial x}+\frac{\partial y}{\partial y} +\frac{\partial
+                  z}{\partial z}=1+1+1=3. \]
+                </p>
+                <p>
+                  O sólido \(E\) é o cilindro de raio \(2\) e altura \(3\), com
+                  volume \(V=\pi r^2 h=\pi\cdot 4\cdot 3=12\pi\). Pelo Teorema
+                  da Divergência:
+                </p>
+                <p>
+                  \[ \iint_S\mathbf F\cdot d\mathbf S =\iiint_E 3\;dV=3\cdot
+                  12\pi=36\pi, \]
+                </p>
+                <p>
+                  o mesmo valor do item (b), como garante o teorema. A
+                  contribuição das tampas aparece aqui de outra forma: na
+                  integral tripla, todo o volume contribui igualmente.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,5)</strong>
+            Calcule a área total de \(S\) (lateral + tampas) por integral de
+            superfície e verifique o resultado por geometria básica.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Pela integral.</strong> Na lateral, \(\|\mathbf
+                  r_\theta\times\mathbf r_z\|=2\), logo \[
+                  \text{Área}_{\text{lateral}} =\int_0^{2\pi}\!\!\int_0^3
+                  2\;dz\,d\theta=12\pi. \]
+                </p>
+                <p>
+                  Cada tampa é um disco de raio \(2\), de área \(\pi\cdot
+                  2^2=4\pi\). Total: \[ \text{Área}(S)=12\pi+4\pi+4\pi=20\pi. \]
+                </p>
+                <p>
+                  <strong>Pela geometria básica:</strong> lateral \(=2\pi
+                  rh=2\pi\cdot 2\cdot 3=12\pi\); tampas \(=2\pi r^2=2\pi\cdot
+                  4=8\pi\); total \(=20\pi\). Os valores coincidem.
+                </p>
+                <p>
+                  <strong>Atenção:</strong> fluxo e área são grandezas distintas
+                  — na lateral o fluxo (\(24\pi\)) não é a área (\(12\pi\)); o
+                  que aconteceu aqui é que \(\mathbf F\cdot\hat{\mathbf n}=2\)
+                  na lateral, enquanto \(\|\mathbf r_\theta\times\mathbf
+                  r_z\|=2\) também, mas com papéis diferentes em cada integral.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 2 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 2: Triângulo e Teorema de Stokes
+          </div>
+          <p>
+            O triângulo \(T\) tem vértices \(A=(0,0,2)\), \(B=(2,0,0)\) e
+            \(C=(0,4,0)\). Considere o campo \(\mathbf F(x,y,z)=(z,\;x,\;y)\) e
+            a fronteira de \(T\) percorrida de \(A\) a \(B\), de \(B\) a \(C\) e
+            de \(C\) a \(A\).
+          </p>
+          <p class="didactic">
+            Stokes em versão genuinamente tridimensional: a superfície é plana,
+            porém inclinada, e o aluno deve determinar por conta própria o plano
+            que contém o triângulo e a normal unitária, obtida por produto
+            vetorial. A circulação na fronteira (item b) e o fluxo do rotacional
+            (item c) verificam o teorema pelos dois lados; a área, pedida por
+            duas vias (integral dupla e produto vetorial, sem dicas sobre como
+            conduzir cada uma), conecta a geometria do capítulo 0 (vetores,
+            norma) com a parametrização de superfícies do capítulo 8 — e o
+            resultado inteiro (\(6\)) permite conferência imediata.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,6)</strong>
+            Esboce \(T\), determine a equação do plano que o contém e um vetor
+            normal unitário \(\hat{\mathbf n}\). Indique a orientação da
+            fronteira compatível com \(\hat{\mathbf n}\) (regra da mão direita)
+            e verifique que é o percurso dado.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Vetores dos lados: \[ \overrightarrow{AB}=(2,\;0,\;-2),\qquad
+                  \overrightarrow{AC}=(0,\;4,\;-2), \] e vetor normal ao plano
+                  do triângulo: \[
+                  \overrightarrow{AB}\times\overrightarrow{AC}=(8,\;4,\;8)
+                  \parallel(2,\;1,\;2). \] O plano por \(A=(0,0,2)\) com normal
+                  \((2,1,2)\): \[ 2(x-0)+1(y-0)+2(z-2)=0
+                  \quad\Longrightarrow\quad 2x+y+2z=4, \] do qual os três
+                  vértices são exatamente os interceptos com os eixos. A normal
+                  unitária: \[ \hat{\mathbf n}=\frac{(2,1,2)}{3}. \]
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="330"
+                    viewBox="0 0 460 330"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Eixos x, y, z com o triângulo de vértices A no eixo z, B no eixo x e C no eixo y, arestas orientadas de A a B, B a C e C a A, e normal apontando para fora"
+                  >
+                    <title>Triângulo T no plano 2x + y + 2z = 4</title>
+                    <defs>
+                      <marker
+                        id="ar-q2"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                      <marker
+                        id="ar-q2n"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#b91c1c"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="150"
+                      y1="200"
+                      x2="390"
+                      y2="200"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <line
+                      x1="150"
+                      y1="200"
+                      x2="31"
+                      y2="285"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <line
+                      x1="150"
+                      y1="200"
+                      x2="150"
+                      y2="60"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <text
+                      x="398"
+                      y="206"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      x
+                    </text>
+                    <text
+                      x="19"
+                      y="299"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      y
+                    </text>
+                    <text
+                      x="150"
+                      y="50"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      z
+                    </text>
+                    <text
+                      x="158"
+                      y="218"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      O
+                    </text>
+                    <polygon
+                      points="150,110 270,200 65,260"
+                      fill="rgba(31,41,55,0.08)"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></polygon>
+                    <line
+                      x1="150"
+                      y1="110"
+                      x2="262"
+                      y2="194"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <line
+                      x1="270"
+                      y1="200"
+                      x2="75"
+                      y2="257"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <line
+                      x1="65"
+                      y1="260"
+                      x2="145"
+                      y2="119"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#ar-q2)"
+                    ></line>
+                    <line
+                      x1="177"
+                      y1="190"
+                      x2="242"
+                      y2="140"
+                      stroke="#b91c1c"
+                      stroke-width="2"
+                      marker-end="url(#ar-q2n)"
+                    ></line>
+                    <circle cx="150" cy="110" r="4" fill="#1f2937"></circle>
+                    <circle cx="270" cy="200" r="4" fill="#1f2937"></circle>
+                    <circle cx="65" cy="260" r="4" fill="#1f2937"></circle>
+                    <text
+                      x="160"
+                      y="106"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      A (0, 0, 2)
+                    </text>
+                    <text
+                      x="278"
+                      y="222"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      B (2, 0, 0)
+                    </text>
+                    <text
+                      x="74"
+                      y="284"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      C (0, 4, 0)
+                    </text>
+                    <text
+                      x="248"
+                      y="134"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#b91c1c"
+                    >
+                      n = (2, 1, 2)/3
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Triângulo \(T\) no plano \(2x+y+2z=4\), arestas orientadas
+                    de \(A\) a \(B\), de \(B\) a \(C\) e de \(C\) a \(A\), com a
+                    normal \(\hat{\mathbf n}\).
+                  </figcaption>
+                </figure>
+                <p>
+                  Como \(\overrightarrow{AB}\times\overrightarrow{AC}\) aponta
+                  no sentido de \(\hat{\mathbf n}\), a ordem \(A\to B\to C\to
+                  A\) é exatamente a orientação compatível com \(\hat{\mathbf
+                  n}\) pela regra da mão direita — o percurso dado no enunciado.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,8)</strong>
+            Calcule \(\oint_{\partial T}\mathbf F\cdot d\mathbf r\) ao longo da
+            fronteira, parametrizando cada aresta.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Aresta \(AB\):</strong>
+                  \(\mathbf r(t)=(2t,\;0,\;2-2t)\), \(0\le t\le 1\); \(\mathbf
+                  r'(t)=(2,\;0,\;-2)\); \(\mathbf F(\mathbf
+                  r(t))=(2-2t,\;2t,\;0)\). Então \[ \mathbf F\cdot\mathbf
+                  r'=(2-2t)\cdot 2=4-4t,\qquad \int_0^1(4-4t)\,dt=2. \]
+                </p>
+                <p>
+                  <strong>Aresta \(BC\):</strong>
+                  \(\mathbf r(t)=(2-2t,\;4t,\;0)\), \(0\le t\le 1\); \(\mathbf
+                  r'(t)=(-2,\;4,\;0)\); \(\mathbf F(\mathbf
+                  r(t))=(0,\;2-2t,\;4t)\). Então \[ \mathbf F\cdot\mathbf
+                  r'=(2-2t)\cdot 4=8-8t,\qquad \int_0^1(8-8t)\,dt=4. \]
+                </p>
+                <p>
+                  <strong>Aresta \(CA\):</strong>
+                  \(\mathbf r(t)=(0,\;4-4t,\;2t)\), \(0\le t\le 1\); \(\mathbf
+                  r'(t)=(0,\;-4,\;2)\); \(\mathbf F(\mathbf
+                  r(t))=(2t,\;0,\;4-4t)\). Então \[ \mathbf F\cdot\mathbf
+                  r'=(4-4t)\cdot 2=8-8t,\qquad \int_0^1(8-8t)\,dt=4. \]
+                </p>
+                <p>
+                  <strong>Total:</strong>
+                  \(\oint_{\partial T}\mathbf F\cdot d\mathbf r=2+4+4=10.\)
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,5)</strong>
+            Calcule \(\operatorname{rot}\mathbf F\) e o fluxo
+            \(\iint_T(\operatorname{rot}\mathbf F)\cdot\hat{\mathbf n}\;dS\),
+            com a normal do item (a). Compare com o item (b): qual teorema
+            relaciona os dois resultados?
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O rotacional: \[ \operatorname{rot}\mathbf F
+                  =\nabla\times(z,\;x,\;y) =\left(\tfrac{\partial y}{\partial
+                  y}-\tfrac{\partial x}{\partial z},\; \tfrac{\partial
+                  z}{\partial z}-\tfrac{\partial y}{\partial x},\;
+                  \tfrac{\partial x}{\partial x}-\tfrac{\partial z}{\partial
+                  y}\right) =(1,\;1,\;1). \]
+                </p>
+                <p>
+                  <strong>Via parametrização.</strong> Isolando \(z\) na
+                  equação do plano, \(z=2-x-\frac{y}{2}\). Escrevendo \(x=v\) e
+                  \(y=u\), o triângulo é o gráfico \[ \mathbf
+                  r(v,u)=\left(v,\;u,\;2-v-\frac{u}{2}\right). \] Temos
+                  \(\mathbf r_v=(1,\;0,\;-1)\) e \(\mathbf
+                  r_u=\left(0,\;1,\;-\frac12\right)\), de modo que \[ \mathbf
+                  r_v\times\mathbf r_u=\left(1,\;\frac12,\;1\right). \] Como
+                  \(\left(1,\frac12,1\right)\cdot(2,1,2)=\frac92>0\), esse
+                  vetor aponta no mesmo sentido de \(\hat{\mathbf
+                  n}=\frac{(2,1,2)}{3}\): a parametrização herda a orientação
+                  correta. Além disso, \[
+                  (\operatorname{rot}\mathbf F)\cdot(\mathbf r_v\times\mathbf
+                  r_u)=(1,1,1)\cdot\left(1,\;\frac12,\;1\right)=\frac52, \]
+                  constante em \(T\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="330"
+                    viewBox="0 0 460 330"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Domínio de integração no plano vu: triângulo com vértices A na origem, B em (2,0) e C em (0,4), hipotenusa u igual a 4 menos 2v e faixa vertical tracejada indicando o intervalo interno de u"
+                  >
+                    <title>Domínio D no plano vu</title>
+                    <defs>
+                      <marker
+                        id="ar-q2d"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="120"
+                      y1="285"
+                      x2="400"
+                      y2="285"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2d)"
+                    ></line>
+                    <line
+                      x1="120"
+                      y1="285"
+                      x2="120"
+                      y2="40"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q2d)"
+                    ></line>
+                    <text
+                      x="408"
+                      y="291"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      v
+                    </text>
+                    <text
+                      x="120"
+                      y="28"
+                      text-anchor="middle"
+                      font-family="Times New Roman, serif"
+                      font-size="15"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      u
+                    </text>
+                    <polygon
+                      points="120,285 300,285 120,65"
+                      fill="rgba(31,41,55,0.08)"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></polygon>
+                    <line
+                      x1="210"
+                      y1="285"
+                      x2="210"
+                      y2="175"
+                      stroke="#6b7280"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <text
+                      x="232"
+                      y="160"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      u = 4 − 2v
+                    </text>
+                    <circle cx="120" cy="285" r="3" fill="#1f2937"></circle>
+                    <circle cx="300" cy="285" r="3" fill="#1f2937"></circle>
+                    <circle cx="120" cy="65" r="3" fill="#1f2937"></circle>
+                    <text
+                      x="70"
+                      y="304"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      A (0, 0)
+                    </text>
+                    <text
+                      x="308"
+                      y="302"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      B (2, 0)
+                    </text>
+                    <text
+                      x="130"
+                      y="60"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      C (0, 4)
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Domínio \(D\) no plano \(vu\): projeção de \(T\), com a
+                    faixa vertical em \(v\) fixo mostrando o intervalo interno
+                    \(0\le u\le 4-2v\).
+                  </figcaption>
+                </figure>
+                <p>
+                  O domínio de integração é a projeção de \(T\) no plano
+                  \(vu\): o triângulo de vértices \((0,0)\) (projeção de
+                  \(A\)), \((2,0)\) (projeção de \(B\)) e \((0,4)\) (projeção
+                  de \(C\)), limitado por \(v=0\), \(u=0\) e pela hipotenusa
+                  \(u=4-2v\), de área \(\frac{2\cdot 4}{2}=4\). Fixando \(v\),
+                  \(u\) percorre \(0\le u\le 4-2v\): \[
+                  \iint_T(\operatorname{rot}\mathbf F)\cdot d\mathbf S
+                  =\int_0^2\!\!\int_0^{4-2v}\frac52\;du\,dv
+                  =\frac52\int_0^2(4-2v)\;dv =\frac52\cdot 4=10. \]
+                </p>
+                <p>
+                  <strong>Via \(\hat{\mathbf n}\):</strong> como
+                  \(\operatorname{rot}\mathbf F\cdot\hat{\mathbf n}
+                  =(1,1,1)\cdot\frac{(2,1,2)}{3}=\frac53\) é constante e a área
+                  de \(T\) é \(6\) (item d): \[
+                  \iint_T(\operatorname{rot}\mathbf F)\cdot\hat{\mathbf n}\;dS
+                  =\frac53\cdot 6=10. \]
+                </p>
+                <p>
+                  Os dois resultados coincidem com a integral de linha do item
+                  (b): é o <strong>Teorema de Stokes</strong>, \(\oint_{\partial
+                  T}\mathbf F\cdot d\mathbf r =\iint_T(\operatorname{rot}\mathbf
+                  F)\cdot d\mathbf S\), com a orientação da fronteira compatível
+                  com \(\hat{\mathbf n}\).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,6)</strong>
+            Calcule a área de \(T\) por integral dupla e por produto vetorial, e
+            compare os resultados.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Pela integral dupla.</strong> Projetando o triângulo
+                  no plano \(xz\): isolando \(y=4-2x-2z\), com \(y_x=-2\) e
+                  \(y_z=-2\): \[
+                  dS=\sqrt{1+y_x^2+y_z^2}\;dx\,dz=\sqrt{1+4+4}\;dx\,dz=3\;dx\,dz.
+                  \]
+                </p>
+                <p>
+                  A projeção é o triângulo \(D:\ x\ge 0\), \(z\ge 0\), \(x+z\le
+                  2\) (área \(2\)). Então \[ \text{Área}=\iint_D
+                  3\;dx\,dz=3\cdot 2=6. \]
+                </p>
+                <p>
+                  (Outra escolha: projeção no plano \(xy\), com
+                  \(z=2-x-\frac{y}{2}\) e
+                  \(dS=\sqrt{1+1+\frac14}\,dx\,dy=\frac32\,dx\,dy\), sobre o
+                  domínio \(2x+y\le 4\), \(x,y\ge0\), de área \(4\) — dá
+                  \(\frac32\cdot 4=6\): qualquer projeção leva ao mesmo
+                  resultado.)
+                </p>
+                <p>
+                  <strong>Pelo produto vetorial:</strong>
+                  \[
+                  \overrightarrow{AB}\times\overrightarrow{AC}=(8,\;4,\;8),\qquad
+                  \text{Área}=\frac12\|\overrightarrow{AB}\times\overrightarrow{AC}\|
+                  =\frac12\sqrt{64+16+64}=\frac{12}{2}=6, \] o mesmo valor das
+                  duas vias.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 3 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 3: Paraboloide — área e volume
+          </div>
+          <p>
+            Considere o paraboloide \(z=2-x^2-y^2\), de concavidade voltada para
+            baixo, e a porção \(S\) dele com \(z\ge 0\).
+          </p>
+          <p class="didactic">
+            O coração da questão é a construção dos infinitesimais, e não a
+            aplicação de fórmulas prontas: o aluno deve propor a parametrização
+            (gráfico de \(z=g(x,y)\)) e justificar de onde vem o elemento de
+            área (o paralelogramo infinitesimal gerado por \(\mathbf r_x\) e
+            \(\mathbf r_y\), cujo componente vertical igual a \(1\) mede o
+            "esticamento" em relação à projeção) e de onde vem o elemento de
+            volume (caixas retangulares ou fatiamento horizontal). A simetria do
+            paraboloide motiva coordenadas polares. Avalia o capítulo 8 (área de
+            superfície) e retoma o capítulo 4 (volume).
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,4)</strong>
+            Esboce \(S\) e a projeção \(D\) de \(S\) no plano \(xy\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A superfície \(S\) é a "calota" do paraboloide acima do plano
+                  \(xy\): vértice em \((0,0,2)\), abrindo para baixo, terminando
+                  na circunferência \(x^2+y^2=2\) no plano \(z=0\). A projeção é
+                  o disco \(D=\{(x,y):x^2+y^2\le 2\}\), de raio \(\sqrt 2\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="310"
+                    viewBox="0 0 460 310"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Paraboloide invertido com vértice em z igual a 2, terminando na circunferência x ao quadrado mais y ao quadrado igual a 2 no plano z igual a 0, com o disco de raio raiz de 2 projetado"
+                  >
+                    <title>Calota do paraboloide z = 2 − x² − y²</title>
+                    <defs>
+                      <marker
+                        id="ar-q3"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <line
+                      x1="230"
+                      y1="250"
+                      x2="230"
+                      y2="40"
+                      stroke="#94a3b8"
+                      stroke-width="1.2"
+                      stroke-dasharray="5 4"
+                    ></line>
+                    <path
+                      d="M 90 220 Q 230 -60 370 220"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="1.8"
+                    ></path>
+                    <ellipse
+                      cx="230"
+                      cy="220"
+                      rx="140"
+                      ry="30"
+                      fill="rgba(31,41,55,0.06)"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                    ></ellipse>
+                    <line
+                      x1="230"
+                      y1="80"
+                      x2="230"
+                      y2="220"
+                      stroke="#1f2937"
+                      stroke-width="1.2"
+                      marker-end="url(#ar-q3)"
+                    ></line>
+                    <text
+                      x="244"
+                      y="150"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      2
+                    </text>
+                    <text
+                      x="248"
+                      y="110"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#1f2937"
+                    >
+                      S: z = 2 − x² − y²
+                    </text>
+                    <text
+                      x="252"
+                      y="256"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      z = 0
+                    </text>
+                    <text
+                      x="160"
+                      y="292"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      D: disco x² + y² ≤ 2 (raio √2)
+                    </text>
+                  </svg>
+                  <figcaption>
+                    A calota \(S\) e sua projeção \(D\) no plano \(xy\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,8)</strong>
+            Proponha uma parametrização para \(S\) e, a partir dos vetores
+            tangentes que ela gera, explique e deduza o elemento infinitesimal
+            de área \(dS\). Em seguida, monte e calcule a integral que fornece a
+            área de \(S\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Parametrização proposta:</strong> \(S\) é o gráfico de
+                  \(z=g(x,y)=2-x^2-y^2\) sobre o disco \(D\), logo uma
+                  parametrização natural é \(\mathbf r(x,y)=(x,\;y,\;g(x,y))\),
+                  com \((x,y)\in D\). Então: \[ \mathbf r_x=(1,\;0,\;-2x),\qquad
+                  \mathbf r_y=(0,\;1,\;-2y), \] \[ \mathbf r_x\times\mathbf
+                  r_y=(2x,\;2y,\;1). \]
+                </p>
+                <p>
+                  <strong>Dedução do infinitesimal de área:</strong> o retângulo
+                  infinitesimal de lados \(\mathbf r_x\,dx\) e \(\mathbf
+                  r_y\,dy\) no plano tangente tem área igual ao módulo do
+                  produto vetorial: \(dS=\|\mathbf r_x\times\mathbf
+                  r_y\|\,dx\,dy\). O componente vertical de \(\mathbf
+                  r_x\times\mathbf r_y\) vale \(1\), então \(dS\ge dA\): a
+                  inclinação da superfície faz com que uma área \(dA\) da
+                  projeção corresponda a uma área maior \(dS\) na própria
+                  superfície. Logo \[ dS=\sqrt{4x^2+4y^2+1}\;dx\,dy
+                  =\sqrt{4r^2+1}\;r\,dr\,d\theta. \]
+                </p>
+                <p>
+                  <strong>Área</strong> (sobre \(D:\ 0\le r\le\sqrt 2\),
+                  \(0\le\theta\le 2\pi\)): \[
+                  \text{Área}=\int_0^{2\pi}\!\!\int_0^{\sqrt2}\sqrt{4r^2+1}\;r\,dr\,d\theta.
+                  \]
+                </p>
+                <p>
+                  Com \(u=4r^2+1\), \(du=8r\,dr\): \[
+                  \int_0^{\sqrt2}\sqrt{4r^2+1}\;r\,dr
+                  =\frac1{12}(4r^2+1)^{3/2}\Big|_0^{\sqrt2}
+                  =\frac1{12}\left(9^{3/2}-1\right)=\frac{26}{12}=\frac{13}{6}.
+                  \]
+                </p>
+                <p>\[ \text{Área}=2\pi\cdot\frac{13}{6}=\frac{13\pi}{3}. \]</p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,5)</strong>
+            Para a região \(R\) compreendida entre o paraboloide e o plano
+            \(z=0\), explique e deduza o elemento infinitesimal de volume \(dV\)
+            e escreva-o em coordenadas polares.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Via caixas retangulares:</strong> um bloco
+                  infinitesimal de arestas \(dx\), \(dy\), \(dz\) tem volume
+                  \(dV=dx\,dy\,dz\). Em coordenadas polares, o elemento de área
+                  vira um setor circular de lados \(dr\) (radial),
+                  \(r\,d\theta\) (tangencial — o arco cresce com o raio) e
+                  altura \(dz\): \[
+                  dV=(dr)\cdot(r\,d\theta)\cdot(dz)=r\;dz\,dr\,d\theta. \] O
+                  fator \(r\) é o Jacobiano: setores longe do eixo cobrem mais
+                  área.
+                </p>
+                <p>
+                  <strong>Via fatiamento horizontal:</strong> fatiar por planos
+                  \(z=\) constante. A seção à altura \(z\) é o disco
+                  \(x^2+y^2\le 2-z\) (de área \(\pi(2-z)\)), então
+                  \(dV=\pi(2-z)\,dz\) — que também leva ao volume do item (d).
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,8)</strong>
+            Monte e calcule a integral que fornece o volume de \(R\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A região é \(R=\{(x,y,z): 0\le z\le 2-x^2-y^2\}\) sobre o
+                  disco \(D\). Somando as fatias verticais (altura
+                  \(z_{\text{topo}}-z_{\text{base}}=2-x^2-y^2\), base \(z=0\)):
+                  \[ V=\iint_D (2-x^2-y^2)\;dA
+                  =\int_0^{2\pi}\!\!\int_0^{\sqrt2}(2-r^2)\,r\,dr\,d\theta. \]
+                </p>
+                <p>
+                  \[ \int_0^{\sqrt2}(2r-r^3)\,dr
+                  =\left[r^2-\frac{r^4}{4}\right]_0^{\sqrt2}=2-1=1, \qquad
+                  V=2\pi\cdot 1=2\pi. \]
+                </p>
+                <p>
+                  (Como integral tripla:
+                  \(V=\int_0^{2\pi}\!\!\int_0^{\sqrt2}\!\!\int_0^{2-r^2}r\;dz\,dr\,d\theta
+                  =\int_0^{2\pi}\!\!\int_0^{\sqrt2}r(2-r^2)\,dr\,d\theta\) —
+                  mesmo resultado. <strong>Conferência por geometria:</strong>
+                  o sólido é um paraboloide de revolução completo (altura \(2\),
+                  raio \(\sqrt 2\)), e o volume de um paraboloide é exatamente
+                  metade do cilindro que o envolve: \(V=\frac12\,\pi
+                  r^2h=\frac12\cdot\pi\cdot 2\cdot 2=2\pi\), confirmando o
+                  cálculo.)
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 4 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 4: Trajetória elíptica — tangente, perpendicular e trabalho
+          </div>
+          <p>
+            Um móvel descreve a trajetória elíptica \(\frac{x^2}{4}+y^2=1\) no
+            sentido anti-horário, partindo de \(A=(2,0)\), passando por
+            \(B=(0,1)\) e completando a volta. Considere os campos vetoriais
+            \(\mathbf F_1(x,y)=(2xy,\;x^2+1)\) e \(\mathbf F_2(x,y)=(0,\;x)\).
+          </p>
+          <p class="didactic">
+            A mecânica dá significado físico aos conceitos: o vetor tangente é a
+            direção do movimento (a velocidade), e o perpendicular aparece
+            naturalmente como gradiente de \(g(x,y)=\frac{x^2}{4}+y^2\) —
+            gradiente é perpendicular às curvas de nível (conexão dos capítulos
+            0 e 1). Os campos foram escolhidos para que a integração direta no
+            arco seja viável; a integral fechada separa o campo conservativo
+            (circulação nula, trabalho independente do caminho) do não
+            conservativo (circulação não nula), conectando os capítulos 5, 6 e 7
+            — o \(\oint\mathbf F_2\) admite verificação via Teorema de Green.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,5)</strong>
+            Esboce a elipse e proponha uma parametrização \(\mathbf r(t)\),
+            \(0\le t\le 2\pi\), compatível com esse percurso. Determine um vetor
+            tangente à trajetória em um ponto genérico \(\mathbf r(t)\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A elipse tem semieixos \(2\) (no \(x\)) e \(1\) (no \(y\)).
+                  Uma parametrização compatível com o percurso anti-horário é \[
+                  \mathbf r(t)=(2\cos t,\;\sin t),\qquad 0\le t\le 2\pi: \]
+                  parte de \(A=(2,0)\) em \(t=0\), passa por \(B=(0,1)\) em
+                  \(t=\frac\pi2\) e percorre a elipse no sentido anti-horário. O
+                  vetor tangente em \(\mathbf r(t)\) é \[ \mathbf r'(t)=(-2\sin
+                  t,\;\cos t)\neq\mathbf 0, \] e qualquer múltiplo escalar não
+                  nulo dele também é tangente. Fisicamente, \(\mathbf r'(t)\) é
+                  a velocidade do móvel: aponta na direção do movimento
+                  (anti-horário).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="250"
+                    viewBox="0 0 460 250"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Elipse de semieixos 2 e 1 com os pontos A à direita e B no topo, um vetor tangente desenhado num ponto do primeiro quadrante e seta indicando o sentido anti-horário"
+                  >
+                    <title>Elipse x/2, y com vetor tangente</title>
+                    <defs>
+                      <marker
+                        id="ar-q4"
+                        markerWidth="9"
+                        markerHeight="7"
+                        refX="8"
+                        refY="3.5"
+                        orient="auto"
+                        fill="#1f2937"
+                      >
+                        <polygon points="0 0, 9 3.5, 0 7"></polygon>
+                      </marker>
+                    </defs>
+                    <ellipse
+                      cx="230"
+                      cy="130"
+                      rx="160"
+                      ry="80"
+                      fill="none"
+                      stroke="#1f2937"
+                      stroke-width="1.8"
+                    ></ellipse>
+                    <circle cx="390" cy="130" r="4" fill="#1f2937"></circle>
+                    <circle cx="230" cy="50" r="4" fill="#1f2937"></circle>
+                    <circle cx="343" cy="63" r="4" fill="#b91c1c"></circle>
+                    <line
+                      x1="343"
+                      y1="63"
+                      x2="287"
+                      y2="35"
+                      stroke="#b91c1c"
+                      stroke-width="2"
+                      marker-end="url(#ar-q4)"
+                    ></line>
+                    <line
+                      x1="386"
+                      y1="112"
+                      x2="372"
+                      y2="94"
+                      stroke="#1f2937"
+                      stroke-width="1.5"
+                      marker-end="url(#ar-q4)"
+                    ></line>
+                    <text
+                      x="252"
+                      y="32"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      font-style="italic"
+                      fill="#b91c1c"
+                    >
+                      r′(t)
+                    </text>
+                    <text
+                      x="396"
+                      y="150"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      A (2, 0)
+                    </text>
+                    <text
+                      x="238"
+                      y="40"
+                      font-family="Times New Roman, serif"
+                      font-size="14"
+                      fill="#1f2937"
+                    >
+                      B (0, 1)
+                    </text>
+                    <text
+                      x="240"
+                      y="238"
+                      font-family="Times New Roman, serif"
+                      font-size="13"
+                      fill="#555"
+                      text-anchor="middle"
+                    >
+                      percurso de A a B no sentido anti-horário
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Elipse \(\mathbf r(t)=(2\cos t,\sin t)\), os pontos \(A\) e
+                    \(B\) e o vetor tangente em \(t=\pi/4\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,5)</strong>
+            Determine um vetor perpendicular à trajetória em \(\mathbf r(t)\) e
+            verifique a ortogonalidade com o vetor tangente.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  <strong>Via rotação de 90°:</strong> girar \((u,v)\) em
+                  \(90°\) dá \((-v,u)\); aplicando a \(\mathbf r'(t)=(-2\sin
+                  t,\;\cos t)\) obtém-se, por exemplo, \[ \mathbf N(t)=(-\cos
+                  t,\;-2\sin t) \quad\text{(ou o oposto }(\cos t,\;2\sin
+                  t)\text{)}. \]
+                </p>
+                <p>
+                  <strong>Via gradiente:</strong> a elipse é a curva de nível
+                  \(g(x,y)=\frac{x^2}{4}+y^2=1\). Como \(\nabla
+                  g=(\frac{x}{2},\;2y)\), em \(\mathbf r(t)=(2\cos t,\;\sin
+                  t)\): \[ \nabla g(\mathbf r(t))=(\cos t,\;2\sin t). \]
+                </p>
+                <p>
+                  <strong>Verificação da ortogonalidade:</strong>
+                  \[ \mathbf r'(t)\cdot\nabla g =(-2\sin t)(\cos t)+(\cos
+                  t)(2\sin t)=0. \] O gradiente é sempre perpendicular às curvas
+                  de nível — e a trajetória é uma delas.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,7)</strong>
+            Calcule o trabalho realizado por cada campo quando o móvel se
+            desloca de \(A\) a \(B\) ao longo do arco da elipse, integrando
+            diretamente \(\int_{\text{arco}}\mathbf F_i\cdot d\mathbf r\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O ponto \(A=(2,0)\) corresponde a \(t=0\) e \(B=(0,1)\) a
+                  \(t=\frac\pi2\) (percurso anti-horário), com \(\mathbf
+                  r'(t)=(-2\sin t,\;\cos t)\).
+                </p>
+                <p>
+                  <strong>Campo \(\mathbf F_1=(2xy,\;x^2+1)\):</strong>
+                  \[ \mathbf F_1(\mathbf r(t))=(4\cos t\sin t,\;4\cos^2t+1), \]
+                  \[ \mathbf F_1\cdot\mathbf r' =-8\cos t\,\sin^2t+4\cos^3t+\cos
+                  t. \]
+                </p>
+                <p>
+                  Com \(\int_0^{\pi/2}\cos t\,\sin^2t\,dt=\frac13\),
+                  \(\int_0^{\pi/2}\cos^3t\,dt=\frac23\) e \(\int_0^{\pi/2}\cos
+                  t\,dt=1\): \[ W_1=-8\cdot\frac13+4\cdot\frac23+1
+                  =-\frac83+\frac83+1=1. \]
+                </p>
+                <p>
+                  <strong>Campo \(\mathbf F_2=(0,\;x)\):</strong>
+                  \[ \mathbf F_2(\mathbf r(t))=(0,\;2\cos t),\qquad \mathbf
+                  F_2\cdot\mathbf r'=2\cos^2t, \] \[
+                  W_2=\int_0^{\pi/2}2\cos^2t\,dt
+                  =2\cdot\frac{\pi}{4}=\frac{\pi}{2}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,8)</strong>
+            Calcule \(\oint\mathbf F_i\cdot d\mathbf r\) na elipse completa,
+            percorrida uma vez no sentido anti-horário, para os dois campos.
+            Qual a diferença entre os resultados e o que se pode concluir sobre
+            os campos a partir da integral de linha fechada?
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Elipse completa, anti-horário: \(t\) vai de \(0\) a \(2\pi\).
+                </p>
+                <p>
+                  <strong>Campo \(\mathbf F_1\):</strong>
+                  \[ \oint\mathbf F_1\cdot d\mathbf r =\int_0^{2\pi}\left(-8\cos
+                  t\,\sin^2t+4\cos^3t+\cos t\right)dt=0, \] pois cada parcela
+                  tem integral nula no intervalo completo (\(\int_0^{2\pi}\cos
+                  t\,\sin^2t\,dt=0\), \(\int_0^{2\pi}\cos^3t\,dt=0\),
+                  \(\int_0^{2\pi}\cos t\,dt=0\)).
+                </p>
+                <p>
+                  <strong>Campo \(\mathbf F_2\):</strong>
+                  \[ \oint\mathbf F_2\cdot d\mathbf r
+                  =\int_0^{2\pi}2\cos^2t\,dt=2\pi. \] Verificação pelo
+                  <strong>Teorema de Green</strong>: \[ \oint\mathbf F_2\cdot
+                  d\mathbf r =\iint\left(\frac{\partial x}{\partial
+                  x}-\frac{\partial 0}{\partial y}\right)dA
+                  =\iint_{\text{elipse}}1\;dA=\pi\cdot 2\cdot 1=2\pi. \]
+                </p>
+                <p>
+                  <strong>Diferença e conclusão:</strong> \(\mathbf F_1\) tem
+                  circulação nula em toda curva fechada — é
+                  <strong>conservativo</strong>: existe potencial
+                  \(f(x,y)=x^2y+y\) com \(\nabla f=\mathbf F_1\), e o trabalho
+                  entre dois pontos depende só dos extremos:
+                  \(f(B)-f(A)=(0+1)-(0+0)=1\), exatamente o valor do item (c).
+                  \(\mathbf F_2\) tem circulação \(2\pi\neq 0\) — é
+                  <strong>não conservativo</strong>: o trabalho entre \(A\) e
+                  \(B\) depende do caminho. De fato, voltando de \(B\) a \(A\)
+                  continuando pela elipse (\(t:\frac\pi2\to 2\pi\)) o trabalho
+                  seria \(2\pi-\frac\pi2=\frac{3\pi}{2}\), diferente de
+                  \(-\frac\pi2\) (o caminho de volta pelo mesmo arco). A
+                  integral de linha fechada é o critério que separa os dois
+                  tipos de campo.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO TDF-ALFA-1</div>
+  <div class="context">
+    ORIGEM: Análise Prévia de Setor Retangular - Relatório
+    <span class="censored">ALFA-01</span>
+  </div>
+  <p>
+    Antes de atacar regiões complicadas, precisamos dominar o caso mais simples:
+    quando o domínio é um retângulo, a integral dupla se decompõe naturalmente
+    em duas integrais iteradas. Este exercício estabelece a base que sustentará
+    toda a lista: se pudéssemos fatiar o retângulo de outro jeito, o resultado
+    seria o mesmo?
+  </p>
+  <p>
+    Calcular \(\iint_D (2x + 3y)\, dA\) onde \(D\) é o retângulo \(0 \le x \le
+    1\), \(0 \le y \le 2\). Use o Teorema de Fubini para determinar o valor
+    exato da integral e interpretar seu significado em termos de \(x\) e \(y\).
+  </p>
+  <p>
+    Antes de calcular, esboce a região no plano \(xy\) e identifique como as
+    fatias verticais e horizontais cobrem o mesmo retângulo. Este exercício
+    estabelece a base: quando o domínio é retangular, Fubini nos permite
+    escolher livremente a ordem de integração.
+  </p>
+  <p>
+    <strong>(a)</strong> Esboce o retângulo \(D\) no plano \(xy\) e desenhe as
+    fatias verticais (paralelas ao eixo \(y\)) que cobrem a região.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte e resolva a integral iterada integrando primeiro
+    em \(y\), depois em \(x\).
+  </p>
+  <p>
+    <strong>(c)</strong> Repita o cálculo integrando primeiro em \(x\) e
+    verifique que o resultado coincide com o item (b).
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O integrando \(2x + 3y\) é uma soma — use a linearidade da
+      integral para separar os termos. Na integração em \(y\), trate \(x\) como
+      constante.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O retângulo \(D = [0,1] \times [0,2]\) é coberto
+        por fatias verticais em cada \(x \in [0,1]\), com \(y\) variando de
+        \(0\) a \(2\).
+      </p>
+      <p><strong>(b)</strong> Aplicando Fubini em \(y\) primeiro:</p>
+      <p>\[ \int_{x=0}^{1} \left(\int_{y=0}^{2} (2x + 3y)\, dy\right) dx. \]</p>
+      <p>Integração em \(y\):</p>
+      <p>
+        \[ \int_{0}^{2} (2x + 3y)\, dy = 2x \int_{0}^{2} dy + 3\int_{0}^{2} y\,
+        dy \]
+      </p>
+      <p>
+        \[ = 2x (2) + 3 \left[\frac{y^2}{2}\right]_0^2 = 4x + 3 \cdot 2 = 4x +
+        6. \]
+      </p>
+      <p>Agora integrando em \(x\):</p>
+      <p>
+        \[ \int_{0}^{1} (4x + 6)\, dx = \left[ 2x^2 + 6x \right]_0^1 = 2 + 6 =
+        8. \]
+      </p>
+      <p>
+        <strong>(c)</strong> Verificação pela ordem inversa (\(dx\) primeiro):
+      </p>
+      <p>
+        \[ \int_{0}^{2} \left(\int_{0}^{1} (2x+3y)\, dx\right) dy = \int_{0}^{2}
+        \left[ x^2 + 3xy \right]_0^1 dy = \int_0^2 (1+3y)\, dy = \left[y +
+        \frac{3y^2}{2}\right]_0^2 = 2 + 6 = 8. \]
+      </p>
+      <p>
+        Conclusão: O valor da integral é \(8\), o mesmo independentemente da
+        ordem. O Teorema de Fubini garante essa equivalência para funções
+        contínuas em domínios retangulares.
+      </p>
+    </div>
+  </details>
+</li>

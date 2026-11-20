@@ -1,0 +1,82 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+  <div class="context">ORIGEM: Centro de Navegação - Gemini X [JUL/1966]</div>
+  <p>
+    Exploramos singularidades e contraexemplos. Agora vamos analisar uma função
+    que é limitada mas tem um comportamento <em>intrigante</em> na origem: ela
+    oscila tão rapidamente que o limite não existe.
+  </p>
+  <p>
+    Considere a função: \[u(x,y,z) = \begin{cases}
+    \sin\!\left(\frac{1}{x^2+y^2+z^2}\right) &amp; \text{se } (x,y,z) \neq
+    (0,0,0), \\ 0 &amp; \text{se } (x,y,z) = (0,0,0). \end{cases}\] definida na
+    bola \(V = \{(x,y,z) \mid x^2+y^2+z^2 \le 4\}\).
+  </p>
+  <p>
+    <strong>(a)</strong> Investigue o comportamento de \(u\) perto da origem.
+    Quando \(r = \sqrt{x^2+y^2+z^2} \to 0\), o argumento \(\frac{1}{r^2} \to
+    +\infty\). O limite \(\lim_{r \to 0}\sin\!\left(\frac{1}{r^2}\right)\)
+    existe? Explique.
+  </p>
+  <p>
+    <strong>(b)</strong> Determine se \(u\) é contínua na origem. Justifique
+    usando o resultado do item (a).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique se \(u\) é limitada em \(V\). Que valores
+    \(\sin(\cdot)\) pode assumir?
+  </p>
+  <p>
+    <strong>(d)</strong> Conclua sobre a integrabilidade de \(u\) em \(V\),
+    usando o argumento de medida nula. Que papel a limitação e o tamanho do
+    conjunto de descontinuidade desempenham?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-9]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A função seno oscila entre \(-1\) e \(1\), portanto é
+      sempre limitada. Mas o limite de \(\sin(1/r^2)\) quando \(r \to 0\) não
+      existe — a função passa por infinitas oscilações em qualquer vizinhança da
+      origem. Isso significa que \(u\) <strong>não é contínua</strong> em
+      \((0,0,0)\), apesar de ter sido definida ali. Contudo, a descontinuidade
+      está em apenas um ponto (medida nula).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-9 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O limite \(\lim_{r \to
+        0}\sin\!\left(\frac{1}{r^2}\right)\) <strong>não existe</strong>.
+        Conforme \(r \to 0\), o argumento \(\frac{1}{r^2}\) cresce sem par e a
+        função seno oscila entre \(-1\) e \(1\) com frequência cada vez maior.
+        Em qualquer intervalo \((0, \varepsilon)\) de \(r\), a função passa por
+        infinitas oscilações completas — não converge para nenhum valor.
+      </p>
+      <p>
+        <strong>(b)</strong> \(u\) <strong>não é contínua</strong> na origem.
+        Para que fosse contínua, precisaríamos
+        \(\lim_{(x,y,z)\to(0,0,0)}u(x,y,z) = u(0,0,0) = 0\). Mas o limite não
+        existe (item a), logo a continuidade falha. A definição do valor
+        \(u(0,0,0) = 0\) não "conserta" a descontinuidade.
+      </p>
+      <p>
+        <strong>(c)</strong> Sim, \(u\) é limitada. Como \(|\sin(\cdot)| \le 1\)
+        sempre, temos \(|u(x,y,z)| \le 1\) para todo ponto em \(V\), inclusive
+        na origem. Portanto \(-1 \le u(x,y,z) \le 1\) em \(V\).
+      </p>
+      <p>
+        <strong>(d)</strong> A integral de \(u\) em \(V\)
+        <strong>existe</strong>. A função é limitada (\(|u| \le 1\)), o conjunto
+        de descontinuidade é apenas \(\{(0,0,0)\}\) (medida nula em
+        \(\mathbb{R}^3\)), e \(V\) é limitado. Este exercício ilustra uma
+        distinção fundamental:
+        <strong
+          >continuidade não é condição necessária para integrabilidade</strong
+        >. Basta que a função seja limitada e que as descontinuidades formem um
+        conjunto "pequeno" (medida nula). Uma função pode oscilar infinitamente,
+        ser descontínua, e ainda assim perfeitamente integrável.
+      </p>
+    </div>
+  </details>
+</li>

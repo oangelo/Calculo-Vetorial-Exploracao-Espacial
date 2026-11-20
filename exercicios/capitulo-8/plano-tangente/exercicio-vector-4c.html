@@ -1,0 +1,27 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+  <div class="context">
+    ORIGEM: Centro de Análise de Anomalias – Apollo 17 [07/DEZ/1972]
+  </div>
+  <p>
+    Culminância — usar tudo que aprendemos sobre planos tangentes para
+    resolver um problema integrador. Em missões de acoplamento, duas
+    naves precisam tocar-se suavemente num ponto de contato. O ângulo
+    entre suas superfícies determina se o acoplamento é seguro. Considere
+    duas superfícies que se intersectam no ponto \(P = (1, 1, 2)\):
+  </p>
+  <p class="formula-highlight">
+    \[S_1: z = x^2 + y^2 \qquad S_2: z = 4 - (x-1)^2 - (y-1)^2\]
+  </p>
+  <p><strong>(a)</strong> Determine os planos tangentes a \(S_1\) e \(S_2\) no ponto \(P\).</p>
+  <p><strong>(b)</strong> Verifique se as superfícies são tangentes em \(P\) (os planos tangentes coincidem?) ou se se cruzam (planos diferentes). Calcule o ângulo entre os planos tangentes.</p>
+  <p><strong>(c)</strong> No caso de cruzamento, descreva geometricamente a curva de interseção local das duas superfícies em torno de \(P\). A curva de interseção é suave em \(P\)?</p>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>(a)</strong> Para \(S_1\): \(f_x = 2x = 2\), \(f_y = 2y = 2\). Plano: \(z - 2 = 2(x-1) + 2(y-1)\), ou \(z = 2x + 2y - 2\). Para \(S_2\): \(g_x = -2(x-1) = 0\), \(g_y = -2(y-1) = 0\). Plano: \(z - 2 = 0\), ou \(z = 2\).</p>
+      <p><strong>(b)</strong> Os planos são diferentes: \(z = 2x + 2y - 2\) e \(z = 2\). As superfícies se cruzam em \(P\). O ângulo entre os planos é o ângulo entre suas normais: \(\vec{n}_1 = (-2, -2, 1)\) e \(\vec{n}_2 = (0, 0, 1)\). \(\cos\theta = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{\|\vec{n}_1\|\|\vec{n}_2\|} = \frac{1}{\sqrt{9}} = \frac{1}{3}\). Portanto \(\theta = \arccos(1/3)\).</p>
+      <p><strong>(c)</strong> A curva de interseção local é a solução de \(x^2 + y^2 = 4 - (x-1)^2 - (y-1)^2\) com \(z = x^2 + y^2\). Simplificando: \(2x^2 + 2y^2 - 2x - 2y = 2\), ou \(x^2 + y^2 - x - y = 1\). No plano \(z=2\), esta é uma circunferência (completando quadrados). A curva é suave em \(P\) pois ambas as superfícies são regulares e seus planos tangentes se intersectam transversalmente.</p>
+    </div>
+  </details>
+</li>

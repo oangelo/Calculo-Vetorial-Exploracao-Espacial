@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gabarito - PF – 2026.1 - Cálculo Vetorial</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        options: {
+          skipHtmlTags: ['details'],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        background-color: #fff;
+        color: #000;
+      }
+      .container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+      .header h1 {
+        text-align: center;
+        font-size: 16pt;
+        font-weight: bold;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+        margin-bottom: 25px;
+      }
+      .question {
+        margin-bottom: 30px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+      }
+      .question:last-child {
+        border-bottom: none;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 13pt;
+        color: #000;
+        border-left: 4px solid #000;
+        padding: 8px 10px;
+        background-color: #f0f0f0;
+        margin-bottom: 12px;
+      }
+      .didactic {
+        font-style: italic;
+        color: #444;
+        margin: 10px 0;
+      }
+      .subquestion {
+        margin: 10px 0 10px 20px;
+      }
+      details {
+        margin-top: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      summary {
+        font-weight: bold;
+        padding: 8px 12px;
+        cursor: pointer;
+        background-color: #e9e9e9;
+        font-size: 10pt;
+        border-radius: 3px;
+      }
+      .answer {
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        background-color: #fff;
+      }
+      .answer p {
+        margin-top: 0;
+      }
+      .figura {
+        text-align: center;
+        margin: 12px 0;
+      }
+      .figura figcaption {
+        font-size: 9pt;
+        color: #555;
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Gabarito - PF – 2026.1 - Cálculo Vetorial</h1>
+      </div>
+      <div class="content">
+        <!-- QUESTÃO 1 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 1: Teorema de Stokes — paraboloide
+          </div>
+          <p>
+            Considere a superfície \(S\) dada pelo paraboloide \(z=x^2+y^2\) com
+            \(0\le z\le1\), orientada com vetor normal apontando para cima, e
+            sua fronteira \(C\), dada por \(x^2+y^2=1\) no plano \(z=1\),
+            percorrida no sentido anti-horário quando vista de cima. Considere o
+            campo vetorial \(\mathbf F(x,y,z)=(y,\;-x,\;z)\).
+          </p>
+          <p class="didactic">
+            A questão isola o Teorema de Stokes no espaço. O aluno precisa
+            parametrizar uma superfície não plana, obter o elemento vetorial de
+            área, respeitar a orientação e comparar a integral de linha da
+            fronteira com o fluxo do rotacional. A igualdade obtida é a própria
+            verificação do teorema.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,7)</strong>
+            Parametrize \(S\) e \(C\), esboce a superfície e a curva e indique
+            as orientações compatíveis com o teorema de Stokes.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Uma parametrização de \(S\) é \[ \mathbf
+                  r(r,\theta)=(r\cos\theta,\;r\sin\theta,\;r^2), \qquad 0\le
+                  r\le1,\quad 0\le\theta\le2\pi. \] A fronteira \(C\) é a
+                  circunferência \[ \mathbf c(t)=(\cos t,\;\sin t,\;1), \qquad
+                  0\le t\le2\pi. \] Com a normal de \(S\) apontando para cima, a
+                  orientação compatível de \(C\) é o sentido anti-horário quando
+                  vista de cima, que é exatamente o percurso dado.
+                </p>
+                <p>
+                  Os vetores tangentes são \[ \mathbf
+                  r_r=(\cos\theta,\;\sin\theta,\;2r), \qquad \mathbf
+                  r_\theta=(-r\sin\theta,\;r\cos\theta,\;0), \] e o produto
+                  vetorial \[ \mathbf r_r\times\mathbf r_\theta
+                  =(-2r^2\cos\theta,\;-2r^2\sin\theta,\;r) \] tem componente
+                  \(z\) positiva, logo aponta para cima. A figura resume a
+                  superfície, a fronteira e a normal.
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="330"
+                    viewBox="0 0 460 330"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Paraboloide z igual a x ao quadrado mais y ao quadrado, com a circunferência de fronteira em z igual a 1 e normal apontando para cima"
+                  >
+                    <title>Paraboloide e fronteira circular</title>
+                    <defs>
+                      <marker
+                        id="arrow-q1"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="3"
+                        orient="auto"
+                      >
+                        <path d="M0,0 L6,3 L0,6 Z" fill="#000" />
+                      </marker>
+                    </defs>
+                    <line
+                      x1="230"
+                      y1="245"
+                      x2="230"
+                      y2="65"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="230"
+                      y1="245"
+                      x2="110"
+                      y2="285"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="230"
+                      y1="245"
+                      x2="350"
+                      y2="285"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <text x="236" y="60" font-size="13" font-family="serif">
+                      z
+                    </text>
+                    <text x="98" y="300" font-size="13" font-family="serif">
+                      x
+                    </text>
+                    <text x="356" y="300" font-size="13" font-family="serif">
+                      y
+                    </text>
+                    <ellipse
+                      cx="230"
+                      cy="140"
+                      rx="110"
+                      ry="28"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <path
+                      d="M120,140 Q150,225 230,245 Q310,225 340,140"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <path
+                      d="M230,245 Q230,195 230,168"
+                      fill="none"
+                      stroke="#666"
+                      stroke-width="1"
+                      stroke-dasharray="4,3"
+                    />
+                    <path
+                      d="M230,245 Q180,205 120,140"
+                      fill="none"
+                      stroke="#666"
+                      stroke-width="1"
+                      stroke-dasharray="4,3"
+                    />
+                    <path
+                      d="M230,245 Q280,205 340,140"
+                      fill="none"
+                      stroke="#666"
+                      stroke-width="1"
+                      stroke-dasharray="4,3"
+                    />
+                    <line
+                      x1="285"
+                      y1="180"
+                      x2="310"
+                      y2="158"
+                      stroke="#000"
+                      stroke-width="1.2"
+                      marker-end="url(#arrow-q1)"
+                    />
+                    <text x="314" y="156" font-size="12" font-family="serif">
+                      n
+                    </text>
+                    <path
+                      d="M338,134 A110,28 0 0 0 300,118"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="1.2"
+                      marker-end="url(#arrow-q1)"
+                    />
+                    <text x="345" y="130" font-size="12" font-family="serif">
+                      C
+                    </text>
+                    <text x="300" y="215" font-size="12" font-family="serif">
+                      S
+                    </text>
+                    <text x="238" y="255" font-size="12" font-family="serif">
+                      O
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Paraboloide \(z=x^2+y^2\), \(0\le z\le1\), com fronteira
+                    \(C\) em \(z=1\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,9)</strong>
+            Calcule diretamente \(\oint_C\mathbf F\cdot d\mathbf r\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Na curva \(C\), temos \[ \mathbf F(\mathbf c(t))=(\sin
+                  t,\;-\cos t,\;1), \qquad \mathbf c'(t)=(-\sin t,\;\cos t,\;0).
+                  \] Assim, \[ \mathbf F\cdot d\mathbf r =(\sin t)(-\sin
+                  t)+(-\cos t)(\cos t)+1\cdot0 =-\sin^2t-\cos^2t=-1. \] Logo, \[
+                  \oint_C\mathbf F\cdot d\mathbf r =\int_0^{2\pi}(-1)\,dt=-2\pi.
+                  \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,9)</strong>
+            Calcule \(\operatorname{rot}\mathbf F\) e o fluxo
+            \(\iint_S\operatorname{rot}\mathbf F\cdot d\mathbf S\). Compare com
+            o resultado de (b) e cite o teorema que garante a igualdade.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  O rotacional é \[ \operatorname{rot}\mathbf F =\left(
+                  \frac{\partial z}{\partial y}-\frac{\partial(-x)}{\partial
+                  z},\; \frac{\partial y}{\partial z}-\frac{\partial z}{\partial
+                  x},\; \frac{\partial(-x)}{\partial x}-\frac{\partial
+                  y}{\partial y} \right) =(0,\;0,\;-2). \] Com o elemento
+                  vetorial de área calculado em (a), \[
+                  \operatorname{rot}\mathbf F\cdot(\mathbf r_r\times\mathbf
+                  r_\theta) =(0,0,-2)\cdot(-2r^2\cos\theta,-2r^2\sin\theta,r)
+                  =-2r. \] Portanto, \[ \iint_S\operatorname{rot}\mathbf F\cdot
+                  d\mathbf S =\int_0^{2\pi}\int_0^1(-2r)\,dr\,d\theta
+                  =-2\cdot2\pi\cdot\frac12=-2\pi. \] Os dois resultados
+                  coincidem. O teorema que garante a igualdade é o Teorema de
+                  Stokes: \[ \oint_C\mathbf F\cdot d\mathbf r
+                  =\iint_S\operatorname{rot}\mathbf F\cdot d\mathbf S. \]
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 2 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 2: Teorema da Divergência — cone
+          </div>
+          <p>
+            Seja \(E\) o sólido limitado pelo cone \(z=2-\sqrt{x^2+y^2}\) e pelo
+            plano \(z=0\). Seja \(S\) a superfície fechada formada pela
+            superfície lateral do cone e pelo disco \(z=0\), orientada com vetor
+            normal externo. Considere \(\mathbf F(x,y,z)=(x^2,\;y^2,\;z^2)\).
+          </p>
+          <p class="didactic">
+            A questão isola o Teorema da Divergência. O sólido cônico exige
+            descrever a região em coordenadas cilíndricas, calcular a
+            divergência e integrar; a conferência direta pela lateral e pela
+            base mostra que a base não contribui porque o campo é tangente ao
+            plano \(z=0\). Isso reforça a leitura geométrica do fluxo e da
+            orientação externa.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,7)</strong>
+            Descreva \(E\) em coordenadas cilíndricas, esboce a superfície \(S\)
+            e calcule \(\operatorname{div}\mathbf F\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Em coordenadas cilíndricas, \(x=r\cos\theta\),
+                  \(y=r\sin\theta\) e \(z=z\). A lateral do cone é \(z=2-r\),
+                  com \(0\le r\le2\), e a base é o disco \(z=0\), com \(0\le
+                  r\le2\). Logo, \[ E=\{(r,\theta,z):0\le
+                  r\le2,\;0\le\theta\le2\pi,\;0\le z\le2-r\}. \] A divergência é
+                  \[ \operatorname{div}\mathbf F =\frac{\partial(x^2)}{\partial
+                  x} +\frac{\partial(y^2)}{\partial y}
+                  +\frac{\partial(z^2)}{\partial z} =2x+2y+2z=2(x+y+z). \] O
+                  esboço deve mostrar o cone com vértice em \((0,0,2)\), base
+                  circular de raio \(2\) em \(z=0\), a normal externa na lateral
+                  e a normal \((0,0,-1)\) na base.
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="340"
+                    viewBox="0 0 460 340"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Cone invertido com vértice em z igual a 2 e base circular de raio 2 em z igual a 0, com normais externas"
+                  >
+                    <title>Cone invertido com normais externas</title>
+                    <defs>
+                      <marker
+                        id="arrow-q2"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="3"
+                        orient="auto"
+                      >
+                        <path d="M0,0 L6,3 L0,6 Z" fill="#000" />
+                      </marker>
+                    </defs>
+                    <line
+                      x1="230"
+                      y1="250"
+                      x2="230"
+                      y2="65"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="230"
+                      y1="250"
+                      x2="110"
+                      y2="290"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="230"
+                      y1="250"
+                      x2="350"
+                      y2="290"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <text x="236" y="60" font-size="13" font-family="serif">
+                      z
+                    </text>
+                    <text x="98" y="305" font-size="13" font-family="serif">
+                      x
+                    </text>
+                    <text x="356" y="305" font-size="13" font-family="serif">
+                      y
+                    </text>
+                    <ellipse
+                      cx="230"
+                      cy="250"
+                      rx="110"
+                      ry="28"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="120"
+                      y1="250"
+                      x2="230"
+                      y2="100"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="340"
+                      y1="250"
+                      x2="230"
+                      y2="100"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="230"
+                      y1="100"
+                      x2="230"
+                      y2="278"
+                      stroke="#666"
+                      stroke-width="1"
+                      stroke-dasharray="4,3"
+                    />
+                    <line
+                      x1="285"
+                      y1="175"
+                      x2="315"
+                      y2="155"
+                      stroke="#000"
+                      stroke-width="1.2"
+                      marker-end="url(#arrow-q2)"
+                    />
+                    <text x="318" y="153" font-size="12" font-family="serif">
+                      n
+                    </text>
+                    <line
+                      x1="230"
+                      y1="278"
+                      x2="230"
+                      y2="315"
+                      stroke="#000"
+                      stroke-width="1.2"
+                      marker-end="url(#arrow-q2)"
+                    />
+                    <text x="238" y="318" font-size="12" font-family="serif">
+                      n
+                    </text>
+                    <text x="240" y="95" font-size="12" font-family="serif">
+                      z=2
+                    </text>
+                    <text x="240" y="268" font-size="12" font-family="serif">
+                      z=0
+                    </text>
+                    <text x="350" y="248" font-size="12" font-family="serif">
+                      r=2
+                    </text>
+                    <text x="300" y="215" font-size="12" font-family="serif">
+                      S
+                    </text>
+                    <text x="170" y="285" font-size="12" font-family="serif">
+                      base
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Cone \(z=2-\sqrt{x^2+y^2}\) com base em \(z=0\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,9)</strong>
+            Calcule o fluxo de \(\mathbf F\) através de \(S\) pelo Teorema da
+            Divergência.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Pelo Teorema da Divergência, \[ \iint_S\mathbf F\cdot d\mathbf
+                  S =\iiint_E 2(x+y+z)\,dV. \] O sólido \(E\) é simétrico em
+                  relação aos planos \(x=0\) e \(y=0\), e o integrando é ímpar
+                  em \(x\) e em \(y\). Assim, \[ \iiint_E x\,dV=\iiint_E
+                  y\,dV=0. \] Resta \[ \iiint_E z\,dV
+                  =\int_0^{2\pi}\int_0^2\int_0^{2-r}z\,r\,dz\,dr\,d\theta
+                  =2\pi\int_0^2 r\,\frac{(2-r)^2}{2}\,dr. \] Como \[ \int_0^2
+                  r(2-r)^2\,dr =\int_0^2(4r-4r^2+r^3)\,dr
+                  =8-\frac{32}{3}+4=\frac{4}{3}, \] segue que \[ \iiint_E z\,dV
+                  =\pi\cdot\frac{4}{3}=\frac{4\pi}{3}. \] Logo, \[
+                  \iint_S\mathbf F\cdot d\mathbf S
+                  =2\cdot\frac{4\pi}{3}=\frac{8\pi}{3}. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,9)</strong>
+            Calcule o mesmo fluxo diretamente, somando as contribuições da
+            superfície lateral do cone e do disco da base, e compare com o item
+            (b).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Na lateral \(S_1\), usamos \[ \mathbf
+                  r(r,\theta)=(r\cos\theta,\;r\sin\theta,\;2-r), \qquad 0\le
+                  r\le2,\quad 0\le\theta\le2\pi. \] Os vetores tangentes são \[
+                  \mathbf r_r=(\cos\theta,\;\sin\theta,\;-1), \qquad \mathbf
+                  r_\theta=(-r\sin\theta,\;r\cos\theta,\;0), \] e \[ \mathbf
+                  r_r\times\mathbf r_\theta =(r\cos\theta,\;r\sin\theta,\;r), \]
+                  que aponta para fora do sólido. No ponto da lateral, \[
+                  \mathbf F=(r^2\cos^2\theta,\;r^2\sin^2\theta,\;(2-r)^2), \] de
+                  modo que \[ \mathbf F\cdot(\mathbf r_r\times\mathbf r_\theta)
+                  =r^3(\cos^3\theta+\sin^3\theta)+r(2-r)^2. \] Como
+                  \(\int_0^{2\pi}\cos^3\theta\,d\theta
+                  =\int_0^{2\pi}\sin^3\theta\,d\theta=0\), o fluxo pela lateral
+                  é \[ \iint_{S_1}\mathbf F\cdot d\mathbf S =2\pi\int_0^2
+                  r(2-r)^2\,dr =2\pi\cdot\frac{4}{3}=\frac{8\pi}{3}. \] Na base
+                  \(S_2\), temos \(z=0\) e normal externa \((0,0,-1)\). Assim,
+                  \[ \mathbf F(x,y,0)=(x^2,\;y^2,\;0) \quad\Longrightarrow\quad
+                  \mathbf F\cdot(0,0,-1)=0, \] logo o fluxo pela base é nulo.
+                  Portanto, \[ \iint_S\mathbf F\cdot d\mathbf S
+                  =\frac{8\pi}{3}+0=\frac{8\pi}{3}, \] que coincide com o item
+                  (b).
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 3 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 3: Campos conservativos e integrais de linha
+          </div>
+          <p>
+            Seja \(C\) a curva dada por \(\mathbf r(t)=(t,\;t^2,\;t^3)\), com
+            \(0\le t\le1\), que vai da origem \(O\) ao ponto \(P(1,1,1)\).
+            Considere os campos vetoriais \(\mathbf
+            F_1(x,y,z)=(2xy+z,\;x^2,\;x)\) e \(\mathbf
+            F_2(x,y,z)=(y^2,\;x,\;0)\).
+          </p>
+          <p class="didactic">
+            A questão reúne integrais de linha e campos conservativos em torno
+            de uma única curva. O aluno testa os rotacionais, encontra o
+            potencial do campo conservativo e compara a integral direta com a
+            avaliação pelo potencial; no outro campo, o rotacional não nulo
+            explica a dependência do caminho.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,6)</strong>
+            Calcule \(\operatorname{rot}\mathbf F_1\) e
+            \(\operatorname{rot}\mathbf F_2\) e identifique qual dos campos é
+            conservativo.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Para \(\mathbf F_1=(2xy+z,\;x^2,\;x)\), \[
+                  \operatorname{rot}\mathbf F_1 =\left( \frac{\partial
+                  x}{\partial y}-\frac{\partial(x^2)}{\partial z},\;
+                  \frac{\partial(2xy+z)}{\partial z}-\frac{\partial x}{\partial
+                  x},\; \frac{\partial(x^2)}{\partial
+                  x}-\frac{\partial(2xy+z)}{\partial y} \right) =(0,\;0,\;0). \]
+                  Para \(\mathbf F_2=(y^2,\;x,\;0)\), \[
+                  \operatorname{rot}\mathbf F_2 =\left( \frac{\partial
+                  0}{\partial y}-\frac{\partial x}{\partial z},\;
+                  \frac{\partial(y^2)}{\partial z}-\frac{\partial 0}{\partial
+                  x},\; \frac{\partial x}{\partial
+                  x}-\frac{\partial(y^2)}{\partial y} \right) =(0,\;0,\;1-2y).
+                  \] Como \(\operatorname{rot}\mathbf F_1=\mathbf 0\) em
+                  \(\mathbb R^3\), que é simplesmente conexo, \(\mathbf F_1\) é
+                  conservativo. Já \(\operatorname{rot}\mathbf F_2\neq\mathbf
+                  0\), logo \(\mathbf F_2\) não é conservativo.
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="340"
+                    viewBox="0 0 460 340"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Curva espacial r de t igual a t, t ao quadrado, t ao cubo, da origem ao ponto 1,1,1"
+                  >
+                    <title>Curva espacial da origem ao ponto P</title>
+                    <defs>
+                      <marker
+                        id="arrow-q3"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="3"
+                        orient="auto"
+                      >
+                        <path d="M0,0 L6,3 L0,6 Z" fill="#000" />
+                      </marker>
+                    </defs>
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="360"
+                      y2="280"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="210"
+                      y2="315"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="90"
+                      y2="70"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <text x="366" y="285" font-size="13" font-family="serif">
+                      x
+                    </text>
+                    <text x="214" y="320" font-size="13" font-family="serif">
+                      y
+                    </text>
+                    <text x="84" y="62" font-size="13" font-family="serif">
+                      z
+                    </text>
+                    <path
+                      d="M90,260 C160,250 250,205 340,100"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="2"
+                    />
+                    <circle cx="90" cy="260" r="4" fill="#000" />
+                    <circle cx="340" cy="100" r="4" fill="#000" />
+                    <text x="72" y="270" font-size="12" font-family="serif">
+                      O
+                    </text>
+                    <text x="348" y="98" font-size="12" font-family="serif">
+                      P
+                    </text>
+                    <line
+                      x1="235"
+                      y1="196"
+                      x2="275"
+                      y2="168"
+                      stroke="#000"
+                      stroke-width="1.2"
+                      marker-end="url(#arrow-q3)"
+                    />
+                    <text x="280" y="166" font-size="12" font-family="serif">
+                      r'(t)
+                    </text>
+                    <text x="250" y="225" font-size="12" font-family="serif">
+                      C
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Curva \(C:\mathbf r(t)=(t,t^2,t^3)\), \(0\le t\le1\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,5)</strong>
+            Para o campo conservativo, determine um potencial escalar \(f\) tal
+            que \(\nabla f=\mathbf F_1\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Buscamos \(f\) com \[ \frac{\partial f}{\partial
+                  x}=2xy+z,\qquad \frac{\partial f}{\partial y}=x^2,\qquad
+                  \frac{\partial f}{\partial z}=x. \] Integrando a primeira em
+                  \(x\), \[ f(x,y,z)=x^2y+xz+g(y,z). \] Derivando em \(y\) e
+                  comparando com \(x^2\), \[ \frac{\partial f}{\partial
+                  y}=x^2+\frac{\partial g}{\partial y}=x^2
+                  \quad\Longrightarrow\quad \frac{\partial g}{\partial y}=0. \]
+                  Derivando em \(z\) e comparando com \(x\), \[ \frac{\partial
+                  f}{\partial z}=x+\frac{\partial g}{\partial z}=x
+                  \quad\Longrightarrow\quad \frac{\partial g}{\partial z}=0. \]
+                  Logo \(g\) é constante e podemos tomar \[ f(x,y,z)=x^2y+xz. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,9)</strong>
+            Calcule \(\int_C\mathbf F_1\cdot d\mathbf r\) diretamente e pelo
+            potencial encontrado em (b), comparando os resultados.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Na curva, \(x=t\), \(y=t^2\) e \(z=t^3\). Então \[ \mathbf
+                  F_1(\mathbf r(t))=(2t^3+t^3,\;t^2,\;t)=(3t^3,\;t^2,\;t),
+                  \qquad \mathbf r'(t)=(1,\;2t,\;3t^2). \] Assim, \[ \mathbf
+                  F_1\cdot d\mathbf r =3t^3+2t^3+3t^3=8t^3, \] e \[
+                  \int_C\mathbf F_1\cdot d\mathbf r =\int_0^1 8t^3\,dt=2. \]
+                  Pelo potencial, \[ \int_C\mathbf F_1\cdot d\mathbf r
+                  =f(P)-f(O)=f(1,1,1)-f(0,0,0) =(1+1)-0=2. \] Os valores
+                  coincidem.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,5)</strong>
+            Calcule \(\int_C\mathbf F_2\cdot d\mathbf r\) e explique por que
+            esse campo não admite potencial escalar.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Na curva, \[ \mathbf F_2(\mathbf r(t))=(t^4,\;t,\;0), \qquad
+                  \mathbf F_2\cdot d\mathbf r =t^4+2t^2. \] Logo, \[
+                  \int_C\mathbf F_2\cdot d\mathbf r =\int_0^1(t^4+2t^2)\,dt
+                  =\frac15+\frac23=\frac{13}{15}. \] Esse campo não admite
+                  potencial escalar porque \[ \operatorname{rot}\mathbf
+                  F_2=(0,\;0,\;1-2y)\neq\mathbf 0. \] Em \(\mathbb R^3\), que é
+                  simplesmente conexo, um campo com rotacional não nulo não pode
+                  ser gradiente de uma função escalar.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+        <!-- QUESTÃO 4 -->
+        <div class="question">
+          <div class="question-header">
+            Questão 4: Revisão — plano, tetraedro, perímetro e volume
+          </div>
+          <p>
+            Considere os pontos \(A(3,0,0)\), \(B(0,2,0)\), \(C(0,0,6)\) e
+            \(O=(0,0,0)\).
+          </p>
+          <p class="didactic">
+            A questão revisa geometria analítica, funções vetoriais e integrais.
+            O plano e o tetraedro retomam produto vetorial e misto; a
+            parametrização das arestas e a integral de linha do perímetro
+            exercitam curvas e comprimento de arco, conferidos pela distância
+            entre os vértices; o volume por integral dupla é confirmado pelo
+            produto misto, fechando o arco do curso.
+          </p>
+          <div class="subquestion">
+            <strong>a) (0,6)</strong>
+            Determine a equação cartesiana do plano \(\pi\) que contém \(A\),
+            \(B\) e \(C\), e seus cortes nos eixos coordenados. Esboce o
+            tetraedro \(OABC\).
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Os vetores \[ \overrightarrow{AB}=(-3,\;2,\;0),\qquad
+                  \overrightarrow{AC}=(-3,\;0,\;6) \] geram o plano. O produto
+                  vetorial é \[ \overrightarrow{AB}\times\overrightarrow{AC}
+                  =(12,\;18,\;6)=6(2,\;3,\;1). \] Assim, um vetor normal é
+                  \((2,3,1)\). Usando \(A(3,0,0)\), \[ 2(x-3)+3(y-0)+1(z-0)=0
+                  \quad\Longrightarrow\quad 2x+3y+z=6. \] Os cortes nos eixos
+                  são \(x=3\), \(y=2\) e \(z=6\). O tetraedro tem vértices
+                  \(O(0,0,0)\), \(A(3,0,0)\), \(B(0,2,0)\) e \(C(0,0,6)\).
+                </p>
+                <figure class="figura">
+                  <svg
+                    width="460"
+                    height="340"
+                    viewBox="0 0 460 340"
+                    xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Tetraedro com vértices na origem, em 3,0,0, em 0,2,0 e em 0,0,6, e o plano 2x mais 3y mais z igual a 6"
+                  >
+                    <title>Tetraedro OABC e plano pi</title>
+                    <defs>
+                      <marker
+                        id="arrow-q4"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="3"
+                        orient="auto"
+                      >
+                        <path d="M0,0 L6,3 L0,6 Z" fill="#000" />
+                      </marker>
+                    </defs>
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="350"
+                      y2="280"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="210"
+                      y2="320"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="90"
+                      y2="60"
+                      stroke="#000"
+                      stroke-width="1.2"
+                    />
+                    <text x="356" y="285" font-size="13" font-family="serif">
+                      x
+                    </text>
+                    <text x="214" y="325" font-size="13" font-family="serif">
+                      y
+                    </text>
+                    <text x="84" y="52" font-size="13" font-family="serif">
+                      z
+                    </text>
+                    <polygon
+                      points="90,260 300,275 180,305"
+                      fill="none"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="90"
+                      y1="260"
+                      x2="90"
+                      y2="90"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="300"
+                      y1="275"
+                      x2="90"
+                      y2="90"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <line
+                      x1="180"
+                      y1="305"
+                      x2="90"
+                      y2="90"
+                      stroke="#000"
+                      stroke-width="1.3"
+                    />
+                    <circle cx="90" cy="260" r="4" fill="#000" />
+                    <circle cx="300" cy="275" r="4" fill="#000" />
+                    <circle cx="180" cy="305" r="4" fill="#000" />
+                    <circle cx="90" cy="90" r="4" fill="#000" />
+                    <text x="72" y="270" font-size="12" font-family="serif">
+                      O
+                    </text>
+                    <text x="306" y="278" font-size="12" font-family="serif">
+                      A
+                    </text>
+                    <text x="186" y="320" font-size="12" font-family="serif">
+                      B
+                    </text>
+                    <text x="96" y="84" font-size="12" font-family="serif">
+                      C
+                    </text>
+                    <text x="200" y="250" font-size="12" font-family="serif">
+                      π
+                    </text>
+                  </svg>
+                  <figcaption>
+                    Tetraedro \(OABC\) e o plano \(\pi:2x+3y+z=6\).
+                  </figcaption>
+                </figure>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>b) (0,5)</strong>
+            Parametrize as três arestas da base \(OAB\) (o triângulo no plano
+            \(z=0\)), indicando os vetores tangentes e seus módulos.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  As arestas da base \(OAB\) podem ser parametrizadas por \[
+                  \mathbf r_1(t)=(3t,\;0,\;0),\qquad \mathbf
+                  r_2(t)=(0,\;2t,\;0),\qquad \mathbf r_3(t)=(3(1-t),\;2t,\;0),
+                  \] com \(0\le t\le1\). Seus vetores tangentes são \[ \mathbf
+                  r_1'(t)=(3,\;0,\;0),\qquad \mathbf r_2'(t)=(0,\;2,\;0),\qquad
+                  \mathbf r_3'(t)=(-3,\;2,\;0), \] e seus módulos são \[
+                  \|\mathbf r_1'(t)\|=3,\qquad \|\mathbf r_2'(t)\|=2,\qquad
+                  \|\mathbf r_3'(t)\|=\sqrt{(-3)^2+2^2}=\sqrt{13}. \] Assim, o
+                  perímetro pode ser escrito como a integral de linha \[
+                  P=\sum_{i=1}^3\int_0^1\|\mathbf r_i'(t)\|\,dt. \]
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>c) (0,7)</strong>
+            Calcule o perímetro da base \(OAB\) por integral de linha e por
+            geometria analítica (distância entre os vértices), comparando os
+            resultados.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  Pela integral de linha, usando os módulos calculados em (b),
+                  \[ P=\int_0^1 3\,dt+\int_0^1 2\,dt+\int_0^1\sqrt{13}\,dt
+                  =3+2+\sqrt{13}=5+\sqrt{13}. \] Pela geometria analítica, as
+                  distâncias entre os vértices são \[ |OA|=3,\qquad
+                  |OB|=2,\qquad |AB|=\sqrt{(3-0)^2+(0-2)^2}=\sqrt{13}, \] logo
+                  \[ P=|OA|+|OB|+|AB|=3+2+\sqrt{13}=5+\sqrt{13}. \] Os dois
+                  resultados coincidem.
+                </p>
+              </div>
+            </details>
+          </div>
+          <div class="subquestion">
+            <strong>d) (0,7)</strong>
+            Calcule o volume do tetraedro \(OABC\) por uma integral dupla sobre
+            a base \(OAB\) e confirme o resultado pelo produto misto.
+            <details>
+              <summary>Ver Resposta</summary>
+              <div class="answer">
+                <p>
+                  A base \(OAB\) no plano \(z=0\) é \[ D=\left\{(x,y):0\le
+                  x\le3,\;0\le y\le2-\frac{2x}{3}\right\}. \] Sobre \(D\), a
+                  altura do tetraedro é dada pelo plano: \[ z=6-2x-3y. \] Assim,
+                  \[ V=\int_0^3\int_0^{2-2x/3}(6-2x-3y)\,dy\,dx. \] Calculando a
+                  integral interna, \[ \int_0^{2-2x/3}(6-2x-3y)\,dy
+                  =\frac23(3-x)^2. \] Então \[ V=\int_0^3\frac23(3-x)^2\,dx
+                  =\frac23\cdot9=6. \] Para confirmar pelo produto misto, com \[
+                  \overrightarrow{OA}=(3,0,0),\qquad
+                  \overrightarrow{OB}=(0,2,0),\qquad
+                  \overrightarrow{OC}=(0,0,6), \] temos \[
+                  \overrightarrow{OB}\times\overrightarrow{OC}=(12,0,0), \qquad
+                  \overrightarrow{OA}\cdot(\overrightarrow{OB}\times\overrightarrow{OC})
+                  =(3,0,0)\cdot(12,0,0)=36, \] e \[
+                  V=\frac16\left|\overrightarrow{OA}\cdot(\overrightarrow{OB}\times\overrightarrow{OC})\right|
+                  =\frac{36}{6}=6. \] O valor coincide com o obtido pela
+                  integral dupla.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Include MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+          processEscapes: true,
+          processEnvironments: true,
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        border-left: 3px solid var(--accent-color);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .mission-context {
+        font-style: italic;
+        margin: 15px 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px dashed #555;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .footer-stamp {
+        position: absolute;
+        bottom: 50px;
+        right: 30px;
+        opacity: 0.3;
+        transform: rotate(-20deg);
+        font-weight: bold;
+        font-size: 1.5em;
+        color: var(--stamp-color);
+        border: 2px solid var(--stamp-color);
+        padding: 5px 15px;
+        pointer-events: none;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">14</span> DE JULHO DE
+          <span class="censored">1966</span>
+          <br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE CÁLCULO [REDACTED]</span>
+        </div>
+
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">ORION-XX</span> <br /><br />
+          Em continuidade às investigações sobre
+          <span class="censored">curvatura espacial</span> e modelagem de
+          trajetórias, nossa equipe desenvolveu estudos detalhados acerca das
+          integrais de linha, que são fundamentais para o
+          <span class="censored">controle de trajetórias orbitais</span>. As
+          descobertas aqui apresentadas foram compiladas a partir dos relatórios
+          de <span class="censored">██████</span>, principal especialista em
+          análise de trajetória do programa <span class="censored">AP-13</span>.
+        </div>
+
+        <div class="warning-box">
+          A divulgação não autorizada destes dados constitui violação de acordos
+          de <span class="censored">segurança internacional</span>. Acesso
+          restrito ao pessoal devidamente credenciado.
+        </div>
+
+        <div class="metadata">
+          <span>REF: INTEGRAL-LINE<span class="censored">-009</span></span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">2</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">1</span> DE
+            <span class="censored">4</span></span
+          >
+        </div>
+      </div>
+
+      <!-- SEÇÃO DE FUNDAMENTAÇÃO TEÓRICA -->
+      <div class="section-title">FUNDAMENTAÇÃO TEÓRICA: INTEGRAIS DE LINHA</div>
+
+      <div class="concept-definition">
+        <p><strong>DEFINIÇÃO FORMAL:</strong></p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}(x,y,z)\cdot d\vec{r} = \int_a^b
+          \vec{F}\bigl(x(t),y(t),z(t)\bigr)\cdot \vec{r}'(t)\,dt\]
+        </p>
+        <p>
+          As integrais de linha permitem calcular o trabalho de um campo
+          vetorial ao longo de um percurso \(C\), bem como outras grandezas
+          associadas a campos vetoriais ou funções escalares em uma curva
+          parametrizada. Em notação alternativa, pode-se representar uma
+          integral de linha como:
+        </p>
+        <p class="formula-highlight">\[\int_C P\,dx + Q\,dy + R\,dz,\]</p>
+        <p>
+          onde \(\vec{F}(x,y,z) = \bigl(P,Q,R\bigr)\). A escolha da notação
+          depende do contexto físico ou geométrico a ser analisado.
+        </p>
+      </div>
+
+      <div class="mission-context">
+        Integrais de linha são empregadas na determinação de esforços mecânicos
+        em cápsulas espaciais durante a reentrada e na análise de campos de
+        variação gravitacional ao longo de trajetórias orbitais. No âmbito do
+        <span class="censored">programa Apollo</span>, esses cálculos foram
+        fundamentais para estimar dissipação de energia e assegurar retorno
+        seguro à superfície terrestre.
+      </div>
+
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em
+        <span class="censored">dezembro</span> de
+        <span class="censored">1968</span>, a Missão
+        <span class="censored">Apollo 8</span> empregou cálculos pioneiros de
+        integrais de linha para avaliar a trajetória de injeção em órbita lunar,
+        contribuindo para o sucesso das operações subsequentes do programa
+        tripulado.
+      </div>
+
+      <main>
+        <ol class="exercise-list">
+          <!-- SÉRIE ALFA (Exercícios 1-3) - Nível Básico -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+            <div class="context">
+              ORIGEM: Análise Elementar de Empuxo - Programa Gemini [AGO/1965]
+            </div>
+            <p>
+              Considere o campo vetorial \[\vec{F}(x,y) = \begin{pmatrix} 2x \\
+              y \end{pmatrix}\] definido no plano. Calcular a integral de linha
+              \(\displaystyle \int_C \vec{F}\cdot d\vec{r}\) ao longo da reta
+              que conecta o ponto \((0,0)\) ao ponto \((2,2)\), parametrizando a
+              curva de modo simples.
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere relacionar a parametrização linear e a
+                forma de \(\vec{F}\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PARAMETRIZAÇÃO DA RETA:</p>
+                <p>
+                  Sejam \(x(t) = t\) e \(y(t) = t\), com \(t\) variando de \(0\)
+                  a \(2\). Logo, \(\vec{r}(t) = (t, t)\).
+                </p>
+                <p>
+                  \(\vec{r}'(t) = (1, 1)\). Então, \[ \vec{F}(x(t),y(t)) =
+                  \begin{pmatrix} 2t \\ t \end{pmatrix}. \]
+                </p>
+                <p>INTEGRANDO:</p>
+                <p>
+                  \[ \int_0^2 \begin{pmatrix} 2t \\ t \end{pmatrix} \cdot
+                  \begin{pmatrix} 1 \\ 1 \end{pmatrix} dt = \int_0^2 (2t + t)\,
+                  dt = \int_0^2 3t\, dt = \left.\frac{3t^2}{2}\right|_0^2 = 3
+                  \cdot 2 = 6. \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral de linha é 6.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1B</div>
+            <div class="context">
+              ORIGEM: Análise de Força Uniforme - Relatórios Internos [ABR/1966]
+            </div>
+            <p>
+              Um campo de força constante em \(\mathbb{R}^2\) é dado por
+              \(\vec{F}(x,y) = \begin{pmatrix} 3 \\ 4 \end{pmatrix}\). Calcular
+              a integral de linha ao longo de qualquer curva que una o ponto
+              \((0,0)\) ao ponto \((5,1)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere como relacionar as componentes sem
+                calcular diretamente toda a curva.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>ANÁLISE DE CAMPO CONSTANTE:</p>
+                <p>
+                  A integral de linha de um campo constante \(\vec{F}\) depende
+                  apenas do deslocamento. Assim, \[ \int_C \vec{F}\cdot d\vec{r}
+                  = \vec{F}\cdot(\vec{r}_{\text{final}} -
+                  \vec{r}_{\text{inicial}}). \]
+                </p>
+                <p>
+                  Neste caso, \[ \begin{pmatrix} 3 \\ 4 \end{pmatrix} \cdot
+                  \Bigl(\begin{pmatrix}5 \\ 1\end{pmatrix} - \begin{pmatrix}0 \\
+                  0\end{pmatrix}\Bigr) = 3\cdot5 + 4\cdot1 = 15 + 4 = 19. \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral de linha é 19.</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+            <div class="context">
+              ORIGEM: Teste de Cabos de Atracação - Programa Gemini [NOV/1966]
+            </div>
+            <p>
+              Dado o campo \(\vec{F}(x,y) = \begin{pmatrix} x \\ x^2
+              \end{pmatrix}\), calcule \(\int_C P\,dx + Q\,dy\) ao longo da
+              curva \(y = x^2\), para \(x\) de 0 até 1, utilizando a notação
+              \(\int_C P\,dx + Q\,dy\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Considere a substituição direta de \(y\) e
+                \(dy\) em função de \(x\).
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-1 REQUERIDO]</summary>
+              <div class="solution">
+                <p>Como \(y = x^2\), temos \(dy = 2x\,dx\). Logo:</p>
+                <p>
+                  \[ P\,dx + Q\,dy = x\,dx + x^2\cdot(2x\,dx) = x\,dx +
+                  2x^3\,dx. \]
+                </p>
+                <p>
+                  \[ \int_0^1 \bigl(x + 2x^3\bigr)\, dx =
+                  \left.\frac{x^2}{2}\right|_0^1 +
+                  \left.\frac{2x^4}{4}\right|_0^1 = \frac{1}{2} + \frac{2}{4} =
+                  \frac{1}{2} + \frac{1}{2} = 1. \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral de linha é 1.</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE BETA (Exercícios 4-6) - Nível Intermediário -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2A</div>
+            <div class="context">
+              ORIGEM: Simulação de Força Eletromagnética - Dados Internos
+              [MAR/1967]
+            </div>
+            <p>
+              Seja \(\vec{F}(x,y,z) = \begin{pmatrix} x+y \\ y+z \\ z+x
+              \end{pmatrix}\). Calcular a integral de linha \(\displaystyle
+              \int_C \vec{F}\cdot d\vec{r}\) ao longo da curva parametrizada
+              pela hélice \(\vec{r}(t) = (t, \cos t, \sin t)\) para \(t\) de 0 a
+              \(2\pi\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de periodicidade podem ser
+                relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PARAMETRIZAÇÃO:</p>
+                <p>
+                  \(x(t) = t,\quad y(t) = \cos t,\quad z(t) = \sin t.\)
+                  <br />
+                  Logo, \(\vec{r}'(t) = \bigl(1, -\sin t, \cos t\bigr)\).
+                </p>
+                <p>
+                  \(\vec{F}(x(t), y(t), z(t)) = \begin{pmatrix} t + \cos t \\
+                  \cos t + \sin t \\ \sin t + t \end{pmatrix}.\)
+                </p>
+                <p>INTEGRANDO:</p>
+                <p>
+                  \[ \int_0^{2\pi} \begin{pmatrix} t + \cos t \\ \cos t + \sin t
+                  \\ \sin t + t \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -\sin t
+                  \\ \cos t \end{pmatrix} dt. \]
+                </p>
+                <p>
+                  Expanda e integre termo a termo. Alguns termos terão média
+                  nula sobre um período \(2\pi\). Depois dos cálculos (omitidos
+                  aqui em detalhe), obtém-se: \[ \int_C \vec{F}\cdot d\vec{r} =
+                  \left.\frac{t^2}{2}\right|_{0}^{2\pi} + \text{(termos de
+                  integração de funções trigonométricas)}. \]
+                </p>
+                <p>
+                  As partes trigonométricas se anulam no intervalo \([0,
+                  2\pi]\), resultando em \(\frac{(2\pi)^2}{2} = 2\pi^2.\)
+                </p>
+                <p>CONCLUSÃO: A integral de linha é \(2\pi^2.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+            <div class="context">
+              ORIGEM: Cálculo de Trabalho Mecânico - Programa Apollo [JAN/1968]
+            </div>
+            <p>
+              Considere a curva fechada no plano \(xy\) descrita por
+              \(\vec{r}(\theta) = (\cos \theta, \sin \theta)\) para \(\theta \in
+              [0,2\pi]\). Se \(\vec{F}(x,y) = \begin{pmatrix} y \\ -x
+              \end{pmatrix}\), calcular \(\int_C \vec{F}\cdot d\vec{r}\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de rotação podem ser relevantes.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PARAMETRIZAÇÃO:</p>
+                <p>
+                  \(x(\theta) = \cos \theta,\quad y(\theta) = \sin \theta.\)
+                  <br />
+                  \(\vec{r}'(\theta) = (-\sin \theta, \cos \theta).\)
+                </p>
+                <p>
+                  \(\vec{F}(\cos \theta, \sin \theta) = \bigl(\sin \theta, -\cos
+                  \theta\bigr).\)
+                </p>
+                <p>INTEGRAL:</p>
+                <p>
+                  \[ \int_0^{2\pi} \bigl(\sin \theta, -\cos \theta\bigr) \cdot
+                  \bigl(-\sin \theta, \cos \theta\bigr) \, d\theta =
+                  \int_0^{2\pi} \bigl(-\sin^2 \theta - \cos^2 \theta\bigr) \,
+                  d\theta. \]
+                </p>
+                <p>
+                  \[ \int_0^{2\pi} \bigl(-1\bigr)\, d\theta =
+                  -\left.\theta\right|_0^{2\pi} = -2\pi. \]
+                </p>
+                <p>CONCLUSÃO: O valor da integral de linha é \(-2\pi\).</p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-2C</div>
+            <div class="context">
+              ORIGEM: Experimentos com Trajetória Reentrante - Dados Parciais
+              [MAI/1968]
+            </div>
+            <p>
+              Seja \(\vec{F}(x,y) = \begin{pmatrix} xy \\ x+y \end{pmatrix}\).
+              Calcular \(\displaystyle \int_C P\,dx + Q\,dy\) ao longo da curva
+              poligonal que segue do ponto \((0,0)\) até \((2,0)\), e então até
+              \((2,2)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Propriedades de soma de integrais em trechos
+                podem ser úteis.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  DIVIDINDO A CURVA EM DOIS TRECHOS:
+                  <br />
+                  1) \(C_1\): de \((0,0)\) a \((2,0)\)<br />
+                  2) \(C_2\): de \((2,0)\) a \((2,2)\)
+                </p>
+                <p><strong>Trecho \(C_1\):</strong> \(y=0\), \(x\) de 0 a 2.</p>
+                <p>
+                  \(P\,dx + Q\,dy = (x\cdot0)\,dx + (x+0)\,d(0) = 0\,dx + 0 =
+                  0.\)
+                  <br />
+                  Integral no trecho \(C_1 = 0\).
+                </p>
+                <p><strong>Trecho \(C_2\):</strong> \(x=2\), \(y\) de 0 a 2.</p>
+                <p>
+                  \(dx=0\). Logo, \[ P\,dx + Q\,dy = (2y)\cdot0 + (2+y)\,dy =
+                  (2+y)\,dy. \] \[ \int_0^2 (2 + y)\, dy = \left.2y +
+                  \frac{y^2}{2}\right|_0^2 = 2\cdot2 + \frac{2^2}{2} = 4 + 2 =
+                  6. \]
+                </p>
+                <p>CONCLUSÃO: Integral total = \(0 + 6 = 6.\)</p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE GAMMA (Exercícios 7-9) - Nível Avançado -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+            <div class="context">
+              ORIGEM: Análise de Voo Lunar - Programa Apollo [AGO/1968]
+            </div>
+            <p>
+              Em uma missão de
+              <span class="censored">aproximação orbital</span>, considera-se a
+              curva no espaço dada por \(\vec{r}(t) = (2\cos t, 2\sin t, t)\)
+              para \(t \in [0,4\pi]\). Calcular \(\int_C \vec{F}\cdot d\vec{r}\)
+              se \(\vec{F}(x,y,z) = \bigl(y, x, z^2\bigr)\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Existem simetrias não aparentes ao longo do
+                intervalo.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PARAMETRIZAÇÃO:</p>
+                <p>
+                  \(x(t) = 2\cos t,\; y(t) = 2\sin t,\; z(t) = t.\)
+                  <br />
+                  \(\vec{r}'(t) = \bigl(-2\sin t, 2\cos t, 1\bigr).\)
+                </p>
+                <p>
+                  \(\vec{F}(x(t),y(t),z(t)) = \bigl(2\sin t,\; 2\cos t,\;
+                  t^2\bigr).
+                </p>
+                <p>
+                  Produto escalar: \[ \bigl(2\sin t,\; 2\cos t,\; t^2\bigr)
+                  \cdot \bigl(-2\sin t, 2\cos t, 1\bigr) = -4\sin^2 t + 4\cos^2
+                  t + t^2. \]
+                </p>
+                <p>\[ = 4(\cos^2 t - \sin^2 t) + t^2 = 4\cos(2t) + t^2. \]</p>
+                <p>
+                  Portanto, \[ \int_0^{4\pi} \bigl[4\cos(2t) + t^2\bigr]\, dt.
+                  \] A integral de \(\cos(2t)\) no intervalo \([0,4\pi]\) será
+                  zero, pois temos duas oscilações completas.
+                </p>
+                <p>
+                  Restante: \[ \int_0^{4\pi} t^2 \, dt =
+                  \left.\frac{t^3}{3}\right|_0^{4\pi} = \frac{(4\pi)^3}{3} =
+                  \frac{64\pi^3}{3}. \]
+                </p>
+                <p>
+                  CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} =
+                  \frac{64\pi^3}{3}.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+            <div class="context">
+              ORIGEM: Ajustes de Órbita Terrestre - Programa Apollo [SET/1968]
+            </div>
+            <p>
+              Se \(\vec{F}(x,y,z) = \begin{pmatrix} x + z \\ y \\ x^2 + y^2
+              \end{pmatrix}\), avaliar \(\int_C \vec{F}\cdot d\vec{r}\) no
+              caminho parametrizado: \[ \vec{r}(t) = \begin{pmatrix} \sqrt{2}
+              \cos t \\ \sqrt{2} \sin t \\ 1 \end{pmatrix}, \] com \(t\)
+              variando de \(\censored 0\) a \(\censored 2\pi\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: A soma de valores sobre uma trajetória fechada
+                pode apresentar cancelamentos parciais.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Observe que o caminho descreve um círculo de raio \(\sqrt{2}\)
+                  no plano \(xy\), enquanto \(z=1\) é constante. Ao final, o
+                  ponto inicial e final coincidem.
+                </p>
+                <p>
+                  Após parametrizar e efetuar o produto escalar: \[
+                  \vec{F}(x(t), y(t), z(t)) \cdot \vec{r}'(t), \] pode-se
+                  separar em termos trigonométricos que, em um período completo,
+                  se anulam ou somam a zero, exceto por possíveis termos
+                  constantes. A verificação detalhada indica que o resultado
+                  final é nulo.
+                </p>
+                <p>
+                  CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} = 0.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-3C</div>
+            <div class="context">
+              ORIGEM: Análise de Forças Laterais - Programa Apollo [OUT/1968]
+            </div>
+            <p>
+              Seja a curva paramétrica \(\vec{r}(t) = (3t, t^2, t)\), com \(t\)
+              de 0 a 2. Dado o campo \(\vec{F}(x,y,z) = (yz, xz, xy)\), compute
+              a integral \(\int_C \vec{F}\cdot d\vec{r}\).
+            </p>
+            <details class="hint-container">
+              <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+              <div class="hint">
+                [NOTA TÉCNICA]: Fatores de simetria podem simplificar o
+                resultado.
+              </div>
+            </details>
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+              <div class="solution">
+                <p>PARAMETRIZAÇÃO:</p>
+                <p>
+                  \(x(t) = 3t,\quad y(t) = t^2,\quad z(t) = t.\)
+                  <br />
+                  \(\vec{r}'(t) = (3, 2t, 1).\)
+                </p>
+                <p>
+                  \(\vec{F}(x(t),y(t),z(t)) = (t^2\cdot t,\; 3t\cdot t,\; 3t
+                  \cdot t^2) = (t^3,\; 3t^2,\; 3t^3).\)
+                </p>
+                <p>
+                  Produto escalar: \[ (t^3, 3t^2, 3t^3)\cdot(3, 2t, 1) = 3t^3 +
+                  6t^3 + 3t^3 = 12t^3. \]
+                </p>
+                <p>
+                  \[ \int_0^2 12t^3 \, dt = 12 \left.\frac{t^4}{4}\right|_0^2 =
+                  3 \bigl(2^4\bigr) = 3 \cdot 16 = 48.
+                </p>
+                <p>
+                  CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} =
+                  48.\)
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <!-- SÉRIE OMEGA (Exercícios 10-12) - Nível Desafiador -->
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4A</div>
+            <div class="context">
+              ORIGEM: Missão Apollo 11 - Análise Final [JUL/1969]
+            </div>
+            <p>
+              Na aproximação final para pouso, um módulo segue a curva:
+              \(\vec{r}(t) = (4\cos t, 4\sin t, 1 - \frac{t}{\censored 2\pi})\),
+              \(t\) de 0 a \(2\pi\). Calcular \(\int_C \vec{F}(x,y,z)\cdot
+              d\vec{r}\), onde \(\vec{F}(x,y,z) = \bigl(x^2, y^2, z\bigr)\).
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Deve-se parametrizar, determinar \(\vec{r}'(t)\) e efetuar o
+                  produto escalar com \(\vec{F}\bigl(x(t),y(t),z(t)\bigr)\).
+                  Após a integração completa, observe que partes periódicas em
+                  \(x^2\) e \(y^2\) podem ter comportamento específico, porém a
+                  componente em \(z\) varia linearmente.
+                </p>
+                <p>
+                  O resultado final, após a soma dos termos e a análise dos
+                  cancelamentos, exibe contribuição não-nula associada à
+                  variação de \(z\).
+                </p>
+                <p>
+                  Conclui-se que a integral assume um valor diferente de zero,
+                  refletindo o trabalho realizado ao longo da descida
+                  helicoidal. A forma exata do resultado depende dos passos de
+                  integração que, resumidamente, fornecem um valor final
+                  <span class="censored">positivo e significativo</span>.
+                </p>
+                <p>
+                  <em
+                    >(Observação: cálculos omitidos por razões de
+                    <span class="censored">segurança</span>.)</em
+                  >
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4B</div>
+            <div class="context">
+              ORIGEM: Operações Pós-Pouso - Apollo 11 [AGO/1969]
+            </div>
+            <p>
+              Com o módulo em solo lunar, analisa-se uma trajetória de
+              deslocamento: \(\vec{r}(s) = \bigl(s, s^2, \sqrt{2s}\bigr)\) para
+              \(s \in [0,4]\). Se \(\vec{F}(x,y,z) = \begin{pmatrix} x+y+z \\
+              xyz \\ \ln(1 + x^2) \end{pmatrix}\), determinar \(\int_C
+              \vec{F}\cdot d\vec{r}\).
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  A integral deve ser computada via produto escalar de
+                  \(\vec{F}(x(s), y(s), z(s))\) com \(\vec{r}'(s)\). A resolução
+                  envolve expressões não triviais, incluindo derivadas de
+                  \(\sqrt{2s}\) e o termo \(\ln(1+x^2)\). Após a expansão e
+                  integração cuidadosa, o resultado reflete aspectos combinados
+                  de termos polinomiais e logarítmicos.
+                </p>
+                <p>
+                  Conclusivamente, a soma dos termos conduz a um valor
+                  <span class="censored">relacionado à manobra</span> no
+                  intervalo indicado, sinalizando o trabalho total efetuado
+                  nesse trajeto em ambiente lunar.
+                </p>
+              </div>
+            </details>
+          </li>
+
+          <li class="exercise-item">
+            <div class="exercise-number">EXERCÍCIO VECTOR-4C</div>
+            <div class="context">
+              ORIGEM: Reconfiguração Órbita-Terra - Apollo 11 [AGO/1969]
+            </div>
+            <p>
+              Um campo vetorial em \(\mathbb{R}^3\) é dado por \(\vec{F}(x,y,z)
+              = \bigl(e^x, \sin(y), xz\bigr)\). Deseja-se analisar o trabalho
+              realizado ao longo da curva resultante da concatenação de duas
+              trajetórias:
+              <br />
+              1) \(C_1\): \(\vec{r}_1(t) = (t, 0, 0)\) para \(t \in [0,2]\).
+              <br />
+              2) \(C_2\): \(\vec{r}_2(u) = (2, u, u)\) para \(u \in [0,2]\).
+              <br />
+              Calcular \(\int_{C} \vec{F}\cdot d\vec{r}\), onde \(C = C_1 \cup
+              C_2\).
+            </p>
+            <!-- Série OMEGA: sem dicas -->
+            <details>
+              <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+              <div class="solution">
+                <p>
+                  Divide-se a integral em dois trechos e soma-se: \(\int_{C_1}
+                  \vec{F}\cdot d\vec{r} + \int_{C_2} \vec{F}\cdot d\vec{r}\).
+                </p>
+                <p>
+                  <strong>Trecho \(C_1\):</strong>
+                  \(\vec{r}_1(t) = (t, 0, 0)\), \(\vec{r}_1'(t) = (1,0,0)\).
+                  <br />
+                  \(\vec{F}(t, 0, 0) = \bigl(e^t, \sin(0), t\cdot0\bigr) = (e^t,
+                  0, 0).\)
+                  <br />
+                  Produto escalar: \[ (e^t, 0, 0)\cdot(1,0,0) = e^t. \] \[
+                  \int_0^2 e^t\, dt = \left.e^t\right|_0^2 = e^2 - 1. \]
+                </p>
+                <p>
+                  <strong>Trecho \(C_2\):</strong>
+                  \(\vec{r}_2(u) = (2, u, u)\), \(\vec{r}_2'(u) = (0,1,1)\).
+                  <br />
+                  \(\vec{F}(2, u, u) = \bigl(e^2, \sin(u), 2u\bigr).\)
+                  <br />
+                  Produto escalar: \[ (e^2, \sin(u), 2u)\cdot(0,1,1) = \sin(u) +
+                  2u. \] \[ \int_0^2 [\sin(u) + 2u]\, du =
+                  \left.-\cos(u)\right|_0^2 + \left.u^2\right|_0^2 =
+                  [-\cos(2)+1] + [4]. \] \[ = 5 - \cos(2). \]
+                </p>
+                <p>
+                  Soma total: \[ (e^2 - 1) + \bigl[5 - \cos(2)\bigr] = e^2 + 4 -
+                  \cos(2). \]
+                </p>
+                <p>
+                  CONCLUSÃO: \(\displaystyle \int_C \vec{F}\cdot d\vec{r} = e^2
+                  + 4 - \cos(2).\)
+                </p>
+              </div>
+            </details>
+          </li>
+        </ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">9</span> • DOCUMENTO
+        INTEGRAL-LINE<span class="censored">-009</span>
+      </div>
+
+      <div class="footer-stamp">MATERIAL ULTRASSECRETO</div>
+    </div>
+  </body>
+</html>

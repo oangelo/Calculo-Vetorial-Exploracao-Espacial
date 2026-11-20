@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+      Documento Sigiloso - Independência do Caminho &amp; Função Potencial
+    </title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint-container .hint {
+        margin-top: 0;
+        border: none;
+        background-color: #f0f0e0;
+        border-top: none;
+        border-left: 3px solid #777;
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">21</span> DE DEZEMBRO DE
+          <span class="censored">1968</span><br />
+          LOCALIZAÇÃO:
+          <span class="censored">CENTRO DE NAVEGAÇÃO [██████]</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-Φ</span><br /><br />
+          Após a missão <span class="censored">Apollo 8</span> completar o
+          primeiro voo orbital lunar, tornou‑se imperativo aprimorar nossos
+          métodos de cálculo de manobras. Os documentos a seguir detalham a
+          <span class="censored">independência do caminho</span> em integrais de
+          linha e a construção de
+          <span class="censored">funções potenciais</span> — ferramentas que
+          permitem calcular trabalho sem parametrizar curvas, economizando tempo
+          crítico em decisões de voo.<br /><br />
+          Este dossiê foi compilado a partir dos trabalhos do Dr.
+          <span class="censored">████████</span> sobre métodos de integração
+          conservativa.
+        </div>
+        <div class="warning-box">
+          Este documento contém fórmulas consideradas vitais para o programa.
+          Divulgação não autorizada acarretará
+          <span class="censored">sanções severas</span>.
+        </div>
+        <div class="metadata">
+          <span>REF: Φ‑<span class="censored">1968</span>-D</span>
+          <span>NÍVEL DE ACESSO: SIGMA‑<span class="censored">4</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: INDEPENDÊNCIA DO CAMINHO E FUNÇÃO POTENCIAL
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >1. INDEPENDÊNCIA DO CAMINHO: QUANDO A ROTA NÃO IMPORTA</strong
+          >
+        </p>
+        <p>
+          Nos tópicos anteriores, você aprendeu que um campo conservativo
+          \(\vec{F} = \nabla\Phi\) satisfaz \(\oint_C \vec{F}\cdot d\vec{r} =
+          0\) para qualquer curva fechada, e que a integral de linha depende
+          apenas dos pontos inicial e final. Agora vamos entender
+          <em>por que</em> isso acontece e como usar esse fato na prática.
+        </p>
+        <p>
+          A independência do caminho significa que, para dois caminhos quaisquer
+          \(C_1\) e \(C_2\) ligando o mesmo ponto \(A\) ao mesmo ponto \(B\):
+        </p>
+        <p class="formula-highlight">
+          \[\int_{C_1} \vec{F}\cdot d\vec{r} = \int_{C_2} \vec{F}\cdot
+          d\vec{r}\]
+        </p>
+        <p>
+          Em termos físicos: o trabalho realizado por uma força conservativa
+          depende apenas da posição inicial e final, não da trajetória
+          percorrida. Para um campo gravitacional, isso significa que o custo
+          energético de uma manobra orbital depende apenas das órbitas de
+          partida e chegada — informação crucial para o planejamento de missões
+          Apollo.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong
+            >2. TEOREMA FUNDAMENTAL DO CÁLCULO PARA INTEGRAIS DE LINHA</strong
+          >
+        </p>
+        <p>
+          Se \(\vec{F} = \nabla\Phi\) e \(C\) é uma curva suave por partes de
+          \(A\) a \(B\), então:
+        </p>
+        <p class="formula-highlight">
+          \[\int_C \vec{F}\cdot d\vec{r} = \Phi(B) - \Phi(A)\]
+        </p>
+        <p>
+          A demonstração usa a regra da cadeia: ao parametrizar \(C\) por
+          \(\vec{r}(t)\) com \(t \in [a,b]\), temos \(\vec{F}\cdot d\vec{r} =
+          \nabla\Phi \cdot \vec{r}'(t)\,dt = \frac{d}{dt}\Phi(\vec{r}(t))\,dt\).
+          Pelo Teorema Fundamental do Cálculo de uma variável, a integral é
+          \(\Phi(\vec{r}(b)) - \Phi(\vec{r}(a)) = \Phi(B) - \Phi(A)\).
+        </p>
+        <p>
+          Este resultado é poderoso: em vez de parametrizar uma curva e calcular
+          uma integral, basta avaliar \(\Phi\) em dois pontos. Para manobras
+          orbitais, isso transforma horas de cálculo numa simples subtração.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p>
+          <strong>3. FUNÇÃO POTENCIAL: COMO CONSTRUIR Φ A PARTIR DE F</strong>
+        </p>
+        <p>
+          Para usar o FTC, precisamos encontrar \(\Phi\) tal que \(\nabla\Phi =
+          \vec{F}\). Em \(\mathbb{R}^2\), se \(\vec{F} = (M, N)\) com
+          \(\frac{\partial M}{\partial y} = \frac{\partial N}{\partial x}\), o
+          procedimento é:
+        </p>
+        <p class="formula-highlight">
+          \[\Phi(x,y) = \int M\,dx + g(y), \quad \text{onde } g'(y) \text{ é
+          determinada igualando } \frac{\partial\Phi}{\partial y} = N\]
+        </p>
+        <p>
+          Em \(\mathbb{R}^3\), o procedimento é análogo mas com duas funções
+          arbitrárias a determinar. Integramos a primeira componente em relação
+          a \(x\), depois usamos a segunda componente para fixar a dependência
+          em \(y\), e finalmente a terceira componente completa a dependência em
+          \(z\).
+        </p>
+        <p>
+          Em regiões simplesmente conexas, se \(\nabla \times \vec{F} =
+          \vec{0}\), então \(\Phi\) existe e pode ser encontrada por este
+          procedimento. Se a região não é simplesmente conexa (tem "buracos"), o
+          potencial pode não existir globalmente mesmo com rotacional nulo.
+        </p>
+      </div>
+      <p>
+        Durante as missões Apollo, o cálculo preciso de manobras orbitais
+        dependia da existência de funções potenciais para o campo gravitacional.
+        Conhecer \(\Phi\) permitia aos engenheiros determinar o consumo de
+        propelente de qualquer manobra avaliando \(\Phi\) em apenas dois pontos
+        — sem necessidade de parametrizar a trajetória.
+      </p>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em
+        <span class="censored">21/12/1968</span>, a missão
+        <span class="censored">Apollo 8</span> tornou-se a primeira a orbitar a
+        Lua. Os cálculos de injeção translunar e de retorno à Terra dependiam
+        diretamente das propriedades do campo gravitacional como campo
+        conservativo, usando as técnicas aqui descritas.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">23</span> • DOCUMENTO Φ‑<span
+          class="censored"
+          >1968</span
+        >-D
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,714 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h2>Plano Tangente e Vetor Normal</h2>
+      <p>
+        No tópico anterior, cada superfície ganhou uma grade: as
+        curvas-coordenadas traçadas por \(\vec r(u,v)\). A grade mostra a forma
+        global, mas não diz como a superfície se inclina em um ponto específico.
+        A pergunta agora é local: uma superfície curva pode ser aproximada por um
+        plano? Se sim, qual plano — e como calculá-lo?
+      </p>
+      <p>
+        Duas peças já conhecidas respondem. Das curvas-coordenadas vêm os
+        vetores tangentes \(\vec r_u\) e \(\vec r_v\); do capítulo 0 vem a
+        equação do plano determinada por um ponto e um vetor normal. Este tópico
+        junta as duas peças: o plano tangente e a normal que o define.
+      </p>
+      <p class="history-insert">
+        Deke Slayton havia sido proibido de voar em 1962, depois de um problema
+        cardíaco. Foi no voo simbólico de 1975 — aos 51 anos — que ele finalmente
+        chegou ao espaço. Era o seu único voo.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Tangentes das Curvas-Coordenadas</h3>
+      <p>
+        Fixe um ponto \((u_0,v_0)\) da superfície. Se \(v\) fica congelado em
+        \(v_0\) e só \(u\) varia, o ponto percorre a curva-\(u\); se \(u\) fica
+        congelado em \(u_0\) e só \(v\) varia, ele percorre a curva-\(v\).
+        Derivar em relação ao parâmetro que varia produz o vetor tangente de cada
+        curva no ponto: \(\vec r_u=\frac{\partial \vec r}{\partial u}\) tangencia
+        a curva-\(u\), e \(\vec r_v=\frac{\partial \vec r}{\partial v}\) tangencia
+        a curva-\(v\).
+      </p>
+      <p>
+        A conexão com o capítulo 1 é direta. Lá, \(\vec r'(t)\) era a velocidade:
+        o vetor tangente à trajetória em cada instante. Aqui, \(\vec r_u\) e
+        \(\vec r_v\) cumprem o mesmo papel para curvas congeladas sobre a
+        superfície — cada um mede como o ponto se move quando apenas um dos
+        parâmetros muda.
+      </p>
+      <p>
+        Dois vetores tangentes não paralelos — isto é, \(\vec r_u\times\vec r_v
+        \neq \vec 0\) — determinam um único plano. Esse é o plano tangente: o
+        plano que contém as duas tangentes e acompanha a superfície na vizinhança
+        do ponto.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Normal e Plano</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \vec N=\vec r_u\times\vec r_v,\qquad \vec n=\frac{\vec N}{\|\vec N\|},\qquad \vec N\cdot(\vec r-\vec r_0)=0 \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(\vec N=\vec r_u\times\vec r_v\) é a normal à
+          superfície no ponto — perpendicular a \(\vec r_u\) e a \(\vec r_v\),
+          logo perpendicular ao plano tangente; \(\vec n\) é a normal unitária,
+          que mantém a direção e descarta o comprimento; \(\vec r=(x,y,z)\) é um
+          ponto genérico do plano e \(\vec r_0=\vec r(u_0,v_0)\) é o ponto de
+          tangência.
+        </p>
+        <p>
+          <strong>A equação:</strong> \(\vec N\cdot(\vec r-\vec r_0)=0\) exige
+          que o vetor de \(\vec r_0\) até \(\vec r\) seja ortogonal à normal. O
+          conjunto dos pontos com essa propriedade é o plano que passa por
+          \(\vec r_0\) e contém as duas direções tangentes.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec N\neq\vec 0\) no ponto — um ponto
+          regular. Nos polos da parametrização usual da esfera os vetores
+          \(\vec r_\phi\) e \(\vec r_\theta\) ficam paralelos, a normal se anula,
+          e é preciso trocar de parametrização.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Superfícies Implícitas — o Gradiente</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ \nabla F=\left(\frac{\partial F}{\partial x},\frac{\partial F}{\partial y},\frac{\partial F}{\partial z}\right),\qquad \nabla F(x_0,y_0,z_0)\cdot(\vec r-\vec r_0)=0 \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> a superfície é a de nível \(F(x,y,z)=K\);
+          \((x_0,y_0,z_0)\) é o ponto de tangência, e o gradiente é calculado
+          nele.
+        </p>
+        <p>
+          <strong>Demonstração — por que \(\nabla F\) é normal:</strong> tome
+          uma curva na superfície, \(\vec r(t)=(x(t),y(t),z(t))\), com
+          \(F(\vec r(t))=K\) para todo \(t\). Derivando os dois lados,
+          \(\frac{d}{dt}F(\vec r(t))=0\); pela regra da cadeia,
+          \(F_x\,x'+F_y\,y'+F_z\,z'=0\), isto é, \(\nabla F\cdot\vec r'(t)=0\).
+          Como \(\vec r'(t)\) é tangente e \(\nabla F\) é ortogonal a toda
+          tangente, \(\nabla F\) é normal à superfície — em 2D, o mesmo
+          argumento dá \(\nabla f\) normal à curva de nível \(f(x,y)=k\).
+          <strong>Intuição:</strong> ao longo do nível, \(F\) não varia; toda
+          a variação está na direção perpendicular — a do maior crescimento.
+        </p>
+        <p>
+          <strong>O plano:</strong> a mesma equação do slide anterior, com a
+          normal vinda do gradiente. <strong>Validade:</strong>
+          \(\nabla F(x_0,y_0,z_0)\neq\vec 0\); onde o gradiente se anula, o
+          critério não decide a normal.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Comparando os Métodos</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>Parametrização</strong></p>
+          <p>
+            A superfície vem como \(\vec r(u,v)\). As tangentes \(\vec r_u\) e
+            \(\vec r_v\) saem direto da parametrização, e a normal é
+            \(\vec r_u\times\vec r_v\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>Equação implícita</strong></p>
+          <p>
+            A superfície vem como \(F(x,y,z)=K\). Não é preciso parametrizar: a
+            normal é \(\nabla F\), avaliado no ponto de tangência.
+          </p>
+        </div>
+      </div>
+      <p>
+        Os dois métodos produzem vetores perpendiculares à mesma superfície:
+        eles são paralelos, e os sentidos podem se opor. Qualquer um define o
+        mesmo plano tangente — a escolha é a da descrição disponível.
+      </p>
+      <div class="formula-spotlight">
+        <p>
+          \[ z-z_0=f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0) \]
+        </p>
+      </div>
+      <p>
+        <strong>O caso gráfico como ponte:</strong> para \(z=f(x,y)\), escreva
+        \(F(x,y,z)=z-f(x,y)\). Então \(\nabla F=(-f_x,-f_y,1)\), e a equação do
+        plano assume a forma familiar acima — a linearização de \(f\) em torno
+        de \((x_0,y_0)\).
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — Plano Tangente à Esfera</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Encontre o plano tangente à esfera \(x^2+y^2+z^2=R^2\) no ponto
+            \((x_0,y_0,z_0)\) usando o gradiente.
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Os soviéticos chamavam a Apollo de "extremamente complexa e
+            perigosa"; os americanos desconfiavam da automação da Soyuz. Ainda
+            assim, os dois lados assinaram o acordo e construíram o módulo que os
+            uniria.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Plano Tangente ao Paraboloide</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Encontre o plano tangente ao paraboloide \(z=x^2+y^2\) no ponto
+            \((1,1,2)\) usando \(\vec r_u\times\vec r_v\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            Na volta, vapores tóxicos de tetróxido de nitrogênio entraram na
+            cabine da Apollo durante a descida. Vance Brand perdeu a consciência;
+            Stafford colocou máscaras de oxigênio nele e em Slayton. Os três
+            passaram duas semanas hospitalizados em Honolulu.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 03 · PLANO TANGENTE E VETOR NORMAL</div>
+    <div class="slide-body">
+      <h3>Exploração — Plano Tangente</h3>
+      <p>
+        A superfície em wireframe com o ponto de tangência, um patch do plano
+        tangente e o vetor normal — as mesmas peças da fórmula
+        \(\vec N=\vec r_u\times\vec r_v\). Os sliders movem o ponto sobre a
+        superfície; o botão alterna entre o paraboloide e a esfera. O painel de
+        informação mostra o ponto e a normal calculados a cada instante.
+      </p>
+      <canvas
+        id="canvasPlanoTangente"
+        class="visualization-canvas"
+        width="700"
+        height="380"
+      ></canvas>
+      <p id="infoPlanoTangente">
+        Ponto: (1.00, 1.00, 2.00) | Normal: (-2.00, -2.00, 1.00)
+      </p>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Ponto \(x_0\):</label>
+          <input
+            type="range"
+            id="sliderPlanoTangenteX"
+            min="-1.3"
+            max="1.3"
+            step="0.02"
+            value="1"
+          />
+        </div>
+        <div class="control-slider">
+          <label>Ponto \(y_0\):</label>
+          <input
+            type="range"
+            id="sliderPlanoTangenteY"
+            min="-1.3"
+            max="1.3"
+            step="0.02"
+            value="1"
+          />
+        </div>
+        <button id="btnPlanoTangenteModo" class="control-button">
+          Alternar: Esfera
+        </button>
+      </div>
+      <p class="visualization-tip">
+        Arraste para rotacionar a cena. Os sliders escolhem o ponto
+        \((x_0,y_0)\) sobre a superfície; o patch do plano tangente e a normal
+        acompanham o ponto.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasPlanoTangente');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var dirty = true;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+    var GRID = 'rgba(255, 255, 255, 0.18)';
+    var PATCH_FILL = 'rgba(67, 160, 71, 0.22)';
+
+    var infoEl = document.getElementById('infoPlanoTangente');
+    var sliderX = document.getElementById('sliderPlanoTangenteX');
+    var sliderY = document.getElementById('sliderPlanoTangenteY');
+    var btn = document.getElementById('btnPlanoTangenteModo');
+
+    var mode = 'paraboloide';
+    var x0 = 1;
+    var y0 = 1;
+    var rotationX = Math.PI / 6;
+    var rotationY = Math.PI / 4;
+    var isDragging = false;
+    var lastX = 0;
+    var lastY = 0;
+
+    var D = 1.3;
+    var R_SPHERE = 1.9;
+    var PATCH = 0.5;
+    var S = 58;
+    var PHI_STEPS = 16;
+    var THETA_STEPS = 24;
+
+    function add(a, b) {
+      return [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+    }
+
+    function scale(a, s) {
+      return [a[0] * s, a[1] * s, a[2] * s];
+    }
+
+    function cross(a, b) {
+      return [
+        a[1] * b[2] - a[2] * b[1],
+        a[2] * b[0] - a[0] * b[2],
+        a[0] * b[1] - a[1] * b[0],
+      ];
+    }
+
+    function normalize(a) {
+      var n = Math.sqrt(a[0] * a[0] + a[1] * a[1] + a[2] * a[2]);
+      if (n < 1e-9) return [0, 0, 1];
+      return [a[0] / n, a[1] / n, a[2] / n];
+    }
+
+    function spherePoint(phi, theta) {
+      return [
+        R_SPHERE * Math.sin(phi) * Math.cos(theta),
+        R_SPHERE * Math.sin(phi) * Math.sin(theta),
+        R_SPHERE * Math.cos(phi),
+      ];
+    }
+
+    function paraboloidPoint(u, v) {
+      return [u, v, u * u + v * v];
+    }
+
+    function surfacePoint() {
+      if (mode === 'esfera') {
+        var r2 = x0 * x0 + y0 * y0;
+        var max2 = R_SPHERE * R_SPHERE * 0.98;
+        var x = x0;
+        var y = y0;
+        if (r2 > max2) {
+          var k = Math.sqrt(max2 / r2);
+          x = x * k;
+          y = y * k;
+          r2 = max2;
+        }
+        return [x, y, Math.sqrt(R_SPHERE * R_SPHERE - r2)];
+      }
+      return paraboloidPoint(x0, y0);
+    }
+
+    function surfaceNormal(p) {
+      if (mode === 'esfera') return [p[0], p[1], p[2]];
+      return [-2 * p[0], -2 * p[1], 1];
+    }
+
+    function tangentVectors(p) {
+      if (mode === 'esfera') {
+        return [
+          [1, 0, -p[0] / p[2]],
+          [0, 1, -p[1] / p[2]],
+        ];
+      }
+      return [
+        [1, 0, 2 * p[0]],
+        [0, 1, 2 * p[1]],
+      ];
+    }
+
+    function patchCorners(p) {
+      var tv = tangentVectors(p);
+      var a = normalize(tv[0]);
+      var b = normalize(tv[1]);
+      var signs = [
+        [-1, -1],
+        [1, -1],
+        [1, 1],
+        [-1, 1],
+      ];
+      var corners = [];
+      var i;
+      for (i = 0; i < signs.length; i++) {
+        corners.push(
+          add(
+            p,
+            add(scale(a, PATCH * signs[i][0]), scale(b, PATCH * signs[i][1]))
+          )
+        );
+      }
+      return corners;
+    }
+
+    function rotationMatrix() {
+      var cx = Math.cos(rotationX);
+      var sx = Math.sin(rotationX);
+      var cy = Math.cos(rotationY);
+      var sy = Math.sin(rotationY);
+      var rx = [1, 0, 0, 0, cx, -sx, 0, sx, cx];
+      var ry = [cy, 0, sy, 0, 1, 0, -sy, 0, cy];
+      var r = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var i;
+      var j;
+      var k;
+      for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+          for (k = 0; k < 3; k++) {
+            r[i * 3 + j] += rx[i * 3 + k] * ry[k * 3 + j];
+          }
+        }
+      }
+      return r;
+    }
+
+    function rotate(p, rot) {
+      return [
+        rot[0] * p[0] + rot[1] * p[1] + rot[2] * p[2],
+        rot[3] * p[0] + rot[4] * p[1] + rot[5] * p[2],
+        rot[6] * p[0] + rot[7] * p[1] + rot[8] * p[2],
+      ];
+    }
+
+    function project(p) {
+      return { x: W / 2 + p[0] * S, y: H / 2 - p[1] * S };
+    }
+
+    function drawSphere(rot) {
+      var i;
+      var j;
+      for (i = 1; i < PHI_STEPS; i++) {
+        var phi = (i / PHI_STEPS) * Math.PI;
+        ctx.beginPath();
+        for (j = 0; j <= 2 * THETA_STEPS; j++) {
+          var theta = (j / (2 * THETA_STEPS)) * 2 * Math.PI;
+          var q = project(rotate(spherePoint(phi, theta), rot));
+          if (j === 0) ctx.moveTo(q.x, q.y);
+          else ctx.lineTo(q.x, q.y);
+        }
+        ctx.stroke();
+      }
+      for (j = 0; j < THETA_STEPS; j++) {
+        var th = (j / THETA_STEPS) * 2 * Math.PI;
+        ctx.beginPath();
+        for (i = 0; i <= PHI_STEPS; i++) {
+          var ph = (i / PHI_STEPS) * Math.PI;
+          var qm = project(rotate(spherePoint(ph, th), rot));
+          if (i === 0) ctx.moveTo(qm.x, qm.y);
+          else ctx.lineTo(qm.x, qm.y);
+        }
+        ctx.stroke();
+      }
+    }
+
+    function drawParaboloid(rot) {
+      var N = 12;
+      var i;
+      var j;
+      var u;
+      var v;
+      var q;
+      for (i = 0; i <= N; i++) {
+        u = -D + (2 * D * i) / N;
+        ctx.beginPath();
+        for (j = 0; j <= N; j++) {
+          v = -D + (2 * D * j) / N;
+          q = project(rotate(paraboloidPoint(u, v), rot));
+          if (j === 0) ctx.moveTo(q.x, q.y);
+          else ctx.lineTo(q.x, q.y);
+        }
+        ctx.stroke();
+      }
+      for (j = 0; j <= N; j++) {
+        v = -D + (2 * D * j) / N;
+        ctx.beginPath();
+        for (i = 0; i <= N; i++) {
+          u = -D + (2 * D * i) / N;
+          q = project(rotate(paraboloidPoint(u, v), rot));
+          if (i === 0) ctx.moveTo(q.x, q.y);
+          else ctx.lineTo(q.x, q.y);
+        }
+        ctx.stroke();
+      }
+    }
+
+    function drawPatch(rot, p) {
+      var corners = patchCorners(p);
+      var i;
+      var q;
+      ctx.beginPath();
+      for (i = 0; i < corners.length; i++) {
+        q = project(rotate(corners[i], rot));
+        if (i === 0) ctx.moveTo(q.x, q.y);
+        else ctx.lineTo(q.x, q.y);
+      }
+      ctx.closePath();
+      ctx.fillStyle = PATCH_FILL;
+      ctx.fill();
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    function arrow(rot, from, to, color, width) {
+      var a = project(rotate(from, rot));
+      var b = project(rotate(to, rot));
+      var dx = b.x - a.x;
+      var dy = b.y - a.y;
+      var len = Math.sqrt(dx * dx + dy * dy);
+      if (len < 2) return;
+      var ux = dx / len;
+      var uy = dy / len;
+      var hs = Math.min(9, len * 0.4);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(a.x, a.y);
+      ctx.lineTo(b.x, b.y);
+      ctx.stroke();
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(b.x, b.y);
+      ctx.lineTo(b.x - ux * hs - uy * hs * 0.5, b.y - uy * hs + ux * hs * 0.5);
+      ctx.lineTo(b.x - ux * hs + uy * hs * 0.5, b.y - uy * hs - ux * hs * 0.5);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    function drawTangentArrows(rot, p) {
+      var tv = tangentVectors(p);
+      var a = normalize(tv[0]);
+      var b = normalize(tv[1]);
+      arrow(rot, p, add(p, scale(a, 0.6)), VEL, 2);
+      arrow(rot, p, add(p, scale(b, 0.6)), ACC, 2);
+    }
+
+    function drawNormal(rot, p) {
+      var n = normalize(surfaceNormal(p));
+      arrow(rot, p, add(p, scale(n, 0.9)), FOR, 2.5);
+    }
+
+    function drawPoint(rot, p) {
+      var q = project(rotate(p, rot));
+      ctx.fillStyle = POS;
+      ctx.beginPath();
+      ctx.arc(q.x, q.y, 6, 0, 2 * Math.PI);
+      ctx.fill();
+      ctx.strokeStyle = UNI;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function fmt(v) {
+      if (Math.abs(v) < 0.005) v = 0;
+      return v.toFixed(2);
+    }
+
+    function updateInfo(p) {
+      if (!infoEl) return;
+      var n = surfaceNormal(p);
+      infoEl.textContent =
+        'Ponto: (' +
+        fmt(p[0]) +
+        ', ' +
+        fmt(p[1]) +
+        ', ' +
+        fmt(p[2]) +
+        ') | Normal: (' +
+        fmt(n[0]) +
+        ', ' +
+        fmt(n[1]) +
+        ', ' +
+        fmt(n[2]) +
+        ')';
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      var rot = rotationMatrix();
+      var p = surfacePoint();
+
+      ctx.strokeStyle = GRID;
+      ctx.lineWidth = 1;
+      if (mode === 'esfera') drawSphere(rot);
+      else drawParaboloid(rot);
+
+      drawPatch(rot, p);
+      drawTangentArrows(rot, p);
+      drawNormal(rot, p);
+      drawPoint(rot, p);
+      updateInfo(p);
+    }
+
+    function loop() {
+      if (dirty) {
+        dirty = false;
+        draw();
+      }
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        dirty = true;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (sliderX) {
+      sliderX.addEventListener('input', function () {
+        x0 = parseFloat(sliderX.value);
+        dirty = true;
+      });
+    }
+    if (sliderY) {
+      sliderY.addEventListener('input', function () {
+        y0 = parseFloat(sliderY.value);
+        dirty = true;
+      });
+    }
+    if (btn) {
+      btn.addEventListener('click', function () {
+        mode = mode === 'paraboloide' ? 'esfera' : 'paraboloide';
+        btn.textContent =
+          mode === 'paraboloide' ? 'Alternar: Esfera' : 'Alternar: Paraboloide';
+        dirty = true;
+      });
+    }
+
+    canvas.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    canvas.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      rotationY += (e.clientX - lastX) * 0.01;
+      rotationX += (e.clientY - lastY) * 0.01;
+      if (rotationX > Math.PI / 2) rotationX = Math.PI / 2;
+      if (rotationX < -Math.PI / 2) rotationX = -Math.PI / 2;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      dirty = true;
+    });
+    canvas.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+    canvas.addEventListener('mouseleave', function () {
+      isDragging = false;
+    });
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizPlanoTangente = { init: init, cleanup: cleanup };
+  })();
+</script>
