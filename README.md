@@ -87,7 +87,7 @@ Bem-vindo à nossa jornada matemática pelo cosmos. Este curso apresenta os fund
 
 ## Calendário do Semestre
 
-Confira as datas importantes, cronograma de aulas e prazos no [planejamento do semestre 2026/1](planejamento/planejamento-CV-2026-1.md).
+Confira as datas importantes, cronograma de aulas e prazos no [planejamento do semestre 2026/2](planejamento/planejamento-CV-2026-2.md) — 33 aulas de 18/nov/2026 a 14/abr/2027, com uma prova escrita por capítulo e PF em 19/abr/2027. O planejamento de 2026/1 continua disponível em [planejamento-CV-2026-1.md](planejamento/planejamento-CV-2026-1.md).
 
 ## Ferramentas
 
