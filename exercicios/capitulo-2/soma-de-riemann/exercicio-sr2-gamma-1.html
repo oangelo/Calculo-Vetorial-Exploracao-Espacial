@@ -1,0 +1,41 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO SR2-GAMMA-1</div>
+  <div class="context">ORIGEM: Seção Avançada de Propulsão - [REDACTED]</div>
+  <p>
+    Você já experimentou três maneiras de escolher pontos amostrais (cantos
+    superiores direitos, inferiores esquerdos e pontos médios). Agora vamos
+    aumentar o grau da função. Com funções de grau mais alto, cada termo da soma
+    varia mais entre sub-retângulos vizinhos.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique os quatro pontos superiores direitos com
+    \(m=2\) e \(n=2\) em \(D = [0,2]\times [0,2]\).
+  </p>
+  <p>
+    <strong>(b)</strong> Estime \(\iint_D (x^3 + y^3)\, dA\) via soma de Riemann
+    com esses pontos.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Calcule separadamente para cada sub-retângulo e somar.
+      Note que \(x^3 + y^3\) não é o mesmo que \((x+y)^3\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL-SIGMA REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        \(\Delta x = 1\), \(\Delta y = 1\). Pontos superiores direitos: \((1,1),
+        (2,1), (1,2), (2,2)\).
+      </p>
+      <p>
+        Função: \(f(x,y) = x^3 + y^3\).
+        <br />
+        \(f(1,1) = 1 + 1 = 2\); \(f(2,1) = 8 + 1 = 9\); \(f(1,2) = 1 + 8 = 9\);
+        \(f(2,2) = 8 + 8 = 16\).
+      </p>
+      <p>Soma: \((2 + 9 + 9 + 16)\times (1)(1) = 36.\)</p>
+    </div>
+  </details>
+</li>

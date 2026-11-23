@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Simulacao de Radiacao Solar - Apollo 15 (26/JUL/1971)
+  </div>
+  <p>
+    Voce ja calculou a area de uma superficie — o que acontece se, em vez de
+    somar 1 em cada pedacinho, somarmos um valor que varia com a posicao? Esta e
+    a pergunta central da integral de superficie. No Capitulo 5, vimos que a
+    integral de linha escalar acumula uma funcao ao longo de uma curva 1D,
+    usando o fator de escala de comprimento ||r'(t)||. Agora vamos estender essa
+    ideia para superficies 2D.
+  </p>
+  <p>
+    Considere a integral de linha escalar \(\int_C f(x,y,z)\, ds = \int_a^b
+    f(\vec{r}(t))\,\|\vec{r}'(t)\|\, dt\). O fator \(\|\vec{r}'(t)\|\) e o
+    "peso" do caminho: ele converte o intervalo no parametro em comprimento real
+    ao longo da curva.
+  </p>
+  <p>
+    <strong>(a)</strong> Identifique, na formula da integral de linha escalar
+    acima, qual fator representa o "peso" do caminho (ou seja, o fator que
+    converte \(dt\) em comprimento de arco \(ds\)).
+  </p>
+  <p>
+    <strong>(b)</strong> Por analogia, escreva a definicao de integral de
+    superficie de uma funcao escalar \(f(x,y,z)\) sobre uma superficie
+    parametrizada \(\vec{r}(u,v)\), identificando o fator correspondente que
+    converte \(du\,dv\) em area de superficie \(dS\).
+  </p>
+  <p>
+    <strong>(c)</strong> Verifique que, para \(f(x,y,z) = 1\) (constante), sua
+    formula recupera exatamente a expressao da area de superficie que voce ja
+    calculou no Topico 3.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: No item (b), o fator de escala de area e ||r_u x r_v||. No
+      item (c), substitua f = 1 na formula e compare com A(S) do Topico 3.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O fator peso e ||r'(t)||, pois ds = ||r'(t)|| dt.
+      </p>
+      <p>
+        <strong>(b)</strong> Por analogia: \[\iint_S f(x,y,z)\, dS = \iint_D
+        f(\vec{r}(u,v))\,\|\vec{r}_u \times \vec{r}_v\|\, du\, dv\] O fator peso
+        e \(\|\vec{r}_u \times \vec{r}_v\|\), pois \(dS = \|\vec{r}_u \times
+        \vec{r}_v\|\, du\, dv\).
+      </p>
+      <p>
+        <strong>(c)</strong> Para f = 1: \[\iint_S 1\, dS = \iint_D \|\vec{r}_u
+        \times \vec{r}_v\|\, du\, dv = A(S)\] que e exatamente a formula da area
+        de superficie.
+      </p>
+    </div>
+  </details>
+</li>

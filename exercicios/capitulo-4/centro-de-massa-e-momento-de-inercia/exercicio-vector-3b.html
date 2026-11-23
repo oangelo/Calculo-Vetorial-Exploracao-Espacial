@@ -1,0 +1,77 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Escudo Térmico Esférico - Programa Gemini [Agosto 1965]
+  </div>
+  <p>
+    No exercício anterior, você calculou o momento de inércia de um cilindro
+    simples com densidade constante. Agora o problema fica mais interessante: o
+    escudo térmico do Gemini tem formato de casca esférica espessa (entre o raio
+    interno 1 e o raio externo 2), com densidade constante \(\rho = 3 \,
+    \text{kg/m}^3\). A cavidade interna muda a distribuição de massa e exige
+    coordenadas esféricas.
+  </p>
+  <p>
+    <strong>(a)</strong> Escolha o sistema de coordenadas e identifique os
+    limites, incluindo a cavidade interna.
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse a distância ao quadrado ao eixo de rotação
+    (\(x^2+y^2\)) no sistema escolhido.
+  </p>
+  <p><strong>(c)</strong> Monte e avalie a integral \(I_z\).</p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Em coordenadas esféricas, \(x^2 + y^2 = r^2\sin^2\phi\). O
+      Jacobiano é \(r^2\sin\phi\). A cavidade é tratada naturalmente mudando o
+      limite inferior de \(r\) de 0 para 1. A integral em \(\theta\) dá
+      \(2\pi\); a integral \(\int_0^\pi \sin^3\phi\,d\phi\) vale \(4/3\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a) Coordenadas e limites:</strong> Coordenadas esféricas
+        \((r,\theta,\phi)\): \(1 \le r \le 2\), \(0 \le \theta \le 2\pi\), \(0
+        \le \phi \le \pi\). A cavidade é tratada pelo limite \(r \ge 1\).
+      </p>
+      <p>
+        <strong>(b) Distância ao quadrado:</strong> Em esféricas, \(x^2 + y^2 =
+        r^2\sin^2\phi\).
+      </p>
+      <p><strong>(c) Integral:</strong></p>
+      <p>
+        \[ I_z = \int_1^2 \int_0^\pi \int_0^{2\pi} 3\,(r^2\sin^2\phi) \cdot
+        r^2\sin\phi\,d\theta\,d\phi\,dr. \]
+      </p>
+      <p>
+        Reorganizando: \(\displaystyle I_z = 3 \int_0^{2\pi} d\theta \int_0^\pi
+        \sin^3\phi\,d\phi \int_1^2 r^4\,dr.\)
+      </p>
+      <p>Integral em \(\theta\): \(2\pi\).</p>
+      <p>
+        Integral em \(\phi\): \(\displaystyle \int_0^\pi \sin^3\phi\,d\phi =
+        \int_0^\pi (\sin\phi - \sin\phi\cos^2\phi)\,d\phi = 2 - 0 = 2\) ...
+        melhor: \(\int_0^\pi \sin^3\phi\,d\phi = \frac{4}{3}\).
+      </p>
+      <p>
+        Integral em \(r\): \(\displaystyle \int_1^2 r^4\,dr =
+        \left[\frac{r^5}{5}\right]_1^2 = \frac{32}{5} - \frac{1}{5} =
+        \frac{31}{5}\).
+      </p>
+      <p>
+        \[ I_z = 3 \cdot 2\pi \cdot \frac{4}{3} \cdot \frac{31}{5} = 8\pi \cdot
+        \frac{31}{5} = \frac{248\pi}{5} \, \text{kg}\cdot\text{m}^2. \]
+      </p>
+      <p>
+        Conclusão: O momento de inércia da casca esférica é
+        \(\frac{248\pi}{5}\). Se o corpo fosse uma esfera maciça de raio 2 (sem
+        cavidade), o momento seria maior porque haveria mais massa próxima ao
+        eixo. A cavidade interna remove essa massa e, paradoxalmente, aumenta a
+        <em>eficiência</em> da rotação.
+      </p>
+    </div>
+  </details>
+</li>

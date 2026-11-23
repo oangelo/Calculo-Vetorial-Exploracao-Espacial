@@ -1,0 +1,49 @@
+<section>
+  <section>
+    <h2>Limite e Continuidade</h2>
+    <p>O limite de uma função vetorial é componente a componente:</p>
+    <div class="fragment formula-spotlight">
+      <p>
+        \[ \lim_{\vec{x} \to \vec{a}} \vec{F}(\vec{x}) = \vec{L} \iff
+        \lim_{\vec{x} \to \vec{a}} f_i(\vec{x}) = L_i \quad \forall\, i \]
+      </p>
+    </div>
+    <div class="fragment">
+      <p>
+        \(\vec{F}\) é <strong>contínua</strong> em \(\vec{a}\) se
+        \(\lim_{\vec{x} \to \vec{a}} \vec{F}(\vec{x}) = \vec{F}(\vec{a})\).
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Propriedades</h3>
+    <p>Se \(\lim \vec{F} = \vec{L}\) e \(\lim \vec{G} = \vec{M}\):</p>
+    <div class="fragment">
+      <p>\[ \lim (\vec{F} + \vec{G}) = \vec{L} + \vec{M} \]</p>
+    </div>
+    <div class="fragment">
+      <p>\[ \lim (c\,\vec{F}) = c\,\vec{L} \]</p>
+    </div>
+    <div class="fragment">
+      <p>\[ \lim (\vec{F} \cdot \vec{G}) = \vec{L} \cdot \vec{M} \]</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo</h3>
+    <div class="problem-section">
+      <p>
+        Seja \(\vec{F}(x,y) = (x^2+y^2,\; xy,\; x-y)\). Calcule \(\lim_{(x,y)
+        \to (1,2)} \vec{F}(x,y)\).
+      </p>
+    </div>
+    <div class="compact-solution">
+      <p>Componente a componente:</p>
+      <p>
+        \(f_1 = 1^2 + 2^2 = 5\), \(f_2 = 1 \cdot 2 = 2\), \(f_3 = 1 - 2 = -1\).
+      </p>
+      <p>\(\lim_{(x,y) \to (1,2)} \vec{F}(x,y) = (5, 2, -1)\).</p>
+    </div>
+  </section>
+</section>

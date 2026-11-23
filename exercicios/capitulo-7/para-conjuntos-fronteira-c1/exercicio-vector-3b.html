@@ -1,0 +1,71 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Seção de Geometria Computacional –
+    <span class="censored">██████</span> (24/JUL/1969)
+  </div>
+  <p>
+    No exercício anterior, você verificou Green no anel numericamente. Agora
+    vamos mais fundo: compreender <strong>por que</strong> o argumento funciona,
+    construindo explicitamente os cortes que tornam o anel simplesmente conexo.
+    Esta é a prova visual de que a extensão de Green para regiões com buracos é
+    legítima.
+  </p>
+  <p>
+    Considere novamente o anel \(D: 1 \le x^2 + y^2 \le 4\). Mostre, passo a
+    passo, como um corte (slit) transforma essa região em uma região
+    simplesmente conexa.
+  </p>
+  <p>
+    <strong>(a)</strong> Desenhe o anel e trace um corte reto que ligue um ponto
+    da borda externa a um ponto da borda interna (por exemplo, ao longo do eixo
+    positivo dos \(x\), do ponto \((1,0)\) ao ponto \((2,0)\)). Esse corte
+    divide o anel em uma região com qual propriedade topológica?
+  </p>
+  <p>
+    <strong>(b)</strong> Percorra a fronteira da região resultante, listando
+    cada trecho (borda externa, primeiro lado do corte, borda interna, segundo
+    lado do corte) e seu sentido de percurso (horário/anti-horário).
+  </p>
+  <p>
+    <strong>(c)</strong> Mostre que os dois lados do corte são percorridos em
+    sentidos opostos. Conclua que, ao aplicar Green na região cortada, as
+    integrais nos dois lados do corte se cancelam, e o que resta são as
+    integrais nas bordas externa e interna com orientações opostas — exatamente
+    o que verificamos numericamente no exercício anterior.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Desenhe o corte como um segmento reto que liga as duas
+      bordas circulares. Ao percorrer a fronteira da região cortada, você
+      caminha ao longo da borda externa, depois entra pelo corte, percorre a
+      borda interna no sentido inverso, e volta pelo outro lado do corte.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) O corte ao longo do eixo \(x\) positivo (de \((1,0)\) a \((2,0)\))
+        abre o anel, tornando-o simplesmente conexo — a região resultante não
+        tem buraco. Topologicamente, é equivalente a um disco.
+      </p>
+      <p>
+        (b) Partindo de \((2,0)\) e percorrendo no sentido anti-horário: (1)
+        borda externa \(r=2\), de \((2,0)\) voltando a \((2,0)\) — anti-horária;
+        (2) lado superior do corte, de \((2,0)\) a \((1,0)\) — para dentro; (3)
+        borda interna \(r=1\), de \((1,0)\) voltando a \((1,0)\) — horária; (4)
+        lado inferior do corte, de \((1,0)\) a \((2,0)\) — para fora.
+      </p>
+      <p>
+        (c) Os lados superior e inferior do corte são percorridos em sentidos
+        opostos: um vai de \((2,0)\) para \((1,0)\), o outro volta. As integrais
+        de linha nesses dois trechos são iguais em módulo e opostas em sinal,
+        cancelando-se. O que resta é a integral na borda externa (anti-horária)
+        mais a integral na borda interna (horária) — exatamente a configuração
+        verificada no VECTOR-3A.
+      </p>
+    </div>
+  </details>
+</li>

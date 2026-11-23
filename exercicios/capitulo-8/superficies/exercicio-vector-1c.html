@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Modelagem de Tanques Esféricos — Apollo 16 [ABR/1972]
+  </div>
+  <p>
+    A parametrização trivial funciona bem quando <strong>z</strong> depende de
+    <strong>x</strong> e <strong>y</strong>. Mas a esfera — a forma mais natural
+    no espaço — não é gráfico de uma função. Precisamos de outra estratégia.
+    Lembre das coordenadas esféricas que você usou no Capítulo 4.
+  </p>
+  <p>
+    <strong>(a)</strong> Relembre as fórmulas de conversão de coordenadas
+    esféricas para cartesianas, identificando cada coordenada:
+    <strong>ρ</strong> (distância à origem), <strong>φ</strong> (ângulo polar) e
+    <strong>θ</strong> (ângulo azimutal).
+  </p>
+  <p>
+    <strong>(b)</strong> Escreva a parametrização da esfera de raio
+    <strong>R</strong> centrada na origem, substituindo
+    <strong>ρ = R</strong> (constante) nas fórmulas de conversão. Use
+    <strong>φ</strong> e <strong>θ</strong> como parâmetros.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine os intervalos dos dois ângulos que cobrem
+    toda a superfície sem repetição, e explique geometricamente por que esses
+    intervalos funcionam. O que acontece nos extremos de cada intervalo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA‑1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: As fórmulas de conversão são \(x =
+      \rho\sin\phi\cos\theta\), \(y = \rho\sin\phi\sin\theta\), \(z =
+      \rho\cos\phi\). Para a esfera, \(\rho = R\) é fixo. O ângulo
+      <strong>φ</strong> mede a latitude a partir do polo norte
+      (<strong>z</strong>), enquanto <strong>θ</strong> mede a longitude ao
+      redor do eixo <strong>z</strong>.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑1 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(x = \rho\sin\phi\cos\theta\), \(y =
+        \rho\sin\phi\sin\theta\), \(z = \rho\cos\phi\).
+      </p>
+      <p>
+        <strong>(b)</strong> \(\vec{r}(\phi,\theta) = (R\sin\phi\cos\theta,\;
+        R\sin\phi\sin\theta,\; R\cos\phi)\).
+      </p>
+      <p>
+        <strong>(c)</strong> \(\phi \in [0, \pi]\) e \(\theta \in [0, 2\pi)\). O
+        ângulo <strong>φ</strong> vai do polo norte (<strong>φ = 0</strong>) ao
+        polo sul (<strong>φ = π</strong>). O ângulo <strong>θ</strong> dá uma
+        volta completa ao redor do eixo <strong>z</strong>. Quando
+        <strong>φ = 0</strong> ou <strong>φ = π</strong>, todos os valores de
+        <strong>θ</strong> produzem o mesmo ponto (os polos), o que é aceitável
+        pois são apenas dois pontos.
+      </p>
+    </div>
+  </details>
+</li>

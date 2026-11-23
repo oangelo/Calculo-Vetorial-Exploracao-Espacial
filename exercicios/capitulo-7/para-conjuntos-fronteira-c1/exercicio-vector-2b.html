@@ -1,0 +1,62 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Engenharia de Mecanismos –
+    <span class="censored">██████</span> (21/JUL/1969)
+  </div>
+  <p>
+    A fórmula de área via Green funcionou para o disco (VECTOR-1C). Agora vamos
+    testá-la em uma curva mais exótica, que aparece como envelope de pontos de
+    contato em mecanismos de engrenagem usados em satélites. A astroide é uma
+    curva fechada \(C^1\) que não é nem circular nem elíptica — e isso é
+    justamente o ponto: a fórmula funciona para <strong>qualquer</strong>
+    fronteira suave.
+  </p>
+  <p>
+    Use o Teorema de Green para calcular a área delimitada pela astroide
+    \(x^{2/3} + y^{2/3} = a^{2/3}\), com \(a > 0\). Expresse o resultado em
+    função de \(a\).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize a astroide usando a representação canônica
+    \(x = a\cos^3 t\), \(y = a\sin^3 t\), para \(t \in [0, 2\pi]\). Verifique
+    que os pontos satisfazem a equação da curva.
+  </p>
+  <p>
+    <strong>(b)</strong> Monte a integral de linha \(\frac{1}{2}\oint(x\,dy -
+    y\,dx)\) usando essa parametrização.
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral e expresse o resultado em função de
+    \(a\). Compare com a fórmula esperada.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: A parametrização envolve potências inteiras de funções
+      trigonométricas. Use \(\cos^2 t + \sin^2 t = 1\) e a identidade \(\sin^2
+      t\cos^2 t = \frac{1}{4}\sin^2(2t)\) para simplificar.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) Substituindo: \(x^{2/3} + y^{2/3} = a^{2/3}(\cos^2 t + \sin^2 t) =
+        a^{2/3}\). Verificado.
+      </p>
+      <p>
+        (b) \(dx = -3a\cos^2 t\sin t\,dt\), \(dy = 3a\sin^2 t\cos t\,dt\). Então
+        \(x\,dy - y\,dx = (a\cos^3 t)(3a\sin^2 t\cos t)\,dt - (a\sin^3
+        t)(-3a\cos^2 t\sin t)\,dt = 3a^2\sin^2 t\cos^2 t(\cos^2 t + \sin^2
+        t)\,dt = 3a^2\sin^2 t\cos^2 t\,dt\).
+      </p>
+      <p>
+        (c) \(A = \frac{1}{2}\int_0^{2\pi} 3a^2\sin^2 t\cos^2 t\,dt =
+        \frac{3a^2}{2}\int_0^{2\pi}\frac{\sin^2(2t)}{4}\,dt =
+        \frac{3a^2}{8}\int_0^{2\pi}\sin^2(2t)\,dt = \frac{3a^2}{8} \cdot \pi =
+        \frac{3\pi a^2}{8}\).
+      </p>
+    </div>
+  </details>
+</li>

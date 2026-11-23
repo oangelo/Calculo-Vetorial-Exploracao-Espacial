@@ -1,0 +1,68 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1C</div>
+  <div class="context">
+    ORIGEM: Estação de Rastreamento - Programa Apollo [MAR/1967]
+  </div>
+  <p>
+    Agora que você entendeu o mecanismo da invariância — a regra da cadeia
+    compensa a mudança de velocidade —, vamos aplicá-lo ao caso mais simples
+    possível: uma reparametrização linear, onde a mudança de velocidade é
+    constante.
+  </p>
+  <p>
+    Considere a curva \(\vec{r}(t) = (3t+1,\, t^2)\) com \(t \in [0,2]\) e a
+    reparametrização linear \(t = u(\tau) = 2\tau\), com \(\tau \in [0,1]\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule o comprimento com o parâmetro original:
+    \(\displaystyle L = \int_0^2 |\vec{r}'(t)|\, dt\).
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a reparametrização linear: expresse
+    \(\vec{r}(u(\tau))\), calcule a derivada e monte o novo integrando
+    \(|\vec{r}'(u(\tau))| \cdot |u'(\tau)|\).
+  </p>
+  <p>
+    <strong>(c)</strong> Avalie a integral no novo parâmetro e verifique que o
+    resultado coincide com (a). Note como a compensação é imediata quando
+    \(u'(\tau)\) é constante.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Com \(u(\tau) = 2\tau\), a derivada \(u'(\tau) = 2\) é
+      constante — o fator de compensação não varia. Compare com o exercício
+      anterior, onde \(u'(\tau) = \frac{1}{2\sqrt{\tau}}\) dependia de \(\tau\).
+      Na reparametrização linear, a compensação é "homogênea" ao longo de toda a
+      curva.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        (a) \(\vec{r}'(t) = (3,\, 2t)\), \(|\vec{r}'(t)| = \sqrt{9 + 4t^2}\).
+        \(L = \int_0^2 \sqrt{9+4t^2}\, dt\). Com a substituição \(t =
+        \frac{3}{2}\tan\alpha\), \(dt = \frac{3}{2}\sec^2\alpha\, d\alpha\):
+        \[\int_0^2 \sqrt{9+4t^2}\, dt = \frac{3}{2}\int_0^{\arctan(4/3)}
+        3\sec\alpha \cdot \sec^2\alpha\, d\alpha =
+        \frac{9}{2}\int_0^{\arctan(4/3)} \sec^3\alpha\, d\alpha.\] Usando a
+        fórmula padrão, o resultado é \(2\sqrt{13} + \frac{9}{2}\ln\left(\frac{4
+        + 2\sqrt{13}}{3}\right)\).
+      </p>
+      <p>
+        (b) \(\vec{r}(u(\tau)) = (6\tau+1,\, 4\tau^2)\).
+        \(\frac{d\vec{r}}{d\tau} = (6,\, 8\tau)\). \(|\vec{r}'(u(\tau))| =
+        \sqrt{9 + 16\tau^2}\), \(u'(\tau) = 2\). Novo integrando:
+        \(\sqrt{9+16\tau^2} \cdot 2 = 2\sqrt{9+16\tau^2}\).
+      </p>
+      <p>
+        (c) \(\int_0^1 2\sqrt{9+16\tau^2}\, d\tau\). Com \(t = 2\tau\), \(dt =
+        2\, d\tau\): \(\int_0^1 2\sqrt{9+16\tau^2}\, d\tau = \int_0^2
+        \sqrt{9+4t^2}\, dt\). Exatamente a mesma integral de (a). A
+        reparametrização linear escala o intervalo por 2 e o integrando por
+        \(\frac{1}{2}\), cancelando-se perfeitamente.
+      </p>
+    </div>
+  </details>
+</li>

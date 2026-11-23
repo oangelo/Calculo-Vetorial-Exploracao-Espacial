@@ -1,0 +1,64 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3B</div>
+  <div class="context">
+    ORIGEM: Projeto de Acoplamento Orbital — Apollo 17 [DEZ/1972]
+  </div>
+  <p>
+    As curvas-coordenadas mostraram como <strong>u</strong> e
+    <strong>v</strong> "pintam" a superfície. Agora vamos combinar dois círculos
+    de tamanhos diferentes para criar uma superfície que não é de revolução
+    simples: o toro. Imagine um círculo menor de raio <strong>r</strong> cujo
+    centro percorre a trajetória de um círculo maior de raio
+    <strong>R</strong> (com <strong>R > r</strong>).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o círculo menor que será rotacionado. Seu
+    centro está em <strong>(R, 0, 0)</strong> e seu plano é perpendicular ao
+    plano <strong>xy</strong> (ou seja, está no plano
+    <strong>xz</strong> local). Use um ângulo <strong>v</strong> como parâmetro.
+  </p>
+  <p>
+    <strong>(b)</strong> Aplique a rotação do círculo menor ao longo da
+    trajetória circular maior no plano <strong>xy</strong>, introduzindo o
+    ângulo <strong>u</strong>. Escreva a parametrização completa
+    \(\vec{r}(u,v)\) do toro.
+  </p>
+  <p>
+    <strong>(c)</strong> Determine o domínio dos parâmetros e esboce o toro
+    indicando as duas famílias de curvas-coordenadas: o que acontece quando
+    <strong>u</strong> é fixo? E quando <strong>v</strong> é fixo?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA‑3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: No item (a), o círculo menor no plano
+      <strong>xz</strong> é \((R + r\cos v,\, 0,\, r\sin v)\). No item (b),
+      rotacione esse círculo em torno do eixo <strong>z</strong> pelo ângulo
+      <strong>u</strong>, usando a matriz de rotação no plano
+      <strong>xy</strong>.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA‑3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> O círculo menor no plano <strong>xz</strong>:
+        \(\vec{c}(v) = (R + r\cos v,\, 0,\, r\sin v)\), com
+        <strong>v ∈ [0, 2π]</strong>.
+      </p>
+      <p>
+        <strong>(b)</strong> Rotacionando em torno de <strong>z</strong>:
+        \(\vec{r}(u,v) = ((R + r\cos v)\cos u,\; (R + r\cos v)\sin u,\; r\sin
+        v)\).
+      </p>
+      <p>
+        <strong>(c)</strong> Domínio: <strong>u ∈ [0, 2π]</strong> e
+        <strong>v ∈ [0, 2π]</strong>. Fixar <strong>u = u₀</strong> produz o
+        círculo menor (seção transversal do tubo). Fixar
+        <strong>v = v₀</strong> produz o círculo maior (trajetória do centro do
+        tubo no plano <strong>xy</strong>, mas com raio variável
+        <strong>R + r\cos v₀</strong>).
+      </p>
+    </div>
+  </details>
+</li>

@@ -1,0 +1,405 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">25</span> DE SETEMBRO DE
+    <span class="censored">1961</span>
+    <br />
+    LOCALIZAÇÃO: <span class="censored">INSTALAÇÃO [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO
+    <span class="censored">DELTA-X</span> <br /><br />
+    Em meio à intensificação da corrida espacial, nossa equipe de pesquisadores
+    elaborou este módulo de revisão sobre derivadas ordinárias. As técnicas
+    apresentadas são cruciais para
+    <span class="censored">cálculos de orientação</span> e para o sucesso de
+    futuras missões do programa <span class="censored">████████</span>.
+    <br /><br />
+    Estes exercícios contemplam aplicações de regras de derivação fundamentais
+    para auxiliar no aprimoramento das
+    <span class="censored">análises de propulsão</span>.
+  </div>
+  <div class="warning-box">
+    Este documento contém informações de alto valor estratégico, com aplicações
+    imediatas no projeto <span class="censored">Fênix</span>. Qualquer
+    divulgação não autorizada resultará em
+    <span class="censored">sanções severas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: RV-<span class="censored">210</span>-X</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">1</span></span>
+    <span
+      >CÓPIAS EXISTENTES: <span class="censored">3</span> DE
+      <span class="censored">5</span></span
+    >
+  </div>
+</div>
+
+<div class="section-title">FUNDAMENTAÇÃO TEÓRICA: DERIVADAS</div>
+
+<!-- ========== PRÉ-REQUISITOS E PROGRESSÃO ========== -->
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS E PROGRESSÃO ESPERADA</strong></p>
+  <p>
+    Antes de iniciar os exercícios de derivadas, certifique-se de dominar os
+    conceitos listados abaixo. Eles são organizados em ordem de dependência:
+    cada item depende dos anteriores. Os exercícios deste módulo avançam em
+    quatro fases — <strong>ALFA</strong>, <strong>BETA</strong>,
+    <strong>GAMMA</strong> e <strong>OMEGA</strong> — e cada fase exige
+    um subconjunto específico destes pré-requisitos.
+  </p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-1. EQUAÇÃO PONTO-INCLINAÇÃO DE RETA (Geometria Analítica)</strong></p>
+  <p>
+    Dado um ponto \((x_0, y_0)\) e uma inclinação \(m\), a equação da reta
+    que passa por esse ponto é \(y - y_0 = m(x - x_0)\). Esta é a ferramenta
+    fundamental para construir retas tangentes: o ponto é o ponto de tangência
+    e a inclinação é a derivada avaliada nesse ponto. Sem esta equação, não
+    é possível escrever a reta tangente — mesmo sabendo a derivada.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0A).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-2. EQUAÇÃO DE CIRCUNFERÊNCIA (Geometria Analítica / Cônicas)</strong></p>
+  <p>
+    A circunferência de centro \((a, b)\) e raio \(r\) tem equação
+    \((x - a)^2 + (y - b)^2 = r^2\). O caso mais simples é \(x^2 + y^2 = r^2\),
+    centrado na origem. Importante: a circunferência <strong>não é uma função</strong>
+    \(y = f(x)\) (falha no teste da linha vertical), o que motiva a derivação
+    implícita. Os exercícios usam a circunferência como primeiro caso de curva
+    que não é função.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0C).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-3. DISCRIMINANTE E INTERSEÇÃO DE CURVAS (Cônicas / Álgebra)</strong></p>
+  <p>
+    Ao igualar duas equações — por exemplo, uma curva \(y = f(x)\) e uma reta
+    \(y = mx + b\) — obtemos uma equação nas incógnitas. Se o resultado for
+    uma equação do 2º grau \(ax^2 + bx + c = 0\), o discriminante
+    \(\Delta = b^2 - 4ac\) determina o número de soluções:
+    \(\Delta > 0\) indica dois pontos de interseção, \(\Delta = 0\) indica
+    tangência (um único ponto) e \(\Delta < 0\) indica ausência de interseção.
+    Este critério é usado para <strong>verificar</strong> se uma reta é tangente
+    a uma curva, confirmando o resultado obtido pela derivada.
+  </p>
+  <p><em>Necessário desde a fase ALFA (exercício 0B).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-4. LIMITES DE FUNÇÕES (Cálculo 1 — revisão)</strong></p>
+  <p>
+    A derivada é definida como um limite:
+    \(\displaystyle f'(x) = \lim_{\Delta x \to 0} \frac{f(x + \Delta x) - f(x)}{\Delta x}\).
+    Para acompanhar esta definição, o aluno precisa entender o conceito de
+    limite de uma função em um ponto, incluindo a notação
+    \(\lim_{x \to a} f(x)\) e a ideia de que \(x\) se aproxima de \(a\) sem
+    necessariamente atingi-lo. As propriedades algébricas de limites (soma,
+    produto, quociente) facilitam os cálculos.
+  </p>
+  <p><em>Necessário para compreender a definição de derivada no intro.</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-5. FUNÇÕES ELEMENTARES (Cálculo 1 — revisão)</strong></p>
+  <p>
+    Reconhecer e manipular os tipos básicos de funções que aparecem nos
+    exercícios: <strong>polinômios</strong> (\(x^n\), \(3x^2 + 4x - 1\)),
+    <strong>trigonométricas</strong> (\(\sin x\), \(\cos x\)),
+    <strong>exponenciais</strong> (\(e^x\), \(e^{3x}\)) e
+    <strong>logarítmicas</strong> (\(\ln x\), \(\ln(x^2 + 1)\)). Os exercícios
+    avançados combinam essas funções em composições, produtos e quocientes.
+    Saber simplificar expressões com radicais e expoentes fracionários
+    (\(\sqrt{x} = x^{1/2}\)) é igualmente essencial.
+  </p>
+  <p><em>Necessário desde a fase BETA em diante.</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PR-6. ÁLGEBRA DE DERIVAÇÃO (Cálculo 1 — revisão)</strong></p>
+  <p>
+    As operações algébricas básicas que sustentam as regras de derivação:
+    linearidade (\((af + bg)' = af' + bg'\)), derivada de constante
+    (\(c' = 0\)), e a regra da potência (\(\frac{d}{dx}(x^n) = n \cdot x^{n-1}\)).
+    Na fase ALFA, basta a derivada de \(x^2\) e de \(x^n\). A partir da fase
+    BETA, as regras do produto, quociente e cadeia exigem que o aluno já
+    domine a derivação termo a termo.
+  </p>
+  <p><em>Necessário desde a fase BETA (exercício 1A).</em></p>
+</div>
+
+<div class="concept-definition">
+  <p><strong>PROGRESSÃO ESPERADA DOS EXERCÍCIOS</strong></p>
+  <p>
+    Os exercícios estão organizados em quatro fases que constroem o domínio
+    das derivadas de forma incremental:
+  </p>
+  <p>
+    <strong>Fase ALFA (0A–0D): Fundamentos geométricos.</strong> O aluno
+    encontra retas tangentes a parábolas e circunferências, verifica tangência
+    pelo discriminante e compara as três notações de derivada (Lagrange,
+    Leibniz, Newton). A conexão com a geometria analítica (PR-1, PR-2, PR-3)
+    é explícita — o aluno entende <em>o que</em> a derivada mede antes de
+    aprender <em>como</em> calculá-la mecanicamente.
+  </p>
+  <p>
+    <strong>Fase BETA (1A–1C): Regras básicas.</strong> O aluno aplica a regra
+    da potência a polinômios (1A), depois a regra do produto (1B) e por fim a
+    regra da cadeia para composições simples (1C). Cada exercício retoma o
+    anterior e acrescenta uma nova ferramenta.
+  </p>
+  <p>
+    <strong>Fase GAMMA (2A–3C): Combinações de regras.</strong> Os exercícios
+    exigem que o aluno combine duas ou mais regras simultaneamente: quociente
+    (2A), produto com cadeia (2B), quociente com cadeia (2C), composições com
+    funções exponenciais (3A), trigonométricas (3B) e cadeia tripla (3C). Cada
+    exercício é um degrau de complexidade sobre o anterior.
+  </p>
+  <p>
+    <strong>Fase OMEGA (4A–4C): Síntese.</strong> Os exercícios finais
+    combinam todas as regras em problemas de alta complexidade: diferenciação
+    logarítmica (4A), produto + exponencial + quociente + cadeia (4B), e uma
+    composição de quatro camadas dentro de um quociente (4C). Os alunos que
+    chegaram até aqui dominam o ferramental de derivadas ordinárias.
+  </p>
+  <p>
+    <strong>Conexão com Cônicas:</strong> A fase ALFA retoma diretamente
+    conceitos de cônicas — parábola (\(y = x^2\)) e circunferência
+    (\(x^2 + y^2 = r^2\)). O discriminante para verificar tangência (PR-3)
+    foi estudado na seção de cônicas do capítulo. Este módulo mostra que
+    derivadas e cônicas não são tópicos isolados: a reta tangente a uma
+    cônica é um problema que pertence a ambos.
+  </p>
+  <p>
+    <strong>Conexão com Curvas de Nível:</strong> A ideia de que a derivada
+    dá a taxa de variação instantânea será retomada no módulo de curvas de
+    nível, onde o gradiente indica a direção de maior crescimento —
+    perpendicular às curvas de nível. O conceito de taxa de variação em uma
+    direção particular é uma generalização direta do que estudamos aqui.
+  </p>
+</div>
+
+<!-- ========== CONTEXTUALIZAÇÃO ========== -->
+<div class="concept-definition">
+  <p><strong>CONTEXTUALIZAÇÃO</strong></p>
+  <p>
+    Imagine que você está rastreindo um satélite em órbita. A cada instante, sua
+    posição muda — mas como descrever a <em>velocidade</em> num dado momento,
+    não apenas a velocidade média entre dois pontos? Precisamos de uma
+    ferramenta que capture a variação <strong>instantânea</strong> de uma
+    quantidade. Essa ferramenta é a derivada.
+  </p>
+  <p>
+    A derivada nasce de uma pergunta simples: <em>quão rápido algo muda quando
+    o intervalo de tempo é infinitamente pequeno?</em> A resposta nos dá o
+    coeficiente angular da reta tangente a uma curva, a taxa de variação de
+    funções compostas e a base para toda a mecânica orbital. Neste módulo,
+    construímos essa ferramenta do zero — da definição por limite até as regras
+    de derivação — e depois aplicamos ao problema prático de modelar o
+    comportamento de funções que surgem em cálculos espaciais.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 1 ========== -->
+<div class="concept-definition">
+  <p><strong>1. O QUE É DERIVADA? TAXA DE VARIAÇÃO INSTANTÂNEA</strong></p>
+  <p>
+    Considere uma função \(f(x)\). Queremos saber qual é a taxa de variação de
+    \(f\) num ponto específico \(x\). A ideia é calcular a inclinação de
+    uma reta secante — que passa por dois pontos da curva — e depois
+    fazer esses pontos se aproximarem até se tornarem o mesmo ponto. A
+    inclinação limite é a <strong>derivada</strong>.
+  </p>
+  <p class="formula-highlight">
+    \[ f'(x) = \frac{d}{dx}\bigl[f(x)\bigr] = \lim_{\Delta x \to 0}
+    \frac{f(x+\Delta x) - f(x)}{\Delta x} \]
+  </p>
+  <p>
+    onde \(\Delta x\) é um incremento na variável \(x\), o numerador
+    \(f(x+\Delta x) - f(x)\) é a variação da função, e o limite faz
+    \(\Delta x\) tender a zero. Geometricamente, \(f'(x)\) é o
+    <strong>coeficiente angular</strong> da reta tangente ao gráfico de \(f\)
+    no ponto \(x\). A equação dessa reta tangente é
+    \(y - y_0 = f'(x_0)(x - x_0)\), onde \((x_0, y_0)\) é o ponto de
+    tangência. Com isso, podemos agora explorar como escrever e aplicar
+    derivadas em contextos diferentes.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 2 ========== -->
+<div class="concept-definition">
+  <p><strong>2. NOTAÇÃO DE DERIVADAS: TRÊS LINGUAGENS, UMA SÓ OPERAÇÃO</strong></p>
+  <p>
+    Diferentes campos da ciência escrevem a derivada de formas distintas.
+    Reconhecer todas é essencial — os laboratórios usam notações intercambiáveis
+    dependendo do contexto.
+  </p>
+  <p>
+    <strong>Lagrange:</strong> \(f'(x)\) — enfatiza que a derivada é uma nova
+    função. É a mais compacta e a mais comum em cálculo diferencial.
+  </p>
+  <p>
+    <strong>Leibniz:</strong> \(\frac{dy}{dx}\) — enfatiza a razão de
+    variação entre \(y\) e \(x\). Essencial quando trabalhamos com
+    variáveis relacionadas ou derivação implícita.
+  </p>
+  <p>
+    <strong>Newton:</strong> \(\dot{y}\) — usada para derivadas em relação ao
+    tempo \(t\), aparecendo em mecânica e equações diferenciais. O ponto acima
+    indica "derivação temporal".
+  </p>
+  <p>
+    Todas representam a mesma operação. A diferença é o contexto:
+    \(f'(x)\) quando \(f\) é explícita, \(\frac{dy}{dx}\) quando a
+    relação entre \(x\) e \(y\) não está isolada, e \(\dot{y}\) quando
+    o tempo é a variável independente.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 3 ========== -->
+<div class="concept-definition">
+  <p><strong>3. DERIVADAS FUNDAMENTAIS: A TABELA BÁSICA</strong></p>
+  <p>
+    Existem funções cujas derivadas aparecem com tanta frequência que vale a pena
+    conhecê-las de cor. A partir da definição por limite, pode-se provar cada
+    uma — mas na prática, usamos esta tabela como ponto de partida para
+    aplicar as regras de derivação.
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{d}{dx}(x^n) = n\,x^{n-1} \]
+  </p>
+  <p>
+    onde \(n\) é qualquer número real. Para \(e^x\), a derivada é a própria
+    função: \(\frac{d}{dx}(e^x) = e^x\). Para o logaritmo natural:
+    \(\frac{d}{dx}(\ln x) = \frac{1}{x}\), válido para \(x > 0\). As
+    funções trigonométricas ciclam entre si: \(\frac{d}{dx}(\sin x) = \cos x\)
+    e \(\frac{d}{dx}(\cos x) = -\sin x\). Essa tabela é o ponto de partida
+    para todas as regras de derivação que veremos a seguir.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 4 ========== -->
+<div class="concept-definition">
+  <p><strong>4. REGRA DO PRODUTO: DERIVANDO PRODUTOS DE FUNÇÕES</strong></p>
+  <p>
+    Quando a função é o produto de duas outras — por exemplo,
+    \(h(x) = f(x) \cdot g(x)\) — não basta multiplicar as derivadas. A
+    derivada de um produto envolve uma estrutura mais delicada.
+  </p>
+  <p class="formula-highlight">
+    \[ (f \cdot g)' = f'g + fg' \]
+  </p>
+  <p>
+    A derivada do produto é a soma de dois termos: o primeiro é a derivada de
+    \(f\) multiplicada por \(g\) inalterada, e o segundo é \(f\)
+    inalterada multiplicada pela derivada de \(g\). Intuitivamente, cada
+    fator "tira sua vez" de derivar enquanto o outro permanece fixo. Essa
+    regra é especialmente útil quando \(f\) e \(g\) são funções com
+    comportamentos muito diferentes, como \(x^2 \cdot \sin x\). Com ela em
+    mãos, podemos atacar uma situação complementar: quando as funções aparecem
+    em divisão.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 5 ========== -->
+<div class="concept-definition">
+  <p><strong>5. REGRA DO QUOCIENTE: DERIVANDO RAZÕES DE FUNÇÕES</strong></p>
+  <p>
+    Se a função é um quociente \(h(x) = \frac{f(x)}{g(x)}\), a estrutura da
+    derivada lembra a regra do produto, mas com um sinal de menos e uma
+    correção quadrática no denominador.
+  </p>
+  <p class="formula-highlight">
+    \[ \left(\frac{f}{g}\right)' = \frac{f'g - fg'}{g^2}, \quad g \neq 0 \]
+  </p>
+  <p>
+    O denominador \(g^2\) aparece naturalmente porque estamos derivando uma
+    divisão — uma fração com denominador maior se altera menos. Note o sinal
+    negativo no segundo termo do numerador: quando \(f\) "tira sua vez", o
+    contribuição de \(g\) tem sinal oposto. Restrição: \(g(x) \neq 0\),
+    pois a função original não pode estar definida onde o denominador se
+    anula. Agora que sabemos derivar produtos e quocientes, falta uma peça
+    central: o que fazer quando uma função está dentro de outra.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 6 ========== -->
+<div class="concept-definition">
+  <p><strong>6. REGRA DA CADEIA: FUNÇÕES DENTRO DE FUNÇÕES</strong></p>
+  <p>
+    Muitas funções são composições — uma função "embrulhada" dentro de outra.
+    Por exemplo, \(\sin(x^2)\) é \(\sin\) de \(x^2\). Para derivar
+    composições, multiplicamos a derivada externa pela derivada interna.
+  </p>
+  <p class="formula-highlight">
+    \[ \frac{d}{dx}\bigl[f(g(x))\bigr] = f'(g(x)) \cdot g'(x) \]
+  </p>
+  <p>
+    onde \(f\) é a função externa, \(g\) é a função interna, \(f'(g(x))\)
+    significa "derivada de \(f\) avaliada em \(g(x)\)", e \(g'(x)\) é a
+    derivada da função interna. Na notação Leibniz, isso fica mais intuitivo:
+    \(\frac{dy}{dx} = \frac{dy}{du} \cdot \frac{du}{dx}\), onde
+    \(u = g(x)\) — os diferenciais \(du\) "cortam" como fração. A regra da
+    cadeia é talvez a mais usada em cálculo aplicado, pois funções compostas
+    aparecem em praticamente toda modelagem física. Resta agora ver como agir
+    quando \(y\) não está isolada de um lado da equação.
+  </p>
+</div>
+
+<!-- ========== CONCEITO 7 ========== -->
+<div class="concept-definition">
+  <p><strong>7. DERIVAÇÃO IMPLÍCITA: QUANDO Y NÃO ESTÁ ISOLADA</strong></p>
+  <p>
+    Nem sempre temos \(y\) expresso como função explícita de \(x\). Às
+    vezes, \(x\) e \(y\) estão misturados numa equação, como \(x^2 + y^2 = r^2\)
+    (circunferência). Nesses casos, derivamos ambos os lados em relação a
+    \(x\), tratando \(y\) como uma função implícita de \(x\).
+  </p>
+  <p>
+    Por exemplo, para \(x^2 + y^2 = 25\), derivando lado a lado:
+    \(2x + 2y\,\frac{dy}{dx} = 0\), donde
+    \(\frac{dy}{dx} = -\frac{x}{y}\). Note que usamos a regra da cadeia no
+    termo \(y^2\), pois \(y\) depende de \(x\). O resultado
+    \(\frac{dy}{dx} = -\frac{x}{y}\) nos dá o coeficiente angular da reta
+    tangente em qualquer ponto do círculo — inclusive quando não podemos isolar
+    \(y\) como função. Essa técnica é essencial para curvas que não passam
+    no teste da linha vertical, como círculos, elipses e curvas implícitas
+    gerais.
+  </p>
+</div>
+
+<!-- ========== APLICAÇÕES ========== -->
+<div class="mission-context">
+  <strong>APLICAÇÕES NA EXPLORAÇÃO ESPACIAL:</strong> A derivada é onipresente
+  em operações espaciais. A <strong>derivada da posição</strong> em relação ao
+  tempo fornece a velocidade instantânea de um satélite; a derivada da
+  velocidade, a aceleração. A <strong>regra da cadeia</strong> aparece ao
+  calcular a taxa de variação de temperatura ao longo de uma trajetória
+  orbital, onde a temperatura depende da altitude, que por sua vez depende do
+  tempo. A <strong>derivação implícita</strong> é usada para encontrar retas
+  tangentes a órbitas elípticas descritas pela equação
+  \(\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1\). A <strong>regra do
+  quociente</strong> calcula eficiências como razão entre potência consumida e
+  distância percorrida. Cada erro no cálculo de uma derivada propaga-se na
+  correção de trajetória, comprometendo
+  <span class="censored">manobras de acoplamento</span> e
+  <span class="censored">janelas de reentrada</span>.
+</div>
+
+<!-- ========== NOTA HISTÓRICA ========== -->
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> A teoria das derivadas foi desenvolvida
+  independentemente por Isaac Newton e Gottfried Leibniz no final do século
+  XVII. Newton usava notação de pontos (\(\dot{y}\)) em seus estudos de
+  mecânica celeste, enquanto Leibniz criou a notação \(\frac{dy}{dx}\) que
+  predomina até hoje por sua elegância algébrica. Durante o início dos anos 60,
+  a computação de derivadas ordinárias desempenhou papel fundamental no
+  <span class="censored">Programa Mercury</span>, ajudando a prever e corrigir
+  desvios de trajetória em lançamentos iniciais. A disseminação de computadores
+  permitiu o cálculo automatizado de derivadas compostas que antes exigiam
+  páginas de manipulações manuais.
+</div>

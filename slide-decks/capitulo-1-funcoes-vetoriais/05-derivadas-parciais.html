@@ -1,0 +1,62 @@
+<section>
+  <section>
+    <h2>Derivadas Parciais</h2>
+    <p>A derivada parcial de \(\vec{F}\) em relação a \(x_j\):</p>
+    <div class="fragment formula-spotlight">
+      <p>
+        \[ \frac{\partial \vec{F}}{\partial x_j} = \left(\frac{\partial
+        f_1}{\partial x_j},\; \ldots,\; \frac{\partial f_m}{\partial x_j}\right)
+        \]
+      </p>
+    </div>
+    <div class="fragment">
+      <p>Variamos uma coordenada, fixamos as demais. Resultado: um vetor.</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Matriz Jacobiana</h3>
+    <p>Todas as derivadas parciais organizadas:</p>
+    <div class="fragment">
+      <p>
+        \[ J_{\vec{F}} = \begin{pmatrix} \frac{\partial f_1}{\partial x_1} &
+        \cdots & \frac{\partial f_1}{\partial x_n} \cr \vdots & \ddots & \vdots
+        \cr \frac{\partial f_m}{\partial x_1} & \cdots & \frac{\partial
+        f_m}{\partial x_n} \end{pmatrix} \]
+      </p>
+    </div>
+    <div class="fragment">
+      <p>Cada linha é o gradiente de uma componente: \(\nabla f_i\).</p>
+    </div>
+  </section>
+
+  <section>
+    <h3>Exemplo: Jacobiana 2D</h3>
+    <div class="problem-section">
+      <p>
+        Calcule a jacobiana de \(\vec{F}(x,y) = (x^2 y,\; xe^{y})\) no ponto
+        \((1, 0)\).
+      </p>
+    </div>
+    <div class="compact-solution">
+      <div class="fragment">
+        <p>
+          Linha 1: \(\frac{\partial f_1}{\partial x} = 2xy\), \(\frac{\partial
+          f_1}{\partial y} = x^2\)
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          Linha 2: \(\frac{\partial f_2}{\partial x} = e^y\), \(\frac{\partial
+          f_2}{\partial y} = xe^y\)
+        </p>
+      </div>
+      <div class="fragment">
+        <p>
+          Avaliando em \((1,0)\): \(J_{\vec{F}}(1,0) = \begin{pmatrix} 0 & 1 \cr
+          1 & 1 \end{pmatrix}\).
+        </p>
+      </div>
+    </div>
+  </section>
+</section>

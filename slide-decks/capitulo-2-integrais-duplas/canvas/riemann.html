@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soma de Riemann - Integrais Duplas - Visualização Interativa</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0a0a0f;
+        color: #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        color: #4fc3f7;
+        text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+        margin-bottom: 10px;
+      }
+      canvas {
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #111;
+      }
+      .controls {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      button {
+        background: #1a237e;
+        color: #4fc3f7;
+        border: 1px solid #4fc3f7;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #283593;
+      }
+      button.active {
+        background: #4fc3f7;
+        color: #0a0a0f;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      input[type='range'] {
+        width: 150px;
+      }
+      .value-display {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #ffb300;
+      }
+      .formula {
+        margin-top: 10px;
+        font-family: monospace;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Soma de Riemann - Integrais Duplas</h1>
+    <canvas id="riemannCanvas" width="700" height="400"></canvas>
+
+    <div class="controls">
+      <div class="slider-container">
+        <label>Subdivisões:</label>
+        <input type="range" id="subdivSlider" min="2" max="10" value="4" />
+        <span id="subdivValue">4</span>
+      </div>
+      <button onclick="resetRiemannVisualization()">Reiniciar</button>
+    </div>
+    <div class="value-display">Soma: <span id="integralValue">0</span></div>
+
+    <script>
+      function initRiemannVisualization() {
+        const riemannCanvas = document.getElementById('riemannCanvas');
+        if (!riemannCanvas) return;
+
+        const ctx = riemannCanvas.getContext('2d');
+        let subdivisions = 4; // Valor inicial
+        let angle = 30;
+        let scale = 120;
+        let isDragging = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        // Configurar controle deslizante
+        const subdivSlider = document.getElementById('subdivSlider');
+        const subdivValue = document.getElementById('subdivValue');
+
+        // Atualizar valor do slider
+        subdivSlider.addEventListener('input', updateRiemannVisualization);
+
+        // Função da superfície
+        function f(x, y) {
+          return Math.pow(x, 2) / 4 + Math.pow(y, 2) / 9;
+        }
+
+        // Conversão para coordenadas 2D isométricas
+        function to2D(x, y, z) {
+          const angleRad = (angle * Math.PI) / 180;
+          const isoX = (x - y) * Math.cos(angleRad);
+          const isoY = ((x + y) * Math.sin(angleRad)) / 2 - z * 0.7;
+          return {
+            x: isoX * scale + riemannCanvas.width / 2,
+            y: isoY * scale + riemannCanvas.height / 2,
+          };
+        }
+
+        // Função principal de desenho
+        function drawRiemannVisualization() {
+          ctx.clearRect(0, 0, riemannCanvas.width, riemannCanvas.height);
+
+          // Desenhar eixos
+          ctx.beginPath();
+          ctx.strokeStyle = '#FF69B4'; // Rosa para eixo X (vetor posição)
+          const xStart = to2D(-1.2, 0, 0);
+          const xEnd = to2D(1.2, 0, 0);
+          ctx.moveTo(xStart.x, xStart.y);
+          ctx.lineTo(xEnd.x, xEnd.y);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.strokeStyle = '#4CAF50'; // Verde para eixo Y (vetor velocidade)
+          const yStart = to2D(0, -1.2, 0);
+          const yEnd = to2D(0, 1.2, 0);
+          ctx.moveTo(yStart.x, yStart.y);
+          ctx.lineTo(yEnd.x, yEnd.y);
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.strokeStyle = '#2196F3'; // Azul para eixo Z
+          const zStart = to2D(0, 0, 0);
+          const zEnd = to2D(0, 0, 1.2);
+          ctx.moveTo(zStart.x, zStart.y);
+          ctx.lineTo(zEnd.x, zEnd.y);
+          ctx.stroke();
+
+          // Desenhar retângulos da soma de Riemann
+          const dx = 2 / subdivisions;
+          const dy = 2 / subdivisions;
+
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              const x = -1 + i * dx + dx / 2;
+              const y = -1 + j * dy + dy / 2;
+              const z = f(x, y);
+
+              // Calcular cor baseada na altura
+              const blue = Math.min(255, Math.floor(150 + z * 100));
+              const strokeColor = `rgba(52, 152, 219, 0.8)`;
+              const fillColor = `rgba(52, 152, ${blue}, ${0.2 + z * 0.3})`;
+
+              ctx.beginPath();
+              ctx.strokeStyle = strokeColor;
+              ctx.fillStyle = fillColor;
+              ctx.lineWidth = 1;
+
+              const points = [
+                to2D(x - dx / 2, y - dy / 2, 0),
+                to2D(x + dx / 2, y - dy / 2, 0),
+                to2D(x + dx / 2, y + dy / 2, 0),
+                to2D(x - dx / 2, y + dy / 2, 0),
+                to2D(x - dx / 2, y - dy / 2, z),
+                to2D(x + dx / 2, y - dy / 2, z),
+                to2D(x + dx / 2, y + dy / 2, z),
+                to2D(x - dx / 2, y + dy / 2, z),
+              ];
+
+              // Desenhar base
+              ctx.moveTo(points[0].x, points[0].y);
+              ctx.lineTo(points[1].x, points[1].y);
+              ctx.lineTo(points[2].x, points[2].y);
+              ctx.lineTo(points[3].x, points[3].y);
+              ctx.lineTo(points[0].x, points[0].y);
+
+              // Desenhar arestas verticais
+              for (let k = 0; k < 4; k++) {
+                ctx.moveTo(points[k].x, points[k].y);
+                ctx.lineTo(points[k + 4].x, points[k + 4].y);
+              }
+
+              // Desenhar topo
+              ctx.moveTo(points[4].x, points[4].y);
+              ctx.lineTo(points[5].x, points[5].y);
+              ctx.lineTo(points[6].x, points[6].y);
+              ctx.lineTo(points[7].x, points[7].y);
+              ctx.lineTo(points[4].x, points[4].y);
+
+              ctx.stroke();
+              ctx.fill();
+            }
+          }
+
+          updateRiemannIntegralValue();
+        }
+
+        // Calcular o valor aproximado da integral
+        function calculateRiemannApproximation() {
+          const dx = 2 / subdivisions;
+          const dy = 2 / subdivisions;
+          let sum = 0;
+
+          for (let i = 0; i < subdivisions; i++) {
+            for (let j = 0; j < subdivisions; j++) {
+              const x = -1 + i * dx + dx / 2;
+              const y = -1 + j * dy + dy / 2;
+              sum += f(x, y) * dx * dy;
+            }
+          }
+          return sum.toFixed(3);
+        }
+
+        // Atualizar o valor exibido
+        function updateRiemannIntegralValue() {
+          const integralValueElement = document.getElementById('integralValue');
+          if (integralValueElement) {
+            integralValueElement.textContent = calculateRiemannApproximation();
+          }
+        }
+
+        // Função de atualização baseada nos controles
+        function updateRiemannVisualization() {
+          subdivisions = parseInt(this.value);
+          document.getElementById('subdivValue').textContent = subdivisions;
+          drawRiemannVisualization();
+        }
+
+        // Função de reset
+        window.resetRiemannVisualization = function () {
+          subdivisions = 4;
+          if (subdivSlider) {
+            subdivSlider.value = 4;
+            subdivValue.textContent = 4;
+          }
+          drawRiemannVisualization();
+        };
+
+        // Manipuladores de interação com mouse/toque
+        riemannCanvas.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          riemannCanvas.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+
+          const deltaX = e.clientX - lastX;
+          angle = (angle + deltaX * 0.5) % 360;
+          lastX = e.clientX;
+
+          drawRiemannVisualization();
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          riemannCanvas.style.cursor = 'grab';
+        });
+
+        // Iniciar desenho da visualização de Riemann
+        drawRiemannVisualization();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DO VOLUME
+      // =============================================
+
+      document.addEventListener('DOMContentLoaded', function () {
+        initRiemannVisualization();
+      });
+    </script>
+  </body>
+</html>

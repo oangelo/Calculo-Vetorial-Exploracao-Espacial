@@ -1,0 +1,65 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCICIO VECTOR-2B</div>
+  <div class="context">
+    ORIGEM: Escudo Termico Apollo 16 - Material Ablativo (05/ABR/1972)
+  </div>
+  <p>
+    Acabamos de integrar sobre o cilindro. Agora vamos a superficie mais iconica
+    da exploracao espacial — a casca esferica — e damos a funcao integrada um
+    significado fisico direto: a densidade superficial de material. O escudo
+    termico da Apollo 16 possui espessura variavel de material ablativo.
+  </p>
+  <p>
+    Considere o hemisferio superior de raio \(R = 2\) m (escudo termico),
+    parametrizado por \(\vec{r}(\theta, \phi) = (2\sin\phi\cos\theta,\;
+    2\sin\phi\sin\theta,\; 2\cos\phi)\), com \(0 \le \theta \le 2\pi\) e \(0 \le
+    \phi \le \pi/2\). A densidade superficial de material ablativo e
+    \(\delta(x,y,z) = 1 + z\) (em kg/m²).
+  </p>
+  <p>
+    <strong>(a)</strong> Parametrize o hemisferio usando as coordenadas
+    esfericas dadas e calcule \(\|\vec{r}_\theta \times \vec{r}_\phi\|\).
+  </p>
+  <p>
+    <strong>(b)</strong> Expresse a funcao densidade \(\delta(x,y,z) = 1 + z\)
+    em termos dos parametros \((\theta, \phi)\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule a massa total do material ablativo sobre o
+    escudo termico.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-2]</summary>
+    <div class="hint">
+      [NOTA TECNICA]: Para esfera de raio R, ||r_theta x r_phi|| = R^2 sin phi.
+      A densidade em parametros fica delta = 1 + 2 cos phi.
+    </div>
+  </details>
+  <details>
+    <summary>RELATORIO DE CALCULO [SIGMA-2 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Derivadas parciais: \(\vec{r}_\theta =
+        (-2\sin\phi\sin\theta,\; 2\sin\phi\cos\theta,\; 0)\), \(\vec{r}_\phi =
+        (2\cos\phi\cos\theta,\; 2\cos\phi\sin\theta,\; -2\sin\phi)\). Produto
+        vetorial: \(\vec{r}_\theta \times \vec{r}_\phi =
+        (-4\sin^2\phi\cos\theta,\; -4\sin^2\phi\sin\theta,\;
+        -4\sin\phi\cos\phi)\). Norma: \(\|\vec{r}_\theta \times \vec{r}_\phi\| =
+        4\sin\phi\).
+      </p>
+      <p>
+        <strong>(b)</strong> Como \(z = 2\cos\phi\): \(\delta(\theta,\phi) = 1 +
+        2\cos\phi\).
+      </p>
+      <p>
+        <strong>(c)</strong> Massa total: \[M = \int_0^{2\pi}\int_0^{\pi/2} (1 +
+        2\cos\phi) \cdot 4\sin\phi\, d\phi\, d\theta\] \[=
+        4\int_0^{2\pi}\int_0^{\pi/2} (\sin\phi + 2\sin\phi\cos\phi)\, d\phi\,
+        d\theta\] \[= 4\int_0^{2\pi}\left[-\cos\phi +
+        \sin^2\phi\right]_0^{\pi/2} d\theta\] \[= 4\int_0^{2\pi}(0 + 1 - (-1 +
+        0))\, d\theta = 4\int_0^{2\pi} 2\, d\theta = 16\pi\] A massa total e
+        \(\mathbf{16\pi}\) kg.
+      </p>
+    </div>
+  </details>
+</li>

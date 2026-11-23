@@ -1,0 +1,94 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-07-GAMMA</div>
+  <div class="context">
+    ORIGEM: Forças Gravitacionais — Programa Skylab, 1973
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> No EX-01, vimos que torque
+    causa rotação. Um campo gravitacional puxa objetos em direção ao centro —
+    mas ele causa <em>rotação</em>? Se colocarmos uma pá de moinho em um campo
+    gravitacional uniforme, ela gira?
+  </div>
+
+  <p>
+    O campo gravitacional perto da superfície da Terra é aproximadamente
+    \(\vec{g} = (0, 0, -g)\), onde \(g \approx 9{,}8\) m/s². Este campo aponta
+    sempre para baixo com intensidade constante.
+  </p>
+
+  <p>
+    <strong>(a)</strong> Calcule o rotacional de \(\vec{g} = (0, 0, -g)\). Use a
+    fórmula componente por componente.
+  </p>
+
+  <p>
+    <strong>(b)</strong> O rotacional é zero. Se colocarmos uma pequena pá de
+    moinho em qualquer ponto deste campo, ela gira? Por quê?
+  </p>
+
+  <p>
+    <strong>(c)</strong> Agora considere o campo gravitacional de uma massa
+    pontual na origem: \(\vec{F} = -\frac{GM}{r^3}(x, y, z)\), onde \(r =
+    \sqrt{x^2+y^2+z^2}\). Calcule a componente \(i\) do rotacional:
+    \(\frac{\partial F_3}{\partial y} - \frac{\partial F_2}{\partial z}\). Dica:
+    use a regra da cadeia com \(F_3 = -\frac{GMz}{r^3}\).
+  </p>
+
+  <p>
+    <strong>(d)</strong> Verifique que \(\frac{\partial F_3}{\partial y} =
+    \frac{3GMyz}{r^5}\) e \(\frac{\partial F_2}{\partial z} =
+    \frac{3GMyz}{r^5}\). A componente \(i\) do rotacional é zero. Por simetria,
+    as outras componentes também são zero. Interprete: por que a gravidade não
+    "gira" objetos?
+  </p>
+
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-7]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Para \(F_3 = -GMz \cdot r^{-3}\), use a regra da cadeia:
+      \(\frac{\partial F_3}{\partial y} = -GMz \cdot (-3) r^{-4} \cdot
+      \frac{\partial r}{\partial y}\). Como \(\frac{\partial r}{\partial y} =
+      \frac{y}{r}\), o resultado é \(\frac{3GMzy}{r^5}\).
+    </div>
+  </details>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) \(P = 0\), \(Q = 0\), \(R = -g\). Todas as derivadas parciais são
+        zero (pois \(g\) é constante). \(\nabla \times \vec{g} = (0, 0, 0)\).
+      </p>
+
+      <p>
+        (b) Não. O campo gravitacional uniforme puxa todos os pontos da pá com a
+        mesma força, na mesma direção. Não há diferença de força entre um lado
+        da pá e o outro — sem torque, sem rotação.
+      </p>
+
+      <p>
+        (c) \(F_3 = -GMz \cdot r^{-3}\). \(\frac{\partial F_3}{\partial y} =
+        -GMz \cdot (-3)r^{-4} \cdot \frac{\partial r}{\partial y} = 3GMz \cdot
+        r^{-4} \cdot \frac{y}{r} = \frac{3GMzy}{r^5}\).
+      </p>
+
+      <p>
+        (d) \(F_2 = -GMy \cdot r^{-3}\). \(\frac{\partial F_2}{\partial z} =
+        -GMy \cdot (-3)r^{-4} \cdot \frac{z}{r} = \frac{3GMyz}{r^5}\).
+        Componente \(i\): \(\frac{3GMzy}{r^5} - \frac{3GMyz}{r^5} = 0\). Por
+        simetria (ciclamos as variáveis), as componentes \(j\) e \(k\) também
+        são zero.
+      </p>
+
+      <p>
+        A gravidade puxa sempre em direção ao centro — não há componente
+        tangencial que cause rotação. O campo é puramente "radial" e, portanto,
+        irrotacional. Isso é uma propriedade fundamental dos campos
+        conservativos: a força não "gira".
+      </p>
+    </div>
+  </details>
+</li>

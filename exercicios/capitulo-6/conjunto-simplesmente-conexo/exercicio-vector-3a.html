@@ -1,0 +1,63 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-3A</div>
+  <div class="context">ORIGEM: Teste de Sistema — Novembro/1968</div>
+  <p>
+    Vamos agora analisar o contra-exemplo clássico a fundo. O campo \(F(x,y) =
+    \left(\frac{-y}{x^2+y^2},\; \frac{x}{x^2+y^2}\right)\) — conhecido como
+    <strong>campo vortical</strong> — aparece em diversas aplicações em física.
+    Já verificamos que seu rotacional é zero. Agora vamos calcular a integral de
+    linha ao redor de uma curva fechada.
+  </p>
+  <p>
+    <strong>(a)</strong> Confirme que as derivadas parciais cruzadas são iguais:
+    \(\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x}\).
+  </p>
+  <p>
+    <strong>(b)</strong> Parametrize a circunferência \(C\) centrada na origem
+    com raio \(R &gt; 0\): \(r(t) = (R\cos t,\, R\sin t)\), \(t \in [0, 2\pi]\).
+  </p>
+  <p>
+    <strong>(c)</strong> Calcule \(\oint_C F \cdot dr\) e interprete o resultado
+    não-nulo.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-3]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Na parametrização circular, o denominador \(x^2+y^2\)
+      simplifica com \(R^2\). Observe que \(F \cdot r'(t)\) se reduz a uma
+      constante.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-3 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Já calculado anteriormente: \(\frac{\partial
+        P}{\partial y} = \frac{\partial Q}{\partial x} =
+        \frac{-x^2+y^2}{(x^2+y^2)^2}\). O rotacional é zero em todo o domínio.
+      </p>
+      <p>
+        <strong>(b)</strong> \(r(t) = (R\cos t,\, R\sin t)\), logo \(r'(t) =
+        (-R\sin t,\, R\cos t)\) e \(x^2+y^2 = R^2\cos^2 t + R^2\sin^2 t = R^2\).
+      </p>
+      <p>
+        <strong>(c)</strong>
+      </p>
+      <p>
+        \[F(r(t)) = \left(\frac{-R\sin t}{R^2},\, \frac{R\cos t}{R^2}\right) =
+        \frac{1}{R}(-\sin t,\, \cos t)\]
+      </p>
+      <p>
+        \[F \cdot r' = \frac{1}{R}\left[R\sin^2 t + R\cos^2 t\right] =
+        \frac{R}{R} = 1\]
+      </p>
+      <p>\[\oint_C F \cdot dr = \int_0^{2\pi} 1\, dt = 2\pi\]</p>
+      <p>
+        A integral ao redor da curva fechada é \(2\pi \neq 0\). Se o campo fosse
+        conservativo, a integral sobre qualquer curva fechada deveria ser zero.
+        Isso confirma que \(F\) <strong>não é conservativo</strong>, apesar do
+        rotacional nulo. O furo no domínio é a causa.
+      </p>
+    </div>
+  </details>
+</li>

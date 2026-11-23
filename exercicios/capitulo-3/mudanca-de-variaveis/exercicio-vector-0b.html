@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">
+    EXERCÍCIO 2 — TRANSFORMAÇÃO LINEAR: RASTREANDO PONTOS
+  </div>
+  <div class="context">
+    ORIGEM: Laboratório de
+    <span class="censored">Transformações</span> - Arquivo
+    <span class="censored">BÁSICO</span>
+  </div>
+  <p>
+    Uma transformação \(x = u+v,\; y = u-v\) "deforma" o plano. Para entender
+    como o Jacobiano mede essa deformação, primeiro precisamos visualizar o que
+    acontece com pontos e regiões concretas. Este exercício rastreia onde vão
+    três pontos e revela como um quadrado se transforma em um losango.
+  </p>
+  <p>
+    <strong>(a)</strong> Aplique a transformação ao ponto \((u,v)=(1,0)\). Onde
+    ele aparece no plano \((x,y)\)?
+  </p>
+  <p><strong>(b)</strong> Aplique a transformação ao ponto \((u,v)=(0,1)\).</p>
+  <p>
+    <strong>(c)</strong> Aplique a transformação ao ponto \((u,v)=(1,1)\).
+    Depois, desenhe o quadrado \([0,1]\times[0,1]\) no plano \((u,v)\) e sua
+    imagem no plano \((x,y)\). A imagem é um losango.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Aplique \((x,y) = (u+v,\, u-v)\) a cada vértice do
+      quadrado: \((0,0)\), \((1,0)\), \((0,1)\), \((1,1)\). A imagem será um
+      losango (paralelogramo com lados iguais). Observe que a área do losango é
+      2 — o dobro da área do quadrado original. Isso nos diz algo sobre o
+      Jacobiano!
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> Para \((u,v)=(1,0)\): \(x = 1+0 = 1\), \(y = 1-0 =
+        1\). O ponto vai para \((1,1)\).
+      </p>
+      <p>
+        <strong>(b)</strong> Para \((u,v)=(0,1)\): \(x = 0+1 = 1\), \(y = 0-1 =
+        -1\). O ponto vai para \((1,-1)\).
+      </p>
+      <p>
+        <strong>(c)</strong> Para \((u,v)=(1,1)\): \(x = 1+1 = 2\), \(y = 1-1 =
+        0\). O ponto vai para \((2,0)\).
+      </p>
+      <p>Imagem completa dos quatro vértices:</p>
+      <p>
+        \((0,0) \to (0,0)\), \quad \((1,0) \to (1,1)\), \quad \((0,1) \to
+        (1,-1)\), \quad \((1,1) \to (2,0)\).
+      </p>
+      <p>
+        A imagem é um losango com vértices em \((0,0)\), \((1,1)\), \((2,0)\),
+        \((1,-1)\). Sua área pode ser calculada pela fórmula do produto
+        vetorial: \[ \text{Área} = |\vec{AB} \times \vec{AD}| = \begin{vmatrix}
+        1 &amp; 1 \\ 1 &amp; -1 \end{vmatrix} = |-1 - 1| = 2. \]
+      </p>
+      <p>
+        A área do quadrado original é 1, mas a imagem tem área 2. O fator de
+        escala é 2 — este é exatamente o valor absoluto do Jacobiano, que
+        calcularemos formalmente no Exercício 3.
+      </p>
+      <p>
+        CONCLUSÃO: A transformação \(x=u+v,\, y=u-v\) mapeia o quadrado
+        \([0,1]\times[0,1]\) em um losango de área 2. O fator de expansão de
+        área é o Jacobiano da transformação.
+      </p>
+    </div>
+  </details>
+</li>

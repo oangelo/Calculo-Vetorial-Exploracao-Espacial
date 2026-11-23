@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Documento Sigiloso - Cálculo Vetorial</title>
+    <link
+      href="https://fonts.cdnjs.com/css2?family=Share+Tech+Mono&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+      :root {
+        --main-bg-color: #0a0a0a;
+        --paper-color: #f5f5dc;
+        --text-color: #333;
+        --accent-color: #d4af37;
+        --stamp-color: #8b0000;
+        --censored-bg: #000;
+        --header-bg: #e6e6cc;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--main-bg-color);
+        font-family: 'Share Tech Mono', monospace;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 800px;
+        background-color: var(--paper-color);
+        color: var(--text-color);
+        padding: 25px;
+        border: 1px solid var(--accent-color);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        position: relative;
+        overflow: hidden;
+      }
+
+      .container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3OLi4ubm5uVlZWPj4+NjY19fX2JiYl/f39ra2uRkZGZmZlpaWmXl5dvb29xcXGTk5NnZ2c4zIguAAAAP0lEQVRIDUzOARZDQQgF0CwzZczQRtn/mtto8G/tIhvCbO1sDrFgHrVVE7kBqyJdwG9tE/I+U6PiZhPC/MrTN/aVPuNZ07YsAAAAAElFTkSuQmCC');
+        opacity: 0.05;
+        pointer-events: none;
+      }
+
+      .document-header {
+        position: relative;
+        margin-bottom: 30px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 20px;
+      }
+
+      .document-stamp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: var(--stamp-color);
+        color: white;
+        padding: 5px 15px;
+        transform: rotate(15deg);
+        font-weight: bold;
+        font-size: 1.2em;
+        border: 2px solid #500;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      }
+
+      .document-date {
+        font-size: 0.9em;
+        margin-bottom: 15px;
+        text-align: right;
+      }
+
+      .document-intro {
+        margin-bottom: 20px;
+        font-size: 0.95em;
+      }
+
+      .censored {
+        background-color: var(--censored-bg);
+        color: var(--censored-bg);
+        padding: 0 2px;
+        user-select: none;
+        margin: 0 2px;
+      }
+
+      .warning-box {
+        border: 1px dashed #8b0000;
+        padding: 10px;
+        margin: 15px 0;
+        background-color: rgba(139, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .metadata {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8em;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px dotted #555;
+      }
+
+      .section-title {
+        margin: 20px 0 10px 0;
+        font-weight: bold;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .concept-definition {
+        background-color: rgba(212, 175, 55, 0.1);
+        padding: 10px;
+        margin: 15px 0;
+      }
+
+      .formula-highlight {
+        text-align: center;
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .historical-note {
+        font-size: 0.85em;
+        margin: 10px 0;
+        padding: 8px;
+        border: 1px dotted #777;
+        background-color: rgba(139, 0, 0, 0.05);
+      }
+
+      main {
+        margin-top: 20px;
+      }
+
+      .exercise-list {
+        list-style-type: none;
+      }
+
+      .exercise-item {
+        margin-bottom: 30px;
+        border: 1px solid #777;
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.4);
+        position: relative;
+      }
+
+      .exercise-number {
+        font-weight: bold;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #777;
+        padding-bottom: 5px;
+      }
+
+      .context {
+        font-size: 0.8em;
+        margin-bottom: 15px;
+        font-style: italic;
+        color: #555;
+      }
+
+      .hint-container {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+
+      .hint-container summary {
+        background-color: #f0f0e0;
+        font-weight: normal;
+        font-size: 0.9em;
+      }
+
+      .hint {
+        font-size: 0.9em;
+        font-style: italic;
+        margin: 10px 0;
+        padding: 5px;
+        border-left: 3px solid #777;
+        background-color: #f0f0e0;
+      }
+
+      summary {
+        cursor: pointer;
+        background-color: var(--header-bg);
+        padding: 8px;
+        margin-top: 15px;
+        border: 1px solid #999;
+        font-weight: bold;
+        transition: background-color 0.3s;
+      }
+
+      summary:hover {
+        background-color: #d6d6b6;
+      }
+
+      .solution {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.7);
+        border: 1px solid #999;
+        border-top: none;
+      }
+
+      .page-number {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.8em;
+        color: #555;
+        border-top: 1px solid #777;
+        padding-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- INTRO - INLINE -->
+      <div class="document-header">
+        <div class="document-stamp">SIGILOSO</div>
+        <div class="document-date">
+          DATA: <span class="censored">27</span> DE JANEIRO DE
+          <span class="censored">1967</span>
+          <br />
+          LOCALIZAÇÃO: <span class="censored">CENTRO ESPACIAL KENNEDY</span>
+        </div>
+        <div class="document-intro">
+          RELATÓRIO DE PROGRESSO: PROJETO
+          <span class="censored">APOLLO-ARC</span><br /><br />
+          Após a <span class="censored">tragedia na plataforma</span>, o
+          programa espacial foi reestruturado. Nossas equipes de engenharia
+          orbital e especialistas em Cálculo Vetorial concentram esforços no
+          desenvolvimento de métodos precisos para medir percursos ao longo de
+          trajetórias curvas. O comprimento de arco de curvas parametrizadas é
+          fundamental para calcular consumo de combustível, tempos de manobra e
+          distâncias percorridas em órbitas que não são circulares. <br /><br />
+          Este dossiê apresenta a fundamentação necessária para o domínio dessas
+          técnicas, retomando conceitos de curvas parametrizadas estudados
+          anteriormente e construindo, passo a passo, a fórmula que nos permite
+          medir qualquer trajetória.
+        </div>
+        <div class="warning-box">
+          A divulgação não autorizada deste documento pode resultar em
+          <span class="censored">consequências irreversíveis</span>. Mantenha
+          sob sigilo absoluto toda a informação contida nas próximas páginas.
+        </div>
+        <div class="metadata">
+          <span>REF: ARC-<span class="censored">0127</span>-A</span>
+          <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">5</span></span>
+          <span
+            >CÓPIAS EXISTENTES: <span class="censored">2</span> DE
+            <span class="censored">5</span></span
+          >
+        </div>
+      </div>
+      <div class="section-title">
+        FUNDAMENTAÇÃO TEÓRICA: COMPRIMENTO DE ARCO DE CURVAS PARAMETRIZADAS
+      </div>
+      <div class="concept-definition">
+        <p><strong>1. PRÉ-REQUISITOS: CURVAS, DERIVADAS E NORMAS</strong></p>
+        <p>
+          No estudo de funções vetoriais, aprendemos que uma curva no espaço é
+          descrita por uma função vetorial \(\vec{r}(t) = \bigl(x(t),\, y(t),\,
+          z(t)\bigr)\), onde o parâmetro \(t\) representa, frequentemente, o
+          tempo. A derivada \(\vec{r}\,'(t) = \bigl(x'(t),\, y'(t),\,
+          z'(t)\bigr)\) é o vetor velocidade — indica a direção e a rapidez com
+          que o ponto se move ao longo da curva.
+        </p>
+        <p>
+          A norma desse vetor, \(\|\vec{r}\,'(t)\|\), nos dá a
+          <strong>rapidez escalar</strong> (velocidade sem direção). Quando a
+          norma é constante, o ponto se move sempre com a mesma velocidade.
+          Quando varia, o ponto acelera ou desacelera. Essa grandeza é a chave
+          para medir comprimentos de curvas.
+        </p>
+        <p>
+          Retomando também a noção de norma e distância entre pontos: a
+          distância entre dois pontos \(\vec{P}\) e \(\vec{Q}\) é \(\|\vec{Q} -
+          \vec{P}\|\). Se a trajetória fosse um segmento reto, o comprimento
+          seria essa distância direta. Mas trajetórias reais são curvas — e é
+          isso que precisamos medir.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>2. A IDEIA GEOMÉTRICA: LINEARIZAR E SOMAR</strong></p>
+        <p>
+          Se não sabemos medir o comprimento de uma curva diretamente, podemos
+          <strong>aproximá-la</strong> por segmentos retos. Escolhemos \(N\)
+          pontos igualmente espaçados no parâmetro ao longo da curva e
+          conectamos cada par consecutivo com um segmento reto. A soma dos
+          comprimentos desses segmentos é uma aproximação do comprimento total.
+        </p>
+        <p class="formula-highlight">
+          \[ L \approx \sum_{i=1}^{N} \|\vec{r}(t_i) - \vec{r}(t_{i-1})\| \]
+        </p>
+        <p>
+          Conforme aumentamos \(N\), os segmentos ficam menores e a aproximação
+          melhora. No limite \(N \to \infty\), a soma converge para o
+          comprimento exato da curva. Cada termo \(\|\vec{r}(t_i) -
+          \vec{r}(t_{i-1})\|\) pode ser reescrito como \(\|\vec{r}\,'(t^*_i)\|
+          \cdot \Delta t\) por uma aplicação do Teorema do Valor Médio — e a
+          soma se transforma na integral que veremos a seguir.
+        </p>
+      </div>
+      <div class="concept-definition">
+        <p><strong>3. A FÓRMULA: COMPRIMENTO DE ARCO COMO INTEGRAL</strong></p>
+        <p>
+          Passando ao limite na soma anterior, obtemos a fórmula fundamental do
+          comprimento de arco:
+        </p>
+        <p class="formula-highlight">
+          \[ L = \int_{a}^{b} \|\vec{r}\,'(t)\| \, dt = \int_{a}^{b}
+          \sqrt{\bigl(x'(t)\bigr)^2 + \bigl(y'(t)\bigr)^2 + \bigl(z'(t)\bigr)^2}
+          \, dt \]
+        </p>
+        <p>
+          Aqui, \(\vec{r}(t)\) é a parametrização da curva com \(t\) variando de
+          \(a\) até \(b\). A integral acumula as contribuições infinitesimais de
+          comprimento ao longo de todo o percurso. A quantidade \(L\) é o
+          comprimento total da curva — uma propriedade
+          <strong>intrínseca da curva</strong>, que não depende da
+          parametrização escolhida.
+        </p>
+        <p>
+          Para curvas no plano (\(z = 0\)), a fórmula se reduz a dois termos sob
+          a raiz. Para curvas no espaço, três termos. A técnica de cálculo é
+          sempre a mesma: derivar cada componente, calcular a norma da derivada,
+          montar a integral e avaliar.
+        </p>
+      </div>
+      <p>
+        Em missões Apollo, o cálculo do comprimento de arco permite estimar
+        consumo de propelente ao longo de trajetórias de injeção translunar,
+        determinar instantes de ignição dos motores e prever distâncias
+        percorridas em manobras orbitais. Quando a trajetória não é uma
+        circunferência perfeita, a integral fornece a medida exata do percurso.
+      </p>
+      <div class="historical-note">
+        <strong>NOTA HISTÓRICA:</strong> Em janeiro de
+        <span class="censored">1967</span>, o incêndio na Apollo 1 abalou o
+        programa espacial americano. Após meses de reestruturação, os voos
+        tripulados foram retomados com a Apollo 7 em outubro de
+        <span class="censored">1968</span>, seguida pela histórica Apollo 8 em
+        dezembro do mesmo ano — a primeira a orbitar a Lua. Cálculos precisos de
+        trajetória foram cruciais para o sucesso dessas missões.
+      </div>
+
+      <main>
+        <ol class="exercise-list" id="exercises"></ol>
+      </main>
+
+      <div class="page-number">
+        PÁGINA 1 DE <span class="censored">23</span> • DOCUMENTO ARC-<span
+          class="censored"
+          >0127</span
+        >-A
+      </div>
+    </div>
+
+    <script>
+      async function loadExercises() {
+        try {
+          const exercises = [
+            'exercicio-vector-1a.html',
+            'exercicio-vector-1b.html',
+            'exercicio-vector-1c.html',
+            'exercicio-vector-2a.html',
+            'exercicio-vector-2b.html',
+            'exercicio-vector-2c.html',
+            'exercicio-vector-3a.html',
+            'exercicio-vector-3b.html',
+            'exercicio-vector-3c.html',
+            'exercicio-vector-4a.html',
+            'exercicio-vector-4b.html',
+            'exercicio-vector-4c.html',
+          ];
+
+          const list = document.getElementById('exercises');
+
+          for (const file of exercises) {
+            const resp = await fetch(file);
+            if (resp.ok) {
+              list.innerHTML += await resp.text();
+            }
+          }
+
+          if (window.MathJax && typeof MathJax.typeset === 'function') {
+            MathJax.typeset();
+          }
+        } catch (error) {
+          console.error('Erro ao carregar exercícios:', error);
+        }
+      }
+
+      loadExercises();
+    </script>
+  </body>
+</html>

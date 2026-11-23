@@ -1,0 +1,479 @@
+<section>
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h2>Área de Superfície</h2>
+      <p>
+        A integral dupla do capítulo 2 media regiões planas: cada retângulo do
+        domínio entrava na soma com a própria área. Quanto tecido cobre uma
+        superfície curva? Uma membrana no espaço não é plana, e esticá-la ou
+        enrolá-la muda a área que ela ocupa — quadrados do domínio deixam de
+        corresponder a quadrados na superfície.
+      </p>
+      <p>
+        O capítulo 3 já deu o instrumento para medir esse efeito: o Jacobiano de
+        uma mudança de variáveis é o fator local que converte uma área do
+        domínio na área correspondente da imagem. Aqui a mesma ideia reaparece
+        em três dimensões. O produto vetorial \(\vec r_u\times\vec r_v\),
+        construído no tópico anterior para obter a normal, mede agora quanto a
+        parametrização estica cada pedaço — e a integral dupla soma os pedaços.
+      </p>
+      <p class="history-insert">
+        O acordo previa um voo — e apenas um. A segunda Skylab, já construída,
+        chegou a ser considerada para voar com Salyut e Soyuz, mas foi cancelada
+        em 1973. Nove dias de cooperação não teriam continuação.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>O Paralelogramo Infinitesimal</h3>
+      <div class="dual-panel">
+        <div>
+          <p><strong>No domínio</strong></p>
+          <p>
+            Um retângulo de lados \(du\) e \(dv\), com um canto em \((u,v)\), é
+            a menor célula da grade que cobre \(D\) — área \(du\,dv\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p><strong>Na superfície</strong></p>
+          <p>
+            A parametrização leva esse retângulo a um paralelogramo de lados
+            \(\vec r_u\,du\) e \(\vec r_v\,dv\), com um canto em
+            \(\vec r(u,v)\). Sua área é
+            \(\|\vec r_u\times\vec r_v\|\,du\,dv\).
+          </p>
+        </div>
+      </div>
+      <p>
+        O fator \(\|\vec r_u\times\vec r_v\|\) é o
+        <strong>esticamento local</strong>: onde é grande, um pedaço pequeno do
+        domínio vira um pedaço grande da superfície e contribui mais para a área
+        total; onde é pequeno, contribui menos. É o análogo tridimensional do
+        Jacobiano — o mesmo papel de fator de escala, agora ligando um mapa
+        plano a uma membrana no espaço.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>Definição</h3>
+      <div class="formula-spotlight">
+        <p>
+          \[ A(S)=\iint_D\|\vec r_u\times\vec r_v\|\,du\,dv,\qquad dS=\|\vec r_u\times\vec r_v\|\,du\,dv \]
+        </p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> \(D\) é o domínio dos parâmetros, com fronteira
+          suave por partes; \(S=\vec r(D)\) é a superfície; \(dS\) é o elemento
+          de área — a área do paralelogramo infinitesimal.
+        </p>
+        <p>
+          <strong>Definição:</strong> \(A(S)\) é o limite da soma das áreas dos
+          paralelogramos quando a malha de \(D\) refina; a soma vira integral e
+          o fator local \(\|\vec r_u\times\vec r_v\|\) pesa cada pedaço.
+        </p>
+        <p>
+          <strong>Validade:</strong> \(\vec r\) de classe \(C^1\) em \(D\) e
+          \(\vec r_u\times\vec r_v\neq\vec 0\) nos pontos regulares — onde o
+          produto se anula, o fator zera e esses pontos não alteram a integral.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>O Caso Gráfico</h3>
+      <div class="formula-spotlight">
+        <p>\[ \|\vec r_x\times\vec r_y\|=\sqrt{1+f_x^2+f_y^2} \]</p>
+      </div>
+      <div class="math-section">
+        <p>
+          <strong>Onde:</strong> a superfície é o gráfico \(z=f(x,y)\), com
+          parametrização natural \(\vec r(x,y)=(x,y,f(x,y))\). As derivadas
+          \(\vec r_x=(1,0,f_x)\) e \(\vec r_y=(0,1,f_y)\) levam ao produto
+          \((-f_x,-f_y,1)\), cuja norma é a fórmula acima.
+        </p>
+        <p>
+          <strong>Interpretação:</strong> \(f_x\) e \(f_y\) medem a inclinação
+          da superfície nas direções \(x\) e \(y\); cada um acrescenta área além
+          da região plana do domínio.
+        </p>
+        <p>
+          <strong>Plano horizontal:</strong> se \(f_x=f_y=0\), o fator é 1 e
+          \(A(S)=\iint_D dA\) — a área da superfície coincide com a área do
+          domínio.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>Exemplo 1 — A Área da Esfera</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule a área da esfera de raio \(R\) usando a parametrização
+            \(\vec r(\phi,\theta)=(R\sin\phi\cos\theta,\;R\sin\phi\sin\theta,\;R\cos\phi)\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div>
+          <p>
+            Mary Jackson assinou 12 artigos técnicos na NASA. Nos anos 1970,
+            ajudou crianças negras de Hampton a construir um túnel de vento em
+            miniatura — a mesma física, outra escala.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>Estratégia de Resolução</h3>
+      <div class="compact-solution">
+        <p>
+          <strong>Estratégia:</strong> 1. Calcule \(\vec r_u\times\vec r_v\).
+          2. Simplifique a norma usando \(\sin\phi\ge 0\). 3. Integre com
+          Fubini.
+        </p>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>Exemplo 2 — Área sobre um Disco</h3>
+      <div class="dual-panel">
+        <div class="problem-section">
+          <p>
+            Calcule a área da parte do paraboloide \(z=x^2+y^2\) sobre o disco
+            \(x^2+y^2\le 1\).
+          </p>
+        </div>
+        <div class="v-bar"></div>
+        <div class="history-section">
+          <span class="history-label">CONTEXTO</span>
+          <p>
+            A Skylab caiu em 11 de julho de 1979: os destroços se espalharam
+            entre Esperance e Rawlinna, na Austrália. A prefeitura de Esperance
+            multou a NASA em 400 dólares australianos por jogar lixo — a multa
+            só foi paga em 2009, por um radialista.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+
+  <section>
+    <div class="slide-header">SEÇÃO 04 · ÁREA DE SUPERFÍCIE</div>
+    <div class="slide-body">
+      <h3>Exploração — Elementos de Área</h3>
+      <p>
+        A esfera de raio \(R=1.3\) em patches: faixas de latitude cruzadas com
+        setores de longitude. Cada patch contribui com a área do paralelogramo
+        \(\|\vec r_\phi\times\vec r_\theta\|\,\Delta\phi\,\Delta\theta\);
+        somar todos dá a área aproximada da superfície. As cores distinguem as
+        faixas; o slider refina a malha e o erro cai.
+      </p>
+      <canvas
+        id="canvasElementosDeArea"
+        class="visualization-canvas"
+        width="700"
+        height="380"
+      ></canvas>
+      <p id="infoElementosDeArea">
+        Área aprox.: — | 4πR²: 21.24 (R=1.3) | Erro: —%
+      </p>
+      <div class="controls-container">
+        <div class="control-slider">
+          <label>Subdivisões:</label>
+          <input
+            type="range"
+            id="sliderElementosDeArea"
+            min="4"
+            max="24"
+            step="1"
+            value="8"
+          />
+        </div>
+      </div>
+      <p class="visualization-tip">
+        Arraste para rotacionar a esfera. O slider refina os patches; a área
+        aproximada e o erro são recalculados a cada mudança.
+      </p>
+    </div>
+    <div class="slide-footer">CV-CH8-1975 · CAPÍTULO 8</div>
+  </section>
+</section>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('canvasElementosDeArea');
+    if (!canvas) return;
+
+    var ctx = canvas.getContext('2d');
+    var W = canvas.width;
+    var H = canvas.height;
+    var animId = null;
+    var inited = false;
+    var dirty = true;
+
+    var POS = '#1E88E5';
+    var VEL = '#43A047';
+    var ACC = '#E53935';
+    var FOR = '#FFB300';
+    var UNI = '#FFFFFF';
+
+    var infoEl = document.getElementById('infoElementosDeArea');
+    var sliderN = document.getElementById('sliderElementosDeArea');
+
+    var R = 1.3;
+    var BANDS = [POS, VEL, FOR, ACC];
+    var N = 8;
+    var rotationX = Math.PI / 6;
+    var rotationY = Math.PI / 4;
+    var isDragging = false;
+    var lastX = 0;
+    var lastY = 0;
+    var SCALE = Math.min(W, H) * 0.36;
+
+    function spherePoint(phi, theta) {
+      return [
+        R * Math.sin(phi) * Math.cos(theta),
+        R * Math.sin(phi) * Math.sin(theta),
+        R * Math.cos(phi),
+      ];
+    }
+
+    function rotationMatrix() {
+      var cx = Math.cos(rotationX);
+      var sx = Math.sin(rotationX);
+      var cy = Math.cos(rotationY);
+      var sy = Math.sin(rotationY);
+      var rx = [1, 0, 0, 0, cx, -sx, 0, sx, cx];
+      var ry = [cy, 0, sy, 0, 1, 0, -sy, 0, cy];
+      var r = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var i;
+      var j;
+      var k;
+      for (i = 0; i < 3; i++) {
+        for (j = 0; j < 3; j++) {
+          for (k = 0; k < 3; k++) {
+            r[i * 3 + j] += rx[i * 3 + k] * ry[k * 3 + j];
+          }
+        }
+      }
+      return r;
+    }
+
+    function rotate(p, rot) {
+      return [
+        rot[0] * p[0] + rot[1] * p[1] + rot[2] * p[2],
+        rot[3] * p[0] + rot[4] * p[1] + rot[5] * p[2],
+        rot[6] * p[0] + rot[7] * p[1] + rot[8] * p[2],
+      ];
+    }
+
+    function project(p) {
+      return { x: W / 2 + p[0] * SCALE, y: H / 2 - p[1] * SCALE };
+    }
+
+    function buildPatches(rot) {
+      var dPhi = Math.PI / N;
+      var M = 2 * N;
+      var dTheta = (2 * Math.PI) / M;
+      var approx = 0;
+      var patches = [];
+      var i;
+      var j;
+      for (i = 0; i < N; i++) {
+        var phiMid = (i + 0.5) * dPhi;
+        approx += M * R * R * Math.sin(phiMid) * dPhi * dTheta;
+        for (j = 0; j < M; j++) {
+          var phi0 = i * dPhi;
+          var phi1 = (i + 1) * dPhi;
+          var theta0 = j * dTheta;
+          var theta1 = (j + 1) * dTheta;
+          var corners = [
+            rotate(spherePoint(phi0, theta0), rot),
+            rotate(spherePoint(phi1, theta0), rot),
+            rotate(spherePoint(phi1, theta1), rot),
+            rotate(spherePoint(phi0, theta1), rot),
+          ];
+          patches.push({
+            corners: corners,
+            color: BANDS[i % BANDS.length],
+            depth:
+              (corners[0][2] + corners[1][2] + corners[2][2] + corners[3][2]) /
+              4,
+          });
+        }
+      }
+      patches.sort(function (a, b) {
+        return a.depth - b.depth;
+      });
+      return { patches: patches, approx: approx, sectors: M };
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+      ctx.fillRect(0, 0, W, H);
+
+      var rot = rotationMatrix();
+      var built = buildPatches(rot);
+      var patches = built.patches;
+      var i;
+      var j;
+
+      for (i = 0; i < patches.length; i++) {
+        var patch = patches[i];
+        ctx.beginPath();
+        for (j = 0; j < patch.corners.length; j++) {
+          var q = project(patch.corners[j]);
+          if (j === 0) ctx.moveTo(q.x, q.y);
+          else ctx.lineTo(q.x, q.y);
+        }
+        ctx.closePath();
+        ctx.globalAlpha = 0.55;
+        ctx.fillStyle = patch.color;
+        ctx.fill();
+        ctx.globalAlpha = 0.28;
+        ctx.strokeStyle = UNI;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      ctx.globalAlpha = 1;
+
+      var exact = 4 * Math.PI * R * R;
+      var error = (Math.abs(built.approx - exact) / exact) * 100;
+
+      ctx.font = '13px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = UNI;
+      ctx.fillText(
+        'N = ' + N + ' faixas · ' + built.sectors + ' setores',
+        W / 2,
+        20
+      );
+      ctx.textAlign = 'left';
+
+      if (infoEl) {
+        infoEl.textContent =
+          'Área aprox.: ' +
+          built.approx.toFixed(2) +
+          ' | 4πR²: ' +
+          exact.toFixed(2) +
+          ' (R=1.3) | Erro: ' +
+          error.toFixed(2) +
+          '%';
+      }
+    }
+
+    function loop() {
+      if (dirty) {
+        dirty = false;
+        draw();
+      }
+      animId = requestAnimationFrame(loop);
+    }
+
+    function init() {
+      if (!canvas || inited) return;
+      inited = true;
+      if (animId === null) {
+        dirty = true;
+        animId = requestAnimationFrame(loop);
+      }
+    }
+
+    function cleanup() {
+      if (animId !== null) {
+        cancelAnimationFrame(animId);
+        animId = null;
+      }
+      if (canvas && inited) inited = false;
+    }
+
+    if (sliderN) {
+      sliderN.addEventListener('input', function () {
+        N = parseInt(sliderN.value, 10);
+        dirty = true;
+      });
+    }
+
+    canvas.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      lastX = e.clientX;
+      lastY = e.clientY;
+    });
+    canvas.addEventListener('mousemove', function (e) {
+      if (!isDragging) return;
+      rotationY += (e.clientX - lastX) * 0.01;
+      rotationX += (e.clientY - lastY) * 0.01;
+      if (rotationX > Math.PI / 2) rotationX = Math.PI / 2;
+      if (rotationX < -Math.PI / 2) rotationX = -Math.PI / 2;
+      lastX = e.clientX;
+      lastY = e.clientY;
+      dirty = true;
+    });
+    canvas.addEventListener('mouseup', function () {
+      isDragging = false;
+    });
+    canvas.addEventListener('mouseleave', function () {
+      isDragging = false;
+    });
+
+    function hook() {
+      function onSlide(e) {
+        if (!canvas) return;
+        if (e.currentSlide && e.currentSlide.contains(canvas)) {
+          init();
+        } else if (e.previousSlide && e.previousSlide.contains(canvas)) {
+          cleanup();
+        }
+      }
+      function attach() {
+        if (typeof window.Reveal === 'undefined' || !Reveal.on) return false;
+        if (!document.getElementById('slides-container')) return false;
+        Reveal.on('slidechanged', onSlide);
+        Reveal.on('ready', onSlide);
+        var cur = Reveal.getCurrentSlide && Reveal.getCurrentSlide();
+        if (cur) onSlide({ currentSlide: cur, previousSlide: null });
+        return true;
+      }
+      if (attach()) return;
+      var tries = 0;
+      (function poll() {
+        tries++;
+        if (attach()) return;
+        if (tries < 200) setTimeout(poll, 50);
+      })();
+    }
+
+    hook();
+    window.vizElementosDeArea = { init: init, cleanup: cleanup };
+  })();
+</script>

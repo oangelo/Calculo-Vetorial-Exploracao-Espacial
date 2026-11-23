@@ -1,0 +1,106 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-11-OMEGA</div>
+  <div class="context">
+    ORIGEM: Propriedades dos Operadores — Pesquisa Fundamental, 1985
+  </div>
+
+  <div class="mission-context">
+    <strong>Significado antes da álgebra:</strong> Até agora calculamos
+    rotacionais de campos dados. Agora vamos provar uma propriedade fundamental:
+    o divergente do rotacional de qualquer campo é sempre zero. Isso tem uma
+    consequência profunda — não é possível criar uma "fonte" de rotação.
+  </div>
+
+  <p>
+    Uma identidade importante do cálculo vetorial afirma que o divergente do
+    rotacional de qualquer campo é sempre zero: \[\nabla \cdot (\nabla \times
+    \vec{F}) = 0.\] Vamos verificar isso com um cálculo explícito.
+  </p>
+
+  <p>
+    <strong>Nota:</strong> O operador divergente (\(\nabla \cdot\)) será
+    estudado em detalhe no próximo tópico. Aqui usamos apenas sua definição como
+    soma de derivadas parciais: \(\nabla \cdot \vec{G} = \frac{\partial
+    G_x}{\partial x} + \frac{\partial G_y}{\partial y} + \frac{\partial
+    G_z}{\partial z}\).
+  </p>
+
+  <p>
+    <strong>(a)</strong> Seja \(\vec{F} = (P, Q, R)\) um campo genérico. Escreva
+    a componente \(i\) do rotacional: \(\frac{\partial R}{\partial y} -
+    \frac{\partial Q}{\partial z}\). Escreva as componentes \(j\) e \(k\) de
+    forma análoga.
+  </p>
+
+  <p>
+    <strong>(b)</strong> O divergente do rotacional é:
+    \[\frac{\partial}{\partial x}\left(\frac{\partial R}{\partial y} -
+    \frac{\partial Q}{\partial z}\right) + \frac{\partial}{\partial
+    y}\left(\frac{\partial P}{\partial z} - \frac{\partial R} {\partial
+    x}\right) + \frac{\partial}{\partial z}\left( \frac{\partial Q}{\partial x}
+    - \frac{\partial P}{\partial y}\right).\] Expanda em seis termos.
+  </p>
+
+  <p>
+    <strong>(c)</strong> Use o teorema de Clairaut (derivadas mistas são iguais
+    quando contínuas: \(\frac{\partial^2 f}{\partial x \partial y} =
+    \frac{\partial^2 f}{\partial y \partial x}\)) para mostrar que os seis
+    termos se cancelam dois a dois.
+  </p>
+
+  <p>
+    <strong>(d)</strong> Verifique a identidade com o campo concreto \(\vec{F} =
+    (y^2, z^2, x^2)\) (do EX-09): calcule \(\nabla \times \vec{F}\) e depois
+    \(\nabla \cdot (\nabla \times \vec{F})\).
+  </p>
+
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [NÍVEL 4 REQUERIDO]</summary>
+    <div class="solution">
+      <p><strong>SOLUÇÃO:</strong></p>
+
+      <p>
+        (a) Componente \(i\): \(\frac{\partial R}{\partial y} - \frac{\partial
+        Q}{\partial z}\). Componente \(j\): \(\frac{\partial P}{\partial z} -
+        \frac{\partial R}{\partial x}\). Componente \(k\): \(\frac{\partial
+        Q}{\partial x} - \frac{\partial P}{\partial y}\).
+      </p>
+
+      <p>(b) Expandindo:</p>
+
+      <p>
+        \(\frac{\partial^2 R}{\partial x \partial y} - \frac{\partial^2
+        Q}{\partial x \partial z} + \frac{\partial^2 P}{\partial y \partial z} -
+        \frac{\partial^2 R}{\partial y \partial x} + \frac{\partial^2
+        Q}{\partial z \partial x} - \frac{\partial^2 P}{\partial z \partial
+        y}\).
+      </p>
+
+      <p>(c) Pelo teorema de Clairaut (derivadas parciais contínuas):</p>
+
+      <p>
+        \(\frac{\partial^2 R}{\partial x \partial y} = \frac{\partial^2
+        R}{\partial y \partial x}\) — estes dois termos se cancelam.
+      </p>
+
+      <p>
+        \(\frac{\partial^2 Q}{\partial x \partial z} = \frac{\partial^2
+        Q}{\partial z \partial x}\) — estes dois se cancelam.
+      </p>
+
+      <p>
+        \(\frac{\partial^2 P}{\partial y \partial z} = \frac{\partial^2
+        P}{\partial z \partial y}\) — estes dois se cancelam.
+      </p>
+
+      <p>A soma é zero. Logo \(\nabla \cdot (\nabla \times \vec{F}) = 0\).</p>
+
+      <p>
+        (d) Do EX-09: \(\nabla \times \vec{F} = (-2z, -2x, -2y)\). \(\nabla
+        \cdot (-2z, -2x, -2y) = \frac{\partial(-2z)}{\partial x} +
+        \frac{\partial(-2x)}{\partial y} + \frac{\partial(-2y)} {\partial z} = 0
+        + 0 + 0 = 0\). Confirma a identidade!
+      </p>
+    </div>
+  </details>
+</li>

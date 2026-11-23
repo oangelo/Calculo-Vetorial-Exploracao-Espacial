@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volume como Integral Dupla - Visualização Interativa</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #0a0a0f;
+        color: #e0e0e0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      h1 {
+        color: #4fc3f7;
+        text-shadow: 0 0 10px rgba(79, 195, 247, 0.3);
+        margin-bottom: 10px;
+      }
+      canvas {
+        border: 1px solid #333;
+        border-radius: 8px;
+        background: #111;
+      }
+      .controls {
+        margin-top: 15px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      button {
+        background: #1a237e;
+        color: #4fc3f7;
+        border: 1px solid #4fc3f7;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      button:hover {
+        background: #283593;
+      }
+      button.active {
+        background: #4fc3f7;
+        color: #0a0a0f;
+      }
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      input[type='range'] {
+        width: 150px;
+      }
+      .value-display {
+        margin-top: 10px;
+        font-size: 18px;
+        color: #ffb300;
+      }
+      .formula {
+        margin-top: 10px;
+        font-family: monospace;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Volume como Integral Dupla</h1>
+    <canvas id="volumeCanvas" width="700" height="400"></canvas>
+
+    <div class="controls">
+      <div class="slider-container">
+        <label>Tamanho da Região:</label>
+        <input type="range" id="limitRange" min="2" max="10" value="5" />
+        <span id="limitValue">1</span>
+      </div>
+      <button onclick="resetVolumeVisualization()">Reiniciar</button>
+    </div>
+    <div class="value-display">Volume = <span id="volumeValue">0</span></div>
+    <div class="formula">f(x,y) = x²/4 + y²/9</div>
+
+    <script>
+      function initVolumeVisualization() {
+        const volumeCanvas = document.getElementById('volumeCanvas');
+        if (!volumeCanvas) return;
+
+        const volumeCtx = volumeCanvas.getContext('2d');
+
+        // Estado
+        let angleZ = 225;
+        let angleX = 30;
+        let limitSize = 1; // Valor inicial
+        let limitXMin = -limitSize;
+        let limitXMax = limitSize;
+        let limitYMin = -limitSize;
+        let limitYMax = limitSize;
+        let volumeIsDragging = false;
+        let volumeLastX = 0;
+        let volumeLastY = 0;
+
+        // Configurar controle deslizante
+        const limitRange = document.getElementById('limitRange');
+        const limitValue = document.getElementById('limitValue');
+
+        // Atualizar valor do slider
+        limitRange.addEventListener('input', updateVolumeVisualization);
+
+        // Função da superfície
+        function f(x, y) {
+          return Math.pow(x, 2) / 4 + Math.pow(y, 2) / 9;
+        }
+
+        // Função de conversão para coordenadas isométricas
+        function iso(x, y, z) {
+          const scale = 90;
+          const angleZRad = (angleZ * Math.PI) / 180;
+          const angleXRad = (angleX * Math.PI) / 180;
+
+          // Rotação em torno do eixo Z
+          let x1 = x * Math.cos(angleZRad) - y * Math.sin(angleZRad);
+          let y1 = x * Math.sin(angleZRad) + y * Math.cos(angleZRad);
+          let z1 = z;
+
+          // Rotação em torno do eixo X
+          let y2 = y1 * Math.cos(angleXRad) - z1 * Math.sin(angleXRad);
+          let z2 = y1 * Math.sin(angleXRad) + z1 * Math.cos(angleXRad);
+
+          return {
+            x: volumeCanvas.width / 2 + x1 * scale,
+            y: volumeCanvas.height / 2 + y2 * scale,
+          };
+        }
+
+        // Função principal de renderização do volume
+        function drawVolumeVisualization() {
+          volumeCtx.clearRect(0, 0, volumeCanvas.width, volumeCanvas.height);
+
+          // Desenhar eixos coordenados
+          const origin = iso(0, 0, 0);
+          const axisLength = 3;
+
+          // Eixo X - Rosa (vetor posição)
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#FF69B4';
+          volumeCtx.lineWidth = 1.5;
+          const xEnd = iso(axisLength, 0, 0);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(xEnd.x, xEnd.y);
+          volumeCtx.stroke();
+
+          // Eixo Y - Verde (vetor velocidade)
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#4CAF50';
+          const yEnd = iso(0, axisLength, 0);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(yEnd.x, yEnd.y);
+          volumeCtx.stroke();
+
+          // Eixo Z - Azul
+          volumeCtx.beginPath();
+          volumeCtx.strokeStyle = '#2196F3';
+          const zEnd = iso(0, 0, axisLength);
+          volumeCtx.moveTo(origin.x, origin.y);
+          volumeCtx.lineTo(zEnd.x, zEnd.y);
+          volumeCtx.stroke();
+
+          // Desenhar região de integração (base)
+          volumeCtx.strokeStyle = 'rgba(255, 50, 50, 0.8)';
+          volumeCtx.lineWidth = 2;
+          volumeCtx.beginPath();
+          const r1 = iso(limitXMin, limitYMin, 0);
+          const r2 = iso(limitXMax, limitYMin, 0);
+          const r3 = iso(limitXMax, limitYMax, 0);
+          const r4 = iso(limitXMin, limitYMax, 0);
+          volumeCtx.moveTo(r1.x, r1.y);
+          volumeCtx.lineTo(r2.x, r2.y);
+          volumeCtx.lineTo(r3.x, r3.y);
+          volumeCtx.lineTo(r4.x, r4.y);
+          volumeCtx.closePath();
+          volumeCtx.stroke();
+
+          // Desenhar grade vertical (linhas da superfície até a região)
+          volumeCtx.strokeStyle = 'rgba(255,255,255,0.2)';
+          volumeCtx.lineWidth = 0.5;
+          const step = Math.max(0.5, limitSize / 4); // Ajusta a densidade da grade
+
+          for (let x = limitXMin; x <= limitXMax + 0.01; x += step) {
+            for (let y = limitYMin; y <= limitYMax + 0.01; y += step) {
+              const p1 = iso(x, y, 0);
+              const p2 = iso(x, y, f(x, y));
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.stroke();
+            }
+          }
+
+          // Desenhar superfície
+          const resolution = 15;
+          const dx = (limitXMax - limitXMin) / resolution;
+          const dy = (limitYMax - limitYMin) / resolution;
+
+          for (let i = 0; i < resolution; i++) {
+            for (let j = 0; j < resolution; j++) {
+              const x1 = limitXMin + i * dx;
+              const y1 = limitYMin + j * dy;
+              const x2 = x1 + dx;
+              const y2 = y1 + dy;
+
+              const z1 = f(x1, y1);
+              const z2 = f(x2, y1);
+              const z3 = f(x2, y2);
+              const z4 = f(x1, y2);
+
+              // Cor baseada na altura média
+              const avgZ = (z1 + z2 + z3 + z4) / 4;
+              const blue = Math.min(255, Math.floor(150 + avgZ * 70));
+
+              const p1 = iso(x1, y1, z1);
+              const p2 = iso(x2, y1, z2);
+              const p3 = iso(x2, y2, z3);
+              const p4 = iso(x1, y2, z4);
+
+              // Desenhar face preenchida
+              volumeCtx.fillStyle = `rgba(52, 152, ${blue}, 0.5)`;
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.lineTo(p3.x, p3.y);
+              volumeCtx.lineTo(p4.x, p4.y);
+              volumeCtx.closePath();
+              volumeCtx.fill();
+
+              // Desenhar contorno
+              volumeCtx.strokeStyle = `rgba(100, 180, 255, 0.7)`;
+              volumeCtx.lineWidth = 0.5;
+              volumeCtx.beginPath();
+              volumeCtx.moveTo(p1.x, p1.y);
+              volumeCtx.lineTo(p2.x, p2.y);
+              volumeCtx.lineTo(p3.x, p3.y);
+              volumeCtx.lineTo(p4.x, p4.y);
+              volumeCtx.closePath();
+              volumeCtx.stroke();
+            }
+          }
+
+          // Calcular e exibir volume
+          const volume = calculateVolume();
+          document.getElementById('volumeValue').textContent =
+            volume.toFixed(3);
+        }
+
+        // Cálculo do volume
+        function calculateVolume() {
+          const resolution = 50;
+          const dx = (limitXMax - limitXMin) / resolution;
+          const dy = (limitYMax - limitYMin) / resolution;
+          let sum = 0;
+
+          for (let i = 0; i < resolution; i++) {
+            for (let j = 0; j < resolution; j++) {
+              const x = limitXMin + (i + 0.5) * dx;
+              const y = limitYMin + (j + 0.5) * dy;
+              sum += f(x, y) * dx * dy;
+            }
+          }
+
+          return sum;
+        }
+
+        // Função de atualização baseada nos controles
+        function updateVolumeVisualization() {
+          const value = parseInt(this.value) / 5;
+          limitSize = value;
+          limitXMin = -limitSize;
+          limitXMax = limitSize;
+          limitYMin = -limitSize;
+          limitYMax = limitSize;
+          limitValue.textContent = limitSize.toFixed(1);
+          drawVolumeVisualization();
+        }
+
+        // Função de reset
+        window.resetVolumeVisualization = function () {
+          limitSize = 1;
+          limitXMin = -limitSize;
+          limitXMax = limitSize;
+          limitYMin = -limitSize;
+          limitYMax = limitSize;
+          if (limitRange) {
+            limitRange.value = 5;
+            limitValue.textContent = '1.0';
+          }
+          drawVolumeVisualization();
+        };
+
+        // Configurar interação de rotação
+        volumeCanvas.addEventListener('mousedown', (e) => {
+          volumeIsDragging = true;
+          volumeLastX = e.clientX;
+          volumeLastY = e.clientY;
+          volumeCanvas.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!volumeIsDragging) return;
+
+          const deltaX = e.clientX - volumeLastX;
+          const deltaY = e.clientY - volumeLastY;
+
+          angleZ = (angleZ - deltaX * 0.5) % 360;
+          angleX = Math.max(-89, Math.min(89, angleX + deltaY * 0.5));
+
+          volumeLastX = e.clientX;
+          volumeLastY = e.clientY;
+
+          drawVolumeVisualization();
+        });
+
+        document.addEventListener('mouseup', () => {
+          volumeIsDragging = false;
+          volumeCanvas.style.cursor = 'grab';
+        });
+
+        // Iniciar desenho da visualização de volume
+        drawVolumeVisualization();
+      }
+
+      // =============================================
+      // VISUALIZAÇÃO DE APLICAÇÃO PRÁTICA (PAINEL SOLAR EM ÓRBITA)
+      // =============================================
+
+      document.addEventListener('DOMContentLoaded', function () {
+        initVolumeVisualization();
+      });
+    </script>
+  </body>
+</html>

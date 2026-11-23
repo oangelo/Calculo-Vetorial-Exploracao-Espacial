@@ -1,0 +1,136 @@
+<div class="document-header">
+  <div class="document-stamp">SIGILOSO</div>
+  <div class="document-date">
+    DATA: <span class="censored">26</span> DE JULHO DE
+    <span class="censored">1971</span><br />
+    LOCALIZAÇÃO:
+    <span class="censored">CENTRO DE CÁLCULO ORBITAL [REDACTED]</span>
+  </div>
+  <div class="document-intro">
+    RELATÓRIO DE PROGRESSO: PROJETO <span class="censored">VECTOR-X</span
+    ><br /><br />
+    Em preparação para as missões Apollo J-type (Apollo 15, 16, 17), nossa
+    equipe de análise geométrica desenvolveu métodos para determinar
+    <span class="censored">planos de aproximação</span> a superfícies
+    irregulares. Estes cálculos são essenciais para o posicionamento de painéis
+    solares, antenas de comunicação e para o planejamento de trajetórias de
+    pouso no terreno lunar acidentado. Anotações obtidas dos cadernos do Dr.
+    <span class="censored">██████</span>.
+  </div>
+  <div class="warning-box">
+    Este documento contém informações geométricas cruciais. Divulgação não
+    autorizada resultará em <span class="censored">sanções severas</span>.
+  </div>
+  <div class="metadata">
+    <span>REF: VX-<span class="censored">3141</span>-T</span>
+    <span>NÍVEL DE ACESSO: SIGMA-<span class="censored">3</span></span>
+    <span
+      >CÓPIAS: <span class="censored">1</span> DE
+      <span class="censored">3</span></span
+    >
+  </div>
+</div>
+<div class="section-title">
+  FUNDAMENTAÇÃO TEÓRICA: PLANOS TANGENTES EM SUPERFÍCIES
+</div>
+<div class="concept-definition">
+  <p><strong>PRÉ-REQUISITOS</strong></p>
+  <p>
+    Este tópico exige domínio de superfícies parametrizadas \(\vec{r}(u,v)\),
+    curvas-coordenadas e parametrizações de esferas, cilindros e paraboloides
+    (Tópico 5 — Superfícies). Você também precisa do produto vetorial e produto
+    escalar (Capítulo 0), derivadas parciais de funções vetoriais (Capítulo 1) e
+    a noção de gradiente como vetor normal a superfícies de nível. Familiaridade
+    com a equação do plano na forma \(\vec{n} \cdot (\vec{r} - \vec{r}_0) = 0\)
+    (Capítulo 0) é indispensável.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>1. CURVAS COORDENADAS E VETORES TANGENTES</strong></p>
+  <p>
+    Dada uma superfície parametrizada \(\vec{r}(u,v)\), fixar um dos parâmetros
+    gera uma <strong>curva coordenada</strong> sobre a superfície. A curva
+    \(\vec{r}(u,v_0)\) varia apenas em \(u\), enquanto \(\vec{r}(u_0,v)\) varia
+    apenas em \(v\). As derivadas parciais
+  </p>
+  <p class="formula-highlight">
+    \[\vec{r}_u = \frac{\partial \vec{r}}{\partial u}, \qquad \vec{r}_v =
+    \frac{\partial \vec{r}}{\partial v}\]
+  </p>
+  <p>
+    são vetores tangentes a essas curvas coordenadas no ponto \((u_0,v_0)\).
+    Portanto, ambos são tangentes à superfície — eles definem o
+    <strong>plano tangente</strong> local.
+  </p>
+  <p>
+    Conexão com o Capítulo 1: se \(\vec{r}(t)\) descrevia a trajetória de um
+    foguete, então \(\vec{r}'(t)\) era o vetor velocidade tangente à trajetória.
+    Aqui, \(\vec{r}_u\) e \(\vec{r}_v\) desempenham o mesmo papel, mas para
+    curvas "congeladas" sobre uma superfície.
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>2. PRODUTO VETORIAL COMO VETOR NORMAL</strong></p>
+  <p>
+    Dois vetores tangentes \(\vec{r}_u\) e \(\vec{r}_v\) definem um plano. O
+    produto vetorial (revisão do Capítulo 0)
+  </p>
+  <p class="formula-highlight">\[\vec{n} = \vec{r}_u \times \vec{r}_v\]</p>
+  <p>
+    é ortogonal a ambos, logo ortogonal à superfície. Este vetor \(\vec{n}\) é
+    uma <strong>normal</strong> à superfície no ponto. Com \(\vec{n}\) e o ponto
+    de contato \(\vec{r}(u_0,v_0)\), montamos a equação do plano tangente:
+  </p>
+  <p class="formula-highlight">\[\vec{n} \cdot (\vec{r} - \vec{r}_0) = 0\]</p>
+  <p>
+    onde \(\vec{r} = (x,y,z)\) é um ponto genérico do plano e \(\vec{r}_0 =
+    \vec{r}(u_0,v_0)\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p>
+    <strong>3. GRADIENTE COMO VETOR NORMAL (SUPERFÍCIES IMPLÍCITAS)</strong>
+  </p>
+  <p>
+    Quando a superfície é dada implicitamente por \(F(x,y,z) = K\), o gradiente
+  </p>
+  <p class="formula-highlight">
+    \[\nabla F = \left(\frac{\partial F}{\partial x}, \frac{\partial F}{\partial
+    y}, \frac{\partial F}{\partial z}\right)\]
+  </p>
+  <p>
+    também é um vetor normal à superfície. Isso ocorre porque o gradiente aponta
+    na direção de maior crescimento de \(F\), e como \(F\) é constante sobre a
+    superfície, a única direção possível para \(\nabla F\) é a perpendicular à
+    superfície. O plano tangente fica:
+  </p>
+  <p class="formula-highlight">
+    \[\nabla F(x_0,y_0,z_0) \cdot (\vec{r} - \vec{r}_0) = 0\]
+  </p>
+  <p>
+    Se a superfície é um gráfico \(z = f(x,y)\), podemos reescrever como
+    \(F(x,y,z) = z - f(x,y) = 0\) e obter a forma familiar \(z - z_0 =
+    f_x(x_0,y_0)(x-x_0) + f_y(x_0,y_0)(y-y_0)\).
+  </p>
+</div>
+<div class="concept-definition">
+  <p><strong>4. COMPARAÇÃO DOS MÉTODOS</strong></p>
+  <p>
+    Os dois métodos — produto vetorial \(\vec{r}_u \times \vec{r}_v\) e
+    gradiente \(\nabla F\) — produzem vetores normais paralelos (possivelmente
+    com sentidos opostos). A escolha depende de como a superfície é apresentada:
+    parametrização favorece o produto vetorial; equação implícita favorece o
+    gradiente. Em missões espaciais, ambos são necessários — a parametrização
+    descreve a forma de um terreno lunar digitalizado, enquanto a forma
+    implícita modela fronteiras de propulsores e tanques de combustível.
+  </p>
+</div>
+<div class="historical-note">
+  <strong>NOTA HISTÓRICA:</strong> Durante as missões Apollo 15 (julho 1971),
+  Apollo 16 (abril 1972) e Apollo 17 (dezembro 1972), as missões J-type
+  introduziram o <span class="censored">rover lunar</span> e estadias
+  prolongadas na superfície. O planejamento de rotas do rover exigia
+  conhecimento preciso do terreno local — incluindo a orientação do plano
+  tangente em cada ponto do relevo lunar, calculado a partir de modelos digitais
+  baseados em fotografias estereoscópicas.
+</div>

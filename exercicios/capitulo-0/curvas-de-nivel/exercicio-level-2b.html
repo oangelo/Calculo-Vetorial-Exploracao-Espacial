@@ -1,0 +1,44 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO LEVEL-2B [NÍVEL BETA]</div>
+  <div class="context">
+    ORIGEM: Estudo de Pressão Atmosférica - Balões Estratosféricos, 1963
+  </div>
+  <p>
+    Nos exercícios anteriores, as funções eram polinômios. Agora vamos ver como
+    o mesmo procedimento funciona com funções não-polinomiais — neste caso, uma
+    exponencial que modela decaimento de sinal. O método é o mesmo: avaliar a
+    função no ponto dado para encontrar \(c\), mas a álgebra será diferente.
+  </p>
+  <p>
+    A variação de pressão em uma região é modelada por \(f(x, y) = e^{-(x^2 +
+    y^2)}\). Determine a equação da curva de nível que passa pelo ponto \((1,
+    0)\). O que acontece com as curvas de nível quando \(c\) se aproxima de 1?
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-N]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: Calcule \(c = f(1,0) = e^{-1}\). Para resolver
+      \(e^{-(x^2+y^2)} = c\), aplique o logaritmo natural em ambos os lados.
+      Note que \(c \to 1\) quando \(x^2 + y^2 \to 0\).
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-N REQUERIDO]</summary>
+    <p>
+      <strong>Solução completa:</strong><br /><br />
+      <strong>Passo 1:</strong> Calcular \(c\): \[ c = f(1, 0) = e^{-(1^2 +
+      0^2)} = e^{-1} = \frac{1}{e} \approx 0{,}368 \]
+      <strong>Passo 2:</strong> Encontrar a curva de nível genérica: \[ e^{-(x^2
+      + y^2)} = c \] Aplicando \(\ln\) em ambos os lados (com \(0 < c \leq 1\)):
+      \[ -(x^2 + y^2) = \ln c \] \[ x^2 + y^2 = -\ln c \]
+      <strong>Passo 3:</strong> Para \(c = e^{-1}\): \[ x^2 + y^2 = -\ln(e^{-1})
+      = 1 \] A curva de nível é um <strong>círculo</strong> de raio 1 centrado
+      na origem.<br /><br />
+      <strong>Quando \(c \to 1\):</strong><br />
+      Como \(-\ln c \to 0\) quando \(c \to 1\), o raio do círculo \(r =
+      \sqrt{-\ln c} \to 0\). As curvas de nível se contraem em torno da origem,
+      indicando que o ponto \((0,0)\) é um máximo global da função com valor
+      \(f(0,0) = 1\).
+    </p>
+  </details>
+</li>

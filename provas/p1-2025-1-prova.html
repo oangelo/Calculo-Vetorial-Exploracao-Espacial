@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prova – P1 – Cálculo Vetorial – 2025.1</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)'],
+          ],
+          displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]'],
+          ],
+        },
+        startup: {
+          ready: () => {
+            MathJax.startup.defaultReady();
+          },
+        },
+      };
+    </script>
+    <style>
+      @page {
+        size: A4;
+        margin: 1cm;
+      }
+      body {
+        font-family: 'Times New Roman', serif;
+        font-size: 9pt;
+        line-height: 1.3;
+        margin: 0;
+      }
+      .container {
+        width: 100%;
+        height: 27.7cm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+      }
+      .main-header {
+        text-align: center;
+        border-bottom: 1px solid #000;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+      }
+      .main-header h1 {
+        margin: 0;
+        font-size: 11pt;
+        font-weight: bold;
+      }
+      .main-header h2 {
+        margin: 0;
+        font-size: 10pt;
+        font-weight: normal;
+      }
+      .content {
+        display: flex;
+        gap: 1.5cm;
+        flex-grow: 1;
+      }
+      .column {
+        flex: 1;
+        min-width: 0;
+      }
+      .student-details {
+        margin-bottom: 20px;
+      }
+      .student-details div {
+        margin-bottom: 4px;
+      }
+      .student-details span {
+        border-bottom: 1px solid #000;
+        min-width: 350px;
+        display: inline-block;
+        margin-left: 5px;
+      }
+      .grade-table {
+        margin-bottom: 10px;
+      }
+      .grade-table table {
+        border-collapse: collapse;
+        font-size: 8pt;
+        text-align: center;
+        width: 100%;
+      }
+      .grade-table th,
+      .grade-table td {
+        border: 1px solid #000;
+        padding: 4px;
+        height: 0.8cm;
+      }
+      .instructions {
+        font-weight: bold;
+        margin-bottom: 20px;
+        font-size: 8.5pt;
+      }
+      .question {
+        margin-bottom: 20px;
+      }
+      .question-header {
+        font-weight: bold;
+        font-size: 10pt;
+        color: #000;
+        border-left: 3px solid #000;
+        padding: 5px 8px;
+        background-color: #f5f5f5;
+        margin-bottom: 8px;
+      }
+      .subquestion {
+        margin: 8px 0 8px 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-header">
+        <h1>Universidade do Estado do Rio de Janeiro - UERJ</h1>
+        <h2>P1 – Cálculo Vetorial – 2025.1</h2>
+      </div>
+      <div class="content">
+        <div class="column">
+          <div class="student-details">
+            <div><strong>Curso:</strong> <span></span></div>
+            <div><strong>Nome:</strong> <span></span></div>
+            <div><strong>Matrícula:</strong> <span></span></div>
+          </div>
+
+          <!-- QUESTÃO 1 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 1 (2,0 pts): Campos vetoriais planos
+            </div>
+            <p>
+              Considere os campos vetoriais planos \[ \vec F(x,y)=\langle
+              x,\,y\rangle,\qquad \vec G(x,y)=\langle -y,\,x\rangle. \] Para
+              <strong>cada</strong> um dos campos execute os itens seguintes.
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong> Esboce o campo em, pelo menos, quatro
+              pontos distintos.
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,5)</strong> Calcule a divergente
+              \(\nabla\!\cdot\!\vec V\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong> Calcule o rotacional (no plano)
+              \(\operatorname{rot}\,\vec V\).
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,5)</strong> Interprete os resultados de (b) e (c) em
+              termos de <em>fontes/sumidouros</em> e <em>rotação local</em>.
+            </div>
+          </div>
+
+          <!-- QUESTÃO 2 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 2 (2,0 pts): Integral dupla sobre triângulo
+            </div>
+            <p>
+              Seja \(T\) o triângulo de vértices \((1,1)\), \((0,3)\) e
+              \((2,2)\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong> Escreva,
+              <strong>sem executar a integração</strong>, a integral dupla
+              \(\displaystyle \iint_T f(x,y)\,dA\) na ordem \(dy\,dx\).
+            </div>
+            <div class="subquestion">
+              <strong>b) (0,5)</strong> Assuma \(f(x,y)=1\). Calcule o valor da
+              integral obtida no item (a).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong> Determine a área de \(T\) usando o
+              produto vetorial entre dois lados.
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,5)</strong> Compare os resultados dos itens (b) e
+              (c) e discuta sua coerência.
+            </div>
+          </div>
+
+          <!-- QUESTÃO 3 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 3 (2,0 pts): Soma de Riemann
+            </div>
+            <p>
+              Considere a função \(g(x,y)=x^{2}+y^{2}\) sobre o retângulo
+              \(R=[0,2]\times[0,1]\).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong> Particione \(R\) em \(m=4\)
+              subintervalos em \(x\) e \(n=2\) em \(y\), utilizando pontos
+              médios.
+            </div>
+            <div class="subquestion">
+              <strong>b) (1,0)</strong> Escreva a soma de Riemann correspondente
+              e encontre um valor numérico aproximado para \(\iint_R
+              g(x,y)\,dA\) (quatro casas decimais).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,5)</strong> Comente qualitativamente como o erro da
+              aproximação evolui quando \(m,n\to\infty\), relacionando sua
+              resposta à definição de integral dupla.
+            </div>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="grade-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Q1</th>
+                  <th>Q2</th>
+                  <th>Q3</th>
+                  <th>Q4</th>
+                  <th>Q5</th>
+                  <th>TOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="instructions">
+            Instruções: Resolva todas as questões apresentando os cálculos
+            detalhadamente. Cada questão vale 2,0 pontos. Não é permitido o uso
+            de calculadoras programáveis ou dispositivos conectados à internet.
+          </div>
+
+          <!-- QUESTÃO 4 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 4 (2,0 pts): Centro de massa de placa elíptica
+            </div>
+            <p>
+              Considere a elipse completa no primeiro quadrante dada por \[
+              \frac{(x-a)^{2}}{a^{2}}+\frac{(y-b)^{2}}{b^{2}}=1,\quad
+              a,b>0,\qquad x\ge 0,\;y\ge 0, \] cuja densidade superficial varia
+              linearmente com \(x\): \(\rho(x,y)=k\,x\) (\(k>0\)).
+            </p>
+            <div class="subquestion">
+              <strong>a) (0,5)</strong> Escreva as integrais que definem as
+              coordenadas do centro de massa \((\bar x,\bar y)\) da placa
+              elíptica.
+            </div>
+            <div class="subquestion">
+              <strong>b) (1,0)</strong> Calcule \(\bar x\) e \(\bar y\) em
+              função de \(a, b\) e \(k\).
+            </div>
+            <div class="subquestion">
+              <strong>c) (0,25)</strong> Explique se o resultado obtido respeita
+              a simetria geométrica esperada.
+            </div>
+            <div class="subquestion">
+              <strong>d) (0,25)</strong> Sem refazer os cálculos, discuta o que
+              mudaria se a densidade fosse \(\rho(x,y)=k\,y\).
+            </div>
+          </div>
+
+          <!-- QUESTÃO 5 -->
+          <div class="question">
+            <div class="question-header">
+              Questão 5 (2,0 pts): Inversão de ordem de integração
+            </div>
+            <p>
+              Considere a integral dupla \[ I =
+              \int_{x=0}^{1}\!\int_{y=x^{2}}^{\sqrt{x}} (x+2y)\,dy\,dx. \]
+            </p>
+            <div class="subquestion">
+              <strong>a) (2,0)</strong> Calcule \(I\) invertendo a ordem de
+              integração (isto é, escrevendo-a na forma \(dx\,dy\)).
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<li class="exercise-item">
+  <div class="exercise-number">EXERCÍCIO VECTOR-1A</div>
+  <div class="context">
+    ORIGEM: Apollo 11 — Simulações Pré-Pouso Lunar [JUL/1969]
+  </div>
+  <p>
+    Nos tópicos anteriores deste capítulo, você aplicou o Teorema de Green para
+    calcular circulações ao redor de contornos fechados. Vamos agora reconhecer
+    que o integrando do lado direito de Green é uma grandeza que você já conhece
+    do Cap 1: o <strong>rotacional escalar</strong>.
+  </p>
+  <p>
+    Considere o retângulo \(R = [0,1] \times [0,2]\) e o campo \(\vec{F}(x,y) =
+    (2y,\, 3x)\).
+  </p>
+  <p>
+    <strong>(a)</strong> Calcule \(\frac{\partial Q}{\partial x} -
+    \frac{\partial P}{\partial y}\) e reconheça este valor como o rotacional
+    escalar \(\operatorname{rot}\vec{F}\) do campo.
+  </p>
+  <p>
+    <strong>(b)</strong> Reescreva o Teorema de Green usando a notação de
+    rotacional: \(\displaystyle\oint_{\partial R} \vec{F}\cdot d\vec{r} =
+    \iint_{R} (\operatorname{rot}\vec{F})\, dA\). Esta é a
+    <strong>forma de Stokes no plano</strong> — o mesmo Green, reinterpretado.
+  </p>
+  <p>
+    <strong>(c)</strong> Use a forma de Stokes para calcular a circulação de
+    \(\vec{F}\) ao redor do retângulo. Em seguida, calcule a mesma circulação
+    pela integral de linha direta ao longo dos quatro lados do retângulo (como
+    fazia nos tópicos anteriores) e verifique que os resultados coincidem.
+  </p>
+  <details class="hint-container">
+    <summary>ARQUIVO AUXILIAR [SIGMA-1]</summary>
+    <div class="hint">
+      [NOTA TÉCNICA]: O rotacional escalar de \(\vec{F}=(P,Q)\) foi definido no
+      Cap 1 como o determinante simbólico \(\operatorname{rot}\vec{F} =
+      \frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\). Para
+      Stokes, basta integrar esse valor sobre a região.
+    </div>
+  </details>
+  <details>
+    <summary>RELATÓRIO DE CÁLCULO [SIGMA-4 REQUERIDO]</summary>
+    <div class="solution">
+      <p>
+        <strong>(a)</strong> \(\operatorname{rot}\vec{F} =
+        \frac{\partial(3x)}{\partial x} - \frac{\partial(2y)}{\partial y} = 3 -
+        2 = 1\).
+      </p>
+      <p>
+        <strong>(b)</strong> Stokes no plano: \(\oint_{\partial R} \vec{F}\cdot
+        d\vec{r} = \iint_{R} 1\, dA = \text{Area}(R) = 2\).
+      </p>
+      <p><strong>(c)</strong> Contorno (sentido anti-horário):</p>
+      <p>
+        Base (\(y=0\), \(x: 0\to 1\)): \(\vec{F}=(0,3x)\), \(d\vec{r}=(dx,0)\),
+        \(\vec{F}\cdot d\vec{r}=0\). Integral: \(0\).
+      </p>
+      <p>
+        Direita (\(x=1\), \(y: 0\to 2\)): \(\vec{F}=(2y,3)\),
+        \(d\vec{r}=(0,dy)\), \(\vec{F}\cdot d\vec{r}=3\,dy\). Integral: \(6\).
+      </p>
+      <p>
+        Topo (\(y=2\), \(x: 1\to 0\)): \(\vec{F}=(4,3x)\), \(d\vec{r}=(dx,0)\),
+        \(\vec{F}\cdot d\vec{r}=4\,dx\). Integral: \(-4\).
+      </p>
+      <p>
+        Esquerda (\(x=0\), \(y: 2\to 0\)): \(\vec{F}=(2y,0)\),
+        \(d\vec{r}=(0,dy)\), \(\vec{F}\cdot d\vec{r}=0\). Integral: \(0\).
+      </p>
+      <p>Total: \(0 + 6 + (-4) + 0 = 2\). Confere com Stokes. \(\checkmark\)</p>
+    </div>
+  </details>
+</li>
