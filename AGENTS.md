@@ -33,7 +33,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 │   │   └── exercicio-*.html
 │   ├── capitulo-1-funcoes-vetoriais/
 │   └── ...
-├── atividades-proativas/ # Atividades com estudo prévio e resumo escrito em sala (vale nota)
+├── especificacoes/       # Especificações (escopo + critério de aceite + protocolo) e o piloto
 ├── slide-decks/          # Apresentações Reveal.js organizadas por capítulo
 │   ├── capitulo-0-revisao/
 │   ├── capitulo-1-funcoes-vetoriais/
@@ -60,7 +60,7 @@ Curso de Cálculo Vetorial com tema de **Exploração Espacial e Guerra Fria**:
 └── worktrees/            # Git worktrees (ignorado pelo git)
 ```
 
-## ⚠️ Importante: Dois Tipos de Exercícios e uma Atividade
+## ⚠️ Importante: Dois Tipos de Exercícios e as Especificações
 
 Este projeto possui **dois tipos de exercícios** com finalidades diferentes:
 
@@ -77,16 +77,18 @@ Este projeto possui **dois tipos de exercícios** com finalidades diferentes:
 - Sem tema narrativo
 - Guia específico em `sala/AGENTS.md`
 
-**NÃO confunda os dois!** Cada um tem seu próprio guia e estrutura.
+**NÃO confunda os dois!** Cada um tem seu próprio guia e estrutura — e a especificação não é exercício nem material de estudo.
 
-### 3. Atividade proativa (`atividades-proativas/`)
+### 3. Especificações (`especificacoes/`)
 
-- O aluno **escreve um documento**, não preenche lacunas: estuda as especificações do professor
-  (publicadas no repositório, com antecedência), revisa com dois colegas por laudo e escreve o
-  resumo de memória em sala, no dia marcado — é o resumo que vale nota, o laudo não
-- Uma pasta por atividade: `atividades-proativas/<topico>/regras.md`
-- **Não é folha de sala:** não segue A4 em coluna dupla nem as classes de
-  `sala-styles.css`. O formato de impressão é decisão à parte.
+- Cada capítulo tem uma **especificação** em HTML: escopo, critério de aceite (seis itens por
+  título) e protocolo do resumo de memória. O aluno estuda pelo material do curso (`intro.html`,
+  slides) e entrega o resumo em sala; é o resumo que vale nota.
+- Uma pasta por especificação: `especificacoes/<capitulo>/especificacao.html`. O piloto de
+  integrais fica em `especificacoes/integrais-piloto/especificacao.html`, fora da série numerada.
+- **Não é folha de sala:** não segue A4 em coluna dupla nem as classes de `sala-styles.css`.
+  **Não é material de estudo:** não repete o `intro.html`; aponta para ele.
+- Não existe mais `regras.md`: o protocolo vive dentro da especificação.
 
 ## ⚠️ Importante: Worktrees
 
@@ -242,6 +244,11 @@ slide-decks/capitulo-N-nome/
 - `/sala/AGENTS.md` - Guia específico para exercícios de sala
 - `/sala/sala-styles.css` - CSS compartilhado
 
+**Para criar especificações:**
+
+- `/especificacoes/<capitulo>/especificacao.html` (modelo: `/especificacoes/integrais-piloto/especificacao.html`)
+- `/especificacoes/especificacoes.css` - CSS compartilhado
+
 **Para criar slides:**
 
 - `/docs/prompts/slides.md` - Instruções para slides
@@ -266,12 +273,14 @@ slide-decks/capitulo-N-nome/
 - Exercícios de sala: `sala/capitulo-N-nome/exercicio-N.html`
 - Slides: `slide-decks/capitulo-N-nome-do-capitulo/index.html` (arquivo principal do capítulo)
 - Seções de slides: `slide-decks/capitulo-N-nome/NN-nome-da-secao.html`
+- Especificações: `especificacoes/capitulo-N-nome/especificacao.html`
 
 **CSS:**
 
 - Exercícios de casa: usar `../styles.css` (relativo ao capítulo)
 - Exercícios de sala: usar `../sala-styles.css` (relativo à pasta do capítulo)
 - Slides: usar `../space-theme.css` (relativo à pasta do capítulo)
+- Especificações: usar `../especificacoes.css` (relativo à pasta do capítulo)
 
 ## O que Evitar
 
@@ -282,6 +291,7 @@ slide-decks/capitulo-N-nome/
 - NÃO usar jQuery (use DOM nativo)
 - NÃO criar Three.js se Canvas 2D basta
 - NÃO confundir exercícios de casa (`exercicios/`) com exercícios de sala (`sala/`)
+- NÃO confundir especificação com `intro.html` ou slides
 
 ## Problemas Conhecidos
 

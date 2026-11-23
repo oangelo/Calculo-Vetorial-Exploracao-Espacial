@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Especificação 0 — Revisão</title>
+    <link rel="stylesheet" href="../especificacoes.css" />
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  </head>
+  <body>
+    <main class="spec">
+      <header class="spec-header">
+        <p class="spec-kicker">ESPECIFICAÇÃO · CAP 0</p>
+        <h1 class="spec-title">Especificação 0 — Revisão</h1>
+        <p class="spec-subtitle">Cálculo Vetorial — IPRJ/UERJ · 2026/2</p>
+      </header>
+
+      <section class="spec-section">
+        <h2>O que este documento é</h2>
+        <p>
+          Esta especificação define o escopo, o critério de aceite e o protocolo
+          do resumo de memória da revisão. Ela não ensina a matemática: diz o
+          que o resumo precisa conter. Quem lê o resumo precisa conseguir
+          entender os tópicos de maneira clara e ver que ele atende a critérios
+          mínimos de legibilidade, organização e rigor matemático.
+        </p>
+        <p class="spec-note">
+          O resumo é escrito de memória, em sala, no dia marcado no cronograma.
+          É ele que vale nota.
+        </p>
+      </section>
+
+      <section class="spec-section">
+        <h2>1. Escopo — os seis títulos</h2>
+        <p>Um bloco para cada um, nesta ordem:</p>
+        <ol class="spec-list">
+          <li>
+            <p>
+              <strong>Vetores e produtos</strong> — ponto, vetor e norma;
+              produto escalar (ângulo, projeção, perpendicularidade); produto
+              vetorial (área, normal, orientação); produto misto (volume,
+              coplanaridade). Símbolos: \(\vec u\), \(\vec v\), \(\|\vec v\|\),
+              \(\vec u\cdot\vec v\), \(\vec u\times\vec v\), \(\vec a\cdot(\vec
+              b\times\vec c)\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Retas, planos e distâncias</strong> — reta (paramétrica e
+              simétrica), plano (normal e forma geral), incidência, distâncias
+              ponto-reta, ponto-plano e entre retas reversas. Símbolos: \(P_0\),
+              \(\vec d\), \(\vec n\), \(t\), \(\pi\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Circunferência e elipse</strong> — lugar geométrico;
+              circunferência \((x-h)^2+(y-k)^2=r^2\); elipse
+              \(d(P,F_1)+d(P,F_2)=2a\), com \(c^2=a^2-b^2\) e \(e=c/a\); centro,
+              focos, vértices e eixos. Símbolos: \(h\), \(k\), \(r\), \(a\),
+              \(b\), \(c\), \(e\), \(F_1\), \(F_2\).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Curvas de nível</strong> — \(f(x,y)=c\); famílias de nível
+              (retas, círculos, elipses, parábolas, hipérboles); esboço do mapa;
+              leitura de inclinação e de extremos/selas pela forma das curvas.
+              Símbolos: \(c\) (percorre a imagem de \(f\)), \(f\), \(x\), \(y\).
+              O vetor gradiente e a classificação quantitativa ficam no título
+              6.
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Derivada parcial</strong> — \(\partial f/\partial x\) e
+              \(\partial f/\partial y\) como derivadas de seções; regra da
+              cadeia; derivadas segundas e mistas (Teorema de Schwarz).
+              Símbolos: \(\partial f/\partial x\), \(\partial f/\partial y\),
+              \(\partial^2 f/\partial x\partial y\) (e a variável que varia com
+              as demais fixas).
+            </p>
+          </li>
+          <li>
+            <p>
+              <strong>Gradiente</strong> — \(\nabla f=(\partial f/\partial
+              x,\partial f/\partial y)\); direção de maior crescimento e
+              magnitude; perpendicularidade à curva de nível; derivada
+              direcional \(D_{\hat u}f=\nabla f\cdot\hat u\); pontos críticos
+              \(\nabla f=\vec 0\). Símbolos: \(\nabla f\), \(\hat u\), \(D_{\hat
+              u}f\).
+            </p>
+          </li>
+        </ol>
+        <p>
+          Nenhum outro título entra. A derivada de uma variável não é título: é
+          pré-requisito do estudo.
+        </p>
+      </section>
+
+      <section class="spec-section">
+        <h2>2. Critério de aceite — o que cada título precisa ter</h2>
+        <p>
+          Cada um dos seis títulos só é aceito se cumprir os seis itens abaixo:
+        </p>
+        <ul class="spec-list">
+          <li>
+            <strong>A definição em palavras</strong> — o que o objeto é, sem
+            fórmula.
+          </li>
+          <li>
+            <strong>Quando usar</strong> — a forma do problema que denuncia o
+            objeto: a assinatura que o distingue dos demais. É este item que
+            decide a escolha.
+          </li>
+          <li>
+            <strong>O procedimento</strong> — os passos, na ordem em que se
+            executam, do começo ao resultado.
+          </li>
+          <li>
+            <strong>O que é cada símbolo</strong> — os símbolos listados no
+            escopo do título: o que cada um representa no cálculo, e o que ele
+            percorre quando é variável.
+          </li>
+          <li>
+            <strong>Um exemplo resolvido</strong> — o exemplo que você usou para
+            estudar, com o passo a passo escrito por você.
+          </li>
+          <li><strong>Por que funciona</strong> — em palavras.</li>
+        </ul>
+        <p>
+          <strong>A demonstração é sugerida, não exigida.</strong> Se sobrar
+          tempo, faça <strong>uma</strong>, à sua escolha:
+        </p>
+        <ul class="spec-list">
+          <li>
+            <strong>(a)</strong> por que o produto escalar dá a projeção e o
+            ângulo entre dois vetores;
+          </li>
+          <li>
+            <strong>(b)</strong> por que a derivada parcial é a derivada de uma
+            seção (com as outras variáveis fixas);
+          </li>
+          <li>
+            <strong>(c)</strong> por que o gradiente é perpendicular à curva de
+            nível;
+          </li>
+          <li>
+            <strong>(d)</strong> por que a derivada direcional é \(D_{\hat
+            u}f=\nabla f\cdot\hat u\).
+          </li>
+        </ul>
+        <p>
+          <strong>Como o critério vira nota.</strong> Dois números, cada um de 1
+          a 3:
+        </p>
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Nível</th>
+              <th>Conteúdo</th>
+              <th>Forma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>
+                Os seis títulos estão completos e corretos, com rigor matemático
+              </td>
+              <td>
+                Acha os seis títulos, entende na primeira leitura, letra legível
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>Passam com uma ou duas falhas de procedimento</td>
+              <td>Um dos três critérios de forma falha</td>
+            </tr>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>
+                Não passam — falta o "quando usar", ou o procedimento não fecha
+              </td>
+              <td>Dois ou três falham</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+          <strong>O conteúdo é o que conta; a forma desempata.</strong> Resumo
+          bonito que não resolve o problema não passa por conteúdo.
+        </p>
+      </section>
+
+      <section class="spec-section">
+        <h2>3. A semana antes, até o dia marcado</h2>
+        <p>
+          Você tem o material e sabe a data. Estude pelo que preferir — livro,
+          notas, vídeo ou IA. O que se espera nesse intervalo:
+        </p>
+        <ul class="spec-list">
+          <li>
+            <strong>Rascunhe várias vezes.</strong> A primeira versão serve para
+            descobrir o que você não sabe; a terceira é a que fica na cabeça.
+          </li>
+          <li>
+            <strong>Foque em entender, não em decorar.</strong> Provavelmente é
+            impossível decorar tantas coisas; o que se cobra é que você entenda
+            os tópicos e saiba aplicá-los com clareza.
+          </li>
+          <li>
+            <strong
+              >Peça a um colega para ler — se quiser, e em qualquer
+              lugar.</strong
+            >
+            Não precisa ser o da direita nem o da esquerda. Às vezes é fácil
+            entender o próprio texto, mas não para um terceiro; o aluno precisa
+            garantir que o professor entenda.
+          </li>
+          <li>
+            <strong
+              >Antes do dia da avaliação, escreva de cabeça um resumo que atenda
+              aos seis critérios.</strong
+            >
+            Não é para entregar antes: é o teste que mostra se você já consegue.
+          </li>
+        </ul>
+      </section>
+
+      <section class="spec-section">
+        <h2>4. O dia do resumo</h2>
+        <ul class="spec-list">
+          <li>
+            <strong
+              >No dia marcado no cronograma, em sala e sem consulta.</strong
+            >
+            Nada em cima da mesa além de papel e caneta.
+          </li>
+          <li>
+            Seis blocos, um por título, na ordem do escopo. Os seis itens de
+            cada um, sem exceção — é por eles que a nota é dada.
+          </li>
+          <li><strong>Entrega:</strong> o resumo.</li>
+        </ul>
+      </section>
+
+      <footer class="spec-footer">
+        Especificação 0 · Cálculo Vetorial · IPRJ/UERJ · 2026/2 ·
+        <a href="../../planejamento/planejamento-CV-2026-2.md">cronograma</a>
+      </footer>
+    </main>
+  </body>
+</html>

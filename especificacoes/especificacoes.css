@@ -1,0 +1,118 @@
+:root {
+  --ink: #1a1a1a;
+  --muted: #555;
+  --rule: #bbb;
+  --accent: #7a1f1f;
+  --paper: #fff;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 17px; }
+
+body {
+  margin: 0;
+  background: #f3f1ec;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1.55;
+}
+
+.spec {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 4rem;
+  background: var(--paper);
+}
+
+.spec-header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.spec-kicker {
+  margin: 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.spec-title {
+  font-size: 1.75rem;
+  margin: 0.35rem 0 0.25rem;
+  line-height: 1.15;
+}
+
+.spec-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.spec-section { margin: 2rem 0; }
+
+.spec-section > h2 {
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.35rem;
+}
+
+.spec-note {
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0.9rem;
+  background: #faf7f2;
+  color: #333;
+}
+
+.spec-list { padding-left: 1.35rem; }
+.spec-list li { margin: 0.4rem 0; }
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.95rem;
+}
+
+.spec-table th,
+.spec-table td {
+  border: 1px solid var(--rule);
+  padding: 0.4rem 0.55rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.spec-table th { background: #efece5; }
+
+.spec-field { margin: 0.6rem 0; }
+.spec-field > strong { display: block; }
+
+.spec-footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+a { color: var(--accent); }
+
+code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.9em;
+}
+
+@media print {
+  body { background: #fff; }
+  .spec { max-width: none; padding: 0; }
+  a { color: inherit; text-decoration: none; }
+  .spec-table,
+  .spec-note { break-inside: avoid; }
+  .spec-section > h2 { break-after: avoid; }
+  @page { margin: 18mm 16mm; }
+}
