@@ -48,7 +48,7 @@
 | 1   | Qua 18/nov      | 0    | 1/3        | Revisão — GA, Cônicas, Derivada, Integral                                                          |
 | 2   | Seg 23/nov      | 0    | 2/3        | Revisão — GA, Cônicas, Derivada, Integral                                                          |
 | 3   | Qua 25/nov      | 0    | 3/3        | Revisão — GA, Cônicas, Derivada, Integral                                                          |
-| 4   | **Seg 30/nov**  | 0    | avaliação  | 📝 **Avaliação — Cap 0** · [especificação](../especificacoes/capitulo-0-revisao/especificacao.html) |
+| 4   | **Seg 30/nov**  | 0    | avaliação  | 📝 **Avaliação — Cap 0** · [especificação](https://oangelo.github.io/Calculo-Vetorial-Exploracao-Espacial/especificacoes/capitulo-0-revisao/especificacao.html) |
 | 5   | Qua 02/dez      | 1    | 1/2        | Funções de Várias Variáveis Reais a Valores Vetoriais                                              |
 | 6   | Seg 07/dez      | 1    | 2/2        | Funções de Várias Variáveis Reais a Valores Vetoriais                                              |
 | 7   | **Qua 09/dez**  | 1    | avaliação  | 📝 **Avaliação — Cap 1**                                                                            |
